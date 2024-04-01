@@ -3,17 +3,19 @@
 # Mustafa Said Ağca <m.said.agca@gmail.com>, 2022.
 # Kaan Özbilek <info@kaanozbilek.com>, 2023.
 # Kursat <sitting_1907@hotmail.com>, 2023.
+# Semih <semihbrn10@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-10-07 05:47+0000\n"
-"Last-Translator: Kursat <sitting_1907@hotmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/tr/>\n"
+"PO-Revision-Date: 2024-03-30 12:02+0000\n"
+"Last-Translator: Semih <semihbrn10@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/"
+"tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -213,11 +215,14 @@ msgstr ""
 msgid ""
 "[Benchmarks](Benchmarks.md): Information on the Klipper benchmark method."
 msgstr ""
+"[Benchmarklar](Benchmarks.md): Klipper kıyaslama yöntemi hakkında bilgi."
 
 msgid ""
 "[Contributing](CONTRIBUTING.md): Information on how to submit improvements "
 "to Klipper."
 msgstr ""
+"[Katkıda Bulunmak](CONTRIBUTING.md): Klipper'a iyileştirmelerin nasıl "
+"gönderileceği hakkında bilgi."
 
 msgid "[Packaging](Packaging.md): Information on building OS packages."
 msgstr ""

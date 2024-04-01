@@ -1,17 +1,20 @@
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # VICTOR <subfyn@gmail.com>, 2023.
 # xXx <xxx_xxx_xxxxxxxxx@mail.ru>, 2023.
+# Russ <xruss.kz@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-09-30 21:41+0000\n"
-"Last-Translator: xXx <xxx_xxx_xxxxxxxxx@mail.ru>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/rotation_distance/ru/>\n"
+"PO-Revision-Date: 2024-03-30 15:49+0000\n"
+"Last-Translator: Russ <xruss.kz@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"rotation_distance/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "Stepper motor drivers on Klipper require a `rotation_distance` parameter in "
@@ -85,15 +88,16 @@ msgstr ""
 "получить точное значение для этого параметра - использовать процедуру "
 "\"измерить и обрезать\"."
 
+#, fuzzy
 msgid ""
 "First start with an initial guess for the rotation distance. This may be "
 "obtained from [steps_per_mm](#obtaining-rotation_distance-from-steps_per_mm-"
 "or-step_distance) or by [inspecting the hardware](#extruder)."
 msgstr ""
-"Сначала начните с первоначального предположения о расстоянии поворота. Это "
-"может быть получено с помощью [steps_per_mm](#получение-rotation_distance-"
-"из-steps_per_mm-или-step_distance) или с помощью [проверки "
-"оборудования](#экструдер)."
+"Сначала начните с первоначального предположения о расстоянии поворота `"
+"rotation distance` . Это Это можно получить c помощью [steps_per_mm"
+"](#obtaining-rotation_distance-from-steps_per_mm-or-step_distance) или с "
+"помощью [inspecting the hardware](#extruder)."
 
 msgid "Then use the following procedure to \"measure and trim\":"
 msgstr "Затем используйте следующую процедуру для \"измерения и обрезки\":"

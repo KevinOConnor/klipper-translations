@@ -22,7 +22,7 @@ If one wishes to reduce current to motors during print start routines, then cons
 
 Some printers with dedicated Z motors that are idle during normal printing moves (no bed_mesh, no bed_tilt, no Z skew_correction, no "vase mode" prints, etc.) may find that Z motors do run cooler with a `hold_current`. If implementing this then be sure to take into account this type of uncommanded Z axis movement during bed leveling, bed probing, probe calibration, and similar. The `driver_TPOWERDOWN` and `driver_IHOLDDELAY` should also be calibrated accordingly. If unsure, prefer to not specify a `hold_current`.
 
-## Setting "spreadCycle" vs "stealthChop" Mode
+## Einstellung "spreadCycle" vs "stealthChop" Modus
 
 Standardmäßig setzt Klipper die TMC-Treiber in den "spreadCycle"-Modus. Wenn der Treiber "stealthChop" unterstützt, kann er durch Hinzufügen von `stealthchop_threshold: 999999`in den TMC-Konfigurationsabschnitt einfügt.
 
@@ -32,7 +32,7 @@ Tests comparing modes have shown an increased "positional lag" of around 75% of 
 
 Es wird empfohlen, immer den "spreadCycle"-Modus zu verwenden (indem `stealthchop_threshold` nicht angegeben wird) oder immer den "stealthChop"-Modus (indem `stealthchop_threshold` auf 999999 gesetzt wird). Leider liefern die Treiber oft schlechte und verwirrende Ergebnisse, wenn sich der Modus ändert, während der Motor eine Geschwindigkeit ungleich Null hat.
 
-## TMC interpolate setting introduces small position deviation
+## Die TMC interpolate einstellung führt zu geringen Positionsabweichungen
 
 The TMC driver `interpolate` setting may reduce the audible noise of printer movement at the cost of introducing a small systemic positional error. This systemic positional error results from the driver's delay in executing "steps" that Klipper sends it. During constant velocity moves, this delay results in a positional error of nearly half a configured microstep (more precisely, the error is half a microstep distance minus a 512th of a full step distance). For example, on an axis with a 40mm rotation_distance, 200 steps_per_rotation, and 16 microsteps, the systemic error introduced during constant velocity moves is ~0.006mm.
 
@@ -217,11 +217,11 @@ Es ist möglich, die sensorlose Referenzfahrt auf den X- und Y-Schlitten eines C
 
 Verwenden Sie die oben beschriebene Abstimmungsanleitung, um die geeignete "Überzieh-Empfindlichkeit" für jeden Wagen zu finden, aber beachten Sie die folgenden Einschränkungen:
 
-1. When using sensorless homing on CoreXY, make sure there is no `hold_current` configured for either stepper.
+1. Bei Verwendung von sensorlosen Homing auf CoreXY, stellen Sie sicher, dass kein `hold_current` für die Stepper konfiguriert wurde.
 1. Vergewissern Sie sich bei der Einstellung, dass sich sowohl der X- als auch der Y-Wagen vor jedem Startversuch in der Mitte ihrer Schienen befinden.
 1. Verwenden Sie nach Abschluss der Abstimmung bei der Referenzfahrt von X und Y Makros, um sicherzustellen, dass zuerst eine Achse referenziert wird, bewegen Sie dann diesen Schlitten von der Achsengrenze weg, halten Sie mindestens 2 Sekunden lang inne und starten Sie dann die Referenzfahrt des anderen Schlittens. Durch die Bewegung von der Achse weg wird vermieden, dass eine Achse referenziert wird, während die andere gegen die Achsengrenze gedrückt wird (was die Erkennung des Stillstands verfälschen könnte). Die Pause ist notwendig, um sicherzustellen, dass das Blockierflag des Fahrers vor der erneuten Referenzfahrt gelöscht wird.
 
-An example CoreXY homing macro might look like:
+Ein CoreXY Homing-Makro könnte beispielsweise so aussehen:
 
 ```
 [gcode_macro HOME]
@@ -243,7 +243,7 @@ gcode:
 
 The `[DUMP_TMC command](G-Codes.md#dump_tmc) is a useful tool when configuring and diagnosing the drivers. It will report all fields configured by Klipper as well as all fields that can be queried from the driver.
 
-Alle angegebenen Felder sind im Trinamic-Datenblatt für jeden Treiber definiert. Diese Datenblätter finden Sie auf der [Trinamic-Website] (https://www.trinamic.com/). Besorgen Sie sich das Trinamic Datenblatt für den Treiber und prüfen Sie es, um die Ergebnisse von DUMP_TMC zu interpretieren.
+Alle angegebenen Felder sind im Trinamic-Datenblatt für jeden Treiber definiert. Diese Datenblätter finden Sie auf der [Trinamic-Website](https://www.trinamic.com/). Besorgen Sie sich das Trinamic Datenblatt für den Treiber und prüfen Sie es, um die Ergebnisse von DUMP_TMC zu interpretieren.
 
 ## Konfigurieren der Einstellungen von driver_XXX
 

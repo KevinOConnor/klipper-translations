@@ -34,9 +34,9 @@ Se o fim de curso não mudar, geralmente indica que o fim de curso está conecta
 
 Utilize o comando STEPPER_BUZZ para verificar a conetividade de cada motor de passo. Comece por posicionar manualmente o eixo dado num ponto intermédio e depois execute `STEPPER_BUZZ STEPPER=stepper_x` na consola de comandos. O comando STEPPER_BUZZ fará com que o motor passo a passo dado se mova um milímetro numa direção positiva e depois voltará à sua posição inicial. (Se a paragem final for definida em posição_paragem_final=0, então no início de cada movimento o motor de passo irá afastar-se da paragem final). Esta oscilação será efetuada dez vezes.
 
-Se o motor de passo não se mover, verifique as configurações de "enable_pin" e "step_pin" para o motor de passo. Se o motor de passo se mover mas não retornar à sua posição original, verifique a configuração de "dir_pin". Se o motor de passo oscilar em uma direção incorreta, geralmente indica que o "dir_pin" para o eixo precisa ser invertido. Isso é feito adicionando um '!' ao "dir_pin" no arquivo de configuração da impressora (ou removendo-o se já houver um lá). Se o motor se mover significativamente mais ou significativamente menos que um milímetro, então verifique a configuração de "rotation_distance".
+Se o motor de passo não se mover, verifique as configurações de "enable_pin" e "step_pin" para o motor de passo. Se o motor de passo se mover, mas não retornar à sua posição original, verifique a configuração de "dir_pin". Se o motor de passo oscilar numa direção incorreta, geralmente indica que o "dir_pin" para o eixo precisa ser invertido. Isso é feito adicionando um '!' ao "dir_pin" no ficheiro de configuração da impressora (ou removendo-o se já houver um lá). Se o motor se mover significativamente mais ou significativamente menos que um milímetro, então verifique a configuração de "rotation_distance".
 
-Execute o teste acima para cada motor de passo definido no arquivo de configuração. (Defina o parâmetro STEPPER do comando STEPPER_BUZZ para o nome da seção de configuração que será testada.) Se não houver filamento no extrusor, é possível usar o STEPPER_BUZZ para verificar a conectividade do motor do extrusor (use STEPPER=extruder). Caso contrário, é melhor testar o motor do extrusor separadamente (veja a próxima seção).
+Execute o teste acima para cada motor de passo definido no ficheiro de configuração. (Defina o parâmetro STEPPER do comando STEPPER_BUZZ para o nome da secção de configuração que será testada.) Se não houver filamento no extrusor, é possível usar o STEPPER_BUZZ para verificar a conectividade do motor do extrusor (use STEPPER=extruder). Caso contrário, é melhor testar o motor do extrusor separadamente (veja a próxima seção).
 
 Após verificar todos os fins de curso e verificar todos os motores de passo, o mecanismo de referência deve ser testado. Emita um comando G28 para referenciar todos os eixos. Remova a energia da impressora se ela não se referenciar corretamente. Execute novamente os passos de verificação do fim de curso e do motor de passo, se necessário.
 
@@ -46,17 +46,17 @@ Para testar o motor da extrusora, será necessário aquecer a extrusora a uma te
 
 ## Calibrar configurações PID
 
-O Klipper suporta o [controle PID](https://en.wikipedia.org/wiki/PID_controller) para os aquecedores do extrusor e da cama. Para utilizar este mecanismo de controle, é necessário calibrar as configurações PID em cada impressora (as configurações PID encontradas em outros firmwares ou nos arquivos de configuração de exemplo muitas vezes funcionam mal).
+O Klipper suporta o [controle PID](https://en.wikipedia.org/wiki/PID_controller) para os aquecedores do extrusor e da cama. Para utilizar este mecanismo de controle, é necessário calibrar as configurações PID em cada impressora (as configurações PID encontradas em outros firmwares ou nos ficheiros de configuração de exemplo muitas vezes funcionam mal).
 
 Para calibrar a extrusora, navegar para a consola de comandos e executar o comando PID_CALIBRATE. Por exemplo: `PID_CALIBRATE HEATER=extruder TARGET=170`
 
-Ao concluir o teste de calibração, execute `SAVE_CONFIG` para atualizar o arquivo printer.cfg com as novas configurações de PID.
+Ao concluir o teste de calibração, execute `SAVE_CONFIG` para atualizar o ficheiro printer.cfg com as novas configurações de PID.
 
 Se a impressora possui uma cama aquecida e ela suporta ser controlada por PWM (Modulação por Largura de Pulso), então é recomendado usar o controle PID para a cama. (Quando o aquecedor da cama é controlado usando o algoritmo PID, ele pode ligar e desligar dez vezes por segundo, o que pode não ser adequado para aquecedores que usam uma chave mecânica.) Um comando típico de calibração PID da cama é: `PID_CALIBRATE HEATER=heater_bed TARGET=60`
 
 ## Próximos passos
 
-Este guia tem como objetivo ajudar na verificação básica das configurações de pinos no arquivo de configuração do Klipper. Certifique-se de ler o guia de [nivelamento da cama](Bed_Level.md). Veja também o documento [Fatiadores](Slicers.md) para informações sobre como configurar um fatiador com o Klipper.
+Este guia pretende ajudar na verificação básica das configurações de pinos no ficheiro de configuração do Klipper. Certifique-se de ler o guia de [nivelamento da cama](Bed_Level.md). Veja também o documento [Fatiadores](Slicers.md) para informações sobre como configurar um fatiador com o Klipper.
 
 Depois de verificar que a impressão básica funciona, é uma boa ideia considerar a calibração do [avanço de pressão](Pressure_Advance.md).
 

@@ -47,9 +47,9 @@ If you're having an intermittent failure or you do have a standard setup, then d
 
 However, if "make flash" just doesn't work for your board, then you will need to manually flash. See if there is a config file in the [config directory](../config) with specific instructions for flashing the device. Also, check the board manufacturer's documentation to see if it describes how to flash the device. Finally, it may be possible to manually flash the device using tools such as "avrdude" or "bossac" - see the [bootloader document](Bootloaders.md) for additional information.
 
-## How do I change the serial baud rate?
+## Wie ändere ich die Serielle Baudrate?
 
-The recommended baud rate for Klipper is 250000. This baud rate works well on all micro-controller boards that Klipper supports. If you've found an online guide recommending a different baud rate, then ignore that part of the guide and continue with the default value of 250000.
+Die empfohlene Baudrate für Klipper ist 250000. Diese Baudrate funktioniert zuverlässig auf allen micro-controller Platinen die Klipper unterstützen. Wenn du in einer online Anleitung erine Empfehlung für eine andere Baudrate findest, ignoriere diese und benutze die standard Baudrate: 250000.
 
 If you want to change the baud rate anyway, then the new rate will need to be configured in the micro-controller (during **make menuconfig**) and that updated code will need to be compiled and flashed to the micro-controller. The Klipper printer.cfg file will also need to be updated to match that baud rate (see the [config reference](Config_Reference.md#mcu) for details). For example:
 

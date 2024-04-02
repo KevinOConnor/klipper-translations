@@ -1325,7 +1325,7 @@ Idle timeout. An idle timeout is automatically enabled - add an explicit idle_ti
 
 ### [virtual_sdcard]
 
-Um cartão SD virtual pode ser útil se a máquina hospedeira não for rápida o suficiente para rodar o OctoPrint de maneira eficiente. Ele permite que o software host do Klipper imprima diretamente arquivos gcode armazenados em um diretório no host usando comandos padrão de G-Code do cartão SD (por exemplo, M24).
+Um cartão SD virtual pode ser útil se a máquina hospedeira não for rápida o suficiente para executar o OctoPrint de maneira eficiente. Ele permite que o software host do Klipper imprima diretamente ficheiros gcode armazenados num diretório no host usando comandos padrão de G-Code do cartão SD (por exemplo, M24).
 
 ```
 [virtual_sdcard]
@@ -3750,7 +3750,7 @@ lcd_type:
 
 Support for displaying custom data on an lcd screen. One may create any number of display groups and any number of data items under those groups. The display will show all the data items for a given group if the display_group option in the [display] section is set to the given group name.
 
-Um [default set of display groups](../klippy/extras/display/display.cfg) é criado automaticamente. Pode-se substituir ou estender esses itens de display_data substituindo os padrões no arquivo de configuração principal printer.cfg.
+Um [default set of display groups](../klippy/extras/display/display.cfg) é criado automaticamente. Pode-se substituir ou estender esses itens de display_data substituindo os padrões no ficheiro de configuração principal printer.cfg.
 
 ```
 [display_data my_group_name my_data_name]
@@ -3828,7 +3828,7 @@ If a primary [display] section has been defined in printer.cfg as shown above it
 
 Customizable lcd display menus.
 
-Um [default set of menus](../klippy/extras/display/menu.cfg) é criado automaticamente. Você pode substituir ou estender o menu substituindo os padrões no arquivo de configuração principal printer.cfg.
+Um [default set of menus](../klippy/extras/display/menu.cfg) é criado automaticamente. Pode substituir ou estender o menu substituindo os padrões no ficheiro de configuração principal printer.cfg.
 
 See the [command template document](Command_Templates.md#menu-templates) for information on menu attributes available during template rendering.
 

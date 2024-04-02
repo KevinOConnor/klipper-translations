@@ -49,7 +49,7 @@ The following commands are available when an [adxl345 config section](Config_Ref
 
 #### ACCELEROMETER_MEASURE
 
-`ACCELEROMETER_MEASURE [CHIP=<config_name>] [NAME=<value>]`: Starts accelerometer measurements at the requested number of samples per second. If CHIP is not specified it defaults to "adxl345". The command works in a start-stop mode: when executed for the first time, it starts the measurements, next execution stops them. The results of measurements are written to a file named `/tmp/adxl345-<chip>-<name>.csv` where `<chip>` is the name of the accelerometer chip (`my_chip_name` from `[adxl345 my_chip_name]`) and `<name>` is the optional NAME parameter. If NAME is not specified it defaults to the current time in "YYYYMMDD_HHMMSS" format. If the accelerometer does not have a name in its config section (simply `[adxl345]`) then `<chip>` part of the name is not generated.
+'MEDIDAS_ACCELORIMETEO [CHIP=<config_name>] [NAME=<value>]`: Empieza medidas de accelorimetro al numero indicado de muestras por segundo . Si CHIP no es específico se usa "adxl345" como valor predeterminado. El comando funciona en modo start-stop: cuando executado inicialmente, Inicia medidas siguiente ejecution las culmina. Resultados se graban en el archivo `/tmp/adxl345-<chip>-<name>.csv` donde `<chip>` es el nombre de el accelerometero(`Mi_chip` abstenido de `[adxl345 Mi_chip]`) y `<name>` en el parameter opcional NAME. Si NAME no se específico formato de tiempo "YYYYMMDD_HHMMSS" se utiliza. Si no tiene nombre en su configuración (como`[adxl345]`) entonses la porcion`<chip>` no es generado como nombre.
 
 #### ACCELEROMETER_QUERY
 

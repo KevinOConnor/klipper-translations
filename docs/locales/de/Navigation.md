@@ -2,13 +2,13 @@ Klipper-Dokumentation
 
 Installation und Konfiguration
 
-Configuration Reference
+Konfigurationsreferenz
 
-Bed Level
+Bettnivelierung
 
 Resonanz-Kompensation
 
-Command templates
+Befehlsvorlagen
 
 Entwicklerdokumentation
 

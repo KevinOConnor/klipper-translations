@@ -1,15 +1,15 @@
-# Multiple Micro-controller Homing and Probing
+# Fler-mcu homing og probeudmåling
 
-Klipper supports a mechanism for homing with an endstop attached to one micro-controller while its stepper motors are on a different micro-controller. This support is referred to as "multi-mcu homing". This feature is also used when a Z probe is on a different micro-controller than the Z stepper motors.
+Klipper understøtter homing med endestop tilsluttet på én mcu, og stepper motorer tilsluttet en anden. Dette kaldes "fler-mcu homing". Denne funktion kan også bruges når en z-probe er monteret på en anden mcu end stepper motoren.
 
-This feature can be useful to simplify wiring, as it may be more convenient to attach an endstop or probe to a closer micro-controller. However, using this feature may result in "overshoot" of the stepper motors during homing and probing operations.
+Denne funktion kan være nyttig til at forkorte ledningsløb, da det kan være mere beljligt at tilslutte et endestop eller probe til en mcu i nærheden. Dog kan dette resultere i "overshoot", hvor stepper motorerne ikke når at stoppe i tide under homing og probeudmåling.
 
-The overshoot occurs due to possible message transmission delays between the micro-controller monitoring the endstop and the micro-controllers moving the stepper motors. The Klipper code is designed to limit this delay to no more than 25ms. (When multi-mcu homing is activated, the micro-controllers send periodic status messages and check that corresponding status messages are received within 25ms.)
+Dette "overshoot" sker hvis der opstår forsinkelser i transmissionen mellem de 2 mcu'er der håndterer sensorer og stepper motorer. Klippers kode er designet til at begrænse denne forsinkelse til ikke mere end 25ms. (Når fler-mcu funktionen er aktiveret sendes der periodiske status beskeder mellem mcu'er for at holde øje med at forsinkelsen ikke overstiger 25ms..)
 
-So, for example, if homing at 10mm/s then it is possible for an overshoot of up to 0.250mm (10mm/s * .025s == 0.250mm). Care should be taken when configuring multi-mcu homing to account for this type of overshoot. Using slower homing or probing speeds can reduce the overshoot.
+For eksempel, hvis homing sker ved 10mm/s, så er det muligt at se et "overshoot" på op til 0.250mm (10mm/s*0,025s = 0,250mm). Det anbefales at planlægge for denne forsinkelse ved konfigurationen, for eksempel ved at sætte homing hastighederne ned.
 
-Stepper motor overshoot should not adversely impact the precision of the homing and probing procedure. The Klipper code will detect the overshoot and account for it in its calculations. However, it is important that the hardware design is capable of handling overshoot without causing damage to the machine.
+Stepper motor "overshoot" bør ikke påvirke præcisionen betydeligt. Klippers kode vil registrere dette "overshoot" og tage højde for det i beregningerne. Dog er det vigtigt at hardwaren designes på en sådan måde, at et "overshoot" ikke kan skade printeren eller dens dele.
 
-Should Klipper detect a communication issue between micro-controllers during multi-mcu homing then it will raise a "Communication timeout during homing" error.
+Hvis Klipper registrerer en kommunikationsfejl under fler-mcu homing, vil Klipper udstede en "Communication timeout during homing" fejl.
 
-Note that an axis with multiple steppers (eg, `stepper_z` and `stepper_z1`) need to be on the same micro-controller in order to use multi-mcu homing. For example, if an endstop is on a separate micro-controller from `stepper_z` then `stepper_z1` must be on the same micro-controller as `stepper_z`.
+Bemærk at en akse med flere steppere (for eksempel `stepper_z `og `stepper_z1`) skal være på samme mcu. Så hvis endestoppet er tilsluttet én mcu, og `stepper_z` er på en anden, skal `stepper_z1` være tilsluttet samme mcu som `stepper_z`.

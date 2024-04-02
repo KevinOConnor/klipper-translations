@@ -6,25 +6,25 @@
 
 ## Проверьте температуру
 
-Start by verifying that temperatures are being properly reported. Navigate to the temperature graph section in the user interface. Verify that the temperature of the nozzle and bed (if applicable) are present and not increasing. If it is increasing, remove power from the printer. If the temperatures are not accurate, review the "sensor_type" and "sensor_pin" settings for the nozzle and/or bed.
+Начните с проверки правильности сообщения о температуре. Перейдите к разделу графика температуры в пользовательском интерфейсе. Убедитесь, что температура сопла и стола (если возможно) присутствует и не увеличивается. Если оно увеличивается, отключите питание принтера. Если температуры неточные, проверьте настройки «sensor_type» и «sensor_pin» для сопла и/или стола.
 
 ## Проверьте M112
 
-Navigate to the command console and issue an M112 command in the terminal box. This command requests Klipper to go into a "shutdown" state. It will cause an error to show, which can be cleared with a FIRMWARE_RESTART command in the command console. Octoprint will also require a reconnect. Then navigate to the temperature graph section and verify that temperatures continue to update and the temperatures are not increasing. If temperatures are increasing, remove power from the printer.
+Перейдите к командной консоли и введите команду `M112` в окне терминала. Эта команда просит Klipper перейти в состояние «выключения». Это приведет к появлению ошибки, которую можно устранить с помощью команды `FIRMWARE_RESTART` в командной консоли. Octoprint также потребует повторного подключения. Затем перейдите к разделу графика температуры и убедитесь, что температура продолжает обновляться и не увеличивается. Если температура повышается, отключите питание принтера.
 
 ## Проверьте нагреватели
 
-Navigate to the temperature graph section and type in 50 followed by enter in the extruder/tool temperature box. The extruder temperature in the graph should start to increase (within about 30 seconds or so). Then go to the extruder temperature drop-down box and select "Off". After several minutes the temperature should start to return to its initial room temperature value. If the temperature does not increase then verify the "heater_pin" setting in the config.
+Перейдите в раздел графика температуры и введите 50 в поле температуры экструдера. Температура экструдера на графике должна начать расти (примерно в течение 30 секунд). Затем перейдите список температуры экструдера и выберите «Выкл.». Через несколько минут температура должна вернуться к исходному значению. Если температура не повышается, проверьте настройку «heater_pin» в конфигурации.
 
 Если в принтере есть стол с подогревом, повторите вышеуказанный тест со столом.
 
 ## Проверьте пин включения шагового двигателя (enable pin)
 
-Verify that all of the printer axes can manually move freely (the stepper motors are disabled). If not, issue an M84 command to disable the motors. If any of the axes still can not move freely, then verify the stepper "enable_pin" configuration for the given axis. On most commodity stepper motor drivers, the motor enable pin is "active low" and therefore the enable pin should have a "!" before the pin (for example, "enable_pin: !PA1").
+Убедитесь, что все оси принтера могут свободно перемещаться вручную (шаговые двигатели отключены). Если нет, подайте команду `M84`, чтобы отключить двигатели. Если какая-либо из осей по-прежнему не может свободно перемещаться, проверьте конфигурацию "enable_pin" шагового двигателя для данной оси. В большинстве стандартных драйверов шаговых двигателей контакт включения двигателя имеет «активный низкий уровень», поэтому перед "enable_pin" должен стоять символ "!" (например, "enable_pin: !PA1").
 
 ## Проверьте концевики (endstops)
 
-Manually move all the printer axes so that none of them are in contact with an endstop. Send a QUERY_ENDSTOPS command via the command console. It should respond with the current state of all of the configured endstops and they should all report a state of "open". For each of the endstops, rerun the QUERY_ENDSTOPS command while manually triggering the endstop. The QUERY_ENDSTOPS command should report the endstop as "TRIGGERED".
+Вручную переместите все оси принтера так, чтобы ни одна из них не соприкасалась с концевым упором. Отправьте команду `QUERY_ENDSTOPS` через командную консоль. В ответ должно появиться текущее состояние всех сконфигурированных концевых упоров, и все они должны сообщить о состоянии "open". Для каждой конечной точки повторно запустите команду `QUERY_ENDSTOPS`, запуская конечную точку вручную. Команда `QUERY_ENDSTOPS`должна сообщать о конечной остановке: «TRIGGERED».
 
 If the endstop appears inverted (it reports "open" when triggered and vice-versa) then add a "!" to the pin definition (for example, "endstop_pin: ^PA2"), or remove the "!" if there is already one present.
 
@@ -46,7 +46,7 @@ To test the extruder motor it will be necessary to heat the extruder to a printi
 
 ## Калибровка настроек PID
 
-Klipper поддерживает [PID-регулирование](https://ru.wikipedia.org/wiki/ПИД-регулятор) для экструдера и нагревателя стола. Чтобы использовать этот механизм управления, необходимо откалибровать настройки ПИД на каждом принтере (настройки ПИД, найденные в других прошивках или в образцах файлов конфигурации, часто работают плохо).
+Klipper поддерживает [PID-регулирование](https://ru.wikipedia.org/wiki/ПИД-регулятор) для экструдера и нагревателя стола. Чтобы использовать этот механизм управления, необходимо откалибровать настройки PID на каждом принтере (настройки PID, найденные в других прошивках или в образцах файлов конфигурации, часто работают плохо).
 
 Для калибровки температуры экструдера, введите в консоли команду PID_CALIBRATE. Пример: `PID_CALIBRATE HEATER=extruder TARGET=170`
 

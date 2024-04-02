@@ -78,7 +78,7 @@ Gehen Sie erneut auf die Registerkarte "Einstellungen" und ändern Sie unter "Se
 
 Navigieren Sie auf der Registerkarte "Einstellungen" zur Unterregisterkarte "Verhalten" und wählen Sie die Option "Laufende Drucke abbrechen, aber mit dem Drucker verbunden bleiben". Klicken Sie auf "Speichern".
 
-Vergewissern Sie sich auf der Hauptseite unter dem Abschnitt "Verbindung" (oben links auf der Seite), dass der "Serial Port" auf "/tmp/printer" eingestellt ist, und klicken Sie auf "Verbinden". (Wenn "/tmp/printer" nicht zur Auswahl steht, versuchen Sie, die Seite neu zu laden).
+Vergewissern Sie sich auf der Hauptseite unter dem Abschnitt "Verbindung" (oben links auf der Seite), dass der "Serial Port" auf "/tmp/printer" eingestellt ist, und klicken Sie auf "Verbinden". (Wenn "/tmp/printer" nicht zur Auswahl steht, versuchen Sie, die Seite neu zu laden.)
 
 Sobald die Verbindung hergestellt ist, navigieren Sie zur Registerkarte "Terminal" und geben Sie "status" (ohne Anführungszeichen) in das Befehlseingabefeld ein und klicken Sie auf "Senden". Das Terminalfenster wird wahrscheinlich melden, dass ein Fehler beim Öffnen der Konfigurationsdatei aufgetreten ist - das bedeutet, dass OctoPrint erfolgreich mit Klipper kommuniziert. Fahren Sie mit dem nächsten Abschnitt fort.
 

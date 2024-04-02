@@ -10,4 +10,4 @@ Der Sensor erzeugt ein analoges Ausgangssignal basierend auf der berechneten Fil
 
 ## Note:
 
-Sensor readings done with 10 mm intervals by default. If necessary you are free to change this setting by editing ***MEASUREMENT_INTERVAL_MM*** parameter in **filament_width_sensor.py** file.
+Die Sensormessungen werden standardmäßig in 10-mm-Abständen durchgeführt. Bei Bedarf können Sie diese Einstellung jedoch ändern, indem Sie den Parameter ***MEASUREMENT_INTERVAL_MM*** in der Datei **filament_width_sensor.py** bearbeiten.

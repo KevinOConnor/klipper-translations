@@ -4,7 +4,7 @@ Dieses Dokument beschreibt Werkzeuge zum Kalibrieren eines Z-Anschlags und zum E
 
 ## Kalibrieren eines Z-Endstop's
 
-An accurate Z endstop position is critical to obtaining high quality prints.
+Die genaue Position des Z-Endanschlags ist entscheidend für eine hohe Druckqualität.
 
 Note, though, the accuracy of the Z endstop switch itself can be a limiting factor. If one is using Trinamic stepper motor drivers then consider enabling [endstop phase](Endstop_Phase.md) detection to improve the accuracy of the switch.
 
@@ -24,7 +24,7 @@ It's preferable to use a Z endstop switch on the opposite end of the Z axis from
 
 Some printers have the ability to manually adjust the location of the physical endstop switch. However, it's recommended to perform Z endstop positioning in software with Klipper - once the physical location of the endstop is in a convenient location, one can make any further adjustments by running Z_ENDSTOP_CALIBRATE or by manually updating the Z position_endstop in the configuration file.
 
-## Adjusting bed leveling screws
+## Nivellierschrauben des Druckbettes einstellen
 
 The secret to getting good bed leveling with bed leveling screws is to utilize the printer's high precision motion system during the bed leveling process itself. This is done by commanding the nozzle to a position near each bed screw and then adjusting that screw until the bed is a set distance from the nozzle. Klipper has a tool to assist with this. In order to use the tool it is necessary to specify each screw XY location.
 
@@ -51,7 +51,7 @@ Once the screw is adjusted so that a small amount of friction is felt, run eithe
 
 This system works best when the printer has a flat printing surface (such as glass) and has straight rails. Upon successful completion of the bed leveling tool the bed should be ready for printing.
 
-### Fine grained bed screw adjustments
+### Fein abgestufte Einstellung der Druckbettschraube
 
 If the printer uses three bed screws and all three screws are under the bed, then it may be possible to perform a second "high precision" bed leveling step. This is done by commanding the nozzle to locations where the bed moves a larger distance with each bed screw adjustment.
 
@@ -110,12 +110,12 @@ Recv: // read left screw : x=-5.0, y=190.0, z=2.47250 : adjust CW 00:02
 Recv: ok
 ```
 
-This means that:
+Dies bedeutet, dass:
 
-- front left screw is the reference point you must not change it.
-- front right screw must be turned clockwise 1 full turn and a quarter turn
-- rear right screw must be turned counter-clockwise 50 minutes
-- rear left screw must be turned clockwise 2 minutes (not need it's ok)
+- Die vordere linke Schraube ist der Bezugspunkt, der nicht verändert werden darf.
+- die vordere rechte Schraube muss 1 volle Umdrehung und eine Vierteldrehung im Uhrzeigersinn gedreht werden
+- die hintere rechte Schraube muss 50 Minuten gegen den Uhrzeigersinn gedreht werden
+- die hintere linke Schraube muss 2 Minuten im Uhrzeigersinn gedreht werden
 
 Note that "minutes" refers to "minutes of a clock face". So, for example, 15 minutes is a quarter of a full turn.
 

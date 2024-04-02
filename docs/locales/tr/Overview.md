@@ -46,8 +46,8 @@ Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'e yeni iseniz , [özelli
 - [MCU komutları](MCU_Commands.md): Mikro denetleyici yazılımında uygulanan düşük seviyeli komutların açıklaması.
 - [CAN veri yolu protokolü](CANBUS_protocol.md): Klipper CAN veri yolu mesaj formatı.
 - [Hata Ayıklama](Debugging.md): Klipper'ın nasıl test edileceği ve hata ayıklanacağı hakkında bilgi.
-- [Benchmarks](Benchmarks.md): Information on the Klipper benchmark method.
-- [Contributing](CONTRIBUTING.md): Information on how to submit improvements to Klipper.
+- [Benchmarklar](Benchmarks.md): Klipper kıyaslama yöntemi hakkında bilgi.
+- [Katkıda Bulunmak](CONTRIBUTING.md): Klipper'a iyileştirmelerin nasıl gönderileceği hakkında bilgi.
 - [Packaging](Packaging.md): Information on building OS packages.
 
 ## Device Specific Documents

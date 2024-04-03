@@ -655,16 +655,6 @@ msgstr ""
 "액세스할 수 있습니다 (예: `axis_minimum.x`, `axis_maximum.z`)."
 
 msgid ""
-"`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
-" The current printing limits that are in effect. This may differ from the "
-"config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters "
-"them at run-time."
-msgstr ""
-"`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
-" 유효한 현재 인쇄 제한입니다. 이는 `SET_VELOCITY_LIMIT`(또는 `M204`) 명령이 런타임에 변경하는 경우 구성 파일 "
-"설정과 다를 수 있습니다."
-
-msgid ""
 "`stalls`: The total number of times (since the last restart) that the "
 "printer had to be paused because the toolhead moved faster than moves could "
 "be read from the G-Code input."
@@ -1206,6 +1196,34 @@ msgid ""
 "`carriage_1`: The mode of the carriage 1. Possible values are: \"INACTIVE\","
 " \"PRIMARY\", \"COPY\", and \"MIRROR\"."
 msgstr ""
+
+#: docs/Status_Reference.md:block 90 (header)
+msgid "pwm_cycle_time"
+msgstr ""
+
+#: docs/Status_Reference.md:block 91 (paragraph)
+msgid ""
+"The following information is available in [pwm_cycle_time "
+"some_name](Config_Reference.md#pwm_cycle_time) objects:"
+msgstr ""
+
+#: docs/Status_Reference.md:block 126 (unordered list)
+msgid ""
+"`max_velocity`, `max_accel`, `minimum_cruise_ratio`, "
+"`square_corner_velocity`: The current printing limits that are in effect. "
+"This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or "
+"`M204`) command alters them at run-time."
+msgstr ""
+
+#~ msgid ""
+#~ "`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
+#~ " The current printing limits that are in effect. This may differ from the "
+#~ "config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters "
+#~ "them at run-time."
+#~ msgstr ""
+#~ "`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
+#~ " 유효한 현재 인쇄 제한입니다. 이는 `SET_VELOCITY_LIMIT`(또는 `M204`) 명령이 런타임에 변경하는 경우 구성 파일 "
+#~ "설정과 다를 수 있습니다."
 
 #~ msgid ""
 #~ "[bme280 "

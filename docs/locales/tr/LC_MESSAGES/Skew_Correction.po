@@ -111,15 +111,6 @@ msgid ""
 "by issuing a `SET_SKEW CLEAR=1` gcode."
 msgstr ""
 
-#: docs/skew_correction.md:block 7 (paragraph)
-msgid ""
-"The `[skew_correcton]` module requires 3 measurements for each plane you "
-"want to correct; the length from Corner A to Corner C, the length from "
-"Corner B to Corner D, and the length from Corner A to Corner D. When "
-"measuring length AD do not include the flats on the corners that some test "
-"objects provide."
-msgstr ""
-
 #: docs/skew_correction.md:block 10 (paragraph)
 msgid ""
 "Make sure `[skew_correction]` is in printer.cfg. You may now use the "
@@ -141,6 +132,23 @@ msgid ""
 "and/or Y axes. It is recommended to arrange parts away from the edges when "
 "using `[skew_correction]`."
 msgstr ""
+
+#: docs/Skew_Correction.md:block 7 (paragraph)
+msgid ""
+"The `[skew_correction]` module requires 3 measurements for each plane you "
+"want to correct; the length from Corner A to Corner C, the length from "
+"Corner B to Corner D, and the length from Corner A to Corner D. When "
+"measuring length AD do not include the flats on the corners that some test "
+"objects provide."
+msgstr ""
+
+#~ msgid ""
+#~ "The `[skew_correcton]` module requires 3 measurements for each plane you "
+#~ "want to correct; the length from Corner A to Corner C, the length from "
+#~ "Corner B to Corner D, and the length from Corner A to Corner D. When "
+#~ "measuring length AD do not include the flats on the corners that some test "
+#~ "objects provide."
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Make sure that no skew correction is applied during this print. You may do "

@@ -87,16 +87,6 @@ msgstr ""
 "конструкция была способна справиться с перерегулированием без повреждения "
 "машины."
 
-#: docs/Multi_MCU_Homing.md:block 7 (paragraph)
-msgid ""
-"Should Klipper detect a communication issue between micro-controllers during"
-" multi-mcu homing then it will raise a \"Communication timeout during "
-"homing\" error."
-msgstr ""
-"Если Klipper обнаружит проблему связи между микроконтроллерами во время "
-"наведения нескольких мку, он выдаст ошибку \"Communication timeout during "
-"homing\"."
-
 #: docs/Multi_MCU_Homing.md:block 8 (paragraph)
 msgid ""
 "Note that an axis with multiple steppers (eg, `stepper_z` and `stepper_z1`) "
@@ -110,3 +100,28 @@ msgstr ""
 "мульти-mcu homing. Например, если концевой упор находится на отдельном "
 "микроконтроллере от `stepper_z`, то `stepper_z1` должен быть на том же "
 "микроконтроллере, что и `stepper_z`."
+
+#: docs/Multi_MCU_Homing.md:block 7 (paragraph)
+msgid ""
+"In order to use this \"multi-mcu homing\" capability the hardware must have "
+"predictably low latency between the host computer and all of the micro-"
+"controllers. Typically the round-trip time must be consistently less than "
+"10ms. High latency (even for short periods) is likely to result in homing "
+"failures."
+msgstr ""
+
+#: docs/Multi_MCU_Homing.md:block 8 (paragraph)
+msgid ""
+"Should high latency result in a failure (or if some other communication "
+"issue is detected) then Klipper will raise a \"Communication timeout during "
+"homing\" error."
+msgstr ""
+
+#~ msgid ""
+#~ "Should Klipper detect a communication issue between micro-controllers during"
+#~ " multi-mcu homing then it will raise a \"Communication timeout during "
+#~ "homing\" error."
+#~ msgstr ""
+#~ "Если Klipper обнаружит проблему связи между микроконтроллерами во время "
+#~ "наведения нескольких мку, он выдаст ошибку \"Communication timeout during "
+#~ "homing\"."

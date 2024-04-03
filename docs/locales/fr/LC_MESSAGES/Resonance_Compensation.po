@@ -1061,14 +1061,6 @@ msgstr ""
 "préférable d'utiliser une valeur d'accélération plus élevée à la place."
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
-msgid ""
-"Increase `max_accel_to_decel` by issuing the following command: "
-"`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-msgstr ""
-"Augmentez `max_accel_to_decel` en lançant la commande suivante : "
-"`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-
-#: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid "Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr "Désactivez l'avance de pression : `SET_PRESSURE_ADVANCE ADVANCE=0`"
 
@@ -1100,10 +1092,6 @@ msgstr "Imprimez le modèle de test de résonance comme suit :"
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Restart the firmware: `RESTART`"
 msgstr "Redémarrez le micrologiciel : `RESTART`"
-
-#: docs/Resonance_Compensation.md:block 28 (ordered list)
-msgid "Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-msgstr "Préparez-vous pour le test : `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Execute: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`"
@@ -1227,10 +1215,6 @@ msgstr ""
 "comme suit. Première fois, avant l'impression, exécutez"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
-msgid "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-msgstr "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-
-#: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid "`SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr "`SET_PRESSURE_ADVANCE ADVANCE=0`"
 
@@ -1305,6 +1289,33 @@ msgid ""
 "changes of the carriages or their modes via `SET_DUAL_CARRIAGE` command will"
 " preserve the configured input shaper parameters."
 msgstr ""
+
+#: docs/Resonance_Compensation.md:block 12 (ordered list)
+msgid ""
+"Disable the `miminum_cruise_ratio` feature by issuing the following command:"
+" `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#: docs/Resonance_Compensation.md:block 28 (ordered list)
+msgid "Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#: docs/Resonance_Compensation.md:block 61 (ordered list)
+msgid "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#~ msgid ""
+#~ "Increase `max_accel_to_decel` by issuing the following command: "
+#~ "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr ""
+#~ "Augmentez `max_accel_to_decel` en lançant la commande suivante : "
+#~ "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+
+#~ msgid "Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr "Préparez-vous pour le test : `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+
+#~ msgid "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
 
 #~ msgid ""
 #~ "There is no dedicated support for dual carriages with input shapers, but it "

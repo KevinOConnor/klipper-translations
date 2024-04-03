@@ -8,8 +8,7 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2024-03-15 16:02+0000\n"
 "Last-Translator: \"Zs.Antal\" <zsikaiantal@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
-"measuring_resonances/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/measuring_resonances/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1104,14 +1103,6 @@ msgstr ""
 "szoftverfüggőségeket igényel. Először futtasd a Raspberry Pi számítógépen a "
 "következő parancsokat:"
 
-#: docs/Measuring_Resonances.md:block 21 (code)
-msgid ""
-"sudo apt update\n"
-"sudo apt install python3-numpy python3-matplotlib libatlas-base-dev\n"
-msgstr ""
-"sudo apt update\n"
-"sudo apt install python3-numpy python3-matplotlib libatlas-base-dev\n"
-
 #: docs/Measuring_Resonances.md:block 22 (paragraph)
 msgid ""
 "Next, in order to install NumPy in the Klipper environment, run the command:"
@@ -1534,13 +1525,13 @@ msgid ""
 msgstr ""
 "A Klipper beépített támogatással rendelkezik az ADXL345, MPU-9250 és LIS2DW "
 "kompatibilis gyorsulásmérőkhöz, amelyek segítségével a nyomtató különböző "
-"tengelyek rezonanciafrekvenciái mérhetők, és a rezonanciák kompenzálására a ["
-"bemeneti alakítók](Resonance_Compensation.md) automatikus beállítása "
+"tengelyek rezonanciafrekvenciái mérhetők, és a rezonanciák kompenzálására a "
+"[bemeneti alakítók](Resonance_Compensation.md) automatikus beállítása "
 "használható. Vedd figyelembe, hogy a gyorsulásmérők használata némi "
 "forrasztást és krimpelést igényel. Az ADXL345/LIS2DW csatlakoztatható egy "
-"Raspberry Pi vagy MCU lap SPI interfészéhez (viszonylag gyorsnak kell lennie)"
-". Az MPU-család közvetlenül csatlakoztatható egy Raspberry Pi I2C-"
-"interfészéhez, vagy egy MCU-kártya I2C-interfészéhez, amely támogatja a "
+"Raspberry Pi vagy MCU lap SPI interfészéhez (viszonylag gyorsnak kell "
+"lennie). Az MPU-család közvetlenül csatlakoztatható egy Raspberry Pi "
+"I2C-interfészéhez, vagy egy MCU-kártya I2C-interfészéhez, amely támogatja a "
 "Klipper 400kbit/s *gyors üzemmódot*."
 
 #: docs/Measuring_Resonances.md:block 3 (paragraph)
@@ -1562,8 +1553,8 @@ msgid ""
 "GND)."
 msgstr ""
 "Az ADXL345s/LIS2DW-k esetében győződj meg róla, hogy a kártya támogatja az "
-"SPI módot (úgy tűnik, hogy néhány kártya keményen I2C-re van konfigurálva az "
-"SDO GND-re húzásával)."
+"SPI módot (úgy tűnik, hogy néhány kártya keményen I2C-re van konfigurálva az"
+" SDO GND-re húzásával)."
 
 #: docs/Measuring_Resonances.md:block 5 (paragraph)
 msgid ""
@@ -1572,8 +1563,8 @@ msgid ""
 "need supplementing."
 msgstr ""
 "Az MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500-asok esetében is vannak "
-"különböző lapkakialakítások és klónok különböző I2C pull-up ellenállásokkal, "
-"amelyeket ki kell egészíteni."
+"különböző lapkakialakítások és klónok különböző I2C pull-up ellenállásokkal,"
+" amelyeket ki kell egészíteni."
 
 #: docs/Measuring_Resonances.md:block 6 (header)
 msgid "MCUs with Klipper I2C *fast-mode* Support"
@@ -1637,8 +1628,8 @@ msgid ""
 "recommended for signal integrity over a long distance. If you still "
 "experience signal integrity issues (SPI/I2C errors):"
 msgstr ""
-"A hosszú távú jelintegritás érdekében árnyékolt, sodrott érpáros (cat5e vagy "
-"jobb) ethernet-kábel használata ajánlott. Ha továbbra is jelintegritási "
+"A hosszú távú jelintegritás érdekében árnyékolt, sodrott érpáros (cat5e vagy"
+" jobb) ethernet-kábel használata ajánlott. Ha továbbra is jelintegritási "
 "problémákat tapasztalsz (SPI/I2C hibák):"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
@@ -1662,8 +1653,8 @@ msgid ""
 "Check the SCL and SDA lines' resistances to 3.3V are in the range of 900 "
 "ohms to 1.8K"
 msgstr ""
-"Ellenőrizd, hogy az SCL és SDA vonalak ellenállása a 3,3V-on 900 ohm és 1,8K "
-"között van-e"
+"Ellenőrizd, hogy az SCL és SDA vonalak ellenállása a 3,3V-on 900 ohm és 1,8K"
+" között van-e"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
@@ -1672,8 +1663,9 @@ msgid ""
 "*fast-mode*"
 msgstr ""
 "A teljes műszaki részleteket lásd [az I2C-busz specifikációjának 7. "
-"fejezetében és az UM10204 felhasználói kézikönyvben](https://www.pololu.com/"
-"file/0J435/UM10204.pdf) a *gyors üzemmódhoz*"
+"fejezetében és az UM10204 felhasználói "
+"kézikönyvben](https://www.pololu.com/file/0J435/UM10204.pdf) a *gyors "
+"üzemmódhoz*"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Shorten the cable"
@@ -1682,7 +1674,8 @@ msgstr "Rövidítsd a kábelt"
 #: docs/Measuring_Resonances.md:block 12 (paragraph)
 msgid "Connect ethernet cable shielding only to the MCU board/Pi ground."
 msgstr ""
-"Az ethernet kábel árnyékolását csak az MCU lap/Pi földeléséhez csatlakoztasd."
+"Az ethernet kábel árnyékolását csak az MCU lap/Pi földeléséhez "
+"csatlakoztasd."
 
 #: docs/Measuring_Resonances.md:block 15 (paragraph)
 msgid "Suggested twisted pair order for three twisted pairs:"
@@ -1691,8 +1684,8 @@ msgstr "Javasolt csavart érpáros sorrend három csavart érpárhoz:"
 #: docs/Measuring_Resonances.md:block 17 (paragraph)
 msgid "Note that unlike a cable shield, GND must be connected at both ends."
 msgstr ""
-"Vedd figyelembe, hogy a kábelárnyékolással ellentétben a GND-t mindkét végén "
-"csatlakoztatni kell."
+"Vedd figyelembe, hogy a kábelárnyékolással ellentétben a GND-t mindkét végén"
+" csatlakoztatni kell."
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -1706,7 +1699,8 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 32 (paragraph)
 msgid "Suggested twisted pair order for three pairs (preferred):"
-msgstr "Javasolt csavart érpáros sorrend három érpárhoz (előnyben részesített):"
+msgstr ""
+"Javasolt csavart érpáros sorrend három érpárhoz (előnyben részesített):"
 
 #: docs/Measuring_Resonances.md:block 33 (code)
 msgid ""
@@ -1901,8 +1895,7 @@ msgstr ""
 "probe_points:\n"
 " 100, 100, 20 # egy példa\n"
 "\n"
-"[static_digital_output pico_3V3pwm] # A teljesítmény stabilitásának "
-"javítása\n"
+"[static_digital_output pico_3V3pwm] # A teljesítmény stabilitásának javítása\n"
 "pins: pico:gpio23\n"
 
 #: docs/Measuring_Resonances.md:block 90 (header)
@@ -1946,9 +1939,9 @@ msgid ""
 "**If you are using a MPU-9250 compatible accelerometer and it shows up as "
 "`mpu-unknown`, use with caution! They are probably refurbished chips!**"
 msgstr ""
-"**Ha MPU-9250 kompatibilis gyorsulásmérőt használsz, és az `mpu-unknown`-"
-"ként jelenik meg, óvatosan használd! Valószínűleg felújított chipekről van "
-"szó!**"
+"**Ha MPU-9250 kompatibilis gyorsulásmérőt használsz, és az `mpu-"
+"unknown`-ként jelenik meg, óvatosan használd! Valószínűleg felújított "
+"chipekről van szó!**"
 
 #: docs/Measuring_Resonances.md:block 122 (paragraph)
 msgid ""
@@ -1957,10 +1950,10 @@ msgid ""
 "MCU board), or to two different physical SPI interfaces on the same board "
 "(rarely available). Then they can be configured in the following manner:"
 msgstr ""
-"Azonban két gyorsulásmérőt is csatlakoztathatsz egyszerre, bár az ADXL345-öt "
-"különböző lapokhoz kell csatlakoztatni (mondjuk egy RPi és egy nyomtató MCU "
-"alaplaphoz), vagy két különböző fizikai SPI interfészhez ugyanazon a lapon ("
-"ritkán elérhető). Ezután a következő módon konfigurálhatók:"
+"Azonban két gyorsulásmérőt is csatlakoztathatsz egyszerre, bár az ADXL345-öt"
+" különböző lapokhoz kell csatlakoztatni (mondjuk egy RPi és egy nyomtató MCU"
+" alaplaphoz), vagy két különböző fizikai SPI interfészhez ugyanazon a lapon "
+"(ritkán elérhető). Ezután a következő módon konfigurálhatók:"
 
 #: docs/Measuring_Resonances.md:block 124 (paragraph)
 msgid ""
@@ -2015,6 +2008,43 @@ msgid ""
 msgstr ""
 "[A hibakeresés megkönnyítése érdekében teszteld mindkét MPU-t külön-külön, "
 "mielőtt mindkettőt a buszra csatlakoztatod.]"
+
+#: docs/Measuring_Resonances.md:block 58 (code)
+msgid ""
+"sudo apt update\n"
+"sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev\n"
+msgstr ""
+
+#: docs/Measuring_Resonances.md:block 148 (paragraph)
+msgid ""
+"Keep in mind that the maximum acceleration without too much smoothing "
+"depends on the `square_corner_velocity`. The general recommendation is not "
+"to change it from its default value 5.0, and this is the value used by "
+"default by the `calibrate_shaper.py` script. If you did change it though, "
+"you should inform the script about it by passing "
+"`--square_corner_velocity=...` parameter, e.g."
+msgstr ""
+
+#: docs/Measuring_Resonances.md:block 149 (code)
+msgid ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
+"/tmp/shaper_calibrate_x.png --square_corner_velocity=10.0\n"
+msgstr ""
+
+#: docs/Measuring_Resonances.md:block 150 (paragraph)
+msgid ""
+"so that it can calculate the maximum acceleration recommendations correctly."
+" Note that the `SHAPER_CALIBRATE` command already takes the configured "
+"`square_corner_velocity` parameter into account, and there is no need to "
+"specify it explicitly."
+msgstr ""
+
+#~ msgid ""
+#~ "sudo apt update\n"
+#~ "sudo apt install python3-numpy python3-matplotlib libatlas-base-dev\n"
+#~ msgstr ""
+#~ "sudo apt update\n"
+#~ "sudo apt install python3-numpy python3-matplotlib libatlas-base-dev\n"
 
 #~ msgid ""
 #~ "Klipper has built-in support for ADXL345 accelerometer, which can be used to"

@@ -4,8 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-01-17 13:06+0000\n"
 "Last-Translator: Pavel Šubík <wgspider@gmail.com>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/klipper/"
-"skew_correction/cs/>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/klipper/skew_correction/cs/>\n"
 "Language: cs\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -53,15 +52,6 @@ msgstr ""
 
 #: docs/Skew_Correction.md:block 6 (header)
 msgid "Take your measurements"
-msgstr ""
-
-#: docs/Skew_Correction.md:block 7 (paragraph)
-msgid ""
-"The `[skew_correcton]` module requires 3 measurements for each plane you "
-"want to correct; the length from Corner A to Corner C, the length from "
-"Corner B to Corner D, and the length from Corner A to Corner D. When "
-"measuring length AD do not include the flats on the corners that some test "
-"objects provide."
 msgstr ""
 
 #: docs/Skew_Correction.md:block 8 (paragraph)
@@ -179,3 +169,20 @@ msgid ""
 "and/or Y axes. It is recommended to arrange parts away from the edges when "
 "using `[skew_correction]`."
 msgstr ""
+
+#: docs/Skew_Correction.md:block 7 (paragraph)
+msgid ""
+"The `[skew_correction]` module requires 3 measurements for each plane you "
+"want to correct; the length from Corner A to Corner C, the length from "
+"Corner B to Corner D, and the length from Corner A to Corner D. When "
+"measuring length AD do not include the flats on the corners that some test "
+"objects provide."
+msgstr ""
+
+#~ msgid ""
+#~ "The `[skew_correcton]` module requires 3 measurements for each plane you "
+#~ "want to correct; the length from Corner A to Corner C, the length from "
+#~ "Corner B to Corner D, and the length from Corner A to Corner D. When "
+#~ "measuring length AD do not include the flats on the corners that some test "
+#~ "objects provide."
+#~ msgstr ""

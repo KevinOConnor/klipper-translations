@@ -4,13 +4,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-03-10 21:01+0000\n"
 "Last-Translator: Rune Steenstrup <rst.steen@gmail.com>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/klipper/"
-"measuring_resonances/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/klipper/measuring_resonances/nb_NO/>\n"
 "Language: nb_NO\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5-dev\n"
-"Content-Transfer-Encoding: 8bit\n"
 
 msgid "Measuring Resonances"
 msgstr "Måling av resonans"
@@ -27,8 +26,8 @@ msgid ""
 "throughput and **will not work**. The recommended connection scheme:"
 msgstr ""
 "Du må koble ADXL345 til din Raspberry Pi via SPI. Merk at I2C-tilkoblingen, "
-"som foreslås av ADXL345-dokumentasjonen, har for lav gjennomstrømning og vil "
-"ikke fungere. Anbefalt tilkoblingsskjema:"
+"som foreslås av ADXL345-dokumentasjonen, har for lav gjennomstrømning og vil"
+" ikke fungere. Anbefalt tilkoblingsskjema:"
 
 msgid "ADXL345 pin"
 msgstr "ADXL345 pin"
@@ -763,12 +762,6 @@ msgid ""
 "your Raspberry Pi the following commands:"
 msgstr ""
 
-#: docs/Measuring_Resonances.md:block 21 (code)
-msgid ""
-"sudo apt update\n"
-"sudo apt install python3-numpy python3-matplotlib libatlas-base-dev\n"
-msgstr ""
-
 #: docs/Measuring_Resonances.md:block 22 (paragraph)
 msgid ""
 "Next, in order to install NumPy in the Klipper environment, run the command:"
@@ -1453,6 +1446,41 @@ msgid ""
 "[Test with each MPU individually before connecting both to the bus for easy "
 "debugging.]"
 msgstr ""
+
+#: docs/Measuring_Resonances.md:block 58 (code)
+msgid ""
+"sudo apt update\n"
+"sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev\n"
+msgstr ""
+
+#: docs/Measuring_Resonances.md:block 148 (paragraph)
+msgid ""
+"Keep in mind that the maximum acceleration without too much smoothing "
+"depends on the `square_corner_velocity`. The general recommendation is not "
+"to change it from its default value 5.0, and this is the value used by "
+"default by the `calibrate_shaper.py` script. If you did change it though, "
+"you should inform the script about it by passing "
+"`--square_corner_velocity=...` parameter, e.g."
+msgstr ""
+
+#: docs/Measuring_Resonances.md:block 149 (code)
+msgid ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
+"/tmp/shaper_calibrate_x.png --square_corner_velocity=10.0\n"
+msgstr ""
+
+#: docs/Measuring_Resonances.md:block 150 (paragraph)
+msgid ""
+"so that it can calculate the maximum acceleration recommendations correctly."
+" Note that the `SHAPER_CALIBRATE` command already takes the configured "
+"`square_corner_velocity` parameter into account, and there is no need to "
+"specify it explicitly."
+msgstr ""
+
+#~ msgid ""
+#~ "sudo apt update\n"
+#~ "sudo apt install python3-numpy python3-matplotlib libatlas-base-dev\n"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Klipper has built-in support for ADXL345 accelerometer, which can be used to"

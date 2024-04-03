@@ -233,12 +233,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] "
-"[ACCEL_TO_DECEL=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: Modify the "
-"printer's velocity limits."
-msgstr ""
-
-msgid ""
 "`SET_HEATER_TEMPERATURE HEATER=<heater_name> [TARGET=<target_temperature>]`:"
 " Sets the target temperature for a heater. If a target temperature is not "
 "supplied, the target is 0."
@@ -409,12 +403,6 @@ msgstr ""
 msgid ""
 "`BED_MESH_CLEAR`: This command clears the mesh and removes all z adjustment."
 " It is recommended to put this in your end-gcode."
-msgstr ""
-
-msgid ""
-"`BED_MESH_OFFSET [X=<value>] [Y=<value>]`: Applies X and/or Y offsets to the"
-" mesh lookup. This is useful for printers with independent extruders, as an "
-"offset is necessary to produce correct Z adjustment after a tool change."
 msgstr ""
 
 msgid ""
@@ -984,18 +972,6 @@ msgstr ""
 
 #: docs/G-Codes.md:block 87 (header)
 msgid "SYNC_EXTRUDER_MOTION"
-msgstr ""
-
-#: docs/G-Codes.md:block 89 (header)
-msgid "SET_EXTRUDER_STEP_DISTANCE"
-msgstr ""
-
-#: docs/G-Codes.md:block 90 (paragraph)
-msgid "This command is deprecated and will be removed in the near future."
-msgstr "Bu komut kullanımdan kaldırılmıştır ve yakın zamanda silinecektir."
-
-#: docs/G-Codes.md:block 91 (header)
-msgid "SYNC_STEPPER_TO_EXTRUDER"
 msgstr ""
 
 #: docs/G-Codes.md:block 93 (header)
@@ -2259,37 +2235,6 @@ msgstr ""
 msgid "Arc Plane Select: G17 (XY plane), G18 (XZ plane), G19 (YZ plane)"
 msgstr ""
 
-#: docs/G-Codes.md:block 231 (paragraph)
-msgid ""
-"`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: Set the "
-"pin to the given output `VALUE`. VALUE should be 0 or 1 for \"digital\" "
-"output pins. For PWM pins, set to a value between 0.0 and 1.0, or between "
-"0.0 and `scale` if a scale is configured in the output_pin config section."
-msgstr ""
-
-#: docs/G-Codes.md:block 232 (paragraph)
-msgid ""
-"Some pins (currently only \"soft PWM\" pins) support setting an explicit "
-"cycle time using the CYCLE_TIME parameter (specified in seconds). Note that "
-"the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN"
-" command without an explicit CYCLE_TIME parameter will use the `cycle_time` "
-"specified in the output_pin config section)."
-msgstr ""
-
-#: docs/G-Codes.md:block 33 (paragraph)
-msgid ""
-"`BED_MESH_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] "
-"[<probe_parameter>=<value>] [<mesh_parameter>=<value>]`: This command probes"
-" the bed using generated points specified by the parameters in the config. "
-"After probing, a mesh is generated and z-movement is adjusted according to "
-"the mesh. See the PROBE command for details on the optional probe "
-"parameters. If METHOD=manual is specified then the manual probing tool is "
-"activated - see the MANUAL_PROBE command above for details on the additional"
-" commands available while this tool is active. The optional "
-"`HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified"
-" in the config file."
-msgstr ""
-
 #: docs/G-Codes.md:block 51 (paragraph)
 msgid ""
 "`BED_TILT_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] "
@@ -2454,6 +2399,122 @@ msgid ""
 "twist calibration wizard. `SAMPLE_COUNT` specifies the number of points "
 "along the X axis to calibrate at and defaults to 3."
 msgstr ""
+
+#: docs/G-Codes.md:block 37 (paragraph)
+msgid ""
+"`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] "
+"[HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] "
+"[<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`: This "
+"command probes the bed using generated points specified by the parameters in"
+" the config. After probing, a mesh is generated and z-movement is adjusted "
+"according to the mesh. The mesh will be saved into a profile specified by "
+"the `PROFILE` parameter, or `default` if unspecified. See the PROBE command "
+"for details on the optional probe parameters. If METHOD=manual is specified "
+"then the manual probing tool is activated - see the MANUAL_PROBE command "
+"above for details on the additional commands available while this tool is "
+"active. The optional `HORIZONTAL_MOVE_Z` value overrides the "
+"`horizontal_move_z` option specified in the config file. If ADAPTIVE=1 is "
+"specified then the objects defined by the Gcode file being printed will be "
+"used to define the probed area. The optional `ADAPTIVE_MARGIN` value "
+"overrides the `adaptive_margin` option specified in the config file."
+msgstr ""
+
+#: docs/G-Codes.md:block 47 (paragraph)
+msgid ""
+"`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value]`: Applies X, Y, "
+"and/or ZFADE offsets to the mesh lookup. This is useful for printers with "
+"independent extruders, as an offset is necessary to produce correct Z "
+"adjustment after a tool change. Note that a ZFADE offset does not apply "
+"additional z-adjustment directly, it is used to correct the `fade` "
+"calculation when a `gcode offset` has been applied to the Z axis."
+msgstr ""
+
+#: docs/G-Codes.md:block 235 (paragraph)
+msgid ""
+"`SET_PIN PIN=config_name VALUE=<value>`: Set the pin to the given output "
+"`VALUE`. VALUE should be 0 or 1 for \"digital\" output pins. For PWM pins, "
+"set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is"
+" configured in the output_pin config section."
+msgstr ""
+
+#: docs/G-Codes.md:block 281 (header)
+msgid "[pwm_cycle_time]"
+msgstr ""
+
+#: docs/G-Codes.md:block 282 (paragraph)
+msgid ""
+"The following command is available when a [pwm_cycle_time config "
+"section](Config_Reference.md#pwm_cycle_time) is enabled."
+msgstr ""
+
+#: docs/G-Codes.md:block 284 (paragraph)
+msgid ""
+"`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: This "
+"command works similarly to [output_pin](#output_pin) SET_PIN commands. The "
+"command here supports setting an explicit cycle time using the CYCLE_TIME "
+"parameter (specified in seconds). Note that the CYCLE_TIME parameter is not "
+"stored between SET_PIN commands (any SET_PIN command without an explicit "
+"CYCLE_TIME parameter will use the `cycle_time` specified in the "
+"pwm_cycle_time config section)."
+msgstr ""
+
+#: docs/G-Codes.md:block 365 (paragraph)
+msgid ""
+"`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] "
+"[MINIMUM_CRUISE_RATIO=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: This "
+"command can alter the velocity limits that were specified in the printer "
+"config file. See the [printer config section](Config_Reference.md#printer) "
+"for a description of each parameter."
+msgstr ""
+
+#~ msgid ""
+#~ "`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] "
+#~ "[ACCEL_TO_DECEL=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: Modify the "
+#~ "printer's velocity limits."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`BED_MESH_OFFSET [X=<value>] [Y=<value>]`: Applies X and/or Y offsets to the"
+#~ " mesh lookup. This is useful for printers with independent extruders, as an "
+#~ "offset is necessary to produce correct Z adjustment after a tool change."
+#~ msgstr ""
+
+#~ msgid "SET_EXTRUDER_STEP_DISTANCE"
+#~ msgstr ""
+
+#~ msgid "This command is deprecated and will be removed in the near future."
+#~ msgstr "Bu komut kullanımdan kaldırılmıştır ve yakın zamanda silinecektir."
+
+#~ msgid "SYNC_STEPPER_TO_EXTRUDER"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: Set the "
+#~ "pin to the given output `VALUE`. VALUE should be 0 or 1 for \"digital\" "
+#~ "output pins. For PWM pins, set to a value between 0.0 and 1.0, or between "
+#~ "0.0 and `scale` if a scale is configured in the output_pin config section."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some pins (currently only \"soft PWM\" pins) support setting an explicit "
+#~ "cycle time using the CYCLE_TIME parameter (specified in seconds). Note that "
+#~ "the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN"
+#~ " command without an explicit CYCLE_TIME parameter will use the `cycle_time` "
+#~ "specified in the output_pin config section)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`BED_MESH_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] "
+#~ "[<probe_parameter>=<value>] [<mesh_parameter>=<value>]`: This command probes"
+#~ " the bed using generated points specified by the parameters in the config. "
+#~ "After probing, a mesh is generated and z-movement is adjusted according to "
+#~ "the mesh. See the PROBE command for details on the optional probe "
+#~ "parameters. If METHOD=manual is specified then the manual probing tool is "
+#~ "activated - see the MANUAL_PROBE command above for details on the additional"
+#~ " commands available while this tool is active. The optional "
+#~ "`HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified"
+#~ " in the config file."
+#~ msgstr ""
 
 #~ msgid ""
 #~ "`SET_DUAL_CARRIAGE CARRIAGE=[0|1]`: This command will set the active "

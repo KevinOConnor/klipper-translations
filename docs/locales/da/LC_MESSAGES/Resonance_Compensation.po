@@ -714,12 +714,6 @@ msgid ""
 msgstr ""
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
-msgid ""
-"Increase `max_accel_to_decel` by issuing the following command: "
-"`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-msgstr ""
-
-#: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid "Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr ""
 
@@ -743,10 +737,6 @@ msgstr ""
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Restart the firmware: `RESTART`"
-msgstr ""
-
-#: docs/Resonance_Compensation.md:block 28 (ordered list)
-msgid "Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
 msgstr ""
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
@@ -833,10 +823,6 @@ msgid ""
 msgstr ""
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
-msgid "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-msgstr ""
-
-#: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid "`SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr ""
 
@@ -906,6 +892,31 @@ msgid ""
 "changes of the carriages or their modes via `SET_DUAL_CARRIAGE` command will"
 " preserve the configured input shaper parameters."
 msgstr ""
+
+#: docs/Resonance_Compensation.md:block 12 (ordered list)
+msgid ""
+"Disable the `miminum_cruise_ratio` feature by issuing the following command:"
+" `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#: docs/Resonance_Compensation.md:block 28 (ordered list)
+msgid "Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#: docs/Resonance_Compensation.md:block 61 (ordered list)
+msgid "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#~ msgid ""
+#~ "Increase `max_accel_to_decel` by issuing the following command: "
+#~ "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr ""
+
+#~ msgid "Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr ""
+
+#~ msgid "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "There is no dedicated support for dual carriages with input shapers, but it "

@@ -68,15 +68,6 @@ msgid ""
 msgstr ""
 "步进电机的过运动不太可能对归零和探高的精度产生很大的影响。Klippe代码上会考虑通讯延时校正归零的结果。但是，过运动对硬件稳固性有要求，因为过运动发生时有可能会损坏硬件。"
 
-#: docs/Multi_MCU_Homing.md:block 7 (paragraph)
-msgid ""
-"Should Klipper detect a communication issue between micro-controllers during"
-" multi-mcu homing then it will raise a \"Communication timeout during "
-"homing\" error."
-msgstr ""
-"对配置有多mcu归零的Klipper，如在进行归零时遭遇通讯错误，软件会出现\"Communication timeout during "
-"homing\"（归零时，控制器通讯超时）的错误信息。"
-
 #: docs/Multi_MCU_Homing.md:block 8 (paragraph)
 msgid ""
 "Note that an axis with multiple steppers (eg, `stepper_z` and `stepper_z1`) "
@@ -87,3 +78,27 @@ msgid ""
 msgstr ""
 "需要注意的是当一个轴由多个步进电机控制（比如`stepper_z`和`stepper_z1`），这些电机必须连接到同一微控制器上以实现复数微控制器归零。详细来说，即Z限位开关位于微控制器1，"
 " `stepper_z`连接到微控制器2，则`stepper_z1`必须连接到微控制器2。"
+
+#: docs/Multi_MCU_Homing.md:block 7 (paragraph)
+msgid ""
+"In order to use this \"multi-mcu homing\" capability the hardware must have "
+"predictably low latency between the host computer and all of the micro-"
+"controllers. Typically the round-trip time must be consistently less than "
+"10ms. High latency (even for short periods) is likely to result in homing "
+"failures."
+msgstr ""
+
+#: docs/Multi_MCU_Homing.md:block 8 (paragraph)
+msgid ""
+"Should high latency result in a failure (or if some other communication "
+"issue is detected) then Klipper will raise a \"Communication timeout during "
+"homing\" error."
+msgstr ""
+
+#~ msgid ""
+#~ "Should Klipper detect a communication issue between micro-controllers during"
+#~ " multi-mcu homing then it will raise a \"Communication timeout during "
+#~ "homing\" error."
+#~ msgstr ""
+#~ "对配置有多mcu归零的Klipper，如在进行归零时遭遇通讯错误，软件会出现\"Communication timeout during "
+#~ "homing\"（归零时，控制器通讯超时）的错误信息。"

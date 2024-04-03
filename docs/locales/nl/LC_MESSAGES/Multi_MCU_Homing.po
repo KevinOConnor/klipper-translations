@@ -81,16 +81,6 @@ msgstr ""
 " compenseert hiervoor in de berekeningen. Belangrijk is wel dat de hardware "
 "deze overshoot op kan vangen zonder schade te veroorzaken."
 
-#: docs/Multi_MCU_Homing.md:block 7 (paragraph)
-msgid ""
-"Should Klipper detect a communication issue between micro-controllers during"
-" multi-mcu homing then it will raise a \"Communication timeout during "
-"homing\" error."
-msgstr ""
-"Als Klipper een communicatiefout heeft tussen de microcontrollers tijdens "
-"multi-mcu homen, dan geeft het de error \"Communication timeout during "
-"homing\"."
-
 #: docs/Multi_MCU_Homing.md:block 8 (paragraph)
 msgid ""
 "Note that an axis with multiple steppers (eg, `stepper_z` and `stepper_z1`) "
@@ -104,3 +94,28 @@ msgstr ""
 "multi-mcu homen. Als bijvoorbeeld een endstop op een andere microcontroller "
 "dan `stepper_z` aangesloten is, dan moet `stepper_z1` op dezelfde "
 "microcontroller als `z_stepper` aangesloten zijn."
+
+#: docs/Multi_MCU_Homing.md:block 7 (paragraph)
+msgid ""
+"In order to use this \"multi-mcu homing\" capability the hardware must have "
+"predictably low latency between the host computer and all of the micro-"
+"controllers. Typically the round-trip time must be consistently less than "
+"10ms. High latency (even for short periods) is likely to result in homing "
+"failures."
+msgstr ""
+
+#: docs/Multi_MCU_Homing.md:block 8 (paragraph)
+msgid ""
+"Should high latency result in a failure (or if some other communication "
+"issue is detected) then Klipper will raise a \"Communication timeout during "
+"homing\" error."
+msgstr ""
+
+#~ msgid ""
+#~ "Should Klipper detect a communication issue between micro-controllers during"
+#~ " multi-mcu homing then it will raise a \"Communication timeout during "
+#~ "homing\" error."
+#~ msgstr ""
+#~ "Als Klipper een communicatiefout heeft tussen de microcontrollers tijdens "
+#~ "multi-mcu homen, dan geeft het de error \"Communication timeout during "
+#~ "homing\"."

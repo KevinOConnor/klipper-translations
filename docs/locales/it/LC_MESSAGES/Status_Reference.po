@@ -750,17 +750,6 @@ msgstr ""
 "valore limite (ad es. `axis_minimum.x`, `axis_minimum.z`)."
 
 msgid ""
-"`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
-" The current printing limits that are in effect. This may differ from the "
-"config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters "
-"them at run-time."
-msgstr ""
-"`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
-" gli attuali limiti di stampa in vigore. Questo può differire dalle "
-"impostazioni del file di configurazione se un comando `SET_VELOCITY_LIMIT` "
-"(o `M204`) le altera in fase di esecuzione."
-
-msgid ""
 "`stalls`: The total number of times (since the last restart) that the "
 "printer had to be paused because the toolhead moved faster than moves could "
 "be read from the G-Code input."
@@ -1446,6 +1435,35 @@ msgid ""
 "`carriage_1`: The mode of the carriage 1. Possible values are: \"INACTIVE\","
 " \"PRIMARY\", \"COPY\", and \"MIRROR\"."
 msgstr ""
+
+#: docs/Status_Reference.md:block 90 (header)
+msgid "pwm_cycle_time"
+msgstr ""
+
+#: docs/Status_Reference.md:block 91 (paragraph)
+msgid ""
+"The following information is available in [pwm_cycle_time "
+"some_name](Config_Reference.md#pwm_cycle_time) objects:"
+msgstr ""
+
+#: docs/Status_Reference.md:block 126 (unordered list)
+msgid ""
+"`max_velocity`, `max_accel`, `minimum_cruise_ratio`, "
+"`square_corner_velocity`: The current printing limits that are in effect. "
+"This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or "
+"`M204`) command alters them at run-time."
+msgstr ""
+
+#~ msgid ""
+#~ "`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
+#~ " The current printing limits that are in effect. This may differ from the "
+#~ "config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters "
+#~ "them at run-time."
+#~ msgstr ""
+#~ "`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"
+#~ " gli attuali limiti di stampa in vigore. Questo può differire dalle "
+#~ "impostazioni del file di configurazione se un comando `SET_VELOCITY_LIMIT` "
+#~ "(o `M204`) le altera in fase di esecuzione."
 
 #~ msgid ""
 #~ "[bme280 "

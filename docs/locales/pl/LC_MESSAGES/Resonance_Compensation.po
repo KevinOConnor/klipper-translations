@@ -5,13 +5,11 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-02-27 18:50+0000\n"
 "Last-Translator: Woo Cash <woocash87@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/"
-"resonance_compensation/pl/>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/resonance_compensation/pl/>\n"
 "Language: pl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.5-dev\n"
 
 msgid "Resonance Compensation"
@@ -42,8 +40,8 @@ msgid ""
 " alignment issues of mechanical parts, heavy moving mass, etc. Those should "
 "be checked and fixed first, if possible."
 msgstr ""
-"Ringing jest spowodowany mechanicznymi drganiami drukarki na skutek szybkich "
-"zmian kierunku druku. Należy pamiętać, że ringing ma zwykle podłoże "
+"Ringing jest spowodowany mechanicznymi drganiami drukarki na skutek szybkich"
+" zmian kierunku druku. Należy pamiętać, że ringing ma zwykle podłoże "
 "mechaniczne: niewystarczająco sztywna rama drukarki, nie napięte lub zbyt "
 "sprężyste paski, problemy z wyrównaniem części mechanicznych, duża ruchoma "
 "masa itp. Należy najpierw sprawdzić urządzenie pod kątem mechanicznym i "
@@ -729,12 +727,6 @@ msgid ""
 msgstr ""
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
-msgid ""
-"Increase `max_accel_to_decel` by issuing the following command: "
-"`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-msgstr ""
-
-#: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid "Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr ""
 
@@ -758,10 +750,6 @@ msgstr ""
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Restart the firmware: `RESTART`"
-msgstr ""
-
-#: docs/Resonance_Compensation.md:block 28 (ordered list)
-msgid "Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
 msgstr ""
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
@@ -848,10 +836,6 @@ msgid ""
 msgstr ""
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
-msgid "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
-msgstr ""
-
-#: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid "`SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr ""
 
@@ -921,6 +905,31 @@ msgid ""
 "changes of the carriages or their modes via `SET_DUAL_CARRIAGE` command will"
 " preserve the configured input shaper parameters."
 msgstr ""
+
+#: docs/Resonance_Compensation.md:block 12 (ordered list)
+msgid ""
+"Disable the `miminum_cruise_ratio` feature by issuing the following command:"
+" `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#: docs/Resonance_Compensation.md:block 28 (ordered list)
+msgid "Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#: docs/Resonance_Compensation.md:block 61 (ordered list)
+msgid "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#~ msgid ""
+#~ "Increase `max_accel_to_decel` by issuing the following command: "
+#~ "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr ""
+
+#~ msgid "Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr ""
+
+#~ msgid "`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "There is no dedicated support for dual carriages with input shapers, but it "

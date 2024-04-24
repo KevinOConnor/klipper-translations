@@ -3,17 +3,20 @@
 # VICTOR <subfyn@gmail.com>, 2023.
 # xXx <xxx_xxx_xxxxxxxxx@mail.ru>, 2023.
 # dsa-t <dudesuchamazing@gmail.com>, 2023.
+# Mika <akimivanov43@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-10-01 22:01+0000\n"
-"Last-Translator: dsa-t <dudesuchamazing@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/rpi_microcontroller/ru/>\n"
+"PO-Revision-Date: 2024-04-07 09:02+0000\n"
+"Last-Translator: Mika <akimivanov43@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"rpi_microcontroller/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "This document describes the process of running Klipper on a RPi and use the "
@@ -358,9 +361,8 @@ msgstr ""
 "gpio13 и gpio19:"
 
 #: docs/RPi_microcontroller.md:block 45 (table)
-#, fuzzy
 msgid "PWM"
-msgstr "PWM"
+msgstr "ШИМ"
 
 #: docs/RPi_microcontroller.md:block 45 (table)
 msgid "gpio PIN"
@@ -483,16 +485,21 @@ msgid ""
 "This example enables only PWM0 and routes it to gpio12. If both PWM channels"
 " need to be enabled you can use `pwm-2chan`:"
 msgstr ""
+"В этом примере включается только PWM0 и перенаправляется на gpio12. Если "
+"необходимо включить оба канала PWM, вы можете использовать \"pwm-2chan`:"
 
 #: docs/RPi_microcontroller.md:block 40 (code)
 msgid ""
 "# Enable pwmchip sysfs interface\n"
 "dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4\n"
 msgstr ""
+"# Включение системного интерфейса pwmchip\n"
+"dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4\n"
 
 #: docs/RPi_microcontroller.md:block 41 (paragraph)
 msgid "This example additionally enables PWM1 and routes it to gpio13."
 msgstr ""
+"В этом примере дополнительно включается PWM1 и перенаправляется в gpio13."
 
 #: docs/RPi_microcontroller.md:block 42 (paragraph)
 msgid ""
@@ -502,18 +509,27 @@ msgid ""
 "`/sys/class/pwm/pwmchip0/pwm0` in the filesystem. The easiest way to do this"
 " is by adding this to `/etc/rc.local` before the `exit 0` line:"
 msgstr ""
+"Наложение не отображает строку pwm в sysfs при загрузке и должно быть "
+"экспортировано путем преобразования номера канала pwm в \"/sys/class/pwm/"
+"pwmchip0/export`. В результате в файловой системе будет создано устройство \""
+"/sys/class/pwm/pwmchip0/pwm0\". Самый простой способ сделать это - добавить "
+"это в \"/etc/rc.local\" перед строкой \"exit 0\".:"
 
 #: docs/RPi_microcontroller.md:block 43 (code)
 msgid ""
 "# Enable pwmchip sysfs interface\n"
 "echo 0 > /sys/class/pwm/pwmchip0/export\n"
 msgstr ""
+"# Активация системного интерфейса pwmchip \n"
+"echo 0 > /sys/class/pwm/pwmchip0/export\n"
 
 #: docs/RPi_microcontroller.md:block 44 (paragraph)
 msgid ""
 "When using both PWM channels, the number of the second channel needs to be "
 "echo'd as well:"
 msgstr ""
+"При использовании обоих ШИМ-каналов также необходимо отразить номер второго "
+"канала:"
 
 #: docs/RPi_microcontroller.md:block 45 (code)
 msgid ""
@@ -521,6 +537,9 @@ msgid ""
 "echo 0 > /sys/class/pwm/pwmchip0/export\n"
 "echo 1 > /sys/class/pwm/pwmchip0/export\n"
 msgstr ""
+"# Активация системного интерфейса pwmchip\n"
+"echo 0 > /sys/class/pwm/pwmchip0/export\n"
+"echo 1 > /sys/class/pwm/pwmchip0/export\n"
 
 #: docs/RPi_microcontroller.md:block 47 (code)
 msgid ""
@@ -538,12 +557,28 @@ msgid ""
 "shutdown_value: 0\n"
 "cycle_time: 0.0005\n"
 msgstr ""
+"[output_pin caselight]\n"
+"pin: host:pwmchip0/pwm0\n"
+"pwm: True\n"
+"hardware_pwm: True\n"
+"cycle_time: 0.000001\n"
+"\n"
+"[output_pin beeper]\n"
+"pin: host:pwmchip0/pwm1\n"
+"pwm: True\n"
+"hardware_pwm: True\n"
+"value: 0\n"
+"shutdown_value: 0\n"
+"cycle_time: 0.0005\n"
 
 #: docs/RPi_microcontroller.md:block 48 (paragraph)
 msgid ""
 "This will add hardware pwm control to gpio12 and gpio13 on the Pi (because "
 "the overlay was configured to route pwm0 to pin=12 and pwm1 to pin=13)."
 msgstr ""
+"Это добавит аппаратное управление шим к gpio12 и gpio13 на Pi (поскольку "
+"наложение было настроено на маршрутизацию pwm0 на вывод=12, а pwm1 на "
+"вывод=13)."
 
 #~ msgid ""
 #~ "This example enables only PWM0 and routes it to gpio12. If both PWM channels"

@@ -1,16 +1,18 @@
 # Luciano Moda <desenvolvimento@gtmax.com.br>, 2023.
 # Milton Miranda Neto <voidmmn@gmail.com>, 2023.
+# Matheus Mösken Diegues <dmosken2015@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-12-10 04:02+0000\n"
-"Last-Translator: Milton Miranda Neto <voidmmn@gmail.com>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/klipper/g-codes/pt/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Matheus Mösken Diegues <dmosken2015@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/klipper/"
+"g-codes/pt/>\n"
 "Language: pt\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.3-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -257,7 +259,7 @@ msgid ""
 msgstr ""
 
 msgid "`ABORT`: This command terminates the manual probing tool."
-msgstr ""
+msgstr "`ABORT`: Este comando encerra a ferramenta de prova manual."
 
 msgid ""
 "`TESTZ Z=<value>`: This command moves the nozzle up or down by the amount "
@@ -715,7 +717,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 18 (header)
 msgid "ACCELEROMETER_DEBUG_READ"
-msgstr ""
+msgstr "ACCELEROMETER_DEBUG_READ"
 
 #: docs/G-Codes.md:block 19 (paragraph)
 msgid ""
@@ -723,10 +725,13 @@ msgid ""
 "ADXL345 register \"register\" (e.g. 44 or 0x2C). Can be useful for debugging"
 " purposes."
 msgstr ""
+"`ACCELEROMETER_DEBUG_READ [CHIP=<config_name>] REG=<register>`:consulta o "
+"registro ADXL345 \"registro\" (por exemplo, 44 ou 0x2C). Pode ser útil para "
+"fins de depuração."
 
 #: docs/G-Codes.md:block 20 (header)
 msgid "ACCELEROMETER_DEBUG_WRITE"
-msgstr ""
+msgstr "ACCELEROMETER_DEBUG_WRITE"
 
 #: docs/G-Codes.md:block 21 (paragraph)
 msgid ""

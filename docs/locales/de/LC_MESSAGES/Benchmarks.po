@@ -1,18 +1,20 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:35+0200\n"
-"PO-Revision-Date: 2022-07-03 11:20+0000\n"
-"Last-Translator: Sven van Beckum <kontakt@partner-3d.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/benchmarks/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"benchmarks/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid "This document describes Klipper benchmarks."
 msgstr "Dieses Dokument beschreibt die Klipper-Benchmarks."
@@ -72,16 +74,16 @@ msgid "The following configuration sequence is used on AVR chips:"
 msgstr ""
 
 msgid "avr"
-msgstr ""
+msgstr "avr"
 
 msgid "ticks"
-msgstr ""
+msgstr "ticks"
 
 msgid "1 stepper"
-msgstr ""
+msgstr "1 Schrittmotor"
 
 msgid "3 stepper"
-msgstr ""
+msgstr "3 Schrittmotoren"
 
 msgid "Arduino Due step rate benchmark"
 msgstr ""
@@ -90,7 +92,7 @@ msgid "The following configuration sequence is used on the Due:"
 msgstr ""
 
 msgid "sam3x8e"
-msgstr ""
+msgstr "sam3x8e"
 
 msgid "Duet Maestro step rate benchmark"
 msgstr ""
@@ -99,10 +101,10 @@ msgid "The following configuration sequence is used on the Duet Maestro:"
 msgstr ""
 
 msgid "sam4s8c"
-msgstr ""
+msgstr "sam4s8c"
 
 msgid "70"
-msgstr ""
+msgstr "70"
 
 msgid "Duet Wifi step rate benchmark"
 msgstr ""
@@ -111,7 +113,7 @@ msgid "The following configuration sequence is used on the Duet Wifi:"
 msgstr ""
 
 msgid "sam4e8e"
-msgstr ""
+msgstr "sam4e8e"
 
 msgid "Beaglebone PRU step rate benchmark"
 msgstr ""
@@ -120,7 +122,7 @@ msgid "The following configuration sequence is used on the PRU:"
 msgstr ""
 
 msgid "pru"
-msgstr ""
+msgstr "pru"
 
 msgid "STM32F042 step rate benchmark"
 msgstr ""
@@ -129,7 +131,7 @@ msgid "The following configuration sequence is used on the STM32F042:"
 msgstr ""
 
 msgid "stm32f042"
-msgstr ""
+msgstr "stm32f042"
 
 msgid "STM32F103 step rate benchmark"
 msgstr ""
@@ -138,10 +140,10 @@ msgid "The following configuration sequence is used on the STM32F103:"
 msgstr ""
 
 msgid "stm32f103"
-msgstr ""
+msgstr "stm32f103"
 
 msgid "71"
-msgstr ""
+msgstr "71"
 
 msgid "STM32F4 step rate benchmark"
 msgstr ""
@@ -150,16 +152,16 @@ msgid "The following configuration sequence is used on the STM32F4:"
 msgstr ""
 
 msgid "stm32f446"
-msgstr ""
+msgstr "stm32f446"
 
 msgid "51"
-msgstr ""
+msgstr "51"
 
 msgid "stm32f407"
-msgstr ""
+msgstr "stm32f407"
 
 msgid "52"
-msgstr ""
+msgstr "52"
 
 msgid "LPC176x step rate benchmark"
 msgstr ""
@@ -168,10 +170,10 @@ msgid "The following configuration sequence is used on the LPC176x:"
 msgstr ""
 
 msgid "lpc1768"
-msgstr ""
+msgstr "lpc1768"
 
 msgid "lpc1769"
-msgstr ""
+msgstr "lpc1769"
 
 msgid "SAMD21 step rate benchmark"
 msgstr ""
@@ -180,7 +182,7 @@ msgid "The following configuration sequence is used on the SAMD21:"
 msgstr ""
 
 msgid "samd21"
-msgstr ""
+msgstr "samd21"
 
 msgid "SAMD51 step rate benchmark"
 msgstr ""
@@ -189,13 +191,13 @@ msgid "The following configuration sequence is used on the SAMD51:"
 msgstr ""
 
 msgid "samd51"
-msgstr ""
+msgstr "samd51"
 
 msgid "1 stepper (200Mhz)"
-msgstr ""
+msgstr "1 stepper (200Mhz)"
 
 msgid "3 stepper (200Mhz)"
-msgstr ""
+msgstr "3 stepper (200Mhz)"
 
 msgid "Linux MCU step rate benchmark"
 msgstr ""
@@ -204,7 +206,7 @@ msgid "The following configuration sequence is used on a Raspberry Pi:"
 msgstr ""
 
 msgid "Linux (RPi3)"
-msgstr ""
+msgstr "Linux (RPi3)"
 
 msgid "Command dispatch benchmark"
 msgstr ""
@@ -224,124 +226,124 @@ msgid ""
 msgstr ""
 
 msgid "MCU"
-msgstr ""
+msgstr "MCU"
 
 msgid "Rate"
-msgstr ""
+msgstr "Rate"
 
 msgid "Build"
-msgstr ""
+msgstr "Build"
 
 msgid "Build compiler"
-msgstr ""
+msgstr "Build compiler"
 
 msgid "stm32f042 (CAN)"
-msgstr ""
+msgstr "stm32f042 (CAN)"
 
 msgid "18K"
-msgstr ""
+msgstr "18K"
 
 msgid "c105adc8"
-msgstr ""
+msgstr "c105adc8"
 
 msgid "arm-none-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1"
-msgstr ""
+msgstr "arm-none-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1"
 
 msgid "atmega2560 (serial)"
-msgstr ""
+msgstr "atmega2560 (serial)"
 
 msgid "23K"
-msgstr ""
+msgstr "23K"
 
 msgid "b161a69e"
-msgstr ""
+msgstr "b161a69e"
 
 msgid "avr-gcc (GCC) 4.8.1"
-msgstr ""
+msgstr "avr-gcc (GCC) 4.8.1"
 
 msgid "sam3x8e (serial)"
-msgstr ""
+msgstr "sam3x8e (serial)"
 
 msgid "arm-none-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
 
 msgid "at90usb1286 (USB)"
-msgstr ""
+msgstr "at90usb1286 (USB)"
 
 msgid "75K"
-msgstr ""
+msgstr "75K"
 
 msgid "01d2183f"
-msgstr ""
+msgstr "01d2183f"
 
 msgid "avr-gcc (GCC) 5.4.0"
-msgstr ""
+msgstr "avr-gcc (GCC) 5.4.0"
 
 msgid "samd21 (USB)"
-msgstr ""
+msgstr "samd21 (USB)"
 
 msgid "223K"
-msgstr ""
+msgstr "223K"
 
 msgid "arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
 
 msgid "pru (shared memory)"
-msgstr ""
+msgstr "pru (gemeinsam genutzter Speicher)"
 
 msgid "260K"
-msgstr ""
+msgstr "260K"
 
 msgid "c5968a08"
-msgstr ""
+msgstr "c5968a08"
 
 msgid "pru-gcc (GCC) 8.0.0 20170530 (experimental)"
-msgstr ""
+msgstr "pru-gcc (GCC) 8.0.0 20170530 (experimental)"
 
 msgid "stm32f103 (USB)"
-msgstr ""
+msgstr "stm32f103 (USB)"
 
 msgid "355K"
-msgstr ""
+msgstr "355K"
 
 msgid "sam3x8e (USB)"
-msgstr ""
+msgstr "sam3x8e (USB)"
 
 msgid "418K"
-msgstr ""
+msgstr "418K"
 
 msgid "lpc1768 (USB)"
-msgstr ""
+msgstr "lpc1768 (USB)"
 
 msgid "534K"
-msgstr ""
+msgstr "534K"
 
 msgid "lpc1769 (USB)"
-msgstr ""
+msgstr "lpc1769 (USB)"
 
 msgid "628K"
-msgstr ""
+msgstr "628K"
 
 msgid "sam4s8c (USB)"
-msgstr ""
+msgstr "sam4s8c (USB)"
 
 msgid "650K"
-msgstr ""
+msgstr "650K"
 
 msgid "8d4a5c16"
-msgstr ""
+msgstr "8d4a5c16"
 
 msgid "samd51 (USB)"
-msgstr ""
+msgstr "samd51 (USB)"
 
 msgid "864K"
-msgstr ""
+msgstr "864K"
 
 msgid "stm32f446 (USB)"
-msgstr ""
+msgstr "stm32f446 (USB)"
 
 msgid "870K"
-msgstr ""
+msgstr "870K"
 
 msgid "Host Benchmarks"
 msgstr ""
@@ -370,7 +372,7 @@ msgid ""
 msgstr ""
 
 msgid "clear_shutdown\n"
-msgstr ""
+msgstr "clear_shutdown\n"
 
 msgid "ECHO Test result is: {\"%.0fK\" % (3. * freq / ticks / 1000.)}\n"
 msgstr ""
@@ -393,28 +395,28 @@ msgid "The following configuration sequence is used on the RP2040:"
 msgstr ""
 
 msgid "rp2040"
-msgstr ""
+msgstr "rp2040"
 
 msgid "66"
-msgstr ""
+msgstr "66"
 
 msgid "5"
-msgstr ""
+msgstr "5"
 
 msgid "22"
-msgstr ""
+msgstr "22"
 
 msgid "rp2040 (USB)"
-msgstr ""
+msgstr "rp2040 (USB)"
 
 msgid "873K"
-msgstr ""
+msgstr "873K"
 
 msgid "c5667193"
-msgstr ""
+msgstr "c5667193"
 
 msgid "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
 
 #: docs/Benchmarks.md:block 1 (header)
 msgid "Benchmarks"
@@ -481,11 +483,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 22 (table)
 msgid "102"
-msgstr ""
+msgstr "102"
 
 #: docs/Benchmarks.md:block 22 (table)
 msgid "486"
-msgstr ""
+msgstr "486"
 
 #: docs/Benchmarks.md:block 25 (code)
 msgid ""
@@ -504,7 +506,7 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 27 (table)
 msgid "257"
-msgstr ""
+msgstr "257"
 
 #: docs/Benchmarks.md:block 30 (code)
 msgid ""
@@ -517,7 +519,7 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 32 (table)
 msgid "260"
-msgstr ""
+msgstr "260"
 
 #: docs/Benchmarks.md:block 35 (code)
 msgid ""
@@ -536,11 +538,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 37 (table)
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: docs/Benchmarks.md:block 37 (table)
 msgid "215"
-msgstr ""
+msgstr "215"
 
 #: docs/Benchmarks.md:block 40 (code)
 msgid ""
@@ -559,11 +561,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 42 (table)
 msgid "231"
-msgstr ""
+msgstr "231"
 
 #: docs/Benchmarks.md:block 42 (table)
 msgid "847"
-msgstr ""
+msgstr "847"
 
 #: docs/Benchmarks.md:block 45 (code)
 msgid ""
@@ -576,11 +578,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 47 (table)
 msgid "59"
-msgstr ""
+msgstr "59"
 
 #: docs/Benchmarks.md:block 47 (table)
 msgid "249"
-msgstr ""
+msgstr "249"
 
 #: docs/Benchmarks.md:block 50 (code)
 msgid ""
@@ -593,11 +595,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 52 (table)
 msgid "61"
-msgstr ""
+msgstr "61"
 
 #: docs/Benchmarks.md:block 52 (table)
 msgid "264"
-msgstr ""
+msgstr "264"
 
 #: docs/Benchmarks.md:block 55 (code)
 msgid ""
@@ -617,11 +619,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 57 (table)
 msgid "46"
-msgstr ""
+msgstr "46"
 
 #: docs/Benchmarks.md:block 57 (table)
 msgid "205"
-msgstr ""
+msgstr "205"
 
 #: docs/Benchmarks.md:block 61 (code)
 msgid ""
@@ -641,7 +643,7 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "222"
-msgstr ""
+msgstr "222"
 
 #: docs/Benchmarks.md:block 67 (code)
 msgid ""
@@ -660,7 +662,7 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 69 (table)
 msgid "306"
-msgstr ""
+msgstr "306"
 
 #: docs/Benchmarks.md:block 72 (code)
 msgid ""
@@ -679,15 +681,15 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 74 (table)
 msgid "39"
-msgstr ""
+msgstr "39"
 
 #: docs/Benchmarks.md:block 74 (table)
 msgid "191"
-msgstr ""
+msgstr "191"
 
 #: docs/Benchmarks.md:block 74 (table)
 msgid "181"
-msgstr ""
+msgstr "181"
 
 #: docs/Benchmarks.md:block 77 (code)
 msgid ""
@@ -722,11 +724,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 84 (table)
 msgid "160"
-msgstr ""
+msgstr "160"
 
 #: docs/Benchmarks.md:block 84 (table)
 msgid "380"
-msgstr ""
+msgstr "380"
 
 #: docs/Benchmarks.md:block 15 (paragraph)
 msgid ""
@@ -762,15 +764,15 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "58"
-msgstr ""
+msgstr "58"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "243"
-msgstr ""
+msgstr "243"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "stm32g0b1"
-msgstr ""
+msgstr "stm32g0b1"
 
 #: docs/Benchmarks.md:block 59 (header)
 msgid "STM32H7 step rate benchmark"
@@ -798,15 +800,15 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "stm32h7"
-msgstr ""
+msgstr "stm32h7"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "44"
-msgstr ""
+msgstr "44"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "198"
-msgstr ""
+msgstr "198"
 
 #: docs/Benchmarks.md:block 85 (header)
 msgid "AR100 step rate benchmark"
@@ -835,31 +837,31 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "AR100 R_PIO"
-msgstr ""
+msgstr "AR100 R_PIO"
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "85"
-msgstr ""
+msgstr "85"
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "359"
-msgstr ""
+msgstr "359"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "ar100 (serial)"
-msgstr ""
+msgstr "ar100 (serial)"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "138K"
-msgstr ""
+msgstr "138K"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "08d037c6"
-msgstr ""
+msgstr "08d037c6"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "or1k-linux-musl-gcc 9.3.0"
-msgstr ""
+msgstr "or1k-linux-musl-gcc 9.3.0"
 
 #~ msgid ""
 #~ "To produce the benchmarks found in the Features.md document, the total "

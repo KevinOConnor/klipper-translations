@@ -1,14 +1,16 @@
 # Sebastian Fiedler <See1807@hotmail.de>, 2022.
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Extrutex <w1indt@outlook.com>, 2024.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:34+0200\n"
-"PO-Revision-Date: 2024-03-15 16:01+0000\n"
-"Last-Translator: Extrutex <w1indt@outlook.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/endstop_phase/de/>\n"
+"PO-Revision-Date: 2024-04-08 17:29+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"endstop_phase/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,7 +69,7 @@ msgid ""
 msgstr ""
 
 msgid "Calibrating endstop phases"
-msgstr ""
+msgstr "Kalibrierung der Endanschlagsphasen"
 
 msgid ""
 "If using Trinamic stepper motor drivers with run-time configuration then one"
@@ -103,7 +105,7 @@ msgid ""
 msgstr ""
 
 msgid "Additional notes"
-msgstr ""
+msgstr "Zusätzliche Hinweise"
 
 msgid ""
 "This feature is most useful on delta printers and on the Z endstop of "
@@ -164,13 +166,13 @@ msgid ""
 msgstr ""
 
 msgid "[endstop_phase]\n"
-msgstr ""
+msgstr "[endstop_phase]\n"
 
 msgid "ENDSTOP_PHASE_CALIBRATE STEPPER=stepper_z\n"
-msgstr ""
+msgstr "ENDSTOP_PHASE_CALIBRATE STEPPER=stepper_z\n"
 
 msgid "SAVE_CONFIG\n"
-msgstr ""
+msgstr "SAVE_CONFIG\n"
 
 #: docs/Endstop_Phase.md:block 1 (header)
 msgid "Endstop phase"

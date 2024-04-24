@@ -1,15 +1,17 @@
 # Michael Haßfurther <hassfurther.michael@googlemail.com>, 2024.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-02-03 21:01+0000\n"
-"Last-Translator: Michael Haßfurther <hassfurther.michael@googlemail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/axis_twist_compensation/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"axis_twist_compensation/de/>\n"
 "Language: de\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: docs/Axis_Twist_Compensation.md:block 1 (header)
 msgid "Axis Twist Compensation"
@@ -17,7 +19,7 @@ msgstr "Kompensation der Achsenverdrehung"
 
 #: docs/Axis_Twist_Compensation.md:block 2 (paragraph)
 msgid "This document describes the [axis_twist_compensation] module."
-msgstr ""
+msgstr "Dieses Dokument beschreibt das Modul [axis_twist_compensation]."
 
 #: docs/Axis_Twist_Compensation.md:block 3 (paragraph)
 msgid ""
@@ -75,7 +77,7 @@ msgstr ""
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid "[Adjust your Z offset](Probe_Calibrate.md#calibrating-probe-z-offset)"
-msgstr ""
+msgstr "[Adjust your Z offset](Probe_Calibrate.md#calibrating-probe-z-offset)"
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid ""
@@ -102,7 +104,7 @@ msgstr ""
 
 #: docs/Axis_Twist_Compensation.md:block 12 (header)
 msgid "[axis_twist_compensation] setup and commands"
-msgstr ""
+msgstr "[axis_twist_compensation] Einrichtung und Befehle"
 
 #: docs/Axis_Twist_Compensation.md:block 13 (paragraph)
 msgid ""

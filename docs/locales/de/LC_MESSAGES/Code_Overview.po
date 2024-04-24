@@ -1,18 +1,20 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:35+0200\n"
-"PO-Revision-Date: 2022-07-03 11:20+0000\n"
-"Last-Translator: Sven van Beckum <kontakt@partner-3d.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/code_overview/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"code_overview/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "This document describes the overall code layout and major code flow of "
@@ -53,6 +55,7 @@ msgstr ""
 msgid ""
 "The **config/** directory contains example printer configuration files."
 msgstr ""
+"Das **config/** Verzeichnis enthält Beispiel Druckerkonfigurationsdateien."
 
 msgid ""
 "The **scripts/** directory contains build-time scripts useful for compiling "
@@ -60,7 +63,7 @@ msgid ""
 msgstr ""
 
 msgid "The **test/** directory contains automated test cases."
-msgstr ""
+msgstr "Das Verzeichnis **test/** enthält automatisierte Testverfahren."
 
 msgid ""
 "During compilation, the build may create an **out/** directory. This "
@@ -120,7 +123,7 @@ msgid ""
 msgstr ""
 
 msgid "Klippy code overview"
-msgstr ""
+msgstr "Klippy Code Übersicht"
 
 msgid ""
 "The host code (Klippy) is intended to run on a low-cost computer (such as a "
@@ -256,7 +259,7 @@ msgid ""
 msgstr ""
 
 msgid "Adding a host module"
-msgstr ""
+msgstr "Hinzufügen eines Hostmoduls"
 
 msgid ""
 "The Klippy host code has a dynamic module loading capability. If a config "
@@ -272,7 +275,7 @@ msgid ""
 msgstr ""
 
 msgid "The following may also be useful:"
-msgstr ""
+msgstr "Die folgenden Informationen könnten ebenfalls nützlich sein:"
 
 msgid ""
 "Execution of the module starts in the module level `load_config()` function "
@@ -371,7 +374,7 @@ msgid ""
 msgstr ""
 
 msgid "Adding new kinematics"
-msgstr ""
+msgstr "Hinzufügen neuer Kinematiken"
 
 msgid ""
 "This section provides some tips on adding support to Klipper for additional "
@@ -382,7 +385,7 @@ msgid ""
 msgstr ""
 
 msgid "Useful steps:"
-msgstr ""
+msgstr "Nützliche Schritte:"
 
 msgid ""
 "Start by studying the \"[code flow of a move](#code-flow-of-a-move-"
@@ -428,7 +431,7 @@ msgid ""
 msgstr ""
 
 msgid "Porting to a new micro-controller"
-msgstr ""
+msgstr "Portierung auf einen neuen Mikrocontroller"
 
 msgid ""
 "This section provides some tips on porting Klipper's micro-controller code "
@@ -470,7 +473,7 @@ msgid "Consider adding build test cases in the test/ directory."
 msgstr ""
 
 msgid "Coordinate Systems"
-msgstr ""
+msgstr "Koordinatensysteme"
 
 msgid ""
 "Internally, Klipper primarily tracks the position of the toolhead in "
@@ -546,7 +549,7 @@ msgid ""
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
 
 msgid ""
 "Fundamental to the operation of Klipper is the handling of clocks, times, "
@@ -640,7 +643,7 @@ msgstr ""
 
 #: docs/Code_Overview.md:block 1 (header)
 msgid "Code overview"
-msgstr ""
+msgstr "Code Überblick"
 
 #: docs/Code_Overview.md:block 43 (paragraph)
 msgid ""
@@ -724,7 +727,7 @@ msgstr ""
 
 #: docs/Code_Overview.md:block 39 (paragraph)
 msgid "Additional coding tips:"
-msgstr ""
+msgstr "Zusätzliche Tipps zur Programmierung:"
 
 #: docs/Code_Overview.md:block 40 (ordered list)
 msgid ""

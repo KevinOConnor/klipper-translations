@@ -2,14 +2,16 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Sascha Petersen <zarrsito@gmail.com>, 2023.
 # Extrutex <w1indt@outlook.com>, 2024.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:34+0200\n"
-"PO-Revision-Date: 2024-03-15 16:01+0000\n"
-"Last-Translator: Extrutex <w1indt@outlook.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/measuring_resonances/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"measuring_resonances/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -160,6 +162,9 @@ msgid ""
 "Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and"
 " enabling SPI under the \"Interfacing options\" menu."
 msgstr ""
+"Vergewissern Sie sich, dass der Linux-SPI-Treiber aktiviert ist, indem Sie `"
+"sudo raspi-config` ausführen und SPI im Menü \"Interfacing options\" "
+"aktivieren."
 
 msgid ""
 "It is advised to start with 1 probe point, in the middle of the print bed, "
@@ -173,10 +178,10 @@ msgid "Measuring the resonances"
 msgstr "Resonanzenmessen"
 
 msgid "Checking the setup"
-msgstr ""
+msgstr "Überprüfung der Einrichtung"
 
 msgid "Now you can test a connection."
-msgstr ""
+msgstr "Jetzt können Sie eine Verbindung testen."
 
 msgid ""
 "For \"non bed-slingers\" (e.g. one accelerometer), in Octoprint, enter "
@@ -232,7 +237,7 @@ msgid ""
 msgstr ""
 
 msgid "![Resonances](img/calibrate-y.png)"
-msgstr ""
+msgstr "![Resonances](img/calibrate-y.png)"
 
 msgid ""
 "The suggested configuration can be added to `[input_shaper]` section of "
@@ -246,7 +251,7 @@ msgid ""
 msgstr ""
 
 msgid "Bed-slinger printers"
-msgstr ""
+msgstr "Bed-slinger Drucker"
 
 msgid ""
 "If your printer is a bed slinger printer, you will need to change the "
@@ -262,7 +267,7 @@ msgid ""
 msgstr ""
 
 msgid "Max smoothing"
-msgstr ""
+msgstr "Max smoothing"
 
 msgid ""
 "Keep in mind that the input shaper can create some smoothing in parts. "
@@ -279,7 +284,7 @@ msgid "Let's consider the following results from the automatic tuning:"
 msgstr ""
 
 msgid "![Resonances](img/calibrate-x.png)"
-msgstr ""
+msgstr "![Resonances](img/calibrate-x.png)"
 
 msgid ""
 "Note that the reported `smoothing` values are some abstract projected "
@@ -303,7 +308,7 @@ msgid ""
 msgstr ""
 
 msgid "![Resonances](img/calibrate-x-max-smoothing.png)"
-msgstr ""
+msgstr "![Resonances](img/calibrate-x-max-smoothing.png)"
 
 msgid ""
 "If you compare to the previously suggested parameters, the vibrations are a "
@@ -337,7 +342,7 @@ msgid ""
 msgstr ""
 
 msgid "Selecting max_accel"
-msgstr ""
+msgstr "Auswahl von max_accel"
 
 msgid ""
 "Since the input shaper can create some smoothing in parts, especially at "
@@ -375,7 +380,7 @@ msgid ""
 msgstr ""
 
 msgid "Input Shaper auto-calibration"
-msgstr ""
+msgstr "Input Shaper Autokalibrierung"
 
 msgid ""
 "Besides manually choosing the appropriate parameters for the input shaper "
@@ -415,7 +420,7 @@ msgid ""
 msgstr ""
 
 msgid "Input Shaper re-calibration"
-msgstr ""
+msgstr "Input Shaper Rekalibrierung"
 
 msgid ""
 "`SHAPER_CALIBRATE` command can be also used to re-calibrate the input shaper"
@@ -434,7 +439,7 @@ msgid ""
 msgstr ""
 
 msgid "Offline processing of the accelerometer data"
-msgstr ""
+msgstr "Offline Verarbeitung der Beschleunigungsmesser Daten"
 
 msgid ""
 "It is possible to generate the raw accelerometer data and process it offline"
@@ -485,7 +490,7 @@ msgid ""
 msgstr ""
 
 msgid "For example,"
-msgstr ""
+msgstr "Zum Beispiel,"
 
 msgid ""
 "will plot the comparison of several `/tmp/raw_data_x_*.csv` files for Z axis"
@@ -521,7 +526,7 @@ msgid ""
 msgstr ""
 
 msgid "Combining the resonance data from multiple test points."
-msgstr ""
+msgstr "Zusammenführung der Resonanzdaten von mehreren Testpunkten."
 
 msgid ""
 "Combining the resonance data from 2 axis (e.g. on a bed slinger printer to "
@@ -531,13 +536,13 @@ msgid ""
 msgstr ""
 
 msgid "~/klippy-env/bin/pip install -v numpy\n"
-msgstr ""
+msgstr "~/klippy-env/bin/pip install -v numpy\n"
 
 msgid "Recv: // adxl345 values (x, y, z): 470.719200, 941.438400, 9728.196800\n"
 msgstr ""
 
 msgid "TEST_RESONANCES AXIS=X\n"
-msgstr ""
+msgstr "TEST_RESONANCES AXIS=X\n"
 
 msgid ""
 "[resonance_tester]\n"
@@ -547,12 +552,16 @@ msgid ""
 msgstr ""
 
 msgid "TEST_RESONANCES AXIS=Y\n"
-msgstr ""
+msgstr "TEST_RESONANCES AXIS=Y\n"
 
 msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png\n"
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_y_*.csv -o /tmp/shaper_calibrate_y.png\n"
 msgstr ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/"
+"shaper_calibrate_x.png\n"
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_y_*.csv -o /tmp/"
+"shaper_calibrate_y.png\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 34.4 Hz (vibrations = 4.0%, smoothing ~= 0.132)\n"
@@ -613,6 +622,8 @@ msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
 "/tmp/shaper_calibrate_x.png --max_smoothing=0.2\n"
 msgstr ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/"
+"shaper_calibrate_x.png --max_smoothing=0.2\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 55.4 Hz (vibrations = 19.7%, smoothing ~= 0.057)\n"
@@ -636,7 +647,7 @@ msgid ""
 msgstr ""
 
 msgid "SHAPER_CALIBRATE\n"
-msgstr ""
+msgstr "SHAPER_CALIBRATE\n"
 
 msgid ""
 "Calculating the best input shaper parameters for y axis\n"
@@ -654,24 +665,28 @@ msgid ""
 msgstr ""
 
 msgid "SHAPER_CALIBRATE AXIS=Y\n"
-msgstr ""
+msgstr "SHAPER_CALIBRATE AXIS=Y\n"
 
 msgid "SHAPER_CALIBRATE AXIS=X\n"
-msgstr ""
+msgstr "SHAPER_CALIBRATE AXIS=X\n"
 
 msgid ""
 "SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0\n"
 "TEST_RESONANCES AXIS=X OUTPUT=raw_data\n"
 msgstr ""
+"SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0\n"
+"TEST_RESONANCES AXIS=X OUTPUT=raw_data\n"
 
 msgid ""
 "~/klipper/scripts/graph_accelerometer.py /tmp/raw_data_x_*.csv -o "
 "/tmp/resonances_x.png -c -a z\n"
 msgstr ""
+"~/klipper/scripts/graph_accelerometer.py /tmp/raw_data_x_*.csv -o /tmp/"
+"resonances_x.png -c -a z\n"
 
 #: docs/Measuring_Resonances.md:block 80 (header)
 msgid "Testing custom axes"
-msgstr ""
+msgstr "Testen benutzerdefinierter Achsen"
 
 #: docs/Measuring_Resonances.md:block 81 (paragraph)
 msgid ""
@@ -689,6 +704,8 @@ msgid ""
 "TEST_RESONANCES AXIS=1,1 OUTPUT=raw_data\n"
 "TEST_RESONANCES AXIS=1,-1 OUTPUT=raw_data\n"
 msgstr ""
+"TEST_RESONANCES AXIS=1,1 OUTPUT=raw_data\n"
+"TEST_RESONANCES AXIS=1,-1 OUTPUT=raw_data\n"
 
 #: docs/Measuring_Resonances.md:block 84 (paragraph)
 msgid "and use `graph_accelerometer.py` to process the generated files, e.g."
@@ -699,10 +716,14 @@ msgid ""
 "~/klipper/scripts/graph_accelerometer.py -c /tmp/raw_data_axis*.csv -o "
 "/tmp/resonances.png\n"
 msgstr ""
+"~/klipper/scripts/graph_accelerometer.py -c /tmp/raw_data_axis*.csv -o /tmp/"
+"resonances.png\n"
 
 #: docs/Measuring_Resonances.md:block 86 (paragraph)
 msgid "which will generate `/tmp/resonances.png` comparing the resonances."
 msgstr ""
+"wodurch die Datei `/tmp/resonances.png` erzeugt wird, in der die Resonanzen "
+"verglichen werden."
 
 #: docs/Measuring_Resonances.md:block 87 (paragraph)
 msgid ""
@@ -719,11 +740,13 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 89 (paragraph)
 msgid "and then use the same command"
-msgstr ""
+msgstr "und dann den gleichen befehl verwenden"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid "to generate `/tmp/resonances.png` comparing the resonances."
 msgstr ""
+"um die Datei `/tmp/resonances.png` zu erstellen, in der die Resonanzen "
+"verglichen werden."
 
 #: docs/Measuring_Resonances.md:block 26 (code)
 msgid ""
@@ -756,27 +779,27 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "MPU-9250 pin"
-msgstr ""
+msgstr "MPU-9250 pin"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "09"
-msgstr ""
+msgstr "09"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "03"
-msgstr ""
+msgstr "03"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "GPIO02 (SDA1)"
-msgstr ""
+msgstr "GPIO02 (SDA1)"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "05"
-msgstr ""
+msgstr "05"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "GPIO03 (SCL1)"
-msgstr ""
+msgstr "GPIO03 (SCL1)"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -821,7 +844,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 9 (header)
 msgid "SPI Accelerometers"
-msgstr ""
+msgstr "SPI Beschleunigungsmesser"
 
 #: docs/Measuring_Resonances.md:block 11 (code)
 msgid ""
@@ -829,24 +852,29 @@ msgid ""
 "3.3V+MOSI\n"
 "SCLK+CS\n"
 msgstr ""
+"GND+MISO\n"
+"3.3V+MOSI\n"
+"SCLK+CS\n"
 
 #: docs/Measuring_Resonances.md:block 12 (header)
 msgid "ADXL345"
-msgstr ""
+msgstr "ADXL345"
 
 #: docs/Measuring_Resonances.md:block 18 (header)
 msgid "I2C Accelerometers"
-msgstr ""
+msgstr "I2C Beschleunigungsmesser"
 
 #: docs/Measuring_Resonances.md:block 20 (code)
 msgid ""
 "3.3V+SDA\n"
 "GND+SCL\n"
 msgstr ""
+"3.3V+SDA\n"
+"GND+SCL\n"
 
 #: docs/Measuring_Resonances.md:block 21 (header)
 msgid "MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500"
-msgstr ""
+msgstr "MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Recommended connection scheme for I2C on the Raspberry Pi:"
@@ -854,39 +882,39 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 24 (table)
 msgid "VCC"
-msgstr ""
+msgstr "VCC"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "RP2040 pin"
-msgstr ""
+msgstr "RP2040 pin"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "39"
-msgstr ""
+msgstr "39"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "3v3"
-msgstr ""
+msgstr "3v3"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "38"
-msgstr ""
+msgstr "38"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "GP0 (I2C0 SDA)"
-msgstr ""
+msgstr "GP0 (I2C0 SDA)"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "02"
-msgstr ""
+msgstr "02"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "GP1 (I2C0 SCL)"
-msgstr ""
+msgstr "GP1 (I2C0 SCL)"
 
 #: docs/Measuring_Resonances.md:block 42 (header)
 msgid "Configure ADXL345 With RPi"
-msgstr ""
+msgstr "ADXL345 mit RPi konfigurieren"
 
 #: docs/Measuring_Resonances.md:block 44 (paragraph)
 msgid "Add the following to the printer.cfg file:"
@@ -894,7 +922,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid "Configure MPU-6000/9000 series With RPi"
-msgstr ""
+msgstr "Konfigurieren der MPU-6000/9000 Serie mit RPi"
 
 #: docs/Measuring_Resonances.md:block 48 (paragraph)
 msgid ""
@@ -905,15 +933,15 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 13 (header)
 msgid "Direct to Raspberry Pi"
-msgstr ""
+msgstr "Direkt zum Raspberry Pi"
 
 #: docs/Measuring_Resonances.md:block 16 (table)
 msgid "3.3V DC power"
-msgstr ""
+msgstr "3.3V DC power"
 
 #: docs/Measuring_Resonances.md:block 19 (header)
 msgid "Using Raspberry Pi Pico"
-msgstr ""
+msgstr "Verwendung Raspberry Pi Pico"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -933,47 +961,47 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "Pico pin"
-msgstr ""
+msgstr "Pico pin"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "Pico pin name"
-msgstr ""
+msgstr "Pico pin name"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP1 (SPI0_CSn)"
-msgstr ""
+msgstr "GP1 (SPI0_CSn)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP0 (SPI0_RX)"
-msgstr ""
+msgstr "GP0 (SPI0_RX)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP3 (SPI0_TX)"
-msgstr ""
+msgstr "GP3 (SPI0_TX)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP2 (SPI0_SCK)"
-msgstr ""
+msgstr "GP2 (SPI0_SCK)"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Wiring diagrams for some of the ADXL345 boards:"
@@ -981,15 +1009,15 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 24 (paragraph)
 msgid "![ADXL345-Pico](img/adxl345-pico.png)"
-msgstr ""
+msgstr "![ADXL345-Pico](img/adxl345-pico.png)"
 
 #: docs/Measuring_Resonances.md:block 54 (header)
 msgid "Configure ADXL345 With Pi Pico"
-msgstr ""
+msgstr "ADXL345 mit Pi Pico konfigurieren"
 
 #: docs/Measuring_Resonances.md:block 55 (header)
 msgid "Flash the Pico Firmware"
-msgstr ""
+msgstr "Flashen der Pico Firmware"
 
 #: docs/Measuring_Resonances.md:block 56 (paragraph)
 msgid "On your Raspberry Pi, compile the firmware for the Pico."
@@ -1001,10 +1029,13 @@ msgid ""
 "make clean\n"
 "make menuconfig\n"
 msgstr ""
+"cd ~/klipper\n"
+"make clean\n"
+"make menuconfig\n"
 
 #: docs/Measuring_Resonances.md:block 58 (paragraph)
 msgid "![Pico menuconfig](img/klipper_pico_menuconfig.png)"
-msgstr ""
+msgstr "![Pico menuconfig](img/klipper_pico_menuconfig.png)"
 
 #: docs/Measuring_Resonances.md:block 59 (paragraph)
 msgid ""
@@ -1014,7 +1045,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 60 (code)
 msgid "make flash FLASH_DEVICE=first\n"
-msgstr ""
+msgstr "make flash FLASH_DEVICE=first\n"
 
 #: docs/Measuring_Resonances.md:block 61 (paragraph)
 msgid ""
@@ -1025,7 +1056,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 62 (header)
 msgid "Configure the Connection"
-msgstr ""
+msgstr "Konfigurieren Sie die Verbindung"
 
 #: docs/Measuring_Resonances.md:block 63 (paragraph)
 msgid ""
@@ -1136,19 +1167,19 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 6 (header)
 msgid "MCUs with Klipper I2C *fast-mode* Support"
-msgstr ""
+msgstr "MCUs mit Klipper I2C *fast-mode* Unterstützung"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU Family"
-msgstr ""
+msgstr "MCU Familie"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) Tested"
-msgstr ""
+msgstr "Getestete MCU(s)"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) with Support"
-msgstr ""
+msgstr "MCU(s) mit Unterstützung"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "Raspberry Pi"
@@ -1156,19 +1187,19 @@ msgstr "Eine Microcomputer Marke"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "3B+, Pico"
-msgstr ""
+msgstr "3B+, Pico"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "3A, 3A+, 3B, 4"
-msgstr ""
+msgstr "3A, 3A+, 3B, 4"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AVR ATmega"
-msgstr ""
+msgstr "AVR ATmega"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "ATmega328p"
-msgstr ""
+msgstr "ATmega328p"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid ""
@@ -1178,15 +1209,15 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AVR AT90"
-msgstr ""
+msgstr "AVR AT90"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AT90usb646, AT90usb1286"
-msgstr ""
+msgstr "AT90usb646, AT90usb1286"
 
 #: docs/Measuring_Resonances.md:block 10 (paragraph)
 msgid ""
@@ -1201,15 +1232,16 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Correct connections when turned off (continuity)"
-msgstr ""
+msgstr "Korrekte Verbindungen im ausgeschalteten Zustand (Durchgang)"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
+#, fuzzy
 msgid "Correct power and ground voltages"
-msgstr ""
+msgstr "Korrekte Strom und Erdspannung"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "I2C only:"
-msgstr ""
+msgstr "Nur I2C:"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
@@ -1226,7 +1258,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Shorten the cable"
-msgstr ""
+msgstr "Kürzen Sie das Kabel"
 
 #: docs/Measuring_Resonances.md:block 12 (paragraph)
 msgid "Connect ethernet cable shielding only to the MCU board/Pi ground."
@@ -1257,10 +1289,13 @@ msgid ""
 "SDA+GND\n"
 "SCL+GND\n"
 msgstr ""
+"3.3V+GND\n"
+"SDA+GND\n"
+"SCL+GND\n"
 
 #: docs/Measuring_Resonances.md:block 34 (paragraph)
 msgid "or for two pairs:"
-msgstr ""
+msgstr "Oder für zwei Paare:"
 
 #: docs/Measuring_Resonances.md:block 36 (paragraph)
 msgid ""
@@ -1282,7 +1317,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 42 (paragraph)
 msgid "![MPU-9250 connected to Pi](img/mpu9250-PI-fritzing.png)"
-msgstr ""
+msgstr "![MPU-9250 connected to Pi](img/mpu9250-PI-fritzing.png)"
 
 #: docs/Measuring_Resonances.md:block 43 (paragraph)
 msgid "Recommended connection scheme for I2C (i2c0a) on the RP2040:"
@@ -1290,7 +1325,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 44 (table)
 msgid "RP2040 pin name"
-msgstr ""
+msgstr "RP2040 Pin Name"
 
 #: docs/Measuring_Resonances.md:block 45 (paragraph)
 msgid "The Pico does not include any built-in I2C pull-up resistors."
@@ -1298,7 +1333,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 46 (paragraph)
 msgid "![MPU-9250 connected to Pico](img/mpu9250-PICO-fritzing.png)"
-msgstr ""
+msgstr "![MPU-9250 connected to Pico](img/mpu9250-PICO-fritzing.png)"
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid ""
@@ -1308,31 +1343,31 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Atmega328P TQFP32 pin"
-msgstr ""
+msgstr "Atmega328P TQFP32 pin"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Atmega328P pin name"
-msgstr ""
+msgstr "Atmega328P pin name"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Arduino Nano pin"
-msgstr ""
+msgstr "Arduino Nano pin"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "27"
-msgstr ""
+msgstr "27"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "28"
-msgstr ""
+msgstr "28"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "A5"
-msgstr ""
+msgstr "A5"
 
 #: docs/Measuring_Resonances.md:block 49 (paragraph)
 msgid ""
@@ -1350,7 +1385,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 82 (header)
 msgid "Configure LIS2DW series"
-msgstr ""
+msgstr "LIS2DW Serie konfigurieren"
 
 #: docs/Measuring_Resonances.md:block 83 (code)
 msgid ""
@@ -1373,7 +1408,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 87 (header)
 msgid "Configure MPU-9520 Compatibles With Pico"
-msgstr ""
+msgstr "Konfigurieren von MPU-9520 Kompatible mit Pico"
 
 #: docs/Measuring_Resonances.md:block 88 (paragraph)
 msgid ""
@@ -1401,7 +1436,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 90 (header)
 msgid "Configure MPU-9520 Compatibles with AVR"
-msgstr ""
+msgstr "Konfigurieren von MPU-9520 Kompatible mit AVR"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid ""
@@ -1491,6 +1526,8 @@ msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
 "/tmp/shaper_calibrate_x.png --square_corner_velocity=10.0\n"
 msgstr ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/"
+"shaper_calibrate_x.png --square_corner_velocity=10.0\n"
 
 #: docs/Measuring_Resonances.md:block 150 (paragraph)
 msgid ""

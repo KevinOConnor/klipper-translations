@@ -1,18 +1,20 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:36+0200\n"
-"PO-Revision-Date: 2022-07-03 11:20+0000\n"
-"Last-Translator: Sven van Beckum <kontakt@partner-3d.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/contributing/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"contributing/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid "Contributing to Klipper"
 msgstr "Zu Klipper beitragen"
@@ -46,11 +48,11 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 9 (header)
 msgid "Contributing to Klipper Translations"
-msgstr ""
+msgstr "Beitrag zur Klipper Übersetzung"
 
 #: docs/CONTRIBUTING.md:block 11 (unordered list)
 msgid "75% Total coverage"
-msgstr ""
+msgstr "75 % Gesamtdeckung"
 
 #: docs/CONTRIBUTING.md:block 11 (unordered list)
 msgid "An updated navigation hierarchy PR in klipper-translations."
@@ -86,11 +88,12 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 4 (header)
 msgid "Overview of Contribution Process"
-msgstr ""
+msgstr "Überblick über den Beitragsprozess"
 
 #: docs/CONTRIBUTING.md:block 5 (paragraph)
 msgid "Contributions to Klipper generally follow a high-level process:"
 msgstr ""
+"Beiträge zu Klipper folgen im Allgemeinen einem anspruchsvollen Prozess:"
 
 #: docs/CONTRIBUTING.md:block 6 (ordered list)
 msgid ""
@@ -124,7 +127,7 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 8 (header)
 msgid "What to expect in a review"
-msgstr ""
+msgstr "Was Sie bei einer Überprüfung erwarten können"
 
 #: docs/CONTRIBUTING.md:block 9 (paragraph)
 msgid ""
@@ -178,6 +181,7 @@ msgstr ""
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid "Submissions must pass all [regression test cases](Debugging.md)."
 msgstr ""
+"Einsendungen müssen alle [regression test cases](Debugging.md) bestehen."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -409,7 +413,7 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 17 (header)
 msgid "Helping with reviews"
-msgstr ""
+msgstr "Bei der Überarbeitung helfen"
 
 #: docs/CONTRIBUTING.md:block 18 (paragraph)
 msgid ""
@@ -448,27 +452,27 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 22 (paragraph)
 msgid "The Klipper \"reviewers\" are:"
-msgstr ""
+msgstr "Die Klipper\"Gutachter\" sind:"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "GitHub Id"
-msgstr ""
+msgstr "GitHub Id"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Areas of interest"
-msgstr ""
+msgstr "Bereiche von Interesse"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Dmitry Butyugin"
-msgstr ""
+msgstr "Dmitry Butyugin"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "@dmbutyugin"
-msgstr ""
+msgstr "@dmbutyugin"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Input shaping, resonance testing, kinematics"
@@ -476,11 +480,11 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Eric Callahan"
-msgstr ""
+msgstr "Eric Callahan"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "@Arksine"
-msgstr ""
+msgstr "@Arksine"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Bed leveling, MCU flashing"
@@ -488,11 +492,11 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Kevin O'Connor"
-msgstr ""
+msgstr "Kevin O'Connor"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "@KevinOConnor"
-msgstr ""
+msgstr "@KevinOConnor"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Core motion system, Micro-controller code"
@@ -507,15 +511,15 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 25 (paragraph)
 msgid "The Klipper \"maintainers\" are:"
-msgstr ""
+msgstr "Die Klipper\"Betreuer\" sind:"
 
 #: docs/CONTRIBUTING.md:block 26 (table)
 msgid "GitHub name"
-msgstr ""
+msgstr "GitHub Name"
 
 #: docs/CONTRIBUTING.md:block 27 (header)
 msgid "Format of commit messages"
-msgstr ""
+msgstr "Format der Commit Nachrichten"
 
 #: docs/CONTRIBUTING.md:block 28 (paragraph)
 msgid ""
@@ -542,11 +546,11 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 34 (unordered list)
 msgid "All titles (H1) are translated"
-msgstr ""
+msgstr "Alle Titel (H1) werden übersetzt"
 
 #: docs/CONTRIBUTING.md:block 37 (paragraph)
 msgid "Once the requirements are met, you need to:"
-msgstr ""
+msgstr "Sobald die Anforderungen erfüllt sind, müssen Sie:"
 
 #: docs/CONTRIBUTING.md:block 38 (ordered list)
 msgid ""
@@ -554,6 +558,9 @@ msgid ""
 "[active_translations](https://github.com/Klipper3d/klipper-"
 "translations/blob/translations/active_translations)"
 msgstr ""
+"klipper-translations Repository aktualisieren "
+"[active_translations](https://github.com/Klipper3d/klipper-translations/blob/"
+"translations/active_translations)"
 
 #: docs/CONTRIBUTING.md:block 38 (ordered list)
 msgid ""
@@ -564,7 +571,7 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 39 (paragraph)
 msgid "Known Issues:"
-msgstr ""
+msgstr "Bekannte Probleme:"
 
 #: docs/CONTRIBUTING.md:block 40 (ordered list)
 msgid ""
@@ -574,7 +581,7 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 40 (ordered list)
 msgid "It is impossible to translate titles in mkdocs.yml."
-msgstr ""
+msgstr "Es ist unmöglich, Titel in mkdocs.yml zu übersetzen."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -601,15 +608,15 @@ msgstr ""
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "James Hartley"
-msgstr ""
+msgstr "James Hartley"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "@JamesH1978"
-msgstr ""
+msgstr "@JamesH1978"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Configuration files"
-msgstr ""
+msgstr "Konfigurationsdateien"
 
 #~ msgid "Paul McGowan"
 #~ msgstr ""

@@ -2,14 +2,16 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # Extrutex <w1indt@outlook.com>, 2024.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:32+0200\n"
-"PO-Revision-Date: 2024-03-15 16:01+0000\n"
-"Last-Translator: Extrutex <w1indt@outlook.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/resonance_compensation/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"resonance_compensation/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,6 +38,8 @@ msgid ""
 "|![Ringing test](img/ringing-test.jpg)|![3D "
 "Benchy](img/ringing-3dbenchy.jpg)|"
 msgstr ""
+"|![Ringing test](img/ringing-test.jpg)|![3D Benchy](img/ringing-3dbenchy."
+"jpg)|"
 
 msgid ""
 "Ringing is caused by mechanical vibrations in the printer due to quick "
@@ -126,6 +130,8 @@ msgid ""
 "|![Mark ringing](img/ringing-mark.jpg)|![Measure ringing](img/ringing-"
 "measure.jpg)|"
 msgstr ""
+"|![Mark ringing](img/ringing-mark.jpg)|![Measure ringing](img/ringing-measure"
+".jpg)|"
 
 msgid ""
 "Count how many oscillations *N* the measured distance *D* corresponds to. If"
@@ -186,8 +192,9 @@ msgid ""
 "or a new hotend is installed, heavy fan with a duct is added, etc."
 msgstr ""
 
+#, fuzzy
 msgid "Belts are tightened."
-msgstr ""
+msgstr "Die Riemen gespannt sind ."
 
 msgid "Some addons to increase frame rigidity are installed."
 msgstr ""
@@ -202,7 +209,7 @@ msgid ""
 msgstr ""
 
 msgid "Input shaper configuration"
-msgstr ""
+msgstr "Input shaper Konfiguration"
 
 msgid ""
 "After the ringing frequencies for X and Y axes are measured, you can add the"
@@ -213,7 +220,7 @@ msgid "For the example above, we get shaper_freq_x/y = 49.4."
 msgstr ""
 
 msgid "Choosing input shaper"
-msgstr ""
+msgstr "Input shaper Auswählen"
 
 msgid ""
 "Klipper supports several input shapers. They differ in their sensitivity to "
@@ -253,7 +260,7 @@ msgid ""
 msgstr ""
 
 msgid "A few notes on shaper selection:"
-msgstr ""
+msgstr "Ein paar Notizen zur \"shaper\" auswahl:"
 
 msgid ""
 "EI shaper may be more suited for bed slinger printers (if the resonance "
@@ -275,7 +282,7 @@ msgid ""
 msgstr ""
 
 msgid "Selecting max_accel"
-msgstr ""
+msgstr "Auswahl von max_accel"
 
 msgid ""
 "In order to select a suitable max_accel value, inspect the model for the "
@@ -289,7 +296,7 @@ msgid ""
 msgstr ""
 
 msgid "![Test gap](img/smoothing-test.png)"
-msgstr ""
+msgstr "![Test gap](img/smoothing-test.png)"
 
 msgid ""
 "As the acceleration increases, so does the smoothing, and the actual gap in "
@@ -297,7 +304,7 @@ msgid ""
 msgstr ""
 
 msgid "![Shaper smoothing](img/shaper-smoothing.jpg)"
-msgstr ""
+msgstr "![Shaper smoothing](img/shaper-smoothing.jpg)"
 
 msgid ""
 "In this picture, the acceleration increases left to right, and the gap "
@@ -339,7 +346,7 @@ msgid ""
 msgstr ""
 
 msgid "Fine-tuning resonance frequencies"
-msgstr ""
+msgstr "Feinabstimmung der Resonanzfrequenzen"
 
 msgid ""
 "Note that the precision of the resonance frequencies measurements using the "
@@ -360,7 +367,7 @@ msgid ""
 msgstr ""
 
 msgid "Print the test model."
-msgstr ""
+msgstr "Drucken Sie das Testmodell."
 
 msgid ""
 "Reset the original frequency value: `SET_INPUT_SHAPER SHAPER_FREQ_X=...`."
@@ -398,7 +405,7 @@ msgid ""
 msgstr ""
 
 msgid "Pressure Advance"
-msgstr ""
+msgstr "Pressure Advance"
 
 msgid "Unreliable measurements of ringing frequencies"
 msgstr ""
@@ -416,7 +423,7 @@ msgid ""
 msgstr ""
 
 msgid "`RESTART`"
-msgstr ""
+msgstr "`RESTART`"
 
 msgid ""
 "and print the model. Then print the model again, but before printing run "
@@ -480,7 +487,7 @@ msgid ""
 msgstr ""
 
 msgid "Troubleshooting and FAQ"
-msgstr ""
+msgstr "Fehlerbehebung und FAQ"
 
 msgid "I cannot get reliable measurements of resonance frequencies"
 msgstr ""
@@ -528,7 +535,7 @@ msgid "Is dual carriage setup supported with input shapers?"
 msgstr ""
 
 msgid "Does input_shaper affect print time?"
-msgstr ""
+msgstr "Beeinflusst input_shaper die Druckzeit?"
 
 msgid ""
 "No, `input_shaper` feature has pretty much no impact on the print times by "
@@ -537,10 +544,10 @@ msgid ""
 msgstr ""
 
 msgid "Technical details"
-msgstr ""
+msgstr "Technische Details"
 
 msgid "Input shapers"
-msgstr ""
+msgstr "Input shapers"
 
 msgid ""
 "Input shapers used in Klipper are rather standard, and one can find more in-"
@@ -551,85 +558,85 @@ msgid ""
 msgstr ""
 
 msgid "Input <br> shaper"
-msgstr ""
+msgstr "Input <br> shaper"
 
 msgid "Shaper <br> duration"
-msgstr ""
+msgstr "Shaper <br> duration"
 
 msgid "Vibration reduction 20x <br> (5% vibration tolerance)"
-msgstr ""
+msgstr "Vibrationsreduzierung 20x <br> (5% Vibrationstoleranz)"
 
 msgid "Vibration reduction 10x <br> (10% vibration tolerance)"
-msgstr ""
+msgstr "Vibrationsreduzierung 10x <br> (10% Vibrationstoleranz)"
 
 msgid "ZV"
-msgstr ""
+msgstr "ZV"
 
 msgid "0.5 / shaper_freq"
-msgstr ""
+msgstr "0.5 / shaper_freq"
 
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 msgid "± 5% shaper_freq"
-msgstr ""
+msgstr "± 5% shaper_freq"
 
 msgid "MZV"
-msgstr ""
+msgstr "MZV"
 
 msgid "0.75 / shaper_freq"
-msgstr ""
+msgstr "0.75 / shaper_freq"
 
 msgid "± 4% shaper_freq"
-msgstr ""
+msgstr "± 4% shaper_freq"
 
 msgid "-10%...+15% shaper_freq"
-msgstr ""
+msgstr "-10%...+15% shaper_freq"
 
 msgid "ZVD"
-msgstr ""
+msgstr "ZVD"
 
 msgid "1 / shaper_freq"
-msgstr ""
+msgstr "1 / shaper_freq"
 
 msgid "± 15% shaper_freq"
-msgstr ""
+msgstr "± 15% shaper_freq"
 
 msgid "± 22% shaper_freq"
-msgstr ""
+msgstr "± 22% shaper_freq"
 
 msgid "EI"
-msgstr ""
+msgstr "EI"
 
 msgid "± 20% shaper_freq"
-msgstr ""
+msgstr "± 20% shaper_freq"
 
 msgid "± 25% shaper_freq"
-msgstr ""
+msgstr "± 25% shaper_freq"
 
 msgid "2HUMP_EI"
-msgstr ""
+msgstr "2HUMP_EI"
 
 msgid "1.5 / shaper_freq"
-msgstr ""
+msgstr "1.5 / shaper_freq"
 
 msgid "± 35% shaper_freq"
-msgstr ""
+msgstr "± 35% shaper_freq"
 
 msgid "± 40 shaper_freq"
-msgstr ""
+msgstr "± 40 shaper_freq"
 
 msgid "3HUMP_EI"
-msgstr ""
+msgstr "3HUMP_EI"
 
 msgid "2 / shaper_freq"
-msgstr ""
+msgstr "2 / shaper_freq"
 
 msgid "-45...+50% shaper_freq"
-msgstr ""
+msgstr "-45...+50% shaper_freq"
 
 msgid "-50%...+55% shaper_freq"
-msgstr ""
+msgstr "-50%...+55% shaper_freq"
 
 msgid ""
 "A note on vibration reduction: the values in the table above are "
@@ -649,7 +656,7 @@ msgid ""
 msgstr ""
 
 msgid "**How to use this table:**"
-msgstr ""
+msgstr "**Verwendung dieser Tabelle:**"
 
 msgid ""
 "Shaper duration affects the smoothing in parts - the larger it is, the more "
@@ -702,6 +709,10 @@ msgid ""
 "shaper_freq_y: ...\n"
 "shaper_type: mzv\n"
 msgstr ""
+"[input_shaper]\n"
+"shaper_freq_x: ...\n"
+"shaper_freq_y: ...\n"
+"shaper_type: mzv\n"
 
 msgid ""
 "[input_shaper]\n"
@@ -709,6 +720,10 @@ msgid ""
 "shaper_freq_y: 50\n"
 "shaper_type: 2hump_ei\n"
 msgstr ""
+"[input_shaper]\n"
+"shaper_freq_x: 50\n"
+"shaper_freq_y: 50\n"
+"shaper_type: 2hump_ei\n"
 
 #: docs/Resonance_Compensation.md:block 7 (paragraph)
 msgid ""
@@ -726,7 +741,7 @@ msgstr ""
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid "Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`"
-msgstr ""
+msgstr "Pressure Advance deaktivieren: `SET_PRESSURE_ADVANCE ADVANCE=0`"
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid ""
@@ -748,11 +763,11 @@ msgstr ""
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Restart the firmware: `RESTART`"
-msgstr ""
+msgstr "Die Firmware neu starten `RESTART`"
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Execute: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`"
-msgstr ""
+msgstr "Execute: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`"
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid ""
@@ -799,10 +814,12 @@ msgstr ""
 msgid ""
 "Make sure Pressure Advance is disabled: `SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr ""
+"Vergewissern Sie sich, dass Pressure Advance deaktiviert ist: `"
+"SET_PRESSURE_ADVANCE ADVANCE=0`"
 
 #: docs/Resonance_Compensation.md:block 52 (ordered list)
 msgid "Execute: `SET_INPUT_SHAPER SHAPER_TYPE=ZV`"
-msgstr ""
+msgstr "Execute: `SET_INPUT_SHAPER SHAPER_TYPE=ZV`"
 
 #: docs/Resonance_Compensation.md:block 52 (ordered list)
 msgid ""
@@ -835,32 +852,37 @@ msgstr ""
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid "`SET_PRESSURE_ADVANCE ADVANCE=0`"
-msgstr ""
+msgstr "`SET_PRESSURE_ADVANCE ADVANCE=0`"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid ""
 "`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`"
 msgstr ""
+"`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid ""
 "`TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 "
 "STEP_DELTA=500 STEP_HEIGHT=5`"
 msgstr ""
+"`TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 "
+"STEP_DELTA=500 STEP_HEIGHT=5`"
 
 #: docs/Resonance_Compensation.md:block 63 (ordered list)
 msgid ""
 "`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=50 SHAPER_FREQ_Y=50`"
 msgstr ""
+"`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=50 SHAPER_FREQ_Y=50`"
 
 #: docs/Resonance_Compensation.md:block 65 (ordered list)
 msgid ""
 "`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=40 SHAPER_FREQ_Y=40`"
 msgstr ""
+"`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=40 SHAPER_FREQ_Y=40`"
 
 #: docs/Resonance_Compensation.md:block 72 (ordered list)
 msgid "`SET_INPUT_SHAPER SHAPER_TYPE=EI SHAPER_FREQ_X=... SHAPER_FREQ_Y=...`"
-msgstr ""
+msgstr "`SET_INPUT_SHAPER SHAPER_TYPE=EI SHAPER_FREQ_X=... SHAPER_FREQ_Y=...`"
 
 #: docs/Resonance_Compensation.md:block 85 (paragraph)
 msgid ""
@@ -912,11 +934,11 @@ msgstr ""
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
-msgstr ""
+msgstr "Vorbereitung für den Test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
-msgstr ""
+msgstr "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 
 #~ msgid ""
 #~ "Increase `max_accel_to_decel` by issuing the following command: "

@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:35+0200\n"
-"PO-Revision-Date: 2024-03-28 01:37+0000\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
 "Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/protocol/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/protocol/"
+"de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,7 +62,7 @@ msgid ""
 msgstr ""
 
 msgid "Micro-controller Interface"
-msgstr ""
+msgstr "Mikrocontroller Schnittstelle"
 
 msgid ""
 "The Klipper transmission protocol can be thought of as a "
@@ -73,7 +74,7 @@ msgid ""
 msgstr ""
 
 msgid "Declaring commands"
-msgstr ""
+msgstr "Befehle festlegen"
 
 msgid ""
 "The micro-controller software declares a \"command\" by using the "
@@ -108,7 +109,7 @@ msgid ""
 msgstr ""
 
 msgid "Declaring responses"
-msgstr ""
+msgstr "Antworten deklarieren"
 
 msgid ""
 "To send information from the micro-controller to the host a \"response\" is "
@@ -188,7 +189,7 @@ msgid ""
 msgstr ""
 
 msgid "Low-level message encoding"
-msgstr ""
+msgstr "Low-Level Nachrichtenkodierung"
 
 msgid ""
 "To accomplish the above RPC mechanism, each command and response is encoded "
@@ -197,7 +198,7 @@ msgid ""
 msgstr ""
 
 msgid "Message Blocks"
-msgstr ""
+msgstr "Nachrichtenblöcke"
 
 msgid ""
 "All data sent from host to micro-controller and vice-versa are contained in "
@@ -228,7 +229,7 @@ msgid ""
 msgstr ""
 
 msgid "Message Block Contents"
-msgstr ""
+msgstr "Inhalt des Nachrichtenblocks"
 
 msgid ""
 "Each message block sent from host to micro-controller contains a series of "
@@ -267,8 +268,9 @@ msgid ""
 "contain more than one response in the message block contents."
 msgstr ""
 
+#, fuzzy
 msgid "Variable Length Quantities"
-msgstr ""
+msgstr "Mengen mit variabler Länge"
 
 msgid ""
 "See the [wikipedia article](https://en.wikipedia.org/wiki/Variable-"
@@ -286,37 +288,38 @@ msgid "Encoded size"
 msgstr ""
 
 msgid "-32 .. 95"
-msgstr ""
+msgstr "-32 .. 95"
 
 msgid "1"
-msgstr ""
+msgstr "1"
 
 msgid "-4096 .. 12287"
-msgstr ""
+msgstr "-4096 .. 12287"
 
 msgid "2"
-msgstr ""
+msgstr "2"
 
 msgid "-524288 .. 1572863"
-msgstr ""
+msgstr "-524288 .. 1572863"
 
 msgid "3"
-msgstr ""
+msgstr "3"
 
 msgid "-67108864 .. 201326591"
-msgstr ""
+msgstr "-67108864 .. 201326591"
 
 msgid "4"
-msgstr ""
+msgstr "4"
 
 msgid "-2147483648 .. 4294967295"
-msgstr ""
+msgstr "-2147483648 .. 4294967295"
 
 msgid "5"
-msgstr ""
+msgstr "5"
 
+#, fuzzy
 msgid "Variable length strings"
-msgstr ""
+msgstr "Zeichenketten variabler Länge"
 
 msgid ""
 "As an exception to the above encoding rules, if a parameter to a command or "
@@ -332,7 +335,7 @@ msgid ""
 msgstr ""
 
 msgid "Data Dictionary"
-msgstr ""
+msgstr "Daten Wörterbuch"
 
 msgid ""
 "In order for meaningful communications to be established between micro-"
@@ -454,11 +457,15 @@ msgid ""
 "DECL_COMMAND(command_update_digital_out, \"update_digital_out oid=%c "
 "value=%c\");\n"
 msgstr ""
+"DECL_COMMAND(command_update_digital_out, \"update_digital_out oid=%c value=%"
+"c\");\n"
 
 msgid ""
 "sendf(\"status clock=%u status=%c\", sched_read_time(), "
 "sched_is_shutdown());\n"
 msgstr ""
+"sendf(\"status clock=%u status=%c\", sched_read_time(), sched_is_shutdown());"
+"\n"
 
 msgid "output(\"The value of %u is %s with size %u.\", x, buf, buf_len);\n"
 msgstr ""
@@ -468,12 +475,15 @@ msgid ""
 "\n"
 "DECL_ENUMERATION_RANGE(\"pin\", \"PC0\", 16, 8);\n"
 msgstr ""
+"DECL_ENUMERATION(\"spi_bus\", \"spi\", 0);\n"
+"\n"
+"DECL_ENUMERATION_RANGE(\"pin\", \"PC0\", 16, 8);\n"
 
 msgid "DECL_CONSTANT(\"SERIAL_BAUD\", 250000);\n"
-msgstr ""
+msgstr "DECL_CONSTANT(\"SERIAL_BAUD\", 250000);\n"
 
 msgid "DECL_CONSTANT_STR(\"MCU\", \"pru\");\n"
-msgstr ""
+msgstr "DECL_CONSTANT_STR(\"MCU\", \"pru\");\n"
 
 msgid ""
 "<1 byte length><1 byte sequence><n-byte content><2 byte crc><1 byte sync>\n"
@@ -485,13 +495,19 @@ msgid ""
 "get_config\n"
 "get_clock\n"
 msgstr ""
+"update_digital_out oid=6 value=1\n"
+"update_digital_out oid=5 value=0\n"
+"get_config\n"
+"get_clock\n"
 
 msgid ""
 "<id_update_digital_out><6><1><id_update_digital_out><5><0><id_get_config><id_get_clock>\n"
 msgstr ""
+"<id_update_digital_out><6><1><id_update_digital_out><5><0><id_get_config><id_"
+"get_clock>\n"
 
 msgid "<VLQ encoded length><n-byte contents>\n"
-msgstr ""
+msgstr "<VLQ encoded length><n-byte contents>\n"
 
 #: docs/Protocol.md:block 1 (header)
 msgid "Protocol"

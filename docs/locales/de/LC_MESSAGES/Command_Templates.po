@@ -1,20 +1,22 @@
 # Sebastian Fiedler <See1807@hotmail.de>, 2022.
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:33+0200\n"
-"PO-Revision-Date: 2022-07-11 18:56+0000\n"
-"Last-Translator: Yifei Ding <dingyifeiair@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/command_templates/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"command_templates/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "This document provides information on implementing G-Code command sequences "
@@ -34,7 +36,7 @@ msgid ""
 msgstr ""
 
 msgid "Formatting of G-Code in the config"
-msgstr ""
+msgstr "Formatierung von G-Code in der Konfigurationsdatei"
 
 msgid ""
 "Indentation is important when defining a macro in the config file. To "
@@ -48,7 +50,7 @@ msgid ""
 msgstr ""
 
 msgid "Add a description to your macro"
-msgstr ""
+msgstr "Fügen Sie eine Beschreibung zu Ihrem Makro hinzu"
 
 msgid ""
 "To help identify the functionality a short description can be added. Add "
@@ -57,7 +59,7 @@ msgid ""
 msgstr ""
 
 msgid "Save/Restore state for G-Code moves"
-msgstr ""
+msgstr "Speichern/Wiederherstellen des Status für G-Code Bewegungen"
 
 msgid ""
 "Unfortunately, the G-Code command language can be challenging to use. The "
@@ -94,10 +96,10 @@ msgid ""
 msgstr ""
 
 msgid "An example of a complex macro:"
-msgstr ""
+msgstr "Ein Beispiel für ein komplexes Makro:"
 
 msgid "Macro parameters"
-msgstr ""
+msgstr "Makro Parameter"
 
 msgid ""
 "It is often useful to inspect parameters passed to the macro when it is "
@@ -118,7 +120,7 @@ msgid ""
 msgstr ""
 
 msgid "The \"printer\" Variable"
-msgstr ""
+msgstr "Die \"printer\" Variable"
 
 msgid ""
 "It is possible to inspect (and alter) the current state of the printer via "
@@ -156,7 +158,7 @@ msgid ""
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Aktionen"
 
 msgid ""
 "There are some commands available that can alter the state of the printer. "
@@ -167,7 +169,7 @@ msgid ""
 msgstr ""
 
 msgid "Available \"action\" commands:"
-msgstr ""
+msgstr "Verfügbare \"action\" Befehle:"
 
 msgid ""
 "`action_respond_info(msg)`: Write the given `msg` to the /tmp/printer "
@@ -195,7 +197,7 @@ msgid ""
 msgstr ""
 
 msgid "Variables"
-msgstr ""
+msgstr "Variablen"
 
 msgid ""
 "The SET_GCODE_VARIABLE command may be useful for saving state between macro "
@@ -209,7 +211,7 @@ msgid ""
 msgstr ""
 
 msgid "Delayed Gcodes"
-msgstr ""
+msgstr "Verzögerte Gcodes"
 
 msgid ""
 "The [delayed_gcode] configuration option can be used to execute a delayed "
@@ -241,7 +243,7 @@ msgid ""
 msgstr ""
 
 msgid "Menu templates"
-msgstr ""
+msgstr "Menüvorlagen"
 
 msgid ""
 "If a [display config section](Config_Reference.md#display) is enabled, then "
@@ -288,7 +290,7 @@ msgid ""
 msgstr ""
 
 msgid "Save Variables to disk"
-msgstr ""
+msgstr "Variablen auf Festplatte speichern"
 
 msgid ""
 "If a [save_variables config section](Config_Reference.md#save_variables) has"
@@ -397,6 +399,10 @@ msgid ""
 "gcode:\n"
 "  M117 Welcome!\n"
 msgstr ""
+"[delayed_gcode welcome]\n"
+"initial_duration: 5.\n"
+"gcode:\n"
+"  M117 Welcome!\n"
 
 msgid ""
 "[delayed_gcode report_temp]\n"
@@ -407,10 +413,10 @@ msgid ""
 msgstr ""
 
 msgid "UPDATE_DELAYED_GCODE ID=report_temp DURATION=0\n"
-msgstr ""
+msgstr "UPDATE_DELAYED_GCODE ID=report_temp DURATION=0\n"
 
 msgid "{% set svv = printer.save_variables.variables %}\n"
-msgstr ""
+msgstr "{% set svv = printer.save_variables.variables %}\n"
 
 msgid ""
 "[gcode_macro T1]\n"
@@ -430,12 +436,13 @@ msgid ""
 msgstr ""
 
 #: docs/Command_Templates.md:block 1 (header)
+#, fuzzy
 msgid "Commands templates"
-msgstr ""
+msgstr "Befehlsvorlagen"
 
 #: docs/Command_Templates.md:block 28 (header)
 msgid "The \"rawparams\" variable"
-msgstr ""
+msgstr "Die Variable \"rawparams\""
 
 #: docs/Command_Templates.md:block 29 (paragraph)
 msgid ""

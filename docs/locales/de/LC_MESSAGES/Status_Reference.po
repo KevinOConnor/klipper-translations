@@ -1,20 +1,22 @@
 # Sebastian Fiedler <See1807@hotmail.de>, 2022.
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Tobias Pierschel <tp@netinventors.de>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:35+0200\n"
-"PO-Revision-Date: 2022-11-01 02:08+0000\n"
-"Last-Translator: Tobias Pierschel <tp@netinventors.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/status_reference/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"status_reference/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "This document is a reference of printer status information available in "
@@ -38,7 +40,7 @@ msgstr ""
 "aktualisieren."
 
 msgid "bed_mesh"
-msgstr ""
+msgstr "bed_mesh"
 
 msgid ""
 "The following information is available in the "
@@ -72,7 +74,7 @@ msgid ""
 msgstr ""
 
 msgid "display_status"
-msgstr ""
+msgstr "display_status"
 
 msgid ""
 "The following information is available in the `display_status` object (this "
@@ -89,7 +91,7 @@ msgid "`message`: The message contained in the last `M117` G-Code command."
 msgstr ""
 
 msgid "endstop_phase"
-msgstr ""
+msgstr "endstop_phase"
 
 msgid ""
 "The following information is available in the "
@@ -115,7 +117,7 @@ msgid ""
 msgstr ""
 
 msgid "fan"
-msgstr ""
+msgstr "fan"
 
 msgid ""
 "The following information is available in [fan](Config_Reference.md#fan), "
@@ -132,7 +134,7 @@ msgid ""
 msgstr ""
 
 msgid "filament_switch_sensor"
-msgstr ""
+msgstr "filament_switch_sensor"
 
 msgid ""
 "The following information is available in [filament_switch_sensor "
@@ -147,7 +149,7 @@ msgid ""
 msgstr ""
 
 msgid "filament_motion_sensor"
-msgstr ""
+msgstr "filament_motion_sensor"
 
 msgid ""
 "The following information is available in [filament_motion_sensor "
@@ -158,7 +160,7 @@ msgid "`enabled`: Returns True if the motion sensor is currently enabled."
 msgstr ""
 
 msgid "firmware_retraction"
-msgstr ""
+msgstr "firmware_retraction"
 
 msgid ""
 "The following information is available in the "
@@ -173,7 +175,7 @@ msgid ""
 msgstr ""
 
 msgid "gcode_macro"
-msgstr ""
+msgstr "gcode_macro"
 
 msgid ""
 "The following information is available in [gcode_macro "
@@ -184,9 +186,11 @@ msgid ""
 "`<variable>`: The current value of a [gcode_macro "
 "variable](Command_Templates.md#variables)."
 msgstr ""
+"`<variable>`: Der aktuelle Wert von [gcode_macro variable](Command_Templates."
+"md#variables)."
 
 msgid "gcode_move"
-msgstr ""
+msgstr "gcode_move"
 
 msgid ""
 "The following information is available in the `gcode_move` object (this "
@@ -240,7 +244,7 @@ msgid ""
 msgstr ""
 
 msgid "hall_filament_width_sensor"
-msgstr ""
+msgstr "hall_filament_width_sensor"
 
 msgid ""
 "The following information is available in the "
@@ -252,7 +256,7 @@ msgid "`is_active`: Returns True if the sensor is currently active."
 msgstr ""
 
 msgid "heater"
-msgstr ""
+msgstr "heater"
 
 msgid ""
 "The following information is available for heater objects such as "
@@ -282,7 +286,7 @@ msgid ""
 msgstr ""
 
 msgid "heaters"
-msgstr ""
+msgstr "heaters"
 
 msgid ""
 "The following information is available in the `heaters` object (this object "
@@ -303,7 +307,7 @@ msgid ""
 msgstr ""
 
 msgid "idle_timeout"
-msgstr ""
+msgstr "idle_timeout"
 
 msgid ""
 "The following information is available in the "
@@ -323,7 +327,7 @@ msgid ""
 msgstr ""
 
 msgid "mcu"
-msgstr ""
+msgstr "mcu"
 
 msgid ""
 "The following information is available in [mcu](Config_Reference.md#mcu) and"
@@ -349,9 +353,11 @@ msgid ""
 "`last_stats.<statistics_name>`: Statistics information on the micro-"
 "controller connection."
 msgstr ""
+"`last_stats.<statistics_name>`: Statistikinformationen über die "
+"Mikrocontroller Verbindung."
 
 msgid "output_pin"
-msgstr ""
+msgstr "output_pin"
 
 msgid ""
 "The following information is available in [output_pin "
@@ -362,7 +368,7 @@ msgid "`value`: The \"value\" of the pin, as set by a `SET_PIN` command."
 msgstr ""
 
 msgid "palette2"
-msgstr ""
+msgstr "palette2"
 
 msgid ""
 "The following information is available in the "
@@ -381,7 +387,7 @@ msgid "`is_splicing`: True when the Palette 2 is splicing filament."
 msgstr ""
 
 msgid "pause_resume"
-msgstr ""
+msgstr "pause_resume"
 
 msgid ""
 "The following information is available in the "
@@ -394,7 +400,7 @@ msgid ""
 msgstr ""
 
 msgid "print_stats"
-msgstr ""
+msgstr "print_stats"
 
 msgid ""
 "The following information is available in the `print_stats` object (this "
@@ -410,7 +416,7 @@ msgid ""
 msgstr ""
 
 msgid "probe"
-msgstr ""
+msgstr "probe"
 
 msgid ""
 "The following information is available in the "
@@ -433,7 +439,7 @@ msgid ""
 msgstr ""
 
 msgid "quad_gantry_level"
-msgstr ""
+msgstr "quad_gantry_level"
 
 msgid ""
 "The following information is available in the `quad_gantry_level` object "
@@ -446,7 +452,7 @@ msgid ""
 msgstr ""
 
 msgid "query_endstops"
-msgstr ""
+msgstr "query_endstops"
 
 msgid ""
 "The following information is available in the `query_endstops` object (this "
@@ -461,7 +467,7 @@ msgid ""
 msgstr ""
 
 msgid "servo"
-msgstr ""
+msgstr "servo"
 
 msgid ""
 "The following information is available in [servo "
@@ -474,7 +480,7 @@ msgid ""
 msgstr ""
 
 msgid "system_stats"
-msgstr ""
+msgstr "system_stats"
 
 msgid ""
 "The following information is available in the `system_stats` object (this "
@@ -487,13 +493,13 @@ msgid ""
 msgstr ""
 
 msgid "temperature sensors"
-msgstr ""
+msgstr "Temperatur Sensoren"
 
 msgid "The following information is available in"
-msgstr ""
+msgstr "Folgende Informationen sind verfügbar in"
 
 msgid "`temperature`: The last read temperature from the sensor."
-msgstr ""
+msgstr "`temperature`: Die letzte vom Sensor gelesene Temperatur."
 
 msgid ""
 "`humidity`, `pressure`, `gas`: The last read values from the sensor (only on"
@@ -501,7 +507,7 @@ msgid ""
 msgstr ""
 
 msgid "temperature_fan"
-msgstr ""
+msgstr "temperature_fan"
 
 msgid ""
 "The following information is available in [temperature_fan "
@@ -509,10 +515,10 @@ msgid ""
 msgstr ""
 
 msgid "`target`: The target temperature for the fan."
-msgstr ""
+msgstr "`target`: Die Zieltemperatur für den Lüfter."
 
 msgid "temperature_sensor"
-msgstr ""
+msgstr "temperature_sensor"
 
 msgid ""
 "The following information is available in [temperature_sensor "
@@ -525,7 +531,7 @@ msgid ""
 msgstr ""
 
 msgid "toolhead"
-msgstr ""
+msgstr "toolhead"
 
 msgid ""
 "The following information is available in the `toolhead` object (this object"
@@ -562,7 +568,7 @@ msgid ""
 msgstr ""
 
 msgid "virtual_sdcard"
-msgstr ""
+msgstr "virtual_sdcard"
 
 msgid ""
 "The following information is available in the "
@@ -581,7 +587,7 @@ msgid "`file_position`: The current position (in bytes) of an active print."
 msgstr ""
 
 msgid "webhooks"
-msgstr ""
+msgstr "webhooks"
 
 msgid ""
 "The following information is available in the `webhooks` object (this object"
@@ -599,7 +605,7 @@ msgid ""
 msgstr ""
 
 msgid "z_tilt"
-msgstr ""
+msgstr "z_tilt"
 
 msgid ""
 "The following information is available in the `z_tilt` object (this object "
@@ -612,7 +618,7 @@ msgid ""
 msgstr ""
 
 msgid "dual_carriage"
-msgstr ""
+msgstr "dual_carriage"
 
 msgid "`file_path`: A full path to the file of currently loaded file."
 msgstr ""
@@ -622,11 +628,11 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 1 (header)
 msgid "Status reference"
-msgstr ""
+msgstr "Statusreferenz"
 
 #: docs/Status_Reference.md:block 49 (header)
 msgid "motion_report"
-msgstr ""
+msgstr "motion_report"
 
 #: docs/Status_Reference.md:block 50 (paragraph)
 msgid ""
@@ -667,7 +673,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 89 (header)
 msgid "tmc drivers"
-msgstr ""
+msgstr "tmc treiber"
 
 #: docs/Status_Reference.md:block 90 (paragraph)
 msgid ""
@@ -699,11 +705,11 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 91 (unordered list)
 msgid "`run_current`: The currently set run current."
-msgstr ""
+msgstr "`run_current`: Der aktuell eingestellte Betriebsstrom."
 
 #: docs/Status_Reference.md:block 91 (unordered list)
 msgid "`hold_current`: The currently set hold current."
-msgstr ""
+msgstr "`hold_current`: Der aktuell eingestellte Haltestrom."
 
 #: docs/Status_Reference.md:block 36 (unordered list)
 msgid "`Diameter`: The last reading from the sensor in mm."
@@ -721,7 +727,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 4 (header)
 msgid "angle"
-msgstr ""
+msgstr "angle"
 
 #: docs/Status_Reference.md:block 5 (paragraph)
 msgid ""
@@ -739,7 +745,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 49 (header)
 msgid "led"
-msgstr ""
+msgstr "led"
 
 #: docs/Status_Reference.md:block 50 (paragraph)
 msgid ""
@@ -766,7 +772,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 19 (header)
 msgid "exclude_object"
-msgstr ""
+msgstr "exclude_object"
 
 #: docs/Status_Reference.md:block 20 (paragraph)
 msgid ""
@@ -784,7 +790,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 21 (unordered list)
 msgid "Here is a JSON sample:"
-msgstr ""
+msgstr "Hier ist eine JSON Beispiel:"
 
 #: docs/Status_Reference.md:block 22 (code)
 msgid ""
@@ -824,7 +830,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 57 (header)
 msgid "manual_probe"
-msgstr ""
+msgstr "manual_probe"
 
 #: docs/Status_Reference.md:block 58 (paragraph)
 msgid "The following information is available in the `manual_probe` object:"
@@ -854,7 +860,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 10 (header)
 msgid "bed_screws"
-msgstr ""
+msgstr "bed_screws"
 
 #: docs/Status_Reference.md:block 11 (paragraph)
 msgid ""
@@ -884,7 +890,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 27 (header)
 msgid "extruder_stepper"
-msgstr ""
+msgstr "extruder_stepper"
 
 #: docs/Status_Reference.md:block 28 (paragraph)
 msgid ""
@@ -897,6 +903,8 @@ msgid ""
 "`pressure_advance`: The current [pressure advance](Pressure_Advance.md) "
 "value."
 msgstr ""
+"`pressure_advance`: Der aktuelle [pressure advance](Pressure_Advance.md) "
+"Wert."
 
 #: docs/Status_Reference.md:block 29 (unordered list)
 msgid "`smooth_time`: The current pressure advance smooth time."
@@ -922,7 +930,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 124 (header)
 msgid "z_thermal_adjust"
-msgstr ""
+msgstr "z_thermal_adjust"
 
 #: docs/Status_Reference.md:block 125 (paragraph)
 msgid ""
@@ -942,11 +950,11 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid "`measured_min_temp`: Minimum measured temperature. [degC]"
-msgstr ""
+msgstr "`measured_min_temp`: Minimal gemessene Temperatur. [degC]"
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid "`measured_max_temp`: Maximum measured temperature. [degC]"
-msgstr ""
+msgstr "`measured_max_temp`: Maximal gemessene Temperatur. [degC]"
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid "`current_z_adjust`: Last computed Z adjustment [mm]."
@@ -960,7 +968,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 93 (header)
 msgid "screws_tilt_adjust"
-msgstr ""
+msgstr "screws_tilt_adjust"
 
 #: docs/Status_Reference.md:block 94 (paragraph)
 msgid ""
@@ -1013,7 +1021,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 99 (header)
 msgid "stepper_enable"
-msgstr ""
+msgstr "stepper_enable"
 
 #: docs/Status_Reference.md:block 100 (paragraph)
 msgid ""
@@ -1027,7 +1035,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 42 (header)
 msgid "gcode_button"
-msgstr ""
+msgstr "gcode_button"
 
 #: docs/Status_Reference.md:block 43 (paragraph)
 msgid ""
@@ -1093,7 +1101,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 90 (header)
 msgid "pwm_cycle_time"
-msgstr ""
+msgstr "pwm_cycle_time"
 
 #: docs/Status_Reference.md:block 91 (paragraph)
 msgid ""

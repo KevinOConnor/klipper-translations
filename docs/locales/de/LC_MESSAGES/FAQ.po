@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:36+0200\n"
-"PO-Revision-Date: 2024-03-28 01:37+0000\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
 "Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/klipper/faq/de/>\n"
 "Language: de\n"
@@ -22,9 +22,8 @@ msgstr "Wie kann ich für das Projekt spenden?"
 msgid "How do I calculate the rotation_distance config parameter?"
 msgstr "Wie berechne ich den Konfigurationsparameter rotation_distance?"
 
-#, fuzzy
 msgid "See the [rotation distance document](Rotation_Distance.md)."
-msgstr "Siehe das Dokument [Rotationsabstand](Rotation_Distance.md)."
+msgstr "Siehe das Dokument [rotation distance document](Rotation_Distance.md)."
 
 msgid "Where's my serial port?"
 msgstr "Wo ist meine serielle Schnittstelle?"
@@ -49,7 +48,6 @@ msgstr ""
 "der Konfigurationsdatei und beim Flashen des Mikrocontroller-Codes zu "
 "verwenden. Ein Flash-Befehl könnte zum Beispiel so aussehen:"
 
-#, fuzzy
 msgid "and the updated config might look like:"
 msgstr "und die aktualisierte Konfiguration könnte wie folgt aussehen:"
 
@@ -220,7 +218,7 @@ msgid ""
 msgstr ""
 
 msgid "Do I have to use OctoPrint?"
-msgstr ""
+msgstr "Muss ich OctoPrint benutzen?"
 
 msgid ""
 "The Klipper software is not dependent on OctoPrint. It is possible to use "
@@ -350,7 +348,7 @@ msgid ""
 msgstr ""
 
 msgid "My Raspberry Pi keeps rebooting during prints"
-msgstr ""
+msgstr "Mein Raspberry Pi startet während des Druckens immer wieder neu"
 
 msgid ""
 "This is most likely do to voltage fluctuations. Follow the same "
@@ -562,7 +560,7 @@ msgid ""
 msgstr ""
 
 msgid "How do I upgrade to the latest software?"
-msgstr ""
+msgstr "Wie kann ich ein Upgrade auf die neueste Softwareversion durchführen?"
 
 msgid ""
 "The first step to upgrading the software is to review the latest [config "
@@ -604,7 +602,7 @@ msgid ""
 msgstr ""
 
 msgid "How do I uninstall Klipper?"
-msgstr ""
+msgstr "Wie deinstalliere ich Klipper?"
 
 msgid ""
 "On the firmware end, nothing special needs to happen. Just follow the "
@@ -640,22 +638,31 @@ msgid ""
 "[mcu]\n"
 "baud: 250000\n"
 msgstr ""
+"[mcu]\n"
+"baud: 250000\n"
 
 msgid ""
 "~/klippy-env/bin/python ~/klipper/klippy/klippy.py ~/printer.cfg -l "
 "/tmp/klippy.log\n"
 msgstr ""
+"~/klippy-env/bin/python ~/klipper/klippy/klippy.py ~/printer.cfg -l /tmp/"
+"klippy.log\n"
 
 msgid ""
 "~/klippy-env/bin/python ~/klipper/klippy/klippy.py ~/printer2.cfg -l "
 "/tmp/klippy2.log -I /tmp/printer2\n"
 msgstr ""
+"~/klippy-env/bin/python ~/klipper/klippy/klippy.py ~/printer2.cfg -l /tmp/"
+"klippy2.log -I /tmp/printer2\n"
 
 msgid ""
 "cd ~/klipper\n"
 "git pull\n"
 "~/klipper/scripts/install-octopi.sh\n"
 msgstr ""
+"cd ~/klipper\n"
+"git pull\n"
+"~/klipper/scripts/install-octopi.sh\n"
 
 msgid ""
 "make menuconfig\n"
@@ -672,15 +679,20 @@ msgid ""
 "git pull\n"
 "sudo service klipper restart\n"
 msgstr ""
+"cd ~/klipper\n"
+"git pull\n"
+"sudo service klipper restart\n"
 
 msgid ""
 "sudo ~/klipper/scripts/klipper-uninstall.sh\n"
 "rm -rf ~/klippy-env ~/klipper\n"
 msgstr ""
+"sudo ~/klipper/scripts/klipper-uninstall.sh\n"
+"rm -rf ~/klippy-env ~/klipper\n"
 
 #: docs/FAQ.md:block 1 (header)
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Häufig gestellte Fragen"
 
 #: docs/FAQ.md:block 31 (paragraph)
 msgid ""

@@ -1,20 +1,22 @@
 # Sebastian Fiedler <See1807@hotmail.de>, 2022.
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:34+0200\n"
-"PO-Revision-Date: 2022-08-18 04:18+0000\n"
-"Last-Translator: Yifei Ding <dingyifeiair@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/debugging/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/debugging/"
+"de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid "This document describes some of the Klipper debugging tools."
 msgstr "Dieses Dokument beschreibt einige der Klipper-Debugging-Werkzeuge."
@@ -29,6 +31,12 @@ msgid ""
 "hardware. It can also be useful to compare the difference in micro-"
 "controller commands after a code change."
 msgstr ""
+"Der Klippy-Hostcode kann im Batch-Modus ausgeführt werden, um die auf eine "
+"gcode-Datei bezogenen Low-Level-Microcontroller-Befehle zu generieren. Das "
+"Untersuchen dieser Low-Level-Befehle ist nützlich, wenn man versucht, das "
+"Verhalten der Low-Level-Hardware zu verstehen. Es kann auch nützlich sein, "
+"um den Unterschied in den Microcontroller-Befehlen nach einer Code-Änderung "
+"zu vergleichen."
 
 msgid ""
 "To run Klippy in this batch mode, there is a one time step necessary to "
@@ -60,7 +68,7 @@ msgid ""
 msgstr ""
 
 msgid "Testing with simulavr"
-msgstr ""
+msgstr "Testen mit simulavr"
 
 msgid ""
 "The [simulavr](http://www.nongnu.org/simulavr/) tool enables one to simulate"
@@ -81,7 +89,7 @@ msgid ""
 msgstr ""
 
 msgid "Using simulavr with gtkwave"
-msgstr ""
+msgstr "Verwendung von simulavr mit gtkwave"
 
 msgid ""
 "One useful feature of simulavr is its ability to create signal wave "
@@ -96,7 +104,7 @@ msgid ""
 msgstr ""
 
 msgid "Manually sending commands to the micro-controller"
-msgstr ""
+msgstr "Befehle manuell an den Mikrocontroller senden"
 
 msgid ""
 "Normally, the host klippy.py process would be used to translate gcode "
@@ -116,7 +124,7 @@ msgid ""
 msgstr ""
 
 msgid "Generating load graphs"
-msgstr ""
+msgstr "Erzeugung von Lastdiagrammen"
 
 msgid ""
 "The Klippy log file (/tmp/klippy.log) stores statistics on bandwidth, micro-"
@@ -130,10 +138,12 @@ msgid ""
 msgstr ""
 
 msgid "Then graphs can be produced with:"
-msgstr ""
+msgstr "Danach können Diagramme erstellt werden mit:"
 
 msgid "One can then view the resulting **loadgraph.png** file."
 msgstr ""
+"Die resultierende Datei **loadgraph.png** kann anschließend betrachtet "
+"werden."
 
 msgid ""
 "Different graphs can be produced. For more information run: "
@@ -141,7 +151,7 @@ msgid ""
 msgstr ""
 
 msgid "Extracting information from the klippy.log file"
-msgstr ""
+msgstr "Informationen aus der klippy.log Datei auslesen"
 
 msgid ""
 "The Klippy log file (/tmp/klippy.log) also contains debugging information. "
@@ -158,7 +168,7 @@ msgid ""
 msgstr ""
 
 msgid "Running the regression tests"
-msgstr ""
+msgstr "Durchführung der Regressionstests"
 
 msgid ""
 "The main Klipper GitHub repository uses \"github actions\" to run a series "
@@ -172,6 +182,8 @@ msgid ""
 "make menuconfig\n"
 "make\n"
 msgstr ""
+"make menuconfig\n"
+"make\n"
 
 msgid ""
 "~/klippy-env/bin/python ./klippy/klippy.py ~/printer.cfg -i test.gcode -o "
@@ -182,25 +194,31 @@ msgid ""
 "~/klippy-env/bin/python ./klippy/parsedump.py out/klipper.dict test.serial >"
 " test.txt\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/parsedump.py out/klipper.dict test.serial > "
+"test.txt\n"
 
 msgid ""
 "~/klippy-env/bin/python ./klippy/klippy.py config/generic-simulavr.cfg -i "
 "test.gcode -v\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/klippy.py config/generic-simulavr.cfg -i "
+"test.gcode -v\n"
 
 msgid "gtkwave avrsim.vcd\n"
-msgstr ""
+msgstr "gtkwave avrsim.vcd\n"
 
 msgid "~/klippy-env/bin/python ./klippy/console.py /tmp/pseudoserial\n"
-msgstr ""
+msgstr "~/klippy-env/bin/python ./klippy/console.py /tmp/pseudoserial\n"
 
 msgid ""
 "sudo apt-get update\n"
 "sudo apt-get install python-matplotlib\n"
 msgstr ""
+"sudo apt-get update\n"
+"sudo apt-get install python-matplotlib\n"
 
 msgid "~/klipper/scripts/graphstats.py /tmp/klippy.log -o loadgraph.png\n"
-msgstr ""
+msgstr "~/klipper/scripts/graphstats.py /tmp/klippy.log -o loadgraph.png\n"
 
 msgid ""
 "mkdir work_directory\n"
@@ -210,20 +228,23 @@ msgid ""
 msgstr ""
 
 msgid "./scripts/check_whitespace.sh\n"
-msgstr ""
+msgstr "./scripts/check_whitespace.sh\n"
 
 msgid ""
 "tar xfz klipper-dict-20??????.tar.gz\n"
 "~/klippy-env/bin/python ~/klipper/scripts/test_klippy.py -d dict/ ~/klipper/test/klippy/*.test\n"
 msgstr ""
+"tar xfz klipper-dict-20??????.tar.gz\n"
+"~/klippy-env/bin/python ~/klipper/scripts/test_klippy.py -d dict/ ~/klipper/"
+"test/klippy/*.test\n"
 
 #: docs/Debugging.md:block 1 (header)
 msgid "Debugging"
-msgstr ""
+msgstr "Fehlersuche"
 
 #: docs/Debugging.md:block 24 (header)
 msgid "Motion analysis and data logging"
-msgstr ""
+msgstr "Bewegungsanalyse und Datenerfassung"
 
 #: docs/Debugging.md:block 25 (paragraph)
 msgid ""
@@ -238,7 +259,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 27 (code)
 msgid "~/klipper/scripts/motan/data_logger.py /tmp/klippy_uds mylog\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/data_logger.py /tmp/klippy_uds mylog\n"
 
 #: docs/Debugging.md:block 28 (paragraph)
 msgid ""
@@ -272,7 +293,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 33 (code)
 msgid "~/klipper/scripts/motan/motan_graph.py mylog -o mygraph.png\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/motan_graph.py mylog -o mygraph.png\n"
 
 #: docs/Debugging.md:block 34 (paragraph)
 msgid ""
@@ -285,6 +306,8 @@ msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)\"], [\"trapq(toolhead,accel)\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '[[\"trapq(toolhead,velocity)"
+"\"], [\"trapq(toolhead,accel)\"]]'\n"
 
 #: docs/Debugging.md:block 36 (paragraph)
 msgid ""
@@ -294,7 +317,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 37 (code)
 msgid "~/klipper/scripts/motan/motan_graph.py -l\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/motan_graph.py -l\n"
 
 #: docs/Debugging.md:block 38 (paragraph)
 msgid ""
@@ -306,6 +329,8 @@ msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '[[\"trapq"
+"(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 
 #: docs/Debugging.md:block 40 (paragraph)
 msgid ""
@@ -325,6 +350,8 @@ msgid ""
 "cd /path/to/klipper\n"
 "make menuconfig\n"
 msgstr ""
+"cd /path/to/klipper\n"
+"make menuconfig\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""
@@ -338,6 +365,8 @@ msgid ""
 "PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf"
 " -t PORTA.PORT,PORTC.PORT\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf "
+"-t PORTA.PORT,PORTC.PORT\n"
 
 #: docs/Debugging.md:block 7 (paragraph)
 msgid ""
@@ -378,7 +407,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 60 (code)
 msgid "ls ./build/pysimulavr/_pysimulavr.*.so\n"
-msgstr ""
+msgstr "ls ./build/pysimulavr/_pysimulavr.*.so\n"
 
 #: docs/Debugging.md:block 62 (paragraph)
 msgid ""
@@ -400,6 +429,8 @@ msgid ""
 "PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py "
 "out/klipper.elf\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py out/"
+"klipper.elf\n"
 
 #: docs/Debugging.md:block 68 (paragraph)
 msgid ""
@@ -409,7 +440,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 69 (code)
 msgid "./scripts/avrsim.py out/klipper.elf\n"
-msgstr ""
+msgstr "./scripts/avrsim.py out/klipper.elf\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""

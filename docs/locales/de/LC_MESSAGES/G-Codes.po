@@ -4,20 +4,22 @@
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # LopeKinz <youtbeacczlp@gmail.com>, 2023.
 # aaron oelschlegel <aaron.oelschlegel@web.de>, 2023.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:32+0200\n"
-"PO-Revision-Date: 2023-10-31 22:10+0000\n"
-"Last-Translator: aaron oelschlegel <aaron.oelschlegel@web.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/g-codes/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/g-codes/"
+"de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -36,31 +38,35 @@ msgid "Move (G0 or G1): `G1 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>]`"
 msgstr ""
 
 msgid "Dwell: `G4 P<milliseconds>`"
-msgstr ""
+msgstr "Dwell: `G4 P<milliseconds>`"
 
 msgid "Move to origin: `G28 [X] [Y] [Z]`"
-msgstr ""
+msgstr "Zum Nullpunkt fahren: `G28 [X] [Y] [Z]`"
 
 msgid "Turn off motors: `M18` or `M84`"
-msgstr ""
+msgstr "Motoren abschalten: `M18` oder `M84`"
 
 msgid "Wait for current moves to finish: `M400`"
-msgstr ""
+msgstr "Abwarten, bis die aktuellen Bewegungen beendet sind: `M400`"
 
 msgid "Use absolute/relative distances for extrusion: `M82`, `M83`"
-msgstr ""
+msgstr "Absolute/relative Abstände für die Extrusion verwenden: `M82`, `M83`"
 
 msgid "Use absolute/relative coordinates: `G90`, `G91`"
-msgstr ""
+msgstr "Absolute/relative Koordinaten verwenden: `G90`, `G91`"
 
 msgid "Set position: `G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]`"
-msgstr ""
+msgstr "Position festlegen: `G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]`"
 
 msgid "Set speed factor override percentage: `M220 S<percent>`"
 msgstr ""
+"Prozentuale Überschreibung des Geschwindigkeitsfaktors einstellen: `M220 "
+"S<percent>`"
 
 msgid "Set extrude factor override percentage: `M221 S<percent>`"
 msgstr ""
+"Prozentuale Überschreibung des Extrusionsfaktors einstellen: `M221 "
+"S<percent>`"
 
 msgid "Set acceleration: `M204 S<value>` OR `M204 P<value> T<value>`"
 msgstr ""
@@ -72,10 +78,10 @@ msgid ""
 msgstr ""
 
 msgid "Get extruder temperature: `M105`"
-msgstr ""
+msgstr "Extrudertemperatur anzeigen: `M105`"
 
 msgid "Set extruder temperature: `M104 [T<index>] [S<temperature>]`"
-msgstr ""
+msgstr "Extrudertemperatur einstellen: `M104 [T<index>] [S<temperature>]`"
 
 msgid "Set extruder temperature and wait: `M109 [T<index>] S<temperature>`"
 msgstr ""
@@ -84,28 +90,28 @@ msgid "Note: M109 always waits for temperature to settle at requested value"
 msgstr ""
 
 msgid "Set bed temperature: `M140 [S<temperature>]`"
-msgstr ""
+msgstr "Druckbetttemperatur einstellen: `M140 [S<temperature>]`"
 
 msgid "Set bed temperature and wait: `M190 S<temperature>`"
-msgstr ""
+msgstr "Betttemperatur einstellen und abwarten: `M190 S<temperature>`"
 
 msgid "Note: M190 always waits for temperature to settle at requested value"
 msgstr ""
 
 msgid "Set fan speed: `M106 S<value>`"
-msgstr ""
+msgstr "Lüftergeschwindigkeit einstellen: `M106 S<value>`"
 
 msgid "Turn fan off: `M107`"
-msgstr ""
+msgstr "Lüfter ausschalten: `M107`"
 
 msgid "Emergency stop: `M112`"
-msgstr ""
+msgstr "Notausschalter: `M112`"
 
 msgid "Get current position: `M114`"
-msgstr ""
+msgstr "Aktuelle Position anzeigen: `M114`"
 
 msgid "Get firmware version: `M115`"
-msgstr ""
+msgstr "Firmware Version anzeigen: `M115`"
 
 msgid ""
 "For further details on the above commands see the [RepRap G-Code "
@@ -120,25 +126,25 @@ msgid ""
 msgstr ""
 
 msgid "List SD card: `M20`"
-msgstr ""
+msgstr "SD-Karte auflisten: `M20`"
 
 msgid "Initialize SD card: `M21`"
-msgstr ""
+msgstr "SD-Karte initialisieren: `M21`"
 
 msgid "Select SD file: `M23 <filename>`"
-msgstr ""
+msgstr "SD-Karten Datei auswählen: `M23 <filename>`"
 
 msgid "Start/resume SD print: `M24`"
-msgstr ""
+msgstr "SD-Karten Druck starten/fortsetzen: `M24`"
 
 msgid "Pause SD print: `M25`"
-msgstr ""
+msgstr "SD-Karten Druck anhalten: `M25`"
 
 msgid "Set SD position: `M26 S<offset>`"
-msgstr ""
+msgstr "SD-Karten Position einstellen: `M26 S<offset>`"
 
 msgid "Report SD print status: `M27`"
-msgstr ""
+msgstr "SD-Karten Druckstatus anzeigen: `M27`"
 
 msgid ""
 "The following standard G-Code commands are available if a [gcode_arcs config"
@@ -146,7 +152,7 @@ msgid ""
 msgstr ""
 
 msgid "Display Message: `M117 <message>`"
-msgstr ""
+msgstr "Nachricht anzeigen: `M117 <Nachricht >`"
 
 msgid "Set build percentage: `M73 P<percent>`"
 msgstr ""
@@ -224,7 +230,7 @@ msgid ""
 msgstr ""
 
 msgid "`TURN_OFF_HEATERS`: Turn off all heaters."
-msgstr ""
+msgstr "`TURN_OFF_HEATERS`: Schaltet alle Heizelemente aus."
 
 msgid ""
 "`TEMPERATURE_WAIT SENSOR=<config_name> [MINIMUM=<target>] "
@@ -317,7 +323,7 @@ msgid ""
 msgstr ""
 
 msgid "`STATUS`: Report the Klipper host software status."
-msgstr ""
+msgstr "`STATUS`: Bericht über den Status der Klipper-Hostsoftware."
 
 msgid "`HELP`: Report the list of available extended G-Code commands."
 msgstr ""
@@ -504,7 +510,7 @@ msgid ""
 msgstr ""
 
 msgid "`CANCEL_PRINT`: Cancels the current print."
-msgstr ""
+msgstr "`CANCEL_PRINT`: Bricht den aktuellen Druckvorgang ab."
 
 msgid ""
 "`SET_FILAMENT_SENSOR SENSOR=<sensor_name> ENABLE=[0|1]`: Sets the filament "
@@ -624,7 +630,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 1 (header)
 msgid "G-Codes"
-msgstr ""
+msgstr "G-Codes"
 
 #: docs/G-Codes.md:block 29 (unordered list)
 msgid ""
@@ -704,11 +710,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 9 (header)
 msgid "Additional Commands"
-msgstr ""
+msgstr "Weitere Befehle"
 
 #: docs/G-Codes.md:block 12 (header)
 msgid "[adxl345]"
-msgstr ""
+msgstr "[adxl345]"
 
 #: docs/G-Codes.md:block 13 (paragraph)
 msgid ""
@@ -722,11 +728,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 16 (header)
 msgid "ACCELEROMETER_QUERY"
-msgstr ""
+msgstr "ACCELEROMETER_QUERY"
 
 #: docs/G-Codes.md:block 18 (header)
 msgid "ACCELEROMETER_DEBUG_READ"
-msgstr ""
+msgstr "ACCELEROMETER_DEBUG_READ"
 
 #: docs/G-Codes.md:block 19 (paragraph)
 msgid ""
@@ -740,7 +746,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 20 (header)
 msgid "ACCELEROMETER_DEBUG_WRITE"
-msgstr ""
+msgstr "ACCELEROMETER_DEBUG_WRITE"
 
 #: docs/G-Codes.md:block 21 (paragraph)
 msgid ""
@@ -757,7 +763,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 22 (header)
 msgid "[bed_mesh]"
-msgstr ""
+msgstr "[bed_mesh]"
 
 #: docs/G-Codes.md:block 23 (paragraph)
 msgid ""
@@ -768,23 +774,23 @@ msgstr ""
 
 #: docs/G-Codes.md:block 24 (header)
 msgid "BED_MESH_CALIBRATE"
-msgstr ""
+msgstr "BED_MESH_CALIBRATE"
 
 #: docs/G-Codes.md:block 26 (header)
 msgid "BED_MESH_OUTPUT"
-msgstr ""
+msgstr "BED_MESH_OUTPUT"
 
 #: docs/G-Codes.md:block 28 (header)
 msgid "BED_MESH_MAP"
-msgstr ""
+msgstr "BED_MESH_MAP"
 
 #: docs/G-Codes.md:block 30 (header)
 msgid "BED_MESH_CLEAR"
-msgstr ""
+msgstr "BED_MESH_CLEAR"
 
 #: docs/G-Codes.md:block 32 (header)
 msgid "BED_MESH_PROFILE"
-msgstr ""
+msgstr "BED_MESH_PROFILE"
 
 #: docs/G-Codes.md:block 33 (paragraph)
 msgid ""
@@ -799,11 +805,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 34 (header)
 msgid "BED_MESH_OFFSET"
-msgstr ""
+msgstr "BED_MESH_OFFSET"
 
 #: docs/G-Codes.md:block 36 (header)
 msgid "[bed_screws]"
-msgstr ""
+msgstr "[bed_screws]"
 
 #: docs/G-Codes.md:block 37 (paragraph)
 msgid ""
@@ -814,11 +820,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 38 (header)
 msgid "BED_SCREWS_ADJUST"
-msgstr ""
+msgstr "BED_SCREWS_ADJUST"
 
 #: docs/G-Codes.md:block 40 (header)
 msgid "[bed_tilt]"
-msgstr ""
+msgstr "[bed_tilt]"
 
 #: docs/G-Codes.md:block 41 (paragraph)
 msgid ""
@@ -828,11 +834,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 42 (header)
 msgid "BED_TILT_CALIBRATE"
-msgstr ""
+msgstr "BED_TILT_CALIBRATE"
 
 #: docs/G-Codes.md:block 44 (header)
 msgid "[bltouch]"
-msgstr ""
+msgstr "[bltouch]"
 
 #: docs/G-Codes.md:block 45 (paragraph)
 msgid ""
@@ -843,7 +849,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 46 (header)
 msgid "BLTOUCH_DEBUG"
-msgstr ""
+msgstr "BLTOUCH_DEBUG"
 
 #: docs/G-Codes.md:block 47 (paragraph)
 msgid ""
@@ -856,23 +862,23 @@ msgstr ""
 
 #: docs/G-Codes.md:block 48 (header)
 msgid "BLTOUCH_STORE"
-msgstr ""
+msgstr "BLTOUCH_STORE"
 
 #: docs/G-Codes.md:block 50 (header)
 msgid "[configfile]"
-msgstr ""
+msgstr "[configfile]"
 
 #: docs/G-Codes.md:block 51 (paragraph)
 msgid "The configfile module is automatically loaded."
-msgstr ""
+msgstr "Das configfile Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 52 (header)
 msgid "SAVE_CONFIG"
-msgstr ""
+msgstr "SAVE_CONFIG"
 
 #: docs/G-Codes.md:block 54 (header)
 msgid "[delayed_gcode]"
-msgstr ""
+msgstr "[delayed_gcode]"
 
 #: docs/G-Codes.md:block 55 (paragraph)
 msgid ""
@@ -883,11 +889,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 56 (header)
 msgid "UPDATE_DELAYED_GCODE"
-msgstr ""
+msgstr "UPDATE_DELAYED_GCODE"
 
 #: docs/G-Codes.md:block 58 (header)
 msgid "[delta_calibrate]"
-msgstr ""
+msgstr "[delta_calibrate]"
 
 #: docs/G-Codes.md:block 59 (paragraph)
 msgid ""
@@ -898,15 +904,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 60 (header)
 msgid "DELTA_CALIBRATE"
-msgstr ""
+msgstr "DELTA_CALIBRATE"
 
 #: docs/G-Codes.md:block 62 (header)
 msgid "DELTA_ANALYZE"
-msgstr ""
+msgstr "DELTA_ANALYZE"
 
 #: docs/G-Codes.md:block 64 (header)
 msgid "[display]"
-msgstr ""
+msgstr "[display]"
 
 #: docs/G-Codes.md:block 65 (paragraph)
 msgid ""
@@ -916,11 +922,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 66 (header)
 msgid "SET_DISPLAY_GROUP"
-msgstr ""
+msgstr "SET_DISPLAY_GROUP"
 
 #: docs/G-Codes.md:block 68 (header)
 msgid "[display_status]"
-msgstr ""
+msgstr "[display_status]"
 
 #: docs/G-Codes.md:block 69 (paragraph)
 msgid ""
@@ -931,7 +937,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 71 (header)
 msgid "[dual_carriage]"
-msgstr ""
+msgstr "[dual_carriage]"
 
 #: docs/G-Codes.md:block 72 (paragraph)
 msgid ""
@@ -941,11 +947,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 73 (header)
 msgid "SET_DUAL_CARRIAGE"
-msgstr ""
+msgstr "SET_DUAL_CARRIAGE"
 
 #: docs/G-Codes.md:block 75 (header)
 msgid "[endstop_phase]"
-msgstr ""
+msgstr "[endstop_phase]"
 
 #: docs/G-Codes.md:block 76 (paragraph)
 msgid ""
@@ -956,11 +962,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 77 (header)
 msgid "ENDSTOP_PHASE_CALIBRATE"
-msgstr ""
+msgstr "ENDSTOP_PHASE_CALIBRATE"
 
 #: docs/G-Codes.md:block 79 (header)
 msgid "[extruder]"
-msgstr ""
+msgstr "[extruder]"
 
 #: docs/G-Codes.md:block 80 (paragraph)
 msgid ""
@@ -970,23 +976,23 @@ msgstr ""
 
 #: docs/G-Codes.md:block 81 (header)
 msgid "ACTIVATE_EXTRUDER"
-msgstr ""
+msgstr "ACTIVATE_EXTRUDER"
 
 #: docs/G-Codes.md:block 83 (header)
 msgid "SET_PRESSURE_ADVANCE"
-msgstr ""
+msgstr "SET_PRESSURE_ADVANCE"
 
 #: docs/G-Codes.md:block 85 (header)
 msgid "SET_EXTRUDER_ROTATION_DISTANCE"
-msgstr ""
+msgstr "SET_EXTRUDER_ROTATION_DISTANCE"
 
 #: docs/G-Codes.md:block 87 (header)
 msgid "SYNC_EXTRUDER_MOTION"
-msgstr ""
+msgstr "SYNC_EXTRUDER_MOTION"
 
 #: docs/G-Codes.md:block 93 (header)
 msgid "[fan_generic]"
-msgstr ""
+msgstr "[fan_generic]"
 
 #: docs/G-Codes.md:block 94 (paragraph)
 msgid ""
@@ -996,7 +1002,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 95 (header)
 msgid "SET_FAN_SPEED"
-msgstr ""
+msgstr "SET_FAN_SPEED"
 
 #: docs/G-Codes.md:block 96 (paragraph)
 msgid ""
@@ -1006,7 +1012,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 97 (header)
 msgid "[firmware_retraction]"
-msgstr ""
+msgstr "[firmware_retraction]"
 
 #: docs/G-Codes.md:block 98 (paragraph)
 msgid ""
@@ -1021,19 +1027,19 @@ msgstr ""
 
 #: docs/G-Codes.md:block 100 (paragraph)
 msgid "The following additional commands are also available."
-msgstr ""
+msgstr "Die folgenden weiteren Befehle sind ebenfalls verfügbar."
 
 #: docs/G-Codes.md:block 101 (header)
 msgid "SET_RETRACTION"
-msgstr ""
+msgstr "SET_RETRACTION"
 
 #: docs/G-Codes.md:block 103 (header)
 msgid "GET_RETRACTION"
-msgstr ""
+msgstr "GET_RETRACTION"
 
 #: docs/G-Codes.md:block 105 (header)
 msgid "[filament_switch_sensor]"
-msgstr ""
+msgstr "[filament_switch_sensor]"
 
 #: docs/G-Codes.md:block 106 (paragraph)
 msgid ""
@@ -1045,7 +1051,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 107 (header)
 msgid "QUERY_FILAMENT_SENSOR"
-msgstr ""
+msgstr "QUERY_FILAMENT_SENSOR"
 
 #: docs/G-Codes.md:block 108 (paragraph)
 msgid ""
@@ -1056,55 +1062,55 @@ msgstr ""
 
 #: docs/G-Codes.md:block 109 (header)
 msgid "SET_FILAMENT_SENSOR"
-msgstr ""
+msgstr "SET_FILAMENT_SENSOR"
 
 #: docs/G-Codes.md:block 114 (header)
 msgid "[force_move]"
-msgstr ""
+msgstr "[force_move]"
 
 #: docs/G-Codes.md:block 116 (header)
 msgid "STEPPER_BUZZ"
-msgstr ""
+msgstr "STEPPER_BUZZ"
 
 #: docs/G-Codes.md:block 118 (header)
 msgid "FORCE_MOVE"
-msgstr ""
+msgstr "FORCE_MOVE"
 
 #: docs/G-Codes.md:block 120 (header)
 msgid "SET_KINEMATIC_POSITION"
-msgstr ""
+msgstr "SET_KINEMATIC_POSITION"
 
 #: docs/G-Codes.md:block 122 (header)
 msgid "[gcode]"
-msgstr ""
+msgstr "[gcode]"
 
 #: docs/G-Codes.md:block 123 (paragraph)
 msgid "The gcode module is automatically loaded."
-msgstr ""
+msgstr "Das gcode Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 124 (header)
 msgid "RESTART"
-msgstr ""
+msgstr "RESTART"
 
 #: docs/G-Codes.md:block 126 (header)
 msgid "FIRMWARE_RESTART"
-msgstr ""
+msgstr "FIRMWARE_RESTART"
 
 #: docs/G-Codes.md:block 128 (header)
 msgid "STATUS"
-msgstr ""
+msgstr "STATUS"
 
 #: docs/G-Codes.md:block 130 (header)
 msgid "HELP"
-msgstr ""
+msgstr "HELP"
 
 #: docs/G-Codes.md:block 132 (header)
 msgid "[gcode_arcs]"
-msgstr ""
+msgstr "[gcode_arcs]"
 
 #: docs/G-Codes.md:block 135 (header)
 msgid "[gcode_macro]"
-msgstr ""
+msgstr "[gcode_macro]"
 
 #: docs/G-Codes.md:block 136 (paragraph)
 msgid ""
@@ -1115,35 +1121,35 @@ msgstr ""
 
 #: docs/G-Codes.md:block 137 (header)
 msgid "SET_GCODE_VARIABLE"
-msgstr ""
+msgstr "SET_GCODE_VARIABLE"
 
 #: docs/G-Codes.md:block 139 (header)
 msgid "[gcode_move]"
-msgstr ""
+msgstr "[gcode_move]"
 
 #: docs/G-Codes.md:block 140 (paragraph)
 msgid "The gcode_move module is automatically loaded."
-msgstr ""
+msgstr "Das gcode_move Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 141 (header)
 msgid "GET_POSITION"
-msgstr ""
+msgstr "GET_POSITION"
 
 #: docs/G-Codes.md:block 143 (header)
 msgid "SET_GCODE_OFFSET"
-msgstr ""
+msgstr "SET_GCODE_OFFSET"
 
 #: docs/G-Codes.md:block 145 (header)
 msgid "SAVE_GCODE_STATE"
-msgstr ""
+msgstr "SAVE_GCODE_STATE"
 
 #: docs/G-Codes.md:block 147 (header)
 msgid "RESTORE_GCODE_STATE"
-msgstr ""
+msgstr "RESTORE_GCODE_STATE"
 
 #: docs/G-Codes.md:block 149 (header)
 msgid "[hall_filament_width_sensor]"
-msgstr ""
+msgstr "[hall_filament_width_sensor]"
 
 #: docs/G-Codes.md:block 150 (paragraph)
 msgid ""
@@ -1157,15 +1163,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 151 (header)
 msgid "QUERY_FILAMENT_WIDTH"
-msgstr ""
+msgstr "QUERY_FILAMENT_WIDTH"
 
 #: docs/G-Codes.md:block 152 (paragraph)
 msgid "`QUERY_FILAMENT_WIDTH`: Return the current measured filament width."
-msgstr ""
+msgstr "`QUERY_FILAMENT_WIDTH`: Gibt die aktuell gemessene Filamentbreite an."
 
 #: docs/G-Codes.md:block 153 (header)
 msgid "RESET_FILAMENT_WIDTH_SENSOR"
-msgstr ""
+msgstr "RESET_FILAMENT_WIDTH_SENSOR"
 
 #: docs/G-Codes.md:block 154 (paragraph)
 msgid ""
@@ -1175,7 +1181,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 155 (header)
 msgid "DISABLE_FILAMENT_WIDTH_SENSOR"
-msgstr ""
+msgstr "DISABLE_FILAMENT_WIDTH_SENSOR"
 
 #: docs/G-Codes.md:block 156 (paragraph)
 msgid ""
@@ -1185,7 +1191,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 157 (header)
 msgid "ENABLE_FILAMENT_WIDTH_SENSOR"
-msgstr ""
+msgstr "ENABLE_FILAMENT_WIDTH_SENSOR"
 
 #: docs/G-Codes.md:block 158 (paragraph)
 msgid ""
@@ -1195,7 +1201,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 159 (header)
 msgid "QUERY_RAW_FILAMENT_WIDTH"
-msgstr ""
+msgstr "QUERY_RAW_FILAMENT_WIDTH"
 
 #: docs/G-Codes.md:block 160 (paragraph)
 msgid ""
@@ -1205,23 +1211,25 @@ msgstr ""
 
 #: docs/G-Codes.md:block 161 (header)
 msgid "ENABLE_FILAMENT_WIDTH_LOG"
-msgstr ""
+msgstr "ENABLE_FILAMENT_WIDTH_LOG"
 
 #: docs/G-Codes.md:block 162 (paragraph)
 msgid "`ENABLE_FILAMENT_WIDTH_LOG`: Turn on diameter logging."
-msgstr ""
+msgstr "`ENABLE_FILAMENT_WIDTH_LOG`: Durchmesserprotokollierung einschalten."
 
 #: docs/G-Codes.md:block 163 (header)
 msgid "DISABLE_FILAMENT_WIDTH_LOG"
-msgstr ""
+msgstr "DISABLE_FILAMENT_WIDTH_LOG"
 
 #: docs/G-Codes.md:block 164 (paragraph)
 msgid "`DISABLE_FILAMENT_WIDTH_LOG`: Turn off diameter logging."
 msgstr ""
+"`DISABLE_FILAMENT_WIDTH_LOG`:  Schaltet die Protokollierung des Durchmessers "
+"aus."
 
 #: docs/G-Codes.md:block 165 (header)
 msgid "[heaters]"
-msgstr ""
+msgstr "[heaters]"
 
 #: docs/G-Codes.md:block 166 (paragraph)
 msgid ""
@@ -1231,31 +1239,31 @@ msgstr ""
 
 #: docs/G-Codes.md:block 167 (header)
 msgid "TURN_OFF_HEATERS"
-msgstr ""
+msgstr "TURN_OFF_HEATERS"
 
 #: docs/G-Codes.md:block 169 (header)
 msgid "TEMPERATURE_WAIT"
-msgstr ""
+msgstr "TEMPERATURE_WAIT"
 
 #: docs/G-Codes.md:block 171 (header)
 msgid "SET_HEATER_TEMPERATURE"
-msgstr ""
+msgstr "SET_HEATER_TEMPERATURE"
 
 #: docs/G-Codes.md:block 173 (header)
 msgid "[idle_timeout]"
-msgstr ""
+msgstr "[idle_timeout]"
 
 #: docs/G-Codes.md:block 174 (paragraph)
 msgid "The idle_timeout module is automatically loaded."
-msgstr ""
+msgstr "Das idle_timeout Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 175 (header)
 msgid "SET_IDLE_TIMEOUT"
-msgstr ""
+msgstr "SET_IDLE_TIMEOUT"
 
 #: docs/G-Codes.md:block 177 (header)
 msgid "[input_shaper]"
-msgstr ""
+msgstr "[input_shaper]"
 
 #: docs/G-Codes.md:block 178 (paragraph)
 msgid ""
@@ -1266,31 +1274,31 @@ msgstr ""
 
 #: docs/G-Codes.md:block 179 (header)
 msgid "SET_INPUT_SHAPER"
-msgstr ""
+msgstr "SET_INPUT_SHAPER"
 
 #: docs/G-Codes.md:block 181 (header)
 msgid "[manual_probe]"
-msgstr ""
+msgstr "[manual_probe]"
 
 #: docs/G-Codes.md:block 182 (paragraph)
 msgid "The manual_probe module is automatically loaded."
-msgstr ""
+msgstr "Das manual_probe Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 183 (header)
 msgid "MANUAL_PROBE"
-msgstr ""
+msgstr "MANUAL_PROBE"
 
 #: docs/G-Codes.md:block 186 (header)
 msgid "Z_ENDSTOP_CALIBRATE"
-msgstr ""
+msgstr "Z_ENDSTOP_CALIBRATE"
 
 #: docs/G-Codes.md:block 188 (header)
 msgid "Z_OFFSET_APPLY_ENDSTOP"
-msgstr ""
+msgstr "Z_OFFSET_APPLY_ENDSTOP"
 
 #: docs/G-Codes.md:block 190 (header)
 msgid "[manual_stepper]"
-msgstr ""
+msgstr "[manual_stepper]"
 
 #: docs/G-Codes.md:block 191 (paragraph)
 msgid ""
@@ -1300,15 +1308,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 192 (header)
 msgid "MANUAL_STEPPER"
-msgstr ""
+msgstr "MANUAL_STEPPER"
 
 #: docs/G-Codes.md:block 196 (header)
 msgid "SET_LED"
-msgstr ""
+msgstr "SET_LED"
 
 #: docs/G-Codes.md:block 198 (header)
 msgid "[output_pin]"
-msgstr ""
+msgstr "[output_pin]"
 
 #: docs/G-Codes.md:block 199 (paragraph)
 msgid ""
@@ -1318,11 +1326,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 200 (header)
 msgid "SET_PIN"
-msgstr ""
+msgstr "SET_PIN"
 
 #: docs/G-Codes.md:block 202 (header)
 msgid "[palette2]"
-msgstr ""
+msgstr "[palette2]"
 
 #: docs/G-Codes.md:block 203 (paragraph)
 msgid ""
@@ -1332,27 +1340,27 @@ msgstr ""
 
 #: docs/G-Codes.md:block 207 (header)
 msgid "PALETTE_CONNECT"
-msgstr ""
+msgstr "PALETTE_CONNECT"
 
 #: docs/G-Codes.md:block 209 (header)
 msgid "PALETTE_DISCONNECT"
-msgstr ""
+msgstr "PALETTE_DISCONNECT"
 
 #: docs/G-Codes.md:block 211 (header)
 msgid "PALETTE_CLEAR"
-msgstr ""
+msgstr "PALETTE_CLEAR"
 
 #: docs/G-Codes.md:block 213 (header)
 msgid "PALETTE_CUT"
-msgstr ""
+msgstr "PALETTE_CUT"
 
 #: docs/G-Codes.md:block 215 (header)
 msgid "PALETTE_SMART_LOAD"
-msgstr ""
+msgstr "PALETTE_SMART_LOAD"
 
 #: docs/G-Codes.md:block 217 (header)
 msgid "[pid_calibrate]"
-msgstr ""
+msgstr "[pid_calibrate]"
 
 #: docs/G-Codes.md:block 218 (paragraph)
 msgid ""
@@ -1362,31 +1370,31 @@ msgstr ""
 
 #: docs/G-Codes.md:block 219 (header)
 msgid "PID_CALIBRATE"
-msgstr ""
+msgstr "PID_CALIBRATE"
 
 #: docs/G-Codes.md:block 221 (header)
 msgid "[pause_resume]"
-msgstr ""
+msgstr "[pause_resume]"
 
 #: docs/G-Codes.md:block 223 (header)
 msgid "PAUSE"
-msgstr ""
+msgstr "PAUSE"
 
 #: docs/G-Codes.md:block 225 (header)
 msgid "RESUME"
-msgstr ""
+msgstr "RESUME"
 
 #: docs/G-Codes.md:block 227 (header)
 msgid "CLEAR_PAUSE"
-msgstr ""
+msgstr "CLEAR_PAUSE"
 
 #: docs/G-Codes.md:block 229 (header)
 msgid "CANCEL_PRINT"
-msgstr ""
+msgstr "CANCEL_PRINT"
 
 #: docs/G-Codes.md:block 231 (header)
 msgid "[probe]"
-msgstr ""
+msgstr "[probe]"
 
 #: docs/G-Codes.md:block 232 (paragraph)
 msgid ""
@@ -1398,35 +1406,35 @@ msgstr ""
 
 #: docs/G-Codes.md:block 233 (header)
 msgid "PROBE"
-msgstr ""
+msgstr "PROBE"
 
 #: docs/G-Codes.md:block 235 (header)
 msgid "QUERY_PROBE"
-msgstr ""
+msgstr "QUERY_PROBE"
 
 #: docs/G-Codes.md:block 237 (header)
 msgid "PROBE_ACCURACY"
-msgstr ""
+msgstr "PROBE_ACCURACY"
 
 #: docs/G-Codes.md:block 239 (header)
 msgid "PROBE_CALIBRATE"
-msgstr ""
+msgstr "PROBE_CALIBRATE"
 
 #: docs/G-Codes.md:block 241 (header)
 msgid "Z_OFFSET_APPLY_PROBE"
-msgstr ""
+msgstr "Z_OFFSET_APPLY_PROBE"
 
 #: docs/G-Codes.md:block 243 (header)
 msgid "[query_adc]"
-msgstr ""
+msgstr "[query_adc]"
 
 #: docs/G-Codes.md:block 245 (header)
 msgid "QUERY_ADC"
-msgstr ""
+msgstr "QUERY_ADC"
 
 #: docs/G-Codes.md:block 247 (header)
 msgid "[query_endstops]"
-msgstr ""
+msgstr "[query_endstops]"
 
 #: docs/G-Codes.md:block 248 (paragraph)
 msgid ""
@@ -1436,11 +1444,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 250 (header)
 msgid "QUERY_ENDSTOPS"
-msgstr ""
+msgstr "QUERY_ENDSTOPS"
 
 #: docs/G-Codes.md:block 252 (header)
 msgid "[resonance_tester]"
-msgstr ""
+msgstr "[resonance_tester]"
 
 #: docs/G-Codes.md:block 253 (paragraph)
 msgid ""
@@ -1451,19 +1459,19 @@ msgstr ""
 
 #: docs/G-Codes.md:block 254 (header)
 msgid "MEASURE_AXES_NOISE"
-msgstr ""
+msgstr "MEASURE_AXES_NOISE"
 
 #: docs/G-Codes.md:block 256 (header)
 msgid "TEST_RESONANCES"
-msgstr ""
+msgstr "TEST_RESONANCES"
 
 #: docs/G-Codes.md:block 258 (header)
 msgid "SHAPER_CALIBRATE"
-msgstr ""
+msgstr "SHAPER_CALIBRATE"
 
 #: docs/G-Codes.md:block 260 (header)
 msgid "[respond]"
-msgstr ""
+msgstr "[respond]"
 
 #: docs/G-Codes.md:block 261 (paragraph)
 msgid ""
@@ -1473,7 +1481,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 264 (header)
 msgid "RESPOND"
-msgstr ""
+msgstr "RESPOND"
 
 #: docs/G-Codes.md:block 265 (unordered list)
 msgid ""
@@ -1484,7 +1492,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 266 (header)
 msgid "[save_variables]"
-msgstr ""
+msgstr "[save_variables]"
 
 #: docs/G-Codes.md:block 267 (paragraph)
 msgid ""
@@ -1494,11 +1502,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 268 (header)
 msgid "SAVE_VARIABLE"
-msgstr ""
+msgstr "SAVE_VARIABLE"
 
 #: docs/G-Codes.md:block 270 (header)
 msgid "[screws_tilt_adjust]"
-msgstr ""
+msgstr "[screws_tilt_adjust]"
 
 #: docs/G-Codes.md:block 271 (paragraph)
 msgid ""
@@ -1510,11 +1518,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 272 (header)
 msgid "SCREWS_TILT_CALCULATE"
-msgstr ""
+msgstr "SCREWS_TILT_CALCULATE"
 
 #: docs/G-Codes.md:block 274 (header)
 msgid "[sdcard_loop]"
-msgstr ""
+msgstr "[sdcard_loop]"
 
 #: docs/G-Codes.md:block 275 (paragraph)
 msgid ""
@@ -1524,7 +1532,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 276 (header)
 msgid "SDCARD_LOOP_BEGIN"
-msgstr ""
+msgstr "SDCARD_LOOP_BEGIN"
 
 #: docs/G-Codes.md:block 277 (paragraph)
 msgid ""
@@ -1534,15 +1542,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 278 (header)
 msgid "SDCARD_LOOP_END"
-msgstr ""
+msgstr "SDCARD_LOOP_END"
 
 #: docs/G-Codes.md:block 280 (header)
 msgid "SDCARD_LOOP_DESIST"
-msgstr ""
+msgstr "SDCARD_LOOP_DESIST"
 
 #: docs/G-Codes.md:block 282 (header)
 msgid "[servo]"
-msgstr ""
+msgstr "[servo]"
 
 #: docs/G-Codes.md:block 283 (paragraph)
 msgid ""
@@ -1552,11 +1560,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 284 (header)
 msgid "SET_SERVO"
-msgstr ""
+msgstr "SET_SERVO"
 
 #: docs/G-Codes.md:block 286 (header)
 msgid "[skew_correction]"
-msgstr ""
+msgstr "[skew_correction]"
 
 #: docs/G-Codes.md:block 287 (paragraph)
 msgid ""
@@ -1567,19 +1575,19 @@ msgstr ""
 
 #: docs/G-Codes.md:block 288 (header)
 msgid "SET_SKEW"
-msgstr ""
+msgstr "SET_SKEW"
 
 #: docs/G-Codes.md:block 290 (header)
 msgid "GET_CURRENT_SKEW"
-msgstr ""
+msgstr "GET_CURRENT_SKEW"
 
 #: docs/G-Codes.md:block 292 (header)
 msgid "CALC_MEASURED_SKEW"
-msgstr ""
+msgstr "CALC_MEASURED_SKEW"
 
 #: docs/G-Codes.md:block 294 (header)
 msgid "SKEW_PROFILE"
-msgstr ""
+msgstr "SKEW_PROFILE"
 
 #: docs/G-Codes.md:block 295 (paragraph)
 msgid ""
@@ -1594,19 +1602,19 @@ msgstr ""
 
 #: docs/G-Codes.md:block 296 (header)
 msgid "[stepper_enable]"
-msgstr ""
+msgstr "[stepper_enable]"
 
 #: docs/G-Codes.md:block 297 (paragraph)
 msgid "The stepper_enable module is automatically loaded."
-msgstr ""
+msgstr "Das stepper_enable Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 298 (header)
 msgid "SET_STEPPER_ENABLE"
-msgstr ""
+msgstr "SET_STEPPER_ENABLE"
 
 #: docs/G-Codes.md:block 300 (header)
 msgid "[temperature_fan]"
-msgstr ""
+msgstr "[temperature_fan]"
 
 #: docs/G-Codes.md:block 301 (paragraph)
 msgid ""
@@ -1616,7 +1624,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 302 (header)
 msgid "SET_TEMPERATURE_FAN_TARGET"
-msgstr ""
+msgstr "SET_TEMPERATURE_FAN_TARGET"
 
 #: docs/G-Codes.md:block 303 (paragraph)
 msgid ""
@@ -1629,7 +1637,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 304 (header)
 msgid "[tmcXXXX]"
-msgstr ""
+msgstr "[tmcXXXX]"
 
 #: docs/G-Codes.md:block 305 (paragraph)
 msgid ""
@@ -1639,11 +1647,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 306 (header)
 msgid "DUMP_TMC"
-msgstr ""
+msgstr "DUMP_TMC"
 
 #: docs/G-Codes.md:block 308 (header)
 msgid "INIT_TMC"
-msgstr ""
+msgstr "INIT_TMC"
 
 #: docs/G-Codes.md:block 309 (paragraph)
 msgid ""
@@ -1654,35 +1662,35 @@ msgstr ""
 
 #: docs/G-Codes.md:block 310 (header)
 msgid "SET_TMC_CURRENT"
-msgstr ""
+msgstr "SET_TMC_CURRENT"
 
 #: docs/G-Codes.md:block 312 (header)
 msgid "SET_TMC_FIELD"
-msgstr ""
+msgstr "SET_TMC_FIELD"
 
 #: docs/G-Codes.md:block 314 (header)
 msgid "[toolhead]"
-msgstr ""
+msgstr "[toolhead]"
 
 #: docs/G-Codes.md:block 315 (paragraph)
 msgid "The toolhead module is automatically loaded."
-msgstr ""
+msgstr "Das toolhead Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 316 (header)
 msgid "SET_VELOCITY_LIMIT"
-msgstr ""
+msgstr "SET_VELOCITY_LIMIT"
 
 #: docs/G-Codes.md:block 318 (header)
 msgid "[tuning_tower]"
-msgstr ""
+msgstr "[tuning_tower]"
 
 #: docs/G-Codes.md:block 319 (paragraph)
 msgid "The tuning_tower module is automatically loaded."
-msgstr ""
+msgstr "Das tuning_tower Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 320 (header)
 msgid "TUNING_TOWER"
-msgstr ""
+msgstr "TUNING_TOWER"
 
 #: docs/G-Codes.md:block 322 (unordered list)
 msgid ""
@@ -1710,7 +1718,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 323 (header)
 msgid "[virtual_sdcard]"
-msgstr ""
+msgstr "[virtual_sdcard]"
 
 #: docs/G-Codes.md:block 324 (paragraph)
 msgid ""
@@ -1727,7 +1735,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 327 (header)
 msgid "SDCARD_PRINT_FILE"
-msgstr ""
+msgstr "SDCARD_PRINT_FILE"
 
 #: docs/G-Codes.md:block 328 (paragraph)
 msgid ""
@@ -1736,15 +1744,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 329 (header)
 msgid "SDCARD_RESET_FILE"
-msgstr ""
+msgstr "SDCARD_RESET_FILE"
 
 #: docs/G-Codes.md:block 330 (paragraph)
 msgid "`SDCARD_RESET_FILE`: Unload file and clear SD state."
-msgstr ""
+msgstr "`SDCARD_RESET_FILE`: Datei zurücksetzen und SD Status löschen."
 
 #: docs/G-Codes.md:block 331 (header)
 msgid "[z_tilt]"
-msgstr ""
+msgstr "[z_tilt]"
 
 #: docs/G-Codes.md:block 332 (paragraph)
 msgid ""
@@ -1754,7 +1762,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 333 (header)
 msgid "Z_TILT_ADJUST"
-msgstr ""
+msgstr "Z_TILT_ADJUST"
 
 #: docs/G-Codes.md:block 7 (paragraph)
 msgid ""
@@ -1783,7 +1791,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 22 (header)
 msgid "[angle]"
-msgstr ""
+msgstr "[angle]"
 
 #: docs/G-Codes.md:block 23 (paragraph)
 msgid ""
@@ -1793,7 +1801,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 24 (header)
 msgid "ANGLE_CALIBRATE"
-msgstr ""
+msgstr "ANGLE_CALIBRATE"
 
 #: docs/G-Codes.md:block 25 (paragraph)
 msgid ""
@@ -1814,7 +1822,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 26 (header)
 msgid "ANGLE_DEBUG_READ"
-msgstr ""
+msgstr "ANGLE_DEBUG_READ"
 
 #: docs/G-Codes.md:block 27 (paragraph)
 msgid ""
@@ -1825,7 +1833,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 28 (header)
 msgid "ANGLE_DEBUG_WRITE"
-msgstr ""
+msgstr "ANGLE_DEBUG_WRITE"
 
 #: docs/G-Codes.md:block 29 (paragraph)
 msgid ""
@@ -1838,7 +1846,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 199 (header)
 msgid "[led]"
-msgstr ""
+msgstr "[led]"
 
 #: docs/G-Codes.md:block 200 (paragraph)
 msgid ""
@@ -1867,7 +1875,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 203 (header)
 msgid "SET_LED_TEMPLATE"
-msgstr ""
+msgstr "SET_LED_TEMPLATE"
 
 #: docs/G-Codes.md:block 204 (paragraph)
 msgid ""
@@ -1891,11 +1899,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 251 (paragraph)
 msgid "The query_adc module is automatically loaded."
-msgstr ""
+msgstr "Das query_adc Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 303 (header)
 msgid "[smart_effector]"
-msgstr ""
+msgstr "[smart_effector]"
 
 #: docs/G-Codes.md:block 304 (paragraph)
 msgid ""
@@ -1909,7 +1917,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 305 (header)
 msgid "SET_SMART_EFFECTOR"
-msgstr ""
+msgstr "SET_SMART_EFFECTOR"
 
 #: docs/G-Codes.md:block 306 (paragraph)
 msgid ""
@@ -1930,7 +1938,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 307 (header)
 msgid "RESET_SMART_EFFECTOR"
-msgstr ""
+msgstr "RESET_SMART_EFFECTOR"
 
 #: docs/G-Codes.md:block 308 (paragraph)
 msgid ""
@@ -1947,7 +1955,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 87 (header)
 msgid "[exclude_object]"
-msgstr ""
+msgstr "[exclude_object]"
 
 #: docs/G-Codes.md:block 88 (paragraph)
 msgid ""
@@ -1958,7 +1966,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 89 (header)
 msgid "`EXCLUDE_OBJECT`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT`"
 
 #: docs/G-Codes.md:block 90 (paragraph)
 msgid ""
@@ -1987,7 +1995,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 94 (header)
 msgid "`EXCLUDE_OBJECT_DEFINE`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT_DEFINE`"
 
 #: docs/G-Codes.md:block 95 (paragraph)
 msgid ""
@@ -2032,7 +2040,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 100 (header)
 msgid "`EXCLUDE_OBJECT_START`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT_START`"
 
 #: docs/G-Codes.md:block 101 (paragraph)
 msgid ""
@@ -2043,7 +2051,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 102 (header)
 msgid "`EXCLUDE_OBJECT_END`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT_END`"
 
 #: docs/G-Codes.md:block 103 (paragraph)
 msgid ""
@@ -2129,7 +2137,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 79 (paragraph)
 msgid "Also provided is the following extended G-Code command:"
-msgstr ""
+msgstr "Außerdem gibt es den folgenden erweiterten G-Code-Befehl:"
 
 #: docs/G-Codes.md:block 80 (unordered list)
 msgid ""
@@ -2148,7 +2156,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 218 (header)
 msgid "[mcp4018]"
-msgstr ""
+msgstr "[mcp4018]"
 
 #: docs/G-Codes.md:block 219 (paragraph)
 msgid ""
@@ -2158,7 +2166,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 220 (header)
 msgid "SET_DIGIPOT"
-msgstr ""
+msgstr "SET_DIGIPOT"
 
 #: docs/G-Codes.md:block 221 (paragraph)
 msgid ""
@@ -2170,15 +2178,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 261 (header)
 msgid "[print_stats]"
-msgstr ""
+msgstr "[print_stats]"
 
 #: docs/G-Codes.md:block 262 (paragraph)
 msgid "The print_stats module is automatically loaded."
-msgstr ""
+msgstr "Das print_stats Modul wird automatisch geladen."
 
 #: docs/G-Codes.md:block 263 (header)
 msgid "SET_PRINT_STATS_INFO"
-msgstr ""
+msgstr "SET_PRINT_STATS_INFO"
 
 #: docs/G-Codes.md:block 264 (paragraph)
 msgid ""
@@ -2192,7 +2200,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 371 (header)
 msgid "[z_thermal_adjust]"
-msgstr ""
+msgstr "[z_thermal_adjust]"
 
 #: docs/G-Codes.md:block 372 (paragraph)
 msgid ""
@@ -2202,7 +2210,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 373 (header)
 msgid "SET_Z_THERMAL_ADJUST"
-msgstr ""
+msgstr "SET_Z_THERMAL_ADJUST"
 
 #: docs/G-Codes.md:block 374 (paragraph)
 msgid ""
@@ -2326,7 +2334,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 85 (header)
 msgid "SAVE_DUAL_CARRIAGE_STATE"
-msgstr ""
+msgstr "SAVE_DUAL_CARRIAGE_STATE"
 
 #: docs/G-Codes.md:block 86 (paragraph)
 msgid ""
@@ -2339,7 +2347,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 87 (header)
 msgid "RESTORE_DUAL_CARRIAGE_STATE"
-msgstr ""
+msgstr "RESTORE_DUAL_CARRIAGE_STATE"
 
 #: docs/G-Codes.md:block 88 (paragraph)
 msgid ""
@@ -2376,7 +2384,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 376 (header)
 msgid "[axis_twist_compensation]"
-msgstr ""
+msgstr "[axis_twist_compensation]"
 
 #: docs/G-Codes.md:block 377 (paragraph)
 msgid ""
@@ -2386,7 +2394,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 378 (header)
 msgid "AXIS_TWIST_COMPENSATION_CALIBRATE"
-msgstr ""
+msgstr "AXIS_TWIST_COMPENSATION_CALIBRATE"
 
 #: docs/G-Codes.md:block 379 (paragraph)
 msgid ""
@@ -2434,7 +2442,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 281 (header)
 msgid "[pwm_cycle_time]"
-msgstr ""
+msgstr "[pwm_cycle_time]"
 
 #: docs/G-Codes.md:block 282 (paragraph)
 msgid ""

@@ -5,9 +5,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:35+0200\n"
-"PO-Revision-Date: 2024-03-28 01:37+0000\n"
+"PO-Revision-Date: 2024-04-13 10:19+0000\n"
 "Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/canbus/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/canbus/de/"
+">\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -147,7 +148,7 @@ msgstr ""
 
 #: docs/CANBUS.md:block 20 (code)
 msgid "Found canbus_uuid=11aa22bb33cc, Application: Klipper\n"
-msgstr ""
+msgstr "Found canbus_uuid=11aa22bb33cc, Application: Klipper\n"
 
 #: docs/CANBUS.md:block 4 (paragraph)
 msgid ""
@@ -178,6 +179,10 @@ msgid ""
 "    bitrate 1000000\n"
 "    up ifconfig $IFACE txqueuelen 128\n"
 msgstr ""
+"allow-hotplug can0\n"
+"iface can0 can static\n"
+"    bitrate 1000000\n"
+"    up ifconfig $IFACE txqueuelen 128\n"
 
 #: docs/CANBUS.md:block 12 (paragraph)
 msgid ""
@@ -248,6 +253,7 @@ msgstr "Tipps zur Fehlerbehebung"
 #: docs/CANBUS.md:block 32 (paragraph)
 msgid "See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document."
 msgstr ""
+"Siehe das [CAN bus troubleshooting](CANBUS_Troubleshooting.md) Dokument."
 
 #~ msgid ""
 #~ "In order to use a CAN bus, it is necessary to have a host adapter. There are"

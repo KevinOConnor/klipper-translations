@@ -1,15 +1,17 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2023.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-10-30 09:04+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/canbus_troubleshooting/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"canbus_troubleshooting/de/>\n"
 "Language: de\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 1 (header)
 msgid "CANBUS Troubleshooting"
@@ -20,6 +22,9 @@ msgid ""
 "This document provides information on troubleshooting communication issues "
 "when using [Klipper with CAN bus](CANBUS.md)."
 msgstr ""
+"Dieses Dokument enthält Informationen zur Behebung von "
+"Kommunikationsproblemen bei der Verwendung von [Klipper mit CAN-Bus](CANBUS."
+"md)."
 
 #: docs/CANBUS_Troubleshooting.md:block 3 (header)
 msgid "Verify CAN bus wiring"
@@ -103,7 +108,7 @@ msgstr ""
 
 #: docs/CANBUS_Troubleshooting.md:block 13 (header)
 msgid "Obtaining candump logs"
-msgstr ""
+msgstr "candump Protokolle Abrufen"
 
 #: docs/CANBUS_Troubleshooting.md:block 14 (paragraph)
 msgid ""
@@ -131,7 +136,7 @@ msgstr ""
 
 #: docs/CANBUS_Troubleshooting.md:block 18 (code)
 msgid "candump -tz -Ddex can0,#FFFFFFFF > mycanlog\n"
-msgstr ""
+msgstr "candump -tz -Ddex can0,#FFFFFFFF > mycanlog\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 19 (paragraph)
 msgid ""
@@ -156,7 +161,7 @@ msgstr ""
 
 #: docs/CANBUS_Troubleshooting.md:block 22 (code)
 msgid "./scripts/parsecandump.py mycanlog 108 ./out/klipper.dict\n"
-msgstr ""
+msgstr "./scripts/parsecandump.py mycanlog 108 ./out/klipper.dict\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 23 (paragraph)
 msgid ""
@@ -204,7 +209,7 @@ msgstr ""
 
 #: docs/CANBUS_Troubleshooting.md:block 29 (paragraph)
 msgid "![pulseview-canbus](img/pulseview-canbus.png)"
-msgstr ""
+msgstr "![pulseview-canbus](img/pulseview-canbus.png)"
 
 #: docs/CANBUS_Troubleshooting.md:block 30 (paragraph)
 msgid ""

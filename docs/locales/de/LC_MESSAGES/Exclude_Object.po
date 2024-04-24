@@ -1,17 +1,19 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # Mathis Mensing <gcmatmen@gmail.com>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-10-26 08:36+0000\n"
-"Last-Translator: Mathis Mensing <gcmatmen@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/exclude_object/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"exclude_object/de/>\n"
 "Language: de\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: docs/Exclude_Object.md:block 1 (header)
 msgid "Exclude Objects"
@@ -118,7 +120,7 @@ msgstr ""
 
 #: docs/Exclude_Object.md:block 7 (header)
 msgid "The GCode File"
-msgstr ""
+msgstr "Die GCode Datei"
 
 #: docs/Exclude_Object.md:block 8 (paragraph)
 msgid ""
@@ -134,7 +136,7 @@ msgstr ""
 
 #: docs/Exclude_Object.md:block 9 (header)
 msgid "Object Definitions"
-msgstr ""
+msgstr "Objektdefinitionen"
 
 #: docs/Exclude_Object.md:block 10 (paragraph)
 msgid ""
@@ -165,6 +167,8 @@ msgid ""
 "`EXCLUDE_OBJECT_DEFINE NAME=calibration_pyramid CENTER=50,50 "
 "POLYGON=[[40,40],[50,60],[60,40]]`"
 msgstr ""
+"`EXCLUDE_OBJECT_DEFINE NAME=calibration_pyramid CENTER=50,50 "
+"POLYGON=[[40,40],[50,60],[60,40]]`"
 
 #: docs/Exclude_Object.md:block 13 (paragraph)
 msgid ""
@@ -174,7 +178,7 @@ msgstr ""
 
 #: docs/Exclude_Object.md:block 14 (header)
 msgid "Status Information"
-msgstr ""
+msgstr "Statusinformationen"
 
 #: docs/Exclude_Object.md:block 15 (paragraph)
 msgid ""
@@ -184,11 +188,11 @@ msgstr ""
 
 #: docs/Exclude_Object.md:block 16 (paragraph)
 msgid "The status is reset when:"
-msgstr ""
+msgstr "Der Status wird zurückgesetzt, wenn:"
 
 #: docs/Exclude_Object.md:block 17 (unordered list)
 msgid "The Klipper firmware is restarted."
-msgstr ""
+msgstr "Die Klipper Firmware wird neu gestartet."
 
 #: docs/Exclude_Object.md:block 17 (unordered list)
 msgid ""
@@ -198,7 +202,7 @@ msgstr ""
 
 #: docs/Exclude_Object.md:block 17 (unordered list)
 msgid "When an `EXCLUDE_OBJECT_DEFINE RESET=1` command is issued."
-msgstr ""
+msgstr "Wenn ein `EXCLUDE_OBJECT_DEFINE RESET=1` Befehl ausgeführt wird."
 
 #: docs/Exclude_Object.md:block 18 (paragraph)
 msgid ""

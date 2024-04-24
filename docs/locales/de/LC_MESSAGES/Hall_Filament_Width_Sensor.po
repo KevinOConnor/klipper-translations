@@ -2,20 +2,22 @@
 # Stefan Dej <meteyou@gmail.com>, 2022.
 # Christian S <schnellrieder.cs@gmail.com>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:34+0200\n"
-"PO-Revision-Date: 2022-08-18 04:18+0000\n"
-"Last-Translator: Yifei Ding <dingyifeiair@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/hall_filament_width_sensor/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"hall_filament_width_sensor/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid "How does it work?"
 msgstr "Wie funktioniert das?"
@@ -24,7 +26,7 @@ msgid "Template for menu variables"
 msgstr "Vorlage für Menü Variablen"
 
 msgid "Calibration procedure"
-msgstr ""
+msgstr "Kalibrierungs Prozedur"
 
 msgid "Insert first calibration rod (1.5 mm size) get first raw sensor value"
 msgstr ""
@@ -34,10 +36,10 @@ msgid ""
 msgstr ""
 
 msgid "How to enable sensor"
-msgstr ""
+msgstr "So aktivieren Sie den Sensor"
 
 msgid "Logging"
-msgstr ""
+msgstr "Protokollierung"
 
 msgid ""
 "[menu __main __filament __width_current]\n"
@@ -63,11 +65,12 @@ msgstr ""
 
 #: docs/HallFilamentWidthSensor.md:block 26 (paragraph)
 msgid "By default, the sensor is disabled at power-on."
-msgstr ""
+msgstr "Standardmäßig ist der Sensor beim Einschalten deaktiviert."
 
 #: docs/HallFilamentWidthSensor.md:block 29 (paragraph)
 msgid "By default, diameter logging is disabled at power-on."
 msgstr ""
+"Standardmäßig ist die Durchmesseraufzeichnung beim Einschalten deaktiviert."
 
 #: docs/HallFilamentWidthSensor.md:block 30 (paragraph)
 msgid ""

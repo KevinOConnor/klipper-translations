@@ -1,15 +1,17 @@
 # Stefan Dej <meteyou@gmail.com>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-05-04 14:15+0000\n"
-"Last-Translator: Stefan Dej <meteyou@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/index/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/index/de/>"
+"\n"
 "Language: de\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: docs/index.md:block 1 (paragraph)
 msgid "hide:"
@@ -45,6 +47,10 @@ msgid ""
 " Klipper code on github](https://github.com/Klipper3d/klipper). We depend on"
 " the generous support from our [sponsors](Sponsors.md)."
 msgstr ""
+"Klipper ist eine kostenlose Software. Lies die [Dokumentation](Overview.md) "
+"oder schau dir [den Klipper-Code auf github](https://github.com/Klipper3d/"
+"klipper) an. Wir sind abhängig von der großzügigen Unterstützung durch "
+"unsere [Sponsoren](Sponsors.md)."
 
 #~ msgid ""
 #~ "Klipper is Free Software. Read the [documentation](Overview.md) or view [the"

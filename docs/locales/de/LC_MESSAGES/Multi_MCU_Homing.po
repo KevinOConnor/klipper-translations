@@ -1,15 +1,17 @@
 # Mathis Mensing <gcmatmen@gmail.com>, 2021.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2021-09-29 00:47+0000\n"
-"Last-Translator: Mathis Mensing <gcmatmen@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/multi_mcu_homing/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"multi_mcu_homing/de/>\n"
 "Language: de\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: docs/Multi_MCU_Homing.md:block 1 (header)
 msgid "Multiple Micro-controller Homing and Probing"
@@ -100,6 +102,9 @@ msgid ""
 "issue is detected) then Klipper will raise a \"Communication timeout during "
 "homing\" error."
 msgstr ""
+"Sollte die hohe Latenzzeit zu einem Fehler führen (oder wenn ein anderes "
+"Kommunikationsproblem festgestellt wird), wird Klipper einen Fehler "
+"\"Communication timeout during homing\" melden."
 
 #~ msgid ""
 #~ "Should Klipper detect a communication issue between micro-controllers during"

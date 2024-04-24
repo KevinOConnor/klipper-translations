@@ -2,14 +2,16 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # Extrutex <w1indt@outlook.com>, 2024.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:33+0200\n"
-"PO-Revision-Date: 2024-03-15 16:01+0000\n"
-"Last-Translator: Extrutex <w1indt@outlook.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/bed_mesh/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/bed_mesh/"
+"de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,10 +56,10 @@ msgid ""
 msgstr ""
 
 msgid "![bedmesh_rect_basic](img/bedmesh_rect_basic.svg)"
-msgstr ""
+msgstr "![bedmesh_rect_basic](img/bedmesh_rect_basic.svg)"
 
 msgid "Round beds"
-msgstr ""
+msgstr "Runde Betten"
 
 msgid ""
 "This example assumes a printer equipped with a round bed radius of 100mm. We"
@@ -81,10 +83,10 @@ msgid ""
 msgstr ""
 
 msgid "![bedmesh_round_basic](img/bedmesh_round_basic.svg)"
-msgstr ""
+msgstr "![bedmesh_round_basic](img/bedmesh_round_basic.svg)"
 
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Erweiterte Konfiguration"
 
 msgid ""
 "Below the more advanced configuration options are explained in detail. Each "
@@ -93,7 +95,7 @@ msgid ""
 msgstr ""
 
 msgid "Mesh Interpolation"
-msgstr ""
+msgstr "Netz Interpolierung"
 
 msgid ""
 "`algorithm: lagrange` *Default Value: lagrange* The algorithm used to "
@@ -119,7 +121,7 @@ msgid ""
 msgstr ""
 
 msgid "![bedmesh_interpolated](img/bedmesh_interpolated.svg)"
-msgstr ""
+msgstr "![bedmesh_interpolated](img/bedmesh_interpolated.svg)"
 
 msgid "Move Splitting"
 msgstr ""
@@ -174,7 +176,7 @@ msgid ""
 msgstr ""
 
 msgid "Faulty Regions"
-msgstr ""
+msgstr "Fehlerhafte Regionen"
 
 msgid ""
 "It is possible for some areas of a bed to report inaccurate results when "
@@ -212,13 +214,13 @@ msgid ""
 msgstr ""
 
 msgid "![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)"
-msgstr ""
+msgstr "![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)"
 
 msgid "Bed Mesh Gcodes"
-msgstr ""
+msgstr "Bett Netz Gcodes"
 
 msgid "Calibration"
-msgstr ""
+msgstr "Kalibrierung"
 
 msgid ""
 "It is possible to specify mesh parameters to modify the probed area. The "
@@ -226,37 +228,37 @@ msgid ""
 msgstr ""
 
 msgid "Rectangular beds (cartesian):"
-msgstr ""
+msgstr "Rechteckige Druckbette (cartesian):"
 
 msgid "`MESH_MIN`"
-msgstr ""
+msgstr "`MESH_MIN`"
 
 msgid "`MESH_MAX`"
-msgstr ""
+msgstr "`MESH_MAX`"
 
 msgid "`PROBE_COUNT`"
-msgstr ""
+msgstr "`PROBE_COUNT`"
 
 msgid "Round beds (delta):"
-msgstr ""
+msgstr "Runde Druckbette (delta):"
 
 msgid "`MESH_RADIUS`"
-msgstr ""
+msgstr "`MESH_RADIUS`"
 
 msgid "`MESH_ORIGIN`"
-msgstr ""
+msgstr "`MESH_ORIGIN`"
 
 msgid "`ROUND_PROBE_COUNT`"
-msgstr ""
+msgstr "`ROUND_PROBE_COUNT`"
 
 msgid "All beds:"
-msgstr ""
+msgstr "Alle Betten:"
 
 msgid "Profiles"
-msgstr ""
+msgstr "Profile"
 
 msgid "`BED_MESH_PROFILE REMOVE=default`"
-msgstr ""
+msgstr "`BED_MESH_PROFILE REMOVE=default`"
 
 msgid ""
 "Any other saved profile can be removed in the same fashion, replacing "
@@ -264,10 +266,10 @@ msgid ""
 msgstr ""
 
 msgid "Output"
-msgstr ""
+msgstr "Ausgabe"
 
 msgid "`BED_MESH_OUTPUT PGP=[0 | 1]`"
-msgstr ""
+msgstr "`BED_MESH_OUTPUT PGP=[0 | 1]`"
 
 msgid ""
 "Outputs the current mesh state to the terminal. Note that the mesh itself is"
@@ -290,13 +292,13 @@ msgid "Clear Mesh State"
 msgstr ""
 
 msgid "`BED_MESH_CLEAR`"
-msgstr ""
+msgstr "`BED_MESH_CLEAR`"
 
 msgid "This gcode may be used to clear the internal mesh state."
 msgstr ""
 
 msgid "Apply X/Y offsets"
-msgstr ""
+msgstr "X/Y Offsets anwenden"
 
 msgid ""
 "// bed_mesh: generated points\n"
@@ -352,7 +354,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 52 (unordered list)
 msgid "`ALGORITHM`"
-msgstr ""
+msgstr "`ALGORITHM`"
 
 #: docs/Bed_Mesh.md:block 53 (paragraph)
 msgid ""
@@ -362,7 +364,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 55 (paragraph)
 msgid "`BED_MESH_PROFILE SAVE=<name> LOAD=<name> REMOVE=<name>`"
-msgstr ""
+msgstr "`BED_MESH_PROFILE SAVE=<name> LOAD=<name> REMOVE=<name>`"
 
 #: docs/Bed_Mesh.md:block 56 (paragraph)
 msgid ""
@@ -376,6 +378,8 @@ msgstr ""
 #: docs/Bed_Mesh.md:block 57 (paragraph)
 msgid "Profiles can be loaded by executing `BED_MESH_PROFILE LOAD=<name>`."
 msgstr ""
+"Profile können durch Ausführen von `BED_MESH_PROFILE LOAD=<name>` geladen "
+"werden."
 
 #: docs/Bed_Mesh.md:block 7 (code)
 msgid ""
@@ -494,7 +498,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 61 (header)
 msgid "Loading the default profile"
-msgstr ""
+msgstr "Laden des Standardprofils"
 
 #: docs/Bed_Mesh.md:block 62 (paragraph)
 msgid ""
@@ -589,7 +593,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 34 (header)
 msgid "Configuring the zero reference position"
-msgstr ""
+msgstr "Konfigurieren der Nullpunktposition"
 
 #: docs/Bed_Mesh.md:block 35 (paragraph)
 msgid ""
@@ -630,7 +634,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 38 (header)
 msgid "The deprecated relative_reference_index"
-msgstr ""
+msgstr "Der veraltete relative_reference_index"
 
 #: docs/Bed_Mesh.md:block 39 (paragraph)
 msgid ""
@@ -669,7 +673,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 50 (header)
 msgid "Adaptive Meshes"
-msgstr ""
+msgstr "Adaptive Netze"
 
 #: docs/Bed_Mesh.md:block 51 (paragraph)
 msgid ""
@@ -705,7 +709,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 55 (paragraph)
 msgid "![adaptive_bedmesh](img/adaptive_bed_mesh.svg)"
-msgstr ""
+msgstr "![adaptive_bedmesh](img/adaptive_bed_mesh.svg)"
 
 #: docs/Bed_Mesh.md:block 56 (code)
 msgid ""
@@ -729,7 +733,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 57 (unordered list)
 msgid "![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)"
-msgstr ""
+msgstr "![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)"
 
 #: docs/Bed_Mesh.md:block 58 (paragraph)
 msgid ""
@@ -763,15 +767,15 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 66 (unordered list)
 msgid "`ADAPTIVE`"
-msgstr ""
+msgstr "`ADAPTIVE`"
 
 #: docs/Bed_Mesh.md:block 66 (unordered list)
 msgid "`ADAPTIVE_MARGIN`"
-msgstr ""
+msgstr "`ADAPTIVE_MARGIN`"
 
 #: docs/Bed_Mesh.md:block 89 (paragraph)
 msgid "`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`"
-msgstr ""
+msgstr "`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`"
 
 #: docs/Bed_Mesh.md:block 90 (paragraph)
 msgid ""

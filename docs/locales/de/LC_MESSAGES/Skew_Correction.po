@@ -1,19 +1,21 @@
 # Christian S <schnellrieder.cs@gmail.com>, 2022.
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:34+0200\n"
-"PO-Revision-Date: 2022-07-03 11:20+0000\n"
-"Last-Translator: Sven van Beckum <kontakt@partner-3d.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/skew_correction/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"skew_correction/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "Software based skew correction can help resolve dimensional inaccuracies "
@@ -42,13 +44,13 @@ msgid ""
 msgstr ""
 
 msgid "Take your measurements"
-msgstr ""
+msgstr "Führen Sie Ihre Messungen durch"
 
 msgid "![skew_lengths](img/skew_lengths.png)"
-msgstr ""
+msgstr "![skew_lengths](img/skew_lengths.png)"
 
 msgid "Configure your skew"
-msgstr ""
+msgstr "Konfigurieren Sie Ihre Schräglage"
 
 msgid "`SET_SKEW` can be used to configure skew correction for the XY plane."
 msgstr ""
@@ -75,7 +77,7 @@ msgid ""
 msgstr ""
 
 msgid "Verifying your correction"
-msgstr ""
+msgstr "Überprüfung Ihrer Korrektur"
 
 msgid ""
 "After skew_correction has been configured you may reprint the calibration "
@@ -102,26 +104,26 @@ msgid ""
 msgstr ""
 
 msgid "SET_SKEW XY=140.4,142.8,99.8\n"
-msgstr ""
+msgstr "SET_SKEW XY=140.4,142.8,99.8\n"
 
 msgid "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
-msgstr ""
+msgstr "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
 
 msgid "SKEW_PROFILE SAVE=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE SAVE=my_skew_profile\n"
 
 msgid "SKEW_PROFILE LOAD=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE LOAD=my_skew_profile\n"
 
 msgid "SKEW_PROFILE REMOVE=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE REMOVE=my_skew_profile\n"
 
 msgid "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
-msgstr ""
+msgstr "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
 
 #: docs/skew_correction.md:block 1 (header)
 msgid "Skew correction"
-msgstr ""
+msgstr "Schräglagenkorrektur"
 
 #: docs/skew_correction.md:block 5 (paragraph)
 msgid ""

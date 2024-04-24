@@ -2,14 +2,16 @@
 # Mathis Mensing <gcmatmen@gmail.com>, 2022.
 # Kev <leadustin@gmail.com>, 2024.
 # Extrutex <w1indt@outlook.com>, 2024.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:36+0200\n"
-"PO-Revision-Date: 2024-03-15 16:01+0000\n"
-"Last-Translator: Extrutex <w1indt@outlook.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/kinematics/de/>\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"kinematics/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,8 +61,9 @@ msgid ""
 "acceleration is:"
 msgstr ""
 
+#, fuzzy
 msgid "Trapezoid generator"
-msgstr ""
+msgstr "Trapezförmiger Generator"
 
 msgid ""
 "Klipper uses a traditional \"trapezoid generator\" to model the motion of "
@@ -70,7 +73,7 @@ msgid ""
 msgstr ""
 
 msgid "![trapezoid](img/trapezoid.svg.png)"
-msgstr ""
+msgstr "![trapezoid](img/trapezoid.svg.png)"
 
 msgid ""
 "It's called a \"trapezoid generator\" because a velocity diagram of the move"
@@ -87,10 +90,10 @@ msgid ""
 msgstr ""
 
 msgid "![trapezoids](img/trapezoids.svg.png)"
-msgstr ""
+msgstr "![trapezoids](img/trapezoids.svg.png)"
 
 msgid "Look-ahead"
-msgstr ""
+msgstr "Look-ahead"
 
 msgid ""
 "The \"look-ahead\" system is used to determine cornering speeds between "
@@ -101,7 +104,7 @@ msgid "Consider the following two moves contained on an XY plane:"
 msgstr ""
 
 msgid "![corner](img/corner.svg.png)"
-msgstr ""
+msgstr "![corner](img/corner.svg.png)"
 
 msgid ""
 "In the above situation it is possible to fully decelerate after the first "
@@ -120,7 +123,7 @@ msgid ""
 msgstr ""
 
 msgid "![lookahead](img/lookahead.svg.png)"
-msgstr ""
+msgstr "![lookahead](img/lookahead.svg.png)"
 
 msgid ""
 "However, if the next move forms an acute angle (the head is going to travel "
@@ -129,7 +132,7 @@ msgid ""
 msgstr ""
 
 msgid "![lookahead](img/lookahead-slow.svg.png)"
-msgstr ""
+msgstr "![lookahead](img/lookahead-slow.svg.png)"
 
 msgid ""
 "The junction speeds are determined using \"approximated centripetal "
@@ -141,7 +144,7 @@ msgid ""
 msgstr ""
 
 msgid "Key formula for look-ahead:"
-msgstr ""
+msgstr "Schlüsselformel für Look-ahead:"
 
 msgid ""
 "Klipper also implements a mechanism for smoothing out the motions of short "
@@ -149,13 +152,13 @@ msgid ""
 msgstr ""
 
 msgid "![zigzag](img/zigzag.svg.png)"
-msgstr ""
+msgstr "![zigzag](img/zigzag.svg.png)"
 
 msgid "![smoothed](img/smoothed.svg.png)"
-msgstr ""
+msgstr "![smoothed](img/smoothed.svg.png)"
 
 msgid "Generating steps"
-msgstr ""
+msgstr "Schritte generieren"
 
 msgid ""
 "Once the look-ahead process completes, the print head movement for the given"
@@ -193,7 +196,7 @@ msgid ""
 msgstr ""
 
 msgid "Cartesian Robots"
-msgstr ""
+msgstr "Kartesische Roboter"
 
 msgid ""
 "Generating steps for cartesian printers is the simplest case. The movement "
@@ -201,10 +204,10 @@ msgid ""
 msgstr ""
 
 msgid "Key formulas:"
-msgstr ""
+msgstr "Schlüsselformeln:"
 
 msgid "CoreXY Robots"
-msgstr ""
+msgstr "CoreXY Roboter"
 
 msgid ""
 "Generating steps on a CoreXY machine is only a little more complex than "
@@ -212,13 +215,13 @@ msgid ""
 msgstr ""
 
 msgid "Delta Robots"
-msgstr ""
+msgstr "Delta Roboter"
 
 msgid "Step generation on a delta robot is based on Pythagoras's theorem:"
 msgstr ""
 
 msgid "Stepper motor acceleration limits"
-msgstr ""
+msgstr "Schrittmotor Beschleunigungsgrenzwerte"
 
 msgid ""
 "With delta kinematics it is possible for a move that is accelerating in "
@@ -242,7 +245,7 @@ msgid ""
 msgstr ""
 
 msgid "Extruder kinematics"
-msgstr ""
+msgstr "Extruder Kinematik"
 
 msgid ""
 "Klipper implements extruder motion in its own kinematic class. Since the "
@@ -271,7 +274,7 @@ msgid ""
 msgstr ""
 
 msgid "![ooze](img/ooze.svg.png)"
-msgstr ""
+msgstr "![ooze](img/ooze.svg.png)"
 
 msgid ""
 "The \"pressure advance\" system attempts to account for this by using a "
@@ -299,7 +302,7 @@ msgid ""
 msgstr ""
 
 msgid "![pressure-advance](img/pressure-velocity.png)"
-msgstr ""
+msgstr "![pressure-advance](img/pressure-velocity.png)"
 
 msgid ""
 "The above graph shows an example of two extrusion moves with a non-zero "
@@ -324,16 +327,16 @@ msgid "Key formula for \"smoothed pressure advance\":"
 msgstr ""
 
 msgid "velocity(time) = start_velocity + accel*time\n"
-msgstr ""
+msgstr "velocity(time) = start_velocity + accel*time\n"
 
 msgid "end_velocity^2 = start_velocity^2 + 2*accel*move_distance\n"
-msgstr ""
+msgstr "end_velocity^2 = start_velocity^2 + 2*accel*move_distance\n"
 
 msgid "move_distance = (start_velocity + .5 * accel * move_time) * move_time\n"
 msgstr ""
 
 msgid "move_distance = cruise_velocity * move_time\n"
-msgstr ""
+msgstr "move_distance = cruise_velocity * move_time\n"
 
 msgid ""
 "cartesian_x_position = start_x + move_distance * total_x_movement / total_movement\n"
@@ -361,12 +364,14 @@ msgid ""
 msgstr ""
 
 msgid "stepper_position = requested_e_position\n"
-msgstr ""
+msgstr "stepper_position = requested_e_position\n"
 
 msgid ""
 "pa_position = nominal_position + pressure_advance_coefficient * "
 "nominal_velocity\n"
 msgstr ""
+"pa_position = nominal_position + pressure_advance_coefficient * "
+"nominal_velocity\n"
 
 msgid ""
 "smooth_pa_position(t) =\n"
@@ -377,7 +382,7 @@ msgstr ""
 
 #: docs/Kinematics.md:block 1 (header)
 msgid "Kinematics"
-msgstr ""
+msgstr "Kinematik"
 
 #: docs/Kinematics.md:block 26 (header)
 msgid "Minimum cruise ratio"

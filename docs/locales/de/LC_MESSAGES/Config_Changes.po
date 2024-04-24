@@ -2,20 +2,22 @@
 # Sven van Beckum <kontakt@partner-3d.de>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # Mathis Mensing <gcmatmen@gmail.com>, 2022.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:32+0200\n"
-"PO-Revision-Date: 2022-10-26 08:36+0000\n"
-"Last-Translator: Mathis Mensing <gcmatmen@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/config_changes/de/>\n"
+"PO-Revision-Date: 2024-04-11 07:01+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"config_changes/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "This document covers recent software changes to the config file that are not"
@@ -142,7 +144,7 @@ msgid ""
 msgstr ""
 
 msgid "20201020: Klipper v0.9.0 released."
-msgstr ""
+msgstr "20.10.2020: Klipper v0.9.0 veröffentlicht."
 
 msgid ""
 "20200902: The RTD resistance-to-temperature calculation for MAX31865 "
@@ -313,7 +315,7 @@ msgid ""
 msgstr ""
 
 msgid "20191021: Klipper v0.8.0 released"
-msgstr ""
+msgstr "21.10.2019: Klipper v0.8.0 veröffentlicht."
 
 msgid ""
 "20191003: The move_to_previous option in [safe_z_homing] now defaults to "
@@ -436,7 +438,7 @@ msgid ""
 msgstr ""
 
 msgid "20181220: Klipper v0.7.0 released"
-msgstr ""
+msgstr "20.12.2018: Klipper v0.7.0 veröffentlicht."
 
 msgid ""
 "20210703: A `samd_sercom` config section must now specify the sercom bus it "
@@ -453,7 +455,7 @@ msgstr ""
 
 #: docs/Config_Changes.md:block 1 (header)
 msgid "Configuration Changes"
-msgstr ""
+msgstr "Konfigurationsänderungen"
 
 #: docs/Config_Changes.md:block 5 (paragraph)
 msgid ""
@@ -522,7 +524,7 @@ msgstr ""
 
 #: docs/Config_Changes.md:block 8 (paragraph)
 msgid "20210929: Klipper v0.10.0 released."
-msgstr ""
+msgstr "29.09.2021: Klipper v0.10.0 veröffentlicht."
 
 #: docs/Config_Changes.md:block 18 (paragraph)
 msgid ""
@@ -662,7 +664,7 @@ msgstr ""
 
 #: docs/Config_Changes.md:block 7 (paragraph)
 msgid "20221128: Klipper v0.11.0 released."
-msgstr ""
+msgstr "28.11.2022: Klipper v0.11.0 veröffentlicht."
 
 #: docs/Config_Changes.md:block 5 (paragraph)
 msgid ""
@@ -809,7 +811,7 @@ msgstr ""
 
 #: docs/Config_Changes.md:block 12 (paragraph)
 msgid "20231110: Klipper v0.12.0 released."
-msgstr ""
+msgstr "10.11.2023: Klipper v0.12.0 veröffentlicht."
 
 #~ msgid ""
 #~ "20211104: The \"step pulse duration\" option in \"make menuconfig\" has been"

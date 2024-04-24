@@ -6,9 +6,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:36+0200\n"
-"PO-Revision-Date: 2024-03-28 01:37+0000\n"
+"PO-Revision-Date: 2024-04-19 15:03+0000\n"
 "Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/klipper/beaglebone/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/klipper/"
+"beaglebone/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,16 +34,16 @@ msgid ""
 msgstr ""
 
 msgid "Install Octoprint"
-msgstr ""
+msgstr "Octoprint installieren"
 
 msgid "One may then install Octoprint:"
-msgstr ""
+msgstr "Dann könnte man Octoprint installieren:"
 
 msgid "And setup OctoPrint to start at bootup:"
-msgstr ""
+msgstr "Und richten Sie OctoPrint so ein, dass es beim Hochfahren startet:"
 
 msgid "Then start the Octoprint service:"
-msgstr ""
+msgstr "Starten Sie dann den Octoprint-Dienst:"
 
 msgid "Building the micro-controller code"
 msgstr ""
@@ -56,13 +57,13 @@ msgid "To build and install the new micro-controller code, run:"
 msgstr ""
 
 msgid "Then install this micro-controller code as well:"
-msgstr ""
+msgstr "Installieren Sie anschließend auch diesen Mikrokontroller Code:"
 
 msgid "Remaining configuration"
-msgstr ""
+msgstr "Restliche Konfiguration"
 
 msgid "Printing on the Beaglebone"
-msgstr ""
+msgstr "Drucken auf einem Beaglebone"
 
 msgid ""
 "git clone https://github.com/foosel/OctoPrint.git\n"
@@ -79,10 +80,10 @@ msgid ""
 msgstr ""
 
 msgid "sudo nano /etc/default/octoprint\n"
-msgstr ""
+msgstr "sudo nano /etc/default/octoprint\n"
 
 msgid "sudo systemctl start octoprint\n"
-msgstr ""
+msgstr "sudo systemctl start octoprint\n"
 
 msgid ""
 "cd ~/klipper/\n"
@@ -96,19 +97,24 @@ msgid ""
 "make flash\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+"make flash\n"
+"sudo service klipper start\n"
 
 msgid "make menuconfig\n"
-msgstr ""
+msgstr "make menuconfig\n"
 
 #: docs/beaglebone.md:block 1 (header)
 msgid "Beaglebone"
-msgstr ""
+msgstr "Beaglebone"
 
 #: docs/beaglebone.md:block 6 (code)
 msgid ""
 "git clone https://github.com/Klipper3d/klipper\n"
 "./klipper/scripts/install-beaglebone.sh\n"
 msgstr ""
+"git clone https://github.com/Klipper3d/klipper\n"
+"./klipper/scripts/install-beaglebone.sh\n"
 
 #: docs/Beaglebone.md:block 5 (paragraph)
 msgid ""

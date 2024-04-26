@@ -1,10 +1,10 @@
 # Bootloader-Eintrag
 
-Klipper can be instructed to reboot into a [Bootloader](Bootloaders.md) in one of the following ways:
+Klipper kann auf eine der folgenden Arten zum Neustart in einen [Bootloader](Bootloaders.md) angewiesen werden:
 
-## Requesting the bootloader
+## Den Bootloader anfordern
 
-### Virtual Serial
+### Virtuell Seriell
 
 If a virtual (USB-ACM) serial port is in use, pulsing DTR while at 1200 baud will request the bootloader.
 
@@ -33,7 +33,7 @@ Where `<DEVICE>` is your serial device, such as `/dev/serial.by-id/usb-Klipper[.
 
 `<Ctrl-A><Ctrl-P>` means holding `Ctrl`, pressing and releasing `a`, pressing and releasing `p`, then releasing `Ctrl`
 
-### Physical serial
+### Physisch Seriell
 
 If a physical serial port is being used on the MCU (even if a USB serial adapter is being used to connect to it), sending the string `<SPACE><FS><SPACE>Request Serial Bootloader!!<SPACE>~`.
 
@@ -74,7 +74,7 @@ Where `<CAN_IFACE>` is the can interface to use. If using `can0`, both the `-i` 
 
 See the [CANBUS Documentation](CANBUS.md#finding-the-canbus_uuid-for-new-micro-controllers) for information on finding the CAN UUID of your devices.
 
-## Entering the bootloader
+## Öffnen des Bootloaders
 
 When klipper receives one of the above bootloader requests:
 
@@ -86,8 +86,8 @@ In short, Klipper will reboot to Katapult if installed, then a hardware specific
 
 For details about the specific bootloaders on various platforms see [Bootloaders](Bootloaders.md)
 
-## Notes
+## Anmerkungen
 
-### STM32 DFU Warning
+### STM32 DFU Warnung
 
 Note that on some boards, like the Octopus Pro v1, entering DFU mode can cause undesired actions (such as powering the heater while in DFU mode). It is recommended to disconnect heaters, and otherwise prevent undesired operations when using DFU mode. Consult the documentation for your board for more details.

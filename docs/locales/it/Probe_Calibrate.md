@@ -40,7 +40,7 @@ Inizia spostando testa in una posizione vicino al centro del piatto. Passare all
 
 Questo strumento eseguirà una misura automatica con la sonda, quindi solleverà la testina, sposterà l'ugello sulla posizione del punto sonda e avvierà lo strumento sonda manuale. Se l'ugello non si sposta in una posizione al di sopra del punto della sonda automatica, allora `ANNULLA` lo strumento sonda manuale ed eseguire la calibrazione dell'offset della sonda XY descritta sopra.
 
-Una volta avviata manualmente la sonda, seguire i passaggi descritti in ["the paper test"](Bed_Level.md#the-paper-test) per determinare la distanza effettiva tra l'ugello e il letto in una determinata posizione. Una volta completati questi passaggi, è possibile `ACCEPT` la posizione e salvare i risultati nel file di configurazione con:
+Once the manual probe tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
 
 ```
 SAVE_CONFIG

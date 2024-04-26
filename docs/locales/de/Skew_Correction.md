@@ -1,4 +1,4 @@
-# Skew correction
+# Schräglagenkorrektur
 
 Die softwarebasierte Schräglagenkorrektur kann helfen, Maßungenauigkeiten zu beheben, die sich aus einem nicht perfekt rechtwinkligen zusammenbau ergeben. Beachten Sie, dass es bei einer erheblichen Schräglage Ihres Druckers dringend empfohlen wird, den Drucker zunächst mit mechanischen Mitteln so rechtwinklig wie möglich zu machen, bevor Sie die softwarebasierte Korrektur anwenden.
 
@@ -8,13 +8,13 @@ The first step in correcting skew is to print a [calibration object](https://www
 
 Make sure that no skew correction is applied during this print. You may do this by either removing the `[skew_correction]` module from printer.cfg or by issuing a `SET_SKEW CLEAR=1` gcode.
 
-## Take your measurements
+## Führen Sie Ihre Messungen durch
 
-The `[skew_correcton]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
+The `[skew_correction]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
 
 ![skew_lengths](img/skew_lengths.png)
 
-## Configure your skew
+## Konfigurieren Sie Ihre Schräglage
 
 Make sure `[skew_correction]` is in printer.cfg. You may now use the `SET_SKEW` gcode to configure skew_correcton. For example, if your measured lengths along XY are as follows:
 
@@ -58,7 +58,7 @@ SKEW_PROFILE REMOVE=my_skew_profile
 
 After removing a profile you will be prompted to issue a `SAVE_CONFIG` to make this change persist.
 
-## Verifying your correction
+## Überprüfung Ihrer Korrektur
 
 After skew_correction has been configured you may reprint the calibration part with correction enabled. Use the following gcode to check your skew on each plane. The results should be lower than those reported via `GET_CURRENT_SKEW`.
 

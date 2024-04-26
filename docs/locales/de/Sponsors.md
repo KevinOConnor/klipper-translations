@@ -6,25 +6,25 @@ Klipper ist Freie Software. Wir sind vom großzügigen Support von Sponsoren abh
 
 [<img src="./img/sponsors/BTT_BTT.png" width="200" style="margin:25px"/>](https://bigtree-tech.com/collections/all-products)
 
-BIGTREETECH is the official mainboard sponsor of Klipper. BIGTREETECH is committed to developing innovative and competitive products to serve the 3D printing community better. Follow them on [Facebook](https://www.facebook.com/BIGTREETECH) or [Twitter](https://twitter.com/BigTreeTech).
+BIGTREETECH ist der offizielle Mainboard Sponsor von Klipper. BIGTREETECH engagiert sich für die Entwicklung innovativer und wettbewerbsfähiger Produkte, um die 3D-Druck-Community besser zu unterstützen. Folgen Sie ihnen auf [Facebook](https://www.facebook.com/BIGTREETECH) oder [Twitter](https://twitter.com/BigTreeTech).
 
 ## Förderer
 
 [<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor) [<img src="./img/sponsors/peopoly-logo.png" width="200" style="margin:25px" />](https://peopoly.net)
 
-## Klipper Developers
+## Klipper Entwickler
 
 ### Kevin O'Connor
 
-Kevin is the original author and current maintainer of Klipper. Donate at: <https://ko-fi.com/koconnor> or <https://www.patreon.com/koconnor>
+Kevin ist der ursprüngliche Autor und derzeitige Betreuer von Klipper. Donate at: <https://ko-fi.com/koconnor> oder <https://www.patreon.com/koconnor>
 
 ### Eric Callahan
 
-Eric is the author of bed_mesh, spi_flash, and several other Klipper modules. Eric has a donations page at: <https://ko-fi.com/arksine>
+Eric ist der Autor von bed_mesh, spi_flash und mehreren anderen Klipper-Modulen. Eric hat eine Spendenseite unter: <https://ko-fi.com/arksine>
 
-## Related Klipper Projects
+## Verwandte Klipper Projekte
 
-Klipper is frequently used with other Free Software. Consider using or supporting these projects.
+Klipper wird häufig zusammen mit anderer kostenloser Software verwendet. Ziehen Sie in Erwägung, diese Projekte zu verwenden oder zu unterstützen.
 
 * [Moonraker](https://github.com/Arksine/moonraker)
 * [Mainsail](https://github.com/mainsail-crew/mainsail)

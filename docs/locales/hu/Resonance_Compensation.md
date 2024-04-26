@@ -27,7 +27,7 @@ Szeleteld fel a [docs/prints/ringing_tower.stl](prints/ringing_tower.stl) fájlb
 Először is mérd meg a **gyűrődési frekvenciát**.
 
 1. Ha a `square_corner_velocity` paramétert megváltoztattuk, állítsuk vissza az 5.0-ra. Nem tanácsos növelni, ha bemeneti alakítót használsz, mert ez nagyobb simítást okozhat az alkatrészeken - helyette jobb, ha nagyobb gyorsulási értéket használsz.
-1. Növeld a `max_accel_to_decel` értéket a következő parancs kiadásával: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Kapcsold ki a `miminum_cruise_ratio` funkciót a következő parancs kiadásával: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Nyomás előtolás kikapcsolása: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Ha már hozzáadtad az `[input_shaper]` részt a printer.cfg fájlhoz, akkor hajtsd végre a `SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0` parancsot. Ha "Unknown command" hibát kapsz, nyugodtan figyelmen kívül hagyhatod ezen a ponton, és folytathatod a méréseket.
 1. Végezd el a parancsot: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Alapvetően a gyorsulás különböző nagy értékeinek beállításával próbáljuk a gyűrődést hangsúlyosabbá tenni. Ez a parancs 1500 mm/sec^2-től kezdve 5 mm-enként növeli a gyorsulást: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 és így tovább, egészen 7000 mm/sec^2-ig az utolsó sávra.
@@ -77,7 +77,7 @@ A legtöbb nyomtatóhoz MZV vagy EI alakítók ajánlhatók. Ez a szakasz egy te
 Nyomtasd ki a gyűrődési tesztmodellt az alábbiak szerint:
 
 1. Indítsd újra a firmware-t: `RESTART`
-1. Készülj fel a tesztre: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Tesztre való felkészülés: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Nyomás előtolás kikapcsolása: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Add ki a parancsot: `SET_INPUT_SHAPER SHAPER_TYPE=MZV `
 1. Add ki a parancsot: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
@@ -135,7 +135,7 @@ Megjegyzendő, hogy a rezonanciafrekvenciák mérésének pontossága a gyűrőd
 
 Feltételezve, hogy szeletelted a gyűrődési modellt a javasolt paraméterekkel, hajtsd végre a következő lépéseket az X és Y tengelyek mindegyikén:
 
-1. Készülj fel a tesztre: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Tesztre való felkészülés: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Győződj meg róla, hogy a nyomás előtolás ki van kapcsolva: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Add ki a parancsot: `SET_INPUT_SHAPER SHAPER_TYPE=ZV `
 1. A meglévő gyűrődési tesztmodellből a kiválasztott bemeneti alakítóval válaszd ki azt a gyorsulást, amely kellően jól mutatja a gyűrődést, és állítsd be a következővel: `SET_VELOCITY_LIMIT ACCEL=...`
@@ -163,7 +163,7 @@ Ha nem tudod mérni a gyűrődési frekvenciákat, pl. ha a rezgések közötti 
 A hangoláshoz adjunk hozzá üres `[input_shaper]` szakaszt a `printer.cfg` fájlhoz. Ezután, feltételezve, hogy a javasolt paraméterekkel felszeletelt gyűrődési modellt, nyomtasd ki 3-szor az alábbiak szerint. Első alkalommal, a nyomtatás előtt futtasd le a
 
 1. `RESTART`
-1. `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`

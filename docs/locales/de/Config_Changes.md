@@ -1,10 +1,27 @@
-# Configuration Changes
+# Konfigurationsänderungen
 
 Dieses Dokument behandelt die jüngsten Softwareänderungen an der Konfigurationsdatei, die nicht abwärtskompatibel sind. Es ist eine gute Idee, dieses Dokument zu lesen, wenn Sie die Klipper-Software aktualisieren.
 
 Alle Daten in diesem Dokument sind ungefähre Angaben.
 
 ## Änderungen
+
+20240313: The `max_accel_to_decel` parameter in the `[printer]` config section has been deprecated. The `ACCEL_TO_DECEL` parameter of the `SET_VELOCITY_LIMIT` command has been deprecated. The `printer.toolhead.max_accel_to_decel` status has been removed. Use the [minimum_cruise_ratio parameter](./Config_Reference.md#printer) instead. The deprecated features will be removed in the near future, and using them in the interim may result in subtly different behavior.
+
+20240215: Several deprecated features have been removed. Using "NTC 100K beta 3950" as a thermistor name has been removed (deprecated on 20211110). The `SYNC_STEPPER_TO_EXTRUDER` and `SET_EXTRUDER_STEP_DISTANCE` commands have been removed, and the extruder `shared_heater` config option has been removed (deprecated on 20220210). The bed_mesh `relative_reference_index` option has been removed (deprecated on 20230619).
+
+20240123: The output_pin SET_PIN CYCLE_TIME parameter has been removed. Use the new [pwm_cycle_time](Config_Reference.md#pwm_cycle_time) module if it is necessary to dynamically change a pwm pin's cycle time.
+
+20240123: The output_pin `maximum_mcu_duration` parameter is deprecated. Use a [pwm_tool config section](Config_Reference.md#pwm_tool) instead. The option will be removed in the near future.
+
+20240123: The output_pin `static_value` parameter is deprecated. Replace with `value` and `shutdown_value` parameters. The option will be removed in the near future.
+
+20231216: The `[hall_filament_width_sensor]` is changed to trigger filament runout when the thickness of the filament exceeds `max_diameter`. The maximum diameter defaults to `default_nominal_filament_diameter + max_difference`. See [[hall_filament_width_sensor] configuration
+reference](./Config_Reference.md#hall_filament_width_sensor) for more details.
+
+20231207: Several undocumented config parameters in the `[printer]` config section have been removed (the buffer_time_low, buffer_time_high, buffer_time_start, and move_flush_time parameters).
+
+10.11.2023: Klipper v0.12.0 veröffentlicht.
 
 20230826: If `safe_distance` is set or calculated to be 0 in `[dual_carriage]`, the carriages proximity checks will be disabled as per documentation. A user may wish to configure `safe_distance` explicitly to prevent accidental crashes of the carriages with each other. Additionally, the homing order of the primary and the dual carriage is changed in some configurations (certain configurations when both carriages home in the same direction, see [[dual_carriage] configuration reference](./Config_Reference.md#dual_carriage) for more details).
 
@@ -30,7 +47,7 @@ Alle Daten in diesem Dokument sind ungefähre Angaben.
 
 20230103: It is now possible with the flash-sdcard.sh script to flash both variants of the Bigtreetech SKR-2, STM32F407 and STM32F429. This means that the original tag of btt-skr2 now has changed to either btt-skr-2-f407 or btt-skr-2-f429.
 
-20221128: Klipper v0.11.0 released.
+28.11.2022: Klipper v0.11.0 veröffentlicht.
 
 20221122: Previously, with safe_z_home, it was possible that the z_hop after the g28 homing would go in the negative z direction. Now, a z_hop is performed after g28 only if it results in a positive hop, mirroring the behavior of the z_hop that occurs before the g28 homing.
 
@@ -60,7 +77,7 @@ Alle Daten in diesem Dokument sind ungefähre Angaben.
 
 20211102: Several deprecated features have been removed. The stepper `step_distance` option has been removed (deprecated on 20201222). The `rpi_temperature` sensor alias has been removed (deprecated on 20210219). The mcu `pin_map` option has been removed (deprecated on 20210325). The gcode_macro `default_parameter_<name>` and macro access to command parameters other than via the `params` pseudo-variable has been removed (deprecated on 20210503). The heater `pid_integral_max` option has been removed (deprecated on 20210612).
 
-20210929: Klipper v0.10.0 released.
+29.09.2021: Klipper v0.10.0 veröffentlicht.
 
 20210903: The default [`smooth_time`](Config_Reference.md#extruder) for heaters has changed to 1 second (from 2 seconds). For most printers this will result in more stable temperature control.
 
@@ -115,7 +132,7 @@ document](Command_Templates.md#macro-parameters) for examples.
 
 20201029: The serial option in the mcu config section no longer defaults to /dev/ttyS0. In the rare situation where /dev/ttyS0 is the desired serial port, it must be specified explicitly.
 
-20201020: Klipper v0.9.0 released.
+20.10.2020: Klipper v0.9.0 veröffentlicht.
 
 20200902: The RTD resistance-to-temperature calculation for MAX31865 converters has been corrected to not read low. If you are using such a device, you should recalibrate your print temperature and PID settings.
 
@@ -165,7 +182,7 @@ document](Command_Templates.md#macro-parameters) for examples.
 
 20191107: The primary extruder config section must be specified as "extruder" and may no longer be specified as "extruder0". Gcode command templates that query the extruder status are now accessed via "{printer.extruder}".
 
-20191021: Klipper v0.8.0 released
+21.10.2019: Klipper v0.8.0 veröffentlicht.
 
 20191003: The move_to_previous option in [safe_z_homing] now defaults to False. (It was effectively False prior to 20190918.)
 
@@ -211,4 +228,4 @@ document](Command_Templates.md#macro-parameters) for examples.
 
 20190107: The i2c_address parameter in the mcp4451 config section changed. This is a common setting on Smoothieboards. The new value is half the old value (88 should be changed to 44, and 90 should be changed to 45).
 
-20181220: Klipper v0.7.0 released
+20.12.2018: Klipper v0.7.0 veröffentlicht.

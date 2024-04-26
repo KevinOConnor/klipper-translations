@@ -10,7 +10,7 @@ Assurez-vous qu'aucune correction d'équerrage n'est appliquée pendant cette im
 
 ## Prenez vos mesures
 
-Le module `[skew_correcton]` nécessite 3 mesures pour chaque plan que vous souhaitez corriger ; la longueur du coin A au coin C, la longueur du coin B au coin D et la longueur du coin A au coin D. Lors de la mesure de la longueur AD, n'incluez pas les plats sur les coins fournis par certains objets de test.
+The `[skew_correction]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
 
 ![skew_lengths](img/skew_lengths.png)
 

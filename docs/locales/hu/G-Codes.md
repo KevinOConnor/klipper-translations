@@ -79,13 +79,22 @@ A következő parancsok akkor érhetők el, ha az [szög konfigurációs szakasz
 
 `ANGLE_DEBUG_WRITE CHIP=<config_name> REG=<register> VAL=<value>`: Nyers "érték" írása a "register" regiszterébe. Mind az "érték", mind a "regiszter" lehet decimális vagy hexadecimális egész szám. Használd óvatosan, és hivatkozzon az érzékelő adatlapjára. Ez csak a TLE5012B chipek esetében érhető el.
 
+### [axis_twist_compensation]
+
+The following commands are available when the [axis_twist_compensation config
+section](Config_Reference.md#axis_twist_compensation) is enabled.
+
+#### AXIS_TWIST_COMPENSATION_CALIBRATE
+
+`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Elindítja az X twist kalibrációs varázslót. A "SAMPLE_COUNT" meghatározza az X tengely mentén a kalibráláshoz szükséges pontok számát, az alapértelmezett érték pedig 3.
+
 ### [bed_mesh]
 
 A következő parancsok akkor érhetők el, ha a [bed_mesh konfigurációs szakasz](Config_Reference.md#bed_mesh) engedélyezve van (lásd még a [tárgyasztal háló útmutatót](Bed_Mesh.md)).
 
 #### BED_MESH_CALIBRATE
 
-`BED_MESH_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>]`: Ez a parancs a konfigban megadott paraméterek által meghatározott generált pontok segítségével szondázza az ágyat. A szondázás után egy háló generálódik, és a Z elmozdulás a hálónak megfelelően kerül beállításra. Az opcionális szondázási paraméterekkel kapcsolatos részletekért lásd a PROBE parancsot. Ha a METHOD=manual parancsot adtad meg, akkor a kézi szondázó eszköz aktiválódik - az eszköz aktiválása közben elérhető további parancsok részleteit lásd a fenti MANUAL_PROBE parancsban. Az opcionális `HORIZONTAL_MOVE_Z` érték felülírja a konfigurációs fájlban megadott `horizontal_move_z` opciót.
+`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`: Ez a parancs a konfigban megadott paraméterek által generált pontok segítségével szondázza az ágyat. A szondázás után egy háló generálódik, és a Z elmozdulás a hálónak megfelelően kerül beállításra. A háló a `PROFILE` paraméter által megadott profilba kerül elmentésre, vagy `default`, ha nincs megadva. Az opcionális szondázó paraméterek részletes leírását lásd a PROBE parancsban. Ha a METHOD=manual meg van adva, akkor a kézi tapintás eszköze aktiválódik - lásd a fenti MANUAL_PROBE parancsot az ezen eszköz aktív állapotában elérhető további parancsok részleteiért. Az opcionális `HORIZONTAL_MOVE_Z` érték felülírja a konfigurációs fájlban megadott `horizontal_move_z` opciót. Ha az ADAPTIVE=1 érték van megadva, akkor a nyomtatás alatt álló G-Kód fájl által meghatározott objektumok lesznek használva a vizsgált terület meghatározásához. Az opcionális `ADAPTIVE_MARGIN` érték felülírja a konfigurációs fájlban megadott `adaptive_margin` opciót.
 
 #### BED_MESH_OUTPUT
 
@@ -105,7 +114,7 @@ A következő parancsok akkor érhetők el, ha a [bed_mesh konfigurációs szaka
 
 #### BED_MESH_OFFSET
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>]`: X és/vagy Y eltolást alkalmaz a hálókereséshez. Ez a független extruderekkel rendelkező nyomtatóknál hasznos, mivel az eltolás szükséges a szerszámcsere utáni helyes Z-beállításhoz.
+`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value]`: X, Y és/vagy ZFADE eltolás alkalmazása a háló keresésére. Ez független extruderekkel rendelkező nyomtatóknál hasznos, mivel az eltolás szükséges a szerszámváltás utáni helyes Z-beállításhoz. Ne feledd, hogy a ZFADE eltolás nem alkalmaz közvetlenül további Z-beállítást, hanem a `fade` számítás korrigálására szolgál, ha a Z tengelyre `gcode offset` került alkalmazásra.
 
 ### [bed_screws]
 
@@ -261,14 +270,6 @@ A következő parancsok akkor érhetők el, ha az [extruder konfigurációs szak
 #### SYNC_EXTRUDER_MOTION
 
 `SYNC_EXTRUDER_MOTION EXTRUDER=<name> MOTION_QUEUE=<name>`: Ez a parancs az EXTRUDER által meghatározott léptetőt (ahogyan az [extruder](Config_Reference.md#extruder) vagy [extruder_stepper](Config_Reference.md#extruder_stepper) konfigurációs szakaszban) meghatározott extruder mozgásához szinkronizálódik a MOTION_QUEUE által meghatározott extruder mozgásához (ahogyan az [extruder](Config_Reference.md#extruder) konfigurációs szakaszban definiálták). Ha a MOTION_QUEUE üres karakterlánc, akkor a léptető deszinkronizálódik az extruder minden mozgására.
-
-#### SET_EXTRUDER_STEP_DISTANCE
-
-Ez a parancs elavult, és a közeljövőben eltávolításra kerül.
-
-#### SYNC_STEPPER_TO_EXTRUDER
-
-Ez a parancs elavult, és a közeljövőben eltávolításra kerül.
 
 ### [fan_generic]
 
@@ -496,9 +497,7 @@ A következő parancs akkor érhető el, ha az [output_pin konfigurációs szaka
 
 #### SET_PIN
 
-`SET_PIN PIN=config_name VALUE=<érték> [CYCLE_TIME=<ciklus_idő>]`: A tű beállítása a megadott kimenetre `VALUE`. A VALUE-nak 0-nak vagy 1-nek kell lennie a "digitális" kimeneti tűk esetében. PWM-tüskék esetén 0,0 és 1,0 közötti értékre, vagy 0,0 és `scale` közötti értékre állítsuk be, ha a kimeneti tüske konfigurációs szakaszban scale van beállítva.
-
-Néhány tű (jelenleg csak a "soft PWM" tű) támogatja az explicit ciklusidő beállítását a CYCLE_TIME paraméter segítségével (másodpercben megadva). Figyelembe kell venni, hogy a CYCLE_TIME paraméter nem tárolódik a SET_PIN parancsok között (minden explicit CYCLE_TIME paraméter nélküli SET_PIN parancs a `cycle_time` címen a output_pin konfigurációs szakaszban megadott ciklusidőt használja).
+`SET_PIN PIN=config_name VALUE=<value>`: A tűt a megadott kimeneti `VALUE` értékre állítja. A VALUE-nak 0-nak vagy 1-nek kell lennie a "digitális" kimeneti tűk esetében. PWM tűk esetén 0.0 és 1.0 közötti értékre állítsuk be, vagy 0.0 és `scale` közötti értékre, ha az output_pin konfigurációs szakaszban van beállítva a skála.
 
 ### [palette2]
 
@@ -589,6 +588,14 @@ A következő parancsok akkor érhetők el, ha a [szonda konfigurációs szakasz
 #### Z_OFFSET_APPLY_PROBE
 
 `Z_OFFSET_APPLY_PROBE`: Vegyük az aktuális Z G-kód eltolást (más néven mikrolépés), és vonjuk ki a szonda z_offset-jéből. Ez egy gyakran használt mikrolépés értéket vesz, és "állandóvá teszi". Egy `SAVE_CONFIG` szükséges a hatálybalépéshez.
+
+### [pwm_cycle_time]
+
+A következő parancs akkor érhető el, ha a [pwm_cycle_time config section](Config_Reference.md#pwm_cycle_time) engedélyezve van.
+
+#### SET_PIN
+
+`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: Ez a parancs hasonlóan működik, mint a [output_pin](#output_pin) SET_PIN parancsok. A parancs itt támogatja egy explicit ciklusidő beállítását a CYCLE_TIME paraméter segítségével (másodpercben megadva). Megjegyzendő, hogy a CYCLE_TIME paraméter nem tárolódik a SET_PIN parancsok között (minden explicit CYCLE_TIME paraméter nélküli SET_PIN parancs a pwm_cycle_time config szakaszban megadott `cycle_time` értéket használja).
 
 ### [query_adc]
 
@@ -755,7 +762,7 @@ A nyomtatófejmodul automatikusan betöltődik.
 
 #### SET_VELOCITY_LIMIT
 
-`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] [ACCEL_TO_DECEL=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: A nyomtató sebességhatárainak módosítása.
+`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] [MINIMUM_CRUISE_RATIO=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: Ez a parancs módosíthatja a nyomtató konfigurációs fájljában megadott sebességhatárokat. Az egyes paraméterek leírását lásd a [printer config szakaszban](Config_Reference.md#printer).
 
 ### [tuning_tower]
 
@@ -790,15 +797,6 @@ Ezenkívül a következő kiterjesztett parancsok is elérhetők, ha a "virtual_
 #### SDCARD_RESET_FILE
 
 `SDCARD_RESET_FILE`: A fájl eltávolítása és az SD állapotának törlése.
-
-### [axis_twist_compensation]
-
-The following commands are available when the [axis_twist_compensation config
-section](Config_Reference.md#axis_twist_compensation) is enabled.
-
-#### AXIS_TWIST_COMPENSATION_CALIBRATE
-
-`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Elindítja az X twist kalibrációs varázslót. A "SAMPLE_COUNT" meghatározza az X tengely mentén a kalibráláshoz szükséges pontok számát, az alapértelmezett érték pedig 3.
 
 ### [z_thermal_adjust]
 

@@ -10,6 +10,8 @@ Klipper支援歸零限位開關和動作的步進電機連線到不同的微控�
 
 步進電機的過運動不太可能對歸零和探高的精度產生很大的影響。Klippe程式碼上會考慮通訊延時校正歸零的結果。但是，過運動對硬體穩固性有要求，因為過運動發生時有可能會損壞硬體。
 
-對配置有複數微控制器歸零的Klipper，如在進行歸零時遭遇通訊錯誤，軟體將會拋出"Communication timeout during homing"（歸零時，控制器通訊超時）錯誤資訊。
+In order to use this "multi-mcu homing" capability the hardware must have predictably low latency between the host computer and all of the micro-controllers. Typically the round-trip time must be consistently less than 10ms. High latency (even for short periods) is likely to result in homing failures.
+
+Should high latency result in a failure (or if some other communication issue is detected) then Klipper will raise a "Communication timeout during homing" error.
 
 要注意，當一個軸由多個步進電機控制（如`stepper_z`和`stepper_z1`），這些電機必須連線到同一微控制器上以實現複數微控制器歸零。詳細來說，即Z限位開關位於微控制器1， `stepper_z`連線到微控制器2，則`stepper_z1`必須連線到微控制器2。

@@ -27,7 +27,7 @@ Klipper支援Input Shaper技術 -一種可以用來減少列印件上環紋（�
 首先，測量**振紋頻率**。
 
 1. 如果 `square_corner_velocity` 參數已更改，請將其恢復為 5.0。使用input shaper時不建議增加它，因為它會導致零件更平滑 - 最好使用更高的加速度值。
-1. 通過發出以下命令增加 `max_accel_to_decel`：`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Disable the `miminum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. 禁用Pressure Advance：`SET_PRESSURE_ADVANCE ADVANCE=0`
 1. 如果你已經將`[input_shaper]`分段新增到print.cfg中，執行`SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0`命令。如果你得到"未知命令"錯誤，此時你可以安全地忽略它，繼續進行測量。
 1. 執行命令： `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` 基本上，我們嘗試通過設置不同的大加速度值來使環紋更加明顯。此命令將從 1500 mm/sec^2 開始每 5 mm 增加加速度：1500 mm/sec^2、2000 mm/sec^2、2500 mm/sec^2 等等，直到 7000 mm/sec^2最後一個區域。
@@ -77,7 +77,7 @@ Klipper 支持多種 input shaper。它們對確定共振頻率的誤差的敏�
 打印環形測試模型如下：
 
 1. 重啟固件：`RESTART`
-1. 準備測試：`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. 禁用Pressure Advance：`SET_PRESSURE_ADVANCE ADVANCE=0`
 1. 執行：`SET_INPUT_SHAPER SHAPER_TYPE=MZV`
 1. 執行命令：`TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
@@ -135,7 +135,7 @@ shaper_type: mzv
 
 假設您已使用建議的參數對環紋模型進行切片，請針對 X 軸和 Y 軸中的每一個完成以下步驟：
 
-1. 準備測試：`SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. 確保Pressure Advance被禁用：`SET_PRESSURE_ADVANCE ADVANCE=0`
 1. 執行：`SET_INPUT_SHAPER SHAPER_TYPE=ZV`
 1. 從具有您選擇的 input shaper的現有環紋測試模型中選擇顯示環紋足夠好的加速度，並將其設置為：`SET_VELOCITY_LIMIT ACCEL=...`
@@ -163,7 +163,7 @@ shaper_type: mzv
 要進行調整，請將空的 `[input_shaper]` 部分添加到您的 `printer.cfg`。然後，假設您已使用建議的參數對環紋模型進行切片，按如下方式打印測試模型 3 次。第一次，在打印之前，運行
 
 1. `RESTART`
-1. `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`

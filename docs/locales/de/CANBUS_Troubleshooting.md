@@ -1,6 +1,6 @@
 # CANBUS-Fehlerbehebung
 
-This document provides information on troubleshooting communication issues when using [Klipper with CAN bus](CANBUS.md).
+Dieses Dokument enthält Informationen zur Behebung von Kommunikationsproblemen bei der Verwendung von [Klipper mit CAN-Bus](CANBUS.md).
 
 ## CAN-Bus-Verkabelung überprüfen
 
@@ -24,7 +24,7 @@ Incrementing `bytes_invalid` on a CAN bus connection is a symptom of reordered m
 
 Reordered messages is a severe problem that must be fixed. It will result in unstable behavior and can lead to confusing errors at any part of a print.
 
-## Obtaining candump logs
+## candump Protokolle Abrufen
 
 The CAN bus messages sent to and from the micro-controller are handled by the Linux kernel. It is possible to capture these messages from the kernel for debugging purposes. A log of these messages may be of use in diagnostics.
 

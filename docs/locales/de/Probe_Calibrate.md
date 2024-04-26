@@ -32,7 +32,7 @@ to move the nozzle to an X position of 57 and Y of 30. Once one finds the positi
 
 The x_offset is then the `nozzle_x_position - probe_x_position` and y_offset is similarly the `nozzle_y_position - probe_y_position`. Update the printer.cfg file with the given values, remove the tape/marks from the bed, and then issue a `RESTART` command so that the new values take effect.
 
-## Calibrating probe Z offset
+## Kalibrierung des Z-Offsets der Probe
 
 Providing an accurate probe z_offset is critical to obtaining high quality prints. The z_offset is the distance between the nozzle and bed when the probe triggers. The Klipper `PROBE_CALIBRATE` tool can be used to obtain this value - it will run an automatic probe to measure the probe's Z trigger position and then start a manual probe to obtain the nozzle Z height. The probe z_offset will then be calculated from these measurements.
 
@@ -40,7 +40,7 @@ Start by homing the printer and then move the head to a position near the center
 
 This tool will perform an automatic probe, then lift the head, move the nozzle over the location of the probe point, and start the manual probe tool. If the nozzle does not move to a position above the automatic probe point, then `ABORT` the manual probe tool and perform the XY probe offset calibration described above.
 
-Once the manual probe tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test)) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
+Once the manual probe tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
 
 ```
 SAVE_CONFIG
@@ -52,7 +52,7 @@ If the probe has an X or Y offset and the bed tilt is changed (eg, by adjusting 
 
 If the results of PROBE_CALIBRATE are invalidated, then any previous [bed mesh](Bed_Mesh.md) results that were obtained using the probe are also invalidated - it will be necessary to rerun BED_MESH_CALIBRATE after recalibrating the probe.
 
-## Repeatability check
+## Überprüfung der Wiederholbarkeit
 
 After calibrating the probe X, Y, and Z offsets it is a good idea to verify that the probe provides repeatable results. Start by homing the printer and then move the head to a position near the center of the bed. Navigate to the OctoPrint terminal tab and run the `PROBE_ACCURACY` command.
 
@@ -94,7 +94,7 @@ Before starting this test, first calibrate the probe X, Y, and Z offsets as desc
 
 If the difference between the minimum reported z_offset and the maximum reported z_offset is greater than 25 microns (.025mm) then the probe is not suitable for typical bed leveling procedures. See the [Bed Level document](Bed_Level.md) for manual probe alternatives.
 
-## Temperature Bias
+## Temperaturverzerrung
 
 Many probes have a systemic bias when probing at different temperatures. For example, the probe may consistently trigger at a lower height when the probe is at a higher temperature.
 

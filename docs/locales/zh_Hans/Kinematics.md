@@ -52,17 +52,21 @@ Klipper 使用传统的"梯形发生器"来产生每个动作的运动--每个�
 end_velocity^2 = start_velocity^2 + 2*accel*move_distance
 ```
 
-### 预计算结果平滑
+### Minimum cruise ratio
 
 Klipper 实现了一种用于平滑短距离之字形移动的机制。参考以下移动：
 
 ![zigzag](img/zigzag.svg.png)
 
-在上述情况下，从加速到减速的频繁变化会导致机器振动并且会对机器造成压力和加噪音。为了减少这种情况，Klipper既跟踪常规的移动加速度并且也跟踪虚拟的"加减速率"。利用这个系统，这些短的"zigzag"移动的最高速度被限制以使得打印机的运动可以更加平滑：
+In the above, the frequent changes from acceleration to deceleration can cause the machine to vibrate which causes stress on the machine and increases the noise. Klipper implements a mechanism to ensure there is always some movement at a cruising speed between acceleration and deceleration. This is done by reducing the top speed of some moves (or sequence of moves) to ensure there is a minimum distance traveled at cruising speed relative to the distance traveled during acceleration and deceleration.
+
+Klipper implements this feature by tracking both a regular move acceleration as well as a virtual "acceleration to deceleration" rate:
 
 ![smoothed](img/smoothed.svg.png)
 
-具体来说，代码计算的是限制在这个虚拟的“加速到减速”率下时（默认为正常加速率的一半），每个动作的速度是多少。在上图中，灰色虚线代表了第一段移动时的虚拟加速率。如果一段移动使用这个虚拟加速度不能达到目标巡航速度，那么这段移动的最高速度将被降低到它在这个虚拟加速率下所能获得的最大速度。对于大多数移动来说，该限制将处于或高于该移动的现有限制，并且不会改变移动的行为。然而，对于短的 "之 "字形移动，这个限制会降低最高速度。请注意，它不会改变移动中的实际加速度--移动会继续使用正常的加速，直到其调整后的最高速度。
+Specifically, the code calculates what the velocity of each move would be if it were limited to this virtual "acceleration to deceleration" rate. In the above picture the dashed gray lines represent this virtual acceleration rate for the first move. If a move can not reach its full cruising speed using this virtual acceleration rate then its top speed is reduced to the maximum speed it could obtain at this virtual acceleration rate.
+
+For most moves the limit will be at or above the move's existing limits and no change in behavior is induced. For short zigzag moves, however, this limit reduces the top speed. Note that it does not change the actual acceleration within the move - the move continues to use the normal acceleration scheme up to its adjusted top-speed.
 
 ## 生成步数（Generating steps）
 

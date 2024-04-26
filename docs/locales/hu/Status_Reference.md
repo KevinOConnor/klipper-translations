@@ -246,6 +246,12 @@ A következő információk a [szonda](Config_Reference.md#probe) objektumban é
 - `last_query`: True értéket ad vissza, ha a szondát az utolsó QUERY_PROBE parancs során "triggered" -ként jelentették. Megjegyzés: ha ezt egy makróban használjuk, a sablon bővítési sorrendje miatt a QUERY_PROBE parancsot akkor ezt a hivatkozást tartalmazó makró előtt kell lefuttatni.
 - `last_z_result`: Az utolsó PROBE parancs Z eredményének értékét adja vissza. Figyelem, ha ezt egy makróban használjuk, a sablon bővítési sorrendje miatt a PROBE (vagy hasonló) parancsot akkor ezt a hivatkozást tartalmazó makró előtt kell lefuttatni.
 
+## pwm_cycle_time
+
+A következő információk a [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time) objektumban érhetők el:
+
+- `value`: A `SET_PIN` paranccsal beállított "value" a tű értéke.
+
 ## quad_gantry_level
 
 A következő információk a `quad_gantry_level` objektumban érhetők el (ez az objektum akkor érhető el, ha a quad_gantry_level definiálva van):
@@ -331,7 +337,7 @@ A következő információk a `toolhead` objektumban érhetők el (ez az objektu
 - `homed_axes`: Az aktuálisan "homed" állapotban lévőnek tekintett cartesian tengelyek. Ez egy karakterlánc, amely egy vagy több "X", "Y", "Z" értéket tartalmaz.
 - `axis_minimum`, `axis_maximum`: A tengely mozgásának határai (mm) a kezdőpont felvétel után. Lehetőség van e határérték X, Y, Z összetevőinek elérésére (pl. `axis_minimum.x`, `axis_maximum.z`).
 - A Delta nyomtatók esetében a `cone_start_z` a maximális sugaraknál mért maximális Z magasság (`printer.toolhead.cone_start_z`).
-- `max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`: Az aktuálisan érvényben lévő nyomtatási korlátok. Ez eltérhet a konfigurációs fájl beállításaiból, ha a `SET_VELOCITY_LIMIT` (vagy `M204`) parancs megváltoztatja azokat használat közben.
+- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: Az aktuálisan érvényben lévő nyomtatási korlátok. Ez eltérhet a konfigurációs fájl beállításaitól, ha a `SET_VELOCITY_LIMIT` (vagy az `M204`) parancs futás közben módosítja azokat.
 - `stalls`: Az összes alkalom száma (az utolsó újraindítás óta), amikor a nyomtatót szüneteltetni kellett, mert a nyomtatófej gyorsabban mozgott, mint ahány mozdulatot a G-kód bemenetről be lehetett olvasni.
 
 ## dual_carriage

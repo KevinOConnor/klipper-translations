@@ -4,7 +4,7 @@ Dieses Dokument enthält Informationen zur Verwendung von Trinamic-Schrittmotort
 
 Klipper kann die Trinamic-Treiber auch in ihrem "Standalone-Modus" verwenden. Wenn sich die Treiber jedoch in diesem Modus befinden, ist keine spezielle Klipper-Konfiguration erforderlich und die in diesem Dokument besprochenen erweiterten Klipper-Funktionen sind nicht verfügbar.
 
-Neben diesem Dokument sollten Sie sich die [TMC-Treiberkonfigurationsreferenz](Config_Reference.md#tmc-stepper-driver-configuration) ansehen.
+Zusätzlich zu diesem Dokument sollten Sie auch die [TMC driver config reference](Config_Reference.md#tmc-stepper-driver-configuration) lesen.
 
 ## Motorstrom abstimmen (Tunen)
 
@@ -295,7 +295,7 @@ Einige häufige Fehler und Tipps zu deren Diagnose:
 
 Dies bedeutet, dass sich der Motortreiber selbst deaktiviert hat, weil er zu heiß geworden ist. Typische Lösungen sind die Verringerung des Schrittmotorstroms, die Erhöhung der Kühlung des Schrittmotortreibers und/oder die Erhöhung der Kühlung des Schrittmotors.
 
-#### TMC reports error: `... ShortToGND` OR `ShortToSupply`
+#### TMC meldet Fehler: `... ShortToGND` ODER `ShortToSupply`
 
 Dies bedeutet, dass der Treiber sich selbst deaktiviert hat, weil er einen sehr hohen Stromfluss durch den Treiber festgestellt hat. Dies kann auf ein loses oder kurzgeschlossenes Kabel zum Schrittmotor oder im Schrittmotor selbst hinweisen.
 

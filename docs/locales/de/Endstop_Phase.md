@@ -8,7 +8,7 @@ The stepper phase adjusted endstop mechanism can use the precision of the steppe
 
 In order to use this functionality it is necessary to be able to identify the phase of the stepper motor. If one is using Trinamic TMC2130, TMC2208, TMC2224 or TMC2660 drivers in run-time configuration mode (ie, not stand-alone mode) then Klipper can query the stepper phase from the driver. (It is also possible to use this system on traditional stepper drivers if one can reliably reset the stepper drivers - see below for details.)
 
-## Calibrating endstop phases
+## Kalibrierung der Endanschlagsphasen
 
 If using Trinamic stepper motor drivers with run-time configuration then one can calibrate the endstop phases using the ENDSTOP_PHASE_CALIBRATE command. Start by adding the following to the config file:
 
@@ -32,7 +32,7 @@ Run the above for all the steppers one wishes to save. Typically, one would use 
 SAVE_CONFIG
 ```
 
-### Additional notes
+### Zusätzliche Hinweise
 
 * This feature is most useful on delta printers and on the Z endstop of cartesian/corexy printers. It is possible to use this feature on the XY endstops of cartesian printers, but that isn't particularly useful as a minor error in X/Y endstop position is unlikely to impact print quality. It is not valid to use this feature on the XY endstops of corexy printers (as the XY position is not determined by a single stepper on corexy kinematics). It is not valid to use this feature on a printer using a "probe:z_virtual_endstop" Z endstop (as the stepper phase is only stable if the endstop is at a static location on a rail).
 * After calibrating the endstop phase, if the endstop is later moved or adjusted then it will be necessary to recalibrate the endstop. Remove the calibration data from the config file and rerun the steps above.

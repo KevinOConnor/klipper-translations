@@ -182,11 +182,40 @@ faulty_region_4_max: 45.0, 210.0
 
 ![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)
 
+### Adaptive Meshes
+
+Adaptive bed meshing is a way to speed up the bed mesh generation by only probing the area of the bed used by the objects being printed. When used, the method will automatically adjust the mesh parameters based on the area occupied by the defined print objects.
+
+The adapted mesh area will be computed from the area defined by the boundaries of all the defined print objects so it covers every object, including any margins defined in the configuration. After the area is computed, the number of probe points will be scaled down based on the ratio of the default mesh area and the adapted mesh area. To illustrate this consider the following example:
+
+For a 150mmx150mm bed with `mesh_min` set to `25,25` and `mesh_max` set to `125,125`, the default mesh area is a 100mmx100mm square. An adapted mesh area of `50,50` means a ratio of `0.5x0.5` between the adapted area and default mesh area.
+
+If the `bed_mesh` configuration specified `probe_count` as `7x7`, the adapted bed mesh will use 4x4 probe points (7 * 0.5 rounded up).
+
+![adaptive_bedmesh](img/adaptive_bed_mesh.svg)
+
+```
+[bed_mesh]
+speed: 120
+horizontal_move_z: 5
+mesh_min: 35, 6
+mesh_max: 240, 198
+probe_count: 5, 3
+adaptive_margin: 5
+```
+
+
+   - `adaptive_margin`  *Default Value: 0*  Margin (in mm) to add around the area of the bed used by the defined objects. The diagram below shows the adapted bed mesh area with an `adaptive_margin` of 5mm. The adapted mesh area (area in green) is computed as the used bed area (area in blue) plus the defined margin.![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)
+
+By nature, adaptive bed meshes use the objects defined by the Gcode file being printed. Therefore, it is expected that each Gcode file will generate a mesh that probes a different area of the print bed. Therefore, adapted bed meshes should not be re-used. The expectation is that a new mesh will be generated for each print if adaptive meshing is used.
+
+It is also important to consider that adaptive bed meshing is best used on machines that can normally probe the entire bed and achieve a maximum variance less than or equal to 1 layer height. Machines with mechanical issues that a full bed mesh normally compensates for may have undesirable results when attempting print moves **outside** of the probed area. If a full bed mesh has a variance greater than 1 layer height, caution must be taken when using adaptive bed meshes and attempting print moves outside of the meshed area.
+
 ## 床網 G程式碼
 
 ### 校準
 
-`BED_MESH_CALIBRATE PROFILE=<名稱> METHOD=[manual | automatic] [<probe_parameter>=<值>] [<mesh_parameter>=<值>]` *預設配置：default* *預設方法：如果檢測到探針則自動，否則手動*
+`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] [ADAPTIVE_MARGIN=<value>]` *Default Profile: default* *Default Method: automatic if a probe is detected, otherwise manual*  *Default Adaptive: 0*  *Default Adaptive Margin: 0*
 
 啟動床網校準的探測程式。
 
@@ -204,6 +233,8 @@ faulty_region_4_max: 45.0, 210.0
    - `ROUND_PROBE_COUNT`
 - 全部列印床：
    - `ALGORITHM`
+   - `ADAPTIVE`
+   - `ADAPTIVE_MARGIN`
 
 有關在網格中使用的配置參數詳見配置文件。
 
@@ -272,6 +303,8 @@ PGP 參數是「列印產生的點」的簡寫。如果設定了`PGP=1`，產生
 
 ### 應用X/Y偏移量
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>]`
+`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`
 
-這對有多個獨立擠出頭的印表機很有用，因為偏移量是必要的，以便在更換工具后產生正確的Z調整。應指定它們相對於主擠出頭的偏移量。也就是說，如果第二個擠出頭安裝在第一個擠出頭的右邊，應指定一個正的X偏移量，如果第二個擠出頭安裝在第一個擠出頭的 "後面"，應指定一個正的Y偏移量。
+This is useful for printers with multiple independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change. Offsets should be specified relative to the primary extruder. That is, a positive X offset should be specified if the secondary extruder is mounted to the right of the primary extruder, a positive Y offset should be specified if the secondary extruder is mounted "behind" the primary extruder, and a positive ZFADE offset should be specified if the secondary extruder's nozzle is above the primary extruder's.
+
+Note that a ZFADE offset does *NOT* directly apply additional adjustment. It is intended to compensate for a `gcode offset` when [mesh fade](#mesh-fade) is enabled. For example, if a secondary extruder is higher than the primary and needs a negative gcode offset, ie: `SET_GCODE_OFFSET Z=-.2`, it can be accounted for in `bed_mesh` with `BED_MESH_OFFSET ZFADE=.2`.

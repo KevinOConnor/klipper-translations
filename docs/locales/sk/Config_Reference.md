@@ -65,33 +65,51 @@ Dodatočné mikrokontroléry (je možné definovať ľubovoľný počet sekcií 
 The printer section controls high level printer settings.
 
 ```
-[tlačiareň]
-kinematika:
-# Typ používanej tlačiarne. Táto možnosť môže byť jedna z: karteziánskej,
-# corexy, corexz, hybrid_corexy, hybrid_corexz, rotary_delta, delta,
-# deltézsky, polárny, navijak alebo žiadny. Tento parameter musí byť špecifikovaný.
+[printer]
+kinematics:
+#   The type of printer in use. This option may be one of: cartesian,
+#   corexy, corexz, hybrid_corexy, hybrid_corexz, rotary_delta, delta,
+#   deltesian, polar, winch, or none. This parameter must be specified.
 max_velocity:
-# Maximálna rýchlosť (v mm/s) nástrojovej hlavy (vo vzťahu k
-#tlač). Tento parameter musí byť špecifikovaný.
+#   Maximum velocity (in mm/s) of the toolhead (relative to the
+#   print). This parameter must be specified.
 max_accel:
-# Maximálne zrýchlenie (v mm/s^2) nástrojovej hlavy (vo vzťahu k
-#tlač). Tento parameter musí byť špecifikovaný.
+#   Maximum acceleration (in mm/s^2) of the toolhead (relative to the
+#   print). Although this parameter is described as a "maximum"
+#   acceleration, in practice most moves that accelerate or decelerate
+#   will do so at the rate specified here. The value specified here
+#   may be changed at runtime using the SET_VELOCITY_LIMIT command.
+#   This parameter must be specified.
+#minimum_cruise_ratio: 0.5
+#   Most moves will accelerate to a cruising speed, travel at that
+#   cruising speed, and then decelerate. However, some moves that
+#   travel a short distance could nominally accelerate and then
+#   immediately decelerate. This option reduces the top speed of these
+#   moves to ensure there is always a minimum distance traveled at a
+#   cruising speed. That is, it enforces a minimum distance traveled
+#   at cruising speed relative to the total distance traveled. It is
+#   intended to reduce the top speed of short zigzag moves (and thus
+#   reduce printer vibration from these moves). For example, a
+#   minimum_cruise_ratio of 0.5 would ensure that a standalone 1.5mm
+#   move would have a minimum cruising distance of 0.75mm. Specify a
+#   ratio of 0.0 to disable this feature (there would be no minimum
+#   cruising distance enforced between acceleration and deceleration).
+#   The value specified here may be changed at runtime using the
+#   SET_VELOCITY_LIMIT command. The default is 0.5.
+#square_corner_velocity: 5.0
+#   The maximum velocity (in mm/s) that the toolhead may travel a 90
+#   degree corner at. A non-zero value can reduce changes in extruder
+#   flow rates by enabling instantaneous velocity changes of the
+#   toolhead during cornering. This value configures the internal
+#   centripetal velocity cornering algorithm; corners with angles
+#   larger than 90 degrees will have a higher cornering velocity while
+#   corners with angles less than 90 degrees will have a lower
+#   cornering velocity. If this is set to zero then the toolhead will
+#   decelerate to zero at each corner. The value specified here may be
+#   changed at runtime using the SET_VELOCITY_LIMIT command. The
+#   default is 5mm/s.
 #max_accel_to_decel:
-# Pseudo zrýchlenie (v mm/s^2), ktoré riadi rýchlosť
-# nástrojová hlava môže prejsť zo zrýchlenia na spomalenie. Je zvyknutý
-# znížiť maximálnu rýchlosť krátkych cik-cak pohybov (a tým znížiť
-# vibrácie tlačiarne z týchto pohybov). Predvolená hodnota je polovica
-# max_accel.
-#square_corner_velocity: 5,0
-# Maximálna rýchlosť (v mm/s), ktorou môže nástrojová hlava prejsť 90
-# stupeň roh pri. Nenulová hodnota môže znížiť zmeny v extrudéri
-# prietokov povolením okamžitých zmien rýchlosti
-# nástrojová hlava počas zatáčania. Táto hodnota konfiguruje interné
-# algoritmus dostredivej rýchlosti zatáčania; rohy s uhlami
-# väčší ako 90 stupňov bude mať vyššiu rýchlosť v zákrute
-# rohy s uhlami menšími ako 90 stupňov budú mať nižšie
-# rýchlosť v zákrute. Ak je toto nastavené na nulu, nástrojová hlava bude
-# spomalenie na nulu v každom rohu. Predvolená hodnota je 5 mm/s.
+#   This parameter is deprecated and should no longer be used.
 ```
 
 ### [stepper]
@@ -824,96 +842,92 @@ Visual Examples:
 ```
 
 ```
-[sieťovina]
-#rýchlosť: 50
-#       Rýchlosť (v mm/s) nesnímaných pohybov počas kalibrácie.
-#       Predvolená hodnota je 50.
+[bed_mesh]
+#speed: 50
+#   The speed (in mm/s) of non-probing moves during the calibration.
+#   The default is 50.
 #horizontal_move_z: 5
-#       Výška (v mm), do ktorej sa má hlava pohnúť
-#       tesne pred spustením operácie sondy. Predvolená hodnota je 5.
+#   The height (in mm) that the head should be commanded to move to
+#   just prior to starting a probe operation. The default is 5.
 #mesh_radius:
-#       Definuje polomer siete na snímanie pre okrúhle lôžka. Poznač si to
-#       polomer je relatívny k súradniciam špecifikovaným v
-#       možnosť mesh_origin. Tento parameter musí byť poskytnutý pre okrúhle lôžka
-#       a vynechané pre obdĺžnikové postele.
+#   Defines the radius of the mesh to probe for round beds. Note that
+#   the radius is relative to the coordinate specified by the
+#   mesh_origin option. This parameter must be provided for round beds
+#   and omitted for rectangular beds.
 #mesh_origin:
-#       Definuje stredovú súradnicu X, Y siete pre okrúhle lôžka. Toto
-#       súradnica je relatívna k polohe sondy. Môže to byť užitočné
-#       upraviť mesh_origin v snahe maximalizovať veľkosť
-#       polomer siete. Predvolená hodnota je 0, 0. Tento parameter musí byť vynechaný
-#       obdĺžnikové postele.
+#   Defines the center X, Y coordinate of the mesh for round beds. This
+#   coordinate is relative to the probe's location. It may be useful
+#   to adjust the mesh_origin in an effort to maximize the size of the
+#   mesh radius. Default is 0, 0. This parameter must be omitted for
+#   rectangular beds.
 #mesh_min:
-#       Definuje minimálnu súradnicu X, Y siete pre obdĺžnikovú
-#       postele. Táto súradnica je relatívna k umiestneniu sondy. Toto
-#       bude prvý testovaný bod najbližšie k začiatku. Toto
-Pre obdĺžnikové postele je potrebné zadať # parameter.
+#   Defines the minimum X, Y coordinate of the mesh for rectangular
+#   beds. This coordinate is relative to the probe's location. This
+#   will be the first point probed, nearest to the origin. This
+#   parameter must be provided for rectangular beds.
 #mesh_max:
-#       Definuje maximálnu súradnicu X, Y siete pre obdĺžnikovú
-#       postele. Dodržiava rovnaký princíp ako mesh_min, ale bude to tak
-#       byť najvzdialenejším bodom skúmaným od pôvodu postele. Tento parameter
-#       musí byť poskytnuté pre obdĺžnikové postele.
+#   Defines the maximum X, Y coordinate of the mesh for rectangular
+#   beds. Adheres to the same principle as mesh_min, however this will
+#   be the furthest point probed from the bed's origin. This parameter
+#   must be provided for rectangular beds.
 #probe_count: 3, 3
-#       V prípade obdĺžnikových postelí ide o pár celých čísel oddelených čiarkou
-#       hodnoty X, Y definujúce počet bodov, ktoré sa majú nasnímať pozdĺž každého z nich
-#       os. Platí aj jedna hodnota, v takom prípade bude táto hodnota
-#       sa aplikuje na obe osi. Predvolená hodnota je 3, 3.
+#   For rectangular beds, this is a comma separate pair of integer
+#   values X, Y defining the number of points to probe along each
+#   axis. A single value is also valid, in which case that value will
+#   be applied to both axes. Default is 3, 3.
 #round_probe_count: 5
-#       Pre okrúhle postele táto celočíselná hodnota definuje maximálny počet
-#       bodov na snímanie pozdĺž každej osi. Táto hodnota musí byť nepárne číslo.
-#       Predvolená hodnota je 5.
+#   For round beds, this integer value defines the maximum number of
+#   points to probe along each axis. This value must be an odd number.
+#   Default is 5.
 #fade_start: 1.0
-#       Pozícia z gcode, v ktorej sa má začať postupné odstraňovanie z-úpravy
-#       keď je aktivované zoslabovanie. Predvolená hodnota je 1.0.
-#fade_end: 0,0
-#       Pozícia gcode z, v ktorej sa ukončuje postupné vyraďovanie. Pri nastavení na a
-#       hodnota pod fade_start, fade je vypnutý. Treba poznamenať, že
-#       Fade môže pridať nežiaduce škálovanie pozdĺž osi z tlače. Ak
-#       používateľ si želá povoliť miznutie, odporúča sa hodnota 10,0.
-#       Predvolená hodnota je 0,0, čo zakáže miznutie.
+#   The gcode z position in which to start phasing out z-adjustment
+#   when fade is enabled. Default is 1.0.
+#fade_end: 0.0
+#   The gcode z position in which phasing out completes. When set to a
+#   value below fade_start, fade is disabled. It should be noted that
+#   fade may add unwanted scaling along the z-axis of a print. If a
+#   user wishes to enable fade, a value of 10.0 is recommended.
+#   Default is 0.0, which disables fade.
 #fade_target:
-#       Pozícia z, v ktorej by sa malo zoslabovanie zbiehať. Keď je táto hodnota
-#       nastavený na nenulovú hodnotu, musí byť v rozsahu hodnôt z
-#       sieťovina. Používatelia, ktorí chcú konvergovať do východiskovej pozície z
-#       by to malo nastaviť na 0. Predvolená hodnota je priemerná hodnota z siete.
-#split_delta_z: 0,025
-#       Veľkosť rozdielu Z (v mm) pozdĺž pohybu, ktorý sa spustí
-#       rozdelenie. Predvolená hodnota je 0,025.
-#move_check_distance: 5,0
-#       Vzdialenosť (v mm) pozdĺž pohybu na kontrolu split_delta_z.
-#       Toto je tiež minimálna dĺžka, ktorú je možné rozdeliť. Predvolené
-#       je 5,0.
+#   The z position in which fade should converge. When this value is
+#   set to a non-zero value it must be within the range of z-values in
+#   the mesh. Users that wish to converge to the z homing position
+#   should set this to 0. Default is the average z value of the mesh.
+#split_delta_z: .025
+#   The amount of Z difference (in mm) along a move that will trigger
+#   a split. Default is .025.
+#move_check_distance: 5.0
+#   The distance (in mm) along a move to check for split_delta_z.
+#   This is also the minimum length that a move can be split. Default
+#   is 5.0.
 #mesh_pps: 2, 2
-#       Čiarkami oddelený pár celých čísel X, Y definujúcich počet
-#       bodov na segment na interpoláciu v sieti pozdĺž každej osi. A
-#       "segment" môže byť definovaný ako priestor medzi každým snímaným bodom.
-#       Používateľ môže zadať jedinú hodnotu, ktorá sa použije na obe
-#       osí. Predvolená hodnota je 2, 2.
-#algoritmus: lagrange
-#       Algoritmus interpolácie, ktorý sa má použiť. Môže byť buď "lagrange" alebo
-#       „bikubický“. Táto možnosť neovplyvní mriežky 3x3, ktoré sú vynútené
-#       použiť lagrangeov vzorkovanie. Predvolená hodnota je lagrange.
+#   A comma separated pair of integers X, Y defining the number of
+#   points per segment to interpolate in the mesh along each axis. A
+#   "segment" can be defined as the space between each probed point.
+#   The user may enter a single value which will be applied to both
+#   axes. Default is 2, 2.
+#algorithm: lagrange
+#   The interpolation algorithm to use. May be either "lagrange" or
+#   "bicubic". This option will not affect 3x3 grids, which are forced
+#   to use lagrange sampling. Default is lagrange.
 #bicubic_tension: .2
-#       Pri použití bikubického algoritmu môže vyššie uvedený parameter napätia
-#       sa použije na zmenu veľkosti interpolovaného sklonu. Väčšie
-#       čísla zvýšia veľkosť sklonu, čo má za následok viac
-#       zakrivenie v sieťke. Predvolená hodnota je .2.
+#   When using the bicubic algorithm the tension parameter above may
+#   be applied to change the amount of slope interpolated. Larger
+#   numbers will increase the amount of slope, which results in more
+#   curvature in the mesh. Default is .2.
 #zero_reference_position:
-#       Voliteľná súradnica X,Y, ktorá určuje umiestnenie na posteli
-#       kde Z = 0. Keď je zadaná táto možnosť, sieť bude posunutá
-#       tak, aby na tomto mieste došlo k nastaveniu nuly Z. Predvolená hodnota je
-#       žiadna nulová referencia.
-#relative_reference_index:
-#       **UKONČENÉ, použite možnosť „nulová_referenčná_pozícia“**
-#       Starú možnosť nahradenú „nulovou referenčnou pozíciou“.
-#       Namiesto súradnice táto možnosť používa celé číslo "index".
-#       označuje umiestnenie jedného z vygenerovaných bodov. Odporúča sa
-#       použiť "nulovú_referenčnú_pozíciu" namiesto tejto možnosti pre nové
-#       konfigurácií. Predvolená hodnota nie je relatívny referenčný index.
+#   An optional X,Y coordinate that specifies the location on the bed
+#   where Z = 0.  When this option is specified the mesh will be offset
+#   so that zero Z adjustment occurs at this location.  The default is
+#   no zero reference.
 #faulty_region_1_min:
 #faulty_region_1_max:
-#       Voliteľné body, ktoré definujú chybnú oblasť. Pozrite si docs/Bed_Mesh.md
-#       pre podrobnosti o chybných regiónoch. Je možné pridať až 99 chybných oblastí.
-#       V predvolenom nastavení nie sú nastavené žiadne chybné oblasti.
+#   Optional points that define a faulty region.  See docs/Bed_Mesh.md
+#   for details on faulty regions.  Up to 99 faulty regions may be added.
+#   By default no faulty regions are set.
+#adaptive_margin:
+#   An optional margin (in mm) to be added around the bed area used by
+#   the defined print objects when generating an adaptive mesh.
 ```
 
 ### [bed_tilt]
@@ -2778,51 +2792,79 @@ Výstupné kolíky konfigurovateľné za chodu (je možné definovať ľubovoľn
 
 ```
 [output_pin my_pin]
-pripnúť:
-# Pin, ktorý sa má nakonfigurovať ako výstup. Tento parameter musí byť
-# poskytnuté.
-#pwm: Nepravda
-# Nastavte, či má byť výstupný kolík schopný modulácie šírky impulzu.
-# Ak je to pravda, polia hodnôt by mali byť medzi 0 a 1; Ak si to
-# je nepravda, polia hodnôt by mali byť 0 alebo 1. Predvolená hodnota je
-# Nepravdivé.
-#static_value:
-# Ak je toto nastavené, potom sa pri spustení priradí pin tejto hodnote
-# a pin nie je možné zmeniť počas prevádzky. Používa sa statický kolík
-# o niečo menej RAM v mikrokontroléri. Predvolená hodnota je použiť
-# runtime konfigurácia pinov.
+pin:
+#   The pin to configure as an output. This parameter must be
+#   provided.
+#pwm: False
+#   Set if the output pin should be capable of pulse-width-modulation.
+#   If this is true, the value fields should be between 0 and 1; if it
+#   is false the value fields should be either 0 or 1. The default is
+#   False.
 #value:
-# Hodnota, na ktorú sa má pôvodne nastaviť kolík počas konfigurácie MCU.
-# Predvolená hodnota je 0 (pre nízke napätie).
+#   The value to initially set the pin to during MCU configuration.
+#   The default is 0 (for low voltage).
 #shutdown_value:
-# Hodnota, na ktorú sa má nastaviť kolík pri udalosti vypnutia MCU. Predvolená hodnota
-# je 0 (pre nízke napätie).
+#   The value to set the pin to on an MCU shutdown event. The default
+#   is 0 (for low voltage).
+#cycle_time: 0.100
+#   The amount of time (in seconds) per PWM cycle. It is recommended
+#   this be 10 milliseconds or greater when using software based PWM.
+#   The default is 0.100 seconds for pwm pins.
+#hardware_pwm: False
+#   Enable this to use hardware PWM instead of software PWM. When
+#   using hardware PWM the actual cycle time is constrained by the
+#   implementation and may be significantly different than the
+#   requested cycle_time. The default is False.
+#scale:
+#   This parameter can be used to alter how the 'value' and
+#   'shutdown_value' parameters are interpreted for pwm pins. If
+#   provided, then the 'value' parameter should be between 0.0 and
+#   'scale'. This may be useful when configuring a PWM pin that
+#   controls a stepper voltage reference. The 'scale' can be set to
+#   the equivalent stepper amperage if the PWM were fully enabled, and
+#   then the 'value' parameter can be specified using the desired
+#   amperage for the stepper. The default is to not scale the 'value'
+#   parameter.
 #maximum_mcu_duration:
-# Maximálne trvanie hodnoty bez vypnutia môže riadiť MCU
-# bez potvrdenia od hostiteľa.
-# Ak hostiteľ nemôže držať krok s aktualizáciou, MCU sa vypne
-# a nastavte všetky kolíky na ich príslušné vypínacie hodnoty.
-# Predvolené: 0 (zakázané)
-# Bežné hodnoty sú okolo 5 sekúnd.
-#cycle_time: 0,100
-# Množstvo času (v sekundách) na cyklus PWM. Odporúča sa
-# toto môže byť 10 milisekúnd alebo viac pri použití softvérového PWM.
-# Predvolená hodnota je 0,100 sekundy pre kolíky pwm.
-#hardware_pwm: Nepravda
-# Povoľte túto možnosť, ak chcete namiesto softvérového PWM použiť hardvérové PWM. Kedy
-# pomocou hardvérového PWM je skutočný čas cyklu obmedzený
-# implementácia a môže sa výrazne líšiť od
-# požadovaný cycle_time. Predvolená hodnota je False.
-#mierka:
-# Tento parameter možno použiť na zmenu spôsobu, akým sa 'hodnota' a
-# Parametre 'shutdown_value' sú interpretované pre piny pwm. Ak
-#, potom parameter 'value' by mal byť medzi 0,0 a
-# 'mierka'. To môže byť užitočné pri konfigurácii pinu PWM, ktorý
-# ovláda krokovú referenciu napätia. „Mierka“ sa dá nastaviť na
-# ekvivalentná kroková prúdová sila, ak bola PWM plne aktivovaná a
-# potom môže byť parameter 'value' špecifikovaný pomocou požadovaného
-# prúd pre stepper. Predvolená hodnota je neškálovať „hodnotu“
-# parameter.
+#static_value:
+#   These options are deprecated and should no longer be specified.
+```
+
+### [pwm_tool]
+
+Pulse width modulation digital output pins capable of high speed updates (one may define any number of sections with an "output_pin" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1" type extended [g-code commands](G-Codes.md#output_pin).
+
+```
+[pwm_tool my_tool]
+pin:
+#   The pin to configure as an output. This parameter must be provided.
+#maximum_mcu_duration:
+#   The maximum duration a non-shutdown value may be driven by the MCU
+#   without an acknowledge from the host.
+#   If host can not keep up with an update, the MCU will shutdown
+#   and set all pins to their respective shutdown values.
+#   Default: 0 (disabled)
+#   Usual values are around 5 seconds.
+#value:
+#shutdown_value:
+#cycle_time: 0.100
+#hardware_pwm: False
+#scale:
+#   See the "output_pin" section for the definition of these parameters.
+```
+
+### [pwm_cycle_time]
+
+Run-time configurable output pins with dynamic pwm cycle timing (one may define any number of sections with an "pwm_cycle_time" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1 CYCLE_TIME=0.100" type extended [g-code commands](G-Codes.md#pwm_cycle_time).
+
+```
+[pwm_cycle_time my_pin]
+pin:
+#value:
+#shutdown_value:
+#cycle_time: 0.100
+#scale:
+#   See the "output_pin" section for information on these parameters.
 ```
 
 ### [static_digital_output]

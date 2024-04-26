@@ -1,4 +1,4 @@
-# Using PWM tools
+# Verwendung von PWM-Tools
 
 Dieses Dokument beschreibt, wie man einen PWM-gesteuerten Laser oder Spindel mit Hilfe von `output_pin` und einigen Makros einrichtet.
 
@@ -8,19 +8,19 @@ With re-purposing the printhead's fan pwm output, you can control lasers or spin
 
 **Warning:** When driving a laser, keep all security precautions that you can think of! Diode lasers are usually inverted. This means, that when the MCU restarts, the laser will be *fully on* for the time it takes the MCU to start up again. For good measure, it is recommended to *always* wear appropriate laser-goggles of the right wavelength if the laser is powered; and to disconnect the laser when it is not needed. Also, you should configure a safety timeout, so that when your host or MCU encounters an error, the tool will stop.
 
-For an example configuration, see [config/sample-pwm-tool.cfg](/config/sample-pwm-tool.cfg).
+Für eine Beispielkonfiguration siehe [config/sample-pwm-tool.cfg](/config/sample-pwm-tool.cfg).
 
-## Current Limitations
+## Aktuelle Einschränkungen
 
 There is a limitation of how frequent PWM updates may occur. While being very precise, a PWM update may only occur every 0.1 seconds, rendering it almost useless for raster engraving. However, there exists an [experimental branch](https://github.com/Cirromulus/klipper/tree/laser_tool) with its own tradeoffs. In long term, it is planned to add this functionality to main-line klipper.
 
-## Commands
+## Befehle
 
-`M3/M4 S<value>` : Set PWM duty-cycle. Values between 0 and 255. `M5` : Stop PWM output to shutdown value.
+`M3/M4 S<Wert>` : Einstellung des PWM-Tastverhältnisses. Werte zwischen 0 und 255. `M5`: PWM Ausgang auf Abschaltwert stoppen.
 
-## Laserweb Configuration
+## Laserweb Konfiguration
 
-If you use Laserweb, a working configuration would be:
+Wenn Sie Laserweb verwenden, würde eine funktionierende Konfiguration wie folgt aussehen:
 
     GCODE START:
         M5            ; Disable Laser

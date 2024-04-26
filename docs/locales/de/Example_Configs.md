@@ -1,10 +1,10 @@
-# Example configurations
+# Beispielkonfigurationen
 
 Dieses Dokument enthält Richtlinien für das Einbringen einer Klipper-Beispielkonfiguration in das Klipper-Github-Repository (zu finden im [config-Verzeichnis](../config/)).
 
 Beachten Sie, dass der [Klipper Community Discourse Server](https://community.klipper3d.org) auch eine nützliche Ressource ist, um Konfigurationsdateien zu finden und zu teilen.
 
-## Guidelines
+## Richtlinien
 
 1. Select the appropriate config filename prefix:
    1. The `printer` prefix is used for stock printers sold by a mainstream manufacturer.
@@ -25,10 +25,10 @@ Beachten Sie, dass der [Klipper Community Discourse Server](https://community.kl
    1. The top of each config file should list the type of micro-controller the user should select during "make menuconfig". It should also have a reference to "docs/Config_Reference.md".
    1. Do not copy the field documentation into the example config files. (Doing so creates a maintenance burden as an update to the documentation would then require changing it in many places.)
    1. Example config files should not contain a "SAVE_CONFIG" section. If necessary, copy the relevant fields from the SAVE_CONFIG section to the appropriate section in the main config area.
-   1. Use `field: value` syntax instead of `field=value`.
+   1. Verwenden Sie die Syntax `field: value` anstelle von `field=value`.
    1. When adding an extruder `rotation_distance` it is preferable to specify a `gear_ratio` if the extruder has a gearing mechanism. We expect the rotation_distance in the example configs to correlate with the circumference of the hobbed gear in the extruder - it is normally in the range of 20 to 35mm. When specifying a `gear_ratio` it is preferable to specify the actual gears on the mechanism (eg, prefer `gear_ratio: 80:20` over `gear_ratio: 4:1`). See the [rotation distance document](Rotation_Distance.md#using-a-gear_ratio) for more information.
    1. Avoid defining field values that are set to their default value. For example, one should not specify `min_extrude_temp: 170` as that is already the default value.
-   1. Where possible, lines should not exceed 80 columns.
+   1. Wenn möglich, sollten die Zeilen nicht länger als 80 Spalten sein.
    1. Avoid adding attribution or revision messages to the config files. (For example, avoid adding lines like "this file was created by ...".) Place attribution and change history in the git commit message.
 1. Do not use any deprecated features in the example config file.
 1. Do not disable a default safety system in an example config file. For example, a config should not specify a custom `max_extrude_cross_section`. Do not enable debugging features. For example there should not be a `force_move` config section.

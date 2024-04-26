@@ -1,6 +1,6 @@
-# Axis Twist Compensation
+# Eksen Eğilme Telafisi
 
-This document describes the [axis_twist_compensation] module.
+Bu belgede [axis_twist_compensation] modülü açıklanmaktadır.
 
 Some printers may have a small twist in their X rail which can skew the results of a probe attached to the X carriage. This is common in printers with designs like the Prusa MK3, Sovol SV06 etc and is further described under [probe location
 bias](Probe_Calibrate.md#location-bias-check). It may result in probe operations such as [Bed Mesh](Bed_Mesh.md), [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) etc returning inaccurate representations of the bed.

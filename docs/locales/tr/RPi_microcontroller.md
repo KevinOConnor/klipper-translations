@@ -2,7 +2,7 @@
 
 Bu belge Klipper'ı bir RPi üzerinde çalıştırma ve aynı RPi'ı ikincil mcu olarak kullanma sürecini açıklamaktadır.
 
-## Why use RPi as a secondary MCU?
+## RPi'yi neden ikincil MCU olarak kullanmalısınız?
 
 Often the MCUs dedicated to controlling 3D printers have a limited and pre-configured number of exposed pins to manage the main printing functions (thermal resistors, extruders, steppers ...). Using the RPi where Klipper is installed as a secondary MCU gives the possibility to directly use the GPIOs and the buses (i2c, spi) of the RPi inside klipper without using Octoprint plugins (if used) or external programs giving the ability to control everything within the print GCODE.
 

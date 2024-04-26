@@ -164,7 +164,7 @@ Note that resonance measurements and shaper auto-calibration require additional 
 
 ```
 sudo apt update
-sudo apt install python3-numpy python3-matplotlib libatlas-base-dev
+sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev
 ```
 
 Next, in order to install NumPy in the Klipper environment, run the command:
@@ -535,6 +535,14 @@ max_smoothing: 0.25  # an example
 或者，按照輸入整形器調整指南的 [this](Resonance_Compensation.md#selecting-max_accel) 部分並打印測試模型以實驗性地選擇“max_accel”參數。
 
 相同的注意事項適用於使用 `SHAPER_CALIBRATE` 命令的輸入整形器 [auto-calibration](#input-shaper-auto-calibration)：自動校准後仍然需要選擇正確的 `max_accel` 值，建議加速度限制不會自動應用。
+
+Keep in mind that the maximum acceleration without too much smoothing depends on the `square_corner_velocity`. The general recommendation is not to change it from its default value 5.0, and this is the value used by default by the `calibrate_shaper.py` script. If you did change it though, you should inform the script about it by passing `--square_corner_velocity=...` parameter, e.g.
+
+```
+~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png --square_corner_velocity=10.0
+```
+
+so that it can calculate the maximum acceleration recommendations correctly. Note that the `SHAPER_CALIBRATE` command already takes the configured `square_corner_velocity` parameter into account, and there is no need to specify it explicitly.
 
 如果您正在重新校準整形器，並且建議的整形器配置報告的平滑度與您在之前校準期間得到的幾乎相同，則可以跳過此步驟。
 

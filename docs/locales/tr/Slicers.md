@@ -2,7 +2,7 @@
 
 Bu belge, Klipper ile kullanım için bir "dilimleyici" uygulaması yapılandırmak için bazı ipuçları sağlar. Klipper ile kullanılan yaygın dilimleyiciler Slic3r, Cura, Simplify3D, vs.'dir.
 
-## Set the G-Code flavor to Marlin
+## G-Code formatını Marlin olarak ayarla
 
 Many slicers have an option to configure the "G-Code flavor". The default is frequently "Marlin" and that works well with Klipper. The "Smoothieware" setting also works well with Klipper.
 

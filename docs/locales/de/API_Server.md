@@ -1,4 +1,4 @@
-# API server
+# API Server
 
 Dieses Document beschreibt Klipper's Application Programmer Interface (API). Diese Schnittstelle ermöglicht es externen Anwendungen, die Host-Software von Klipper abzufragen und zu steuern.
 
@@ -30,15 +30,15 @@ Klipper beinhaltet ein Tool `scripts/whconsole.py`, das die oben genannte Meldun
 
 This tool can read a series of JSON commands from stdin, send them to Klipper, and report the results. The tool expects each JSON command to be on a single line, and it will automatically append the 0x03 terminator when transmitting a request. (The Klipper API server does not have a newline requirement.)
 
-## API Protocol
+## API Protokoll
 
 The command protocol used on the communication socket is inspired by [json-rpc](https://www.jsonrpc.org/).
 
-A request might look like:
+Eine Anfrage könnte wie folgt aussehen:
 
 `{"id": 123, "method": "info", "params": {}}`
 
-and a response might look like:
+und eine Antwort könnte wie folgt aussehen:
 
 `{"id": 123, "result": {"state_message": "Printer is ready", "klipper_path": "/home/pi/klipper", "config_file": "/home/pi/printer.cfg", "software_version": "v0.8.0-823-g883b1cb6", "hostname": "octopi", "cpu_info": "4 core ARMv7 Processor rev 4 (v7l)", "state": "ready", "python_path": "/home/pi/klippy-env/bin/python", "log_file": "/tmp/klippy.log"}}`
 
@@ -58,11 +58,11 @@ Klipper will always start processing requests in the order that they are receive
 
 Some Klipper "endpoint" requests allow one to "subscribe" to future asynchronous update messages.
 
-For example:
+Zum Beispiel:
 
 `{"id": 123, "method": "gcode/subscribe_output", "params": {"response_template":{"key": 345}}}`
 
-may initially respond with:
+kann anfänglich reagieren mit:
 
 `{"id": 123, "result": {}}`
 
@@ -72,7 +72,7 @@ and cause Klipper to send future messages similar to:
 
 A subscription request accepts a "response_template" dictionary in the "params" field of the request. That "response_template" dictionary is used as a template for future asynchronous messages - it may contain arbitrary key/value pairs. When sending these future asynchronous messages, Klipper will add a "params" field containing a dictionary with "endpoint" specific contents to the response template and then send that template. If a "response_template" field is not provided then it defaults to an empty dictionary (`{}`).
 
-## Available "endpoints"
+## Verfügbare "Endpunkte"
 
 By convention, Klipper "endpoints" are of the form `<module_name>/<some_name>`. When making a request to an "endpoint", the full name must be set in the "method" parameter of the request dictionary (eg, `{"method"="gcode/restart"}`).
 

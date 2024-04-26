@@ -10,6 +10,8 @@ A túllendülés a végállást figyelő mikrovezérlő és a léptetőmotorokat
 
 A léptetőmotor túllendülése nem befolyásolhatja hátrányosan az alaphelyzetbe állítási és tapintási eljárás pontosságát. A Klipper kód észleli a túllendülést, és számításai során figyelembe veszi azt. Fontos azonban, hogy a hardvertervezés képes legyen kezelni a túllendülést anélkül, hogy a gépben kárt okozna.
 
-Ha a Klipper kommunikációs problémát észlel a mikrovezérlők között a multi-mcu homing során, akkor egy "Kommunikációs időkiesés a kezdőpont felvétel során" hibát jelez.
+Ahhoz, hogy ezt a "multi-mcu homing" képességet használni lehessen, a hardvernek kiszámíthatóan alacsony késleltetéssel kell rendelkeznie a központi számítógép és az összes mikrovezérlő között. Általában az átfutási időnek következetesen 10ms-nél kisebbnek kell lennie. A nagy késleltetés (még rövid ideig is) valószínűleg hibás kezdőpont felvételt eredményez.
+
+Ha a nagy késleltetés hibát eredményez (vagy más kommunikációs problémát észlel), akkor a Klipper a "Kommunikációs időkiesés az indítás során" hibát jelzi.
 
 Vedd figyelembe, hogy a több léptetővel rendelkező tengelyeknek (pl. `stepper_z` és `stepper_z1`) ugyanazon a mikrokontrolleren kell lenniük a multi-mcu homing használatához. Például, ha egy végállás a `stepper_z` mikrokontrollertől külön mikrokontrolleren van, akkor a `stepper_z1`-nek ugyanazon a mikrokontrolleren kell lennie, mint a `stepper_z`.

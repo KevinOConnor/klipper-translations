@@ -10,6 +10,8 @@ Dus, bijvoorbeeld bij een home-snelheid van 10 mm/s is er een mogelijke overshoo
 
 Overshoot van stappenmotors zullen niet veel impact hebben op de nauwkeurigheid van het homen en proben. De Klipper-code meet de overshoot en compenseert hiervoor in de berekeningen. Belangrijk is wel dat de hardware deze overshoot op kan vangen zonder schade te veroorzaken.
 
-Als Klipper een communicatiefout heeft tussen de microcontrollers tijdens multi-mcu homen, dan geeft het de error "Communication timeout during homing".
+In order to use this "multi-mcu homing" capability the hardware must have predictably low latency between the host computer and all of the micro-controllers. Typically the round-trip time must be consistently less than 10ms. High latency (even for short periods) is likely to result in homing failures.
+
+Should high latency result in a failure (or if some other communication issue is detected) then Klipper will raise a "Communication timeout during homing" error.
 
 Let op dat een as met meerdere stappenmotors (bijv. `stepper_z` en `stepper_z1`) op dezelfde microcontroller aangesloten moeten zijn voor het multi-mcu homen. Als bijvoorbeeld een endstop op een andere microcontroller dan `stepper_z` aangesloten is, dan moet `stepper_z1` op dezelfde microcontroller als `z_stepper` aangesloten zijn.

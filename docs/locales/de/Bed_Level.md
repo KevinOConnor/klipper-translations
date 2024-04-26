@@ -1,4 +1,4 @@
-# Bed leveling
+# Bett Nivellierung
 
 Die Bettnivellierung (auch als "Bettbewegung" bezeichnet) ist entscheidend, um qualitativ hochwertige Drucke zu erhalten. Wenn ein Bett nicht richtig "nivelliert" ist, kann dies zu schlechter Betthaftung, "Verziehen" und subtilen Problemen während des gesamten Drucks führen. Dieses Dokument dient als Leitfaden für die Durchführung der Bettnivellierung in Klipper.
 
@@ -84,7 +84,7 @@ The exact amount of friction felt isn't crucial, just as the amount of thermal e
 
 If something goes wrong during the test, one can use the `ABORT` command to exit the calibration tool.
 
-## Determining Thermal Expansion
+## Ermittlung der thermischen Ausdehnung
 
 After successfully performing bed leveling, one may go on to calculate a more precise value for the combined impact of "thermal expansion", "thickness of the paper", and "amount of friction felt during the paper test".
 

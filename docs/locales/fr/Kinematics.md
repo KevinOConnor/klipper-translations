@@ -52,17 +52,21 @@ Formule clé pour la projection :
 end_velocity^2 = start_velocity^2 + 2*accel*move_distance
 ```
 
-### Lissage de la projection
+### Minimum cruise ratio
 
 Klipper met également en œuvre un mécanisme permettant de lisser les mouvements de courts déplacements en "zigzag". Considérons les mouvements suivants :
 
 ![zigzag](img/zigzag.svg.png)
 
-Dans l'exemple ci-dessus, les passages fréquents de l'accélération à la décélération peuvent faire vibrer la machine provoquant des contraintes sur la machine et augmentant le bruit. Pour réduire ce phénomène, Klipper suit à la fois l'accélération des mouvements réguliers et un taux virtuel "d'accélération à décélération". Grâce à ce système, la vitesse maximale de ces courts mouvements en "zigzag" est limitée pour lisser le mouvement de l'imprimante :
+In the above, the frequent changes from acceleration to deceleration can cause the machine to vibrate which causes stress on the machine and increases the noise. Klipper implements a mechanism to ensure there is always some movement at a cruising speed between acceleration and deceleration. This is done by reducing the top speed of some moves (or sequence of moves) to ensure there is a minimum distance traveled at cruising speed relative to the distance traveled during acceleration and deceleration.
+
+Klipper implements this feature by tracking both a regular move acceleration as well as a virtual "acceleration to deceleration" rate:
 
 ![smoothed](img/smoothed.svg.png)
 
-Plus précisément, le code calcule ce que serait la vitesse de chaque mouvement s'il était limité à ce taux virtuel "d'accélération à décélération" (la moitié du taux d'accélération normal par défaut). Dans l'image ci-dessus, les lignes grises en pointillés représentent ce taux d'accélération virtuel pour le premier déplacement. Si un déplacement ne peut atteindre sa vitesse de croisière maximale en utilisant ce taux d'accélération virtuel, sa vitesse maximale est réduite à la vitesse maximale obtenu avec ce taux d'accélération virtuel. Pour la plupart des mouvements, la limite sera égale ou supérieure aux limites existantes du mouvement et aucun changement de comportement n'est induit. En revanche, pour les déplacements courts en zigzag, cette limite réduit la vitesse maximale. Notez que cela ne modifie pas l'accélération réelle du mouvement - le mouvement continue d'utiliser le schéma d'accélération normal jusqu'à sa vitesse maximale ajustée.
+Specifically, the code calculates what the velocity of each move would be if it were limited to this virtual "acceleration to deceleration" rate. In the above picture the dashed gray lines represent this virtual acceleration rate for the first move. If a move can not reach its full cruising speed using this virtual acceleration rate then its top speed is reduced to the maximum speed it could obtain at this virtual acceleration rate.
+
+For most moves the limit will be at or above the move's existing limits and no change in behavior is induced. For short zigzag moves, however, this limit reduces the top speed. Note that it does not change the actual acceleration within the move - the move continues to use the normal acceleration scheme up to its adjusted top-speed.
 
 ## Étapes de la génération
 

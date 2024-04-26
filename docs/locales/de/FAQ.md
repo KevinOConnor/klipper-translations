@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# Häufig gestellte Fragen
 
 ## Wie kann ich für das Projekt spenden?
 
@@ -6,7 +6,7 @@ Thank you for your support. See the [Sponsors page](Sponsors.md) for information
 
 ## Wie berechne ich den Konfigurationsparameter rotation_distance?
 
-Siehe das Dokument [Rotationsabstand](Rotation_Distance.md).
+Siehe das Dokument [rotation distance document](Rotation_Distance.md).
 
 ## Wo ist meine serielle Schnittstelle?
 
@@ -94,7 +94,7 @@ One can run multiple instances of the above command as long as each instance has
 
 If you choose to do this, you will need to implement the necessary start, stop, and installation scripts (if any). The [install-octopi.sh](../scripts/install-octopi.sh) script and the [klipper-start.sh](../scripts/klipper-start.sh) script may be useful as examples.
 
-## Do I have to use OctoPrint?
+## Muss ich OctoPrint benutzen?
 
 The Klipper software is not dependent on OctoPrint. It is possible to use alternative software to send commands to Klipper, but doing so requires Linux admin knowledge.
 
@@ -134,7 +134,7 @@ This is commonly caused by hardware errors on the USB connection between the hos
 - Verify stepper, heater, and other printer wires are not crimped or frayed. (Printer movement may place stress on a faulty wire causing it to lose contact, briefly short, or generate excessive noise.)
 - There have been reports of high USB noise when both the printer's power supply and the host's 5V power supply are mixed. (If you find that the micro-controller powers on when either the printer's power supply is on or the USB cable is plugged in, then it indicates the 5V power supplies are being mixed.) It may help to configure the micro-controller to use power from only one source. (Alternatively, if the micro-controller board can not configure its power source, one may modify a USB cable so that it does not carry 5V power between the host and micro-controller.)
 
-## My Raspberry Pi keeps rebooting during prints
+## Mein Raspberry Pi startet während des Druckens immer wieder neu
 
 This is most likely do to voltage fluctuations. Follow the same troubleshooting steps for a ["Lost communication with MCU"](#i-keep-getting-random-lost-communication-with-mcu-errors) error.
 
@@ -200,7 +200,7 @@ Long answer: Klipper has been engineered to automatically workaround many transi
 
 There are some related questions: Why doesn't Klipper pause the print instead? Report a warning instead? Check for errors before the print? Ignore errors in user typed commands? etc? Currently Klipper reads commands using the G-Code protocol, and unfortunately the G-Code command protocol is not flexible enough to make these alternatives practical today. There is developer interest in improving the user experience during abnormal events, but it is expected that will require notable infrastructure work (including a shift away from G-Code).
 
-## How do I upgrade to the latest software?
+## Wie kann ich ein Upgrade auf die neueste Softwareversion durchführen?
 
 The first step to upgrading the software is to review the latest [config changes](Config_Changes.md) document. On occasion, changes are made to the software that require users to update their settings as part of a software upgrade. It is a good idea to review this document prior to upgrading.
 
@@ -238,7 +238,7 @@ If any errors persist then double check the [config changes](Config_Changes.md) 
 
 Note that the RESTART and FIRMWARE_RESTART g-code commands do not load new software - the above "sudo service klipper restart" and "make flash" commands are needed for a software change to take effect.
 
-## How do I uninstall Klipper?
+## Wie deinstalliere ich Klipper?
 
 On the firmware end, nothing special needs to happen. Just follow the flashing directions for the new firmware.
 

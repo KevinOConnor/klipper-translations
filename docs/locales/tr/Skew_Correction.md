@@ -1,6 +1,6 @@
 # Skew correction
 
-Software based skew correction can help resolve dimensional inaccuracies resulting from a printer assembly that is not perfectly square. Note that if your printer is significantly skewed it is strongly recommended to first use mechanical means to get your printer as square as possible prior to applying software based correction.
+azılım tabanlı eğrilik düzeltme, tam olarak kare olmayan bir yazıcı mekanizmasından kaynaklanan boyutsal hataları gidermeye yardımcı olabilir. Ancak, yazıcınız önemli ölçüde eğriyse, yazılım tabanlı düzeltme işlemine başlamadan önce yazıcınızı mümkün olduğunca kare hale getirmek için mekanik yöntemler kullanmanız önemle tavsiye edilir.
 
 ## Print a Calibration Object
 
@@ -10,7 +10,7 @@ Make sure that no skew correction is applied during this print. You may do this 
 
 ## Take your measurements
 
-The `[skew_correcton]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
+The `[skew_correction]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
 
 ![skew_lengths](img/skew_lengths.png)
 

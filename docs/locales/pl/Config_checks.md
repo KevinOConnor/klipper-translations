@@ -6,7 +6,7 @@ Podczas tego przewodnika może być konieczne wprowadzenie zmian w pliku konfigu
 
 ## Sprawdź temperaturę
 
-Start by verifying that temperatures are being properly reported. Navigate to the temperature graph section in the user interface. Verify that the temperature of the nozzle and bed (if applicable) are present and not increasing. If it is increasing, remove power from the printer. If the temperatures are not accurate, review the "sensor_type" and "sensor_pin" settings for the nozzle and/or bed.
+Zacznij sprawdzając czy temperatury są poprawnie odczytywane. Przejdź do wykresu temperatur w interfejsie. Sprawdź czy temperatura dyszy i stołu grzewczego (jeżeli owy posiadamy) są odczytywane i nie wzrastają. Jeżeli wzrastają, odłącz drukarkę od prądu. Jeżeli temperatury nie są dokładne, sprawdź ustawienie "sensor_type" i "sensor_pin" dla dyszy i/lub stołu grzewczego.
 
 ## Sprawdź M112
 

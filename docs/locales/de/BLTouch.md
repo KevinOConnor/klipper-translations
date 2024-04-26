@@ -48,7 +48,7 @@ This may happen if its calibration is interrupted by the probe being blocked fro
 
 However, the BL-Touch may also not be able to calibrate itself anymore. This happens if the screw on its top is in the wrong position or the magnetic core inside the probe pin has moved. If it has moved up so that it sticks to the screw, it may not be able to lower its pin anymore. With this behavior you need to open the screw and use a ball-point pen to push it gently back into place. Re-Insert the pin into the BL-Touch so that it falls into the extracted position. Carefully readjust the headless screw into place. You need to find the right position so it is able to lower and raise the pin and the red light turns on and of. Use the `reset`, `pin_up` and `pin_down` commands to achieve this.
 
-## BL-Touch "clones"
+## BL-Touch "Nachbauten"
 
 Many BL-Touch "clone" devices work correctly with Klipper using the default configuration. However, some "clone" devices may not support the `QUERY_PROBE` command and some "clone" devices may require configuration of `pin_up_reports_not_triggered` or `pin_up_touch_mode_reports_triggered`.
 
@@ -80,13 +80,13 @@ Important! It is recommended to use `probe_with_touch_mode` configured to True w
 
 Note, however, that some "clone" devices and the BL-Touch v2.0 (and earlier) may have reduced accuracy when `probe_with_touch_mode` is set to True. On these devices it is a good idea to test the probe accuracy before and after setting `probe_with_touch_mode` (use the `PROBE_ACCURACY` command to test).
 
-## Calibrating the BL-Touch offsets
+## Kalibrierung des BL-Touch Offsets
 
 Follow the directions in the [Probe Calibrate](Probe_Calibrate.md) guide to set the x_offset, y_offset, and z_offset config parameters.
 
 It's a good idea to verify that the Z offset is close to 1mm. If not, then you probably want to move the probe up or down to fix this. You want it to trigger well before the nozzle hits the bed, so that possible stuck filament or a warped bed doesn't affect any probing action. But at the same time, you want the retracted position to be as far above the nozzle as possible to avoid it touching printed parts. If an adjustment is made to the probe position, then rerun the probe calibration steps.
 
-## BL-Touch output mode
+## BL-Touch Ausgabemodus
 
 
    * A BL-Touch V3.0 supports setting a 5V or OPEN-DRAIN output mode, a BL-Touch V3.1 supports this too, but can also store this in its internal EEPROM. If your controller board needs the fixed 5V high logic level of the 5V mode you may set the 'set_output_mode' parameter in the [bltouch] section of the printer config file to "5V".*** Only use the 5V mode if your controller boards input line is 5V tolerant. This is why the default configuration of these BL-Touch versions is OPEN-DRAIN mode. You could potentially damage your controller boards CPU ***

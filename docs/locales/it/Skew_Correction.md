@@ -10,7 +10,7 @@ Assicurarsi che durante questa stampa non venga applicata alcuna correzione dell
 
 ## Prendi le tue misure
 
-Il modulo `[skew_correcton]` richiede 3 misurazioni per ogni piano che vuoi correggere; la lunghezza dall'angolo A all'angolo C, la lunghezza dall'angolo B all'angolo D e la lunghezza dall'angolo A all'angolo D. Quando si misura la lunghezza AD non includere i piani sugli angoli forniti da alcuni oggetti di prova.
+The `[skew_correction]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
 
 ![skew_lengths](img/skew_lengths.png)
 

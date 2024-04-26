@@ -1,4 +1,4 @@
-# RPi microcontroller
+# RPi Mikrocontroller
 
 Dieses Dokument beschreibt den Prozess, Klipper auf einem Raspberry Pi laufen zu lassen und denselben Raspberry Pi als sekundäre Steuerung zu verwenden.
 
@@ -6,13 +6,13 @@ Dieses Dokument beschreibt den Prozess, Klipper auf einem Raspberry Pi laufen zu
 
 Often the MCUs dedicated to controlling 3D printers have a limited and pre-configured number of exposed pins to manage the main printing functions (thermal resistors, extruders, steppers ...). Using the RPi where Klipper is installed as a secondary MCU gives the possibility to directly use the GPIOs and the buses (i2c, spi) of the RPi inside klipper without using Octoprint plugins (if used) or external programs giving the ability to control everything within the print GCODE.
 
-**Warning**: If your platform is a *Beaglebone* and you have correctly followed the installation steps, the linux mcu is already installed and configured for your system.
+**Warnung**: Wenn Ihre Plattform ein *Beaglebone* ist und Sie die Installationsschritte korrekt befolgt haben, ist die Linux-MCU bereits installiert und für Ihr System konfiguriert.
 
-## Install the rc script
+## Installieren Sie das rc Skript
 
-If you want to use the host as a secondary MCU the klipper_mcu process must run before the klippy process.
+Wenn Sie den Host als sekundäre MCU verwenden wollen, muss der klipper_mcu Prozess vor dem klippy Prozess laufen.
 
-After installing Klipper, install the script. run:
+Nach der Installation von Klipper installieren Sie das Skript. Führen sie dafür folgenden Befehl aus:
 
 ```
 cd ~/klipper/
@@ -22,14 +22,14 @@ sudo systemctl enable klipper-mcu.service
 
 ## Building the micro-controller code
 
-To compile the Klipper micro-controller code, start by configuring it for the "Linux process":
+Um den Code des Klipper Mikrocontrollers zu kompilieren, müssen Sie ihn zunächst für den "Linux-Prozess" konfigurieren:
 
 ```
 cd ~/klipper/
 make menuconfig
 ```
 
-In the menu, set "Microcontroller Architecture" to "Linux process," then save and exit.
+Stellen Sie im Menü "Microcontroller Architecture" auf "Linux process", speichern und beenden Sie das Programm.
 
 To build and install the new micro-controller code, run:
 
@@ -39,51 +39,51 @@ make flash
 sudo service klipper start
 ```
 
-If klippy.log reports a "Permission denied" error when attempting to connect to `/tmp/klipper_host_mcu` then you need to add your user to the tty group. The following command will add the "pi" user to the tty group:
+Wenn klippy.log einen "Permission denied" Fehler meldet, wenn Sie versuchen, sich mit `/tmp/klipper_host_mcu` zu verbinden, dann müssen Sie Ihren Benutzer zu der tty Gruppe hinzufügen. Der folgende Befehl fügt den Benutzer "pi" zur tty Gruppe hinzu:
 
 ```
 sudo usermod -a -G tty pi
 ```
 
-## Remaining configuration
+## Restliche Konfiguration
 
-Complete the installation by configuring Klipper secondary MCU following the instructions in [RaspberryPi sample config](../config/sample-raspberry-pi.cfg) and [Multi MCU sample config](../config/sample-multi-mcu.cfg).
+Schließen Sie die Installation ab, indem Sie die sekundäre Klipper MCU gemäß den Anweisungen in [RaspberryPi sample config](../config/sample-raspberry-pi.cfg) und [Multi MCU sample config](../config/sample-multi-mcu.cfg) konfigurieren.
 
-## Optional: Enabling SPI
+## Optional: SPI aktivieren
 
-Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and enabling SPI under the "Interfacing options" menu.
+Vergewissern Sie sich, dass der Linux-SPI-Treiber aktiviert ist, indem Sie `sudo raspi-config` ausführen und SPI im Menü "Interfacing options" aktivieren.
 
-## Optional: Enabling I2C
+## Optional: I2C aktivieren
 
-Make sure the Linux I2C driver is enabled by running `sudo raspi-config` and enabling I2C under the "Interfacing options" menu. If planning to use I2C for the MPU accelerometer, it is also required to set the baud rate to 400000 by: adding/uncommenting `dtparam=i2c_arm=on,i2c_arm_baudrate=400000` in `/boot/config.txt` (or `/boot/firmware/config.txt` in some distros).
+Stellen Sie sicher, dass der Linux I2C-Treiber aktiviert ist, indem Sie `sudo raspi-config` ausführen und I2C im Menü "Interfacing options" aktivieren. Wenn Sie I2C für den MPU Beschleunigungsmesser verwenden möchten, müssen Sie auch die Baudrate auf 400000 einstellen, indem Sie `dtparam=i2c_arm=on,i2c_arm_baudrate=400000` in `/boot/config.txt` (oder `/boot/firmware/config.txt` in einigen Distributionen) hinzufügen/entfernen.
 
-## Optional: Identify the correct gpiochip
+## Optional: Den richtigen Gpiochip identifizieren
 
 On Raspberry Pi and on many clones the pins exposed on the GPIO belong to the first gpiochip. They can therefore be used on klipper simply by referring them with the name `gpio0..n`. However, there are cases in which the exposed pins belong to gpiochips other than the first. For example in the case of some OrangePi models or if a Port Expander is used. In these cases it is useful to use the commands to access the *Linux GPIO character device* to verify the configuration.
 
-To install the *Linux GPIO character device - binary* on a debian based distro like octopi run:
+Um das *Linux GPIO character device - binary* auf einer debian basierten Distribution wie octopi zu installieren, führen Sie aus:
 
 ```
 sudo apt-get install gpiod
 ```
 
-To check available gpiochip run:
+Um den verfügbaren gpiochip zu testen, führen Sie aus:
 
 ```
 gpiodetect
 ```
 
-To check the pin number and the pin availability tun:
+Überprüfen Sie die Pin Nummer und die Verfügbarkeit der Pins:
 
 ```
 gpioinfo
 ```
 
-The chosen pin can thus be used within the configuration as `gpiochip<n>/gpio<o>` where **n** is the chip number as seen by the `gpiodetect` command and **o** is the line number seen by the`gpioinfo` command.
+Der gewählte Pin kann also in der Konfiguration als `gpiochip<n>/gpio<o>` verwendet werden, wobei **n** die Chipnummer ist, die der Befehl `gpiodetect` anzeigt und **o** die Leitungsnummer, die der Befehl `gpioinfo` anzeigt.
 
-***Warning:*** only gpio marked as `unused` can be used. It is not possible for a *line* to be used by multiple processes simultaneously.
+***Warnung:*** nur als `unused` markierte gpio können verwendet werden. Es ist nicht möglich, dass eine *Leitung* von mehreren Prozessen gleichzeitig verwendet wird.
 
-For example on a RPi 3B+ where klipper use the GPIO20 for a switch:
+Zum Beispiel auf einem RPi 3B+, wo Klipper den GPIO20 für einen Schalter verwendet:
 
 ```
 $ gpiodetect
@@ -159,38 +159,38 @@ gpiochip1 - 8 lines:
 
 ## Optional: Hardware PWM
 
-Raspberry Pi's have two PWM channels (PWM0 and PWM1) which are exposed on the header or if not, can be routed to existing gpio pins. The Linux mcu daemon uses the pwmchip sysfs interface to control hardware pwm devices on Linux hosts. The pwm sysfs interface is not exposed by default on a Raspberry and can be activated by adding a line to `/boot/config.txt`:
+Raspberry Pi's haben zwei PWM Kanäle (PWM0 und PWM1), die auf dem Header freigelegt sind oder, falls nicht, auf bestehende gpio Pins geroutet werden können. Der Linux mcu Daemon verwendet die pwmchip sysfs Schnittstelle, um Hardware PWM-Geräte auf Linux Hosts zu steuern. Die pwm sysfs Schnittstelle ist auf einem Raspberry standardmäßig nicht verfügbar und kann durch Hinzufügen einer Zeile in `/boot/config.txt` aktiviert werden:
 
 ```
-# Enable pwmchip sysfs interface
+# Aktivieren der pwmchip sysfs Schnittstelle
 dtoverlay=pwm,pin=12,func=4
 ```
 
-This example enables only PWM0 and routes it to gpio12. If both PWM channels need to be enabled you can use `pwm-2chan`:
+Dieses Beispiel aktiviert nur PWM0 und leitet es an gpio12. Wenn beide PWM-Kanäle aktiviert werden müssen, können Sie `pwm-2chan` verwenden:
 
 ```
-# Enable pwmchip sysfs interface
+# Aktivieren der pwmchip sysfs Schnittstelle
 dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4
 ```
 
-This example additionally enables PWM1 and routes it to gpio13.
+In diesem Beispiel wird zusätzlich PWM1 aktiviert und an gpio13 geleitet.
 
-The overlay does not expose the pwm line on sysfs on boot and needs to be exported by echo'ing the number of the pwm channel to `/sys/class/pwm/pwmchip0/export`. This will create device `/sys/class/pwm/pwmchip0/pwm0` in the filesystem. The easiest way to do this is by adding this to `/etc/rc.local` before the `exit 0` line:
+Das Overlay legt die pwm Zeile auf sysfs beim Booten nicht frei und muss durch Echo'ing der Nummer des pwm Kanals nach '/sys/class/pwm/pwmchip0/export' exportiert werden. Dadurch wird das Gerät '/sys/class/pwm/pwmchip0/pwm0' im Dateisystem erstellt. Der einfachste Weg, dies zu tun, ist, indem Folgendes, vor die Zeile 'exit 0' in der datei '/etc/rc.local' eingefügt wird:
 
 ```
-# Enable pwmchip sysfs interface
+# Aktivieren der pwmchip sysfs Schnittstelle
 echo 0 > /sys/class/pwm/pwmchip0/export
 ```
 
-When using both PWM channels, the number of the second channel needs to be echo'd as well:
+Wenn Sie beide PWM Kanäle verwenden, muss die Nummer des zweiten Kanals ebenfalls mit einem Echo versehen werden:
 
 ```
-# Enable pwmchip sysfs interface
+# Aktivieren der pwmchip sysfs Schnittstelle
 echo 0 > /sys/class/pwm/pwmchip0/export
 echo 1 > /sys/class/pwm/pwmchip0/export
 ```
 
-With the sysfs in place, you can now use either the pwm channel(s) by adding the following piece of configuration to your `printer.cfg`:
+Nachdem die sysfs eingerichtet ist, können Sie nun entweder den/die pwm-Kanal/Kanäle verwenden, indem Sie den folgenden Teil der Konfiguration zu Ihrer `printer.cfg` hinzufügen:
 
 ```
 [output_pin caselight]
@@ -208,9 +208,9 @@ shutdown_value: 0
 cycle_time: 0.0005
 ```
 
-This will add hardware pwm control to gpio12 and gpio13 on the Pi (because the overlay was configured to route pwm0 to pin=12 and pwm1 to pin=13).
+Dies fügt Hardware Pwm-Steuerung zu gpio12 und gpio13 auf dem Pi hinzu (weil das Overlay so konfiguriert wurde, dass pwm0 zu pin=12 und pwm1 zu pin=13 geleitet wird).
 
-PWM0 can be routed to gpio12 and gpio18, PWM1 can be routed to gpio13 and gpio19:
+PWM0 kann auf gpio12 und gpio18 geroutet werden, PWM1 kann auf gpio13 und gpio19 geroutet werden:
 
 | PWM | gpio PIN | Func |
 | --- | --- | --- |

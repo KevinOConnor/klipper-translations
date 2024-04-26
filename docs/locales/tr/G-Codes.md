@@ -2,7 +2,7 @@
 
 Bu doküman Klipper'ın desteklediği komutları tarif etmektedir. Bu komutlar, OctoPrint terminal sekmesine girilebilecek komutlardır.
 
-## G-Code commands
+## G Kodu komutları
 
 Klipper aşağıdaki standart G-Kodu komutlarını destekler:
 
@@ -79,13 +79,22 @@ The following commands are available when an [angle config section](Config_Refer
 
 `ANGLE_DEBUG_WRITE CHIP=<config_name> REG=<register> VAL=<value>`: Writes raw "value" into register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to sensor data sheet for the reference. This is only available for tle5012b chips.
 
+### [axis_twist_compensation]
+
+The following commands are available when the [axis_twist_compensation config
+section](Config_Reference.md#axis_twist_compensation) is enabled.
+
+#### AXIS_TWIST_COMPENSATION_CALIBRATE
+
+`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Initiates the X twist calibration wizard. `SAMPLE_COUNT` specifies the number of points along the X axis to calibrate at and defaults to 3.
+
 ### [bed_mesh]
 
 The following commands are available when the [bed_mesh config section](Config_Reference.md#bed_mesh) is enabled (also see the [bed mesh guide](Bed_Mesh.md)).
 
 #### BED_MESH_CALIBRATE
 
-`BED_MESH_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>]`: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file.
+`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file. If ADAPTIVE=1 is specified then the objects defined by the Gcode file being printed will be used to define the probed area. The optional `ADAPTIVE_MARGIN` value overrides the `adaptive_margin` option specified in the config file.
 
 #### BED_MESH_OUTPUT
 
@@ -105,7 +114,7 @@ The following commands are available when the [bed_mesh config section](Config_R
 
 #### BED_MESH_OFFSET
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>]`: Applies X and/or Y offsets to the mesh lookup. This is useful for printers with independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change.
+`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value]`: Applies X, Y, and/or ZFADE offsets to the mesh lookup. This is useful for printers with independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change. Note that a ZFADE offset does not apply additional z-adjustment directly, it is used to correct the `fade` calculation when a `gcode offset` has been applied to the Z axis.
 
 ### [bed_screws]
 
@@ -261,14 +270,6 @@ The following commands are available if an [extruder config section](Config_Refe
 #### SYNC_EXTRUDER_MOTION
 
 `SYNC_EXTRUDER_MOTION EXTRUDER=<name> MOTION_QUEUE=<name>`: This command will cause the stepper specified by EXTRUDER (as defined in an [extruder](Config_Reference.md#extruder) or [extruder_stepper](Config_Reference.md#extruder_stepper) config section) to become synchronized to the movement of an extruder specified by MOTION_QUEUE (as defined in an [extruder](Config_Reference.md#extruder) config section). If MOTION_QUEUE is an empty string then the stepper will be desynchronized from all extruder movement.
-
-#### SET_EXTRUDER_STEP_DISTANCE
-
-Bu komut kullanımdan kaldırılmıştır ve yakın zamanda silinecektir.
-
-#### SYNC_STEPPER_TO_EXTRUDER
-
-Bu komut kullanımdan kaldırılmıştır ve yakın zamanda silinecektir.
 
 ### [fan_generic]
 
@@ -496,9 +497,7 @@ The following command is available when an [output_pin config section](Config_Re
 
 #### SET_PIN
 
-`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: Set the pin to the given output `VALUE`. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is configured in the output_pin config section.
-
-Some pins (currently only "soft PWM" pins) support setting an explicit cycle time using the CYCLE_TIME parameter (specified in seconds). Note that the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN command without an explicit CYCLE_TIME parameter will use the `cycle_time` specified in the output_pin config section).
+`SET_PIN PIN=config_name VALUE=<value>`: Set the pin to the given output `VALUE`. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is configured in the output_pin config section.
 
 ### [palette2]
 
@@ -589,6 +588,14 @@ The following commands are available when a [probe config section](Config_Refere
 #### Z_OFFSET_APPLY_PROBE
 
 `Z_OFFSET_APPLY_PROBE`: Take the current Z Gcode offset (aka, babystepping), and subtract if from the probe's z_offset. This acts to take a frequently used babystepping value, and "make it permanent". Requires a `SAVE_CONFIG` to take effect.
+
+### [pwm_cycle_time]
+
+The following command is available when a [pwm_cycle_time config section](Config_Reference.md#pwm_cycle_time) is enabled.
+
+#### SET_PIN
+
+`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: This command works similarly to [output_pin](#output_pin) SET_PIN commands. The command here supports setting an explicit cycle time using the CYCLE_TIME parameter (specified in seconds). Note that the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN command without an explicit CYCLE_TIME parameter will use the `cycle_time` specified in the pwm_cycle_time config section).
 
 ### [query_adc]
 
@@ -755,7 +762,7 @@ Takım kafası modülü otomatik olarak yüklendi.
 
 #### SET_VELOCITY_LIMIT
 
-`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] [ACCEL_TO_DECEL=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: Modify the printer's velocity limits.
+`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] [MINIMUM_CRUISE_RATIO=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: This command can alter the velocity limits that were specified in the printer config file. See the [printer config section](Config_Reference.md#printer) for a description of each parameter.
 
 ### [tuning_tower]
 
@@ -790,15 +797,6 @@ In addition, the following extended commands are available when the "virtual_sdc
 #### SDCARD_RESET_FILE
 
 `SDCARD_RESET_FILE`: Unload file and clear SD state.
-
-### [axis_twist_compensation]
-
-The following commands are available when the [axis_twist_compensation config
-section](Config_Reference.md#axis_twist_compensation) is enabled.
-
-#### AXIS_TWIST_COMPENSATION_CALIBRATE
-
-`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Initiates the X twist calibration wizard. `SAMPLE_COUNT` specifies the number of points along the X axis to calibrate at and defaults to 3.
 
 ### [z_thermal_adjust]
 

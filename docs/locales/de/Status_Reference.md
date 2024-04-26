@@ -1,4 +1,4 @@
-# Status reference
+# Statusreferenz
 
 Dieses Dokument ist eine Referenz für Druckerstatusinformationen, die in Klipper [Makros](Command_Templates.md), [Anzeigefelder](Config_Reference.md#display) und über den [API-Server](API_Server.md) verfügbar sind.
 
@@ -56,7 +56,7 @@ The following information is available in the [endstop_phase](Config_Reference.m
 The following information is available in the [exclude_object](Exclude_Object.md) object:
 
 
-   - `objects`: An array of the known objects as provided by the `EXCLUDE_OBJECT_DEFINE` command. This is the same information provided by the `EXCLUDE_OBJECT VERBOSE=1` command. The `center` and `polygon` fields will only be present if provided in the original `EXCLUDE_OBJECT_DEFINE`Here is a JSON sample:
+   - `objects`: An array of the known objects as provided by the `EXCLUDE_OBJECT_DEFINE` command. This is the same information provided by the `EXCLUDE_OBJECT VERBOSE=1` command. The `center` and `polygon` fields will only be present if provided in the original `EXCLUDE_OBJECT_DEFINE`Hier ist eine JSON Beispiel:
 
 ```
 [
@@ -90,7 +90,7 @@ The following information is available in the [exclude_object](Exclude_Object.md
 
 The following information is available for extruder_stepper objects (as well as [extruder](Config_Reference.md#extruder) objects):
 
-- `pressure_advance`: The current [pressure advance](Pressure_Advance.md) value.
+- `pressure_advance`: Der aktuelle [pressure advance](Pressure_Advance.md) Wert.
 - `smooth_time`: The current pressure advance smooth time.
 - `motion_queue`: The name of the extruder that this extruder stepper is currently synchronized to. This is reported as `None` if the extruder stepper is not currently associated with an extruder.
 
@@ -131,7 +131,7 @@ The following information is available in [gcode_button some_name](Config_Refere
 
 The following information is available in [gcode_macro some_name](Config_Reference.md#gcode_macro) objects:
 
-- `<variable>`: The current value of a [gcode_macro variable](Command_Templates.md#variables).
+- `<variable>`: Der aktuelle Wert von [gcode_macro variable](Command_Templates.md#variables).
 
 ## gcode_move
 
@@ -200,7 +200,7 @@ The following information is available in [mcu](Config_Reference.md#mcu) and [mc
 - `mcu_version`: The Klipper code version reported by the micro-controller.
 - `mcu_build_versions`: Information on the build tools used to generate the micro-controller code (as reported by the micro-controller).
 - `mcu_constants.<constant_name>`: Compile time constants reported by the micro-controller. The available constants may differ between micro-controller architectures and with each code revision.
-- `last_stats.<statistics_name>`: Statistics information on the micro-controller connection.
+- `last_stats.<statistics_name>`: Statistikinformationen über die Mikrocontroller Verbindung.
 
 ## motion_report
 
@@ -246,6 +246,12 @@ The following information is available in the [probe](Config_Reference.md#probe)
 - `last_query`: Returns True if the probe was reported as "triggered" during the last QUERY_PROBE command. Note, if this is used in a macro, due to the order of template expansion, the QUERY_PROBE command must be run prior to the macro containing this reference.
 - `last_z_result`: Returns the Z result value of the last PROBE command. Note, if this is used in a macro, due to the order of template expansion, the PROBE (or similar) command must be run prior to the macro containing this reference.
 
+## pwm_cycle_time
+
+The following information is available in [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time) objects:
+
+- `value`: The "value" of the pin, as set by a `SET_PIN` command.
+
 ## quad_gantry_level
 
 The following information is available in the `quad_gantry_level` object (this object is available if quad_gantry_level is defined):
@@ -288,30 +294,30 @@ The following information is available in the `system_stats` object (this object
 
 - `sysload`, `cputime`, `memavail`: Information on the host operating system and process load.
 
-## temperature sensors
+## Temperatur Sensoren
 
-The following information is available in
+Folgende Informationen sind verfügbar in
 
 [bme280 config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), [lm75 config_section_name](Config_Reference.md#lm75-temperature-sensor), [temperature_host config_section_name](Config_Reference.md#host-temperature-sensor) and [temperature_combined config_section_name](Config_Reference.md#combined-temperature-sensor) objects:
 
-- `temperature`: The last read temperature from the sensor.
+- `temperature`: Die letzte vom Sensor gelesene Temperatur.
 - `humidity`, `pressure`, `gas`: The last read values from the sensor (only on bme280, htu21d, and lm75 sensors).
 
 ## temperature_fan
 
 The following information is available in [temperature_fan some_name](Config_Reference.md#temperature_fan) objects:
 
-- `temperature`: The last read temperature from the sensor.
-- `target`: The target temperature for the fan.
+- `temperature`: Die letzte vom Sensor gelesene Temperatur.
+- `target`: Die Zieltemperatur für den Lüfter.
 
 ## temperature_sensor
 
 The following information is available in [temperature_sensor some_name](Config_Reference.md#temperature_sensor) objects:
 
-- `temperature`: The last read temperature from the sensor.
+- `temperature`: Die letzte vom Sensor gelesene Temperatur.
 - `measured_min_temp`, `measured_max_temp`: The lowest and highest temperature seen by the sensor since the Klipper host software was last restarted.
 
-## tmc drivers
+## tmc treiber
 
 The following information is available in [TMC stepper driver](Config_Reference.md#tmc-stepper-driver-configuration) objects (eg, `[tmc2208 stepper_x]`):
 
@@ -319,8 +325,8 @@ The following information is available in [TMC stepper driver](Config_Reference.
 - `phase_offset_position`: The "commanded position" corresponding to the driver's "zero" phase. This field may be null if the phase offset is not known.
 - `drv_status`: The results of the last driver status query. (Only non-zero fields are reported.) This field will be null if the driver is not enabled (and thus is not periodically queried).
 - `temperature`: The internal temperature reported by the driver. This field will be null if the driver is not enabled or if the driver does not support temperature reporting.
-- `run_current`: The currently set run current.
-- `hold_current`: The currently set hold current.
+- `run_current`: Der aktuell eingestellte Betriebsstrom.
+- `hold_current`: Der aktuell eingestellte Haltestrom.
 
 ## toolhead
 
@@ -331,7 +337,7 @@ The following information is available in the `toolhead` object (this object is 
 - `homed_axes`: The current cartesian axes considered to be in a "homed" state. This is a string containing one or more of "x", "y", "z".
 - `axis_minimum`, `axis_maximum`: The axis travel limits (mm) after homing. It is possible to access the x, y, z components of this limit value (eg, `axis_minimum.x`, `axis_maximum.z`).
 - For Delta printers the `cone_start_z` is the max z height at maximum radius (`printer.toolhead.cone_start_z`).
-- `max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`: The current printing limits that are in effect. This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters them at run-time.
+- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: The current printing limits that are in effect. This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters them at run-time.
 - `stalls`: The total number of times (since the last restart) that the printer had to be paused because the toolhead moved faster than moves could be read from the G-Code input.
 
 ## dual_carriage
@@ -364,8 +370,8 @@ The following information is available in the `z_thermal_adjust` object (this ob
 
 - `enabled`: Returns True if adjustment is enabled.
 - `temperature`: Current (smoothed) temperature of the defined sensor. [degC]
-- `measured_min_temp`: Minimum measured temperature. [degC]
-- `measured_max_temp`: Maximum measured temperature. [degC]
+- `measured_min_temp`: Minimal gemessene Temperatur. [degC]
+- `measured_max_temp`: Maximal gemessene Temperatur. [degC]
 - `current_z_adjust`: Last computed Z adjustment [mm].
 - `z_adjust_ref_temperature`: Current reference temperature used for calculation of Z `current_z_adjust` [degC].
 

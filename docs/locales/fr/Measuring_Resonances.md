@@ -164,7 +164,7 @@ Notez que les mesures de résonance et l’auto-étalonnage de l'input shaper n�
 
 ```
 sudo apt update
-sudo apt install python3-numpy python3-matplotlib libatlas-base-dev
+sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev
 ```
 
 Ensuite, pour installer NumPy dans l’environnement Klipper, exécutez la commande :
@@ -535,6 +535,14 @@ Ensuite, si vous [réexécutez](#input-shaper-re-calibration) le réglage automa
 Vous pouvez également suivre [cette partie](Resonance_Compensation.md#selecting-max_accel) du guide de réglage du formateur d'entrée et imprimer un modèle de test pour choisir le paramètre `max_accel` de manière expérimentale.
 
 Même remarque pour l'[auto-calibration](#input-shaper-auto-calibration) du formateur d'entrée avec la commande `SHAPER_CALIBRATE` : il faut encore choisir la bonne valeur `max_accel` après l'auto-calibrage, notez que les limites d'accélérations suggérées ne sont pas appliquées automatiquement.
+
+Keep in mind that the maximum acceleration without too much smoothing depends on the `square_corner_velocity`. The general recommendation is not to change it from its default value 5.0, and this is the value used by default by the `calibrate_shaper.py` script. If you did change it though, you should inform the script about it by passing `--square_corner_velocity=...` parameter, e.g.
+
+```
+~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png --square_corner_velocity=10.0
+```
+
+so that it can calculate the maximum acceleration recommendations correctly. Note that the `SHAPER_CALIBRATE` command already takes the configured `square_corner_velocity` parameter into account, and there is no need to specify it explicitly.
 
 Si vous effectuez un ré-étalonnage du formateur d'entrée et que le lissage indiqué pour la configuration de formateur suggérée est pratiquement le même que celui obtenu lors du calibrage précédent, cette étape peut être ignorée.
 

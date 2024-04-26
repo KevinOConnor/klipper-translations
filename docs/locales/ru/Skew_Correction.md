@@ -10,7 +10,7 @@
 
 ## Проведите свои измерения
 
-Модуль `[skew_correcton]` требует проведения трех измерений для каждой плоскости, которую необходимо скорректировать: длина от угла A до угла C, длина от угла B до угла D и длина от угла A до угла D. При измерении длины AD не учитывайте плоские поверхности на углах, которые предусмотрены в некоторых тестовых объектах.
+The `[skew_correction]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
 
 ![skew_lengths](img/skew_lengths.png)
 

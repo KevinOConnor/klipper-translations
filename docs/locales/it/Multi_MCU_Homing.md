@@ -10,6 +10,8 @@ Quindi, ad esempio, se si esegue l'homing a 10 mm/s, è possibile un superamento
 
 La sovraelongazione 'overshot' del motore passo-passo non dovrebbe influire negativamente sulla precisione della procedura di homing e di sonda. Il codice Klipper rileverà il superamento e ne terrà conto nei suoi calcoli. Tuttavia, è importante che il design dell'hardware sia in grado di gestire l'overshoot senza causare danni alla macchina.
 
-Se Klipper dovesse rilevare un problema di comunicazione tra i microcontrollori durante l'homing multi-mcu, genererà un errore "Timeout di comunicazione durante l'homing".
+In order to use this "multi-mcu homing" capability the hardware must have predictably low latency between the host computer and all of the micro-controllers. Typically the round-trip time must be consistently less than 10ms. High latency (even for short periods) is likely to result in homing failures.
+
+Should high latency result in a failure (or if some other communication issue is detected) then Klipper will raise a "Communication timeout during homing" error.
 
 Si noti che un asse con più stepper (ad esempio, `stepper_z` e `stepper_z1`) deve trovarsi sullo stesso microcontrollore per poter utilizzare l'homing multi-mcu. Ad esempio, se un endstop si trova su un microcontrollore separato da `stepper_z` allora `stepper_z1` deve trovarsi sullo stesso microcontrollore di `stepper_z`.

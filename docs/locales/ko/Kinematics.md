@@ -52,17 +52,21 @@ XY 평면에서 일어날 수 있는 다음 두 가지 이동을 생각해 보�
 end_velocity^2 = start_velocity^2 + 2*accel*move_distance
 ```
 
-### 부드러운 예측 (Smoothed Look-ahed)
+### Minimum cruise ratio
 
 Klipper는 또한 짧은 "지그재그" 동작을 부드럽게 하는 메커니즘을 구현합니다. 다음 동작을 살펴보세요:
 
 ![지그재그](img/zigzag.svg.png)
 
-위의 경우 가속에서 감속으로의 빈번한 변화는 기계를 진동시켜 기계에 스트레스를 일으키고 소음을 증가시킬 수 있습니다.이를 줄이기 위해 Klipper는 일반적인 이동 가속과 가상 "가속에서 감속" 비율을 모두 추적합니다. 이 시스템을 사용하면 이러한 짧은 "지그재그" 이동의 최고 속도는 프린터 동작을 부드럽게 하기 위해 제한됩니다:
+In the above, the frequent changes from acceleration to deceleration can cause the machine to vibrate which causes stress on the machine and increases the noise. Klipper implements a mechanism to ensure there is always some movement at a cruising speed between acceleration and deceleration. This is done by reducing the top speed of some moves (or sequence of moves) to ensure there is a minimum distance traveled at cruising speed relative to the distance traveled during acceleration and deceleration.
+
+Klipper implements this feature by tracking both a regular move acceleration as well as a virtual "acceleration to deceleration" rate:
 
 ![smoothed](img/smoothed.svg.png)
 
-특히 코드는 이 가상 "가감속 가속" 비율 (기본적으로 정상 가속 비율의 절반)로 제한되는 경우 각 이동의 속도를 계산합니다. 위의 그림에서 회색 점선은 첫 번째 이동에 대한 가상 가속도를 나타냅니다. 이동이 이 가상 가속도를 사용하여 최대 순항 속도에 도달할 수 없는 경우 최고 속도는 이 가상 가속도에서 얻을 수 있는 최대 속도로 감소됩니다. 대부분의 동작에 대해 제한은 이동의 기존 제한 이상이며 동작의 변화가 생기지 않습니다. 그러나 짧은 지그재그 이동의 경우 이 제한으로 인해 최고 속도가 감소합니다. 이동 내 실제 가속은 변경되지 않습니다. 이동은 조정된 최고 속도까지 일반 가속 계획을 계속 사용합니다.
+Specifically, the code calculates what the velocity of each move would be if it were limited to this virtual "acceleration to deceleration" rate. In the above picture the dashed gray lines represent this virtual acceleration rate for the first move. If a move can not reach its full cruising speed using this virtual acceleration rate then its top speed is reduced to the maximum speed it could obtain at this virtual acceleration rate.
+
+For most moves the limit will be at or above the move's existing limits and no change in behavior is induced. For short zigzag moves, however, this limit reduces the top speed. Note that it does not change the actual acceleration within the move - the move continues to use the normal acceleration scheme up to its adjusted top-speed.
 
 ## step 생성
 

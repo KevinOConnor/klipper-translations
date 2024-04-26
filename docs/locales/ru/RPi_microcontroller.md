@@ -166,26 +166,26 @@ Raspberry Pi имеет два ШИМ-канала (PWM0 и PWM1), которы�
 dtoverlay=pwm,вывод=12,функция=4
 ```
 
-This example enables only PWM0 and routes it to gpio12. If both PWM channels need to be enabled you can use `pwm-2chan`:
+В этом примере включается только PWM0 и перенаправляется на gpio12. Если необходимо включить оба канала PWM, вы можете использовать "pwm-2chan`:
 
 ```
-# Enable pwmchip sysfs interface
+# Включение системного интерфейса pwmchip
 dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4
 ```
 
-This example additionally enables PWM1 and routes it to gpio13.
+В этом примере дополнительно включается PWM1 и перенаправляется в gpio13.
 
-The overlay does not expose the pwm line on sysfs on boot and needs to be exported by echo'ing the number of the pwm channel to `/sys/class/pwm/pwmchip0/export`. This will create device `/sys/class/pwm/pwmchip0/pwm0` in the filesystem. The easiest way to do this is by adding this to `/etc/rc.local` before the `exit 0` line:
+Наложение не отображает строку pwm в sysfs при загрузке и должно быть экспортировано путем преобразования номера канала pwm в "/sys/class/pwm/pwmchip0/export`. В результате в файловой системе будет создано устройство "/sys/class/pwm/pwmchip0/pwm0". Самый простой способ сделать это - добавить это в "/etc/rc.local" перед строкой "exit 0".:
 
 ```
-# Enable pwmchip sysfs interface
+# Активация системного интерфейса pwmchip 
 echo 0 > /sys/class/pwm/pwmchip0/export
 ```
 
-When using both PWM channels, the number of the second channel needs to be echo'd as well:
+При использовании обоих ШИМ-каналов также необходимо отразить номер второго канала:
 
 ```
-# Enable pwmchip sysfs interface
+# Активация системного интерфейса pwmchip
 echo 0 > /sys/class/pwm/pwmchip0/export
 echo 1 > /sys/class/pwm/pwmchip0/export
 ```
@@ -208,11 +208,11 @@ shutdown_value: 0
 cycle_time: 0.0005
 ```
 
-This will add hardware pwm control to gpio12 and gpio13 on the Pi (because the overlay was configured to route pwm0 to pin=12 and pwm1 to pin=13).
+Это добавит аппаратное управление шим к gpio12 и gpio13 на Pi (поскольку наложение было настроено на маршрутизацию pwm0 на вывод=12, а pwm1 на вывод=13).
 
 PWM0 может быть направлен в gpio12 и gpio18, PWM1 может быть направлен в gpio13 и gpio19:
 
-| PWM | вывод gpio | Функция |
+| ШИМ | вывод gpio | Функция |
 | --- | --- | --- |
 | 0 | 12 | 4 |
 | 0 | 18 | 2 |

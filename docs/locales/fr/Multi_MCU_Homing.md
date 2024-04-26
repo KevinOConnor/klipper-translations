@@ -10,6 +10,8 @@ Donc, par exemple, si l'on fait une mise à l'origine à 10 mm/s, il est alors p
 
 Ce dépassement des moteurs pas à pas ne nuit pas à la précision de la procédure de mise à l'origine et de palpage. Le code de Klipper détectera le dépassement et en tiendra compte dans ses calculs. Cependant, il est important que la conception matérielle soit capable de gérer les dépassements sans endommager la machine.
 
-Si Klipper détecte un problème de communication entre les microcontrôleurs lors de la mise à l'origine multi-mcu, il déclenchera une erreur "Délai de communication pendant la mise à l'origine".
+In order to use this "multi-mcu homing" capability the hardware must have predictably low latency between the host computer and all of the micro-controllers. Typically the round-trip time must be consistently less than 10ms. High latency (even for short periods) is likely to result in homing failures.
+
+Should high latency result in a failure (or if some other communication issue is detected) then Klipper will raise a "Communication timeout during homing" error.
 
 Notez qu'un axe avec plusieurs steppers (par exemple, `stepper_z` et `stepper_z1`) doit avoir tous les meteeurs pas à pas sur le même microcontrôleur afin d'utiliser le référencement multi-mcu. Par exemple, si une fin de course est sur un microcontrôleur distinct de `stepper_z` alors `stepper_z1` doit être sur le même microcontrôleur que `stepper_z`.

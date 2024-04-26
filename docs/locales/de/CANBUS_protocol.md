@@ -1,4 +1,4 @@
-# CANBUS protocol
+# CANBUS Protokoll
 
 This document describes the protocol Klipper uses to communicate over [CAN bus](https://en.wikipedia.org/wiki/CAN_bus). See <CANBUS.md> for information on configuring Klipper with CAN bus.
 
@@ -8,7 +8,7 @@ Klipper verwendet nur CAN 2.0A Standard-CAN-Bus-Pakete, die auf 8 Datenbytes und
 
 Each micro-controller has a factory assigned unique chip identifier that is used during id assignment. This identifier can exceed the length of one CAN packet, so a hash function is used to generate a unique 6-byte id (`canbus_uuid`) from the factory id.
 
-## Admin messages
+## Admin Nachrichten
 
 Admin messages are used for id assignment. Admin messages sent from host to micro-controller use the CAN bus id `0x3f0` and messages sent from micro-controller to host use the CAN bus id `0x3f1`. All micro-controllers listen to messages on id `0x3f0`; that id can be thought of as a "broadcast address".
 
@@ -16,11 +16,11 @@ Admin messages are used for id assignment. Admin messages sent from host to micr
 
 This command queries all micro-controllers that have not yet been assigned a `canbus_nodeid`. Unassigned micro-controllers will respond with a RESP_NEED_NODEID response message.
 
-The CMD_QUERY_UNASSIGNED message format is: `<1-byte message_id = 0x00>`
+Das CMD_QUERY_UNASSIGNED Nachrichtenformat ist: `<1-byte message_id = 0x00>`
 
 ### CMD_SET_KLIPPER_NODEID message
 
-This command assigns a `canbus_nodeid` to the micro-controller with a given `canbus_uuid`.
+Dieser Befehl weist dem Mikrocontroller mit einer bestimmten `canbus_uuid` eine`canbus_nodeid` zu.
 
 The CMD_SET_KLIPPER_NODEID message format is: `<1-byte message_id = 0x01><6-byte canbus_uuid><1-byte canbus_nodeid>`
 
@@ -28,7 +28,7 @@ The CMD_SET_KLIPPER_NODEID message format is: `<1-byte message_id = 0x01><6-byte
 
 The RESP_NEED_NODEID message format is: `<1-byte message_id = 0x20><6-byte canbus_uuid><1-byte set_klipper_nodeid = 0x01>`
 
-## Data Packets
+## Datenpakete
 
 A micro-controller that has been assigned a nodeid via the CMD_SET_KLIPPER_NODEID command can send and receive data packets.
 

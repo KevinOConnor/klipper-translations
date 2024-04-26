@@ -4,7 +4,7 @@
 
 Thank you for your support. See the [Sponsors page](Sponsors.md) for information.
 
-## How do I calculate the rotation_distance config parameter?
+## rotasyon_distance yapılandırma parametresini nasıl hesaplarım?
 
 See the [rotation distance document](Rotation_Distance.md).
 

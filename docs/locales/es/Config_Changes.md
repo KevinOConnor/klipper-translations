@@ -6,6 +6,23 @@ Todas las fechas en este archivo son aproximadas.
 
 ## Cambios
 
+20240313: The `max_accel_to_decel` parameter in the `[printer]` config section has been deprecated. The `ACCEL_TO_DECEL` parameter of the `SET_VELOCITY_LIMIT` command has been deprecated. The `printer.toolhead.max_accel_to_decel` status has been removed. Use the [minimum_cruise_ratio parameter](./Config_Reference.md#printer) instead. The deprecated features will be removed in the near future, and using them in the interim may result in subtly different behavior.
+
+20240215: Several deprecated features have been removed. Using "NTC 100K beta 3950" as a thermistor name has been removed (deprecated on 20211110). The `SYNC_STEPPER_TO_EXTRUDER` and `SET_EXTRUDER_STEP_DISTANCE` commands have been removed, and the extruder `shared_heater` config option has been removed (deprecated on 20220210). The bed_mesh `relative_reference_index` option has been removed (deprecated on 20230619).
+
+20240123: The output_pin SET_PIN CYCLE_TIME parameter has been removed. Use the new [pwm_cycle_time](Config_Reference.md#pwm_cycle_time) module if it is necessary to dynamically change a pwm pin's cycle time.
+
+20240123: The output_pin `maximum_mcu_duration` parameter is deprecated. Use a [pwm_tool config section](Config_Reference.md#pwm_tool) instead. The option will be removed in the near future.
+
+20240123: The output_pin `static_value` parameter is deprecated. Replace with `value` and `shutdown_value` parameters. The option will be removed in the near future.
+
+20231216: The `[hall_filament_width_sensor]` is changed to trigger filament runout when the thickness of the filament exceeds `max_diameter`. The maximum diameter defaults to `default_nominal_filament_diameter + max_difference`. See [[hall_filament_width_sensor] configuration
+reference](./Config_Reference.md#hall_filament_width_sensor) for more details.
+
+20231207: Several undocumented config parameters in the `[printer]` config section have been removed (the buffer_time_low, buffer_time_high, buffer_time_start, and move_flush_time parameters).
+
+20231110: Klipper v0.12.0 released.
+
 20230826: Si `safe_distance` está activado o se calcula a 0 en `[dual_carriage]`, los chequeos de proximidad de los carruajes serán desactivados de acuerdo con la documentación. Es posible que un usuario desee configurar `safe_distance` explícitamente para evitar choques accidentales entre los carruajes. Además, el orden del proceso de localización de la boquilla de los carruajes principales y secundarios ha cambiado en algunas configuraciones (ciertas configuraciones cuando ambos carruajes están moviéndose en la misma dirección, vea [[dual_carriage] configuration reference](./Config_Reference.md#dual_carriage) para más detalles).
 
 20230810: El programa flash-sdcard.sh ahora apoya las dos variantes del Bigtreetech SKR-3: STM32H743 y STM32H723. Para esto, la etiqueta original btt-skr-3 ahora a cambiado a ser btt-skr-3-h743 o btt-skr-3-h723.

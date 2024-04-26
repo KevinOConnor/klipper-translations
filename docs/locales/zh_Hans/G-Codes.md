@@ -79,13 +79,22 @@ The following commands are available when an [angle config section](Config_Refer
 
 `ANGLE_DEBUG_WRITE CHIP=<配置名> REG=<寄存器> VAL=<值>`：将“值”写入“寄存器”。“值”和“寄存器”可以是十进制或十六进制整数。请小心使用，并参考传感器数据手册。仅适用于 tle5012b芯片。
 
+### [axis_twist_compensation]
+
+The following commands are available when the [axis_twist_compensation config
+section](Config_Reference.md#axis_twist_compensation) is enabled.
+
+#### AXIS_TWIST_COMPENSATION_CALIBRATE
+
+`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: 启动X轴扭转校准向导。 `SAMPLE_COUNT` 指定沿着X轴进行校准的点数，默认为3个。
+
 ### [bed_mesh]
 
 启用[床网格配置部分]（config_Reference.md#bed_mesh）时，以下命令可用（另请参阅[床网格指南]（bed_mesh.md））。
 
 #### BED_MESH_CALIBRATE
 
-`BED_MESH_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>]`: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file.
+`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file. If ADAPTIVE=1 is specified then the objects defined by the Gcode file being printed will be used to define the probed area. The optional `ADAPTIVE_MARGIN` value overrides the `adaptive_margin` option specified in the config file.
 
 #### BED_MESH_OUTPUT
 
@@ -105,7 +114,7 @@ The following commands are available when an [angle config section](Config_Refer
 
 #### BED_MESH_OFFSET
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>]`。将X和/或Y的偏移量应用于网格查找。这对具有多个独立挤出头的打印机很有用，因为偏移量对切换工具头后产生正确的 Z 值调整是至关重要的。
+`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value]`: Applies X, Y, and/or ZFADE offsets to the mesh lookup. This is useful for printers with independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change. Note that a ZFADE offset does not apply additional z-adjustment directly, it is used to correct the `fade` calculation when a `gcode offset` has been applied to the Z axis.
 
 ### [bed_screws]
 
@@ -261,14 +270,6 @@ The following commands are available if an [extruder config section](Config_Refe
 #### SYNC_EXTRUDER_MOTION
 
 `SYNC_EXTRUDER_MOTION EXTRUDER=<name> MOTION_QUEUE=<name>`: This command will cause the stepper specified by EXTRUDER (as defined in an [extruder](Config_Reference.md#extruder) or [extruder_stepper](Config_Reference.md#extruder_stepper) config section) to become synchronized to the movement of an extruder specified by MOTION_QUEUE (as defined in an [extruder](Config_Reference.md#extruder) config section). If MOTION_QUEUE is an empty string then the stepper will be desynchronized from all extruder movement.
-
-#### SET_EXTRUDER_STEP_DISTANCE
-
-This command is deprecated and will be removed in the near future.
-
-#### SYNC_STEPPER_TO_EXTRUDER
-
-This command is deprecated and will be removed in the near future.
 
 ### [fan_generic]
 
@@ -496,9 +497,7 @@ The following command is available when any of the [led config sections](Config_
 
 #### SET_PIN
 
-`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: Set the pin to the given output `VALUE`. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is configured in the output_pin config section.
-
-Some pins (currently only "soft PWM" pins) support setting an explicit cycle time using the CYCLE_TIME parameter (specified in seconds). Note that the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN command without an explicit CYCLE_TIME parameter will use the `cycle_time` specified in the output_pin config section).
+`SET_PIN PIN=config_name VALUE=<value>`: Set the pin to the given output `VALUE`. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is configured in the output_pin config section.
 
 ### [palette2]
 
@@ -589,6 +588,14 @@ The following commands are available when a [probe config section](Config_Refere
 #### Z_OFFSET_APPLY_PROBE
 
 `Z_OFFSET_APPLY_PROBE`：将当前的Z 的 G 代码偏移量（就是 babystepping）从 probe 的 z_offset 中减去。该命令将持久化一个常用babystepping 微调值。需要执行 `SAVE_CONFIG`才能生效。
+
+### [pwm_cycle_time]
+
+The following command is available when a [pwm_cycle_time config section](Config_Reference.md#pwm_cycle_time) is enabled.
+
+#### SET_PIN
+
+`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: This command works similarly to [output_pin](#output_pin) SET_PIN commands. The command here supports setting an explicit cycle time using the CYCLE_TIME parameter (specified in seconds). Note that the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN command without an explicit CYCLE_TIME parameter will use the `cycle_time` specified in the pwm_cycle_time config section).
 
 ### [query_adc]
 
@@ -755,7 +762,7 @@ The toolhead module is automatically loaded.
 
 #### SET_VELOCITY_LIMIT
 
-`SET_VELOCITY_LIMIT [VELOCITY=<值>] [ACCEL=<值>] [ACCEL_TO_DECEL=<值>] [SQUARE_CORNER_VELOCITY=<值>]`：修改打印机速度限制。
+`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] [MINIMUM_CRUISE_RATIO=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: This command can alter the velocity limits that were specified in the printer config file. See the [printer config section](Config_Reference.md#printer) for a description of each parameter.
 
 ### [tuning_tower]
 
@@ -790,15 +797,6 @@ The tuning_tower module is automatically loaded.
 #### SDCARD_RESET_FILE
 
 `SDCARD_RESET_FILE`：卸载文件并清除SD状态。
-
-### [axis_twist_compensation]
-
-The following commands are available when the [axis_twist_compensation config
-section](Config_Reference.md#axis_twist_compensation) is enabled.
-
-#### AXIS_TWIST_COMPENSATION_CALIBRATE
-
-`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: 启动X轴扭转校准向导。 `SAMPLE_COUNT` 指定沿着X轴进行校准的点数，默认为3个。
 
 ### [z_thermal_adjust]
 

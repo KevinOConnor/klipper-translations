@@ -10,7 +10,7 @@ Győződj meg róla, hogy a nyomtatás során nem alkalmazol ferdeségkorrekció
 
 ## Mérd meg
 
-A `[skew_correcton]` modul minden egyes korrigálandó síkhoz 3 mérést igényel; az A saroktól a C sarokig terjedő hosszúságot, a B saroktól a D sarokig terjedő hosszúságot és az A saroktól a D sarokig terjedő hosszúságot. Az AD hosszmérésnél ne vedd figyelembe a sarkokon lévő síkokat, amelyeket néhány tesztobjektum mutat.
+A `[skew_correction]` modul minden egyes korrigálandó síkhoz 3 mérést igényel: az A saroktól a C sarokig tartó hossz, a B saroktól a D sarokig tartó hossz, és az A saroktól a D sarokig tartó hossz. Az AD hosszmérésnél ne vedd figyelembe a sarkokon lévő síkokat, amelyeket néhány tesztobjektum biztosít.
 
 ![skew_lengths](img/skew_lengths.png)
 

@@ -27,7 +27,7 @@ Carica il modello di prova per il ringing, che può essere trovato in [docs/prin
 Innanzitutto, misura la **frequenza di ringing**.
 
 1. Se il parametro `square_corner_velocity` è stato modificato, ripristinalo a 5.0 . Non è consigliabile aumentarlo quando si utilizza l'input shaper perché può causare un maggiore smussamento smoothing delle parti: è invece meglio utilizzare un valore di accelerazione più elevato.
-1. Aumenta `max_accel_to_decel` inserendo il seguente comando: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Disable the `miminum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Disabilita la Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Se hai già aggiunto la sezione `[input_shaper]` a printer.cfg, esegui il comando `SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0`. Se ricevi l'errore "Comando sconosciuto- Unknown command", puoi tranquillamente ignorarlo a questo punto e continuare con le misurazioni.
 1. Eseguire il comando: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Fondamentalmente, cerchiamo di rendere più pronunciato il ringing impostando diversi valori elevati per l'accelerazione. Questo comando aumenterà l'accelerazione ogni 5 mm a partire da 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 e così via fino a 7000 mm/sec^2 per l'ultima fascia.
@@ -77,7 +77,7 @@ Per la maggior parte delle stampanti, possono essere consigliati shaper MZV o EI
 Stampare il modello di prova di ringing come segue:
 
 1. Riavviare il firmware: `RESTART`
-1. Prepararsi per il test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Disabilita la Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Eseguire: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`
 1. Eseguire il comando: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
@@ -135,7 +135,7 @@ Si noti che la precisione delle misurazioni delle frequenze di risonanza utilizz
 
 Supponendo di aver suddiviso il modello di ringing con i parametri suggeriti, completare i seguenti passaggi per ciascuno degli assi X e Y:
 
-1. Prepararsi per il test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Assicurati che Pressure Advance sia disabilitato: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Eseguire: `SET_INPUT_SHAPER SHAPER_TYPE=ZV`
 1. Dal modello di prova di ringing esistente con lo shaper di input scelto, seleziona l'accelerazione che mostra sufficientemente bene il ringing e impostala con: `SET_VELOCITY_LIMIT ACCEL=...`
@@ -163,7 +163,7 @@ Se non è possibile misurare le frequenze di ringing, ad es. se la distanza tra 
 Per l'ottimizzazione, aggiungi la sezione `[input_shaper]` vuota al tuo `printer.cfg`. Quindi, supponendo di aver fattolo slicing il modello di ringing con i parametri suggeriti, stampare il modello di prova 3 volte come segue. La prima volta, prima della stampa, eseguire
 
 1. `RESTART`
-1. `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`

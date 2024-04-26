@@ -164,7 +164,7 @@ Note that resonance measurements and shaper auto-calibration require additional 
 
 ```
 sudo apt update
-sudo apt install python3-numpy python3-matplotlib libatlas-base-dev
+sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev
 ```
 
 Next, in order to install NumPy in the Klipper environment, run the command:
@@ -535,6 +535,14 @@ max_smoothing: 0.25  # an example
 또는 입력 셰이퍼 튜닝 가이드의 [this](Resonance_Compensation.md#selecting-max_accel) 부분을 따르고 테스트 모델을 인쇄하여 `max_accel` 매개변수를 실험적으로 선택합니다.
 
 동일한 알림이 `SHAPER_CALIBRATE` 명령을 사용하여 입력 셰이퍼 [auto-calibration](#input-shaper-auto-calibration) 에 적용됩니다: 자동 보정 후에도 올바른 `max_accel` 값을 선택해야 하며 제안된 가속 제한은 자동으로 적용되지 않습니다.
+
+Keep in mind that the maximum acceleration without too much smoothing depends on the `square_corner_velocity`. The general recommendation is not to change it from its default value 5.0, and this is the value used by default by the `calibrate_shaper.py` script. If you did change it though, you should inform the script about it by passing `--square_corner_velocity=...` parameter, e.g.
+
+```
+~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png --square_corner_velocity=10.0
+```
+
+so that it can calculate the maximum acceleration recommendations correctly. Note that the `SHAPER_CALIBRATE` command already takes the configured `square_corner_velocity` parameter into account, and there is no need to specify it explicitly.
 
 만약 셰이퍼 재보정을 수행하고 제안된 셰이퍼 구성에 대해 보고된 smoothing 이 이전 보정 중에 얻은 것과 거의 동일한 경우 이 단계를 건너뛸 수 있습니다.
 

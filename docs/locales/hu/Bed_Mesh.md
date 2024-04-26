@@ -182,11 +182,40 @@ Az alábbi kép azt szemlélteti, hogyan generálódnak a cserepontok, ha egy ge
 
 ![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)
 
+### Adaptív hálók
+
+Az adaptív ágyrácsozás egy olyan módszer, amely felgyorsítja az ágyrács generálását azáltal, hogy csak az ágynak a nyomtatandó tárgyak által használt területét vizsgálja. Használatakor a módszer automatikusan beállítja a háló paramétereit a meghatározott nyomtatási objektumok által elfoglalt terület alapján.
+
+Az adaptált háló területe az összes meghatározott nyomtatási objektum határai által meghatározott területből kerül kiszámításra, így minden objektumot lefed, beleértve a konfigurációban meghatározott margókat is. A terület kiszámítása után a mérőpontok száma az alapértelmezett hálóterület és az adaptált hálóterület aránya alapján lesz kicsinyítve. Ennek szemléltetésére nézd meg a következő példát:
+
+Egy 150mm x 150mm-es ágy esetében, ahol a "mesh_min" értéke "25,25" és a "mesh_max" értéke "125,125", az alapértelmezett hálóterület egy 100mm x 100mm-es négyzet. Az `50,50` adaptált hálóterület azt jelenti, hogy az adaptált terület és az alapértelmezett hálóterület közötti arány `0,5x0,5`.
+
+Ha a `bed_mesh` konfigurációban a `probe_count` értéke `7x7`, akkor az adaptív ágyháló 4x4 próbapontot fog használni (7 * 0,5 felfelé kerekítve).
+
+![adaptive_bedmesh](img/adaptive_bed_mesh.svg)
+
+```
+[bed_mesh]
+speed: 120
+horizontal_move_z: 5
+mesh_min: 35, 6
+mesh_max: 240, 198
+probe_count: 5, 3
+adaptive_margin: 5
+```
+
+
+   - `adaptive_margin` *Alapértelmezett érték: 0* Az ágy meghatározott objektumok által használt területe köré hozzáadandó margó (mm-ben). Az alábbi ábra az adaptív ágy hálóterületét mutatja, ha az `adaptive_margin` értéke 5 mm. Az adaptív hálóterület (zöld színű terület) a használt ágyterület (kék színű terület) és a meghatározott margó összegeként kerül kiszámításra.![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)
+
+Az adaptív ágyrácsok természetüknél fogva a nyomtatás alatt álló G-Kód fájlban meghatározott objektumokat használják. Ezért várható, hogy minden egyes G-Kód fájl olyan hálót generál, amely a nyomtatóágy különböző területét vizsgálja. Ezért az adaptív ágyhálót nem szabad újra felhasználni. Az adaptív hálózás használata esetén elvárás, hogy minden egyes nyomtatáshoz új hálót generáljon.
+
+Azt is fontos figyelembe venni, hogy az adaptív ágyhálózást olyan gépeken lehet a legjobban alkalmazni, amelyek általában a teljes ágyat meg tudják tapogatni, és 1 rétegmagasságnál kisebb vagy azzal egyenlő maximális eltérést érnek el. Az olyan mechanikai problémákkal küzdő gépek, amelyeket a teljes ágyháló általában kompenzál, nemkívánatos eredményeket hozhatnak, amikor a nyomtatási mozgásokat a szondázott területen **kívül** próbálják végrehajtani. Ha a teljes ágyháló eltérése nagyobb, mint 1 rétegmagasság, akkor óvatosan kell eljárni, amikor adaptív ágyhálót használunk, és a hálózott területen kívüli nyomtatási mozgásokat kísérelünk meg.
+
 ## Tárgyasztal háló G-kódok
 
 ### Kalibráció
 
-`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic] [<probe_parameter>=<value>] [<mesh_parameter>=<value>]` * Alapértelmezett profil: alapértelmezett* *Alapértelmezett módszer: automatikus, ha érzékelőt észlel, egyébként manuális*
+`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] [ADAPTIVE_MARGIN=<value>]` *Alapértelmezett profil: alapértelmezett* *Alapértelmezett módszer: automatikus, ha szondát észlel, egyébként manuális* *Alapértelmezett adaptív: 0* *Alapértelmezett adaptív margó: 0**
 
 Mérési eljárást indítása a tárgyasztal háló kalibrálásához.
 
@@ -204,6 +233,8 @@ Lehetőség van hálóparaméterek megadására a mért terület módosításár
    - `ROUND_PROBE_COUNT`
 - Minden tárgyasztal:
    - `ALGORITHM`
+   - `ADAPTIVE`
+   - `ADAPTIVE_MARGIN`
 
 Az egyes paraméterek hálóra való alkalmazásának részleteit lásd a fenti konfigurációs dokumentációban.
 
@@ -272,6 +303,8 @@ Ez a G-kód használható a belső háló állapotának törlésére.
 
 ### X/Y eltolások alkalmazása
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>]`
+`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`
 
-Ez több független extruderrel rendelkező nyomtatóknál hasznos, mivel a szerszámcsere utáni helyes Z-beállításhoz szükség van egy eltolásra. Az eltolásokat az elsődleges extruderhez képest kell megadni. Vagyis pozitív X eltolást kell megadni, ha a másodlagos extruder az elsődleges extrudertől jobbra van felszerelve, és pozitív Y eltolást kell megadni, ha a másodlagos extruder az elsődleges extruder mögött van felszerelve.
+Ez több független extruderrel rendelkező nyomtatóknál hasznos, mivel a szerszámcsere utáni helyes Z-beállításhoz szükség van egy eltolásra. Az eltolásokat az elsődleges extruderhez képest kell megadni. Vagyis pozitív X eltolást kell megadni, ha a másodlagos extruder az elsődleges extruder jobb oldalán van felszerelve, pozitív Y eltolást kell megadni, ha a másodlagos extruder az elsődleges extruder "mögött" van felszerelve, és pozitív ZFADE eltolást kell megadni, ha a másodlagos extruder fúvókája az elsődleges extruder fúvókája felett van.
+
+Vedd figyelembe, hogy a ZFADE eltolás *NEM* alkalmaz közvetlenül további beállításokat. Ez a `gcode offset` kompenzálására szolgál, amikor a [mesh fade](#mesh-fade) engedélyezve van. Például, ha egy másodlagos extruder magasabb, mint az elsődleges, és negatív G-Kód eltolásra van szüksége, azaz: `SET_GCODE_OFFSET Z=-.2`, azt a `bed_mesh`-ben a `BED_MESH_OFFSET ZFADE=.2`-vel lehet figyelembe venni.

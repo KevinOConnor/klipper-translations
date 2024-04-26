@@ -8,28 +8,28 @@ Klipper unterstützt die folgenden Standard- G-Code-Befehle:
 
 - Move (G0 or G1): `G1 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>]`
 - Dwell: `G4 P<milliseconds>`
-- Move to origin: `G28 [X] [Y] [Z]`
-- Turn off motors: `M18` or `M84`
-- Wait for current moves to finish: `M400`
-- Use absolute/relative distances for extrusion: `M82`, `M83`
-- Use absolute/relative coordinates: `G90`, `G91`
-- Set position: `G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]`
-- Set speed factor override percentage: `M220 S<percent>`
-- Set extrude factor override percentage: `M221 S<percent>`
+- Zum Nullpunkt fahren: `G28 [X] [Y] [Z]`
+- Motoren abschalten: `M18` oder `M84`
+- Abwarten, bis die aktuellen Bewegungen beendet sind: `M400`
+- Absolute/relative Abstände für die Extrusion verwenden: `M82`, `M83`
+- Absolute/relative Koordinaten verwenden: `G90`, `G91`
+- Position festlegen: `G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]`
+- Prozentuale Überschreibung des Geschwindigkeitsfaktors einstellen: `M220 S<percent>`
+- Prozentuale Überschreibung des Extrusionsfaktors einstellen: `M221 S<percent>`
 - Set acceleration: `M204 S<value>` OR `M204 P<value> T<value>`
    - Note: If S is not specified and both P and T are specified, then the acceleration is set to the minimum of P and T. If only one of P or T is specified, the command has no effect.
-- Get extruder temperature: `M105`
-- Set extruder temperature: `M104 [T<index>] [S<temperature>]`
+- Extrudertemperatur anzeigen: `M105`
+- Extrudertemperatur einstellen: `M104 [T<index>] [S<temperature>]`
 - Set extruder temperature and wait: `M109 [T<index>] S<temperature>`
    - Note: M109 always waits for temperature to settle at requested value
-- Set bed temperature: `M140 [S<temperature>]`
-- Set bed temperature and wait: `M190 S<temperature>`
+- Druckbetttemperatur einstellen: `M140 [S<temperature>]`
+- Betttemperatur einstellen und abwarten: `M190 S<temperature>`
    - Note: M190 always waits for temperature to settle at requested value
-- Set fan speed: `M106 S<value>`
-- Turn fan off: `M107`
-- Emergency stop: `M112`
-- Get current position: `M114`
-- Get firmware version: `M115`
+- Lüftergeschwindigkeit einstellen: `M106 S<value>`
+- Lüfter ausschalten: `M107`
+- Notausschalter: `M112`
+- Aktuelle Position anzeigen: `M114`
+- Firmware Version anzeigen: `M115`
 
 For further details on the above commands see the [RepRap G-Code documentation](http://reprap.org/wiki/G-code).
 
@@ -37,7 +37,7 @@ Klipper's goal is to support the G-Code commands produced by common 3rd party so
 
 If one requires a less common G-Code command then it may be possible to implement it with a custom [gcode_macro config section](Config_Reference.md#gcode_macro). For example, one might use this to implement: `G12`, `G29`, `G30`, `G31`, `M42`, `M80`, `M81`, `T1`, etc.
 
-## Additional Commands
+## Weitere Befehle
 
 Klipper uses "extended" G-Code commands for general configuration and status. These extended commands all follow a similar format - they start with a command name and may be followed by one or more parameters. For example: `SET_SERVO SERVO=myservo ANGLE=5.3`. In this document, the commands and parameters are shown in uppercase, however they are not case sensitive. (So, "SET_SERVO" and "set_servo" both run the same command.)
 
@@ -79,13 +79,22 @@ The following commands are available when an [angle config section](Config_Refer
 
 `ANGLE_DEBUG_WRITE CHIP=<config_name> REG=<register> VAL=<value>`: Writes raw "value" into register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to sensor data sheet for the reference. This is only available for tle5012b chips.
 
+### [axis_twist_compensation]
+
+The following commands are available when the [axis_twist_compensation config
+section](Config_Reference.md#axis_twist_compensation) is enabled.
+
+#### AXIS_TWIST_COMPENSATION_CALIBRATE
+
+`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Initiates the X twist calibration wizard. `SAMPLE_COUNT` specifies the number of points along the X axis to calibrate at and defaults to 3.
+
 ### [bed_mesh]
 
 The following commands are available when the [bed_mesh config section](Config_Reference.md#bed_mesh) is enabled (also see the [bed mesh guide](Bed_Mesh.md)).
 
 #### BED_MESH_CALIBRATE
 
-`BED_MESH_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>]`: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file.
+`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file. If ADAPTIVE=1 is specified then the objects defined by the Gcode file being printed will be used to define the probed area. The optional `ADAPTIVE_MARGIN` value overrides the `adaptive_margin` option specified in the config file.
 
 #### BED_MESH_OUTPUT
 
@@ -105,7 +114,7 @@ The following commands are available when the [bed_mesh config section](Config_R
 
 #### BED_MESH_OFFSET
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>]`: Applies X and/or Y offsets to the mesh lookup. This is useful for printers with independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change.
+`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value]`: Applies X, Y, and/or ZFADE offsets to the mesh lookup. This is useful for printers with independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change. Note that a ZFADE offset does not apply additional z-adjustment directly, it is used to correct the `fade` calculation when a `gcode offset` has been applied to the Z axis.
 
 ### [bed_screws]
 
@@ -137,7 +146,7 @@ The following command is available when a [bltouch config section](Config_Refere
 
 ### [configfile]
 
-The configfile module is automatically loaded.
+Das configfile Modul wird automatisch geladen.
 
 #### SAVE_CONFIG
 
@@ -175,10 +184,10 @@ The following command is available when a [display config section](Config_Refere
 
 The display_status module is automatically loaded if a [display config section](Config_Reference.md#display) is enabled. It provides the following standard G-Code commands:
 
-- Display Message: `M117 <message>`
+- Nachricht anzeigen: `M117 <Nachricht >`
 - Set build percentage: `M73 P<percent>`
 
-Also provided is the following extended G-Code command:
+Außerdem gibt es den folgenden erweiterten G-Code-Befehl:
 
 - `SET_DISPLAY_TEXT MSG=<message>`: Performs the equivalent of M117, setting the supplied `MSG` as the current display message. If `MSG` is omitted the display will be cleared.
 
@@ -262,14 +271,6 @@ The following commands are available if an [extruder config section](Config_Refe
 
 `SYNC_EXTRUDER_MOTION EXTRUDER=<name> MOTION_QUEUE=<name>`: This command will cause the stepper specified by EXTRUDER (as defined in an [extruder](Config_Reference.md#extruder) or [extruder_stepper](Config_Reference.md#extruder_stepper) config section) to become synchronized to the movement of an extruder specified by MOTION_QUEUE (as defined in an [extruder](Config_Reference.md#extruder) config section). If MOTION_QUEUE is an empty string then the stepper will be desynchronized from all extruder movement.
 
-#### SET_EXTRUDER_STEP_DISTANCE
-
-This command is deprecated and will be removed in the near future.
-
-#### SYNC_STEPPER_TO_EXTRUDER
-
-This command is deprecated and will be removed in the near future.
-
 ### [fan_generic]
 
 The following command is available when a [fan_generic config section](Config_Reference.md#fan_generic) is enabled.
@@ -297,7 +298,7 @@ The following standard G-Code commands are available when the [firmware_retracti
 - `G10`: Retracts the extruder using the currently configured parameters.
 - `G11`: Unretracts the extruder using the currently configured parameters.
 
-The following additional commands are also available.
+Die folgenden weiteren Befehle sind ebenfalls verfügbar.
 
 #### SET_RETRACTION
 
@@ -325,7 +326,7 @@ The force_move module is automatically loaded, however some commands require set
 
 ### [gcode]
 
-The gcode module is automatically loaded.
+Das gcode Modul wird automatisch geladen.
 
 #### RESTART
 
@@ -337,7 +338,7 @@ The gcode module is automatically loaded.
 
 #### STATUS
 
-`STATUS`: Report the Klipper host software status.
+`STATUS`: Bericht über den Status der Klipper-Hostsoftware.
 
 #### HELP
 
@@ -360,7 +361,7 @@ The following command is available when a [gcode_macro config section](Config_Re
 
 ### [gcode_move]
 
-The gcode_move module is automatically loaded.
+Das gcode_move Modul wird automatisch geladen.
 
 #### GET_POSITION
 
@@ -384,7 +385,7 @@ The following commands are available when the [tsl1401cl filament width sensor c
 
 #### QUERY_FILAMENT_WIDTH
 
-`QUERY_FILAMENT_WIDTH`: Return the current measured filament width.
+`QUERY_FILAMENT_WIDTH`: Gibt die aktuell gemessene Filamentbreite an.
 
 #### RESET_FILAMENT_WIDTH_SENSOR
 
@@ -404,11 +405,11 @@ The following commands are available when the [tsl1401cl filament width sensor c
 
 #### ENABLE_FILAMENT_WIDTH_LOG
 
-`ENABLE_FILAMENT_WIDTH_LOG`: Turn on diameter logging.
+`ENABLE_FILAMENT_WIDTH_LOG`: Durchmesserprotokollierung einschalten.
 
 #### DISABLE_FILAMENT_WIDTH_LOG
 
-`DISABLE_FILAMENT_WIDTH_LOG`: Turn off diameter logging.
+`DISABLE_FILAMENT_WIDTH_LOG`:  Schaltet die Protokollierung des Durchmessers aus.
 
 ### [heaters]
 
@@ -416,7 +417,7 @@ The heaters module is automatically loaded if a heater is defined in the config 
 
 #### TURN_OFF_HEATERS
 
-`TURN_OFF_HEATERS`: Turn off all heaters.
+`TURN_OFF_HEATERS`: Schaltet alle Heizelemente aus.
 
 #### TEMPERATURE_WAIT
 
@@ -428,7 +429,7 @@ The heaters module is automatically loaded if a heater is defined in the config 
 
 ### [idle_timeout]
 
-The idle_timeout module is automatically loaded.
+Das idle_timeout Modul wird automatisch geladen.
 
 #### SET_IDLE_TIMEOUT
 
@@ -444,7 +445,7 @@ The following command is enabled if an [input_shaper config section](Config_Refe
 
 ### [manual_probe]
 
-The manual_probe module is automatically loaded.
+Das manual_probe Modul wird automatisch geladen.
 
 #### MANUAL_PROBE
 
@@ -496,9 +497,7 @@ The following command is available when an [output_pin config section](Config_Re
 
 #### SET_PIN
 
-`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: Set the pin to the given output `VALUE`. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is configured in the output_pin config section.
-
-Some pins (currently only "soft PWM" pins) support setting an explicit cycle time using the CYCLE_TIME parameter (specified in seconds). Note that the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN command without an explicit CYCLE_TIME parameter will use the `cycle_time` specified in the output_pin config section).
+`SET_PIN PIN=config_name VALUE=<value>`: Set the pin to the given output `VALUE`. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is configured in the output_pin config section.
 
 ### [palette2]
 
@@ -508,7 +507,7 @@ Palette prints work by embedding special OCodes (Omega Codes) in the GCode file:
 
 - `O1`...`O32`: These codes are read from the GCode stream and processed by this module and passed to the Palette 2 device.
 
-The following additional commands are also available.
+Die folgenden weiteren Befehle sind ebenfalls verfügbar.
 
 #### PALETTE_CONNECT
 
@@ -556,11 +555,11 @@ The following commands are available when the [pause_resume config section](Conf
 
 #### CANCEL_PRINT
 
-`CANCEL_PRINT`: Cancels the current print.
+`CANCEL_PRINT`: Bricht den aktuellen Druckvorgang ab.
 
 ### [print_stats]
 
-The print_stats module is automatically loaded.
+Das print_stats Modul wird automatisch geladen.
 
 #### SET_PRINT_STATS_INFO
 
@@ -590,9 +589,17 @@ The following commands are available when a [probe config section](Config_Refere
 
 `Z_OFFSET_APPLY_PROBE`: Take the current Z Gcode offset (aka, babystepping), and subtract if from the probe's z_offset. This acts to take a frequently used babystepping value, and "make it permanent". Requires a `SAVE_CONFIG` to take effect.
 
+### [pwm_cycle_time]
+
+The following command is available when a [pwm_cycle_time config section](Config_Reference.md#pwm_cycle_time) is enabled.
+
+#### SET_PIN
+
+`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: This command works similarly to [output_pin](#output_pin) SET_PIN commands. The command here supports setting an explicit cycle time using the CYCLE_TIME parameter (specified in seconds). Note that the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN command without an explicit CYCLE_TIME parameter will use the `cycle_time` specified in the pwm_cycle_time config section).
+
 ### [query_adc]
 
-The query_adc module is automatically loaded.
+Das query_adc Modul wird automatisch geladen.
 
 #### QUERY_ADC
 
@@ -630,7 +637,7 @@ The following standard G-Code commands are available when the [respond config se
 
 - `M118 <message>`: echo the message prepended with the configured default prefix (or `echo: ` if no prefix is configured).
 
-The following additional commands are also available.
+Die folgenden weiteren Befehle sind ebenfalls verfügbar.
 
 #### RESPOND
 
@@ -715,7 +722,7 @@ Several commands are available when a [smart_effector config section](Config_Ref
 
 ### [stepper_enable]
 
-The stepper_enable module is automatically loaded.
+Das stepper_enable Modul wird automatisch geladen.
 
 #### SET_STEPPER_ENABLE
 
@@ -751,15 +758,15 @@ The following commands are available when any of the [tmcXXXX config sections](C
 
 ### [toolhead]
 
-The toolhead module is automatically loaded.
+Das toolhead Modul wird automatisch geladen.
 
 #### SET_VELOCITY_LIMIT
 
-`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] [ACCEL_TO_DECEL=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: Modify the printer's velocity limits.
+`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] [MINIMUM_CRUISE_RATIO=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: This command can alter the velocity limits that were specified in the printer config file. See the [printer config section](Config_Reference.md#printer) for a description of each parameter.
 
 ### [tuning_tower]
 
-The tuning_tower module is automatically loaded.
+Das tuning_tower Modul wird automatisch geladen.
 
 #### TUNING_TOWER
 
@@ -773,13 +780,13 @@ The tuning_tower module is automatically loaded.
 
 Klipper supports the following standard G-Code commands if the [virtual_sdcard config section](Config_Reference.md#virtual_sdcard) is enabled:
 
-- List SD card: `M20`
-- Initialize SD card: `M21`
-- Select SD file: `M23 <filename>`
-- Start/resume SD print: `M24`
-- Pause SD print: `M25`
-- Set SD position: `M26 S<offset>`
-- Report SD print status: `M27`
+- SD-Karte auflisten: `M20`
+- SD-Karte initialisieren: `M21`
+- SD-Karten Datei auswählen: `M23 <filename>`
+- SD-Karten Druck starten/fortsetzen: `M24`
+- SD-Karten Druck anhalten: `M25`
+- SD-Karten Position einstellen: `M26 S<offset>`
+- SD-Karten Druckstatus anzeigen: `M27`
 
 In addition, the following extended commands are available when the "virtual_sdcard" config section is enabled.
 
@@ -789,16 +796,7 @@ In addition, the following extended commands are available when the "virtual_sdc
 
 #### SDCARD_RESET_FILE
 
-`SDCARD_RESET_FILE`: Unload file and clear SD state.
-
-### [axis_twist_compensation]
-
-The following commands are available when the [axis_twist_compensation config
-section](Config_Reference.md#axis_twist_compensation) is enabled.
-
-#### AXIS_TWIST_COMPENSATION_CALIBRATE
-
-`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Initiates the X twist calibration wizard. `SAMPLE_COUNT` specifies the number of points along the X axis to calibrate at and defaults to 3.
+`SDCARD_RESET_FILE`: Datei zurücksetzen und SD Status löschen.
 
 ### [z_thermal_adjust]
 

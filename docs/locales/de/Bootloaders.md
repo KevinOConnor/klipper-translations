@@ -1,4 +1,4 @@
-# Bootloaders
+# Bootloader
 
 Dieses Dokument enthält Informationen über gängige Bootloader für Mikrocontroller, die von Klipper unterstützt werden.
 
@@ -8,7 +8,7 @@ If one can flash a bootloader to a micro-controller then one can generally also 
 
 This document attempts to describe common bootloaders, the steps needed to flash a bootloader, and the steps needed to flash an application. This document is not an authoritative reference; it is intended as a collection of useful information that the Klipper developers have accumulated.
 
-## AVR micro-controllers
+## AVR Mikrocontroller
 
 In general, the Arduino project is a good reference for bootloaders and flashing procedures on the 8-bit Atmel Atmega micro-controllers. In particular, the "boards.txt" file: <https://github.com/arduino/Arduino/blob/1.8.5/hardware/arduino/avr/boards.txt> is a useful reference.
 
@@ -110,7 +110,7 @@ To flash an application via the Optiboot bootloader use something like:
 avrdude -carduino -patmega168 -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/klipper.elf.hex:i
 ```
 
-## SAM3 micro-controllers (Arduino Due)
+## SAM3 Mikrocontroller (Arduino Due)
 
 It is not common to use a bootloader with the SAM3 mcu. The chip itself has a ROM that allows the flash to be programmed from 3.3V serial port or from USB.
 
@@ -125,7 +125,7 @@ bossac -U -p /dev/ttyACM0 -a -e -w out/klipper.bin -v -b
 bossac -U -p /dev/ttyACM0 -R
 ```
 
-## SAM4 micro-controllers (Duet Wifi)
+## SAM4 Mikrocontroller (Duet Wifi)
 
 It is not common to use a bootloader with the SAM4 mcu. The chip itself has a ROM that allows the flash to be programmed from 3.3V serial port or from USB.
 
@@ -139,7 +139,7 @@ To flash an application use something like:
 bossac --port=/dev/ttyACM0 -b -U -e -w -v -R out/klipper.bin
 ```
 
-## SAMDC21 micro-controllers (Duet3D Toolboard 1LC)
+## SAMDC21 Mikrocontroller (Duet3D Toolboard 1LC)
 
 The SAMC21 is flashed via the ARM Serial Wire Debug (SWD) interface. This is commonly done with a dedicated SWD hardware dongle. Alternatively, one can use a [Raspberry Pi with OpenOCD](#running-openocd-on-the-raspberry-pi).
 
@@ -180,7 +180,7 @@ at91samd bootloader 0
 program out/klipper.elf verify
 ```
 
-## SAMD21 micro-controllers (Arduino Zero)
+## SAMD21 Mikrocontroller (Arduino Zero)
 
 The SAMD21 bootloader is flashed via the ARM Serial Wire Debug (SWD) interface. This is commonly done with a dedicated SWD hardware dongle. Alternatively, one can use a [Raspberry Pi with OpenOCD](#running-openocd-on-the-raspberry-pi).
 
@@ -215,7 +215,7 @@ In contrast, the "Arduino M0" uses a 16KiB bootloader (the application must be c
 avrdude -c stk500v2 -p atmega2560 -P /dev/ttyACM0 -u -Uflash:w:out/klipper.elf.hex:i
 ```
 
-## SAMD51 micro-controllers (Adafruit Metro-M4 and similar)
+## SAMD51 Mikrocontroller (Adafruit Metro-M4 und ähnliche)
 
 Like the SAMD21, the SAMD51 bootloader is flashed via the ARM Serial Wire Debug (SWD) interface. To flash a bootloader with [OpenOCD on a Raspberry Pi](#running-openocd-on-the-raspberry-pi) use the following chip config:
 
@@ -243,7 +243,7 @@ The SAMD51 uses a 16KiB bootloader (the application must be compiled with a star
 bossac -U -p /dev/ttyACM0 --offset=0x4000 -w out/klipper.bin -v -b -R
 ```
 
-## STM32F103 micro-controllers (Blue Pill devices)
+## STM32F103 Mikrocontroller (Blue Pill Geräte)
 
 The STM32F103 devices have a ROM that can flash a bootloader or application via 3.3V serial. Typically one would wire the PA10 (MCU Rx) and PA9 (MCU Tx) pins to a 3.3V UART adapter. To access the ROM, one should connect the "boot 0" pin to high and "boot 1" pin to low, and then reset the device. The "stm32flash" package can then be used to flash the device using something like:
 
@@ -255,7 +255,7 @@ Note that if one is using a Raspberry Pi for the 3.3V serial, the stm32flash pro
 
 After flashing, set both "boot 0" and "boot 1" back to low so that future resets boot from flash.
 
-### STM32F103 with stm32duino bootloader
+### STM32F103 mit stm32duino Bootloader
 
 The "stm32duino" project has a USB capable bootloader - see: <https://github.com/rogerclarkmelbourne/STM32duino-bootloader>
 
@@ -275,7 +275,7 @@ dfu-util -d 1eaf:0003 -a 2 -R -D out/klipper.bin
 
 The bootloader typically runs for only a short period after boot. It may be necessary to time the above command so that it runs while the bootloader is still active (the bootloader will flash a board led while it is running). Alternatively, set the "boot 0" pin to low and "boot 1" pin to high to stay in the bootloader after a reset.
 
-### STM32F103 with HID bootloader
+### STM32F103 mit HID Bootloader
 
 The [HID bootloader](https://github.com/Serasidis/STM32_HID_Bootloader) is a compact, driverless bootloader capable of flashing over USB. Also available is a [fork with builds specific to the SKR Mini E3 1.2](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest).
 
@@ -300,7 +300,7 @@ stm32f1x mass_erase 0
 program hid_btt_skr_mini_e3.bin verify 0x08000000
 ```
 
-NOTES:
+HINWEISE:
 
 - The example above erases the chip then programs the bootloader. Regardless of the method chosen to flash it is recommended to erase the chip prior to flashing.
 - Prior flashing the SKR Mini E3 with this bootloader you should be aware that you will no longer be able to update firmware via the sdcard.
@@ -320,7 +320,7 @@ Info : stm32f1x.cpu: external reset detected
 Info : starting gdb server for stm32f1x.cpu on 3333
 Info : Listening on port 3333 for gdb connections
    ```
-After which you can release the reset button.
+Danach können Sie die Reset-Taste loslassen.
 
 This bootloader requires 2KiB of flash space (the application must be compiled with a start address of 2KiB).
 
@@ -344,7 +344,7 @@ alternatively, you can use `make flash` to flash klipper directly:
 make flash FLASH_DEVICE=1209:BEBA
 ```
 
-OR if klipper has been previously flashed:
+oder wenn Klipper zuvor geflasht wurde:
 
 ```
 make flash FLASH_DEVICE=/dev/ttyACM0
@@ -352,7 +352,7 @@ make flash FLASH_DEVICE=/dev/ttyACM0
 
 It may be necessary to manually enter the bootloader, this can be done by setting "boot 0" low and "boot 1" high. On the SKR Mini E3 "Boot 1" is not available, so it may be done by setting pin PA2 low if you flashed "hid_btt_skr_mini_e3.bin". This pin is labeled "TX0" on the TFT header in the SKR Mini E3's "PIN" document. There is a ground pin next to PA2 which you can use to pull PA2 low.
 
-### STM32F103/STM32F072 with MSC bootloader
+### STM32F103/STM32F072 mit MSC Bootloader
 
 The [MSC bootloader](https://github.com/Telekatz/MSC-stm32f103-bootloader) is a driverless bootloader capable of flashing over USB.
 
@@ -368,7 +368,7 @@ This bootloader uses 8KiB or 16KiB of flash space, see description of the bootlo
 
 The bootloader can be activated by pressing the reset button of the board twice. As soon as the bootloader is activated, the board appears as a USB flash drive onto which the klipper.bin file can be copied.
 
-### STM32F103/STM32F0x2 with CanBoot bootloader
+### STM32F103/STM32F0x2 mit CanBoot Bootloader
 
 The [CanBoot](https://github.com/Arksine/CanBoot) bootloader provides an option for uploading Klipper firmware over the CANBUS. The bootloader itself is derived from Klipper's source code. Currently CanBoot supports the STM32F103, STM32F042, and STM32F072 models.
 
@@ -394,7 +394,7 @@ Where `aabbccddeeff` is replaced by your UUID. Note that the `-i` and `-f` optio
 
 When building Klipper for use with CanBoot, select the 8 KiB Bootloader option.
 
-## STM32F4 micro-controllers (SKR Pro 1.1)
+## STM32F4 Mikrocontroller (SKR Pro 1.1)
 
 STM32F4 micro-controllers come equipped with a built-in system bootloader capable of flashing over USB (via DFU), 3.3V Serial, and various other methods (see STM Document AN2606 for more information). Some STM32F4 boards, such as the SKR Pro 1.1, are not able to enter the DFU bootloader. The HID bootloader is available for STM32F405/407 based boards should the user prefer flashing over USB over using the sdcard. Note that you may need to configure and build a version specific to your board, a [build for the SKR Pro 1.1 is available here](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest).
 
@@ -412,13 +412,13 @@ As with the STM32F1, the STM32F4 uses the hid-flash tool to upload binaries to t
 
 It may be necessary to manually enter the bootloader, this can be done by setting "boot 0" low, "boot 1" high and plugging in the device. After programming is complete unplug the device and set "boot 1" back to low so the application will be loaded.
 
-## LPC176x micro-controllers (Smoothieboards)
+## LPC176x Mikrocontroller (Smoothieboards)
 
 This document does not describe the method to flash a bootloader itself - see: <http://smoothieware.org/flashing-the-bootloader> for further information on that topic.
 
 It is common for Smoothieboards to come with a bootloader from: <https://github.com/triffid/LPC17xx-DFU-Bootloader>. When using this bootloader the application must be compiled with a start address of 16KiB. The easiest way to flash an application with this bootloader is to copy the application file (eg, `out/klipper.bin`) to a file named `firmware.bin` on an SD card, and then to reboot the micro-controller with that SD card.
 
-## Running OpenOCD on the Raspberry PI
+## Ausführen von OpenOCD auf dem Raspberry PI
 
 OpenOCD is a software package that can perform low-level chip flashing and debugging. It can use the GPIO pins on a Raspberry Pi to communicate with a variety of ARM chips.
 
@@ -439,15 +439,15 @@ make
 make install
 ```
 
-### Configure OpenOCD
+### OpenOCD konfigurieren
 
-Create an OpenOCD config file:
+Erstellen Sie eine OpenOCD config Datei:
 
 ```
 nano ~/openocd/openocd.cfg
 ```
 
-Use a config similar to the following:
+Verwenden Sie eine Konfiguration ähnlich der folgenden:
 
 ```
 # Uses RPi pins: GPIO25 for SWDCLK, GPIO24 for SWDIO, GPIO18 for nRST
@@ -481,9 +481,9 @@ Connect GND, SWDCLK, SWDIO, and RST on the target chip to GND, GPIO25, GPIO24, a
 
 Then power up the Raspberry Pi and provide power to the target chip.
 
-### Run OpenOCD
+### OpenOCD starten
 
-Run OpenOCD:
+OpenOCD starten:
 
 ```
 cd ~/openocd/
@@ -500,11 +500,11 @@ telnet 127.0.0.1 4444
 
 (One can exit telnet by pressing ctrl+] and then running the "quit" command.)
 
-### OpenOCD and gdb
+### OpenOCD und gdb
 
 It is possible to use OpenOCD with gdb to debug Klipper. The following commands assume one is running gdb on a desktop class machine.
 
-Add the following to the OpenOCD config file:
+Fügen Sie der OpenOCD Konfigurationsdatei Folgendes hinzu:
 
 ```
 bindto 0.0.0.0
@@ -518,7 +518,7 @@ cd /path/to/klipper/
 gdb out/klipper.elf
 ```
 
-Within gdb run:
+Innerhalb von gdb ausführen:
 
 ```
 target remote octopi:44444

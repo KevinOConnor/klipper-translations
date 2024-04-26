@@ -40,7 +40,7 @@ Začnite umiestnením tlačiarne a potom presuňte hlavu do polohy blízko stred
 
 Tento nástroj vykoná automatickú sondu, potom zdvihne hlavu, presunie dýzu nad miesto bodu sondy a spustí ručnú sondu. Ak sa dýza nepohne do polohy nad bodom automatickej sondy, potom  `ABORT` nástroj manuálnej sondy a vykonajte vyššie opísanú kalibráciu posunu sondy XY.
 
-Po spustení nástroja manuálnej sondy postupujte podľa krokov popísaných v časti ["test papiera"](Bed_Level.md#the-paper-test)), aby ste určili skutočnú vzdialenosť medzi tryskou a lôžkom na danom mieste. Po dokončení týchto krokov môžete pozíciu  `ACCEPT` a uložiť výsledky do konfiguračného súboru pomocou:
+Once the manual probe tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
 
 ```
 SAVE_CONFIG

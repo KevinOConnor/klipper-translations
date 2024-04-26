@@ -52,17 +52,21 @@ Klipper 使用傳統的"梯形發生器"來產生每個動作的運動--每個�
 end_velocity^2 = start_velocity^2 + 2*accel*move_distance
 ```
 
-### 預計算結果平滑
+### Minimum cruise ratio
 
 Klipper 實現了一種用於平滑短距離之字形移動的機制。參考以下移動：
 
 ![zigzag](img/zigzag.svg.png)
 
-在上述情況下，從加速到減速的頻繁變化會導致機器振動，從而對機器造成壓力並增加噪音。為了減少這種情況，Klipper 跟踪常規移動加速度以及虛擬“加速到減速”率。使用這個系統，這些短的“之字形”移動的最高速度被限制為平滑打印機運動：
+In the above, the frequent changes from acceleration to deceleration can cause the machine to vibrate which causes stress on the machine and increases the noise. Klipper implements a mechanism to ensure there is always some movement at a cruising speed between acceleration and deceleration. This is done by reducing the top speed of some moves (or sequence of moves) to ensure there is a minimum distance traveled at cruising speed relative to the distance traveled during acceleration and deceleration.
+
+Klipper implements this feature by tracking both a regular move acceleration as well as a virtual "acceleration to deceleration" rate:
 
 ![smoothed](img/smoothed.svg.png)
 
-具體來說，代碼計算每次移動的速度，如果它被限制在這個虛擬的“加速到減速”率（默認情況下為正常加速率的一半）。在上圖中，灰色虛線表示第一步的虛擬加速度。如果使用此虛擬加速度無法達到其全巡航速度，則其最高速度將降低到在此虛擬加速度下可以達到的最大速度。對於大多數移動，限制將等於或高於移動的現有限制，並且不會引起行為變化。然而，對於短的之字形移動，這個限制會降低最高速度。請注意，它不會改變移動中的實際加速度 - 移動將繼續使用正常加速方案，直至其調整後的最高速度。
+Specifically, the code calculates what the velocity of each move would be if it were limited to this virtual "acceleration to deceleration" rate. In the above picture the dashed gray lines represent this virtual acceleration rate for the first move. If a move can not reach its full cruising speed using this virtual acceleration rate then its top speed is reduced to the maximum speed it could obtain at this virtual acceleration rate.
+
+For most moves the limit will be at or above the move's existing limits and no change in behavior is induced. For short zigzag moves, however, this limit reduces the top speed. Note that it does not change the actual acceleration within the move - the move continues to use the normal acceleration scheme up to its adjusted top-speed.
 
 ## 生成步驟
 

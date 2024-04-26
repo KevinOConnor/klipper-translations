@@ -246,6 +246,12 @@ The following information is available in the `manual_probe` object:
 - `last_query`: 마지막 QUERY_PROBE 명령 동안 프로브가 "트리거된" 것으로 보고된 경우 True를 반환합니다. 이것이 매크로에서 사용되는 경우 템플릿 확장 순서로 인해 QUERY_PROBE 명령이 이 참조를 포함하는 매크로보다 먼저 실행되어야 합니다.
 - `last_z_result`: 마지막 PROBE 명령의 Z 결과 값을 반환합니다. 이것이 매크로에서 사용되는 경우 템플릿 확장 순서로 인해 PROBE(또는 유사한) 명령이 이 참조를 포함하는 매크로보다 먼저 실행되어야 합니다.
 
+## pwm_cycle_time
+
+The following information is available in [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time) objects:
+
+- `value`: `SET_PIN` 명령에 의해 설정된 핀의 "값".
+
 ## quad_gantry_level
 
 다음 정보는 `quad_gantry_level` 개체에서 사용할 수 있습니다 (이 개체는 quad_gantry_level이 정의된 경우 사용할 수 있음):
@@ -331,7 +337,7 @@ The following information is available in [TMC stepper driver](Config_Reference.
 - `homed_axes`: "homed" 상태에 있는 것으로 간주되는 현재 직교 축입니다. "x", "y", "z" 중 하나 이상을 포함하는 문자열입니다.
 - `axis_minimum`, `axis_maximum`: 원점 복귀 후 축 이동 한계(mm). 이 제한 값의 x, y, z 구성 요소에 액세스할 수 있습니다 (예: `axis_minimum.x`, `axis_maximum.z`).
 - For Delta printers the `cone_start_z` is the max z height at maximum radius (`printer.toolhead.cone_start_z`).
-- `max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`: 유효한 현재 인쇄 제한입니다. 이는 `SET_VELOCITY_LIMIT`(또는 `M204`) 명령이 런타임에 변경하는 경우 구성 파일 설정과 다를 수 있습니다.
+- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: The current printing limits that are in effect. This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters them at run-time.
 - `stalls`: toolhead가 G-Code 입력에서 읽을 수 있는 것보다 빠르게 이동하여 프린터를 일시 중지해야 했던 총 횟수(마지막 다시 시작한 이후).
 
 ## dual_carriage

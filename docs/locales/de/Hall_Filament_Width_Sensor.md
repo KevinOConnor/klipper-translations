@@ -26,7 +26,7 @@ name: Raw: {'%4.0F' % printer.hall_filament_width_sensor.Raw}
 index: 1
 ```
 
-## Calibration procedure
+## Kalibrierungs Prozedur
 
 To get raw sensor value you can use menu item or **QUERY_RAW_FILAMENT_WIDTH** command in terminal.
 
@@ -34,15 +34,15 @@ To get raw sensor value you can use menu item or **QUERY_RAW_FILAMENT_WIDTH** co
 1. Insert second calibration rod (2.0 mm size) get second raw sensor value
 1. Save raw sensor values in config parameter `Raw_dia1` and `Raw_dia2`
 
-## How to enable sensor
+## So aktivieren Sie den Sensor
 
-By default, the sensor is disabled at power-on.
+Standardmäßig ist der Sensor beim Einschalten deaktiviert.
 
 To enable the sensor, issue **ENABLE_FILAMENT_WIDTH_SENSOR** command or set the `enable` parameter to `true`.
 
-## Logging
+## Protokollierung
 
-By default, diameter logging is disabled at power-on.
+Standardmäßig ist die Durchmesseraufzeichnung beim Einschalten deaktiviert.
 
 Issue **ENABLE_FILAMENT_WIDTH_LOG** command to start logging and issue **DISABLE_FILAMENT_WIDTH_LOG** command to stop logging. To enable logging at power-on, set the `logging` parameter to `true`.
 

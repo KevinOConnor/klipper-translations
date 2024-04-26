@@ -40,7 +40,7 @@ G1 F300 X57 Y30 Z15
 
 Этот инструмент выполнит автоматический зонд, затем поднимет головку, переместит сопло над точкой зондирования и запустит инструмент ручного зондирования. Если сопло не перемещается в положение над точкой автоматического зондирования, то следует `АБОРТИРОВАТЬ` инструмент ручного зондирования и выполнить калибровку смещения зонда по оси XY, описанную выше.
 
-После запуска инструмента ручного зондирования выполните действия, описанные в разделе ["тест бумаги"](Bed_Level.md#the-paper-test)], чтобы определить фактическое расстояние между соплом и станиной в заданном месте. По завершении этих действий можно `принять` позицию и сохранить результаты в файле конфигурации с помощью:
+Once the manual probe tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
 
 ```
 SAVE_CONFIG

@@ -246,6 +246,12 @@ Les informations suivantes sont disponibles dans l'objet [probe](Config_Referenc
 - `last_query` : renvoie True si la sonde a été signalée comme "déclenchée" lors de la dernière commande QUERY_PROBE. Notez que si cela est utilisé dans une macro, en raison de l'ordre de développement du modèle, la commande QUERY_PROBE doit être exécutée avant la macro contenant cette demande.
 - `last_z_result` : Renvoie la valeur du Z de la dernière commande PROBE. Notez que si cela est utilisé dans une macro, en raison de l'ordre d'expansion du modèle, la commande PROBE (ou similaire) doit être exécutée avant la macro contenant cette demande.
 
+## pwm_cycle_time
+
+The following information is available in [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time) objects:
+
+- `value` : la "valeur" de la broche, telle que définie par une commande `SET_PIN`.
+
 ## quad_gantry_level
 
 Les informations suivantes sont disponibles dans l'objet `quad_gantry_level` (cet objet est disponible si quad_gantry_level est défini) :
@@ -331,7 +337,7 @@ Les informations suivantes sont disponibles dans l'objet `toolhead` (cet objet e
 - `homed_axes` : les axes considérés comme étant dans un état "à l'origine". Il s'agit d'une chaîne contenant un ou plusieurs "x", "y", "z".
 - `axis_minimum`, `axis_maximum` : les limites de déplacement de l'axe (mm) après la mise à l'origine. Il est possible d'accéder aux composantes x, y, z de cette valeur limite (par exemple, `axis_minimum.x`, `axis_maximum.z`).
 - Pour les imprimantes Delta, le `cone_start_z` est la hauteur z maximale au rayon maximal (`printer.toolhead.cone_start_z`).
-- `max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity` : les limites d'impression actuelles en vigueur. Cela peut différer des paramètres du fichier de configuration si une commande `SET_VELOCITY_LIMIT` (ou `M204`) les a modifiées au moment de l'exécution.
+- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: The current printing limits that are in effect. This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters them at run-time.
 - `stalls` : Le nombre total de fois (depuis le dernier redémarrage) où l'imprimante a dû être mise en pause parce que la tête d'outil s'est déplacée plus vite que les mouvements ne pouvaient être lus à partir de l'entrée G-Code.
 
 ## dual_carriage

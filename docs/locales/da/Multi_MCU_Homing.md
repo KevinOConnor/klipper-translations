@@ -10,6 +10,8 @@ For eksempel, hvis homing sker ved 10mm/s, så er det muligt at se et "overshoot
 
 Stepper motor "overshoot" bør ikke påvirke præcisionen betydeligt. Klippers kode vil registrere dette "overshoot" og tage højde for det i beregningerne. Dog er det vigtigt at hardwaren designes på en sådan måde, at et "overshoot" ikke kan skade printeren eller dens dele.
 
-Hvis Klipper registrerer en kommunikationsfejl under fler-mcu homing, vil Klipper udstede en "Communication timeout during homing" fejl.
+In order to use this "multi-mcu homing" capability the hardware must have predictably low latency between the host computer and all of the micro-controllers. Typically the round-trip time must be consistently less than 10ms. High latency (even for short periods) is likely to result in homing failures.
+
+Should high latency result in a failure (or if some other communication issue is detected) then Klipper will raise a "Communication timeout during homing" error.
 
 Bemærk at en akse med flere steppere (for eksempel `stepper_z `og `stepper_z1`) skal være på samme mcu. Så hvis endestoppet er tilsluttet én mcu, og `stepper_z` er på en anden, skal `stepper_z1` være tilsluttet samme mcu som `stepper_z`.

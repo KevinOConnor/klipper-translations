@@ -246,6 +246,12 @@ The following information is available in the `manual_probe` object:
 - `last_query`：如果探針在上一個 QUERY_PROBE 命令期間報告為"已觸發"，則返回 True。請注意，如果在宏中使用它，根據模板展開的順序，必須在包含此引用的宏之前執行 QUERY_PROBE 命令。
 - `last_z_result`：返回上一次 PROBE 命令的結果 Z 值。請注意，由於模板展開的順序，在宏中使用時必須在包含此引用的宏之前執行 PROBE（或類似）命令。
 
+## pwm_cycle_time
+
+The following information is available in [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time) objects:
+
+- `value`：由`SET_PIN`指令設定的引腳「值」。
+
 ## quad_gantry_level
 
 `quad_gantry_level` 對像提供了以下資訊（如果定義了 quad_gantry_level，則該對象可用）：
@@ -331,7 +337,7 @@ The following information is available in the `stepper_enable` object (this obje
 - `homed_axes`：目前被認為處於「已歸位」狀態的車軸。這是一個包含一個或多個"x"、"y"、"z"的字串。
 - `axis_minimum`、`axis_maximum`：歸位后的軸的行程限制（毫米）。可以訪問此極限值的 x、y、z 份量（例如，`axis_minimum.x`、`axis_maximum.z`）。
 - For Delta printers the `cone_start_z` is the max z height at maximum radius (`printer.toolhead.cone_start_z`).
-- `max_velocity`、`max_accel`、`max_accel_to_decel`和`square_corner_velocity`：目前生效的印表機限制。如果 `SET_VELOCITY_LIMIT`（或 `M204`）命令在執行時改變它們，這些值可能與配置檔案設定不同。
+- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: The current printing limits that are in effect. This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters them at run-time.
 - `stalls`：由於工具頭移動速度快于從 G 程式碼輸入讀取的移動速度，因此印表機必須暫停的總次數（自上次重新啟動以來）。
 
 ## dual_carriage

@@ -40,7 +40,7 @@ Kezd a nyomtató alaphelyzetbe állításával, majd mozgasd a fejet a tárgyasz
 
 Ez az eszköz automatikus mérést hajt végre, majd felemeli a fejet, mozgatja a fúvókát a mérőpont helye fölé, és elindítja a kézi mérést. Ha a fúvóka nem mozdul el az automatikus mérőpont feletti pozícióba, akkor `ABORT` a kézi mérőeszközzel, hajtsd végre a fent leírt X-Y szondaeltolás kalibrálását.
 
-Miután a kézi mérő eszköz elindult, kövesd a ["a papírteszt"](Bed_Level.md#the-paper-test)] pontban leírt lépéseket a fúvóka és a tárgyasztal közötti tényleges távolság meghatározásához az adott helyen. Ha ezek a lépések befejeződtek, akkor `ACCEPT` a pozíció és elmentheted az eredményeket a config fájlba a következővel:
+Miután a kézi szondás eszköz elindult, kövesd a ["a papírteszt"](Bed_Level.md#the-paper-test) pontban leírt lépéseket a fúvóka és az ágy közötti tényleges távolság meghatározásához az adott helyen. Ha ezek a lépések befejeződtek, `ELFOGAD-hatjuk` a pozíciót és elmenthetjük az eredményeket a config fájlba a következővel:
 
 ```
 SAVE_CONFIG

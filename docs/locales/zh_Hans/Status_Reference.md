@@ -246,6 +246,12 @@
 - `last_query`：如果探针在上一个 QUERY_PROBE 命令期间报告为"已触发"，则返回 True。请注意，如果在宏中使用它，根据模板展开的顺序，必须在包含此引用的宏之前运行 QUERY_PROBE 命令。
 - `last_z_result`：返回上一次 PROBE 命令的结果 Z 值。请注意，由于模板展开的顺序，在宏中使用时必须在包含此引用的宏之前运行 PROBE（或类似）命令。
 
+## pwm_cycle_time
+
+The following information is available in [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time) objects:
+
+- `value`：由`SET_PIN`指令设置的引脚“值”。
+
 ## quad_gantry_level
 
 `quad_gantry_level` 对象提供了以下信息（如果定义了 quad_gantry_level，则该对象可用）：
@@ -331,7 +337,7 @@
 - `homed_axes`：当前被认为处于“已归位”状态的车轴。这是一个包含一个或多个"x"、"y"、"z"的字符串。
 - `axis_minimum`、`axis_maximum`：归位后的轴的行程限制（毫米）。可以访问此极限值的 x、y、z 分量（例如，`axis_minimum.x`、`axis_maximum.z`）。
 - 对于三角洲打印机，`cone_start_z` 是最大半径时的最大z高度(`printer.toolhead.cone_start_z`)。
-- `max_velocity`、`max_accel`、`max_accel_to_decel`和`square_corner_velocity`：当前生效的打印机限制。如果 `SET_VELOCITY_LIMIT`（或 `M204`）命令在运行时改变它们，这些值可能与配置文件设置不同。
+- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: The current printing limits that are in effect. This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters them at run-time.
 - `stalls`：由于工具头移动速度快于从 G 代码输入读取的移动速度，因此打印机必须暂停的总次数（自上次重新启动以来）。
 
 ## dual_carriage

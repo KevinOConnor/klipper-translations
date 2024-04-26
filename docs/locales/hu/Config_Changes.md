@@ -6,6 +6,23 @@ A dokumentumban szereplő valamennyi dátum hozzávetőleges.
 
 ## Változások
 
+20240313: A `[nyomtató]` konfigurációs szakaszban található `max_accel_to_decel` paramétert elavultnak nyilvánítottuk. A `SET_VELOCITY_LIMIT` parancs `ACCEL_TO_DECEL` paramétere elavult. A `printer.toolhead.max_accel_to_decel` állapot eltávolításra került. Használd helyette a [minimum_cruise_ratio paramétert](./Config_Reference.md#printer). Az elavult funkciók a közeljövőben eltávolításra kerülnek, és az időközbeni használatuk finoman eltérő viselkedést eredményezhet.
+
+20240215: Számos elavult funkciót eltávolítottunk. Az "NTC 100K beta 3950" használata termisztor névként megszűnt (elavult a 20211110 oldalon). A `SYNC_STEPPER_TO_EXTRUDER` és a `SET_EXTRUDER_STEP_DISTANCE` parancsok eltávolításra kerültek, és az extruder `shared_heater` konfigurációs opciója eltávolításra került (deprecated on 20220210). A bed_mesh `relative_reference_index` opció eltávolításra került (deprecated on 20230619).
+
+20240123: Az output_pin SET_PIN CYCLE_TIME paramétert eltávolítottuk. Használd az új [pwm_cycle_time](Config_Reference.md#pwm_cycle_time) modult, ha egy PWM tű ciklusidejét dinamikusan kell megváltoztatni.
+
+20240123: Az output_pin `maximum_mcu_duration` paraméter elavult. Használd helyette a [pwm_tool config section](Config_Reference.md#pwm_tool). Az opciót a közeljövőben eltávolítjuk.
+
+20240123: Az output_pin `static_value` paraméter elavult. Helyettesítsük a `value` és `shutdown_value` paraméterekkel. Az opciót a közeljövőben eltávolítjuk.
+
+20231216: The `[hall_filament_width_sensor]` is changed to trigger filament runout when the thickness of the filament exceeds `max_diameter`. The maximum diameter defaults to `default_nominal_filament_diameter + max_difference`. See [[hall_filament_width_sensor] configuration
+reference](./Config_Reference.md#hall_filament_width_sensor) for more details.
+
+20231207: Több nem dokumentált konfigurációs paramétert eltávolítottunk a `[printer]` konfigurációs szakaszban (a buffer_time_low, buffer_time_high, buffer_time_start és move_flush_time paramétereket).
+
+20231110: Klipper v0.12.0 megjelent.
+
 20230826: Ha a `[dual_carriage]-ben a `safe_distance` értéke 0-ra van beállítva vagy kiszámítva, akkor a dokumentáció szerint a kocsik közelségének ellenőrzése le lesz tiltva. A felhasználónak érdemes a `safe_distance`-t explicit módon beállítani, hogy megakadályozza a kocsik véletlen ütközését egymással. Ezen kívül az elsődleges és a kettős kocsi indulási sorrendje bizonyos konfigurációkban megváltozik (bizonyos konfigurációk, amikor mindkét kocsi ugyanabba az irányba indul, további részletekért lásd a [[dual_carriage] konfigurációs hivatkozás](./Config_Reference.md#dual_carriage)).
 
 20230810: A flash-sdcard.sh szkript mostantól támogatja a Bigtreetech SKR-3 mindkét változatát, az STM32H743-at és az STM32H723-at. Ennek érdekében az eredeti btt-skr-3 címke mostantól btt-skr-3-h743 vagy btt-skr-3-h723-ra változott.

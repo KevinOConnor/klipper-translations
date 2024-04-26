@@ -4,7 +4,7 @@ Dieses Dokument beschreibt Werkzeuge zum Kalibrieren eines Z-Anschlags und zum E
 
 ## Kalibrieren eines Z-Endstop's
 
-Die genaue Position des Z-Endanschlags ist entscheidend für eine hohe Druckqualität.
+Eine genaue Positionierung des Z-Endstops ist entscheidend, um hochwertige Drucke zu erzielen.
 
 Note, though, the accuracy of the Z endstop switch itself can be a limiting factor. If one is using Trinamic stepper motor drivers then consider enabling [endstop phase](Endstop_Phase.md) detection to improve the accuracy of the switch.
 

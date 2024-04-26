@@ -22,7 +22,7 @@ This command makes the nozzle travel slower through corners to emphasize the eff
 TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=.005
 ```
 
-For long bowden extruders use:
+Für lange Bowden-Extruder verwenden Sie:
 
 ```
 TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=.020
@@ -50,7 +50,7 @@ Although this tuning exercise directly improves the quality of corners, it's wor
 
 At the completion of this test, set `pressure_advance = <calculated_value>` in the `[extruder]` section of the configuration file and issue a RESTART command. The RESTART command will clear the test state and return the acceleration and cornering speeds to their normal values.
 
-## Important Notes
+## Wichtige Hinweise
 
 * The pressure advance value is dependent on the extruder, the nozzle, and the filament. It is common for filament from different manufactures or with different pigments to require significantly different pressure advance values. Therefore, one should calibrate pressure advance on each printer and with each spool of filament.
 * Printing temperature and extrusion rates can impact pressure advance. Be sure to tune the [extruder rotation_distance](Rotation_Distance.md#calibrating-rotation_distance-on-extruders) and [nozzle temperature](http://reprap.org/wiki/Triffid_Hunter%27s_Calibration_Guide#Nozzle_Temperature) prior to tuning pressure advance.

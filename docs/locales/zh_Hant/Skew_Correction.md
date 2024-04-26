@@ -10,7 +10,7 @@
 
 ## 進行測量
 
-`[skew_correcton]` 模組需要三次對校準平面的測量值；從角 A 到角 C 的距離，從角 B 到角 D 的距離，以及從角 A 到角 D 的距離。當測量距離 AD 時，不包括一些測試物件的角上的平面。
+The `[skew_correction]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
 
 ![skew_lengths](img/skew_lengths.png)
 

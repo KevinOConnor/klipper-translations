@@ -1,4 +1,4 @@
-# SDCard updates
+# SD-Karten Aktualisierung
 
 Viele der heute gängigen Controller-Karten werden mit einem Bootloader ausgeliefert, der die Aktualisierung der Firmware über eine SD-Karte ermöglicht. Obwohl dies in vielen Fällen praktisch ist, bieten diese Bootloader in der Regel keine andere Möglichkeit zur Aktualisierung der Firmware. Dies kann lästig sein, wenn Ihr Board an einem schwer zugänglichen Ort montiert ist oder wenn Sie die Firmware häufig aktualisieren müssen. Nachdem Klipper auf einen Controller geflasht wurde, ist es möglich, die neue Firmware auf die SD-Karte zu übertragen und den Flashapparat über ssh zu starten.
 
@@ -27,7 +27,7 @@ Supported boards can be listed with the following command:
 
 If you do not see your board listed it may be necessary to add a new board definition as [described below](#board-definitions).
 
-## Advanced Usage
+## Erweiterte Nutzung
 
 The above commands assume that your MCU connects at the default baud rate of 250000 and the firmware is located at `~/klipper/out/klipper.bin`. The `flash-sdcard.sh` script provides options for changing these defaults. All options can be viewed by the help screen:
 
@@ -87,7 +87,7 @@ BOARD_DEFS = {
 }
 ```
 
-The following fields may be specified:
+Folgende Felder können angegeben werden:
 
 - `mcu`: The mcu type. This can be retrieved after configuring the build via `make menuconfig` by running `cat .config | grep CONFIG_MCU`. This field is required.
 - `spi_bus`: The SPI bus connected to the SD Card. This should be retrieved from the board's schematic. This field is required.
@@ -113,13 +113,13 @@ BOARD_ALIASES = {
 
 If you need a new board definition and you are uncomfortable with the procedure outlined above it is recommended that you request one in the [Klipper Community Discord](Contact.md#discord).
 
-## Flashing Boards that use SDIO
+## Flashen von Boards, die SDIO verwenden
 
 [As mentioned in the Caveats](#caveats), boards whose bootloader uses SDIO mode to access their SD Card require a power-cycle of the board, and specifically the SD Card itself, in order to switch from the SPI Mode used while writing the file to the SD Card back to SDIO mode for the bootloader to flash it into the board. These board definitions will use the `skip_verify` flag, which tells the flashing tool to stop after writing the firmware to the SD Card so that the board can be manually power-cycled and the verification step deferred until that's complete.
 
 There are two scenarios -- one with the RPi Host running on a separate power supply and the other when the RPi Host is running on the same power supply as the main board being flashed. The difference is whether or not it's necessary to also shutdown the RPi and then `ssh` again after the flashing is complete in order to do the verification step, or if the verification can be done immediately. Here's examples of the two scenarios:
 
-### SDIO Programming with RPi on Separate Power Supply
+### SDIO Programmierung mit RPi auf separatem Netzteil
 
 A typical session with the RPi on a Separate Power Supply looks like the following. You will, of course, need to use your proper device path and board name:
 
@@ -158,11 +158,11 @@ sudo service klipper start
 
 In this case, since the RPi Host is being restarted, which will restart the `klipper` service, it's necessary to stop `klipper` again before doing the verification step and restart it after verification is complete.
 
-### SDIO to SPI Pin Mapping
+### SDIO zu SPI Pin Belegung
 
 If your board's schematic uses SDIO for its SD Card, you can map the pins as described in the chart below to determine the compatible Software SPI pins to assign in the `board_defs.py` file:
 
-| SD Card Pin | Micro SD Card Pin | SDIO Pin Name | SPI Pin Name |
+| SD Karten Pin | Mikro SD Karten Pin | SDIO Pin Name | SPI Pin Name |
 | :-: | :-: | :-: | :-: |
 | 9 | 1 | DATA2 | None (PU)* |
 | 1 | 2 | CD/DATA3 | CS |
@@ -172,7 +172,7 @@ If your board's schematic uses SDIO for its SD Card, you can map the pins as des
 | 3 | 6 | GND (VSS) | GND (VSS) |
 | 7 | 7 | DATA0 | MISO |
 | 8 | 8 | DATA1 | None (PU)* |
-| N/A | 9 | Card Detect (CD) | Card Detect (CD) |
+| N/A | 9 | Kartenerkennung (CD) | Kartenerkennung (CD) |
 | 6 | 10 | GND | GND |
 
 \* None (PU) indicates an unused pin with a pull-up resistor

@@ -13,9 +13,9 @@ git clone https://github.com/Klipper3d/klipper
 ./klipper/scripts/install-beaglebone.sh
 ```
 
-## Install Octoprint
+## Octoprint installieren
 
-One may then install Octoprint:
+Dann könnte man Octoprint installieren:
 
 ```
 git clone https://github.com/foosel/OctoPrint.git
@@ -24,7 +24,7 @@ virtualenv venv
 ./venv/bin/python setup.py install
 ```
 
-And setup OctoPrint to start at bootup:
+Und richten Sie OctoPrint so ein, dass es beim Hochfahren startet:
 
 ```
 sudo cp ~/OctoPrint/scripts/octoprint.init /etc/init.d/octoprint
@@ -39,7 +39,7 @@ It is necessary to modify OctoPrint's **/etc/default/octoprint** configuration f
 sudo nano /etc/default/octoprint
 ```
 
-Then start the Octoprint service:
+Starten Sie dann den Octoprint-Dienst:
 
 ```
 sudo systemctl start octoprint
@@ -70,7 +70,7 @@ It is also necessary to compile and install the micro-controller code for a Linu
 make menuconfig
 ```
 
-Then install this micro-controller code as well:
+Installieren Sie anschließend auch diesen Mikrokontroller Code:
 
 ```
 sudo service klipper stop
@@ -78,10 +78,10 @@ make flash
 sudo service klipper start
 ```
 
-## Remaining configuration
+## Restliche Konfiguration
 
 Complete the installation by configuring Klipper and Octoprint following the instructions in the main [Installation](Installation.md#configuring-klipper) document.
 
-## Printing on the Beaglebone
+## Drucken auf einem Beaglebone
 
 Unfortunately, the Beaglebone processor can sometimes struggle to run OctoPrint well. Print stalls have been known to occur on complex prints (the printer may move faster than OctoPrint can send movement commands). If this occurs, consider using the "virtual_sdcard" feature (see [Config Reference](Config_Reference.md#virtual_sdcard) for details) to print directly from Klipper.

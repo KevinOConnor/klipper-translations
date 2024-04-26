@@ -81,4 +81,4 @@ iface can0 can static
 
 ## Tipps zur Fehlerbehebung
 
-See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document.
+Siehe das [CAN bus troubleshooting](CANBUS_Troubleshooting.md) Dokument.

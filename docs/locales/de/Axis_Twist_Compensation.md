@@ -1,6 +1,6 @@
 # Kompensation der Achsenverdrehung
 
-This document describes the [axis_twist_compensation] module.
+Dieses Dokument beschreibt das Modul [axis_twist_compensation].
 
 Some printers may have a small twist in their X rail which can skew the results of a probe attached to the X carriage. This is common in printers with designs like the Prusa MK3, Sovol SV06 etc and is further described under [probe location
 bias](Probe_Calibrate.md#location-bias-check). It may result in probe operations such as [Bed Mesh](Bed_Mesh.md), [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) etc returning inaccurate representations of the bed.
@@ -25,7 +25,7 @@ This module uses manual measurements by the user to correct the probe's results.
 
 > **Tip:** Bed temperature and nozzle temperature and size do not seem to have an influence to the calibration process.
 
-## [axis_twist_compensation] setup and commands
+## [axis_twist_compensation] Einrichtung und Befehle
 
 Configuration options for [axis_twist_compensation] can be found in the [Configuration Reference](Config_Reference.md#axis_twist_compensation).
 

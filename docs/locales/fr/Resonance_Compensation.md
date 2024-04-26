@@ -27,7 +27,7 @@ Tranchez le modèle de test de résonance, qui se trouve dans [docs/prints/ringi
 En premier lieu, mesurez la **fréquence de résonance**.
 
 1. Si le paramètre `square_corner_velocity` a été modifié, remettez-le à 5.0. Il n'est pas conseillé de l'augmenter lors de l'utilisation de l'input shaper car cela peut provoquer plus de lissage dans les pièces - il est préférable d'utiliser une valeur d'accélération plus élevée à la place.
-1. Augmentez `max_accel_to_decel` en lançant la commande suivante : `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Disable the `miminum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Désactivez l'avance de pression : `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Si vous avez déjà ajouté la section `[input_shaper]` au fichier printer.cfg, exécutez la commande `SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0`. Si vous obtenez l'erreur "Unknown command", vous pouvez l'ignorer - pour le moment - et continuer les mesures.
 1. Exécutez la commande : `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Dans la pratique, nous essayons de rendre la résonance plus prononcée en définissant différentes valeurs élevées pour l'accélération. Cette commande augmentera l'accélération tous les 5 mm à partir de 1500 mm/sec² : 1500 mm/sec², 2000 mm/sec², 2500 mm/sec² et ainsi de suite jusqu'à 7000 mm/sec² pour la dernière bande.
@@ -77,7 +77,7 @@ Pour la plupart des imprimantes, les types MZV ou EI sont recommandés. Cette se
 Imprimez le modèle de test de résonance comme suit :
 
 1. Redémarrez le micrologiciel : `RESTART`
-1. Préparez-vous pour le test : `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Désactivez l'avance de pression : `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Exécutez : `SET_INPUT_SHAPER SHAPER_TYPE=MZV`
 1. Exécutez la commande : `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
@@ -135,7 +135,7 @@ Notez que la précision des mesures des fréquences de résonance à l'aide du m
 
 En considérant que vous avez tranché le modèle de résonance avec les paramètres suggérés, effectuez les étapes suivantes pour chacun des axes X et Y :
 
-1. Préparez-vous pour le test : `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Assurez-vous que l'avance de pression est désactivée : `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Exécutez : `SET_INPUT_SHAPER SHAPER_TYPE=ZV`
 1. À partir du modèle de test de résonance imprimé avec l'input shaper choisi, sélectionnez l'accélération montrant suffisamment bien la résonance et définissez-la avec : `SET_VELOCITY_LIMIT ACCEL=...`
@@ -163,7 +163,7 @@ Si vous ne parvenez pas à mesurer les fréquences de résonance, par ex. si la 
 Pour le réglage, ajoutez une section `[input_shaper]` vide à votre `printer.cfg`. Ensuite, en supposant que vous avez tranché le modèle de résonance avec les paramètres suggérés, imprimez le modèle de test 3 fois comme suit. Première fois, avant l'impression, exécutez
 
 1. `RESTART`
-1. `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`

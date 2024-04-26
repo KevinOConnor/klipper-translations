@@ -52,17 +52,21 @@ Kulcsképlet az előretekintéshez:
 end_velocity^2 = start_velocity^2 + 2*accel*move_distance
 ```
 
-### Simított előretekintés
+### Minimális utazási arány
 
 A Klipper egy olyan mechanizmust is megvalósít, amely kisimítja a rövid "cikkcakk" mozgásokat. Nézzük a következő mozgásokat:
 
 ![zigzag](img/zigzag.svg.png)
 
-A fentiekben a gyorsításról lassításra történő gyakori váltás a gép rezgését okozhatja, ami a gépet terheli, és növeli a zajt. Ennek csökkentése érdekében a Klipper mind a rendszeres mozgási gyorsulást, mind pedig a virtuális "gyorsításról lassításra" sebességet követi. Ezzel a rendszerrel a nyomtató mozgásának kiegyenlítése érdekében a rövid "cikkcakkos" mozgások csúcssebessége korlátozott:
+A fentiekben a gyorsításról lassításra történő gyakori váltás a gép rezgését okozhatja, ami a gépet terheli, és növeli a zajt. A Klipper egy olyan mechanizmust valósít meg, amely biztosítja, hogy a gyorsítás és lassítás között mindig van némi mozgás utazósebességen. Ez úgy történik, hogy egyes mozgások (vagy mozgássorozatok) végsebességét csökkenti, hogy a gyorsítás és lassítás során megtett távolsághoz képest minimális távolságot tegyen meg utazósebességen.
+
+A Klipper ezt a funkciót úgy valósítja meg, hogy mind a normál mozgásgyorsulást, mind a virtuális "gyorsulás-lassulás" sebességet követi:
 
 ![smoothed](img/smoothed.svg.png)
 
-Konkrétan, a kód kiszámítja, hogy mi lenne az egyes mozgások sebessége, ha az adott virtuális "gyorsulás-lassulás" sebességre korlátozódna (alapértelmezés szerint a normál gyorsulási sebesség fele). A fenti képen a szaggatott szürke vonalak ezt a virtuális gyorsulási sebességet jelölik az első mozdulatnál. Ha egy mozgás nem tudja elérni a teljes utazósebességét ezzel a virtuális gyorsulási sebességgel, akkor a végsebessége arra a maximális sebességre csökken, amelyet ezzel a virtuális gyorsulási sebességgel elérhetne. A legtöbb mozgás esetében ez a határérték a mozgás meglévő határértékeinél vagy azok felett lesz, és nem változik a viselkedés. Rövid cikk-cakk mozgások esetén azonban ez a határ csökkenti a csúcssebességet. Vedd figyelembe, hogy ez nem változtatja meg a tényleges gyorsulást a mozgáson belül. A mozgás továbbra is a normál gyorsulási sémát használja a beállított csúcssebességig.
+Konkrétan a kód kiszámítja, hogy mekkora lenne az egyes mozgások sebessége, ha az adott virtuális "gyorsulás-lassulás" sebességre korlátozódna. A fenti képen a szaggatott szürke vonalak ezt a virtuális gyorsulási sebességet jelölik az első lépésnél. Ha egy mozgás nem tudja elérni a teljes utazósebességét ezzel a virtuális gyorsulási sebességgel, akkor a csúcssebessége arra a maximális sebességre csökken, amelyet ezzel a virtuális gyorsulási sebességgel elérhetne.
+
+A legtöbb mozgás esetében a határérték a mozgás meglévő határértékeinél vagy azok felett lesz, és nem változik a viselkedés. Rövid cikk-cakk mozgások esetén azonban ez a határ csökkenti a csúcssebességet. Vedd figyelembe, hogy ez nem változtatja meg a tényleges gyorsulást a mozgáson belül - a mozgás továbbra is a normál gyorsulási sémát használja a beállított csúcssebességig.
 
 ## Lépések generálása
 

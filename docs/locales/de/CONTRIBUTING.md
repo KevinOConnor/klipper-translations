@@ -4,9 +4,9 @@ Thank you for contributing to Klipper! This document describes the process for c
 
 Please see the [contact page](Contact.md) for information on reporting an issue or for details on contacting the developers.
 
-## Overview of Contribution Process
+## Überblick über den Beitragsprozess
 
-Contributions to Klipper generally follow a high-level process:
+Beiträge zu Klipper folgen im Allgemeinen einem anspruchsvollen Prozess:
 
 1. A submitter starts by creating a [GitHub Pull Request](https://github.com/Klipper3d/klipper/pulls) when a submission is ready for widespread deployment.
 1. When a [reviewer](#reviewers) is available to [review](#what-to-expect-in-a-review) the submission, they will assign themselves to the Pull Request on GitHub. The goal of the review is to look for defects and to check that the submission follows documented guidelines.
@@ -14,7 +14,7 @@ Contributions to Klipper generally follow a high-level process:
 
 When working on enhancements, consider starting (or contributing to) a topic on [Klipper Discourse](Contact.md). An ongoing discussion on the forum can improve visibility of development work and may attract others interested in testing new work.
 
-## What to expect in a review
+## Was Sie bei einer Überprüfung erwarten können
 
 Contributions to Klipper are reviewed before merging. The primary goal of the review process is to check for defects and to check that the submission follows guidelines specified in the Klipper documentation.
 
@@ -29,7 +29,7 @@ Common things a reviewer will look for:
 
    The main [Klipper3d/klipper](https://github.com/Klipper3d/klipper) GitHub repository does not accept experimental work. Submitters should perform experimentation, debugging, and testing in their own repositories. The [Klipper Discourse](Contact.md) server is a good place to raise awareness of new work and to find users interested in providing real-world feedback.
 
-   Submissions must pass all [regression test cases](Debugging.md).
+   Einsendungen müssen alle [regression test cases](Debugging.md) bestehen.
 
    When fixing a defect in the code, submitters should have a general understanding of the root cause of that defect, and the fix should target that root cause.
 
@@ -88,7 +88,7 @@ It is not a goal of a review to discuss "better implementations". However, if a 
 
 As part of a review, a reviewer may create an alternate Pull Request for a topic. This may be done to avoid excessive "back and forth" on minor procedural items and thus streamline the submission process. It may also be done because the discussion inspires a reviewer to build an alternative implementation. Both situations are a normal result of a review and should not be considered criticism of the original submission.
 
-### Helping with reviews
+### Bei der Überarbeitung helfen
 
 We appreciate help with reviews! It is not necessary to be a [listed reviewer](#reviewers) to perform a review. Submitters of GitHub Pull Requests are also encouraged to review their own submissions.
 
@@ -98,24 +98,24 @@ We also appreciate testing of submissions. If the code was tested then please ad
 
 ### Reviewers
 
-The Klipper "reviewers" are:
+Die Klipper"Gutachter" sind:
 
-| Name | GitHub Id | Areas of interest |
+| Name | GitHub Id | Bereiche von Interesse |
 | --- | --- | --- |
 | Dmitry Butyugin | @dmbutyugin | Input shaping, resonance testing, kinematics |
 | Eric Callahan | @Arksine | Bed leveling, MCU flashing |
-| James Hartley | @JamesH1978 | Configuration files |
+| James Hartley | @JamesH1978 | Konfigurationsdateien |
 | Kevin O'Connor | @KevinOConnor | Core motion system, Micro-controller code |
 
 Please do not "ping" any of the reviewers and please do not direct submissions at them. All of the reviewers monitor the forums and PRs, and will take on reviews when they have time to.
 
-The Klipper "maintainers" are:
+Die Klipper"Betreuer" sind:
 
-| Name | GitHub name |
+| Name | GitHub Name |
 | --- | --- |
 | Kevin O'Connor | @KevinOConnor |
 
-## Format of commit messages
+## Format der Commit Nachrichten
 
 Each commit should have a commit message formatted similar to the following:
 
@@ -138,24 +138,24 @@ In the above example, `module` should be the name of a file or directory in the 
 
 Es ist wichtig, eine "Signed-off-by"-Zeile auf jedem Commit zu haben - sie bescheinigt, dass Sie mit dem [Entwickler-Ursprungszeugnis](developer-certificate-of-origin) einverstanden sind. Sie muss Ihren echten Namen (sorry, keine Pseudonyme oder anonyme Beiträge) und eine aktuelle E-Mail-Adresse enthalten.
 
-## Contributing to Klipper Translations
+## Beitrag zur Klipper Übersetzung
 
 [Klipper-translations Project](https://github.com/Klipper3d/klipper-translations) is a project dedicated to translating Klipper to different languages. [Weblate](https://hosted.weblate.org/projects/klipper/) hosts all the Gettext strings for translating and reviewing. Locales can be displayed on [klipper3d.org](https://www.klipper3d.org) once they satisfy the following requirements:
 
-- [ ] 75% Total coverage
-- [ ] All titles (H1) are translated
+- [ ] 75 % Gesamtdeckung
+- [ ] Alle Titel (H1) werden übersetzt
 - [ ] An updated navigation hierarchy PR in klipper-translations.
 
 To reduce the frustration of translating domain-specific terms and gain awareness of the ongoing translations, you can submit a PR modifying the [Klipper-translations Project](https://github.com/Klipper3d/klipper-translations) `readme.md`. Once a translation is ready, the corresponding modification to the Klipper project can be made.
 
 If a translation already exists in the Klipper repository and no longer meets the checklist above, it will be marked out-of-date after a month without updates.
 
-Once the requirements are met, you need to:
+Sobald die Anforderungen erfüllt sind, müssen Sie:
 
-1. update klipper-tranlations repository [active_translations](https://github.com/Klipper3d/klipper-translations/blob/translations/active_translations)
+1. klipper-translations Repository aktualisieren [active_translations](https://github.com/Klipper3d/klipper-translations/blob/translations/active_translations)
 1. Optional: add a manual-index.md file in klipper-translations repository's `docs\locals\<lang>` folder to replace the language specific index.md (generated index.md does not render correctly).
 
-Known Issues:
+Bekannte Probleme:
 
 1. Currently, there isn't a method for correctly translating pictures in the documentation
-1. It is impossible to translate titles in mkdocs.yml.
+1. Es ist unmöglich, Titel in mkdocs.yml zu übersetzen.

@@ -10,6 +10,8 @@ Klipper поддерживает механизм самонаведения с 
 
 Перерегулирование шагового двигателя не должно отрицательно влиять на точность процедуры наведения и зондирования. Код Klipper обнаружит проскакивание и учтет его в своих расчетах. Однако важно, чтобы аппаратная конструкция была способна справиться с перерегулированием без повреждения машины.
 
-Если Klipper обнаружит проблему связи между микроконтроллерами во время наведения нескольких мку, он выдаст ошибку "Communication timeout during homing".
+In order to use this "multi-mcu homing" capability the hardware must have predictably low latency between the host computer and all of the micro-controllers. Typically the round-trip time must be consistently less than 10ms. High latency (even for short periods) is likely to result in homing failures.
+
+Should high latency result in a failure (or if some other communication issue is detected) then Klipper will raise a "Communication timeout during homing" error.
 
 Обратите внимание, что ось с несколькими степперами (например, `stepper_z` и `stepper_z1`) должна быть на одном микроконтроллере, чтобы использовать мульти-mcu homing. Например, если концевой упор находится на отдельном микроконтроллере от `stepper_z`, то `stepper_z1` должен быть на том же микроконтроллере, что и `stepper_z`.

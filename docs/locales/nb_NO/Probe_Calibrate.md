@@ -40,7 +40,7 @@ Start ved å nullstile skriveren og så flytte hodet til en posisjon nær midten
 
 Verktøyet vil utføre en automatisk probe, løfte hodet, flytte tuten over stedet for probingspunkt, og starte det manuelle probeverktøyet. Hvis tuten ikke flytter til en posisjon over det automatiske probepunktet, vil `ABORT` avslutte det manuelle probeverktøyet og utføre kalibrering av XY-probeforskyvning beskrevet ovenfor.
 
-Når det manuelle probeverktøyet starter, følger du stegene beskrevet i [«papirtesten»](Bed_Level.md#the-paper-test) for å bestemme faktisk avstand mellom tut og bunnplate på gitt posisjon. Når disse stegene er fullført, kan man utføre `ACCEPT` for posisjonen, og lagre resultatet i en oppsettsfil med:
+Once the manual probe tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
 
 ```
 SAVE_CONFIG

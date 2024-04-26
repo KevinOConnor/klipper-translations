@@ -164,7 +164,7 @@ Vedd figyelembe, hogy a rezonanciamérések és a shaper automatikus kalibrálá
 
 ```
 sudo apt update
-sudo apt install python3-numpy python3-matplotlib libatlas-base-dev
+sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev
 ```
 
 Ezután a NumPy telepítéséhez a Klipper környezetbe futtassuk a parancsot:
@@ -535,6 +535,14 @@ Mivel a bemeneti alakító némi simítást okozhat az elemekben, különösen n
 Alternatívaként kövesd [ezt](Resonance_Compensation.md#selecting-max_accel) a részt a bemeneti alakító hangolási útmutatójában, és nyomtasd ki a tesztmodellt a `max_accel` paraméter kísérleti kiválasztásához.
 
 Ugyanez a figyelmeztetés vonatkozik a bemeneti alakító [automatikus kalibrálás](#bemeneti-formazo-automatikus-kalibralasa) `SHAPER_CALIBRATE` paranccsal történő használatára is: az automatikus kalibrálás után továbbra is szükséges a megfelelő `max_accel` érték kiválasztása, és a javasolt gyorsulási korlátok nem lesznek automatikusan alkalmazva.
+
+Ne feledd, hogy a maximális gyorsulás túl nagy simítás nélkül a `square_corner_velocity` értéktől függ. Az általános ajánlás az, hogy ne változtassuk meg az alapértelmezett 5.0 értéktől, és ezt az értéket használja alapértelmezés szerint a `calibrate_shaper.py` szkript. Ha mégis megváltoztattad, akkor a `--square_corner_velocity=...` paraméter átadásával tájékoztatnod kell erről a szkriptet, például.
+
+```
+~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png --square_corner_velocity=10.0
+```
+
+hogy helyesen tudd kiszámítani a maximális gyorsulási ajánlásokat. Vedd figyelembe, hogy a `SHAPER_CALIBRATE` parancs már figyelembe veszi a konfigurált `square_corner_velocity` paramétert, és nincs szükség annak explicit megadására.
 
 Ha a formázó újrakalibrálását végzi, és a javasolt formázó konfigurációhoz tartozó simítás majdnem megegyezik az előző kalibrálás során kapott értékkel, ez a lépés kihagyható.
 

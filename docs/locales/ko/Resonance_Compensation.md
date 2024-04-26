@@ -27,7 +27,7 @@ Basic tuning requires measuring the ringing frequencies of the printer by printi
 먼저 **rining 주파수**를 측정합니다.
 
 1. If `square_corner_velocity` parameter was changed, revert it back to 5.0. It is not advised to increase it when using input shaper because it can cause more smoothing in parts - it is better to use higher acceleration value instead.
-1. Increase `max_accel_to_decel` by issuing the following command: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Disable the `miminum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Printer.cfg에 `[input_shaper]` 섹션을 이미 추가한 경우 `SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0` 명령어를 실행합니다. "Unknown command" 오류가 발생하면 안전하게 이 오류를 무시하고 측정을 계속할 수 있습니다.
 1. Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Basically, we try to make ringing more pronounced by setting different large values for acceleration. This command will increase the acceleration every 5 mm starting from 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 and so forth up until 7000 mm/sec^2 at the last band.
@@ -77,7 +77,7 @@ Klipper는 여러 input shapers를 지원합니다. 공진 주파수를 결정�
 Print the ringing test model as follows:
 
 1. Restart the firmware: `RESTART`
-1. Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Execute: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`
 1. Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
@@ -135,7 +135,7 @@ Ringing 테스트 모델을 사용하는 공진 주파수 측정의 정밀도는
 
 Assuming that you have sliced the ringing model with suggested parameters, complete the following steps for each of the axes X and Y:
 
-1. Prepare for test: `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Make sure Pressure Advance is disabled: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Execute: `SET_INPUT_SHAPER SHAPER_TYPE=ZV`
 1. From the existing ringing test model with your chosen input shaper select the acceleration that shows ringing sufficiently well, and set it with: `SET_VELOCITY_LIMIT ACCEL=...`
@@ -163,7 +163,7 @@ Ringing 주파수를 측정할 수 없는 경우, 예를 들어 진동 사이의
 For tuning, add empty `[input_shaper]` section to your `printer.cfg`. Then, assuming that you have sliced the ringing model with suggested parameters, print the test model 3 times as follows. First time, prior to printing, run
 
 1. `RESTART`
-1. `SET_VELOCITY_LIMIT ACCEL_TO_DECEL=7000`
+1. `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`

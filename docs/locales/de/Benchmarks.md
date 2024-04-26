@@ -73,8 +73,8 @@ The test was last run on commit `59314d99` with gcc version `avr-gcc (GCC) 5.4.0
 
 | avr | ticks |
 | --- | --- |
-| 1 stepper | 102 |
-| 3 stepper | 486 |
+| 1 Schrittmotor | 102 |
+| 3 Schrittmotoren | 486 |
 
 ### Arduino Due step rate benchmark
 
@@ -92,8 +92,8 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | sam3x8e | ticks |
 | --- | --- |
-| 1 stepper | 66 |
-| 3 stepper | 257 |
+| 1 Schrittmotor | 66 |
+| 3 Schrittmotoren | 257 |
 
 ### Duet Maestro step rate benchmark
 
@@ -111,8 +111,8 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | sam4s8c | ticks |
 | --- | --- |
-| 1 stepper | 71 |
-| 3 stepper | 260 |
+| 1 Schrittmotor | 71 |
+| 3 Schrittmotoren | 260 |
 
 ### Duet Wifi step rate benchmark
 
@@ -130,8 +130,8 @@ The test was last run on commit `59314d99` with gcc version `gcc version 10.3.1 
 
 | sam4e8e | ticks |
 | --- | --- |
-| 1 stepper | 48 |
-| 3 stepper | 215 |
+| 1 Schrittmotor | 48 |
+| 3 Schrittmotoren | 215 |
 
 ### Beaglebone PRU step rate benchmark
 
@@ -149,8 +149,8 @@ The test was last run on commit `59314d99` with gcc version `pru-gcc (GCC) 8.0.0
 
 | pru | ticks |
 | --- | --- |
-| 1 stepper | 231 |
-| 3 stepper | 847 |
+| 1 Schrittmotor | 231 |
+| 3 Schrittmotoren | 847 |
 
 ### STM32F042 step rate benchmark
 
@@ -168,8 +168,8 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | stm32f042 | ticks |
 | --- | --- |
-| 1 stepper | 59 |
-| 3 stepper | 249 |
+| 1 Schrittmotor | 59 |
+| 3 Schrittmotoren | 249 |
 
 ### STM32F103 step rate benchmark
 
@@ -187,8 +187,8 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | stm32f103 | ticks |
 | --- | --- |
-| 1 stepper | 61 |
-| 3 stepper | 264 |
+| 1 Schrittmotor | 61 |
+| 3 Schrittmotoren | 264 |
 
 ### STM32F4 step rate benchmark
 
@@ -206,13 +206,13 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | stm32f446 | ticks |
 | --- | --- |
-| 1 stepper | 46 |
-| 3 stepper | 205 |
+| 1 Schrittmotor | 46 |
+| 3 Schrittmotoren | 205 |
 
 | stm32f407 | ticks |
 | --- | --- |
-| 1 stepper | 46 |
-| 3 stepper | 205 |
+| 1 Schrittmotor | 46 |
+| 3 Schrittmotoren | 205 |
 
 ### STM32H7 step rate benchmark
 
@@ -230,8 +230,8 @@ The test was last run on commit `00191b5c` with gcc version `arm-none-eabi-gcc (
 
 | stm32h7 | ticks |
 | --- | --- |
-| 1 stepper | 44 |
-| 3 stepper | 198 |
+| 1 Schrittmotor | 44 |
+| 3 Schrittmotoren | 198 |
 
 ### STM32G0B1 step rate benchmark
 
@@ -249,8 +249,8 @@ The test was last run on commit `247cd753` with gcc version `arm-none-eabi-gcc (
 
 | stm32g0b1 | ticks |
 | --- | --- |
-| 1 stepper | 58 |
-| 3 stepper | 243 |
+| 1 Schrittmotor | 58 |
+| 3 Schrittmotoren | 243 |
 
 ### LPC176x step rate benchmark
 
@@ -268,13 +268,13 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | lpc1768 | ticks |
 | --- | --- |
-| 1 stepper | 52 |
-| 3 stepper | 222 |
+| 1 Schrittmotor | 52 |
+| 3 Schrittmotoren | 222 |
 
 | lpc1769 | ticks |
 | --- | --- |
-| 1 stepper | 51 |
-| 3 stepper | 222 |
+| 1 Schrittmotor | 51 |
+| 3 Schrittmotoren | 222 |
 
 ### SAMD21 step rate benchmark
 
@@ -292,8 +292,8 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | samd21 | ticks |
 | --- | --- |
-| 1 stepper | 70 |
-| 3 stepper | 306 |
+| 1 Schrittmotor | 70 |
+| 3 Schrittmotoren | 306 |
 
 ### SAMD51 step rate benchmark
 
@@ -311,8 +311,8 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | samd51 | ticks |
 | --- | --- |
-| 1 stepper | 39 |
-| 3 stepper | 191 |
+| 1 Schrittmotor | 39 |
+| 3 Schrittmotoren | 191 |
 | 1 stepper (200Mhz) | 39 |
 | 3 stepper (200Mhz) | 181 |
 
@@ -332,8 +332,8 @@ The test was last run on commit `08d037c6` with gcc version `or1k-linux-musl-gcc
 
 | AR100 R_PIO | ticks |
 | --- | --- |
-| 1 stepper | 85 |
-| 3 stepper | 359 |
+| 1 Schrittmotor | 85 |
+| 3 Schrittmotoren | 359 |
 
 ### RP2040 step rate benchmark
 
@@ -351,8 +351,8 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | rp2040 | ticks |
 | --- | --- |
-| 1 stepper | 5 |
-| 3 stepper | 22 |
+| 1 Schrittmotor | 5 |
+| 3 Schrittmotoren | 22 |
 
 ### Linux MCU step rate benchmark
 
@@ -370,8 +370,8 @@ The test was last run on commit `59314d99` with gcc version `gcc (Raspbian 8.3.0
 
 | Linux (RPi3) | ticks |
 | --- | --- |
-| 1 stepper | 160 |
-| 3 stepper | 380 |
+| 1 Schrittmotor | 160 |
+| 3 Schrittmotoren | 380 |
 
 ## Command dispatch benchmark
 
@@ -395,7 +395,7 @@ Note that this test may saturate the USB/CPU capacity of a Raspberry Pi. If runn
 | at90usb1286 (USB) | 75K | 01d2183f | avr-gcc (GCC) 5.4.0 |
 | ar100 (serial) | 138K | 08d037c6 | or1k-linux-musl-gcc 9.3.0 |
 | samd21 (USB) | 223K | 01d2183f | arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
-| pru (shared memory) | 260K | c5968a08 | pru-gcc (GCC) 8.0.0 20170530 (experimental) |
+| pru (gemeinsam genutzter Speicher) | 260K | c5968a08 | pru-gcc (GCC) 8.0.0 20170530 (experimental) |
 | stm32f103 (USB) | 355K | 01d2183f | arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
 | sam3x8e (USB) | 418K | 01d2183f | arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
 | lpc1768 (USB) | 534K | 01d2183f | arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |

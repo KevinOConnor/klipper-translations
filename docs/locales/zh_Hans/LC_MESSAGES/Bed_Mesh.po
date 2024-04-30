@@ -1,20 +1,22 @@
 # badpoi <a1635835119@gmail.com>, 2021.
 # Yifei Ding <dingyifeiair@gmail.com>, 2021, 2022, 2023.
 # Hosted Weblate <mfvotmjhcj@iubridge.com>, 2024.
+# "Neko.vecter" <Vecterfang@icloud.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-06-28 08:28+0200\n"
-"PO-Revision-Date: 2024-02-18 14:01+0000\n"
-"Last-Translator: Hosted Weblate <mfvotmjhcj@iubridge.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/klipper/bed_mesh/zh_Hans/>\n"
+"PO-Revision-Date: 2024-04-30 17:07+0000\n"
+"Last-Translator: \"Neko.vecter\" <Vecterfang@icloud.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"klipper/bed_mesh/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.5.3-dev\n"
 
 msgid "Basic Configuration"
 msgstr "基本配置"
@@ -755,13 +757,13 @@ msgid ""
 "zero_reference_position: 125, 110\n"
 "probe_count: 5, 3\n"
 msgstr ""
-"[床_网格]。\n"
-"速度：120。\n"
-"水平移动z：5。\n"
-"网格最小值：35，6。\n"
-"Mesh_max：240,198。\n"
-"Zero_Reference_Position：125,110。\n"
-"探测计数：5，3\n"
+"[bed_mesh]\n"
+"speed: 120\n"
+"horizontal_move_z: 5\n"
+"mesh_min: 35, 6\n"
+"mesh_max: 240, 198\n"
+"zero_reference_position: 125, 110\n"
+"probe_count: 5, 3\n"
 
 #: docs/Bed_Mesh.md:block 37 (unordered list)
 msgid ""
@@ -804,14 +806,14 @@ msgid ""
 "... (additional generated points)\n"
 "// bed_mesh: relative_reference_index 24 is (131.5, 108.0)\n"
 msgstr ""
-"//Bed_Mesh：生成点。\n"
-"//索引|调整工具|探测。\n"
-"//0|(1.0，1.0)|(24.0，6.0)。\n"
-"//1|(36.7，1.0)|(59.7，6.0)。\n"
-"//2|(72.3，1.0)|(95.3，6.0)。\n"
-"//3|(108.0，1.0)|(131.0，6.0)。\n"
-"..。(其他生成点)。\n"
-"//BED_MESH：Relative_Reference_Index 24为(131.5,108.0)\n"
+"// bed_mesh: generated points\n"
+"// Index | Tool Adjusted | Probe\n"
+"// 0 | (1.0, 1.0) | (24.0, 6.0)\n"
+"// 1 | (36.7, 1.0) | (59.7, 6.0)\n"
+"// 2 | (72.3, 1.0) | (95.3, 6.0)\n"
+"// 3 | (108.0, 1.0) | (131.0, 6.0)\n"
+"... (additional generated points)\n"
+"// bed_mesh: relative_reference_index 24 is (131.5, 108.0)\n"
 
 #: docs/Bed_Mesh.md:block 41 (paragraph)
 msgid ""
@@ -877,6 +879,13 @@ msgid ""
 "probe_count: 5, 3\n"
 "adaptive_margin: 5\n"
 msgstr ""
+"[bed_mesh]\n"
+"speed: 120\n"
+"horizontal_move_z: 5\n"
+"mesh_min: 35, 6\n"
+"mesh_max: 240, 198\n"
+"probe_count: 5, 3\n"
+"adaptive_margin: 5\n"
 
 #: docs/Bed_Mesh.md:block 57 (unordered list)
 msgid ""
@@ -889,7 +898,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 57 (unordered list)
 msgid "![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)"
-msgstr ""
+msgstr "![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)"
 
 #: docs/Bed_Mesh.md:block 58 (paragraph)
 msgid ""
@@ -923,15 +932,16 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 66 (unordered list)
 msgid "`ADAPTIVE`"
-msgstr ""
+msgstr "`ADAPTIVE`"
 
 #: docs/Bed_Mesh.md:block 66 (unordered list)
 msgid "`ADAPTIVE_MARGIN`"
-msgstr ""
+msgstr "`ADAPTIVE_MARGIN`"
 
 #: docs/Bed_Mesh.md:block 89 (paragraph)
+#, fuzzy
 msgid "`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`"
-msgstr ""
+msgstr "`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`"
 
 #: docs/Bed_Mesh.md:block 90 (paragraph)
 msgid ""

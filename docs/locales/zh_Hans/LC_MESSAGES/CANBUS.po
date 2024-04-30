@@ -1,20 +1,22 @@
 # Neko.vecter <Vecterfang@icloud.com>, 2021, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2021, 2022.
 # Hosted Weblate <mfvotmjhcj@iubridge.com>, 2023, 2024.
+# "Neko.vecter" <Vecterfang@icloud.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-10 16:29+0200\n"
-"PO-Revision-Date: 2024-02-18 14:01+0000\n"
-"Last-Translator: Hosted Weblate <mfvotmjhcj@iubridge.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/klipper/canbus/zh_Hans/>\n"
+"PO-Revision-Date: 2024-04-30 17:07+0000\n"
+"Last-Translator: \"Neko.vecter\" <Vecterfang@icloud.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"klipper/canbus/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.5.3-dev\n"
 
 msgid "This document describes Klipper's CAN bus support."
 msgstr "本文档描述了 Klipper 的 CAN 总线支持。"
@@ -160,10 +162,10 @@ msgid ""
 "    bitrate 1000000\n"
 "    up ifconfig $IFACE txqueuelen 128\n"
 msgstr ""
-"允许-热插拔can0。\n"
-"IFace can0可以静态。\n"
-"比特率1000000。\n"
-"Up ifconfig$iFace txqueelen 128\n"
+"allow-hotplug can0\n"
+"iface can0 can static\n"
+"    bitrate 1000000\n"
+"    up ifconfig $IFACE txqueuelen 128\n"
 
 #: docs/CANBUS.md:block 12 (paragraph)
 msgid ""
@@ -181,8 +183,8 @@ msgid ""
 "during Klipper's \"make menuconfig\". This mode may allow one to use a "
 "micro-controller as both a \"USB to CAN bus adapter\" and as a Klipper node."
 msgstr ""
-"有些微控制器支持在Klipper的“make menuconfig”模式下选择“USB转CAN Bus "
-"Bridge”模式。该模式可使微控制器既可用作“USB转CAN总线适配器”，又可用作Klipper节点。"
+"有些微控制器支持在Klipper的“make menuconfig”中选择“USB to CAN bus bridge” "
+"模式。该模式可使微控制器既可用作“USB转CAN总线适配器”并且同时作为Klipper节点。"
 
 #: docs/CANBUS.md:block 26 (paragraph)
 msgid ""
@@ -209,7 +211,8 @@ msgstr ""
 msgid ""
 "The \"bridge mcu\" is not actually on the CAN bus. Messages to and from the "
 "bridge mcu will not be seen by other adapters that may be on the CAN bus."
-msgstr "“桥式MCU”实际上并不在CAN总线上。可能位于CAN总线上的其他适配器不会看到进出桥接器MCU的消息。"
+msgstr "“桥接MCU”实际上并不在CAN总线上。可能位于CAN总线上的其他适配器不会看到进出桥接"
+"器MCU的消息。"
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""

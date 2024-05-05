@@ -46,6 +46,7 @@ Un tipico movimento della stampante inizia quando viene inviato un comando "G1" 
 
 * L'elaborazione di un comando di spostamento inizia in gcode.py. L'obiettivo di gcode.py è tradurre il G-code in chiamate interne. Un comando G1 invocherà cmd_G1() in klippy/extras/gcode_move.py. Il codice gcode_move.py gestisce le modifiche all'origine (ad esempio, G92), le modifiche alle posizioni relative rispetto a quelle assolute (ad esempio, G90) e le modifiche alle unità (ad esempio, F6000=100mm/s). Il percorso del codice per una mossa è: `_process_data() -> _process_commands() -> cmd_G1()`. Infine viene invocata la classe ToolHead per eseguire la richiesta effettiva: `cmd_G1() -> ToolHead.move()`
 * The ToolHead class (in toolhead.py) handles "look-ahead" and tracks the timing of printing actions. The main codepath for a move is: `ToolHead.move() -> LookAheadQueue.add_move() -> LookAheadQueue.flush() -> Move.set_junction() -> ToolHead._process_moves()`.
+
    * ToolHead.move() crea un oggetto Move() con i parametri del movimento (in spazio cartesiano e in unità di secondi e millimetri).
    * Alla classe cinematica viene data l'opportunità di controllare ogni movimento (`ToolHead.move() -> kin.check_move()`). Le classi cinematiche si trovano nella directory klippy/cinematica/. Il codice check_move() può generare un errore se il movimento non è valida. Se check_move() viene completato correttamente, la cinematica sottostante deve essere in grado di gestire lo spostamento.
    * LookAheadQueue.add_move() places the move object on the "look-ahead" queue.

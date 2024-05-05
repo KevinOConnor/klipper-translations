@@ -55,8 +55,9 @@
 
 以下信息可在[exclude_object](Exclude_Object.md)对象中找到：
 
+- `objects`：`EXCLUDE_OBJECT_DEFINE` 命令提供的已知对象数组。这与 `EXCLUDE_OBJECT VERBOSE=1` 命令提供的信息相同。 `center` 和 `polygon` 字段只有在原始 `EXCLUDE_OBJECT_DEFINE` 中提供时才会出现
 
-   - `objects`：`EXCLUDE_OBJECT_DEFINE` 命令提供的已知对象数组。这与 `EXCLUDE_OBJECT VERBOSE=1` 命令提供的信息相同。 `center` 和 `polygon` 字段只有在原始 `EXCLUDE_OBJECT_DEFINE` 中提供时才会出现这里有一个JSON样本：
+   这里有一个JSON样本：
 
 ```
 [

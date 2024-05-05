@@ -88,8 +88,9 @@ C'est une bonne idée de vérifier que le décalage Z est proche de 1mm. Si ce n
 
 ## Mode de sortie du BL-Touch
 
+* Un BL-Touch V3.0 accepte le réglage d'un mode de sortie 5V ou OPEN-DRAIN, un BL-Touch V3.1 le supporte aussi et peut également le stocker dans son EEPROM interne. Si votre carte contrôleur a besoin du niveau logique haut de 5V du mode 5V, vous pouvez régler le paramètre 'set_output_mode' dans la section [bltouch] du fichier de configuration de l'imprimante sur "5V".
 
-   * Un BL-Touch V3.0 accepte le réglage d'un mode de sortie 5V ou OPEN-DRAIN, un BL-Touch V3.1 le supporte aussi et peut également le stocker dans son EEPROM interne. Si votre carte contrôleur a besoin du niveau logique haut de 5V du mode 5V, vous pouvez régler le paramètre 'set_output_mode' dans la section [bltouch] du fichier de configuration de l'imprimante sur "5V".***N'utilisez le mode 5V que si la ligne d'entrée de votre carte contrôleur est tolérante à cette tension (5V). C'est pourquoi la configuration par défaut de ces versions de BL-Touch est le mode OPEN-DRAIN. Vous pourriez potentiellement endommager le CPU de votre carte contrôleur***
+   ***N'utilisez le mode 5V que si la ligne d'entrée de votre carte contrôleur est tolérante à cette tension (5V). C'est pourquoi la configuration par défaut de ces versions de BL-Touch est le mode OPEN-DRAIN. Vous pourriez potentiellement endommager le CPU de votre carte contrôleur***
 
    En résumé : Si une carte contrôleur a besoin d'un mode 5V ET qu'elle est tolérante à 5V sur sa ligne de signal d'entrée ET si
 

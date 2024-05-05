@@ -88,8 +88,9 @@ Jó ötlet ellenőrizni, hogy a Z eltolás közel 1 mm. Ha nem, akkor valószín
 
 ## BL-Touch kimeneti mód
 
+* A BL-Touch V3.0 támogatja az 5V vagy OPEN-DRAIN kimeneti mód beállítását, a BL-Touch V3.1 szintén támogatja ezt, de ezt a belső EEPROM-jában is el tudja tárolni. Ha az alaplapodnak szüksége van az 5V-os üzemmód fix 5V magas logikai szintjére, akkor a nyomtató konfigurációs fájl [bltouch] szakaszában a 'set_output_mode' paramétert "5V" értékre állíthatod.
 
-   * A BL-Touch V3.0 támogatja az 5V vagy OPEN-DRAIN kimeneti mód beállítását, a BL-Touch V3.1 szintén támogatja ezt, de ezt a belső EEPROM-jában is el tudja tárolni. Ha az alaplapodnak szüksége van az 5V-os üzemmód fix 5V magas logikai szintjére, akkor a nyomtató konfigurációs fájl [bltouch] szakaszában a 'set_output_mode' paramétert "5V" értékre állíthatod.*** Csak akkor használd az 5V-os üzemmódot, ha az alaplapnak a bemeneti vonala 5V-os toleráns. Ezért ezeknek a BL-Touch verzióknak az alapértelmezett konfigurációja a OPEN-DRAIN üzemmód. Ezzel potenciálisan károsíthatod az alaplap CPU-ját ***
+   *** Csak akkor használd az 5V-os üzemmódot, ha az alaplapnak a bemeneti vonala 5V-os toleráns. Ezért ezeknek a BL-Touch verzióknak az alapértelmezett konfigurációja a OPEN-DRAIN üzemmód. Ezzel potenciálisan károsíthatod az alaplap CPU-ját ***
 
    Ezért tehát: Ha egy alaplapnak 5V-os üzemmódra van szüksége ÉS 5V-os toleráns a bemeneti jelvonalon ÉS ha
 

@@ -24,8 +24,9 @@ A beadványok többsége visszajelzést eredményez egy felülvizsgálatról. K�
 
 Gyakori dolgok, amiket a bíráló keres:
 
+1. Hibátlan-e a beadvány, és készen áll-e a széles körű bevezetésre?
 
-   1. Hibátlan-e a beadvány, és készen áll-e a széles körű bevezetésre?A benyújtóknak a benyújtás előtt tesztelniük kell a változtatásokat. A bírálók keresik a hibákat, de általában nem tesztelik a beküldött anyagokat. Egy elfogadott beadványt gyakran az elfogadást követő néhány héten belül több ezer nyomtatóhoz juttatunk el. Ezért a beadványok minősége prioritást élvez.
+   A benyújtóknak a benyújtás előtt tesztelniük kell a változtatásokat. A bírálók keresik a hibákat, de általában nem tesztelik a beküldött anyagokat. Egy elfogadott beadványt gyakran az elfogadást követő néhány héten belül több ezer nyomtatóhoz juttatunk el. Ezért a beadványok minősége prioritást élvez.
 
    A fő [Klipper3d/klipper](https://github.com/Klipper3d/klipper) GitHub tároló nem fogad el kísérleti munkát. A beküldőknek a kísérletezést, hibakeresést és tesztelést a saját tárolójukban kell elvégezniük. A [Klipper Társalgó](Contact.md) szerver jó hely arra, hogy felhívjuk a figyelmet az új munkára, és megtaláljuk azokat a felhasználókat, akiket érdekel a valós visszajelzés.
 
@@ -38,8 +39,9 @@ Gyakori dolgok, amiket a bíráló keres:
    A kódbeadványokhoz fűzött megjegyzéseknek a kód karbantartásának javítására kell összpontosítaniuk. A beadványok nem tartalmazhatnak "kikommentált kódot" vagy túlzottan sok, korábbi megvalósításokat leíró megjegyzést. Nem lehetnek túlzott mértékű "todo" megjegyzések.
 
    A dokumentáció frissítései nem jelenthetik ki, hogy azok "folyamatban lévő munkák".
+1. A beadott pályázat "nagy hatású" előnyt jelent-e a valós felhasználók számára, akik valós feladatokat látnak el?
 
-   1. A beadott pályázat "nagy hatású" előnyt jelent-e a valós felhasználók számára, akik valós feladatokat látnak el?A bírálóknak - legalábbis a saját fejükben - nagyjából meg kell határozniuk, hogy "ki a célközönség", hogy "mekkora a célközönség", hogy "milyen előnyökhöz" jutnak, hogy "az előnyöket hogyan mérik", és hogy "milyen eredményeket hoznak ezek a mérési tesztek". A legtöbb esetben ez mind a benyújtó, mind a bíráló számára nyilvánvaló, és a bírálat során nem kerül kifejezett kijelentésre.
+   A bírálóknak - legalábbis a saját fejükben - nagyjából meg kell határozniuk, hogy "ki a célközönség", hogy "mekkora a célközönség", hogy "milyen előnyökhöz" jutnak, hogy "az előnyöket hogyan mérik", és hogy "milyen eredményeket hoznak ezek a mérési tesztek". A legtöbb esetben ez mind a benyújtó, mind a bíráló számára nyilvánvaló, és a bírálat során nem kerül kifejezett kijelentésre.
 
    A mester Klipper ágba küldött beadványok várhatóan figyelemre méltó célközönséggel rendelkeznek. Általános "ökölszabályként" a beadványoknak legalább 100 valós felhasználóból álló felhasználói bázist kell megcélozniuk.
 
@@ -54,16 +56,19 @@ Gyakori dolgok, amiket a bíráló keres:
    Ha az opció célja, hogy a kódot modulárisabbá tedd, akkor inkább használj kódkonstansokat a felhasználóval szembenéző konfigurációs opciók helyett.
 
    Az új modulok, új opciók és új paraméterek nem biztosíthatnak hasonló funkciókat a meglévő modulokhoz - ha a különbségek önkényesek, akkor inkább a meglévő rendszert kell használni, vagy a meglévő kódot kell átalakítani.
+1. A beadvány szerzői joga egyértelmű, nem hálapénz és összeegyeztethető?
 
-   1. A beadvány szerzői joga egyértelmű, nem hálapénz és összeegyeztethető?Az új C és Python fájloknak egyértelmű szerzői jogi nyilatkozatot kell tartalmazniuk. Az előnyben részesített formátumot lásd a meglévő fájlokban. A meglévő fájl szerzői jogának deklarálása a fájl kisebb módosításai esetén elhanyagolható.
+   Az új C és Python fájloknak egyértelmű szerzői jogi nyilatkozatot kell tartalmazniuk. Az előnyben részesített formátumot lásd a meglévő fájlokban. A meglévő fájl szerzői jogának deklarálása a fájl kisebb módosításai esetén elhanyagolható.
 
    A harmadik féltől származó kódnak kompatibilisnek kell lennie a Klipper licenszel (GNU GPLv3). A nagyobb, harmadik féltől származó kódkiegészítéseket a `lib/` könyvtárba kell helyezni (és a [lib/README](../lib/README) könyvtárban leírt formátumot kell követni).
 
    A beküldőknek meg kell adniuk egy [Signed-off-by line](#format-of-commit-messages) sort a teljes valódi nevükkel. Ez azt jelzi, hogy a benyújtó egyetért a [fejlesztői származási igazolással](developer-certificate-of-origin).
+1. A benyújtás követi a Klipper dokumentációban meghatározott irányelveket?
 
-   1. A benyújtás követi a Klipper dokumentációban meghatározott irányelveket?Különösen a kódnak a <Code_Overview.md>, a konfigurációs fájloknak pedig a <Example_Configs.md> című dokumentumban található irányelveket kell követniük.
+   Különösen a kódnak a <Code_Overview.md>, a konfigurációs fájloknak pedig a <Example_Configs.md> című dokumentumban található irányelveket kell követniük.
+1. A Klipper dokumentáció frissítve van az új változásoknak megfelelően?
 
-   1. A Klipper dokumentáció frissítve van az új változásoknak megfelelően?Legalább a referenciadokumentációt kell frissíteni a kód megfelelő változtatásaival:
+   Legalább a referenciadokumentációt kell frissíteni a kód megfelelő változtatásaival:
 
    * Minden parancsot és parancsparamétert a <G-Codes.md> dokumentumban kell dokumentálni.
    * Minden felhasználó előtt álló modult és azok konfigurációs paramétereit dokumentálni kell a <Config_Reference.md> fájlban.
@@ -73,8 +78,9 @@ Gyakori dolgok, amiket a bíráló keres:
 
 Az új dokumentumokat hozzá kell adni az <Overview.md> fájlhoz, és hozzá kell adni a weboldal indexéhez [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml).
 
+1. A véglegesítések jól megformáltak, véglegesítésként egyetlen témával foglalkoznak, és függetlenek?
 
-   1. A véglegesítések jól megformáltak, véglegesítésként egyetlen témával foglalkoznak, és függetlenek?A kérelmi üzeneteknek a [preferált formátumot](#format-of-commit-messages) kell követniük.
+   A kérelmi üzeneteknek a [preferált formátumot](#format-of-commit-messages) kell követniük.
 
    A kérelmeknek nem lehet összeolvadási konfliktusuk. A Klipper master ágához való új hozzáadások mindig egy "rebase" vagy "squash and rebase" segítségével történnek. A benyújtóknak általában nem szükséges a Klipper főadattár minden egyes frissítésénél újra egyesíteniük a beadványukat. Ha azonban összeolvasztási konfliktus van, akkor a benyújtóknak ajánlott a `git rebase` használata a konfliktus megoldására.
 

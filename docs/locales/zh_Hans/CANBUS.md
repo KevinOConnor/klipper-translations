@@ -15,10 +15,10 @@ Klipper目前支持STM32、SAME5x和rp2040芯片上的CAN。此外，微控制�
 还需要将主机操作系统配置为使用适配器。通常可以通过创建一个名为 `/etc/network/interfaces.d/can0` 的新文件来实现，该文件包含以下内容：
 
 ```
-允许-热插拔can0。
-IFace can0可以静态。
-比特率1000000。
-Up ifconfig$iFace txqueelen 128
+allow-hotplug can0
+iface can0 can static
+    bitrate 1000000
+    up ifconfig $IFACE txqueuelen 128
 ```
 
 ## 终端电阻
@@ -58,7 +58,7 @@ canbus_uuid: 11aa22bb33cc
 
 ## USB转CAN总线桥接模式
 
-有些微控制器支持在Klipper的“make menuconfig”模式下选择“USB转CAN Bus Bridge”模式。该模式可使微控制器既可用作“USB转CAN总线适配器”，又可用作Klipper节点。
+有些微控制器支持在Klipper的“make menuconfig”中选择“USB to CAN bus bridge” 模式。该模式可使微控制器既可用作“USB转CAN总线适配器”并且同时作为Klipper节点。
 
 当Klipper使用此模式时，微控制器在Linux下显示为“USB CAN Bus Adapter”。“Klipper网桥MCU”本身看起来就像在此CAN总线上一样-它可以通过`canbus_query.py`识别，并且必须像其他CAN Bus Klipper节点一样进行配置。
 
@@ -68,15 +68,16 @@ canbus_uuid: 11aa22bb33cc
 * 每当桥接MCU重置时，Linux都会关闭相应的`can0`接口。为了确保Firmware_Restart和Restart命令的正确处理，建议使用`/etc/network/interfaces.d/can0`文件中的`Allow-hotplug`。例如：
 
 ```
-允许-热插拔can0。
-IFace can0可以静态。
-比特率1000000。
-Up ifconfig$iFace txqueelen 128
+allow-hotplug can0
+iface can0 can static
+    bitrate 1000000
+    up ifconfig $IFACE txqueuelen 128
 ```
 
-* “桥式MCU”实际上并不在CAN总线上。可能位于CAN总线上的其他适配器不会看到进出桥接器MCU的消息。
+* “桥接MCU”实际上并不在CAN总线上。可能位于CAN总线上的其他适配器不会看到进出桥接器MCU的消息。
+* “桥式MCU”本身和CAN总线上的所有设备的可用带宽都受到CAN总线频率的有效限制。因此，在使用“USB转CAN总线桥模式”时，建议使用1000000的CAN总线频率。
 
-   * “桥式MCU”本身和CAN总线上的所有设备的可用带宽都受到CAN总线频率的有效限制。因此，在使用“USB转CAN总线桥模式”时，建议使用1000000的CAN总线频率。即使在CAN总线频率为1000000的情况下，如果XY步进器和加速度计都通过单个“USB to CAN Bus”接口进行通信，也可能没有足够的带宽来运行 `SHAPER_CALIBRATE` 测试。
+   即使在CAN总线频率为1000000的情况下，如果XY步进器和加速度计都通过单个“USB to CAN Bus”接口进行通信，也可能没有足够的带宽来运行 `SHAPER_CALIBRATE` 测试。
 * USB转CAN桥板不会显示为USB串口设备，也不会在运行`ls/dev/Serial/by-id`时出现，也不能在Klipper的printer.cfg文件中使用`Serial：`参数进行配置。桥接板显示为“USB CAN适配器”，并在printer.cfg中配置为[CAN节点](#configuring-klipper)。
 
 ## 故障排除提示

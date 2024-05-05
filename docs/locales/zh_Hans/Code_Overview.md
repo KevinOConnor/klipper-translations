@@ -46,6 +46,7 @@ Klippy上位机程序包含四个进程。主线程用于处理输入的G代码�
 
 * 移动命令的处理始于gcode.py，该代码将G代码转化为内部调用。G1命令将调用klippy/extras/gcode_move.py中的cmd_G1()函数。gcode_move.py中的代码将处理 原点变换（G92），绝对坐标模式（G90）和单位变换（如F6000=100mm/s）。一个移动命令的处理路径为：`_process_data() -> _process_commands() -> cmd_G1()`。最终将调用ToolHead类的方法实现移动 `cmd_G1() -> ToolHead.move()`
 * The ToolHead class (in toolhead.py) handles "look-ahead" and tracks the timing of printing actions. The main codepath for a move is: `ToolHead.move() -> LookAheadQueue.add_move() -> LookAheadQueue.flush() -> Move.set_junction() -> ToolHead._process_moves()`.
+
    * ToolHead.move()将创建一个Move()对象实例，其中将包含移动的参数（在笛卡尔空间中，并这些参数以mm和s为单位）。
    * kinematics类将检查每个运动命令（`ToolHead.move() -> kin.check_move()`）。各种kinematics类存放于 klippy/kinematics/ 目录。check_move()能在运动命令不合理时抛出错误。如果 check_move()成功，这意味着打印机必定能完成运动命令。
    * LookAheadQueue.add_move() places the move object on the "look-ahead" queue.

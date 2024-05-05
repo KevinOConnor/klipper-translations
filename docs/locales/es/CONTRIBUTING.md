@@ -24,8 +24,9 @@ The majority of submissions will result in feedback from a review. Be prepared t
 
 Common things a reviewer will look for:
 
+1. Is the submission free of defects and is it ready to be widely deployed?
 
-   1. Is the submission free of defects and is it ready to be widely deployed?Submitters are expected to test their changes prior to submission. The reviewers look for errors, but they don't, in general, test submissions. An accepted submission is often deployed to thousands of printers within a few weeks of acceptance. Quality of submissions is therefore considered a priority.
+   Submitters are expected to test their changes prior to submission. The reviewers look for errors, but they don't, in general, test submissions. An accepted submission is often deployed to thousands of printers within a few weeks of acceptance. Quality of submissions is therefore considered a priority.
 
    The main [Klipper3d/klipper](https://github.com/Klipper3d/klipper) GitHub repository does not accept experimental work. Submitters should perform experimentation, debugging, and testing in their own repositories. The [Klipper Discourse](Contact.md) server is a good place to raise awareness of new work and to find users interested in providing real-world feedback.
 
@@ -38,8 +39,9 @@ Common things a reviewer will look for:
    Los comentarios en los envíos de código deben focalizarse en mejorar el mantenimiento del código. Los envíos no deben contener código comentarizado ni comentarios excesivos que describan elaboraciones pasadas. Tampoco debería haber comentarios sobre tareas pendientes en demasía.
 
    Updates to documentation should not declare that they are a "work in progress".
+1. Does the submission provide a "high impact" benefit to real-world users performing real-world tasks?
 
-   1. Does the submission provide a "high impact" benefit to real-world users performing real-world tasks?Reviewers need to identify, at least in their own minds, roughly "who the target audience is", a rough scale of "the size of that audience", the "benefit" they will obtain, how the "benefit is measured", and the "results of those measurement tests". In most cases this will be obvious to both the submitter and the reviewer, and it is not explicitly stated during a review.
+   Reviewers need to identify, at least in their own minds, roughly "who the target audience is", a rough scale of "the size of that audience", the "benefit" they will obtain, how the "benefit is measured", and the "results of those measurement tests". In most cases this will be obvious to both the submitter and the reviewer, and it is not explicitly stated during a review.
 
    Submissions to the master Klipper branch are expected to have a noteworthy target audience. As a general "rule of thumb", submissions should target a user base of at least a 100 real-world users.
 
@@ -54,16 +56,19 @@ Common things a reviewer will look for:
    If the goal of an option is to make the code more modular then prefer using code constants instead of user facing config options.
 
    New modules, new options, and new parameters should not provide similar functionality to existing modules - if the differences are arbitrary than it's preferable to utilize the existing system or refactor the existing code.
+1. Is the copyright of the submission clear, non-gratuitous, and compatible?
 
-   1. Is the copyright of the submission clear, non-gratuitous, and compatible?New C files and Python files should have an unambiguous copyright statement. See the existing files for the preferred format. Declaring a copyright on an existing file when making minor changes to that file is discouraged.
+   New C files and Python files should have an unambiguous copyright statement. See the existing files for the preferred format. Declaring a copyright on an existing file when making minor changes to that file is discouraged.
 
    Code taken from 3rd party sources must be compatible with the Klipper license (GNU GPLv3). Large 3rd party code additions should be added to the `lib/` directory (and follow the format described in [lib/README](../lib/README)).
 
    Submitters must provide a [Signed-off-by line](#format-of-commit-messages) using their full real name. It indicates the submitter agrees with the [developer certificate of origin](developer-certificate-of-origin).
+1. Does the submission follow guidelines specified in the Klipper documentation?
 
-   1. Does the submission follow guidelines specified in the Klipper documentation?In particular, code should follow the guidelines in <Code_Overview.md> and config files should follow the guidelines in <Example_Configs.md>.
+   In particular, code should follow the guidelines in <Code_Overview.md> and config files should follow the guidelines in <Example_Configs.md>.
+1. Is the Klipper documentation updated to reflect new changes?
 
-   1. Is the Klipper documentation updated to reflect new changes?At a minimum, the reference documentation must be updated with corresponding changes to the code:
+   At a minimum, the reference documentation must be updated with corresponding changes to the code:
 
    * All commands and command parameters must be documented in <G-Codes.md>.
    * All user facing modules and their config parameters must be documented in <Config_Reference.md>.
@@ -73,8 +78,9 @@ Common things a reviewer will look for:
 
 New documents should be added to <Overview.md> and be added to the website index [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml).
 
+1. Are commits well formed, address a single topic per commit, and independent?
 
-   1. Are commits well formed, address a single topic per commit, and independent?Commit messages should follow the [preferred format](#format-of-commit-messages).
+   Commit messages should follow the [preferred format](#format-of-commit-messages).
 
    Commits must not have a merge conflict. New additions to the Klipper master branch are always done via a "rebase" or "squash and rebase". It is generally not necessary for submitters to re-merge their submission on every update to the Klipper master repository. However, if there is a merge conflict, then submitters are recommended to use `git rebase` to address the conflict.
 

@@ -88,8 +88,9 @@ Seguire le istruzioni nella guida [Probe Calibrate](Probe_Calibrate.md) per impo
 
 ## Modalità di output BL-Touch
 
+* Un BL-Touch V3.0 supporta l'impostazione di una modalità di uscita 5V o OPEN-DRAIN, un BL-Touch V3.1 supporta anche questo, ma può anche memorizzarlo nella sua EEPROM interna. Se la tua scheda controller ha bisogno del livello logico alto 5V fisso della modalità 5V, puoi impostare il parametro 'set_output_mode' nella sezione [bltouch] del file di configurazione della stampante su "5V".
 
-   * Un BL-Touch V3.0 supporta l'impostazione di una modalità di uscita 5V o OPEN-DRAIN, un BL-Touch V3.1 supporta anche questo, ma può anche memorizzarlo nella sua EEPROM interna. Se la tua scheda controller ha bisogno del livello logico alto 5V fisso della modalità 5V, puoi impostare il parametro 'set_output_mode' nella sezione [bltouch] del file di configurazione della stampante su "5V".*** Utilizzare la modalità 5V solo se la linea di ingresso della scheda controller è tollerante a 5V. Ecco perché la configurazione di default di queste versioni BL-Touch è la modalità OPEN-DRAIN. Potresti potenzialmente danneggiare la CPU delle tue schede di controllo ***
+   *** Utilizzare la modalità 5V solo se la linea di ingresso della scheda controller è tollerante a 5V. Ecco perché la configurazione di default di queste versioni BL-Touch è la modalità OPEN-DRAIN. Potresti potenzialmente danneggiare la CPU delle tue schede di controllo ***
 
    Quindi: se una scheda controller HA BISOGNO della modalità 5V ED è tollerante a 5V sulla sua linea del segnale di ingresso E se
 

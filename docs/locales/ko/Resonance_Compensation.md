@@ -33,8 +33,9 @@ Basic tuning requires measuring the ringing frequencies of the printer by printi
 1. Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Basically, we try to make ringing more pronounced by setting different large values for acceleration. This command will increase the acceleration every 5 mm starting from 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 and so forth up until 7000 mm/sec^2 at the last band.
 1. 제안된 매개변수로 슬라이스된 테스트 모델을 출력합니다.
 1. Ringing이 명확하게 보이고 프린터에 대한 가속도가 너무 높은 경우(예: 프린터가 너무 많이 흔들리거나 단계를 건너뛰기 시작하는 경우) 인쇄 출력을 중지할 수 있습니다.
+1. 참조를 위해 모델 뒷면의 X 및 Y 표시를 이용합니다. X 표시가 있는 쪽의 측정은 X축 *구성*에 사용하고 Y 표시는 Y축 구성에 사용해야 합니다. 노치 근처에서 X 표시가 있는 부품의 여러 진동 사이의 거리 *D*(mm)를 측정합니다. 가급적이면 첫 번째 진동 또는 두 번을 건너뜁니다. 진동 사이의 거리를 더 쉽게 측정하려면 먼저 진동을 표시한 다음 눈금자 또는 캘리퍼스로 표시 사이의 거리를 측정합니다:
 
-   1. 참조를 위해 모델 뒷면의 X 및 Y 표시를 이용합니다. X 표시가 있는 쪽의 측정은 X축 *구성*에 사용하고 Y 표시는 Y축 구성에 사용해야 합니다. 노치 근처에서 X 표시가 있는 부품의 여러 진동 사이의 거리 *D*(mm)를 측정합니다. 가급적이면 첫 번째 진동 또는 두 번을 건너뜁니다. 진동 사이의 거리를 더 쉽게 측정하려면 먼저 진동을 표시한 다음 눈금자 또는 캘리퍼스로 표시 사이의 거리를 측정합니다:|![Mark ringing](img/ringing-mark.jpg)|![Measure ringing](img/ringing-measure.jpg)|
+   |![Mark ringing](img/ringing-mark.jpg)|![Measure ringing](img/ringing-measure.jpg)|
 1. 측정 거리 *D*가 해당하는 진동수 *N*를 측정합니다. 진동수를 세는 방법을 잘 모르는 경우 *N* = 6 진동수를 표시하는 위의 그림을 참조합니다.
 1. *V* &middot; *N* / *D*(Hz) 수식을 이용하여 X축의 ringing 주파수를 게산합니다. 여기서 *V*는 outer perimeters 속도(mm/sec)입니다. 위의 예에서 우리는 6개의 진동수를 표시했고 테스트는 100mm/sec 속도로 인쇄되었으므로 주파수는 100 * 6 / 12.14 ≈ 49.4Hz입니다.
 1. Do (8) - (10) for Y mark as well.

@@ -88,8 +88,9 @@ It's a good idea to verify that the Z offset is close to 1mm. If not, then you p
 
 ## BL-Touch Ausgabemodus
 
+* A BL-Touch V3.0 supports setting a 5V or OPEN-DRAIN output mode, a BL-Touch V3.1 supports this too, but can also store this in its internal EEPROM. If your controller board needs the fixed 5V high logic level of the 5V mode you may set the 'set_output_mode' parameter in the [bltouch] section of the printer config file to "5V".
 
-   * A BL-Touch V3.0 supports setting a 5V or OPEN-DRAIN output mode, a BL-Touch V3.1 supports this too, but can also store this in its internal EEPROM. If your controller board needs the fixed 5V high logic level of the 5V mode you may set the 'set_output_mode' parameter in the [bltouch] section of the printer config file to "5V".*** Only use the 5V mode if your controller boards input line is 5V tolerant. This is why the default configuration of these BL-Touch versions is OPEN-DRAIN mode. You could potentially damage your controller boards CPU ***
+   *** Only use the 5V mode if your controller boards input line is 5V tolerant. This is why the default configuration of these BL-Touch versions is OPEN-DRAIN mode. You could potentially damage your controller boards CPU ***
 
    So therefore: If a controller board NEEDs 5V mode AND it is 5V tolerant on its input signal line AND if
 

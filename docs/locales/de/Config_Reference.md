@@ -1863,7 +1863,7 @@ Siehe [sample-multi-extruder.cfg](./config/sample-multi-extruder.cfg) für eine 
 
 Support for cartesian and hybrid_corexy/z printers with dual carriages on a single axis. The carriage mode can be set via the SET_DUAL_CARRIAGE extended g-code command. For example, "SET_DUAL_CARRIAGE CARRIAGE=1" command will activate the carriage defined in this section (CARRIAGE=0 will return activation to the primary carriage). Dual carriage support is typically combined with extra extruders - the SET_DUAL_CARRIAGE command is often called at the same time as the ACTIVATE_EXTRUDER command. Be sure to park the carriages during deactivation. Note that during G28 homing, typically the primary carriage is homed first followed by the carriage defined in the `[dual_carriage]` config section. However, the `[dual_carriage]` carriage will be homed first if both carriages home in a positive direction and the [dual_carriage] carriage has a `position_endstop` greater than the primary carriage, or if both carriages home in a negative direction and the `[dual_carriage]` carriage has a `position_endstop` less than the primary carriage.
 
-Additionally, one could use "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" or "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" commands to activate either copying or mirroring mode of the dual carriage, in which case it will follow the motion of the carriage 0 accordingly. These commands can be used to print two parts simultaneously - either two identical parts (in COPY mode) or mirrored parts (in MIRROR mode). Note that COPY and MIRROR modes also require appropriate configuration of the extruder on the dual carriage, which can typically be achieved with "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" or a similar command.
+Zusätzlich könnte man die Befehle "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" oder "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" verwenden, um entweder den Kopier- oder Spiegelmodus des doppelten Fahrwerks zu aktivieren, in dem Fall wird es die Bewegung des Fahrwerks 0 entsprechend nachvollziehen. Diese Befehle können verwendet werden, um zwei Teile gleichzeitig zu drucken - entweder zwei identische Teile (im COPY-Modus) oder gespiegelte Teile (im MIRROR-Modus). Beachten Sie, dass die COPY- und MIRROR-Modi auch eine angemessene Konfiguration des Extruders auf dem doppelten Fahrwerk erfordern, die normalerweise mit "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" oder einem ähnlichen Befehl erreicht werden kann.
 
 Siehe [sample-idex.cfg](../config/sample-idex.cfg) für eine Beispielkonfiguration.
 
@@ -2030,22 +2030,21 @@ Custom ADC temperature sensors (one may define any number of sections with an "a
 #temperature2:
 #voltage2:
 #...
-#   A set of temperatures (in Celsius) and voltages (in Volts) to use
-#   as reference when converting a temperature. A heater section using
-#   this sensor may also specify adc_voltage and voltage_offset
-#   parameters to define the ADC voltage (see "Common temperature
-#   amplifiers" section for details). At least two measurements must
-#   be provided.
+#   Eine Reihe von Temperaturen (in Celsius) und Spannungen (in Volt) zur Verwendung
+#   als Referenz bei der Temperaturumwandlung. Ein Heizabschnitt, der
+#   diesen Sensor verwendet, kann auch die Parameter adc_voltage und voltage_offset
+#   angeben, um die ADC-Spannung zu definieren (siehe Abschnitt "Gemeinsame Temperaturverstärker"
+#   für Details). Mindestens zwei Messungen müssen angegeben werden.
 #temperature1:
 #resistance1:
 #temperature2:
 #resistance2:
 #...
-#   Alternatively one may specify a set of temperatures (in Celsius)
-#   and resistance (in Ohms) to use as reference when converting a
-#   temperature. A heater section using this sensor may also specify a
-#   pullup_resistor parameter (see "extruder" section for details). At
-#   least two measurements must be provided.
+#   Alternativ kann man eine Reihe von Temperaturen (in Celsius) und Widerständen
+#   (in Ohm) zur Verwendung als Referenz bei der Temperaturumwandlung angeben.
+#   Ein Heizabschnitt, der diesen Sensor verwendet, kann auch einen
+#   Pullup_resistor-Parameter angeben (siehe Abschnitt "Extruder" für Details). Mindestens
+#   zwei Messungen müssen angegeben werden.
 ```
 
 ### [heater_generic]
@@ -4078,15 +4077,15 @@ Siehe die Datei [generic-duet2-maestro.cfg](../config/generic-duet2-maestro.cfg)
 ```
 [adc_scaled my_name]
 vref_pin:
-#   The ADC pin to use for VREF monitoring. This parameter must be
-#   provided.
+#   Der ADC-Pin zur Überwachung von VREF. Dieser Parameter muss
+#   angegeben werden.
 vssa_pin:
-#   The ADC pin to use for VSSA monitoring. This parameter must be
-#   provided.
+#   Der ADC-Pin zur Überwachung von VSSA. Dieser Parameter muss
+#   angegeben werden.
 #smooth_time: 2.0
-#   A time value (in seconds) over which the vref and vssa
-#   measurements will be smoothed to reduce the impact of measurement
-#   noise. The default is 2 seconds.
+#   Ein Zeitwert (in Sekunden), über den die vref- und vssa-
+#   Messungen geglättet werden, um den Einfluss von Messrauschen
+#   zu verringern. Die Standardeinstellung sind 2 Sekunden.
 ```
 
 ### [replicape]

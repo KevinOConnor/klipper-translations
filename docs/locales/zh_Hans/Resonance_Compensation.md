@@ -33,8 +33,9 @@ Klipper支持输入整形 -一种可以用来减少打印件上振纹（也被�
 1. Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Basically, we try to make ringing more pronounced by setting different large values for acceleration. This command will increase the acceleration every 5 mm starting from 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 and so forth up until 7000 mm/sec^2 at the last band.
 1. 打印用建议的参数切片的测试模型。
 1. 如果振纹清晰可见，并且发现加速度对你的打印机来说太高了（如打印机抖动太厉害或开始丢步），你可以提前停止打印。
+1. 使用模型后侧的XY标志作为校准的参考。X标志所在一侧的测量结果用于X轴的*配置*，而Y标志所在一侧则作为Y轴的配置。以X轴为例，测量X标志所在一侧的数个振纹周期的长度*D*（单位mm）：首先确定凹槽的位置，为了测量准确可以忽略最靠近凹槽的数个纹路，用记号笔标记起始和结束的数个振纹，然后用尺子或卡尺进行测量：
 
-   1. 使用模型后侧的XY标志作为校准的参考。X标志所在一侧的测量结果用于X轴的*配置*，而Y标志所在一侧则作为Y轴的配置。以X轴为例，测量X标志所在一侧的数个振纹周期的长度*D*（单位mm）：首先确定凹槽的位置，为了测量准确可以忽略最靠近凹槽的数个纹路，用记号笔标记起始和结束的数个振纹，然后用尺子或卡尺进行测量：|![标记振纹（Mark ringing）](img/ringing-mark.jpg)|![Measure ringing](img/ringing-measure.jpg)|
+   |![标记振纹（Mark ringing）](img/ringing-mark.jpg)|![Measure ringing](img/ringing-measure.jpg)|
 1. 数一数测量的距离*D*中有多少个振荡*D*。如果你不确定如何计算振荡，请参考上图，其中显示*N*=6次振荡。
 1. 通过 *V* &middot; *N* / *D* (Hz) 计算振铃的频率，其中*V* 是外壁的加速度（mm/秒）。在上述例子中，我们标记了6个振纹，同时测试件是以100 mm/秒的速度进行印制，因此振动频率为100 * 6 / 12.14 ≈ 49.4 Hz。
 1. Do (8) - (10) for Y mark as well.

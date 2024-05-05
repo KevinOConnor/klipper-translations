@@ -55,8 +55,9 @@ The following information is available in the [endstop_phase](Config_Reference.m
 
 The following information is available in the [exclude_object](Exclude_Object.md) object:
 
+- `objects`: An array of the known objects as provided by the `EXCLUDE_OBJECT_DEFINE` command. This is the same information provided by the `EXCLUDE_OBJECT VERBOSE=1` command. The `center` and `polygon` fields will only be present if provided in the original `EXCLUDE_OBJECT_DEFINE`
 
-   - `objects`: An array of the known objects as provided by the `EXCLUDE_OBJECT_DEFINE` command. This is the same information provided by the `EXCLUDE_OBJECT VERBOSE=1` command. The `center` and `polygon` fields will only be present if provided in the original `EXCLUDE_OBJECT_DEFINE`Hier ist eine JSON Beispiel:
+   Hier ist eine JSON Beispiel:
 
 ```
 [

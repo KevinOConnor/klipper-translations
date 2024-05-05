@@ -204,8 +204,9 @@ probe_count: 5, 3
 adaptive_margin: 5
 ```
 
+- `adaptive_margin` *Alapértelmezett érték: 0* Az ágy meghatározott objektumok által használt területe köré hozzáadandó margó (mm-ben). Az alábbi ábra az adaptív ágy hálóterületét mutatja, ha az `adaptive_margin` értéke 5 mm. Az adaptív hálóterület (zöld színű terület) a használt ágyterület (kék színű terület) és a meghatározott margó összegeként kerül kiszámításra.
 
-   - `adaptive_margin` *Alapértelmezett érték: 0* Az ágy meghatározott objektumok által használt területe köré hozzáadandó margó (mm-ben). Az alábbi ábra az adaptív ágy hálóterületét mutatja, ha az `adaptive_margin` értéke 5 mm. Az adaptív hálóterület (zöld színű terület) a használt ágyterület (kék színű terület) és a meghatározott margó összegeként kerül kiszámításra.![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)
+   ![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)
 
 Az adaptív ágyrácsok természetüknél fogva a nyomtatás alatt álló G-Kód fájlban meghatározott objektumokat használják. Ezért várható, hogy minden egyes G-Kód fájl olyan hálót generál, amely a nyomtatóágy különböző területét vizsgálja. Ezért az adaptív ágyhálót nem szabad újra felhasználni. Az adaptív hálózás használata esetén elvárás, hogy minden egyes nyomtatáshoz új hálót generáljon.
 

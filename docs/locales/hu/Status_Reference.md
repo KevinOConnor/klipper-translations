@@ -55,8 +55,9 @@ A következő információk az [endstop_phase](Config_Reference.md#endstop_phase
 
 A következő információk az [exclude_object](Exclude_Object.md) objektumban találhatók:
 
+- `objektumok`: Az `EXCLUDE_OBJECT_DEFINE` parancs által megadott ismert objektumok tömbje. Ez ugyanaz az információ, amelyet az `EXCLUDE_OBJECT VERBOSE=1` parancs szolgáltat. A `center` és `polygon` mezők csak akkor lesznek jelen, ha az eredeti `EXCLUDE_OBJECT_DEFINE` parancsban szerepelnek.
 
-   - `objektumok`: Az `EXCLUDE_OBJECT_DEFINE` parancs által megadott ismert objektumok tömbje. Ez ugyanaz az információ, amelyet az `EXCLUDE_OBJECT VERBOSE=1` parancs szolgáltat. A `center` és `polygon` mezők csak akkor lesznek jelen, ha az eredeti `EXCLUDE_OBJECT_DEFINE` parancsban szerepelnek.Íme egy JSON-minta:
+   Íme egy JSON-minta:
 
 ```
 [

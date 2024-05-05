@@ -24,8 +24,9 @@ La maggior parte degli invii otterrà in feedback da una recensione. Preparati a
 
 Cose comuni che un revisore cercherà:
 
+1. L'invio è privo di difetti ed è pronto per essere diffuso?
 
-   1. L'invio è privo di difetti ed è pronto per essere diffuso?I realizzatori dei contributi sono tenuti a testare le loro modifiche prima dell'invio. I revisori cercano gli errori, ma in generale non testano gli invii. Un invio accettato viene spesso distribuito a migliaia di stampanti entro poche settimane dall'accettazione. La qualità degli invii è quindi considerata una priorità.
+   I realizzatori dei contributi sono tenuti a testare le loro modifiche prima dell'invio. I revisori cercano gli errori, ma in generale non testano gli invii. Un invio accettato viene spesso distribuito a migliaia di stampanti entro poche settimane dall'accettazione. La qualità degli invii è quindi considerata una priorità.
 
    Il repository GitHub principale [Klipper3d/klipper](https://github.com/Klipper3d/klipper) non accetta lavori sperimentali. I realizzatori di contributi devono eseguire la sperimentazione, il debug e il test nei propri repository. Il server [Klipper Discourse](Contact.md) è un buon posto per aumentare la consapevolezza del nuovo lavoro e per trovare utenti interessati a fornire feedback nel mondo reale.
 
@@ -38,8 +39,9 @@ Cose comuni che un revisore cercherà:
    I commenti negli invii di codice dovrebbero concentrarsi sul miglioramento della manutenzione del codice. Gli invii non devono contenere "codice commentato" né commenti eccessivi che descrivono implementazioni passate. Non dovrebbero esserci commenti "todo" eccessivi.
 
    Gli aggiornamenti alla documentazione non devono dichiarare che si tratta di un "work in progress".
+1. L'invio fornisce un vantaggio "ad alto impatto" per gli utenti del mondo reale che svolgono attività nel mondo reale?
 
-   1. L'invio fornisce un vantaggio "ad alto impatto" per gli utenti del mondo reale che svolgono attività nel mondo reale?I revisori devono identificare, almeno nella loro mente, approssimativamente "chi è il pubblico di destinazione", una scala approssimativa delle "dimensioni di quel pubblico", il "beneficio" che otterranno, come "il beneficio viene misurato" e i "risultati di tali prove di misurazione". Nella maggior parte dei casi questo sarà ovvio sia per il mittente che per il revisore e non è esplicitamente dichiarato durante una revisione.
+   I revisori devono identificare, almeno nella loro mente, approssimativamente "chi è il pubblico di destinazione", una scala approssimativa delle "dimensioni di quel pubblico", il "beneficio" che otterranno, come "il beneficio viene misurato" e i "risultati di tali prove di misurazione". Nella maggior parte dei casi questo sarà ovvio sia per il mittente che per il revisore e non è esplicitamente dichiarato durante una revisione.
 
    Le proposte al ramo principale di Klipper dovrebbero avere un pubblico di destinazione degno di nota. Come "regola pratica" generale, gli invii dovrebbero avere come target una base di utenti di almeno 100 utenti del mondo reale.
 
@@ -54,16 +56,19 @@ Cose comuni che un revisore cercherà:
    Se l'obiettivo di un'opzione è rendere il codice più modulare, è preferibile utilizzare le costanti del codice invece delle opzioni di configurazione rivolte all'utente.
 
    Nuovi moduli, nuove opzioni e nuovi parametri non dovrebbero fornire funzionalità simili ai moduli esistenti: se le differenze sono arbitrarie, è preferibile utilizzare il sistema esistente o effettuare refactoring del codice esistente.
+1. Il copyright dell'invio è chiaro, non gratuito e compatibile?
 
-   1. Il copyright dell'invio è chiaro, non gratuito e compatibile?I nuovi file C e Python dovrebbero avere una dichiarazione di copyright univoca. Vedere i file esistenti per il formato preferito. È sconsigliato dichiarare un copyright su un file esistente quando si apportano modifiche minori a quel file.
+   I nuovi file C e Python dovrebbero avere una dichiarazione di copyright univoca. Vedere i file esistenti per il formato preferito. È sconsigliato dichiarare un copyright su un file esistente quando si apportano modifiche minori a quel file.
 
    Il codice prelevato da fonti di terze parti deve essere compatibile con la licenza Klipper (GNU GPLv3). Grandi aggiunte di codice di terze parti dovrebbero essere aggiunte alla directory `lib/` (e seguire il formato descritto in [lib/README](../lib/README)).
 
    I mittenti devono fornire una [Signed-off-line](#format-of-commit-messages) utilizzando il loro vero nome completo. Indica che il mittente è d'accordo con il [developer certificate of origin](developer-certificate-of-origin).
+1. L'invio segue le linee guida specificate nella documentazione di Klipper?
 
-   1. L'invio segue le linee guida specificate nella documentazione di Klipper?In particolare, il codice deve seguire le linee guida in <Code_Overview.md> e i file di configurazione devono seguire le linee guida in <Example_Configs.md>.
+   In particolare, il codice deve seguire le linee guida in <Code_Overview.md> e i file di configurazione devono seguire le linee guida in <Example_Configs.md>.
+1. La documentazione di Klipper è aggiornata per riflettere le nuove modifiche?
 
-   1. La documentazione di Klipper è aggiornata per riflettere le nuove modifiche?Come minimo, la documentazione di riferimento deve essere aggiornata con le relative modifiche al codice:
+   Come minimo, la documentazione di riferimento deve essere aggiornata con le relative modifiche al codice:
 
    * Tutti i comandi e i relativi parametri devono essere documentati in <G-Codes.md>.
    * Tutti i moduli rivolti all'utente e i relativi parametri di configurazione devono essere documentati in <Config_Reference.md>.
@@ -73,8 +78,9 @@ Cose comuni che un revisore cercherà:
 
 I nuovi documenti dovrebbero essere aggiunti a <Overview.md> e all'indice del sito web [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml).
 
+1. I commit sono ben formati, affrontano un singolo argomento per commit e sono indipendenti?
 
-   1. I commit sono ben formati, affrontano un singolo argomento per commit e sono indipendenti?I messaggi di commit devono seguire il [formato preferito](#format-of-commit-messages).
+   I messaggi di commit devono seguire il [formato preferito](#format-of-commit-messages).
 
    I commit non devono avere un conflitto in fase di merge. Le nuove aggiunte al ramo principale di Klipper vengono sempre eseguite tramite un "rebase" o "squash and rebase". In genere non è necessario che i propositori uniscano nuovamente il loro invio ad ogni aggiornamento al repository principale di Klipper. Tuttavia, se c'è un conflitto in fase di merge, si consiglia ai mittenti di usare `git rebase` per risolvere il conflitto.
 

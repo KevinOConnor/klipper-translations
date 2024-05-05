@@ -24,8 +24,9 @@ La majorité des soumissions donneront lieu à un retour d'information. Soyez pr
 
 Ce que le relecteur recherche le plus souvent :
 
+1. La soumission est-elle exempte de défauts et est-elle prête à être déployée à grande échelle ?
 
-   1. La soumission est-elle exempte de défauts et est-elle prête à être déployée à grande échelle ?Les soumissionnaires sont censés tester leurs modifications avant de les soumettre. Les relecteurs recherchent les erreurs, mais ne testent pas, en général, les soumissions. Une soumission acceptée est souvent déployée sur des milliers d'imprimantes dans les quelques semaines qui suivent son acceptation. La qualité des soumissions est donc considérée comme une priorité.
+   Les soumissionnaires sont censés tester leurs modifications avant de les soumettre. Les relecteurs recherchent les erreurs, mais ne testent pas, en général, les soumissions. Une soumission acceptée est souvent déployée sur des milliers d'imprimantes dans les quelques semaines qui suivent son acceptation. La qualité des soumissions est donc considérée comme une priorité.
 
    Le dépôt GitHub principal de [Klipper3d/klipper](https://github.com/Klipper3d/klipper) n'accepte pas les travaux expérimentaux. Les auteurs doivent effectuer les expérimentations, le débogage et les tests dans leurs propres dépôts. Le serveur [Klipper Discourse](Contact.md) est un bon endroit pour faire connaître les nouveaux travaux et trouver des utilisateurs désireux de fournir des commentaires concrets.
 
@@ -38,8 +39,9 @@ Ce que le relecteur recherche le plus souvent :
    Les commentaires dans les soumissions de code doivent se concentrer sur l'amélioration de la maintenance du code. Les soumissions ne doivent pas contenir de "code commenté" ni de commentaires excessifs décrivant des implémentations passées. Il ne doit pas y avoir de commentaires excessifs de type "todo".
 
    Les mises à jour de la documentation ne doivent pas indiquer qu'il s'agit d'un "travail en cours".
+1. La demande apporte-t-elle un avantage "à fort impact" à des utilisateurs du monde réel effectuant des tâches du monde réel ?
 
-   1. La demande apporte-t-elle un avantage "à fort impact" à des utilisateurs du monde réel effectuant des tâches du monde réel ?Les relecteurs doivent identifier, au moins dans leur propre esprit, à peu près "qui est le public cible", une échelle approximative de "la taille de ce public", le "bénéfice" qu'ils obtiendront, comment le "bénéfice est mesuré", et les "résultats de ces tests de mesure". Dans la plupart des cas, ces éléments sont évidents pour l'auteur et l'examinateur, et ne sont pas explicitement mentionnés lors d'un examen.
+   Les relecteurs doivent identifier, au moins dans leur propre esprit, à peu près "qui est le public cible", une échelle approximative de "la taille de ce public", le "bénéfice" qu'ils obtiendront, comment le "bénéfice est mesuré", et les "résultats de ces tests de mesure". Dans la plupart des cas, ces éléments sont évidents pour l'auteur et l'examinateur, et ne sont pas explicitement mentionnés lors d'un examen.
 
    Les soumissions à la branche principale de Klipper doivent avoir un public cible important. En règle générale, les soumissions doivent cibler une base d'au moins 100 utilisateurs du monde réel.
 
@@ -54,16 +56,19 @@ Ce que le relecteur recherche le plus souvent :
    Si le but d'une option est de rendre le code plus modulaire, il est préférable d'utiliser des constantes de code plutôt que des options de configuration pour l'utilisateur.
 
    Les nouveaux modules, les nouvelles options et les nouveaux paramètres ne doivent pas offrir des fonctionnalités similaires à celles des modules existants - si les différences sont arbitraires, il est préférable d'utiliser le système existant ou de remanier le code existant.
+1. Le droit d'auteur de la soumission est-il clair, non gracieux et compatible ?
 
-   1. Le droit d'auteur de la soumission est-il clair, non gracieux et compatible ?Les nouveaux fichiers C et Python doivent comporter une déclaration de copyright sans ambiguïté. Voir les fichiers existants pour le format préféré. Il est déconseillé de déclarer un droit d'auteur sur un fichier existant lorsque l'on apporte des modifications mineures à ce fichier.
+   Les nouveaux fichiers C et Python doivent comporter une déclaration de copyright sans ambiguïté. Voir les fichiers existants pour le format préféré. Il est déconseillé de déclarer un droit d'auteur sur un fichier existant lorsque l'on apporte des modifications mineures à ce fichier.
 
    Le code provenant de sources tierces doit être compatible avec la licence Klipper (GNU GPLv3). Les ajouts importants de code tiers doivent être ajoutés au répertoire `lib/` (et suivre le format décrit dans [lib/README](../lib/README)).
 
    Les soumissionnaires doivent fournir une [ligne Signed-off-by](#format-of-commit-messages) en utilisant leur nom réel complet. Elle indique que le soumissionnaire est d'accord avec le [certificat d'origine du développeur](developer-certificate-of-origin).
+1. La soumission suit-elle les directives spécifiées dans la documentation de Klipper ?
 
-   1. La soumission suit-elle les directives spécifiées dans la documentation de Klipper ?En particulier, le code doit suivre les directives de <Code_Overview.md> et les fichiers de configuration doivent suivre les directives de <Example_Configs.md>.
+   En particulier, le code doit suivre les directives de <Code_Overview.md> et les fichiers de configuration doivent suivre les directives de <Example_Configs.md>.
+1. La documentation de Klipper est-elle mise à jour pour refléter les nouveaux changements ?
 
-   1. La documentation de Klipper est-elle mise à jour pour refléter les nouveaux changements ?Au minimum, la documentation de référence doit être mise à jour avec les modifications correspondantes du code :
+   Au minimum, la documentation de référence doit être mise à jour avec les modifications correspondantes du code :
 
    * Toutes les commandes et tous les paramètres de commande doivent être documentés dans <G-Codes.md>.
    * Tous les modules destinés aux utilisateurs et leurs paramètres de configuration doivent être documentés dans <Config_Reference.md>.
@@ -73,8 +78,9 @@ Ce que le relecteur recherche le plus souvent :
 
 Les nouveaux documents doivent être ajoutés à <Overview.md> et être ajoutés à l'index du site web [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml).
 
+1. Les commits sont-ils bien formés, abordent-ils un seul sujet par commit, et sont-ils indépendants ?
 
-   1. Les commits sont-ils bien formés, abordent-ils un seul sujet par commit, et sont-ils indépendants ?Les messages de validation doivent suivre le [format préféré](#format-of-commit-messages).
+   Les messages de validation doivent suivre le [format préféré](#format-of-commit-messages).
 
    Les commits ne doivent pas avoir de conflit de fusion. Les nouveaux ajouts à la branche maîtresse de Klipper sont toujours effectués via un "rebase" ou un "squash and rebase". Il n'est généralement pas nécessaire pour les soumissionnaires de fusionner à nouveau leur soumission à chaque mise à jour du dépôt maître de Klipper. Cependant, s'il y a un conflit de fusion, il est recommandé aux soumissionnaires d'utiliser `git rebase` pour résoudre le conflit.
 

@@ -46,6 +46,7 @@ Egy tipikus nyomtatómozgás akkor kezdődik, amikor egy "G1" parancsot küldün
 
 * A mozgás parancs feldolgozása a gcode.py fájlban kezdődik. A gcode.py célja a G-kód lefordítása belső hívásokká. Egy G1 parancs a klippy/extras/gcode_move.py állományban lévő cmd_G1() parancsot hívja meg. A gcode_move.py kód kezeli az eredetváltozásokat (pl. G92), a relatív és abszolút pozíciók közötti változásokat (pl. G90) és az egységváltozásokat (pl. F6000=100mm/s). A kód útvonala a mozgatáshoz a következő: `_process_data() -> _process_commands() -> cmd_G1()`. Végül a ToolHead osztályt hívjuk meg a tényleges kérés végrehajtásához: `cmd_G1() -> ToolHead.move()`
 * A ToolHead osztály (a toolhead.py állományban) kezeli a "look-ahead" funkciót és követi a nyomtatási műveletek időzítését. A fő kódútvonal egy mozdulathoz a következő: `ToolHead.move() -> LookAheadQueue.add_move() -> LookAheadQueue.flush() -> Move.set_junction() -> ToolHead._process_moves()`.
+
    * A ToolHead.move() létrehoz egy Move() objektumot a mozgás paramétereivel (cartesian térben, másodperc és milliméter egységekben).
    * A kinematikai osztály lehetőséget kap az egyes mozgások ellenőrzésére (`ToolHead.move() -> kin.check_move()`). A kinematikai osztályok a klippy/kinematics/ könyvtárban találhatók. A check_move() kód hibát adhat ki, ha a mozgás nem érvényes. Ha a check_move() sikeresen befejeződik, akkor az alapul szolgáló kinematikának képesnek kell lennie a mozgás kezelésére.
    * A LookAheadQueue.add_move() a move objektumot a "look-ahead" várólistára helyezi.

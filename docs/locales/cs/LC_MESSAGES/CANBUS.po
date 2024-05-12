@@ -1,47 +1,57 @@
 # Pavel Šubík <wgspider@gmail.com>, 2024.
+# Miloslav Kos <kos.m@post.cz>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-01-17 13:06+0000\n"
-"Last-Translator: Pavel Šubík <wgspider@gmail.com>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/klipper/canbus/cs/>\n"
+"PO-Revision-Date: 2024-05-12 08:01+0000\n"
+"Last-Translator: Miloslav Kos <kos.m@post.cz>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/klipper/canbus/cs/>"
+"\n"
 "Language: cs\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.5.4\n"
 
 msgid "This document describes Klipper's CAN bus support."
-msgstr "Tento dokument popisuje podporu CAN sběrnice Klipperem."
+msgstr "Tento dokument popisuje podporu sběrnice CAN systému Klipper."
 
 msgid "Device Hardware"
 msgstr "Hardware zařízení"
 
 msgid "Host Hardware"
-msgstr ""
+msgstr "Hardware hostitele"
 
 msgid ""
 "It is also necessary to configure the host operating system to use the "
 "adapter. This is typically done by creating a new file named "
 "`/etc/network/interfaces.d/can0` with the following contents:"
 msgstr ""
+"Je také nutné nakonfigurovat hostitelský operační systém pro použití "
+"adaptéru. To se obvykle provádí vytvořením nového souboru s názvem `/etc/"
+"network/interfaces.d/can0` s následujícím obsahem:"
 
 msgid "Terminating Resistors"
-msgstr ""
+msgstr "Zakončovací odpory"
 
 msgid ""
 "A CAN bus should have two 120 ohm resistors between the CANH and CANL wires."
 " Ideally, one resistor located at each the end of the bus."
 msgstr ""
+"Sběrnice CAN by měla mít mezi vodiči CANH a CANL dva 120ohmové odpory. V "
+"ideálním případě by měl být na každém konci sběrnice umístěn jeden rezistor."
 
 msgid ""
 "To test that the resistors are correct, one can remove power to the printer "
 "and use a multi-meter to check the resistance between the CANH and CANL "
 "wires - it should report ~60 ohms on a correctly wired CAN bus."
 msgstr ""
+"Správnost odporů lze ověřit tak, že se odpojí napájení tiskárny a "
+"multimetrem se zkontroluje odpor mezi vodiči CANH a CANL - u správně "
+"zapojené sběrnice CAN by měl ukazovat ~60 ohmů."
 
 msgid "Finding the canbus_uuid for new micro-controllers"
-msgstr ""
+msgstr "Zjištění canbus_uuid pro nové mikrokontroléry"
 
 msgid ""
 "Each micro-controller on the CAN bus is assigned a unique id based on the "
@@ -67,7 +77,7 @@ msgid ""
 msgstr ""
 
 msgid "Configuring Klipper"
-msgstr ""
+msgstr "Konfigurace Klipperu"
 
 msgid ""
 "Update the Klipper [mcu configuration](Config_Reference.md#mcu) to use the "
@@ -75,16 +85,18 @@ msgid ""
 msgstr ""
 
 msgid "~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0\n"
-msgstr ""
+msgstr "~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0\n"
 
 msgid ""
 "[mcu my_can_mcu]\n"
 "canbus_uuid: 11aa22bb33cc\n"
 msgstr ""
+"[mcu my_can_mcu]\n"
+"canbus_uuid: 11aa22bb33cc\n"
 
 #: docs/CANBUS.md:block 1 (header)
 msgid "CANBUS"
-msgstr ""
+msgstr "CANBUS"
 
 #: docs/CANBUS.md:block 5 (paragraph)
 msgid ""
@@ -94,8 +106,9 @@ msgid ""
 msgstr ""
 
 #: docs/CANBUS.md:block 26 (header)
+#, fuzzy
 msgid "USB to CAN bus bridge mode"
-msgstr ""
+msgstr "USB to CAN bus bridge mode"
 
 #: docs/CANBUS.md:block 29 (paragraph)
 msgid "Some important notes when using this mode:"
@@ -205,11 +218,11 @@ msgstr ""
 
 #: docs/CANBUS.md:block 31 (header)
 msgid "Tips for troubleshooting"
-msgstr ""
+msgstr "Tipy pro řešení problémů"
 
 #: docs/CANBUS.md:block 32 (paragraph)
 msgid "See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document."
-msgstr ""
+msgstr "Viz dokument [CAN bus troubleshooting](CANBUS_Troubleshooting.md)."
 
 #~ msgid ""
 #~ "In order to use a CAN bus, it is necessary to have a host adapter. There are"

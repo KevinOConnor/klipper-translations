@@ -1,10 +1,10 @@
 # Pepa Mochr Vladik <pvladik@centrum.cz>, 2022.
 # Vlastimil Dědek <dedekvlastimil@gmail.com>, 2022.
-# Vojtěch Hrubý <vvojtech1564@gmail.com>, 2023.
+# Vojtěch Hrubý <vvojtech1564@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-03-28 02:43+0000\n"
+"PO-Revision-Date: 2024-05-11 07:45+0000\n"
 "Last-Translator: Vojtěch Hrubý <vvojtech1564@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/klipper/overview/"
 "cs/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.5.4\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "

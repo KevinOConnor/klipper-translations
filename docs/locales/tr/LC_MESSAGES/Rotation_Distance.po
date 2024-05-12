@@ -1,15 +1,17 @@
 # zafer yazkili <yazkili@hotmail.com>, 2023.
+# Makers Lab <makerslab.tr@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-03-20 06:39+0000\n"
-"Last-Translator: zafer yazkili <yazkili@hotmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/rotation_distance/tr/>\n"
+"PO-Revision-Date: 2024-05-07 11:07+0000\n"
+"Last-Translator: Makers Lab <makerslab.tr@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/"
+"rotation_distance/tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.5.4-dev\n"
 
 msgid ""
 "Stepper motor drivers on Klipper require a `rotation_distance` parameter in "
@@ -26,6 +28,7 @@ msgstr ""
 
 msgid "Obtaining rotation_distance from steps_per_mm (or step_distance)"
 msgstr ""
+"Step_per_mm'den (veya step_distance) rotasyon_distance'ının elde edilmesi"
 
 msgid ""
 "The designers of your 3d printer originally calculated `steps_per_mm` from a"

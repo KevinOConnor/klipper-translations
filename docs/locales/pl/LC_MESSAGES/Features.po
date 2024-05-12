@@ -1,17 +1,20 @@
 # Robert Jaroszewicz <mediagott1977@googlemail.com>, 2022.
 # Mateusz Kapała <lolekwielki@gmail.com>, 2023.
 # Woo Cash <woocash87@gmail.com>, 2024.
+# Kacper Karpiński <kacperocik@yahoo.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-02-27 18:50+0000\n"
-"Last-Translator: Woo Cash <woocash87@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/features/pl/>\n"
+"PO-Revision-Date: 2024-05-11 06:00+0000\n"
+"Last-Translator: Kacper Karpiński <kacperocik@yahoo.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/features/"
+"pl/>\n"
 "Language: pl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.5.4\n"
 
 msgid "Klipper has several compelling features:"
 msgstr "Klipper ma kilka istotnych cech:"
@@ -77,6 +80,10 @@ msgid ""
 "robots easier and it keeps timing precise even with complex kinematics (no "
 "\"line segmentation\" is needed)."
 msgstr ""
+"Klipper wykorzystuje \"iteracyjny solver\" do obliczania dokładnych czasów "
+"kroków na podstawie prostych równań kinematycznych. Ułatwia to przenoszenie "
+"Klippera na nowe typy robotów i utrzymuje precyzyjny czas nawet przy "
+"złożonej kinematyce (nie jest wymagana \"segmentacja linii\")."
 
 msgid ""
 "Portable code. Klipper works on ARM, AVR, and PRU based micro-controllers. "

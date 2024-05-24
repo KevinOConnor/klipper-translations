@@ -1,9 +1,10 @@
 # Ricardo Madeira <rmadeira@gmail.com>, 2024.
+# Emerson Jhones <ejhones@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-05-21 18:01+0000\n"
-"Last-Translator: Ricardo Madeira <rmadeira@gmail.com>\n"
+"PO-Revision-Date: 2024-05-22 09:10+0000\n"
+"Last-Translator: Emerson Jhones <ejhones@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/klipper/"
 "contact/pt/>\n"
 "Language: pt\n"
@@ -194,7 +195,7 @@ msgstr ""
 
 #: docs/Contact.md:block 1 (header)
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 #: docs/Contact.md:block 7 (paragraph)
 msgid ""

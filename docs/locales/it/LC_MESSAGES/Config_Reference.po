@@ -1,17 +1,19 @@
 # Dex94 <Dasvaresu@dr.com>, 2022.
 # Ale Ale <ale.99.ale@gmail.com>, 2022, 2023.
 # Alfredo Monclus <alfredomonclus@gmail.com>, 2024.
+# Ezio Santellocco <eziosantellocco97@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-01-04 14:10+0000\n"
-"Last-Translator: Alfredo Monclus <alfredomonclus@gmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/klipper/config_reference/it/>\n"
+"PO-Revision-Date: 2024-05-19 20:01+0000\n"
+"Last-Translator: Ezio Santellocco <eziosantellocco97@gmail.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/klipper/"
+"config_reference/it/>\n"
 "Language: it\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
@@ -7458,7 +7460,7 @@ msgid ""
 "#   This should be the Y coordinate that positions the nozzle during the\n"
 "#   calibration process. This parameter must be provided and is recommended to\n"
 "#   be near the center of the bed\n"
-msgstr ""
+msgstr "italiano\n"
 
 #: docs/Config_Reference.md:block 212 (paragraph)
 msgid ""

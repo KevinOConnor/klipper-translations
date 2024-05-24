@@ -1,15 +1,17 @@
 # Luc Van den Borre <luc@orotec.be>, 2023.
+# Tjalling Kaastra <tjalling@kaastra.net>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-06-30 06:49+0000\n"
-"Last-Translator: Luc Van den Borre <luc@orotec.be>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/installation/nl/>\n"
+"PO-Revision-Date: 2024-05-23 02:21+0000\n"
+"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
+"installation/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "These instructions assume the software will run on a Raspberry Pi computer "
@@ -17,9 +19,14 @@ msgid ""
 "or 4 computer be used as the host machine (see the [FAQ](FAQ.md#can-i-run-"
 "klipper-on-something-other-than-a-raspberry-pi-3) for other machines)."
 msgstr ""
+"Deze instructies gaan er vanuit dat de software op een Raspberry Pi draait "
+"samen met octoprint. Het word aangeraden een Raspberry Pi 2,3 of 4 te "
+"gebruiken als host machine (zie de [FAQ](FAQ.md#can-i-run-klipper-on-"
+"something-other-than-a-raspberry-pi-3) voor andere machines)."
 
+#, fuzzy
 msgid "Prepping an OS image"
-msgstr ""
+msgstr "Besturingssysteem afbeelding voorbereiden"
 
 msgid ""
 "After installing OctoPi and upgrading OctoPrint, it will be necessary to ssh"
@@ -30,6 +37,14 @@ msgid ""
 " Use the ssh utility to connect to the Raspberry Pi (ssh pi@octopi -- "
 "password is \"raspberry\") and run the following commands:"
 msgstr ""
+"Na het installeren van octopi en het upgraden van octoprint is het nodig om "
+"te ssh'en in de doel machine en een paar commandos te draaien. Als je een "
+"Linux of macOS computer gebruikt zou ssh al geïnstalleerd moeten zijn op je "
+"computer. Voor andere besturingssystemen zijn andere gratis ssh clients "
+"beschikbaar (bijvoorbeeld [PuTTY](https://www.chiark.greenend.org.uk/~"
+"sgtatham/putty/)). Gebruik de ssh tool om met de Raspberry Pi te verbinden ("
+"ssh pi@octopi -- password is \"raspberry\") en voor de volgende commando's "
+"uit:"
 
 msgid ""
 "The above will download Klipper, install some system dependencies, setup "
@@ -37,17 +52,23 @@ msgid ""
 "will require an internet connection and it may take a few minutes to "
 "complete."
 msgstr ""
+"Het bovenstaande zal klipper downloaden, een paar afhankelijkheden "
+"instaleren, klipper instellen zodat het draait bij het opstarten, en de "
+"klipper software opstarten. Dit vereist een internet verbinding en kan een "
+"paar minuten duren."
 
 msgid "Building and flashing the micro-controller"
-msgstr ""
+msgstr "Bouwen en flashen van de microcontroller software"
 
 msgid ""
 "To compile the micro-controller code, start by running these commands on the"
 " Raspberry Pi:"
 msgstr ""
+"Om de microcontroller code te compileren start met het draaien van de "
+"volgende commando's op de Raspberry Pi:"
 
 msgid "It should report something similar to the following:"
-msgstr ""
+msgstr "Het zou iets vergelijkbaars als het volgende moeten teruggeven:"
 
 msgid ""
 "It's common for each printer to have its own unique serial port name. This "
@@ -56,25 +77,38 @@ msgid ""
 "corresponding to the micro-controller (see the [FAQ](FAQ.md#wheres-my-"
 "serial-port) for more information)."
 msgstr ""
+"Het komt vaak voor dat elke printer een eigen unieke seriële poort naam "
+"heeft. Deze unieke naam word gebruikt bij het flashen van de "
+"microcontroller. Het is mogelijk dat er meerdere regels zijn in de "
+"resultaten van hierboven. Als dat zo is kies de correcte regel met de "
+"microcontroller erop(zie [FAQ](FAQ.md#wheres-my-serial-port) voor meer "
+"informatie)."
 
 msgid ""
 "For common micro-controllers, the code can be flashed with something similar"
 " to:"
 msgstr ""
+"Voor veelvoorkomende microcontrollers kan de code geflashed worden met iets "
+"vergelijkbaar met:"
 
 msgid ""
 "Be sure to update the FLASH_DEVICE with the printer's unique serial port "
 "name."
 msgstr ""
+"Controleer dat je het FLASH_DEVICE update met de printer's unieke seriële "
+"poort naam."
 
 msgid ""
 "When flashing for the first time, make sure that OctoPrint is not connected "
 "directly to the printer (from the OctoPrint web page, under the "
 "\"Connection\" section, click \"Disconnect\")."
 msgstr ""
+"Als je het voor de eerste keer flashed wees zeker dat octoprint niet direct "
+"verbonden is met de printer(in de octoprint webpagina onder het \"connection"
+"\" deel, klik \"disconnect\")."
 
 msgid "Configuring OctoPrint to use Klipper"
-msgstr ""
+msgstr "Configureer octoprint om klipper te gebruiken"
 
 msgid ""
 "The OctoPrint web server needs to be configured to communicate with the "
@@ -92,12 +126,17 @@ msgid ""
 "Enter the Settings tab again and under \"Serial Connection\" change the "
 "\"Serial Port\" setting to \"/tmp/printer\"."
 msgstr ""
+"Ga opnieuw naar de instelling en onder \"Serial connection\" Verander de "
+"\"Serial port\" instelling naar \"/tmp/printer\"."
 
 msgid ""
 "In the Settings tab, navigate to the \"Behavior\" sub-tab and select the "
 "\"Cancel any ongoing prints but stay connected to the printer\" option. "
 "Click \"Save\"."
 msgstr ""
+"In het instelling tablat, Navigeer naar het \"behavior\" onderdeel en klik "
+"de \"Cancel any ongoing prints but stay connected to the printer\" optie. "
+"Klik \"Save\"."
 
 msgid ""
 "From the main page, under the \"Connection\" section (at the top left of the"
@@ -115,7 +154,7 @@ msgid ""
 msgstr ""
 
 msgid "Configuring Klipper"
-msgstr ""
+msgstr "Configureer Klipper"
 
 msgid ""
 "Klipper reports error messages via the OctoPrint terminal tab. The "
@@ -124,45 +163,64 @@ msgid ""
 "provides more detailed information."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "cd ~/klipper/\n"
 "make menuconfig\n"
 msgstr ""
+"cd ~/klipper/\n"
+"make menuconfig\n"
 
+#, fuzzy
 msgid "make\n"
-msgstr ""
+msgstr "make\n"
 
+#, fuzzy
 msgid "ls /dev/serial/by-id/*\n"
-msgstr ""
+msgstr "ls /dev/serial/by-id/*\n"
 
+#, fuzzy
 msgid "/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
-msgstr ""
+msgstr "/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 
+#, fuzzy
 msgid ""
 "sudo service klipper stop\n"
 "make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+"make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
+"sudo service klipper start\n"
 
+#, fuzzy
 msgid ""
 "cp ~/klipper/config/example-cartesian.cfg ~/printer.cfg\n"
 "nano ~/printer.cfg\n"
 msgstr ""
+"cp ~/klipper/config/example-cartesian.cfg ~/printer.cfg\n"
+"nano ~/printer.cfg\n"
 
+#, fuzzy
 msgid ""
 "[mcu]\n"
 "serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 msgstr ""
+"[mcu]\n"
+"serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 
 #: docs/Installation.md:block 1 (header)
 msgid "Installation"
 msgstr "Installatie"
 
 #: docs/Installation.md:block 7 (code)
+#, fuzzy
 msgid ""
 "git clone https://github.com/Klipper3d/klipper\n"
 "./klipper/scripts/install-octopi.sh\n"
 msgstr ""
+"git clone https://github.com/Klipper3d/klipper\n"
+"./klipper/scripts/install-octopi.sh\n"
 
 #: docs/Installation.md:block 5 (paragraph)
 msgid ""
@@ -176,7 +234,7 @@ msgstr ""
 
 #: docs/Installation.md:block 3 (header)
 msgid "Obtain a Klipper Configuration File"
-msgstr ""
+msgstr "Verkrijg een klipper configuratie bestand"
 
 #: docs/Installation.md:block 4 (paragraph)
 msgid ""
@@ -246,6 +304,8 @@ msgid ""
 "The next step is to copy the [printer configuration file](#obtain-a-klipper-"
 "configuration-file) to the Raspberry Pi."
 msgstr ""
+"De volgende stap is om het [printer configuratie bestand](#obtain-a-klipper-"
+"configuration-file) te kopiëren naar de Raspberry Pi."
 
 #: docs/Installation.md:block 37 (paragraph)
 msgid ""
@@ -276,6 +336,8 @@ msgid ""
 "Then update the config file with the unique name. For example, update the "
 "`[mcu]` section to look something similar to:"
 msgstr ""
+"Dan werk je het configuratie bestand bij met een unieke naam. Bijvoorbeeld, "
+"weinig het `[mcu]` deel zodat het er vergelijkbaar uitziet met:"
 
 #: docs/Installation.md:block 46 (paragraph)
 msgid ""

@@ -1,9 +1,16 @@
-#
+# Tjalling Kaastra <tjalling@kaastra.net>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-05-23 02:21+0000\n"
+"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
+"rpi_microcontroller/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "This document describes the process of running Klipper on a RPi and use the "
@@ -93,10 +100,13 @@ msgstr ""
 msgid "For example on a RPi 3B+ where klipper use the GPIO20 for a switch:"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "cd ~/klipper/\n"
 "make menuconfig\n"
 msgstr ""
+"cd ~/klipper/\n"
+"make menuconfig\n"
 
 msgid ""
 "sudo service klipper stop\n"

@@ -1,9 +1,16 @@
-#
+# Tjalling Kaastra <tjalling@kaastra.net>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-05-23 02:21+0000\n"
+"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/canbus/nl/>"
+"\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid "This document describes Klipper's CAN bus support."
 msgstr ""
@@ -61,7 +68,7 @@ msgid ""
 msgstr ""
 
 msgid "Configuring Klipper"
-msgstr ""
+msgstr "Configureer Klipper"
 
 msgid ""
 "Update the Klipper [mcu configuration](Config_Reference.md#mcu) to use the "

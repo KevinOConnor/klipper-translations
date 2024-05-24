@@ -1,16 +1,18 @@
 # Simon Tillema <simontillema@gmail.com>, 2023.
 # Luc Van den Borre <luc@orotec.be>, 2023.
+# Tjalling Kaastra <tjalling@kaastra.net>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-06-30 06:48+0000\n"
-"Last-Translator: Luc Van den Borre <luc@orotec.be>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/config_checks/nl/>\n"
+"PO-Revision-Date: 2024-05-22 04:20+0000\n"
+"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
+"config_checks/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "This document provides a list of steps to help confirm the pin settings in "
@@ -44,18 +46,21 @@ msgid "Verify M112"
 msgstr "Controleer M112"
 
 msgid "Verify heaters"
-msgstr ""
+msgstr "Controleer verwarming elementen"
 
 msgid ""
 "If the printer has a heated bed then perform the above test again with the "
 "bed."
 msgstr ""
+"Als de printer een verwarmd bed heeft doe de bovenstaande test opnieuw met "
+"het bed."
 
 msgid "Verify stepper motor enable pin"
-msgstr ""
+msgstr "Controleer stappenmotor ingeschakeld pin"
 
+#, fuzzy
 msgid "Verify endstops"
-msgstr ""
+msgstr "Controleer eindstoppen"
 
 msgid ""
 "If the endstop does not change at all then it generally indicates that the "

@@ -1,9 +1,15 @@
-#
+# Tjalling Kaastra <tjalling@kaastra.net>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-05-23 02:21+0000\n"
+"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/faq/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid "How can I donate to the project?"
 msgstr ""
@@ -580,19 +586,27 @@ msgid ""
 "example:"
 msgstr ""
 
+#, fuzzy
 msgid "/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
-msgstr ""
+msgstr "/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 
+#, fuzzy
 msgid ""
 "sudo service klipper stop\n"
 "make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+"make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
+"sudo service klipper start\n"
 
+#, fuzzy
 msgid ""
 "[mcu]\n"
 "serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 msgstr ""
+"[mcu]\n"
+"serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 
 msgid ""
 "[mcu]\n"

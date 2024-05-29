@@ -1,8 +1,8 @@
 # Installatie
 
-These instructions assume the software will run on a Raspberry Pi computer in conjunction with OctoPrint. It is recommended that a Raspberry Pi 2, 3, or 4 computer be used as the host machine (see the [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) for other machines).
+Deze instructies gaan er vanuit dat de software op een Raspberry Pi draait samen met octoprint. Het word aangeraden een Raspberry Pi 2,3 of 4 te gebruiken als host machine (zie de [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) voor andere machines).
 
-## Obtain a Klipper Configuration File
+## Verkrijg een klipper configuratie bestand
 
 Most Klipper settings are determined by a "printer configuration file" that will be stored on the Raspberry Pi. An appropriate configuration file can often be found by looking in the Klipper [config directory](../config/) for a file starting with a "printer-" prefix that corresponds to the target printer. The Klipper configuration file contains technical information about the printer that will be needed during the installation.
 
@@ -12,22 +12,22 @@ If no configuration file for the printer can be found, but the type of printer c
 
 It is also possible to define a new printer configuration from scratch. However, this requires significant technical knowledge about the printer and its electronics. It is recommended that most users start with an appropriate configuration file. If creating a new custom printer configuration file, then start with the closest example [config file](../config/) and use the Klipper [config reference](Config_Reference.md) for further information.
 
-## Prepping an OS image
+## Besturingssysteem afbeelding voorbereiden
 
 Start by installing [OctoPi](https://github.com/guysoft/OctoPi) on the Raspberry Pi computer. Use OctoPi v0.17.0 or later - see the [OctoPi releases](https://github.com/guysoft/OctoPi/releases) for release information. One should verify that OctoPi boots and that the OctoPrint web server works. After connecting to the OctoPrint web page, follow the prompt to upgrade OctoPrint to v1.4.2 or later.
 
-After installing OctoPi and upgrading OctoPrint, it will be necessary to ssh into the target machine to run a handful of system commands. If using a Linux or MacOS desktop, then the "ssh" software should already be installed on the desktop. There are free ssh clients available for other desktops (eg, [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)). Use the ssh utility to connect to the Raspberry Pi (ssh pi@octopi -- password is "raspberry") and run the following commands:
+Na het installeren van octopi en het upgraden van octoprint is het nodig om te ssh'en in de doel machine en een paar commandos te draaien. Als je een Linux of macOS computer gebruikt zou ssh al geïnstalleerd moeten zijn op je computer. Voor andere besturingssystemen zijn andere gratis ssh clients beschikbaar (bijvoorbeeld [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)). Gebruik de ssh tool om met de Raspberry Pi te verbinden (ssh pi@octopi -- password is "raspberry") en voor de volgende commando's uit:
 
 ```
 git clone https://github.com/Klipper3d/klipper
 ./klipper/scripts/install-octopi.sh
 ```
 
-The above will download Klipper, install some system dependencies, setup Klipper to run at system startup, and start the Klipper host software. It will require an internet connection and it may take a few minutes to complete.
+Het bovenstaande zal klipper downloaden, een paar afhankelijkheden instaleren, klipper instellen zodat het draait bij het opstarten, en de klipper software opstarten. Dit vereist een internet verbinding en kan een paar minuten duren.
 
-## Building and flashing the micro-controller
+## Bouwen en flashen van de microcontroller software
 
-To compile the micro-controller code, start by running these commands on the Raspberry Pi:
+Om de microcontroller code te compileren start met het draaien van de volgende commando's op de Raspberry Pi:
 
 ```
 cd ~/klipper/
@@ -48,15 +48,15 @@ Otherwise, the following steps are often used to "flash" the printer control boa
 ls /dev/serial/by-id/*
 ```
 
-It should report something similar to the following:
+Het zou iets vergelijkbaars als het volgende moeten teruggeven:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-It's common for each printer to have its own unique serial port name. This unique name will be used when flashing the micro-controller. It's possible there may be multiple lines in the above output - if so, choose the line corresponding to the micro-controller (see the [FAQ](FAQ.md#wheres-my-serial-port) for more information).
+Het komt vaak voor dat elke printer een eigen unieke seriële poort naam heeft. Deze unieke naam word gebruikt bij het flashen van de microcontroller. Het is mogelijk dat er meerdere regels zijn in de resultaten van hierboven. Als dat zo is kies de correcte regel met de microcontroller erop(zie [FAQ](FAQ.md#wheres-my-serial-port) voor meer informatie).
 
-For common micro-controllers, the code can be flashed with something similar to:
+Voor veelvoorkomende microcontrollers kan de code geflashed worden met iets vergelijkbaar met:
 
 ```
 sudo service klipper stop
@@ -64,27 +64,27 @@ make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 sudo service klipper start
 ```
 
-Be sure to update the FLASH_DEVICE with the printer's unique serial port name.
+Controleer dat je het FLASH_DEVICE update met de printer's unieke seriële poort naam.
 
-When flashing for the first time, make sure that OctoPrint is not connected directly to the printer (from the OctoPrint web page, under the "Connection" section, click "Disconnect").
+Als je het voor de eerste keer flashed wees zeker dat octoprint niet direct verbonden is met de printer(in de octoprint webpagina onder het "connection" deel, klik "disconnect").
 
-## Configuring OctoPrint to use Klipper
+## Configureer octoprint om klipper te gebruiken
 
 The OctoPrint web server needs to be configured to communicate with the Klipper host software. Using a web browser, login to the OctoPrint web page and then configure the following items:
 
 Navigate to the Settings tab (the wrench icon at the top of the page). Under "Serial Connection" in "Additional serial ports" add "/tmp/printer". Then click "Save".
 
-Enter the Settings tab again and under "Serial Connection" change the "Serial Port" setting to "/tmp/printer".
+Ga opnieuw naar de instelling en onder "Serial connection" Verander de "Serial port" instelling naar "/tmp/printer".
 
-In the Settings tab, navigate to the "Behavior" sub-tab and select the "Cancel any ongoing prints but stay connected to the printer" option. Click "Save".
+In het instelling tablat, Navigeer naar het "behavior" onderdeel en klik de "Cancel any ongoing prints but stay connected to the printer" optie. Klik "Save".
 
 From the main page, under the "Connection" section (at the top left of the page) make sure the "Serial Port" is set to "/tmp/printer" and click "Connect". (If "/tmp/printer" is not an available selection then try reloading the page.)
 
 Once connected, navigate to the "Terminal" tab and type "status" (without the quotes) into the command entry box and click "Send". The terminal window will likely report there is an error opening the config file - that means OctoPrint is successfully communicating with Klipper. Proceed to the next section.
 
-## Configuring Klipper
+## Configureer Klipper
 
-The next step is to copy the [printer configuration file](#obtain-a-klipper-configuration-file) to the Raspberry Pi.
+De volgende stap is om het [printer configuratie bestand](#obtain-a-klipper-configuration-file) te kopiëren naar de Raspberry Pi.
 
 Arguably the easiest way to set the Klipper configuration file is to use a desktop editor that supports editing files over the "scp" and/or "sftp" protocols. There are freely available tools that support this (eg, Notepad++, WinSCP, and Cyberduck). Load the printer config file in the editor and then save it as a file named "printer.cfg" in the home directory of the pi user (ie, /home/pi/printer.cfg).
 
@@ -101,13 +101,13 @@ It's common for each printer to have its own unique name for the micro-controlle
 ls /dev/serial/by-id/*
 ```
 
-It should report something similar to the following:
+Het zou iets vergelijkbaars als het volgende moeten teruggeven:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-Then update the config file with the unique name. For example, update the `[mcu]` section to look something similar to:
+Dan werk je het configuratie bestand bij met een unieke naam. Bijvoorbeeld, weinig het `[mcu]` deel zodat het er vergelijkbaar uitziet met:
 
 ```
 [mcu]

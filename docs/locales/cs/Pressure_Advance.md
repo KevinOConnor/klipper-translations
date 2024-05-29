@@ -2,7 +2,7 @@
 
 Tento dokument poskytuje informace o ladění konfigurační proměnné "pressure advance" pro konkrétní trysku a filament. Funkce pressure advance může být užitečná při snižování vytékání. Pro více informací o tom, jak je pressure advance implementován, viz dokument [kinematics](Kinematics.md).
 
-## Tuning pressure advance
+## Ladění předstihu tlaku
 
 Pressure advance does two useful things - it reduces ooze during non-extrude moves and it reduces blobbing during cornering. This guide uses the second feature (reducing blobbing during cornering) as a mechanism for tuning.
 

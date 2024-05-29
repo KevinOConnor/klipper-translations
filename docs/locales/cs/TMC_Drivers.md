@@ -2,7 +2,7 @@
 
 Tento dokument poskytuje informace o použití ovladačů krokových motorů Trinamic v režimu SPI/UART na Klipperu.
 
-Klipper can also use Trinamic drivers in their "standalone mode". However, when the drivers are in this mode, no special Klipper configuration is needed and the advanced Klipper features discussed in this document are not available.
+Klipper může používat ovladače Trinamic i v samostatném režimu. Pokud jsou však ovladače v tomto režimu, není nutná žádná speciální konfigurace Klipperu a pokročilé funkce Klipperu, o kterých pojednává tento dokument, nejsou k dispozici.
 
 In addition to this document, be sure to review the [TMC driver config reference](Config_Reference.md#tmc-stepper-driver-configuration).
 

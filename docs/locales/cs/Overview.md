@@ -1,4 +1,4 @@
-# Overview
+# Přehled
 
 Vítejte v dokumentaci ke Klipperu. Pokud s Klipprem začínáte, začněte s dokumenty [features](Features.md) a [installation](Installation.md)
 
@@ -27,7 +27,7 @@ Vítejte v dokumentaci ke Klipperu. Pokud s Klipprem začínáte, začněte s do
 - [Resonance compensation](Resonance_Compensation.md): Nástroj pro snížení zvonění u výtisků.
    - [Měření rezonancí](Measuring_Resonances.md): Informace o použití akcelerometru adxl345 k měření rezonancí.
 - [Pressure advance](Pressure_Advance.md): Kalibrace tlaku extrudéru.
-- [G-Codes](G-Codes.md): Information on commands supported by Klipper.
+- [G-Codes](G-Codes.md): Informace a příkazy podporované Klipperem.
 - [Šablony příkazů](Command_Templates.md): G-kód makra a podmíněné vyhodnocování.
    - [Status Reference](Status_Reference.md): Informace dostupné pro makra (a podobné).
 - [TMC Drivers](TMC_Drivers.md): Použití ovladačů krokových motorů Trinamic s Klipperem.

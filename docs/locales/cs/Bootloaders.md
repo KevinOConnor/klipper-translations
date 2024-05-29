@@ -1,6 +1,6 @@
 # Bootloaders
 
-Tento dokument poskytuje informace o běžných bootloaderech na mikrokontrolérech, které Klipper podporuje.
+Tento dokument obsahuje informace o běžných zavaděčích mikrokontrolérů, které Klipper podporuje.
 
 Bootloader je softwarový nástroj třetí strany, který běží na mikrokontroléru při jeho prvním zapnutí. Obvykle se používá k nahrání nové aplikace (například Klipper) na mikrokontrolér bez potřeby specializovaného hardwaru. Bohužel neexistuje žádný průmyslový standard pro nahrávání mikrokontroléru, a není ani standardní bootloader, který by fungoval na všech mikrokontrolérech. Navíc je běžné, že každý bootloader vyžaduje jiný soubor kroků k nahrání aplikace.
 

@@ -795,7 +795,7 @@ max_temp:
 #   These parameters must be provided.
 ```
 
-### [heater_bed]
+### [verwarmd_bed]
 
 The heater_bed section describes a heated bed. It uses the same heater settings described in the "extruder" section.
 

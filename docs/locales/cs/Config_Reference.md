@@ -1,6 +1,6 @@
 # Configuration reference
 
-Tento dokument je příručkou pro možnosti dostupné v konfiguračním souboru Klipperu.
+Tento dokument je odkazem na možnosti dostupné v konfiguračním souboru aplikace Klipper.
 
 Popisy v tomto dokumentu jsou formátovány tak, aby bylo možné je zkopírovat a vložit do konfiguračního souboru tiskárny. Viz [dokumentace k instalaci](Installation.md) pro informace o nastavení Klipperu a výběru počátečního konfiguračního souboru.
 

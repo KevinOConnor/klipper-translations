@@ -1,8 +1,8 @@
 # G-Codes
 
-Tento dokument popisuje příkazy, které Klipper podporuje. Jedná se o příkazy, které lze zadat do záložky terminálu v OctoPrint.
+Tento dokument popisuje příkazy, které Klipper podporuje. Jedná se o příkazy, které lze zadat na kartě terminálu OctoPrint.
 
-## G-Code commands
+## Příkazy G-Code
 
 Klipper supports the following standard G-Code commands:
 

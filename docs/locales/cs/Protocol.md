@@ -1,6 +1,6 @@
 # Protokol
 
-Protokol pro zprávy Klipper se používá pro komunikaci na nízké úrovni mezi hostitelským softwarem Klipper a mikrokontrolérovým softwarem Klipper. Na vysoké úrovni lze protokol představit jako sérii řetězců příkazů a odpovědí, které jsou komprimovány, odeslány a poté zpracovány na přijímací straně. Příklad série příkazů v nepřekladném lidském formátu by mohl vypadat takto:
+Protokol zpráv Klipper se používá pro nízkoúrovňovou komunikaci mezi hostitelským softwarem Klipper a softwarem mikrokontroléru Klipper. Na vysoké úrovni si lze protokol představit jako sérii řetězců příkazů a odpovědí, které jsou komprimovány, přenášeny a poté zpracovány na přijímající straně. Příklad série příkazů v nekomprimovaném formátu čitelném pro člověka může vypadat takto:
 
 ```
 set_digital_out pin=PA3 value=1
@@ -10,7 +10,7 @@ queue_step oid=7 interval=7458 count=10 add=331
 queue_step oid=7 interval=11717 count=4 add=1281
 ```
 
-See the [mcu commands](MCU_Commands.md) document for information on available commands. See the [debugging](Debugging.md) document for information on how to translate a G-Code file into its corresponding human-readable micro-controller commands.
+Informace o dostupných příkazech najdete v dokumentu [mcu commands](MCU_Commands.md). Informace o překladu souboru G-Code do odpovídajících příkazů mikrokontroléru čitelných pro člověka naleznete v dokumentu [debugging](Debugging.md).
 
 This page provides a high-level description of the Klipper messaging protocol itself. It describes how messages are declared, encoded in binary format (the "compression" scheme), and transmitted.
 

@@ -1,6 +1,6 @@
-# Sponsors
+# Sponzoři
 
-Klipper is Free Software. We depend on the generous support from sponsors. Please consider sponsoring Klipper or supporting our sponsors.
+Klipper je svobodný software. Jsme závislí na štědré podpoře sponzorů. Zvažte prosím možnost sponzorovat Klipper nebo podpořit naše sponzory.
 
 ## BIGTREETECH
 
@@ -8,7 +8,7 @@ Klipper is Free Software. We depend on the generous support from sponsors. Pleas
 
 BIGTREETECH is the official mainboard sponsor of Klipper. BIGTREETECH is committed to developing innovative and competitive products to serve the 3D printing community better. Follow them on [Facebook](https://www.facebook.com/BIGTREETECH) or [Twitter](https://twitter.com/BigTreeTech).
 
-## Sponsors
+## Sponzoři
 
 [<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor) [<img src="./img/sponsors/peopoly-logo.png" width="200" style="margin:25px" />](https://peopoly.net)
 

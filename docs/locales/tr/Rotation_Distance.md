@@ -2,7 +2,7 @@
 
 Klipper üzerindeki step motor sürücüleri, her [adım yapılandırma bölümünde](Config_Reference.md#stepper) bir "rotation_distance" parametresi gerektirir. "rotation_distance", step motorun bir tam dönüşünde eksenin hareket ettiği mesafe miktarıdır. Bu belge, bu değerin nasıl yapılandırılacağını açıklar.
 
-## Obtaining rotation_distance from steps_per_mm (or step_distance)
+## Step_per_mm'den (veya step_distance) rotasyon_distance'ının elde edilmesi
 
 The designers of your 3d printer originally calculated `steps_per_mm` from a rotation distance. If you know the steps_per_mm then it is possible to use this general formula to obtain that original rotation distance:
 

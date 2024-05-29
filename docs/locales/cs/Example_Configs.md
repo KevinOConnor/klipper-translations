@@ -1,10 +1,10 @@
 # Example configurations
 
-Tento dokument obsahuje pravidla pro přispívání ukázkové konfigurace Klipper do repozitáře Klipper na GitHubu (umístěného v adresáři config).
+Tento dokument obsahuje pravidla pro přispívání ukázkové konfigurace Klipper do repozitáře Klipper na GitHubu (umístěného v [config directory](../config/)).
 
-Note that the [Klipper Community Discourse server](https://community.klipper3d.org) is also a useful resource for finding and sharing config files.
+Všimněte si, že [Klipper Community Discourse server](https://community.klipper3d.org) je také užitečným zdrojem pro vyhledávání a sdílení konfiguračních souborů.
 
-## Guidelines
+## Pokyny
 
 1. Select the appropriate config filename prefix:
    1. The `printer` prefix is used for stock printers sold by a mainstream manufacturer.

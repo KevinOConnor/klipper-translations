@@ -1,4 +1,4 @@
-# Vícečipové Mikrokontroléry pro Domácí Použití a Sondování
+# Vícenásobné navádění a sondování prostřednictvím mikrokontroléru
 
 Klipper podporuje mechanismus homingu s koncovým spínačem připojeným k jednomu mikrokontroléru, zatímco krokové motory jsou připojeny k jinému mikrokontroléru. Tato podpora je označována jako "multi-mcu homing". Tato funkce se také používá, když je snímač Z na jiném mikrokontroléru než krokové motory Z.
 

@@ -144,7 +144,7 @@ In the above example, `module` should be the name of a file or directory in the 
 
 Je důležité mít na každém commitu řádek "Signed-off-by" - certifikuje, že souhlasíte s [osvědčením vývojáře](developer-certificate-of-origin). Musí obsahovat vaše skutečné jméno (omlouváme se, pseudonymy nebo anonymní příspěvky nejsou povoleny) a aktuální emailovou adresu.
 
-## Contributing to Klipper Translations
+## Přispívání do překladů Klipper
 
 [Klipper-translations Project](https://github.com/Klipper3d/klipper-translations) is a project dedicated to translating Klipper to different languages. [Weblate](https://hosted.weblate.org/projects/klipper/) hosts all the Gettext strings for translating and reviewing. Locales can be displayed on [klipper3d.org](https://www.klipper3d.org) once they satisfy the following requirements:
 

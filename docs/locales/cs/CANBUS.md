@@ -1,6 +1,6 @@
 # CANBUS
 
-Tento dokument popisuje podporu CAN sběrnice Klipperem.
+Tento dokument popisuje podporu sběrnice CAN systému Klipper.
 
 ## Hardware zařízení
 
@@ -8,11 +8,11 @@ Klipper currently supports CAN on stm32, SAME5x, and rp2040 chips. In addition, 
 
 To compile for CAN, run `make menuconfig` and select "CAN bus" as the communication interface. Finally, compile the micro-controller code and flash it to the target board.
 
-## Host Hardware
+## Hardware hostitele
 
 In order to use a CAN bus, it is necessary to have a host adapter. It is recommended to use a "USB to CAN adapter". There are many different USB to CAN adapters available from different manufacturers. When choosing one, we recommend verifying that the firmware can be updated on it. (Unfortunately, we've found some USB adapters run defective firmware and are locked down, so verify before purchasing.) Look for adapters that can run Klipper directly (in its "USB to CAN bridge mode") or that run the [candlelight firmware](https://github.com/candle-usb/candleLight_fw).
 
-It is also necessary to configure the host operating system to use the adapter. This is typically done by creating a new file named `/etc/network/interfaces.d/can0` with the following contents:
+Je také nutné nakonfigurovat hostitelský operační systém pro použití adaptéru. To se obvykle provádí vytvořením nového souboru s názvem `/etc/network/interfaces.d/can0` s následujícím obsahem:
 
 ```
 allow-hotplug can0
@@ -21,15 +21,15 @@ iface can0 can static
     up ifconfig $IFACE txqueuelen 128
 ```
 
-## Terminating Resistors
+## Zakončovací odpory
 
-A CAN bus should have two 120 ohm resistors between the CANH and CANL wires. Ideally, one resistor located at each the end of the bus.
+Sběrnice CAN by měla mít mezi vodiči CANH a CANL dva 120ohmové odpory. V ideálním případě by měl být na každém konci sběrnice umístěn jeden rezistor.
 
 Note that some devices have a builtin 120 ohm resistor that can not be easily removed. Some devices do not include a resistor at all. Other devices have a mechanism to select the resistor (typically by connecting a "pin jumper"). Be sure to check the schematics of all devices on the CAN bus to verify that there are two and only two 120 Ohm resistors on the bus.
 
-To test that the resistors are correct, one can remove power to the printer and use a multi-meter to check the resistance between the CANH and CANL wires - it should report ~60 ohms on a correctly wired CAN bus.
+Správnost odporů lze ověřit tak, že se odpojí napájení tiskárny a multimetrem se zkontroluje odpor mezi vodiči CANH a CANL - u správně zapojené sběrnice CAN by měl ukazovat ~60 ohmů.
 
-## Finding the canbus_uuid for new micro-controllers
+## Zjištění canbus_uuid pro nové mikrokontroléry
 
 Each micro-controller on the CAN bus is assigned a unique id based on the factory chip identifier encoded into each micro-controller. To find each micro-controller device id, make sure the hardware is powered and wired correctly, and then run:
 
@@ -47,7 +47,7 @@ Each device will have a unique identifier. In the above example, `11aa22bb33cc` 
 
 Note that the `canbus_query.py` tool will only report uninitialized devices - if Klipper (or a similar tool) configures the device then it will no longer appear in the list.
 
-## Configuring Klipper
+## Konfigurace Klipperu
 
 Update the Klipper [mcu configuration](Config_Reference.md#mcu) to use the CAN bus to communicate with the device - for example:
 
@@ -80,6 +80,6 @@ iface can0 can static
    Even at a CAN bus frequency of 1000000, there may not be sufficient bandwidth to run a `SHAPER_CALIBRATE` test if both the XY steppers and the accelerometer all communicate via a single "USB to CAN bus" interface.
 * A USB to CAN bridge board will not appear as a USB serial device, it will not show up when running `ls /dev/serial/by-id`, and it can not be configured in Klipper's printer.cfg file with a `serial:` parameter. The bridge board appears as a "USB CAN adapter" and it is configured in the printer.cfg as a [CAN node](#configuring-klipper).
 
-## Tips for troubleshooting
+## Tipy pro řešení problémů
 
-See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document.
+Viz dokument [CAN bus troubleshooting](CANBUS_Troubleshooting.md).

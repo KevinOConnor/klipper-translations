@@ -2,7 +2,7 @@
 
 Tento dokument poskytuje přehled toho, jak Klipper implementuje pohyb robota (jeho [kinematiku](https://en.wikipedia.org/wiki/Kinematics)). Obsah může být zajímavý jak pro vývojáře, kteří chtějí pracovat na softwaru Klipper, tak pro uživatele, kteří chtějí lépe porozumět mechanice svých strojů.
 
-## Acceleration
+## Zrychlení
 
 Klipper implements a constant acceleration scheme whenever the print head changes velocity - the velocity is gradually changed to the new speed instead of suddenly jerking to it. Klipper always enforces acceleration between the tool head and the print. The filament leaving the extruder can be quite fragile - rapid jerks and/or extruder flow changes lead to poor quality and poor bed adhesion. Even when not extruding, if the print head is at the same level as the print then rapid jerking of the head can cause disruption of recently deposited filament. Limiting speed changes of the print head (relative to the print) reduces risks of disrupting the print.
 

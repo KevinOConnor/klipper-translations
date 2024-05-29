@@ -1,6 +1,6 @@
 # Řešení potíží s CAN sběrnicí
 
-This document provides information on troubleshooting communication issues when using [Klipper with CAN bus](CANBUS.md).
+Tento dokument obsahuje informace o řešení problémů s komunikací při použití [Klipper se sběrnicí CAN](CANBUS.md).
 
 ## Verify CAN bus wiring
 

@@ -14,7 +14,7 @@ Naviga nella console dei comandi e invia un comando M112 nel terminale. Questo c
 
 ## Verifica i riscaldatori
 
-Navigate to the temperature graph section and type in 50 followed by enter in the extruder/tool temperature box. The extruder temperature in the graph should start to increase (within about 30 seconds or so). Then go to the extruder temperature drop-down box and select "Off". After several minutes the temperature should start to return to its initial room temperature value. If the temperature does not increase then verify the "heater_pin" setting in the config.
+Italiano
 
 Se la stampante ha il piatto riscaldato, eseguire nuovamente il test indicato in precedenza ma per il piatto.
 

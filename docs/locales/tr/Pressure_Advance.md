@@ -2,7 +2,7 @@
 
 Bu belge, belirli bir nozul ve filament için "basınç avansı" yapılandırma değişkeninin ayarlanması hakkında bilgi sağlar. Basınç ilerletme özelliği sızıntıyı azaltmada yardımcı olabilir. Basınç avansının nasıl uygulandığı hakkında daha fazla bilgi için [kinematics](Kinematics.md) belgesine bakın.
 
-## Tuning pressure advance
+## Basınç ilerlemesinin ayarlanması
 
 Pressure advance does two useful things - it reduces ooze during non-extrude moves and it reduces blobbing during cornering. This guide uses the second feature (reducing blobbing during cornering) as a mechanism for tuning.
 

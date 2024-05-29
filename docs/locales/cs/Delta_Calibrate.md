@@ -1,12 +1,12 @@
 # Delta calibration
 
-Tento dokument popisuje systém automatické kalibrace Klipperu pro tiskárny typu "delta"
+Tento dokument popisuje systém automatické kalibrace Klipperu pro tiskárny typu "delta".
 
 Kalibrace delta tiskárny zahrnuje určení pozic koncových spínačů ve věžích, úhly věží, poloměr delta a délky ramen delta. Tyto nastavení ovlivňují pohyb tiskárny u delta tiskárny. Každý z těchto parametrů má nezjevný a nelineární vliv a je obtížné je kalibrovat ručně. Naopak, softwarový kalibrační kód může poskytnout vynikající výsledky během několika málo minut. Není nutný žádný speciální sondovací hardware.
 
 Ultimately, the delta calibration is dependent on the precision of the tower endstop switches. If one is using Trinamic stepper motor drivers then consider enabling [endstop phase](Endstop_Phase.md) detection to improve the accuracy of those switches.
 
-## Automatic vs manual probing
+## Automatická vs. manuální sonda
 
 Klipper supports calibrating the delta parameters via a manual probing method or via an automatic Z probe.
 

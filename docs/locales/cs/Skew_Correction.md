@@ -2,7 +2,7 @@
 
 Korekce zkosení založená na softwaru může pomoci vyřešit rozměrové nepřesnosti vznikající v důsledku montáže tiskárny, která není zcela čtvercová. Upozorňujeme však, že pokud je vaše tiskárna výrazně zkosená, silně doporučujeme nejprve použít mechanická opatření k dosažení co nejvíce čtvercového stavu tiskárny před použitím korekce založené na softwaru.
 
-## Print a Calibration Object
+## Tisk kalibračního objektu
 
 The first step in correcting skew is to print a [calibration object](https://www.thingiverse.com/thing:2563185/files) along the plane you want to correct. There is also a [calibration object](https://www.thingiverse.com/thing:2972743) that includes all planes in one model. You want the object oriented so that corner A is toward the origin of the plane.
 

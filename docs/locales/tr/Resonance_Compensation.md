@@ -1,6 +1,6 @@
 # Rezonans Telafisi
 
-Klipper supports Input Shaping - a technique that can be used to reduce ringing (also known as echoing, ghosting or rippling) in prints. Ringing is a surface printing defect when, typically, elements like edges repeat themselves on a printed surface as a subtle 'echo':
+Klipper, baskılardaki çınlamayı (yankılanma, gölgelenme veya dalgalanma olarak da bilinir) azaltmak için kullanılabilecek bir teknik olan Giriş Şekillendirmeyi destekler. Yüzük, tipik olarak kenarlar gibi öğelerin baskılı bir yüzey üzerinde ince bir 'yankı' olarak kendilerini tekrarladığı bir yüzey baskı hatasıdır:
 
 |![Ringing test](img/ringing-test.jpg)|![3D Benchy](img/ringing-3dbenchy.jpg)|
 

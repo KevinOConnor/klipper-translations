@@ -1,29 +1,29 @@
-# Contact
+# Contato
 
-This document provides contact information for Klipper.
+Este documento fornece informações de contato para Klipper.
 
-1. [Community Forum](#community-forum)
+1. [Fórum Comunitário](#comunidade-forum)
 1. [Discord Chat](#discord-chat)
-1. [I have a question about Klipper](#i-have-a-question-about-klipper)
-1. [I have a feature request](#i-have-a-feature-request)
-1. [Help! It doesn't work!](#help-it-doesnt-work)
+1. Tenho uma pergunta sobre o Klipper
+1. [Eu tenho um pedido de recurso](#i-have-a-feature-request)
+1. Socorro! Não funciona!
 1. [I found a bug in the Klipper software](#i-found-a-bug-in-the-klipper-software)
-1. [I am making changes that I'd like to include in Klipper](#i-am-making-changes-that-id-like-to-include-in-klipper)
+1. [Estou fazendo mudanças que gostaria de incluir no Klipper](#i-am-making-changes-that-id-like-to-include-in-klipper)
 1. [Klipper github](#klipper-github)
 
-## Community Forum
+## Fórum Comunitário
 
-There is a [Klipper Community Discourse server](https://community.klipper3d.org) for discussions on Klipper.
+Existe um [Klipper Community Discourse server](https://community.klipper3d.org) para discussões sobre Klipper.
 
-## Discord Chat
+## Conversa de Discord
 
 There is a Discord server dedicated to Klipper at: <https://discord.klipper3d.org>.
 
-This server is run by a community of Klipper enthusiasts dedicated to discussions on Klipper. It allows users to chat with other users in real-time.
+Este servidor é executado por uma comunidade de entusiastas Klipper dedicado a discussões sobre Klipper. Ele permite que os usuários conversem com outros usuários em tempo real.
 
-## I have a question about Klipper
+## Tenho uma pergunta sobre Klipper
 
-Many questions we receive are already answered in the [Klipper documentation](Overview.md). Please be sure to to read the documentation and follow the directions provided there.
+Muitas perguntas que recebemos já são respondidas na documentação [Klipper](Overview.md). Por favor, certifique-se de ler a documentação e siga as instruções fornecidas lá.
 
 It is also possible to search for similar questions in the [Klipper Community Forum](#community-forum).
 

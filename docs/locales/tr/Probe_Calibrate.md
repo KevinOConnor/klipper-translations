@@ -4,7 +4,7 @@ This document describes the method for calibrating the X, Y, and Z offsets of an
 
 ## X ve Y prob ofsetlerinin kalibrasyonu
 
-To calibrate the X and Y offset, navigate to the OctoPrint "Control" tab, home the printer, and then use the OctoPrint jogging buttons to move the head to a position near the center of the bed.
+X ve Y ofsetini kalibre etmek için OctoPrint "Kontrol" sekmesine gidin, yazıcıyı ana konuma getirin ve ardından kafayı yatağın merkezine yakın bir konuma taşımak için OctoPrint kaydırma düğmelerini kullanın.
 
 Place a piece of blue painters tape (or similar) on the bed underneath the probe. Navigate to the OctoPrint "Terminal" tab and issue a PROBE command:
 

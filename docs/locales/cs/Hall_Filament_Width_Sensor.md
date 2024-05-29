@@ -10,7 +10,7 @@ To use Hall filament width sensor, read [Config Reference](Config_Reference.md#h
 
 Sensor generates two analog output based on calculated filament width. Sum of output voltage always equals to detected filament width. Host module monitors voltage changes and adjusts extrusion multiplier. I use the aux2 connector on a ramps-like board with the analog11 and analog12 pins. You can use different pins and different boards.
 
-## Template for menu variables
+## Šablona pro úpravu menu
 
 ```
 [menu __main __filament __width_current]

@@ -4,28 +4,30 @@
 # Kaan Özbilek <info@kaanozbilek.com>, 2023.
 # Kursat <sitting_1907@hotmail.com>, 2023.
 # Semih <semihbrn10@gmail.com>, 2024.
+# kasım atmaca <kasim.atmaca13@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-03-30 12:02+0000\n"
-"Last-Translator: Semih <semihbrn10@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/tr/>\n"
+"PO-Revision-Date: 2024-06-03 00:48+0000\n"
+"Last-Translator: kasım atmaca <kasim.atmaca13@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/"
+"tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
 "[features](Features.md) and [installation](Installation.md) documents."
 msgstr ""
-"Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'e yeni iseniz , "
+"Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , "
 "[özellikler](Features.md) ve [kurulum](Installation.md) ile "
 "başlayabilirsiniz."
 
 msgid "Overview information"
-msgstr "Genel Bakış Bilgileri"
+msgstr "Genel Bakış"
 
 msgid "[Features](Features.md): A high-level list of features in Klipper."
 msgstr ""

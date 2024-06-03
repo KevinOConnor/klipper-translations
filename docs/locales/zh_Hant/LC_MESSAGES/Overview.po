@@ -1,15 +1,17 @@
 # Fred Chan <fred2088@gmail.com>, 2022.
+# hugoalh <hugoalh@users.noreply.hosted.weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-08-01 07:21+0000\n"
-"Last-Translator: Fred Chan <fred2088@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/klipper/overview/zh_Hant/>\n"
+"PO-Revision-Date: 2024-05-30 09:33+0000\n"
+"Last-Translator: hugoalh <hugoalh@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"klipper/overview/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -229,23 +231,24 @@ msgstr "[霍爾列印絲寬度感測器](Hall_Filament_Width_Sensor.md)"
 msgid ""
 "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objects "
 "implementation."
-msgstr ""
+msgstr "[排除物件](Exclude_Object.md)：排除物件實現的指南。"
 
 #: docs/Overview.md:block 6 (unordered list)
 msgid ""
 "[Axis Twist Compensation](Axis_Twist_Compensation.md): A tool to compensate "
 "for inaccurate probe readings due to twist in X gantry."
-msgstr ""
+msgstr "[軸扭曲補償](Axis_Twist_Compensation.md)：用於補償由於 X "
+"機架扭曲而導致不準確的探頭讀數的工具。"
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader."
-msgstr ""
+msgstr "[啟動程式入口](Bootloader_Entry.md)：正在請求啟動程式。"
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid ""
 "[CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for "
 "troubleshooting CAN bus."
-msgstr ""
+msgstr "[CAN 匯流排故障排除](CANBUS_Troubleshooting.md)：CAN 匯流排故障排除的提示。"
 
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "

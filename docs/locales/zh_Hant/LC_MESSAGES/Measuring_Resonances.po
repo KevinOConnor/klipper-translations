@@ -1,15 +1,17 @@
 # Fred Chan <fred2088@gmail.com>, 2022.
+# hugoalh <hugoalh@users.noreply.hosted.weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-02-27 14:54+0000\n"
-"Last-Translator: Fred Chan <fred2088@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/klipper/measuring_resonances/zh_Hant/>\n"
+"PO-Revision-Date: 2024-06-02 07:07+0000\n"
+"Last-Translator: hugoalh <hugoalh@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"klipper/measuring_resonances/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid "Measuring Resonances"
 msgstr "共振值測量"
@@ -55,7 +57,7 @@ msgid "Ground"
 msgstr "地（GND）"
 
 msgid "CS"
-msgstr "CS（晶片選定）"
+msgstr "CS"
 
 msgid "24"
 msgstr "24"
@@ -222,7 +224,7 @@ msgstr ""
 "該腳本將生成帶有頻率響應的圖表`/tmp/shaper_calibrate_x.png`和`/tmp/shaper_calibrate_y.png`。您還將獲得每個輸入整形器的建議頻率，以及為您的設置推薦的輸入整形器。例如："
 
 msgid "![Resonances](img/calibrate-y.png)"
-msgstr "![Resonances](img/calibrate-y.png)"
+msgstr "![共振](img/calibrate-y.png)"
 
 msgid ""
 "The suggested configuration can be added to `[input_shaper]` section of "
@@ -274,7 +276,7 @@ msgid "Let's consider the following results from the automatic tuning:"
 msgstr "讓我們考慮以下自動調整的結果："
 
 msgid "![Resonances](img/calibrate-x.png)"
-msgstr "![Resonances](img/calibrate-x.png)"
+msgstr "![共振](img/calibrate-x.png)"
 
 msgid ""
 "Note that the reported `smoothing` values are some abstract projected "
@@ -302,7 +304,7 @@ msgid ""
 msgstr "這將平滑限制為 0.2 分。現在您可以得到以下結果："
 
 msgid "![Resonances](img/calibrate-x-max-smoothing.png)"
-msgstr "![Resonances](img/calibrate-x-max-smoothing.png)"
+msgstr "![共振](img/calibrate-x-max-smoothing.png)"
 
 msgid ""
 "If you compare to the previously suggested parameters, the vibrations are a "
@@ -366,8 +368,8 @@ msgid ""
 "part of the input shaper tuning guide and print the test model to choose "
 "`max_accel` parameter experimentally."
 msgstr ""
-"或者，按照輸入整形器調整指南的 [this](Resonance_Compensation.md#selecting-max_accel) "
-"部分並打印測試模型以實驗性地選擇“max_accel”參數。"
+"或者，按照輸入整形器調整指南的[此](Resonance_Compensation.md#selecting-"
+"max_accel)部分並打印測試模型以實驗性地選擇 `max_accel` 參數。"
 
 msgid ""
 "The same notice applies to the input shaper [auto-calibration](#input-"
@@ -422,13 +424,14 @@ msgid ""
 msgstr "如果您的打印機是拋床打印機，您可以指定要測試的軸，以便您可以在測試之間更改加速度計安裝點（默認情況下，兩個軸都執行測試）："
 
 msgid "You can execute `SAVE_CONFIG` twice - after calibrating each axis."
-msgstr "您可以在校準每個軸之後執行兩次“SAVE_CONFIG”。"
+msgstr "您可以在校準每個軸之後執行兩次 `SAVE_CONFIG`。"
 
 msgid ""
 "However, if you connected two accelerometers simultaneously, you simply run "
 "`SHAPER_CALIBRATE` without specifying an axis to calibrate the input shaper "
 "for both axes in one go."
-msgstr "但是，如果您同時連接兩個加速度計，您只需運行“SHAPER_CALIBRATE”，而無需指定一個軸來一次性校準兩個軸的輸入整形器。"
+msgstr "但是，如果您同時連接兩個加速度計，您只需運行 "
+"`SHAPER_CALIBRATE`，而無需指定一個軸來一次性校準兩個軸的輸入整形器。"
 
 msgid "Input Shaper re-calibration"
 msgstr "輸入整形器重新校準"
@@ -495,8 +498,8 @@ msgid ""
 "consider via `-a x`, `-a y` or `-a z` parameter (if none specified, the sum "
 "of vibrations for all axes is used);"
 msgstr ""
-"比較幾個輸入之間的頻率響應（使用“-c”參數）；您還可以通過“-a x”、“-a y”或“-a "
-"z”參數指定要考慮的加速度計軸（如果未指定，則使用所有軸的振動總和）；"
+"比較幾個輸入之間的頻率響應（使用 `-c` 參數）；您還可以通過 `-a x`、`-a y` 或 "
+"`-a z` 參數指定要考慮的加速度計軸（如果未指定，則使用所有軸的振動總和）；"
 
 msgid ""
 "plotting the spectrogram (use `-s` parameter), only 1 input is supported; "
@@ -515,7 +518,7 @@ msgstr ""
 "或calibration_data\\*.csv 文件。"
 
 msgid "For example,"
-msgstr "例如:"
+msgstr "例如，"
 
 msgid ""
 "will plot the comparison of several `/tmp/raw_data_x_*.csv` files for Z axis"
@@ -554,8 +557,8 @@ msgid ""
 " a glass bed and a magnetic surfaces (which is lighter) to find the input "
 "shaper parameters that work well for any print surface configuration."
 msgstr ""
-"在帶有玻璃床和磁性表面（更輕）的床吊具上運行兩次“TEST_RESONANCES AXIS=Y "
-"OUTPUT=raw_data”，以找到適用於任何打印表面配置的輸入整形器參數。"
+"在帶有玻璃床和磁性表面（更輕）的床吊具上運行兩次 `TEST_RESONANCES AXIS=Y "
+"OUTPUT=raw_data`，以找到適用於任何打印表面配置的輸入整形器參數。"
 
 msgid "Combining the resonance data from multiple test points."
 msgstr "結合來自多個測試點的共振數據。"
@@ -1005,7 +1008,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "39"
-msgstr ""
+msgstr "39"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "3v3"
@@ -1088,7 +1091,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP1 (SPI0_CSn)"
@@ -1096,7 +1099,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP0 (SPI0_RX)"
@@ -1104,7 +1107,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP3 (SPI0_TX)"
@@ -1112,7 +1115,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP2 (SPI0_SCK)"

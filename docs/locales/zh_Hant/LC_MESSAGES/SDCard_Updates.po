@@ -1,15 +1,17 @@
 # Fred Chan <fred2088@gmail.com>, 2022.
+# hugoalh <hugoalh@users.noreply.hosted.weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-02-24 08:58+0000\n"
-"Last-Translator: Fred Chan <fred2088@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/klipper/sdcard_updates/zh_Hant/>\n"
+"PO-Revision-Date: 2024-06-02 07:07+0000\n"
+"Last-Translator: hugoalh <hugoalh@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"klipper/sdcard_updates/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "Many of today's popular controller boards ship with a bootloader capable of "
@@ -406,7 +408,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "DATA2"
@@ -418,7 +420,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "CD/DATA3"
@@ -426,7 +428,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "CS"
-msgstr ""
+msgstr "CS"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "3"
@@ -442,7 +444,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "+3.3V (VDD)"
@@ -450,7 +452,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "CLK"
@@ -502,7 +504,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "GND"
-msgstr ""
+msgstr "GND"
 
 #: docs/SDCard_Updates.md:block 45 (paragraph)
 msgid "\\* None (PU) indicates an unused pin with a pull-up resistor"

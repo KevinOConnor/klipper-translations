@@ -1,16 +1,18 @@
 # Francis Poulizac <fpoulizac@vivaldi.net>, 2021.
 # Francis Poulizac <francis@poulizac.fr>, 2022.
+# Sébastien Thieury <dev.sebthieu@serendip-it.fr>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-12-30 18:51+0000\n"
-"Last-Translator: Francis Poulizac <francis@poulizac.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/klipper/code_overview/fr/>\n"
+"PO-Revision-Date: 2024-06-12 13:24+0000\n"
+"Last-Translator: Sébastien Thieury <dev.sebthieu@serendip-it.fr>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/klipper/"
+"code_overview/fr/>\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "This document describes the overall code layout and major code flow of "
@@ -1258,6 +1260,10 @@ msgid ""
 "`ToolHead.move() -> LookAheadQueue.add_move() -> LookAheadQueue.flush() -> "
 "Move.set_junction() -> ToolHead._process_moves()`."
 msgstr ""
+"La classe ToolHead (dans toolhead.py) gère l'anticipation (\"look-ahead\") "
+"et suit le timing des actions d'impression. Le chemin principal pour un "
+"mouvement est : `ToolHead.move() -> LookAheadQueue.add_move() -> "
+"LookAheadQueue.flush() -> Move.set_junction() -> ToolHead._process_moves()`."
 
 #: docs/Code_Overview.md:block 24 (unordered list)
 msgid ""
@@ -1269,6 +1275,8 @@ msgstr ""
 msgid ""
 "LookAheadQueue.flush() determines the start and end velocities of each move."
 msgstr ""
+"LookAheadQueue.flush() détermine les vitesses de début et de fin de chaque "
+"mouvement."
 
 #: docs/Code_Overview.md:block 24 (unordered list)
 msgid ""

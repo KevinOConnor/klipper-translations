@@ -1,17 +1,20 @@
 # brian park <gouache95@gmail.com>, 2021.
 # 赵美丽 <kaiyue.zhao@leyantech.com>, 2022.
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
+# ElectricalBoy <15651807+ElectricalBoy@users.noreply.github.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-05-25 17:15+0000\n"
-"Last-Translator: Yifei Ding <dingyifeiair@gmail.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/klipper/config_reference/ko/>\n"
+"PO-Revision-Date: 2024-06-22 11:09+0000\n"
+"Last-Translator: ElectricalBoy <15651807+ElectricalBoy@users.noreply.github."
+"com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/klipper/"
+"config_reference/ko/>\n"
 "Language: ko\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
@@ -395,7 +398,7 @@ msgid "[respond]"
 msgstr ""
 
 msgid "Resonance compensation"
-msgstr "공진 보상"
+msgstr "공명 보정"
 
 msgid "[input_shaper]"
 msgstr ""

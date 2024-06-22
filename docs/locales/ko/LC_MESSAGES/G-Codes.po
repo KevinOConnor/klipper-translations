@@ -1,15 +1,18 @@
 # brian park <gouache95@gmail.com>, 2021.
+# ElectricalBoy <15651807+ElectricalBoy@users.noreply.github.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2021-08-23 02:32+0000\n"
-"Last-Translator: brian park <gouache95@gmail.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/klipper/g-codes/ko/>\n"
+"PO-Revision-Date: 2024-06-22 11:09+0000\n"
+"Last-Translator: ElectricalBoy <15651807+ElectricalBoy@users.noreply.github."
+"com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/klipper/g-codes/"
+"ko/>\n"
 "Language: ko\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -779,7 +782,7 @@ msgstr "`O1`...`O32`: 이 코드는 GCode 스트림에서 읽고 이 모듈에 �
 
 #: docs/G-Codes.md:block 1 (header)
 msgid "G-Codes"
-msgstr "G-Codes"
+msgstr "G코드"
 
 #: docs/G-Codes.md:block 29 (unordered list)
 msgid ""
@@ -887,7 +890,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 18 (header)
 msgid "ACCELEROMETER_DEBUG_READ"
-msgstr ""
+msgstr "ACCELEROMETER_DEBUG_READ"
 
 #: docs/G-Codes.md:block 19 (paragraph)
 msgid ""

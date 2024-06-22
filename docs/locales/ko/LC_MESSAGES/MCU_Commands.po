@@ -1,15 +1,18 @@
 # brian park <gouache95@gmail.com>, 2021.
+# ElectricalBoy <15651807+ElectricalBoy@users.noreply.github.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2021-08-23 02:32+0000\n"
-"Last-Translator: brian park <gouache95@gmail.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/klipper/mcu_commands/ko/>\n"
+"PO-Revision-Date: 2024-06-22 11:09+0000\n"
+"Last-Translator: ElectricalBoy <15651807+ElectricalBoy@users.noreply.github."
+"com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/klipper/"
+"mcu_commands/ko/>\n"
 "Language: ko\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 msgid ""
 "This document provides information on the low-level micro-controller "
@@ -474,7 +477,7 @@ msgstr ""
 
 #: docs/MCU_Commands.md:block 1 (header)
 msgid "MCU commands"
-msgstr "MCU 명령"
+msgstr "MCU 명령어"
 
 #: docs/MCU_Commands.md:block 15 (unordered list)
 msgid ""

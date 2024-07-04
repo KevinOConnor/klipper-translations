@@ -1,16 +1,18 @@
 # 京都タラレバ息子 <japan100@gmail.com>, 2023.
 # ktyubeshi <kt.yubeshi@gmail.com>, 2023.
+# Haruhiro Obora <boraboraharuharu@outlook.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-08-26 07:55+0000\n"
-"Last-Translator: ktyubeshi <kt.yubeshi@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/overview/ja/>\n"
+"PO-Revision-Date: 2024-07-03 21:12+0000\n"
+"Last-Translator: Haruhiro Obora <boraboraharuharu@outlook.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/"
+"overview/ja/>\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -249,16 +251,20 @@ msgid ""
 "[Axis Twist Compensation](Axis_Twist_Compensation.md): A tool to compensate "
 "for inaccurate probe readings due to twist in X gantry."
 msgstr ""
+"[Axis Twist Compensation](Axis_Twist_Compensation.md): "
+"ガントリーの回転による不正確なプローブの読み取りを補正するためのツール。"
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader."
-msgstr ""
+msgstr "[Bootloader Entry](Bootloader_Entry.md): ブートローダーを呼び出します。"
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid ""
 "[CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for "
 "troubleshooting CAN bus."
 msgstr ""
+"[CAN bus troubleshooting](CANBUS_Troubleshooting.md): CAN "
+"busのトラブルシューティングのためのヒント。"
 
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "

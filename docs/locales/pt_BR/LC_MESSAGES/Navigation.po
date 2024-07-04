@@ -2,20 +2,22 @@
 # Francisco Lima <limamg@gmail.com>, 2022, 2023.
 # Felipe Nogueira <contato.fnog@gmail.com>, 2023.
 # Roberto Besser <rmbesser@gmail.com>, 2023.
+# Rafael Neuwirth Swierczynski <rafanswi@protonmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2022-03-06 16:50+0200\n"
-"PO-Revision-Date: 2023-07-23 06:05+0000\n"
-"Last-Translator: Roberto Besser <rmbesser@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/klipper/navigation/pt_BR/>\n"
+"PO-Revision-Date: 2024-07-02 15:09+0000\n"
+"Last-Translator: Rafael Neuwirth Swierczynski <rafanswi@protonmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"klipper/navigation/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid "Klipper documentation"
 msgstr "Documentação do Klipper"
@@ -24,16 +26,16 @@ msgid "Installation and Configuration"
 msgstr "Instalação e Configuração"
 
 msgid "Configuration Reference"
-msgstr ""
+msgstr "Configuração Referência"
 
 msgid "Bed Level"
-msgstr ""
+msgstr "Nível da Mesa"
 
 msgid "Resonance Compensation"
 msgstr "Compensação de Ressonância"
 
 msgid "Command templates"
-msgstr ""
+msgstr "Templates de Comandos"
 
 msgid "Developer Documentation"
 msgstr "Documentação do Desenvolvedor"

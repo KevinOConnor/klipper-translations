@@ -1,23 +1,26 @@
 # Luciano Moda <desenvolvimento@gtmax.com.br>, 2023.
 # Milton Miranda Neto <voidmmn@gmail.com>, 2023.
 # Matheus Mösken Diegues <dmosken2015@gmail.com>, 2024.
+# Emerson Jhones <ejhones@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-04-19 15:03+0000\n"
-"Last-Translator: Matheus Mösken Diegues <dmosken2015@gmail.com>\n"
+"PO-Revision-Date: 2024-07-02 15:09+0000\n"
+"Last-Translator: Emerson Jhones <ejhones@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/klipper/"
 "g-codes/pt/>\n"
 "Language: pt\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
 "commands that one may enter into the OctoPrint terminal tab."
 msgstr ""
+"Este documento descreve os comandos suportados pelo Klipper. Estes comandos "
+"podem ser inseridos na guia terminal do OctoPrint."
 
 msgid "G-Code commands"
 msgstr ""

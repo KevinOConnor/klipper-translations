@@ -1,18 +1,19 @@
 # Simon Tillema <simontillema@gmail.com>, 2023.
 # Luc Van den Borre <luc@orotec.be>, 2023.
 # Tjalling Kaastra <tjalling@kaastra.net>, 2024.
+# Austin <austin_adamek1@hotmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-05-22 04:20+0000\n"
-"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
+"PO-Revision-Date: 2024-07-03 21:12+0000\n"
+"Last-Translator: Austin <austin_adamek1@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
 "config_checks/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "This document provides a list of steps to help confirm the pin settings in "
@@ -122,7 +123,7 @@ msgid ""
 msgstr ""
 
 msgid "Next steps"
-msgstr ""
+msgstr "Volgende stappen"
 
 msgid ""
 "This guide is intended to help with basic verification of pin settings in "

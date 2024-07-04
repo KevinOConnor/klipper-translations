@@ -1,18 +1,19 @@
 # Kaan Özbilek <info@kaanozbilek.com>, 2023.
 # zafer yazkili <yazkili@hotmail.com>, 2023.
 # mustafa kaya <m.mkaya92@gmail.com>, 2024.
+# Sümer Okan <smr.okan@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-04-18 08:03+0000\n"
-"Last-Translator: mustafa kaya <m.mkaya92@gmail.com>\n"
+"PO-Revision-Date: 2024-06-27 08:09+0000\n"
+"Last-Translator: Sümer Okan <smr.okan@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/releases/"
 "tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 msgid ""
 "History of Klipper releases. Please see [installation](Installation.md) for "
@@ -54,7 +55,7 @@ msgid ""
 msgstr ""
 
 msgid "Improved BL-Touch v3 support."
-msgstr ""
+msgstr "Geliştirilmiş BL-Touch v3 desteği."
 
 msgid ""
 "Improved USB identification. Klipper now has its own USB identification code"
@@ -63,7 +64,7 @@ msgid ""
 msgstr ""
 
 msgid "New kinematic support for \"Rotary Delta\" and \"CoreXZ\" printers."
-msgstr ""
+msgstr "\"Delta\" ve \"CoreXZ\" yazıcılar için yeni kinematik destek."
 
 msgid ""
 "Micro-controller improvements: support for stm32f070, support for stm32f207,"
@@ -83,16 +84,16 @@ msgid ""
 msgstr ""
 
 msgid "Several bug fixes and code cleanups."
-msgstr ""
+msgstr "Çeşitli hata düzeltmleri ve kod sadeleştirmeleri."
 
 msgid "Klipper 0.9.1"
-msgstr ""
+msgstr "Klipper 0.9.1"
 
 msgid "Available on 20201028. Release containing only bug fixes."
 msgstr ""
 
 msgid "Klipper 0.8.0"
-msgstr ""
+msgstr "Klipper 0.8.0"
 
 msgid "Available on 20191021. Major changes in this release:"
 msgstr ""
@@ -106,10 +107,10 @@ msgid "Improvements to Trinamic stepper drivers:"
 msgstr ""
 
 msgid "New support for TMC2209 and TMC5160 drivers."
-msgstr ""
+msgstr "TMC2209 ve TMC5160 sürücüler için yeni destek."
 
 msgid "Improved DUMP_TMC, SET_TMC_CURRENT, and INIT_TMC G-Code commands."
-msgstr ""
+msgstr "İyileştirilmiş DUMP_TMC, SET_TMC_CURRENT, ve INIT_TMC G-Code komutları."
 
 msgid "Improved support for TMC UART handling with an analog mux."
 msgstr ""
@@ -143,10 +144,10 @@ msgid "New USB CDC driver implementations on SAM3X, SAM4, STM32F4."
 msgstr ""
 
 msgid "Enhanced support for flashing Klipper over USB."
-msgstr ""
+msgstr "Klipper'ın USB üzerinden yüklenebilmesi için geliştirilmiş destek."
 
 msgid "Software SPI support."
-msgstr ""
+msgstr "SPI yazılım desteği."
 
 msgid "Greatly improved temperature filtering on the LPC176x."
 msgstr ""

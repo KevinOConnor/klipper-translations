@@ -1,22 +1,24 @@
 # zafer yazkili <yazkili@hotmail.com>, 2023.
 # Kaan Özbilek <info@kaanozbilek.com>, 2023.
+# Sümer Okan <smr.okan@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-12-05 06:02+0000\n"
-"Last-Translator: Kaan Özbilek <info@kaanozbilek.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/bed_mesh/tr/>\n"
+"PO-Revision-Date: 2024-06-27 08:09+0000\n"
+"Last-Translator: Sümer Okan <smr.okan@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/bed_mesh/"
+"tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 msgid "Basic Configuration"
 msgstr "Temel Yapılandırma"
 
 msgid "Rectangular Beds"
-msgstr ""
+msgstr "Dikdörtgenel Yataklar"
 
 msgid ""
 "This example assumes a printer with a 250 mm x 220 mm rectangular bed and a "

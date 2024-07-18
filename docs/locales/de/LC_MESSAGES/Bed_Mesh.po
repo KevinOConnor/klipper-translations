@@ -3,13 +3,14 @@
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # Extrutex <w1indt@outlook.com>, 2024.
 # Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
+# Rashid Al Haqbany <haqbany@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:33+0200\n"
-"PO-Revision-Date: 2024-04-11 07:01+0000\n"
-"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
+"PO-Revision-Date: 2024-07-12 18:57+0000\n"
+"Last-Translator: Rashid Al Haqbany <haqbany@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/klipper/bed_mesh/"
 "de/>\n"
 "Language: de\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid "Basic Configuration"
 msgstr "Grundlegende Konfiguration"
@@ -258,7 +259,7 @@ msgid "Profiles"
 msgstr "Profile"
 
 msgid "`BED_MESH_PROFILE REMOVE=default`"
-msgstr "`BED_MESH_PROFILE REMOVE=default`"
+msgstr "BETT_MESH_PROFIL ENTFERNEN=standard"
 
 msgid ""
 "Any other saved profile can be removed in the same fashion, replacing "
@@ -296,6 +297,7 @@ msgstr "`BED_MESH_CLEAR`"
 
 msgid "This gcode may be used to clear the internal mesh state."
 msgstr ""
+"Dieser G-code kann verwendet werden, um den internen Mesh-Zustand zu löschen."
 
 msgid "Apply X/Y offsets"
 msgstr "X/Y Offsets anwenden"

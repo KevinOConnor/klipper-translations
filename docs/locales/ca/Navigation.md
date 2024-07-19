@@ -1,12 +1,12 @@
-Klipper documentation
+Documentació Klipper
 
 Instal·lació i configuració
 
-Configuration Reference
+Referència configuració
 
-Bed Level
+Anivellament de Base
 
-Resonance Compensation
+Compensació de Resonància
 
 Command templates
 

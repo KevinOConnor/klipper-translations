@@ -10,7 +10,7 @@ The following information is available in [angle some_name](Config_Reference.md#
 
 - `temperature`: The last temperature reading (in Celsius) from a tle5012b magnetic hall sensor. This value is only available if the angle sensor is a tle5012b chip and if measurements are in progress (otherwise it reports `None`).
 
-## bed_mesh
+## tabla_yuzeyi
 
 The following information is available in the [bed_mesh](Config_Reference.md#bed_mesh) object:
 

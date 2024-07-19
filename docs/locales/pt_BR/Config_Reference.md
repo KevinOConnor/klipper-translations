@@ -1492,29 +1492,29 @@ Support for ADXL345 accelerometers. This support allows one to query acceleromet
 ```
 [adxl345]
 cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
+#   O pino SPI ativado para o sensor. Este parâmetro precisa estar definido.
 #spi_speed: 5000000
-#   The SPI speed (in hz) to use when communicating with the chip.
-#   The default is 5000000.
+#   A velocidade (em hz) usada pelo SPI na comunicação com o chip.
+#   O padrão é 5000000.
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#   Veja a sessão "configurações comuns do SPI" para uma descrição dos
+#   valores acima.
 #axes_map: x, y, z
-#   The accelerometer axis for each of the printer's X, Y, and Z axes.
-#   This may be useful if the accelerometer is mounted in an
-#   orientation that does not match the printer orientation. For
-#   example, one could set this to "y, x, z" to swap the X and Y axes.
-#   It is also possible to negate an axis if the accelerometer
-#   direction is reversed (eg, "x, z, -y"). The default is "x, y, z".
+#   O eixo do acelerômetro para cada eixo X, Y e Z da impressora.
+#   Isto pode ser útil se o acelerômetro estiver montado em uma
+#   orientação diferente da orientação da impressora. Por
+#   exemplo, pode-se usar "y, x, z" para inverter os eixos X e Y.
+#   Também é possível negar um eixo caso a direção do acelerômetro
+#   esteja invertida (como, "x, z, -y"). O padrão é "x, y, z".
 #rate: 3200
-#   Output data rate for ADXL345. ADXL345 supports the following data
-#   rates: 3200, 1600, 800, 400, 200, 100, 50, and 25. Note that it is
-#   not recommended to change this rate from the default 3200, and
-#   rates below 800 will considerably affect the quality of resonance
-#   measurements.
+#   Taxa de saída de dados para o ADXL345. O ADXL345 suporta as seguintes
+#   taxas de dados: 3200, 1600, 800, 400, 200, 100, 50, e 25. Note que não é
+#   recomendado mudar esta taxa do padrão 3200, e que
+#   taxas menores que 800 irão afetar consideravelmente a qualidade das medidas
+#   de ressonância.
 ```
 
 ### [lis2dw]
@@ -1887,7 +1887,7 @@ See [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) for an exam
 
 Support for cartesian and hybrid_corexy/z printers with dual carriages on a single axis. The carriage mode can be set via the SET_DUAL_CARRIAGE extended g-code command. For example, "SET_DUAL_CARRIAGE CARRIAGE=1" command will activate the carriage defined in this section (CARRIAGE=0 will return activation to the primary carriage). Dual carriage support is typically combined with extra extruders - the SET_DUAL_CARRIAGE command is often called at the same time as the ACTIVATE_EXTRUDER command. Be sure to park the carriages during deactivation. Note that during G28 homing, typically the primary carriage is homed first followed by the carriage defined in the `[dual_carriage]` config section. However, the `[dual_carriage]` carriage will be homed first if both carriages home in a positive direction and the [dual_carriage] carriage has a `position_endstop` greater than the primary carriage, or if both carriages home in a negative direction and the `[dual_carriage]` carriage has a `position_endstop` less than the primary carriage.
 
-Additionally, one could use "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" or "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" commands to activate either copying or mirroring mode of the dual carriage, in which case it will follow the motion of the carriage 0 accordingly. These commands can be used to print two parts simultaneously - either two identical parts (in COPY mode) or mirrored parts (in MIRROR mode). Note that COPY and MIRROR modes also require appropriate configuration of the extruder on the dual carriage, which can typically be achieved with "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" or a similar command.
+Adicionalmente, você pode usar os comandos "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" ou "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" para ativar tanto o modo de copiar ou de espelhar o carrinho duplo, em ambos os casos ele irá seguir o movimento do carrinho 0 de acordo. Estes comandos podem ser usados para imprimir duas partes simultaneamente - tanto duas partes idênticas (no modo COPY) ou espelhadas (no modo MIRROR). Note que os modos COPY e MIRROR também requerem configuração apropriada da extrusora no carrinho duplo, o que pode ser feito normalmente com o comando  "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" ou outro similar.
 
 See [sample-idex.cfg](../config/sample-idex.cfg) for an example configuration.
 
@@ -2222,7 +2222,7 @@ sensor_type: BME280
 #   above parameters.
 ```
 
-### AHT10/AHT20/AHT21 temperature sensor
+### Sensor de temperatura AHT10/AHT20/AHT21
 
 AHT10/AHT20/AHT21 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C) and relative humidity. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report humidity in addition to temperature.
 

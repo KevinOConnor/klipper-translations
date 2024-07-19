@@ -2,7 +2,7 @@
 
 Bu belge, bir Z endstop kalibre etmek ve yatak tesviye vidalarında ayarlamalar yapmak için kullanılan araçlar açıklamaktadır.
 
-## Calibrating a Z endstop
+## Z endstop' u kalibre ediliyor
 
 An accurate Z endstop position is critical to obtaining high quality prints.
 

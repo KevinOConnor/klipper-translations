@@ -1,4 +1,4 @@
-# Slicers
+# 슬라이서
 
 이 문서는 Klipper와 함께 사용할 "슬라이서" 애플리케이션을 구성하기 위한 몇 가지 팁을 제공합니다. Klipper와 함께 사용되는 일반적인 슬라이서는 Slic3r, Cura, Simplify3D 등입니다.
 

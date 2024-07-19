@@ -249,7 +249,7 @@ Profile können durch Ausführen von `BED_MESH_PROFILE LOAD=<name>` geladen werd
 
 It should be noted that each time a BED_MESH_CALIBRATE occurs, the current state is automatically saved to the *default* profile. The *default* profile can be removed as follows:
 
-`BED_MESH_PROFILE REMOVE=default`
+BETT_MESH_PROFIL ENTFERNEN=standard
 
 Any other saved profile can be removed in the same fashion, replacing *default* with the named profile you wish to remove.
 
@@ -300,7 +300,7 @@ The "Tool Adjusted" points refer to the nozzle location for each point, and the 
 
 `BED_MESH_CLEAR`
 
-This gcode may be used to clear the internal mesh state.
+Dieser G-code kann verwendet werden, um den internen Mesh-Zustand zu löschen.
 
 ### X/Y Offsets anwenden
 

@@ -1,6 +1,6 @@
 # Sponsorlar
 
-Klipper is Free Software. We depend on the generous support from sponsors. Please consider sponsoring Klipper or supporting our sponsors.
+Klipper sponsorların cömert destekleriyle geliştirilen ücretsiz bir yazılımdır. Lütfen Klipper' a sponsor olmayı veya sponsorlarımızı desteklemeyi düşünün.
 
 ## BIGTREETECH
 

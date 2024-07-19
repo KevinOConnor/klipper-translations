@@ -58,7 +58,7 @@ Note that unlike a cable shield, GND must be connected at both ends.
 | :-: | :-: | :-: |
 | 3V3 或 VCC | 01 | 3.3V DC power |
 | GND | 06 | 地（GND） |
-| CS（晶片選定） | 24 | GPIO08 (SPI0_CE0_N) |
+| CS | 24 | GPIO08 (SPI0_CE0_N) |
 | SDO | 21 | GPIO09 (SPI0_MISO) |
 | SDA | 19 | GPIO10 (SPI0_MOSI) |
 | SCL | 23 | GPIO11 (SPI0_SCLK) |
@@ -77,7 +77,7 @@ In order to avoid damage to your RPi make sure to connect the ADXL345 to 3.3V on
 | :-: | :-: | :-: |
 | 3V3 或 VCC | 36 | 3.3V DC power |
 | GND | 38 | 地（GND） |
-| CS（晶片選定） | 2 | GP1 (SPI0_CSn) |
+| CS | 2 | GP1 (SPI0_CSn) |
 | SDO | 1 | GP0 (SPI0_RX) |
 | SDA | 5 | GP3 (SPI0_TX) |
 | SCL | 4 | GP2 (SPI0_SCK) |
@@ -386,7 +386,7 @@ TEST_RESONANCES AXIS=Y
 
 該腳本將生成帶有頻率響應的圖表`/tmp/shaper_calibrate_x.png`和`/tmp/shaper_calibrate_y.png`。您還將獲得每個輸入整形器的建議頻率，以及為您的設置推薦的輸入整形器。例如：
 
-![Resonances](img/calibrate-y.png)
+![共振](img/calibrate-y.png)
 
 ```
 Fitted shaper 'zv' frequency = 34.4 Hz (vibrations = 4.0%, smoothing ~= 0.132)
@@ -471,7 +471,7 @@ probe_points: ...
 
 讓我們考慮以下自動調整的結果：
 
-![Resonances](img/calibrate-x.png)
+![共振](img/calibrate-x.png)
 
 ```
 Fitted shaper 'zv' frequency = 57.8 Hz (vibrations = 20.3%, smoothing ~= 0.053)
@@ -497,7 +497,7 @@ Recommended shaper is 2hump_ei @ 45.2 Hz
 
 這將平滑限制為 0.2 分。現在您可以得到以下結果：
 
-![Resonances](img/calibrate-x-max-smoothing.png)
+![共振](img/calibrate-x-max-smoothing.png)
 
 ```
 Fitted shaper 'zv' frequency = 55.4 Hz (vibrations = 19.7%, smoothing ~= 0.057)
@@ -532,7 +532,7 @@ max_smoothing: 0.25  # an example
 
 由於輸入整形器可以在零件中創建一些平滑，尤其是在高加速度時，您仍然需要選擇不會在打印零件中創建太多平滑的“max_accel”值。校準腳本提供了“max_accel”參數的估計值，該參數不應產生過多的平滑。請注意，校準腳本顯示的“max_accel”只是理論上的最大值，在該最大值時，各個整形器仍然能夠工作而不會產生過多的平滑。絕對不建議為打印設置此加速。您的打印機能夠承受的最大加速度取決於其機械性能和所用步進電機的最大扭矩。因此，建議在 `[printer]` 部分設置不超過 X 和 Y 軸的估計值的 `max_accel`，可能有一些保守的安全餘量。
 
-或者，按照輸入整形器調整指南的 [this](Resonance_Compensation.md#selecting-max_accel) 部分並打印測試模型以實驗性地選擇“max_accel”參數。
+或者，按照輸入整形器調整指南的[此](Resonance_Compensation.md#selecting-max_accel)部分並打印測試模型以實驗性地選擇 `max_accel` 參數。
 
 相同的注意事項適用於使用 `SHAPER_CALIBRATE` 命令的輸入整形器 [auto-calibration](#input-shaper-auto-calibration)：自動校准後仍然需要選擇正確的 `max_accel` 值，建議加速度限制不會自動應用。
 
@@ -614,9 +614,9 @@ Recommended shaper_type_y = mzv, shaper_freq_y = 36.8 Hz # 建議shaper_type_y =
 SHAPER_CALIBRATE AXIS=Y
 ```
 
-您可以在校準每個軸之後執行兩次“SAVE_CONFIG”。
+您可以在校準每個軸之後執行兩次 `SAVE_CONFIG`。
 
-但是，如果您同時連接兩個加速度計，您只需運行“SHAPER_CALIBRATE”，而無需指定一個軸來一次性校準兩個軸的輸入整形器。
+但是，如果您同時連接兩個加速度計，您只需運行 `SHAPER_CALIBRATE`，而無需指定一個軸來一次性校準兩個軸的輸入整形器。
 
 ### 輸入整形器重新校準
 
@@ -647,12 +647,12 @@ TEST_RESONANCES AXIS=X OUTPUT=raw_data
 
 * 繪製原始加速度計數據（使用 `-r` 參數），僅支持 1 個輸入;
 * 繪製頻率響應（不需要額外的參數），如果指定了多個輸入，則計算平均頻率響應；
-* 比較幾個輸入之間的頻率響應（使用“-c”參數）；您還可以通過“-a x”、“-a y”或“-a z”參數指定要考慮的加速度計軸（如果未指定，則使用所有軸的振動總和）；
+* 比較幾個輸入之間的頻率響應（使用 `-c` 參數）；您還可以通過 `-a x`、`-a y` 或 `-a z` 參數指定要考慮的加速度計軸（如果未指定，則使用所有軸的振動總和）；
 * 繪製頻譜圖（使用 `-s` 參數），僅支持 1 個輸入；您還可以通過“-a x”、“-a y”或“-a z”參數指定要考慮的加速度計軸（如果未指定，則使用所有軸的振動總和）。
 
 請注意，graph_accelerometer.py 腳本僅支持 raw_data\*.csv 文件，而不支持 resions\*.csv 或calibration_data\*.csv 文件。
 
-例如:
+例如，
 
 ```
 ~/klipper/scripts/graph_accelerometer.py /tmp/raw_data_x_*.csv -o /tmp/resonances_x.png -c -a z
@@ -665,6 +665,6 @@ shaper_calibrate.py 腳本接受 1 個或多個輸入，並且可以運行輸入
 如果運行輸入整形器的一些高級調整，為 shaper_calibrate.py 腳本提供幾個輸入可能很有用，例如：
 
 * 在第一次將加速度計連接到工具頭上，第二次將加速度計按順序連接到床身的情況下，在床吊具打印機上為單個軸運行兩次“TEST_RESONANCES AXIS=X OUTPUT=raw_data”（和“Y”軸）檢測軸交叉共振並嘗試使用輸入整形器消除它們。
-* 在帶有玻璃床和磁性表面（更輕）的床吊具上運行兩次“TEST_RESONANCES AXIS=Y OUTPUT=raw_data”，以找到適用於任何打印表面配置的輸入整形器參數。
+* 在帶有玻璃床和磁性表面（更輕）的床吊具上運行兩次 `TEST_RESONANCES AXIS=Y OUTPUT=raw_data`，以找到適用於任何打印表面配置的輸入整形器參數。
 * 結合來自多個測試點的共振數據。
 * 結合來自 2 軸的共振數據（例如，在床拋投打印機上配置 X 軸 input_shaper 從 X 軸和 Y 軸共振以消除*床*的振動，以防噴嘴在 X 軸方向移動時“捕捉”打印）。

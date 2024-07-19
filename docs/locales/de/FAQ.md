@@ -41,7 +41,7 @@ Folgen Sie den Anweisungen im "[Wo ist meine serielle Schnittstelle?](#wheres-my
 
 ## Der Befehl "make flash" funktioniert nicht
 
-The code attempts to flash the device using the most common method for each platform. Unfortunately, there is a lot of variance in flashing methods, so the "make flash" command may not work on all boards.
+Der Code versucht, das Gerät mit der gebräuchlichsten Methode für die jeweilige Plattform zu flashen. Leider gibt es viele Varianten bei Flash-Methoden, weshalb der Befehl "make flash" nicht unbedingt auf allen Boards funktioniert.
 
 If you're having an intermittent failure or you do have a standard setup, then double check that Klipper isn't running when flashing (sudo service klipper stop), make sure OctoPrint isn't trying to connect directly to the device (open the Connection tab in the web page and click Disconnect if the Serial Port is set to the device), and make sure FLASH_DEVICE is set correctly for your board (see the [question above](#wheres-my-serial-port)).
 
@@ -58,13 +58,13 @@ If you want to change the baud rate anyway, then the new rate will need to be co
 baud: 250000
 ```
 
-The baud rate shown on the OctoPrint web page has no impact on the internal Klipper micro-controller baud rate. Always set the OctoPrint baud rate to 250000 when using Klipper.
+Die auf der OctoPrint-Webseite angezeigte Baudrate hat keinen Einfluss auf die interne Baudrate des Klipper-Mikrocontrollers. Stellen Sie immer die Baudrate von OctoPrint auf 250000 ein, wenn Sie Klipper verwenden.
 
 The Klipper micro-controller baud rate is not related to the baud rate of the micro-controller's bootloader. See the [bootloader document](Bootloaders.md) for additional information on bootloaders.
 
-## Can I run Klipper on something other than a Raspberry Pi 3?
+## Funktioniert Klipper auf anderen Geräten, außer dem Raspberry Pi 3?
 
-The recommended hardware is a Raspberry Pi 2, Raspberry Pi 3, or Raspberry Pi 4.
+Die empfohlene Hardware ist ein Raspberry Pi 2, Raspberry Pi 3, oder Raspberry Pi 4.
 
 Klipper will run on a Raspberry Pi 1 and on the Raspberry Pi Zero, but these boards don't have enough processing power to run OctoPrint well. It is common for print stalls to occur on these slower machines when printing directly from OctoPrint. (The printer may move faster than OctoPrint can send movement commands.) If you wish to run on one one of these slower boards anyway, consider using the "virtual_sdcard" feature when printing (see [config reference](Config_Reference.md#virtual_sdcard) for details).
 
@@ -78,9 +78,9 @@ If you are looking to run the Klipper host software on a shared general-purpose 
 
 Note: If you are not using an OctoPi image, be aware that several Linux distributions enable a "ModemManager" (or similar) package that can disrupt serial communication. (Which can cause Klipper to report seemingly random "Lost communication with MCU" errors.) If you install Klipper on one of these distributions you may need to disable that package.
 
-## Can I run multiple instances of Klipper on the same host machine?
+## Kann ich mehrere Instanzen von Klipper auf dem gleichen Hostsystem ausführen?
 
-It is possible to run multiple instances of the Klipper host software, but doing so requires Linux admin knowledge. The Klipper installation scripts ultimately cause the following Unix command to be run:
+Es ist möglich, mehrere Instanzen der Klipper-Host-Software auszuführen, dies erfordert jedoch Kenntnisse in der Linux-Administration. Die Klipper-Installationscripts führen schließlich den folgenden Unix-Befehl aus:
 
 ```
 ~/klippy-env/bin/python ~/klipper/klippy/klippy.py ~/printer.cfg -l /tmp/klippy.log
@@ -96,11 +96,11 @@ If you choose to do this, you will need to implement the necessary start, stop, 
 
 ## Muss ich OctoPrint benutzen?
 
-The Klipper software is not dependent on OctoPrint. It is possible to use alternative software to send commands to Klipper, but doing so requires Linux admin knowledge.
+Die Klipper-Software ist nicht von OctoPrint abhängig. Es ist möglich, eine alternative Software zu verwenden, um Befehle an Klipper zu senden, jedoch erfordert dies Kenntnisse in der Linux-Administration.
 
 Klipper creates a "virtual serial port" via the "/tmp/printer" file, and it emulates a classic 3d-printer serial interface via that file. In general, alternative software may work with Klipper as long as it can be configured to use "/tmp/printer" for the printer serial port.
 
-## Why can't I move the stepper before homing the printer?
+## Warum kann ich den Schrittmotor nicht bewegen, bevor ich den Drucker in die Ausgangsposition bringe?
 
 The code does this to reduce the chance of accidentally commanding the head into the bed or a wall. Once the printer is homed the software attempts to verify each move is within the position_min/max defined in the config file. If the motors are disabled (via an M84 or M18 command) then the motors will need to be homed again prior to movement.
 

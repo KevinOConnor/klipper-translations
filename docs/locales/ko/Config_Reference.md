@@ -1446,7 +1446,7 @@ See the [exclude objects guide](Exclude_Object.md) and [command reference](G-Cod
 [exclude_object]
 ```
 
-## 공진 보상
+## 공명 보정
 
 ### [input_shaper]
 

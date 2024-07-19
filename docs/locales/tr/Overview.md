@@ -1,8 +1,8 @@
 # Overview
 
-Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'e yeni iseniz , [özellikler](Features.md) ve [kurulum](Installation.md) ile başlayabilirsiniz.
+Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , [özellikler](Features.md) ve [kurulum](Installation.md) ile başlayabilirsiniz.
 
-## Genel Bakış Bilgileri
+## Genel Bakış
 
 - [Özellikler](Features.md): Klipper'ın sahip olduğu yüksek-seviye özellikler listesi.
 - [SSS](FAQ.md): Sıklıkla sorulan sorular.
@@ -10,7 +10,7 @@ Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'e yeni iseniz , [özelli
 - [Yapı değişiklikleri](Config_Changes.md): Kullanıcıların yazıcı yapılandırma dosyasını değiştirmelerini gerektirebilecek son yazılım değişiklikleri.
 - [İletişim](Contact.md): Hata raporlama ve Klipper geliştiricileri ile genel iletişim hakkında bilgiler.
 
-## Installation and Configuration
+## Kurulum ve Yapılandırma
 
 - [Kurulum](Installation.md): Klipper'ı indirmek için kılavuz.
 - [Yapı Referansları](Config_Reference.md): Yapılandırma değişkenlerinin açıklamaları.

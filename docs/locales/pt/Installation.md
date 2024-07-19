@@ -1,6 +1,6 @@
 # Instalação
 
-These instructions assume the software will run on a Raspberry Pi computer in conjunction with OctoPrint. It is recommended that a Raspberry Pi 2, 3, or 4 computer be used as the host machine (see the [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) for other machines).
+Estas instruções pressupõe que o software será executado em um computador Raspberry Pi juntamente com o Octoprint. Recomenda-se que seja usado um computador Raspberry Pi 2, 3 ou 4 como máquina host (consulte [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry -pi-3) para outras máquinas).
 
 ## Obtain a Klipper Configuration File
 

@@ -23,7 +23,7 @@ Klipperドキュメントへようこそ。Klipperが初めての方は [機能�
    - [マニュアルレベリング](Manual_Level.md): Z軸エンドストップとマニュアルベッドレベリングについて。
    - [ベッドメッシュ](Bed_Mesh.md): ベッド表面の凹凸の補正について。
    - [Endstop phase](Endstop_Phase.md): ステッピングモーターの励磁ステップ状態を活用したZ軸ホーミング制度の向上について。
-   - [Axis Twist Compensation](Axis_Twist_Compensation.md): A tool to compensate for inaccurate probe readings due to twist in X gantry.
+   - [Axis Twist Compensation](Axis_Twist_Compensation.md): ガントリーの回転による不正確なプローブの読み取りを補正するためのツール。
 - [共振補償](Resonance_Compensation.md): 共振による印刷品質低下を抑制する機能について。
    - [共振周波数測定](Measuring_Resonances.md): adxl345加速度センサーを使用した固有共振周波数の測定方法です。
 - [Pressure advance](Pressure_Advance.md):エクストルーダーのプレッシャーアドバンスの設定です。
@@ -57,8 +57,8 @@ Klipperドキュメントへようこそ。Klipperが初めての方は [機能�
 - [Raspberry PiのMCUとしての使用](RPi_microcontroller.md): Raspberry PiのGPIOピンを利用した周辺機器の制御に関する詳細情報です。
 - [Beaglebone](Beaglebone.md): Beaglebone PRUでKlipperを実行する際の詳細について。
 - [ブートローダー](Bootloaders.md): マイクロコントローラーのフラッシュに関する開発情報。
-- [Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader.
+- [Bootloader Entry](Bootloader_Entry.md): ブートローダーを呼び出します。
 - [CAN bus](CANBUS.md): KlipperでのCAN bus使用に関する情報。
-   - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
+   - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): CAN busのトラブルシューティングのためのヒント。
 - [TSL1401CLフィラメント径センサー](TSL1401CL_Filament_Width_Sensor.md)
 - [ホール素子フィラメント径センサー](Hall_Filament_Width_Sensor.md)

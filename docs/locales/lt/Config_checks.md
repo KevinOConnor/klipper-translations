@@ -1,6 +1,6 @@
 # Configuration checks
 
-This document provides a list of steps to help confirm the pin settings in the Klipper printer.cfg file. It is a good idea to run through these steps after following the steps in the [installation document](Installation.md).
+Šiame dokumente pateikiamas veiksmų sąrašas, padedantis patvirtinti "Klipper" spausdintuvo printer.cfg faile esančius kaiščių nustatymus. Šiuos veiksmus pravartu atlikti atlikus [installation document] (Installation.md) nurodytus veiksmus.
 
 During this guide, it may be necessary to make changes to the Klipper config file. Be sure to issue a RESTART command after every change to the config file to ensure that the change takes effect (type "restart" in the Octoprint terminal tab and then click "Send"). It's also a good idea to issue a STATUS command after every RESTART to verify that the config file is successfully loaded.
 

@@ -1,4 +1,4 @@
-# Pressure advance
+# 프레셔 어드밴스
 
 이 문서는 특정 노즐 및 필라멘트에 대한 "Pressure advance" config 변수 조정에 대한 정보를 제공합니다. pressure advance 기능은 ooze (노즐 흘러내림) 를 줄이는 데 도움이 될 수 있습니다. pressure advance 가 구현되는 방법에 대한 자세한 내용은 [kinematics](Kinematics.md) 문서를 참조하십시오.
 

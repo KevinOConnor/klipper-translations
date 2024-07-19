@@ -1,30 +1,30 @@
-# Sponsors
+# Patrocinadores
 
-Klipper is Free Software. We depend on the generous support from sponsors. Please consider sponsoring Klipper or supporting our sponsors.
+Klipper é um software livre. Dependemos do generoso apoio dos patrocinadores. Por favor, considere patrocinar o Klipper ou apoiar nossos patrocinadores.
 
 ## BIGTREETECH
 
 [<img src="./img/sponsors/BTT_BTT.png" width="200" style="margin:25px"/>](https://bigtree-tech.com/collections/all-products)
 
-BIGTREETECH is the official mainboard sponsor of Klipper. BIGTREETECH is committed to developing innovative and competitive products to serve the 3D printing community better. Follow them on [Facebook](https://www.facebook.com/BIGTREETECH) or [Twitter](https://twitter.com/BigTreeTech).
+BIGTREETECH é o patrocinador oficial da placa-mãe do Klipper. A BIGTREETECH está comprometida em desenvolver produtos inovadores e competitivos para melhor atender a comunidade de impressão 3D. Siga-os no [Facebook](https://www.facebook.com/BIGTREETECH) ou [Twitter(X)](https://twitter.com/BigTreeTech).
 
-## Sponsors
+## Patrocinadores
 
 [<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor) [<img src="./img/sponsors/peopoly-logo.png" width="200" style="margin:25px" />](https://peopoly.net)
 
-## Klipper Developers
+## Desenvolvedores do Klipper
 
 ### Kevin O'Connor
 
-Kevin is the original author and current maintainer of Klipper. Donate at: <https://ko-fi.com/koconnor> or <https://www.patreon.com/koconnor>
+Kevin é o autor original e atual desenvolvedor do Klipper. Doe em: <https://ko-fi.com/koconnor> ou <https://www.patreon.com/koconnor>
 
 ### Eric Callahan
 
-Eric is the author of bed_mesh, spi_flash, and several other Klipper modules. Eric has a donations page at: <https://ko-fi.com/arksine>
+Eric é o autor do bed_mesh, spi_flash e vários outros módulos do Klipper. Eric tem uma página para doações em: <https://ko-fi.com/arksine>
 
-## Related Klipper Projects
+## Projetos relacionados ao Klipper
 
-Klipper is frequently used with other Free Software. Consider using or supporting these projects.
+O Klipper é frequentemente usado com outros Softwares Livres. Considere usar ou apoiar esses projetos.
 
 * [Moonraker](https://github.com/Arksine/moonraker)
 * [Mainsail](https://github.com/mainsail-crew/mainsail)

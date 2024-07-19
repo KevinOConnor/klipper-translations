@@ -1,29 +1,29 @@
-# Contact
+# 연락처
 
-This document provides contact information for Klipper.
+이 문서는 Klipper와 관련된 연락 수단을 제공합니다.
 
-1. [Community Forum](#community-forum)
-1. [Discord Chat](#discord-chat)
-1. [I have a question about Klipper](#i-have-a-question-about-klipper)
-1. [I have a feature request](#i-have-a-feature-request)
-1. [Help! It doesn't work!](#help-it-doesnt-work)
+1. [커뮤니티 포럼](#커뮤니티-포럼)
+1. [디스코드 채팅](#디스코드-채팅)
+1. [Klipper에 관한 질문이 있습니다](#Klipper에-관한-질문이-있습니다)
+1. [새로운 기능을 제안하고 싶습니다](#새로운-기능을-제안하고-싶습니다)
+1. [무언가가 작동하지 않습니다! 도와주세요!](#무언가가-작동하지-않습니다-도와주세요)
 1. [I found a bug in the Klipper software](#i-found-a-bug-in-the-klipper-software)
 1. [I am making changes that I'd like to include in Klipper](#i-am-making-changes-that-id-like-to-include-in-klipper)
 1. [Klipper github](#klipper-github)
 
-## Community Forum
+## 커뮤니티 포럼
 
-There is a [Klipper Community Discourse server](https://community.klipper3d.org) for discussions on Klipper.
+Klipper에 관한 논의를 위한 [Klipper 커뮤니니 디스코스 서버](https://community.klipper3d.org)가 있습니다.
 
-## Discord Chat
+## 디스코드 채팅
 
 There is a Discord server dedicated to Klipper at: <https://discord.klipper3d.org>.
 
-This server is run by a community of Klipper enthusiasts dedicated to discussions on Klipper. It allows users to chat with other users in real-time.
+이 서버는 Klipper에 관한 논의를 위해 열정적인 Klipper 사용자들에 의하여 운영되며, 다른 사용자들과 실시간으로 대화를 나눌 수 있습니다.
 
-## I have a question about Klipper
+## 클리퍼에 관한 질문이 있습니다
 
-Many questions we receive are already answered in the [Klipper documentation](Overview.md). Please be sure to to read the documentation and follow the directions provided there.
+우리가 받는 대부분의 질문에 대한 답은 이미 [Klipper 설명서](Overview.md)에 있습니다. 설명서에 제시된 해결 방법을 따르십시오.
 
 It is also possible to search for similar questions in the [Klipper Community Forum](#community-forum).
 

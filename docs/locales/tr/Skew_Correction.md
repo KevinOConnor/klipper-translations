@@ -2,7 +2,7 @@
 
 azılım tabanlı eğrilik düzeltme, tam olarak kare olmayan bir yazıcı mekanizmasından kaynaklanan boyutsal hataları gidermeye yardımcı olabilir. Ancak, yazıcınız önemli ölçüde eğriyse, yazılım tabanlı düzeltme işlemine başlamadan önce yazıcınızı mümkün olduğunca kare hale getirmek için mekanik yöntemler kullanmanız önemle tavsiye edilir.
 
-## Print a Calibration Object
+## Kalibrasyon Objesi Yazdır
 
 The first step in correcting skew is to print a [calibration object](https://www.thingiverse.com/thing:2563185/files) along the plane you want to correct. There is also a [calibration object](https://www.thingiverse.com/thing:2972743) that includes all planes in one model. You want the object oriented so that corner A is toward the origin of the plane.
 

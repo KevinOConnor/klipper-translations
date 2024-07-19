@@ -2,13 +2,13 @@ Documentação do Klipper
 
 Instalação e Configuração
 
-Configuration Reference
+Configuração Referência
 
-Bed Level
+Nível da Mesa
 
 Compensação de Ressonância
 
-Command templates
+Templates de Comandos
 
 Documentação do Desenvolvedor
 

@@ -1,4 +1,4 @@
-# G-Codes
+# G코드
 
 이 문서는 Klipper가 지원하는 명령에 대해 설명합니다. OctoPrint Terminal 탭에 입력할 수 있는 명령입니다.
 

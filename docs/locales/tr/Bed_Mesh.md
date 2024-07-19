@@ -6,7 +6,7 @@ Prior to Mesh Calibration you will need to be sure that your Probe's Z-Offset is
 
 ## Temel Yapılandırma
 
-### Rectangular Beds
+### Dikdörtgenel Yataklar
 
 This example assumes a printer with a 250 mm x 220 mm rectangular bed and a probe with an x-offset of 24 mm and y-offset of 5 mm.
 

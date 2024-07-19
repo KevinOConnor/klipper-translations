@@ -1,22 +1,22 @@
 # Frequently Asked Questions
 
-## How can I donate to the project?
+## Como posso doar para o projeto?
 
 Thank you for your support. See the [Sponsors page](Sponsors.md) for information.
 
-## How do I calculate the rotation_distance config parameter?
+## Como calculo o parâmetro de configuração rotation_distance?
 
-See the [rotation distance document](Rotation_Distance.md).
+Consulte o [documento de distância de rotação](Rotation_Distance.md).
 
-## Where's my serial port?
+## Onde está minha porta serial?
 
-The general way to find a USB serial port is to run `ls /dev/serial/by-id/*` from an ssh terminal on the host machine. It will likely produce output similar to the following:
+A maneira geral de encontrar uma porta serial USB é executar `ls /dev/serial/by-id/*` a partir de um terminal ssh na máquina host. Provavelmente produzirá um resultado semelhante ao seguinte:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-The name found in the above command is stable and it is possible to use it in the config file and while flashing the micro-controller code. For example, a flash command might look similar to:
+O nome encontrado no comando acima é estável e é possível utilizá-lo no arquivo de configuração e durante a atualização do código do microcontrolador. Por exemplo, um comando flash pode ser semelhante a:
 
 ```
 sudo service klipper stop
@@ -24,43 +24,43 @@ make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 sudo service klipper start
 ```
 
-and the updated config might look like:
+e a configuração atualizada pode ser semelhante a:
 
 ```
 [mcu]
 serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-Be sure to copy-and-paste the name from the "ls" command that you ran above as the name will be different for each printer.
+Certifique-se de copiar e colar o nome do comando “ls” executado acima, pois o nome será diferente para cada impressora.
 
-If you are using multiple micro-controllers and they do not have unique ids (common on boards with a CH340 USB chip) then follow the directions above using the command `ls /dev/serial/by-path/*` instead.
+Se você estiver usando vários microcontroladores e eles não tiverem ids exclusivos (comuns em placas com chip USB CH340), siga as instruções acima usando o comando `ls /dev/serial/by-path/*`.
 
-## When the micro-controller restarts the device changes to /dev/ttyUSB1
+## Quando o microcontrolador reinicia, o dispositivo muda para /dev/ttyUSB1
 
-Follow the directions in the "[Where's my serial port?](#wheres-my-serial-port)" section to prevent this from occurring.
+Siga as instruções na seção "[Onde está minha porta serial?](#wheres-my-serial-port)" para evitar que isso ocorra.
 
-## The "make flash" command doesn't work
+## O comando "make flash" não funciona
 
-The code attempts to flash the device using the most common method for each platform. Unfortunately, there is a lot of variance in flashing methods, so the "make flash" command may not work on all boards.
+O código tenta atualizar o dispositivo usando o método mais comum para cada plataforma. Infelizmente, há muita variação nos métodos de flash, então o comando “make flash” pode não funcionar em todas as placas.
 
-If you're having an intermittent failure or you do have a standard setup, then double check that Klipper isn't running when flashing (sudo service klipper stop), make sure OctoPrint isn't trying to connect directly to the device (open the Connection tab in the web page and click Disconnect if the Serial Port is set to the device), and make sure FLASH_DEVICE is set correctly for your board (see the [question above](#wheres-my-serial-port)).
+Se você estiver tendo uma falha intermitente ou tiver uma configuração padrão, verifique novamente se o Klipper não está funcionando durante o flash (sudo service klipper stop), certifique-se de que o OctoPrint não esteja tentando se conectar diretamente ao dispositivo (abra o Guia Conexão na página da web e clique em Desconectar se a porta serial estiver configurada para o dispositivo) e certifique-se de que FLASH_DEVICE esteja configurado corretamente para sua placa (veja a [pergunta acima](#wheres-my-serial-port)).
 
-However, if "make flash" just doesn't work for your board, then you will need to manually flash. See if there is a config file in the [config directory](../config) with specific instructions for flashing the device. Also, check the board manufacturer's documentation to see if it describes how to flash the device. Finally, it may be possible to manually flash the device using tools such as "avrdude" or "bossac" - see the [bootloader document](Bootloaders.md) for additional information.
+No entanto, se "fazer flash" simplesmente não funcionar para sua placa, você precisará fazer o flash manualmente. Veja se existe um arquivo de configuração no [diretório config](../config) com instruções específicas para atualizar o dispositivo. Além disso, verifique a documentação do fabricante da placa para ver se ela descreve como atualizar o dispositivo. Finalmente, pode ser possível atualizar manualmente o dispositivo usando ferramentas como "avrdude" ou "bossac" - consulte o [documento do bootloader](Bootloaders.md) para obter informações adicionais.
 
-## How do I change the serial baud rate?
+## Como altero a taxa de transmissão serial?
 
-The recommended baud rate for Klipper is 250000. This baud rate works well on all micro-controller boards that Klipper supports. If you've found an online guide recommending a different baud rate, then ignore that part of the guide and continue with the default value of 250000.
+A taxa de transmissão recomendada para o Klipper é 250.000. Essa taxa de transmissão funciona bem em todas as placas microcontroladoras suportadas pelo Klipper. Se você encontrou um guia on-line recomendando uma taxa de transmissão diferente, ignore essa parte do guia e continue com o valor padrão de 250.000.
 
-If you want to change the baud rate anyway, then the new rate will need to be configured in the micro-controller (during **make menuconfig**) and that updated code will need to be compiled and flashed to the micro-controller. The Klipper printer.cfg file will also need to be updated to match that baud rate (see the [config reference](Config_Reference.md#mcu) for details). For example:
+Se você quiser alterar a taxa de transmissão de qualquer maneira, a nova taxa precisará ser configurada no microcontrolador (durante **make menuconfig**) e esse código atualizado precisará ser compilado e atualizado para o microcontrolador. O arquivo Klipper Printer.cfg também precisará ser atualizado para corresponder a essa taxa de transmissão (veja a [referência de configuração](Config_Reference.md#mcu) para detalhes). Por exemplo:
 
 ```
 [mcu]
 baud: 250000
 ```
 
-The baud rate shown on the OctoPrint web page has no impact on the internal Klipper micro-controller baud rate. Always set the OctoPrint baud rate to 250000 when using Klipper.
+A taxa de transmissão mostrada na página da web do OctoPrint não tem impacto na taxa de transmissão interna do microcontrolador Klipper. Sempre defina a taxa de transmissão do OctoPrint para 250.000 ao usar o Klipper.
 
-The Klipper micro-controller baud rate is not related to the baud rate of the micro-controller's bootloader. See the [bootloader document](Bootloaders.md) for additional information on bootloaders.
+A taxa de transmissão do microcontrolador Klipper não está relacionada à taxa de transmissão do bootloader do microcontrolador. Consulte o [documento bootloader](Bootloaders.md) para obter informações adicionais sobre bootloaders.
 
 ## Can I run Klipper on something other than a Raspberry Pi 3?
 

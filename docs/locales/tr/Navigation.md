@@ -1,6 +1,6 @@
 Klipper dökümantasyonu
 
-Installation and Configuration
+Kurulum ve Yapılandırma
 
 Configuration Reference
 

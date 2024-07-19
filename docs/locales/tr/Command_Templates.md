@@ -2,7 +2,7 @@
 
 Bu belge gcode_macro (ve benzeri) yapılandırma bölümlerinde G-Code komut dizilerinin uygulanması hakkında bilgi sağlar.
 
-## G-Code Macro Naming
+## G-Code Macro İsimlendirmesi
 
 Case is not important for the G-Code macro name - MY_MACRO and my_macro will evaluate the same and may be called in either upper or lower case. If any numbers are used in the macro name then they must all be at the end of the name (eg, TEST_MACRO25 is valid, but MACRO25_TEST3 is not).
 

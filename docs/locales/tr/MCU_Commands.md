@@ -2,7 +2,7 @@
 
 Bu belge, Klipper "host" yazılımından gönderilen ve Klipper mikro denetleyici yazılımı tarafından işlenen düşük seviyeli mikro denetleyici komutları hakkında bilgi sağlar. Bu belge, bu komutlar için yetkili bir başvuru değildir ve mevcut tüm komutların özel bir listesi değildir.
 
-This document may be useful for developers interested in understanding the low-level micro-controller commands.
+Bu belge düşük seviye mikro denetleyici komutları ile ilgilenen geliştiriciler için faydalı olabilir.
 
 See the [protocol](Protocol.md) document for more information on the format of commands and their transmission. The commands here are described using their "printf" style syntax - for those unfamiliar with that format, just note that where a '%...' sequence is seen it should be replaced with an actual integer. For example, a description with "count=%c" could be replaced with the text "count=10". Note that parameters that are considered "enumerations" (see the above protocol document) take a string value which is automatically converted to an integer value for the micro-controller. This is common with parameters named "pin" (or that have a suffix of "_pin").
 

@@ -2,7 +2,7 @@
 
 Bu belge, yapılandırma dosyasında geriye dönük uyumlu olmayan son yazılım değişikliklerini kapsamaktadır. Klipper yazılımını yükseltirken bu belgeyi gözden geçirmek iyi bir fikirdir.
 
-All dates in this document are approximate.
+Bu belgedeki bütün tarihler yaklaşıktır.
 
 ## Changes
 

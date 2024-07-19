@@ -2,7 +2,7 @@
 
 Bu belgede Klipper karşılaştırma testleri açıklanmaktadır.
 
-## Micro-controller Benchmarks
+## Mikro denetleyici karşılaştırma testleri
 
 This section describes the mechanism used to generate the Klipper micro-controller step rate benchmarks.
 

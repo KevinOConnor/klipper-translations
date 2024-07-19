@@ -23,7 +23,7 @@
    - [手動調平](Manual_Level.md)：校準 Z 限位和調整熱床調平螺絲。
    - [床網](Bed_Mesh.md)：基於 XY 位置的列印床高度補償。
    - [限位相位](Endstop_Phase.md)：使用步進電機相位輔助 Z 限位定位。
-   - [Axis Twist Compensation](Axis_Twist_Compensation.md): A tool to compensate for inaccurate probe readings due to twist in X gantry.
+   - [軸扭曲補償](Axis_Twist_Compensation.md)：用於補償由於 X 機架扭曲而導致不準確的探頭讀數的工具。
 - [共振補償](Resonance_Compensation.md)：減少列印震紋的工具。
    - [測量共振](Measuring_Resonances.md)：使用 adxl345 加速度計模組測量共振。
 - [提前壓力](Pressure_Advance.md)：校準擠出機壓力。
@@ -35,7 +35,7 @@
 - [切片](Slicers.md)：為 Klipper 配置切片軟體。
 - [偏斜校正](Skew_Correction.md)：調整不完全垂直的軸（不完美的方形）。
 - [PWM 工具](Using_PWM_Tools.md)：關於如何使用 PWM 控制的工具，例如鐳射器或電鉆頭。
-- [Exclude Object](Exclude_Object.md): The guide to the Exclude Objects implementation.
+- [排除物件](Exclude_Object.md)：排除物件實現的指南。
 
 ## 開發者文檔
 
@@ -57,8 +57,8 @@
 - [將樹莓派作為微控制器](RPi_microcontroller.md)：關於如何控制與樹莓派 GPIO 引腳連線的裝置。
 - [Beaglebone](Beaglebone.md)：在 Beaglebone PRU 上執行 Klipper 的詳細資訊。
 - [底層載入程式](Bootloaders.md)：有關於微控制器刷寫的開發者資訊。
-- [Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader.
+- [啟動程式入口](Bootloader_Entry.md)：正在請求啟動程式。
 - [CAN 匯流排](CANBUS.md)：有關於 Klipper 使用 CAN 匯流排的資訊。
-   - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
+   - [CAN 匯流排故障排除](CANBUS_Troubleshooting.md)：CAN 匯流排故障排除的提示。
 - [TSL1401CL 耗材線徑感測器](TSL1401CL_Filament_Width_Sensor.md)
 - [霍爾列印絲寬度感測器](Hall_Filament_Width_Sensor.md)

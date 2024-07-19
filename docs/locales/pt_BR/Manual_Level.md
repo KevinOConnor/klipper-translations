@@ -1,34 +1,34 @@
-# Manual leveling
+# Nivelamento Manual
 
-This document describes tools for calibrating a Z endstop and for performing adjustments to bed leveling screws.
+Este documento descreve as ferramentas para calibrar o Fim de Curso (Eixo Z) e realizar ajustes nos parafusos da mesa.
 
-## Calibrating a Z endstop
+## Calibrando Fim de Curso (Eixo Z)
 
-An accurate Z endstop position is critical to obtaining high quality prints.
+Uma configuração precisa do fim de curso (Eixo Z) é crítica para obter impressões de alta qualidade.
 
-Note, though, the accuracy of the Z endstop switch itself can be a limiting factor. If one is using Trinamic stepper motor drivers then consider enabling [endstop phase](Endstop_Phase.md) detection to improve the accuracy of the switch.
+Observe que a precisão da própria chave de fim de curso (Eixo Z) pode ser um fator limitante. Se estiver usando drivers de motor de passo Trinamic, considere ativar a detecção de [endstop phase](Endstop_Phase.md) para melhorar a precisão.
 
-To perform a Z endstop calibration, home the printer, command the head to move to a Z position that is at least five millimeters above the bed (if it is not already), command the head to move to an XY position near the center of the bed, then navigate to the OctoPrint terminal tab and run:
+Para calibrar o fim de curso (Eixo Z), coloque a impressora em posição inicial, mova o extrusor para uma posição (Eixo Z) que esteja pelo menos 5 milímetros acima da base (se ainda não estiver), mova o extrusor para uma posição (XY) próxima ao centro da mesa, vá até o terminal OctoPrint e execute:
 
 ```
 Z_ENDSTOP_CALIBRATE
 ```
 
-Then follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
+Em seguida, siga as etapas em ["the paper test"](Bed_Level.md#the-paper-test) para determinar a distância real entre o bico e a mesa no local determinado. Depois que essas etapas forem concluídas, é permitido executar `ACCEPT` para aceitar a posição e salvar os resultados no arquivo de configuração com:
 
 ```
 SAVE_CONFIG
 ```
 
-It's preferable to use a Z endstop switch on the opposite end of the Z axis from the bed. (Homing away from the bed is more robust as then it is generally always safe to home the Z.) However, if one must home towards the bed it is recommended to adjust the endstop so that it triggers a small distance (eg, .5mm) above the bed. Almost all endstop switches can safely be depressed a small distance beyond their trigger point. When this is done, one should find that the `Z_ENDSTOP_CALIBRATE` command reports a small positive value (eg, .5mm) for the Z position_endstop. Triggering the endstop while it is still some distance from the bed reduces the risk of inadvertent bed crashes.
+É preferível usar uma chave de fim de curso (Eixo Z) na extremidade oposta do Eixo Z da mesa. No entanto, se for necessário se aproximar da mesa, é recomendado ajustar o fim de curso para que ele acione a uma pequena distância (por exemplo, 0,5 mm) acima da mesa. Quase todos os sensores de fim de curso podem ser ativados com segurança a uma pequena distância além do ponto de detecção. Depois, tenha em mente que o comando `Z_ENDSTOP_CALIBRATE` reporta um pequeno valor positivo (por exemplo, 0,5 mm) para a position_endstop (Eixo Z). Acionar o fim de curso enquanto ele ainda está a alguma distância da mesa reduz o risco de quedas da mesa.
 
-Some printers have the ability to manually adjust the location of the physical endstop switch. However, it's recommended to perform Z endstop positioning in software with Klipper - once the physical location of the endstop is in a convenient location, one can make any further adjustments by running Z_ENDSTOP_CALIBRATE or by manually updating the Z position_endstop in the configuration file.
+Algumas impressoras têm a capacidade de ajustar manualmente o local do sensor físico do fim de curso. No entanto, é recomendado realizar o posicionamento do fim de curso (Eixo Z) no software com o Klipper - uma vez que o local físico do fim de curso esteja em um local conveniente, pode-se fazer quaisquer ajustes adicionais executando Z_ENDSTOP_CALIBRATE ou atualizando manualmente o position_endstop no arquivo de configuração.
 
-## Adjusting bed leveling screws
+## Ajustando os parafusos de nivelamento da mesa
 
-The secret to getting good bed leveling with bed leveling screws is to utilize the printer's high precision motion system during the bed leveling process itself. This is done by commanding the nozzle to a position near each bed screw and then adjusting that screw until the bed is a set distance from the nozzle. Klipper has a tool to assist with this. In order to use the tool it is necessary to specify each screw XY location.
+O segredo para obter um bom nivelamento da mesa é utilizar o sistema de movimento de alta precisão da impressora durante o processo de nivelamento da base. Isso é feito comandando o extrusor para uma posição próxima a cada parafuso da base e, em seguida, ajustando esse parafuso até que a base esteja a uma distância da ponta do extrusor. O Klipper tem uma ferramenta para ajudar nisso. Para utilizá-la é necessário especificar o local (Eixo X e Y) de cada parafuso.
 
-This is done by creating a `[bed_screws]` config section. For example, it might look something similar to:
+Isso é feito criando uma aba de configuração chamada de `[bed_screws]`. Pode parecer algo similar a:
 
 ```
 [bed_screws]
@@ -37,31 +37,31 @@ screw2: 100, 150
 screw3: 150, 100
 ```
 
-If a bed screw is under the bed, then specify the XY position directly above the screw. If the screw is outside the bed then specify an XY position closest to the screw that is still within the range of the bed.
+Se um parafuso de mesa estiver sob ela, especifique a posição (Eixo X e Y) diretamente acima do parafuso. Se o parafuso estiver fora da mesa, especifique uma posição (Eixo X e Y) mais próxima do parafuso que ainda esteja dentro do alcance da mesa.
 
-Once the config file is ready, run `RESTART` to load that config, and then one can start the tool by running:
+Quando o arquivo de configuração estiver pronto, execute `RESTART`, e então você poderá iniciar executando:
 
 ```
 BED_SCREWS_ADJUST
 ```
 
-This tool will move the printer's nozzle to each screw XY location and then move the nozzle to a Z=0 height. At this point one can use the "paper test" to adjust the bed screw directly under the nozzle. See the information described in ["the paper test"](Bed_Level.md#the-paper-test), but adjust the bed screw instead of commanding the nozzle to different heights. Adjust the bed screw until there is a small amount of friction when pushing the paper back and forth.
+Esta ferramenta moverá o extrusor para cada local (Eixos X e Y) do parafuso e, em seguida, moverá o extrusor para uma altura Z=0. Neste ponto, pode-se usar o "teste do papel" para ajustar o parafuso da mesa diretamente sob o extrusor. Veja as informações descritas em ["the paper test"](Bed_Level.md#the-paper-test), mas ajuste o parafuso da mesa em vez de mover o extrusor para alturas diferentes. Ajuste os parafusos da mesa até que haja um pequeno atrito ao esfregar o papel para frente e para trás.
 
-Once the screw is adjusted so that a small amount of friction is felt, run either the `ACCEPT` or `ADJUSTED` command. Use the `ADJUSTED` command if the bed screw needed an adjustment (typically anything more than about 1/8th of a turn of the screw). Use the `ACCEPT` command if no significant adjustment is necessary. Both commands will cause the tool to proceed to the next screw. (When an `ADJUSTED` command is used, the tool will schedule an additional cycle of bed screw adjustments; the tool completes successfully when all bed screws are verified to not require any significant adjustments.) One can use the `ABORT` command to exit the tool early.
+Depois que o parafuso for ajustado de modo que um pequeno atrito ocorra, execute o comando `ACCEPT` ou `ADJUSTED`. Use o comando `ADJUSTED` se o parafuso da mesa precisar de um ajuste (normalmente qualquer movimento mais do que cerca de 1/8 do parafuso). Use o comando `ACCEPT` se nenhum ajuste significativo for necessário ou feito. Ambos os comandos farão com que o extrusor prossiga para o próximo parafuso. (Quando um comando `ADJUSTED` é usado, o extrusor agendará um ciclo adicional de ajustes do parafuso da mesa; o procedimento é concluído com sucesso quando todos os parafusos da mesa são verificados para não exigirem nenhum ajuste significativo.) Pode-se usar o comando `ABORT` para sair da ferramenta a qualquer momento.
 
-This system works best when the printer has a flat printing surface (such as glass) and has straight rails. Upon successful completion of the bed leveling tool the bed should be ready for printing.
+Este sistema funciona melhor quando a impressora tem uma superfície de impressão plana (como vidro) e guias retas. Após a conclusão bem-sucedida do nivelamento da mesa, a mesma deve estar pronta para impressão.
 
-### Fine grained bed screw adjustments
+### Ajustes de parafusos de mesa de precisão fina
 
-If the printer uses three bed screws and all three screws are under the bed, then it may be possible to perform a second "high precision" bed leveling step. This is done by commanding the nozzle to locations where the bed moves a larger distance with each bed screw adjustment.
+Se a impressora usar três parafusos de mesa e todos os três parafusos estiverem sob a mesa, então pode ser possível executar uma segunda etapa de nivelamento de "alta precisão". Isso é feito movendo o extrusor para locais onde a mesa se move uma distância maior com cada ajuste de parafuso de mesa.
 
-For example, consider a bed with screws at locations A, B, and C:
+Por exemplo, considere uma mesa com parafusos nos locais A, B e C:
 
 ![bed_screws](img/bed_screws.svg.png)
 
-For each adjustment made to the bed screw at location C, the bed will swing along a pendulum defined by the remaining two bed screws (shown here as a green line). In this situation, each adjustment to the bed screw at C will move the bed at position D a further amount than directly at C. It is thus possible to make an improved C screw adjustment when the nozzle is at position D.
+Para cada ajuste feito no parafuso da mesa no local C, a mesa irá balançar ao longo de um pêndulo definido pelos dois parafusos da cama restantes (mostrado aqui como uma linha verde). Nessa situação, cada ajuste no parafuso da mesa em C irá mover a mesa na posição D uma quantidade maior do que diretamente em C. Assim, é possível fazer um ajuste melhorado do parafuso C quando o extrusor está na posição D.
 
-To enable this feature, one would determine the additional nozzle coordinates and add them to the config file. For example, it might look like:
+Para usar esse recurso, é necessário determinar as coordenadas adicionais do extrusor e adicioná-las ao arquivo de configuração. Por exemplo:
 
 ```
 [bed_screws]
@@ -73,13 +73,13 @@ screw3: 150, 100
 screw3_fine_adjust: 0, 100
 ```
 
-When this feature is enabled, the `BED_SCREWS_ADJUST` tool will first prompt for coarse adjustments directly above each screw position, and once those are accepted, it will prompt for fine adjustments at the additional locations. Continue to use `ACCEPT` and `ADJUSTED` at each position.
+Quando esse recurso é habilitado, o `BED_SCREWS_ADJUST` solicitará ajustes bruscos diretamente acima de cada posição dos parafusos, e uma vez que eles forem aceitos, solicitará ajustes finos nos locais adicionais. Continue usando `ACCEPT` e `ADJUSTED` em cada posição.
 
-## Adjusting bed leveling screws using the bed probe
+## Ajustando parafusos de nivelamento da mesa usando o probe de mesa
 
-This is another way to calibrate the bed level using the bed probe. To use it you must have a Z probe (BL Touch, Inductive sensor, etc).
+Esta é outra forma de calibrar o nivelamento da mesa usando o probe. Para usá-la, você deve ter um probe de eixo Z (BL Touch, sensor indutivo, etc).
 
-To enable this feature, one would determine the nozzle coordinates such that the Z probe is above the screws, and then add them to the config file. For example, it might look like:
+Para habilitar essa função, é necessário determinar as coordenadas do extrusor de modo que o probe (Eixo Z) fique acima dos parafusos, e então, adicioná-los ao arquivo de configuração. Por exemplo:
 
 ```
 [screws_tilt_adjust]
@@ -96,33 +96,33 @@ speed: 50.
 screw_thread: CW-M3
 ```
 
-The screw1 is always the reference point for the others, so the system assumes that screw1 is at the correct height. Always run `G28` first and then run `SCREWS_TILT_CALCULATE` - it should produce output similar to:
+O parafuso 1 (screw1) é sempre o ponto de referência para os outros, então o sistema assume que o parafuso 1 está na altura correta. Execute `G28` primeiro, e após execute `SCREWS_TILT_CALCULATE` - ele deve produzir uma saída similar a:
 
 ```
 Send: G28
 Recv: ok
 Send: SCREWS_TILT_CALCULATE
-Recv: // 01:20 means 1 full turn and 20 minutes, CW=clockwise, CCW=counter-clockwise
-Recv: // front left screw (base) : x=-5.0, y=30.0, z=2.48750
-Recv: // front right screw : x=155.0, y=30.0, z=2.36000 : adjust CW 01:15
-Recv: // rear right screw : y=155.0, y=190.0, z=2.71500 : adjust CCW 00:50
-Recv: // read left screw : x=-5.0, y=190.0, z=2.47250 : adjust CW 00:02
+Recv: // 01:20 significa 1 volta completa por 20 minutos, CW = sentido horário, CCW = sentido anti-horário
+Recv: // parafuso frontal esquerdo (base): x=-5,0, y=30,0, z=2,48750
+Recv: // parafuso frontal direito: x=155,0, y=30,0, z=2,36000: ajuste CW 01:15
+Recv: // parafuso traseiro direito: y=155,0, y=190,0, z=2,71500: ajuste CCW 00:50
+Recv: // veja o parafuso esquerdo: x=-5,0, y=190,0, z=2,47250: ajuste CW 00:02
 Recv: ok
 ```
 
-This means that:
+Isso significa que:
 
-- front left screw is the reference point you must not change it.
-- front right screw must be turned clockwise 1 full turn and a quarter turn
-- rear right screw must be turned counter-clockwise 50 minutes
-- rear left screw must be turned clockwise 2 minutes (not need it's ok)
+- O parafuso dianteiro esquerdo é o ponto de referência, e isso não deve ser alterado.
+- O parafuso frontal direito deve ser girado no sentido horário uma (1) volta completa e um quarto (1/4) de volta
+- O parafuso traseiro direito deve ser girado no sentido anti-horário por 50 minutos
+- O parafuso traseiro esquerdo deve ser girado no sentido horário por 2 minutos (não obrigatório)
 
-Note that "minutes" refers to "minutes of a clock face". So, for example, 15 minutes is a quarter of a full turn.
+Note que "minutos" se refere a "minutos de um relógio". Então, por exemplo, 15 minutos é um quarto (1/4) de uma volta completa.
 
-Repeat the process several times until you get a good level bed - normally when all adjustments are below 6 minutes.
+Repita o processo várias vezes até obter um bom nivelamento da mesa - normalmente quando todos os ajustes duram menos que 6 minutos.
 
-If using a probe that is mounted on the side of the hotend (that is, it has an X or Y offset) then note that adjusting the bed tilt will invalidate any previous probe calibration that was performed with a tilted bed. Be sure to run [probe calibration](Probe_Calibrate.md) after the bed screws have been adjusted.
+Se estiver usando um probe montado na lateral do hotend (ou seja, que tenha um deslocamento de Eixo X e Y), observe que ajustar a inclinação da mesa invalidará qualquer calibração de probe anterior que tenha sido realizada com a mesa inclinada. Certifique-se de executar [probe calibration](Probe_Calibrate.md) após os parafusos da mesa terem sido ajustados.
 
-The `MAX_DEVIATION` parameter is useful when a saved bed mesh is used, to ensure that the bed level has not drifted too far from where it was when the mesh was created. For example, `SCREWS_TILT_CALCULATE MAX_DEVIATION=0.01` can be added to the custom start gcode of the slicer before the mesh is loaded. It will abort the print if the configured limit is exceeded (0.01mm in this example), giving the user a chance to adjust the screws and restart the print.
+O parâmetro `MAX_DEVIATION` é útil quando uma malha da cama salva é usada, para garantir que o nível da mesa não tenha se desviado muito de onde estava quando a malha foi criada. Por exemplo, `SCREWS_TILT_CALCULATE MAX_DEVIATION=0.01` pode ser adicionado ao Gcode inicial personalizado do fatiador antes que a malha seja carregada. Ele irá cancelar a impressão se o limite configurado for excedido (0,01mm, neste exemplo), dando ao usuário a chance de ajustar os parafusos e reiniciar a impressão.
 
-The `DIRECTION` parameter is useful if you can turn your bed adjustment screws in one direction only. For example, you might have screws that start tightened in their lowest (or highest) possible position, which can only be turned in a single direction, to raise (or lower) the bed. If you can only turn the screws clockwise, run `SCREWS_TILT_CALCULATE DIRECTION=CW`. If you can only turn them counter-clockwise, run `SCREWS_TILT_CALCULATE DIRECTION=CCW`. A suitable reference point will be chosen such that the bed can be leveled by turning all the screws in the given direction.
+O parâmetro `DIRECTION` é útil se você puder girar os parafusos de ajuste da mesa em apenas uma direção. Por exemplo, você pode ter parafusos que começam apertados na posição mais baixa (ou mais alta) possível, que só podem ser girados em uma única direção, para levantar (ou abaixar) a mesa. Se você só puder girar os parafusos no sentido horário, execute `SCREWS_TILT_CALCULATE DIRECTION=CW`. Se você só puder girá-los no sentido anti-horário, execute `SCREWS_TILT_CALCULATE DIRECTION=CCW`. Um ponto de referência adequado será escolhido de forma que a mesa possa ser nivelada girando todos os parafusos na direção fornecida.

@@ -3,17 +3,19 @@
 # Francisco Lima <limamg@gmail.com>, 2023.
 # delvani <inavleb@users.noreply.hosted.weblate.org>, 2024.
 # Bernardo Scolnik <bscolnik@gmail.com>, 2024.
+# Matheus Mösken Diegues <dmosken2015@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-01-26 16:02+0000\n"
-"Last-Translator: Bernardo Scolnik <bscolnik@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/klipper/bed_mesh/pt_BR/>\n"
+"PO-Revision-Date: 2024-08-09 23:09+0000\n"
+"Last-Translator: Matheus Mösken Diegues <dmosken2015@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"klipper/bed_mesh/pt_BR/>\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid "Basic Configuration"
 msgstr "Configuração básica"
@@ -400,7 +402,7 @@ msgid "`BED_MESH_CLEAR`"
 msgstr "`BED_MESH_CLEAR`"
 
 msgid "This gcode may be used to clear the internal mesh state."
-msgstr "Este gcode pode ser usado para apagar o estado interno da malha."
+msgstr "Este gcode pode ser usado para limpar o estado interno da malha."
 
 msgid "Apply X/Y offsets"
 msgstr "Aplicar deslocamentos em X/Y"
@@ -987,7 +989,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 50 (header)
 msgid "Adaptive Meshes"
-msgstr ""
+msgstr "Malhas Adaptativas"
 
 #: docs/Bed_Mesh.md:block 51 (paragraph)
 msgid ""

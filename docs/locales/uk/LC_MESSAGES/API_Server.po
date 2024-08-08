@@ -1,15 +1,26 @@
-#
+# Ruslan Kyba <kybargr@gmail.com>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-07-19 16:04+0000\n"
+"Last-Translator: Ruslan Kyba <kybargr@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
+"api_server/uk/>\n"
 "Language: uk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "This document describes Klipper's Application Programmer Interface (API). "
 "This interface enables external applications to query and control the "
 "Klipper host software."
 msgstr ""
+"Цей документ описує Прикладний Програмний Інтерфейс Klipper (ППІ). Цей "
+"інтерфейс дає змогу зовнішнім застусункам опитувати та керувати хостове "
+"програмне забезпечення Klipper."
 
 msgid "Enabling the API socket"
 msgstr ""

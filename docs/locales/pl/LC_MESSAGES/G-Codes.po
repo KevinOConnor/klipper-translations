@@ -2,17 +2,21 @@
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # Kamil Kostrzewa <kamilianos3@gmail.com>, 2022.
 # Jan P <jasiek.kliper06@gmail.com>, 2023.
+# Bartosz Trojan <51444728+ethylowy@users.noreply.github.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-09-13 21:52+0000\n"
-"Last-Translator: Jan P <jasiek.kliper06@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/g-codes/pl/>\n"
+"PO-Revision-Date: 2024-07-31 08:45+0000\n"
+"Last-Translator: Bartosz Trojan <51444728+ethylowy@users.noreply.github.com>"
+"\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/g-codes/"
+"pl/>\n"
 "Language: pl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -804,11 +808,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 9 (header)
 msgid "Additional Commands"
-msgstr ""
+msgstr "Dodatkowe polecenia"
 
 #: docs/G-Codes.md:block 12 (header)
 msgid "[adxl345]"
-msgstr ""
+msgstr "ADXL345"
 
 #: docs/G-Codes.md:block 13 (paragraph)
 msgid ""
@@ -826,7 +830,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 18 (header)
 msgid "ACCELEROMETER_DEBUG_READ"
-msgstr "AKCELEROMETER_CZYTANIE_DEBUGOWE"
+msgstr "Odczyt danych debugowych akcelerometru"
 
 #: docs/G-Codes.md:block 19 (paragraph)
 msgid ""
@@ -834,9 +838,9 @@ msgid ""
 "ADXL345 register \"register\" (e.g. 44 or 0x2C). Can be useful for debugging"
 " purposes."
 msgstr ""
-"`ACCELEROMETER_DEBUG_READ [CHIP=<config_name>] REG=<register>`: queries "
-"ADXL345 register \"register\" (e.g. 44 or 0x2C). Może się przydać przy "
-"debugowaniu."
+"`ACCELEROMETER_DEBUG_READ [CHIP=<config_name>] REG=<register>`: Odczytuje "
+"rejestr czipu ADXL345 o nazwie \"register\" (np. 44 lub 0x2C). Może się "
+"przydać przy debugowaniu."
 
 #: docs/G-Codes.md:block 20 (header)
 msgid "ACCELEROMETER_DEBUG_WRITE"
@@ -1894,7 +1898,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 22 (header)
 msgid "[angle]"
-msgstr ""
+msgstr "kąt"
 
 #: docs/G-Codes.md:block 23 (paragraph)
 msgid ""
@@ -1904,7 +1908,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 24 (header)
 msgid "ANGLE_CALIBRATE"
-msgstr ""
+msgstr "Kalibracja kąta"
 
 #: docs/G-Codes.md:block 25 (paragraph)
 msgid ""
@@ -2240,7 +2244,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 79 (paragraph)
 msgid "Also provided is the following extended G-Code command:"
-msgstr ""
+msgstr "Dostępna jest również rozszerzona komenda G-Code:"
 
 #: docs/G-Codes.md:block 80 (unordered list)
 msgid ""

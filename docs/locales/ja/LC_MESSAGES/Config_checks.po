@@ -1,17 +1,19 @@
 # 京都タラレバ息子 <japan100@gmail.com>, 2023.
 # Lol A-girl-with-tea <f300f300f300@gmail.com>, 2023.
 # ktyubeshi <kt.yubeshi@gmail.com>, 2023.
+# umesaburo sagawa <atowa-notonare-yamatonare427@pm.me>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-08-26 07:55+0000\n"
-"Last-Translator: ktyubeshi <kt.yubeshi@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/config_checks/ja/>\n"
+"PO-Revision-Date: 2024-08-07 04:56+0000\n"
+"Last-Translator: umesaburo sagawa <atowa-notonare-yamatonare427@pm.me>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/"
+"config_checks/ja/>\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "This document provides a list of steps to help confirm the pin settings in "
@@ -40,21 +42,22 @@ msgid "Verify temperature"
 msgstr "温度を確認する"
 
 msgid "Verify M112"
-msgstr ""
+msgstr "M112を確認する"
 
 msgid "Verify heaters"
-msgstr ""
+msgstr "ヒーターを確認する"
 
 msgid ""
 "If the printer has a heated bed then perform the above test again with the "
 "bed."
-msgstr ""
+msgstr "プリンターに加熱ベッドがある場合は、ベッドで上記のテストを再度行ってください"
+"。"
 
 msgid "Verify stepper motor enable pin"
-msgstr ""
+msgstr "ステッピングモータ・イネーブル・ピンの確認"
 
 msgid "Verify endstops"
-msgstr ""
+msgstr "エンドストップを確認する"
 
 msgid ""
 "If the endstop does not change at all then it generally indicates that the "
@@ -63,9 +66,13 @@ msgid ""
 "endstop_pin name - most printers will use a pullup resistor and the '^' "
 "should be present)."
 msgstr ""
+"エンドストップが全く変化しない場合は、一般的にエンドストップが別のピンに接続"
+"されていることを示しています。ただし、ピンのプルアップ設定を変更する必要があ"
+"る場合もあります。 (エンドストップピン名の先頭にある-ほとんどのプリンタはプル"
+"アップ抵抗を使用するので、この抵抗があるはずである)。"
 
 msgid "Verify stepper motors"
-msgstr ""
+msgstr "ステッピングモーターを確認する"
 
 msgid ""
 "If the stepper does not move at all, then verify the \"enable_pin\" and "
@@ -96,10 +103,10 @@ msgid ""
 msgstr ""
 
 msgid "Verify extruder motor"
-msgstr ""
+msgstr "押出機のモーターを確認する"
 
 msgid "Calibrate PID settings"
-msgstr ""
+msgstr "PID設定の校正"
 
 msgid ""
 "At the completion of the tuning test run `SAVE_CONFIG` to update the "

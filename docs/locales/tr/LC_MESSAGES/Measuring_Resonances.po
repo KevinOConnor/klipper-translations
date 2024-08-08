@@ -1,21 +1,23 @@
 # zafer yazkili <yazkili@hotmail.com>, 2023.
+# Zübeyir Tosun <baretta_3838@hotmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-03-19 11:39+0000\n"
-"Last-Translator: zafer yazkili <yazkili@hotmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/measuring_resonances/tr/>\n"
+"PO-Revision-Date: 2024-07-21 01:05+0000\n"
+"Last-Translator: Zübeyir Tosun <baretta_3838@hotmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/"
+"measuring_resonances/tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid "Measuring Resonances"
 msgstr "Rezonans Ölçümü"
 
 msgid "Installation instructions"
-msgstr ""
+msgstr "Kurulum talimatları"
 
 msgid "Wiring"
 msgstr ""
@@ -128,7 +130,7 @@ msgid ""
 msgstr ""
 
 msgid "Software installation"
-msgstr ""
+msgstr "Yazılım kurulumu"
 
 msgid ""
 "Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and"
@@ -150,7 +152,7 @@ msgid "Checking the setup"
 msgstr ""
 
 msgid "Now you can test a connection."
-msgstr ""
+msgstr "Bağlantıyı şimdi test edebilirsin."
 
 msgid ""
 "For \"non bed-slingers\" (e.g. one accelerometer), in Octoprint, enter "
@@ -178,7 +180,7 @@ msgid ""
 msgstr ""
 
 msgid "Now you can run some real-life tests. Run the following command:"
-msgstr ""
+msgstr "Bazı gerçek hayat testlerini şimdi çalıştırabilirsin. Şu kodu çalıştır:"
 
 msgid ""
 "Note that it will create vibrations on X axis. It will also disable input "
@@ -196,7 +198,7 @@ msgid ""
 msgstr ""
 
 msgid "If it works for X axis, run for Y axis as well:"
-msgstr ""
+msgstr "X ekseninde çalışıyorsa, Y ekseninde de çalıştırmak için:"
 
 msgid ""
 "This script will generate the charts `/tmp/shaper_calibrate_x.png` and "

@@ -1,16 +1,16 @@
 # Bed leveling
 
-Bed leveling (sometimes also referred to as "bed tramming") is critical to getting high quality prints. If a bed is not properly "leveled" it can lead to poor bed adhesion, "warping", and subtle problems throughout the print. This document serves as a guide to performing bed leveling in Klipper.
+ベッドのレベリング (「ベッドトラミング」とも呼ばれる) は、高品質のプリントを得るために重要です。ベッドが適切に「水平」になっていないと、ベッドの接着力が低下し、「反り」が発生し、プリント全体に微妙な問題が発生する可能性があります。 この文書はベッド レベリング で Klipperを実行するためのガイドとして機能します 。
 
 It's important to understand the goal of bed leveling. If the printer is commanded to a position `X0 Y0 Z10` during a print, then the goal is for the printer's nozzle to be exactly 10mm from the printer's bed. Further, should the printer then be commanded to a position of `X50 Z10` the goal is for the nozzle to maintain an exact distance of 10mm from the bed during that entire horizontal move.
 
-In order to get good quality prints the printer should be calibrated so that Z distances are accurate to within about 25 microns (.025mm). This is a small distance - significantly smaller than the width of a typical human hair. This scale can not be measured "by eye". Subtle effects (such as heat expansion) impact measurements at this scale. The secret to getting high accuracy is to use a repeatable process and to use a leveling method that leverages the high accuracy of the printer's own motion system.
+高品質の印刷を行うには、Z 距離の精度が約 25 ミクロン (.025mm) 以内になるようにプリンターを校正する必要があります。これは小さな距離であり、一般的な人間の髪の毛の幅よりも大幅に小さいです。このスケールは「目で」測定することはできません。このスケールでの測定には、微妙な影響 (熱膨張など) が影響します。高精度を実現する秘訣は、繰り返し可能なプロセスを使用することと、プリンター独自のモーション システムの高精度を活用したレベリング方法を使用することです。
 
-## Choose the appropriate calibration mechanism
+## 適切な校正メカニズムを選択する
 
-Different types of printers use different methods for performing bed leveling. All of them ultimately depend on the "paper test" (described below). However, the actual process for a particular type of printer is described in other documents.
+プリンタの種類が異なれば、ベッド レベリングを実行する方法も異なります 。いずれも最終的には「ペーパーテスト」（後述）にかかっています。ただし、特定の種類のプリンタの実際のプロセスについては、他のドキュメントで説明されています。
 
-Prior to running any of these calibration tools, be sure to run the checks described in the [config check document](Config_checks.md). It is necessary to verify basic printer motion before performing bed leveling.
+これらのキャリブレーション ツールを実行する前に、[構成チェック ドキュメント](Config_checks.md) に記載されているチェックを必ず実行してください。 ベッドレベリング を実行する前に、プリンタの基本動作を確認する必要がありまグ 。
 
 For printers with an "automatic Z probe" be sure to calibrate the probe following the directions in the [Probe Calibrate](Probe_Calibrate.md) document. For delta printers, see the [Delta Calibrate](Delta_Calibrate.md) document. For printers with bed screws and traditional Z endstops, see the [Manual Level](Manual_Level.md) document.
 

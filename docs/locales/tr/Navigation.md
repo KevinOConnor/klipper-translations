@@ -12,4 +12,4 @@ Command templates
 
 Geliştirici Belgeleri
 
-Device Specific Documents
+Cihaza Özgü Belgeler

@@ -16,7 +16,7 @@ For MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500s there are also a variety of bo
 | AVR ATmega | ATmega328p | ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, ATmega1284, ATmega2560 |
 | AVR AT90 | - | AT90usb646, AT90usb1286 |
 
-## Installation instructions
+## Kurulum talimatları
 
 ### Wiring
 
@@ -158,7 +158,7 @@ Note that on a bed slinger printer one must design 2 mounts: one for the toolhea
 
 **Attention:** make sure the accelerometer and any screws that hold it in place do not touch any metal parts of the printer. Basically, the mount must be designed such as to ensure the electrical isolation of the accelerometer from the printer frame. Failing to ensure that can create a ground loop in the system that may damage the electronics.
 
-### Software installation
+### Yazılım kurulumu
 
 Note that resonance measurements and shaper auto-calibration require additional software dependencies not installed by default. First, run on your Raspberry Pi the following commands:
 
@@ -335,7 +335,7 @@ Restart Klipper via the `RESTART` command.
 
 ### Checking the setup
 
-Now you can test a connection.
+Bağlantıyı şimdi test edebilirsin.
 
 - For "non bed-slingers" (e.g. one accelerometer), in Octoprint, enter `ACCELEROMETER_QUERY`
 - For "bed-slingers" (e.g. more than one accelerometer), enter `ACCELEROMETER_QUERY CHIP=<chip>` where `<chip>` is the name of the chip as-entered, e.g. `CHIP=bed` (see: [bed-slinger](#bed-slinger-printers)) for all installed accelerometer chips.
@@ -354,7 +354,7 @@ Next, try running `MEASURE_AXES_NOISE` in Octoprint, you should get some baselin
 
 ### Measuring the resonances
 
-Now you can run some real-life tests. Run the following command:
+Bazı gerçek hayat testlerini şimdi çalıştırabilirsin. Şu kodu çalıştır:
 
 ```
 TEST_RESONANCES AXIS=X
@@ -371,7 +371,7 @@ accel_per_hz: 50  # default is 75
 probe_points: ...
 ```
 
-If it works for X axis, run for Y axis as well:
+X ekseninde çalışıyorsa, Y ekseninde de çalıştırmak için:
 
 ```
 TEST_RESONANCES AXIS=Y

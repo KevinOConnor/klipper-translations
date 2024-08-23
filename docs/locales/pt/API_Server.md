@@ -1,4 +1,4 @@
-# API server
+# Servidor API
 
 This document describes Klipper's Application Programmer Interface (API). This interface enables external applications to query and control the Klipper host software.
 

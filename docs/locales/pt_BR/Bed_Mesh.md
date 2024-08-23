@@ -182,7 +182,7 @@ A imagem abaixo ilustra como os pontos de substituição são gerados quando um 
 
 ![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)
 
-### Adaptive Meshes
+### Malhas Adaptativas
 
 Adaptive bed meshing is a way to speed up the bed mesh generation by only probing the area of the bed used by the objects being printed. When used, the method will automatically adjust the mesh parameters based on the area occupied by the defined print objects.
 
@@ -300,7 +300,7 @@ Os pontos "Ajustados pela Ferramenta" se referem à localização da ponta da ex
 
 `BED_MESH_CLEAR`
 
-Este gcode pode ser usado para apagar o estado interno da malha.
+Este gcode pode ser usado para limpar o estado interno da malha.
 
 ### Aplicar deslocamentos em X/Y
 

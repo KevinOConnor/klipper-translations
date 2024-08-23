@@ -1,14 +1,14 @@
-# Bed Mesh
+# شبكة سطح الطباعة
 
 The Bed Mesh module may be used to compensate for bed surface irregularities to achieve a better first layer across the entire bed. It should be noted that software based correction will not achieve perfect results, it can only approximate the shape of the bed. Bed Mesh also cannot compensate for mechanical and electrical issues. If an axis is skewed or a probe is not accurate then the bed_mesh module will not receive accurate results from the probing process.
 
 Prior to Mesh Calibration you will need to be sure that your Probe's Z-Offset is calibrated. If using an endstop for Z homing it will need to be calibrated as well. See [Probe Calibrate](Probe_Calibrate.md) and Z_ENDSTOP_CALIBRATE in [Manual Level](Manual_Level.md) for more information.
 
-## Basic Configuration
+## التكوين الأساسي
 
-### Rectangular Beds
+### سطح مستطيلة
 
-This example assumes a printer with a 250 mm x 220 mm rectangular bed and a probe with an x-offset of 24 mm and y-offset of 5 mm.
+يفترض هذا المثال طابعة ذات سرير مستطيل 250 مم × 220 مم ومسبار مع إزاحة x 24 مم وإزاحة y 5 مم.
 
 ```
 [bed_mesh]
@@ -19,19 +19,19 @@ mesh_max: 240, 198
 probe_count: 5, 3
 ```
 
-- `speed: 120` *Default Value: 50* The speed in which the tool moves between points.
-- `horizontal_move_z: 5` *Default Value: 5* The Z coordinate the probe rises to prior to traveling between points.
+- `السرعة: 120` *القيمة الافتراضية: 50* السرعة التي تتحرك بها الأداة بين النقاط.
+- `horizontal_move_z: 5` *القيمة الافتراضية: 5* تنسيق Z الذي يرتفع إليه المسبار قبل السفر بين النقاط.
 - `mesh_min: 35, 6` *Required* The first probed coordinate, nearest to the origin. This coordinate is relative to the probe's location.
 - `mesh_max: 240, 198` *Required* The probed coordinate farthest farthest from the origin. This is not necessarily the last point probed, as the probing process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is relative to the probe's location.
 - `probe_count: 5, 3` *Default Value: 3, 3* The number of points to probe on each axis, specified as X, Y integer values. In this example 5 points will be probed along the X axis, with 3 points along the Y axis, for a total of 15 probed points. Note that if you wanted a square grid, for example 3x3, this could be specified as a single integer value that is used for both axes, ie `probe_count: 3`. Note that a mesh requires a minimum probe_count of 3 along each axis.
 
-The illustration below demonstrates how the `mesh_min`, `mesh_max`, and `probe_count` options are used to generate probe points. The arrows indicate the direction of the probing procedure, beginning at `mesh_min`. For reference, when the probe is at `mesh_min` the nozzle will be at (11, 1), and when the probe is at `mesh_max`, the nozzle will be at (206, 193).
+يوضح الرسم التوضيحي أدناه كيفية استخدام خيارات `mesh_min` و`mesh_max` و`probe_count` لتوليد نقاط التحقيق. تشير الأسهم إلى اتجاه إجراء التحقيق، بدءا من "mesh_min". كمرجع، عندما يكون المسبار في "mesh_min" ستكون الفوهة في (11، 1)، وعندما يكون المسبار في "mesh_max"، ستكون الفوهة عند (206، 193).
 
 ![bedmesh_rect_basic](img/bedmesh_rect_basic.svg)
 
-### Round beds
+### سطح مستديرة
 
-This example assumes a printer equipped with a round bed radius of 100mm. We will use the same probe offsets as the rectangular example, 24 mm on X and 5 mm on Y.
+يفترض هذا المثال طابعة مجهزة بنصف قطر سرير دائري يبلغ 100 مم. سنستخدم نفس إزاحات المسبار مثل المثال المستطيل، 24 مم على X و5 مم على Y.
 
 ```
 [bed_mesh]
@@ -42,15 +42,15 @@ mesh_origin: 0, 0
 round_probe_count: 5
 ```
 
-- `mesh_radius: 75` *Required* The radius of the probed mesh in mm, relative to the `mesh_origin`. Note that the probe's offsets limit the size of the mesh radius. In this example, a radius larger than 76 would move the tool beyond the range of the printer.
+- `mesh_radius: 75` *مطلوب* نصف قطر الشبكة المدققة بالملليمتر، بالنسبة إلى `mesh_origin`. لاحظ أن إزاحات المسبار تحد من حجم نصف قطر الشبكة. في هذا المثال، من شأن نصف قطر أكبر من 76 أن ينقل الأداة إلى ما وراء نطاق الطابعة.
 - `mesh_origin: 0, 0` *Default Value: 0, 0* The center point of the mesh. This coordinate is relative to the probe's location. While the default is 0, 0, it may be useful to adjust the origin in an effort to probe a larger portion of the bed. See the illustration below.
-- `round_probe_count: 5` *Default Value: 5* This is an integer value that defines the maximum number of probed points along the X and Y axes. By "maximum", we mean the number of points probed along the mesh origin. This value must be an odd number, as it is required that the center of the mesh is probed.
+- `round_probe_count: 5` *القيمة الافتراضية: 5* هذه قيمة صحيحة تحدد الحد الأقصى لعدد النقاط المحققة على طول المحورين X وY. نعني ب "الحد الأقصى" عدد النقاط التي تم التحقيق فيها على طول أصل الشبكة. يجب أن تكون هذه القيمة رقما فرديا، حيث أنه مطلوب أن يتم فحص مركز الشبكة.
 
 The illustration below shows how the probed points are generated. As you can see, setting the `mesh_origin` to (-10, 0) allows us to specify a larger mesh radius of 85.
 
 ![bedmesh_round_basic](img/bedmesh_round_basic.svg)
 
-## Advanced Configuration
+## التكوين المتقدم
 
 Below the more advanced configuration options are explained in detail. Each example will build upon the basic rectangular bed configuration shown above. Each of the advanced options apply to round beds in the same manner.
 
@@ -74,11 +74,11 @@ bicubic_tension: 0.2
 - `algorithm: lagrange` *Default Value: lagrange* The algorithm used to interpolate the mesh. May be `lagrange` or `bicubic`. Lagrange interpolation is capped at 6 probed points as oscillation tends to occur with a larger number of samples. Bicubic interpolation requires a minimum of 4 probed points along each axis, if less than 4 points are specified then lagrange sampling is forced. If `mesh_pps` is set to 0 then this value is ignored as no mesh interpolation is done.
 - `bicubic_tension: 0.2` *Default Value: 0.2* If the `algorithm` option is set to bicubic it is possible to specify the tension value. The higher the tension the more slope is interpolated. Be careful when adjusting this, as higher values also create more overshoot, which will result in interpolated values higher or lower than your probed points.
 
-The illustration below shows how the options above are used to generate an interpolated mesh.
+يوضح الرسم التوضيحي أدناه كيفية استخدام الخيارات المذكورة أعلاه لإنشاء شبكة محرفة.
 
 ![bedmesh_interpolated](img/bedmesh_interpolated.svg)
 
-### Move Splitting
+### نقل الانقسام
 
 Bed Mesh works by intercepting gcode move commands and applying a transform to their Z coordinate. Long moves must be split into smaller moves to correctly follow the shape of the bed. The options below control the splitting behavior.
 
@@ -93,14 +93,14 @@ move_check_distance: 5
 split_delta_z: .025
 ```
 
-- `move_check_distance: 5` *Default Value: 5* The minimum distance to check for the desired change in Z before performing a split. In this example, a move longer than 5mm will be traversed by the algorithm. Each 5mm a mesh Z lookup will occur, comparing it with the Z value of the previous move. If the delta meets the threshold set by `split_delta_z`, the move will be split and traversal will continue. This process repeats until the end of the move is reached, where a final adjustment will be applied. Moves shorter than the `move_check_distance` have the correct Z adjustment applied directly to the move without traversal or splitting.
-- `split_delta_z: .025` *Default Value: .025* As mentioned above, this is the minimum deviation required to trigger a move split. In this example, any Z value with a deviation +/- .025mm will trigger a split.
+- `move_check_distance: 5` *القيمة الافتراضية: 5* الحد الأدنى للمسافة للتحقق من التغيير المطلوب في Z قبل إجراء الانقسام. في هذا المثال، سيتم اجتياز خطوة أطول من 5 مم بواسطة الخوارزمية. سيحدث كل 5 مم بحث شبكة Z، ومقارنته بقيمة Z للخطوة السابقة. إذا استوفت الدلتا العتبة التي حددها "split_delta_z"، فسيتم تقسيم الحركة وسيستمر العبور. تتكرر هذه العملية حتى يتم الوصول إلى نهاية الخطوة، حيث سيتم تطبيق تعديل نهائي. التحركات الأقصر من "move_check_distance" لها تعديل Z الصحيح المطبق مباشرة على الحركة دون اجتياز أو تقسيم.
+- `split_delta_z: .025` *القيمة الافتراضية: .025* كما ذكر أعلاه، هذا هو الحد الأدنى للانحراف المطلوب لتحريك تقسيم الحركة. في هذا المثال، أي قيمة Z مع انحراف +/- .025mm ستتسبب الانقسام.
 
 Generally the default values for these options are sufficient, in fact the default value of 5mm for the `move_check_distance` may be overkill. However an advanced user may wish to experiment with these options in an effort to squeeze out the optimal first layer.
 
-### Mesh Fade
+### شبكة تتلاشى
 
-When "fade" is enabled Z adjustment is phased out over a distance defined by the configuration. This is accomplished by applying small adjustments to the layer height, either increasing or decreasing depending on the shape of the bed. When fade has completed, Z adjustment is no longer applied, allowing the top of the print to be flat rather than mirror the shape of the bed. Fade also may have some undesirable traits, if you fade too quickly it can result in visible artifacts on the print. Also, if your bed is significantly warped, fade can shrink or stretch the Z height of the print. As such, fade is disabled by default.
+عند تمكين "التلاشي" يتم التخلص التدريجي من تعديل Z على مسافة يحددها التكوين. يتم تحقيق ذلك من خلال تطبيق تعديلات صغيرة على ارتفاع الطبقة، إما زيادة أو تناقص اعتمادا على شكل السرير. عند اكتمال التلاشي، لم يعد يتم تطبيق تعديل Z، مما يسمح للجزء العلوي من الطباعة أن يكون مسطحا بدلا من عكس شكل السرير. قد يكون للتلاشي أيضا بعض السمات غير المرغوب فيها، إذا تلاشى بسرعة كبيرة، فقد يؤدي ذلك إلى قطع أثرية مرئية على الطباعة. أيضا، إذا كان سريرك مشوها بشكل كبير، فإن التلاشي يمكن أن يتقلص أو يمتد ارتفاع الطباعة Z. على هذا النحو، يتم تعطيل التلاشي افتراضيا.
 
 ```
 [bed_mesh]
@@ -114,8 +114,8 @@ fade_end: 10
 fade_target: 0
 ```
 
-- `fade_start: 1` *Default Value: 1* The Z height in which to start phasing out adjustment. It is a good idea to get a few layers down before starting the fade process.
-- `fade_end: 10` *Default Value: 0* The Z height in which fade should complete. If this value is lower than `fade_start` then fade is disabled. This value may be adjusted depending on how warped the print surface is. A significantly warped surface should fade out over a longer distance. A near flat surface may be able to reduce this value to phase out more quickly. 10mm is a sane value to begin with if using the default value of 1 for `fade_start`.
+- `fade_start: 1` *القيمة الافتراضية: 1* الارتفاع Z الذي يبدأ فيه التخلص التدريجي من التعديل. من الجيد خفض بضع طبقات قبل بدء عملية التلاشي.
+- `fade_end: 10` *القيمة الافتراضية: 0* يجب أن يكتمل الارتفاع Z الذي يجب أن يتلاشى فيه. إذا كانت هذه القيمة أقل من "fade_start"، فسيتم تعطيل fade. يمكن تعديل هذه القيمة اعتمادا على مدى تشوه سطح الطباعة. يجب أن يتلاشى السطح المشوه بشكل كبير على مسافة أطول. قد يكون السطح المسطح القريب قادرا على تقليل هذه القيمة للتخلص التدريجي بسرعة أكبر. 10 مم هي قيمة عاقلة للبدء بها إذا كنت تستخدم القيمة الافتراضية 1 ل "fade_start".
 - `fade_target: 0` *Default Value: The average Z value of the mesh* The `fade_target` can be thought of as an additional Z offset applied to the entire bed after fade completes. Generally speaking we would like this value to be 0, however there are circumstances where it should not be. For example, lets assume your homing position on the bed is an outlier, its .2 mm lower than the average probed height of the bed. If the `fade_target` is 0, fade will shrink the print by an average of .2 mm across the bed. By setting the `fade_target` to .2, the homed area will expand by .2 mm, however, the rest of the bed will be accurately sized. Generally its a good idea to leave `fade_target` out of the configuration so the average height of the mesh is used, however it may be desirable to manually adjust the fade target if one wants to print on a specific portion of the bed.
 
 ### Configuring the zero reference position
@@ -153,11 +153,11 @@ Existing configurations using the `relative_reference_index` option must be upda
 
 Using the example above we see that the `relative_reference_index` is printed along with its coordinate. Thus the `zero_reference_position` is `131.5, 108`.
 
-### Faulty Regions
+### المناطق المعيبة
 
-It is possible for some areas of a bed to report inaccurate results when probing due to a "fault" at specific locations. The best example of this are beds with series of integrated magnets used to retain removable steel sheets. The magnetic field at and around these magnets may cause an inductive probe to trigger at a distance higher or lower than it would otherwise, resulting in a mesh that does not accurately represent the surface at these locations. **Note: This should not be confused with probe location bias, which produces inaccurate results across the entire bed.**
+من الممكن لبعض مناطق السرير الإبلاغ عن نتائج غير دقيقة عند التحقيق بسبب "خطأ" في مواقع محددة. أفضل مثال على ذلك هو الأسرة مع سلسلة من المغناطيسات المتكاملة المستخدمة للاحتفاظ بألواح الصلب القابلة للإزالة. قد يتسبب المجال المغناطيسي في هذه المغناطيسات وحولها في تشغيل مسبار حثي على مسافة أعلى أو أقل مما كان سيفعله لولا ذلك، مما يؤدي إلى شبكة لا تمثل السطح بدقة في هذه المواقع. **ملاحظة: لا ينبغي الخلط بين هذا وتحيز موقع التحقيق، الذي ينتج نتائج غير دقيقة عبر السرير بأكمله. **
 
-The `faulty_region` options may be configured to compensate for this affect. If a generated point lies within a faulty region bed mesh will attempt to probe up to 4 points at the boundaries of this region. These probed values will be averaged and inserted in the mesh as the Z value at the generated (X, Y) coordinate.
+يمكن تكوين خيارات "faulty_region" للتعويض عن هذا التأثير. إذا كانت النقطة المتولدة تقع داخل شبكة سطح الطباعة منطقة معيبة، فستحاول التحقيق في ما يصل إلى 4 نقاط على حدود هذه المنطقة. سيتم حساب متوسط هذه القيم المحققة وإدراجها في الشبكة كقيمة Z عند الإحداثيات المتولدة (X، Y).
 
 ```
 [bed_mesh]
@@ -176,11 +176,11 @@ faulty_region_4_min: 30.0, 170.0
 faulty_region_4_max: 45.0, 210.0
 ```
 
-- `faulty_region_{1...99}_min` `faulty_region_{1..99}_max` *Default Value: None (disabled)* Faulty Regions are defined in a way similar to that of mesh itself, where minimum and maximum (X, Y) coordinates must be specified for each region. A faulty region may extend outside of a mesh, however the alternate points generated will always be within the mesh boundary. No two regions may overlap.
+- `faulty_region_{1...99}_min` `faulty_region_{1..99}_max` *القيمة الافتراضية: لا شيء (معطل)* يتم تعريف المناطق الخاطئة بطريقة مماثلة لتلك الخاصة بالشبكة نفسها، حيث يجب تحديد إحداثيات الحد الأدنى والحد الأقصى (X، Y) لكل منطقة. قد تمتد المنطقة المعيبة خارج الشبكة، ومع ذلك فإن النقاط البديلة المتولدة ستكون دائما داخل حدود الشبكة. لا يجوز أن تتداخل منطقتان.
 
-The image below illustrates how replacement points are generated when a generated point lies within a faulty region. The regions shown match those in the sample config above. The replacement points and their coordinates are identified in green.
+توضح الصورة أدناه كيفية إنشاء نقاط الاستبدال عندما تقع نقطة تم إنشاؤها داخل منطقة خاطئة. تتطابق المناطق الموضحة مع تلك الموجودة في تكوين العينة أعلاه. يتم تحديد نقاط الاستبدال وإحداثياتها باللون الأخضر.
 
-![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)
+![ Bedmesh_interpolated](img/bedmesh_faulty_regions.svg)
 
 ### Adaptive Meshes
 
@@ -212,9 +212,9 @@ By nature, adaptive bed meshes use the objects defined by the Gcode file being p
 
 It is also important to consider that adaptive bed meshing is best used on machines that can normally probe the entire bed and achieve a maximum variance less than or equal to 1 layer height. Machines with mechanical issues that a full bed mesh normally compensates for may have undesirable results when attempting print moves **outside** of the probed area. If a full bed mesh has a variance greater than 1 layer height, caution must be taken when using adaptive bed meshes and attempting print moves outside of the meshed area.
 
-## Bed Mesh Gcodes
+## شبكة السرير Gcodes
 
-### Calibration
+### معايرة
 
 `BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] [ADAPTIVE_MARGIN=<value>]` *Default Profile: default* *Default Method: automatic if a probe is detected, otherwise manual*  *Default Adaptive: 0*  *Default Adaptive Margin: 0*
 
@@ -222,24 +222,24 @@ Initiates the probing procedure for Bed Mesh Calibration.
 
 The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. If `METHOD=manual` is selected then manual probing will occur. When switching between automatic and manual probing the generated mesh points will automatically be adjusted.
 
-It is possible to specify mesh parameters to modify the probed area. The following parameters are available:
+من الممكن تحديد معلمات الشبكة لتعديل المنطقة المحققة. تتوفر المعايير التالية:
 
-- Rectangular beds (cartesian):
-   - `MESH_MIN`
-   - `MESH_MAX`
-   - `PROBE_COUNT`
-- Round beds (delta):
-   - `MESH_RADIUS`
-   - `MESH_ORIGIN`
-   - `ROUND_PROBE_COUNT`
-- All beds:
+- أسرة مستطيلة (كارتية):
+   - `اصغر_الشبكة`
+   - `اعلي_ حدود الشبكة`
+   - `عدد_الاستشعارات`
+- سرير مستدير (دلتا):
+   - `نصف_قطر_الشبكة`
+   - `أصل_الشبكة`
+   - `عدد_الاستشعارات_الدائرية`
+- جميع الاسطح:
    - `ALGORITHM`
    - `ADAPTIVE`
    - `ADAPTIVE_MARGIN`
 
 See the configuration documentation above for details on how each parameter applies to the mesh.
 
-### Profiles
+### ملفات تعريف
 
 `BED_MESH_PROFILE SAVE=<name> LOAD=<name> REMOVE=<name>`
 
@@ -249,9 +249,9 @@ Profiles can be loaded by executing `BED_MESH_PROFILE LOAD=<name>`.
 
 It should be noted that each time a BED_MESH_CALIBRATE occurs, the current state is automatically saved to the *default* profile. The *default* profile can be removed as follows:
 
-`BED_MESH_PROFILE REMOVE=default`
+`إزالة_ملف_الشبكة_صطح الطباعة = افتراضي`
 
-Any other saved profile can be removed in the same fashion, replacing *default* with the named profile you wish to remove.
+يمكن إزالة أي ملف تعريف آخر محفوظ بنفس الطريقة، واستبدال *افتراضي* بالملف الشخصي المسمى الذي ترغب في إزالته.
 
 #### Loading the default profile
 
@@ -266,7 +266,7 @@ gcode:
   BED_MESH_PROFILE LOAD=default
 ```
 
-### Output
+### إنتاج
 
 `BED_MESH_OUTPUT PGP=[0 | 1]`
 
@@ -300,7 +300,7 @@ The "Tool Adjusted" points refer to the nozzle location for each point, and the 
 
 `BED_MESH_CLEAR`
 
-This gcode may be used to clear the internal mesh state.
+يمكن استخدام رمز g هذا لمسح حالة الشبكة الداخلية.
 
 ### Apply X/Y offsets
 

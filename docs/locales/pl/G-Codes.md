@@ -37,7 +37,7 @@ Klipper's goal is to support the G-Code commands produced by common 3rd party so
 
 Jeżeli ktoś potrzebuje mniej popularnej komendy G-Code, to może być możliwe zaimplementowanie jej za pomocą własnej sekcji [gcode_macro config](Config_Reference.md#gcode_macro). Na przykład, można użyć tego do implementacji: `G12`, `G29`, `G30`, `G31`, `M42`, `M80`, `M81`, `T1`, itd.
 
-## Additional Commands
+## Dodatkowe polecenia
 
 Klipper używa "rozszerzonych" poleceń G-Code do ogólnej konfiguracji i statusu. Wszystkie te rozszerzone komendy mają podobny format - rozpoczynają się od nazwy komendy, po której może następować jeden lub więcej parametrów. Na przykład: `SET_SERVO SERVO=myservo ANGLE=5.3`. W tym dokumencie polecenia i parametry są wyświetlane wielkimi literami, ale nie jest rozróżniana wielkość liter. (Tak więc "SET_SERVO" i "set_servo" uruchamiają to samo polecenie).
 
@@ -45,7 +45,7 @@ Przetłumaczono z www.DeepL.com/Translator (wersja darmowa)
 
 This section is organized by Klipper module name, which generally follows the section names specified in the [printer configuration file](Config_Reference.md). Note that some modules are automatically loaded.
 
-### [adxl345]
+### ADXL345
 
 The following commands are available when an [adxl345 config section](Config_Reference.md#adxl345) is enabled.
 
@@ -57,19 +57,19 @@ The following commands are available when an [adxl345 config section](Config_Ref
 
 `ACCELEROMETER_QUERY [CHIP=<config_name>] [RATE=<value>]`: Pyta akcelerometr o obecną wartość. Jeżeli CHIP nie jest podany to używa domyślnego: "adxl345". Jeżeli RATE nie jest podany, to domyślna wartość jest użyta. Ta komenda jest użyteczna do testowania połączenia do akcelerometra ADXL345: jedna z zwróconych wartości powinno byc przyśpieszenie swobodnego opadania. (+/- troche zakłóceń czipa).
 
-#### AKCELEROMETER_CZYTANIE_DEBUGOWE
+#### Odczyt danych debugowych akcelerometru
 
-`ACCELEROMETER_DEBUG_READ [CHIP=<config_name>] REG=<register>`: queries ADXL345 register "register" (e.g. 44 or 0x2C). Może się przydać przy debugowaniu.
+`ACCELEROMETER_DEBUG_READ [CHIP=<config_name>] REG=<register>`: Odczytuje rejestr czipu ADXL345 o nazwie "register" (np. 44 lub 0x2C). Może się przydać przy debugowaniu.
 
 #### ACCELEROMETER_DEBUG_WRITE
 
 `ACCELEROMETER_DEBUG_WRITE [CHIP=<config_name>] REG=<register> VAL=<value>`: Wpisuje Surową "value" w rejestr "register".  "value" i "register" może być w systemie dziesiętnym albo szesnastkowym. Uzywać ostrożnie, i odnoś sie do ADXL345 Arkuszu danych jako referencja.
 
-### [angle]
+### kąt
 
 The following commands are available when an [angle config section](Config_Reference.md#angle) is enabled.
 
-#### ANGLE_CALIBRATE
+#### Kalibracja kąta
 
 `ANGLE_CALIBRATE CHIP=<chip_name>`: Perform angle calibration on the given sensor (there must be an `[angle chip_name]` config section that has specified a `stepper` parameter). IMPORTANT - this tool will command the stepper motor to move without checking the normal kinematic boundary limits. Ideally the motor should be disconnected from any printer carriage before performing calibration. If the stepper can not be disconnected from the printer, make sure the carriage is near the center of its rail before starting calibration. (The stepper motor may move forwards or backwards two full rotations during this test.) After completing this test use the `SAVE_CONFIG` command to save the calibration data to the config file. In order to use this tool the Python "numpy" package must be installed (see the [measuring resonance document](Measuring_Resonances.md#software-installation) for more information).
 
@@ -189,7 +189,7 @@ The display_status module is automatically loaded if a [display config section](
 - Wyświetlenie komunikatu: `M117 <message>`.
 - Ustaw procent kompilacji: `M73 P<percent>`
 
-Also provided is the following extended G-Code command:
+Dostępna jest również rozszerzona komenda G-Code:
 
 - `SET_DISPLAY_TEXT MSG=<message>`: Performs the equivalent of M117, setting the supplied `MSG` as the current display message. If `MSG` is omitted the display will be cleared.
 

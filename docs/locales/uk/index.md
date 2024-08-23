@@ -1,6 +1,6 @@
 ***
 
-hide:
+сховати:
 
 - toc title: Welcome
 

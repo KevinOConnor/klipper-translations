@@ -1,4 +1,4 @@
-# Configuration reference
+# Referência de configuração
 
 This document is a reference for options available in the Klipper config file.
 
@@ -18,7 +18,7 @@ Note, some config sections may "create" additional pins. Where this occurs, the 
 
 ### [mcu]
 
-Configuration of the primary micro-controller.
+Configuração do microcontrolador primário.
 
 ```
 [mcu]
@@ -625,7 +625,7 @@ radius:
 #   just prior to starting a probe operation. The default is 5.
 ```
 
-### Cable winch Kinematics
+### Cinemática do guincho de cabo
 
 See the [example-winch.cfg](../config/example-winch.cfg) for an example cable winch kinematics config file.
 
@@ -931,7 +931,7 @@ Visual Examples:
 
 ### [bed_tilt]
 
-Bed tilt compensation. One may define a bed_tilt config section to enable move transformations that account for a tilted bed. Note that bed_mesh and bed_tilt are incompatible; both cannot be defined.
+Compensação de inclinação da cama. Pode-se definir um bed_tilt config section para permitir transformações de movimento que levam em conta uma cama inclinada. Observe que bed_mesh e bed_tilt são incompatíveis; ambos não podem ser definidos.
 
 See the [command reference](G-Codes.md#bed_tilt) for additional information.
 
@@ -1607,11 +1607,11 @@ Support for resonance testing and automatic input shaper calibration. In order t
 #   (Hz/sec == sec^-2).
 ```
 
-## Config file helpers
+## Auxiliares de arquivo de configuração
 
 ### [board_pins]
 
-Board pin aliases (one may define any number of sections with a "board_pins" prefix). Use this to define aliases for the pins on a micro-controller.
+Aliases de pinos da placa (pode-se definir qualquer número de seções com o prefixo "board_pins"). Use isto para definir aliases para os pinos em um microcontrolador.
 
 ```
 [board_pins my_aliases]
@@ -1648,7 +1648,7 @@ pins:
 #   provided.
 ```
 
-## Bed probing hardware
+## Hardware de sondagem ruim
 
 ### [probe]
 
@@ -1715,7 +1715,7 @@ z_offset:
 
 ### [bltouch]
 
-BLTouch probe. One may define this section (instead of a probe section) to enable a BLTouch probe. See [BL-Touch guide](BLTouch.md) and [command reference](G-Codes.md#bltouch) for further information. A virtual "probe:z_virtual_endstop" pin is also created (see the "probe" section for the details).
+Sonda BLTouch. Pode-se definir esta seção (em vez de uma seção de sonda) para habilitar uma sonda BLTouch. Consulte [Guia BL-Touch](BLTouch.md) e [referência de comando](G-Codes.md#bltouch) para obter mais informações. Um pino virtual "sonda:z_virtual_endstop" também é criado (consulte a seção "sonda" para obter detalhes).
 
 ```
 [bltouch]
@@ -2117,9 +2117,9 @@ Generic temperature sensors. One can define any number of additional temperature
 
 Klipper includes definitions for many types of temperature sensors. These sensors may be used in any config section that requires a temperature sensor (such as an `[extruder]` or `[heater_bed]` section).
 
-### Common thermistors
+### Termistores comuns
 
-Common thermistors. The following parameters are available in heater sections that use one of these sensors.
+Termistores comuns. Os parâmetros estão disponíveis nas seções do aquecedor que usam um desses sensores.
 
 ```
 sensor_type:
@@ -2139,9 +2139,9 @@ sensor_pin:
 #   The default is 0 ohms.
 ```
 
-### Common temperature amplifiers
+### Amplificadores de temperatura comuns
 
-Common temperature amplifiers. The following parameters are available in heater sections that use one of these sensors.
+Amplificadores de temperatura comuns. Os parâmetros a seguir estão disponíveis nas seções do aquecedor que usam um desses sensores
 
 ```
 sensor_type:
@@ -2204,9 +2204,9 @@ sensor_pin:
 #   name in the above list.
 ```
 
-### BMP280/BME280/BME680 temperature sensor
+### BMP280/BME280/BME680 Sensor de temperatura
 
-BMP280/BME280/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
+Sensores ambientais de interface de dois fios (I2C) BMP280/BME280/BME680. Observe que esses sensores não se destinam ao uso com extrusoras e bases aquecedoras, mas sim para monitoramento de temperatura ambiente (C), pressão (hPa), umidade relativa e no caso do nível de gás BME680. Consulte [sample-macros.cfg](../config/sample-macros.cfg) para obter um gcode_macro que pode ser usado para relatar pressão e umidade, além de temperatura.
 
 ```
 sensor_type: BME280
@@ -2295,7 +2295,7 @@ sensor_type: LM75
 #   0.5.
 ```
 
-### Builtin micro-controller temperature sensor
+### Sensor de temperatura microcontrolador integrado
 
 The atsam, atsamd, and stm32 micro-controllers contain an internal temperature sensor. One can use the "temperature_mcu" sensor to monitor these temperatures.
 
@@ -2356,9 +2356,9 @@ serial_no:
 #   The micro-controller to read from. Must be the host_mcu
 ```
 
-### Combined temperature sensor
+### Sensor de temperatura combinado
 
-Combined temperature sensor is a virtual temperature sensor based on several other sensors. This sensor can be used with extruders, heater_generic and heater beds.
+O sensor de temperatura combinado é um sensor de temperatura virtual baseado em vários outros sensores. Este sensor pode ser usado com extrusoras, aquecedores genéricos e bases aquecedoras.
 
 ```
 sensor_type: temperature_combined
@@ -3875,71 +3875,71 @@ Um [default set of menus](../klippy/extras/display/menu.cfg) é criado automatic
 See the [command template document](Command_Templates.md#menu-templates) for information on menu attributes available during template rendering.
 
 ```
-# Common parameters available for all menu config sections.
-#[menu __some_list __some_name]
-#type: disabled
-#   Permanently disabled menu element, only required attribute is 'type'.
-#   Allows you to easily disable/hide existing menu items.
+# Parâmetros comuns disponíveis para todas as seções de configuração do menu.
+#[menu __algum_lista __algum_nome]
+#type: desativado
+# Elemento de menu permanentemente desabilitado, apenas o atributo obrigatório é 'type'.
+# Permite desabilitar/ocultar facilmente itens de menu existentes.
 
-#[menu some_name]
-#type:
-#   One of command, input, list, text:
-#       command - basic menu element with various script triggers
-#       input   - same like 'command' but has value changing capabilities.
-#                 Press will start/stop edit mode.
-#       list    - it allows for menu items to be grouped together in a
-#                 scrollable list.  Add to the list by creating menu
-#                 configurations using "some_list" as a prefix - for
-#                 example: [menu some_list some_item_in_the_list]
-#       vsdlist - same as 'list' but will append files from virtual sdcard
-#                 (will be removed in the future)
-#name:
-#   Name of menu item - evaluated as a template.
-#enable:
-#   Template that evaluates to True or False.
-#index:
-#   Position where an item needs to be inserted in list. By default
-#   the item is added at the end.
+#[menu algum_nome]
+#tipo:
+# Um entre comando, entrada, lista, texto:
+# comando - elemento básico do menu com vários gatilhos de script
+# input - igual a 'command', mas possui recursos de alteração de valor.
+# Pressione para iniciar/parar o modo de edição.
+# list - permite que os itens do menu sejam agrupados em um
+# lista rolável.  Adicione à lista criando menu
+# configurações usando "some_list" como prefixo - para
+# exemplo: [menu alguma_lista algum_item_na_lista]
+# vsdlist - igual a 'list', mas anexará arquivos do cartão SD virtual
+# (será removido no futuro)
+#nome:
+# Nome do item de menu - avaliado como modelo.
+#habilitar:
+# Modelo que é avaliado como Verdadeiro ou Falso.
+#índice:
+# Posição onde um item precisa ser inserido na lista. Por padrão
+# o item é adicionado no final.
 
-#[menu some_list]
-#type: list
-#name:
-#enable:
-#   See above for a description of these parameters.
+#[menu alguma_lista]
+#type: lista
+#nome:
+#habilitar:
+# Veja acima uma descrição desses parâmetros.
 
-#[menu some_list some_command]
-#type: command
-#name:
-#enable:
-#   See above for a description of these parameters.
-#gcode:
-#   Script to run on button click or long click. Evaluated as a
-#   template.
+#[menu alguma_lista algum_comando]
+#tipo: comando
+#nome:
+#habilitar:
+# Veja acima uma descrição desses parâmetros.
+#gcódigo:
+# Script para ser executado ao clicar no botão ou clicar longamente. Avaliado como um
+#   modelo.
 
-#[menu some_list some_input]
-#type: input
-#name:
-#enable:
-#   See above for a description of these parameters.
-#input:
-#   Initial value to use when editing - evaluated as a template.
-#   Result must be float.
+#[menu alguma_lista alguma_entrada]
+#tipo: entrada
+#nome:
+#habilitar:
+# Veja acima uma descrição desses parâmetros.
+#entrada:
+# Valor inicial a ser usado na edição - avaliado como modelo.
+# O resultado deve ser flutuante.
 #input_min:
-#   Minimum value of range - evaluated as a template. Default -99999.
+# Valor mínimo do intervalo - avaliado como modelo. Padrão -99999.
 #input_max:
-#   Maximum value of range - evaluated as a template. Default 99999.
+# Valor máximo do intervalo - avaliado como modelo. Padrão 99999.
 #input_step:
-#   Editing step - Must be a positive integer or float value. It has
-#   internal fast rate step. When "(input_max - input_min) /
-#   input_step > 100" then fast rate step is 10 * input_step else fast
-#   rate step is same input_step.
-#realtime:
-#   This attribute accepts static boolean value. When enabled then
-#   gcode script is run after each value change. The default is False.
-#gcode:
-#   Script to run on button click, long click or value change.
-#   Evaluated as a template. The button click will trigger the edit
-#   mode start or end.
+# Etapa de edição - deve ser um número inteiro positivo ou um valor flutuante. Tem
+# etapa de taxa rápida interna. Quando "(input_max - input_min) /
+# input_step > 100" então o passo de taxa rápida é 10 * input_step else fast
+# taxa de passo é o mesmo input_step.
+#tempo real:
+# Este atributo aceita valor booleano estático. Quando habilitado então
+# O script gcode é executado após cada alteração de valor. O padrão é falso.
+#gcódigo:
+# Script para ser executado ao clicar no botão, clicar longamente ou alterar o valor.
+# Avaliado como modelo. O clique do botão acionará a edição
+# modo de início ou fim.
 ```
 
 ## Filament sensors
@@ -4075,11 +4075,11 @@ adc2:
 #   above parameters.
 ```
 
-## Board specific hardware support
+## Suporte de hardware específico da placa
 
 ### [sx1509]
 
-Configure an SX1509 I2C to GPIO expander. Due to the delay incurred by I2C communication you should NOT use SX1509 pins as stepper enable, step or dir pins or any other pin that requires fast bit-banging. They are best used as static or gcode controlled digital outputs or hardware-pwm pins for e.g. fans. One may define any number of sections with an "sx1509" prefix. Each expander provides a set of 16 pins (sx1509_my_sx1509:PIN_0 to sx1509_my_sx1509:PIN_15) which can be used in the printer configuration.
+Configure um SX1509 I2C para GPIO expander. Devido ao atraso sofrido I2C, comunicação que você NÃO deve usar SX1509 pinos como stepper enable, pinos step ou dir ou qualquer outro pino que exija fast bit-banging. Eles são melhor usados como static ou gcode controlled digital outputs ou hardware-pwm pins for e.g. fans. Pode-se definir qualquer número de seções com um "sx1509" prefix. Cada expansor fornece um conjunto de 16 pins (sx1509_my_sx1509:PIN_0 to sx1509_my_sx1509:PIN_15) que pode ser usado na configuração da impressora.
 
 See the [generic-duet2-duex.cfg](../config/generic-duet2-duex.cfg) file for an example.
 
@@ -4267,7 +4267,7 @@ cs_pin:
 
 ## Parâmetros comuns do barramento
 
-### Common SPI settings
+### Configuraçoes comuns SPI
 
 The following parameters are generally available for devices using an SPI bus.
 

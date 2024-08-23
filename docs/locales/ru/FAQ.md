@@ -35,19 +35,19 @@ serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 
 Если вы используете несколько микроконтроллеров, которые не имеют уникальных идентификаторов (распространены на чипах CH340 USB) тогда следуйте инструкциям выше, используя команду `ls /dev/serial/by-path/*` вместо этого.
 
-## When the micro-controller restarts the device changes to /dev/ttyUSB1
+## Когда микроконтроллер перезапускает устройство, изменения в/dev/ttyUSB1
 
-Follow the directions in the "[Where's my serial port?](#wheres-my-serial-port)" section to prevent this from occurring.
+Следуйте указаниям из секции "[Где мой последовательный порт?](#где-мой-последовательный-порт)" чтобы предотвратить это.
 
-## The "make flash" command doesn't work
+## Команда "прошить" не работает
 
-The code attempts to flash the device using the most common method for each platform. Unfortunately, there is a lot of variance in flashing methods, so the "make flash" command may not work on all boards.
+Код пытается прошить устройство с помощью самого распространенного способа. К сожалению, существует множество способов прошивки, потому команда "прошить" может не работать на всех возможных приборах.
 
-If you're having an intermittent failure or you do have a standard setup, then double check that Klipper isn't running when flashing (sudo service klipper stop), make sure OctoPrint isn't trying to connect directly to the device (open the Connection tab in the web page and click Disconnect if the Serial Port is set to the device), and make sure FLASH_DEVICE is set correctly for your board (see the [question above](#wheres-my-serial-port)).
+Если у вас переодчно появляются ошибки либо у вас стандартная установка, убедитесь, что Klipper не работает во время прошивки (от имени сервиса klipper стоп), убедитесь OctoPrint не пытается подключится напрямую к устройству (откройте окно Подключений на веб-странице и нажмите Отключить если Последовательный Порт настроен на устройстве), и убедитесь, что FLASH_DEVICE настроен правильно для вашего прибора (смотреть [вопрос выше ](#где-мой-последовательный-порт)).
 
-However, if "make flash" just doesn't work for your board, then you will need to manually flash. See if there is a config file in the [config directory](../config) with specific instructions for flashing the device. Also, check the board manufacturer's documentation to see if it describes how to flash the device. Finally, it may be possible to manually flash the device using tools such as "avrdude" or "bossac" - see the [bootloader document](Bootloaders.md) for additional information.
+Тем не менее, если "прошить" не работает для вашего прибора, то вам нужно прошить вручную. Посмотрите, есть ли файл конфигурации в [настройках](../config) со специальными инструкциями для прошивки прибора. Также, проверьте документацию производителя прибора, если она описывает способ для прошивки устройства. В конце концов, можт быть возможно вручную прошить устройство с помощью инструемнтов, таких как "avrdude" или "bossac" - смотрите [документацию загрузчик операционной системы](Bootloaders.md) для дополнительной информации.
 
-## How do I change the serial baud rate?
+## Как я могу изменить скорость порта?
 
 The recommended baud rate for Klipper is 250000. This baud rate works well on all micro-controller boards that Klipper supports. If you've found an online guide recommending a different baud rate, then ignore that part of the guide and continue with the default value of 250000.
 

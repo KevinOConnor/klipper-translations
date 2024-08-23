@@ -1485,7 +1485,7 @@ Enables [resonance compensation](Resonance_Compensation.md). Also see the [comma
 #   parameter requires no tuning and should not be changed.
 ```
 
-### [adxl345]
+### ADXL345
 
 Support for ADXL345 accelerometers. This support allows one to query accelerometer measurements from the sensor. This enables an ACCELEROMETER_MEASURE command (see [G-Codes](G-Codes.md#adxl345) for more information). The default chip name is "default", but one may specify an explicit name (eg, [adxl345 my_chip_name]).
 
@@ -4236,7 +4236,7 @@ serial:
 #   Auto cancel print when ping variation is above this threshold
 ```
 
-### [angle]
+### kąt
 
 Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
 

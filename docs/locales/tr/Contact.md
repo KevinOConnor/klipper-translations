@@ -1,4 +1,4 @@
-# Contact
+# İletişim
 
 Bu belge Klipper için iletişim bilgileri sağlar.
 

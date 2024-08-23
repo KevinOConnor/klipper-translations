@@ -1,6 +1,6 @@
 # API server
 
-This document describes Klipper's Application Programmer Interface (API). This interface enables external applications to query and control the Klipper host software.
+Цей документ описує Прикладний Програмний Інтерфейс Klipper (ППІ). Цей інтерфейс дає змогу зовнішнім застусункам опитувати та керувати хостове програмне забезпечення Klipper.
 
 ## Enabling the API socket
 

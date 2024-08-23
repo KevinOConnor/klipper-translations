@@ -1,4 +1,4 @@
-# Overview
+# İlk Bakış
 
 Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , [özellikler](Features.md) ve [kurulum](Installation.md) ile başlayabilirsiniz.
 
@@ -48,17 +48,17 @@ Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , [özell
 - [Hata Ayıklama](Debugging.md): Klipper'ın nasıl test edileceği ve hata ayıklanacağı hakkında bilgi.
 - [Benchmarklar](Benchmarks.md): Klipper kıyaslama yöntemi hakkında bilgi.
 - [Katkıda Bulunmak](CONTRIBUTING.md): Klipper'a iyileştirmelerin nasıl gönderileceği hakkında bilgi.
-- [Packaging](Packaging.md): Information on building OS packages.
+- [Paketleme](Packaging.md): İS paketleri oluşturma üzerine bilgilendirme.
 
-## Device Specific Documents
+## Cihaza Özgü Belgeler
 
-- [Example configs](Example_Configs.md): Information on adding an example config file to Klipper.
-- [SDCard Updates](SDCard_Updates.md): Flash a micro-controller by copying a binary to an sdcard in the micro-controller.
-- [Raspberry Pi as Micro-controller](RPi_microcontroller.md): Details for controlling devices wired to the GPIO pins of a Raspberry Pi.
+- [Örnek yapılandırmalar](Example_Configs.md): Klipper'a örnek bir yapılandırma dosyası ekleme üzerine bilgilendirme.
+- [SDCard Güncellemeleri](SDCard_Updates.md): Bir mikro-denetleyiciyi, sdcard içine bir ikili dosya (binary) kopyalayarak flashlama.
+- [Mikro denetleyici olarak Raspberry Pi](RPi_microcontroller.md): Bir Raspberry Pi üzerindeki GPIO pinlerine bağlı cihazları kontrol etmek için ayrıntılar.
 - [Beaglebone](Beaglebone.md): Details for running Klipper on the Beaglebone PRU.
-- [Bootloaders](Bootloaders.md): Developer information on micro-controller flashing.
+- [Önyükleyiciler](Bootloaders.md): Mikro denetleyici flashlama hakkında geliştirici bilgilendirmesi.
 - [Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader.
-- [CAN bus](CANBUS.md): Information on using CAN bus with Klipper.
+- [CAN veri yolu](CANBUS.md): Klipper ile CAN veri yolu kullanımı üzerine bilgilendirme.
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
-- [TSL1401CL filament width sensor](TSL1401CL_Filament_Width_Sensor.md)
+- [TSL1401CL filament genişlik sensörü](TSL1401CL_Filament_Width_Sensor.md)
 - [Hall filament width sensor](Hall_Filament_Width_Sensor.md)

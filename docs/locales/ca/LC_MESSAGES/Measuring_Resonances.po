@@ -713,13 +713,6 @@ msgid ""
 "    100, 100, 20  # an example\n"
 msgstr ""
 
-#: docs/Measuring_Resonances.md:block 45 (paragraph)
-msgid ""
-"This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and "
-"`/tmp/resonances_y_*.csv`). These files can be processed with the stand-"
-"alone script on a Raspberry Pi. To do that, run the following commands:"
-msgstr ""
-
 #: docs/Measuring_Resonances.md:block 111 (paragraph)
 msgid ""
 "The raw data can also be obtained by running the command "
@@ -1473,6 +1466,23 @@ msgid ""
 "`square_corner_velocity` parameter into account, and there is no need to "
 "specify it explicitly."
 msgstr ""
+
+#: docs/Measuring_Resonances.md:block 111 (paragraph)
+msgid ""
+"This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and "
+"`/tmp/resonances_y_*.csv`). These files can be processed with the stand-"
+"alone script on a Raspberry Pi. This script is intended to be run with a "
+"single CSV file for each axis measured, although it can be used with "
+"multiple CSV files if you desire to average the results. Averaging results "
+"can be useful, for example, if resonance tests were done at multiple test "
+"points. Delete the extra CSV files if you do not desire to average them."
+msgstr ""
+
+#~ msgid ""
+#~ "This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and "
+#~ "`/tmp/resonances_y_*.csv`). These files can be processed with the stand-"
+#~ "alone script on a Raspberry Pi. To do that, run the following commands:"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "sudo apt update\n"

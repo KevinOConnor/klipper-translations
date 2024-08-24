@@ -12,8 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-08-20 15:09+0000\n"
 "Last-Translator: Murateba <robloxmurat5@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/"
-"tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -322,6 +321,14 @@ msgstr ""
 msgid ""
 "[CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for "
 "troubleshooting CAN bus."
+msgstr ""
+
+#: docs/Overview.md:block 6 (unordered list)
+msgid "[Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper."
+msgstr ""
+
+#: docs/Overview.md:block 10 (unordered list)
+msgid "[Eddy Current Inductive probe](Eddy_Probe.md)"
 msgstr ""
 
 #~ msgid ""

@@ -4,8 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-05-23 02:21+0000\n"
 "Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/canbus/nl/>"
-"\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/canbus/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -134,14 +133,6 @@ msgid ""
 "firmware](https://github.com/candle-usb/candleLight_fw)."
 msgstr ""
 
-#: docs/CANBUS.md:block 9 (code)
-msgid ""
-"allow-hotplug can0\n"
-"iface can0 can static\n"
-"    bitrate 1000000\n"
-"    up ifconfig $IFACE txqueuelen 128\n"
-msgstr ""
-
 #: docs/CANBUS.md:block 12 (paragraph)
 msgid ""
 "Note that some devices have a builtin 120 ohm resistor that can not be "
@@ -211,6 +202,21 @@ msgstr ""
 #: docs/CANBUS.md:block 32 (paragraph)
 msgid "See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document."
 msgstr ""
+
+#: docs/CANBUS.md:block 9 (code)
+msgid ""
+"allow-hotplug can0\n"
+"iface can0 can static\n"
+"    bitrate 1000000\n"
+"    up ip link set $IFACE txqueuelen 128\n"
+msgstr ""
+
+#~ msgid ""
+#~ "allow-hotplug can0\n"
+#~ "iface can0 can static\n"
+#~ "    bitrate 1000000\n"
+#~ "    up ifconfig $IFACE txqueuelen 128\n"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "In order to use a CAN bus, it is necessary to have a host adapter. There are"

@@ -9,8 +9,7 @@ msgstr ""
 "POT-Creation-Date: 2021-06-28 08:28+0200\n"
 "PO-Revision-Date: 2024-04-30 17:07+0000\n"
 "Last-Translator: \"Neko.vecter\" <Vecterfang@icloud.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"klipper/bed_mesh/zh_Hans/>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/klipper/bed_mesh/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -375,16 +374,6 @@ msgstr "床网"
 msgid "Initiates the probing procedure for Bed Mesh Calibration."
 msgstr "启动床网校准的探测程序。"
 
-#: docs/Bed_Mesh.md:block 50 (paragraph)
-msgid ""
-"The mesh will be saved into a profile specified by the `PROFILE` parameter, "
-"or `default` if unspecified. If `METHOD=manual` is selected then manual "
-"probing will occur. When switching between automatic and manual probing the "
-"generated mesh points will automatically be adjusted."
-msgstr ""
-"网格将被保存到由 `PROFILE` 参数指定的配置中，如果没有指定，则使用 `default`。如果选择了 `METHOD=manual` "
-"，那么将进行手动探测。在自动和手动探测之间切换时，生成的网格点会自动调整。"
-
 #: docs/Bed_Mesh.md:block 26 (paragraph)
 msgid ""
 "Bed Mesh works by intercepting gcode move commands and applying a transform "
@@ -658,16 +647,6 @@ msgid ""
 msgstr ""
 "床网模块可以用于补偿床面的不规则性，以实现更好的首层均一性。需要注意的是，基于软件的校正无法达到完美的结果，它只能近似地模拟床面的形状。床网模块也无法对机械和电气问题进行补偿。如果一个轴倾斜或探针不准确，那么床网模块将无法从探测过程中获得准确的结果。"
 
-#: docs/Bed_Mesh.md:block 8 (unordered list)
-msgid ""
-"`mesh_max: 240, 198` *Required* The probed coordinate farthest farthest from"
-" the origin. This is not necessarily the last point probed, as the probing "
-"process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is "
-"relative to the probe's location."
-msgstr ""
-"`mesh_max: 240, 198` *必填* 探测坐标最远离原点的点。这不一定是最后一个被探测到的点，因为探测过程是以锯齿形进行的。与 "
-"`mesh_min` 一样，此坐标相对于探针位置。"
-
 #: docs/Bed_Mesh.md:block 15 (paragraph)
 msgid ""
 "The illustration below shows how the probed points are generated. As you can"
@@ -921,15 +900,6 @@ msgid ""
 "the meshed area."
 msgstr ""
 
-#: docs/Bed_Mesh.md:block 62 (paragraph)
-msgid ""
-"`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic] "
-"[<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] "
-"[ADAPTIVE_MARGIN=<value>]` *Default Profile: default* *Default Method: "
-"automatic if a probe is detected, otherwise manual*  *Default Adaptive: 0*  "
-"*Default Adaptive Margin: 0*"
-msgstr ""
-
 #: docs/Bed_Mesh.md:block 66 (unordered list)
 msgid "`ADAPTIVE`"
 msgstr "`ADAPTIVE`"
@@ -963,6 +933,513 @@ msgid ""
 " and needs a negative gcode offset, ie: `SET_GCODE_OFFSET Z=-.2`, it can be "
 "accounted for in `bed_mesh` with `BED_MESH_OFFSET ZFADE=.2`."
 msgstr ""
+
+#: docs/Bed_Mesh.md:block 8 (unordered list)
+msgid ""
+"`mesh_max: 240, 198` *Required* The probed coordinate farthest from the "
+"origin. This is not necessarily the last point probed, as the probing "
+"process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is "
+"relative to the probe's location."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 60 (header)
+msgid "Surface Scans"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 61 (paragraph)
+msgid ""
+"Some probes, such as the [Eddy Current Probe](./Eddy_Probe.md), are capable "
+"of \"scanning\" the surface of the bed. That is, these probes can sample a "
+"mesh without lifting the tool between samples. To activate scanning mode, "
+"the `METHOD=scan` or `METHOD=rapid_scan` probe parameter should be passed in"
+" the `BED_MESH_CALIBRATE` gcode command."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 62 (header)
+msgid "Scan Height"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 63 (paragraph)
+msgid ""
+"The scan height is set by the `horizontal_move_z` option in `[bed_mesh]`. In"
+" addition it can be supplied with the `BED_MESH_CALIBRATE` gcode command via"
+" the `HORIZONTAL_MOVE_Z` parameter."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 64 (paragraph)
+msgid ""
+"The scan height must be sufficiently low to avoid scanning errors. Typically"
+" a height of 2mm (ie: `HORIZONTAL_MOVE_Z=2`) should work well, presuming "
+"that the probe is mounted correctly."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 65 (paragraph)
+msgid ""
+"It should be noted that if the probe is more than 4mm above the surface then"
+" the results will be invalid. Thus, scanning is not possible on beds with "
+"severe surface deviation or beds with extreme tilt that hasn't been "
+"corrected."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 66 (header)
+msgid "Rapid (Continuous) Scanning"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 67 (paragraph)
+msgid ""
+"When performing a `rapid_scan` one should keep in mind that the results will"
+" have some amount of error. This error should be low enough to be useful on "
+"large print areas with reasonably thick layer heights. Some probes may be "
+"more prone to error than others."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 68 (paragraph)
+msgid ""
+"It is not recommended that rapid mode be used to scan a \"dense\" mesh. Some"
+" of the error introduced during a rapid scan may be gaussian noise from the "
+"sensor, and a dense mesh will reflect this noise (ie: there will be peaks "
+"and valleys)."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 69 (paragraph)
+msgid ""
+"Bed Mesh will attempt to optimize the travel path to provide the best "
+"possible result based on the configuration. This includes avoiding faulty "
+"regions when collecting samples and \"overshooting\" the mesh when changing "
+"direction. This overshoot improves sampling at the edges of a mesh, however "
+"it requires that the mesh be configured in a way that allows the tool to "
+"travel outside of the mesh."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 70 (code)
+msgid ""
+"[bed_mesh]\n"
+"speed: 120\n"
+"horizontal_move_z: 5\n"
+"mesh_min: 35, 6\n"
+"mesh_max: 240, 198\n"
+"probe_count: 5\n"
+"scan_overshoot: 8\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 71 (unordered list)
+msgid ""
+"`scan_overshoot` *Default Value: 0 (disabled)* The maximum amount of travel "
+"(in mm) available outside of the mesh. For rectangular beds this applies to "
+"travel on the X axis, and for round beds it applies to the entire radius. "
+"The tool must be able to travel the amount specified outside of the mesh. "
+"This value is used to optimize the travel path when performing a \"rapid "
+"scan\". The minimum value that may be specified is 1. The default is no "
+"overshoot."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 72 (paragraph)
+msgid ""
+"If no scan overshoot is configured then travel path optimization will not be"
+" applied to changes in direction."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 75 (paragraph)
+msgid ""
+"`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic | scan | "
+"rapid_scan] \\ [<probe_parameter>=<value>] [<mesh_parameter>=<value>] "
+"[ADAPTIVE=[0|1] \\ [ADAPTIVE_MARGIN=<value>]` *Default Profile: default* "
+"*Default Method: automatic if a probe is detected, otherwise manual*  "
+"*Default Adaptive: 0*  *Default Adaptive Margin: 0*"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 77 (paragraph)
+msgid ""
+"The mesh will be saved into a profile specified by the `PROFILE` parameter, "
+"or `default` if unspecified. The `METHOD` parameter takes one of the "
+"following values:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 78 (unordered list)
+msgid ""
+"`METHOD=manual`: enables manual probing using the nozzle and the paper test"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 78 (unordered list)
+msgid "`METHOD=automatic`: Automatic (standard) probing. This is the default."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 78 (unordered list)
+msgid ""
+"`METHOD=scan`: Enables surface scanning. The tool will pause over each "
+"position to collect a sample."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 78 (unordered list)
+msgid "`METHOD=rapid_scan`: Enables continuous surface scanning."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 79 (paragraph)
+msgid ""
+"XY positions are automatically adjusted to include the X and/or Y offsets "
+"when a probing method other than `manual` is selected."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 81 (unordered list)
+msgid "`MESH_PPS`"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 107 (header)
+msgid "Bed Mesh Webhooks APIs"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 108 (header)
+msgid "Dumping mesh data"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 109 (paragraph)
+msgid "`{\"id\": 123, \"method\": \"bed_mesh/dump_mesh\"}`"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 110 (paragraph)
+msgid ""
+"Dumps the configuration and state for the current mesh and all saved "
+"profiles."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 111 (paragraph)
+msgid ""
+"The `dump_mesh` endpoint takes one optional parameter, `mesh_args`. This "
+"parameter must be an object, where the keys and values are parameters "
+"available to [BED_MESH_CALIBRATE](#bed_mesh_calibrate). This will update the"
+" mesh configuration and probe points using the supplied parameters prior to "
+"returning the result. It is recommended to omit mesh parameters unless it is"
+" desired to visualize the probe points and/or travel path before performing "
+"`BED_MESH_CALIBRATE`."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 112 (header)
+msgid "Visualization and analysis"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 113 (paragraph)
+msgid ""
+"Most users will likely find that the visualizers included with applications "
+"such as Mainsail, Fluidd, and Octoprint are sufficient for basic analysis. "
+"However, Klipper's `scripts` folder contains the `graph_mesh.py` script that"
+" may be used to perform additional visualizations and more detailed "
+"analysis, particularly useful for debugging hardware or the results produced"
+" by `bed_mesh`:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 114 (code)
+msgid ""
+"usage: graph_mesh.py [-h] {list,plot,analyze,dump} ...\n"
+"\n"
+"Graph Bed Mesh Data\n"
+"\n"
+"positional arguments:\n"
+"  {list,plot,analyze,dump}\n"
+"    list                List available plot types\n"
+"    plot                Plot a specified type\n"
+"    analyze             Perform analysis on mesh data\n"
+"    dump                Dump API response to json file\n"
+"\n"
+"options:\n"
+"  -h, --help            show this help message and exit\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 115 (header)
+msgid "Pre-requisites"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 116 (paragraph)
+msgid ""
+"Like most graphing tools provided by Klipper, `graph_mesh.py` requires the "
+"`matplotlib` and `numpy` python dependencies. In addition, connecting to "
+"Klipper via Moonraker's websocket requires the `websockets` python "
+"dependency. While all visualizations can be output to an `svg` file, most of"
+" the visualizations offered by `graph_mesh.py` are better viewed in live "
+"preview mode on a desktop class PC. For example, the 3D visualizations may "
+"be rotated and zoomed in preview mode, and the path visualizations can "
+"optionally be animated in preview mode."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 117 (header)
+msgid "Plotting Mesh data"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 118 (paragraph)
+msgid ""
+"The `graph_mesh.py` tool can plot several types of visualizations. Available"
+" types can be shown by running `graph_mesh.py list`:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 119 (code)
+msgid ""
+"graph_mesh.py list\n"
+"points    Plot original generated points\n"
+"path      Plot probe travel path\n"
+"rapid     Plot rapid scan travel path\n"
+"probedz   Plot probed Z values\n"
+"meshz     Plot mesh Z values\n"
+"overlay   Plots the current probed mesh overlaid with a profile\n"
+"delta     Plots the delta between current probed mesh and a profile\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 120 (paragraph)
+msgid "Several options are available when plotting visualizations:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 121 (code)
+msgid ""
+"usage: graph_mesh.py plot [-h] [-a] [-s] [-p PROFILE_NAME] [-o OUTPUT] <plot type> <input>\n"
+"\n"
+"positional arguments:\n"
+"  <plot type>           Type of data to graph\n"
+"  <input>               Path/url to Klipper Socket or path to json file\n"
+"\n"
+"options:\n"
+"  -h, --help            show this help message and exit\n"
+"  -a, --animate         Animate paths in live preview\n"
+"  -s, --scale-plot      Use axis limits reported by Klipper to scale plot X/Y\n"
+"  -p PROFILE_NAME, --profile-name PROFILE_NAME\n"
+"                        Optional name of a profile to plot for 'probedz'\n"
+"  -o OUTPUT, --output OUTPUT\n"
+"                        Output file path\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 122 (paragraph)
+msgid "Below is a description of each argument:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid ""
+"`plot type`: A required positional argument designating the type of "
+"visualization to generate. Must be one of the types output by the "
+"`graph_mesh.py list` command."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid ""
+"`input`: A required positional argument containing a path or url to the "
+"input source. This must be one of the following:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid "A path to Klipper's Unix Domain Socket"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid "A url to an instance of Moonraker"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid "A path to a json file produced by `graph_mesh.py dump <input>`"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid ""
+"`-a`: Optional animation for the `path` and `rapid` visualization types. "
+"Animations only apply to a live preview."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid ""
+"`-s`: Optionally scales a plot using the `axis_minimum` and `axis_maximum` "
+"values reported by Klipper's `toolhead` object when the dump file was "
+"generated."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid ""
+"`-p`: A profile name that may be specified when generating the `probedz` 3D "
+"mesh visualization. When generating an `overlay` or `delta` visualization "
+"this argument must be provided."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 123 (unordered list)
+msgid ""
+"`-o`: An optional file path indicating that the script should save the "
+"visualization to this location rather than run in preview mode. Images are "
+"saved in `svg` format."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 124 (paragraph)
+msgid ""
+"For example, to plot an animated rapid path, connecting via Klipper's unix "
+"socket:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 125 (code)
+msgid "graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 126 (paragraph)
+msgid "Or to plot a 3d visualization of the mesh, connecting via Moonraker:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 127 (code)
+msgid "graph_mesh.py plot meshz http://my-printer.local\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 128 (header)
+msgid "Bed Mesh Analysis"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 129 (paragraph)
+msgid ""
+"The `graph_mesh.py` tool may also be used to perform an analysis on the data"
+" provided by the [bed_mesh/dump_mesh](#dumping-mesh-data) API:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 130 (code)
+msgid "graph_mesh.py analyze <input>\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 131 (paragraph)
+msgid ""
+"As with the `plot` command, the `<input>` must be a path to Klipper's unix "
+"socket, a URL to an instance of Moonraker, or a path to a json file "
+"generated by the dump command."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 132 (paragraph)
+msgid ""
+"To begin, the analysis will perform various checks on the points and probe "
+"paths generated by `bed_mesh` at the time of the dump. This includes the "
+"following:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 133 (unordered list)
+msgid "The number of probe points generated, without any additions"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 133 (unordered list)
+msgid ""
+"The number of probe points generated including any points generated as the "
+"result faulty regions and/or a configured zero reference position."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 133 (unordered list)
+msgid "The number of probe points generated when performing a rapid scan."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 133 (unordered list)
+msgid "The total number of moves generated for a rapid scan."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 133 (unordered list)
+msgid ""
+"A validation that the probe points generated for a rapid scan are identical "
+"to the probe points generated for a standard probing procedure."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 133 (unordered list)
+msgid ""
+"A \"backtracking\" check for both the standard probe path and a rapid scan "
+"path. Backtracking can be defined as moving to the same position more than "
+"once during the probing procedure. Backtracking should never occur during a "
+"standard probe. Faulty regions *can* result in backtracking during a rapid "
+"scan in an attempt to avoid entering a faulty region when approaching or "
+"leaving a probe location, however should never occur otherwise."
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 134 (paragraph)
+msgid ""
+"Next each probed mesh present in the dump will by analyzed, beginning with "
+"the mesh loaded at the time of the dump (if present) and followed by any "
+"saved profiles. The following data is extracted:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 135 (unordered list)
+msgid "Mesh shape (Min X,Y, Max X,Y Probe Count)"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 135 (unordered list)
+msgid "Mesh Z range, (Minimum Z, Maximum Z)"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 135 (unordered list)
+msgid "Mean Z value in the mesh"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 135 (unordered list)
+msgid "Standard Deviation of the Z values in the Mesh"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 136 (paragraph)
+msgid ""
+"In addition to the above, a delta analysis is performed between meshes with "
+"the same shape, reporting the following:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 137 (unordered list)
+msgid "The range of the delta between to meshes (Minimum and Maximum)"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 137 (unordered list)
+msgid "The mean delta"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 137 (unordered list)
+msgid "Standard Deviation of the delta"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 137 (unordered list)
+msgid "The absolute maximum difference"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 137 (unordered list)
+msgid "The absolute mean"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 138 (header)
+msgid "Save mesh data to a file"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 139 (paragraph)
+msgid ""
+"The `dump` command may be used to save the response to a file which can be "
+"shared for analysis when troubleshooting:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 140 (code)
+msgid "graph_mesh.py dump -o <output file name> <input>\n"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 141 (paragraph)
+msgid ""
+"The `<input>` should be a path to Klipper's unix socket or a URL to an "
+"instance of Moonraker. The `-o` option may be used to specify the path to "
+"the output file. If omitted, the file will be saved in the working "
+"directory, with a file name in the following format:"
+msgstr ""
+
+#: docs/Bed_Mesh.md:block 142 (paragraph)
+msgid "`klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`"
+msgstr ""
+
+#~ msgid ""
+#~ "The mesh will be saved into a profile specified by the `PROFILE` parameter, "
+#~ "or `default` if unspecified. If `METHOD=manual` is selected then manual "
+#~ "probing will occur. When switching between automatic and manual probing the "
+#~ "generated mesh points will automatically be adjusted."
+#~ msgstr ""
+#~ "网格将被保存到由 `PROFILE` 参数指定的配置中，如果没有指定，则使用 `default`。如果选择了 `METHOD=manual` "
+#~ "，那么将进行手动探测。在自动和手动探测之间切换时，生成的网格点会自动调整。"
+
+#~ msgid ""
+#~ "`mesh_max: 240, 198` *Required* The probed coordinate farthest farthest from"
+#~ " the origin. This is not necessarily the last point probed, as the probing "
+#~ "process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is "
+#~ "relative to the probe's location."
+#~ msgstr ""
+#~ "`mesh_max: 240, 198` *必填* 探测坐标最远离原点的点。这不一定是最后一个被探测到的点，因为探测过程是以锯齿形进行的。与 "
+#~ "`mesh_min` 一样，此坐标相对于探针位置。"
+
+#~ msgid ""
+#~ "`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic] "
+#~ "[<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] "
+#~ "[ADAPTIVE_MARGIN=<value>]` *Default Profile: default* *Default Method: "
+#~ "automatic if a probe is detected, otherwise manual*  *Default Adaptive: 0*  "
+#~ "*Default Adaptive Margin: 0*"
+#~ msgstr ""
 
 #~ msgid "`BED_MESH_OFFSET [X=<value>] [Y=<value>]`"
 #~ msgstr "`BED_MESH_OFFSET [X=<value>] [Y=<value>]`"

@@ -334,6 +334,14 @@ msgstr ""
 "[Resolució de problemes del bus CAN](CANBUS_Troubleshooting.md): Consells "
 "per resoldre problemes del bus CAN."
 
+#: docs/Overview.md:block 6 (unordered list)
+msgid "[Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper."
+msgstr ""
+
+#: docs/Overview.md:block 10 (unordered list)
+msgid "[Eddy Current Inductive probe](Eddy_Probe.md)"
+msgstr ""
+
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "
 #~ "implementation."

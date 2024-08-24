@@ -899,12 +899,6 @@ msgid ""
 " preserve the configured input shaper parameters."
 msgstr ""
 
-#: docs/Resonance_Compensation.md:block 12 (ordered list)
-msgid ""
-"Disable the `miminum_cruise_ratio` feature by issuing the following command:"
-" `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
-msgstr ""
-
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 msgstr ""
@@ -912,6 +906,17 @@ msgstr ""
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
 msgid "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 msgstr ""
+
+#: docs/Resonance_Compensation.md:block 12 (ordered list)
+msgid ""
+"Disable the `minimum_cruise_ratio` feature by issuing the following command:"
+" `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+msgstr ""
+
+#~ msgid ""
+#~ "Disable the `miminum_cruise_ratio` feature by issuing the following command:"
+#~ " `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "Increase `max_accel_to_decel` by issuing the following command: "

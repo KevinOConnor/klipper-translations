@@ -5,8 +5,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-05-30 09:33+0000\n"
 "Last-Translator: hugoalh <hugoalh@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
-"klipper/overview/zh_Hant/>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/klipper/overview/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -237,8 +236,7 @@ msgstr "[排除物件](Exclude_Object.md)：排除物件實現的指南。"
 msgid ""
 "[Axis Twist Compensation](Axis_Twist_Compensation.md): A tool to compensate "
 "for inaccurate probe readings due to twist in X gantry."
-msgstr "[軸扭曲補償](Axis_Twist_Compensation.md)：用於補償由於 X "
-"機架扭曲而導致不準確的探頭讀數的工具。"
+msgstr "[軸扭曲補償](Axis_Twist_Compensation.md)：用於補償由於 X 機架扭曲而導致不準確的探頭讀數的工具。"
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader."
@@ -249,6 +247,14 @@ msgid ""
 "[CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for "
 "troubleshooting CAN bus."
 msgstr "[CAN 匯流排故障排除](CANBUS_Troubleshooting.md)：CAN 匯流排故障排除的提示。"
+
+#: docs/Overview.md:block 6 (unordered list)
+msgid "[Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper."
+msgstr ""
+
+#: docs/Overview.md:block 10 (unordered list)
+msgid "[Eddy Current Inductive probe](Eddy_Probe.md)"
+msgstr ""
 
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "

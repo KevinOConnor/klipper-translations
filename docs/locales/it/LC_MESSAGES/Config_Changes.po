@@ -1176,6 +1176,15 @@ msgstr ""
 msgid "20231110: Klipper v0.12.0 released."
 msgstr ""
 
+#: docs/Config_Changes.md:block 5 (paragraph)
+msgid ""
+"20240415: The `on_error_gcode` parameter in the `[virtual_sdcard]` config "
+"section now has a default. If this parameter is not specified it now "
+"defaults to `TURN_OFF_HEATERS`. If the previous behavior is desired (take no"
+" default action on an error during a virtual_sdcard print) then define "
+"`on_error_gcode` with an empty value."
+msgstr ""
+
 #~ msgid ""
 #~ "20211104: The \"step pulse duration\" option in \"make menuconfig\" has been"
 #~ " removed. A new `step_pulse_duration` setting in the [stepper config "

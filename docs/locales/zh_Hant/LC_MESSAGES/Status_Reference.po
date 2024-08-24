@@ -541,11 +541,6 @@ msgstr "以下資訊可在"
 msgid "`temperature`: The last read temperature from the sensor."
 msgstr "`temperature`：上一次從感測器讀取的溫度。"
 
-msgid ""
-"`humidity`, `pressure`, `gas`: The last read values from the sensor (only on"
-" bme280, htu21d, and lm75 sensors)."
-msgstr "`hemidity`、`pressure`和`gas`：感測器上一次讀取的值（僅在bme280、htu21d和lm75感測器上）。"
-
 msgid "temperature_fan"
 msgstr "temperature_fan"
 
@@ -1111,18 +1106,6 @@ msgid ""
 "`SCREWS_TILT_CALCULATE` command."
 msgstr ""
 
-#: docs/Status_Reference.md:block 110 (paragraph)
-msgid ""
-"[bme280 "
-"config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-"
-"sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), "
-"[lm75 config_section_name](Config_Reference.md#lm75-temperature-sensor), "
-"[temperature_host config_section_name](Config_Reference.md#host-temperature-"
-"sensor) and [temperature_combined "
-"config_section_name](Config_Reference.md#combined-temperature-sensor) "
-"objects:"
-msgstr ""
-
 #: docs/Status_Reference.md:block 120 (unordered list)
 msgid ""
 "`temperature`: The internal temperature reported by the driver. This field "
@@ -1166,6 +1149,41 @@ msgid ""
 "This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or "
 "`M204`) command alters them at run-time."
 msgstr ""
+
+#: docs/Status_Reference.md:block 113 (paragraph)
+msgid ""
+"[bme280 "
+"config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-"
+"sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), "
+"[sht3x config_section_name](Config_Reference.md#sht31-sensor), [lm75 "
+"config_section_name](Config_Reference.md#lm75-temperature-sensor), "
+"[temperature_host config_section_name](Config_Reference.md#host-temperature-"
+"sensor) and [temperature_combined "
+"config_section_name](Config_Reference.md#combined-temperature-sensor) "
+"objects:"
+msgstr ""
+
+#: docs/Status_Reference.md:block 114 (unordered list)
+msgid ""
+"`humidity`, `pressure`, `gas`: The last read values from the sensor (only on"
+" bme280, htu21d, sht3x and lm75 sensors)."
+msgstr ""
+
+#~ msgid ""
+#~ "`humidity`, `pressure`, `gas`: The last read values from the sensor (only on"
+#~ " bme280, htu21d, and lm75 sensors)."
+#~ msgstr "`hemidity`、`pressure`和`gas`：感測器上一次讀取的值（僅在bme280、htu21d和lm75感測器上）。"
+
+#~ msgid ""
+#~ "[bme280 "
+#~ "config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-"
+#~ "sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), "
+#~ "[lm75 config_section_name](Config_Reference.md#lm75-temperature-sensor), "
+#~ "[temperature_host config_section_name](Config_Reference.md#host-temperature-"
+#~ "sensor) and [temperature_combined "
+#~ "config_section_name](Config_Reference.md#combined-temperature-sensor) "
+#~ "objects:"
+#~ msgstr ""
 
 #~ msgid ""
 #~ "`max_velocity`, `max_accel`, `max_accel_to_decel`, `square_corner_velocity`:"

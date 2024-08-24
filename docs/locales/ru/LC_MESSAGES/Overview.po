@@ -12,13 +12,11 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-04-07 09:02+0000\n"
 "Last-Translator: Mika <akimivanov43@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/overview/"
-"ru/>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/overview/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
@@ -328,6 +326,14 @@ msgid ""
 msgstr ""
 "[CAN bus troubleshooting](CANBUS_Troubleshooting.md): Советы по устранению "
 "неполадок с шиной CAN."
+
+#: docs/Overview.md:block 6 (unordered list)
+msgid "[Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper."
+msgstr ""
+
+#: docs/Overview.md:block 10 (unordered list)
+msgid "[Eddy Current Inductive probe](Eddy_Probe.md)"
+msgstr ""
 
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "

@@ -182,18 +182,6 @@ msgstr ""
 "ou qui exécutent [candlelight firmware](https://github.com/candle-"
 "usb/candleLight_fw)."
 
-#: docs/CANBUS.md:block 9 (code)
-msgid ""
-"allow-hotplug can0\n"
-"iface can0 can static\n"
-"    bitrate 1000000\n"
-"    up ifconfig $IFACE txqueuelen 128\n"
-msgstr ""
-"allow-hotplug can0\n"
-"iface can0 can static\n"
-"    bitrate 1000000\n"
-"    up ifconfig $IFACE txqueuelen 128\n"
-
 #: docs/CANBUS.md:block 12 (paragraph)
 msgid ""
 "Note that some devices have a builtin 120 ohm resistor that can not be "
@@ -298,6 +286,25 @@ msgstr "Conseils pour le dépannage"
 #: docs/CANBUS.md:block 32 (paragraph)
 msgid "See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document."
 msgstr "Voir le document [Dépannage du Bus CAN](CANBUS_Troubleshooting.md)."
+
+#: docs/CANBUS.md:block 9 (code)
+msgid ""
+"allow-hotplug can0\n"
+"iface can0 can static\n"
+"    bitrate 1000000\n"
+"    up ip link set $IFACE txqueuelen 128\n"
+msgstr ""
+
+#~ msgid ""
+#~ "allow-hotplug can0\n"
+#~ "iface can0 can static\n"
+#~ "    bitrate 1000000\n"
+#~ "    up ifconfig $IFACE txqueuelen 128\n"
+#~ msgstr ""
+#~ "allow-hotplug can0\n"
+#~ "iface can0 can static\n"
+#~ "    bitrate 1000000\n"
+#~ "    up ifconfig $IFACE txqueuelen 128\n"
 
 #~ msgid ""
 #~ "In order to use a CAN bus, it is necessary to have a host adapter. There are"

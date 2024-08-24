@@ -1,10 +1,20 @@
-#
+# "Zs.Antal" <antonio092130@icloud.com>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-08-25 16:09+0000\n"
+"Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"eddy_probe/hu/>\n"
+"Language: hu\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.7.1-dev\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Eddy_Probe.md:block 1 (header)
 msgid "Eddy Current Inductive probe"
-msgstr ""
+msgstr "Örvényáramú induktív szonda"
 
 #: docs/Eddy_Probe.md:block 2 (paragraph)
 msgid ""
@@ -12,12 +22,16 @@ msgid ""
 "current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in "
 "Klipper."
 msgstr ""
+"Ez a dokumentum az [örvényáramú](https://en.wikipedia.org/wiki/Eddy_current) "
+"induktív szonda Klipperben történő használatát írja le."
 
 #: docs/Eddy_Probe.md:block 3 (paragraph)
 msgid ""
 "Currently, an eddy current probe can not be used for Z homing. The sensor "
 "can only be used for Z probing."
 msgstr ""
+"Jelenleg az örvényáramú szonda nem használható Z-kezdőpont felvételre. Az "
+"érzékelő csak Z-szondázásra használható."
 
 #: docs/Eddy_Probe.md:block 4 (paragraph)
 msgid ""
@@ -27,6 +41,11 @@ msgid ""
 " to require an `x_offset` and `y_offset`. If these values are not known, one"
 " should estimate the values during initial calibration."
 msgstr ""
+"Kezdd a [probe_eddy_current konfigurációs szakasz](Config_Reference."
+"md#probe_eddy_current) deklarálásával a printer.cfg fájlban. A `z_offset` "
+"értéket ajánlott 0,5 mm-re állítani. Jellemző, hogy az érzékelőnek szüksége "
+"van egy `x_offset` és egy `y_offset` értékre. Ha ezek az értékek nem "
+"ismertek, akkor a kezdeti kalibrálás során becsléssel adjuk meg az értékeket."
 
 #: docs/Eddy_Probe.md:block 5 (paragraph)
 msgid ""
@@ -40,6 +59,15 @@ msgid ""
 " completes, issue a `SAVE_CONFIG` command to save the results to the "
 "printer.cfg and restart."
 msgstr ""
+"A kalibrálás első lépése az érzékelő megfelelő DRIVE_CURRENT értékének "
+"meghatározása. Állítsd be a nyomtatót, és navigáld a nyomtatófejet úgy, hogy "
+"az érzékelő az ágy közepéhez közel, az ágy felett kb. 20 mm-re legyen. "
+"Ezután add ki az `LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` parancsot. "
+"Ha például a konfigurációs szakasz neve `[probe_eddy_current my_eddy_probe]`"
+", akkor az `LDC_CALIBRATE_DRIVE_CURRENT CHIP=my_eddy_probe` parancsot kell "
+"futtatni. Ez a parancs néhány másodperc alatt befejeződik. Miután "
+"befejeződött, adj ki egy `SAVE_CONFIG` parancsot az eredmények mentéséhez a "
+"printer.cfg fájlba, és indítsd újra."
 
 #: docs/Eddy_Probe.md:block 6 (paragraph)
 msgid ""
@@ -56,6 +84,18 @@ msgid ""
 "After the tool completes, issue a `SAVE_CONFIG` command to save the results "
 "to the printer.cfg and restart."
 msgstr ""
+"A kalibrálás második lépése az érzékelő leolvasásainak és a megfelelő Z "
+"magasságoknak a korrelálása. Állítsd be a nyomtatót, és navigáld a "
+"nyomtatófejet úgy, hogy a fúvóka az ágy közepéhez közel legyen. Ezután "
+"futtass egy `PROBE_EDDY_CURRENT_CALIBRATE CHIP=my_eddy_probe` parancsot. "
+"Miután a fej elindult, kövesd a [„a papír teszt”](Bed_Level.md#the-paper-"
+"test) pontban leírt lépéseket a fúvóka és az ágy közötti tényleges távolság "
+"meghatározásához az adott helyen. Ha ezek a lépések befejeződtek, akkor a "
+"pozíciót „ELFOGADHATJUK”. A gép ezután úgy mozgatja a nyomtatófejet, hogy az "
+"érzékelő a fúvóka korábbi helye fölé kerüljön, és lefuttat egy sor mozgást, "
+"hogy az érzékelőt a Z pozíciókkal korrelálja. Ez néhány percet vesz igénybe. "
+"Miután az eszköz befejezte a munkát, adj ki egy `SAVE_CONFIG` parancsot az "
+"eredmények mentéséhez a printer.cfg fájlba, és indítsd újra."
 
 #: docs/Eddy_Probe.md:block 7 (paragraph)
 msgid ""
@@ -66,12 +106,20 @@ msgid ""
 "`PROBE_EDDY_CURRENT_CALIBRATE` command (as described above) after making the"
 " change."
 msgstr ""
+"A kezdeti kalibrálás után érdemes ellenőrizni, hogy az `x_offset` és "
+"`y_offset` értékek pontosak-e. Kövesd a [szonda X- és Y-eltolásának "
+"kalibrálása](Probe_Calibrate.md#calibrating-probe-x-and-y-offsets) lépéseit. "
+"Ha az `x_offset` vagy az `y_offset` értéket módosítod, akkor a módosítás "
+"után feltétlenül futtasd a `PROBE_EDDY_CURRENT_CALIBRATE` parancsot (a fent "
+"leírtak szerint)."
 
 #: docs/Eddy_Probe.md:block 8 (paragraph)
 msgid ""
 "Once calibration is complete, one may use all the standard Klipper tools "
 "that use a Z probe."
 msgstr ""
+"A kalibrálás befejezése után a Z-szondát használó összes szabványos Klipper "
+"eszköz használható."
 
 #: docs/Eddy_Probe.md:block 9 (paragraph)
 msgid ""
@@ -82,10 +130,16 @@ msgid ""
 "important that calibration and probing is only done when the printer is at a"
 " stable temperature."
 msgstr ""
+"Vedd figyelembe, hogy az örvényáram-érzékelők (és általában az induktív "
+"szondák) érzékenyek a „termikus elhajlásra”. Vagyis a hőmérséklet változása "
+"a jelentett Z magasság változását eredményezheti. Az ágyfelület "
+"hőmérsékletének vagy a szenzor hardverhőmérsékletének változása torzíthatja "
+"az eredményeket. Fontos, hogy a kalibrálás és a szondázás csak akkor "
+"történjen, amikor a nyomtató stabil hőmérsékleten van."
 
 #: docs/Eddy_Probe.md:block 10 (header)
 msgid "Thermal Drift Calibration"
-msgstr ""
+msgstr "Termikus elhajlás kalibrálása"
 
 #: docs/Eddy_Probe.md:block 11 (paragraph)
 msgid ""
@@ -96,6 +150,13 @@ msgid ""
 "eddy current probe the `[temperature_probe]` section must share a name with "
 "the `[probe_eddy_current]` section. For example:"
 msgstr ""
+"Mint minden induktív szondánál, az örvényáramú szondáknál is jelentős a "
+"termikus elhajlás. Ha az örvényáramú szonda a tekercsen hőmérséklet-"
+"érzékelővel rendelkezik, akkor lehetőség van egy `[temperature_probe]-t "
+"konfigurálni a tekercs hőmérsékletének jelentésére és a szoftveres "
+"hajláskompenzáció engedélyezésére. A hőmérsékletmérő szonda és az "
+"örvényáramú szonda összekapcsolásához a `[temperature_probe]` szakasszal "
+"közös nevet kell adnia a `[probe_eddy_current]` szakasznak. Például:"
 
 #: docs/Eddy_Probe.md:block 12 (code)
 msgid ""
@@ -105,6 +166,11 @@ msgid ""
 "[temperature_probe my_probe]\n"
 "# temperature probe configuration...\n"
 msgstr ""
+"[probe_eddy_current my_probe]\n"
+"# eddy probe configuration...\n"
+"\n"
+"[temperature_probe my_probe]\n"
+"# temperature probe configuration...\n"
 
 #: docs/Eddy_Probe.md:block 13 (paragraph)
 msgid ""
@@ -114,6 +180,11 @@ msgid ""
 "`extruder_heating_z`, and `calibration_bed_temp` options, as doing so will "
 "automate some of the steps outlined below."
 msgstr ""
+"A [konfigurációs hivatkozás](Config_Reference.md#temperature_probe) további "
+"részleteket tartalmaz a `temperature_probe` konfigurálásáról. Javasoljuk a "
+"`calibration_position`, `calibration_extruder_temp`, `extruder_heating_z` és "
+"`calibration_bed_temp` opciók konfigurálását, mivel ez automatizálja az "
+"alább ismertetett lépések egy részét."
 
 #: docs/Eddy_Probe.md:block 14 (paragraph)
 msgid ""
@@ -123,6 +194,12 @@ msgid ""
 "on your system, the `temperature_probe` module offers a manual calibration "
 "procedure via the `TEMPERATURE_PROBE_CALIBRATE` gcode command."
 msgstr ""
+"Az örvényszondák gyártói kínálhatnak készleten lévő elhajlás kalibrációt, "
+"amelyet manuálisan hozzá lehet adni a `[probe_eddy_current]` szakasz "
+"`drift_calibration` opciójához. Ha nem, vagy ha a készletkalibráció nem "
+"működik jól a rendszereden, a `temperature_probe` modul a "
+"`TEMPERATURE_PROBE_CALIBRATE` G-kód parancs segítségével manuális "
+"kalibrálási eljárást kínál."
 
 #: docs/Eddy_Probe.md:block 15 (paragraph)
 msgid ""
@@ -134,12 +211,20 @@ msgid ""
 "printer cold and finish with the coil at the maximum temperature it can "
 "reach."
 msgstr ""
+"A kalibrálás elvégzése előtt a felhasználónak tudnia kell, hogy mi a "
+"maximálisan elérhető hőmérsékletű szondatekercs hőmérséklete. Ezt a "
+"hőmérsékletet kell használni a `TEMPERATURE_PROBE_CALIBRATE` parancs `TARGET`"
+" paraméterének beállításához. A cél a lehető legszélesebb hőmérséklet-"
+"tartományban történő kalibrálás, ezért ajánlatos, hogy hidegen kezdjük, és a "
+"tekercset a maximálisan elérhető hőmérsékleten fejezzük be a kalibrálást."
 
 #: docs/Eddy_Probe.md:block 16 (paragraph)
 msgid ""
 "Once a `[temperature_probe]` is configured, the following steps may be taken"
 " to perform thermal drift calibration:"
 msgstr ""
+"Miután a `[temperature_probe]`-t konfiguráltuk, a következő lépésekkel "
+"végezhető el a termikus elhajlás kalibrálás:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -148,14 +233,20 @@ msgid ""
 "temperature during calibration which is necessary to perform thermal drift "
 "compensation."
 msgstr ""
+"A szondát a `PROBE_EDDY_CURRENT_CALIBRATE` használatával kell kalibrálni, "
+"amikor a `[temperature_probe]`-t konfiguráljuk és összekapcsoljuk. Ez "
+"rögzíti a hőmérsékletet a kalibrálás során, ami a termikus elhajlás "
+"kompenzáció elvégzéséhez szükséges."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "Make sure the nozzle is free of debris and filament."
-msgstr ""
+msgstr "Győződj meg róla, hogy a fúvóka mentes a törmeléktől és a szálaktól."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "The bed, nozzle, and probe coil should be cold prior to calibration."
 msgstr ""
+"Az ágynak, a fúvókának és a szondatekercsnek hidegnek kell lennie a "
+"kalibrálás előtt."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -163,11 +254,16 @@ msgid ""
 "`calibration_extruder_temp`, and `extruder_heating_z` options in "
 "`[temperature_probe]` are **NOT** configured:"
 msgstr ""
+"A következő lépésekre akkor van szükség, ha a `[temperature_probe]`-ban a "
+"`calibration_position`, `calibration_extruder_temp` és `extruder_heating_z` "
+"opciók **NINCSENEK** beállítva:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "Move the tool to the center of the bed. Z should be 30mm+ above the bed."
 msgstr ""
+"Vidd a nyomtatófejet az ágy közepére. A Z-nek az ágy felett 30 mm-nél "
+"nagyobb magasságban kell lennie."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -175,12 +271,18 @@ msgid ""
 "150-170C should be sufficient for most configurations. The purpose of "
 "heating the extruder is to avoid nozzle expansion during calibration."
 msgstr ""
+"Fűtsd fel az extrudert a maximális biztonságos ágyhőmérséklet feletti "
+"hőmérsékletre. A legtöbb konfigurációhoz 150-170C elegendőnek kell lennie. "
+"Az extruder felmelegítésének célja a fúvóka tágulásának elkerülése a "
+"kalibrálás során."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When the extruder temperature has settled, move the Z axis down to about 1mm"
 " above the bed."
 msgstr ""
+"Amikor az extruder hőmérséklete beállt, mozgasd a Z tengelyt körülbelül 1 mm-"
+"rel az ágy fölé."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -192,6 +294,13 @@ msgid ""
 "extruder to the specified temperature the tool will move to the Z value "
 "specified by the`calibration_position`."
 msgstr ""
+"Elhajlás kalibrálás megkezdése. Ha a szonda neve `my_probe` és a maximálisan "
+"elérhető szondahőmérséklet 80C, a megfelelő G-kód parancs a `"
+"TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`. Ha beállítjuk, a "
+"nyomtatófejet a `calibration_position` által megadott X-Y koordinátára, "
+"akkor az `extruder_heating_z` által megadott Z értékre fog mozogni. Miután "
+"az extruder a megadott hőmérsékletre melegedett, a szerszám a `"
+"calibration_position ` által megadott Z értékre mozog."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -199,6 +308,9 @@ msgid ""
 " paper test and `ACCEPT`. The calibration procedure will take the first set "
 "of samples with the probe then park the probe in the heating position."
 msgstr ""
+"Az eljárás kézi szondát fog kérni. Végezd el a kézi mérést a papírteszttel "
+"és az `ACCEPT` gombbal. A kalibrálási eljárás a szondával elvégzi az első "
+"mintasorozatot, majd a szondát a fűtési pozícióban leállítja."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -206,6 +318,9 @@ msgid ""
 "the maximum safe temperature. Otherwise this step will be performed "
 "automatically."
 msgstr ""
+"Ha a `calibration_bed_temp` értéke **NINCSEN** beállítva, kapcsold be az ágy "
+"fűtését a maximális biztonságos hőmérsékletre. Ellenkező esetben ez a lépés "
+"automatikusan végrehajtásra kerül."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -216,34 +331,49 @@ msgid ""
 "`STEP` value, a value too high may request too few samples resulting in a "
 "poor calibration."
 msgstr ""
+"Alapértelmezés szerint a kalibrációs eljárás a minták között 2C-nként kézi "
+"szondát kér, amíg a `TARGET` el nem éri a célt. A minták közötti hőmérséklet-"
+"különbség testre szabható a `TEMPERATURE_PROBE_CALIBRATE` paraméter `STEP` "
+"beállításával. Az egyéni `STEP` érték beállításakor óvatosan kell eljárni, a "
+"túl magas érték túl kevés mintát kérhet, ami rossz kalibrációt eredményezhet."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "The following additional gcode commands are available during drift "
 "calibration:"
 msgstr ""
+"Az elhajlás kalibrálás során a következő további G-kód parancsok állnak "
+"rendelkezésre:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_NEXT` may be used to force a new sample before the step "
 "delta has been reached."
 msgstr ""
+"A `TEMPERATURE_PROBE_NEXT` használható egy új minta kényszerítésére a lépés "
+"delta elérése előtt."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_COMPLETE` may be used to complete calibration before the "
 "`TARGET` has been reached."
 msgstr ""
+"A `TEMPERATURE_PROBE_COMPLETE` használható a kalibrálás befejezéséhez a "
+"`TARGET` elérése előtt."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "`ABORT` may be used to end calibration and discard results."
 msgstr ""
+"Az `ABORT` a kalibrálás befejezéséhez és az eredmények elvetéséhez "
+"használható."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When calibration is finished use `SAVE_CONFIG` to store the drift "
 "calibration."
 msgstr ""
+"Ha a kalibrálás befejeződött, használd a `SAVE_CONFIG` funkciót az elhajlás "
+"kalibrálás tárolásához."
 
 #: docs/Eddy_Probe.md:block 18 (paragraph)
 msgid ""
@@ -251,3 +381,6 @@ msgid ""
 "challenging and time consuming than most other procedures. It may require "
 "practice and several attempts to achieve an optimal calibration."
 msgstr ""
+"Amint arra következtethetünk, a fent vázolt kalibrációs folyamat nagyobb "
+"kihívást jelent és időigényesebb, mint a legtöbb más eljárás. Az optimális "
+"kalibrálás eléréséhez gyakorlatra és többszöri próbálkozásra lehet szükség."

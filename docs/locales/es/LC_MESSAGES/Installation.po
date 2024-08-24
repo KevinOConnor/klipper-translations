@@ -1,6 +1,7 @@
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2021.
 # Alberto <aru_hackZ.official@zohomail.eu>, 2022.
 # Pepe <ec288eb6-6bd6-473b-93a5-5c8fb60ceb16@simplelogin.fr>, 2023.
+# gallegonovato <fran-carro@hotmail.es>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"

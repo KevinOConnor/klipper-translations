@@ -1,10 +1,20 @@
-#
+# "Neko.vecter" <Vecterfang@icloud.com>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-08-25 16:09+0000\n"
+"Last-Translator: \"Neko.vecter\" <Vecterfang@icloud.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"klipper/eddy_probe/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.7.1-dev\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Eddy_Probe.md:block 1 (header)
 msgid "Eddy Current Inductive probe"
-msgstr ""
+msgstr "Eddy 感应涡流探针"
 
 #: docs/Eddy_Probe.md:block 2 (paragraph)
 msgid ""
@@ -12,12 +22,14 @@ msgid ""
 "current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in "
 "Klipper."
 msgstr ""
+"这个文档解释了如何在klipper 中使用 [eddy 涡流传感器](https://en.wikipedia."
+"org/wiki/Eddy_current)。"
 
 #: docs/Eddy_Probe.md:block 3 (paragraph)
 msgid ""
 "Currently, an eddy current probe can not be used for Z homing. The sensor "
 "can only be used for Z probing."
-msgstr ""
+msgstr "目前eddy涡流传感器不能作为z 限位传感器使用。这个传感器只能用作z探针。"
 
 #: docs/Eddy_Probe.md:block 4 (paragraph)
 msgid ""
@@ -27,6 +39,9 @@ msgid ""
 " to require an `x_offset` and `y_offset`. If these values are not known, one"
 " should estimate the values during initial calibration."
 msgstr ""
+"首先在 printer.cfg 文件中声明 [probe_eddy_current 配置部分](Config_Reference."
+"md#probe_eddy_current)。建议将 `z_offset` 设置为 0.5mm。传感器通常需要 "
+"`x_offset` 和 `y_offset`。如果不知道这些值，则应在初始校准时估算这些值。"
 
 #: docs/Eddy_Probe.md:block 5 (paragraph)
 msgid ""
@@ -40,6 +55,14 @@ msgid ""
 " completes, issue a `SAVE_CONFIG` command to save the results to the "
 "printer.cfg and restart."
 msgstr ""
+"校准的第一步是确定传感器的适当 "
+"DRIVE_CURRENT。将打印机调至原位，并移动工具头，"
+"使传感器靠近床面中心并高出床面约 20 毫米。然后使用 `"
+"LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` "
+"命令。例如，如果配置部分名为`[probe_eddy_current my_eddy_probe]`，则应运行 `"
+"LDC_CALIBRATE_DRIVE_CURRENT "
+"CHIP=my_eddy_probe`。该命令应在几秒钟内完成。完成后，使用 `SAVE_CONFIG` "
+"命令将结果保存到 printer.cfg 中，然后重新启动。"
 
 #: docs/Eddy_Probe.md:block 6 (paragraph)
 msgid ""
@@ -56,6 +79,14 @@ msgid ""
 "After the tool completes, issue a `SAVE_CONFIG` command to save the results "
 "to the printer.cfg and restart."
 msgstr ""
+"校准的第二步是将传感器读数与相应的 Z "
+"高度相关联。将打印机调回原位，并移动工具头，使喷嘴靠近床面中心。然后运行 `"
+"PROBE_EDDY_CURRENT_CALIBRATE CHIP=my_eddy_probe` "
+"命令。工具启动后，按照[“纸张测试”](Bed_Level.md#the-paper-"
+"test)中描述的步骤确定给定位置上喷嘴和床面之间的实际距离。完成这些步骤后，"
+"就可以 `ACCEPT` 该位置。然后，工具将移动工具头，使传感器位于喷嘴位置的上方，"
+"并运行一系列运动，将传感器与 Z 位置相关联。这需要几分钟时间。工具完成后，"
+"发出 `SAVE_CONFIG` 命令将结果保存到 printer.cfg 中，然后重新启动。"
 
 #: docs/Eddy_Probe.md:block 7 (paragraph)
 msgid ""
@@ -66,12 +97,16 @@ msgid ""
 "`PROBE_EDDY_CURRENT_CALIBRATE` command (as described above) after making the"
 " change."
 msgstr ""
+"在第一次校准后最好验证 `x_offset` 和 `y_offset` 是否准确。请按照[校准探针 X "
+"Y 偏移](Probe_Calibrate.md#calibrating-probe-x and-y-offsets)的步骤操作。"
+"如果修改了 `x_offset` 或 `y_offset` ，请务必在修改后运行 "
+"`PROBE_EDDY_CURRENT_CALIBRATE` 命令（如上所述）。"
 
 #: docs/Eddy_Probe.md:block 8 (paragraph)
 msgid ""
 "Once calibration is complete, one may use all the standard Klipper tools "
 "that use a Z probe."
-msgstr ""
+msgstr "一旦校准完成，可以使用所有标准的Klipper 工具命令使用z探针。"
 
 #: docs/Eddy_Probe.md:block 9 (paragraph)
 msgid ""
@@ -82,10 +117,13 @@ msgid ""
 "important that calibration and probing is only done when the printer is at a"
 " stable temperature."
 msgstr ""
+"请注意，涡流传感器（以及一般的感应探针）容易受到 “温飘”的影响。也就是说，"
+"温度变化会导致报告的 Z 高度发生变化。床面温度或传感器硬件温度的变化都会导致结"
+"果偏差。重要的是，校准和探测只能在打印机温度稳定时进行。"
 
 #: docs/Eddy_Probe.md:block 10 (header)
 msgid "Thermal Drift Calibration"
-msgstr ""
+msgstr "温度漂移校准"
 
 #: docs/Eddy_Probe.md:block 11 (paragraph)
 msgid ""
@@ -105,6 +143,11 @@ msgid ""
 "[temperature_probe my_probe]\n"
 "# temperature probe configuration...\n"
 msgstr ""
+"[probe_eddy_current my_probe]\n"
+"# eddy 探针配置文件\n"
+"\n"
+"[temperature_probe my_probe]\n"
+"# 温度探针配置文件\n"
 
 #: docs/Eddy_Probe.md:block 13 (paragraph)
 msgid ""

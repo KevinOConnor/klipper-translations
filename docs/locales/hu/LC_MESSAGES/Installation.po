@@ -1,4 +1,5 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"

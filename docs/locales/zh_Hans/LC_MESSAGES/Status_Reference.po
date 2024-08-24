@@ -1,16 +1,17 @@
-# Yifei Ding <dingyifeiair@gmail.com>, 2021, 2022, 2023.
+# Yifei Ding <dingyifeiair@gmail.com>, 2021, 2022, 2023, 2024.
 # Hosted Weblate <mfvotmjhcj@iubridge.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-02-18 14:02+0000\n"
-"Last-Translator: Hosted Weblate <mfvotmjhcj@iubridge.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/klipper/status_reference/zh_Hans/>\n"
+"PO-Revision-Date: 2024-08-25 16:09+0000\n"
+"Last-Translator: Yifei Ding <dingyifeiair@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"klipper/status_reference/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 msgid ""
 "This document is a reference of printer status information available in "
@@ -1179,7 +1180,7 @@ msgstr "`Carrance_1`：马车1的模式，可选值为：Inactive、PRIMARY、CO
 
 #: docs/Status_Reference.md:block 90 (header)
 msgid "pwm_cycle_time"
-msgstr ""
+msgstr "pwm_cycle_time"
 
 #: docs/Status_Reference.md:block 91 (paragraph)
 msgid ""

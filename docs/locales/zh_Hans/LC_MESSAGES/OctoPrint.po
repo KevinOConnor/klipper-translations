@@ -1,10 +1,20 @@
-#
+# "Neko.vecter" <Vecterfang@icloud.com>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-09-02 21:09+0000\n"
+"Last-Translator: \"Neko.vecter\" <Vecterfang@icloud.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
+"projects/klipper/octoprint/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.8-dev\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/OctoPrint.md:block 1 (header)
 msgid "OctoPrint for Klipper"
-msgstr ""
+msgstr "OctoPrint for Klipper"
 
 #: docs/OctoPrint.md:block 2 (paragraph)
 msgid ""
@@ -12,10 +22,12 @@ msgid ""
 "original front end for Klipper. This document will give a brief overview of "
 "installing with this option."
 msgstr ""
+"Klipper 有几个不同的前端选择，Octoprint 是最早也是最原始的Klipper 前端。"
+"这篇文档会给一个大致的概览关于如何在Octoprint 上安装Klipper。"
 
 #: docs/OctoPrint.md:block 3 (header)
 msgid "Install with OctoPi"
-msgstr ""
+msgstr "在OctoPi 上进行安装"
 
 #: docs/OctoPrint.md:block 4 (paragraph)
 msgid ""
@@ -24,6 +36,9 @@ msgid ""
 "releases](https://github.com/guysoft/OctoPi/releases) for release "
 "information."
 msgstr ""
+"首先在 Raspberry Pi 上安装 [OctoPi](https://github.com/guysoft/OctoPi)。使用 "
+"OctoPi v0.17.0 或更高版本 - 有关版本信息，请参考 [OctoPi "
+"release](https://github.com/guysoft/OctoPi/releases)。"
 
 #: docs/OctoPrint.md:block 5 (paragraph)
 msgid ""

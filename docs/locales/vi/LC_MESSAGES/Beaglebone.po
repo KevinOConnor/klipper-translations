@@ -1,13 +1,21 @@
-#
+# "N. Hao" <nguyenviethao2002@gmail.com>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-09-05 07:09+0000\n"
+"Last-Translator: \"N. Hao\" <nguyenviethao2002@gmail.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/klipper/"
+"beaglebone/vi/>\n"
 "Language: vi\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.7.2-rc\n"
 
 #: docs/Beaglebone.md:block 1 (header)
+#, fuzzy
 msgid "Beaglebone"
-msgstr ""
+msgstr "Beaglebone"
 
 #: docs/Beaglebone.md:block 2 (paragraph)
 msgid ""

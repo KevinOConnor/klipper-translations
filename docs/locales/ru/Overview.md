@@ -13,6 +13,7 @@
 ## Установка и настройка
 
 - [Установка](Installation.md): Гайд по установке Klipper.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Справочник по конфигурации](Config_Reference.md): Описание параметров конфигурации.
    - [Дистанция поворота](Rotation_Distance.md): Расчет параметра дистанции попорота(Rotation_distance).
 - [Проверки конфигурации](Config_checks.md): Проверка основных настроек контактов в файле конфигурации.
@@ -62,3 +63,4 @@
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Советы по устранению неполадок с шиной CAN.
 - [TSL1401CL датчик ширины нити](TSL1401CL_Filament_Width_Sensor.md)
 - [Датчик ширины нити Холла](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

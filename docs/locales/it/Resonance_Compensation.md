@@ -27,7 +27,7 @@ Carica il modello di prova per il ringing, che può essere trovato in [docs/prin
 Innanzitutto, misura la **frequenza di ringing**.
 
 1. Se il parametro `square_corner_velocity` è stato modificato, ripristinalo a 5.0 . Non è consigliabile aumentarlo quando si utilizza l'input shaper perché può causare un maggiore smussamento smoothing delle parti: è invece meglio utilizzare un valore di accelerazione più elevato.
-1. Disable the `miminum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
+1. Disable the `minimum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Disabilita la Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. Se hai già aggiunto la sezione `[input_shaper]` a printer.cfg, esegui il comando `SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0`. Se ricevi l'errore "Comando sconosciuto- Unknown command", puoi tranquillamente ignorarlo a questo punto e continuare con le misurazioni.
 1. Eseguire il comando: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Fondamentalmente, cerchiamo di rendere più pronunciato il ringing impostando diversi valori elevati per l'accelerazione. Questo comando aumenterà l'accelerazione ogni 5 mm a partire da 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 e così via fino a 7000 mm/sec^2 per l'ultima fascia.

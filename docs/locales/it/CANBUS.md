@@ -18,7 +18,7 @@ In order to use a CAN bus, it is necessary to have a host adapter. It is recomme
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 ## Resistori di terminazione
@@ -71,7 +71,7 @@ Alcune note importanti quando si utilizza questa modalità:
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 * The "bridge mcu" is not actually on the CAN bus. Messages to and from the bridge mcu will not be seen by other adapters that may be on the CAN bus.

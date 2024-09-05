@@ -13,6 +13,7 @@
 ## 安装和配置
 
 - [安装](Installation.md)：Klipper 安装指南。
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [配置参考](Config_Reference.md)：配置参数说明。
    - [旋转距离](Rotation_Distance.md)：计算旋转距离(rotation_distance)步进参数。
 - [检查配置](Config_checks.md)：验证配置文件中的基本引脚设置。
@@ -62,3 +63,4 @@
    - [CAN Bus故障排除](CanBus_Troublrouoting.md)：CAN Bus故障排除提示。
 - [TSL1401CL 耗材线径传感器](TSL1401CL_Filament_Width_Sensor.md)
 - [霍尔打印丝宽度传感器](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

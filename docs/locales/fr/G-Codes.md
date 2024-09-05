@@ -589,6 +589,18 @@ Les commandes suivantes sont disponibles lorsqu'une section [probe config](Confi
 
 `Z_OFFSET_APPLY_PROBE` : Prend le décalage actuel du Gcode Z (alias, babystepping), et le soustrait du z_offset de la sonde. Cela permet de prendre une valeur de babystepping fréquemment utilisée, et de la rendre permanente. Nécessite un `SAVE_CONFIG` pour prendre effet.
 
+### [probe_eddy_current]
+
+The following commands are available when a [probe_eddy_current config section](Config_Reference.md#probe_eddy_current) is enabled.
+
+#### PROBE_EDDY_CURRENT_CALIBRATE
+
+`PROBE_EDDY_CURRENT_CALIBRATE CHIP=<config_name>`: This starts a tool that calibrates the sensor resonance frequencies to corresponding Z heights. The tool will take a couple of minutes to complete. After completion, use the SAVE_CONFIG command to store the results in the printer.cfg file.
+
+#### LDC_CALIBRATE_DRIVE_CURRENT
+
+`LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` This tool will calibrate the ldc1612 DRIVE_CURRENT0 register. Prior to using this tool, move the sensor so that it is near the center of the bed and about 20mm above the bed surface. Run this command to determine an appropriate DRIVE_CURRENT for the sensor. After running this command use the SAVE_CONFIG command to store that new setting in the printer.cfg config file.
+
 ### [pwm_cycle_time]
 
 The following command is available when a [pwm_cycle_time config section](Config_Reference.md#pwm_cycle_time) is enabled.
@@ -813,3 +825,27 @@ Les commandes suivantes sont disponibles lorsque la section [z_tilt config](Conf
 #### Z_TILT_ADJUST
 
 `Z_TILT_ADJUST [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`: Cette commande sondera les points spécifiés dans la configuration, puis effectuera des ajustements indépendants sur chaque stepper Z pour compenser l'inclinaison. Voir la commande PROBE pour plus de détails sur les paramètres de sonde facultatifs. La valeur facultative `HORIZONTAL_MOVE_Z` remplace l'option `horizontal_move_z` spécifiée dans le fichier de configuration.
+
+### [temperature_probe]
+
+The following commands are available when a [temperature_probe config section](Config_Reference.md#temperature_probe) is enabled.
+
+#### TEMPERATURE_PROBE_CALIBRATE
+
+`TEMPERATURE_PROBE_CALIBRATE [PROBE=<probe name>] [TARGET=<value>] [STEP=<value>]`: Initiates probe drift calibration for eddy current based probes. The `TARGET` is a target temperature for the last sample. When the temperature recorded during a sample exceeds the `TARGET` calibration will complete. The `STEP` parameter sets temperature delta (in C) between samples. After a sample has been taken, this delta is used to schedule a call to `TEMPERATURE_PROBE_NEXT`. The default `STEP` is 2.
+
+#### TEMPERATURE_PROBE_NEXT
+
+`TEMPERATURE_PROBE_NEXT`: After calibration has started this command is run to take the next sample. It is automatically scheduled to run when the delta specified by `STEP` has been reached, however its also possible to manually run this command to force a new sample. This command is only available during calibration.
+
+#### TEMPERATURE_PROBE_COMPLETE:
+
+`TEMPERATURE_PROBE_COMPLETE`: Can be used to end calibration and save the current result before the `TARGET` temperature is reached. This command is only available during calibration.
+
+#### ABORT
+
+`ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
+
+### TEMPERATURE_PROBE_ENABLE
+
+`TEMPERATURE_PROBE_ENABLE ENABLE=[0|1]`: Sets temperature drift compensation on or off. If ENABLE is set to 0, drift compensation will be disabled, if set to 1 it is enabled.

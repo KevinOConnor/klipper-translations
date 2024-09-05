@@ -299,10 +299,10 @@ The following information is available in [pwm_cycle_time some_name](Config_Refe
 
 以下信息可在
 
-[BME280 config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-sensor)，[htu21d config_section_name(Config_Reference.md#htu21d-sensor)，[lm75 config_section_name](Config_Reference.md#lm75-temperaturesensor)，[温度_主机config_section_name](Config_Reference.md#host-temperature-sensor) 和[温度_组合config_section_name](Config_Reference.md#combined-temperature-sensor) 对象：
+[bme280 config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), [sht3x config_section_name](Config_Reference.md#sht31-sensor), [lm75 config_section_name](Config_Reference.md#lm75-temperature-sensor), [temperature_host config_section_name](Config_Reference.md#host-temperature-sensor) and [temperature_combined config_section_name](Config_Reference.md#combined-temperature-sensor) objects:
 
 - `temperature`：上一次从传感器读取的温度。
-- `hemidity`、`pressure`和`gas`：传感器上一次读取的值（仅在bme280、htu21d和lm75传感器上）。
+- `humidity`, `pressure`, `gas`: The last read values from the sensor (only on bme280, htu21d, sht3x and lm75 sensors).
 
 ## temperature_fan
 

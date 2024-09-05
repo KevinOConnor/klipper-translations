@@ -377,7 +377,7 @@ Accel_PER_HZ：50#默认为75。
 TEST_RESONANCES AXIS=Y
 ```
 
-这将生成2个CSV文件（`/tmp/reonances_x_*.CSV`和`/tmp/Reonances_y_*.CSV'）。这些文件可以在树莓派上使用独立脚本进行处理。要执行此操作，请运行以下命令：
+This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and `/tmp/resonances_y_*.csv`). These files can be processed with the stand-alone script on a Raspberry Pi. This script is intended to be run with a single CSV file for each axis measured, although it can be used with multiple CSV files if you desire to average the results. Averaging results can be useful, for example, if resonance tests were done at multiple test points. Delete the extra CSV files if you do not desire to average them.
 
 ```
 ~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png

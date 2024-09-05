@@ -13,6 +13,7 @@
 ## Telepítés és Konfiguráció
 
 - [Telepítés](Installation.md): Klipper telepítési útmutató.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Konfigurációs hivatkozás](Config_Reference.md): A konfigurációs paraméterek leírása.
    - [Forgatási távolság](Rotation_Distance.md): A rotation_distance léptető paraméter kiszámítása.
 - [Konfigurációs ellenőrzések](Config_checks.md): Alapvető tűbeállítások ellenőrzése a konfigurációs fájlban.
@@ -62,3 +63,4 @@
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tippek a CAN-busz hibaelhárításához.
 - [TSL1401CL szálszélesség érzékelő](TSL1401CL_Filament_Width_Sensor.md)
 - [Hall szálszélesség érzékelő](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

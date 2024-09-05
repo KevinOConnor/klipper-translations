@@ -18,7 +18,7 @@ Il faut aussi configurer le système d'exploitation hôte pour utiliser l'adapta
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 ## Résistances de terminaison
@@ -71,7 +71,7 @@ Quelques remarques importantes lors de l'utilisation de ce mode :
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 * Le « pont mcu » n'est pas en fait sur le bus CAN. Les messages entrant et sortant du bridge mcu ne seront pas vus par les autres adaptateurs présents sur le bus CAN.

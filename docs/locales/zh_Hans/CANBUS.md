@@ -18,7 +18,7 @@ Klipper目前支持STM32、SAME5x和rp2040芯片上的CAN。此外，微控制�
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 ## 终端电阻
@@ -71,7 +71,7 @@ canbus_uuid: 11aa22bb33cc
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 * “桥接MCU”实际上并不在CAN总线上。可能位于CAN总线上的其他适配器不会看到进出桥接器MCU的消息。

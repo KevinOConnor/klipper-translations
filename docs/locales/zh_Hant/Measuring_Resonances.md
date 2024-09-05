@@ -377,7 +377,7 @@ probe_points: ...
 TEST_RESONANCES AXIS=Y
 ```
 
-這將生成 2 個 CSV 文件（`/tmp/resonances_x_*.csv` 和 `/tmp/resonances_y_*.csv`）。可以使用 Raspberry Pi 上的獨立腳本處理這些文件。為此，請運行以下命令：
+This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and `/tmp/resonances_y_*.csv`). These files can be processed with the stand-alone script on a Raspberry Pi. This script is intended to be run with a single CSV file for each axis measured, although it can be used with multiple CSV files if you desire to average the results. Averaging results can be useful, for example, if resonance tests were done at multiple test points. Delete the extra CSV files if you do not desire to average them.
 
 ```
 ~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png

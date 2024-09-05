@@ -13,6 +13,7 @@ Velkommen til Klipper-dokumentasjonen. Hvis du er ny kan du begynne med [funksjo
 ## Installation and Configuration
 
 - [Installation](Installation.md): Guide to installing Klipper.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Config Reference](Config_Reference.md): Description of config parameters.
    - [Rotation Distance](Rotation_Distance.md): Calculating the rotation_distance stepper parameter.
 - [Config checks](Config_checks.md): Verify basic pin settings in the config file.
@@ -62,3 +63,4 @@ Velkommen til Klipper-dokumentasjonen. Hvis du er ny kan du begynne med [funksjo
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
 - [TSL1401CL filament width sensor](TSL1401CL_Filament_Width_Sensor.md)
 - [Hall filament width sensor](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

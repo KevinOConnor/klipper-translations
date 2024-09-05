@@ -13,6 +13,7 @@ Benvingut a la documentació de Klipper. Si comences amb Klipper, comença llegi
 ## Instal·lació i configuració
 
 - [Instal·lació](Installation.md): Guia per instal·lar el Klipper.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Referencies per a la configuració](Config_Reference.md): Descripció dels paràmetres de configuració.
    - [Distància de rotació](Rotation_Distance.md): Calculant el paràmetre rotation_distance del motor pas a pas.
 - [Validació de la configuració](Config_checks.md): Verificar les configuracions bàsiques de pins en el fitxer de configuració.
@@ -62,3 +63,4 @@ Benvingut a la documentació de Klipper. Si comences amb Klipper, comença llegi
    - [Resolució de problemes del bus CAN](CANBUS_Troubleshooting.md): Consells per resoldre problemes del bus CAN.
 - [Sensor d'amplada del filament TSL1401CL](TSL1401CL_Filament_Width_Sensor.md)
 - [Sensor d'efecte Hall d'amplada de filament](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

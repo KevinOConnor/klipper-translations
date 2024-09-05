@@ -13,6 +13,7 @@ Klipperドキュメントへようこそ。Klipperが初めての方は [機能�
 ## インストールと設定
 
 - [インストール](Installation.md): Klipperのインストールガイドです。
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Config参照情報](Config_Reference.md): Configの各種パラメータの説明です。
    - [Rotation Distance](Rotation_Distance.md): ステッパーモーターの設定で必要な rotation_distanceの計算について。
 - [設定確認](Config_checks.md): Configファイルのピン設定の基本的な確認方法について。
@@ -62,3 +63,4 @@ Klipperドキュメントへようこそ。Klipperが初めての方は [機能�
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): CAN busのトラブルシューティングのためのヒント。
 - [TSL1401CLフィラメント径センサー](TSL1401CL_Filament_Width_Sensor.md)
 - [ホール素子フィラメント径センサー](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

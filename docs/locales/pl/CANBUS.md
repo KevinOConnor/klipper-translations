@@ -18,7 +18,7 @@ Konieczne jest także skonfigurowanie systemu operacyjnego hosta do korzystania 
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 ## Terminating Resistors
@@ -71,7 +71,7 @@ Some important notes when using this mode:
 allow-hotplug can0
 iface can0 can static
     bitrate 1000000
-    up ifconfig $IFACE txqueuelen 128
+    up ip link set $IFACE txqueuelen 128
 ```
 
 * The "bridge mcu" is not actually on the CAN bus. Messages to and from the bridge mcu will not be seen by other adapters that may be on the CAN bus.

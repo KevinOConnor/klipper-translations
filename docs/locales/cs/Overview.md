@@ -13,6 +13,7 @@ Vítejte v dokumentaci ke Klipperu. Pokud s Klipprem začínáte, začněte s do
 ## Instalace a konfigurace
 
 - [Installation](Installation.md): Průvodce instalací Klipperu.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Config Reference](Config_Reference.md): Popis konfiguračních parametrů.
    - [Rotation Distance](Rotation_Distance.md): Výpočet parametru rotation_distance krokového motoru.
 - [Config checks](Config_checks.md): Ověřte základní nastavení pinů v konfiguračním souboru.
@@ -62,3 +63,4 @@ Vítejte v dokumentaci ke Klipperu. Pokud s Klipprem začínáte, začněte s do
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
 - [TSL1401CL filament width sensor](TSL1401CL_Filament_Width_Sensor.md)
 - [Hall filament width sensor](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

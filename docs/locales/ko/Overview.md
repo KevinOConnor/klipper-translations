@@ -13,6 +13,7 @@ Klipper 에 오신것을 환영합니다. Klipper를 처음 사용하는 경우�
 ## 설치 및 구성
 
 - [설치](Installation.md): 클리퍼 설치 안내입니다.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Config Reference](Config_Reference.md): config 매개변수에 대한 설명.
    - [Rotation Distance](Rotation_Distance.md): rotation_distance 스테퍼 모터 매개변수 계산.
 - [Config checks](Config_checks.md): cofnig 파일에서 기본 핀 설정 확인.
@@ -62,3 +63,4 @@ Klipper 에 오신것을 환영합니다. Klipper를 처음 사용하는 경우�
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
 - [TSL1401CL 필라멘트 폭 센서](TSL1401CL_Filament_Width_Sensor.md)
 - [홀 필라멘트 폭 센서](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

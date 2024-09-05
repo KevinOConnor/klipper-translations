@@ -861,6 +861,13 @@ max_temp:
 #adaptive_margin:
 #   An optional margin (in mm) to be added around the bed area used by
 #   the defined print objects when generating an adaptive mesh.
+#scan_overshoot:
+#  The maximum amount of travel (in mm) available outside of the mesh.
+#  For rectangular beds this applies to travel on the X axis, and for round beds
+#  it applies to the entire radius.  The tool must be able to travel the amount
+#  specified outside of the mesh.  This value is used to optimize the travel
+#  path when performing a "rapid scan".  The minimum value that may be specified
+#  is 1.  The default is no overshoot.
 ```
 
 ### [bed_tilt]
@@ -1263,6 +1270,8 @@ path:
 #   be provided.
 #on_error_gcode:
 #   A list of G-Code commands to execute when an error is reported.
+#   See docs/Command_Templates.md for G-Code format. The default is to
+#   run TURN_OFF_HEATERS.
 ```
 
 ### [sdcard_loop]
@@ -1705,6 +1714,41 @@ z_offset:
 #   有关以上参数的更多信息，请参阅"probe"分段。
 ```
 
+### [probe_eddy_current]
+
+Support for eddy current inductive probes. One may define this section (instead of a probe section) to enable this probe. See the [command reference](G-Codes.md#probe_eddy_current) for further information.
+
+```
+[probe_eddy_current my_eddy_probe]
+sensor_type: ldc1612
+#   The sensor chip used to perform eddy current measurements. This
+#   parameter must be provided and must be set to ldc1612.
+#intb_pin:
+#   MCU gpio pin connected to the ldc1612 sensor's INTB pin (if
+#   available). The default is to not use the INTB pin.
+#z_offset:
+#   The nominal distance (in mm) between the nozzle and bed that a
+#   probing attempt should stop at. This parameter must be provided.
+#i2c_address:
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed:
+#   The i2c settings for the sensor chip. See the "common I2C
+#   settings" section for a description of the above parameters.
+#x_offset:
+#y_offset:
+#speed:
+#lift_speed:
+#samples:
+#sample_retract_dist:
+#samples_result:
+#samples_tolerance:
+#samples_tolerance_retries:
+#   See the "probe" section for information on these parameters.
+```
+
 ### [axis_twist_compensation]
 
 A tool to compensate for inaccurate probe readings due to twist in X gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
@@ -1983,6 +2027,62 @@ Tool to disable heaters when homing or probing an axis.
 #   以上参数的定义请见“heater_generic”章节。
 ```
 
+### [temperature_probe]
+
+Reports probe coil temperature. Includes optional thermal drift calibration for eddy current based probes. A `[temperature_probe]` section may be linked to a `[probe_eddy_current]` by using the same postfix for both sections.
+
+```
+[temperature_probe my_probe]
+#sensor_type:
+#sensor_pin:
+#min_temp:
+#max_temp:
+#   Temperature sensor configuration.
+#   See the "extruder" section for the definition of the above
+#   parameters.
+#smooth_time:
+#   A time value (in seconds) over which temperature measurements will
+#   be smoothed to reduce the impact of measurement noise. The default
+#   is 2.0 seconds.
+#gcode_id:
+#   See the "heater_generic" section for the definition of this
+#   parameter.
+#speed:
+#   The travel speed [mm/s] for xy moves during calibration.  Default
+#   is the speed defined by the probe.
+#horizontal_move_z:
+#   The z distance [mm] from the bed at which xy moves will occur
+#   during calibration. Default is 2mm.
+#resting_z:
+#   The z distance [mm] from the bed at which the tool will rest
+#   to heat the probe coil during calibration.  Default is .4mm
+#calibration_position:
+#   The X, Y, Z position where the tool should be moved when
+#   probe drift calibration initializes.  This is the location
+#   where the first manual probe will occur.  If omitted, the
+#   default behavior is not to move the tool prior to the first
+#   manual probe.
+#calibration_bed_temp:
+#   The maximum safe bed temperature (in C) used to heat the probe
+#   during probe drift calibration.  When set, the calibration
+#   procedure will turn on the bed after the first sample is
+#   taken.  When the calibration procedure is complete the bed
+#   temperature will be set to zero.  When omitted the default
+#   behavior is not to set the bed temperature.
+#calibration_extruder_temp:
+#   The extruder temperature (in C) set probe during drift calibration.
+#   When this option is supplied the procedure will wait for until the
+#   specified temperature is reached before requesting the first manual
+#   probe.  When the calibration procedure is complete the extruder
+#   temperature will be set to 0.  When omitted the default behavior is
+#   not to set the extruder temperature.
+#extruder_heating_z: 50.
+#   The Z location where extruder heating will occur if the
+#   "calibration_extruder_temp" option is set.  Its recommended to heat
+#   the extruder some distance from the bed to minimize its impact on
+#   the probe coil temperature.  The default is 50.
+```
+
 ## 温度传感器
 
 Klipper内置了许多类型的温度传感器的定义。这些传感器可用于任何需要温度传感器的配置分段（如`[extruder]` 或`[heater_bed]` 分段）。
@@ -2075,15 +2175,15 @@ sensor_pin:
 #   每个参数的默认值在上述列表的参数名称旁边。
 ```
 
-### BMP280/BME280/BME680 温度传感器
+### BMP180/BMP280/BME280/BMP388/BME680 temperature sensor
 
-BMP280/BME280/BME680 两线接口 (I2C) 环境传感器。注意，这些传感器不适用于挤出机和加热床。它们可以用于监测环境温度 (C)、压力 (hPa)、相对湿度以及气体水平（仅在BME680上）。请参阅 [sample-macros.cfg](../config/sample-macros.cfg) 以获取可用于报告压力和湿度以及温度的gcode_macro。
+BMP180/BMP280/BME280/BMP388/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
 
 ```
 sensor_type: BME280
 #i2c_address:
-#   Default is 118 (0x76). Some BME280 sensors have an address of 119
-#   (0x77).
+#   Default is 118 (0x76). The BMP180, BMP388 and some BME280 sensors
+#   have an address of 119 (0x77).
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
@@ -2093,9 +2193,9 @@ sensor_type: BME280
 #   above parameters.
 ```
 
-### AHT10/AHT20/AHT21 temperature sensor
+### AHT10/AHT20/AHT21 温度传感器
 
-AHT10/AHT20/AHT21 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C) and relative humidity. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report humidity in addition to temperature.
+AHT10/AHT20/AHT21 是两线接口（I2C）环境传感器。注意这些传感器不是给挤出机或者热床使用的，他们通常用来测量环境温度（C）以及相对湿度。关于如何在gcode_macro 中使用环境温度传感器可以参考[sample-macros.cfg](../config/sample-macros.cfg)。
 
 ```
 sensor_type: AHT10
@@ -2142,6 +2242,23 @@ sensor_type:
 #   Default is: "TEMP11_HUM11"
 #htu21d_report_time:
 #   Interval in seconds between readings. Default is 30
+```
+
+### SHT3X sensor
+
+SHT3X family two wire interface (I2C) environmental sensor. These sensors have a range of -55~125 C, so are usable for e.g. chamber temperature monitoring. They can also function as simple fan/heater controllers.
+
+```
+sensor_type: SHT3X
+#i2c_address:
+#   Default is 68 (0x44).
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed:
+#   See the "common I2C settings" section for a description of the
+#   above parameters.
 ```
 
 ### LM75 温度传感器
@@ -2750,38 +2867,55 @@ pins:
 ```
 [tmc2130 stepper_x]
 cs_pin:
-#   对应TMC2130芯片选择线的引脚。此引脚将在SPI消息开始时设置为
-#   低电平，并在消息完成后提升为高电平。
-#   必须提供此参数。
+#   The pin corresponding to the TMC2130 chip select line. This pin
+#   will be set to low at the start of SPI messages and raised to high
+#   after the message completes. This parameter must be provided.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   有关上述参数的描述，请参阅“常见SPI设置”分段。
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
 #chain_position:
 #chain_length:
-#   这些参数配置SPI串行连接。这两个参数定义了链中的步进位置和总
-#   链长。位置1对应连接到MOSI信号的步进器。
-#   默认情况下不使用SPI串行连接。
+#   These parameters configure an SPI daisy chain. The two parameters
+#   define the stepper position in the chain and the total chain length.
+#   Position 1 corresponds to the stepper that connects to the MOSI signal.
+#   The default is to not use an SPI daisy chain.
 #interpolate: True
-#   如果为真，则启用步进插值（驱动器将内部以256微步的速度步进）。
-#   这种插值确实引入了一个小的系统位置偏差 - 详情请参见TMC_Drivers.md。
-#   默认为True。
+#   If true, enable step interpolation (the driver will internally
+#   step at a rate of 256 micro-steps). This interpolation does
+#   introduce a small systemic positional deviation - see
+#   TMC_Drivers.md for details. The default is True.
 run_current:
-#   配置驱动器在步进电机移动期间使用的电流（以安培RMS为单位）。
-#   必须提供此参数。
+#   The amount of current (in amps RMS) to configure the driver to use
+#   during stepper movement. This parameter must be provided.
 #hold_current:
-#   配置驱动器在步进电机不移动时使用的电流（以安培RMS为单位）。
-#   不推荐设置hold_current（详见TMC_Drivers.md）。
-#   默认情况下不降低电流。
+#   The amount of current (in amps RMS) to configure the driver to use
+#   when the stepper is not moving. Setting a hold_current is not
+#   recommended (see TMC_Drivers.md for details). The default is to
+#   not reduce the current.
 #sense_resistor: 0.110
-#   电机感应电阻的电阻值（以欧姆为单位）。
-#   默认值为0.110欧姆。
+#   The resistance (in ohms) of the motor sense resistor. The default
+#   is 0.110 ohms.
 #stealthchop_threshold: 0
-#   设定“StealthChop”阈值的速度（以毫米/秒为单位）。当设定时，如果步进
-#   电机的速度低于此值，“StealthChop”模式将被启用。
-#   默认值为0，此值会禁用“StealthChop”模式。
+#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
+#   set, "stealthChop" mode will be enabled if the stepper motor
+#   velocity is below this value. The default is 0, which disables
+#   "stealthChop" mode.
+#coolstep_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
+#   threshold to. If set, the coolstep feature will be enabled when
+#   the stepper motor velocity is near or above this value. Important
+#   - if coolstep_threshold is set and "sensorless homing" is used,
+#   then one must ensure that the homing speed is above the coolstep
+#   threshold! The default is to not enable the coolstep feature.
+#high_velocity_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "high
+#   velocity" threshold (THIGH) to. This is typically used to disable
+#   the "CoolStep" feature at high speeds. The default is to not set a
+#   TMC "high velocity" threshold.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -2799,33 +2933,46 @@ run_current:
 #driver_X3: 255
 #driver_START_SIN: 0
 #driver_START_SIN90: 247
-#   这些字段直接控制Microstep Table寄存器。最佳波形表是特定于每个电机
-#   的，并可能随电流变化。最优的配置将最小化由非线性步进运动引起的
-#   打印件的瑕疵。上述指定的值是驱动器默认使用的值。值必须以十进制
-#   整数形式指定（不支持十六进制形式）。要计算波形表字段，请参见
-#   Trinamic网站上的tmc2130 "Calculation Sheet"。
+#   These fields control the Microstep Table registers directly. The optimal
+#   wave table is specific to each motor and might vary with current. An
+#   optimal configuration will have minimal print artifacts caused by
+#   non-linear stepper movement. The values specified above are the default
+#   values used by the driver. The value must be specified as a decimal integer
+#   (hex form is not supported). In order to compute the wave table fields,
+#   see the tmc2130 "Calculation Sheet" from the Trinamic website.
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 0
 #driver_TBL: 1
 #driver_TOFF: 4
 #driver_HEND: 7
 #driver_HSTRT: 0
+#driver_VHIGHFS: 0
+#driver_VHIGHCHM: 0
 #driver_PWM_AUTOSCALE: True
 #driver_PWM_FREQ: 1
 #driver_PWM_GRAD: 4
 #driver_PWM_AMPL: 128
 #driver_SGT: 0
-#   在配置TMC2130芯片期间设置给定的寄存器。这可以用于设置自定义电
-#   机参数。
-#   上述列表中每个参数的默认值都在参数名旁边。
+#driver_SEMIN: 0
+#driver_SEUP: 0
+#driver_SEMAX: 0
+#driver_SEDN: 0
+#driver_SEIMIN: 0
+#driver_SFILT: 0
+#   Set the given register during the configuration of the TMC2130
+#   chip. This may be used to set custom motor parameters. The
+#   defaults for each parameter are next to the parameter name in the
+#   above list.
 #diag0_pin:
 #diag1_pin:
-#   连接到TMC2130芯片的DIAG线之一的微控制器引脚。只应指定一个diag引
-#   脚。引脚是"低电平有效"，因此通常以"^!"为前缀。设置这会创建一个
-#   "tmc2130_stepper_x:virtual_endstop"虚拟引脚，可以作为步进器的endstop_pin
-#   使用。这样做可以启用"无感应归位"。（确保也将driver_SGT设置为适当的敏感
-#   度值。）
-#   默认情况下不启用无感应归位。
+#   The micro-controller pin attached to one of the DIAG lines of the
+#   TMC2130 chip. Only a single diag pin should be specified. The pin
+#   is "active low" and is thus normally prefaced with "^!". Setting
+#   this creates a "tmc2130_stepper_x:virtual_endstop" virtual pin
+#   which may be used as the stepper's endstop_pin. Doing this enables
+#   "sensorless homing". (Be sure to also set driver_SGT to an
+#   appropriate sensitivity value.) The default is to not enable
+#   sensorless homing.
 ```
 
 ### [tmc2208]
@@ -2902,6 +3049,13 @@ run_current:
 #sense_resistor: 0.110
 #stealthchop_threshold: 0
 #   See the "tmc2208" section for the definition of these parameters.
+#coolstep_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
+#   threshold to. If set, the coolstep feature will be enabled when
+#   the stepper motor velocity is near or above this value. Important
+#   - if coolstep_threshold is set and "sensorless homing" is used,
+#   then one must ensure that the homing speed is above the coolstep
+#   threshold! The default is to not enable the coolstep feature.
 #uart_address:
 #   The address of the TMC2209 chip for UART messages (an integer
 #   between 0 and 3). This is typically used when multiple TMC2209
@@ -2921,6 +3075,11 @@ run_current:
 #driver_PWM_GRAD: 14
 #driver_PWM_OFS: 36
 #driver_SGTHRS: 0
+#driver_SEMIN: 0
+#driver_SEUP: 0
+#driver_SEMAX: 0
+#driver_SEDN: 0
+#driver_SEIMIN: 0
 #   Set the given register during the configuration of the TMC2209
 #   chip. This may be used to set custom motor parameters. The
 #   defaults for each parameter are next to the parameter name in the
@@ -3039,6 +3198,18 @@ run_current:
 #   set, "stealthChop" mode will be enabled if the stepper motor
 #   velocity is below this value. The default is 0, which disables
 #   "stealthChop" mode.
+#coolstep_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
+#   threshold to. If set, the coolstep feature will be enabled when
+#   the stepper motor velocity is near or above this value. Important
+#   - if coolstep_threshold is set and "sensorless homing" is used,
+#   then one must ensure that the homing speed is above the coolstep
+#   threshold! The default is to not enable the coolstep feature.
+#high_velocity_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "high
+#   velocity" threshold (THIGH) to. This is typically used to disable
+#   the "CoolStep" feature at high speeds. The default is to not set a
+#   TMC "high velocity" threshold.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -3157,6 +3328,18 @@ run_current:
 #   set, "stealthChop" mode will be enabled if the stepper motor
 #   velocity is below this value. The default is 0, which disables
 #   "stealthChop" mode.
+#coolstep_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
+#   threshold to. If set, the coolstep feature will be enabled when
+#   the stepper motor velocity is near or above this value. Important
+#   - if coolstep_threshold is set and "sensorless homing" is used,
+#   then one must ensure that the homing speed is above the coolstep
+#   threshold! The default is to not enable the coolstep feature.
+#high_velocity_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "high
+#   velocity" threshold (THIGH) to. This is typically used to disable
+#   the "CoolStep" feature at high speeds. The default is to not set a
+#   TMC "high velocity" threshold.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -3877,6 +4060,99 @@ adc2:
 #event_delay:
 #pause_delay:
 #   关于上述参数的描述请参见"filament_switch_sensor"章节。
+```
+
+## Load Cells
+
+### [load_cell]
+
+Load Cell. Uses an ADC sensor attached to a load cell to create a digital scale.
+
+```
+[load_cell]
+sensor_type:
+#   This must be one of the supported sensor types, see below.
+```
+
+#### XH711
+
+This is a 24 bit low sample rate chip using "bit-bang" communications. It is suitable for filament scales.
+
+```
+[load_cell]
+sensor_type: hx711
+sclk_pin:
+#   The pin connected to the HX711 clock line. This parameter must be provided.
+dout_pin:
+#   The pin connected to the HX711 data output line. This parameter must be
+#   provided.
+#gain: A-128
+#   Valid values for gain are: A-128, A-64, B-32. The default is A-128.
+#   'A' denotes the input channel and the number denotes the gain. Only the 3
+#   listed combinations are supported by the chip. Note that changing the gain
+#   setting also selects the channel being read.
+#sample_rate: 80
+#   Valid values for sample_rate are 80 or 10. The default value is 80.
+#   This must match the wiring of the chip. The sample rate cannot be changed
+#   in software.
+```
+
+#### HX717
+
+This is the 4x higher sample rate version of the HX711, suitable for probing.
+
+```
+[load_cell]
+sensor_type: hx717
+sclk_pin:
+#   The pin connected to the HX717 clock line. This parameter must be provided.
+dout_pin:
+#   The pin connected to the HX717 data output line. This parameter must be
+#   provided.
+#gain: A-128
+#   Valid values for gain are A-128, B-64, A-64, B-8.
+#   'A' denotes the input channel and the number denotes the gain setting.
+#   Only the 4 listed combinations are supported by the chip. Note that
+#   changing the gain setting also selects the channel being read.
+#sample_rate: 320
+#   Valid values for sample_rate are: 10, 20, 80, 320. The default is 320.
+#   This must match the wiring of the chip. The sample rate cannot be changed
+#   in software.
+```
+
+#### ADS1220
+
+The ADS1220 is a 24 bit ADC supporting up to a 2Khz sample rate configurable in software.
+
+```
+[load_cell]
+sensor_type: ads1220
+cs_pin:
+#   The pin connected to the ADS1220 chip select line. This parameter must
+#   be provided.
+#spi_speed: 512000
+#   This chip supports 2 speeds: 256000 or 512000. The faster speed is only
+#   enabled when one of the Turbo sample rates is used. The correct spi_speed
+#   is selected based on the sample rate.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+data_ready_pin:
+#   Pin connected to the ADS1220 data ready line. This parameter must be
+#   provided.
+#gain: 128
+#   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
+#   The default is 128
+#sample_rate: 660
+#   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
+#   mode the chips c internal clock runs twice as fast and the SPI communication
+#   speed is also doubled.
+#   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
+#   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
+#   The default is 660
 ```
 
 ## 控制板特定硬件支持

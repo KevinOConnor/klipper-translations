@@ -377,7 +377,7 @@ Ha az X tengelyen működik, futtasd az Y tengelyen is:
 TEST_RESONANCES AXIS=Y
 ```
 
-Ez 2 CSV fájlt fog létrehozni (`/tmp/resonances_x_*.csv` és `/tmp/resonances_y_*.csv`) Ezeket a fájlokat a Raspberry Pi-n lévő önálló szkript segítségével lehet feldolgozni. Ehhez futtasd a következő parancsokat:
+This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and `/tmp/resonances_y_*.csv`). These files can be processed with the stand-alone script on a Raspberry Pi. This script is intended to be run with a single CSV file for each axis measured, although it can be used with multiple CSV files if you desire to average the results. Averaging results can be useful, for example, if resonance tests were done at multiple test points. Delete the extra CSV files if you do not desire to average them.
 
 ```
 ~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png

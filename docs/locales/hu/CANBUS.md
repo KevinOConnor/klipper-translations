@@ -17,8 +17,8 @@ Az adapter használatához a gazdagép operációs rendszert is konfigurálni ke
 ```
 allow-hotplug can0
 iface can0 can static
-         bitrate 1000000
-         up ifconfig $IFACE txqueuelen 128
+    bitrate 1000000
+    up ip link set $IFACE txqueuelen 128
 ```
 
 ## Az ellenállások megszüntetése
@@ -70,8 +70,8 @@ Néhány fontos megjegyzés ennek az üzemmódnak a használatához:
 ```
 allow-hotplug can0
 iface can0 can static
-         bitrate 1000000
-         up ifconfig $IFACE txqueuelen 128
+    bitrate 1000000
+    up ip link set $IFACE txqueuelen 128
 ```
 
 * A "bridge mcu" valójában nem a CAN-buszon van. A híd mcu-nak küldött és onnan érkező üzeneteket a CAN-buszon lévő más adapterek nem látják.

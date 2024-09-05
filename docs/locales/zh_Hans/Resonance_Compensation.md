@@ -27,7 +27,7 @@ Klipper支持输入整形 -一种可以用来减少打印件上振纹（也被�
 首先，测量**振纹频率**。
 
 1. 如果`square_corner_velocity`参数已更改，请将其恢复到5.0。当使用输入整形器时，不建议增加它，因为它会导致零件更加平滑——最好使用更高的加速度值。
-1. Disable the `miminum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
+1. Disable the `minimum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
 1. Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. 如果你已经将`[input_shaper]`分段添加到print.cfg中，执行`SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0`命令。如果你得到"未知命令"错误，此时你可以安全地忽略它，继续进行测量。
 1. Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Basically, we try to make ringing more pronounced by setting different large values for acceleration. This command will increase the acceleration every 5 mm starting from 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 and so forth up until 7000 mm/sec^2 at the last band.

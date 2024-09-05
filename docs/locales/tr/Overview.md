@@ -13,6 +13,7 @@ Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , [özell
 ## Kurulum ve Yapılandırma
 
 - [Kurulum](Installation.md): Klipper'ı indirmek için kılavuz.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Yapı Referansları](Config_Reference.md): Yapılandırma değişkenlerinin açıklamaları.
    - [Dönüş Mesafesi](Rotation_Distance.md): Step motor parametresi rotation_distance hesaplaması.
 - [Konfigürasyon gözden geçirme](Config_checks.md): Konfigürasyon dosyasındaki temel pin ayarlarını doğrulayın.
@@ -62,3 +63,4 @@ Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , [özell
    - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
 - [TSL1401CL filament genişlik sensörü](TSL1401CL_Filament_Width_Sensor.md)
 - [Hall filament width sensor](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

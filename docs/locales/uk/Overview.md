@@ -13,6 +13,7 @@
 ## Встановлення та налаштування
 
 - [Встановлення](Installation.md): Посібник зі встановлення Klipper.
+   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
 - [Посилання на конфігурацію](Config_Reference.md): Опис параметрів конфігурації.
    - [Відстань обертання](Rotation_Distance.md): Обчислення значення параметра відстані обертання.
 - [Перевірка конфігурації](Config_checks.md): Перевірте основні параметри PIN у файлі конфігурації.
@@ -62,3 +63,4 @@
    - [Усунення несправностей шини CAN](CANBUS_Troubleshooting.md): Поради щодо усунення несправностей CAN-шини.
 - [TSL1401CL датчик ширини нитки ](TSL1401CL_Filament_Width_Sensor.md)
 - [Датчик ширини нитки Холла](Hall_Filament_Width_Sensor.md)
+- [Eddy Current Inductive probe](Eddy_Probe.md)

@@ -6,6 +6,8 @@ A dokumentumban szereplő valamennyi dátum hozzávetőleges.
 
 ## Változások
 
+20240415: The `on_error_gcode` parameter in the `[virtual_sdcard]` config section now has a default. If this parameter is not specified it now defaults to `TURN_OFF_HEATERS`. If the previous behavior is desired (take no default action on an error during a virtual_sdcard print) then define `on_error_gcode` with an empty value.
+
 20240313: A `[nyomtató]` konfigurációs szakaszban található `max_accel_to_decel` paramétert elavultnak nyilvánítottuk. A `SET_VELOCITY_LIMIT` parancs `ACCEL_TO_DECEL` paramétere elavult. A `printer.toolhead.max_accel_to_decel` állapot eltávolításra került. Használd helyette a [minimum_cruise_ratio paramétert](./Config_Reference.md#printer). Az elavult funkciók a közeljövőben eltávolításra kerülnek, és az időközbeni használatuk finoman eltérő viselkedést eredményezhet.
 
 20240215: Számos elavult funkciót eltávolítottunk. Az "NTC 100K beta 3950" használata termisztor névként megszűnt (elavult a 20211110 oldalon). A `SYNC_STEPPER_TO_EXTRUDER` és a `SET_EXTRUDER_STEP_DISTANCE` parancsok eltávolításra kerültek, és az extruder `shared_heater` konfigurációs opciója eltávolításra került (deprecated on 20220210). A bed_mesh `relative_reference_index` opció eltávolításra került (deprecated on 20230619).

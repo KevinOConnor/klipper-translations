@@ -299,10 +299,10 @@ A következő információk a `system_stats` objektumban érhetők el (ez az obj
 
 A következő információk a következő dokumentumban találhatók
 
-[bme280 config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), [lm75 config_section_name](Config_Reference.md#lm75-temperature-sensor), [temperature_host config_section_name](Config_Reference.md#host-temperature-sensor) and [temperature_combined config_section_name](Config_Reference.md#combined-temperature-sensor) objektumok:
+[bme280 config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), [sht3x config_section_name](Config_Reference.md#sht31-sensor), [lm75 config_section_name](Config_Reference.md#lm75-temperature-sensor), [temperature_host config_section_name](Config_Reference.md#host-temperature-sensor) és [temperature_combined config_section_name](Config_Reference.md#combined-temperature-sensor) tárgyak:
 
 - `temperature`: Az érzékelőtől utoljára kapott hőmérséklet.
-- `humidity`, `pressure`, `gas`: Az érzékelőtől utoljára kapott értékek (csak a bme280, htu21d és lm75 érzékelők esetében).
+- `páratartalom`, `légnyomás`, `gáz`: Az érzékelőből utoljára leolvasott értékek (csak a bme280, htu21d, sht3x és lm75 érzékelők esetében).
 
 ## temperature_fan
 

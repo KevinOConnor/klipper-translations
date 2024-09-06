@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-09-02 21:09+0000\n"
+"PO-Revision-Date: 2024-09-07 07:09+0000\n"
 "Last-Translator: \"Neko.vecter\" <Vecterfang@icloud.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/klipper/eddy_probe/zh_Hans/>\n"
@@ -259,7 +259,8 @@ msgstr ""
 "开始漂移校准。如果探针名字是`my_probe` 并且最大探针温度可以到达80C，可以使用`"
 "TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`来进行校准。如果进行了配"
 "置，喷头的XY应该会移动到`calibration_position` 并且Z轴通过`extruder_heating_z"
-"`来调整。将挤出机加热到指定温度后，工具将移动到`校准位置`指定的 Z 值。"
+"`来调整。将挤出机加热到指定温度后，工具将会移动到`calibration_position`"
+"中指定的 Z 值。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""

@@ -1,15 +1,17 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-11-08 11:51+0000\n"
-"Last-Translator: Zs.Antal <zsikaiantal@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/beaglebone/hu/>\n"
+"PO-Revision-Date: 2024-09-07 07:09+0000\n"
+"Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"beaglebone/hu/>\n"
 "Language: hu\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: docs/Beaglebone.md:block 1 (header)
 msgid "Beaglebone"
@@ -130,64 +132,84 @@ msgid ""
 "from either a micro-SD card or from builtin eMMC. If using the eMMC, install"
 " it to eMMC now by following the instructions from the above link."
 msgstr ""
+"Kezdd a [Debian 11.7 2023-09-02 4GB microSD IoT](https://beagleboard.org/"
+"latest-images) lemezkép telepítésével. A lemezképet futtathatjuk micro-SD "
+"kártyáról vagy beépített eMMC-ről is. Ha az eMMC-t használjuk, akkor "
+"telepítsük az eMMC-re a fenti link utasításait követve."
 
 #: docs/Beaglebone.md:block 5 (paragraph)
 msgid ""
 "Then ssh into the Beaglebone machine (`ssh debian@beaglebone` -- password is"
 " `temppwd`)."
 msgstr ""
+"Ezután lépj be SSH-n a Beaglebone gépre (`ssh debian@beaglebone` -- a jelszó "
+"`temppwd`)."
 
 #: docs/Beaglebone.md:block 6 (paragraph)
 msgid ""
 "Before start installing Klipper you need to free-up additional space. there "
 "are 3 options to do that:"
 msgstr ""
+"A Klipper telepítése előtt további helyet kell felszabadítani. Erre 3 "
+"lehetőség van:"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid "remove some BeagleBone \"Demo\" resources"
-msgstr ""
+msgstr "néhány BeagleBone \"Demo\" erőforrás eltávolítása"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid ""
 "if you did boot from SD-Card, and it's bigger than 4Gb - you can expand "
 "current filesystem to take whole card space"
 msgstr ""
+"ha az SD-kártyáról bootoltál, és ez nagyobb, mint 4Gb - bővítheted a "
+"jelenlegi fájlrendszert, hogy a teljes területet használhasd"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid "do option #1 and #2 together."
-msgstr ""
+msgstr "az 1. és a 2. lehetőséget együtt kell elvégezni."
 
 #: docs/Beaglebone.md:block 8 (paragraph)
 msgid "To remove some BeagleBone \"Demo\" resources execute these commands"
 msgstr ""
+"Néhány BeagleBone \"Demo\" erőforrás eltávolításához hajtsd végre a "
+"következő parancsokat"
 
 #: docs/Beaglebone.md:block 9 (code)
 msgid ""
 "sudo apt remove bb-node-red-installer\n"
 "sudo apt remove bb-code-server\n"
 msgstr ""
+"sudo apt remove bb-node-red-installer\n"
+"sudo apt remove bb-code-server\n"
 
 #: docs/Beaglebone.md:block 10 (paragraph)
 msgid ""
 "To expand filesystem to full size of your SD-Card execute this command, "
 "reboot is not required."
 msgstr ""
+"A SD-kártya fájlrendszer teljes méretére történő bővítéséhez hajtsd végre "
+"ezt a parancsot, újraindítás nem szükséges."
 
 #: docs/Beaglebone.md:block 11 (code)
 msgid ""
 "sudo growpart /dev/mmcblk0 1\n"
 "sudo resize2fs /dev/mmcblk0p1\n"
 msgstr ""
+"sudo growpart /dev/mmcblk0 1\n"
+"sudo resize2fs /dev/mmcblk0p1\n"
 
 #: docs/Beaglebone.md:block 12 (paragraph)
 msgid "Install Klipper by running the following commands:"
-msgstr ""
+msgstr "Telepítsd a Klippert a következő parancsok futtatásával:"
 
 #: docs/Beaglebone.md:block 13 (code)
 msgid ""
 "git clone https://github.com/Klipper3d/klipper.git\n"
 "./klipper/scripts/install-beaglebone.sh\n"
 msgstr ""
+"git clone https://github.com/Klipper3d/klipper.git\n"
+"./klipper/scripts/install-beaglebone.sh\n"
 
 #: docs/Beaglebone.md:block 14 (paragraph)
 msgid ""
@@ -196,12 +218,19 @@ msgid ""
 "cases you can't directly connect pins to 5v or 12v based hardware without "
 "conversion boards."
 msgstr ""
+"A Klipper telepítése után el kell döntened, hogy milyen telepítésre van "
+"szükséged, de vedd figyelembe, hogy a BeagleBone 3.3v alapú hardver, és a "
+"legtöbb esetben nem lehet közvetlenül csatlakoztatni a tűket 5v vagy 12v "
+"alapú hardverhez átalakító lapok nélkül."
 
 #: docs/Beaglebone.md:block 15 (paragraph)
 msgid ""
 "As Klipper have multimodule architecture on BeagleBone you can achieve many "
 "different use cases, but general ones are following:"
 msgstr ""
+"Mivel a Klipper többmodulos architektúrával rendelkezik a BeagleBone-on, "
+"számos különböző felhasználási esetet lehet megvalósítani, de az általánosak "
+"a következők:"
 
 #: docs/Beaglebone.md:block 16 (paragraph)
 msgid ""
@@ -210,6 +239,10 @@ msgid ""
 "configuration will be driving external micro-controllers via "
 "serial/usb/canbus connections."
 msgstr ""
+"1. felhasználási eset: A BeagleBone-t csak gazdagépként használjuk a Klipper "
+"és további szoftverek, mint az OctoPrint/Fluidd + Moonraker/... futtatására, "
+"és ez a konfiguráció külső mikrovezérlőket fog vezérelni soros/usb/canbus "
+"kapcsolatokon keresztül."
 
 #: docs/Beaglebone.md:block 17 (paragraph)
 msgid ""
@@ -218,16 +251,23 @@ msgid ""
 "it will drive extension board with BeagleBone PRU cores (2 additional cores "
 "200Mh, 32Bit)."
 msgstr ""
+"2. felhasználási eset: BeagleBone használata bővítőkártyával (köpeny), mint "
+"a CRAMPS deszka. Ebben a konfigurációban a BeagleBone a Klipper + további "
+"szoftvereket fog fogadni, és a BeagleBone PRU magokkal (2 további mag 200Mh, "
+"32Bit) meghajtja a bővítőkártyát."
 
 #: docs/Beaglebone.md:block 18 (paragraph)
 msgid ""
 "Use case 3: It's same as \"Use case 1\" but additionally you want to drive "
 "BeagleBone GPIOs with high speed by utilizing PRU cores to offload main CPU."
 msgstr ""
+"3. felhasználási eset: Ugyanaz, mint az \"1. felhasználási eset\", de "
+"emellett a BeagleBone GPIO-kat nagy sebességgel fogja meghajtani a PRU magok "
+"felhasználásával a fő CPU tehermentesítésére."
 
 #: docs/Beaglebone.md:block 19 (header)
 msgid "Installing Octoprint"
-msgstr ""
+msgstr "Octoprint telepítése"
 
 #: docs/Beaglebone.md:block 20 (paragraph)
 msgid ""

@@ -4,17 +4,20 @@
 # Alfredo Monclus <alfredomonclus@gmail.com>, 2023.
 # Bernardo Scolnik <bscolnik@gmail.com>, 2024.
 # Jhonny Rosa <jh0nny.rosa@gmail.com>, 2024.
+# Caio Henrique Dos Santos Carvalho <estudantecaiohsc@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-07-04 21:49+0000\n"
-"Last-Translator: Jhonny Rosa <jh0nny.rosa@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/klipper/config_reference/pt_BR/>\n"
+"PO-Revision-Date: 2024-09-08 09:09+0000\n"
+"Last-Translator: Caio Henrique Dos Santos Carvalho <estudantecaiohsc@gmail."
+"com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"klipper/config_reference/pt_BR/>\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
@@ -4475,8 +4478,9 @@ msgid ""
 msgstr ""
 
 #: docs/Config_Reference.md:block 200 (header)
+#, fuzzy
 msgid "[axis_twist_compensation]"
-msgstr ""
+msgstr "[compensação_de_desvio_no_eixo]"
 
 #: docs/Config_Reference.md:block 201 (paragraph)
 msgid ""

@@ -1,20 +1,22 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
 # "Zs.Antal" <zsikaiantal@gmail.com>, 2023.
 # "Zs.Antal" <zsikaiantal@icloud.com>, 2024.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2024-04-06 06:02+0000\n"
-"Last-Translator: \"Zs.Antal\" <zsikaiantal@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/bed_mesh/hu/>\n"
+"PO-Revision-Date: 2024-09-08 09:09+0000\n"
+"Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"bed_mesh/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid "Basic Configuration"
 msgstr "Alapvető konfiguráció"
@@ -1145,10 +1147,14 @@ msgid ""
 "process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is "
 "relative to the probe's location."
 msgstr ""
+"`mesh_max: 240, 198` *Ajánlott* Az origótól legtávolabb eső koordináta. Ez "
+"nem feltétlenül az utolsó mért pont, mivel a mérés cikcakkos módon történik. "
+"A `mesh_min` koordinátához hasonlóan ez a koordináta is a szonda helyéhez "
+"képest relatív."
 
 #: docs/Bed_Mesh.md:block 60 (header)
 msgid "Surface Scans"
-msgstr ""
+msgstr "Felületi mérések"
 
 #: docs/Bed_Mesh.md:block 61 (paragraph)
 msgid ""
@@ -1158,10 +1164,15 @@ msgid ""
 "the `METHOD=scan` or `METHOD=rapid_scan` probe parameter should be passed in"
 " the `BED_MESH_CALIBRATE` gcode command."
 msgstr ""
+"Egyes szondák, mint például az [Örvényáramú szonda](./Eddy_Probe.md), "
+"képesek az ágy felületének \"letapogatására\". Azaz ezek a szondák anélkül "
+"képesek háló mintát készíteni, hogy a fejet a minták között felemelnék. A "
+"pásztázó üzemmód aktiválásához a `METHOD=scan` vagy `METHOD=rapid_scan` "
+"szonda paramétert kell átadni a `BED_MESH_CALIBRATE` G-kód parancsban."
 
 #: docs/Bed_Mesh.md:block 62 (header)
 msgid "Scan Height"
-msgstr ""
+msgstr "Mérési magasság"
 
 #: docs/Bed_Mesh.md:block 63 (paragraph)
 msgid ""
@@ -1169,6 +1180,9 @@ msgid ""
 " addition it can be supplied with the `BED_MESH_CALIBRATE` gcode command via"
 " the `HORIZONTAL_MOVE_Z` parameter."
 msgstr ""
+"A pásztázási magasságot a `[bed_mesh]-ben a `horizontal_move_z` opció "
+"határozza meg. Ezenkívül a `BED_MESH_CALIBRATE` G-kód parancs a "
+"`HORIZONTAL_MOVE_Z` paraméteren keresztül is megadható."
 
 #: docs/Bed_Mesh.md:block 64 (paragraph)
 msgid ""
@@ -1176,6 +1190,10 @@ msgid ""
 " a height of 2mm (ie: `HORIZONTAL_MOVE_Z=2`) should work well, presuming "
 "that the probe is mounted correctly."
 msgstr ""
+"A mérési magasságnak kellően alacsonynak kell lennie a beolvasási hibák "
+"elkerülése érdekében. Általában 2 mm-es magasság (azaz: "
+"`HORIZONTAL_MOVE_Z=2`) jól működik, feltéve, hogy a szonda megfelelően van "
+"felszerelve."
 
 #: docs/Bed_Mesh.md:block 65 (paragraph)
 msgid ""
@@ -1184,10 +1202,14 @@ msgid ""
 "severe surface deviation or beds with extreme tilt that hasn't been "
 "corrected."
 msgstr ""
+"Meg kell jegyezni, hogy ha a szonda több mint 4 mm-rel a felszín felett van, "
+"akkor az eredmények érvénytelenek lesznek. Így a mérés nem lehetséges olyan "
+"ágyaknál, ahol a felület nagymértékben eltérő vagy extrém dőlésszögű, "
+"amelyeket nem korrigáltak."
 
 #: docs/Bed_Mesh.md:block 66 (header)
 msgid "Rapid (Continuous) Scanning"
-msgstr ""
+msgstr "Gyors (folyamatos) mérés"
 
 #: docs/Bed_Mesh.md:block 67 (paragraph)
 msgid ""
@@ -1196,6 +1218,10 @@ msgid ""
 "large print areas with reasonably thick layer heights. Some probes may be "
 "more prone to error than others."
 msgstr ""
+"A `rapid_scan` elvégzésekor szem előtt kell tartani, hogy az eredmények némi "
+"hibával fognak rendelkezni. Ennek a hibának elég alacsonynak kell lennie "
+"ahhoz, hogy nagy nyomtatási területeken, viszonylag vastag rétegmagassággal "
+"hasznos legyen. Egyes szondák hajlamosabbak lehetnek a hibára, mint mások."
 
 #: docs/Bed_Mesh.md:block 68 (paragraph)
 msgid ""
@@ -1204,6 +1230,10 @@ msgid ""
 "sensor, and a dense mesh will reflect this noise (ie: there will be peaks "
 "and valleys)."
 msgstr ""
+"Nem ajánlott a gyors üzemmód használata \"sűrű\" háló beolvasására. A gyors "
+"pásztázás során keletkező hiba egy része az érzékelő gauss-zajából "
+"származhat, és a sűrű háló ezt a zajt fogja tükrözni (azaz: lesznek csúcsok "
+"és völgyek)."
 
 #: docs/Bed_Mesh.md:block 69 (paragraph)
 msgid ""
@@ -1214,6 +1244,12 @@ msgid ""
 "it requires that the mesh be configured in a way that allows the tool to "
 "travel outside of the mesh."
 msgstr ""
+"Az Ágy háló megpróbálja optimalizálni az útvonalat, hogy a konfiguráció "
+"alapján a lehető legjobb eredményt érje el. Ez magában foglalja a hibás "
+"régiók elkerülését a minták gyűjtésekor és a háló \"túllövését\" "
+"irányváltáskor. Ez a túllövés javítja a mintavételt a háló széleinél, "
+"azonban megköveteli, hogy a hálót úgy konfigurálják, hogy a szerszám a hálón "
+"kívülre kerüljön."
 
 #: docs/Bed_Mesh.md:block 70 (code)
 msgid ""
@@ -1225,6 +1261,13 @@ msgid ""
 "probe_count: 5\n"
 "scan_overshoot: 8\n"
 msgstr ""
+"[bed_mesh]\n"
+"speed: 120\n"
+"horizontal_move_z: 5\n"
+"mesh_min: 35, 6\n"
+"mesh_max: 240, 198\n"
+"probe_count: 5\n"
+"scan_overshoot: 8\n"
 
 #: docs/Bed_Mesh.md:block 71 (unordered list)
 msgid ""
@@ -1236,12 +1279,21 @@ msgid ""
 "scan\". The minimum value that may be specified is 1. The default is no "
 "overshoot."
 msgstr ""
+"`scan_overshoot` *Alapértelmezett érték: 0 (letiltva)* A hálón kívül "
+"rendelkezésre álló maximális elmozdulás (mm-ben). Téglalap alakú ágyak "
+"esetén ez az X tengelyen történő mozgásra vonatkozik, kerek ágyak esetén "
+"pedig a teljes sugárra. A fejnek képesnek kell lennie a megadott mértékű "
+"mozgásra a hálómezőn kívül. Ez az érték a \"gyors mérés\" végrehajtása során "
+"a mozgási útvonal optimalizálására szolgál. A minimálisan megadható érték 1. "
+"Az alapértelmezett érték a túllövés hiánya."
 
 #: docs/Bed_Mesh.md:block 72 (paragraph)
 msgid ""
 "If no scan overshoot is configured then travel path optimization will not be"
 " applied to changes in direction."
 msgstr ""
+"Ha nincs beállítva mérési túllövés, akkor az útvonal-optimalizálás nem kerül "
+"alkalmazásra az irányváltozásokkor."
 
 #: docs/Bed_Mesh.md:block 75 (paragraph)
 msgid ""
@@ -1251,6 +1303,12 @@ msgid ""
 "*Default Method: automatic if a probe is detected, otherwise manual*  "
 "*Default Adaptive: 0*  *Default Adaptive Margin: 0*"
 msgstr ""
+"`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic | scan | "
+"rapid_scan] \\ [<probe_parameter>=<value>] [<mesh_parameter>=<value>] "
+"[ADAPTIVE=[0|1] \\ [ADAPTIVE_MARGIN=<value>]` *Alapértelmezett profil: "
+"alapértelmezett* *Alapértelmezett módszer: automatikus, ha szondát észlel, "
+"egyébként manuális* *Alapértelmezett adaptív: 0* *Alapértelmezett adaptív "
+"margó: 0*"
 
 #: docs/Bed_Mesh.md:block 77 (paragraph)
 msgid ""
@@ -1258,53 +1316,64 @@ msgid ""
 "or `default` if unspecified. The `METHOD` parameter takes one of the "
 "following values:"
 msgstr ""
+"A háló a `PROFILE` paraméter által megadott profilba lesz mentve, vagy a "
+"`default`, ha nincs megadva. A `METHOD` paraméter a következő értékek "
+"egyikét veszi fel:"
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid ""
 "`METHOD=manual`: enables manual probing using the nozzle and the paper test"
 msgstr ""
+"`METHOD=manual`: lehetővé teszi a kézi mérést a fúvókával és a papírlappal"
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid "`METHOD=automatic`: Automatic (standard) probing. This is the default."
 msgstr ""
+"`METHOD=automatic`: Automatikus (szabvány) mérés. Ez az alapértelmezett."
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid ""
 "`METHOD=scan`: Enables surface scanning. The tool will pause over each "
 "position to collect a sample."
 msgstr ""
+"`METHOD=scan`: Engedélyezi a felületi mérést. A fej minden egyes pozíció "
+"felett megáll, hogy mérést végezzen."
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid "`METHOD=rapid_scan`: Enables continuous surface scanning."
-msgstr ""
+msgstr "`METHOD=rapid_scan`: Engedélyezi a folyamatos felületi mérést."
 
 #: docs/Bed_Mesh.md:block 79 (paragraph)
 msgid ""
 "XY positions are automatically adjusted to include the X and/or Y offsets "
 "when a probing method other than `manual` is selected."
 msgstr ""
+"Az XY pozíciók automatikusan beállítódnak az X és Y eltolások "
+"figyelembevételével, ha a `kézi`-től eltérő mérési módszert választunk."
 
 #: docs/Bed_Mesh.md:block 81 (unordered list)
 msgid "`MESH_PPS`"
-msgstr ""
+msgstr "`MESH_PPS`"
 
 #: docs/Bed_Mesh.md:block 107 (header)
 msgid "Bed Mesh Webhooks APIs"
-msgstr ""
+msgstr "Ágy háló Webhooks API-k"
 
 #: docs/Bed_Mesh.md:block 108 (header)
 msgid "Dumping mesh data"
-msgstr ""
+msgstr "Hálóadatok kiürítése"
 
 #: docs/Bed_Mesh.md:block 109 (paragraph)
 msgid "`{\"id\": 123, \"method\": \"bed_mesh/dump_mesh\"}`"
-msgstr ""
+msgstr "`{\"id\": 123, \"method\": \"bed_mesh/dump_mesh\"}`"
 
 #: docs/Bed_Mesh.md:block 110 (paragraph)
 msgid ""
 "Dumps the configuration and state for the current mesh and all saved "
 "profiles."
 msgstr ""
+"Kitölti az aktuális háló és az összes mentett profil konfigurációját és "
+"állapotát."
 
 #: docs/Bed_Mesh.md:block 111 (paragraph)
 msgid ""
@@ -1316,10 +1385,17 @@ msgid ""
 " desired to visualize the probe points and/or travel path before performing "
 "`BED_MESH_CALIBRATE`."
 msgstr ""
+"A `dump_mesh` végpontnak egy opcionális paramétere van, a `mesh_args`. Ennek "
+"a paraméternek egy objektumnak kell lennie, ahol a kulcsok és az értékek a "
+"[BED_MESH_CALIBRATE](#bed_mesh_calibrate) számára elérhető paraméterek. Ez "
+"frissíti a háló konfigurációját és a mérési pontokat a megadott paraméterek "
+"segítségével, mielőtt visszaküldi az eredményt. A hálóparaméterek elhagyása "
+"ajánlott, kivéve, ha a `BED_MESH_CALIBRATE` végrehajtása előtt a mérési "
+"pontokat és/vagy a haladási útvonalat kívánod megjeleníteni."
 
 #: docs/Bed_Mesh.md:block 112 (header)
 msgid "Visualization and analysis"
-msgstr ""
+msgstr "Vizualizáció és elemzés"
 
 #: docs/Bed_Mesh.md:block 113 (paragraph)
 msgid ""
@@ -1330,6 +1406,13 @@ msgid ""
 "analysis, particularly useful for debugging hardware or the results produced"
 " by `bed_mesh`:"
 msgstr ""
+"A legtöbb felhasználó valószínűleg úgy találja, hogy az olyan "
+"alkalmazásokhoz, mint a Mainsail, a Fluidd és az Octoprint mellékelt "
+"vizualizátorok elegendőek az alapvető elemzésekhez. A Klipper `scripts` "
+"mappája azonban tartalmazza a `graph_mesh.py` szkriptet, amely további "
+"vizualizációk és részletesebb elemzések elvégzéséhez használható, különösen "
+"hasznos a hardver vagy a `bed_mesh` által előállított eredmények "
+"hibakereséséhez:"
 
 #: docs/Bed_Mesh.md:block 114 (code)
 msgid ""
@@ -1347,10 +1430,23 @@ msgid ""
 "options:\n"
 "  -h, --help            show this help message and exit\n"
 msgstr ""
+"usage: graph_mesh.py [-h] {list,plot,analyze,dump} ...\n"
+"\n"
+"Ágy háló adatok grafikonja\n"
+"\n"
+"pozícionális érvek:\n"
+"  {list,plot,analyze,dump}\n"
+"    list                Elérhető parcellatípusok listája\n"
+"    plot                Megadott típus ábrázolása\n"
+"    analyze             Elemzés elvégzése a hálóadatokon\n"
+"    dump                API-válasz kiürítése json fájlba\n"
+"\n"
+"options:\n"
+"  -h, --help            megjeleníti a súgóüzenetet és kilép\n"
 
 #: docs/Bed_Mesh.md:block 115 (header)
 msgid "Pre-requisites"
-msgstr ""
+msgstr "Előfeltételek"
 
 #: docs/Bed_Mesh.md:block 116 (paragraph)
 msgid ""
@@ -1363,16 +1459,28 @@ msgid ""
 "be rotated and zoomed in preview mode, and the path visualizations can "
 "optionally be animated in preview mode."
 msgstr ""
+"A Klipper által biztosított legtöbb grafikus eszközhöz hasonlóan a "
+"`graph_mesh.py`-nak is szüksége van a `matplotlib` és a `numpy` python "
+"függőségekre. Ezen kívül a Klipper-hez a Moonraker websocketjén keresztül "
+"történő csatlakozáshoz a `websockets` python függőségre van szükség. Bár az "
+"összes vizualizáció kimenete `svg` fájlban is megjeleníthető, a `graph_mesh."
+"py` által kínált legtöbb vizualizáció jobb, ha élő előnézeti módban, asztali "
+"számítógépen nézzük meg. Például a 3D-s megjelenítések előnézeti módban "
+"forgathatók és nagyíthatók, az útvonalak megjelenítése pedig opcionálisan "
+"animálható előnézeti módban."
 
 #: docs/Bed_Mesh.md:block 117 (header)
 msgid "Plotting Mesh data"
-msgstr ""
+msgstr "Hálóadatok ábrázolása"
 
 #: docs/Bed_Mesh.md:block 118 (paragraph)
 msgid ""
 "The `graph_mesh.py` tool can plot several types of visualizations. Available"
 " types can be shown by running `graph_mesh.py list`:"
 msgstr ""
+"A `graph_mesh.py` eszköz többféle vizualizáció készítésére képes. A "
+"rendelkezésre álló típusok a `graph_mesh.py list` futtatásával jeleníthetők "
+"meg:"
 
 #: docs/Bed_Mesh.md:block 119 (code)
 msgid ""
@@ -1385,10 +1493,18 @@ msgid ""
 "overlay   Plots the current probed mesh overlaid with a profile\n"
 "delta     Plots the delta between current probed mesh and a profile\n"
 msgstr ""
+"graph_mesh.py list\n"
+"points    Eredeti generált pontok ábrázolása\n"
+"path      Szonda útvonalának megrajzolása\n"
+"rapid     Gyors mérési útvonal megrajzolása\n"
+"probedz   Vizsgált Z-értékek ábrázolása\n"
+"meshz     Háló Z-értékeinek ábrázolása\n"
+"overlay   Aktuális szondázott hálót egy profillal átfedve ábrázolja\n"
+"delta     Aktuális szondázott háló és egy profil közötti delta ábrázolása\n"
 
 #: docs/Bed_Mesh.md:block 120 (paragraph)
 msgid "Several options are available when plotting visualizations:"
-msgstr ""
+msgstr "A megjelenítések ábrázolásakor számos lehetőség áll rendelkezésre:"
 
 #: docs/Bed_Mesh.md:block 121 (code)
 msgid ""
@@ -1407,10 +1523,28 @@ msgid ""
 "  -o OUTPUT, --output OUTPUT\n"
 "                        Output file path\n"
 msgstr ""
+"usage: graph_mesh.py plot [-h] [-a] [-s] [-p PROFILE_NAME] [-o OUTPUT] <plot "
+"type> <input>\n"
+"\n"
+"pozícionális érvek:\n"
+"  <plot type>           Grafikusan ábrázolandó adatok típusa\n"
+"  <input>               A Klipper Socket elérési útvonala/url vagy a json "
+"fájl elérési útvonala\n"
+"\n"
+"opciók:\n"
+"  -h, --help            megjeleníti a súgóüzenetet és kilép\n"
+"  -a, --animate         Útvonalak animálása élő előnézetben\n"
+"  -s, --scale-plot      A Klipper által jelentett tengelyhatárok használata "
+"a plot X/Y skálázásához\n"
+"  -p PROFILE_NAME, --profile-name PROFILE_NAME\n"
+"                        A 'probedz' számára ábrázolandó profil opcionális "
+"neve\n"
+"  -o OUTPUT, --output OUTPUT\n"
+"                        Kimeneti fájl elérési útja\n"
 
 #: docs/Bed_Mesh.md:block 122 (paragraph)
 msgid "Below is a description of each argument:"
-msgstr ""
+msgstr "Az alábbiakban az egyes érvek leírása következik:"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1418,30 +1552,39 @@ msgid ""
 "visualization to generate. Must be one of the types output by the "
 "`graph_mesh.py list` command."
 msgstr ""
+"`plot type`: A létrehozandó vizualizáció típusát jelölő kötelező "
+"pozicionális argumentum. A `graph_mesh.py list` parancs által kiadott "
+"típusok egyikének kell lennie."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
 "`input`: A required positional argument containing a path or url to the "
 "input source. This must be one of the following:"
 msgstr ""
+"`bemenet`: A bemeneti forrás elérési útvonalát vagy URL-címét tartalmazó, "
+"kötelezően megadandó pozicionális argumentum. Ennek az alábbiak egyikének "
+"kell lennie:"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A path to Klipper's Unix Domain Socket"
-msgstr ""
+msgstr "A Klipper Unix Domain Socket elérési útvonala"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A url to an instance of Moonraker"
-msgstr ""
+msgstr "Moonraker egy példányának URL-je"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A path to a json file produced by `graph_mesh.py dump <input>`"
 msgstr ""
+"A `graph_mesh.py dump <input>` által előállított json fájl elérési útvonala"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
 "`-a`: Optional animation for the `path` and `rapid` visualization types. "
 "Animations only apply to a live preview."
 msgstr ""
+"`-a`: Az `útvonal` és a `gyors` vizualizációs típusokhoz választható "
+"animáció. Az animációk csak az élő előnézetre vonatkoznak."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1449,6 +1592,9 @@ msgid ""
 "values reported by Klipper's `toolhead` object when the dump file was "
 "generated."
 msgstr ""
+"`-s`: A Klipper `toolhead` objektuma által a dump fájl létrehozásakor "
+"jelentett `axis_minimum` és `axis_maximum` értékek segítségével méretezi a "
+"diagramot."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1456,6 +1602,9 @@ msgid ""
 "mesh visualization. When generating an `overlay` or `delta` visualization "
 "this argument must be provided."
 msgstr ""
+"`-p`: Egy profilnév, amelyet a `probedz` 3D háló vizualizáció generálásakor "
+"lehet megadni. Az `overlay` vagy `delta` vizualizáció generálásakor ezt az "
+"argumentumot meg kell adni."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1463,38 +1612,47 @@ msgid ""
 "visualization to this location rather than run in preview mode. Images are "
 "saved in `svg` format."
 msgstr ""
+"`-o`: Egy opcionális fájl elérési útja, amely jelzi, hogy a szkriptnek a "
+"vizualizációt erre a helyre kell mentenie, nem pedig előnézeti módban "
+"futtatnia. A képek `svg` formátumban kerülnek mentésre."
 
 #: docs/Bed_Mesh.md:block 124 (paragraph)
 msgid ""
 "For example, to plot an animated rapid path, connecting via Klipper's unix "
 "socket:"
 msgstr ""
+"Például egy animált gyors útvonal megrajzolásához, a Klipper unix foglalatán "
+"keresztül csatlakozva:"
 
 #: docs/Bed_Mesh.md:block 125 (code)
 msgid "graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock\n"
-msgstr ""
+msgstr "graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock\n"
 
 #: docs/Bed_Mesh.md:block 126 (paragraph)
 msgid "Or to plot a 3d visualization of the mesh, connecting via Moonraker:"
 msgstr ""
+"A háló 3D-s vizualizációjának megrajzolásához, a Moonraker segítségével "
+"csatlakozva:"
 
 #: docs/Bed_Mesh.md:block 127 (code)
 msgid "graph_mesh.py plot meshz http://my-printer.local\n"
-msgstr ""
+msgstr "graph_mesh.py plot meshz http://my-printer.local\n"
 
 #: docs/Bed_Mesh.md:block 128 (header)
 msgid "Bed Mesh Analysis"
-msgstr ""
+msgstr "Ágy háló elemzés"
 
 #: docs/Bed_Mesh.md:block 129 (paragraph)
 msgid ""
 "The `graph_mesh.py` tool may also be used to perform an analysis on the data"
 " provided by the [bed_mesh/dump_mesh](#dumping-mesh-data) API:"
 msgstr ""
+"A `graph_mesh.py` eszköz használható a [bed_mesh/dump_mesh](#dumping-mesh-"
+"data) API által szolgáltatott adatok elemzéséhez is:"
 
 #: docs/Bed_Mesh.md:block 130 (code)
 msgid "graph_mesh.py analyze <input>\n"
-msgstr ""
+msgstr "graph_mesh.py analyze <input>\n"
 
 #: docs/Bed_Mesh.md:block 131 (paragraph)
 msgid ""
@@ -1502,6 +1660,9 @@ msgid ""
 "socket, a URL to an instance of Moonraker, or a path to a json file "
 "generated by the dump command."
 msgstr ""
+"A `plot` parancshoz hasonlóan az `<input>` a Klipper unix socketjének "
+"elérési útvonala, a Moonraker egy példányának URL címe, vagy a dump parancs "
+"által generált json fájl elérési útvonala kell, hogy legyen."
 
 #: docs/Bed_Mesh.md:block 132 (paragraph)
 msgid ""
@@ -1509,30 +1670,37 @@ msgid ""
 "paths generated by `bed_mesh` at the time of the dump. This includes the "
 "following:"
 msgstr ""
+"Kezdetben az elemzés különböző ellenőrzéseket végez a `bed_mesh` által a "
+"dump idején generált pontokon és mérések útvonalain. Ezek közé tartozik a "
+"következő:"
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The number of probe points generated, without any additions"
-msgstr ""
+msgstr "A generált mérési pontok száma, kiegészítések nélkül"
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
 "The number of probe points generated including any points generated as the "
 "result faulty regions and/or a configured zero reference position."
 msgstr ""
+"A generált mérési pontok száma, beleértve a hibás területek és a konfigurált "
+"nulla referenciapozíció eredményeként generált pontokat is."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The number of probe points generated when performing a rapid scan."
-msgstr ""
+msgstr "A gyors mérések során generált mérőpontok száma."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The total number of moves generated for a rapid scan."
-msgstr ""
+msgstr "A gyors méréshez generált mozgások teljes száma."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
 "A validation that the probe points generated for a rapid scan are identical "
 "to the probe points generated for a standard probing procedure."
 msgstr ""
+"Annak igazolása, hogy a gyors méréshez generált mérőpontok megegyeznek a "
+"szabvány mérési eljáráshoz generált mérőpontokkal."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
@@ -1543,6 +1711,13 @@ msgid ""
 "scan in an attempt to avoid entering a faulty region when approaching or "
 "leaving a probe location, however should never occur otherwise."
 msgstr ""
+"A \"visszalépés\" ellenőrzése mind a szabványos mérőút, mind a gyors mérési "
+"útvonal esetében. A visszalépés úgy definiálható, hogy a mérési eljárás "
+"során többször is elmozdul ugyanabba a pozícióba. A visszalépés soha nem "
+"fordulhat elő normál mérés során. A hibás régiók *visszalépést* "
+"eredményezhetnek a gyors mérés során, hogy elkerüljék a hibás régióba való "
+"belépést, amikor megközelítik vagy elhagyják a mérési helyet, de soha nem "
+"fordulhat elő másként."
 
 #: docs/Bed_Mesh.md:block 134 (paragraph)
 msgid ""
@@ -1550,62 +1725,69 @@ msgid ""
 "the mesh loaded at the time of the dump (if present) and followed by any "
 "saved profiles. The following data is extracted:"
 msgstr ""
+"Ezután minden, a dump-ban lévő mért háló elemzésre kerül, kezdve a kiíráskor "
+"betöltött hálóval (ha van), majd az esetleges mentett profilokkal. A "
+"következő adatok kerülnek kinyerésre:"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mesh shape (Min X,Y, Max X,Y Probe Count)"
-msgstr ""
+msgstr "Háló alakja (min. X,Y, max. X,Y mérésszám)"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mesh Z range, (Minimum Z, Maximum Z)"
-msgstr ""
+msgstr "Háló Z tartomány, (Minimum Z, Maximum Z)"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mean Z value in the mesh"
-msgstr ""
+msgstr "Átlagos Z érték a hálóban"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Standard Deviation of the Z values in the Mesh"
-msgstr ""
+msgstr "A szabvány Z-értékek szórása a hálóban"
 
 #: docs/Bed_Mesh.md:block 136 (paragraph)
 msgid ""
 "In addition to the above, a delta analysis is performed between meshes with "
 "the same shape, reporting the following:"
 msgstr ""
+"A fentieken kívül delta-analízist végeznek az azonos alakú hálók között, "
+"amely a következőket jelenti:"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The range of the delta between to meshes (Minimum and Maximum)"
-msgstr ""
+msgstr "A delta tartománya a hálók között (Minimum és Maximum)"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The mean delta"
-msgstr ""
+msgstr "Az átlagos delta"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "Standard Deviation of the delta"
-msgstr ""
+msgstr "A delta szabványos szórása"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The absolute maximum difference"
-msgstr ""
+msgstr "Az abszolút maximális különbség"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The absolute mean"
-msgstr ""
+msgstr "Az abszolút átlag"
 
 #: docs/Bed_Mesh.md:block 138 (header)
 msgid "Save mesh data to a file"
-msgstr ""
+msgstr "A hálóadatok mentése fájlba"
 
 #: docs/Bed_Mesh.md:block 139 (paragraph)
 msgid ""
 "The `dump` command may be used to save the response to a file which can be "
 "shared for analysis when troubleshooting:"
 msgstr ""
+"A `dump` paranccsal a válasz menthető egy fájlba, amely megosztható elemzés "
+"céljából a hibaelhárítás során:"
 
 #: docs/Bed_Mesh.md:block 140 (code)
 msgid "graph_mesh.py dump -o <output file name> <input>\n"
-msgstr ""
+msgstr "graph_mesh.py dump -o <output file name> <input>\n"
 
 #: docs/Bed_Mesh.md:block 141 (paragraph)
 msgid ""
@@ -1614,10 +1796,14 @@ msgid ""
 "the output file. If omitted, the file will be saved in the working "
 "directory, with a file name in the following format:"
 msgstr ""
+"A `<input>` a Klipper unix socketjének elérési útja, vagy a Moonraker egy "
+"példányának URL-je. A \"-o\" opció használható a kimeneti fájl elérési "
+"útjának megadására. Ha kihagyod, a fájl a munkakönyvtárba kerül mentésre, a "
+"következő formátumú fájlnévvel:"
 
 #: docs/Bed_Mesh.md:block 142 (paragraph)
 msgid "`klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`"
-msgstr ""
+msgstr "`klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`"
 
 #~ msgid ""
 #~ "The mesh will be saved into a profile specified by the `PROFILE` parameter, "

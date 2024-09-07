@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-09-07 07:09+0000\n"
+"PO-Revision-Date: 2024-09-08 09:09+0000\n"
 "Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
 "beaglebone/hu/>\n"
@@ -274,30 +274,36 @@ msgid ""
 "One may then install Octoprint or fully skip this section if desired other "
 "software:"
 msgstr ""
+"Ezután telepítheted az Octoprint-et, vagy kihagyhatod ezt a lépést, ha más "
+"szoftvert szeretnél:"
 
 #: docs/Beaglebone.md:block 28 (paragraph)
 msgid ""
 "Wait 1-2 minutes and make sure the OctoPrint web server is accessible - it "
 "should be at: <http://beaglebone:5000/>"
 msgstr ""
+"Várj 1-2 percet, és győződj meg róla, hogy az OctoPrint webszerver elérhető -"
+" a következő címen kell lennie: <http://beaglebone:5000/>"
 
 #: docs/Beaglebone.md:block 29 (header)
 msgid "Building the BeagleBone PRU micro-controller code (PRU firmware)"
-msgstr ""
+msgstr "A BeagleBone PRU mikrokontroller kódjának elkészítése (PRU firmware)"
 
 #: docs/Beaglebone.md:block 30 (paragraph)
 msgid ""
 "This section is required for \"Use case 2\" and \"Use case 3\" mentioned "
 "above, you should skip it for \"Use case 1\"."
 msgstr ""
+"Ez a szakasz a fent említett \"2. használati eset\" és \"3. használati eset\""
+" esetében szükséges, az \"1. használati eset\" esetében kihagyható."
 
 #: docs/Beaglebone.md:block 31 (paragraph)
 msgid "Check that required devices are present"
-msgstr ""
+msgstr "Ellenőrizd a szükséges eszközök meglétét"
 
 #: docs/Beaglebone.md:block 32 (code)
 msgid "sudo beagle-version\n"
-msgstr ""
+msgstr "sudo beagle-version\n"
 
 #: docs/Beaglebone.md:block 33 (paragraph)
 msgid ""
@@ -310,6 +316,15 @@ msgid ""
 "options or with cape-overlays Just for reference some output of working "
 "BeagleBone Black configuration with CRAMPS board:"
 msgstr ""
+"Ellenőrizd, hogy a kimenet tartalmazza a sikeres \"remoteproc\" "
+"illesztőprogramok betöltését és a PRU magok jelenlétét, a Kernel 5.10-ben "
+"ezeknek \"remoteproc1\" és \"remoteproc2\" (4a334000.pru, 4a338000.pru) kell "
+"lenniük. Ellenőrizd azt is, hogy sok GPIO betöltődött-e. Úgy fog kinézni, "
+"mint \"Allocated GPIO id=0 name='P8_03'\" Általában minden rendben van, és "
+"nincs szükség hardver konfigurációra. Ha valami hiányzik - próbálj meg "
+"játszani az \"uboot overlays\" opciókkal vagy a cape-overlays-szel. Csak "
+"referenciaként néhány kimenet a működő BeagleBone Black konfigurációról a "
+"CRAMPS táblával:"
 
 #: docs/Beaglebone.md:block 34 (code)
 msgid ""
@@ -332,6 +347,24 @@ msgid ""
 ".............\n"
 "\n"
 msgstr ""
+"model:[TI_AM335x_BeagleBone_Black]\n"
+"UBOOT: Booted Device-Tree:[am335x-boneblack-uboot-univ.dts]\n"
+"UBOOT: Loaded Overlay:[BB-ADC-00A0.bb.org-overlays]\n"
+"UBOOT: Loaded Overlay:[BB-BONE-eMMC1-01-00A0.bb.org-overlays]\n"
+"kernel:[5.10.168-ti-r71]\n"
+"/boot/uEnv.txt Settings:\n"
+"uboot_overlay_options:[enable_uboot_overlays=1]\n"
+"uboot_overlay_options:[disable_uboot_overlay_video=0]\n"
+"uboot_overlay_options:[disable_uboot_overlay_audio=1]\n"
+"uboot_overlay_options:[disable_uboot_overlay_wireless=1]\n"
+"uboot_overlay_options:[enable_uboot_cape_universal=1]\n"
+"pkg:[bb-cape-overlays]:[4.14.20210821.0-0~bullseye+20210821]\n"
+"pkg:[bb-customizations]:[1.20230720.1-0~bullseye+20230720]\n"
+"pkg:[bb-usb-gadgets]:[1.20230414.0-0~bullseye+20230414]\n"
+"pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]\n"
+".............\n"
+".............\n"
+"\n"
 
 #: docs/Beaglebone.md:block 35 (paragraph)
 msgid ""
@@ -341,26 +374,38 @@ msgid ""
 "devices\" inside the \"Optional features\" because they will not fit in 8Kb "
 "PRU firmware memory, then exit and save config:"
 msgstr ""
+"A Klipper mikrokontroller kódjának lefordításához kezd a \"Beaglebone PRU\" "
+"konfigurálásával, a \"BeagleBone Black\" esetében kapcsold ki a \"Support "
+"GPIO Bit-banging devices\" és a \"Support LCD devices\" opciót az \"Optional "
+"features\" menüben, mert ezek nem férnek el a 8Kb PRU firmware memóriában, "
+"majd lépj ki és mentsd a konfigurációt:"
 
 #: docs/Beaglebone.md:block 37 (paragraph)
 msgid "To build and install the new PRU micro-controller code, run:"
 msgstr ""
+"Az új PRU mikrokontroller kódjának elkészítéséhez és telepítéséhez futtasd a "
+"következőt:"
 
 #: docs/Beaglebone.md:block 39 (paragraph)
 msgid ""
 "After previous commands was executed your PRU firmware should be ready and "
 "started to check if everything was fine you can execute following command"
 msgstr ""
+"Az előző parancsok végrehajtása után a PRU firmware-nek készen kell állnia, "
+"és el kell kezdenie ellenőrizni, hogy minden rendben volt-e. A következő "
+"parancsot hajthatod végre"
 
 #: docs/Beaglebone.md:block 40 (code)
 msgid "dmesg\n"
-msgstr ""
+msgstr "dmesg\n"
 
 #: docs/Beaglebone.md:block 41 (paragraph)
 msgid ""
 "and compare last messages with sample one which indicate that everything "
 "started properly:"
 msgstr ""
+"és hasonlítsd össze az utolsó üzeneteket a mintával, amely azt jelzi, hogy "
+"minden rendben elindult:"
 
 #: docs/Beaglebone.md:block 42 (code)
 msgid ""
@@ -380,6 +425,27 @@ msgid ""
 "[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online\n"
 "[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/rpmsg_pru30\n"
 msgstr ""
+"[   71.105499] remoteproc remoteproc1: 4a334000.pru is available\n"
+"[   71.157155] remoteproc remoteproc2: 4a338000.pru is available\n"
+"[   73.256287] remoteproc remoteproc1: powering up 4a334000.pru\n"
+"[   73.279246] remoteproc remoteproc1: Booting fw image am335x-pru0-fw, size "
+"97112\n"
+"[   73.285807]  remoteproc1#vdev0buffer: registered virtio0 (type 7)\n"
+"[   73.285836] remoteproc remoteproc1: remote processor 4a334000.pru is now "
+"up\n"
+"[   73.286322] remoteproc remoteproc2: powering up 4a338000.pru\n"
+"[   73.313717] remoteproc remoteproc2: Booting fw image am335x-pru1-fw, size "
+"188560\n"
+"[   73.313753] remoteproc remoteproc2: header-less resource table\n"
+"[   73.329964] remoteproc remoteproc2: header-less resource table\n"
+"[   73.348321] remoteproc remoteproc2: remote processor 4a338000.pru is now "
+"up\n"
+"[   73.443355] virtio_rpmsg_bus virtio0: creating channel rpmsg-pru addr "
+"0x1e\n"
+"[   73.443727] virtio_rpmsg_bus virtio0: msg received with no recipient\n"
+"[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online\n"
+"[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/"
+"rpmsg_pru30\n"
 
 #: docs/Beaglebone.md:block 43 (paragraph)
 msgid ""
@@ -387,16 +453,21 @@ msgid ""
 "main mcu configuration this device is required to be present, if it's absent"
 " - your PRU cores did not start properly."
 msgstr ""
+"vedd figyelembe a \"/dev/rpmsg_pru30\" - ez a jövőbeli soros eszköz a fő MCU "
+"konfigurációhoz, ennek az eszköznek jelen kell lennie, ha hiányzik - a PRU "
+"magok nem indulnak el megfelelően."
 
 #: docs/Beaglebone.md:block 44 (header)
 msgid "Building and installing Linux host micro-controller code"
-msgstr ""
+msgstr "Linux gazdagép mikrokontroller kódjának létrehozása és telepítése"
 
 #: docs/Beaglebone.md:block 45 (paragraph)
 msgid ""
 "This section is required for \"Use case 2\" and optional for \"Use case 3\" "
 "mentioned above"
 msgstr ""
+"Ez a szakasz a \"2. használati eset\" esetében kötelező, a fent említett \"3"
+". használati eset\" esetében pedig nem kötelező"
 
 #: docs/Beaglebone.md:block 50 (paragraph)
 msgid ""
@@ -405,6 +476,9 @@ msgid ""
 "\"scripts/klipper-mcu.service\" file, it was installed by previous commands,"
 " and it's responsible for it."
 msgstr ""
+"jegyezd meg a \"/tmp/klipper_host_mcu\" - ez lesz a jövőbeli soros eszközöd "
+"az \"mcu host\" számára, ha ez a fájl nem létezik - lásd a \"scripts/klipper-"
+"mcu.service\" fájlt, az előző parancsok telepítették, és ez a felelős érte."
 
 #: docs/Beaglebone.md:block 51 (paragraph)
 msgid ""
@@ -417,6 +491,15 @@ msgid ""
 "should be avoided because it will be creating additional load on main CPU "
 "and most probably you can't use them for stepper control."
 msgstr ""
+"A \"2. felhasználási eset\" esetében jegyezd meg a következőket: amikor a "
+"nyomtató konfigurációját határozod meg, mindig az \"mcu host\" hőmérséklet-"
+"érzékelőit kell használni, mivel az ADC-k nincsenek jelen az alapértelmezett "
+"\"mcu\"-ban (PRU magok). A \"sensor_pin\" mintakonfigurációja az extruder és "
+"a fűtött ágy számára elérhető a \"generic-cramps.cfg\"-ben. Bármely más GPIO-"
+"t használhatsz közvetlenül az \"mcu host\"-ból, ha így hivatkozol rájuk: "
+"\"host:gpiochip1/gpio17\", de ezt kerülni kell, mert ez további terhelést "
+"jelent a fő CPU-ra, és valószínűleg nem tudja használni a léptető "
+"vezérlésére."
 
 #: docs/Beaglebone.md:block 53 (paragraph)
 msgid ""
@@ -424,6 +507,9 @@ msgid ""
 "in the main [Installation](Installation.md#configuring-octoprint-to-use-"
 "klipper) document."
 msgstr ""
+"Fejezd be a telepítést a Klipper konfigurálásával a [Telepítés](Installation."
+"md#configuring-octoprint-to-use-klipper) fődokumentumban található "
+"utasítások szerint."
 
 #: docs/Beaglebone.md:block 55 (paragraph)
 msgid ""
@@ -435,10 +521,18 @@ msgid ""
 "directly from Klipper and disable any DEBUG or VERBOSE logging options if "
 "you did enable them."
 msgstr ""
+"Sajnos a Beaglebone processzor néha nehezen tudja jól futtatni az "
+"OctoPrintet. Előfordult már, hogy összetett nyomtatásoknál a nyomtatás "
+"akadozott (a nyomtató gyorsabban mozog, mint ahogy az OctoPrint mozgatási "
+"parancsokat tud küldeni). Ha ez előfordul, fontold meg a „virtual_sdcard” "
+"funkció használatát (a részletekért lásd a [Konfigurációs "
+"referencia](Config_Reference.md#virtual_sdcard)) pontot, hogy közvetlenül a "
+"Klipperből nyomtass, és kapcsold ki a DEBUG vagy VERBOSE naplózási opciókat, "
+"ha engedélyezted őket."
 
 #: docs/Beaglebone.md:block 56 (header)
 msgid "AVR micro-controller code build"
-msgstr ""
+msgstr "AVR mikrovezérlő kód építése"
 
 #: docs/Beaglebone.md:block 57 (paragraph)
 msgid ""
@@ -448,27 +542,38 @@ msgid ""
 " need to remove PRU packages and install AVR packages by executing following"
 " commands"
 msgstr ""
+"Ez a környezet mindent tartalmaz a szükséges mikrokontroller kód építéséhez, "
+"kivéve az AVR-t. Az AVR csomagok eltávolításra kerültek a PRU csomagokkal "
+"való konfliktus miatt. Ha még mindig AVR mikrokontroller kódot akarsz "
+"építeni ebben a környezetben, akkor el kell távolítanod a PRU csomagokat és "
+"telepítened kell az AVR csomagokat a következő parancsok végrehajtásával"
 
 #: docs/Beaglebone.md:block 58 (code)
 msgid ""
 "sudo apt-get remove gcc-pru\n"
 "sudo apt-get install avrdude gcc-avr binutils-avr avr-libc\n"
 msgstr ""
+"sudo apt-get remove gcc-pru\n"
+"sudo apt-get install avrdude gcc-avr binutils-avr avr-libc\n"
 
 #: docs/Beaglebone.md:block 59 (paragraph)
 msgid ""
 "if you need to restore PRU packages - then remove ARV packages before that"
 msgstr ""
+"ha vissza kell állítani a PRU csomagokat - akkor előtte távolítsd el az AVR "
+"csomagokat"
 
 #: docs/Beaglebone.md:block 60 (code)
 msgid ""
 "sudo apt-get remove avrdude gcc-avr binutils-avr avr-libc\n"
 "sudo apt-get install gcc-pru\n"
 msgstr ""
+"sudo apt-get remove avrdude gcc-avr binutils-avr avr-libc\n"
+"sudo apt-get install gcc-pru\n"
 
 #: docs/Beaglebone.md:block 61 (header)
 msgid "Hardware Pin designation"
-msgstr ""
+msgstr "Hardver tű megjelölés"
 
 #: docs/Beaglebone.md:block 62 (paragraph)
 msgid ""
@@ -481,6 +586,13 @@ msgid ""
 "i2c1_scl/can1_rx/gpio0_15/uart1_tx P9_26 - "
 "i2c1_sda/can1_tx/gpio0_14/uart1_rx"
 msgstr ""
+"A BeagleBone nagyon rugalmas a tűk kijelölése szempontjából, ugyanaz a tű "
+"különböző funkciókhoz konfigurálható, de mindig egyetlen funkciót egyetlen "
+"tűhöz, ugyanaz a funkció különböző tűkön is jelen lehet. Tehát nem lehet "
+"több funkció egyetlen tűn, vagy ugyanaz a funkció több tűn. Példa: P9_20 - "
+"i2c2_sda/can0_tx/spi1_cs0/gpio0_12/uart1_ctsn P9_19 - i2c2_scl/can0_rx/"
+"spi1_cs1/gpio0_13/uart1_rtsn P9_24 - i2c1_scl/can1_rx/gpio0_15/uart1_tx "
+"P9_26 - i2c1_sda/can1_tx/gpio0_14/uart1_rx"
 
 #: docs/Beaglebone.md:block 63 (paragraph)
 msgid ""
@@ -488,20 +600,25 @@ msgid ""
 "loaded during linux boot they are configured by editing file /boot/uEnv.txt "
 "with elevated permissions"
 msgstr ""
+"A TŰK kijelölése speciális \"overlay\"-ek használatával történik, amelyek a "
+"Linux indításakor töltődnek be. Ezeket a /boot/uEnv.txt fájl szerkesztésével "
+"lehet beállítani, megnövelt jogosultságokkal"
 
 #: docs/Beaglebone.md:block 64 (code)
 msgid "sudo editor /boot/uEnv.txt\n"
-msgstr ""
+msgstr "sudo editor /boot/uEnv.txt\n"
 
 #: docs/Beaglebone.md:block 65 (paragraph)
 msgid ""
 "and defining which functionality to load, for example to enable CAN1 you "
 "need to define overlay for it"
 msgstr ""
+"és annak meghatározása, hogy melyik funkciót kell betölteni, például a CAN1 "
+"engedélyezéséhez meg kell határozni az overlay-t"
 
 #: docs/Beaglebone.md:block 66 (code)
 msgid "uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo\n"
-msgstr ""
+msgstr "uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo\n"
 
 #: docs/Beaglebone.md:block 67 (paragraph)
 msgid ""
@@ -511,10 +628,16 @@ msgid ""
 "some overlay - you can analyze source files in this location: "
 "/opt/sources/bb.org-overlays/src/arm/ or search info in BeagleBone forums."
 msgstr ""
+"Ez az overlay BB-CAN1-00A0.dtbo átkonfigurálja a CAN1 összes szükséges "
+"tűjét, és létrehozza a CAN eszközt Linux-ban. Az overlay-ek bármilyen "
+"módosítása a rendszer újraindítását igényli. Ha megérted, hogy mely tűk "
+"vesznek részt valamelyik overlay-ben - elemezheted a forrásfájlokat ezen a "
+"helyen: /opt/sources/bb.org-overlays/src/arm/ vagy keress információt a "
+"BeagleBone fórumokon."
 
 #: docs/Beaglebone.md:block 68 (header)
 msgid "Enabling hardware SPI"
-msgstr ""
+msgstr "Hardver SPI engedélyezése"
 
 #: docs/Beaglebone.md:block 69 (paragraph)
 msgid ""
@@ -525,32 +648,42 @@ msgid ""
 "SPI1 you need to disable HDMI Audio and enable SPI1 To do that edit file "
 "/boot/uEnv.txt with elevated permissions"
 msgstr ""
+"A BeagleBone általában több hardveres SPI busszal rendelkezik, például a "
+"BeagleBone Black 2 ilyen busz van, ezek akár 48Mhz-ig is működhetnek, de "
+"általában 16Mhz-re korlátozza őket a Kernel Device-tree. Alapértelmezés "
+"szerint a BeagleBone Black-ben néhány SPI1 pin HDMI-Audio kimenetre van "
+"konfigurálva, a 4-vezetékes SPI1 teljes engedélyezéséhez ki kell kapcsolni a "
+"HDMI Audio-t és engedélyezni kell az SPI1-et. Ehhez a /boot/uEnv.txt fájlt "
+"kell szerkeszteni megnövelt jogosultságokkal"
 
 #: docs/Beaglebone.md:block 71 (paragraph)
 msgid "uncomment variable"
-msgstr ""
+msgstr "változó feloldása"
 
 #: docs/Beaglebone.md:block 72 (code)
 msgid "disable_uboot_overlay_audio=1\n"
-msgstr ""
+msgstr "disable_uboot_overlay_audio=1\n"
 
 #: docs/Beaglebone.md:block 73 (paragraph)
 msgid "next uncomment variable and define it this way"
-msgstr ""
+msgstr "a következő változót ki kell kommentelni, és így kell definiálni"
 
 #: docs/Beaglebone.md:block 74 (code)
 msgid "uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo\n"
-msgstr ""
+msgstr "uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo\n"
 
 #: docs/Beaglebone.md:block 75 (paragraph)
 msgid ""
 "Save changes in /boot/uEnv.txt and reboot the board. Now you have SPI1 "
 "Enabled, to verify its presence execute command"
 msgstr ""
+"Mentsd a változtatásokat a /boot/uEnv.txt állományba, és indítsd újra az "
+"alaplapot. Most már az SPI1 engedélyezve van, a jelenlétének ellenőrzéséhez "
+"hajtsd végre a következő parancsot"
 
 #: docs/Beaglebone.md:block 76 (code)
 msgid "ls /dev/spidev1.*\n"
-msgstr ""
+msgstr "ls /dev/spidev1.*\n"
 
 #: docs/Beaglebone.md:block 77 (paragraph)
 msgid ""
@@ -561,10 +694,16 @@ msgid ""
 "they can accept 5v hardware, check CRAMPS board Schematics for pin "
 "references."
 msgstr ""
+"Vedd figyelembe, hogy a BeagleBone általában 3,3V alapú hardver, és az 5V-os "
+"SPI eszközök használatához szintváltó chipet kell hozzáadni, például "
+"SN74CBTD3861, SN74LVC1G34 vagy hasonló. Ha CRAMPS táblát használ - ez már "
+"tartalmaz Level-Shifting chipet és SPI1 tűk elérhetővé válnak a P503 porton, "
+"és elfogadják az 5V hardvert, ellenőrizd a CRAMPS tábla kapcsolási rajzát a "
+"tű-referenciákért."
 
 #: docs/Beaglebone.md:block 78 (header)
 msgid "Enabling hardware I2C"
-msgstr ""
+msgstr "Hardver I2C engedélyezése"
 
 #: docs/Beaglebone.md:block 79 (paragraph)
 msgid ""
@@ -580,10 +719,23 @@ msgid ""
 "BB-I2C1-00A0.dtbo I2C1(400Kbit): BB-I2C1-FAST-00A0.dtbo I2C2(100Kbit): "
 "BB-I2C2-00A0.dtbo I2C2(400Kbit): BB-I2C2-FAST-00A0.dtbo"
 msgstr ""
+"A BeagleBone rendszerint több hardveres I2C buszokkal rendelkezik, például a "
+"BeagleBone Black 3 ilyen buszokkal rendelkezhet, amelyek támogatják a "
+"400Kbit gyors üzemmódig terjedő sebességet. Alapértelmezés szerint a "
+"BeagleBone Blackben kettő van belőlük (i2c-1 és i2c-2) általában mindkettő "
+"már konfigurálva van és jelen van a P9-en, a harmadik i2c-0 általában belső "
+"használatra van fenntartva. Ha CRAMPS lapot használsz, akkor az i2c-2 a P303 "
+"porton van jelen 3,3V-os szinten, Ha az I2c-1-et a CRAMPS lapon szeretnéd "
+"használni - az Extruder1.Step, Extruder1.Dir tűkön kaphatod meg őket, ezek "
+"szintén 3,3V alapúak, nézd meg a CRAMPS lap kapcsolási rajzát a tű-"
+"referenciákért. Kapcsolódó átfedések, a [Hardver tű megnevezés](#hardware-"
+"pin-designation): I2C1(100Kbit): BB-I2C1-00A0.dtbo I2C1(400Kbit): BB-I2C1"
+"-FAST-00A0.dtbo I2C2(100Kbit): BB-I2C2-00A0.dtbo I2C2(400Kbit): BB-I2C2-FAST-"
+"00A0.dtbo"
 
 #: docs/Beaglebone.md:block 80 (header)
 msgid "Enabling hardware UART(Serial)/CAN"
-msgstr ""
+msgstr "Hardveres UART(Soros)/CAN aktiválása"
 
 #: docs/Beaglebone.md:block 81 (paragraph)
 msgid ""
@@ -596,6 +748,15 @@ msgid ""
 "(for CAN), TTL-RS485 (for RS-485) or something similar which can convert "
 "3.3v signals to appropriate levels."
 msgstr ""
+"A BeagleBone akár 6 hardveres UART(Soros) busz (akár 3Mbit) és akár 2 "
+"hardveres CAN(1Mbit) busz. UART1(RX,TX) és CAN1(TX,RX) és I2C2(SDA,SCL) "
+"ugyanazokat a tűket használják - így ki kell választanod, hogy mit "
+"használjon UART1(CTSN,RTSN) és CAN0(TX,RX) és I2C1(SDA,SCL) ugyanazokat a "
+"tűket használják - így ki kell választanod, hogy mit használjon. Minden UART/"
+"CAN kapcsolódó tű 3.3V alapú, így olyan adó-vevő chipeket/lapokat kell "
+"használnod, mint az SN74LVC2G241DCUR (UART-hoz), SN65HVD230 (CAN-hez), TTL-"
+"RS485 (RS-485-hez) vagy valami hasonlót, amely képes a 3.3V jeleket "
+"megfelelő szintre konvertálni."
 
 #: docs/Beaglebone.md:block 82 (paragraph)
 msgid ""
@@ -605,6 +766,10 @@ msgid ""
 "UART2(RX,TX): BB-UART2-00A0.dtbo UART3(RX,TX): BB-UART3-00A0.dtbo "
 "UART4(RS-485): BB-UART4-RS485-00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo"
 msgstr ""
+"Kapcsolódó overlay-ek, a [Hardver Tű-megjelölés](#hardware-pin-designation) "
+"esetén CAN0: BB-CAN0-00A0.dtbo CAN1: BB-CAN1-00A0.dtbo UART0: - a konzol "
+"számára UART1(RX,TX): BB-UART3-00A0.dtbo UART4(RS-485): BB-UART4-RS485-"
+"00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo"
 
 #~ msgid ""
 #~ "Start by installing the [Debian 9.9 2019-08-03 4GB SD "

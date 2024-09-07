@@ -1,15 +1,17 @@
 # "Zs.Antal" <zsikaiantal@icloud.com>, 2023, 2024.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-03-15 16:02+0000\n"
-"Last-Translator: \"Zs.Antal\" <zsikaiantal@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/canbus_troubleshooting/hu/>\n"
+"PO-Revision-Date: 2024-09-07 07:09+0000\n"
+"Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"canbus_troubleshooting/hu/>\n"
 "Language: hu\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 1 (header)
 msgid "CANBUS Troubleshooting"
@@ -331,7 +333,7 @@ msgstr ""
 
 #: docs/CANBUS_Troubleshooting.md:block 13 (header)
 msgid "Use an appropriate txqueuelen setting"
-msgstr ""
+msgstr "Használj megfelelő txqueuelen beállítást"
 
 #: docs/CANBUS_Troubleshooting.md:block 14 (paragraph)
 msgid ""
@@ -340,6 +342,10 @@ msgid ""
 "recommended to [configure the can0 device](CANBUS.md#host-hardware) with a "
 "`txqueuelen 128` to increase that size."
 msgstr ""
+"A Klipper kód a Linux kernelt használja a CAN-busz forgalom kezelésére. "
+"Alapértelmezés szerint a kernel csak 10 CAN átviteli csomagot állít sorba. "
+"Ajánlott [a can0 eszköz konfigurálása](CANBUS.md#host-hardware) `txqueuelen "
+"128`-val, hogy növeld ezt a méretet."
 
 #: docs/CANBUS_Troubleshooting.md:block 15 (paragraph)
 msgid ""
@@ -347,6 +353,9 @@ msgid ""
 " space then Linux will drop that packet and messages like the following will"
 " appear in the Klipper log:"
 msgstr ""
+"Ha a Klipper továbbít egy csomagot, és a Linux betöltötte az összes átviteli "
+"várólistát, akkor a Linux eldobja a csomagot, és a Klipper naplójában a "
+"következő üzenetek jelennek meg:"
 
 #: docs/CANBUS_Troubleshooting.md:block 16 (code)
 msgid "Got error -1 in can write: (105)No buffer space available\n"

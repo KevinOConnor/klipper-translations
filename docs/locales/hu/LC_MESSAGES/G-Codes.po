@@ -2,20 +2,22 @@
 # Yifei Ding <dingyifeiair@gmail.com>, 2022.
 # "Zs.Antal" <zsikaiantal@gmail.com>, 2023.
 # "Zs.Antal" <zsikaiantal@icloud.com>, 2024.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2024-04-06 06:02+0000\n"
-"Last-Translator: \"Zs.Antal\" <zsikaiantal@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/g-codes/hu/>\n"
+"PO-Revision-Date: 2024-09-08 09:09+0000\n"
+"Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"g-codes/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -3356,17 +3358,20 @@ msgstr ""
 
 #: docs/G-Codes.md:block 281 (header)
 msgid "[probe_eddy_current]"
-msgstr ""
+msgstr "[probe_eddy_current]"
 
 #: docs/G-Codes.md:block 282 (paragraph)
 msgid ""
 "The following commands are available when a [probe_eddy_current config "
 "section](Config_Reference.md#probe_eddy_current) is enabled."
 msgstr ""
+"A következő parancsok akkor érhetők el, ha a [probe_eddy_current "
+"konfigurációs szekció](Config_Reference.md#probe_eddy_current) engedélyezve "
+"van."
 
 #: docs/G-Codes.md:block 283 (header)
 msgid "PROBE_EDDY_CURRENT_CALIBRATE"
-msgstr ""
+msgstr "PROBE_EDDY_CURRENT_CALIBRATE"
 
 #: docs/G-Codes.md:block 284 (paragraph)
 msgid ""
@@ -3375,10 +3380,14 @@ msgid ""
 "tool will take a couple of minutes to complete. After completion, use the "
 "SAVE_CONFIG command to store the results in the printer.cfg file."
 msgstr ""
+"`PROBE_EDDY_CURRENT_CALIBRATE CHIP=<config_name>`: Ez elindít egy eszközt, "
+"amely kalibrálja az érzékelő rezonancia frekvenciáit a megfelelő Z "
+"magasságokhoz. Az eszköz elkészítése néhány percet vesz igénybe. A befejezés "
+"után a SAVE_CONFIG paranccsal tárold az eredményeket a printer.cfg fájlban."
 
 #: docs/G-Codes.md:block 285 (header)
 msgid "LDC_CALIBRATE_DRIVE_CURRENT"
-msgstr ""
+msgstr "LDC_CALIBRATE_DRIVE_CURRENT"
 
 #: docs/G-Codes.md:block 286 (paragraph)
 msgid ""
@@ -3389,20 +3398,29 @@ msgid ""
 " sensor. After running this command use the SAVE_CONFIG command to store "
 "that new setting in the printer.cfg config file."
 msgstr ""
+"`LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` Ez az eszköz kalibrálja az "
+"ldc1612 DRIVE_CURRENT0 regisztert. Az eszköz használata előtt mozgasd az "
+"érzékelőt úgy, hogy az az ágy közepe közelében legyen, és körülbelül 20 mm-"
+"rel az ágy felülete felett legyen. Futtasd ezt a parancsot a megfelelő "
+"DRIVE_CURRENT meghatározásához az érzékelő számára. A parancs futtatása után "
+"a SAVE_CONFIG paranccsal tárold az új beállítást a printer.cfg fájlban."
 
 #: docs/G-Codes.md:block 393 (header)
 msgid "[temperature_probe]"
-msgstr ""
+msgstr "[temperature_probe]"
 
 #: docs/G-Codes.md:block 394 (paragraph)
 msgid ""
 "The following commands are available when a [temperature_probe config "
 "section](Config_Reference.md#temperature_probe) is enabled."
 msgstr ""
+"A következő parancsok akkor érhetők el, ha a [temperature_probe "
+"konfigurációs szakasz](Config_Reference.md#temperature_probe) engedélyezve "
+"van."
 
 #: docs/G-Codes.md:block 395 (header)
 msgid "TEMPERATURE_PROBE_CALIBRATE"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_CALIBRATE"
 
 #: docs/G-Codes.md:block 396 (paragraph)
 msgid ""
@@ -3414,10 +3432,18 @@ msgid ""
 "samples. After a sample has been taken, this delta is used to schedule a "
 "call to `TEMPERATURE_PROBE_NEXT`. The default `STEP` is 2."
 msgstr ""
+"`TEMPERATURE_PROBE_CALIBRATE [PROBE=<probe name>] [TARGET=<value>] "
+"[STEP=<value>]`: Elindítja a szonda sodródásának kalibrálását örvényáram "
+"alapú szondákhoz. A `TARGET` az utolsó mérés célhőmérséklete. Ha a mérés "
+"során rögzített hőmérséklet meghaladja a `TARGET` kalibrációt, akkor a "
+"kalibráció befejeződik. A `STEP` paraméter beállítja a hőmérséklet-deltát "
+"(C-ban) a mérések között. A mérések után ez a delta a "
+"`TEMPERATURE_PROBE_NEXT` hívás ütemezésére szolgál. Az alapértelmezett `STEP`"
+" a 2."
 
 #: docs/G-Codes.md:block 397 (header)
 msgid "TEMPERATURE_PROBE_NEXT"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_NEXT"
 
 #: docs/G-Codes.md:block 398 (paragraph)
 msgid ""
@@ -3427,10 +3453,15 @@ msgid ""
 " run this command to force a new sample. This command is only available "
 "during calibration."
 msgstr ""
+"`TEMPERATURE_PROBE_NEXT`: A kalibrálás megkezdése után ez a parancs fut a "
+"következő méréshez. A rendszer automatikusan ütemezi a futást, amikor elérte "
+"a `STEP` által meghatározott delta értéket, de lehetséges manuálisan is "
+"futtatni ezt a parancsot egy új mérés kényszerítéséhez. Ez a parancs csak "
+"kalibrálás közben érhető el."
 
 #: docs/G-Codes.md:block 399 (header)
 msgid "TEMPERATURE_PROBE_COMPLETE:"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_COMPLETE:"
 
 #: docs/G-Codes.md:block 400 (paragraph)
 msgid ""
@@ -3438,20 +3469,25 @@ msgid ""
 "current result before the `TARGET` temperature is reached. This command is "
 "only available during calibration."
 msgstr ""
+"`TEMPERATURE_PROBE_COMPLETE`: A kalibráció befejezésére és az aktuális "
+"eredmény mentésére használható, mielőtt elérné a `TARGET` hőmérsékletet. Ez "
+"a parancs csak kalibrálás közben érhető el."
 
 #: docs/G-Codes.md:block 401 (header)
 msgid "ABORT"
-msgstr ""
+msgstr "ABORT"
 
 #: docs/G-Codes.md:block 402 (paragraph)
 msgid ""
 "`ABORT`: Aborts the calibration process, discarding the current results. "
 "This command is only available during drift calibration."
 msgstr ""
+"`ABORT`: Megszakítja a kalibrálási folyamatot, elveti az aktuális "
+"eredményeket. Ez a parancs csak a drift-kalibráció során érhető el."
 
 #: docs/G-Codes.md:block 403 (header)
 msgid "TEMPERATURE_PROBE_ENABLE"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_ENABLE"
 
 #: docs/G-Codes.md:block 404 (paragraph)
 msgid ""
@@ -3459,6 +3495,9 @@ msgid ""
 " on or off. If ENABLE is set to 0, drift compensation will be disabled, if "
 "set to 1 it is enabled."
 msgstr ""
+"`TEMPERATURE_PROBE_ENABLE ENABLE=[0|1]`: Be- vagy kikapcsolja a hőmérséklet-"
+"eltolás kompenzációját. Ha az ENGEDÉLYEZÉS 0-ra van állítva, az eltolás "
+"kompenzáció le lesz tiltva, ha 1-re van állítva, akkor engedélyezve van."
 
 #~ msgid ""
 #~ "`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] "

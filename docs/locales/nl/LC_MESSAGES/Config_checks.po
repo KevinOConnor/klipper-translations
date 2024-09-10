@@ -2,24 +2,26 @@
 # Luc Van den Borre <luc@orotec.be>, 2023.
 # Tjalling Kaastra <tjalling@kaastra.net>, 2024.
 # Austin <austin_adamek1@hotmail.com>, 2024.
+# Simon Tillema <shtillema@gomarus.nl>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-07-03 21:12+0000\n"
-"Last-Translator: Austin <austin_adamek1@hotmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/config_checks/nl/>\n"
+"PO-Revision-Date: 2024-09-11 14:09+0000\n"
+"Last-Translator: Simon Tillema <shtillema@gomarus.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
+"config_checks/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid ""
 "This document provides a list of steps to help confirm the pin settings in "
 "the Klipper printer.cfg file. It is a good idea to run through these steps "
 "after following the steps in the [installation document](Installation.md)."
 msgstr ""
-"Dit document bevat een lijst met stappen om de pininstellingen in "
+"Dit document bevat een lijst met stappen om de pin-instellingen in "
 "printer.cfg te bevestigen. Het is belangrijk om deze stappen door te lopen "
 "in het [installatiedocument](Installation.md)."
 
@@ -71,7 +73,7 @@ msgid ""
 msgstr ""
 
 msgid "Verify stepper motors"
-msgstr ""
+msgstr "Verifieer stappenmotors"
 
 msgid ""
 "If the stepper does not move at all, then verify the \"enable_pin\" and "
@@ -93,6 +95,12 @@ msgid ""
 "STEPPER=extruder). Otherwise, it's best to test the extruder motor "
 "separately (see the next section)."
 msgstr ""
+"Draai de voorgaande test voor elke stappenmotor zoals gedefinieerd in het "
+"configuratiebestand. (Stel de STEPPER-parameters van het STEPPER_BUZZ-"
+"commando in op de naam zoals gebruikt in het configuratiebestand.) Als er "
+"geen filament geladen is, kan STEPPER_BUZZ ook gebruikt worden voor de "
+"extrudermotor (gebruik STEPPER=extruder). Test anders de extrudermotor "
+"afzonderlijk (zie de volgende sectie)."
 
 msgid ""
 "After verifying all endstops and verifying all stepper motors the homing "
@@ -102,15 +110,18 @@ msgid ""
 msgstr ""
 
 msgid "Verify extruder motor"
-msgstr ""
+msgstr "Verifieer extrudermotor"
 
 msgid "Calibrate PID settings"
-msgstr ""
+msgstr "Kalibreer PID-instellingen"
 
+#, fuzzy
 msgid ""
 "At the completion of the tuning test run `SAVE_CONFIG` to update the "
 "printer.cfg file the new PID settings."
 msgstr ""
+"Draai `SAVE_CONFIG` na het afronden van de tuning test om printer.cfg te "
+"updaten naar de nieuwe PID-instellingen."
 
 msgid ""
 "If the printer has a heated bed and it supports being driven by PWM (Pulse "

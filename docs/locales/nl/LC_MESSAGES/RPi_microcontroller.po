@@ -1,20 +1,24 @@
 # Tjalling Kaastra <tjalling@kaastra.net>, 2024.
+# Simon Tillema <shtillema@gomarus.nl>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-05-23 02:21+0000\n"
-"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/rpi_microcontroller/nl/>\n"
+"PO-Revision-Date: 2024-09-11 14:09+0000\n"
+"Last-Translator: Simon Tillema <shtillema@gomarus.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
+"rpi_microcontroller/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid ""
 "This document describes the process of running Klipper on a RPi and use the "
 "same RPi as secondary mcu."
 msgstr ""
+"Dit document beschrijft het proces van het draaien van Klipper op een RPi en "
+"die tevens te gebruiken als een tweede mcu."
 
 msgid "Why use RPi as a secondary MCU?"
 msgstr ""

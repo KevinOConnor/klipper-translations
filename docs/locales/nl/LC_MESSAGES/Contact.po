@@ -1,22 +1,24 @@
 # Simon Tillema <simontillema@gmail.com>, 2023.
 # Luc Van den Borre <luc@orotec.be>, 2023.
+# Simon Tillema <shtillema@gomarus.nl>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-06-30 06:49+0000\n"
-"Last-Translator: Luc Van den Borre <luc@orotec.be>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/contact/nl/>\n"
+"PO-Revision-Date: 2024-09-11 14:09+0000\n"
+"Last-Translator: Simon Tillema <shtillema@gomarus.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/contact/nl/"
+">\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid "This document provides contact information for Klipper."
 msgstr "Dit document bevat contactinformatie voor Klipper."
 
 msgid "[Community Forum](#community-forum)"
-msgstr "[Communityforum](#community-forum)"
+msgstr "[Community-forum](#community-forum)"
 
 msgid "[Discord Chat](#discord-chat)"
 msgstr "[Discord-chat](#discord-chat)"
@@ -44,8 +46,8 @@ msgid ""
 "There is a [Klipper Community Discourse "
 "server](https://community.klipper3d.org) for discussions on Klipper."
 msgstr ""
-"Er is een [Klipper Discourse-server](https://community.klipper3d.org) voor "
-"discussies over Klipper."
+"Er is een [Klipper Community Discourse-server](https://community.klipper3d."
+"org) voor discussies over Klipper."
 
 msgid "Discord Chat"
 msgstr "Discord-chat"
@@ -84,6 +86,10 @@ msgid ""
 "forum) or [Klipper Discord Chat](#discord-chat). Both are communities where "
 "Klipper users can discuss Klipper with other users."
 msgstr ""
+"Als je bent geïnteresseerd in het delen van je kennis en ervaring met andere "
+"Klipper-gebruikers, dan kun je de [Klipper Community Forum](#community-forum)"
+" of de [Klipper Discord Chat](#discord-chat) joinen. Beide zijn community's "
+"waar Klipper-gebruikers kunnen discussiëren met andere Klipper-gebruikers."
 
 msgid ""
 "Many questions we receive are general 3d-printing questions that are not "
@@ -92,9 +98,14 @@ msgid ""
 "asking in a general 3d-printing forum or a forum dedicated to your printer "
 "hardware."
 msgstr ""
+"Veel vragen die we krijgen zijn algemene 3D-printer vragen die niet "
+"specifiek over Klipper gaan. Als je een algemene vraag of algemeen "
+"printerprobleem hebt, dan heb je een grotere kans op een beter antwoord door "
+"de vraag te stellen in een algemeen 3D-printer-forum die gericht is op je "
+"type printer."
 
 msgid "I have a feature request"
-msgstr ""
+msgstr "Ik heb een functie-aanvraag"
 
 msgid ""
 "All new features require someone interested and able to implement that "
@@ -103,20 +114,28 @@ msgid ""
 "Forum](#community-forum). There is also [Klipper Discord Chat](#discord-"
 "chat) for discussions between collaborators."
 msgstr ""
+"Alle nieuwe functies vereisen enige interesse en moeten geïmplementeerd "
+"kunnen worden. Als je geïnteresseerd bent in het helpen implementeren of "
+"testen van nieuwe functies, kan je zoeken op lopende ontwikkelingen in de ["
+"Klipper Community Forum](#community-forum). Er is ook een [Klipper Discord "
+"Chat](#discord-chat) voor discussies tussen medewerkers."
 
 msgid "Help! It doesn't work!"
-msgstr ""
+msgstr "Help! Het werkt niet!"
 
 msgid ""
 "Unfortunately, we receive many more requests for help than we could possibly"
 " answer. Most problem reports we see are eventually tracked down to:"
 msgstr ""
+"We krijgen helaas meer hulpaanvragen dan we kunnen beantwoorden. De meeste "
+"probleemrapportages die we zien worden onderverdeeld in:"
 
 msgid "Subtle errors in the hardware, or"
-msgstr ""
+msgstr "Kleine fouten in de hardware, of"
 
 msgid "Not following all the steps described in the Klipper documentation."
 msgstr ""
+"Het niet volgen van de stappen zoals beschreven in de Klipper-documentatie."
 
 msgid ""
 "If you are experiencing problems we recommend you carefully read the "
@@ -210,7 +229,7 @@ msgstr ""
 
 #: docs/Contact.md:block 3 (ordered list)
 msgid "[Klipper github](#klipper-github)"
-msgstr ""
+msgstr "[Klipper github](#klipper-github)"
 
 #: docs/Contact.md:block 23 (header)
 msgid "I found a bug in the Klipper software"
@@ -261,7 +280,7 @@ msgstr ""
 
 #: docs/Contact.md:block 32 (header)
 msgid "Klipper github"
-msgstr ""
+msgstr "Klipper github"
 
 #: docs/Contact.md:block 33 (paragraph)
 msgid ""

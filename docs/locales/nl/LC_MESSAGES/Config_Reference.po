@@ -1,21 +1,25 @@
 # Luc Van den Borre <luc@orotec.be>, 2023.
 # Tjalling Kaastra <tjalling@kaastra.net>, 2024.
+# Simon Tillema <shtillema@gomarus.nl>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-05-24 02:06+0000\n"
-"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/config_reference/nl/>\n"
+"PO-Revision-Date: 2024-09-11 14:09+0000\n"
+"Last-Translator: Simon Tillema <shtillema@gomarus.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
+"config_reference/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
 "file."
 msgstr ""
+"Dit document is een referentie voor opties die in het Klipper "
+"configuratiebestand beschikbaar zijn."
 
 msgid ""
 "The descriptions in this document are formatted so that it is possible to "
@@ -394,7 +398,7 @@ msgid "[respond]"
 msgstr ""
 
 msgid "Resonance compensation"
-msgstr "Resonantie compensering"
+msgstr "Resonantiecompensatie"
 
 msgid "[input_shaper]"
 msgstr ""

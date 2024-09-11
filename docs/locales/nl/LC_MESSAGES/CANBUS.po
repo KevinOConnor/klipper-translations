@@ -1,47 +1,57 @@
 # Tjalling Kaastra <tjalling@kaastra.net>, 2024.
+# Simon Tillema <shtillema@gomarus.nl>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-05-23 02:21+0000\n"
-"Last-Translator: Tjalling Kaastra <tjalling@kaastra.net>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/canbus/nl/>\n"
+"PO-Revision-Date: 2024-09-11 14:09+0000\n"
+"Last-Translator: Simon Tillema <shtillema@gomarus.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/canbus/nl/>"
+"\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 msgid "This document describes Klipper's CAN bus support."
-msgstr ""
+msgstr "Dit document beschrijft Klipper's CAN-bus ondersteuning."
 
 msgid "Device Hardware"
-msgstr ""
+msgstr "Apparaat"
 
 msgid "Host Hardware"
-msgstr ""
+msgstr "Host"
 
 msgid ""
 "It is also necessary to configure the host operating system to use the "
 "adapter. This is typically done by creating a new file named "
 "`/etc/network/interfaces.d/can0` with the following contents:"
 msgstr ""
+"Het is ook cruciaal om de host OS te configureren om de adapter te "
+"gebruiken. Dit wordt normaal gesproken gedaan door een nieuw bestand aan te "
+"maken met de naam `/etc/network/interfaces.d/can0` en de volgende inhoud:"
 
 msgid "Terminating Resistors"
-msgstr ""
+msgstr "Afsluitweerstanden"
 
 msgid ""
 "A CAN bus should have two 120 ohm resistors between the CANH and CANL wires."
 " Ideally, one resistor located at each the end of the bus."
 msgstr ""
+"Een CAN-bus moet twee 120 Ohm weerstanden hebben tussen de CAN-H en CAN-L "
+"draden. Bij voorkeur een weerstand aan beide einden van de bus."
 
 msgid ""
 "To test that the resistors are correct, one can remove power to the printer "
 "and use a multi-meter to check the resistance between the CANH and CANL "
 "wires - it should report ~60 ohms on a correctly wired CAN bus."
 msgstr ""
+"Om de weerstanden te testen kun je de stroom van de printer halen en een "
+"multimeter gebruiken om de weerstand tussen CAN-H en CAN-L te meten - het "
+"zou ~60 Ohm moeten zijn op een correct aangesloten CAN-bus."
 
 msgid "Finding the canbus_uuid for new micro-controllers"
-msgstr ""
+msgstr "Zoeken naar de canbus_uuid voor nieuwe microcontrollers"
 
 msgid ""
 "Each micro-controller on the CAN bus is assigned a unique id based on the "
@@ -49,6 +59,10 @@ msgid ""
 "micro-controller device id, make sure the hardware is powered and wired "
 "correctly, and then run:"
 msgstr ""
+"Elke microcontroller op de CAN-bus heeft een uniek ID toegewezen, gebaseerd "
+"op de fabrieksinstelling, gecodeerd in elke microcontroller. Zorg ervoor dat "
+"de hardware correct is aangesloten en aanstaat om de ID te achterhalen. "
+"Draai dan:"
 
 msgid ""
 "If uninitialized CAN devices are detected the above command will report "
@@ -81,10 +95,12 @@ msgid ""
 "[mcu my_can_mcu]\n"
 "canbus_uuid: 11aa22bb33cc\n"
 msgstr ""
+"[mcu my_can_mcu]\n"
+"canbus_uuid: 11aa22bb33cc\n"
 
 #: docs/CANBUS.md:block 1 (header)
 msgid "CANBUS"
-msgstr ""
+msgstr "CAN-bus"
 
 #: docs/CANBUS.md:block 5 (paragraph)
 msgid ""
@@ -92,14 +108,17 @@ msgid ""
 "communication interface. Finally, compile the micro-controller code and "
 "flash it to the target board."
 msgstr ""
+"Om te compileren voor CAN, draai `make menuconfig` en selecteer \"CAN bus\" "
+"als communicatie-interface. Compileer tenslotte de microcontroller-code en "
+"flash dit op het betreffende bord."
 
 #: docs/CANBUS.md:block 26 (header)
 msgid "USB to CAN bus bridge mode"
-msgstr ""
+msgstr "USB naar CAN-bus bridge-modus"
 
 #: docs/CANBUS.md:block 29 (paragraph)
 msgid "Some important notes when using this mode:"
-msgstr ""
+msgstr "Enkel belangrijke opmerkingen voor gebruik in deze modus:"
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""
@@ -109,10 +128,15 @@ msgid ""
 "is specified during \"make menuconfig\" and the bus speed specified in Linux"
 " is ignored."
 msgstr ""
+"Het is noodzakelijk om `can0` (of een vergelijkbare) interface in Linux te "
+"configureren om te communiceren met de bus. Linux CAN-bus snelheid en CAN-"
+"bus bit-timing-opties worden genegeerd door Klipper. Momenteel wordt de CAN-"
+"bus-frequentie ingesteld in \"make menuconfig\" en de bus-snelheid ingesteld "
+"in Linux wordt genegeerd."
 
 #: docs/CANBUS.md:block 20 (code)
 msgid "Found canbus_uuid=11aa22bb33cc, Application: Klipper\n"
-msgstr ""
+msgstr "Gevonden: canbus_uuid=11aa22bb33cc, applicatie: Klipper\n"
 
 #: docs/CANBUS.md:block 4 (paragraph)
 msgid ""
@@ -120,6 +144,9 @@ msgid ""
 "addition, the micro-controller chip must be on a board that has a CAN "
 "transceiver."
 msgstr ""
+"Klipper ondersteunt momenteel CAN op stm32, SAME5x en rp2040 chips. De "
+"microcontroller-chip moet zich daarbij op een bord bevinden met CAN-"
+"zendontvanger."
 
 #: docs/CANBUS.md:block 7 (paragraph)
 msgid ""

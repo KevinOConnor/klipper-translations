@@ -1,6 +1,6 @@
 # Slicers
 
-This document provides some tips for configuring a "slicer" application for use with Klipper. Common slicers used with Klipper are Slic3r, Cura, Simplify3D, etc.
+Dit document geeft enkele tips om de slicer te configureren voor gebruik met Klipper. Bekende slicers zijn Slic3r, Cura, Simplify3D, etc.
 
 ## Set the G-Code flavor to Marlin
 

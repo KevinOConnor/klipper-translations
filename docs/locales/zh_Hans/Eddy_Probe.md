@@ -43,7 +43,7 @@ Eddy probe的制造商提供了一些可以使用的校准预设可以手动添�
    - 移动喷头到热床的中心。z轴高度应该至少高于热床30mm。
    - 加热挤出机温度到最大热床安全温度。150-170C 通常来说适用于绝大部分的配置。加热挤出机的目的是避免喷头在校准过程中的热膨胀。
    - 当挤出机到达设定温度，移动z下降到离热床1mm的位置。
-- 开始漂移校准。如果探针名字是`my_probe` 并且最大探针温度可以到达80C，可以使用`TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`来进行校准。如果进行了配置，喷头的XY应该会移动到`calibration_position` 并且Z轴通过`extruder_heating_z`来调整。将挤出机加热到指定温度后，工具将移动到`校准位置`指定的 Z 值。
+- 开始漂移校准。如果探针名字是`my_probe` 并且最大探针温度可以到达80C，可以使用`TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`来进行校准。如果进行了配置，喷头的XY应该会移动到`calibration_position` 并且Z轴通过`extruder_heating_z`来调整。将挤出机加热到指定温度后，工具将会移动到`calibration_position`中指定的 Z 值。
 - 程序将要求进行手动探测。使用纸张测试执行手动探头，然后使用 `ACCEPT`接受当前位置。校准程序将使用探针采集第一组采样，然后将探针停在加热位置。
 - 如果`calibration_bed_temp`**未被**配置启动热床加热到最高安全温度。否则将自动执行此步骤。
 - 在默认的校准流程中在到达 `TARGET`之前会每2C要求一次手动偏移探针校准。温度偏移量在校准中可以通过`TEMPERATURE_PROBE_CALIBRATE` 中的`STEP`来进行修改。注意在自定义`STEP` 的值的时候，特别高的值和太少的校准点回导致很差的校准结果。

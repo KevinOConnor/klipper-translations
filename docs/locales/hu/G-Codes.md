@@ -591,15 +591,15 @@ A következő parancsok akkor érhetők el, ha a [szonda konfigurációs szakasz
 
 ### [probe_eddy_current]
 
-The following commands are available when a [probe_eddy_current config section](Config_Reference.md#probe_eddy_current) is enabled.
+A következő parancsok akkor érhetők el, ha a [probe_eddy_current konfigurációs szekció](Config_Reference.md#probe_eddy_current) engedélyezve van.
 
 #### PROBE_EDDY_CURRENT_CALIBRATE
 
-`PROBE_EDDY_CURRENT_CALIBRATE CHIP=<config_name>`: This starts a tool that calibrates the sensor resonance frequencies to corresponding Z heights. The tool will take a couple of minutes to complete. After completion, use the SAVE_CONFIG command to store the results in the printer.cfg file.
+`PROBE_EDDY_CURRENT_CALIBRATE CHIP=<config_name>`: Ez elindít egy eszközt, amely kalibrálja az érzékelő rezonancia frekvenciáit a megfelelő Z magasságokhoz. Az eszköz elkészítése néhány percet vesz igénybe. A befejezés után a SAVE_CONFIG paranccsal tárold az eredményeket a printer.cfg fájlban.
 
 #### LDC_CALIBRATE_DRIVE_CURRENT
 
-`LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` This tool will calibrate the ldc1612 DRIVE_CURRENT0 register. Prior to using this tool, move the sensor so that it is near the center of the bed and about 20mm above the bed surface. Run this command to determine an appropriate DRIVE_CURRENT for the sensor. After running this command use the SAVE_CONFIG command to store that new setting in the printer.cfg config file.
+`LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` Ez az eszköz kalibrálja az ldc1612 DRIVE_CURRENT0 regisztert. Az eszköz használata előtt mozgasd az érzékelőt úgy, hogy az az ágy közepe közelében legyen, és körülbelül 20 mm-rel az ágy felülete felett legyen. Futtasd ezt a parancsot a megfelelő DRIVE_CURRENT meghatározásához az érzékelő számára. A parancs futtatása után a SAVE_CONFIG paranccsal tárold az új beállítást a printer.cfg fájlban.
 
 ### [pwm_cycle_time]
 
@@ -828,24 +828,24 @@ A következő parancsok akkor érhetők el, ha a [z_tilt konfigurációs szakasz
 
 ### [temperature_probe]
 
-The following commands are available when a [temperature_probe config section](Config_Reference.md#temperature_probe) is enabled.
+A következő parancsok akkor érhetők el, ha a [temperature_probe konfigurációs szakasz](Config_Reference.md#temperature_probe) engedélyezve van.
 
 #### TEMPERATURE_PROBE_CALIBRATE
 
-`TEMPERATURE_PROBE_CALIBRATE [PROBE=<probe name>] [TARGET=<value>] [STEP=<value>]`: Initiates probe drift calibration for eddy current based probes. The `TARGET` is a target temperature for the last sample. When the temperature recorded during a sample exceeds the `TARGET` calibration will complete. The `STEP` parameter sets temperature delta (in C) between samples. After a sample has been taken, this delta is used to schedule a call to `TEMPERATURE_PROBE_NEXT`. The default `STEP` is 2.
+`TEMPERATURE_PROBE_CALIBRATE [PROBE=<probe name>] [TARGET=<value>] [STEP=<value>]`: Elindítja a szonda sodródásának kalibrálását örvényáram alapú szondákhoz. A `TARGET` az utolsó mérés célhőmérséklete. Ha a mérés során rögzített hőmérséklet meghaladja a `TARGET` kalibrációt, akkor a kalibráció befejeződik. A `STEP` paraméter beállítja a hőmérséklet-deltát (C-ban) a mérések között. A mérések után ez a delta a `TEMPERATURE_PROBE_NEXT` hívás ütemezésére szolgál. Az alapértelmezett `STEP` a 2.
 
 #### TEMPERATURE_PROBE_NEXT
 
-`TEMPERATURE_PROBE_NEXT`: After calibration has started this command is run to take the next sample. It is automatically scheduled to run when the delta specified by `STEP` has been reached, however its also possible to manually run this command to force a new sample. This command is only available during calibration.
+`TEMPERATURE_PROBE_NEXT`: A kalibrálás megkezdése után ez a parancs fut a következő méréshez. A rendszer automatikusan ütemezi a futást, amikor elérte a `STEP` által meghatározott delta értéket, de lehetséges manuálisan is futtatni ezt a parancsot egy új mérés kényszerítéséhez. Ez a parancs csak kalibrálás közben érhető el.
 
 #### TEMPERATURE_PROBE_COMPLETE:
 
-`TEMPERATURE_PROBE_COMPLETE`: Can be used to end calibration and save the current result before the `TARGET` temperature is reached. This command is only available during calibration.
+`TEMPERATURE_PROBE_COMPLETE`: A kalibráció befejezésére és az aktuális eredmény mentésére használható, mielőtt elérné a `TARGET` hőmérsékletet. Ez a parancs csak kalibrálás közben érhető el.
 
 #### ABORT
 
-`ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
+`ABORT`: Megszakítja a kalibrálási folyamatot, elveti az aktuális eredményeket. Ez a parancs csak a drift-kalibráció során érhető el.
 
 ### TEMPERATURE_PROBE_ENABLE
 
-`TEMPERATURE_PROBE_ENABLE ENABLE=[0|1]`: Sets temperature drift compensation on or off. If ENABLE is set to 0, drift compensation will be disabled, if set to 1 it is enabled.
+`TEMPERATURE_PROBE_ENABLE ENABLE=[0|1]`: Be- vagy kikapcsolja a hőmérséklet-eltolás kompenzációját. Ha az ENGEDÉLYEZÉS 0-ra van állítva, az eltolás kompenzáció le lesz tiltva, ha 1-re van állítva, akkor engedélyezve van.

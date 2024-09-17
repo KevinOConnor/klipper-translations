@@ -6,7 +6,7 @@ Configuration Reference
 
 Bed Level
 
-Resonance Compensation
+Resonantie-compensatie
 
 Command templates
 

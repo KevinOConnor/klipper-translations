@@ -822,97 +822,99 @@ Vizuális példák:
 ```
 [bed_mesh]
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#   A nem tapintó mozgás sebessége (mm/s-ban) a kalibrálás során.
+#   Az alapértelmezett 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#   Az a magasság (mm-ben), ameddig a fejet utasítani kell, hogy
+#   mozogjon közvetlenül a tapintóművelet megkezdése előtt.
+#   Az alapértelmezett az 5.
 #mesh_radius:
-#   Defines the radius of the mesh to probe for round beds. Note that
-#   the radius is relative to the coordinate specified by the
-#   mesh_origin option. This parameter must be provided for round beds
-#   and omitted for rectangular beds.
+#   Meghatározza a háló sugarát a kerek ágyakhoz. Vedd figyelembe,
+#   hogy a sugár a mesh_origin paraméter által megadott
+#   koordinátához viszonyított. Ezt a paramétert kerek ágyaknál kell
+#   megadni, téglalap alakú ágyaknál pedig elhagyni.
 #mesh_origin:
-#   Defines the center X, Y coordinate of the mesh for round beds. This
-#   coordinate is relative to the probe's location. It may be useful
-#   to adjust the mesh_origin in an effort to maximize the size of the
-#   mesh radius. Default is 0, 0. This parameter must be omitted for
-#   rectangular beds.
+#   Meghatározza a háló középső X, Y koordinátáját kerek ágyakhoz.
+#   Ez a koordináta a szonda helyéhez viszonyított. Hasznos lehet a
+#   mesh_origin beállítása a háló sugara méretének maximalizálása érdekében
+#   Az alapértelmezett érték 0, 0. Ezt a paramétert ki kell hagyni
+#   téglalap alakú ágyaknál.
 #mesh_min:
-#   Defines the minimum X, Y coordinate of the mesh for rectangular
-#   beds. This coordinate is relative to the probe's location. This
-#   will be the first point probed, nearest to the origin. This
-#   parameter must be provided for rectangular beds.
+#   Meghatározza a háló minimális X, Y koordinátáját téglalap ágyak esetén.
+#   Ez a koordináta a szonda helyéhez viszonyított.
+#   Ez lesz az origóhoz legközelebbi első vizsgált pont.
+#   Ezt a paramétert kell megadni a téglalap alakú ágyakhoz.
 #mesh_max:
-#   Defines the maximum X, Y coordinate of the mesh for rectangular
-#   beds. Adheres to the same principle as mesh_min, however this will
-#   be the furthest point probed from the bed's origin. This parameter
-#   must be provided for rectangular beds.
+#   Meghatározza a háló maximális X, Y koordinátáját téglalap ágyak esetén.
+#   Ugyanaz az elv, mint a mesh_min, bárhogyan is
+#   legyen a legtávolabbi pont az ágy eredetétől.
+#   Ez a paramétert téglalap alakú ágyakhoz kell biztosítani.
 #probe_count: 3, 3
-#   For rectangular beds, this is a comma separate pair of integer
-#   values X, Y defining the number of points to probe along each
-#   axis. A single value is also valid, in which case that value will
-#   be applied to both axes. Default is 3, 3.
+#   Téglalap alakú ágyak esetén ez egy vesszővel elválasztott egész számpár
+#   X, Y értékek, amelyek meghatározzák a vizsgálandó pontok számát mindegyik tengely mentén
+#   Egyetlen érték is érvényes, ebben az esetben ez az értéket
+#   mindkét tengelyre alkalmazni kell. Az alapértelmezett 3, 3.
 #round_probe_count: 5
-#   For round beds, this integer value defines the maximum number of
-#   points to probe along each axis. This value must be an odd number.
-#   Default is 5.
+#   Kerek ágyak esetén ez az egész érték határozza meg a maximális számát a méréseknek
+#   Ennek az értéknek páratlan számnak kell lennie.
+#   Az alapértelmezett az 5.
 #fade_start: 1.0
-#   The gcode z position in which to start phasing out z-adjustment
-#   when fade is enabled. Default is 1.0.
+#   A G-kód Z pozíciója, ahol elkezdődik a Z-beállítás fokozatos megszüntetése
+#   ha a fade engedélyezve van. Az alapértelmezett 1.0.
 #fade_end: 0.0
-#   The gcode z position in which phasing out completes. When set to a
-#   value below fade_start, fade is disabled. It should be noted that
-#   fade may add unwanted scaling along the z-axis of a print. If a
-#   user wishes to enable fade, a value of 10.0 is recommended.
-#   Default is 0.0, which disables fade.
+#   A G-kód Z pozíciója, amelyben a fokozatos kivonás befejeződik.
+#   Ha a fade_start alatti értékre van állítva, a fade le van tiltva.
+#   Meg kell jegyezni, hogy a fade nem kívánt méretezést okozhat a nyomat Z tengelye mentén.
+#   Ha a felhasználó engedélyezni szeretné a fade-ot, a 10.0 érték ajánlott.
+#   Az alapértelmezett 0.0, ami letiltja az elhalványulást.
 #fade_target:
-#   The z position in which fade should converge. When this value is
-#   set to a non-zero value it must be within the range of z-values in
-#   the mesh. Users that wish to converge to the z homing position
-#   should set this to 0. Default is the average z value of the mesh.
+#   A Z pozíció, amelyben a fade-nek konvergálnia kell. Amikor ez az érték
+#   nullától eltérő értékre van állítva a Z-értékek tartományában kell lennie.
+#   Azok a felhasználók, akik a z kezdőponthoz szeretnének konvergálni
+#   0-ra kell állítani. Az alapértelmezett a háló átlagos Z értéke.
 #split_delta_z: .025
-#   The amount of Z difference (in mm) along a move that will trigger
-#   a split. Default is .025.
+#   A Z eltérés mértéke (mm-ben) a kiváltó mozgás mentén
+#   egy hasadás. Az alapértelmezett érték .025.
 #move_check_distance: 5.0
-#   The distance (in mm) along a move to check for split_delta_z.
-#   This is also the minimum length that a move can be split. Default
-#   is 5.0.
+#   A távolság (mm-ben) egy mozgás mentén a split_delta_z ellenőrzéséhez.
+#   Ez egyben a minimális hossz, ameddig egy lépést el lehet osztani.
+#   Alapértelmezett az 5.0.
 #mesh_pps: 2, 2
-#   A comma separated pair of integers X, Y defining the number of
-#   points per segment to interpolate in the mesh along each axis. A
-#   "segment" can be defined as the space between each probed point.
-#   The user may enter a single value which will be applied to both
-#   axes. Default is 2, 2.
-#algorithm: lagrange
-#   The interpolation algorithm to use. May be either "lagrange" or
-#   "bicubic". This option will not affect 3x3 grids, which are forced
-#   to use lagrange sampling. Default is lagrange.
+#   Egy vesszővel elválasztott X, Y egész számpár, amely meghatározza a számok számát
+#   pontokat szegmensenként interpolálni a hálóba az egyes tengelyek mentén.
+#   A "szegmens" az egyes vizsgált pontok közötti tér.
+#   A felhasználó megadhat egyetlen értéket, amely mindkét tengelyre vonatkozik
+#   Az alapértelmezett 2, 2.
+#algoritmus: lagrange
+#   A használandó interpolációs algoritmus. Lehet "lagrange" vagy
+#   "bicubic". Ez az opció nem érinti a 3x3-as rácsokat, amelyek kényszerítettek
+#   hogy lagrange mintavételt használjunk. Az alapértelmezett a lagrange.
 #bicubic_tension: .2
-#   When using the bicubic algorithm the tension parameter above may
-#   be applied to change the amount of slope interpolated. Larger
-#   numbers will increase the amount of slope, which results in more
-#   curvature in the mesh. Default is .2.
+#   A bikubik algoritmus használatakor a fenti feszítési paraméter előfordulhat
+#   alkalmazni kell az interpolált lejtés mértékének módosítására. Nagyobb
+#   számok növelik a lejtés mértékét, ami nagyobbat görbületet eredményez a hálóban.
+#   Az alapértelmezett .2.
 #zero_reference_position:
-#   An optional X,Y coordinate that specifies the location on the bed
-#   where Z = 0.  When this option is specified the mesh will be offset
-#   so that zero Z adjustment occurs at this location.  The default is
-#   no zero reference.
+#   Egy opcionális X,Y koordináta, amely meghatározza a helyet az ágyon
+#   ahol Z = 0. Ha ez az opció meg van adva, a háló eltolódik
+#   hogy ezen a helyen nulla Z-beállítás történjen.
+#   Az alapértelmezés szerint nincs nulla referencia.
 #faulty_region_1_min:
 #faulty_region_1_max:
-#   Optional points that define a faulty region.  See docs/Bed_Mesh.md
-#   for details on faulty regions.  Up to 99 faulty regions may be added.
-#   By default no faulty regions are set.
+#   Opcionális pontok, amelyek egy hibás régiót határoznak meg.
+#   A hibás régiókkal kapcsolatos részletekért lásd a docs/Bed_Mesh.md fájlt.
+#   Legfeljebb 99 hibás régió adható hozzá.
+#   Alapértelmezés szerint nincs beállítva hibás régió.
 #adaptive_margin:
-#   An optional margin (in mm) to be added around the bed area used by
-#   the defined print objects when generating an adaptive mesh.
+#   Opcionális margó (mm-ben), amelyet a definiált nyomtatási objektumok által
+#   használt ágyterület köré kell hozzáadni adaptív háló generálásakor.
 #scan_overshoot:
-#  The maximum amount of travel (in mm) available outside of the mesh.
-#  For rectangular beds this applies to travel on the X axis, and for round beds
-#  it applies to the entire radius.  The tool must be able to travel the amount
-#  specified outside of the mesh.  This value is used to optimize the travel
-#  path when performing a "rapid scan".  The minimum value that may be specified
-#  is 1.  The default is no overshoot.
+#  A hálón kívül elérhető maximális távolság (mm-ben).
+#  Téglalap alakú ágyaknál ez az X tengelyen való haladásra, kerek ágyakra pedig a
+#  teljes sugárra vonatkozik. A szerszámnak képesnek kell lennie a megadott
+#  mennyiséget a hálón kívülre haladni. Ez az érték a haladási útvonal optimalizálására
+#  szolgál "gyors pásztázás" végrehajtásakor. A minimálisan megadható érték 1.
+#  Az alapértelmezés szerint nincs túllövés.
 ```
 
 ### [bed_tilt]
@@ -1341,15 +1343,14 @@ A virtuális sdcard hasznos lehet, ha a gazdaszámítógép nem elég gyors az O
 ```
 [virtual_sdcard]
 path:
-#   The path of the local directory on the host machine to look for
-#   g-code files. This is a read-only directory (sdcard file writes
-#   are not supported). One may point this to OctoPrint's upload
-#   directory (generally ~/.octoprint/uploads/ ). This parameter must
-#   be provided.
+#   A helyi könyvtár elérési útja a gazdagépen a G-kód fájlok kereséséhez.
+#   Ez egy csak olvasható könyvtár (az sdcard fájl írása nem támogatott).
+#   Ezt rámutathatjuk az OctoPrint feltöltési könyvtárára
+#   (általában ~/.octoprint/uploads/ ). Ezt a paramétert meg kell adni.
 #on_error_gcode:
-#   A list of G-Code commands to execute when an error is reported.
-#   See docs/Command_Templates.md for G-Code format. The default is to
-#   run TURN_OFF_HEATERS.
+#   A hibajelentéskor végrehajtandó G-kód parancsok listája.
+#   Lásd a docs/Command_Templates.md fájlt a G-kód formátumhoz.
+#   Az alapértelmezett a TURN_OFF_HEATERS működése.
 ```
 
 ### [sdcard_loop]
@@ -1849,27 +1850,31 @@ z_offset:
 
 ### [probe_eddy_current]
 
-Support for eddy current inductive probes. One may define this section (instead of a probe section) to enable this probe. See the [command reference](G-Codes.md#probe_eddy_current) for further information.
+Örvényáramú induktív szondák támogatása. Meghatározható ez a szakasz (szonda szakasz helyett), hogy engedélyezd ezt a szondát. További információkért lásd a [parancshivatkozást](G-Codes.md#probe_eddy_current).
 
 ```
 [probe_eddy_current my_eddy_probe]
 sensor_type: ldc1612
-#   The sensor chip used to perform eddy current measurements. This
-#   parameter must be provided and must be set to ldc1612.
+#   Az örvényáram mérések elvégzésére használt érzékelő chip.
+#   Ezt a paramétert meg kell adni, és ldc1612-re kell állítani.
 #intb_pin:
-#   MCU gpio pin connected to the ldc1612 sensor's INTB pin (if
-#   available). The default is to not use the INTB pin.
+
+#   MCU gpio tű csatlakoztatva az ldc1612 érzékelő INTB tűjéhez
+#   (ha van). Az alapértelmezett beállítás szerint az INTB tű
+#   nem használható.
+
 #z_offset:
-#   The nominal distance (in mm) between the nozzle and bed that a
-#   probing attempt should stop at. This parameter must be provided.
+#   A fúvóka és az ágy közötti névleges távolság (mm-ben),
+#   amelynél a mérési kísérletnek meg kell állnia.
+#   Ezt a paramétert meg kell adni.
 #i2c_address:
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   The i2c settings for the sensor chip. See the "common I2C
-#   settings" section for a description of the above parameters.
+#   Az érzékelő chip I2C beállításai. A fenti paraméterek leírását
+#   lásd a "közös I2C beállítások" szakaszban.
 #x_offset:
 #y_offset:
 #speed:
@@ -1879,7 +1884,8 @@ sensor_type: ldc1612
 #samples_result:
 #samples_tolerance:
 #samples_tolerance_retries:
-#   See the "probe" section for information on these parameters.
+#   A paraméterekkel kapcsolatos információkért lásd a
+#   "szonda" című szakaszt.
 ```
 
 ### [axis_twist_compensation]
@@ -2183,7 +2189,7 @@ Egyedi ADC hőmérséklet-érzékelők (tetszőleges számú szekciót lehet def
 
 ### [temperature_probe]
 
-Reports probe coil temperature. Includes optional thermal drift calibration for eddy current based probes. A `[temperature_probe]` section may be linked to a `[probe_eddy_current]` by using the same postfix for both sections.
+Jelenti a szonda tekercs hőmérsékletét. Az örvényáram alapú szondákhoz opcionális termikus eltolás kalibrációt tartalmaz. A `[temperature_probe]` szakasz összekapcsolható egy `[probe_eddy_current]`-el, ha mindkét szakaszhoz ugyanazt az utójavítást használod.
 
 ```
 [temperature_probe my_probe]
@@ -2191,50 +2197,49 @@ Reports probe coil temperature. Includes optional thermal drift calibration for 
 #sensor_pin:
 #min_temp:
 #max_temp:
-#   Temperature sensor configuration.
-#   See the "extruder" section for the definition of the above
-#   parameters.
+#   Hőmérsékletérzékelő konfigurációja.
+#   A fenti paraméterek meghatározását lásd az „extruder” szakaszban.
 #smooth_time:
-#   A time value (in seconds) over which temperature measurements will
-#   be smoothed to reduce the impact of measurement noise. The default
-#   is 2.0 seconds.
+#   Egy időérték (másodpercben), amely alatt a hőmérsékletmérések simításra
+#   kerülnek a mérési zaj hatásának csökkentése érdekében.
+#   Az alapértelmezett érték 2,0 másodperc.
 #gcode_id:
-#   See the "heater_generic" section for the definition of this
-#   parameter.
+#   A paraméter definícióját lásd a „heater_generic” szakaszban.
 #speed:
-#   The travel speed [mm/s] for xy moves during calibration.  Default
-#   is the speed defined by the probe.
+#   A kalibrálás során az X-Y mozgások utazási sebessége [mm/s].
+#   Az alapértelmezett a szonda által meghatározott sebesség.
 #horizontal_move_z:
-#   The z distance [mm] from the bed at which xy moves will occur
-#   during calibration. Default is 2mm.
+#   A Z távolság [mm] az ágytól, amelyen az X-Y mozgások a
+#   kalibrálás során történnek. Az alapértelmezett érték 2 mm.
 #resting_z:
-#   The z distance [mm] from the bed at which the tool will rest
-#   to heat the probe coil during calibration.  Default is .4mm
+#   A Z távolság [mm] az ágytól, amelyen a fej megpihen a
+#   szondatekercs fűtése érdekében a kalibrálás során.
+#   Az alapértelmezett érték .4mm
 #calibration_position:
-#   The X, Y, Z position where the tool should be moved when
-#   probe drift calibration initializes.  This is the location
-#   where the first manual probe will occur.  If omitted, the
-#   default behavior is not to move the tool prior to the first
-#   manual probe.
+#   Az X, Y, Z pozíció, ahová a fejet a szonda sodródás kalibrációjának
+#   inicializálásakor mozgatni kell. Ez az a hely, ahol az első kézi mérés
+#   történik. Ha elhagyod, az alapértelmezett viselkedés az, hogy a
+#   fejet nem mozgatja az első kézi mérés előtt.
 #calibration_bed_temp:
-#   The maximum safe bed temperature (in C) used to heat the probe
-#   during probe drift calibration.  When set, the calibration
-#   procedure will turn on the bed after the first sample is
-#   taken.  When the calibration procedure is complete the bed
-#   temperature will be set to zero.  When omitted the default
-#   behavior is not to set the bed temperature.
+#   A maximális biztonságos ágyhőmérséklet (C-ban), amelyet a szonda
+#   melegítésére használnak a szonda sodródás kalibrálásakor. Ha be van
+#   állítva, a kalibrációs eljárás az ágyfűtést az első mérés után bekapcsolja.
+#   A kalibrációs eljárás befejeztével az ágy hőmérséklete nullára áll be.
+#   Ha kihagyod, az alapértelmezett viselkedés az, hogy nem
+#   állítja be az ágyhőmérsékletet.
 #calibration_extruder_temp:
-#   The extruder temperature (in C) set probe during drift calibration.
-#   When this option is supplied the procedure will wait for until the
-#   specified temperature is reached before requesting the first manual
-#   probe.  When the calibration procedure is complete the extruder
-#   temperature will be set to 0.  When omitted the default behavior is
-#   not to set the extruder temperature.
+#   Az extruder hőmérséklete (C-ban), amelyet a sodródás kalibrálás során a
+#   szonda beállít. Ha ezt az opciót megadjuk, az eljárás megvárja a megadott
+#   hőmérséklet elérését, mielőtt az első kézi mérést kérné.
+#   A kalibrációs eljárás befejezésekor az extruder hőmérséklete 0-ra áll be.
+#   Ha elhagyod, az alapértelmezett viselkedés az, hogy nem
+#   állítja be az extruder hőmérsékletét.
 #extruder_heating_z: 50.
-#   The Z location where extruder heating will occur if the
-#   "calibration_extruder_temp" option is set.  Its recommended to heat
-#   the extruder some distance from the bed to minimize its impact on
-#   the probe coil temperature.  The default is 50.
+#   Az a Z hely, ahol az extruder fűtése bekapcsol, ha a
+#   „calibration_extruder_temp” opció be van állítva.
+#   Ajánlott az extruder fűtése az ágytól némi távolságra, hogy minimalizálja a
+#   szondatekercs hőmérsékletére gyakorolt hatását.
+#   Az alapértelmezett érték 50.
 ```
 
 ## Hőmérséklet-érzékelők
@@ -2328,22 +2333,22 @@ sensor_pin:
 #   paraméter neve mellett találhatók a fenti listában.
 ```
 
-### BMP180/BMP280/BME280/BMP388/BME680 temperature sensor
+### BMP180/BMP280/BME280/BMP388/BME680 hőmérséklet-érzékelő
 
-BMP180/BMP280/BME280/BMP388/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
+BMP180/BMP280/BME280/BMP388/BME680 kétvezetékes interfész (I2C) környezeti érzékelők. Vedd figyelembe, hogy ezeket az érzékelőket nem extruderekkel és fűthető ágyakkal való használatra tervezték, hanem inkább a környezeti hőmérséklet (C), a nyomás (hPa), a relatív páratartalom és a BME680 gázszint figyelésére szolgálnak. A [sample-macros.cfg](../config/sample-macros.cfg) oldalon találsz egy gcode_macro-t, amely a hőmérsékleten kívül a légnyomás és a páratartalom jelentésére is használható.
 
 ```
 sensor_type: BME280
 #i2c_address:
-#   Default is 118 (0x76). The BMP180, BMP388 and some BME280 sensors
-#   have an address of 119 (0x77).
+#   Az alapértelmezett 118 (0x76).
+#   A BMP180, BMP388 és egyes BME280 érzékelők címe 119 (0x77).
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#   A fenti paraméterek leírását lásd az
+#   "általános I2C beállítások" részben.
 ```
 
 ### AHT10/AHT20/AHT21 hőmérséklet-érzékelő
@@ -2398,21 +2403,21 @@ sensor_type:
 #       Az alapértelmezett érték a 30
 ```
 
-### SHT3X sensor
+### SHT3X érzékelő
 
-SHT3X family two wire interface (I2C) environmental sensor. These sensors have a range of -55~125 C, so are usable for e.g. chamber temperature monitoring. They can also function as simple fan/heater controllers.
+SHT3X család két vezetékes interfész (I2C) környezeti érzékelő. Ezek az érzékelők -55~125 C hatótávolságúak, így használhatók pl. kamra hőmérséklet figyelésre. Egyszerű ventilátor vagy fűtő vezérlőként is működhetnek.
 
 ```
 sensor_type: SHT3X
 #i2c_address:
-#   Default is 68 (0x44).
+#   Alapértelmezett a 68 (0x44).
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#   A fenti paraméterek leírását lásd az "általános I2C
+#   beállítások" részben.
 ```
 
 ### LM75 hőmérséklet-érzékelő
@@ -3045,55 +3050,59 @@ TMC2130 motorvezérlő konfigurálása SPI-buszon keresztül. A funkció haszná
 ```
 [tmc2130 stepper_x]
 cs_pin:
-#   The pin corresponding to the TMC2130 chip select line. This pin
-#   will be set to low at the start of SPI messages and raised to high
-#   after the message completes. This parameter must be provided.
+#   A TMC2130 chip select vonalnak megfelelő tű. Ez a tű az
+#   SPI-üzenetek kezdetén alacsony értékre áll, és az üzenet
+#   befejezése után magas értékre emelkedik.
+#   Ezt a paramétert meg kell adni.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#   A fenti paraméterek leírását lásd a „közös SPI-beállítások”
+#   szakaszban.
 #chain_position:
 #chain_length:
-#   These parameters configure an SPI daisy chain. The two parameters
-#   define the stepper position in the chain and the total chain length.
-#   Position 1 corresponds to the stepper that connects to the MOSI signal.
-#   The default is to not use an SPI daisy chain.
+#   Ezek a paraméterek egy SPI daisy chain konfigurálására szolgálnak.
+#   A két paraméter meghatározza a léptető pozícióját a láncban és a
+#   lánc teljes hosszát. Az 1. pozíció a MOSI jelre csatlakozó léptetőnek
+#   felel meg. Az alapértelmezett beállítás szerint nem használ
+#   SPI daisy chain-et.
 #interpolate: True
-#   If true, enable step interpolation (the driver will internally
-#   step at a rate of 256 micro-steps). This interpolation does
-#   introduce a small systemic positional deviation - see
-#   TMC_Drivers.md for details. The default is True.
+#   Ha True, engedélyezi a lépésinterpolációt (a meghajtó belsőleg 256
+#   mikrolépéses sebességgel lépked). Ez az interpoláció egy kis
+#   rendszerszintű pozícióeltérést eredményez - a részletekért lásd a
+#   TMC_Drivers.md fájlt. Az alapértelmezett érték True.
 run_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   during stepper movement. This parameter must be provided.
+#   Az áram mennyisége (amperben RMS), amelyet a meghajtó a
+#   léptető mozgatása során használjon.
+#   Ezt a paramétert meg kell adni.
 #hold_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   when the stepper is not moving. Setting a hold_current is not
-#   recommended (see TMC_Drivers.md for details). The default is to
-#   not reduce the current.
+#   Az áram mennyisége (amperben RMS), amelyet a meghajtó akkor
+#   használjon, amikor a léptető nem mozog. A hold_current beállítása
+#   nem ajánlott (a részletekért lásd TMC_Drivers.md).
+#   Az alapértelmezett érték nem csökkenti az áramot.
 #sense_resistor: 0.110
-#   The resistance (in ohms) of the motor sense resistor. The default
-#   is 0.110 ohms.
+#   A motorérzékelő ellenállás ellenállása (ohmban).
+#   Az alapértelmezett érték 0,110 ohm.
 #stealthchop_threshold: 0
-#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
-#   set, "stealthChop" mode will be enabled if the stepper motor
-#   velocity is below this value. The default is 0, which disables
-#   "stealthChop" mode.
+#   A sebesség (mm/s-ban), amelyre a „stealthChop” küszöbértéket
+#   állítani kell. Ha be van állítva, a „stealthChop” üzemmód akkor lesz
+#   engedélyezve, ha a léptetőmotor sebessége ez alatt az érték alatt van.
+#   Az alapértelmezett érték 0, ami kikapcsolja a „stealthChop” üzemmódot.
 #coolstep_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
-#   threshold to. If set, the coolstep feature will be enabled when
-#   the stepper motor velocity is near or above this value. Important
-#   - if coolstep_threshold is set and "sensorless homing" is used,
-#   then one must ensure that the homing speed is above the coolstep
-#   threshold! The default is to not enable the coolstep feature.
+#   A sebesség (mm/s-ban), amelyre a TMC-meghajtó belső „CoolStep”
+#   küszöbértékét állítani kell. Ha be van állítva, a coolstep funkció akkor lesz
+#   engedélyezve, ha a léptetőmotor sebessége ennek az értéknek a
+#   közelében vagy fölött van. Fontos - ha a coolstep_threshold be van állítva
+#   és „érzékelő nélküli kezdőpont” használatban van, akkor biztosítani kell,
+#   hogy a kezdőpont sebesség a coolstep küszöbérték felett legyen!
+#   Az alapértelmezett beállítás szerint a coolstep funkciót nem engedélyezzük.
 #high_velocity_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "high
-#   velocity" threshold (THIGH) to. This is typically used to disable
-#   the "CoolStep" feature at high speeds. The default is to not set a
-#   TMC "high velocity" threshold.
+#   A sebesség (mm/s-ban), amelyre a TMC-meghajtó belső „nagy sebességű”
+#   küszöbértékét (THIGH) kell beállítani. Ezt általában a „CoolStep” funkció
+#   kikapcsolására használják nagy sebességeknél. Az alapértelmezés szerint
+#   a TMC „nagy sebességű” küszöbértéket nem állítjuk be.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -3111,13 +3120,14 @@ run_current:
 #driver_X3: 255
 #driver_START_SIN: 0
 #driver_START_SIN90: 247
-#   These fields control the Microstep Table registers directly. The optimal
-#   wave table is specific to each motor and might vary with current. An
-#   optimal configuration will have minimal print artifacts caused by
-#   non-linear stepper movement. The values specified above are the default
-#   values used by the driver. The value must be specified as a decimal integer
-#   (hex form is not supported). In order to compute the wave table fields,
-#   see the tmc2130 "Calculation Sheet" from the Trinamic website.
+#   Ezek a mezők közvetlenül a Microstep Table regisztereit vezérlik.
+#   Az optimális hullámtábla minden motorra jellemző, és az áramtól függően
+#   változhat. Az optimális konfigurációban minimális lesz a nem lineáris
+#   léptetőmozgás okozta nyomtatási lelet. A fent megadott értékek a
+#   meghajtó által használt alapértelmezett értékek. Az értéket decimális
+#   egész számként kell megadni (a hexa alak nem támogatott). A hullámtábla
+#   mezőinek kiszámításához lásd a tmc2130 „Calculation Sheet”
+#   (számítási lap) című dokumentumot a Trinamic weboldalán.
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 0
 #driver_TBL: 1
@@ -3137,20 +3147,21 @@ run_current:
 #driver_SEDN: 0
 #driver_SEIMIN: 0
 #driver_SFILT: 0
-#   Set the given register during the configuration of the TMC2130
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#   Állítsd be az adott regisztert a TMC2130 chip konfigurálása során.
+#   Ez egyéni motorparaméterek beállítására használható.
+#   Az egyes paraméterek alapértelmezett értékei a fenti listában a
+#   paraméter neve mellett találhatók.
 #diag0_pin:
 #diag1_pin:
-#   The micro-controller pin attached to one of the DIAG lines of the
-#   TMC2130 chip. Only a single diag pin should be specified. The pin
-#   is "active low" and is thus normally prefaced with "^!". Setting
-#   this creates a "tmc2130_stepper_x:virtual_endstop" virtual pin
-#   which may be used as the stepper's endstop_pin. Doing this enables
-#   "sensorless homing". (Be sure to also set driver_SGT to an
-#   appropriate sensitivity value.) The default is to not enable
-#   sensorless homing.
+#   A TMC2130 chip egyik DIAG vonalához csatlakoztatott
+#   mikrokontrollertű. Csak egyetlen diag-tűt kell megadni.
+#   A tű „aktív alacsony”, ezért általában a „^!” előtagot kell használni.
+#   Ennek beállítása létrehoz egy „tmc2130_stepper_x:virtual_endstop”
+#   virtuális tűt, amely a stepper endstop_pin-jeként használható.
+#   Ez lehetővé teszi a „szenzor nélküli kezdőpontot”.
+#   (Győződj meg róla, hogy a driver_SGT-t is megfelelő érzékenységi
+#   értékre állította be.) Az alapértelmezett beállítás nem engedélyezi
+#   az érzékelő nélküli kezdőpont felvételt.
 ```
 
 ### [tmc2208]
@@ -3229,18 +3240,21 @@ run_current:
 #hold_current:
 #sense_resistor: 0.110
 #stealthchop_threshold: 0
-#   See the "tmc2208" section for the definition of these parameters.
+#   A paraméterek definícióját lásd a „tmc2208” szakaszban.
 #coolstep_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
-#   threshold to. If set, the coolstep feature will be enabled when
-#   the stepper motor velocity is near or above this value. Important
-#   - if coolstep_threshold is set and "sensorless homing" is used,
-#   then one must ensure that the homing speed is above the coolstep
-#   threshold! The default is to not enable the coolstep feature.
+#   A sebesség (mm/s-ban), amelyre a TMC-meghajtó belső „CoolStep”
+#   küszöbértékét állítani kell. Ha be van állítva, a coolstep funkció akkor
+#   lesz engedélyezve, ha a léptetőmotor sebessége ennek az értéknek a
+#   közelében vagy fölött van. Fontos - ha a coolstep_threshold be van
+#   állítva és „érzékelő nélküli kezdőpont” használatban van, akkor
+#   biztosítani kell, hogy a kezdőpont sebesség a coolstep küszöbérték
+#   felett legyen! Az alapértelmezett beállítás szerint a coolstep
+#   funkciót nem engedélyezzük.
 #uart_address:
-#   The address of the TMC2209 chip for UART messages (an integer
-#   between 0 and 3). This is typically used when multiple TMC2209
-#   chips are connected to the same UART pin. The default is zero.
+#   A TMC2209 chip címe az UART üzenetekhez (0 és 3 közötti egész szám).
+#   Ezt általában akkor használják, ha több TMC2209 chip van
+#   csatlakoztatva ugyanahhoz az UART tűhöz.
+#   Az alapértelmezett érték nulla.
 #driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 20
@@ -3261,18 +3275,19 @@ run_current:
 #driver_SEMAX: 0
 #driver_SEDN: 0
 #driver_SEIMIN: 0
-#   Set the given register during the configuration of the TMC2209
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#   Állítsd be az adott regisztert a TMC2209 chip konfigurálása során.
+#   Ez egyéni motorparaméterek beállítására használható.
+#   Az egyes paraméterek alapértelmezett értékei a fenti listában a
+#   paraméter neve mellett találhatók.
 #diag_pin:
-#   The micro-controller pin attached to the DIAG line of the TMC2209
-#   chip. The pin is normally prefaced with "^" to enable a pullup.
-#   Setting this creates a "tmc2209_stepper_x:virtual_endstop" virtual
-#   pin which may be used as the stepper's endstop_pin. Doing this
-#   enables "sensorless homing". (Be sure to also set driver_SGTHRS to
-#   an appropriate sensitivity value.) The default is to not enable
-#   sensorless homing.
+#   A TMC2209 chip DIAG vonalához csatlakoztatott mikrokontrollertű.
+#   A tű elé általában „^” kerül, hogy engedélyezze a pullupot.
+#   Ennek beállítása létrehoz egy „tmc2209_stepper_x:virtual_endstop”
+#   virtuális tűt, amely a stepper endstop_pin-jeként használható.
+#   Ez lehetővé teszi a „sensorless homing”-ot. (Ügyelj arra, hogy a
+#   driver_SGTHRS-t is megfelelő érzékenységi értékre állítsd be.)
+#   Az alapértelmezett beállítás nem engedélyezi az
+#   érzékelő nélküli kezdőpontot.
 ```
 
 ### [tmc2660]
@@ -3352,56 +3367,59 @@ Konfigurálj egy TMC2240 léptetőmotor-vezérlőt SPI buszon vagy UART-on keres
 ```
 [tmc2240 stepper_x]
 cs_pin:
-#   The pin corresponding to the TMC2240 chip select line. This pin
-#   will be set to low at the start of SPI messages and raised to high
-#   after the message completes. This parameter must be provided.
+#   A TMC2240 chip select vonalnak megfelelő tű. Ez a tű az
+#   SPI-üzenetek kezdetekor alacsony értékre kerül, és az üzenet
+#   befejezése után magas értékre emelkedik.
+#   Ezt a paramétert meg kell adni.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#   A fenti paraméterek leírását lásd a „közös SPI-beállítások”
+#   szakaszban.
 #uart_pin:
-#   The pin connected to the TMC2240 DIAG1/SW line. If this parameter
-#   is provided UART communication is used rather then SPI.
+#   A TMC2240 DIAG1/SW vonalához csatlakozó tű. Ha ez a
+#   paraméter meg van adva, akkor SPI helyett UART
+#   kommunikációt használnak.
 #chain_position:
 #chain_length:
-#   These parameters configure an SPI daisy chain. The two parameters
-#   define the stepper position in the chain and the total chain length.
-#   Position 1 corresponds to the stepper that connects to the MOSI signal.
-#   The default is to not use an SPI daisy chain.
+#   Ezek a paraméterek egy SPI daisy chain konfigurálására
+#   szolgálnak. A két paraméter meghatározza a léptető pozícióját
+#   a láncban és a lánc teljes hosszát. Az 1. pozíció a MOSI jelre
+#   csatlakozó léptetőnek felel meg. Az alapértelmezett
+#   beállítás szerint nem használ SPI daisy chain-et.
 #interpolate: True
-#   If true, enable step interpolation (the driver will internally
-#   step at a rate of 256 micro-steps). The default is True.
+#   Ha igaz, engedélyezi a lépésinterpolációt (a meghajtó belsőleg
+#   256 mikrolépéses sebességgel lépked). Az alapértelmezett érték True.
 run_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   during stepper movement. This parameter must be provided.
+#   Az áram mennyisége (amperben RMS), amelyet a meghajtó a léptető
+#   mozgatása során használjon. Ezt a paramétert meg kell adni.
 #hold_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   when the stepper is not moving. Setting a hold_current is not
-#   recommended (see TMC_Drivers.md for details). The default is to
-#   not reduce the current.
+#  Az áram mennyisége (amperben RMS), amelyet a meghajtó akkor
+#   használjon, amikor a léptető nem mozog. A hold_current beállítása
+#   nem ajánlott (a részletekért lásd TMC_Drivers.md).
+#   Az alapértelmezett érték nem csökkenti az áramot.
 #rref: 12000
-#   The resistance (in ohms) of the resistor between IREF and GND. The
-#   default is 12000.
+#   Az IREF és GND közötti ellenállás ellenállása (ohmban).
+#   Az alapértelmezett érték 12000.
 #stealthchop_threshold: 0
-#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
-#   set, "stealthChop" mode will be enabled if the stepper motor
-#   velocity is below this value. The default is 0, which disables
-#   "stealthChop" mode.
+#   A sebesség (mm/s-ban), amelyre a „stealthChop” küszöbértéket
+#   állítani kell. Amikor az alapértelmezett érték 0, ami kikapcsolja a
+#   „stealthChop” üzemmódot.
 #coolstep_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
-#   threshold to. If set, the coolstep feature will be enabled when
-#   the stepper motor velocity is near or above this value. Important
-#   - if coolstep_threshold is set and "sensorless homing" is used,
-#   then one must ensure that the homing speed is above the coolstep
-#   threshold! The default is to not enable the coolstep feature.
+#   A sebesség (mm/s-ban), amelyre a TMC-meghajtó belső „CoolStep”
+#   küszöbértékét állítani kell. Ha be van állítva, a CoolStep funkció akkor
+#   lesz engedélyezve, ha a léptetőmotor sebessége ennek az értéknek a
+#   közelében vagy fölött van. Fontos - ha a coolstep_threshold be van állítva
+#   és „érzékelő nélküli kezdőpont” használatban van, akkor biztosítani kell,
+#   hogy a kezdőpont sebesség a CoolStep küszöbérték felett legyen!
+#   Alapértelmezés szerint a CoolStep funkciót nem engedélyezzük.
 #high_velocity_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "high
-#   velocity" threshold (THIGH) to. This is typically used to disable
-#   the "CoolStep" feature at high speeds. The default is to not set a
-#   TMC "high velocity" threshold.
+#   A sebesség (mm/s-ban), amelyre a TMC-meghajtó belső „nagy sebességű”
+#   küszöbértékét (THIGH) kell beállítani. Ezt általában a „CoolStep” funkció
+#   kikapcsolására használják nagy sebességeknél. Az alapértelmezés szerint
+#   a TMC „nagy sebességű” küszöbértéket nem állítjuk be.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -3420,17 +3438,17 @@ run_current:
 #driver_START_SIN: 0
 #driver_START_SIN90: 247
 #driver_OFFSET_SIN90: 0
-#   These fields control the Microstep Table registers directly. The optimal
-#   wave table is specific to each motor and might vary with current. An
-#   optimal configuration will have minimal print artifacts caused by
-#   non-linear stepper movement. The values specified above are the default
-#   values used by the driver. The value must be specified as a decimal integer
-#   (hex form is not supported). In order to compute the wave table fields,
-#   see the tmc2130 "Calculation Sheet" from the Trinamic website.
-#   Additionally, this driver also has the OFFSET_SIN90 field which can be used
-#   to tune a motor with unbalanced coils. See the `Sine Wave Lookup Table`
-#   section in the datasheet for information about this field and how to tune
-#   it.
+#   Ezek a mezők közvetlenül a Microstep Table regisztereit vezérlik. Az optimális
+#   hullámtábla minden motorra jellemző, és az áramtól függően változhat.
+#   Az optimális konfigurációban minimális lesz a nem lineáris léptetőmozgás
+#   okozta nyomtatási lelet. A fent megadott értékek a meghajtó által használt
+#   alapértelmezett értékek. Az értéket decimális egész számként kell megadni
+#   (a hexa alak nem támogatott). A hullámtábla mezőinek kiszámításához lásd
+#   a tmc2130 „Calculation Sheet” (számítási lap) című dokumentumot a Trinamic
+#   weboldalán. Ezenkívül ez a meghajtó rendelkezik az OFFSET_SIN90 mezővel is,
+#   amely a kiegyensúlyozatlan tekercsekkel rendelkező motorok hangolásához
+#   használható. Lásd az adatlap „Szinuszhullám keresési táblázat” című szakaszát
+#   az erről a mezőről és a hangolásról szóló információkért.
 #driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 6
 #driver_IRUNDELAY: 4
@@ -3462,20 +3480,20 @@ run_current:
 #driver_SEIMIN: 0
 #driver_SFILT: 0
 #driver_SG4_ANGLE_OFFSET: 1
-#   Set the given register during the configuration of the TMC2240
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#   Állítsd be az adott regisztert a TMC2240 chip konfigurálása során.
+#   Ez egyéni motorparaméterek beállítására használható. Az egyes
+#   paraméterek alapértelmezett értékei a fenti listában a paraméter
+#   neve mellett találhatók.
 #diag0_pin:
 #diag1_pin:
-#   The micro-controller pin attached to one of the DIAG lines of the
-#   TMC2240 chip. Only a single diag pin should be specified. The pin
-#   is "active low" and is thus normally prefaced with "^!". Setting
-#   this creates a "tmc2240_stepper_x:virtual_endstop" virtual pin
-#   which may be used as the stepper's endstop_pin. Doing this enables
-#   "sensorless homing". (Be sure to also set driver_SGT to an
-#   appropriate sensitivity value.) The default is to not enable
-#   sensorless homing.
+#   A TMC2240 chip egyik DIAG vonalához csatlakoztatott mikrokontrollertű.
+#   Csak egyetlen diag tűt kell megadni. A tű „aktív alacsony”, ezért általában a
+#   „^!” előtagot kell használni. Ennek beállítása létrehoz egy
+#   „tmc2240_stepper_x:virtual_endstop” virtuális tűt, amely a stepper
+#   endstop_pin-jeként használható. Ez lehetővé teszi a
+#   „szenzor nélküli kezdőpont felvételt”. (Győződj meg róla, hogy a
+#   driver_SGT-t is megfelelő érzékenységi értékre állítottad be.)
+#   Az alapértelmezett beállítás nem engedélyezi az érzékelő nélküli kezdőpont.
 ```
 
 ### [tmc5160]
@@ -3485,53 +3503,54 @@ TMC5160 motorvezérlő konfigurálása SPI-buszon keresztül. A funkció haszná
 ```
 [tmc5160 stepper_x]
 cs_pin:
-#   The pin corresponding to the TMC5160 chip select line. This pin
-#   will be set to low at the start of SPI messages and raised to high
-#   after the message completes. This parameter must be provided.
+#   A TMC5160 chip select vonalának megfelelő tű. Ez a tű az
+#   SPI-üzenetek kezdetén alacsony értékre kerül, és az üzenet
+#   befejezése után magas értékre emelkedik.
+#   Ezt a paramétert meg kell adni.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#   A fenti paraméterek leírását lásd a „közös SPI-beállítások” szakaszban.
 #chain_position:
 #chain_length:
-#   These parameters configure an SPI daisy chain. The two parameters
-#   define the stepper position in the chain and the total chain length.
-#   Position 1 corresponds to the stepper that connects to the MOSI signal.
-#   The default is to not use an SPI daisy chain.
+#   Ezek a paraméterek egy SPI daisy chain konfigurálására szolgálnak.
+#   A két paraméter meghatározza a léptető pozícióját a láncban és a lánc
+#   teljes hosszát. Az 1. pozíció a MOSI jelre csatlakozó léptetőnek felel meg.
+#   Az alapértelmezett beállítás szerint nem használ SPI daisy chain-et.
 #interpolate: True
-#   If true, enable step interpolation (the driver will internally
-#   step at a rate of 256 micro-steps). The default is True.
+#   Ha igaz, engedélyezi a lépésinterpolációt (a meghajtó belsőleg 256
+#   mikrolépéses sebességgel lépked). Az alapértelmezett érték True.
 run_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   during stepper movement. This parameter must be provided.
+#   Az áram mennyisége (amperben RMS), amelyet a meghajtó a léptető
+#   mozgatása során használjon. Ezt a paramétert meg kell adni.
 #hold_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   when the stepper is not moving. Setting a hold_current is not
-#   recommended (see TMC_Drivers.md for details). The default is to
-#   not reduce the current.
+#   Az áram mennyisége (amperben RMS), amelyet a meghajtó akkor
+#   használjon, amikor a léptető nem mozog. A hold_current beállítása
+#   nem ajánlott (a részletekért lásd TMC_Drivers.md).
+#   Az alapértelmezett érték nem csökkenti az áramot.
 #sense_resistor: 0.075
-#   The resistance (in ohms) of the motor sense resistor. The default
-#   is 0.075 ohms.
+#   A motorérzékelő ellenállás ellenállása (ohmban).
+#   Az alapértelmezett érték 0,075 ohm.
 #stealthchop_threshold: 0
-#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
-#   set, "stealthChop" mode will be enabled if the stepper motor
-#   velocity is below this value. The default is 0, which disables
-#   "stealthChop" mode.
+#   A sebesség (mm/s-ban), amelyre a „stealthChop” küszöbértéket
+#   állítani kell. Ha be van állítva, a „stealthChop” üzemmód akkor lesz
+#   engedélyezve, ha a léptetőmotor sebessége ez alatt az érték alatt van.
+#   Az alapértelmezett érték 0, ami kikapcsolja a „stealthChop” üzemmódot.
 #coolstep_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
-#   threshold to. If set, the coolstep feature will be enabled when
-#   the stepper motor velocity is near or above this value. Important
-#   - if coolstep_threshold is set and "sensorless homing" is used,
-#   then one must ensure that the homing speed is above the coolstep
-#   threshold! The default is to not enable the coolstep feature.
+#   A sebesség (mm/s-ban), amelyre a TMC-meghajtó belső „CoolStep”
+#   küszöbértékét állítani kell. Ha be van állítva, a CoolStep funkció akkor lesz
+#   engedélyezve, ha a léptetőmotor sebessége ennek az értéknek a közelében
+#   vagy fölött van. Fontos - ha a coolstep_threshold be van állítva és
+#   „érzékelő nélküli kezdőpont felvétel” használatban van, akkor biztosítani
+#   kell, hogy a kezdőpont sebesség a CoolStep küszöbérték felett legyen!
+#   Az alapértelmezett beállítás szerint a CoolStep funkciót nem engedélyezzük.
 #high_velocity_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "high
-#   velocity" threshold (THIGH) to. This is typically used to disable
-#   the "CoolStep" feature at high speeds. The default is to not set a
-#   TMC "high velocity" threshold.
+#   A sebesség (mm/s-ban), amelyre a TMC-meghajtó belső „nagy sebességű”
+#   küszöbértékét (THIGH) kell beállítani. Ezt általában a „CoolStep” funkció
+#   kikapcsolására használják nagy sebességeknél.
+#   Alapértelmezés szerint a TMC „nagy sebességű” küszöbértéket nem állítjuk be.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -3549,13 +3568,15 @@ run_current:
 #driver_X3: 255
 #driver_START_SIN: 0
 #driver_START_SIN90: 247
-#   These fields control the Microstep Table registers directly. The optimal
-#   wave table is specific to each motor and might vary with current. An
-#   optimal configuration will have minimal print artifacts caused by
-#   non-linear stepper movement. The values specified above are the default
-#   values used by the driver. The value must be specified as a decimal integer
-#   (hex form is not supported). In order to compute the wave table fields,
-#   see the tmc2130 "Calculation Sheet" from the Trinamic website.
+#   Ezek a mezők közvetlenül a Microstep Table regisztereit vezérlik.
+#   Az optimális hullámtábla minden motorra jellemző, és az áramtól
+#   függően változhat. Az optimális konfigurációban minimális lesz a
+#   nem lineáris léptetőmozgás okozta nyomtatási lelet. A fent megadott
+#   értékek a meghajtó által használt alapértelmezett értékek. Az értéket
+#   decimális egész számként kell megadni (a hexa alak nem támogatott).
+#   A hullámtábla mezőinek kiszámításához lásd a tmc2130
+#   „Calculation Sheet” (számítási lap) című dokumentumot a
+#   Trinamic weboldalán.
 #driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 6
 #driver_TPOWERDOWN: 10
@@ -3589,20 +3610,20 @@ run_current:
 #driver_BBMCLKS: 4
 #driver_BBMTIME: 0
 #driver_FILT_ISENSE: 0
-#   Set the given register during the configuration of the TMC5160
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#   Állítsd be az adott regisztert a TMC5160 chip konfigurálása során.
+#   Ez egyéni motorparaméterek beállítására használható. Az egyes
+#   paraméterek alapértelmezett értékei a fenti listában a paraméter
+#   neve mellett találhatók.
 #diag0_pin:
 #diag1_pin:
-#   The micro-controller pin attached to one of the DIAG lines of the
-#   TMC5160 chip. Only a single diag pin should be specified. The pin
-#   is "active low" and is thus normally prefaced with "^!". Setting
-#   this creates a "tmc5160_stepper_x:virtual_endstop" virtual pin
-#   which may be used as the stepper's endstop_pin. Doing this enables
-#   "sensorless homing". (Be sure to also set driver_SGT to an
-#   appropriate sensitivity value.) The default is to not enable
-#   sensorless homing.
+#   A TMC5160 chip egyik DIAG vonalához csatlakoztatott mikrokontrollertű.
+#   Csak egyetlen diag tűt kell megadni. A tű „aktív alacsony”,
+#   ezért általában a „^!” előtagot kell használni. Ennek beállítása létrehoz egy
+#   „tmc5160_stepper_x:virtual_endstop” virtuális tűt, amely a stepper
+#   endstop_pin-jeként használható. Ez lehetővé teszi a
+#   „szenzor nélküli kezdőpont felvételt”. (Győződj meg róla, hogy a
+#   driver_SGT-t is megfelelő érzékenységi értékre állítottad be.)
+#   Az alapértelmezett beállítás nem engedélyezi az érzékelő nélküli kezdőpontot.
 ```
 
 ## Futás-idejű léptetőmotor áram konfiguráció
@@ -4290,97 +4311,97 @@ adc2:
 #   A fenti paraméterek leírását lásd a "filament_switch_sensor" részben.
 ```
 
-## Load Cells
+## Terhelőcellák
 
 ### [load_cell]
 
-Load Cell. Uses an ADC sensor attached to a load cell to create a digital scale.
+Terhelőcella. Egy erőmérő cellához csatlakoztatott ADC érzékelőt használ digitális mérleg létrehozásához.
 
 ```
 [load_cell]
 sensor_type:
-#   This must be one of the supported sensor types, see below.
+#   Ennek a támogatott érzékelőtípusok egyikének kell lennie,
+#   lásd alább.
 ```
 
 #### XH711
 
-This is a 24 bit low sample rate chip using "bit-bang" communications. It is suitable for filament scales.
+Ez egy 24 bites alacsony mintavételi sebességű chip, amely "bit-bang" kommunikációt használ. Nyomtatószál mérlegekhez alkalmas.
 
 ```
 [load_cell]
 sensor_type: hx711
 sclk_pin:
-#   The pin connected to the HX711 clock line. This parameter must be provided.
+#   A HX711 óravonalhoz csatlakoztatott tű. Ezt a paramétert meg kell adni.
 dout_pin:
-#   The pin connected to the HX711 data output line. This parameter must be
-#   provided.
+#   A HX711 adatkimeneti vonalhoz csatlakoztatott tű.
+#   Ezt a paramétert meg kell adni.
 #gain: A-128
-#   Valid values for gain are: A-128, A-64, B-32. The default is A-128.
-#   'A' denotes the input channel and the number denotes the gain. Only the 3
-#   listed combinations are supported by the chip. Note that changing the gain
-#   setting also selects the channel being read.
+#   Az erősítés érvényes értékei: A-128, A-64, B-32. Az alapértelmezett érték
+#   A-128. Az „A” a bemeneti csatornát, a szám pedig az erősítést jelöli.
+#   Csak a felsorolt 3 kombinációt támogatja a chip. Ne feledd, hogy az
+#   erősítés beállításának módosítása az éppen olvasott csatornát is kiválasztja.
 #sample_rate: 80
-#   Valid values for sample_rate are 80 or 10. The default value is 80.
-#   This must match the wiring of the chip. The sample rate cannot be changed
-#   in software.
+#   A sample_rate érvényes értéke 80 vagy 10. Az alapértelmezett érték 80.
+#   Ennek meg kell egyeznie a chip bekötésével.
+#   A mintavételi frekvencia a szoftverben nem módosítható.
 ```
 
 #### HX717
 
-This is the 4x higher sample rate version of the HX711, suitable for probing.
+Ez a HX711 négyszer nagyobb mintavételezési sebességű változata, amely alkalmas mérésre.
 
 ```
 [load_cell]
 sensor_type: hx717
 sclk_pin:
-#   The pin connected to the HX717 clock line. This parameter must be provided.
+#   A tű a HX717 óravonalhoz csatlakozik. Ezt a paramétert meg kell adni.
 dout_pin:
-#   The pin connected to the HX717 data output line. This parameter must be
-#   provided.
+#   A HX717 adatkimeneti vonalhoz csatlakoztatott tű.
+#   Ezt a paramétert meg kell adni.
 #gain: A-128
-#   Valid values for gain are A-128, B-64, A-64, B-8.
-#   'A' denotes the input channel and the number denotes the gain setting.
-#   Only the 4 listed combinations are supported by the chip. Note that
-#   changing the gain setting also selects the channel being read.
+#   Az erősítés érvényes értékei: A-128, B-64, A-64, B-8. Az „A” a bemeneti
+#   csatornát, a szám pedig az erősítési beállítást jelöli. Csak a felsorolt 4
+#   kombinációt támogatja a chip. Ne feledd, hogy az erősítés beállításának
+#   módosítása az éppen olvasott csatornát is kiválasztja.
 #sample_rate: 320
-#   Valid values for sample_rate are: 10, 20, 80, 320. The default is 320.
-#   This must match the wiring of the chip. The sample rate cannot be changed
-#   in software.
+#   A sample_rate érvényes értékei: 10, 20, 80, 320. Az alapértelmezett érték 320.
+#   Ennek meg kell egyeznie a chip bekötésével.
+#   A mintavételi frekvencia a szoftverben nem módosítható.
 ```
 
 #### ADS1220
 
-The ADS1220 is a 24 bit ADC supporting up to a 2Khz sample rate configurable in software.
+Az ADS1220 egy 24 bites ADC, amely akár 2 khz-es mintavételi frekvenciát is támogat, amely szoftveresen konfigurálható.
 
 ```
 [load_cell]
 sensor_type: ads1220
 cs_pin:
-#   The pin connected to the ADS1220 chip select line. This parameter must
-#   be provided.
+#   Az ADS1220 chipkiválasztó vonalához csatlakozó tű.
+#   Ezt a paramétert meg kell adni.
 #spi_speed: 512000
-#   This chip supports 2 speeds: 256000 or 512000. The faster speed is only
-#   enabled when one of the Turbo sample rates is used. The correct spi_speed
-#   is selected based on the sample rate.
+#   Ez a chip 2 sebességet támogat: 256000 vagy 512000. A gyorsabb sebesség
+#   csak a Turbo mintavételi sebességek egyikének használata esetén engedélyezett.
+#   A megfelelő spi_speed a mintavételi sebesség alapján kerül kiválasztásra.
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#   Lásd a "közös SPI-beállítások" című fejezetben a fenti paraméterek leírását.
 data_ready_pin:
-#   Pin connected to the ADS1220 data ready line. This parameter must be
-#   provided.
+#   Az ADS1220 adatkész vonalához csatlakoztatott tű.
+#   Ezt a paramétert meg kell adni.
 #gain: 128
-#   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
-#   The default is 128
+#   Érvényes erősítési értékek a következők: 128, 64, 32, 16, 8, 4, 2, 1
+#   Az alapértelmezett érték 128
 #sample_rate: 660
-#   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
-#   mode the chips c internal clock runs twice as fast and the SPI communication
-#   speed is also doubled.
-#   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
-#   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
-#   The default is 660
+#   Ez a chip kétféle mintavételi sebességtartományt támogat: Normál és Turbo.
+#   Turbo üzemmódban a chip c belső órája kétszer olyan gyorsan jár, és az SPI
+#   kommunikációs sebesség is megduplázódik.
+#   Normál mintavételi sebességek: 20, 45, 90, 175, 330, 600, 1000
+#   Turbó mintavételi sebességek: 40, 90, 180, 350, 660, 1200, 2000
+#   Az alapértelmezett érték 660.
 ```
 
 ## Alaplap specifikus hardvertámogatás

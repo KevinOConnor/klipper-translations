@@ -1,4 +1,4 @@
-# BL-Touch
+# BLTouch
 
 ## Connecting BL-Touch
 

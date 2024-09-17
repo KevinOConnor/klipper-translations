@@ -13,7 +13,7 @@
 ## 安装和配置
 
 - [安装](Installation.md)：Klipper 安装指南。
-   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
+   - [Octoprint](OctoPrint.md): OctoPrint 安装 Klipper 指南。
 - [配置参考](Config_Reference.md)：配置参数说明。
    - [旋转距离](Rotation_Distance.md)：计算旋转距离(rotation_distance)步进参数。
 - [检查配置](Config_checks.md)：验证配置文件中的基本引脚设置。
@@ -24,10 +24,10 @@
    - [手动调平](Manual_Level.md)：校准 Z 限位和调整热床调平螺丝。
    - [床网](Bed_Mesh.md)：基于 XY 位置的打印床高度补偿。
    - [限位相位](Endstop_Phase.md)：使用步进电机相位辅助 Z 限位定位。
-   - [Axis Twist Compensation.md](Axis_Twist_Compensation.md)：用于补偿因X台架扭曲而导致的探头读数不准确的工具。
+   - [Axis Twist Compensation](Axis_Twist_Compensation.md): 用于补偿X轴装配问题导致的探针读数异常。
 - [共振补偿](Resonance_Compensation.md)：减少打印震纹的工具。
    - [测量共振](Measuring_Resonances.md)：使用 adxl345 加速度计模块测量共振。
-- [提前压力](Pressure_Advance.md)：校准挤出机压力。
+- [压力提前](Pressure_Advance.md)：校准挤出机压力。
 - [G代码](G-Codes.md)：用于 Klipper 的G代码命令。
 - [命令模板](Command_Templates.md)：G代码宏和条件判断。
    - [状态参考](Status_Reference.md)：可用于宏和类似功能的信息。
@@ -58,9 +58,9 @@
 - [将树莓派作为微控制器](RPi_microcontroller.md)：关于如何控制与树莓派 GPIO 引脚连接的设备。
 - [Beaglebone](Beaglebone.md)：在 Beaglebone PRU 上运行 Klipper 的详细信息。
 - [底层引导程序](Bootloaders.md)：有关于微控制器刷写的开发者信息。
-- [Bootloader Entry](Bootloader_Entry.md): 正在请求引导加载程序。
+- [进入 Bootloader](Bootloader_Entry.md): 调用引导加载程序。
 - [CAN 总线](CANBUS.md)：有关于 Klipper 使用 CAN 总线的信息。
-   - [CAN Bus故障排除](CanBus_Troublrouoting.md)：CAN Bus故障排除提示。
+   - [CAN bus 故障排除](CANBUS_Troubleshooting.md): CAN bus的故障排除指南。
 - [TSL1401CL 耗材线径传感器](TSL1401CL_Filament_Width_Sensor.md)
-- [霍尔打印丝宽度传感器](Hall_Filament_Width_Sensor.md)
-- [Eddy Current Inductive probe](Eddy_Probe.md)
+- [霍尔耗材宽度传感器](Hall_Filament_Width_Sensor.md)
+- [Eddy 涡流感应探针](Eddy_Probe.md)

@@ -1,18 +1,18 @@
-# CANBUS
+# CAN-bus
 
-This document describes Klipper's CAN bus support.
+Dit document beschrijft Klipper's CAN-bus ondersteuning.
 
-## Device Hardware
+## Apparaat
 
-Klipper currently supports CAN on stm32, SAME5x, and rp2040 chips. In addition, the micro-controller chip must be on a board that has a CAN transceiver.
+Klipper ondersteunt momenteel CAN op stm32, SAME5x en rp2040 chips. De microcontroller-chip moet zich daarbij op een bord bevinden met CAN-zendontvanger.
 
-To compile for CAN, run `make menuconfig` and select "CAN bus" as the communication interface. Finally, compile the micro-controller code and flash it to the target board.
+Om te compileren voor CAN, draai `make menuconfig` en selecteer "CAN bus" als communicatie-interface. Compileer tenslotte de microcontroller-code en flash dit op het betreffende bord.
 
-## Host Hardware
+## Host
 
 In order to use a CAN bus, it is necessary to have a host adapter. It is recommended to use a "USB to CAN adapter". There are many different USB to CAN adapters available from different manufacturers. When choosing one, we recommend verifying that the firmware can be updated on it. (Unfortunately, we've found some USB adapters run defective firmware and are locked down, so verify before purchasing.) Look for adapters that can run Klipper directly (in its "USB to CAN bridge mode") or that run the [candlelight firmware](https://github.com/candle-usb/candleLight_fw).
 
-It is also necessary to configure the host operating system to use the adapter. This is typically done by creating a new file named `/etc/network/interfaces.d/can0` with the following contents:
+Het is ook cruciaal om de host OS te configureren om de adapter te gebruiken. Dit wordt normaal gesproken gedaan door een nieuw bestand aan te maken met de naam `/etc/network/interfaces.d/can0` en de volgende inhoud:
 
 ```
 allow-hotplug can0
@@ -21,17 +21,17 @@ iface can0 can static
     up ip link set $IFACE txqueuelen 128
 ```
 
-## Terminating Resistors
+## Afsluitweerstanden
 
-A CAN bus should have two 120 ohm resistors between the CANH and CANL wires. Ideally, one resistor located at each the end of the bus.
+Een CAN-bus moet twee 120 Ohm weerstanden hebben tussen de CAN-H en CAN-L draden. Bij voorkeur een weerstand aan beide einden van de bus.
 
 Note that some devices have a builtin 120 ohm resistor that can not be easily removed. Some devices do not include a resistor at all. Other devices have a mechanism to select the resistor (typically by connecting a "pin jumper"). Be sure to check the schematics of all devices on the CAN bus to verify that there are two and only two 120 Ohm resistors on the bus.
 
-To test that the resistors are correct, one can remove power to the printer and use a multi-meter to check the resistance between the CANH and CANL wires - it should report ~60 ohms on a correctly wired CAN bus.
+Om de weerstanden te testen kun je de stroom van de printer halen en een multimeter gebruiken om de weerstand tussen CAN-H en CAN-L te meten - het zou ~60 Ohm moeten zijn op een correct aangesloten CAN-bus.
 
-## Finding the canbus_uuid for new micro-controllers
+## Zoeken naar de canbus_uuid voor nieuwe microcontrollers
 
-Each micro-controller on the CAN bus is assigned a unique id based on the factory chip identifier encoded into each micro-controller. To find each micro-controller device id, make sure the hardware is powered and wired correctly, and then run:
+Elke microcontroller op de CAN-bus heeft een uniek ID toegewezen, gebaseerd op de fabrieksinstelling, gecodeerd in elke microcontroller. Zorg ervoor dat de hardware correct is aangesloten en aanstaat om de ID te achterhalen. Draai dan:
 
 ```
 ~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0
@@ -40,7 +40,7 @@ Each micro-controller on the CAN bus is assigned a unique id based on the factor
 If uninitialized CAN devices are detected the above command will report lines like the following:
 
 ```
-Found canbus_uuid=11aa22bb33cc, Application: Klipper
+Gevonden: canbus_uuid=11aa22bb33cc, applicatie: Klipper
 ```
 
 Each device will have a unique identifier. In the above example, `11aa22bb33cc` is the micro-controller's "canbus_uuid".
@@ -56,15 +56,15 @@ Update the Klipper [mcu configuration](Config_Reference.md#mcu) to use the CAN b
 canbus_uuid: 11aa22bb33cc
 ```
 
-## USB to CAN bus bridge mode
+## USB naar CAN-bus bridge-modus
 
 Some micro-controllers support selecting "USB to CAN bus bridge" mode during Klipper's "make menuconfig". This mode may allow one to use a micro-controller as both a "USB to CAN bus adapter" and as a Klipper node.
 
 When Klipper uses this mode the micro-controller appears as a "USB CAN bus adapter" under Linux. The "Klipper bridge mcu" itself will appear as if it was on this CAN bus - it can be identified via `canbus_query.py` and it must be configured like other CAN bus Klipper nodes.
 
-Some important notes when using this mode:
+Enkel belangrijke opmerkingen voor gebruik in deze modus:
 
-* It is necessary to configure the `can0` (or similar) interface in Linux in order to communicate with the bus. However, Linux CAN bus speed and CAN bus bit-timing options are ignored by Klipper. Currently, the CAN bus frequency is specified during "make menuconfig" and the bus speed specified in Linux is ignored.
+* Het is noodzakelijk om `can0` (of een vergelijkbare) interface in Linux te configureren om te communiceren met de bus. Linux CAN-bus snelheid en CAN-bus bit-timing-opties worden genegeerd door Klipper. Momenteel wordt de CAN-bus-frequentie ingesteld in "make menuconfig" en de bus-snelheid ingesteld in Linux wordt genegeerd.
 * Whenever the "bridge mcu" is reset, Linux will disable the corresponding `can0` interface. To ensure proper handling of FIRMWARE_RESTART and RESTART commands, it is recommended to use `allow-hotplug` in the `/etc/network/interfaces.d/can0` file. For example:
 
 ```

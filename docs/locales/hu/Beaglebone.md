@@ -4,50 +4,50 @@ Ez a dokumentum a Klipper futtatásának folyamatát írja le egy Beaglebone PRU
 
 ## OS-képfájl készítése
 
-Start by installing the [Debian 11.7 2023-09-02 4GB microSD IoT](https://beagleboard.org/latest-images) image. One may run the image from either a micro-SD card or from builtin eMMC. If using the eMMC, install it to eMMC now by following the instructions from the above link.
+Kezdd a [Debian 11.7 2023-09-02 4GB microSD IoT](https://beagleboard.org/latest-images) lemezkép telepítésével. A lemezképet futtathatjuk micro-SD kártyáról vagy beépített eMMC-ről is. Ha az eMMC-t használjuk, akkor telepítsük az eMMC-re a fenti link utasításait követve.
 
-Then ssh into the Beaglebone machine (`ssh debian@beaglebone` -- password is `temppwd`).
+Ezután lépj be SSH-n a Beaglebone gépre (`ssh debian@beaglebone` -- a jelszó `temppwd`).
 
-Before start installing Klipper you need to free-up additional space. there are 3 options to do that:
+A Klipper telepítése előtt további helyet kell felszabadítani. Erre 3 lehetőség van:
 
-1. remove some BeagleBone "Demo" resources
-1. if you did boot from SD-Card, and it's bigger than 4Gb - you can expand current filesystem to take whole card space
-1. do option #1 and #2 together.
+1. néhány BeagleBone "Demo" erőforrás eltávolítása
+1. ha az SD-kártyáról bootoltál, és ez nagyobb, mint 4Gb - bővítheted a jelenlegi fájlrendszert, hogy a teljes területet használhasd
+1. az 1. és a 2. lehetőséget együtt kell elvégezni.
 
-To remove some BeagleBone "Demo" resources execute these commands
+Néhány BeagleBone "Demo" erőforrás eltávolításához hajtsd végre a következő parancsokat
 
 ```
 sudo apt remove bb-node-red-installer
 sudo apt remove bb-code-server
 ```
 
-To expand filesystem to full size of your SD-Card execute this command, reboot is not required.
+A SD-kártya fájlrendszer teljes méretére történő bővítéséhez hajtsd végre ezt a parancsot, újraindítás nem szükséges.
 
 ```
 sudo growpart /dev/mmcblk0 1
 sudo resize2fs /dev/mmcblk0p1
 ```
 
-Install Klipper by running the following commands:
+Telepítsd a Klippert a következő parancsok futtatásával:
 
 ```
 git clone https://github.com/Klipper3d/klipper.git
 ./klipper/scripts/install-beaglebone.sh
 ```
 
-After installing Klipper you need to decide what kind of deployment do you need, but take a note that BeagleBone is 3.3v based hardware and in most cases you can't directly connect pins to 5v or 12v based hardware without conversion boards.
+A Klipper telepítése után el kell döntened, hogy milyen telepítésre van szükséged, de vedd figyelembe, hogy a BeagleBone 3.3v alapú hardver, és a legtöbb esetben nem lehet közvetlenül csatlakoztatni a tűket 5v vagy 12v alapú hardverhez átalakító lapok nélkül.
 
-As Klipper have multimodule architecture on BeagleBone you can achieve many different use cases, but general ones are following:
+Mivel a Klipper többmodulos architektúrával rendelkezik a BeagleBone-on, számos különböző felhasználási esetet lehet megvalósítani, de az általánosak a következők:
 
-Use case 1: Use BeagleBone only as a host system to run Klipper and additional software like OctoPrint/Fluidd + Moonraker/... and this configuration will be driving external micro-controllers via serial/usb/canbus connections.
+1. felhasználási eset: A BeagleBone-t csak gazdagépként használjuk a Klipper és további szoftverek, mint az OctoPrint/Fluidd + Moonraker/... futtatására, és ez a konfiguráció külső mikrovezérlőket fog vezérelni soros/usb/canbus kapcsolatokon keresztül.
 
-Use case 2: Use BeagleBone with extension board (cape) like CRAMPS board. in this configuration BeagleBone will host Klipper + additional software, and it will drive extension board with BeagleBone PRU cores (2 additional cores 200Mh, 32Bit).
+2. felhasználási eset: BeagleBone használata bővítőkártyával (köpeny), mint a CRAMPS deszka. Ebben a konfigurációban a BeagleBone a Klipper + további szoftvereket fog fogadni, és a BeagleBone PRU magokkal (2 további mag 200Mh, 32Bit) meghajtja a bővítőkártyát.
 
-Use case 3: It's same as "Use case 1" but additionally you want to drive BeagleBone GPIOs with high speed by utilizing PRU cores to offload main CPU.
+3. felhasználási eset: Ugyanaz, mint az "1. felhasználási eset", de emellett a BeagleBone GPIO-kat nagy sebességgel fogja meghajtani a PRU magok felhasználásával a fő CPU tehermentesítésére.
 
-## Installing Octoprint
+## Octoprint telepítése
 
-One may then install Octoprint or fully skip this section if desired other software:
+Ezután telepítheted az Octoprint-et, vagy kihagyhatod ezt a lépést, ha más szoftvert szeretnél:
 
 ```
 git clone https://github.com/foosel/OctoPrint.git
@@ -77,19 +77,19 @@ Ezután indítsd el az Octoprint szolgáltatást:
 sudo systemctl start octoprint
 ```
 
-Wait 1-2 minutes and make sure the OctoPrint web server is accessible - it should be at: <http://beaglebone:5000/>
+Várj 1-2 percet, és győződj meg róla, hogy az OctoPrint webszerver elérhető - a következő címen kell lennie: <http://beaglebone:5000/>
 
-## Building the BeagleBone PRU micro-controller code (PRU firmware)
+## A BeagleBone PRU mikrokontroller kódjának elkészítése (PRU firmware)
 
-This section is required for "Use case 2" and "Use case 3" mentioned above, you should skip it for "Use case 1".
+Ez a szakasz a fent említett "2. használati eset" és "3. használati eset" esetében szükséges, az "1. használati eset" esetében kihagyható.
 
-Check that required devices are present
+Ellenőrizd a szükséges eszközök meglétét
 
 ```
 sudo beagle-version
 ```
 
-You should check that output contains successful "remoteproc" drivers loading and presence of PRU cores, in Kernel 5.10 they should be "remoteproc1" and "remoteproc2" (4a334000.pru, 4a338000.pru) Also check that many GPIOs are loaded they will look like "Allocated GPIO id=0 name='P8_03'" Usually everything is fine and no hardware configuration is required. If something is missing - try to play with "uboot overlays" options or with cape-overlays Just for reference some output of working BeagleBone Black configuration with CRAMPS board:
+Ellenőrizd, hogy a kimenet tartalmazza a sikeres "remoteproc" illesztőprogramok betöltését és a PRU magok jelenlétét, a Kernel 5.10-ben ezeknek "remoteproc1" és "remoteproc2" (4a334000.pru, 4a338000.pru) kell lenniük. Ellenőrizd azt is, hogy sok GPIO betöltődött-e. Úgy fog kinézni, mint "Allocated GPIO id=0 name='P8_03'" Általában minden rendben van, és nincs szükség hardver konfigurációra. Ha valami hiányzik - próbálj meg játszani az "uboot overlays" opciókkal vagy a cape-overlays-szel. Csak referenciaként néhány kimenet a működő BeagleBone Black konfigurációról a CRAMPS táblával:
 
 ```
 model:[TI_AM335x_BeagleBone_Black]
@@ -111,14 +111,14 @@ pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]
 .............
 ```
 
-To compile the Klipper micro-controller code, start by configuring it for the "Beaglebone PRU", for "BeagleBone Black" additionally disable options "Support GPIO Bit-banging devices" and disable "Support LCD devices" inside the "Optional features" because they will not fit in 8Kb PRU firmware memory, then exit and save config:
+A Klipper mikrokontroller kódjának lefordításához kezd a "Beaglebone PRU" konfigurálásával, a "BeagleBone Black" esetében kapcsold ki a "Support GPIO Bit-banging devices" és a "Support LCD devices" opciót az "Optional features" menüben, mert ezek nem férnek el a 8Kb PRU firmware memóriában, majd lépj ki és mentsd a konfigurációt:
 
 ```
 cd ~/klipper/
 make menuconfig
 ```
 
-To build and install the new PRU micro-controller code, run:
+Az új PRU mikrokontroller kódjának elkészítéséhez és telepítéséhez futtasd a következőt:
 
 ```
 sudo service klipper stop
@@ -126,13 +126,13 @@ make flash
 sudo service klipper start
 ```
 
-After previous commands was executed your PRU firmware should be ready and started to check if everything was fine you can execute following command
+Az előző parancsok végrehajtása után a PRU firmware-nek készen kell állnia, és el kell kezdenie ellenőrizni, hogy minden rendben volt-e. A következő parancsot hajthatod végre
 
 ```
 dmesg
 ```
 
-and compare last messages with sample one which indicate that everything started properly:
+és hasonlítsd össze az utolsó üzeneteket a mintával, amely azt jelzi, hogy minden rendben elindult:
 
 ```
 [   71.105499] remoteproc remoteproc1: 4a334000.pru is available
@@ -152,11 +152,11 @@ and compare last messages with sample one which indicate that everything started
 [   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/rpmsg_pru30
 ```
 
-take a note about "/dev/rpmsg_pru30" - it's your future serial device for main mcu configuration this device is required to be present, if it's absent - your PRU cores did not start properly.
+vedd figyelembe a "/dev/rpmsg_pru30" - ez a jövőbeli soros eszköz a fő MCU konfigurációhoz, ennek az eszköznek jelen kell lennie, ha hiányzik - a PRU magok nem indulnak el megfelelően.
 
-## Building and installing Linux host micro-controller code
+## Linux gazdagép mikrokontroller kódjának létrehozása és telepítése
 
-This section is required for "Use case 2" and optional for "Use case 3" mentioned above
+Ez a szakasz a "2. használati eset" esetében kötelező, a fent említett "3. használati eset" esetében pedig nem kötelező
 
 Szükséges továbbá a mikrokontroller kódjának lefordítása és telepítése egy Linux gazdafolyamathoz. Konfiguráld másodszor is egy "Linux folyamat" számára:
 
@@ -172,86 +172,86 @@ make flash
 sudo service klipper start
 ```
 
-take a note about "/tmp/klipper_host_mcu" - it will be your future serial device for "mcu host" if that file don't exist - refer to "scripts/klipper-mcu.service" file, it was installed by previous commands, and it's responsible for it.
+jegyezd meg a "/tmp/klipper_host_mcu" - ez lesz a jövőbeli soros eszközöd az "mcu host" számára, ha ez a fájl nem létezik - lásd a "scripts/klipper-mcu.service" fájlt, az előző parancsok telepítették, és ez a felelős érte.
 
-Take a note for "Use case 2" about following: when you will define printer configuration you should always use temperature sensors from "mcu host" because ADCs not present in default "mcu" (PRU cores). Sample configuration of "sensor_pin" for extruder and heated bed are available in "generic-cramps.cfg" You can use any other GPIO directly from "mcu host" by referencing them this way "host:gpiochip1/gpio17" but that should be avoided because it will be creating additional load on main CPU and most probably you can't use them for stepper control.
+A "2. felhasználási eset" esetében jegyezd meg a következőket: amikor a nyomtató konfigurációját határozod meg, mindig az "mcu host" hőmérséklet-érzékelőit kell használni, mivel az ADC-k nincsenek jelen az alapértelmezett "mcu"-ban (PRU magok). A "sensor_pin" mintakonfigurációja az extruder és a fűtött ágy számára elérhető a "generic-cramps.cfg"-ben. Bármely más GPIO-t használhatsz közvetlenül az "mcu host"-ból, ha így hivatkozol rájuk: "host:gpiochip1/gpio17", de ezt kerülni kell, mert ez további terhelést jelent a fő CPU-ra, és valószínűleg nem tudja használni a léptető vezérlésére.
 
 ## Hátralevő konfiguráció
 
-Complete the installation by configuring Klipper following the instructions in the main [Installation](Installation.md#configuring-octoprint-to-use-klipper) document.
+Fejezd be a telepítést a Klipper konfigurálásával a [Telepítés](Installation.md#configuring-octoprint-to-use-klipper) fődokumentumban található utasítások szerint.
 
 ## Nyomtatás a Beaglebone-on
 
-Unfortunately, the Beaglebone processor can sometimes struggle to run OctoPrint well. Print stalls have been known to occur on complex prints (the printer may move faster than OctoPrint can send movement commands). If this occurs, consider using the "virtual_sdcard" feature (see [Config Reference](Config_Reference.md#virtual_sdcard) for details) to print directly from Klipper and disable any DEBUG or VERBOSE logging options if you did enable them.
+Sajnos a Beaglebone processzor néha nehezen tudja jól futtatni az OctoPrintet. Előfordult már, hogy összetett nyomtatásoknál a nyomtatás akadozott (a nyomtató gyorsabban mozog, mint ahogy az OctoPrint mozgatási parancsokat tud küldeni). Ha ez előfordul, fontold meg a „virtual_sdcard” funkció használatát (a részletekért lásd a [Konfigurációs referencia](Config_Reference.md#virtual_sdcard)) pontot, hogy közvetlenül a Klipperből nyomtass, és kapcsold ki a DEBUG vagy VERBOSE naplózási opciókat, ha engedélyezted őket.
 
-## AVR micro-controller code build
+## AVR mikrovezérlő kód építése
 
-This environment have everything to build necessary micro-controller code except AVR, AVR packages was removed because of conflict with PRU packages. if you still want to build AVR micro-controller code in this environment you need to remove PRU packages and install AVR packages by executing following commands
+Ez a környezet mindent tartalmaz a szükséges mikrokontroller kód építéséhez, kivéve az AVR-t. Az AVR csomagok eltávolításra kerültek a PRU csomagokkal való konfliktus miatt. Ha még mindig AVR mikrokontroller kódot akarsz építeni ebben a környezetben, akkor el kell távolítanod a PRU csomagokat és telepítened kell az AVR csomagokat a következő parancsok végrehajtásával
 
 ```
 sudo apt-get remove gcc-pru
 sudo apt-get install avrdude gcc-avr binutils-avr avr-libc
 ```
 
-if you need to restore PRU packages - then remove ARV packages before that
+ha vissza kell állítani a PRU csomagokat - akkor előtte távolítsd el az AVR csomagokat
 
 ```
 sudo apt-get remove avrdude gcc-avr binutils-avr avr-libc
 sudo apt-get install gcc-pru
 ```
 
-## Hardware Pin designation
+## Hardver tű megjelölés
 
-BeagleBone is very flexible in terms of pin designation, same pin can be configured for different function but always single function for single pin, same function can be present on different pins. So you can't have multiple functions on single pin or have same function on multiple pins. Example: P9_20 - i2c2_sda/can0_tx/spi1_cs0/gpio0_12/uart1_ctsn P9_19 - i2c2_scl/can0_rx/spi1_cs1/gpio0_13/uart1_rtsn P9_24 - i2c1_scl/can1_rx/gpio0_15/uart1_tx P9_26 - i2c1_sda/can1_tx/gpio0_14/uart1_rx
+A BeagleBone nagyon rugalmas a tűk kijelölése szempontjából, ugyanaz a tű különböző funkciókhoz konfigurálható, de mindig egyetlen funkciót egyetlen tűhöz, ugyanaz a funkció különböző tűkön is jelen lehet. Tehát nem lehet több funkció egyetlen tűn, vagy ugyanaz a funkció több tűn. Példa: P9_20 - i2c2_sda/can0_tx/spi1_cs0/gpio0_12/uart1_ctsn P9_19 - i2c2_scl/can0_rx/spi1_cs1/gpio0_13/uart1_rtsn P9_24 - i2c1_scl/can1_rx/gpio0_15/uart1_tx P9_26 - i2c1_sda/can1_tx/gpio0_14/uart1_rx
 
-Pin designation is defined by using special "overlays" which will be loaded during linux boot they are configured by editing file /boot/uEnv.txt with elevated permissions
+A TŰK kijelölése speciális "overlay"-ek használatával történik, amelyek a Linux indításakor töltődnek be. Ezeket a /boot/uEnv.txt fájl szerkesztésével lehet beállítani, megnövelt jogosultságokkal
 
 ```
 sudo editor /boot/uEnv.txt
 ```
 
-and defining which functionality to load, for example to enable CAN1 you need to define overlay for it
+és annak meghatározása, hogy melyik funkciót kell betölteni, például a CAN1 engedélyezéséhez meg kell határozni az overlay-t
 
 ```
 uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo
 ```
 
-This overlay BB-CAN1-00A0.dtbo will reconfigure all required pins for CAN1 and create CAN device in Linux. Any change in overlays will require system reboot to be applied. If you need to understand which pins are involved in some overlay - you can analyze source files in this location: /opt/sources/bb.org-overlays/src/arm/ or search info in BeagleBone forums.
+Ez az overlay BB-CAN1-00A0.dtbo átkonfigurálja a CAN1 összes szükséges tűjét, és létrehozza a CAN eszközt Linux-ban. Az overlay-ek bármilyen módosítása a rendszer újraindítását igényli. Ha megérted, hogy mely tűk vesznek részt valamelyik overlay-ben - elemezheted a forrásfájlokat ezen a helyen: /opt/sources/bb.org-overlays/src/arm/ vagy keress információt a BeagleBone fórumokon.
 
-## Enabling hardware SPI
+## Hardver SPI engedélyezése
 
-BeagleBone usually have multiple hardware SPI buses, for example BeagleBone Black can have 2 of them, they can work up to 48Mhz, but usually they are limited to 16Mhz by Kernel Device-tree. By default, in BeagleBone Black some of SPI1 pins are configured for HDMI-Audio output, to fully enable 4-wire SPI1 you need to disable HDMI Audio and enable SPI1 To do that edit file /boot/uEnv.txt with elevated permissions
+A BeagleBone általában több hardveres SPI busszal rendelkezik, például a BeagleBone Black 2 ilyen busz van, ezek akár 48Mhz-ig is működhetnek, de általában 16Mhz-re korlátozza őket a Kernel Device-tree. Alapértelmezés szerint a BeagleBone Black-ben néhány SPI1 pin HDMI-Audio kimenetre van konfigurálva, a 4-vezetékes SPI1 teljes engedélyezéséhez ki kell kapcsolni a HDMI Audio-t és engedélyezni kell az SPI1-et. Ehhez a /boot/uEnv.txt fájlt kell szerkeszteni megnövelt jogosultságokkal
 
 ```
 sudo editor /boot/uEnv.txt
 ```
 
-uncomment variable
+változó feloldása
 
 ```
 disable_uboot_overlay_audio=1
 ```
 
-next uncomment variable and define it this way
+a következő változót ki kell kommentelni, és így kell definiálni
 
 ```
 uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo
 ```
 
-Save changes in /boot/uEnv.txt and reboot the board. Now you have SPI1 Enabled, to verify its presence execute command
+Mentsd a változtatásokat a /boot/uEnv.txt állományba, és indítsd újra az alaplapot. Most már az SPI1 engedélyezve van, a jelenlétének ellenőrzéséhez hajtsd végre a következő parancsot
 
 ```
 ls /dev/spidev1.*
 ```
 
-Take a note that BeagleBone usually is 3.3v based hardware and to use 5V SPI devices you need to add Level-Shifting chip, for example SN74CBTD3861, SN74LVC1G34 or similar. If you are using CRAMPS board - it already contains Level-Shifting chip and SPI1 pins will become available on P503 port, and they can accept 5v hardware, check CRAMPS board Schematics for pin references.
+Vedd figyelembe, hogy a BeagleBone általában 3,3V alapú hardver, és az 5V-os SPI eszközök használatához szintváltó chipet kell hozzáadni, például SN74CBTD3861, SN74LVC1G34 vagy hasonló. Ha CRAMPS táblát használ - ez már tartalmaz Level-Shifting chipet és SPI1 tűk elérhetővé válnak a P503 porton, és elfogadják az 5V hardvert, ellenőrizd a CRAMPS tábla kapcsolási rajzát a tű-referenciákért.
 
-## Enabling hardware I2C
+## Hardver I2C engedélyezése
 
-BeagleBone usually have multiple hardware I2C buses, for example BeagleBone Black can have 3 of them, they support speed up-to 400Kbit Fast mode. By default, in BeagleBone Black there are two of them (i2c-1 and i2c-2) usually both are already configured and present on P9, third ic2-0 usually reserved for internal use. If you are using CRAMPS board then i2c-2 is present on P303 port with 3.3v level, If you want to obtain I2c-1 in CRAMPS board - you can get them on Extruder1.Step, Extruder1.Dir pins, they also are 3.3v based, check CRAMPS board Schematics for pin references. Related overlays, for [Hardware Pin designation](#hardware-pin-designation): I2C1(100Kbit): BB-I2C1-00A0.dtbo I2C1(400Kbit): BB-I2C1-FAST-00A0.dtbo I2C2(100Kbit): BB-I2C2-00A0.dtbo I2C2(400Kbit): BB-I2C2-FAST-00A0.dtbo
+A BeagleBone rendszerint több hardveres I2C buszokkal rendelkezik, például a BeagleBone Black 3 ilyen buszokkal rendelkezhet, amelyek támogatják a 400Kbit gyors üzemmódig terjedő sebességet. Alapértelmezés szerint a BeagleBone Blackben kettő van belőlük (i2c-1 és i2c-2) általában mindkettő már konfigurálva van és jelen van a P9-en, a harmadik i2c-0 általában belső használatra van fenntartva. Ha CRAMPS lapot használsz, akkor az i2c-2 a P303 porton van jelen 3,3V-os szinten, Ha az I2c-1-et a CRAMPS lapon szeretnéd használni - az Extruder1.Step, Extruder1.Dir tűkön kaphatod meg őket, ezek szintén 3,3V alapúak, nézd meg a CRAMPS lap kapcsolási rajzát a tű-referenciákért. Kapcsolódó átfedések, a [Hardver tű megnevezés](#hardware-pin-designation): I2C1(100Kbit): BB-I2C1-00A0.dtbo I2C1(400Kbit): BB-I2C1-FAST-00A0.dtbo I2C2(100Kbit): BB-I2C2-00A0.dtbo I2C2(400Kbit): BB-I2C2-FAST-00A0.dtbo
 
-## Enabling hardware UART(Serial)/CAN
+## Hardveres UART(Soros)/CAN aktiválása
 
-BeagleBone have up to 6 hardware UART(Serial) buses (up to 3Mbit) and up to 2 hardware CAN(1Mbit) buses. UART1(RX,TX) and CAN1(TX,RX) and I2C2(SDA,SCL) are using same pins - so you need to chose what to use UART1(CTSN,RTSN) and CAN0(TX,RX) and I2C1(SDA,SCL) are using same pins - so you need to chose what to use All UART/CAN related pins are 3.3v based, so you will need to use Transceiver chips/boards like SN74LVC2G241DCUR (for UART), SN65HVD230 (for CAN), TTL-RS485 (for RS-485) or something similar which can convert 3.3v signals to appropriate levels.
+A BeagleBone akár 6 hardveres UART(Soros) busz (akár 3Mbit) és akár 2 hardveres CAN(1Mbit) busz. UART1(RX,TX) és CAN1(TX,RX) és I2C2(SDA,SCL) ugyanazokat a tűket használják - így ki kell választanod, hogy mit használjon UART1(CTSN,RTSN) és CAN0(TX,RX) és I2C1(SDA,SCL) ugyanazokat a tűket használják - így ki kell választanod, hogy mit használjon. Minden UART/CAN kapcsolódó tű 3.3V alapú, így olyan adó-vevő chipeket/lapokat kell használnod, mint az SN74LVC2G241DCUR (UART-hoz), SN65HVD230 (CAN-hez), TTL-RS485 (RS-485-hez) vagy valami hasonlót, amely képes a 3.3V jeleket megfelelő szintre konvertálni.
 
-Related overlays, for [Hardware Pin designation](#hardware-pin-designation) CAN0: BB-CAN0-00A0.dtbo CAN1: BB-CAN1-00A0.dtbo UART0: - used for Console UART1(RX,TX): BB-UART1-00A0.dtbo UART1(RTS,CTS): BB-UART1-RTSCTS-00A0.dtbo UART2(RX,TX): BB-UART2-00A0.dtbo UART3(RX,TX): BB-UART3-00A0.dtbo UART4(RS-485): BB-UART4-RS485-00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo
+Kapcsolódó overlay-ek, a [Hardver Tű-megjelölés](#hardware-pin-designation) esetén CAN0: BB-CAN0-00A0.dtbo CAN1: BB-CAN1-00A0.dtbo UART0: - a konzol számára UART1(RX,TX): BB-UART3-00A0.dtbo UART4(RS-485): BB-UART4-RS485-00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo

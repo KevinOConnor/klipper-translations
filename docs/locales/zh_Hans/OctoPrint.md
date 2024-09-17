@@ -6,19 +6,19 @@ Klipper 有几个不同的前端选择，Octoprint 是最早也是最原始的Kl
 
 首先在 Raspberry Pi 上安装 [OctoPi](https://github.com/guysoft/OctoPi)。使用 OctoPi v0.17.0 或更高版本 - 有关版本信息，请参考 [OctoPi release](https://github.com/guysoft/OctoPi/releases)。
 
-One should verify that OctoPi boots and that the OctoPrint web server works. After connecting to the OctoPrint web page, follow the prompt to upgrade OctoPrint if needed.
+需要确认OctoPi 正常启动并且OctoPrint 网页服务器正常工作。当连接到OctoPrint网页后，根据提示更新OctoPrint。
 
-After installing OctoPi and upgrading OctoPrint, it will be necessary to ssh into the target machine to run a handful of system commands.
+当安装完成OctoPi 并且更新完成OctoPrint 后，使用ssh 进入目标机器运行一些系统命令是有必要的。
 
-Start by running these commands on your host device:
+现在来在你的Host 设备上运行这些指令：
 
-**If you do not have git installed, please do so with:**
+**如果你没有安装git，你需要使用以下命令进行安装：**
 
 ```
 sudo apt install git
 ```
 
-then proceed:
+然后使用以下命令：
 
 ```
 cd ~
@@ -26,32 +26,32 @@ git clone https://github.com/Klipper3d/klipper
 ./klipper/scripts/install-octopi.sh
 ```
 
-The above will download Klipper, install the needed system dependencies, setup Klipper to run at system startup, and start the Klipper host software. It will require an internet connection and it may take a few minutes to complete.
+以上命令会下载Klipper，并且安装必要的系统依赖，配置Klipper 在系统启动时运行，以及启动Klipper Host 软件。这些操作会需要互联网连接并且可能需要几分钟来完成。
 
-## Installing with KIAUH
+## 使用KIAUH进行安装
 
-KIAUH can be used to install OctoPrint on a variety of Linux based systems that run a form of Debian. More information can be found at https://github.com/dw-0/kiauh
+KIAUH 可以用来在各种基于Debian Linux 发行版上安装 OctoPrint。更多的使用细节可以在 https://github.com/dw-0/kiauh 找到
 
-## Configuring OctoPrint to use Klipper
+## 配置OctoPrint 去使用Klipper
 
-The OctoPrint web server needs to be configured to communicate with the Klipper host software. Using a web browser, login to the OctoPrint web page and then configure the following items:
+OctoPrint 网页服务器需要配置和Klipper Host 软件的连接。使用浏览器登录到 OctoPrint 网页并且配置以下内容：
 
-Navigate to the Settings tab (the wrench icon at the top of the page). Under "Serial Connection" in "Additional serial ports" add:
+浏览到设置界面（在网页顶部的扳手图标）。在"Serial Connection" 下的 "Additional serial ports" 添加：
 
 ```
 ~/printer_data/comms/klippy.sock
 ```
 
-Then click "Save".
+然后点击"保存"。
 
-*In some older setups this address may be `/tmp/printer`*
+*在比较老的配置中这个地址可能是 `/tmp/printer`*
 
-Enter the Settings tab again and under "Serial Connection" change the "Serial Port" setting to the one added above.
+再次进入设置界面中的 "Serial Connection" 更改 "Serial Port" 设置到上面添加的。
 
-In the Settings tab, navigate to the "Behavior" sub-tab and select the "Cancel any ongoing prints but stay connected to the printer" option. Click "Save".
+在设置界面浏览到 "Behavior" 子菜单并且选择 "Cancel any ongoing prints but stay connected to the printer" 的选项。并且点击"保存"。
 
-From the main page, under the "Connection" section (at the top left of the page) make sure the "Serial Port" is set to the new additional one added and click "Connect". (If it is not in the available selection then try reloading the page.)
+在主界面的 "Connection" 下面（在界面的左上角）确定 "Serial Port" 被选择并且点击 "Connect"。（如果没有可选的可以尝试刷新界面。）
 
-Once connected, navigate to the "Terminal" tab and type "status" (without the quotes) into the command entry box and click "Send". The terminal window will likely report there is an error opening the config file - that means OctoPrint is successfully communicating with Klipper.
+当成功连接，选择"Terminal" 窗口并且输入"status"（不要有括号）到命令行窗口中并且点击"Send"。命令行窗口很大的可能会显示缺少配置文件 - 这意味着OctoPrint 成功上了 Klipper。
 
-Please proceed to <Installation.md> and the *Building and flashing the micro-controller* section
+接下来继续 <Installation.md>的 *Building and flashing the micro-controller*部分

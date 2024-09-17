@@ -184,15 +184,15 @@ A kezdeti lekérdezési válasz "header" mezője a későbbi "data" válaszokban
 
 ### hx71x/dump_hx71x
 
-This endpoint is used to subscribe to raw HX711 and HX717 ADC data. Obtaining these low-level ADC updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Ez a végpont a nyers HX711 és HX717 ADC-adatok előfizetésére szolgál. Ezen alacsony szintű ADC-frissítések lekérése hasznos lehet diagnosztikai és hibakeresési célokra. Ennek a végpontnak a használata növelheti a Klipper rendszerterhelését.
 
-A request may look like: `{"id": 123, "method":"hx71x/dump_hx71x", "params": {"sensor": "load_cell", "response_template": {}}}` and might return: `{"id": 123,"result":{"header":["time","counts","value"]}}` and might later produce asynchronous messages such as: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
+Egy kérés így nézhet ki: `{"id": 123, "method":"hx71x/dump_hx71x", "params": {"sensor": "load_cell", "response_template": {}}}` és visszatérhet: `{"id": 123,"result":{"header":["time","counts","value"]}}` és később aszinkron üzeneteket produkálhat, mint például: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
 
 ### ads1220/dump_ads1220
 
-This endpoint is used to subscribe to raw ADS1220 ADC data. Obtaining these low-level ADC updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Ez a végpont a nyers ADS1220 ADC-adatok felírására szolgál. Ezen alacsony szintű ADC-frissítések lekérése hasznos lehet diagnosztikai és hibakeresési célokra. Ennek a végpontnak a használata növelheti a Klipper rendszerterhelését.
 
-A request may look like: `{"id": 123, "method":"ads1220/dump_ads1220", "params": {"sensor": "load_cell", "response_template": {}}}` and might return: `{"id": 123,"result":{"header":["time","counts","value"]}}` and might later produce asynchronous messages such as: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
+Egy kérés így nézhet ki: `{"id": 123, "method":"ads1220/dump_ads1220", "params": {"sensor": "load_cell", "response_template": {}}}` és visszatérhet: `{"id": 123,"result":{"header":["time","counts","value"]}}` és később aszinkron üzeneteket produkálhat: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
 
 ### pause_resume/cancel
 
@@ -220,11 +220,11 @@ A "gcode/script" végponthoz hasonlóan ez a végpont is csak a függőben lév�
 
 ### bed_mesh/dump_mesh
 
-Dumps the configuration and state for the current mesh and all saved profiles.
+Kitölti az aktuális háló és az összes mentett profil konfigurációját és állapotát.
 
-For example: `{"id": 123, "method": "bed_mesh/dump_mesh"}`
+Például: `{"id": 123, "method": "bed_mesh/dump_mesh"}`
 
-might return:
+visszatérhet:
 
 ```
 {
@@ -335,4 +335,4 @@ might return:
 }
 ```
 
-The `dump_mesh` endpoint takes one optional parameter, `mesh_args`. This parameter must be an object, where the keys and values are parameters available to [BED_MESH_CALIBRATE](#bed_mesh_calibrate). This will update the mesh configuration and probe points using the supplied parameters prior to returning the result. It is recommended to omit mesh parameters unless it is desired to visualize the probe points and/or travel path before performing `BED_MESH_CALIBRATE`.
+A `dump_mesh` végpontnak egy opcionális paramétere van, a `mesh_args`. Ennek a paraméternek egy objektumnak kell lennie, ahol a kulcsok és az értékek a [BED_MESH_CALIBRATE](#bed_mesh_calibrate) számára elérhető paraméterek. Ez frissíti a háló konfigurációját és a mérési pontokat a megadott paraméterek segítségével, mielőtt visszaküldi az eredményt. A hálóparaméterek elhagyása ajánlott, kivéve, ha a `BED_MESH_CALIBRATE` végrehajtása előtt a mérési pontokat és/vagy a haladási útvonalat kívánod megjeleníteni.

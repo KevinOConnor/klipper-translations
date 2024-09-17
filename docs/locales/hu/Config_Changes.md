@@ -6,7 +6,7 @@ A dokumentumban szereplő valamennyi dátum hozzávetőleges.
 
 ## Változások
 
-20240415: The `on_error_gcode` parameter in the `[virtual_sdcard]` config section now has a default. If this parameter is not specified it now defaults to `TURN_OFF_HEATERS`. If the previous behavior is desired (take no default action on an error during a virtual_sdcard print) then define `on_error_gcode` with an empty value.
+20240415: A `[virtual_sdcard]` konfigurációs szakaszban az `on_error_gcode` paraméter mostantól alapértelmezett. Ha ez a paraméter nincs megadva, az alapértelmezett érték mostantól `TURN_OFF_HEATERS`. Ha a korábbi viselkedést szeretnénk (hiba esetén a virtual_sdcard nyomtatása során nem teszünk alapértelmezett lépéseket), akkor a `on_error_gcode` paramétert üres értékkel definiáljuk.
 
 20240313: A `[nyomtató]` konfigurációs szakaszban található `max_accel_to_decel` paramétert elavultnak nyilvánítottuk. A `SET_VELOCITY_LIMIT` parancs `ACCEL_TO_DECEL` paramétere elavult. A `printer.toolhead.max_accel_to_decel` állapot eltávolításra került. Használd helyette a [minimum_cruise_ratio paramétert](./Config_Reference.md#printer). Az elavult funkciók a közeljövőben eltávolításra kerülnek, és az időközbeni használatuk finoman eltérő viselkedést eredményezhet.
 

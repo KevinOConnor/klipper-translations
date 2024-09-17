@@ -1,6 +1,6 @@
 # Manual leveling
 
-This document describes tools for calibrating a Z endstop and for performing adjustments to bed leveling screws.
+Dit document beschrijft opties voor het kalibreren van de Z-eindstop en voor het uitvoeren van aanpassingen aan bedlevel-schroeven.
 
 ## Calibrating a Z endstop
 

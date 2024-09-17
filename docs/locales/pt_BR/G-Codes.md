@@ -79,7 +79,7 @@ The following commands are available when an [angle config section](Config_Refer
 
 `ANGLE_DEBUG_WRITE CHIP=<nome_config> REG=<registro> VAL=<valor>`: escreve o "valor" bruto no registro "registro". Ambos "valor" e "registro" podem ser um número inteiro decimal ou hexadecimal. Use com cuidado, e consulte a folha de dados do sensor para referência. Este comando só está disponível para chips tle5012b.
 
-### [axis_twist_compensation]
+### [compensação_de_desvio_no_eixo]
 
 The following commands are available when the [axis_twist_compensation config
 section](Config_Reference.md#axis_twist_compensation) is enabled.
@@ -842,9 +842,9 @@ The following commands are available when a [temperature_probe config section](C
 
 `TEMPERATURE_PROBE_COMPLETE`: Can be used to end calibration and save the current result before the `TARGET` temperature is reached. This command is only available during calibration.
 
-#### ABORT
+#### CANCELAR
 
-`ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
+CANCELAR: Cancela o processo de calibração, independente dos resultados. Esse comando só está disponível durante calibração de movimento.
 
 ### TEMPERATURE_PROBE_ENABLE
 

@@ -2,7 +2,7 @@
 
 Dit document bevat contactinformatie voor Klipper.
 
-1. [Communityforum](#community-forum)
+1. [Community-forum](#community-forum)
 1. [Discord-chat](#discord-chat)
 1. [Ik heb een vraag over Klipper](#i-have-a-question-about-klipper)
 1. [Ik heb een verzoek voor een functie](#i-have-a-feature-request)
@@ -13,7 +13,7 @@ Dit document bevat contactinformatie voor Klipper.
 
 ## Community-forum
 
-Er is een [Klipper Discourse-server](https://community.klipper3d.org) voor discussies over Klipper.
+Er is een [Klipper Community Discourse-server](https://community.klipper3d.org) voor discussies over Klipper.
 
 ## Discord-chat
 
@@ -27,20 +27,20 @@ Veel vragen die we krijgen zijn al beantwoord in de [Klipper-documentatie](Overv
 
 Het is ook mogelijk om te zoeken naar vergelijkbare vragen in het [community-forum](#community-forum).
 
-If you are interested in sharing your knowledge and experience with other Klipper users then you can join the [Klipper Community Forum](#community-forum) or [Klipper Discord Chat](#discord-chat). Both are communities where Klipper users can discuss Klipper with other users.
+Als je bent geïnteresseerd in het delen van je kennis en ervaring met andere Klipper-gebruikers, dan kun je de [Klipper Community Forum](#community-forum) of de [Klipper Discord Chat](#discord-chat) joinen. Beide zijn community's waar Klipper-gebruikers kunnen discussiëren met andere Klipper-gebruikers.
 
-Many questions we receive are general 3d-printing questions that are not specific to Klipper. If you have a general question or are experiencing general printing problems, then you will likely get a better response by asking in a general 3d-printing forum or a forum dedicated to your printer hardware.
+Veel vragen die we krijgen zijn algemene 3D-printer vragen die niet specifiek over Klipper gaan. Als je een algemene vraag of algemeen printerprobleem hebt, dan heb je een grotere kans op een beter antwoord door de vraag te stellen in een algemeen 3D-printer-forum die gericht is op je type printer.
 
-## I have a feature request
+## Ik heb een functie-aanvraag
 
-All new features require someone interested and able to implement that feature. If you are interested in helping to implement or test a new feature, you can search for ongoing developments in the [Klipper Community Forum](#community-forum). There is also [Klipper Discord Chat](#discord-chat) for discussions between collaborators.
+Alle nieuwe functies vereisen enige interesse en moeten geïmplementeerd kunnen worden. Als je geïnteresseerd bent in het helpen implementeren of testen van nieuwe functies, kan je zoeken op lopende ontwikkelingen in de [Klipper Community Forum](#community-forum). Er is ook een [Klipper Discord Chat](#discord-chat) voor discussies tussen medewerkers.
 
-## Help! It doesn't work!
+## Help! Het werkt niet!
 
-Unfortunately, we receive many more requests for help than we could possibly answer. Most problem reports we see are eventually tracked down to:
+We krijgen helaas meer hulpaanvragen dan we kunnen beantwoorden. De meeste probleemrapportages die we zien worden onderverdeeld in:
 
-1. Subtle errors in the hardware, or
-1. Not following all the steps described in the Klipper documentation.
+1. Kleine fouten in de hardware, of
+1. Het niet volgen van de stappen zoals beschreven in de Klipper-documentatie.
 
 If you are experiencing problems we recommend you carefully read the [Klipper documentation](Overview.md) and double check that all steps were followed.
 
@@ -48,7 +48,7 @@ If you are experiencing a printing problem, then we recommend carefully inspecti
 
 It is also possible to search for similar issues in the [Klipper Community Forum](#community-forum).
 
-If you are interested in sharing your knowledge and experience with other Klipper users then you can join the [Klipper Community Forum](#community-forum) or [Klipper Discord Chat](#discord-chat). Both are communities where Klipper users can discuss Klipper with other users.
+Als je bent geïnteresseerd in het delen van je kennis en ervaring met andere Klipper-gebruikers, dan kun je de [Klipper Community Forum](#community-forum) of de [Klipper Discord Chat](#discord-chat) joinen. Beide zijn community's waar Klipper-gebruikers kunnen discussiëren met andere Klipper-gebruikers.
 
 ## I found a bug in the Klipper software
 

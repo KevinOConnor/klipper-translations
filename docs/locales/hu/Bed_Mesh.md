@@ -22,7 +22,7 @@ probe_count: 5, 3
 - `speed: 120` * Alapértelmezett érték: 50* A sebesség, amellyel a fej a pontok között mozog.
 - `horizontal_move_z: 5` *Alapértelmezett érték: 5* A Z koordináta, amelyre a szonda a mérőpontok közötti utazás előtt emelkedik.
 - `mesh_min: 35, 6` *Ajánlott* Az első, az origóhoz legközelebbi koordináta. Ez a koordináta a szonda helyéhez képest relatív.
-- `mesh_max: 240, 198` *Required* The probed coordinate farthest from the origin. This is not necessarily the last point probed, as the probing process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is relative to the probe's location.
+- `mesh_max: 240, 198` *Ajánlott* Az origótól legtávolabb eső koordináta. Ez nem feltétlenül az utolsó mért pont, mivel a mérés cikcakkos módon történik. A `mesh_min` koordinátához hasonlóan ez a koordináta is a szonda helyéhez képest relatív.
 - `probe_count: 5, 3` *Alapértelmezett érték: 3,3* Az egyes tengelyeken mérendő pontok száma, X, Y egész értékben megadva. Ebben a példában az X tengely mentén 5 pont lesz mérve, az Y tengely mentén 3 pont, összesen 15 mért pont. Vedd figyelembe, hogy ha négyzetrácsot szeretnél, például 3x3, akkor ezt egyetlen egész számértékként is megadhatod, amelyet mindkét tengelyre használsz, azaz `probe_count: 3`. Vedd figyelembe, hogy egy hálóhoz mindkét tengely mentén legalább 3 darab mérési számra van szükség.
 
 Az alábbi ábra azt mutatja, hogy a `mesh_min`, `mesh_max` és `probe_count` opciók hogyan használhatók a mérőpontok létrehozására. A nyilak jelzik a mérési eljárás irányát, kezdve a `mesh_min` ponttól. Hivatkozásképpen, amikor a szonda a `mesh_min` pontnál van, a fúvóka a (11, 1) pontnál lesz, és amikor a szonda a `mesh_max` pontnál van, a fúvóka a (206, 193) pontnál lesz.
@@ -212,25 +212,25 @@ Az adaptív ágyrácsok természetüknél fogva a nyomtatás alatt álló G-Kód
 
 Azt is fontos figyelembe venni, hogy az adaptív ágyhálózást olyan gépeken lehet a legjobban alkalmazni, amelyek általában a teljes ágyat meg tudják tapogatni, és 1 rétegmagasságnál kisebb vagy azzal egyenlő maximális eltérést érnek el. Az olyan mechanikai problémákkal küzdő gépek, amelyeket a teljes ágyháló általában kompenzál, nemkívánatos eredményeket hozhatnak, amikor a nyomtatási mozgásokat a szondázott területen **kívül** próbálják végrehajtani. Ha a teljes ágyháló eltérése nagyobb, mint 1 rétegmagasság, akkor óvatosan kell eljárni, amikor adaptív ágyhálót használunk, és a hálózott területen kívüli nyomtatási mozgásokat kísérelünk meg.
 
-## Surface Scans
+## Felületi mérések
 
-Some probes, such as the [Eddy Current Probe](./Eddy_Probe.md), are capable of "scanning" the surface of the bed. That is, these probes can sample a mesh without lifting the tool between samples. To activate scanning mode, the `METHOD=scan` or `METHOD=rapid_scan` probe parameter should be passed in the `BED_MESH_CALIBRATE` gcode command.
+Egyes szondák, mint például az [Örvényáramú szonda](./Eddy_Probe.md), képesek az ágy felületének "letapogatására". Azaz ezek a szondák anélkül képesek háló mintát készíteni, hogy a fejet a minták között felemelnék. A pásztázó üzemmód aktiválásához a `METHOD=scan` vagy `METHOD=rapid_scan` szonda paramétert kell átadni a `BED_MESH_CALIBRATE` G-kód parancsban.
 
-### Scan Height
+### Mérési magasság
 
-The scan height is set by the `horizontal_move_z` option in `[bed_mesh]`. In addition it can be supplied with the `BED_MESH_CALIBRATE` gcode command via the `HORIZONTAL_MOVE_Z` parameter.
+A pásztázási magasságot a `[bed_mesh]-ben a `horizontal_move_z` opció határozza meg. Ezenkívül a `BED_MESH_CALIBRATE` G-kód parancs a `HORIZONTAL_MOVE_Z` paraméteren keresztül is megadható.
 
-The scan height must be sufficiently low to avoid scanning errors. Typically a height of 2mm (ie: `HORIZONTAL_MOVE_Z=2`) should work well, presuming that the probe is mounted correctly.
+A mérési magasságnak kellően alacsonynak kell lennie a beolvasási hibák elkerülése érdekében. Általában 2 mm-es magasság (azaz: `HORIZONTAL_MOVE_Z=2`) jól működik, feltéve, hogy a szonda megfelelően van felszerelve.
 
-It should be noted that if the probe is more than 4mm above the surface then the results will be invalid. Thus, scanning is not possible on beds with severe surface deviation or beds with extreme tilt that hasn't been corrected.
+Meg kell jegyezni, hogy ha a szonda több mint 4 mm-rel a felszín felett van, akkor az eredmények érvénytelenek lesznek. Így a mérés nem lehetséges olyan ágyaknál, ahol a felület nagymértékben eltérő vagy extrém dőlésszögű, amelyeket nem korrigáltak.
 
-### Rapid (Continuous) Scanning
+### Gyors (folyamatos) mérés
 
-When performing a `rapid_scan` one should keep in mind that the results will have some amount of error. This error should be low enough to be useful on large print areas with reasonably thick layer heights. Some probes may be more prone to error than others.
+A `rapid_scan` elvégzésekor szem előtt kell tartani, hogy az eredmények némi hibával fognak rendelkezni. Ennek a hibának elég alacsonynak kell lennie ahhoz, hogy nagy nyomtatási területeken, viszonylag vastag rétegmagassággal hasznos legyen. Egyes szondák hajlamosabbak lehetnek a hibára, mint mások.
 
-It is not recommended that rapid mode be used to scan a "dense" mesh. Some of the error introduced during a rapid scan may be gaussian noise from the sensor, and a dense mesh will reflect this noise (ie: there will be peaks and valleys).
+Nem ajánlott a gyors üzemmód használata "sűrű" háló beolvasására. A gyors pásztázás során keletkező hiba egy része az érzékelő gauss-zajából származhat, és a sűrű háló ezt a zajt fogja tükrözni (azaz: lesznek csúcsok és völgyek).
 
-Bed Mesh will attempt to optimize the travel path to provide the best possible result based on the configuration. This includes avoiding faulty regions when collecting samples and "overshooting" the mesh when changing direction. This overshoot improves sampling at the edges of a mesh, however it requires that the mesh be configured in a way that allows the tool to travel outside of the mesh.
+Az Ágy háló megpróbálja optimalizálni az útvonalat, hogy a konfiguráció alapján a lehető legjobb eredményt érje el. Ez magában foglalja a hibás régiók elkerülését a minták gyűjtésekor és a háló "túllövését" irányváltáskor. Ez a túllövés javítja a mintavételt a háló széleinél, azonban megköveteli, hogy a hálót úgy konfigurálják, hogy a szerszám a hálón kívülre kerüljön.
 
 ```
 [bed_mesh]
@@ -242,26 +242,26 @@ probe_count: 5
 scan_overshoot: 8
 ```
 
-- `scan_overshoot` *Default Value: 0 (disabled)* The maximum amount of travel (in mm) available outside of the mesh. For rectangular beds this applies to travel on the X axis, and for round beds it applies to the entire radius. The tool must be able to travel the amount specified outside of the mesh. This value is used to optimize the travel path when performing a "rapid scan". The minimum value that may be specified is 1. The default is no overshoot.
+- `scan_overshoot` *Alapértelmezett érték: 0 (letiltva)* A hálón kívül rendelkezésre álló maximális elmozdulás (mm-ben). Téglalap alakú ágyak esetén ez az X tengelyen történő mozgásra vonatkozik, kerek ágyak esetén pedig a teljes sugárra. A fejnek képesnek kell lennie a megadott mértékű mozgásra a hálómezőn kívül. Ez az érték a "gyors mérés" végrehajtása során a mozgási útvonal optimalizálására szolgál. A minimálisan megadható érték 1. Az alapértelmezett érték a túllövés hiánya.
 
-If no scan overshoot is configured then travel path optimization will not be applied to changes in direction.
+Ha nincs beállítva mérési túllövés, akkor az útvonal-optimalizálás nem kerül alkalmazásra az irányváltozásokkor.
 
 ## Tárgyasztal háló G-kódok
 
 ### Kalibráció
 
-`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic | scan | rapid_scan] \ [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] \ [ADAPTIVE_MARGIN=<value>]` *Default Profile: default* *Default Method: automatic if a probe is detected, otherwise manual*  *Default Adaptive: 0*  *Default Adaptive Margin: 0*
+`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic | scan | rapid_scan] \ [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] \ [ADAPTIVE_MARGIN=<value>]` *Alapértelmezett profil: alapértelmezett* *Alapértelmezett módszer: automatikus, ha szondát észlel, egyébként manuális* *Alapértelmezett adaptív: 0* *Alapértelmezett adaptív margó: 0*
 
 Mérési eljárást indítása a tárgyasztal háló kalibrálásához.
 
-The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. The `METHOD` parameter takes one of the following values:
+A háló a `PROFILE` paraméter által megadott profilba lesz mentve, vagy a `default`, ha nincs megadva. A `METHOD` paraméter a következő értékek egyikét veszi fel:
 
-- `METHOD=manual`: enables manual probing using the nozzle and the paper test
-- `METHOD=automatic`: Automatic (standard) probing. This is the default.
-- `METHOD=scan`: Enables surface scanning. The tool will pause over each position to collect a sample.
-- `METHOD=rapid_scan`: Enables continuous surface scanning.
+- `METHOD=manual`: lehetővé teszi a kézi mérést a fúvókával és a papírlappal
+- `METHOD=automatic`: Automatikus (szabvány) mérés. Ez az alapértelmezett.
+- `METHOD=scan`: Engedélyezi a felületi mérést. A fej minden egyes pozíció felett megáll, hogy mérést végezzen.
+- `METHOD=rapid_scan`: Engedélyezi a folyamatos felületi mérést.
 
-XY positions are automatically adjusted to include the X and/or Y offsets when a probing method other than `manual` is selected.
+Az XY pozíciók automatikusan beállítódnak az X és Y eltolások figyelembevételével, ha a `kézi`-től eltérő mérési módszert választunk.
 
 Lehetőség van hálóparaméterek megadására a mért terület módosítására. A következő paraméterek állnak rendelkezésre:
 
@@ -352,140 +352,140 @@ Ez több független extruderrel rendelkező nyomtatóknál hasznos, mivel a szer
 
 Vedd figyelembe, hogy a ZFADE eltolás *NEM* alkalmaz közvetlenül további beállításokat. Ez a `gcode offset` kompenzálására szolgál, amikor a [mesh fade](#mesh-fade) engedélyezve van. Például, ha egy másodlagos extruder magasabb, mint az elsődleges, és negatív G-Kód eltolásra van szüksége, azaz: `SET_GCODE_OFFSET Z=-.2`, azt a `bed_mesh`-ben a `BED_MESH_OFFSET ZFADE=.2`-vel lehet figyelembe venni.
 
-## Bed Mesh Webhooks APIs
+## Ágy háló Webhooks API-k
 
-### Dumping mesh data
+### Hálóadatok kiürítése
 
 `{"id": 123, "method": "bed_mesh/dump_mesh"}`
 
-Dumps the configuration and state for the current mesh and all saved profiles.
+Kitölti az aktuális háló és az összes mentett profil konfigurációját és állapotát.
 
-The `dump_mesh` endpoint takes one optional parameter, `mesh_args`. This parameter must be an object, where the keys and values are parameters available to [BED_MESH_CALIBRATE](#bed_mesh_calibrate). This will update the mesh configuration and probe points using the supplied parameters prior to returning the result. It is recommended to omit mesh parameters unless it is desired to visualize the probe points and/or travel path before performing `BED_MESH_CALIBRATE`.
+A `dump_mesh` végpontnak egy opcionális paramétere van, a `mesh_args`. Ennek a paraméternek egy objektumnak kell lennie, ahol a kulcsok és az értékek a [BED_MESH_CALIBRATE](#bed_mesh_calibrate) számára elérhető paraméterek. Ez frissíti a háló konfigurációját és a mérési pontokat a megadott paraméterek segítségével, mielőtt visszaküldi az eredményt. A hálóparaméterek elhagyása ajánlott, kivéve, ha a `BED_MESH_CALIBRATE` végrehajtása előtt a mérési pontokat és/vagy a haladási útvonalat kívánod megjeleníteni.
 
-## Visualization and analysis
+## Vizualizáció és elemzés
 
-Most users will likely find that the visualizers included with applications such as Mainsail, Fluidd, and Octoprint are sufficient for basic analysis. However, Klipper's `scripts` folder contains the `graph_mesh.py` script that may be used to perform additional visualizations and more detailed analysis, particularly useful for debugging hardware or the results produced by `bed_mesh`:
+A legtöbb felhasználó valószínűleg úgy találja, hogy az olyan alkalmazásokhoz, mint a Mainsail, a Fluidd és az Octoprint mellékelt vizualizátorok elegendőek az alapvető elemzésekhez. A Klipper `scripts` mappája azonban tartalmazza a `graph_mesh.py` szkriptet, amely további vizualizációk és részletesebb elemzések elvégzéséhez használható, különösen hasznos a hardver vagy a `bed_mesh` által előállított eredmények hibakereséséhez:
 
 ```
 usage: graph_mesh.py [-h] {list,plot,analyze,dump} ...
 
-Graph Bed Mesh Data
+Ágy háló adatok grafikonja
 
-positional arguments:
+pozícionális érvek:
   {list,plot,analyze,dump}
-    list                List available plot types
-    plot                Plot a specified type
-    analyze             Perform analysis on mesh data
-    dump                Dump API response to json file
+    list                Elérhető parcellatípusok listája
+    plot                Megadott típus ábrázolása
+    analyze             Elemzés elvégzése a hálóadatokon
+    dump                API-válasz kiürítése json fájlba
 
 options:
-  -h, --help            show this help message and exit
+  -h, --help            megjeleníti a súgóüzenetet és kilép
 ```
 
-### Pre-requisites
+### Előfeltételek
 
-Like most graphing tools provided by Klipper, `graph_mesh.py` requires the `matplotlib` and `numpy` python dependencies. In addition, connecting to Klipper via Moonraker's websocket requires the `websockets` python dependency. While all visualizations can be output to an `svg` file, most of the visualizations offered by `graph_mesh.py` are better viewed in live preview mode on a desktop class PC. For example, the 3D visualizations may be rotated and zoomed in preview mode, and the path visualizations can optionally be animated in preview mode.
+A Klipper által biztosított legtöbb grafikus eszközhöz hasonlóan a `graph_mesh.py`-nak is szüksége van a `matplotlib` és a `numpy` python függőségekre. Ezen kívül a Klipper-hez a Moonraker websocketjén keresztül történő csatlakozáshoz a `websockets` python függőségre van szükség. Bár az összes vizualizáció kimenete `svg` fájlban is megjeleníthető, a `graph_mesh.py` által kínált legtöbb vizualizáció jobb, ha élő előnézeti módban, asztali számítógépen nézzük meg. Például a 3D-s megjelenítések előnézeti módban forgathatók és nagyíthatók, az útvonalak megjelenítése pedig opcionálisan animálható előnézeti módban.
 
-### Plotting Mesh data
+### Hálóadatok ábrázolása
 
-The `graph_mesh.py` tool can plot several types of visualizations. Available types can be shown by running `graph_mesh.py list`:
+A `graph_mesh.py` eszköz többféle vizualizáció készítésére képes. A rendelkezésre álló típusok a `graph_mesh.py list` futtatásával jeleníthetők meg:
 
 ```
 graph_mesh.py list
-points    Plot original generated points
-path      Plot probe travel path
-rapid     Plot rapid scan travel path
-probedz   Plot probed Z values
-meshz     Plot mesh Z values
-overlay   Plots the current probed mesh overlaid with a profile
-delta     Plots the delta between current probed mesh and a profile
+points    Eredeti generált pontok ábrázolása
+path      Szonda útvonalának megrajzolása
+rapid     Gyors mérési útvonal megrajzolása
+probedz   Vizsgált Z-értékek ábrázolása
+meshz     Háló Z-értékeinek ábrázolása
+overlay   Aktuális szondázott hálót egy profillal átfedve ábrázolja
+delta     Aktuális szondázott háló és egy profil közötti delta ábrázolása
 ```
 
-Several options are available when plotting visualizations:
+A megjelenítések ábrázolásakor számos lehetőség áll rendelkezésre:
 
 ```
 usage: graph_mesh.py plot [-h] [-a] [-s] [-p PROFILE_NAME] [-o OUTPUT] <plot type> <input>
 
-positional arguments:
-  <plot type>           Type of data to graph
-  <input>               Path/url to Klipper Socket or path to json file
+pozícionális érvek:
+  <plot type>           Grafikusan ábrázolandó adatok típusa
+  <input>               A Klipper Socket elérési útvonala/url vagy a json fájl elérési útvonala
 
-options:
-  -h, --help            show this help message and exit
-  -a, --animate         Animate paths in live preview
-  -s, --scale-plot      Use axis limits reported by Klipper to scale plot X/Y
+opciók:
+  -h, --help            megjeleníti a súgóüzenetet és kilép
+  -a, --animate         Útvonalak animálása élő előnézetben
+  -s, --scale-plot      A Klipper által jelentett tengelyhatárok használata a plot X/Y skálázásához
   -p PROFILE_NAME, --profile-name PROFILE_NAME
-                        Optional name of a profile to plot for 'probedz'
+                        A 'probedz' számára ábrázolandó profil opcionális neve
   -o OUTPUT, --output OUTPUT
-                        Output file path
+                        Kimeneti fájl elérési útja
 ```
 
-Below is a description of each argument:
+Az alábbiakban az egyes érvek leírása következik:
 
-- `plot type`: A required positional argument designating the type of visualization to generate. Must be one of the types output by the `graph_mesh.py list` command.
-- `input`: A required positional argument containing a path or url to the input source. This must be one of the following:
-   - A path to Klipper's Unix Domain Socket
-   - A url to an instance of Moonraker
-   - A path to a json file produced by `graph_mesh.py dump <input>`
-- `-a`: Optional animation for the `path` and `rapid` visualization types. Animations only apply to a live preview.
-- `-s`: Optionally scales a plot using the `axis_minimum` and `axis_maximum` values reported by Klipper's `toolhead` object when the dump file was generated.
-- `-p`: A profile name that may be specified when generating the `probedz` 3D mesh visualization. When generating an `overlay` or `delta` visualization this argument must be provided.
-- `-o`: An optional file path indicating that the script should save the visualization to this location rather than run in preview mode. Images are saved in `svg` format.
+- `plot type`: A létrehozandó vizualizáció típusát jelölő kötelező pozicionális argumentum. A `graph_mesh.py list` parancs által kiadott típusok egyikének kell lennie.
+- `bemenet`: A bemeneti forrás elérési útvonalát vagy URL-címét tartalmazó, kötelezően megadandó pozicionális argumentum. Ennek az alábbiak egyikének kell lennie:
+   - A Klipper Unix Domain Socket elérési útvonala
+   - Moonraker egy példányának URL-je
+   - A `graph_mesh.py dump <input>` által előállított json fájl elérési útvonala
+- `-a`: Az `útvonal` és a `gyors` vizualizációs típusokhoz választható animáció. Az animációk csak az élő előnézetre vonatkoznak.
+- `-s`: A Klipper `toolhead` objektuma által a dump fájl létrehozásakor jelentett `axis_minimum` és `axis_maximum` értékek segítségével méretezi a diagramot.
+- `-p`: Egy profilnév, amelyet a `probedz` 3D háló vizualizáció generálásakor lehet megadni. Az `overlay` vagy `delta` vizualizáció generálásakor ezt az argumentumot meg kell adni.
+- `-o`: Egy opcionális fájl elérési útja, amely jelzi, hogy a szkriptnek a vizualizációt erre a helyre kell mentenie, nem pedig előnézeti módban futtatnia. A képek `svg` formátumban kerülnek mentésre.
 
-For example, to plot an animated rapid path, connecting via Klipper's unix socket:
+Például egy animált gyors útvonal megrajzolásához, a Klipper unix foglalatán keresztül csatlakozva:
 
 ```
 graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock
 ```
 
-Or to plot a 3d visualization of the mesh, connecting via Moonraker:
+A háló 3D-s vizualizációjának megrajzolásához, a Moonraker segítségével csatlakozva:
 
 ```
 graph_mesh.py plot meshz http://my-printer.local
 ```
 
-### Bed Mesh Analysis
+### Ágy háló elemzés
 
-The `graph_mesh.py` tool may also be used to perform an analysis on the data provided by the [bed_mesh/dump_mesh](#dumping-mesh-data) API:
+A `graph_mesh.py` eszköz használható a [bed_mesh/dump_mesh](#dumping-mesh-data) API által szolgáltatott adatok elemzéséhez is:
 
 ```
 graph_mesh.py analyze <input>
 ```
 
-As with the `plot` command, the `<input>` must be a path to Klipper's unix socket, a URL to an instance of Moonraker, or a path to a json file generated by the dump command.
+A `plot` parancshoz hasonlóan az `<input>` a Klipper unix socketjének elérési útvonala, a Moonraker egy példányának URL címe, vagy a dump parancs által generált json fájl elérési útvonala kell, hogy legyen.
 
-To begin, the analysis will perform various checks on the points and probe paths generated by `bed_mesh` at the time of the dump. This includes the following:
+Kezdetben az elemzés különböző ellenőrzéseket végez a `bed_mesh` által a dump idején generált pontokon és mérések útvonalain. Ezek közé tartozik a következő:
 
-- The number of probe points generated, without any additions
-- The number of probe points generated including any points generated as the result faulty regions and/or a configured zero reference position.
-- The number of probe points generated when performing a rapid scan.
-- The total number of moves generated for a rapid scan.
-- A validation that the probe points generated for a rapid scan are identical to the probe points generated for a standard probing procedure.
-- A "backtracking" check for both the standard probe path and a rapid scan path. Backtracking can be defined as moving to the same position more than once during the probing procedure. Backtracking should never occur during a standard probe. Faulty regions *can* result in backtracking during a rapid scan in an attempt to avoid entering a faulty region when approaching or leaving a probe location, however should never occur otherwise.
+- A generált mérési pontok száma, kiegészítések nélkül
+- A generált mérési pontok száma, beleértve a hibás területek és a konfigurált nulla referenciapozíció eredményeként generált pontokat is.
+- A gyors mérések során generált mérőpontok száma.
+- A gyors méréshez generált mozgások teljes száma.
+- Annak igazolása, hogy a gyors méréshez generált mérőpontok megegyeznek a szabvány mérési eljáráshoz generált mérőpontokkal.
+- A "visszalépés" ellenőrzése mind a szabványos mérőút, mind a gyors mérési útvonal esetében. A visszalépés úgy definiálható, hogy a mérési eljárás során többször is elmozdul ugyanabba a pozícióba. A visszalépés soha nem fordulhat elő normál mérés során. A hibás régiók *visszalépést* eredményezhetnek a gyors mérés során, hogy elkerüljék a hibás régióba való belépést, amikor megközelítik vagy elhagyják a mérési helyet, de soha nem fordulhat elő másként.
 
-Next each probed mesh present in the dump will by analyzed, beginning with the mesh loaded at the time of the dump (if present) and followed by any saved profiles. The following data is extracted:
+Ezután minden, a dump-ban lévő mért háló elemzésre kerül, kezdve a kiíráskor betöltött hálóval (ha van), majd az esetleges mentett profilokkal. A következő adatok kerülnek kinyerésre:
 
-- Mesh shape (Min X,Y, Max X,Y Probe Count)
-- Mesh Z range, (Minimum Z, Maximum Z)
-- Mean Z value in the mesh
-- Standard Deviation of the Z values in the Mesh
+- Háló alakja (min. X,Y, max. X,Y mérésszám)
+- Háló Z tartomány, (Minimum Z, Maximum Z)
+- Átlagos Z érték a hálóban
+- A szabvány Z-értékek szórása a hálóban
 
-In addition to the above, a delta analysis is performed between meshes with the same shape, reporting the following:
+A fentieken kívül delta-analízist végeznek az azonos alakú hálók között, amely a következőket jelenti:
 
-- The range of the delta between to meshes (Minimum and Maximum)
-- The mean delta
-- Standard Deviation of the delta
-- The absolute maximum difference
-- The absolute mean
+- A delta tartománya a hálók között (Minimum és Maximum)
+- Az átlagos delta
+- A delta szabványos szórása
+- Az abszolút maximális különbség
+- Az abszolút átlag
 
-### Save mesh data to a file
+### A hálóadatok mentése fájlba
 
-The `dump` command may be used to save the response to a file which can be shared for analysis when troubleshooting:
+A `dump` paranccsal a válasz menthető egy fájlba, amely megosztható elemzés céljából a hibaelhárítás során:
 
 ```
 graph_mesh.py dump -o <output file name> <input>
 ```
 
-The `<input>` should be a path to Klipper's unix socket or a URL to an instance of Moonraker. The `-o` option may be used to specify the path to the output file. If omitted, the file will be saved in the working directory, with a file name in the following format:
+A `<input>` a Klipper unix socketjének elérési útja, vagy a Moonraker egy példányának URL-je. A "-o" opció használható a kimeneti fájl elérési útjának megadására. Ha kihagyod, a fájl a munkakönyvtárba kerül mentésre, a következő formátumú fájlnévvel:
 
 `klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`

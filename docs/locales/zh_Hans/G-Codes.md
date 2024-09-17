@@ -842,7 +842,7 @@ The following commands are available when a [temperature_probe config section](C
 
 `TEMPERATURE_PROBE_COMPLETE`: Can be used to end calibration and save the current result before the `TARGET` temperature is reached. This command is only available during calibration.
 
-#### ABORT
+#### 关于
 
 `ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
 

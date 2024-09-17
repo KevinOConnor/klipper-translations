@@ -1,6 +1,6 @@
 # Configuration reference
 
-This document is a reference for options available in the Klipper config file.
+Dit document is een referentie voor opties die in het Klipper configuratiebestand beschikbaar zijn.
 
 The descriptions in this document are formatted so that it is possible to cut-and-paste them into a printer config file. See the [installation document](Installation.md) for information on setting up Klipper and choosing an initial config file.
 
@@ -1455,7 +1455,7 @@ See the [exclude objects guide](Exclude_Object.md) and [command reference](G-Cod
 [exclude_object]
 ```
 
-## Resonantie compensering
+## Resonantiecompensatie
 
 ### [input_shaper]
 

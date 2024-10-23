@@ -13,7 +13,7 @@
 ## 安裝和配置
 
 - [安裝](Installation.md)：Klipper 安裝指南。
-   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
+   - [Octoprint](OctoPrint.md)：Octoprint 與 Klipper 的安裝指南。
 - [配置參考](Config_Reference.md)：配置參數說明。
    - [旋轉距離](Rotation_Distance.md)：計算旋轉距離(rotation_distance)步進參數。
 - [檢查配置](Config_checks.md)：驗證配置檔案中的基本引腳設定。

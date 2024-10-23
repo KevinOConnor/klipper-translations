@@ -1,16 +1,16 @@
 # Сензор за ширина на нишката на Хол
 
-This document describes Filament Width Sensor host module. Hardware used for developing this host module is based on two Hall linear sensors (ss49e for example). Sensors in the body are located on opposite sides. Principle of operation: two hall sensors work in differential mode, temperature drift same for sensor. Special temperature compensation not needed.
+Този документ описва хост модула на сензора за ширина на нишката. Хардуерът, използван за разработването на този хост модул, се основава на два линейни сензора на Хол (например ss49e). Сензорите в тялото са разположени на противоположни страни. Принцип на работа: два сензора на Хол работят в диференциален режим, температурата се променя по един и същ начин за сензора. Не е необходима специална температурна компенсация.
 
-You can find designs at [Thingiverse](https://www.thingiverse.com/thing:4138933), an assembly video is also available on [Youtube](https://www.youtube.com/watch?v=TDO9tME8vp4)
+Проектите можете да намерите в [Thingiverse](https://www.thingiverse.com/thing:4138933), а видеоклип за сглобяване е достъпен в [Youtube](https://www.youtube.com/watch?v=TDO9tME8vp4).
 
-To use Hall filament width sensor, read [Config Reference](Config_Reference.md#hall_filament_width_sensor) and [G-Code documentation](G-Codes.md#hall_filament_width_sensor).
+За да използвате сензора на Хол за широчина на влакното, прочетете [Config Reference](Config_Reference.md#hall_filament_width_sensor) и [G-Code documentation](G-Codes.md#hall_filament_width_sensor).
 
 ## Как работи?
 
-Sensor generates two analog output based on calculated filament width. Sum of output voltage always equals to detected filament width. Host module monitors voltage changes and adjusts extrusion multiplier. I use the aux2 connector on a ramps-like board with the analog11 and analog12 pins. You can use different pins and different boards.
+Сензорът генерира два аналогови изхода въз основа на изчислената ширина на нишката. Сумата на изходното напрежение винаги е равна на откритата ширина на нишката. Приемащият модул следи промените в напрежението и регулира множителя на екструдиране. Използвам конектора aux2 на платка, подобна на рампа, с изводите analog11 и analog12. Можете да използвате различни щифтове и различни платки.
 
-## Template for menu variables
+## Шаблон за променливи в менюто
 
 ```
 [menu __main __filament __width_current]
@@ -26,24 +26,24 @@ name: Raw: {'%4.0F' % printer.hall_filament_width_sensor.Raw}
 index: 1
 ```
 
-## Calibration procedure
+## Процедура за калибриране
 
-To get raw sensor value you can use menu item or **QUERY_RAW_FILAMENT_WIDTH** command in terminal.
+За да получите суровата стойност на сензора, можете да използвате елемент от менюто или командата **QUERY_RAW_FILAMENT_WIDTH** в терминала.
 
-1. Insert first calibration rod (1.5 mm size) get first raw sensor value
-1. Insert second calibration rod (2.0 mm size) get second raw sensor value
-1. Save raw sensor values in config parameter `Raw_dia1` and `Raw_dia2`
+1. Поставете първата пръчка за калибриране (с размер 1,5 mm), за да получите първата необработена стойност на сензора
+1. Поставете втора пръчка за калибриране (с размер 2,0 mm), за да получите втората необработена стойност на сензора
+1. Записване на необработени стойности на сензорите в параметъра на конфигурацията `Raw_dia1` и `Raw_dia2`
 
-## How to enable sensor
+## Как да активирате сензора
 
-By default, the sensor is disabled at power-on.
+По подразбиране сензорът е деактивиран при включване на захранването.
 
-To enable the sensor, issue **ENABLE_FILAMENT_WIDTH_SENSOR** command or set the `enable` parameter to `true`.
+За да активирате сензора, издайте командата **ENABLE_FILAMENT_WIDTH_SENSOR** или задайте параметъра `enable` на `true`.
 
-## Logging
+## Регистриране
 
-By default, diameter logging is disabled at power-on.
+По подразбиране регистрирането на диаметъра е деактивирано при включване на захранването.
 
-Issue **ENABLE_FILAMENT_WIDTH_LOG** command to start logging and issue **DISABLE_FILAMENT_WIDTH_LOG** command to stop logging. To enable logging at power-on, set the `logging` parameter to `true`.
+Издайте командата **ENABLE_FILAMENT_WIDTH_LOG**, за да стартирате регистрирането, и издайте командата **DISABLE_FILAMENT_WIDTH_LOG**, за да спрете регистрирането. За да разрешите воденето на дневник при включване на захранването, задайте параметъра `logging` на `true`.
 
-Filament diameter is logged on every measurement interval (10 mm by default).
+Диаметърът на нишката се записва на всеки интервал на измерване (10 mm по подразбиране).

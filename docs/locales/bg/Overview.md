@@ -2,7 +2,7 @@
 
 Добре дошли в документацията на Klipper. Ако сте нов потребител на Klipper, започнете с документите [features](Features.md) и [installation](Installation.md).
 
-## Преглед на информацията
+## Преглед на информациятаОбща информация
 
 - [Характеристики](Features.md): Списък на високо ниво на функциите в Klipper.
 - [ЧЗВ](FAQ.md): Често задавани въпроси.
@@ -13,7 +13,7 @@
 ## Инсталиране и конфигуриране
 
 - [Инсталация](Installation.md): Ръководство за инсталиране на Klipper.
-   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
+   - [Octoprint](OctoPrint.md): Ръководство за инсталиране на Octoprint с Klipper.
 - [Config Reference](Config_Reference.md): Описание на параметрите на конфигурацията.
    - [Разстояние на завъртане](Rotation_Distance.md): Изчисляване на стъпковия параметър Rotation_distance.
 - [Проверки на конфигурацията](Config_checks.md): Проверете основните настройки на ПИН в конфигурационния файл.
@@ -24,7 +24,7 @@
    - [Ръчно ниво](Manual_Level.md): Калибриране на крайните ограничители Z (и други подобни).
    - [Bed Mesh](Bed_Mesh.md): Корекция на височината на леглото въз основа на местоположението XY.
    - [Endstop phase](Endstop_Phase.md): Позициониране на крайния ограничител Z с помощта на стъпков механизъм.
-   - [Axis Twist Compensation](Axis_Twist_Compensation.md): A tool to compensate for inaccurate probe readings due to twist in X gantry.
+   - [Компенсация на усукването на оста](Axis_Twist_Compensation.md): Инструмент за компенсиране на неточни показания на сондата, дължащи се на усукване на портала X.
 - [Резонансна компенсация](Resonance_Compensation.md): Инструмент за намаляване на звъненето в разпечатките.
    - [Измерване на резонанси](Measuring_Resonances.md): Информация за използването на хардуерния акселерометър adxl345 за измерване на резонанс.
 - [Напредък на налягането](Pressure_Advance.md): Калибриране на налягането в екструдера.
@@ -36,7 +36,7 @@
 - [Slicers](Slicers.md): Конфигуриране на софтуера "slicer" за Klipper.
 - [Корекция на наклона](Skew_Correction.md): Корекции за оси, които не са идеално квадратни.
 - [PWM tools](Using_PWM_Tools.md): Ръководство за използване на инструменти, управлявани от ШИМ, като лазери или шпиндели.
-- [Exclude Object](Exclude_Object.md): The guide to the Exclude Objects implementation.
+- [Exclude Object](Exclude_Object.md): Ръководството за прилагането на Exclude Objects.
 
 ## Документация за разработчици
 
@@ -58,9 +58,9 @@
 - [Raspberry Pi като микроконтролер](RPi_microcontroller.md): Подробности за управление на устройства, свързани към GPIO изводите на Raspberry Pi.
 - [Beaglebone](Beaglebone.md): Подробности за работа с Klipper на Beaglebone PRU.
 - [Bootloaders](Bootloaders.md): Информация за разработчици относно флашването на микроконтролери.
-- [Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader.
+- [Bootloader Entry](Bootloader_Entry.md): Запитване за зареждащото устройство.
 - [CAN bus](CANBUS.md): Информация за използването на CAN шина с Klipper.
-   - [CAN bus troubleshooting](CANBUS_Troubleshooting.md): Tips for troubleshooting CAN bus.
+   - [Отстраняване на неизправности по шината CAN](CANBUS_Troubleshooting.md): Съвети за отстраняване на неизправности по шината CAN.
 - [TSL1401CL сензор за широчина на нишката](TSL1401CL_Filament_Width_Sensor.md)
 - [Сензор за ширина на нишката на Хол](Hall_Filament_Width_Sensor.md)
-- [Eddy Current Inductive probe](Eddy_Probe.md)
+- [Индуктивна сонда за вихрови токове](Eddy_Probe.md)

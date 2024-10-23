@@ -6,33 +6,33 @@
 
 ## Проверка на температурата
 
-Start by verifying that temperatures are being properly reported. Navigate to the temperature graph section in the user interface. Verify that the temperature of the nozzle and bed (if applicable) are present and not increasing. If it is increasing, remove power from the printer. If the temperatures are not accurate, review the "sensor_type" and "sensor_pin" settings for the nozzle and/or bed.
+Започнете да проверявате дали температурите се отчитат правилно. Преминете към раздела с графиката на температурата в потребителския интерфейс. Проверете дали температурата на дюзата и леглото (ако е приложимо) са налице и не се увеличават. Ако се увеличава, изключете захранването от принтера. Ако температурите не са точни, прегледайте настройките "sensor_type" и "sensor_pin" за дюзата и/или леглото.
 
 ## Проверка на M112
 
-Navigate to the command console and issue an M112 command in the terminal box. This command requests Klipper to go into a "shutdown" state. It will cause an error to show, which can be cleared with a FIRMWARE_RESTART command in the command console. Octoprint will also require a reconnect. Then navigate to the temperature graph section and verify that temperatures continue to update and the temperatures are not increasing. If temperatures are increasing, remove power from the printer.
+Отидете на командната конзола и издайте команда M112 в полето на терминала. Тази команда изисква Klipper да премине в състояние "изключване". Това ще доведе до показване на грешка, която може да бъде изчистена с команда FIRMWARE_RESTART в командната конзола. Octoprint също ще поиска повторно свързване. След това преминете към раздела с температурната графика и проверете дали температурите продължават да се актуализират и дали не се увеличават. Ако температурите се увеличават, изключете захранването от принтера.
 
 ## Проверка на нагревателите
 
-Navigate to the temperature graph section and type in 50 followed by enter in the extruder/tool temperature box. The extruder temperature in the graph should start to increase (within about 30 seconds or so). Then go to the extruder temperature drop-down box and select "Off". After several minutes the temperature should start to return to its initial room temperature value. If the temperature does not increase then verify the "heater_pin" setting in the config.
+Преминете към раздела с температурната графика и въведете 50, последвано от enter, в полето за температурата на екструдера/инструмента. Температурата на екструдера в графиката трябва да започне да се увеличава (в рамките на около 30 секунди). След това отидете в падащото поле "Температура на екструдера" и изберете "Изкл.". След няколко минути температурата трябва да започне да се връща към първоначалната си стойност на стайна температура. Ако температурата не се повиши, проверете настройката "heater_pin" в конфигурацията.
 
 Ако принтерът има отопляемо легло, извършете горния тест отново с леглото.
 
 ## Проверка на щифта за разрешаване на стъпковия двигател
 
-Verify that all of the printer axes can manually move freely (the stepper motors are disabled). If not, issue an M84 command to disable the motors. If any of the axes still can not move freely, then verify the stepper "enable_pin" configuration for the given axis. On most commodity stepper motor drivers, the motor enable pin is "active low" and therefore the enable pin should have a "!" before the pin (for example, "enable_pin: !PA1").
+Проверете дали всички оси на принтера могат да се движат свободно ръчно (стъпковите двигатели са изключени). Ако това не е така, издайте команда M84, за да деактивирате двигателите. Ако някоя от осите все още не може да се движи свободно, проверете конфигурацията на стъпковия механизъм "enable_pin" за дадената ос. При повечето стокови драйвери за стъпкови двигатели изводът за разрешаване на двигателя е "активен нисък" и следователно изводът за разрешаване трябва да има "!" преди извода (например "enable_pin: !PA1").
 
 ## Проверка на крайните спирания
 
-Manually move all the printer axes so that none of them are in contact with an endstop. Send a QUERY_ENDSTOPS command via the command console. It should respond with the current state of all of the configured endstops and they should all report a state of "open". For each of the endstops, rerun the QUERY_ENDSTOPS command while manually triggering the endstop. The QUERY_ENDSTOPS command should report the endstop as "TRIGGERED".
+Преместете ръчно всички оси на принтера, така че нито една от тях да не е в контакт с крайния ограничител. Изпратете команда QUERY_ENDSTOPS чрез командната конзола. Тя трябва да отговори с текущото състояние на всички конфигурирани крайни спиращи устройства и всички те трябва да докладват състояние "отворено". За всеки от крайните стопове изпълнете отново командата QUERY_ENDSTOPS, като ръчно задействате крайния стоп. Командата QUERY_ENDSTOPS трябва да отчете крайната спирка като "TRIGGERED".
 
-If the endstop appears inverted (it reports "open" when triggered and vice-versa) then add a "!" to the pin definition (for example, "endstop_pin: ^PA2"), or remove the "!" if there is already one present.
+Ако крайният ограничител изглежда инвертиран (съобщава за "отворен", когато е задействан, и обратно), тогава добавете "!" към дефиницията на извода (например "endstop_pin: ^PA2") или премахнете "!", ако вече има такъв.
 
 Ако крайният ограничител изобщо не се променя, това обикновено означава, че крайният ограничител е свързан към друг щифт. Това обаче може да изисква и промяна на настройката за издърпване на извода (символът "^" в началото на името на endstop_pin - повечето принтери използват резистор за издърпване и символът "^" трябва да присъства).
 
 ## Проверка на стъпковите двигатели
 
-Use the STEPPER_BUZZ command to verify the connectivity of each stepper motor. Start by manually positioning the given axis to a midway point and then run `STEPPER_BUZZ STEPPER=stepper_x` in the command console. The STEPPER_BUZZ command will cause the given stepper to move one millimeter in a positive direction and then it will return to its starting position. (If the endstop is defined at position_endstop=0 then at the start of each movement the stepper will move away from the endstop.) It will perform this oscillation ten times.
+Използвайте командата STEPPER_BUZZ, за да проверите свързаността на всеки стъпков двигател. Започнете с ръчно позициониране на дадената ос в средна точка и след това изпълнете `STEPPER_BUZZ STEPPER=stepper_x` в командната конзола. Командата STEPPER_BUZZ ще накара дадения стъпков механизъм да се придвижи с един милиметър в положителна посока, след което ще се върне в началната си позиция. (Ако крайният ограничител е дефиниран на position_endstop=0, тогава в началото на всяко движение стъпковият механизъм ще се отдалечава от крайния ограничител.) Той ще извърши това трептене десет пъти.
 
 Ако стъпковият механизъм изобщо не се движи, проверете настройките "enable_pin" и "step_pin" за стъпковия механизъм. Ако стъпковият двигател се движи, но не се връща в първоначалното си положение, тогава проверете настройката "dir_pin". Ако стъпковият двигател се колебае в неправилна посока, то това обикновено показва, че "dir_pin" за оста трябва да се обърне. Това става чрез добавяне на символа "!" към "dir_pin" във файла за конфигуриране на принтера (или премахването му, ако вече има такъв). Ако двигателят се движи значително повече или значително по-малко от един милиметър, тогава проверете настройката "rotation_distance".
 
@@ -42,13 +42,13 @@ Use the STEPPER_BUZZ command to verify the connectivity of each stepper motor. S
 
 ## Проверете двигателя на екструдера
 
-To test the extruder motor it will be necessary to heat the extruder to a printing temperature. Navigate to the temperature graph section and select a target temperature from the temperature drop-down box (or manually enter an appropriate temperature). Wait for the printer to reach the desired temperature. Then navigate to the command console and click the "Extrude" button. Verify that the extruder motor turns in the correct direction. If it does not, see the troubleshooting tips in the previous section to confirm the "enable_pin", "step_pin", and "dir_pin" settings for the extruder.
+За да тествате двигателя на екструдера, е необходимо да загреете екструдера до температура за печат. Преминете към раздела с графиката на температурата и изберете целева температура от падащото поле за температура (или въведете ръчно подходяща температура). Изчакайте принтерът да достигне желаната температура. След това преминете към командната конзола и щракнете върху бутона "Extrude". Проверете дали двигателят на екструдера се върти в правилната посока. Ако не го прави, вижте съветите за отстраняване на неизправности в предишния раздел, за да потвърдите настройките "enable_pin", "step_pin" и "dir_pin" за екструдера.
 
 ## Калибриране на PID настройките
 
 Klipper поддържа [PID контрол](https://en.wikipedia.org/wiki/PID_controller) за екструдера и нагревателите на леглото. За да се използва този механизъм за управление, е необходимо да се калибрират PID настройките на всеки принтер (PID настройките, намерени в други фърмуери или в примерните конфигурационни файлове, често работят лошо).
 
-To calibrate the extruder, navigate to the command console and run the PID_CALIBRATE command. For example: `PID_CALIBRATE HEATER=extruder TARGET=170`
+За да калибрирате екструдера, отидете в командната конзола и изпълнете командата PID_CALIBRATE. Например: `PID_CALIBRATE HEATER=extruder TARGET=170`
 
 След приключване на теста за настройка стартирайте `SAVE_CONFIG`, за да актуализирате файла printer.cfg с новите настройки на PID.
 

@@ -63,7 +63,7 @@ The following commands are available when an [adxl345 config section](Config_Ref
 
 `ACCELEROMETER_DEBUG_WRITE [CHIP=<config_name>] REG=<register> VAL=<value>`: Writes raw "value" into a register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to ADXL345 data sheet for the reference.
 
-### [angle]
+### [кут]
 
 The following commands are available when an [angle config section](Config_Reference.md#angle) is enabled.
 

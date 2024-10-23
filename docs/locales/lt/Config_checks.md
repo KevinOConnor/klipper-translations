@@ -1,63 +1,63 @@
-# Configuration checks
+# Konfigūracijos patikrinimai
 
-Šiame dokumente pateikiamas veiksmų sąrašas, padedantis patvirtinti "Klipper" spausdintuvo printer.cfg faile esančius kaiščių nustatymus. Šiuos veiksmus pravartu atlikti atlikus [installation document] (Installation.md) nurodytus veiksmus.
+Šiame dokumente pateikiamas veiksmų sąrašas, padedantis patvirtinti kaiščių nustatymus Klipper printer.cfg faile. Rekomenduojama atlikti šiuos veiksmus atlikus veiksmus, nurodytus [diegimo dokumente](Installation.md).
 
-During this guide, it may be necessary to make changes to the Klipper config file. Be sure to issue a RESTART command after every change to the config file to ensure that the change takes effect (type "restart" in the Octoprint terminal tab and then click "Send"). It's also a good idea to issue a STATUS command after every RESTART to verify that the config file is successfully loaded.
+Šio vadovo metu gali prireikti atlikti pakeitimus Klipper konfigūracijos faile. Būtinai išleiskite komandą RESTART po kiekvieno konfigūracijos failo pakeitimo, kad pakeitimas įsigaliotų (įveskite "restart" Octoprint terminalo skirtuke ir tada spustelėkite "Siųsti"). Taip pat patartina išleisti STATUS komandą po kiekvieno RESTART, kad būtų patikrinta, ar konfigūracijos failas sėkmingai įkeltas.
 
-## Verify temperature
+## Patikrinkite temperatūrą
 
-Start by verifying that temperatures are being properly reported. Navigate to the temperature graph section in the user interface. Verify that the temperature of the nozzle and bed (if applicable) are present and not increasing. If it is increasing, remove power from the printer. If the temperatures are not accurate, review the "sensor_type" and "sensor_pin" settings for the nozzle and/or bed.
+Pradėkite patikrindami, ar temperatūros tinkamai pranešamos. Eikite į temperatūros grafiko skyrių vartotojo sąsajoje. Patikrinkite, ar antgalio ir platformos (jei taikoma) temperatūra yra rodoma ir nedidėja. Jei ji didėja, atjunkite maitinimą nuo spausdintuvo. Jei temperatūros nėra tikslios, peržiūrėkite "sensor_type" ir "sensor_pin" nustatymus antgaliui ir (arba) platformai.
 
-## Verify M112
+## Patikrinkite M112
 
-Navigate to the command console and issue an M112 command in the terminal box. This command requests Klipper to go into a "shutdown" state. It will cause an error to show, which can be cleared with a FIRMWARE_RESTART command in the command console. Octoprint will also require a reconnect. Then navigate to the temperature graph section and verify that temperatures continue to update and the temperatures are not increasing. If temperatures are increasing, remove power from the printer.
+Eikite į komandų konsolę ir įveskite M112 komandą terminalo lange. Ši komanda prašo Klipper pereiti į "išjungimo" būseną. Tai sukels klaidą, kurią galima išvalyti naudojant FIRMWARE_RESTART komandą komandų konsolėje. Octoprint taip pat reikės iš naujo prisijungti. Tada eikite į temperatūros grafiko skyrių ir patikrinkite, ar temperatūros toliau atnaujinamos ir temperatūros nedidėja. Jei temperatūros didėja, atjunkite maitinimą nuo spausdintuvo.
 
-## Verify heaters
+## Patikrinkite šildytuvus
 
-Navigate to the temperature graph section and type in 50 followed by enter in the extruder/tool temperature box. The extruder temperature in the graph should start to increase (within about 30 seconds or so). Then go to the extruder temperature drop-down box and select "Off". After several minutes the temperature should start to return to its initial room temperature value. If the temperature does not increase then verify the "heater_pin" setting in the config.
+Eikite į temperatūros grafiko skyrių ir įveskite 50, po to spauskite enter ekstruzerio/įrankio temperatūros langelyje. Ekstruzerio temperatūra grafike turėtų pradėti didėti (per maždaug 30 sekundžių ar panašiai). Tada eikite į ekstruzerio temperatūros išskleidžiamąjį laukelį ir pasirinkite "Išjungta". Po kelių minučių temperatūra turėtų pradėti grįžti į pradinę kambario temperatūros vertę. Jei temperatūra nedidėja, patikrinkite "heater_pin" nustatymą konfigūracijoje.
 
-If the printer has a heated bed then perform the above test again with the bed.
+Jei spausdintuvas turi šildomą platformą, atlikite aukščiau nurodytą testą dar kartą su platforma.
 
-## Verify stepper motor enable pin
+## Patikrinkite žingsninio variklio įjungimo kaištį
 
-Verify that all of the printer axes can manually move freely (the stepper motors are disabled). If not, issue an M84 command to disable the motors. If any of the axes still can not move freely, then verify the stepper "enable_pin" configuration for the given axis. On most commodity stepper motor drivers, the motor enable pin is "active low" and therefore the enable pin should have a "!" before the pin (for example, "enable_pin: !PA1").
+Patikrinkite, ar visos spausdintuvo ašys gali laisvai judėti rankiniu būdu (žingsniniai varikliai yra išjungti). Jei ne, išleiskite M84 komandą, kad išjungtumėte variklius. Jei kuri nors iš ašių vis tiek negali laisvai judėti, patikrinkite žingsninio variklio "enable_pin" konfigūraciją tai ašiai. Daugelyje įprastų žingsninių variklių valdiklių variklio įjungimo kaištis yra "aktyvus žemas", todėl įjungimo kaištis turėtų turėti "!" prieš kaiščio numerį (pavyzdžiui, "enable_pin: !PA1").
 
-## Verify endstops
+## Patikrinkite galinius jungiklius
 
-Manually move all the printer axes so that none of them are in contact with an endstop. Send a QUERY_ENDSTOPS command via the command console. It should respond with the current state of all of the configured endstops and they should all report a state of "open". For each of the endstops, rerun the QUERY_ENDSTOPS command while manually triggering the endstop. The QUERY_ENDSTOPS command should report the endstop as "TRIGGERED".
+Rankiniu būdu pajudinkite visas spausdintuvo ašis taip, kad nė viena iš jų nebūtų kontakte su galiniu jungikliu. Išsiųskite QUERY_ENDSTOPS komandą per komandų konsolę. Ji turėtų atsakyti su visų sukonfigūruotų galinių jungiklių esama būsena ir jie visi turėtų pranešti apie "atvirą" būseną. Kiekvienam iš galinių jungiklių pakartokite QUERY_ENDSTOPS komandą, rankiniu būdu aktyvuodami galinį jungiklį. QUERY_ENDSTOPS komanda turėtų pranešti apie galinį jungiklį kaip "SUVEIKĘS".
 
-If the endstop appears inverted (it reports "open" when triggered and vice-versa) then add a "!" to the pin definition (for example, "endstop_pin: ^PA2"), or remove the "!" if there is already one present.
+Jei galinis jungiklis atrodo invertuotas (jis praneša "atvirą", kai suveikia, ir atvirkščiai), pridėkite "!" prie kaiščio apibrėžimo (pavyzdžiui, "endstop_pin: ^PA2") arba pašalinkite "!", jei jis jau yra.
 
-If the endstop does not change at all then it generally indicates that the endstop is connected to a different pin. However, it may also require a change to the pullup setting of the pin (the '^' at the start of the endstop_pin name - most printers will use a pullup resistor and the '^' should be present).
+Jei galinis jungiklis visai nesikeičia, tai paprastai rodo, kad galinis jungiklis yra prijungtas prie kito kaiščio. Tačiau taip pat gali prireikti pakeisti kaiščio ištraukimo nustatymą ('^' ženklas endstop_pin pavadinimo pradžioje - dauguma spausdintuvų naudos ištraukimo rezistorių ir '^' turėtų būti).
 
-## Verify stepper motors
+## Patikrinkite žingsninius variklius
 
-Use the STEPPER_BUZZ command to verify the connectivity of each stepper motor. Start by manually positioning the given axis to a midway point and then run `STEPPER_BUZZ STEPPER=stepper_x` in the command console. The STEPPER_BUZZ command will cause the given stepper to move one millimeter in a positive direction and then it will return to its starting position. (If the endstop is defined at position_endstop=0 then at the start of each movement the stepper will move away from the endstop.) It will perform this oscillation ten times.
+Naudokite STEPPER_BUZZ komandą, kad patikrintumėte kiekvieno žingsninio variklio jungiamumą. Pradėkite rankiniu būdu nustatydami duotą ašį į vidurinį tašką ir tada paleiskite `STEPPER_BUZZ STEPPER=stepper_x` komandų konsolėje. STEPPER_BUZZ komanda privers duotą žingsninį variklį judėti vieną milimetrą teigiama kryptimi, o tada jis grįš į pradinę padėtį. (Jei galinis jungiklis apibrėžtas position_endstop=0, tai kiekvieno judėjimo pradžioje žingsninis variklis judės tolyn nuo galinio jungiklio.) Jis atliks šį svyravimą dešimt kartų.
 
-If the stepper does not move at all, then verify the "enable_pin" and "step_pin" settings for the stepper. If the stepper motor moves but does not return to its original position then verify the "dir_pin" setting. If the stepper motor oscillates in an incorrect direction, then it generally indicates that the "dir_pin" for the axis needs to be inverted. This is done by adding a '!' to the "dir_pin" in the printer config file (or removing it if one is already there). If the motor moves significantly more or significantly less than one millimeter then verify the "rotation_distance" setting.
+Jei žingsninis variklis visai nejuda, patikrinkite "enable_pin" ir "step_pin" nustatymus žingsniniam varikliui. Jei žingsninis variklis juda, bet negrįžta į pradinę padėtį, patikrinkite "dir_pin" nustatymą. Jei žingsninis variklis svyruoja neteisinga kryptimi, tai paprastai rodo, kad ašies "dir_pin" reikia invertuoti. Tai daroma pridedant '!' prie "dir_pin" spausdintuvo konfigūracijos faile (arba pašalinant jį, jei jis jau yra). Jei variklis juda žymiai daugiau arba žymiai mažiau nei vieną milimetrą, patikrinkite "rotation_distance" nustatymą.
 
-Run the above test for each stepper motor defined in the config file. (Set the STEPPER parameter of the STEPPER_BUZZ command to the name of the config section that is to be tested.) If there is no filament in the extruder then one can use STEPPER_BUZZ to verify the extruder motor connectivity (use STEPPER=extruder). Otherwise, it's best to test the extruder motor separately (see the next section).
+Atlikite aukščiau nurodytą testą kiekvienam žingsniniam varikliui, apibrėžtam konfigūracijos faile. (Nustatykite STEPPER_BUZZ komandos STEPPER parametrą į konfigūracijos skyriaus, kurį reikia patikrinti, pavadinimą.) Jei ekstruzeryje nėra gijos, galima naudoti STEPPER_BUZZ, kad būtų patikrintas ekstruzerio variklio jungiamumas (naudokite STEPPER=extruder). Priešingu atveju geriausia patikrinti ekstruzerio variklį atskirai (žr. kitą skyrių).
 
-After verifying all endstops and verifying all stepper motors the homing mechanism should be tested. Issue a G28 command to home all axes. Remove power from the printer if it does not home properly. Rerun the endstop and stepper motor verification steps if necessary.
+Patikrinus visus galinius jungiklius ir patikrinus visus žingsninius variklius, reikėtų patikrinti pradinės padėties mechanizmą. Išleiskite G28 komandą, kad nustatytumėte visų ašių pradinę padėtį. Atjunkite maitinimą nuo spausdintuvo, jei jis tinkamai negrįžta į pradinę padėtį. Jei reikia, pakartokite galinių jungiklių ir žingsninių variklių patikrinimo veiksmus.
 
-## Verify extruder motor
+## Patikrinkite ekstruzerio variklį
 
-To test the extruder motor it will be necessary to heat the extruder to a printing temperature. Navigate to the temperature graph section and select a target temperature from the temperature drop-down box (or manually enter an appropriate temperature). Wait for the printer to reach the desired temperature. Then navigate to the command console and click the "Extrude" button. Verify that the extruder motor turns in the correct direction. If it does not, see the troubleshooting tips in the previous section to confirm the "enable_pin", "step_pin", and "dir_pin" settings for the extruder.
+Norint išbandyti ekstruzerio variklį, reikės įkaitinti ekstruzerį iki spausdinimo temperatūros. Eikite į temperatūros grafiko skyrių ir pasirinkite tikslinę temperatūrą iš temperatūros išskleidžiamojo laukelio (arba rankiniu būdu įveskite tinkamą temperatūrą). Palaukite, kol spausdintuvas pasieks norimą temperatūrą. Tada eikite į komandų konsolę ir spustelėkite mygtuką "Ekstruduoti". Patikrinkite, ar ekstruzerio variklis sukasi teisinga kryptimi. Jei ne, žr. trikčių šalinimo patarimus ankstesniame skyriuje, kad patvirtintumėte "enable_pin", "step_pin" ir "dir_pin" nustatymus ekstruzeriui.
 
-## Calibrate PID settings
+## Kalibruokite PID nustatymus
 
-Klipper supports [PID control](https://en.wikipedia.org/wiki/PID_controller) for the extruder and bed heaters. In order to use this control mechanism, it is necessary to calibrate the PID settings on each printer (PID settings found in other firmwares or in the example configuration files often work poorly).
+Klipper palaiko [PID valdymą](https://en.wikipedia.org/wiki/PID_controller) ekstruzerio ir platformos šildytuvams. Norint naudoti šį valdymo mechanizmą, būtina kalibruoti PID nustatymus kiekvienam spausdintuvui (PID nustatymai, rasti kitose programinėse įrangose arba pavyzdiniuose konfigūracijos failuose, dažnai veikia prastai).
 
-To calibrate the extruder, navigate to the command console and run the PID_CALIBRATE command. For example: `PID_CALIBRATE HEATER=extruder TARGET=170`
+Norėdami kalibruoti ekstruzerį, eikite į komandų konsolę ir paleiskite PID_CALIBRATE komandą. Pavyzdžiui: `PID_CALIBRATE HEATER=extruder TARGET=170`
 
-At the completion of the tuning test run `SAVE_CONFIG` to update the printer.cfg file the new PID settings.
+Baigus derinimo testą, paleiskite `SAVE_CONFIG`, kad atnaujintumėte printer.cfg failą su naujais PID nustatymais.
 
-If the printer has a heated bed and it supports being driven by PWM (Pulse Width Modulation) then it is recommended to use PID control for the bed. (When the bed heater is controlled using the PID algorithm it may turn on and off ten times a second, which may not be suitable for heaters using a mechanical switch.) A typical bed PID calibration command is: `PID_CALIBRATE HEATER=heater_bed TARGET=60`
+Jei spausdintuvas turi šildomą platformą ir ji palaiko PWM (impulso pločio moduliaciją) valdymą, rekomenduojama naudoti PID valdymą platformai. (Kai platformos šildytuvas valdomas naudojant PID algoritmą, jis gali įsijungti ir išsijungti dešimt kartų per sekundę, o tai gali netikti šildytuvams, naudojantiems mechaninį jungiklį.) Tipinė platformos PID kalibravimo komanda yra: `PID_CALIBRATE HEATER=heater_bed TARGET=60`
 
-## Next steps
+## Kiti žingsniai
 
-This guide is intended to help with basic verification of pin settings in the Klipper configuration file. Be sure to read the [bed leveling](Bed_Level.md) guide. Also see the [Slicers](Slicers.md) document for information on configuring a slicer with Klipper.
+Šis vadovas skirtas padėti atlikti pagrindinį kaiščių nustatymų patikrinimą Klipper konfigūracijos faile. Būtinai perskaitykite [platformos lyginimo](Bed_Level.md) vadovą. Taip pat žiūrėkite [Pjaustytuvai](Slicers.md) dokumentą, kuriame pateikiama informacija apie pjaustytuvo konfigūravimą su Klipper.
 
-After one has verified that basic printing works, it is a good idea to consider calibrating [pressure advance](Pressure_Advance.md).
+Patikrinus, kad pagrindinis spausdinimas veikia, rekomenduojama apsvarstyti [slėgio išankstinio](Pressure_Advance.md) kalibravimą.
 
-It may be necessary to perform other types of detailed printer calibration - a number of guides are available online to help with this (for example, do a web search for "3d printer calibration"). As an example, if you experience the effect called ringing, you may try following [resonance compensation](Resonance_Compensation.md) tuning guide.
+Gali prireikti atlikti kitų tipų išsamų spausdintuvo kalibravimą - internete yra daug vadovų, padedančių tai atlikti (pavyzdžiui, atlikite internetinę paiešką "3d spausdintuvo kalibravimas"). Pavyzdžiui, jei pastebite efektą, vadinamą skambesiu, galite pabandyti vadovautis [rezonanso kompensavimo](Resonance_Compensation.md) derinimo vadovu.

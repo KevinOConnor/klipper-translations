@@ -1,4 +1,4 @@
-# Axis Twist Compensation
+# Компенсация поворота оси
 
 Этот документ описывает модуль [axis_twist_compensation].
 

@@ -1,4 +1,4 @@
-# protocolo
+# Protocolo
 
 El protocolo de mensajes de Klipper se utiliza para la comunicación de bajo nivel entre el software host Klipper y el software del microcontrolador Klipper.  En un nivel alto, se puede considerar el protocolo como una serie de cadenas de comando y respuesta que se comprimen, transmiten y luego procesan en el lado receptor.  Una serie de ejemplos de comandos en formato legible por humanos sin comprimir podría verse así:
 
@@ -12,7 +12,7 @@ queue_step oid=7 interval=11717 count=4 add=1281
 
 See the [mcu commands](MCU_Commands.md) document for information on available commands. See the [debugging](Debugging.md) document for information on how to translate a G-Code file into its corresponding human-readable micro-controller commands.
 
-This page provides a high-level description of the Klipper messaging protocol itself. It describes how messages are declared, encoded in binary format (the "compression" scheme), and transmitted.
+Esta página proporciona una descripción de alto nivel del mismo protocolo de mensajería Klipper. Describe como los mensajes se declaran, codificados en formato binario (el esquema «compresión»), y transmitido.
 
 The goal of the protocol is to enable an error-free communication channel between the host and micro-controller that is low-latency, low-bandwidth, and low-complexity for the micro-controller.
 
@@ -34,9 +34,9 @@ In general, the parameters are described with printf() style syntax (eg, "%u"). 
 
 The micro-controller build will collect all commands declared with DECL_COMMAND(), determine their parameters, and arrange for them to be callable.
 
-### Declaring responses
+### Declarar respuestas
 
-To send information from the micro-controller to the host a "response" is generated. These are both declared and transmitted using the sendf() C macro. For example:
+Para enviar información desde el micro-controlador para el hospedaje se genera una «respuesta». Estas son ambas declaradas y transmitidas utilizando la macro C sendf(). Por ejemplo:
 
 ```
 sendf("status clock=%u status=%c", sched_read_time(), sched_is_shutdown());
@@ -53,14 +53,14 @@ The sendf() macro should only be invoked from command or task handlers, and it s
 To simplify debugging, there is also an output() C function. For example:
 
 ```
-output("The value of %u is %s with size %u.", x, buf, buf_len);
+output("El valor de %u es %s con tamaño %u.", x, buf, buf_len);
 ```
 
 The output() function is similar in usage to printf() - it is intended to generate and format arbitrary messages for human consumption.
 
-### Declaring enumerations
+### Declarando enumeraciones
 
-Enumerations allow the host code to use string identifiers for parameters that the micro-controller handles as integers. They are declared in the micro-controller code - for example:
+Las enumeraciones permiten el código del hospedado utilice identificadores de cadena para parámetros que el micro-controlador manipula como enteros. Son declarados dentro del código micro-controlador – por ejemplo:
 
 ```
 DECL_ENUMERATION("spi_bus", "spi", 0);
@@ -72,27 +72,27 @@ If the first example, the DECL_ENUMERATION() macro defines an enumeration for an
 
 It's also possible to declare an enumeration range. In the second example, a "pin" parameter (or any parameter with a suffix of "_pin") would accept PC0, PC1, PC2, ..., PC7 as valid values. The strings will be transmitted with integers 16, 17, 18, ..., 23.
 
-### Declaring constants
+### Declarando constantes
 
-Constants can also be exported. For example, the following:
+Las constantes además pueden ser exportadas. Por ejemplo, las siguientes:
 
 ```
 DECL_CONSTANT("SERIAL_BAUD", 250000);
 ```
 
-would export a constant named "SERIAL_BAUD" with a value of 250000 from the micro-controller to the host. It is also possible to declare a constant that is a string - for example:
+exportarían una constante con nombre «SERIAL_BAUD» con un valor de 250000 desde el micro-controlador para el hospedaje. Además es posible declarar una constante que es una cadena – por ejemplo:
 
 ```
 DECL_CONSTANT_STR("MCU", "pru");
 ```
 
-## Low-level message encoding
+## Codificación de bajo nivel del mensaje
 
-To accomplish the above RPC mechanism, each command and response is encoded into a binary format for transmission. This section describes the transmission system.
+Para lograr el mecanismo RPC anterior, cada comando y respuesta está codificada en un formato binario para transmisión. Esta sección describe el sistema de transmisión.
 
-### Message Blocks
+### Bloques de Mensaje
 
-All data sent from host to micro-controller and vice-versa are contained in "message blocks". A message block has a two byte header and a three byte trailer. The format of a message block is:
+Todos los datos enviados desde el hospedaje al micro-controlador y vice-versa son contenidos en «bloques de mensaje». Un bloque de mensaje tiene una cabecera de dos byte y una cola de tres byte. El formato de un bloque de mensaje es:
 
 ```
 <1 byte length><1 byte sequence><n-byte content><2 byte crc><1 byte sync>
@@ -115,7 +115,7 @@ get_config
 get_clock
 ```
 
-and encoded into the following eight VLQ integers:
+y codificado en los siguientes ocho enteros VLQ:
 
 ```
 <id_update_digital_out><6><1><id_update_digital_out><5><0><id_get_config><id_get_clock>
@@ -129,7 +129,7 @@ The message contents for blocks sent from micro-controller to host follow the sa
 
 See the [wikipedia article](https://en.wikipedia.org/wiki/Variable-length_quantity) for more information on the general format of VLQ encoded integers. Klipper uses an encoding scheme that supports both positive and negative integers. Integers close to zero use less bytes to encode and positive integers typically encode using less bytes than negative integers. The following table shows the number of bytes each integer takes to encode:
 
-| Integer | Encoded size |
+| Entero | Tamaño codificado |
 | --- | --- |
 | -32 .. 95 | 1 |
 | -4096 .. 12287 | 2 |
@@ -137,15 +137,15 @@ See the [wikipedia article](https://en.wikipedia.org/wiki/Variable-length_quanti
 | -67108864 .. 201326591 | 4 |
 | -2147483648 .. 4294967295 | 5 |
 
-#### Variable length strings
+#### Cadenas de longitud variable
 
-As an exception to the above encoding rules, if a parameter to a command or response is a dynamic string then the parameter is not encoded as a simple VLQ integer. Instead it is encoded by transmitting the length as a VLQ encoded integer followed by the contents itself:
+Como una excepción para las anteriores reglas de codificación, si un parámetro para un comando o respuesta es una cadena dinámica entonces el parámetro no está codificado como un simple entero VLQ. En su lugar está codificado por trasmisión de longitud como un entero codificado de VLQ seguida por el mismo contenido:
 
 ```
-<VLQ encoded length><n-byte contents>
+<longitud de VLQ codificado><n-byte del contenido>
 ```
 
-The command descriptions found in the data dictionary allow both the host and micro-controller to know which command parameters use simple VLQ encoding and which parameters use string encoding.
+Las descripciones de instrucción encontrada dentro del diccionario permite a ambos hospedaje y micro-controlador conocer cuales parámetros de comando utilizan codificación simple VQL y cuales parámetros utilizan la codificación de cadena.
 
 ## Data Dictionary
 
@@ -161,7 +161,7 @@ The format of the transmitted data dictionary itself is a zlib compressed JSON s
 
 In addition to information on the communication protocol, the data dictionary also contains the software version, enumerations (as defined by DECL_ENUMERATION), and constants (as defined by DECL_CONSTANT).
 
-## Message flow
+## Flujo de mensajería
 
 Message commands sent from host to micro-controller are intended to be error-free. The micro-controller will check the CRC and sequence numbers in each message block to ensure the commands are accurate and in-order. The micro-controller always processes message blocks in-order - should it receive a block out-of-order it will discard it and any other out-of-order blocks until it receives blocks with the correct sequencing.
 

@@ -6,7 +6,7 @@ Thank you for your support. See the [Sponsors page](Sponsors.md) for information
 
 ## ¿Cómo calculo el parámetro de configuración rotation_distance?
 
-Ojee el [documento sobre la distancia de rotación](Rotation_Distance.md).
+Véase el [documento sobre la distancia de rotación](Rotation_Distance.md).
 
 ## ¿Dónde está mi puerto serial?
 
@@ -70,7 +70,7 @@ Klipper es capaz de ejecutarse en una Raspberry Pi 1 y en la Raspberry Pi Zero, 
 
 For running on the Beaglebone, see the [Beaglebone specific installation instructions](Beaglebone.md).
 
-Klipper has been run on other machines. The Klipper host software only requires Python running on a Linux (or similar) computer. However, if you wish to run it on a different machine you will need Linux admin knowledge to install the system prerequisites for that particular machine. See the [install-octopi.sh](../scripts/install-octopi.sh) script for further information on the necessary Linux admin steps.
+Klipper ha sido ejecutado en otras máquinas. El software anfitrión Klipper requiere solamente a Python ejecutarse en una computadora Linux (O similar). Sin embargo, si desea ejecutarlo en una máquina diferente necesitará conocimientos de administrador de Linux para instalar los pre-requisitos para dicha máquina. Léase la fuente [install-octopi.sh](../scripts/install-octopi.sh) para más información sobre los pasos necesarios de administrador de Linux.
 
 Si desea ejecutar el software anfitrión Klipper en un chip de gama baja, tenga en cuenta que, como mínimo, se requiere una máquina con hardware de "coma flotante de doble precisión".
 
@@ -100,41 +100,41 @@ El software Klipper no depende de OctoPrint. Es posible utilizar software altern
 
 Klipper crea un "puerto serie virtual" a través del archivo "/tmp/printer", y emula una interfaz serie clásica de impresora 3d a través de ese archivo. En general, los programas alternativos pueden funcionar con Klipper siempre que puedan configurarse para utilizar "/tmp/printer" para el puerto serie de la impresora.
 
-## ¿Por qué no puedo mover el stepper antes de localizar la impresora?
+## ¿Por qué no puedo mover el motor de pasos antes de localizar la impresora?
 
-The code does this to reduce the chance of accidentally commanding the head into the bed or a wall. Once the printer is homed the software attempts to verify each move is within the position_min/max defined in the config file. If the motors are disabled (via an M84 or M18 command) then the motors will need to be homed again prior to movement.
+El código hace esto para reducir la posibilidad de golpear accidentalmente la cabecera contra la cama o un muro. Una vez que la impresora es alojada, el software intenta verificar si cada movimiento está dentro de la posición_mínima/máxima definida en el archivo de configuración. Si los motores están desactivados (A través de un comando M84 o M18), entonces será necesario re-ubicar los motores antes de moverlos.
 
-If you want to move the head after canceling a print via OctoPrint, consider changing the OctoPrint cancel sequence to do that for you. It's configured in OctoPrint via a web browser under: Settings->GCODE Scripts
+Si desea mover el cabezal después de cancelar una impresión a través de OctoPrint, considere cambiar la secuencia de cancelación de OctoPrint para que lo haga por usted. Está configurado en OctoPrint a través de un navegador web en: Ajustes->GCODE Scripts
 
-If you want to move the head after a print finishes, consider adding the desired movement to the "custom g-code" section of your slicer.
+Si desea mover el cabezal después de que una impresión haya terminado, considere añadir el movimiento deseado a la sección de "Personalización de G-Code" de su deslizador.
 
 If the printer requires some additional movement as part of the homing process itself (or fundamentally does not have a homing process) then consider using a safe_z_home or homing_override section in the config file. If you need to move a stepper for diagnostic or debugging purposes then consider adding a force_move section to the config file. See [config reference](Config_Reference.md#customized_homing) for further details on these options.
 
-## Why is the Z position_endstop set to 0.5 in the default configs?
+## ¿Por qué la Z posición_paradafinal está establecida en 0.5 en las configuraciones por defecto?
 
 For cartesian style printers the Z position_endstop specifies how far the nozzle is from the bed when the endstop triggers. If possible, it is recommended to use a Z-max endstop and home away from the bed (as this reduces the potential for bed collisions). However, if one must home towards the bed then it is recommended to position the endstop so it triggers when the nozzle is still a small distance away from the bed. This way, when homing the axis, it will stop before the nozzle touches the bed. See the [bed level document](Bed_Level.md) for more information.
 
-## I converted my config from Marlin and the X/Y axes work fine, but I just get a screeching noise when homing the Z axis
+## Convertí mi configuración desde Marlin y los ejes X/Y funcionan correctamente, pero escucho un ruido chirriante cuando el eje Z vuelve al origen
 
-Short answer: First, make sure you have verified the stepper configuration as described in the [config check document](Config_checks.md). If the problem persists, try reducing the max_z_velocity setting in the printer config.
+Respuesta corta: Primero, Cerciórese que haya verificado la configuración del motor de pasos como lo describó en [documento de comprobación de configuración](Config_checks.md). Si el problema persiste, Intente reducir la velocidad_maxima_z en la configuración de la impresora.
 
 Long answer: In practice Marlin can typically only step at a rate of around 10000 steps per second. If it is requested to move at a speed that would require a higher step rate then Marlin will generally just step as fast as it can. Klipper is able to achieve much higher step rates, but the stepper motor may not have sufficient torque to move at a higher speed. So, for a Z axis with a high gearing ratio or high microsteps setting the actual obtainable max_z_velocity may be smaller than what is configured in Marlin.
 
-## My TMC motor driver turns off in the middle of a print
+## El controlador de mi motor TMC se apaga a mitad de una impresión
 
 If using the TMC2208 (or TMC2224) driver in "standalone mode" then make sure to use the [latest version of Klipper](#how-do-i-upgrade-to-the-latest-software). A workaround for a TMC2208 "stealthchop" driver problem was added to Klipper in mid-March of 2020.
 
-## I keep getting random "Lost communication with MCU" errors
+## Sigo obteniendo errores aleatorios de "Comunicación perdida con Unidad de Microcontrolador"
 
-This is commonly caused by hardware errors on the USB connection between the host machine and the micro-controller. Things to look for:
+Comúnmente esto es causado por errores de Hardware en la conexión USB entre la máquina anfitriona y el microcontrolador. Tenga en cuenta:
 
-- Use a good quality USB cable between the host machine and micro-controller. Make sure the plugs are secure.
+- Use un cable USB de buena calidad al conectarlo entre la máquina anfitriona y el microcontrolador. Cerciórese que las conexiones estén correctamente conectadas.
 - If using a Raspberry Pi, use a [good quality power supply](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply) for the Raspberry Pi and use a [good quality USB cable](https://forums.raspberrypi.com/viewtopic.php?p=589877#p589877) to connect that power supply to the Pi. If you get "under voltage" warnings from OctoPrint, this is related to the power supply and it must be fixed.
-- Make sure the printer's power supply is not being overloaded. (Power fluctuations to the micro-controller's USB chip may result in resets of that chip.)
-- Verify stepper, heater, and other printer wires are not crimped or frayed. (Printer movement may place stress on a faulty wire causing it to lose contact, briefly short, or generate excessive noise.)
+- Asegúrese de que la fuente de poder de la impresora no esté siendo sobrecargada. (Las fluctuaciones de energía hacia el chip USB del microcontrolador puede provocar que se restablezca.)
+- Verifique que el motor de pasos, calentador, y otros cables de la impresora no estén rizados o deshilados. (Los movimientos de la impresora puede causar tensión en un cable provocando pérdidas de contacto, cortos repentinos, o generar ruido excesivo.)
 - There have been reports of high USB noise when both the printer's power supply and the host's 5V power supply are mixed. (If you find that the micro-controller powers on when either the printer's power supply is on or the USB cable is plugged in, then it indicates the 5V power supplies are being mixed.) It may help to configure the micro-controller to use power from only one source. (Alternatively, if the micro-controller board can not configure its power source, one may modify a USB cable so that it does not carry 5V power between the host and micro-controller.)
 
-## My Raspberry Pi keeps rebooting during prints
+## Mi Raspberry Pi sigue reiniciándose durante las impresiones
 
 This is most likely do to voltage fluctuations. Follow the same troubleshooting steps for a ["Lost communication with MCU"](#i-keep-getting-random-lost-communication-with-mcu-errors) error.
 
@@ -154,41 +154,41 @@ In addition, the micro-controller software is configured with a minimum and maxi
 
 Separately, the host software also implements code to check that heaters and temperature sensors are functioning correctly. See the [config reference](Config_Reference.md#verify_heater) for further details.
 
-## How do I convert a Marlin pin number to a Klipper pin name?
+## ¿Cómo convierto un número de pin de Marlin a un nombre de pin de Klipper?
 
 Short answer: A mapping is available in the [sample-aliases.cfg](../config/sample-aliases.cfg) file. Use that file as a guide to finding the actual micro-controller pin names. (It is also possible to copy the relevant [board_pins](Config_Reference.md#board_pins) config section into your config file and use the aliases in your config, but it is preferable to translate and use the actual micro-controller pin names.) Note that the sample-aliases.cfg file uses pin names that start with the prefix "ar" instead of "D" (eg, Arduino pin `D23` is Klipper alias `ar23`) and the prefix "analog" instead of "A" (eg, Arduino pin `A14` is Klipper alias `analog14`).
 
-Long answer: Klipper uses the standard pin names defined by the micro-controller. On the Atmega chips these hardware pins have names like `PA4`, `PC7`, or `PD2`.
+Respuesta larga: Klipper usa los nombres estándar definidos por el microcontrolador. En los chips Atmega estos pines del hardware tienen nombres como `PA4`, `PC7`, o `PD2`.
 
-Long ago, the Arduino project decided to avoid using the standard hardware names in favor of their own pin names based on incrementing numbers - these Arduino names generally look like `D23` or `A14`. This was an unfortunate choice that has lead to a great deal of confusion. In particular the Arduino pin numbers frequently don't translate to the same hardware names. For example, `D21` is `PD0` on one common Arduino board, but is `PC7` on another common Arduino board.
+Hace tiempo, El proyecto Arduino decidió evitar el uso de los nombres de hardware estándar a favor de sus propios nombres de pines basado en números incrementales - Los nombres de Arduino generalmente son como `D23` o `A14`. Esto fue una elección desfavorable que condujo a muchas confusiones. Particularmente los números de pin de Arduino frecuentemente no se traducen a los mismos nombres de Hardware, Por ejemplo, `D21` es `PD0` en una placa Arduino común, pero es `PC7` en otra placa Arduino común.
 
-To avoid this confusion, the core Klipper code uses the standard pin names defined by the micro-controller.
+Para evitar esta confusión, El núcleo de código de Klipper usa los nombres de pines estándar definidos por el microcontrolador.
 
-## Do I have to wire my device to a specific type of micro-controller pin?
+## ¿Tengo que conectar mi dispositivo a un tipo de pin de microcontrolador específico?
 
-It depends on the type of device and type of pin:
+Depende del tipo de dispositivo y el tipo del pin:
 
-ADC pins (or Analog pins): For thermistors and similar "analog" sensors, the device must be wired to an "analog" or "ADC" capable pin on the micro-controller. If you configure Klipper to use a pin that is not analog capable, Klipper will report a "Not a valid ADC pin" error.
+Pines ADC (o Pines análogos): Son para termistores y sensores "Análogos" similares, el dispositivo debe estar conectado a un pin con capacidad "Análoga" o "ADC" en el microcontrolador. Si configura Klipper para usar un pin que no es análogo, Klipper reportará un error "Pin ADC inválido".
 
-PWM pins (or Timer pins): Klipper does not use hardware PWM by default for any device. So, in general, one may wire heaters, fans, and similar devices to any general purpose IO pin. However, fans and output_pin devices may be optionally configured to use `hardware_pwm: True`, in which case the micro-controller must support hardware PWM on the pin (otherwise, Klipper will report a "Not a valid PWM pin" error).
+Pines PWM (O pines de Pulso): Klipper no usa hardware PWM para cualquier dispositivo por defecto. Entonces, En general, Se pueden conectar calentadores, ventiladores y dispositivos a cualquier pin IO de propósito general. Sin embargo, Los ventiladores y dispositivos output_pin pueden ser configurados opcionalmente para utilizar `hardware_pwm: True`, Cuyo caso, el microcontrolador debe soportar hardware PWM en el pin (Por otra parte, Klipper reportará un error "Pin PWM inválido").
 
-IRQ pins (or Interrupt pins): Klipper does not use hardware interrupts on IO pins, so it is never necessary to wire a device to one of these micro-controller pins.
+Pines IRQ (O pines de interrupción): Klipper no usa Hardware de interrupción en Pines IO, Por lo que es innecesario conectar un dispositivo a uno de estos pines del microcontrolador.
 
-SPI pins: When using hardware SPI it is necessary to wire the pins to the micro-controller's SPI capable pins. However, most devices can be configured to use "software SPI", in which case any general purpose IO pins may be used.
+Pines SPI:Cuando se usa Hardware SPI, Es necesario conectar los pines a los pines compatibles con SPI del microcontrolador. Sin embargo, la mayoría de dispositivos pueden ser configurados para usar "Software SPI", En cuyo caso, Cualquier pin IO de propósito general puede ser usado.
 
-I2C pins: When using I2C it is necessary to wire the pins to the micro-controller's I2C capable pins.
+Pines I2C: Cuando se usa I2C es necesario conectar los pines a pines compatibles con I2C del microcontrolador.
 
-Other devices may be wired to any general purpose IO pin. For example, steppers, heaters, fans, Z probes, servos, LEDs, common hd44780/st7920 LCD displays, the Trinamic UART control line may be wired to any general purpose IO pin.
+Otros dispositivos pueden ser conectados a cualquier pin IO de propósito general. Por ejemplo, Motores de pasos, calentadores, ventiladores , sondas Z, servomotores, pantallas LCD comunes hd44780/st7920, la línea de control trinamic UART pueden ser conectados a cualquier pin IO de propósito general.
 
-## How do I cancel an M109/M190 "wait for temperature" request?
+## ¿Cómo cancelo una solicitud de "Espera de temperatura" M109/M190?
 
 Navigate to the OctoPrint terminal tab and issue an M112 command in the terminal box. The M112 command will cause Klipper to enter into a "shutdown" state, and it will cause OctoPrint to disconnect from Klipper. Navigate to the OctoPrint connection area and click on "Connect" to cause OctoPrint to reconnect. Navigate back to the terminal tab and issue a FIRMWARE_RESTART command to clear the Klipper error state. After completing this sequence, the previous heating request will be canceled and a new print may be started.
 
-## Can I find out whether the printer has lost steps?
+## ¿Puedo saber si la impresora ha perdido pasos?
 
-In a way, yes. Home the printer, issue a `GET_POSITION` command, run your print, home again and issue another `GET_POSITION`. Then compare the values in the `mcu:` line.
+De cierto modo, sí, Establezca la impresora en posición inicial, ejecute el comando `GET_POSITION`, ejecute su impresión, vuelva a la posición inicial y ejecute otro `GET_POSITION`. Luego compare los valores en la línea`mcu:`.
 
-This might be helpful to tune settings like stepper motor currents, accelerations and speeds without needing to actually print something and waste filament: just run some high-speed moves in between the `GET_POSITION` commands.
+Esto puede ser de utilidad para establecer ajustes como corrientes, aceleraciones y velocidades del motor de pasos sin necesidad de imprimir algo y desperdiciar filamento: Solo ejecute algunos movimientos de alta velocidad entre los comandos `GET_POSITION`.
 
 Note that endstop switches themselves tend to trigger at slightly different positions, so a difference of a couple of microsteps is likely the result of endstop inaccuracies. A stepper motor itself can only lose steps in increments of 4 full steps. (So, if one is using 16 microsteps, then a lost step on the stepper would result in the "mcu:" step counter being off by a multiple of 64 microsteps.)
 

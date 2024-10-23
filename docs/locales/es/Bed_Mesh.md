@@ -1,4 +1,4 @@
-# Cama de malla
+# Cauce de malla
 
 The Bed Mesh module may be used to compensate for bed surface irregularities to achieve a better first layer across the entire bed. It should be noted that software based correction will not achieve perfect results, it can only approximate the shape of the bed. Bed Mesh also cannot compensate for mechanical and electrical issues. If an axis is skewed or a probe is not accurate then the bed_mesh module will not receive accurate results from the probing process.
 
@@ -29,9 +29,9 @@ La ilustración debajo muestra como las son usadas las opciones  `mesh_min`, `me
 
 ![bedmesh_rect_basic](img/bedmesh_rect_basic.svg)
 
-### Camas redondas
+### Cauces redondeados
 
-This example assumes a printer equipped with a round bed radius of 100mm. We will use the same probe offsets as the rectangular example, 24 mm on X and 5 mm on Y.
+Este ejemplo asume una impresora equipada con un radio de cauce redondeado a 100mm. Utilizaremos el mismo desplazamiento de sondeo como el ejemplo rectangular, 24 mm en X y 5 mm en Y.
 
 ```
 [bed_mesh]
@@ -74,13 +74,13 @@ bicubic_tension: 0.2
 - `algorithm: lagrange` *Default Value: lagrange* The algorithm used to interpolate the mesh. May be `lagrange` or `bicubic`. Lagrange interpolation is capped at 6 probed points as oscillation tends to occur with a larger number of samples. Bicubic interpolation requires a minimum of 4 probed points along each axis, if less than 4 points are specified then lagrange sampling is forced. If `mesh_pps` is set to 0 then this value is ignored as no mesh interpolation is done.
 - `bicubic_tension: 0.2` *Default Value: 0.2* If the `algorithm` option is set to bicubic it is possible to specify the tension value. The higher the tension the more slope is interpolated. Be careful when adjusting this, as higher values also create more overshoot, which will result in interpolated values higher or lower than your probed points.
 
-The illustration below shows how the options above are used to generate an interpolated mesh.
+La ilustración siguiente muestra como las opciones anteriores son utilizadas para generar una malla interpolada.
 
 ![bedmesh_interpolated](img/bedmesh_interpolated.svg)
 
 ### Move Splitting
 
-Bed Mesh works by intercepting gcode move commands and applying a transform to their Z coordinate. Long moves must be split into smaller moves to correctly follow the shape of the bed. The options below control the splitting behavior.
+Malla del Cauce funciona interceptando comandos de movimiento de gcode y aplicando una transformación de su coordenada Z. Movimientos largos deben ser escindidos en movimientos más pequeños para seguir correctamente la forma del cauce. Las siguientes opciones controlan el comportamiento del desglose.
 
 ```
 [bed_mesh]
@@ -248,11 +248,11 @@ If no scan overshoot is configured then travel path optimization will not be app
 
 ## Bed Mesh Gcodes
 
-### Calibration
+### Calibración
 
 `BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic | scan | rapid_scan] \ [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] \ [ADAPTIVE_MARGIN=<value>]` *Default Profile: default* *Default Method: automatic if a probe is detected, otherwise manual*  *Default Adaptive: 0*  *Default Adaptive Margin: 0*
 
-Initiates the probing procedure for Bed Mesh Calibration.
+Inicia el procedimiento de prueba para Calibración de Malla del Cauce.
 
 The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. The `METHOD` parameter takes one of the following values:
 
@@ -263,17 +263,17 @@ The mesh will be saved into a profile specified by the `PROFILE` parameter, or `
 
 XY positions are automatically adjusted to include the X and/or Y offsets when a probing method other than `manual` is selected.
 
-It is possible to specify mesh parameters to modify the probed area. The following parameters are available:
+Es posible especificar parámetros de malla para modificar el área de sondeo. Los parámetros siguientes están disponibles:
 
-- Rectangular beds (cartesian):
+- Cauces rectangulares (cartesiano):
    - `MESH_MIN`
    - `MESH_MAX`
    - `PROBE_COUNT`
-- Round beds (delta):
+- Redondear cauce (delta):
    - `MESH_RADIUS`
    - `MESH_ORIGIN`
    - `ROUND_PROBE_COUNT`
-- All beds:
+- Todos los cauces:
    - `MESH_PPS`
    - `ALGORITHM`
    - `ADAPTIVE`
@@ -281,7 +281,7 @@ It is possible to specify mesh parameters to modify the probed area. The followi
 
 See the configuration documentation above for details on how each parameter applies to the mesh.
 
-### Profiles
+### Perfiles
 
 `BED_MESH_PROFILE SAVE=<name> LOAD=<name> REMOVE=<name>`
 
@@ -293,7 +293,7 @@ It should be noted that each time a BED_MESH_CALIBRATE occurs, the current state
 
 `BED_MESH_PROFILE REMOVE=default`
 
-Any other saved profile can be removed in the same fashion, replacing *default* with the named profile you wish to remove.
+Cualquier perfil guardado puede ser retirado en la misma forma, sustituyendo *default* con el perfil nombrado que desea retirar.
 
 #### Loading the default profile
 
@@ -308,13 +308,13 @@ gcode:
   BED_MESH_PROFILE LOAD=default
 ```
 
-### Output
+### Salida
 
 `BED_MESH_OUTPUT PGP=[0 | 1]`
 
-Outputs the current mesh state to the terminal. Note that the mesh itself is output
+Las salidas del estado lío actual para el terminal. Nótese que el lío mismo es la salida
 
-The PGP parameter is shorthand for "Print Generated Points". If `PGP=1` is set, the generated probed points will be output to the terminal:
+El parámetro PGP está recortado para «Imprimir puntos generados». Si está puesto `PGP=1` los puntos probados generados serán extraídos al terminal:
 
 ```
 // bed_mesh: generated points
@@ -342,7 +342,7 @@ The "Tool Adjusted" points refer to the nozzle location for each point, and the 
 
 `BED_MESH_CLEAR`
 
-This gcode may be used to clear the internal mesh state.
+Este gcode puede ser utilizado para vaciar el estado interno medio.
 
 ### Apply X/Y offsets
 

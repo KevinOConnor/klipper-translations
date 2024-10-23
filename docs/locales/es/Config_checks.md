@@ -28,9 +28,9 @@ Mueva manualmente todos los ejes de la impresora para que ninguno de ellos esté
 
 Si el endstop aparece invertido (indica "abierto" cuando se dispara y viceversa), añada un "!" a la definición del pin (por ejemplo, "endstop_pin: ^PA2"), o elimine el "!" si ya hay uno presente.
 
-Si el final de carrera no cambia en absoluto, entonces generalmente indica que el final de carrera está conectado a un alfiler diferente. Sin embargo, puede requerir también un cambio a la configuración del levantado del alfiler (el '^' al comienzo del nombre de endstop_pin - la mayoría de las impresoras usarán un resistor de levantado y el '^' debería estar presente).
+Si el endstop no cambia en absoluto, generalmente indica que el endstop está conectado a un pin diferente. Sin embargo, también puede requerir un cambio en la configuración pullup del pin (el '^' al principio del nombre endstop_pin - la mayoría de las impresoras usarán una resistencia pullup y el '^' debería estar presente).
 
-## Verificar el motor a pasos
+## Verificar motores paso a paso
 
 Utilice el comando STEPPER_BUZZ para verificar la conectividad de cada motor paso a paso. Comienza posicionando manualmente el eje dado en un punto intermedio y luego ejecuta `STEPPER_BUZZ STEPPER=stepper_x` en la consola de comandos. El comando STEPPER_BUZZ hará que el motor paso a paso dado se mueva un milímetro en dirección positiva y luego volverá a su posición inicial. (Si el endstop se define en position_endstop=0 entonces al inicio de cada movimiento el stepper se alejará del endstop). Realizará esta oscilación diez veces.
 

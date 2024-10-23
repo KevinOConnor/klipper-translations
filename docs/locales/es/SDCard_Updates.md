@@ -2,7 +2,7 @@
 
 Muchas de las placas controladoras más populares de la actualidad se entregan con un gestor de arranque capaz de actualizar el firmware mediante una tarjeta SD.  Si bien esto es conveniente en muchas circunstancias, estos cargadores de arranque generalmente no ofrecen otra forma de actualizar el firmware.  Esto puede ser una molestia si su placa está montada en un lugar de difícil acceso o si necesita actualizar el firmware con frecuencia.  Después de que Klipper se haya actualizado inicialmente a un controlador, es posible transferir el nuevo firmware a la tarjeta SD e iniciar el procedimiento de actualización a través de ssh.
 
-## Typical Upgrade Procedure
+## Procedimiento de Modernización Típico
 
 The procedure for updating MCU firmware using the SD Card is similar to that of other methods. Instead of using `make flash` it is necessary to run a helper script, `flash-sdcard.sh`. Updating a BigTreeTech SKR 1.3 might look like the following:
 
@@ -33,21 +33,21 @@ The above commands assume that your MCU connects at the default baud rate of 250
 
 ```
 ./scripts/flash-sdcard.sh -h
-SD Card upload utility for Klipper
+Utilidad de subida de la Tarjeta SD para Klipper
 
-usage: flash_sdcard.sh [-h] [-l] [-c] [-b <baud>] [-f <firmware>]
-                       <device> <board>
+Modo de empleo: flash_sdcard.sh [-h] [-l] [-c] [-b <baud>] [-f <firmware>]
+                       <dispositivo> <placa>
 
-positional arguments:
-  <device>        device serial port
-  <board>         board type
+argumentos posicionales:
+  <dispositivo>        puerto seria del dispositivo
+  <tarjeta>         tipo de tarjeta
 
-optional arguments:
-  -h              show this message
-  -l              list available boards
-  -c              run flash check/verify only (skip upload)
-  -b <baud>       serial baud rate (default is 250000)
-  -f <firmware>   path to klipper.bin
+argumentos opcionales:
+  -h              muestra este mensaje
+  -l              enumera las tarjetas disponibles
+  -c              ejecuta solamente la comprobación/verificación del flash (omite cargar)
+  -b <baudio>       proporción del ancho de baudios serie (predet es 250.000)
+  -f <firmware>   ruta para klipper.bin
 ```
 
 If your board is flashed with firmware that connects at a custom baud rate it is possible to upgrade by specifying the `-b` option:
@@ -68,7 +68,7 @@ The `-c` option is used to perform a check or verify-only operation to test if t
 
 ## Advertencias
 
-- As mentioned in the introduction, this method only works for upgrading firmware. The initial flashing procedure must be done manually per the instructions that apply to your controller board.
+- Como mencioné en la introducción, este método solo funciona para modernización del firmware. El procedimiento de flaseado inicial debe ser hecho manualmente por las instrucciones que aplicar a su placa del controlador.
 - While it is possible to flash a build that changes the Serial Baud or connection interface (ie: from USB to UART), verification will always fail as the script will be unable to reconnect to the MCU to verify the current version.
 - Only boards that use SPI for SD Card communication are supported. Boards that use SDIO, such as the Flymaker Flyboard and MKS Robin Nano V1/V2, will not work in SDIO mode. However, it's usually possible to flash such boards using Software SPI mode instead. But if the board's bootloader only uses SDIO mode to access the SD Card, a power-cycle of the board and SD Card will be necessary so that the mode can switch from SPI back to SDIO to complete reflashing. Such boards should be defined with `skip_verify` enabled to skip the verify step immediately after flashing. Then after the manual power-cycle, you can rerun the exact same `./scripts/flash-sdcard.sh` command, but add the `-c` option to complete the check/verify operation. See [Flashing Boards that use SDIO](#flashing-boards-that-use-sdio) for examples.
 

@@ -1834,29 +1834,29 @@ sensor_type: ldc1612
 
 ### [axis_twist_compensation]
 
-A tool to compensate for inaccurate probe readings due to twist in X gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
+Un outil pour compenser les lectures inexactes de la sonde en raison de la torsion de la structure en X. Voir le [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) pour des informations plus détaillées sur les symptômes, la configuration et la mise en service.
 
 ```
 [axis_twist_compensation]
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#   Vitesse (en mm/s) des déplacements sans mesures pendant l'étape d'étalonnage.
+#   La valeur par défaut est de 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#   La hauteur (en mm) à laquelle la tête doit se positionner
+#   avant de commencer une mesure. La valeur par défaut est de 5.
 calibrate_start_x: 20
-#   Defines the minimum X coordinate of the calibration
-#   This should be the X coordinate that positions the nozzle at the starting
-#   calibration position. This parameter must be provided.
+#   Définit la coordonnée minimum en X pour les mesures
+#   Ce doit être la coordonnée X qui positionne la buse à la position de
+#   départ des mesures. Ce paramètre est obligatoire.
 calibrate_end_x: 200
-#   Defines the maximum X coordinate of the calibration
-#   This should be the X coordinate that positions the nozzle at the ending
-#   calibration position. This parameter must be provided.
+#   Définit la coordonnée maximum en X pour les mesures
+#   Ce doit être la coordonnée X qui positionne la buse à la position de
+#   fin des mesures. Ce paramètre est obligatoire.
 calibrate_y: 112.5
-#   Defines the Y coordinate of the calibration
-#   This should be the Y coordinate that positions the nozzle during the
-#   calibration process. This parameter must be provided and is recommended to
-#   be near the center of the bed
+#   Définit la coordonnée Y de mesure
+#   Ce doit être la coordonnée Y qui positionne la buse à la position de
+#   mesures. Ce paramètre est obligatoire et il est conseillé de mettre une mesure
+#   proche du centre du plateau
 ```
 
 ## Moteurs pas à  pas et extrudeurs additionnels
@@ -1901,7 +1901,7 @@ Voir [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) pour un ex
 
 Support for cartesian and hybrid_corexy/z printers with dual carriages on a single axis. The carriage mode can be set via the SET_DUAL_CARRIAGE extended g-code command. For example, "SET_DUAL_CARRIAGE CARRIAGE=1" command will activate the carriage defined in this section (CARRIAGE=0 will return activation to the primary carriage). Dual carriage support is typically combined with extra extruders - the SET_DUAL_CARRIAGE command is often called at the same time as the ACTIVATE_EXTRUDER command. Be sure to park the carriages during deactivation. Note that during G28 homing, typically the primary carriage is homed first followed by the carriage defined in the `[dual_carriage]` config section. However, the `[dual_carriage]` carriage will be homed first if both carriages home in a positive direction and the [dual_carriage] carriage has a `position_endstop` greater than the primary carriage, or if both carriages home in a negative direction and the `[dual_carriage]` carriage has a `position_endstop` less than the primary carriage.
 
-Additionally, one could use "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" or "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" commands to activate either copying or mirroring mode of the dual carriage, in which case it will follow the motion of the carriage 0 accordingly. These commands can be used to print two parts simultaneously - either two identical parts (in COPY mode) or mirrored parts (in MIRROR mode). Note that COPY and MIRROR modes also require appropriate configuration of the extruder on the dual carriage, which can typically be achieved with "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" or a similar command.
+En outre, on pourrait utiliser les commandes "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" ou "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" pour activer le mode copie ou miroir du double chariot, auquel cas il suivra le mouvement du chariot 0 en conséquence. Ces commandes peuvent être utilisées pour imprimer deux pièces simultanément - soit deux pièces identiques (en mode COPY) ou des pièces miroirs (en mode MIRROR). Notez que les modes COPY et MIRROR nécessitent également la configuration appropriée de l'extrudeur sur le double chariot, qui peut généralement être atteint avec "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=exedual_carriage_extruderю" ou une commande similaire.
 
 Voir [sample-idex.cfg](../config/sample-idex.cfg) pour un exemple de configuration.
 
@@ -2291,9 +2291,9 @@ sensor_type: BME280
 #   above parameters.
 ```
 
-### AHT10/AHT20/AHT21 temperature sensor
+### AHT10/AHT20/AHT21 capteur de température
 
-AHT10/AHT20/AHT21 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C) and relative humidity. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report humidity in addition to temperature.
+AHT10/AHT20/AHT21 : capteurs environnementaux à deux fils (I2C). Notez que ces capteurs ne sont pas destinés à être utilisés avec des extrudeurs et des lits chauffants, mais plutôt pour surveiller la température ambiante (C) et l'humidité relative. Voir [sample-macros.cfg](../config/sample-macros.cfg) pour un gcode_macro qui peut être utilisé pour signaler l'humidité en plus de la température.
 
 ```
 sensor_type: AHT10

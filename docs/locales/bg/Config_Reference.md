@@ -1,20 +1,20 @@
 # Справка за конфигурацията
 
-This document is a reference for options available in the Klipper config file.
+Този документ представлява справка за наличните опции в конфигурационния файл на Klipper.
 
-The descriptions in this document are formatted so that it is possible to cut-and-paste them into a printer config file. See the [installation document](Installation.md) for information on setting up Klipper and choosing an initial config file.
+Описанията в този документ са форматирани така, че да е възможно да бъдат изрязани и поставени във файл с конфигурацията на принтера. Вижте [инсталационния документ](Installation.md) за информация относно настройката на Klipper и избора на първоначален конфигурационен файл.
 
-## Micro-controller configuration
+## Конфигуриране на микроконтролера
 
 ### Формат на имената на пиновете на микроконтролера
 
-Many config options require the name of a micro-controller pin. Klipper uses the hardware names for these pins - for example `PA4`.
+Много опции за конфигуриране изискват името на пин на микроконтролера. Klipper използва хардуерните имена на тези пинове - например `PA4`.
 
-Pin names may be preceded by `!` to indicate that a reverse polarity should be used (eg, trigger on low instead of high).
+Имената на изводите могат да бъдат предшествани от `!`, за да се укаже, че трябва да се използва обратна полярност (напр. задействане при нисък вместо при висок сигнал).
 
 Входните пинове могат да бъдат предшествани от `^`, за да се укаже, че за пина трябва да се включи хардуерен издърпващ резистор. Ако микроконтролерът поддържа издърпващи резистори, тогава входният щифт може да бъде предшестван от `~`.
 
-Note, some config sections may "create" additional pins. Where this occurs, the config section defining the pins must be listed in the config file before any sections using those pins.
+Обърнете внимание, че някои секции на конфигурацията могат да "създадат" допълнителни щифтове. Когато това се случи, секцията за конфигуриране, която дефинира изводите, трябва да бъде посочена във файла за конфигуриране преди всички секции, които използват тези изводи.
 
 ### [mcu]
 
@@ -62,7 +62,7 @@ serial:
 
 ### [printer]
 
-The printer section controls high level printer settings.
+Разделът за принтера управлява настройките на принтера на високо ниво.
 
 ```
 [printer]
@@ -114,9 +114,9 @@ max_accel:
 
 ### [stepper]
 
-Stepper motor definitions. Different printer types (as specified by the "kinematics" option in the [printer] config section) require different names for the stepper (eg, `stepper_x` vs `stepper_a`). Below are common stepper definitions.
+Дефиниции на стъпкови двигатели. Различните типове принтери (както е посочено от опцията "kinematics" в раздела [printer] config) изискват различни имена за стъпковия двигател (например `stepper_x` срещу `stepper_a`). По-долу са дадени общи дефиниции на стъпков механизъм.
 
-See the [rotation distance document](Rotation_Distance.md) for information on calculating the `rotation_distance` parameter. See the [Multi-MCU homing](Multi_MCU_Homing.md) document for information on homing using multiple micro-controllers.
+Вижте документа [rotation distance](Rotation_Distance.md) за информация относно изчисляването на параметъра `rotation_distance`. Вижте документа [Multi-MCU homing](Multi_MCU_Homing.md) за информация относно насочването с помощта на няколко микроконтролера.
 
 ```
 [stepper_x]
@@ -192,11 +192,11 @@ position_max:
 #   if near position_min.
 ```
 
-### Cartesian Kinematics
+### Декартова кинематика
 
-See [example-cartesian.cfg](../config/example-cartesian.cfg) for an example cartesian kinematics config file.
+Вижте [example-cartesian.cfg](../config/example-cartesian.cfg) за примерен файл за конфигуриране на картезианска кинематика.
 
-Only parameters specific to cartesian printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, специфични за картезианските принтери - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ```
 [printer]
@@ -226,9 +226,9 @@ max_z_accel:
 
 ### Линейна делта кинематика
 
-See [example-delta.cfg](../config/example-delta.cfg) for an example linear delta kinematics config file. See the [delta calibrate guide](Delta_Calibrate.md) for information on calibration.
+Вижте [example-delta.cfg](../config/example-delta.cfg) за примерен конфигурационен файл за линейна делта кинематика. Вижте ръководството [delta calibrate guide]( Delta_Calibrate.md) за информация относно калибрирането.
 
-Only parameters specific to linear delta printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, характерни за линейните делта-принтери - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ```
 [printer]
@@ -305,11 +305,11 @@ radius:
 #   just prior to starting a probe operation. The default is 5.
 ```
 
-### Deltesian Kinematics
+### Делта кинематика
 
-See [example-deltesian.cfg](../config/example-deltesian.cfg) for an example deltesian kinematics config file.
+Вижте [example-deltesian.cfg](../config/example-deltesian.cfg) за примерен файл за конфигуриране на делтезианска кинематика.
 
-Only parameters specific to deltesian printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, специфични за делтезианските принтери - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ```
 [printer]
@@ -377,11 +377,11 @@ arm_x_length:
 [stepper_y]
 ```
 
-### CoreXY Kinematics
+### Кинематика CoreXY
 
-See [example-corexy.cfg](../config/example-corexy.cfg) for an example corexy (and h-bot) kinematics file.
+Вижте [example-corexy.cfg](../config/example-corexy.cfg) за примерен файл за кинематика на corexy (и h-bot).
 
-Only parameters specific to corexy printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, специфични за принтерите corexy - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ```
 [printer]
@@ -409,11 +409,11 @@ max_z_accel:
 [stepper_z]
 ```
 
-### CoreXZ Kinematics
+### Кинематика CoreXZ
 
-See [example-corexz.cfg](../config/example-corexz.cfg) for an example corexz kinematics config file.
+Вижте [example-corexz.cfg](../config/example-corexz.cfg) за примерен конфигурационен файл за кинематика на corexz.
 
-Only parameters specific to corexz printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, специфични за принтерите corexz - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ```
 [printer]
@@ -438,13 +438,13 @@ max_z_accel:
 [stepper_z]
 ```
 
-### Hybrid-CoreXY Kinematics
+### Кинематика CoreXY Хибрид
 
-See [example-hybrid-corexy.cfg](../config/example-hybrid-corexy.cfg) for an example hybrid corexy kinematics config file.
+Вижте [example-hybrid-corexy.cfg](../config/example-hybrid-corexy.cfg) за примерен файл за конфигурация на хибридната кинематика на corexy.
 
-This kinematic is also known as Markforged kinematic.
+Тази кинематика е известна и като Markforged кинематика.
 
-Only parameters specific to hybrid corexy printers are described here see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, характерни за хибридните принтери за корекси, вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ```
 [printer]
@@ -469,13 +469,13 @@ max_z_accel:
 [stepper_z]
 ```
 
-### Hybrid-CoreXZ Kinematics
+### Кинематика CoreXZ Хибрид
 
-See [example-hybrid-corexz.cfg](../config/example-hybrid-corexz.cfg) for an example hybrid corexz kinematics config file.
+Вижте [example-hybrid-corexz.cfg](../config/example-hybrid-corexz.cfg) за примерен файл за конфигуриране на хибридна кинематика corexz.
 
-This kinematic is also known as Markforged kinematic.
+Тази кинематика е известна и като Markforged кинематика.
 
-Only parameters specific to hybrid corexy printers are described here see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, характерни за хибридните принтери за корекси, вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ```
 [printer]
@@ -500,13 +500,13 @@ max_z_accel:
 [stepper_z]
 ```
 
-### Polar Kinematics
+### Полярна кинематика
 
-See [example-polar.cfg](../config/example-polar.cfg) for an example polar kinematics config file.
+Вижте [example-polar.cfg](../config/example-polar.cfg) за примерен файл за конфигурация на полярната кинематика.
 
-Only parameters specific to polar printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, специфични за полярните принтери - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
-POLAR KINEMATICS ARE A WORK IN PROGRESS. Moves around the 0, 0 position are known to not work properly.
+ПОЛЯРНАТА КИНЕМАТИКА Е В ПРОЦЕС НА РАЗРАБОТКА. Известно е, че движенията около позиция 0, 0 не работят правилно.
 
 ```
 [printer]
@@ -539,13 +539,13 @@ gear_ratio:
 [stepper_z]
 ```
 
-### Rotary delta Kinematics
+### Ротационна делта кинематика
 
-See [example-rotary-delta.cfg](../config/example-rotary-delta.cfg) for an example rotary delta kinematics config file.
+Вижте [example-rotary-delta.cfg](../config/example-rotary-delta.cfg) за примерен файл за конфигуриране на ротационна делта кинематика.
 
-Only parameters specific to rotary delta printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, специфични за ротационните делта-принтери - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
-ROTARY DELTA KINEMATICS ARE A WORK IN PROGRESS. Homing moves may timeout and some boundary checks are not implemented.
+РОТАЦИОННАТА ДЕЛТАКИНЕМАТИКА Е В ПРОЦЕС НА РАЗРАБОТКА. Движенията за насочване могат да се забавят и някои гранични проверки не са реализирани.
 
 ```
 [printer]
@@ -627,9 +627,9 @@ radius:
 
 ### Кинематика на кабелната лебедка
 
-See the [example-winch.cfg](../config/example-winch.cfg) for an example cable winch kinematics config file.
+Вижте файла [example-winch.cfg](../config/example-winch.cfg) за примерен файл за конфигуриране на кинематиката на кабелната лебедка.
 
-Only parameters specific to cable winch printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Тук са описани само параметрите, специфични за принтерите на кабелни лебедки - вижте [общи кинематични настройки](#common-kinematic-settings) за наличните параметри.
 
 ОПОРАТА НА КАБЕЛНАТА ЛЕБЕДКА Е ЕКСПЕРИМЕНТАЛНА. Навигацията не е реализирана в кинематиката на кабелната лебедка. За да хомеографирате принтера, изпращайте ръчно команди за движение, докато главата на инструмента се намира на 0, 0, 0, и след това издайте команда `G28`.
 
@@ -652,7 +652,7 @@ anchor_z:
 #   These parameters must be provided.
 ```
 
-### None Kinematics
+### Няма Кинематика
 
 Възможно е да се дефинира специална кинематика "няма", за да се деактивира кинематичната поддръжка в Klipper. Това може да е полезно за управление на устройства, които не са типични 3d-принтери, или за целите на отстраняване на грешки.
 
@@ -669,7 +669,7 @@ max_accel: 1
 
 ### [extruder]
 
-The extruder section is used to describe the heater parameters for the nozzle hotend along with the stepper controlling the extruder. See the [command reference](G-Codes.md#extruder) for additional information. See the [pressure advance guide](Pressure_Advance.md) for information on tuning pressure advance.
+Разделът за екструдера се използва за описване на параметрите на нагревателя за горещата част на дюзата, както и на стъпковия механизъм за управление на екструдера. За допълнителна информация вижте [справка за командите](G-Codes.md#extruder). За информация относно настройката на аванса на налягането вижте [ръководство за аванса на налягането](Pressure_Advance.md).
 
 ```
 [екструдер]
@@ -781,7 +781,7 @@ pid_Kd:
 
 ### [heater_bed]
 
-The heater_bed section describes a heated bed. It uses the same heater settings described in the "extruder" section.
+Разделът heater_bed описва отопляемо легло. Той използва същите настройки на нагревателя, описани в раздела "Екструдер".
 
 ```
 [heater_bed]
@@ -798,11 +798,11 @@ max_temp:
 
 ### [bed_mesh]
 
-Mesh Bed Leveling. One may define a bed_mesh config section to enable move transformations that offset the z axis based on a mesh generated from probed points. When using a probe to home the z-axis, it is recommended to define a safe_z_home section in printer.cfg to home toward the center of the print area.
+Изравняване на мрежестото легло. Може да се дефинира конфигурационен раздел bed_mesh, за да се активират трансформации на преместване, които изместват оста z въз основа на мрежа, генерирана от сондирани точки. Когато се използва сонда за насочване на оста z, се препоръчва да се дефинира секция safe_z_home в printer.cfg, за да се насочи към центъра на зоната за печат.
 
-See the [bed mesh guide](Bed_Mesh.md) and [command reference](G-Codes.md#bed_mesh) for additional information.
+За допълнителна информация вижте [ръководство за мрежа на легло](Bed_Mesh.md) и [справка за командите](G-Codes.md#bed_mesh).
 
-Visual Examples:
+Визуални примери:
 
 ```
  rectangular bed, probe_count = 3, 3:
@@ -924,7 +924,7 @@ Visual Examples:
 
 Компенсация на наклона на леглото. Може да се дефинира конфигурационен раздел bed_tilt, за да се активират трансформациите на движенията, които отчитат наклоненото легло. Обърнете внимание, че bed_mesh и bed_tilt са несъвместими; и двете не могат да бъдат дефинирани.
 
-See the [command reference](G-Codes.md#bed_tilt) for additional information.
+За допълнителна информация вижте [справка за командата](G-Codes.md#bed_tilt).
 
 ```
 [bed_tilt]
@@ -956,9 +956,9 @@ See the [command reference](G-Codes.md#bed_tilt) for additional information.
 
 ### [винтове за легло]
 
-Tool to help adjust bed leveling screws. One may define a [bed_screws] config section to enable a BED_SCREWS_ADJUST g-code command.
+Инструмент за регулиране на винтовете за нивелиране на леглото. Може да се дефинира конфигурационен раздел [bed_screws], за да се активира g-кодова команда BED_SCREWS_ADJUST.
 
-See the [leveling guide](Manual_Level.md#adjusting-bed-leveling-screws) and [command reference](G-Codes.md#bed_screws) for additional information.
+За допълнителна информация вижте [ръководство за нивелиране](Manual_Level.md#adjusting-bed-leveling-screws) и [справка за команди](G-Codes.md#bed_screws).
 
 ```
 [bed_screws]
@@ -997,9 +997,9 @@ See the [leveling guide](Manual_Level.md#adjusting-bed-leveling-screws) and [com
 
 ### [screws_tilt_adjust]
 
-Tool to help adjust bed screws tilt using Z probe. One may define a screws_tilt_adjust config section to enable a SCREWS_TILT_CALCULATE g-code command.
+Инструмент за регулиране на наклона на винтовете на леглото с помощта на Z-сонда. Може да се дефинира конфигурационна секция screws_tilt_adjust, за да се активира командата SCREWS_TILT_CALCULATE g-code.
 
-See the [leveling guide](Manual_Level.md#adjusting-bed-leveling-screws-using-the-bed-probe) and [command reference](G-Codes.md#screws_tilt_adjust) for additional information.
+За допълнителна информация вижте [ръководство за нивелиране](Manual_Level.md#adjusting-bed-leveling-screwing-using-the-bed-probe) и [справка за команди](G-Codes.md#screws_tilt_adjust).
 
 ```
 [screws_tilt_adjust]
@@ -1035,7 +1035,7 @@ See the [leveling guide](Manual_Level.md#adjusting-bed-leveling-screws-using-the
 
 ### [z_tilt]
 
-Multiple Z stepper tilt adjustment. This feature enables independent adjustment of multiple z steppers (see the "stepper_z1" section) to adjust for tilt. If this section is present then a Z_TILT_ADJUST extended [G-Code command](G-Codes.md#z_tilt) becomes available.
+Многократно регулиране на наклона на стъпката Z. Тази функция позволява независима настройка на няколко Z-стъпки (вж. раздела "stepper_z1"), за да се регулира наклонът. Ако този раздел е налице, тогава разширената [G-Code команда](G-Codes.md#z_tilt) Z_TILT_ADJUST става достъпна.
 
 ```
 [z_tilt]
@@ -1073,7 +1073,7 @@ Multiple Z stepper tilt adjustment. This feature enables independent adjustment 
 
 ### [quad_gantry_level]
 
-Moving gantry leveling using 4 independently controlled Z motors. Corrects hyperbolic parabola effects (potato chip) on moving gantry which is more flexible. WARNING: Using this on a moving bed may lead to undesirable results. If this section is present then a QUAD_GANTRY_LEVEL extended G-Code command becomes available. This routine assumes the following Z motor configuration:
+Изравняване на портала с помощта на 4 независимо управлявани Z-мотора. Коригира ефекта на хиперболичната парабола (картофен чипс) при подвижния портал, който е по-гъвкав. ПРЕДУПРЕЖДЕНИЕ: Използването на тази функция върху движещо се легло може да доведе до нежелани резултати. Ако този раздел е налице, тогава става достъпна разширената команда QUAD_GANTRY_LEVEL на G-Code. Тази процедура предполага следната конфигурация на двигателя Z:
 
 ```
  ----------------
@@ -1086,7 +1086,7 @@ Moving gantry leveling using 4 independently controlled Z motors. Corrects hyper
  ----------------
 ```
 
-Where x is the 0, 0 point on the bed
+Където x е точката 0, 0 на леглото
 
 ```
 [quad_gantry_level]
@@ -1119,7 +1119,7 @@ Where x is the 0, 0 point on the bed
 
 ### [skew_correction]
 
-Printer Skew Correction. It is possible to use software to correct printer skew across 3 planes, xy, xz, yz. This is done by printing a calibration model along a plane and measuring three lengths. Due to the nature of skew correction these lengths are set via gcode. See [Skew Correction](Skew_Correction.md) and [Command Reference](G-Codes.md#skew_correction) for details.
+Корекция на наклона на принтера. Възможно е да се използва софтуер за коригиране на изкривяването на принтера в 3 равнини: xy, xz, yz. Това става чрез отпечатване на калибровъчен модел по протежение на една равнина и измерване на три дължини. Поради естеството на корекцията на наклона тези дължини се задават чрез gcode. За подробности вижте [Skew Correction](Skew_Correction.md) и [Command Reference](G-Codes.md#skew_correction).
 
 ```
 [skew_correction]
@@ -1127,9 +1127,9 @@ Printer Skew Correction. It is possible to use software to correct printer skew 
 
 ### [z_thermal_adjust]
 
-Temperature-dependant toolhead Z position adjustment. Compensate for vertical toolhead movement caused by thermal expansion of the printer's frame in real-time using a temperature sensor (typically coupled to a vertical section of frame).
+Регулиране на позицията Z на главата на инструмента в зависимост от температурата. Компенсиране на вертикалното движение на главата на инструмента, причинено от температурното разширение на рамката на принтера, в реално време с помощта на температурен сензор (обикновено свързан с вертикална секция на рамката).
 
-See also: [extended g-code commands](G-Codes.md#z_thermal_adjust).
+Вижте също: [extended g-code commands](G-Codes.md#z_thermal_adjust).
 
 ```
 [z_thermal_adjust]
@@ -1165,7 +1165,7 @@ See also: [extended g-code commands](G-Codes.md#z_thermal_adjust).
 
 ### [safe_z_home]
 
-Safe Z homing. One may use this mechanism to home the Z axis at a specific X, Y coordinate. This is useful if the toolhead, for example has to move to the center of the bed before Z can be homed.
+Безопасно насочване по Z. Този механизъм може да се използва за насочване на оста Z към определена координата X, Y. Това е полезно, ако например главата на инструмента трябва да се придвижи до центъра на леглото, преди Z да бъде ориентирана.
 
 ```
 [safe_z_home]
@@ -1221,9 +1221,9 @@ gcode:
 
 ### [endstop_phase]
 
-Stepper phase adjusted endstops. To use this feature, define a config section with an "endstop_phase" prefix followed by the name of the corresponding stepper config section (for example, "[endstop_phase stepper_z]"). This feature can improve the accuracy of endstop switches. Add a bare "[endstop_phase]" declaration to enable the ENDSTOP_PHASE_CALIBRATE command.
+Крайни ограничители с регулиране на фазата на стъпковия механизъм. За да използвате тази функция, дефинирайте секция от конфигурацията с префикс "endstop_phase", последван от името на съответната секция от конфигурацията на стъпковия механизъм (например "[endstop_phase stepper_z]"). Тази функция може да подобри точността на крайните спиращи превключватели. Добавете гола декларация "[endstop_phase]", за да активирате командата ENDSTOP_PHASE_CALIBRATE.
 
-See the [endstop phases guide](Endstop_Phase.md) and [command reference](G-Codes.md#endstop_phase) for additional information.
+За допълнителна информация вижте [Ръководство за фазите на спиране](Endstop_Phase.md) и [Справка за командите](G-Codes.md#endstop_phase).
 
 ```
 [endstop_phase stepper_z]
@@ -1303,7 +1303,7 @@ gcode:
 
 ### [save_variables]
 
-Support saving variables to disk so that they are retained across restarts. See [command templates](Command_Templates.md#save-variables-to-disk) and [G-Code reference](G-Codes.md#save_variables) for further information.
+Поддържа запаметяване на променливи на диска, така че те да се запазват при рестартиране. За допълнителна информация вижте [шаблони на команди](Command_Templates.md#save-variables-to-disk) и [G-Code reference](G-Codes.md#save_variables).
 
 ```
 [save_variables]
@@ -1327,7 +1327,7 @@ filename:
 # командите. По подразбиране е 600 секунди.
 ```
 
-## Optional G-Code features
+## Допълнителни функции на G-Code
 
 ### [virtual_sdcard]
 
@@ -1349,9 +1349,9 @@ path:
 
 ### [sdcard_loop]
 
-Some printers with stage-clearing features, such as a part ejector or a belt printer, can find use in looping sections of the sdcard file. (For example, to print the same part over and over, or repeat the a section of a part for a chain or other repeated pattern).
+Някои принтери с функции за изчистване на етапи, като например изхвъргач на части или лентов принтер, могат да намерят приложение в цикличните секции на файла sdcard. (Например, за отпечатване на една и съща част отново и отново или за повтаряне на участък от част за верига или друг повтарящ се модел).
 
-See the [command reference](G-Codes.md#sdcard_loop) for supported commands. See the [sample-macros.cfg](../config/sample-macros.cfg) file for a Marlin compatible M808 G-Code macro.
+Вижте [справка за командите](G-Codes.md#sdcard_loop) за поддържаните команди. Вижте файла [sample-macros.cfg](../config/sample-macros.cfg) за G-Code макрос, съвместим с Marlin M808.
 
 ```
 [sdcard_loop]
@@ -1359,7 +1359,7 @@ See the [command reference](G-Codes.md#sdcard_loop) for supported commands. See 
 
 ### [force_move]
 
-Support manually moving stepper motors for diagnostic purposes. Note, using this feature may place the printer in an invalid state - see the [command reference](G-Codes.md#force_move) for important details.
+Поддържа ръчно преместване на стъпкови двигатели за диагностични цели. Обърнете внимание, че използването на тази функция може да доведе до невалидно състояние на принтера - вижте [справка за командите](G-Codes.md#force_move) за важни подробности.
 
 ```
 [force_move]
@@ -1370,7 +1370,7 @@ Support manually moving stepper motors for diagnostic purposes. Note, using this
 
 ### [pause_resume]
 
-Pause/Resume functionality with support of position capture and restore. See the [command reference](G-Codes.md#pause_resume) for more information.
+Функции за пауза/възобновяване с поддръжка на заснемане и възстановяване на позиции. За повече информация вижте [справка за командите](G-Codes.md#pause_resume).
 
 ```
 [pause_resume]
@@ -1400,7 +1400,7 @@ Pause/Resume functionality with support of position capture and restore. See the
 
 ### [gcode_arcs]
 
-Support for gcode arc (G2/G3) commands.
+Поддръжка на командите gcode arc (G2/G3).
 
 ```
 [gcode_arcs]
@@ -1433,7 +1433,7 @@ Support for gcode arc (G2/G3) commands.
 
 Позволява изключване или отмяна на отделни обекти по време на процеса на отпечатване.
 
-See the [exclude objects guide](Exclude_Object.md) and [command reference](G-Codes.md#excludeobject) for additional information. See the [sample-macros.cfg](../config/sample-macros.cfg) file for a Marlin/RepRapFirmware compatible M486 G-Code macro.
+За допълнителна информация вижте [ръководство за изключване на обекти](Exclude_Object.md) и [справка за командата](G-Codes.md#excludeobject). Вижте файла [sample-macros.cfg](../config/sample-macros.cfg) за макрос, съвместим с Marlin/RepRapFirmware M486 G-Code.
 
 ```
 [exclude_object]
@@ -1480,7 +1480,7 @@ See the [exclude objects guide](Exclude_Object.md) and [command reference](G-Cod
 
 ### [adxl345]
 
-Support for ADXL345 accelerometers. This support allows one to query accelerometer measurements from the sensor. This enables an ACCELEROMETER_MEASURE command (see [G-Codes](G-Codes.md#adxl345) for more information). The default chip name is "default", but one may specify an explicit name (eg, [adxl345 my_chip_name]).
+Поддръжка на акселерометри ADXL345. Тази поддръжка позволява да се правят справки за измерванията на акселерометъра от сензора. Това активира командата ACCELEROMETER_MEASURE (за повече информация вижте [G-Codes](G-Codes.md#adxl345)). Името на чипа по подразбиране е "default" (по подразбиране), но може да се посочи изрично име (например [adxl345 my_chip_name]).
 
 ```
 [adxl345]
@@ -1512,7 +1512,7 @@ cs_pin:
 
 ### [lis2dw]
 
-Support for LIS2DW accelerometers.
+Поддръжка на акселерометри LIS2DW.
 
 ```
 [lis2dw]
@@ -1533,7 +1533,7 @@ cs_pin:
 
 ### [mpu9250]
 
-Support for MPU-9250, MPU-9255, MPU-6515, MPU-6050, and MPU-6500 accelerometers (one may define any number of sections with an "mpu9250" prefix).
+Поддръжка на акселерометри MPU-9250, MPU-9255, MPU-6515, MPU-6050 и MPU-6500 (може да се дефинират произволен брой секции с префикс "mpu9250").
 
 ```
 [mpu9250 my_accelerometer]
@@ -1552,7 +1552,7 @@ Support for MPU-9250, MPU-9255, MPU-6515, MPU-6050, and MPU-6500 accelerometers 
 
 ### [resonance_tester]
 
-Support for resonance testing and automatic input shaper calibration. In order to use most of the functionality of this module, additional software dependencies must be installed; refer to [Measuring Resonances](Measuring_Resonances.md) and the [command reference](G-Codes.md#resonance_tester) for more information. See the [Max smoothing](Measuring_Resonances.md#max-smoothing) section of the measuring resonances guide for more information on `max_smoothing` parameter and its use.
+Поддръжка на резонансни тестове и автоматично калибриране на входните форми. За да се използва по-голямата част от функционалността на този модул, трябва да се инсталират допълнителни софтуерни зависимости; за повече информация вижте [Measuring Resonances](Measuring_Resonances.md) и [command reference](G-Codes.md#resonance_tester). Вижте раздела [Максимално изглаждане](Measuring_Resonances.md#max-smoothing) на ръководството за измерване на резонанси за повече информация относно параметъра `max_smoothing` и неговото използване.
 
 ```
 [resonance_tester]
@@ -1632,7 +1632,7 @@ aliases_<name>:
 
 ### [duplicate_pin_override]
 
-This tool allows a single micro-controller pin to be defined multiple times in a config file without normal error checking. This is intended for diagnostic and debugging purposes. This section is not needed where Klipper supports using the same pin multiple times, and using this override may cause confusing and unexpected results.
+Този инструмент позволява един пин на микроконтролера да бъде дефиниран многократно в конфигурационен файл без нормална проверка за грешки. Това е предназначено за диагностика и отстраняване на грешки. Този раздел не е необходим в случаите, когато Klipper поддържа многократно използване на един и същ пин, а използването на тази промяна може да доведе до объркващи и неочаквани резултати.
 
 ```
 [duplicate_pin_override]
@@ -1646,7 +1646,7 @@ This tool allows a single micro-controller pin to be defined multiple times in a
 
 ### [probe]
 
-Z height probe. One may define this section to enable Z height probing hardware. When this section is enabled, PROBE and QUERY_PROBE extended [g-code commands](G-Codes.md#probe) become available. Also, see the [probe calibrate guide](Probe_Calibrate.md). The probe section also creates a virtual "probe:z_virtual_endstop" pin. One may set the stepper_z endstop_pin to this virtual pin on cartesian style printers that use the probe in place of a z endstop. If using "probe:z_virtual_endstop" then do not define a position_endstop in the stepper_z config section.
+Сонда за височина Z. Този раздел може да се дефинира, за да се активира хардуерът за измерване на височината Z. Когато този раздел е активиран, стават достъпни разширените [g-кодови команди] PROBE и QUERY_PROBE (G-Codes.md#probe). Също така, вижте [ръководство за калибриране на сонда](Probe_Calibrate.md). Секцията на сондата също така създава виртуален щифт "probe:z_virtual_endstop". Може да се зададе Stepper_z endstop_pin към този виртуален щифт на принтерите в картезиански стил, които използват сондата вместо z endstop. Ако използвате "probe:z_virtual_endstop", не дефинирайте position_endstop в раздела за конфигурация на stepper_z.
 
 ```
 [probe]
@@ -1763,7 +1763,7 @@ control_pin:
 
 ### [smart_effector]
 
-The "Smart Effector" from Duet3d implements a Z probe using a force sensor. One may define this section instead of `[probe]` to enable the Smart Effector specific features. This also enables [runtime commands](G-Codes.md#smart_effector) to adjust the parameters of the Smart Effector at run time.
+"Smart Effector" от Duet3d реализира Z-сонда с помощта на сензор за сила. Може да се дефинира този раздел вместо `[probe]`, за да се активират специфичните функции на Smart Effector. Това също така дава възможност на [runtime commands](G-Codes.md#smart_effector) да се настройват параметрите на Smart Effector по време на работа.
 
 ```
 [smart_effector]
@@ -1813,7 +1813,7 @@ z_offset:
 
 ### [probe_eddy_current]
 
-Support for eddy current inductive probes. One may define this section (instead of a probe section) to enable this probe. See the [command reference](G-Codes.md#probe_eddy_current) for further information.
+Поддръжка на индуктивни сонди за вихрови токове. Може да се дефинира този раздел (вместо раздел за сонда), за да се активира тази сонда. За повече информация вижте [справка за командите](G-Codes.md#probe_eddy_current).
 
 ```
 [probe_eddy_current my_eddy_probe]
@@ -1848,7 +1848,7 @@ sensor_type: ldc1612
 
 ### [axis_twist_compensation]
 
-A tool to compensate for inaccurate probe readings due to twist in X gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
+Инструмент за компенсиране на неточните показания на сондата, дължащи се на усукване на портала X. За по-подробна информация относно симптомите, конфигурацията и настройката вижте [Ръководство за компенсиране на усукването на оста](Axis_Twist_Compensation.md).
 
 ```
 [axis_twist_compensation]
@@ -1877,7 +1877,7 @@ calibrate_y: 112.5
 
 ### [stepper_z1]
 
-Multi-stepper axes. On a cartesian style printer, the stepper controlling a given axis may have additional config blocks defining steppers that should be stepped in concert with the primary stepper. One may define any number of sections with a numeric suffix starting at 1 (for example, "stepper_z1", "stepper_z2", etc.).
+Оси с многостранно управление. При принтер в картезиански стил стъпковият механизъм, контролиращ дадена ос, може да има допълнителни блокове за конфигуриране, определящи стъпкови механизми, които трябва да се задействат съвместно с основния стъпков механизъм. Могат да се дефинират произволен брой секции с цифров суфикс, започващ от 1 (например "stepper_z1", "stepper_z2" и т.н.).
 
 ```
 [stepper_z1]
@@ -1898,7 +1898,7 @@ Multi-stepper axes. On a cartesian style printer, the stepper controlling a give
 
 При принтер с няколко екструдера добавете допълнителна секция за всеки допълнителен екструдер. Допълнителните екструдерни секции трябва да бъдат наречени "екструдер1", "екструдер2", "екструдер3" и т.н. За описание на наличните параметри вижте раздела "Екструдер".
 
-See [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) for an example configuration.
+Вижте [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) за примерна конфигурация.
 
 ```
 [екструдер1]
@@ -1913,9 +1913,9 @@ See [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) for an exam
 
 ### [двойна_каретка]
 
-Support for cartesian and hybrid_corexy/z printers with dual carriages on a single axis. The carriage mode can be set via the SET_DUAL_CARRIAGE extended g-code command. For example, "SET_DUAL_CARRIAGE CARRIAGE=1" command will activate the carriage defined in this section (CARRIAGE=0 will return activation to the primary carriage). Dual carriage support is typically combined with extra extruders - the SET_DUAL_CARRIAGE command is often called at the same time as the ACTIVATE_EXTRUDER command. Be sure to park the carriages during deactivation. Note that during G28 homing, typically the primary carriage is homed first followed by the carriage defined in the `[dual_carriage]` config section. However, the `[dual_carriage]` carriage will be homed first if both carriages home in a positive direction and the [dual_carriage] carriage has a `position_endstop` greater than the primary carriage, or if both carriages home in a negative direction and the `[dual_carriage]` carriage has a `position_endstop` less than the primary carriage.
+Поддръжка на картезиански и хибридни_corexy/z принтери с две колички на една ос. Режимът на каретките може да се зададе чрез разширената g-кодова команда SET_DUAL_CARRIAGE. Например командата "SET_DUAL_CARRIAGE CARRIAGE=1" ще активира каретата, определена в този раздел (CARRIAGE=0 ще върне активирането към основната карета). Поддръжката на двойна каретка обикновено се комбинира с допълнителни екструдери - командата SET_DUAL_CARRIAGE често се извиква едновременно с командата ACTIVATE_EXTRUDER. Не забравяйте да паркирате каретките по време на деактивирането. Обърнете внимание, че по време на насочването на G28 обикновено първо се насочва основната количка, последвана от количката, определена в секцията за конфигуриране `[dual_carriage]`. Въпреки това, каретата `[dual_carriage]` ще бъде насочена първа, ако и двете карета се насочат в положителна посока и каретата [dual_carriage] има `position_endstop` по-голяма от основната карета, или ако и двете карета се насочат в отрицателна посока и каретата `[dual_carriage]` има `position_endstop` по-малка от основната карета.
 
-Additionally, one could use "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" or "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" commands to activate either copying or mirroring mode of the dual carriage, in which case it will follow the motion of the carriage 0 accordingly. These commands can be used to print two parts simultaneously - either two identical parts (in COPY mode) or mirrored parts (in MIRROR mode). Note that COPY and MIRROR modes also require appropriate configuration of the extruder on the dual carriage, which can typically be achieved with "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" or a similar command.
+Освен това може да се използват командите "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" или "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR", за да се активира режим на копиране или огледален режим на двойната каретка, като в този случай тя ще следва съответно движението на каретка 0. Тези команди могат да се използват за отпечатване на две части едновременно - две идентични части (в режим COPY) или огледални части (в режим MIRROR). Обърнете внимание, че режимите COPY (копиране) и MIRROR (огледален печат) изискват и подходящо конфигуриране на екструдера на двойната каретка, което обикновено може да се постигне с "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" или подобна команда.
 
 See [sample-idex.cfg](../config/sample-idex.cfg) for an example configuration.
 
@@ -1947,9 +1947,9 @@ axis:
 
 ### [extruder_stepper]
 
-Support for additional steppers synchronized to the movement of an extruder (one may define any number of sections with an "extruder_stepper" prefix).
+Поддръжка на допълнителни степери, синхронизирани с движението на екструдера (може да се дефинират произволен брой секции с префикс "extruder_stepper").
 
-See the [command reference](G-Codes.md#extruder) for more information.
+За повече информация вижте [справка за командите](G-Codes.md#extruder).
 
 ```
 [extruder_stepper my_extra_stepper]
@@ -2033,7 +2033,7 @@ See the [command reference](G-Codes.md#extruder) for more information.
 
 ### [homing_heaters]
 
-Tool to disable heaters when homing or probing an axis.
+Инструмент за деактивиране на нагревателите при насочване или сондиране на ос.
 
 ```
 [homing_heaters]
@@ -2144,7 +2144,7 @@ Tool to disable heaters when homing or probing an axis.
 
 ### [temperature_probe]
 
-Reports probe coil temperature. Includes optional thermal drift calibration for eddy current based probes. A `[temperature_probe]` section may be linked to a `[probe_eddy_current]` by using the same postfix for both sections.
+Отчита температурата на намотката на сондата. Включва опционално калибриране на термичния дрейф за сонди, базирани на вихрови токове. Раздел `[temperature_probe]` може да бъде свързан с раздел `[probe_eddy_current]`, като се използва един и същ постфикс и за двата раздела.
 
 ```
 [temperature_probe my_probe]
@@ -2198,7 +2198,7 @@ Reports probe coil temperature. Includes optional thermal drift calibration for 
 #   the probe coil temperature.  The default is 50.
 ```
 
-## Temperature sensors
+## Температурни сензори
 
 Klipper включва дефиниции за много видове температурни сензори. Тези сензори могат да се използват във всеки раздел на конфигурацията, който изисква температурен сензор (например раздел `[extruder]` или `[heater_bed]` ).
 
@@ -2255,9 +2255,9 @@ sensor_pin:
 #   default is 4700 ohms.
 ```
 
-### MAXxxxxx temperature sensors
+### Температурни сензори MAXxxxxx
 
-MAXxxxxx serial peripheral interface (SPI) temperature based sensors. The following parameters are available in heater sections that use one of these sensor types.
+Температурни сензори със сериен периферен интерфейс (SPI) MAXxxxxx. Следните параметри са налични в секциите на нагревателите, които използват един от тези типове сензори.
 
 ```
 sensor_type:
@@ -2289,9 +2289,9 @@ sensor_pin:
 #   name in the above list.
 ```
 
-### BMP180/BMP280/BME280/BMP388/BME680 temperature sensor
+### Температурен сензор BMP180/BMP280/BME280/BMP388/BME680
 
-BMP180/BMP280/BME280/BMP388/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
+Сензори за околна среда BMP180/BMP280/BME280/BMP388/BME680 с двупроводен интерфейс (I2C). Имайте предвид, че тези сензори не са предназначени за използване с екструдери и нагреватели, а по-скоро за наблюдение на температурата на околната среда (C), налягането (hPa), относителната влажност и в случай на BME680 - нивото на газа. Вижте [sample-macros.cfg](../config/sample-macros.cfg) за gcode_macro, който може да се използва за отчитане на налягането и влажността в допълнение към температурата.
 
 ```
 sensor_type: BME280
@@ -2307,9 +2307,9 @@ sensor_type: BME280
 #   above parameters.
 ```
 
-### AHT10/AHT20/AHT21 temperature sensor
+### Температурен сензор AHT10/AHT20/AHT21
 
-AHT10/AHT20/AHT21 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C) and relative humidity. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report humidity in addition to temperature.
+Сензори за околна среда AHT10/AHT20/AHT21 с двупроводен интерфейс (I2C). Имайте предвид, че тези сензори не са предназначени за използване с екструдери и нагреватели, а по-скоро за наблюдение на температурата на околната среда (C) и относителната влажност. Вижте [sample-macros.cfg](../config/sample-macros.cfg) за gcode_macro, който може да се използва за отчитане на влажността в допълнение към температурата.
 
 ```
 sensor_type: AHT10
@@ -2358,9 +2358,9 @@ sensor_type:
 #   Interval in seconds between readings. Default is 30
 ```
 
-### SHT3X sensor
+### Сензор SHT3X
 
-SHT3X family two wire interface (I2C) environmental sensor. These sensors have a range of -55~125 C, so are usable for e.g. chamber temperature monitoring. They can also function as simple fan/heater controllers.
+Сензор за околна среда от семейство SHT3X с двупроводен интерфейс (I2C). Диапазонът на тези сензори е -55~125 C, така че могат да се използват например за наблюдение на температурата в камерата. Те могат да функционират и като прости контролери на вентилатори/нагреватели.
 
 ```
 sensor_type: SHT3X
@@ -2399,7 +2399,7 @@ sensor_type: LM75
 
 ### Вграден сензор за температура в микроконтролера
 
-The atsam, atsamd, and stm32 micro-controllers contain an internal temperature sensor. One can use the "temperature_mcu" sensor to monitor these temperatures.
+Микроконтролерите atsam, atsamd и stm32 съдържат вътрешен температурен сензор. За наблюдение на тези температури може да се използва сензорът "temperature_mcu".
 
 ```
 sensor_type: temperature_mcu
@@ -2431,7 +2431,7 @@ sensor_type: temperature_mcu
 
 ### Сензор за температура на хоста
 
-Temperature from the machine (eg Raspberry Pi) running the host software.
+Температура от машината (напр. Raspberry Pi), на която е инсталиран хост софтуерът.
 
 ```
 sensor_type: temperature_host
@@ -2458,9 +2458,9 @@ serial_no:
 #   The micro-controller to read from. Must be the host_mcu
 ```
 
-### Combined temperature sensor
+### Комбиниран температурен сензор
 
-Combined temperature sensor is a virtual temperature sensor based on several other sensors. This sensor can be used with extruders, heater_generic and heater beds.
+Комбинираният температурен сензор е виртуален температурен сензор, базиран на няколко други сензора. Този сензор може да се използва с екструдери, нагревател_generic и нагревателни легла.
 
 ```
 sensor_type: temperature_combined
@@ -2480,7 +2480,7 @@ sensor_type: temperature_combined
 
 ### [вентилатор]
 
-Print cooling fan.
+Вентилатор за охлаждане на печата.
 
 ```
 [fan]
@@ -2622,9 +2622,9 @@ pin:
 
 ### [temperature_fan]
 
-Temperature-triggered cooling fans (one may define any number of sections with a "temperature_fan" prefix). A "temperature fan" is a fan that will be enabled whenever its associated sensor is above a set temperature. By default, a temperature_fan has a shutdown_speed equal to max_power.
+Вентилатори за охлаждане, задействани от температурата (могат да се дефинират произволен брой секции с префикс "temperature_fan"). "Температурен вентилатор" е вентилатор, който се активира, когато свързаният с него сензор е над определена температура. По подразбиране температурният вентилатор има скорост на изключване, равна на max_power.
 
-See the [command reference](G-Codes.md#temperature_fan) for additional information.
+За допълнителна информация вижте [справка за командата](G-Codes.md#temperature_fan).
 
 ```
 [temperature_fan my_temp_fan]
@@ -2702,7 +2702,7 @@ See the [command reference](G-Codes.md#temperature_fan) for additional informati
 
 ### [led]
 
-Support for LEDs (and LED strips) controlled via micro-controller PWM pins (one may define any number of sections with an "led" prefix). See the [command reference](G-Codes.md#led) for more information.
+Поддръжка на светодиоди (и светодиодни ленти), управлявани чрез ШИМ изводите на микроконтролера (може да се дефинират произволен брой секции с префикс "led"). За повече информация вижте [справка за командите](G-Codes.md#led).
 
 ```
 [led my_led]
@@ -2731,9 +2731,9 @@ Support for LEDs (and LED strips) controlled via micro-controller PWM pins (one 
 
 ### [neopixel]
 
-Neopixel (aka WS2812) LED support (one may define any number of sections with a "neopixel" prefix). See the [command reference](G-Codes.md#led) for more information.
+Поддръжка на светодиоди Neopixel (известни още като WS2812) (може да се дефинират произволен брой секции с префикс "neopixel"). За повече информация вижте [справка за командите](G-Codes.md#led).
 
-Note that the [linux mcu](RPi_microcontroller.md) implementation does not currently support directly connected neopixels. The current design using the Linux kernel interface does not allow this scenario because the kernel GPIO interface is not fast enough to provide the required pulse rates.
+Имайте предвид, че реализацията на [linux mcu](RPi_microcontroller.md) понастоящем не поддържа директно свързани неопиксели. Настоящият проект, използващ интерфейса на ядрото на Linux, не позволява този сценарий, тъй като интерфейсът GPIO на ядрото не е достатъчно бърз, за да осигури необходимата честота на импулсите.
 
 ```
 [neopixel my_neopixel]
@@ -2778,7 +2778,7 @@ clock_pin:
 
 ### [pca9533]
 
-PCA9533 LED support. The PCA9533 is used on the mightyboard.
+Поддръжка на светодиод PCA9533. PCA9533 се използва на платката mightyboard.
 
 ```
 [pca9533 my_pca9533]
@@ -2801,7 +2801,7 @@ PCA9533 LED support. The PCA9533 is used on the mightyboard.
 
 ### [pca9632]
 
-PCA9632 LED support. The PCA9632 is used on the FlashForge Dreamer.
+Поддръжка на светодиода PCA9632. PCA9632 се използва във FlashForge Dreamer.
 
 ```
 [pca9632 my_pca9632]
@@ -2834,7 +2834,7 @@ PCA9632 LED support. The PCA9632 is used on the FlashForge Dreamer.
 
 ### [servo]
 
-Servos (one may define any number of sections with a "servo" prefix). The servos may be controlled using the SET_SERVO [g-code command](G-Codes.md#servo). For example: SET_SERVO SERVO=my_servo ANGLE=180
+Сервозадвижвания (може да се дефинират произволен брой секции с префикс "servo"). Сервоприводите могат да се управляват с помощта на командата SET_SERVO [g-code](G-Codes.md#servo). Например: SET_SERVO SERVO=my_servo ANGLE=180
 
 ```
 [servo my_servo]
@@ -2888,7 +2888,7 @@ pin:
 
 ### [output_pin]
 
-Run-time configurable output pins (one may define any number of sections with an "output_pin" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1" type extended [g-code commands](G-Codes.md#output_pin).
+Конфигурируеми по време на работа изходни щифтове (могат да се дефинират произволен брой секции с префикс "output_pin"). Конфигурираните тук щифтове ще бъдат настроени като изходни щифтове и могат да се променят по време на работа с помощта на разширените [g-code commands](G-Codes.md#output_pin) от типа "SET_PIN PIN=my_pin VALUE=.1".
 
 ```
 [output_pin my_pin]
@@ -2932,7 +2932,7 @@ pin:
 
 ### [pwm_tool]
 
-Pulse width modulation digital output pins capable of high speed updates (one may define any number of sections with an "output_pin" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1" type extended [g-code commands](G-Codes.md#output_pin).
+Цифрови изходни щифтове с широчинно-импулсна модулация, които могат да се актуализират с висока скорост (може да се дефинират произволен брой секции с префикс "output_pin"). Конфигурираните тук щифтове ще бъдат настроени като изходни щифтове и могат да се променят по време на работа с помощта на разширени [g-code commands] (G-Codes.md#output_pin) от типа "SET_PIN PIN=my_pin VALUE=.1".
 
 ```
 [pwm_tool my_tool]
@@ -2955,7 +2955,7 @@ pin:
 
 ### [pwm_cycle_time]
 
-Run-time configurable output pins with dynamic pwm cycle timing (one may define any number of sections with an "pwm_cycle_time" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1 CYCLE_TIME=0.100" type extended [g-code commands](G-Codes.md#pwm_cycle_time).
+Конфигурируеми по време на работа изходни щифтове с динамично синхронизиране на циклите pwm (може да се дефинират произволен брой секции с префикс "pwm_cycle_time"). Конфигурираните тук щифтове ще бъдат настроени като изходни щифтове и могат да се променят по време на работа с помощта на разширени [g-code commands] (G-Codes.md#pwm_cycle_time) от типа "SET_PIN PIN=my_pin VALUE=.1 CYCLE_TIME=0.100".
 
 ```
 [pwm_cycle_time my_pin]
@@ -2969,7 +2969,7 @@ pin:
 
 ### [static_digital_output]
 
-Statically configured digital output pins (one may define any number of sections with a "static_digital_output" prefix). Pins configured here will be setup as a GPIO output during MCU configuration. They can not be changed at run-time.
+Статично конфигурирани цифрови изходни щифтове (може да се дефинират произволен брой секции с префикс "static_digital_output"). Конфигурираните тук пинове ще бъдат настроени като GPIO изход по време на конфигурирането на MCU. Те не могат да бъдат променяни по време на работа.
 
 ```
 [static_digital_output my_output_pins]
@@ -2981,7 +2981,7 @@ pins:
 
 ### [multi_pin]
 
-Multiple pin outputs (one may define any number of sections with a "multi_pin" prefix). A multi_pin output creates an internal pin alias that can modify multiple output pins each time the alias pin is set. For example, one could define a "[multi_pin my_fan]" object containing two pins and then set "pin=multi_pin:my_fan" in the "[fan]" section - on each fan change both output pins would be updated. These aliases may not be used with stepper motor pins.
+Изходи с множество изводи (може да се дефинират произволен брой секции с префикс "multi_pin"). Изходът с няколко извода създава вътрешен псевдоним на извод, който може да променя няколко извода всеки път, когато псевдонимът на извода е зададен. Например може да се дефинира обект "[multi_pin my_fan]", съдържащ два извода, и след това да се зададе "pin=multi_pin:my_fan" в секцията "[fan]" - при всяка промяна на вентилатора ще се актуализират и двата изходни извода. Тези псевдоними не могат да се използват с изводи на стъпкови двигатели.
 
 ```
 [multi_pin my_multi_pin]
@@ -2990,7 +2990,7 @@ pins:
 #   parameter must be provided.
 ```
 
-## TMC stepper driver configuration
+## Конфигурация на стъпковия драйвер TMC
 
 Конфигуриране на драйвери за стъпкови двигатели Trinamic в режим UART/SPI. Допълнителна информация се съдържа в [Ръководство за драйвери на TMC](TMC_Drivers.md) и в [Справка за командите](G-Codes.md#tmcxxxx).
 
@@ -3299,7 +3299,7 @@ run_current:
 
 ### [tmc2240]
 
-Configure a TMC2240 stepper motor driver via SPI bus or UART. To use this feature, define a config section with a "tmc2240" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2240 stepper_x]").
+Конфигуриране на драйвер на стъпков двигател TMC2240 чрез SPI шина или UART. За да използвате тази функция, дефинирайте секция за конфигуриране с префикс "tmc2240", последван от името на съответната секция за конфигуриране на стъпков двигател (например "[tmc2240 stepper_x]").
 
 ```
 [tmc2240 stepper_x]
@@ -3557,11 +3557,11 @@ run_current:
 #   sensorless homing.
 ```
 
-## Run-time stepper motor current configuration
+## Конфигурация на тока на стъпковия двигател по време на работа
 
 ### [ad5206]
 
-Statically configured AD5206 digipots connected via SPI bus (one may define any number of sections with an "ad5206" prefix).
+Статично конфигурирани цифрови модули AD5206, свързани чрез SPI шина (може да се дефинират произволен брой секции с префикс "ad5206").
 
 ```
 [ad5206 my_digipot]
@@ -3600,7 +3600,7 @@ enable_pin:
 
 ### [mcp4451]
 
-Statically configured MCP4451 digipot connected via I2C bus (one may define any number of sections with an "mcp4451" prefix).
+Статично конфигуриран дигипот MCP4451, свързан чрез шина I2C (може да се дефинират произволен брой секции с префикс "mcp4451").
 
 ```
 [mcp4451 my_digipot]
@@ -3636,7 +3636,7 @@ i2c_address:
 
 ### [mcp4728]
 
-Statically configured MCP4728 digital-to-analog converter connected via I2C bus (one may define any number of sections with an "mcp4728" prefix).
+Статично конфигуриран цифрово-аналогов преобразувател MCP4728, свързан чрез шина I2C (може да се дефинират произволен брой секции с префикс "mcp4728").
 
 ```
 [mcp4728 my_dac]
@@ -3673,7 +3673,7 @@ Statically configured MCP4728 digital-to-analog converter connected via I2C bus 
 
 ### [mcp4018]
 
-Statically configured MCP4018 digipot connected via two gpio "bit banging" pins (one may define any number of sections with an "mcp4018" prefix).
+Статично конфигуриран MCP4018 digipot, свързан чрез два gpio "bit banging" пина (може да се дефинират произволен брой секции с префикс "mcp4018").
 
 ```
 [mcp4018 my_digipot]
@@ -3702,7 +3702,7 @@ wiper:
 
 ### [дисплей]
 
-Support for a display attached to the micro-controller.
+Поддръжка на дисплей, свързан към микроконтролера.
 
 ```
 [дисплей]
@@ -3839,7 +3839,7 @@ spi_software_miso_pin:
 ...
 ```
 
-#### st7920 display
+#### дисплей на st7920
 
 Информация за конфигуриране на дисплеи st7920 (които се използват в дисплеи тип "RepRapDiscount 12864 Full Graphic Smart Controller").
 
@@ -3877,7 +3877,7 @@ spi_software_miso_pin:
 ...
 ```
 
-#### uc1701 display
+#### дисплей uc1701
 
 Информация за конфигуриране на дисплеи uc1701 (които се използват в дисплеи тип "MKS Mini 12864").
 
@@ -3899,7 +3899,7 @@ a0_pin:
 ...
 ```
 
-#### ssd1306 and sh1106 displays
+#### Дисплеи ssd1306 и sh1106
 
 Информация за конфигуриране на дисплеите ssd1306 и sh1106.
 
@@ -3948,7 +3948,7 @@ lcd_type:
 
 ### [display_data]
 
-Support for displaying custom data on an lcd screen. One may create any number of display groups and any number of data items under those groups. The display will show all the data items for a given group if the display_group option in the [display] section is set to the given group name.
+Поддръжка за показване на потребителски данни на LCD екран. Може да се създадат произволен брой групи за показване и произволен брой елементи за данни в тези групи. Дисплеят ще покаже всички елементи на данни за дадена група, ако опцията display_group в раздела [display] е зададена на името на дадената група.
 
 Автоматично се създава [набор от групи по подразбиране](../klippy/extras/display/display.cfg). Може да се заменят или разширят тези елементи display_data, като се заменят настройките по подразбиране в основния конфигурационен файл printer.cfg.
 
@@ -3968,9 +3968,9 @@ text:
 
 "Макроси" за текст на данни за показване (могат да се дефинират произволен брой раздели с префикс display_template). За информация относно оценката на шаблоните вижте документа [command templates](Command_Templates.md).
 
-This feature allows one to reduce repetitive definitions in display_data sections. One may use the builtin `render()` function in display_data sections to evaluate a template. For example, if one were to define `[display_template my_template]` then one could use `{ render('my_template') }` in a display_data section.
+Тази функция позволява да се намалят повтарящите се дефиниции в секциите display_data. Може да се използва вградената функция `render()` в секциите display_data, за да се оцени шаблон. Например, ако се дефинира `[display_template my_template]`, тогава може да се използва `{ render('my_template') }` в секция display_data.
 
-This feature can also be used for continuous LED updates using the [SET_LED_TEMPLATE](G-Codes.md#set_led_template) command.
+Тази функция може да се използва и за непрекъснати актуализации на светодиодите, като се използва командата [SET_LED_TEMPLATE](G-Codes.md#set_led_template).
 
 ```
 [display_template my_template_name]
@@ -4030,7 +4030,7 @@ See [sample-glyphs.cfg](../config/sample-glyphs.cfg) for some examples.
 
 Автоматично се създава [набор от менюта по подразбиране](../klippy/extras/display/menu.cfg). Човек може да замени или разшири менюто, като отмени настройките по подразбиране в основния конфигурационен файл printer.cfg.
 
-See the [command template document](Command_Templates.md#menu-templates) for information on menu attributes available during template rendering.
+За информация относно атрибутите на менюто, налични по време на изобразяването на шаблона, вижте документа [шаблони на команди](Command_Templates.md#menu-templates).
 
 ```
 # Общи параметри, достъпни за всички секции на конфигурацията на менюто.
@@ -4106,7 +4106,7 @@ See the [command template document](Command_Templates.md#menu-templates) for inf
 
 Сензор за превключване на нишките. Поддръжка за откриване на вмъкване на нишка и напускане на нишката с помощта на сензор за превключване, като например превключвател за край.
 
-See the [command reference](G-Codes.md#filament_switch_sensor) for more information.
+За повече информация вижте [препратка към командата](G-Codes.md#filament_switch_sensor).
 
 ```
 [filament_switch_sensor my_sensor]
@@ -4143,7 +4143,7 @@ See the [command reference](G-Codes.md#filament_switch_sensor) for more informat
 
 Сензор за движение с нишки. Поддръжка за откриване на вмъкване и изтичане на нишка с помощта на енкодер, който превключва изходния щифт по време на движението на нишката през сензора.
 
-See the [command reference](G-Codes.md#filament_switch_sensor) for more information.
+За повече информация вижте [препратка към командата](G-Codes.md#filament_switch_sensor).
 
 ```
 [filament_motion_sensor my_sensor]
@@ -4166,7 +4166,7 @@ switch_pin:
 
 ### [tsl1401cl_filament_width_sensor]
 
-TSLl401CL Based Filament Width Sensor. See the [guide](TSL1401CL_Filament_Width_Sensor.md) for more information.
+Сензор за ширината на нишката на базата на TSLl401CL. За повече информация вижте [ръководството](TSL1401CL_Filament_Width_Sensor.md).
 
 ```
 [tsl1401cl_filament_width_sensor]
@@ -4237,7 +4237,7 @@ adc2:
 
 ### [load_cell]
 
-Load Cell. Uses an ADC sensor attached to a load cell to create a digital scale.
+Клетка за натоварване. Използва ADC сензор, прикрепен към клетка за натоварване, за да създаде цифрова скала.
 
 ```
 [load_cell]
@@ -4247,7 +4247,7 @@ sensor_type:
 
 #### XH711
 
-This is a 24 bit low sample rate chip using "bit-bang" communications. It is suitable for filament scales.
+Това е 24-битов чип с ниска честота на дискретизация, който използва "bit-bang" комуникации. Той е подходящ за везни с нишки.
 
 ```
 [load_cell]
@@ -4270,7 +4270,7 @@ dout_pin:
 
 #### HX717
 
-This is the 4x higher sample rate version of the HX711, suitable for probing.
+Това е версията на HX711 с 4 пъти по-висока честота на дискретизация, подходяща за сондиране.
 
 ```
 [load_cell]
@@ -4293,7 +4293,7 @@ dout_pin:
 
 #### ADS1220
 
-The ADS1220 is a 24 bit ADC supporting up to a 2Khz sample rate configurable in software.
+ADS1220 е 24-битов АЦП, поддържащ честота на дискретизация до 2Khz, която може да се конфигурира софтуерно.
 
 ```
 [load_cell]
@@ -4332,7 +4332,7 @@ data_ready_pin:
 
 Конфигуриране на разширител SX1509 I2C към GPIO. Поради закъснението, което се получава при I2C комуникацията, НЕ трябва да използвате изводите на SX1509 като изводи за разрешаване на стъпковия механизъм, стъпка или дир или други изводи, които изискват бърза обработка на битове. Най-добре е те да се използват като статични или управлявани от gcode цифрови изходи или като хардуерни-pwm изводи, например за вентилатори. Може да се дефинират произволен брой секции с префикс "sx1509". Всеки разширител предоставя набор от 16 извода (sx1509_my_sx1509:PIN_0 до sx1509_my_sx1509:PIN_15), които могат да се използват в конфигурацията на принтера.
 
-See the [generic-duet2-duex.cfg](../config/generic-duet2-duex.cfg) file for an example.
+За пример вижте файла [generic-duet2-duex.cfg](../config/generic-duet2-duex.cfg).
 
 ```
 [sx1509 my_sx1509]
@@ -4351,7 +4351,7 @@ i2c_address:
 
 ### [samd_sercom]
 
-SAMD SERCOM configuration to specify which pins to use on a given SERCOM. One may define any number of sections with a "samd_sercom" prefix. Each SERCOM must be configured prior to using it as SPI or I2C peripheral. Place this config section above any other section that makes use of SPI or I2C buses.
+Конфигурация на SAMD SERCOM за определяне на изводите, които да се използват в даден SERCOM. Може да се дефинират произволен брой секции с префикс "samd_sercom". Всеки SERCOM трябва да се конфигурира, преди да се използва като SPI или I2C периферно устройство. Поставете този раздел за конфигуриране над всеки друг раздел, в който се използват шини SPI или I2C.
 
 ```
 [samd_sercom my_sercom]
@@ -4378,7 +4378,7 @@ clk_pin:
 
 Аналогово мащабиране на Duet2 Maestro по показания на vref и vssa. Дефинирането на секция adc_scaled позволява използването на виртуални adc изводи (като например "my_name:PB0"), които се настройват автоматично от контролните изводи vref и vssa на платката. Не забравяйте да дефинирате тази секция за конфигуриране над всички секции за конфигуриране, които използват тези виртуални щифтове.
 
-See the [generic-duet2-maestro.cfg](../config/generic-duet2-maestro.cfg) file for an example.
+За пример вижте файла [generic-duet2-maestro.cfg](../config/generic-duet2-maestro.cfg).
 
 ```
 [adc_scaled my_name]
@@ -4396,7 +4396,7 @@ vssa_pin:
 
 ### [replicape]
 
-Replicape support - see the [beaglebone guide](Beaglebone.md) and the [generic-replicape.cfg](../config/generic-replicape.cfg) file for an example.
+Поддръжка на Replicape - за пример вижте [beaglebone guide](Beaglebone.md) и файла [generic-replicape.cfg](../config/generic-replicape.cfg).
 
 ```
 # The "replicape" config section adds "replicape:stepper_x_enable"
@@ -4458,13 +4458,13 @@ host_mcu:
 #   (True sets CFG5 high, False sets it low). The default is True.
 ```
 
-## Other Custom Modules
+## Други персонализирани модули
 
 ### [palette2]
 
-Palette 2 multimaterial support - provides a tighter integration supporting Palette 2 devices in connected mode.
+Поддръжка на мултиматериали от Palette 2 - осигурява по-тясна интеграция, като поддържа устройства от Palette 2 в свързан режим.
 
-This modules also requires `[virtual_sdcard]` and `[pause_resume]` for full functionality.
+Този модул изисква също така `[virtual_sdcard]` и `[pause_resume]` за пълна функционалност.
 
 Ако използвате този модул, не използвайте приставката Palette 2 за Octoprint, тъй като те ще си противоречат и 1 няма да успее да се инициализира правилно, което вероятно ще доведе до прекъсване на печата.
 
@@ -4520,7 +4520,7 @@ cs_pin:
 
 ### Общи настройки на SPI
 
-The following parameters are generally available for devices using an SPI bus.
+Следните параметри са общодостъпни за устройства, използващи шина SPI.
 
 ```
 #spi_speed:
@@ -4541,11 +4541,11 @@ The following parameters are generally available for devices using an SPI bus.
 
 ### Общи настройки на I2C
 
-The following parameters are generally available for devices using an I2C bus.
+Следните параметри са общодостъпни за устройства, използващи шина I2C.
 
-Note that Klipper's current micro-controller support for I2C is generally not tolerant to line noise. Unexpected errors on the I2C wires may result in Klipper raising a run-time error. Klipper's support for error recovery varies between each micro-controller type. It is generally recommended to only use I2C devices that are on the same printed circuit board as the micro-controller.
+Обърнете внимание, че текущата поддръжка на I2C от страна на микроконтролера Klipper обикновено не е толерантна към линейни шумове. Неочаквани грешки по I2C проводниците могат да доведат до това Klipper да обяви грешка по време на изпълнение. Поддръжката на Klipper за възстановяване на грешки е различна за всеки тип микроконтролер. Обикновено се препоръчва да се използват само I2C устройства, които са на същата печатна платка като микроконтролера.
 
-Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
+Повечето имплементации на микроконтролери Klipper поддържат само `i2c_speed` от 100000 (*стандартен режим*, 100kbit/s). Микроконтролерът Klipper "Linux" поддържа скорост 400000 (*бърз режим*, 400kbit/s), но тя трябва да бъде [зададена в операционната система](RPi_microcontroller.md#optional-enabling-i2c) и в противен случай параметърът `i2c_speed` се игнорира. Микроконтролерът Klipper "RP2040" и фамилията ATmega AVR поддържат скорост от 400000 чрез параметъра `i2c_speed`. Всички останали микроконтролери Klipper използват скорост 100000 и игнорират параметъра `i2c_speed`.
 
 ```
 #i2c_address:

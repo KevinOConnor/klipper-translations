@@ -1,6 +1,6 @@
 # G-коды
 
-В этом документе описаны команды, поддерживаемые Klipper. Это команды, которые можно ввести на вкладке терминала OctoPrint.
+JВ этом документе описаны команды, поддерживаемые Klipper. Это команды, которые можно ввести на вкладке терминала OctoPrint.
 
 ## Команды G-кода
 
@@ -51,7 +51,7 @@ The following commands are available when an [adxl345 config section](Config_Ref
 
 `ACCELEROMETER_MEASURE [CHIP=<config_name>] [NAME=<value>]`: Starts accelerometer measurements at the requested number of samples per second. If CHIP is not specified it defaults to "adxl345". The command works in a start-stop mode: when executed for the first time, it starts the measurements, next execution stops them. The results of measurements are written to a file named `/tmp/adxl345-<chip>-<name>.csv` where `<chip>` is the name of the accelerometer chip (`my_chip_name` from `[adxl345 my_chip_name]`) and `<name>` is the optional NAME parameter. If NAME is not specified it defaults to the current time in "YYYYMMDD_HHMMSS" format. If the accelerometer does not have a name in its config section (simply `[adxl345]`) then `<chip>` part of the name is not generated.
 
-#### ACCELEROMETER_QUERY
+#### ОПРОС_АКСЕЛЕРОМЕТРА
 
 `ACCELEROMETER_QUERY [CHIP=<config_name>] [RATE=<value>]`: queries accelerometer for the current value. If CHIP is not specified it defaults to "adxl345". If RATE is not specified, the default value is used. This command is useful to test the connection to the ADXL345 accelerometer: one of the returned values should be a free-fall acceleration (+/- some noise of the chip).
 
@@ -88,7 +88,7 @@ section](Config_Reference.md#axis_twist_compensation) is enabled.
 
 `AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Initiates the X twist calibration wizard. `SAMPLE_COUNT` specifies the number of points along the X axis to calibrate at and defaults to 3.
 
-### [кровать_сетка]
+### [сетка_стола]
 
 The following commands are available when the [bed_mesh config section](Config_Reference.md#bed_mesh) is enabled (also see the [bed mesh guide](Bed_Mesh.md)).
 
@@ -283,7 +283,7 @@ The following command is available when a [fan_generic config section](Config_Re
 
 The following command is available when a [filament_switch_sensor](Config_Reference.md#filament_switch_sensor) or [filament_motion_sensor](Config_Reference.md#filament_motion_sensor) config section is enabled.
 
-#### QUERY_FILAMENT_SENSOR
+#### Опрос сенсора (наличия) филамента
 
 `QUERY_FILAMENT_SENSOR SENSOR=<sensor_name>`: Queries the current status of the filament sensor. The data displayed on the terminal will depend on the sensor type defined in the configuration.
 
@@ -383,7 +383,7 @@ The gcode_move module is automatically loaded.
 
 The following commands are available when the [tsl1401cl filament width sensor config section](Config_Reference.md#tsl1401cl_filament_width_sensor) or [hall filament width sensor config section](Config_Reference.md#hall_filament_width_sensor) is enabled (also see [TSLl401CL Filament Width Sensor](TSL1401CL_Filament_Width_Sensor.md) and [Hall Filament Width Sensor](Hall_Filament_Width_Sensor.md)):
 
-#### QUERY_FILAMENT_WIDTH
+#### Запрос ширины филамента
 
 `QUERY_FILAMENT_WIDTH`: Return the current measured filament width.
 
@@ -569,19 +569,19 @@ The print_stats module is automatically loaded.
 
 The following commands are available when a [probe config section](Config_Reference.md#probe) or [bltouch config section](Config_Reference.md#bltouch) is enabled (also see the [probe calibrate guide](Probe_Calibrate.md)).
 
-#### PROBE
+#### Проба
 
 `PROBE [PROBE_SPEED=<mm/s>] [LIFT_SPEED=<mm/s>] [SAMPLES=<count>] [SAMPLE_RETRACT_DIST=<mm>] [SAMPLES_TOLERANCE=<mm>] [SAMPLES_TOLERANCE_RETRIES=<count>] [SAMPLES_RESULT=median|average]`: Move the nozzle downwards until the probe triggers. If any of the optional parameters are provided they override their equivalent setting in the [probe config section](Config_Reference.md#probe).
 
 #### QUERY_PROBE
 
-`QUERY_PROBE`: Report the current status of the probe ("triggered" or "open").
+'Запрос_Пробы': Отчёт о текущем статусе пробы (задействована или открыта)
 
-#### PROBE_ACCURACY
+#### Точность пробы
 
 `PROBE_ACCURACY [PROBE_SPEED=<mm/s>] [SAMPLES=<count>] [SAMPLE_RETRACT_DIST=<mm>]`: Calculate the maximum, minimum, average, median, and standard deviation of multiple probe samples. By default, 10 SAMPLES are taken. Otherwise the optional parameters default to their equivalent setting in the probe config section.
 
-#### PROBE_CALIBRATE
+#### Калибровка пробы
 
 `PROBE_CALIBRATE [SPEED=<speed>] [<probe_parameter>=<value>]`: Run a helper script useful for calibrating the probe's z_offset. See the PROBE command for details on the optional probe parameters. See the MANUAL_PROBE command for details on the SPEED parameter and the additional commands available while the tool is active. Please note, the PROBE_CALIBRATE command uses the speed variable to move in XY direction as well as Z.
 
@@ -601,7 +601,7 @@ The following commands are available when a [probe_eddy_current config section](
 
 `LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` This tool will calibrate the ldc1612 DRIVE_CURRENT0 register. Prior to using this tool, move the sensor so that it is near the center of the bed and about 20mm above the bed surface. Run this command to determine an appropriate DRIVE_CURRENT for the sensor. After running this command use the SAVE_CONFIG command to store that new setting in the printer.cfg config file.
 
-### [pwm_cycle_time]
+### Цикл PWM
 
 The following command is available when a [pwm_cycle_time config section](Config_Reference.md#pwm_cycle_time) is enabled.
 
@@ -617,13 +617,13 @@ The query_adc module is automatically loaded.
 
 `QUERY_ADC [NAME=<config_name>] [PULLUP=<value>]`: Report the last analog value received for a configured analog pin. If NAME is not provided, the list of available adc names are reported. If PULLUP is provided (as a value in Ohms), the raw analog value along with the equivalent resistance given that pullup is reported.
 
-### [query_endstops]
+### Запрос концевиков
 
 The query_endstops module is automatically loaded. The following standard G-Code commands are currently available, but using them is not recommended:
 
 - Get Endstop Status: `M119` (Use QUERY_ENDSTOPS instead.)
 
-#### QUERY_ENDSTOPS
+#### Запрос концевиков
 
 `QUERY_ENDSTOPS`: Probe the axis endstops and report if they are "triggered" or in an "open" state. This command is typically used to verify that an endstop is working correctly.
 
@@ -842,9 +842,9 @@ The following commands are available when a [temperature_probe config section](C
 
 `TEMPERATURE_PROBE_COMPLETE`: Can be used to end calibration and save the current result before the `TARGET` temperature is reached. This command is only available during calibration.
 
-#### ABORT
+#### ПРЕРВАТЬ
 
-`ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
+'ПРЕРВАТЬ': Прерывание калибровочного процесса, откат текущих результатов. Эта команда доступна только во время калибровки дрейфа
 
 ### TEMPERATURE_PROBE_ENABLE
 

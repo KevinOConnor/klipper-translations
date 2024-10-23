@@ -1,6 +1,6 @@
 # Configuration reference
 
-This document is a reference for options available in the Klipper config file.
+Этот документ является справочником по опциям, доступным в файле конфигурации Klipper.
 
 Описания в этом документе отформатированы таким образом, чтобы их можно было вырезать и вставить в конфигурационный файл принтера. См. [installation document](Installation.md) для получения информации о настройке Klipper и выборе начального конфигурационного файла.
 
@@ -2969,7 +2969,7 @@ pin:
 #   See the "output_pin" section for the definition of these parameters.
 ```
 
-### [pwm_cycle_time]
+### Цикл PWM
 
 Run-time configurable output pins with dynamic pwm cycle timing (one may define any number of sections with an "pwm_cycle_time" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1 CYCLE_TIME=0.100" type extended [g-code commands](G-Codes.md#pwm_cycle_time).
 

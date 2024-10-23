@@ -1,6 +1,6 @@
-# Bootloader Entry
+# Запись в загрузчик
 
-Klipper can be instructed to reboot into a [Bootloader](Bootloaders.md) in one of the following ways:
+Klipper можно дать команду перезагрузиться в [Bootloader](Bootloaders.md) одним из следующих способов:
 
 ## Requesting the bootloader
 

@@ -27,9 +27,9 @@ Muchas de las preguntas que recibimos ya están respondiddas en la [documentaci�
 
 Es posible buscar preguntas similares en el [Foro Comunitario de Klipper](#community-forum).
 
-If you are interested in sharing your knowledge and experience with other Klipper users then you can join the [Klipper Community Forum](#community-forum) or [Klipper Discord Chat](#discord-chat). Both are communities where Klipper users can discuss Klipper with other users.
+Si está interesado en compartir su conocimiento y experiencia con otros usuarios de Klippler entonces puede unirse al [Foro de la Comunidad Klipper](#community-forum) o a la [Charla de Discusión Klipper](#discord-chat). Ambas son comunidades donde los usuarios de Klipper pueden hablar Klipper con otros usuarios.
 
-Many questions we receive are general 3d-printing questions that are not specific to Klipper. If you have a general question or are experiencing general printing problems, then you will likely get a better response by asking in a general 3d-printing forum or a forum dedicated to your printer hardware.
+Recibimos muchas cuestiones que son preguntas de impresión en 3D que no son específicas de Klipper. Si tiene una pregunta general o es experiencia geneal de problemas de impresión, entonces será como obtener una respuesta mejor preguntando en un for de impresión 3d general o un foro dedicado a su hardware de impresora.
 
 ## Tengo una sugerencia para una nueva funcionalidad
 
@@ -48,7 +48,7 @@ If you are experiencing a printing problem, then we recommend carefully inspecti
 
 También es posible buscar problemas similares en el [Foro de la Comunidad de Klipper](#community-forum).
 
-If you are interested in sharing your knowledge and experience with other Klipper users then you can join the [Klipper Community Forum](#community-forum) or [Klipper Discord Chat](#discord-chat). Both are communities where Klipper users can discuss Klipper with other users.
+Si está interesado en compartir su conocimiento y experiencia con otros usuarios de Klippler entonces puede unirse al [Foro de la Comunidad Klipper](#community-forum) o a la [Charla de Discusión Klipper](#discord-chat). Ambas son comunidades donde los usuarios de Klipper pueden hablar Klipper con otros usuarios.
 
 ## I found a bug in the Klipper software
 

@@ -6,13 +6,14 @@
 # Synertry <jonny.somrak@gmail.com>, 2023.
 # Kev <leadustin@gmail.com>, 2024.
 # Christian Patzl <christian.patzl@gmx.net>, 2024.
+# Niklas Tecklenborg <niklas.tecklenborg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: 2021-07-07 01:32+0200\n"
-"PO-Revision-Date: 2024-10-07 18:15+0000\n"
-"Last-Translator: Christian Patzl <christian.patzl@gmx.net>\n"
+"PO-Revision-Date: 2024-10-26 12:15+0000\n"
+"Last-Translator: Niklas Tecklenborg <niklas.tecklenborg@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/klipper/overview/"
 "de/>\n"
 "Language: de\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -346,7 +347,7 @@ msgstr ""
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Eddy Current Inductive probe](Eddy_Probe.md)"
-msgstr ""
+msgstr "[Induktive Wirbelstromsonde](Eddy_Probe.md)"
 
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "

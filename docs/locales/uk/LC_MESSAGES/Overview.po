@@ -4,11 +4,12 @@
 # Сергій <sergiy.goncharuk.1@gmail.com>, 2023.
 # Dan <jonweblin2205@protonmail.com>, 2024.
 # Максим Горпиніч <mgorpinic2005@gmail.com>, 2024.
+# Мойсеєнко Вадим <masterpemoiseenko1@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-10-31 21:00+0000\n"
-"Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
+"Last-Translator: Мойсеєнко Вадим <masterpemoiseenko1@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
 "overview/uk/>\n"
 "Language: uk\n"
@@ -302,8 +303,8 @@ msgid ""
 "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objects "
 "implementation."
 msgstr ""
-"[Виключити об'єкт](Exclude_Object.md): Керівництво з реалізації об'єктів "
-"Exclude."
+"[Виключити об’єкт](Exclude_Object.md): Посібник із реалізації виключення "
+"об’єктів."
 
 #: docs/Overview.md:block 6 (unordered list)
 msgid ""

@@ -102,7 +102,8 @@ msgstr ""
 "подібних)."
 
 msgid "[Bed Mesh](Bed_Mesh.md): Bed height correction based on XY locations."
-msgstr "[Bed Mesh](Bed_Mesh.md):"
+msgstr ""
+"[Bed Mesh](Bed_Mesh.md): Корекція висоти ліжка на основі розташування XY."
 
 msgid ""
 "[Endstop phase](Endstop_Phase.md): Stepper assisted Z endstop positioning."
@@ -301,8 +302,8 @@ msgid ""
 "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objects "
 "implementation."
 msgstr ""
-"[Exclude Object](Exclude_Object.md): Посібник з реалізації виключення "
-"об'єктів."
+"[Виключити об'єкт](Exclude_Object.md): Керівництво з реалізації об'єктів "
+"Exclude."
 
 #: docs/Overview.md:block 6 (unordered list)
 msgid ""

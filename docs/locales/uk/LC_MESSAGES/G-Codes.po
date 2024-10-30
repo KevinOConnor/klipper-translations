@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-20 12:16+0000\n"
+"PO-Revision-Date: 2024-10-30 20:07+0000\n"
 "Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
 "g-codes/uk/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -857,7 +857,7 @@ msgstr "SAVE_CONFIG"
 
 #: docs/G-Codes.md:block 54 (header)
 msgid "[delayed_gcode]"
-msgstr ""
+msgstr "[delayed_gcode]"
 
 #: docs/G-Codes.md:block 55 (paragraph)
 msgid ""
@@ -891,7 +891,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 64 (header)
 msgid "[display]"
-msgstr ""
+msgstr "[дисплей]"
 
 #: docs/G-Codes.md:block 65 (paragraph)
 msgid ""
@@ -916,7 +916,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 71 (header)
 msgid "[dual_carriage]"
-msgstr ""
+msgstr "[dual_carriage]"
 
 #: docs/G-Codes.md:block 72 (paragraph)
 msgid ""
@@ -930,7 +930,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 75 (header)
 msgid "[endstop_phase]"
-msgstr ""
+msgstr "[кінцева_фаза]"
 
 #: docs/G-Codes.md:block 76 (paragraph)
 msgid ""
@@ -971,7 +971,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 93 (header)
 msgid "[fan_generic]"
-msgstr ""
+msgstr "[fan_generic]"
 
 #: docs/G-Codes.md:block 94 (paragraph)
 msgid ""
@@ -991,7 +991,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 97 (header)
 msgid "[firmware_retraction]"
-msgstr ""
+msgstr "[firmware_retraction]"
 
 #: docs/G-Codes.md:block 98 (paragraph)
 msgid ""
@@ -1018,7 +1018,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 105 (header)
 msgid "[filament_switch_sensor]"
-msgstr ""
+msgstr "[filament_switch_sensor]"
 
 #: docs/G-Codes.md:block 106 (paragraph)
 msgid ""
@@ -1045,7 +1045,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 114 (header)
 msgid "[force_move]"
-msgstr ""
+msgstr "[force_move]"
 
 #: docs/G-Codes.md:block 116 (header)
 msgid "STEPPER_BUZZ"
@@ -1085,11 +1085,11 @@ msgstr ""
 
 #: docs/G-Codes.md:block 132 (header)
 msgid "[gcode_arcs]"
-msgstr ""
+msgstr "[gcode_arcs]"
 
 #: docs/G-Codes.md:block 135 (header)
 msgid "[gcode_macro]"
-msgstr ""
+msgstr "[gcode_macro]"
 
 #: docs/G-Codes.md:block 136 (paragraph)
 msgid ""
@@ -1128,7 +1128,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 149 (header)
 msgid "[hall_filament_width_sensor]"
-msgstr ""
+msgstr "[сенсор_ширини_нитки_холу]"
 
 #: docs/G-Codes.md:block 150 (paragraph)
 msgid ""
@@ -1228,7 +1228,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 173 (header)
 msgid "[idle_timeout]"
-msgstr ""
+msgstr "[idle_timeout]"
 
 #: docs/G-Codes.md:block 174 (paragraph)
 msgid "The idle_timeout module is automatically loaded."
@@ -1240,7 +1240,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 177 (header)
 msgid "[input_shaper]"
-msgstr ""
+msgstr "[input_shaper]"
 
 #: docs/G-Codes.md:block 178 (paragraph)
 msgid ""
@@ -1275,7 +1275,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 190 (header)
 msgid "[manual_stepper]"
-msgstr ""
+msgstr "[ручний_степпер]"
 
 #: docs/G-Codes.md:block 191 (paragraph)
 msgid ""
@@ -1293,7 +1293,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 198 (header)
 msgid "[output_pin]"
-msgstr ""
+msgstr "[вихідний_контакт]"
 
 #: docs/G-Codes.md:block 199 (paragraph)
 msgid ""
@@ -1307,7 +1307,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 202 (header)
 msgid "[palette2]"
-msgstr ""
+msgstr "[палітра2]"
 
 #: docs/G-Codes.md:block 203 (paragraph)
 msgid ""
@@ -1351,7 +1351,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 221 (header)
 msgid "[pause_resume]"
-msgstr ""
+msgstr "[pause_resume]"
 
 #: docs/G-Codes.md:block 223 (header)
 msgid "PAUSE"
@@ -1371,7 +1371,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 231 (header)
 msgid "[probe]"
-msgstr ""
+msgstr "[зонд]"
 
 #: docs/G-Codes.md:block 232 (paragraph)
 msgid ""
@@ -1425,7 +1425,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 252 (header)
 msgid "[resonance_tester]"
-msgstr ""
+msgstr "[resonance_tester]"
 
 #: docs/G-Codes.md:block 253 (paragraph)
 msgid ""
@@ -1448,7 +1448,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 260 (header)
 msgid "[respond]"
-msgstr ""
+msgstr "[відповісти]"
 
 #: docs/G-Codes.md:block 261 (paragraph)
 msgid ""
@@ -1469,7 +1469,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 266 (header)
 msgid "[save_variables]"
-msgstr ""
+msgstr "[зберегти_змінні]"
 
 #: docs/G-Codes.md:block 267 (paragraph)
 msgid ""
@@ -1483,7 +1483,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 270 (header)
 msgid "[screws_tilt_adjust]"
-msgstr ""
+msgstr "[screws_tilt_adjust]"
 
 #: docs/G-Codes.md:block 271 (paragraph)
 msgid ""
@@ -1499,7 +1499,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 274 (header)
 msgid "[sdcard_loop]"
-msgstr ""
+msgstr "[sdcard_loop]"
 
 #: docs/G-Codes.md:block 275 (paragraph)
 msgid ""
@@ -1527,7 +1527,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 282 (header)
 msgid "[servo]"
-msgstr ""
+msgstr "[серво]"
 
 #: docs/G-Codes.md:block 283 (paragraph)
 msgid ""
@@ -1541,7 +1541,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 286 (header)
 msgid "[skew_correction]"
-msgstr ""
+msgstr "[виправлення перекосу]"
 
 #: docs/G-Codes.md:block 287 (paragraph)
 msgid ""
@@ -1591,7 +1591,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 300 (header)
 msgid "[temperature_fan]"
-msgstr ""
+msgstr "[temperature_fan]"
 
 #: docs/G-Codes.md:block 301 (paragraph)
 msgid ""
@@ -1695,7 +1695,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 323 (header)
 msgid "[virtual_sdcard]"
-msgstr ""
+msgstr "[virtual_sdcard]"
 
 #: docs/G-Codes.md:block 324 (paragraph)
 msgid ""
@@ -1729,7 +1729,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 331 (header)
 msgid "[z_tilt]"
-msgstr ""
+msgstr "[z_tilt]"
 
 #: docs/G-Codes.md:block 332 (paragraph)
 msgid ""
@@ -1823,7 +1823,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 199 (header)
 msgid "[led]"
-msgstr ""
+msgstr "[під керівництвом]"
 
 #: docs/G-Codes.md:block 200 (paragraph)
 msgid ""
@@ -1880,7 +1880,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 303 (header)
 msgid "[smart_effector]"
-msgstr ""
+msgstr "[smart_effector]"
 
 #: docs/G-Codes.md:block 304 (paragraph)
 msgid ""
@@ -1932,7 +1932,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 87 (header)
 msgid "[exclude_object]"
-msgstr ""
+msgstr "[exclude_object]"
 
 #: docs/G-Codes.md:block 88 (paragraph)
 msgid ""
@@ -2133,7 +2133,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 218 (header)
 msgid "[mcp4018]"
-msgstr ""
+msgstr "[mcp4018]"
 
 #: docs/G-Codes.md:block 219 (paragraph)
 msgid ""
@@ -2177,7 +2177,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 371 (header)
 msgid "[z_thermal_adjust]"
-msgstr ""
+msgstr "[z_thermal_adjust]"
 
 #: docs/G-Codes.md:block 372 (paragraph)
 msgid ""
@@ -2419,7 +2419,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 281 (header)
 msgid "[pwm_cycle_time]"
-msgstr ""
+msgstr "[pwm_cycle_time]"
 
 #: docs/G-Codes.md:block 282 (paragraph)
 msgid ""
@@ -2449,7 +2449,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 281 (header)
 msgid "[probe_eddy_current]"
-msgstr ""
+msgstr "[probe_eddy_current]"
 
 #: docs/G-Codes.md:block 282 (paragraph)
 msgid ""
@@ -2485,7 +2485,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 393 (header)
 msgid "[temperature_probe]"
-msgstr ""
+msgstr "[temperature_probe]"
 
 #: docs/G-Codes.md:block 394 (paragraph)
 msgid ""

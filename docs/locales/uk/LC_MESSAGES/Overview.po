@@ -2,17 +2,20 @@
 # Dan <denqwerta@gmail.com>, 2022.
 # CakesTwix <cakestwix1@gmail.com>, 2023.
 # Сергій <sergiy.goncharuk.1@gmail.com>, 2023.
+# Dan <jonweblin2205@protonmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-12-31 13:09+0000\n"
-"Last-Translator: Сергій <sergiy.goncharuk.1@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/overview/uk/>\n"
+"PO-Revision-Date: 2024-10-30 20:07+0000\n"
+"Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
+"overview/uk/>\n"
 "Language: uk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -98,8 +101,7 @@ msgstr ""
 "подібних)."
 
 msgid "[Bed Mesh](Bed_Mesh.md): Bed height correction based on XY locations."
-msgstr ""
-"[Сітка ліжка](Bed_Mesh.md): Корекція висоти ліжка на основі розташування XY."
+msgstr "[Bed Mesh](Bed_Mesh.md):"
 
 msgid ""
 "[Endstop phase](Endstop_Phase.md): Stepper assisted Z endstop positioning."

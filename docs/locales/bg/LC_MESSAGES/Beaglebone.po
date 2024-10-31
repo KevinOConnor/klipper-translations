@@ -1,18 +1,26 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"beaglebone/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: docs/Beaglebone.md:block 1 (header)
 msgid "Beaglebone"
-msgstr ""
+msgstr "Beaglebone"
 
 #: docs/Beaglebone.md:block 2 (paragraph)
 msgid ""
 "This document describes the process of running Klipper on a Beaglebone PRU."
 msgstr ""
+"Този документ описва процеса на стартиране на Klipper на Beaglebone PRU."
 
 #: docs/Beaglebone.md:block 3 (header)
 msgid "Building an OS image"
@@ -25,6 +33,10 @@ msgid ""
 "virtualenv venv\n"
 "./venv/bin/python setup.py install\n"
 msgstr ""
+"git clone https://github.com/foosel/OctoPrint.git\n"
+"cd OctoPrint/\n"
+"virtualenv venv\n"
+"./venv/bin/python setup.py install\n"
 
 #: docs/Beaglebone.md:block 10 (paragraph)
 msgid "And setup OctoPrint to start at bootup:"
@@ -37,6 +49,10 @@ msgid ""
 "sudo cp ~/OctoPrint/scripts/octoprint.default /etc/default/octoprint\n"
 "sudo update-rc.d octoprint defaults\n"
 msgstr ""
+"sudo cp ~/OctoPrint/scripts/octoprint.init /etc/init.d/octoprint\n"
+"sudo chmod +x /etc/init.d/octoprint\n"
+"sudo cp ~/OctoPrint/scripts/octoprint.default /etc/default/octoprint\n"
+"sudo update-rc.d octoprint defaults\n"
 
 #: docs/Beaglebone.md:block 12 (paragraph)
 msgid ""
@@ -64,6 +80,8 @@ msgid ""
 "cd ~/klipper/\n"
 "make menuconfig\n"
 msgstr ""
+"cd ~/klipper/\n"
+"make menuconfig\n"
 
 #: docs/Beaglebone.md:block 21 (code)
 msgid ""
@@ -71,6 +89,9 @@ msgid ""
 "make flash\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+"make flash\n"
+"sudo service klipper start\n"
 
 #: docs/Beaglebone.md:block 22 (paragraph)
 msgid ""
@@ -80,7 +101,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 23 (code)
 msgid "make menuconfig\n"
-msgstr ""
+msgstr "make menuconfig\n"
 
 #: docs/Beaglebone.md:block 24 (paragraph)
 msgid "Then install this micro-controller code as well:"

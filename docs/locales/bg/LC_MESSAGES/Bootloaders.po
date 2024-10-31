@@ -1,14 +1,23 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"bootloaders/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "This document provides information on common bootloaders found on micro-"
 "controllers that Klipper supports."
 msgstr ""
+"Този документ предоставя информация за често срещаните буутлоудъри в "
+"микроконтролерите, които Klipper поддържа."
 
 msgid ""
 "The bootloader is 3rd-party software that runs on the micro-controller when "
@@ -19,6 +28,13 @@ msgid ""
 "controllers. Worse, it is common for each bootloader to require a different "
 "set of steps to flash an application."
 msgstr ""
+"Буутлоудърът е софтуер на трета страна, който се стартира в микроконтролера "
+"при първото му включване. Обикновено се използва за флашване на ново "
+"приложение (например Klipper) на микроконтролера, без да е необходим "
+"специализиран хардуер. За съжаление, не съществува индустриален стандарт за "
+"флашване на микроконтролер, нито пък стандартен буутлоудър, който да работи "
+"за всички микроконтролери. Нещо по-лошо, често се случва всеки буутлоудър да "
+"изисква различен набор от стъпки за флашване на приложение."
 
 msgid ""
 "If one can flash a bootloader to a micro-controller then one can generally "
@@ -55,7 +71,7 @@ msgid ""
 msgstr ""
 
 msgid "Atmega2560"
-msgstr ""
+msgstr "Atmega2560"
 
 msgid ""
 "This chip is typically found in the \"Arduino Mega\" and is very common in "
@@ -69,13 +85,13 @@ msgid "To flash an application use something like:"
 msgstr ""
 
 msgid "Atmega1280"
-msgstr ""
+msgstr "Atmega1280"
 
 msgid "This chip is typically found in earlier versions of the \"Arduino Mega\"."
 msgstr ""
 
 msgid "Atmega1284p"
-msgstr ""
+msgstr "Atmega1284p"
 
 msgid "This chip is commonly found in \"Melzi\" style 3d printer boards."
 msgstr ""
@@ -87,7 +103,7 @@ msgid ""
 msgstr ""
 
 msgid "At90usb1286"
-msgstr ""
+msgstr "At90usb1286"
 
 msgid ""
 "This document does not cover the method to flash a bootloader to the "
@@ -95,7 +111,7 @@ msgid ""
 msgstr ""
 
 msgid "Atmega168"
-msgstr ""
+msgstr "Atmega168"
 
 msgid ""
 "The atmega168 has limited flash space. If using a bootloader, it is "

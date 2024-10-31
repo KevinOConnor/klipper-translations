@@ -1,13 +1,20 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"skew_correction/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: docs/Skew_Correction.md:block 1 (header)
 msgid "Skew correction"
-msgstr ""
+msgstr "Корекция на наклона"
 
 #: docs/Skew_Correction.md:block 2 (paragraph)
 msgid ""
@@ -17,10 +24,16 @@ msgid ""
 "use mechanical means to get your printer as square as possible prior to "
 "applying software based correction."
 msgstr ""
+"Софтуерно базираната корекция на изкривяването може да помогне за "
+"отстраняване на неточностите в размерите, произтичащи от сглобка на принтер, "
+"която не е идеално квадратна. Имайте предвид, че ако принтерът ви е "
+"значително изкривен, силно се препоръчва първо да използвате механични "
+"средства, за да направите принтера си възможно най-квадратен, преди да "
+"приложите софтуерна корекция."
 
 #: docs/Skew_Correction.md:block 3 (header)
 msgid "Print a Calibration Object"
-msgstr ""
+msgstr "Отпечатване на обект за калибриране"
 
 #: docs/Skew_Correction.md:block 4 (paragraph)
 msgid ""
@@ -31,6 +44,12 @@ msgid ""
 "in one model. You want the object oriented so that corner A is toward the "
 "origin of the plane."
 msgstr ""
+"Първата стъпка в коригирането на наклона е да отпечатате [обект за "
+"калибриране](https://www.thingiverse.com/thing:2563185/files) по дължината "
+"на равнината, която искате да коригирате. Съществува и [обект за "
+"калибриране](https://www.thingiverse.com/thing:2972743), който включва "
+"всички равнини в един модел. Искате обектът да е ориентиран така, че ъгъл А "
+"да е към началото на равнината."
 
 #: docs/Skew_Correction.md:block 5 (paragraph)
 msgid ""
@@ -38,18 +57,22 @@ msgid ""
 "this by either removing the `[skew_correction]` module from printer.cfg or "
 "by issuing a `SET_SKEW CLEAR=1` gcode."
 msgstr ""
+"Уверете се, че по време на това отпечатване не е приложена корекция на "
+"изкривяването. Можете да направите това или като премахнете модула "
+"`[skew_correction]` от printer.cfg, или като издадете gcode `SET_SKEW "
+"CLEAR=1`."
 
 #: docs/Skew_Correction.md:block 6 (header)
 msgid "Take your measurements"
-msgstr ""
+msgstr "Направете своите измервания"
 
 #: docs/Skew_Correction.md:block 8 (paragraph)
 msgid "![skew_lengths](img/skew_lengths.png)"
-msgstr ""
+msgstr "![skew_lengths](img/skew_lengths.png)"
 
 #: docs/Skew_Correction.md:block 9 (header)
 msgid "Configure your skew"
-msgstr ""
+msgstr "Конфигуриране на изкривяването"
 
 #: docs/Skew_Correction.md:block 10 (paragraph)
 msgid ""
@@ -57,6 +80,9 @@ msgid ""
 "`SET_SKEW` gcode to configure skew_correcton. For example, if your measured "
 "lengths along XY are as follows:"
 msgstr ""
+"Уверете се, че `[skew_correction]` е в printer.cfg. Сега можете да "
+"използвате gcode `SET_SKEW`, за да конфигурирате skew_correcton. Например, "
+"ако измерените дължини по XY са следните:"
 
 #: docs/Skew_Correction.md:block 11 (code)
 msgid ""
@@ -64,22 +90,27 @@ msgid ""
 "Length BD = 142.8\n"
 "Length AD = 99.8\n"
 msgstr ""
+"Length AC = 140.4\n"
+"Length BD = 142.8\n"
+"Length AD = 99.8\n"
 
 #: docs/Skew_Correction.md:block 12 (paragraph)
 msgid "`SET_SKEW` can be used to configure skew correction for the XY plane."
 msgstr ""
+"`SET_SKEW` може да се използва за конфигуриране на корекция на изкривяването "
+"за равнината XY."
 
 #: docs/Skew_Correction.md:block 13 (code)
 msgid "SET_SKEW XY=140.4,142.8,99.8\n"
-msgstr ""
+msgstr "SET_SKEW XY=140.4,142.8,99.8\n"
 
 #: docs/Skew_Correction.md:block 14 (paragraph)
 msgid "You may also add measurements for XZ and YZ to the gcode:"
-msgstr ""
+msgstr "Можете също така да добавите измервания за XZ и YZ към gcode:"
 
 #: docs/Skew_Correction.md:block 15 (code)
 msgid "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
-msgstr ""
+msgstr "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
 
 #: docs/Skew_Correction.md:block 16 (paragraph)
 msgid ""
@@ -87,10 +118,14 @@ msgid ""
 "similar to `[bed_mesh]`. After setting skew using the `SET_SKEW` gcode, you "
 "may use the `SKEW_PROFILE` gcode to save it:"
 msgstr ""
+"Модулът `[skew_correction]` поддържа и управление на профили по начин, "
+"подобен на този на `[bed_mesh]`. След като зададете изкривяването с помощта "
+"на гкода `SET_SKEW`, можете да използвате гкода `SKEW_PROFILE`, за да го "
+"запазите:"
 
 #: docs/Skew_Correction.md:block 17 (code)
 msgid "SKEW_PROFILE SAVE=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE SAVE=my_skew_profile\n"
 
 #: docs/Skew_Correction.md:block 18 (paragraph)
 msgid ""
@@ -99,32 +134,38 @@ msgid ""
 "`my_skew_profile` then a new profile will be created. If the named profile "
 "exists it will be overwritten."
 msgstr ""
+"След тази команда ще бъдете подканени да издадете gcode `SAVE_CONFIG`, за да "
+"запазите профила в постоянна памет. Ако няма профил с име `my_skew_profile`, "
+"ще бъде създаден нов профил. Ако именуваният профил съществува, той ще бъде "
+"презаписан."
 
 #: docs/Skew_Correction.md:block 19 (paragraph)
 msgid "Once you have a saved profile, you may load it:"
-msgstr ""
+msgstr "След като сте запазили профил, можете да го заредите:"
 
 #: docs/Skew_Correction.md:block 20 (code)
 msgid "SKEW_PROFILE LOAD=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE LOAD=my_skew_profile\n"
 
 #: docs/Skew_Correction.md:block 21 (paragraph)
 msgid "It is also possible to remove an old or out of date profile:"
-msgstr ""
+msgstr "Възможно е също така да премахнете стар или неактуален профил:"
 
 #: docs/Skew_Correction.md:block 22 (code)
 msgid "SKEW_PROFILE REMOVE=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE REMOVE=my_skew_profile\n"
 
 #: docs/Skew_Correction.md:block 23 (paragraph)
 msgid ""
 "After removing a profile you will be prompted to issue a `SAVE_CONFIG` to "
 "make this change persist."
 msgstr ""
+"След като премахнете профил, ще бъдете подканени да издадете `SAVE_CONFIG`, "
+"за да запазите тази промяна."
 
 #: docs/Skew_Correction.md:block 24 (header)
 msgid "Verifying your correction"
-msgstr ""
+msgstr "Проверка на вашата корекция"
 
 #: docs/Skew_Correction.md:block 25 (paragraph)
 msgid ""
@@ -133,14 +174,18 @@ msgid ""
 "each plane. The results should be lower than those reported via "
 "`GET_CURRENT_SKEW`."
 msgstr ""
+"След конфигурирането на корекция на изкривяването можете да отпечатате "
+"отново частта за калибриране с активирана корекция. Използвайте следния "
+"gcode, за да проверите наклона на всяка равнина. Резултатите трябва да са по-"
+"ниски от тези, отчетени чрез `GET_CURRENT_SKEW`."
 
 #: docs/Skew_Correction.md:block 26 (code)
 msgid "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
-msgstr ""
+msgstr "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
 
 #: docs/Skew_Correction.md:block 27 (header)
 msgid "Caveats"
-msgstr ""
+msgstr "Предупреждения"
 
 #: docs/Skew_Correction.md:block 28 (paragraph)
 msgid ""
@@ -150,6 +195,12 @@ msgid ""
 "the `SET_SKEW` or `SKEW_PROFILE` gcodes to accomplish this. It is also "
 "recommended to issue a `SET_SKEW CLEAR=1` in your end gcode."
 msgstr ""
+"Поради естеството на корекцията на наклона е препоръчително да конфигурирате "
+"наклона в началния gcode, след навиване и всякакъв вид движение, което се "
+"движи близо до ръба на зоната за печат, като например прочистване или "
+"избърсване на дюзата. За тази цел можете да използвате гкодовете `SET_SKEW` "
+"или `SKEW_PROFILE`. Препоръчително е също така да зададете `SET_SKEW CLEAR=1`"
+" в крайния си gcode."
 
 #: docs/Skew_Correction.md:block 29 (paragraph)
 msgid ""
@@ -158,6 +209,10 @@ msgid ""
 "and/or Y axes. It is recommended to arrange parts away from the edges when "
 "using `[skew_correction]`."
 msgstr ""
+"Имайте предвид, че е възможно `[skew_correction]` да генерира корекция, "
+"която премества инструмента извън границите на принтера по осите X и/или Y. "
+"Препоръчително е при използване на `[skew_correction]` да подреждате "
+"детайлите далеч от ръбовете."
 
 #: docs/Skew_Correction.md:block 7 (paragraph)
 msgid ""
@@ -167,6 +222,10 @@ msgid ""
 "measuring length AD do not include the flats on the corners that some test "
 "objects provide."
 msgstr ""
+"Модулът `[skew_correction]` изисква 3 измервания за всяка равнина, която "
+"искате да коригирате; дължината от ъгъл A до ъгъл C, дължината от ъгъл B до "
+"ъгъл D и дължината от ъгъл A до ъгъл D. Когато измервате дължината, AD не "
+"включва плоските ъгли, които някои тестови обекти предоставят."
 
 #~ msgid ""
 #~ "The `[skew_correcton]` module requires 3 measurements for each plane you "

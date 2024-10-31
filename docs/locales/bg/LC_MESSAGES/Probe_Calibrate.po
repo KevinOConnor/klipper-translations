@@ -1,18 +1,29 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"probe_calibrate/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid "Calibrating probe X and Y offsets"
-msgstr ""
+msgstr "Калибриране на отместванията на сондата X и Y"
 
 msgid ""
 "To calibrate the X and Y offset, navigate to the OctoPrint \"Control\" tab, "
 "home the printer, and then use the OctoPrint jogging buttons to move the "
 "head to a position near the center of the bed."
 msgstr ""
+"За да калибрирате отместването по X и Y, преминете към раздела \"Контрол\" "
+"на OctoPrint, поставете принтера в изходно положение и след това използвайте "
+"бутоните за преместване на OctoPrint, за да преместите главата в позиция "
+"близо до центъра на леглото."
 
 msgid ""
 "Place a piece of blue painters tape (or similar) on the bed underneath the "
@@ -217,7 +228,7 @@ msgid "G1 F300 X57 Y30 Z15\n"
 msgstr ""
 
 msgid "SAVE_CONFIG\n"
-msgstr ""
+msgstr "SAVE_CONFIG\n"
 
 msgid ""
 "Recv: // probe accuracy: at X:0.000 Y:0.000 Z:10.000\n"

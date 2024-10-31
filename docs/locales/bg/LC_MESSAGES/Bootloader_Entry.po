@@ -1,38 +1,52 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"bootloader_entry/bg/>\n"
+"Language: bg\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Bootloader_Entry.md:block 1 (header)
 msgid "Bootloader Entry"
-msgstr ""
+msgstr "Въвеждане на буутлоудъра"
 
 #: docs/Bootloader_Entry.md:block 2 (paragraph)
 msgid ""
 "Klipper can be instructed to reboot into a [Bootloader](Bootloaders.md) in "
 "one of the following ways:"
 msgstr ""
+"Klipper може да бъде инструктиран да рестартира в [Bootloader](Bootloaders."
+"md) по един от следните начини:"
 
 #: docs/Bootloader_Entry.md:block 3 (header)
 msgid "Requesting the bootloader"
-msgstr ""
+msgstr "Запитване за буутлоудър"
 
 #: docs/Bootloader_Entry.md:block 4 (header)
 msgid "Virtual Serial"
-msgstr ""
+msgstr "Виртуален сериен"
 
 #: docs/Bootloader_Entry.md:block 5 (paragraph)
 msgid ""
 "If a virtual (USB-ACM) serial port is in use, pulsing DTR while at 1200 baud"
 " will request the bootloader."
 msgstr ""
+"Ако се използва виртуален (USB-ACM) сериен порт, импулсирането на DTR при "
+"скорост 1200 бода ще изиска зареждане."
 
 #: docs/Bootloader_Entry.md:block 6 (header)
 msgid "Python (with `flash_usb`)"
-msgstr ""
+msgstr "Python (with `flash_usb`)"
 
 #: docs/Bootloader_Entry.md:block 7 (paragraph)
 msgid "To enter the bootloader using python (using `flash_usb`):"
-msgstr ""
+msgstr "Влизане в буутлоудъра с помощта на питон (чрез `flash_usb`):"
 
 #: docs/Bootloader_Entry.md:block 8 (code)
 msgid ""
@@ -40,38 +54,50 @@ msgid ""
 "> python3 -c 'import flash_usb as u; u.enter_bootloader(\"<DEVICE>\")'\n"
 "Entering bootloader on <DEVICE>\n"
 msgstr ""
+"> cd klipper/scripts\n"
+"> python3 -c 'import flash_usb as u; u.enter_bootloader(\"<DEVICE>\")'\n"
+"Entering bootloader on <DEVICE>\n"
 
 #: docs/Bootloader_Entry.md:block 9 (paragraph)
 msgid ""
 "Where `<DEVICE>` is your serial device, such as `/dev/serial.by-id/usb-"
 "Klipper[...]` or `/dev/ttyACM0`"
 msgstr ""
+"Където `<DEVICE>` е вашето серийно устройство, например `/dev/serial.by-id/"
+"usb-Klipper[...]` или `/dev/ttyACM0`."
 
 #: docs/Bootloader_Entry.md:block 10 (paragraph)
 msgid ""
 "Note that if this fails, no output will be printed, success is indicated by "
 "printing `Entering bootloader on <DEVICE>`."
 msgstr ""
+"Обърнете внимание, че при неуспех няма да бъде отпечатан никакъв изход, а "
+"успехът се индикира с отпечатването на `Entering bootloader on <DEVICE>`."
 
 #: docs/Bootloader_Entry.md:block 11 (header)
 msgid "Picocom"
-msgstr ""
+msgstr "Picocom"
 
 #: docs/Bootloader_Entry.md:block 12 (code)
 msgid ""
 "picocom -b 1200 <DEVICE>\n"
 "<Ctrl-A><Ctrl-P>\n"
 msgstr ""
+"picocom -b 1200 <DEVICE>\n"
+"<Ctrl-A><Ctrl-P>\n"
 
 #: docs/Bootloader_Entry.md:block 14 (paragraph)
 msgid ""
 "`<Ctrl-A><Ctrl-P>` means holding `Ctrl`, pressing and releasing `a`, "
 "pressing and releasing `p`, then releasing `Ctrl`"
 msgstr ""
+"````<Ctrl-A><Ctrl-P>` означава задържане на `Ctrl`, натискане и "
+"освобождаване на `a`, натискане и освобождаване на `p`, след което "
+"освобождаване на `Ctrl`"
 
 #: docs/Bootloader_Entry.md:block 15 (header)
 msgid "Physical serial"
-msgstr ""
+msgstr "Физическа серия"
 
 #: docs/Bootloader_Entry.md:block 16 (paragraph)
 msgid ""
@@ -79,14 +105,17 @@ msgid ""
 "adapter is being used to connect to it), sending the string "
 "`<SPACE><FS><SPACE>Request Serial Bootloader!!<SPACE>~`."
 msgstr ""
+"Ако се използва физически сериен порт на MCU (дори ако се използва USB "
+"сериен адаптер за свързване към него), изпратете символния низ `"
+"<SPACE><FS><SPACE>Запитване за сериен буутлоудър!!<SPACE>~``."
 
 #: docs/Bootloader_Entry.md:block 17 (paragraph)
 msgid "`<SPACE>` is an ASCII literal space, 0x20."
-msgstr ""
+msgstr "`<SPACE>` е буквален интервал ASCII, 0x20."
 
 #: docs/Bootloader_Entry.md:block 18 (paragraph)
 msgid "`<FS>` is the ASCII File Separator, 0x1c."
-msgstr ""
+msgstr "`<FS>` е ASCII файловият разделител, 0x1c."
 
 #: docs/Bootloader_Entry.md:block 19 (paragraph)
 msgid ""
@@ -94,6 +123,9 @@ msgid ""
 "Protocol](Protocol.md#micro-controller-interface), but sync characters(`~`) "
 "are still respected."
 msgstr ""
+"Имайте предвид, че това не е валидно съобщение съгласно [MCU "
+"Protocol](Protocol.md#micro-controller-interface), но символите за "
+"синхронизация (`~``) все още се спазват."
 
 #: docs/Bootloader_Entry.md:block 20 (paragraph)
 msgid ""
@@ -101,30 +133,38 @@ msgid ""
 "in, prefixing an extra sync character can increase reliability if other "
 "tools were previously accessing the serial port."
 msgstr ""
+"Тъй като това съобщение трябва да бъде единственото в \"блока\", в който е "
+"получено, добавянето на допълнителен символ за синхронизация може да повиши "
+"надеждността, ако преди това други инструменти са имали достъп до серийния "
+"порт."
 
 #: docs/Bootloader_Entry.md:block 21 (header)
 msgid "Shell"
-msgstr ""
+msgstr "Shell"
 
 #: docs/Bootloader_Entry.md:block 22 (code)
 msgid ""
 "stty <BAUD> < /dev/<DEVICE>\n"
 "echo $'~ \\x1c Request Serial Bootloader!! ~' >> /dev/<DEVICE>\n"
 msgstr ""
+"stty <BAUD> < /dev/<DEVICE>\n"
+"echo $'~ \\x1c Request Serial Bootloader!! ~' >> /dev/<DEVICE>\n"
 
 #: docs/Bootloader_Entry.md:block 23 (paragraph)
 msgid ""
 "Where `<DEVICE>` is your serial port, such as `/dev/ttyS0`, or "
 "`/dev/serial/by-id/gpio-serial2`, and"
 msgstr ""
+"Където `<DEVICE>` е вашият сериен порт, например `/dev/ttyS0` или `/dev/"
+"serial/by-id/gpio-serial2`, и"
 
 #: docs/Bootloader_Entry.md:block 24 (paragraph)
 msgid "`<BAUD>` is the baud rate of the serial port, such as `115200`."
-msgstr ""
+msgstr "`<BAUD>` е скоростта на предаване на серийния порт, например `115200`."
 
 #: docs/Bootloader_Entry.md:block 25 (header)
 msgid "CANBUS"
-msgstr ""
+msgstr "CANBUS"
 
 #: docs/Bootloader_Entry.md:block 26 (paragraph)
 msgid ""
@@ -133,44 +173,56 @@ msgid ""
 "if the device already has a nodeid, and will also be processed if the mcu is"
 " shutdown."
 msgstr ""
+"Ако се използва CANBUS, специално съобщение [admin message](CANBUS_protocol."
+"md#admin-messages) ще поиска зареждането на системата. Това съобщение ще "
+"бъде спазено, дори ако устройството вече има nodeid, и ще бъде обработено и "
+"ако mcu е изключен."
 
 #: docs/Bootloader_Entry.md:block 27 (paragraph)
 msgid ""
 "This method also applies to devices operating in [CANBridge](CANBUS.md#usb-"
 "to-can-bus-bridge-mode) mode."
 msgstr ""
+"Този метод се прилага и за устройства, работещи в режим [CANBridge](CANBUS.md"
+"#usb-to-can-bus-bridge-mode)."
 
 #: docs/Bootloader_Entry.md:block 28 (header)
 msgid "Katapult's flashtool.py"
-msgstr ""
+msgstr "Katapult's flashtool.py"
 
 #: docs/Bootloader_Entry.md:block 29 (code)
 msgid "python3 ./katapult/scripts/flashtool.py -i <CAN_IFACE> -u <UUID> -r\n"
-msgstr ""
+msgstr "python3 ./katapult/scripts/flashtool.py -i <CAN_IFACE> -u <UUID> -r\n"
 
 #: docs/Bootloader_Entry.md:block 30 (paragraph)
 msgid ""
 "Where `<CAN_IFACE>` is the can interface to use. If using `can0`, both the "
 "`-i` and `<CAN_IFACE>` may be omitted."
 msgstr ""
+"Където `<CAN_IFACE>` е интерфейсът на кутията, който трябва да се използва. "
+"Ако се използва `can0`, може да се пропуснат както `-i`, така и "
+"`<CAN_IFACE>`."
 
 #: docs/Bootloader_Entry.md:block 31 (paragraph)
 msgid "`<UUID>` is the UUID of your CAN device."
-msgstr ""
+msgstr "`<UUID>` е UUID на вашето CAN устройство."
 
 #: docs/Bootloader_Entry.md:block 32 (paragraph)
 msgid ""
 "See the [CANBUS Documentation](CANBUS.md#finding-the-canbus_uuid-for-new-"
 "micro-controllers) for information on finding the CAN UUID of your devices."
 msgstr ""
+"Вижте документацията [CANBUS Documentation](CANBUS.md#finding-the-"
+"canbus_uuid-for-new-micro-controllers) за информация относно намирането на "
+"CAN UUID на вашите устройства."
 
 #: docs/Bootloader_Entry.md:block 33 (header)
 msgid "Entering the bootloader"
-msgstr ""
+msgstr "Влизане в буутлоудъра"
 
 #: docs/Bootloader_Entry.md:block 34 (paragraph)
 msgid "When klipper receives one of the above bootloader requests:"
-msgstr ""
+msgstr "Когато klipper получи една от горните заявки от bootloader:"
 
 #: docs/Bootloader_Entry.md:block 35 (paragraph)
 msgid ""
@@ -178,6 +230,9 @@ msgid ""
 "that Katapult stay active on the next boot, then reset the MCU (therefore "
 "entering Katapult)."
 msgstr ""
+"Ако е наличен Katapult (по-рано известен като CANBoot), klipper ще поиска "
+"Katapult да остане активен при следващото зареждане, след което ще нулира "
+"MCU (следователно ще влезе в Katapult)."
 
 #: docs/Bootloader_Entry.md:block 36 (paragraph)
 msgid ""
@@ -185,26 +240,33 @@ msgid ""
 "specific bootloader, such as STM32's DFU mode([see note](#stm32-dfu-"
 "warning))."
 msgstr ""
+"Ако Katapult не е наличен, klipper ще се опита да влезе в специфичен за "
+"платформата буутлоудър, като например DFU режима на STM32([вж. "
+"бележка](#stm32-dfu-warning))."
 
 #: docs/Bootloader_Entry.md:block 37 (paragraph)
 msgid ""
 "In short, Klipper will reboot to Katapult if installed, then a hardware "
 "specific bootloader if available."
 msgstr ""
+"Накратко, Klipper ще рестартира в Katapult, ако е инсталиран, а след това в "
+"специфичен за хардуера буутлоудър, ако има такъв."
 
 #: docs/Bootloader_Entry.md:block 38 (paragraph)
 msgid ""
 "For details about the specific bootloaders on various platforms see "
 "[Bootloaders](Bootloaders.md)"
 msgstr ""
+"За подробности относно специфичните буутлоудъри за различните платформи "
+"вижте [Bootloaders](Bootloaders.md)"
 
 #: docs/Bootloader_Entry.md:block 39 (header)
 msgid "Notes"
-msgstr ""
+msgstr "Бележки"
 
 #: docs/Bootloader_Entry.md:block 40 (header)
 msgid "STM32 DFU Warning"
-msgstr ""
+msgstr "Предупреждение за STM32 DFU"
 
 #: docs/Bootloader_Entry.md:block 41 (paragraph)
 msgid ""
@@ -214,3 +276,9 @@ msgid ""
 "operations when using DFU mode. Consult the documentation for your board for"
 " more details."
 msgstr ""
+"Обърнете внимание, че при някои платки, като Octopus Pro v1, влизането в "
+"режим DFU може да доведе до нежелани действия (например включване на "
+"нагревателя, докато сте в режим DFU). Препоръчително е да изключвате "
+"нагревателите и по друг начин да предотвратявате нежелани действия, когато "
+"използвате режим DFU. За повече подробности се обърнете към документацията "
+"за вашата платка."

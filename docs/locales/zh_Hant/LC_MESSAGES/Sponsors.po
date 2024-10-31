@@ -1,15 +1,17 @@
 # Fred Chan <fred2088@gmail.com>, 2022.
+# Peter Dave Hello <hsu@peterdavehello.org>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-08-02 07:24+0000\n"
-"Last-Translator: Fred Chan <fred2088@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/klipper/sponsors/zh_Hant/>\n"
+"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"Last-Translator: Peter Dave Hello <hsu@peterdavehello.org>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/klipper/sponsors/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: docs/Sponsors.md:block 1 (header)
 msgid "Sponsors"
@@ -92,12 +94,16 @@ msgid ""
 "Kevin is the original author and current maintainer of Klipper. Donate at: "
 "<https://ko-fi.com/koconnor> or <https://www.patreon.com/koconnor>"
 msgstr ""
+"Kevin 是 Klipper 的原創作者及現任維護者。捐款支持請至：<https://ko-fi.com/"
+"koconnor> 或 <https://www.patreon.com/koconnor>"
 
 #: docs/Sponsors.md:block 4 (paragraph)
 msgid ""
 "[<img src=\"./img/sponsors/BTT_BTT.png\" width=\"200\" "
 "style=\"margin:25px\"/>](https://bigtree-tech.com/collections/all-products)"
 msgstr ""
+"[<img src=\"./img/sponsors/BTT_BTT.png\" width=\"200\" style=\"margin:25px\""
+"/>](https://bigtree-tech.com/collections/all-products)"
 
 #: docs/Sponsors.md:block 7 (paragraph)
 msgid ""
@@ -107,6 +113,10 @@ msgid ""
 "src=\"./img/sponsors/peopoly-logo.png\" width=\"200\" style=\"margin:25px\" "
 "/>](https://peopoly.net)"
 msgstr ""
+"[<img src=\"./img/sponsors/obico-light-horizontal.png\" width=\"200\" style="
+"\"margin:25px\" />](https://obico.io/klipper.html?source=klipper_sponsor) ["
+"<img src=\"./img/sponsors/peopoly-logo.png\" width=\"200\" style=\"margin:"
+"25px\" />](https://peopoly.net)"
 
 #~ msgid ""
 #~ "[<img src=\"./img/sponsors/BTT_BTT.png\" width=\"200\" />](https://bigtree-"

@@ -1,9 +1,16 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"sdcard_updates/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "Many of today's popular controller boards ship with a bootloader capable of "
@@ -15,9 +22,17 @@ msgid ""
 "transfer new firmware to the SD Card and initiate the flashing procedure via"
 " ssh."
 msgstr ""
+"Много от популярните днес контролни платки се доставят с буутлоудър, който "
+"може да актуализира фърмуера чрез SD карта. Въпреки че това е удобно при "
+"много обстоятелства, тези буутлоудъри обикновено не предоставят друг начин "
+"за актуализиране на фърмуера. Това може да бъде неудобно, ако вашата платка "
+"е монтирана на място, което е труднодостъпно, или ако трябва често да "
+"актуализирате фърмуера. След като Klipper е бил първоначално флашнат на "
+"контролер, е възможно да се прехвърли нов фърмуер на SD картата и да се "
+"започне процедура за флашване чрез ssh."
 
 msgid "Typical Upgrade Procedure"
-msgstr ""
+msgstr "Типична процедура за надграждане"
 
 msgid ""
 "The procedure for updating MCU firmware using the SD Card is similar to that"
@@ -68,7 +83,7 @@ msgid ""
 msgstr ""
 
 msgid "Caveats"
-msgstr ""
+msgstr "Предупреждения"
 
 msgid ""
 "As mentioned in the introduction, this method only works for upgrading "
@@ -360,7 +375,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "DATA2"
@@ -372,7 +387,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "CD/DATA3"
@@ -380,11 +395,11 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "CS"
-msgstr ""
+msgstr "CS"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "CMD"
@@ -396,7 +411,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "+3.3V (VDD)"
@@ -404,7 +419,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "CLK"
@@ -456,7 +471,7 @@ msgstr ""
 
 #: docs/SDCard_Updates.md:block 44 (table)
 msgid "GND"
-msgstr ""
+msgstr "GND"
 
 #: docs/SDCard_Updates.md:block 45 (paragraph)
 msgid "\\* None (PU) indicates an unused pin with a pull-up resistor"

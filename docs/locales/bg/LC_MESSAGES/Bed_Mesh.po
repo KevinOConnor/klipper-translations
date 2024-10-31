@@ -1,21 +1,23 @@
 # Nikolai Danov <nikolaidanov67@gmail.com>, 2022.
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-08-26 15:08+0000\n"
-"Last-Translator: Nikolai Danov <nikolaidanov67@gmail.com>\n"
-"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/bed_mesh/bg/>\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"bed_mesh/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid "Basic Configuration"
-msgstr ""
+msgstr "Основно конфигуриране"
 
 msgid "Rectangular Beds"
-msgstr ""
+msgstr "Правоъгълни легла"
 
 msgid ""
 "This example assumes a printer with a 250 mm x 220 mm rectangular bed and a "
@@ -68,7 +70,7 @@ msgid ""
 msgstr ""
 
 msgid "![bedmesh_round_basic](img/bedmesh_round_basic.svg)"
-msgstr ""
+msgstr "![bedmesh_round_basic](img/bedmesh_round_basic.svg)"
 
 msgid "Advanced Configuration"
 msgstr ""
@@ -106,7 +108,7 @@ msgid ""
 msgstr ""
 
 msgid "![bedmesh_interpolated](img/bedmesh_interpolated.svg)"
-msgstr ""
+msgstr "![bedmesh_interpolated](img/bedmesh_interpolated.svg)"
 
 msgid "Move Splitting"
 msgstr ""

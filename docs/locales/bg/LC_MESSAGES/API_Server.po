@@ -1,23 +1,35 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"api_server/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "This document describes Klipper's Application Programmer Interface (API). "
 "This interface enables external applications to query and control the "
 "Klipper host software."
 msgstr ""
+"Този документ описва интерфейса за приложни програмисти (API) на Klipper. "
+"Този интерфейс позволява на външни приложения да правят заявки и да "
+"управляват хост софтуера на Klipper."
 
 msgid "Enabling the API socket"
-msgstr ""
+msgstr "Активиране на гнездото на API"
 
 msgid ""
 "In order to use the API server, the klippy.py host software must be started "
 "with the `-a` parameter. For example:"
 msgstr ""
+"За да използвате API сървъра, хост софтуерът klippy.py трябва да бъде "
+"стартиран с параметъра `-a`. Например:"
 
 msgid ""
 "This causes the host software to create a Unix Domain Socket. A client can "
@@ -57,7 +69,7 @@ msgid "A request might look like:"
 msgstr ""
 
 msgid "`{\"id\": 123, \"method\": \"info\", \"params\": {}}`"
-msgstr ""
+msgstr "`{\"id\": 123, \"method\": \"info\", \"params\": {}}`"
 
 msgid "and a response might look like:"
 msgstr ""

@@ -1,15 +1,22 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/faq/bg/"
+">\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid "How can I donate to the project?"
-msgstr ""
+msgstr "Как мога да направя дарение за проекта?"
 
 msgid "How do I calculate the rotation_distance config parameter?"
-msgstr ""
+msgstr "Как да изчисля конфигурационния параметър rotation_distance?"
 
 msgid "See the [rotation distance document](Rotation_Distance.md)."
 msgstr ""
@@ -588,11 +595,16 @@ msgid ""
 "make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+"make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
+"sudo service klipper start\n"
 
 msgid ""
 "[mcu]\n"
 "serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 msgstr ""
+"[mcu]\n"
+"serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 
 msgid ""
 "[mcu]\n"

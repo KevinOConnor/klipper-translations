@@ -1,18 +1,29 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"bltouch/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid "Connecting BL-Touch"
-msgstr ""
+msgstr "Свързване на BL-Touch"
 
 msgid ""
 "A **warning** before you start: Avoid touching the BL-Touch pin with your "
 "bare fingers, since it is quite sensitive to finger grease. And if you do "
 "touch it, be very gentle, in order to not bend or push anything."
 msgstr ""
+"Едно **предупреждение** преди да започнете: Избягвайте да докосвате щифта BL-"
+"Touch с голи пръсти, тъй като той е доста чувствителен към пръстова мазнина. "
+"А ако все пак го докоснете, бъдете много внимателни, за да не огънете или "
+"натиснете нещо."
 
 msgid ""
 "Hook up the BL-Touch \"servo\" connector to a `control_pin` according to the"
@@ -81,7 +92,7 @@ msgid ""
 msgstr ""
 
 msgid "BLTOUCH_DEBUG COMMAND=reset"
-msgstr ""
+msgstr "BLTOUCH_DEBUG COMMAND=reset"
 
 msgid ""
 "This may happen if its calibration is interrupted by the probe being blocked"
@@ -140,7 +151,7 @@ msgid ""
 msgstr ""
 
 msgid "BL-Touch v3"
-msgstr ""
+msgstr "BL-Touch v3"
 
 msgid ""
 "Some BL-Touch v3.0 and BL-Touch 3.1 devices may require configuring "

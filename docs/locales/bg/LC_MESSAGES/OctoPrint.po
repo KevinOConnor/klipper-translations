@@ -1,10 +1,20 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"octoprint/bg/>\n"
+"Language: bg\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/OctoPrint.md:block 1 (header)
 msgid "OctoPrint for Klipper"
-msgstr ""
+msgstr "OctoPrint за Clipper"
 
 #: docs/OctoPrint.md:block 2 (paragraph)
 msgid ""
@@ -12,10 +22,13 @@ msgid ""
 "original front end for Klipper. This document will give a brief overview of "
 "installing with this option."
 msgstr ""
+"Klipper има няколко опции за предните си части, Octoprint е първата и "
+"оригинална предна част за Klipper. В този документ ще бъде направен кратък "
+"преглед на инсталирането с тази опция."
 
 #: docs/OctoPrint.md:block 3 (header)
 msgid "Install with OctoPi"
-msgstr ""
+msgstr "Инсталиране с OctoPi"
 
 #: docs/OctoPrint.md:block 4 (paragraph)
 msgid ""
@@ -24,6 +37,10 @@ msgid ""
 "releases](https://github.com/guysoft/OctoPi/releases) for release "
 "information."
 msgstr ""
+"Започнете, като инсталирате [OctoPi](https://github.com/guysoft/OctoPi) на "
+"компютъра Raspberry Pi. Използвайте OctoPi v0.17.0 или по-нова версия - "
+"вижте [OctoPi releases](https://github.com/guysoft/OctoPi/releases) за "
+"информация за версиите."
 
 #: docs/OctoPrint.md:block 5 (paragraph)
 msgid ""
@@ -31,28 +48,33 @@ msgid ""
 " After connecting to the OctoPrint web page, follow the prompt to upgrade "
 "OctoPrint if needed."
 msgstr ""
+"Трябва да се провери дали OctoPi се зарежда и дали уеб сървърът на OctoPrint "
+"работи. След като се свържете с уеб страницата на OctoPrint, следвайте "
+"подканата за обновяване на OctoPrint, ако е необходимо."
 
 #: docs/OctoPrint.md:block 6 (paragraph)
 msgid ""
 "After installing OctoPi and upgrading OctoPrint, it will be necessary to ssh"
 " into the target machine to run a handful of system commands."
 msgstr ""
+"След като инсталирате OctoPi и надстроите OctoPrint, ще е необходимо да "
+"влезете през ssh в целевата машина, за да изпълните няколко системни команди."
 
 #: docs/OctoPrint.md:block 7 (paragraph)
 msgid "Start by running these commands on your host device:"
-msgstr ""
+msgstr "Започнете с изпълнението на тези команди на хост устройството:"
 
 #: docs/OctoPrint.md:block 8 (paragraph)
 msgid "**If you do not have git installed, please do so with:**"
-msgstr ""
+msgstr "**Ако нямате инсталиран git, моля, направете го с:**"
 
 #: docs/OctoPrint.md:block 9 (code)
 msgid "sudo apt install git\n"
-msgstr ""
+msgstr "sudo apt install git\n"
 
 #: docs/OctoPrint.md:block 10 (paragraph)
 msgid "then proceed:"
-msgstr ""
+msgstr "след това продължете:"
 
 #: docs/OctoPrint.md:block 11 (code)
 msgid ""
@@ -60,6 +82,9 @@ msgid ""
 "git clone https://github.com/Klipper3d/klipper\n"
 "./klipper/scripts/install-octopi.sh\n"
 msgstr ""
+"cd ~\n"
+"git clone https://github.com/Klipper3d/klipper\n"
+"./klipper/scripts/install-octopi.sh\n"
 
 #: docs/OctoPrint.md:block 12 (paragraph)
 msgid ""
@@ -68,10 +93,14 @@ msgid ""
 " It will require an internet connection and it may take a few minutes to "
 "complete."
 msgstr ""
+"Горното ще изтегли Klipper, ще инсталира необходимите системни зависимости, "
+"ще настрои Klipper да се стартира при стартиране на системата и ще стартира "
+"хост софтуера на Klipper. Това изисква интернет връзка и може да отнеме "
+"няколко минути."
 
 #: docs/OctoPrint.md:block 13 (header)
 msgid "Installing with KIAUH"
-msgstr ""
+msgstr "Инсталиране с KIAUH"
 
 #: docs/OctoPrint.md:block 14 (paragraph)
 msgid ""
@@ -79,10 +108,13 @@ msgid ""
 "that run a form of Debian. More information can be found at "
 "https://github.com/dw-0/kiauh"
 msgstr ""
+"KIAUH може да се използва за инсталиране на OctoPrint на различни системи, "
+"базирани на Linux, които работят под формата на Debian. Повече информация "
+"можете да намерите на адрес https://github.com/dw-0/kiauh"
 
 #: docs/OctoPrint.md:block 15 (header)
 msgid "Configuring OctoPrint to use Klipper"
-msgstr ""
+msgstr "Конфигуриране на OctoPrint за използване на Klipper"
 
 #: docs/OctoPrint.md:block 16 (paragraph)
 msgid ""
@@ -90,30 +122,39 @@ msgid ""
 "Klipper host software. Using a web browser, login to the OctoPrint web page "
 "and then configure the following items:"
 msgstr ""
+"Уеб сървърът на OctoPrint трябва да бъде конфигуриран, за да комуникира с "
+"хост софтуера на Klipper. Използвайки уеб браузър, влезте в уеб страницата "
+"на OctoPrint и след това конфигурирайте следните елементи:"
 
 #: docs/OctoPrint.md:block 17 (paragraph)
 msgid ""
 "Navigate to the Settings tab (the wrench icon at the top of the page). Under"
 " \"Serial Connection\" in \"Additional serial ports\" add:"
 msgstr ""
+"Отидете в раздела Настройки (иконата на гаечен ключ в горната част на "
+"страницата). В \"Серийна връзка\" в \"Допълнителни серийни портове\" "
+"добавете:"
 
 #: docs/OctoPrint.md:block 18 (code)
 msgid "~/printer_data/comms/klippy.sock\n"
-msgstr ""
+msgstr "~/printer_data/comms/klippy.sock\n"
 
 #: docs/OctoPrint.md:block 19 (paragraph)
 msgid "Then click \"Save\"."
-msgstr ""
+msgstr "След това щракнете върху \"Запази\"."
 
 #: docs/OctoPrint.md:block 20 (paragraph)
 msgid "*In some older setups this address may be `/tmp/printer`*"
-msgstr ""
+msgstr "*В някои по-стари конфигурации този адрес може да бъде `/tmp/printer`*"
 
 #: docs/OctoPrint.md:block 21 (paragraph)
 msgid ""
 "Enter the Settings tab again and under \"Serial Connection\" change the "
 "\"Serial Port\" setting to the one added above."
 msgstr ""
+"Влезте отново в раздела Settings (Настройки) и в \"Serial Connection\" ("
+"Серийна връзка) променете настройката \"Serial Port\" (Сериен порт) на "
+"добавената по-горе."
 
 #: docs/OctoPrint.md:block 22 (paragraph)
 msgid ""
@@ -121,6 +162,10 @@ msgid ""
 "\"Cancel any ongoing prints but stay connected to the printer\" option. "
 "Click \"Save\"."
 msgstr ""
+"В раздела Settings (Настройки) преминете към подкабината \"Behavior\" "
+"(Поведение) и изберете опцията \"Cancel any ongoing prints but stay "
+"connected to the printer\" (Отмени всички текущи разпечатки, но остани "
+"свързан с принтера). Щракнете върху \"Запази\"."
 
 #: docs/OctoPrint.md:block 23 (paragraph)
 msgid ""
@@ -129,6 +174,10 @@ msgid ""
 "and click \"Connect\". (If it is not in the available selection then try "
 "reloading the page.)"
 msgstr ""
+"На главната страница в раздела \"Connection\" (в горния ляв ъгъл на "
+"страницата) се уверете, че \"Serial Port\" (Сериен порт) е настроен на новия "
+"допълнителен порт и щракнете върху \"Connect\" (Свързване). (Ако не е в "
+"наличния избор, опитайте да презаредите страницата.)"
 
 #: docs/OctoPrint.md:block 24 (paragraph)
 msgid ""
@@ -137,9 +186,16 @@ msgid ""
 "terminal window will likely report there is an error opening the config file"
 " - that means OctoPrint is successfully communicating with Klipper."
 msgstr ""
+"След като се свържете, преминете към раздела \"Терминал\" и въведете \"status"
+"\" (без кавичките) в полето за въвеждане на команди и щракнете върху "
+"\"Изпрати\". Прозорецът на терминала вероятно ще съобщи, че има грешка при "
+"отварянето на конфигурационния файл - това означава, че OctoPrint успешно "
+"комуникира с Klipper."
 
 #: docs/OctoPrint.md:block 25 (paragraph)
 msgid ""
 "Please proceed to <Installation.md> and the *Building and flashing the "
 "micro-controller* section"
 msgstr ""
+"Моля, преминете към <Installation.md> и раздела *Създаване и флашване на "
+"микроконтролера*"

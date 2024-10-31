@@ -1,17 +1,26 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"rpi_microcontroller/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "This document describes the process of running Klipper on a RPi and use the "
 "same RPi as secondary mcu."
 msgstr ""
+"Този документ описва процеса на стартиране на Klipper на RPi и използване на "
+"същия RPi като вторичен mcu."
 
 msgid "Why use RPi as a secondary MCU?"
-msgstr ""
+msgstr "Защо да използвате RPi като вторичен MCU?"
 
 msgid ""
 "Often the MCUs dedicated to controlling 3D printers have a limited and pre-"
@@ -22,6 +31,14 @@ msgid ""
 "Octoprint plugins (if used) or external programs giving the ability to "
 "control everything within the print GCODE."
 msgstr ""
+"Често MCU устройствата, предназначени за управление на 3D принтери, имат "
+"ограничен и предварително конфигуриран брой изводи за управление на "
+"основните функции за печат (термични резистори, екструдери, степери...). "
+"Използването на RPi, в който е инсталиран Klipper, като вторичен MCU дава "
+"възможност за директно използване на GPIO и шините (i2c, spi) на RPi в "
+"Klipper, без да се използват плъгини на Octoprint (ако се използват) или "
+"външни програми, което дава възможност за управление на всичко в рамките на "
+"GCODE за печат."
 
 msgid ""
 "**Warning**: If your platform is a *Beaglebone* and you have correctly "
@@ -97,12 +114,17 @@ msgid ""
 "cd ~/klipper/\n"
 "make menuconfig\n"
 msgstr ""
+"cd ~/klipper/\n"
+"make menuconfig\n"
 
 msgid ""
 "sudo service klipper stop\n"
 "make flash\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+"make flash\n"
+"sudo service klipper start\n"
 
 msgid "sudo usermod -a -G tty pi\n"
 msgstr ""
@@ -245,7 +267,7 @@ msgstr ""
 
 #: docs/RPi_microcontroller.md:block 45 (table)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: docs/RPi_microcontroller.md:block 45 (table)
 msgid "18"
@@ -253,11 +275,11 @@ msgstr ""
 
 #: docs/RPi_microcontroller.md:block 45 (table)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: docs/RPi_microcontroller.md:block 45 (table)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: docs/RPi_microcontroller.md:block 45 (table)
 msgid "13"
@@ -265,7 +287,7 @@ msgstr ""
 
 #: docs/RPi_microcontroller.md:block 45 (table)
 msgid "19"
-msgstr ""
+msgstr "19"
 
 #: docs/RPi_microcontroller.md:block 20 (header)
 msgid "Optional: Enabling SPI"

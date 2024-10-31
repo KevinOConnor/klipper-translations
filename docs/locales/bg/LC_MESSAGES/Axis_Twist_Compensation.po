@@ -1,14 +1,24 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"axis_twist_compensation/bg/>\n"
+"Language: bg\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Axis_Twist_Compensation.md:block 1 (header)
 msgid "Axis Twist Compensation"
-msgstr ""
+msgstr "Компенсация на усукването на оста"
 
 #: docs/Axis_Twist_Compensation.md:block 2 (paragraph)
 msgid "This document describes the [axis_twist_compensation] module."
-msgstr ""
+msgstr "Този документ описва модула [axis_twist_compensation]."
 
 #: docs/Axis_Twist_Compensation.md:block 3 (paragraph)
 msgid ""
@@ -21,6 +31,14 @@ msgid ""
 "Adjust](G-Codes.md#z_tilt_adjust) etc returning inaccurate representations "
 "of the bed."
 msgstr ""
+"Някои принтери могат да имат малко усукване на релсата X, което може да "
+"изкриви резултатите от сондата, прикрепена към каретката X. Това е често "
+"срещано при принтери с дизайн като Prusa MK3, Sovol SV06 и т.н. и е описано "
+"по-подробно в раздела [probe location bias](Probe_Calibrate.md#location-bias-"
+"check). Това може да доведе до операции на сондата, като например [Bed "
+"Mesh](Bed_Mesh.md), [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z "
+"Tilt Adjust](G-Codes.md#z_tilt_adjust) и т.н., които връщат неточни "
+"изображения на леглото."
 
 #: docs/Axis_Twist_Compensation.md:block 4 (paragraph)
 msgid ""
@@ -29,44 +47,60 @@ msgid ""
 "recommended to first use mechanical means to fix it prior to applying "
 "software corrections."
 msgstr ""
+"Този модул използва ръчните измервания на потребителя за коригиране на "
+"резултатите от сондата. Обърнете внимание, че ако оста е значително усукана, "
+"силно се препоръчва първо да използвате механични средства, за да я "
+"фиксирате, преди да прилагате софтуерни корекции."
 
 #: docs/Axis_Twist_Compensation.md:block 5 (paragraph)
 msgid ""
 "**Warning**: This module is not compatible with dockable probes yet and will"
 " try to probe the bed without attaching the probe if you use it."
 msgstr ""
+"**Предупреждение**: Този модул все още не е съвместим с докинг сондите и ако "
+"го използвате, ще се опита да изследва леглото, без да е прикрепена сондата."
 
 #: docs/Axis_Twist_Compensation.md:block 6 (header)
 msgid "Overview of compensation usage"
-msgstr ""
+msgstr "Преглед на използването на компенсациите"
 
 #: docs/Axis_Twist_Compensation.md:block 7 (quote)
 msgid ""
 "**Tip:** Make sure the [probe X and Y offsets](Config_Reference.md#probe) "
 "are correctly set as they greatly influence calibration."
 msgstr ""
+"**Съвет:** Уверете се, че [отместванията на сондата X и Y](Config_Reference."
+"md#probe) са правилно зададени, тъй като те оказват голямо влияние върху "
+"калибрирането."
 
 #: docs/Axis_Twist_Compensation.md:block 8 (ordered list)
 msgid ""
 "After setting up the [axis_twist_compensation] module, perform "
 "`AXIS_TWIST_COMPENSATION_CALIBRATE`"
 msgstr ""
+"След като настроите модула [axis_twist_compensation], изпълнете "
+"`AXIS_TWIST_COMPENSATION_CALIBRATE`."
 
 #: docs/Axis_Twist_Compensation.md:block 9 (unordered list)
 msgid ""
 "The calibration wizard will prompt you to measure the probe Z offset at a "
 "few points along the bed"
 msgstr ""
+"Съветникът за калибриране ще ви подкани да измерите изместването на сондата "
+"Z в няколко точки по протежение на леглото."
 
 #: docs/Axis_Twist_Compensation.md:block 9 (unordered list)
 msgid ""
 "The calibration defaults to 3 points but you can use the option "
 "`SAMPLE_COUNT=` to use a different number."
 msgstr ""
+"По подразбиране калибрирането е с 3 точки, но можете да използвате опцията "
+"`SAMPLE_COUNT=`, за да използвате друг брой."
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid "[Adjust your Z offset](Probe_Calibrate.md#calibrating-probe-z-offset)"
 msgstr ""
+"[Настройте изместването Z](Probe_Calibrate.md#calibrating-probe-z-offset)"
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid ""
@@ -74,35 +108,49 @@ msgid ""
 "Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt "
 "Adjust](G-Codes.md#z_tilt_adjust) etc"
 msgstr ""
+"Извършване на автоматични/базирани на сонда операции за трамбоване на "
+"леглото, като например [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), ["
+"Z Tilt Adjust](G-Codes.md#z_tilt_adjust) и др."
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid "Home all axis, then perform a [Bed Mesh](Bed_Mesh.md) if required"
 msgstr ""
+"Поставете всички оси в изходно положение, след което при необходимост "
+"направете [Bed Mesh](Bed_Mesh.md)"
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid ""
 "Perform a test print, followed by any [fine-"
 "tuning](Axis_Twist_Compensation.md#fine-tuning) as desired"
 msgstr ""
+"Извършете тестово отпечатване, последвано от [фина "
+"настройка](Axis_Twist_Compensation.md#fine-tuning) по желание."
 
 #: docs/Axis_Twist_Compensation.md:block 11 (quote)
 msgid ""
 "**Tip:** Bed temperature and nozzle temperature and size do not seem to have"
 " an influence to the calibration process."
 msgstr ""
+"**Съвет:** Изглежда, че температурата на леглото и температурата и размерът "
+"на дюзата не оказват влияние върху процеса на калибриране."
 
 #: docs/Axis_Twist_Compensation.md:block 12 (header)
 msgid "[axis_twist_compensation] setup and commands"
-msgstr ""
+msgstr "[axis_twist_compensation] настройка и команди"
 
 #: docs/Axis_Twist_Compensation.md:block 13 (paragraph)
 msgid ""
 "Configuration options for [axis_twist_compensation] can be found in the "
 "[Configuration Reference](Config_Reference.md#axis_twist_compensation)."
 msgstr ""
+"Опциите за конфигуриране за [axis_twist_compensation] могат да бъдат "
+"намерени в [Configuration Reference](Config_Reference."
+"md#axis_twist_compensation)."
 
 #: docs/Axis_Twist_Compensation.md:block 14 (paragraph)
 msgid ""
 "Commands for [axis_twist_compensation] can be found in the [G-Codes "
 "Reference](G-Codes.md#axis_twist_compensation)"
 msgstr ""
+"Командите за [axis_twist_compensation] могат да бъдат намерени в [G-Codes "
+"Reference](G-Codes.md#axis_twist_compensation)"

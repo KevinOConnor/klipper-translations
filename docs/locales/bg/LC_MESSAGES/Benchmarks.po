@@ -1,15 +1,22 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"benchmarks/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid "This document describes Klipper benchmarks."
-msgstr ""
+msgstr "Този документ описва бенчмарковете на Klipper."
 
 msgid "Micro-controller Benchmarks"
-msgstr ""
+msgstr "Бенчмаркове за микроконтролери"
 
 msgid ""
 "This section describes the mechanism used to generate the Klipper micro-"
@@ -63,16 +70,18 @@ msgid "The following configuration sequence is used on AVR chips:"
 msgstr ""
 
 msgid "avr"
-msgstr ""
+msgstr "avr"
 
 msgid "ticks"
 msgstr ""
 
+#, fuzzy
 msgid "1 stepper"
-msgstr ""
+msgstr "1 stepper"
 
+#, fuzzy
 msgid "3 stepper"
-msgstr ""
+msgstr "3 stepper"
 
 msgid "Arduino Due step rate benchmark"
 msgstr ""
@@ -81,7 +90,7 @@ msgid "The following configuration sequence is used on the Due:"
 msgstr ""
 
 msgid "sam3x8e"
-msgstr ""
+msgstr "sam3x8e"
 
 msgid "Duet Maestro step rate benchmark"
 msgstr ""
@@ -90,7 +99,7 @@ msgid "The following configuration sequence is used on the Duet Maestro:"
 msgstr ""
 
 msgid "sam4s8c"
-msgstr ""
+msgstr "sam4s8c"
 
 msgid "70"
 msgstr ""
@@ -390,7 +399,7 @@ msgid "66"
 msgstr ""
 
 msgid "5"
-msgstr ""
+msgstr "5"
 
 msgid "22"
 msgstr ""

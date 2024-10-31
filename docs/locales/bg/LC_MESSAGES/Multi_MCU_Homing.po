@@ -1,15 +1,17 @@
 # Nikolai Danov <nikolaidanov67@gmail.com>, 2022.
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-08-26 16:03+0000\n"
-"Last-Translator: Nikolai Danov <nikolaidanov67@gmail.com>\n"
-"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/multi_mcu_homing/bg/>\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"multi_mcu_homing/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: docs/Multi_MCU_Homing.md:block 1 (header)
 msgid "Multiple Micro-controller Homing and Probing"
@@ -108,6 +110,11 @@ msgid ""
 "10ms. High latency (even for short periods) is likely to result in homing "
 "failures."
 msgstr ""
+"За да може да се използва тази възможност за насочване на множество "
+"микроконтролери, хардуерът трябва да има предвидимо ниска латентност между "
+"главния компютър и всички микроконтролери. Обикновено времето за обхождане "
+"трябва да е постоянно по-малко от 10 ms. Високата латентност (дори за кратки "
+"периоди от време) вероятно ще доведе до неуспешно насочване."
 
 #: docs/Multi_MCU_Homing.md:block 8 (paragraph)
 msgid ""
@@ -115,6 +122,9 @@ msgid ""
 "issue is detected) then Klipper will raise a \"Communication timeout during "
 "homing\" error."
 msgstr ""
+"Ако високата латентност доведе до неуспех (или ако се открие някакъв друг "
+"проблем с комуникацията), Klipper ще обяви грешка \"Communication timeout "
+"during homing\"."
 
 #~ msgid ""
 #~ "Should Klipper detect a communication issue between micro-controllers during"

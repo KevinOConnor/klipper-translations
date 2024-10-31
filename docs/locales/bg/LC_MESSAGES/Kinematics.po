@@ -1,9 +1,16 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"kinematics/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "This document provides an overview of how Klipper implements robot motion "
@@ -12,9 +19,15 @@ msgid ""
 "software as well as users interested in better understanding the mechanics "
 "of their machines."
 msgstr ""
+"Този документ съдържа преглед на начина, по който Klipper реализира "
+"движението на робота (неговата [кинематика](https://en.wikipedia.org/wiki/"
+"Kinematics)). Съдържанието може да представлява интерес както за "
+"разработчици, които се интересуват от работа по софтуера Klipper, така и за "
+"потребители, които се интересуват от по-добро разбиране на механиката на "
+"своите машини."
 
 msgid "Acceleration"
-msgstr ""
+msgstr "Ускорение"
 
 msgid ""
 "Klipper implements a constant acceleration scheme whenever the print head "
@@ -69,10 +82,10 @@ msgid ""
 msgstr ""
 
 msgid "![trapezoids](img/trapezoids.svg.png)"
-msgstr ""
+msgstr "![trapezoids](img/trapezoids.svg.png)"
 
 msgid "Look-ahead"
-msgstr ""
+msgstr "Поглед напред"
 
 msgid ""
 "The \"look-ahead\" system is used to determine cornering speeds between "
@@ -83,7 +96,7 @@ msgid "Consider the following two moves contained on an XY plane:"
 msgstr ""
 
 msgid "![corner](img/corner.svg.png)"
-msgstr ""
+msgstr "![corner](img/corner.svg.png)"
 
 msgid ""
 "In the above situation it is possible to fully decelerate after the first "
@@ -102,7 +115,7 @@ msgid ""
 msgstr ""
 
 msgid "![lookahead](img/lookahead.svg.png)"
-msgstr ""
+msgstr "![lookahead](img/lookahead.svg.png)"
 
 msgid ""
 "However, if the next move forms an acute angle (the head is going to travel "
@@ -111,7 +124,7 @@ msgid ""
 msgstr ""
 
 msgid "![lookahead](img/lookahead-slow.svg.png)"
-msgstr ""
+msgstr "![lookahead](img/lookahead-slow.svg.png)"
 
 msgid ""
 "The junction speeds are determined using \"approximated centripetal "
@@ -239,7 +252,7 @@ msgid ""
 msgstr ""
 
 msgid "Pressure advance"
-msgstr ""
+msgstr "Pressure advance"
 
 msgid ""
 "Experimentation has shown that it's possible to improve the modeling of the "

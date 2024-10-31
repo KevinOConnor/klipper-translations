@@ -1,23 +1,27 @@
 # Nikolai Danov <nikolaidanov67@gmail.com>, 2022.
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-08-26 15:12+0000\n"
-"Last-Translator: Nikolai Danov <nikolaidanov67@gmail.com>\n"
-"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/releases/bg/>\n"
+"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"releases/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "History of Klipper releases. Please see [installation](Installation.md) for "
 "information on installing Klipper."
 msgstr ""
+"История на изданията на Klipper. Моля, вижте [installation](Installation.md) "
+"за информация относно инсталирането на Klipper."
 
 msgid "Klipper 0.9.0"
-msgstr ""
+msgstr "Klipper 0.9.0"
 
 msgid "Available on 20201020. Major changes in this release:"
 msgstr ""
@@ -81,13 +85,13 @@ msgid "Several bug fixes and code cleanups."
 msgstr ""
 
 msgid "Klipper 0.9.1"
-msgstr ""
+msgstr "Klipper 0.9.1"
 
 msgid "Available on 20201028. Release containing only bug fixes."
 msgstr ""
 
 msgid "Klipper 0.8.0"
-msgstr ""
+msgstr "Klipper 0.8.0"
 
 msgid "Available on 20191021. Major changes in this release:"
 msgstr ""

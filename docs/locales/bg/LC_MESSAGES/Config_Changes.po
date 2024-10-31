@@ -1,18 +1,28 @@
-#
+# Niolay Danov <nikdan@abv.bg>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
+"config_changes/bg/>\n"
 "Language: bg\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 msgid ""
 "This document covers recent software changes to the config file that are not"
 " backwards compatible. It is a good idea to review this document when "
 "upgrading the Klipper software."
 msgstr ""
+"Този документ обхваща последните софтуерни промени в конфигурационния файл, "
+"които не са обратно съвместими. Добре е да прегледате този документ, когато "
+"обновявате софтуера Klipper."
 
 msgid "All dates in this document are approximate."
-msgstr ""
+msgstr "Всички дати в този документ са приблизителни."
 
 msgid "Changes"
 msgstr ""
@@ -126,8 +136,9 @@ msgid ""
 "port, it must be specified explicitly."
 msgstr ""
 
+#, fuzzy
 msgid "20201020: Klipper v0.9.0 released."
-msgstr ""
+msgstr "20201020: Klipper v0.9.0"
 
 msgid ""
 "20200902: The RTD resistance-to-temperature calculation for MAX31865 "

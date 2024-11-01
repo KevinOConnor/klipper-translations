@@ -63,4 +63,4 @@ Willkommen auf der Klipper-Dokumentationsseite! Wenn Klipper für dich neu ist, 
    - [CAN-Bus-Fehlerbehebung](CANBUS_Troubleshooting.md): Tipps zur Fehlersuche am CAN-Bus.
 - [TSL1401CL Filamentbreitensensor](TSL1401CL_Filament_Width_Sensor.md)
 - [Hall-Effekt Filamentbreitensensor](Hall_Filament_Width_Sensor.md)
-- [Eddy Current Inductive probe](Eddy_Probe.md)
+- [Induktive Wirbelstromsonde](Eddy_Probe.md)

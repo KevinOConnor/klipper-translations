@@ -1,10 +1,10 @@
 # API server
 
-This document describes Klipper's Application Programmer Interface (API). This interface enables external applications to query and control the Klipper host software.
+Този документ описва интерфейса за приложни програмисти (API) на Klipper. Този интерфейс позволява на външни приложения да правят заявки и да управляват хост софтуера на Klipper.
 
-## Enabling the API socket
+## Активиране на гнездото на API
 
-In order to use the API server, the klippy.py host software must be started with the `-a` parameter. For example:
+За да използвате API сървъра, хост софтуерът klippy.py трябва да бъде стартиран с параметъра `-a`. Например:
 
 ```
 ~/klippy-env/bin/python ~/klipper/klippy/klippy.py ~/printer.cfg -a /tmp/klippy_uds -l /tmp/klippy.log

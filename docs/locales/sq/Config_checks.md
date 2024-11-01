@@ -1,36 +1,36 @@
 # Configuration checks
 
-This document provides a list of steps to help confirm the pin settings in the Klipper printer.cfg file. It is a good idea to run through these steps after following the steps in the [installation document](Installation.md).
+Ky dokument ofron një listë hapash për të ndihmuar në konfirmimin e cilësimeve të kontakteve në dokumentin e Kliperit të emërtuar si printer.cfg. Është e këshillueshme ti ndiqni këto hapa pas hapave të listuar në [installation document](Installation.md).
 
-During this guide, it may be necessary to make changes to the Klipper config file. Be sure to issue a RESTART command after every change to the config file to ensure that the change takes effect (type "restart" in the Octoprint terminal tab and then click "Send"). It's also a good idea to issue a STATUS command after every RESTART to verify that the config file is successfully loaded.
+Gjatë këtij udhëzuesi, mund të jetë e nevojshme të bëhen ndryshime në konfigurimet e Klipper-it. Sigurohuni që të jepni komandën RESTART pas çdo ndryshimi në konfigurimet për të siguruar që ndryshimet aplikohen (shkruani "restart" në skedën e terminalit të Octoprint dhe pastaj klikoni "Send"). Gjithashtu, është ide e mirë të jepni komandën STATUS pas çdo RESTART për të verifikuar që skedari i konfigurimit është ngarkuar me sukses.
 
-## Verify temperature
+## Kontrollo temperaturën
 
 Start by verifying that temperatures are being properly reported. Navigate to the temperature graph section in the user interface. Verify that the temperature of the nozzle and bed (if applicable) are present and not increasing. If it is increasing, remove power from the printer. If the temperatures are not accurate, review the "sensor_type" and "sensor_pin" settings for the nozzle and/or bed.
 
-## Verify M112
+## Kontrollo M112
 
 Navigate to the command console and issue an M112 command in the terminal box. This command requests Klipper to go into a "shutdown" state. It will cause an error to show, which can be cleared with a FIRMWARE_RESTART command in the command console. Octoprint will also require a reconnect. Then navigate to the temperature graph section and verify that temperatures continue to update and the temperatures are not increasing. If temperatures are increasing, remove power from the printer.
 
-## Verify heaters
+## Kontrollo elementët e nxehtësisë
 
 Navigate to the temperature graph section and type in 50 followed by enter in the extruder/tool temperature box. The extruder temperature in the graph should start to increase (within about 30 seconds or so). Then go to the extruder temperature drop-down box and select "Off". After several minutes the temperature should start to return to its initial room temperature value. If the temperature does not increase then verify the "heater_pin" setting in the config.
 
-If the printer has a heated bed then perform the above test again with the bed.
+Nëse printeri ka një platformë që nxehet, atëherë kryeni përsëri testin e mësipërm me platformën.
 
-## Verify stepper motor enable pin
+## Verifikoni kontakt-in e aktivizimit të motorit hap-pas-hapi
 
 Verify that all of the printer axes can manually move freely (the stepper motors are disabled). If not, issue an M84 command to disable the motors. If any of the axes still can not move freely, then verify the stepper "enable_pin" configuration for the given axis. On most commodity stepper motor drivers, the motor enable pin is "active low" and therefore the enable pin should have a "!" before the pin (for example, "enable_pin: !PA1").
 
-## Verify endstops
+## Kontrollo kontaktet limitues fundorë
 
 Manually move all the printer axes so that none of them are in contact with an endstop. Send a QUERY_ENDSTOPS command via the command console. It should respond with the current state of all of the configured endstops and they should all report a state of "open". For each of the endstops, rerun the QUERY_ENDSTOPS command while manually triggering the endstop. The QUERY_ENDSTOPS command should report the endstop as "TRIGGERED".
 
 If the endstop appears inverted (it reports "open" when triggered and vice-versa) then add a "!" to the pin definition (for example, "endstop_pin: ^PA2"), or remove the "!" if there is already one present.
 
-If the endstop does not change at all then it generally indicates that the endstop is connected to a different pin. However, it may also require a change to the pullup setting of the pin (the '^' at the start of the endstop_pin name - most printers will use a pullup resistor and the '^' should be present).
+Nëse ndërprerësi fundor nuk ndryshon fare, zakonisht tregon që ai është i lidhur me një kontakt tjetër. Megjithatë, mund të dhe rasti që duhet një ndryshim ne cilësimet e kontaktit për ta aktivizuar (simboli '^' në fillim të emrit endstop_pin – shumica e printerëve përdorin një rezistor dhe simboli '^' duhet të jetë i pranishëm).
 
-## Verify stepper motors
+## Kontrollo motorët (stepper motors)
 
 Use the STEPPER_BUZZ command to verify the connectivity of each stepper motor. Start by manually positioning the given axis to a midway point and then run `STEPPER_BUZZ STEPPER=stepper_x` in the command console. The STEPPER_BUZZ command will cause the given stepper to move one millimeter in a positive direction and then it will return to its starting position. (If the endstop is defined at position_endstop=0 then at the start of each movement the stepper will move away from the endstop.) It will perform this oscillation ten times.
 

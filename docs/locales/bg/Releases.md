@@ -1,6 +1,6 @@
 # Издания
 
-History of Klipper releases. Please see [installation](Installation.md) for information on installing Klipper.
+История на изданията на Klipper. Моля, вижте [installation](Installation.md) за информация относно инсталирането на Klipper.
 
 ## Klipper 0.11.0
 

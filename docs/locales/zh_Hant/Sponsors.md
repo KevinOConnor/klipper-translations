@@ -16,7 +16,7 @@ BIGTREETECH 是 Klipper 的主板官方贊助商。 BIGTREETECH 致力於開發�
 
 ### Kevin O'Connor
 
-Kevin is the original author and current maintainer of Klipper. Donate at: <https://ko-fi.com/koconnor> or <https://www.patreon.com/koconnor>
+Kevin 是 Klipper 的原創作者及現任維護者。捐款支持請至：<https://ko-fi.com/koconnor> 或 <https://www.patreon.com/koconnor>
 
 ### Eric Callahan
 

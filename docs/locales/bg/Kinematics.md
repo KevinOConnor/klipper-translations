@@ -1,8 +1,8 @@
 # Kinematics
 
-This document provides an overview of how Klipper implements robot motion (its [kinematics](https://en.wikipedia.org/wiki/Kinematics)). The contents may be of interest to both developers interested in working on the Klipper software as well as users interested in better understanding the mechanics of their machines.
+Този документ съдържа преглед на начина, по който Klipper реализира движението на робота (неговата [кинематика](https://en.wikipedia.org/wiki/Kinematics)). Съдържанието може да представлява интерес както за разработчици, които се интересуват от работа по софтуера Klipper, така и за потребители, които се интересуват от по-добро разбиране на механиката на своите машини.
 
-## Acceleration
+## Ускорение
 
 Klipper implements a constant acceleration scheme whenever the print head changes velocity - the velocity is gradually changed to the new speed instead of suddenly jerking to it. Klipper always enforces acceleration between the tool head and the print. The filament leaving the extruder can be quite fragile - rapid jerks and/or extruder flow changes lead to poor quality and poor bed adhesion. Even when not extruding, if the print head is at the same level as the print then rapid jerking of the head can cause disruption of recently deposited filament. Limiting speed changes of the print head (relative to the print) reduces risks of disrupting the print.
 
@@ -26,7 +26,7 @@ The cruising speed is always greater than or equal to both the start speed and t
 
 ![trapezoids](img/trapezoids.svg.png)
 
-## Look-ahead
+## Поглед напред
 
 The "look-ahead" system is used to determine cornering speeds between moves.
 

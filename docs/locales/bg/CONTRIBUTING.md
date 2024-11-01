@@ -1,4 +1,4 @@
-# Contributing to Klipper
+# Даване на принос към Klipper
 
 Thank you for contributing to Klipper! This document describes the process for contributing changes to Klipper.
 
@@ -142,7 +142,7 @@ Signed-off-by: My Name <myemail@example.org>
 
 In the above example, `module` should be the name of a file or directory in the repository (without a file extension). For example, `clocksync: Fix typo in pause() call at connect time`. The purpose of specifying a module name in the commit message is to help provide context for the commit comments.
 
-It is important to have a "Signed-off-by" line on each commit - it certifies that you agree to the [developer certificate of origin](developer-certificate-of-origin). It must contain your real name (sorry, no pseudonyms or anonymous contributions) and contain a current email address.
+Важно е на всеки commit да има ред "Signed-off-by" (Подписано от) - той удостоверява, че сте съгласни със [сертификат за произход на разработчика](developer-certificate-of-origin). Той трябва да съдържа истинското ви име (съжаляваме, без псевдоними или анонимни приноси) и да съдържа актуален имейл адрес.
 
 ## Contributing to Klipper Translations
 

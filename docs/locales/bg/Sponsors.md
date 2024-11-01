@@ -16,7 +16,7 @@ BIGTREETECH е официалният спонсор на Klipper. BIGTREETECH �
 
 ### Кевин О'Конър
 
-Kevin is the original author and current maintainer of Klipper. Donate at: <https://ko-fi.com/koconnor> or <https://www.patreon.com/koconnor>
+Кевин е първоначалният автор и настоящ поддържащ на Klipper. Направете дарение на адрес: <https://ko-fi.com/koconnor> или <https://www.patreon.com/koconnor>
 
 ### Ерик Калахан
 

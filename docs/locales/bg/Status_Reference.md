@@ -1,63 +1,63 @@
 # Status reference
 
-This document is a reference of printer status information available in Klipper [macros](Command_Templates.md), [display fields](Config_Reference.md#display), and via the [API Server](API_Server.md).
+Този документ представлява справка за информацията за състоянието на принтера, налична в Klipper [макроси](Command_Templates.md), [полета за показване](Config_Reference.md#display) и чрез [API Server](API_Server.md).
 
-The fields in this document are subject to change - if using an attribute be sure to review the [Config Changes document](Config_Changes.md) when upgrading the Klipper software.
+Полетата в този документ могат да се променят - ако използвате даден атрибут, не забравяйте да прегледате документа [Config Changes](Config_Changes.md) при обновяване на софтуера Klipper.
 
-## angle
+## ъгъл
 
-The following information is available in [angle some_name](Config_Reference.md#angle) objects:
+Следната информация е налична в обектите [angle some_name](Config_Reference.md#angle):
 
-- `temperature`: The last temperature reading (in Celsius) from a tle5012b magnetic hall sensor. This value is only available if the angle sensor is a tle5012b chip and if measurements are in progress (otherwise it reports `None`).
+- `температура`: Последното отчитане на температурата (в градуси по Целзий) от магнитен сензор на Хола tle5012b. Тази стойност е налична само ако сензорът за ъгъл е чип tle5012b и ако измерванията са в ход (в противен случай се съобщава `None`).
 
 ## bed_mesh
 
-The following information is available in the [bed_mesh](Config_Reference.md#bed_mesh) object:
+Следната информация е налична в обекта [bed_mesh](Config_Reference.md#bed_mesh):
 
-- `profile_name`, `mesh_min`, `mesh_max`, `probed_matrix`, `mesh_matrix`: Information on the currently active bed_mesh.
-- `profiles`: The set of currently defined profiles as setup using BED_MESH_PROFILE.
+- `profile_name`, `mesh_min`, `mesh_max`, `probed_matrix`, `mesh_matrix`: Информация за активния в момента bed_mesh.
+- `profiles`: Наборът от текущо дефинирани профили, настроен с помощта на BED_MESH_PROFILE.
 
 ## bed_screws
 
-The following information is available in the `Config_Reference.md#bed_screws` object:
+Следната информация е налична в обекта `Config_Reference.md#bed_screws`:
 
-- `is_active`: Returns True if the bed screws adjustment tool is currently active.
-- `state`: The bed screws adjustment tool state. It is one of the following strings: "adjust", "fine".
-- `current_screw`: The index for the current screw being adjusted.
-- `accepted_screws`: The number of accepted screws.
+- `is_active`: Връща True, ако инструментът за регулиране на винтовете на леглото е активен в момента.
+- `state`: Състояние на инструмента за регулиране на винтовете на леглото. Това е една от следните струни: "adjust", "fine".
+- `current_screw`: Индексът на текущия винт, който се регулира.
+- `accepted_screws`: Броят на приетите винтове.
 
-## configfile
+## конфигурационен файл
 
-The following information is available in the `configfile` object (this object is always available):
+Следната информация е налична в обекта `configfile` (този обект е винаги наличен):
 
-- `settings.<section>.<option>`: Returns the given config file setting (or default value) during the last software start or restart. (Any settings changed at run-time will not be reflected here.)
-- `config.<section>.<option>`: Returns the given raw config file setting as read by Klipper during the last software start or restart. (Any settings changed at run-time will not be reflected here.) All values are returned as strings.
-- `save_config_pending`: Returns true if there are updates that a `SAVE_CONFIG` command may persist to disk.
-- `save_config_pending_items`: Contains the sections and options that were changed and would be persisted by a `SAVE_CONFIG`.
-- `warnings`: A list of warnings about config options. Each entry in the list will be a dictionary containing a `type` and `message` field (both strings). Additional fields may be available depending on the type of warning.
+- `settings.<section>.<option>`: Връща зададената настройка на конфигурационния файл (или стойността по подразбиране) по време на последното стартиране или рестартиране на софтуера. (Всички настройки, променени по време на работа, няма да бъдат отразени тук.)
+- `config.<section>.<option>`: Връща зададената сурова настройка на конфигурационния файл, прочетена от Klipper по време на последното стартиране или рестартиране на софтуера. (Всички настройки, променени по време на работа, няма да бъдат отразени тук.) Всички стойности се връщат като низове.
+- `save_config_pending`: Връща true, ако има актуализации, които командата `SAVE_CONFIG` може да запази на диска.
+- `save_config_pending_items`: Съдържа секциите и опциите, които са били променени и ще бъдат запазени при `SAVE_CONFIG`.
+- `предупреждения`: Списък с предупреждения за опциите на конфигурацията. Всеки запис в списъка е речник, съдържащ полета `type` и `message` (и двете са низове). Възможно е да има допълнителни полета в зависимост от типа на предупреждението.
 
 ## display_status
 
-The following information is available in the `display_status` object (this object is automatically available if a [display](Config_Reference.md#display) config section is defined):
+Следната информация е налична в обекта `display_status` (този обект е автоматично наличен, ако е дефинирана секция [display](Config_Reference.md#display) на конфигурацията):
 
-- `progress`: The progress value of the last `M73` G-Code command (or `virtual_sdcard.progress` if no recent `M73` received).
-- `message`: The message contained in the last `M117` G-Code command.
+- `progress`: Стойността на прогреса на последната `M73` G-Code команда (или `virtual_sdcard.progress`, ако не е получена скорошна `M73`).
+- `message`: Съобщението, съдържащо се в последната G-кодова команда `M117`.
 
 ## endstop_phase
 
-The following information is available in the [endstop_phase](Config_Reference.md#endstop_phase) object:
+Следната информация е налична в обекта [endstop_phase](Config_Reference.md#endstop_phase):
 
-- `last_home.<stepper name>.phase`: The phase of the stepper motor at the end of the last home attempt.
-- `last_home.<stepper name>.phases`: The total number of phases available on the stepper motor.
-- `last_home.<stepper name>.mcu_position`: The position (as tracked by the micro-controller) of the stepper motor at the end of the last home attempt. The position is the total number of steps taken in a forward direction minus the total number of steps taken in the reverse direction since the micro-controller was last restarted.
+- `last_home.<име на степер>.phase`: Фазата на стъпковия двигател в края на последния домашен опит.
+- `last_home.<име на степер>.phases`: Общият брой на наличните фази на стъпковия двигател.
+- `last_home.<име на степер>.mcu_position`: Позицията (проследена от микроконтролера) на стъпковия двигател в края на последния опит за връщане в изходно положение. Позицията е общият брой стъпки, направени в права посока, минус общия брой стъпки, направени в обратна посока, след последното рестартиране на микроконтролера.
 
 ## exclude_object
 
-The following information is available in the [exclude_object](Exclude_Object.md) object:
+Следната информация е налична в обекта [exclude_object](Exclude_Object.md):
 
-- `objects`: An array of the known objects as provided by the `EXCLUDE_OBJECT_DEFINE` command. This is the same information provided by the `EXCLUDE_OBJECT VERBOSE=1` command. The `center` and `polygon` fields will only be present if provided in the original `EXCLUDE_OBJECT_DEFINE`
+- `objects`: Масив от известните обекти, предоставени от командата `EXCLUDE_OBJECT_DEFINE`. Това е същата информация, предоставена от командата `EXCLUDE_OBJECT VERBOSE=1`. Полетата `center` и `polygon` ще присъстват само ако са предоставени в оригиналната команда `EXCLUDE_OBJECT_DEFINE`.
 
-   Here is a JSON sample:
+   Ето една JSON извадка:
 
 ```
 [
@@ -84,300 +84,300 @@ The following information is available in the [exclude_object](Exclude_Object.md
 ]
 ```
 
-- `excluded_objects`: An array of strings listing the names of excluded objects.
-- `current_object`: The name of the object currently being printed.
+- `excluded_objects`: Масив от низове, съдържащ имената на изключените обекти.
+- `current_object`: Името на обекта, който се отпечатва в момента.
 
 ## extruder_stepper
 
-The following information is available for extruder_stepper objects (as well as [extruder](Config_Reference.md#extruder) objects):
+Следната информация е налична за обектите extruder_stepper (както и за обектите [extruder](Config_Reference.md#extruder)):
 
-- `pressure_advance`: The current [pressure advance](Pressure_Advance.md) value.
-- `smooth_time`: The current pressure advance smooth time.
-- `motion_queue`: The name of the extruder that this extruder stepper is currently synchronized to. This is reported as `None` if the extruder stepper is not currently associated with an extruder.
+- `pressure_advance`: Текущата стойност на [аванс на налягането](Pressure_Advance.md).
+- `smooth_time`: Текущото време за плавно увеличаване на налягането.
+- `motion_queue`: Името на екструдера, с който в момента е синхронизиран този стъпков екструдер. Това се съобщава като `None`, ако стъпката на екструдера в момента не е свързана с екструдер.
 
-## fan
+## вентилатор
 
-The following information is available in [fan](Config_Reference.md#fan), [heater_fan some_name](Config_Reference.md#heater_fan) and [controller_fan some_name](Config_Reference.md#controller_fan) objects:
+Следната информация е налична в обектите [fan](Config_Reference.md#fan), [heater_fan some_name](Config_Reference.md#heater_fan) и [controller_fan some_name](Config_Reference.md#controller_fan):
 
-- `speed`: The fan speed as a float between 0.0 and 1.0.
-- `rpm`: The measured fan speed in rotations per minute if the fan has a tachometer_pin defined.
+- `speed`: Скоростта на вентилатора като плаващо число между 0,0 и 1,0.
+- `rpm`: Измерената скорост на вентилатора в обороти в минута, ако вентилаторът има дефиниран tachometer_pin.
 
 ## filament_switch_sensor
 
-The following information is available in [filament_switch_sensor some_name](Config_Reference.md#filament_switch_sensor) objects:
+Следната информация е налична в обектите [filament_switch_sensor some_name](Config_Reference.md#filament_switch_sensor):
 
-- `enabled`: Returns True if the switch sensor is currently enabled.
-- `filament_detected`: Returns True if the sensor is in a triggered state.
+- `enabled`: Връща True, ако сензорът за превключване в момента е активиран.
+- `filament_detected`: Връща True, ако сензорът е в състояние на задействане.
 
 ## filament_motion_sensor
 
-The following information is available in [filament_motion_sensor some_name](Config_Reference.md#filament_motion_sensor) objects:
+Следната информация е налична в обектите [filament_motion_sensor some_name](Config_Reference.md#filament_motion_sensor):
 
-- `enabled`: Returns True if the motion sensor is currently enabled.
-- `filament_detected`: Returns True if the sensor is in a triggered state.
+- `enabled`: Връща True, ако сензорът за движение в момента е активиран.
+- `filament_detected`: Връща True, ако сензорът е в състояние на задействане.
 
 ## firmware_retraction
 
-The following information is available in the [firmware_retraction](Config_Reference.md#firmware_retraction) object:
+Следната информация е налична в обекта [firmware_retraction](Config_Reference.md#firmware_retraction):
 
-- `retract_length`, `retract_speed`, `unretract_extra_length`, `unretract_speed`: The current settings for the firmware_retraction module. These settings may differ from the config file if a `SET_RETRACTION` command alters them.
+- `retract_length`, `retract_speed`, `unretract_extra_length`, `unretract_speed`: Текущите настройки за модула firmware_retraction. Тези настройки могат да се различават от тези в конфигурационния файл, ако командата `SET_RETRACTION` ги промени.
 
 ## gcode_button
 
-The following information is available in [gcode_button some_name](Config_Reference.md#gcode_button) objects:
+Следната информация е налична в обектите [gcode_button some_name](Config_Reference.md#gcode_button):
 
-- `state`: The current button state returned as "PRESSED" or "RELEASED"
+- `state`: Текущото състояние на бутона, върнато като "PRESSED" или "RELEASED".
 
 ## gcode_macro
 
-The following information is available in [gcode_macro some_name](Config_Reference.md#gcode_macro) objects:
+Следната информация е налична в обектите [gcode_macro some_name](Config_Reference.md#gcode_macro):
 
-- `<variable>`: The current value of a [gcode_macro variable](Command_Templates.md#variables).
+- `<променлива>`: Текущата стойност на променлива [gcode_macro](Command_Templates.md#variables).
 
 ## gcode_move
 
-The following information is available in the `gcode_move` object (this object is always available):
+Следната информация е налична в обекта `gcode_move` (този обект е винаги наличен):
 
-- `gcode_position`: The current position of the toolhead relative to the current G-Code origin. That is, positions that one might directly send to a `G1` command. It is possible to access the x, y, z, and e components of this position (eg, `gcode_position.x`).
-- `position`: The last commanded position of the toolhead using the coordinate system specified in the config file. It is possible to access the x, y, z, and e components of this position (eg, `position.x`).
-- `homing_origin`: The origin of the gcode coordinate system (relative to the coordinate system specified in the config file) to use after a `G28` command. The `SET_GCODE_OFFSET` command can alter this position. It is possible to access the x, y, and z components of this position (eg, `homing_origin.x`).
-- `speed`: The last speed set in a `G1` command (in mm/s).
-- `speed_factor`: The "speed factor override" as set by an `M220` command. This is a floating point value such that 1.0 means no override and, for example, 2.0 would double requested speed.
-- `extrude_factor`: The "extrude factor override" as set by an `M221` command. This is a floating point value such that 1.0 means no override and, for example, 2.0 would double requested extrusions.
-- `absolute_coordinates`: This returns True if in `G90` absolute coordinate mode or False if in `G91` relative mode.
-- `absolute_extrude`: This returns True if in `M82` absolute extrude mode or False if in `M83` relative mode.
+- `gcode_position`: Текущата позиция на главата на инструмента спрямо текущото начало на G-кода. Тоест позициите, които могат да се изпратят директно към команда `G1`. Възможно е да се получи достъп до компонентите x, y, z и e на тази позиция (например, `gcode_position.x`).
+- `позиция`: Последната заповядана позиция на главата на инструмента, използваща координатната система, зададена в конфигурационния файл. Възможно е да се получи достъп до компонентите x, y, z и e на тази позиция (напр., `position.x`).
+- `homing_origin`: Произходът на координатната система gcode (спрямо координатната система, посочена в конфигурационния файл), която да се използва след команда `G28`. Командата `SET_GCODE_OFFSET` може да промени тази позиция. Възможен е достъп до компонентите x, y и z на тази позиция (например, `homing_origin.x`).
+- `speed`: Последната скорост, зададена с команда `G1` (в mm/s).
+- `speed_factor`: "Коефициент на скоростта", зададен с команда `M220`. Това е стойност с плаваща запетая, като 1,0 означава, че няма превишаване, а например 2,0 ще удвои заявената скорост.
+- `extrude_factor`: "Коефициент на екструдиране", зададен с команда `M221`. Това е стойност с плаваща запетая, така че 1,0 означава, че няма промяна, а например 2,0 ще удвои исканите екструзии.
+- `absolute_coordinates`: Връща True, ако е в режим на абсолютни координати `G90`, или False, ако е в режим на относителни координати `G91`.
+- `absolute_extrude`: Връща True, ако е в режим `M82` на абсолютно екструдиране, или False, ако е в режим `M83` на относително екструдиране.
 
 ## hall_filament_width_sensor
 
-The following information is available in the [hall_filament_width_sensor](Config_Reference.md#hall_filament_width_sensor) object:
+Следната информация е налична в обекта [hall_filament_width_sensor](Config_Reference.md#hall_filament_width_sensor):
 
-- `is_active`: Returns True if the sensor is currently active.
-- `Diameter`: The last reading from the sensor in mm.
-- `Raw`: The last raw ADC reading from the sensor.
+- `is_active`: Връща True, ако сензорът в момента е активен.
+- `Диаметър`: Последното показание на сензора в мм.
+- `Raw`: Последното необработено ADC показание от сензора.
 
-## heater
+## нагревател
 
-The following information is available for heater objects such as [extruder](Config_Reference.md#extruder), [heater_bed](Config_Reference.md#heater_bed), and [heater_generic](Config_Reference.md#heater_generic):
+Следната информация е налична за обекти за нагреватели като [extruder](Config_Reference.md#extruder), [heater_bed](Config_Reference.md#heater_bed) и [heater_generic](Config_Reference.md#heater_generic):
 
-- `temperature`: The last reported temperature (in Celsius as a float) for the given heater.
-- `target`: The current target temperature (in Celsius as a float) for the given heater.
-- `power`: The last setting of the PWM pin (a value between 0.0 and 1.0) associated with the heater.
-- `can_extrude`: If extruder can extrude (defined by `min_extrude_temp`), available only for [extruder](Config_Reference.md#extruder)
+- `температура`: Последната отчетена температура (в градуси по Целзий като float) за дадения нагревател.
+- `Target`: Текущата целева температура (в градуси по Целзий като float) за дадения нагревател.
+- `power`: Последната настройка на щифта PWM (стойност между 0,0 и 1,0), свързана с нагревателя.
+- `can_extrude`: Ако екструдерът може да екструдира (определено от `min_extrude_temp`), достъпно само за [extruder](Config_Reference.md#extruder)
 
-## heaters
+## нагреватели
 
-The following information is available in the `heaters` object (this object is available if any heater is defined):
+Следната информация е налична в обекта `heaters` (този обект е наличен, ако е дефиниран някой нагревател):
 
-- `available_heaters`: Returns a list of all currently available heaters by their full config section names, e.g. `["extruder", "heater_bed", "heater_generic my_custom_heater"]`.
-- `available_sensors`: Returns a list of all currently available temperature sensors by their full config section names, e.g. `["extruder", "heater_bed", "heater_generic my_custom_heater", "temperature_sensor electronics_temp"]`.
-- `available_monitors`: Returns a list of all currently available temperature monitors by their full config section names, e.g. `["tmc2240 stepper_x"]`. While a temperature sensor is always available to read, a temperature monitor may not be available and will return null in such case.
+- `available_heaters`: Връща списък на всички налични в момента нагреватели по техните пълни имена на секциите на конфигурацията, например `["extruder", "heater_bed", "heater_generic my_custom_heater"]`.
+- `available_sensors`: Връща списък на всички налични в момента температурни сензори чрез пълните им имена на секциите на конфигурацията, например `["extruder", "heater_bed", "heater_generic my_custom_heater", "temperature_sensor electronics_temp"]`.
+- `available_monitors`: Връща списък на всички налични в момента температурни монитори по техните пълни имена на секциите в конфигурацията, например `["tmc2240 stepper_x"]`. Докато температурен сензор е винаги наличен за четене, температурен монитор може да не е наличен и в такъв случай ще се върне null.
 
 ## idle_timeout
 
-The following information is available in the [idle_timeout](Config_Reference.md#idle_timeout) object (this object is always available):
+Следната информация е налична в обекта [idle_timeout](Config_Reference.md#idle_timeout) (този обект е винаги наличен):
 
-- `state`: The current state of the printer as tracked by the idle_timeout module. It is one of the following strings: "Idle", "Printing", "Ready".
-- `printing_time`: The amount of time (in seconds) the printer has been in the "Printing" state (as tracked by the idle_timeout module).
+- `state`: Текущото състояние на принтера, проследявано от модула idle_timeout. Това е един от следните низове: "Idle", "Printing", "Ready".
+- `printing_time`: Времето (в секунди), през което принтерът е бил в състояние "Печат" (както се следи от модула idle_timeout).
 
 ## led
 
-The following information is available for each `[led led_name]`, `[neopixel led_name]`, `[dotstar led_name]`, `[pca9533 led_name]`, and `[pca9632 led_name]` config section defined in printer.cfg:
+Следната информация е налична за всеки раздел от конфигурацията `[led led_name]`, `[neopixel led_name]`, `[dotstar led_name]`, `[pca9533 led_name]` и `[pca9632 led_name]`, дефиниран в printer.cfg:
 
-- `color_data`: A list of color lists containing the RGBW values for a led in the chain. Each value is represented as a float from 0.0 to 1.0. Each color list contains 4 items (red, green, blue, white) even if the underyling LED supports fewer color channels. For example, the blue value (3rd item in color list) of the second neopixel in a chain could be accessed at `printer["neopixel <config_name>"].color_data[1][2]`.
+- `color_data`: Списък с цветови списъци, съдържащи RGBW стойностите за даден светодиод във веригата. Всяка стойност е представена като float от 0,0 до 1,0. Всеки списък с цветове съдържа 4 елемента (червено, зелено, синьо, бяло), дори ако светодиодът с подсветка поддържа по-малко цветови канали. Например стойността на синьото (3-ти елемент в списъка с цветове) на втория неопиксел във веригата може да се получи на адрес `printer["neopixel <config_name>"].color_data[1][2]`.
 
 ## manual_probe
 
-The following information is available in the `manual_probe` object:
+Следната информация е налична в обекта `manual_probe`:
 
-- `is_active`: Returns True if a manual probing helper script is currently active.
-- `z_position`: The current height of the nozzle (as the printer currently understands it).
-- `z_position_lower`: Last probe attempt just lower than the current height.
-- `z_position_upper`: Last probe attempt just greater than the current height.
+- `is_active`: Връща True, ако в момента е активен помощен скрипт за ръчно сондиране.
+- `z_position`: Текущата височина на дюзата (както принтерът я разбира в момента).
+- `z_position_lower`: Последният опит за сондиране е по-нисък от текущата височина.
+- `z_position_upper`: Последният опит за сондиране е по-голям от текущата височина.
 
 ## mcu
 
-The following information is available in [mcu](Config_Reference.md#mcu) and [mcu some_name](Config_Reference.md#mcu-my_extra_mcu) objects:
+Следната информация е налична в обектите [mcu](Config_Reference.md#mcu) и [mcu some_name](Config_Reference.md#mcu-my_extra_mcu):
 
-- `mcu_version`: The Klipper code version reported by the micro-controller.
-- `mcu_build_versions`: Information on the build tools used to generate the micro-controller code (as reported by the micro-controller).
-- `mcu_constants.<constant_name>`: Compile time constants reported by the micro-controller. The available constants may differ between micro-controller architectures and with each code revision.
-- `last_stats.<statistics_name>`: Statistics information on the micro-controller connection.
+- `mcu_version`: Версията на кода на Klipper, съобщена от микроконтролера.
+- `mcu_build_versions`: Информация за инструментите за изграждане, използвани за генериране на кода на микроконтролера (както се съобщава от микроконтролера).
+- `mcu_constants.<constant_name>`: Константи по време на компилация, докладвани от микроконтролера. Наличните константи могат да се различават при различните архитектури на микроконтролера и при всяка ревизия на кода.
+- ```last_stats.<statistics_name>`: Статистическа информация за връзката с микроконтролера.
 
 ## motion_report
 
-The following information is available in the `motion_report` object (this object is automatically available if any stepper config section is defined):
+Следната информация е налична в обекта `motion_report` (този обект е наличен автоматично, ако е дефиниран някой раздел от конфигурацията на стъпковия механизъм):
 
-- `live_position`: The requested toolhead position interpolated to the current time.
-- `live_velocity`: The requested toolhead velocity (in mm/s) at the current time.
-- `live_extruder_velocity`: The requested extruder velocity (in mm/s) at the current time.
+- `live_position`: Заявената позиция на главата на инструмента, интерполирана към текущото време.
+- `live_velocity`: Заявената скорост на главата на инструмента (в mm/s) в текущия момент.
+- `live_extruder_velocity`: Заявената скорост на екструдера (в mm/s) в текущия момент.
 
 ## output_pin
 
-The following information is available in [output_pin some_name](Config_Reference.md#output_pin) objects:
+Следната информация е налична в обектите [output_pin some_name](Config_Reference.md#output_pin):
 
-- `value`: The "value" of the pin, as set by a `SET_PIN` command.
+- `value`: "Стойността" на пина, зададена с команда `SET_PIN`.
 
-## palette2
+## палитри2
 
-The following information is available in the [palette2](Config_Reference.md#palette2) object:
+Следната информация е налична в обекта [palette2](Config_Reference.md#palette2):
 
-- `ping`: Amount of the last reported Palette 2 ping in percent.
-- `remaining_load_length`: When starting a Palette 2 print, this will be the amount of filament to load into the extruder.
-- `is_splicing`: True when the Palette 2 is splicing filament.
+- `ping`: Размер на последния отчетен пинг на Palette 2 в проценти.
+- `remaining_load_length`: При стартиране на печат с Palette 2 това ще бъде количеството нишка, което ще се зареди в екструдера.
+- `is_splicing`: Вярно, когато палитрата 2 е сплитаща нишка.
 
 ## pause_resume
 
-The following information is available in the [pause_resume](Config_Reference.md#pause_resume) object:
+Следната информация е налична в обекта [pause_resume](Config_Reference.md#pause_resume):
 
-- `is_paused`: Returns true if a PAUSE command has been executed without a corresponding RESUME.
+- `is_paused`: Връща true, ако е била изпълнена команда PAUSE без съответна команда RESUME.
 
 ## print_stats
 
-The following information is available in the `print_stats` object (this object is automatically available if a [virtual_sdcard](Config_Reference.md#virtual_sdcard) config section is defined):
+Следната информация е налична в обекта `print_stats` (този обект е автоматично наличен, ако е дефинирана конфигурационна секция [virtual_sdcard](Config_Reference.md#virtual_sdcard)):
 
-- `filename`, `total_duration`, `print_duration`, `filament_used`, `state`, `message`: Estimated information about the current print when a virtual_sdcard print is active.
-- `info.total_layer`: The total layer value of the last `SET_PRINT_STATS_INFO TOTAL_LAYER=<value>` G-Code command.
-- `info.current_layer`: The current layer value of the last `SET_PRINT_STATS_INFO CURRENT_LAYER=<value>` G-Code command.
+- `име на филма`, `обща продължителност`, `продължителност на печат`, `използвани влакна`, `състояние`, `съобщение`: Очаквана информация за текущия печат, когато е активен печат на virtual_sdcard.
+- `info.total_layer`: Стойността на общия слой от последната команда `SET_PRINT_STATS_INFO TOTAL_LAYER=<value>` на G-Code.
+- `info.current_layer`: Стойността на текущия слой от последната команда на G-Code `SET_PRINT_STATS_INFO CURRENT_LAYER=<value>`.
 
-## probe
+## сонда
 
-The following information is available in the [probe](Config_Reference.md#probe) object (this object is also available if a [bltouch](Config_Reference.md#bltouch) config section is defined):
+Следната информация е налична в обекта [probe](Config_Reference.md#probe) (този обект също е наличен, ако е дефинирана секция [bltouch](Config_Reference.md#bltouch) config):
 
-- `name`: Returns the name of the probe in use.
-- `last_query`: Returns True if the probe was reported as "triggered" during the last QUERY_PROBE command. Note, if this is used in a macro, due to the order of template expansion, the QUERY_PROBE command must be run prior to the macro containing this reference.
-- `last_z_result`: Returns the Z result value of the last PROBE command. Note, if this is used in a macro, due to the order of template expansion, the PROBE (or similar) command must be run prior to the macro containing this reference.
+- `name`: Връща името на използваната сонда.
+- `last_query`: Връща True, ако сондата е била отчетена като "задействана" по време на последната команда QUERY_PROBE. Обърнете внимание, че ако това се използва в макрос, поради реда на разширяване на шаблона, командата QUERY_PROBE трябва да се изпълни преди макроса, съдържащ тази препратка.
+- `last_z_result`: Връща стойността на Z резултата от последната команда PROBE. Обърнете внимание, че ако това се използва в макрос, поради реда на разширяване на шаблона, командата PROBE (или подобна) трябва да се изпълни преди макроса, съдържащ тази препратка.
 
 ## pwm_cycle_time
 
-The following information is available in [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time) objects:
+Следната информация е налична в обектите [pwm_cycle_time some_name](Config_Reference.md#pwm_cycle_time):
 
-- `value`: The "value" of the pin, as set by a `SET_PIN` command.
+- `value`: "Стойността" на пина, зададена с команда `SET_PIN`.
 
 ## quad_gantry_level
 
-The following information is available in the `quad_gantry_level` object (this object is available if quad_gantry_level is defined):
+Следната информация е налична в обекта `quad_gantry_level` (този обект е наличен, ако е дефиниран quad_gantry_level):
 
-- `applied`: True if the gantry leveling process has been run and completed successfully.
+- `applied`: Вярно, ако процесът на нивелиране на портала е стартиран и е завършил успешно.
 
 ## query_endstops
 
-The following information is available in the `query_endstops` object (this object is available if any endstop is defined):
+Следната информация е налична в обекта `query_endstops` (този обект е наличен, ако е дефиниран някой endstop):
 
-- `last_query["<endstop>"]`: Returns True if the given endstop was reported as "triggered" during the last QUERY_ENDSTOP command. Note, if this is used in a macro, due to the order of template expansion, the QUERY_ENDSTOP command must be run prior to the macro containing this reference.
+- `last_query["<endstop>"]`: Връща True, ако даденият endstop е отчетен като "задействан" по време на последната команда QUERY_ENDSTOP. Обърнете внимание, че ако това се използва в макрос, поради реда на разширяване на шаблона, командата QUERY_ENDSTOP трябва да се изпълни преди макроса, съдържащ тази препратка.
 
 ## screws_tilt_adjust
 
-The following information is available in the `screws_tilt_adjust` object:
+Следната информация е налична в обекта `screws_tilt_adjust`:
 
-- `error`: Returns True if the most recent `SCREWS_TILT_CALCULATE` command included the `MAX_DEVIATION` parameter and any of the probed screw points exceeded the specified `MAX_DEVIATION`.
-- `max_deviation`: Return the last `MAX_DEVIATION` value of the most recent `SCREWS_TILT_CALCULATE` command.
-- `results["<screw>"]`: A dictionary containing the following keys:
-   - `z`: The measured Z height of the screw location.
-   - `sign`: A string specifying the direction to turn to screw for the necessary adjustment. Either "CW" for clockwise or "CCW" for counterclockwise.
-   - `adjust`: The number of screw turns to adjust the screw, given in the format "HH:MM," where "HH" is the number of full screw turns and "MM" is the number of "minutes of a clock face" representing a partial screw turn. (E.g. "01:15" would mean to turn the screw one and a quarter revolutions.)
-   - `is_base`: Returns True if this is the base screw.
+- `error`: Връща True, ако последната команда `SCREWS_TILT_CALCULATE` е включвала параметъра `MAX_DEVIATION` и някоя от изследваните точки на винта е надвишила зададения параметър `MAX_DEVIATION`.
+- `max_deviation`: Връща последната стойност на `MAX_DEVIATION` на последната команда `SCREWS_TILT_CALCULATE`.
+- `Results["<screw>"]`: Речник, съдържащ следните ключове:
+   - `z`: Измерената височина Z на местоположението на винта.
+   - `sign`: низ, указващ посоката на завъртане на винта за необходимата настройка. "CW" - по посока на часовниковата стрелка, или "CCW" - обратно на часовниковата стрелка.
+   - `adjust`: Броят на завъртанията на винта за регулиране, зададен във формат "HH:MM", където "HH" е броят на пълните завъртания на винта, а "MM" е броят на "минутите на часовниковия циферблат", представляващи частично завъртане на винта. (Например "01:15" означава да завъртите винта с един и четвърт оборот.)
+   - `is_base`: Връща True, ако това е базовият винт.
 
-## servo
+## Серво
 
-The following information is available in [servo some_name](Config_Reference.md#servo) objects:
+Следната информация е налична в обектите [servo some_name](Config_Reference.md#servo):
 
-- `printer["servo <config_name>"].value`: The last setting of the PWM pin (a value between 0.0 and 1.0) associated with the servo.
+- `printer["servo <config_name>"].value`: Последната настройка на щифта PWM (стойност между 0,0 и 1,0), свързана със сервоусилвателя.
 
 ## stepper_enable
 
-The following information is available in the `stepper_enable` object (this object is available if any stepper is defined):
+Следната информация е налична в обекта `stepper_enable` (този обект е наличен, ако е дефиниран някой стъпков механизъм):
 
-- `steppers["<stepper>"]`: Returns True if the given stepper is enabled.
+- `steppers["<stepper>"]`: Връща True, ако даденият стъпков механизъм е активиран.
 
 ## system_stats
 
-The following information is available in the `system_stats` object (this object is always available):
+Следната информация е налична в обекта `system_stats` (този обект е винаги наличен):
 
-- `sysload`, `cputime`, `memavail`: Information on the host operating system and process load.
+- `sysload`, `cputime`, `memavail`: Информация за операционната система на хоста и натоварването на процесите.
 
-## temperature sensors
+## температурни сензори
 
-The following information is available in
+Следната информация е налична в
 
 [bme280 config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-sensor), [htu21d config_section_name](Config_Reference.md#htu21d-sensor), [sht3x config_section_name](Config_Reference.md#sht31-sensor), [lm75 config_section_name](Config_Reference.md#lm75-temperature-sensor), [temperature_host config_section_name](Config_Reference.md#host-temperature-sensor) and [temperature_combined config_section_name](Config_Reference.md#combined-temperature-sensor) objects:
 
-- `temperature`: The last read temperature from the sensor.
-- `humidity`, `pressure`, `gas`: The last read values from the sensor (only on bme280, htu21d, sht3x and lm75 sensors).
+- `температура`: Последната отчетена температура от сензора.
+- `влажност`, `налягане`, `газ`: Последните прочетени стойности от сензора (само за сензорите bme280, htu21d, sht3x и lm75).
 
 ## temperature_fan
 
-The following information is available in [temperature_fan some_name](Config_Reference.md#temperature_fan) objects:
+Следната информация е налична в обектите [temperature_fan some_name](Config_Reference.md#temperature_fan):
 
-- `temperature`: The last read temperature from the sensor.
-- `target`: The target temperature for the fan.
+- `температура`: Последната отчетена температура от сензора.
+- `Target`: Целевата температура за вентилатора.
 
 ## temperature_sensor
 
-The following information is available in [temperature_sensor some_name](Config_Reference.md#temperature_sensor) objects:
+Следната информация е налична в обектите [temperature_sensor some_name](Config_Reference.md#temperature_sensor):
 
-- `temperature`: The last read temperature from the sensor.
-- `measured_min_temp`, `measured_max_temp`: The lowest and highest temperature seen by the sensor since the Klipper host software was last restarted.
+- `температура`: Последната отчетена температура от сензора.
+- `measured_min_temp`, `measured_max_temp`: Най-ниската и най-високата температура, отчетена от сензора след последното рестартиране на софтуера на Klipper.
 
 ## tmc drivers
 
-The following information is available in [TMC stepper driver](Config_Reference.md#tmc-stepper-driver-configuration) objects (eg, `[tmc2208 stepper_x]`):
+Следната информация е налична в обектите [TMC stepper driver](Config_Reference.md#tmc-stepper-driver-configuration) (например, `[tmc2208 stepper_x]`):
 
-- `mcu_phase_offset`: The micro-controller stepper position corresponding with the driver's "zero" phase. This field may be null if the phase offset is not known.
-- `phase_offset_position`: The "commanded position" corresponding to the driver's "zero" phase. This field may be null if the phase offset is not known.
-- `drv_status`: The results of the last driver status query. (Only non-zero fields are reported.) This field will be null if the driver is not enabled (and thus is not periodically queried).
-- `temperature`: The internal temperature reported by the driver. This field will be null if the driver is not enabled or if the driver does not support temperature reporting.
-- `run_current`: The currently set run current.
-- `hold_current`: The currently set hold current.
+- `mcu_phase_offset`: Позицията на стъпковия механизъм на микроконтролера, съответстваща на "нулевата" фаза на драйвера. Това поле може да бъде нулево, ако фазовото отместване не е известно.
+- `phase_offset_position`: Командната позиция", съответстваща на "нулевата" фаза на водача. Това поле може да бъде нулево, ако фазовото отместване не е известно.
+- `drv_status`: Резултатите от последната заявка за състоянието на водача. (Отчитат се само полета, които не са нулеви.) Това поле ще бъде нулево, ако драйверът не е активиран (и следователно не се запитва периодично).
+- `температура`: Вътрешната температура, отчетена от драйвера. Това поле ще бъде нулево, ако драйверът не е активиран или ако драйверът не поддържа отчитане на температурата.
+- `run_current`: Текущият ток на изпълнение.
+- `hold_current`: Текущо зададеният ток на задържане.
 
-## toolhead
+## глава на инструмент
 
-The following information is available in the `toolhead` object (this object is always available):
+Следната информация е налична в обекта `toolhead` (този обект е винаги наличен):
 
-- `position`: The last commanded position of the toolhead relative to the coordinate system specified in the config file. It is possible to access the x, y, z, and e components of this position (eg, `position.x`).
-- `extruder`: The name of the currently active extruder. For example, in a macro one could use `printer[printer.toolhead.extruder].target` to get the target temperature of the current extruder.
-- `homed_axes`: The current cartesian axes considered to be in a "homed" state. This is a string containing one or more of "x", "y", "z".
-- `axis_minimum`, `axis_maximum`: The axis travel limits (mm) after homing. It is possible to access the x, y, z components of this limit value (eg, `axis_minimum.x`, `axis_maximum.z`).
-- For Delta printers the `cone_start_z` is the max z height at maximum radius (`printer.toolhead.cone_start_z`).
-- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: The current printing limits that are in effect. This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or `M204`) command alters them at run-time.
-- `stalls`: The total number of times (since the last restart) that the printer had to be paused because the toolhead moved faster than moves could be read from the G-Code input.
+- `позиция`: Последната командна позиция на главата на инструмента спрямо координатната система, посочена в конфигурационния файл. Възможно е да се получи достъп до компонентите x, y, z и e на тази позиция (например, `position.x`).
+- `екструдер`: Името на активния в момента екструдер. Например в макрос може да се използва `printer[printer.toolhead.extruder].target`, за да се получи целевата температура на текущия екструдер.
+- `homed_axes`: Текущите картезиански оси, за които се счита, че са в състояние "homed". Това е низ, съдържащ един или повече от символите "x", "y", "z".
+- `axis_minimum`, `axis_maximum`: Границите на преместване на оста (mm) след самонасочване. Възможен е достъп до компонентите x, y, z на тази гранична стойност (например, `axis_minimum.x`, `axis_maximum.z`).
+- За принтерите Delta `cone_start_z` е максималната височина z при максимален радиус (`printer.toolhead.cone_start_z`).
+- `max_velocity`, `max_accel`, `minimum_cruise_ratio`, `square_corner_velocity`: Текущите ограничения за печат, които са в сила. Това може да се различава от настройките в конфигурационния файл, ако командата `SET_VELOCITY_LIMIT` (или `M204`) ги промени по време на работа.
+- `stalls`: Общият брой пъти (от последното рестартиране), когато се е наложило принтерът да бъде спрян, тъй като главата на инструмента се е движила по-бързо от движенията, които могат да бъдат прочетени от входа на G-Code.
 
 ## dual_carriage
 
-The following information is available in [dual_carriage](Config_Reference.md#dual_carriage) on a cartesian, hybrid_corexy or hybrid_corexz robot
+Следната информация е налична в [dual_carriage](Config_Reference.md#dual_carriage) за картезиански, хибриден_corexy или хибриден_corexz робот
 
-- `carriage_0`: The mode of the carriage 0. Possible values are: "INACTIVE" and "PRIMARY".
-- `carriage_1`: The mode of the carriage 1. Possible values are: "INACTIVE", "PRIMARY", "COPY", and "MIRROR".
+- `carriage_0`: Възможните стойности са: "НЕАКТИВЕН" и "ПЪРВИЧЕН".
+- `carriage_1`: Режимът на карета 1. Възможните стойности са: "INACTIVE", "PRIMARY", "COPY" и "MIRROR".
 
 ## virtual_sdcard
 
-The following information is available in the [virtual_sdcard](Config_Reference.md#virtual_sdcard) object:
+Следната информация е налична в обекта [virtual_sdcard](Config_Reference.md#virtual_sdcard):
 
-- `is_active`: Returns True if a print from file is currently active.
-- `progress`: An estimate of the current print progress (based of file size and file position).
-- `file_path`: A full path to the file of currently loaded file.
-- `file_position`: The current position (in bytes) of an active print.
-- `file_size`: The file size (in bytes) of currently loaded file.
+- `is_active`: Връща True, ако отпечатването от файл в момента е активно.
+- `progress`: Оценка на текущия напредък на печата (въз основа на размера на файла и позицията на файла).
+- `file_path`: Пълен път до файла на текущо заредения файл.
+- `file_position`: Текущата позиция (в байтове) на активния печат.
+- `file_size`: Размерът на файла (в байтове) на текущо заредения файл.
 
 ## webhooks
 
-The following information is available in the `webhooks` object (this object is always available):
+Следната информация е налична в обекта `webhooks` (този обект е винаги наличен):
 
-- `state`: Returns a string indicating the current Klipper state. Possible values are: "ready", "startup", "shutdown", "error".
-- `state_message`: A human readable string giving additional context on the current Klipper state.
+- `state`: Връща низ, указващ текущото състояние на Klipper. Възможните стойности са: "готов", "стартиране", "изключване", "грешка".
+- `state_message`: Човешки прочетен низ, който дава допълнителен контекст за текущото състояние на Klipper.
 
 ## z_thermal_adjust
 
-The following information is available in the `z_thermal_adjust` object (this object is available if [z_thermal_adjust](Config_Reference.md#z_thermal_adjust) is defined).
+Следната информация е налична в обекта `z_thermal_adjust` (този обект е наличен, ако е дефиниран [z_thermal_adjust](Config_Reference.md#z_thermal_adjust)).
 
-- `enabled`: Returns True if adjustment is enabled.
-- `temperature`: Current (smoothed) temperature of the defined sensor. [degC]
-- `measured_min_temp`: Minimum measured temperature. [degC]
-- `measured_max_temp`: Maximum measured temperature. [degC]
-- `current_z_adjust`: Last computed Z adjustment [mm].
-- `z_adjust_ref_temperature`: Current reference temperature used for calculation of Z `current_z_adjust` [degC].
+- `enabled`: Връща True, ако настройката е разрешена.
+- `температура`: Текуща (изгладена) температура на определения сензор. [degC]
+- `measured_min_temp`: Минимална измерена температура. [degC]
+- `measured_max_temp`: Максимална измерена температура. [degC]
+- `current_z_adjust`: Последната изчислена Z корекция [mm].
+- `z_adjust_ref_temperature`: Текуща референтна температура, използвана за изчисляване на Z `current_z_adjust` [degC].
 
 ## z_tilt
 
-The following information is available in the `z_tilt` object (this object is available if z_tilt is defined):
+Следната информация е налична в обекта `z_tilt` (този обект е наличен, ако е дефиниран z_tilt):
 
-- `applied`: True if the z-tilt leveling process has been run and completed successfully.
+- `applied`: Вярно, ако процесът на изравняване на z-наклона е стартиран и е завършил успешно.

@@ -1,4 +1,4 @@
-# Measuring Resonances
+# Измерване на резонанси
 
 Klipper has built-in support for the ADXL345, MPU-9250 and LIS2DW compatible accelerometers which can be used to measure resonance frequencies of the printer for different axes, and auto-tune [input shapers](Resonance_Compensation.md) to compensate for resonances. Note that using accelerometers requires some soldering and crimping. The ADXL345/LIS2DW can be connected to the SPI interface of a Raspberry Pi or MCU board (it needs to be reasonably fast). The MPU family can be connected to the I2C interface of a Raspberry Pi directly, or to an I2C interface of an MCU board that supports 400kbit/s *fast mode* in Klipper.
 
@@ -16,9 +16,9 @@ For MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500s there are also a variety of bo
 | AVR ATmega | ATmega328p | ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, ATmega1284, ATmega2560 |
 | AVR AT90 | - | AT90usb646, AT90usb1286 |
 
-## Installation instructions
+## Инструкции за инсталиране
 
-### Wiring
+### Окабеляване
 
 An ethernet cable with shielded twisted pairs (cat5e or better) is recommended for signal integrity over a long distance. If you still experience signal integrity issues (SPI/I2C errors):
 
@@ -57,7 +57,7 @@ You need to connect ADXL345 to your Raspberry Pi via SPI. Note that the I2C conn
 | ADXL345 pin | RPi pin | RPi pin name |
 | :-: | :-: | :-: |
 | 3V3 (or VCC) | 01 | 3.3V DC power |
-| GND | 06 | Ground |
+| GND | 06 | Маса |
 | CS | 24 | GPIO08 (SPI0_CE0_N) |
 | SDO | 21 | GPIO09 (SPI0_MISO) |
 | SDA | 19 | GPIO10 (SPI0_MOSI) |
@@ -76,7 +76,7 @@ In order to avoid damage to your RPi make sure to connect the ADXL345 to 3.3V on
 | ADXL345 pin | Pico pin | Pico pin name |
 | :-: | :-: | :-: |
 | 3V3 (or VCC) | 36 | 3.3V DC power |
-| GND | 38 | Ground |
+| GND | 38 | Маса |
 | CS | 2 | GP1 (SPI0_CSn) |
 | SDO | 1 | GP0 (SPI0_RX) |
 | SDA | 5 | GP3 (SPI0_TX) |
@@ -114,7 +114,7 @@ Recommended connection scheme for I2C on the Raspberry Pi:
 | MPU-9250 pin | RPi pin | RPi pin name |
 | :-: | :-: | :-: |
 | VCC | 01 | 3.3v DC power |
-| GND | 09 | Ground |
+| GND | 09 | Маса |
 | SDA | 03 | GPIO02 (SDA1) |
 | SCL | 05 | GPIO03 (SCL1) |
 
@@ -127,7 +127,7 @@ Recommended connection scheme for I2C (i2c0a) on the RP2040:
 | MPU-9250 pin | RP2040 pin | RP2040 pin name |
 | :-: | :-: | :-: |
 | VCC | 36 | 3v3 |
-| GND | 38 | Ground |
+| GND | 38 | Маса |
 | SDA | 01 | GP0 (I2C0 SDA) |
 | SCL | 02 | GP1 (I2C0 SCL) |
 
@@ -140,7 +140,7 @@ The Pico does not include any built-in I2C pull-up resistors.
 | MPU-9250 pin | Atmega328P TQFP32 pin | Atmega328P pin name | Arduino Nano pin |
 | :-: | :-: | :-: | :-: |
 | VCC | 39 | - | - |
-| GND | 38 | Ground | GND |
+| GND | 38 | Маса | GND |
 | SDA | 27 | SDA | A4 |
 | SCL | 28 | SCL | A5 |
 

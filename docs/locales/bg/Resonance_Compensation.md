@@ -1,6 +1,6 @@
 # Компенсация на резонанса
 
-Klipper supports Input Shaping - a technique that can be used to reduce ringing (also known as echoing, ghosting or rippling) in prints. Ringing is a surface printing defect when, typically, elements like edges repeat themselves on a printed surface as a subtle 'echo':
+Klipper поддържа Input Shaping (оформяне на входа) - техника, която може да се използва за намаляване на звъненето (известно също като ехо, призраци или пулсации) в отпечатъците. Звъненето е дефект при печатане на повърхности, когато обикновено елементи като ръбове се повтарят върху отпечатаната повърхност като едва доловимо "ехо":
 
 |![Ringing test](img/ringing-test.jpg)|![3D Benchy](img/ringing-3dbenchy.jpg)|
 

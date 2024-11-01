@@ -1,10 +1,10 @@
 # G-Codes
 
-This document describes the commands that Klipper supports. These are commands that one may enter into the OctoPrint terminal tab.
+Този документ описва командите, които Klipper поддържа. Това са команди, които могат да се въведат в терминалния раздел на OctoPrint.
 
-## G-Code commands
+## Команди G-Code
 
-Klipper supports the following standard G-Code commands:
+Klipper поддържа следните стандартни команди на G-Code:
 
 - Move (G0 or G1): `G1 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>]`
 - Dwell: `G4 P<milliseconds>`

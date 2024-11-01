@@ -114,8 +114,8 @@ pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]
 To compile the Klipper micro-controller code, start by configuring it for the "Beaglebone PRU", for "BeagleBone Black" additionally disable options "Support GPIO Bit-banging devices" and disable "Support LCD devices" inside the "Optional features" because they will not fit in 8Kb PRU firmware memory, then exit and save config:
 
 ```
-cd ~/klipper/
-make menuconfig
+cd ~ / клиппер /
+налаштування меню
 ```
 
 To build and install the new PRU micro-controller code, run:

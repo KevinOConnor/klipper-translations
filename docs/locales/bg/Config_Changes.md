@@ -1,8 +1,8 @@
 # Configuration Changes
 
-This document covers recent software changes to the config file that are not backwards compatible. It is a good idea to review this document when upgrading the Klipper software.
+Този документ обхваща последните софтуерни промени в конфигурационния файл, които не са обратно съвместими. Добре е да прегледате този документ, когато обновявате софтуера Klipper.
 
-All dates in this document are approximate.
+Всички дати в този документ са приблизителни.
 
 ## Changes
 
@@ -134,7 +134,7 @@ document](Command_Templates.md#macro-parameters) for examples.
 
 20201029: The serial option in the mcu config section no longer defaults to /dev/ttyS0. In the rare situation where /dev/ttyS0 is the desired serial port, it must be specified explicitly.
 
-20201020: Klipper v0.9.0 released.
+20201020: Klipper v0.9.0
 
 20200902: The RTD resistance-to-temperature calculation for MAX31865 converters has been corrected to not read low. If you are using such a device, you should recalibrate your print temperature and PID settings.
 

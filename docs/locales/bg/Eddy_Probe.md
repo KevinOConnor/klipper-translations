@@ -1,24 +1,24 @@
-# Eddy Current Inductive probe
+# Вихров ток Индуктивна сонда
 
-This document describes how to use an [eddy current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in Klipper.
+Този документ описва как да използвате индуктивна сонда [вихрови токове](https://en.wikipedia.org/wiki/Eddy_current) в Klipper.
 
-Currently, an eddy current probe can not be used for Z homing. The sensor can only be used for Z probing.
+Понастоящем сондата за вихрови токове не може да се използва за Z-насочване. Сензорът може да се използва само за Z-сондиране.
 
-Start by declaring a [probe_eddy_current config section](Config_Reference.md#probe_eddy_current) in the printer.cfg file. It is recommended to set the `z_offset` to 0.5mm. It is typical for the sensor to require an `x_offset` and `y_offset`. If these values are not known, one should estimate the values during initial calibration.
+Започнете, като декларирате [probe_eddy_current config section](Config_Reference.md#probe_eddy_current) във файла printer.cfg. Препоръчително е да зададете `z_offset` на 0,5 mm. Обикновено сензорът се нуждае от `x_offset` и `y_offset`. Ако тези стойности не са известни, те трябва да се оценят по време на първоначалното калибриране.
 
-The first step in calibration is to determine the appropriate DRIVE_CURRENT for the sensor. Home the printer and navigate the toolhead so that the sensor is near the center of the bed and is about 20mm above the bed. Then issue an `LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` command. For example, if the config section was named `[probe_eddy_current my_eddy_probe]` then one would run `LDC_CALIBRATE_DRIVE_CURRENT CHIP=my_eddy_probe`. This command should complete in a few seconds. After it completes, issue a `SAVE_CONFIG` command to save the results to the printer.cfg and restart.
+Първата стъпка при калибрирането е да се определи подходящият DRIVE_CURRENT за сензора. Включете принтера в изходно положение и насочете главата на инструмента така, че сензорът да е близо до центъра на леглото и да е на около 20 мм над него. След това издайте командата `LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>`. Например, ако разделът на конфигурацията е наречен `[probe_eddy_current my_eddy_probe]`, тогава трябва да се изпълни `LDC_CALIBRATE_DRIVE_CURRENT CHIP=my_eddy_probe`. Тази команда трябва да приключи за няколко секунди. След като завърши, издайте командата `SAVE_CONFIG`, за да запазите резултатите в printer.cfg, и рестартирайте.
 
-The second step in calibration is to correlate the sensor readings to the corresponding Z heights. Home the printer and navigate the toolhead so that the nozzle is near the center of the bed. Then run an `PROBE_EDDY_CURRENT_CALIBRATE CHIP=my_eddy_probe` command. Once the tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position. The tool will then move the the toolhead so that the sensor is above the point where the nozzle used to be and run a series of movements to correlate the sensor to Z positions. This will take a couple of minutes. After the tool completes, issue a `SAVE_CONFIG` command to save the results to the printer.cfg and restart.
+Втората стъпка при калибрирането е да се съпоставят показанията на сензора със съответните височини Z. Включете принтера в изходно положение и настройте главата на инструмента така, че дюзата да е близо до центъра на леглото. След това изпълнете командата `PROBE_EDDY_CURRENT_CALIBRATE CHIP=my_eddy_probe`. След като инструментът се стартира, следвайте стъпките, описани в ["the paper test"](Bed_Level.md#the-paper-test), за да определите действителното разстояние между дюзата и леглото на даденото място. След приключването на тези стъпки може да се приеме позицията. След това инструментът ще премести главата на инструмента, така че сензорът да се намира над точката, където е била дюзата, и ще извърши поредица от движения, за да съпостави сензора с Z позициите. Това ще отнеме няколко минути. След като инструментът завърши, издайте командата `SAVE_CONFIG`, за да запазите резултатите в printer.cfg, и рестартирайте.
 
-After initial calibration it is a good idea to verify that the `x_offset` and `y_offset` are accurate. Follow the steps to [calibrate probe x and y offsets](Probe_Calibrate.md#calibrating-probe-x-and-y-offsets). If either the `x_offset` or `y_offset` is modified then be sure to run the `PROBE_EDDY_CURRENT_CALIBRATE` command (as described above) after making the change.
+След първоначалното калибриране е добре да проверите дали стойностите на `x_offset` и `y_offset` са точни. Следвайте стъпките за [калибриране на отместванията x и y на сондата](Probe_Calibrate.md#calibrating-probe-x-and-y-offsets). Ако `x_offset` или `y_offset` са променени, не забравяйте да изпълните командата `PROBE_EDDY_CURRENT_CALIBRATE` (както е описано по-горе) след извършване на промяната.
 
-Once calibration is complete, one may use all the standard Klipper tools that use a Z probe.
+След като калибрирането е завършено, можете да използвате всички стандартни инструменти на Klipper, които използват Z-сонда.
 
-Note that eddy current sensors (and inductive probes in general) are susceptible to "thermal drift". That is, changes in temperature can result in changes in reported Z height. Changes in either the bed surface temperature or sensor hardware temperature can skew the results. It is important that calibration and probing is only done when the printer is at a stable temperature.
+Имайте предвид, че сензорите за вихрови токове (и индуктивните сонди като цяло) са податливи на "термичен дрейф". Това означава, че промените в температурата могат да доведат до промени в отчетената височина Z. Промените в температурата на повърхността на леглото или в температурата на хардуера на сензора могат да изкривят резултатите. Важно е калибрирането и сондирането да се извършват само когато температурата на принтера е стабилна.
 
-## Thermal Drift Calibration
+## Калибриране на термичния дрейф
 
-As with all inductive probes, eddy current probes are subject to significant thermal drift. If the eddy probe has a temperature sensor on the coil it is possible to configure a `[temperature_probe]` to report coil temperature and enable software drift compensation. To link a temperature probe to an eddy current probe the `[temperature_probe]` section must share a name with the `[probe_eddy_current]` section. For example:
+Както при всички индуктивни сонди, сондите за вихрови токове са подложени на значителен термичен дрейф. Ако вихровата сонда има температурен сензор на намотката, е възможно да се конфигурира `[temperature_probe]` за отчитане на температурата на намотката и да се активира софтуерна компенсация на дрейфа. За да се свърже температурна сонда с вихровотокова сонда, разделът `[temperature_probe]` трябва да има общо име с раздела `[probe_eddy_current]`. Например:
 
 ```
 [probe_eddy_current my_probe]
@@ -28,29 +28,29 @@ As with all inductive probes, eddy current probes are subject to significant the
 # temperature probe configuration...
 ```
 
-See the [configuration reference](Config_Reference.md#temperature_probe) for further details on how to configure a `temperature_probe`. It is advised to configure the `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, and `calibration_bed_temp` options, as doing so will automate some of the steps outlined below.
+Вижте [configuration reference](Config_Reference.md#temperature_probe) за повече подробности относно конфигурирането на `temperature_probe`. Препоръчително е да конфигурирате опциите `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z` и `calibration_bed_temp`, тъй като това ще автоматизира някои от стъпките, описани по-долу.
 
-Eddy probe manufacturers may offer a stock drift calibration that can be manually added to `drift_calibration` option of the `[probe_eddy_current]` section. If they do not, or if the stock calibration does not perform well on your system, the `temperature_probe` module offers a manual calibration procedure via the `TEMPERATURE_PROBE_CALIBRATE` gcode command.
+Производителите на вихрови сонди могат да предложат стандартна калибрация на дрейфа, която може да се добави ръчно към опцията `drift_calibration` в раздела `[probe_eddy_current]`. Ако това не е така или ако стандартното калибриране не работи добре във вашата система, модулът `temperature_probe` предлага процедура за ръчно калибриране чрез gcode командата `TEMPERATURE_PROBE_CALIBRATE`.
 
-Prior to performing calibration the user should have an idea of what the maximum attainable temperature probe coil temperature is. This temperature should be used to set the `TARGET` parameter of the `TEMPERATURE_PROBE_CALIBRATE` command. The goal is to calibrate across the widest temperature range possible, thus its desirable to start with the printer cold and finish with the coil at the maximum temperature it can reach.
+Преди извършване на калибрирането потребителят трябва да има представа каква е максималната постижима температура на намотката на температурната сонда. Тази температура трябва да се използва за задаване на параметъра `TARGET` на командата `TEMPERATURE_PROBE_CALIBRATE`. Целта е да се калибрира във възможно най-широк температурен диапазон, поради което е желателно да се започне със студен принтер и да се завърши с намотка при максималната температура, която може да достигне.
 
-Once a `[temperature_probe]` is configured, the following steps may be taken to perform thermal drift calibration:
+След като се конфигурира `[температурна сонда]`, могат да се предприемат следните стъпки за извършване на калибриране на температурния дрейф:
 
-- The probe must be calibrated using `PROBE_EDDY_CURRENT_CALIBRATE` when a `[temperature_probe]` is configured and linked. This captures the temperature during calibration which is necessary to perform thermal drift compensation.
-- Make sure the nozzle is free of debris and filament.
-- The bed, nozzle, and probe coil should be cold prior to calibration.
-- The following steps are required if the `calibration_position`, `calibration_extruder_temp`, and `extruder_heating_z` options in `[temperature_probe]` are **NOT** configured:
-   - Move the tool to the center of the bed. Z should be 30mm+ above the bed.
-   - Heat the extruder to a temperature above the maximum safe bed temperature. 150-170C should be sufficient for most configurations. The purpose of heating the extruder is to avoid nozzle expansion during calibration.
-   - When the extruder temperature has settled, move the Z axis down to about 1mm above the bed.
-- Start drift calibration. If the probe's name is `my_probe` and the maximum probe temperature we can achieve is 80C, the appropriate gcode command is `TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`. If configured, the tool will move to the X,Y coordinate specified by the `calibration_position` and the Z value specified by `extruder_heating_z`. After heating the extruder to the specified temperature the tool will move to the Z value specified by the`calibration_position`.
-- The procedure will request a manual probe. Perform the manual probe with the paper test and `ACCEPT`. The calibration procedure will take the first set of samples with the probe then park the probe in the heating position.
-- If the `calibration_bed_temp` is **NOT** configured turn on the bed heat to the maximum safe temperature. Otherwise this step will be performed automatically.
-- By default the calibration procedure will request a manual probe every 2C between samples until the `TARGET` is reached. The temperature delta between samples can be customized by setting the `STEP` parameter in `TEMPERATURE_PROBE_CALIBRATE`. Care should be taken when setting a custom `STEP` value, a value too high may request too few samples resulting in a poor calibration.
-- The following additional gcode commands are available during drift calibration:
-   - `TEMPERATURE_PROBE_NEXT` may be used to force a new sample before the step delta has been reached.
-   - `TEMPERATURE_PROBE_COMPLETE` may be used to complete calibration before the `TARGET` has been reached.
-   - `ABORT` may be used to end calibration and discard results.
-- When calibration is finished use `SAVE_CONFIG` to store the drift calibration.
+- Сондата трябва да се калибрира, като се използва `PROBE_EDDY_CURRENT_CALIBRATE`, когато се конфигурира и свърже `[temperature_probe]`. По този начин се улавя температурата по време на калибрирането, което е необходимо за извършване на компенсация на температурния дрейф.
+- Уверете се, че дюзата е свободна от замърсявания и нишки.
+- Преди калибрирането леглото, дюзата и намотката на сондата трябва да са студени.
+- Следващите стъпки са необходими, ако опциите `calibration_position`, `calibration_extruder_temp` и `extruder_heating_z` в `[temperature_probe]` не са конфигурирани:
+   - Преместете инструмента в центъра на леглото. Z трябва да е над 30 мм над леглото.
+   - Загрейте екструдера до температура над максималната безопасна температура на леглото. 150-170С трябва да са достатъчни за повечето конфигурации. Целта на загряването на екструдера е да се избегне разширяването на дюзата по време на калибрирането.
+   - Когато температурата на екструдера се успокои, преместете оста Z надолу до около 1 mm над леглото.
+- Започнете калибриране на дрейфа. Ако името на сондата е `my_probe` и максималната температура на сондата, която можем да постигнем, е 80C, подходящата gcode команда е `TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`. Ако е конфигуриран, инструментът ще се придвижи до координатите X,Y, зададени от `calibration_position`, и стойността Z, зададена от `extruder_heating_z`. След нагряване на екструдера до зададената температура инструментът ще се придвижи до стойността Z, зададена от `calibration_position`.
+- Процедурата ще поиска ръчна сонда. Извършете ръчната сонда с теста на хартията и `АКСЕПТ`. Процедурата за калибриране ще направи първия набор от проби със сондата, след което ще паркира сондата в позиция за нагряване.
+- Ако параметърът `calibration_bed_temp` не е конфигуриран, включете отоплението на леглото до максималната безопасна температура. В противен случай тази стъпка ще бъде извършена автоматично.
+- По подразбиране процедурата за калибриране изисква ръчна сонда на всеки 2С между пробите до достигане на `Целевата стойност`. Температурната разлика между пробите може да се персонализира чрез задаване на параметъра `STEP` в `TEMPERATURE_PROBE_CALIBRATE`. Трябва да се внимава, когато се задава персонализирана стойност на `STEP`, тъй като твърде висока стойност може да изисква твърде малко проби, което да доведе до лошо калибриране.
+- Следните допълнителни gcode команди са достъпни по време на калибрирането на дрейфа:
+   - `TEMPERATURE_PROBE_NEXT` може да се използва за форсиране на нова проба, преди да е достигната делтата на стъпката.
+   - `TEMPERATURE_PROBE_COMPLETE` може да се използва за завършване на калибрирането преди достигане на `TARGET`.
+   - `ABORT` може да се използва за прекратяване на калибрирането и изхвърляне на резултатите.
+- След приключване на калибрирането използвайте `SAVE_CONFIG`, за да съхраните калибрирането на дрейфа.
 
-As one may conclude, the calibration process outlined above is more challenging and time consuming than most other procedures. It may require practice and several attempts to achieve an optimal calibration.
+Както може да се заключи, процесът на калибриране, описан по-горе, е по-труден и отнема повече време, отколкото повечето други процедури. Той може да изисква практика и няколко опита за постигане на оптимално калибриране.

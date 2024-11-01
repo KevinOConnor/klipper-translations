@@ -1,136 +1,136 @@
 # Встановлення
 
-These instructions assume the software will run on a linux based host running a Klipper compatible front end. It is recommended that a SBC(Small Board Computer) such as a Raspberry Pi or Debian based Linux device be used as the host machine (see the [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) for other options).
+Ці інструкції припускають програмне забезпечення, яке буде працювати на основі Linux, що працює Klipper сумісний передній кінець. Рекомендовано, що SBC (Маленькі дошки комп'ютерів), такі як малиновий Pi або Debian на основі Linux пристрій використовується як хост машина (див. [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) для інших варіантів).
 
-For the purposes of these instructions host relates to the Linux device and mcu relates to the printboard. SBC relates to the term Small Board Computer such as the Raspberry Pi.
+Для цілей цих інструкцій, що належать до пристрою Linux і mcu, відноситься до друкованої плати. SBC відноситься до терміну Малої дошки комп'ютер, такі як Малина Пі.
 
-## Obtain a Klipper Configuration File
+## Отримання файлу конфігурації кліппера
 
-Most Klipper settings are determined by a "printer configuration file" printer.cfg, that will be stored on the host. An appropriate configuration file can often be found by looking in the Klipper [config directory](../config/) for a file starting with a "printer-" prefix that corresponds to the target printer. The Klipper configuration file contains technical information about the printer that will be needed during the installation.
+Більшість параметрів Klipper визначається «файлом конфігурації принтера» printer.cfg, який зберігатиметься на хості. Відповідний файл конфігурації часто можна знайти, переглянувши [каталог конфігурації](../config/) Klipper для файлу, який починається з префікса «printer-», який відповідає цільовому принтеру. Файл конфігурації Klipper містить технічну інформацію про принтер, яка знадобиться під час встановлення.
 
-If there isn't an appropriate printer configuration file in the Klipper config directory then try searching the printer manufacturer's website to see if they have an appropriate Klipper configuration file.
+Якщо ви не є відповідним файлом конфігурації принтера в каталозі Klipper, то спробуйте шукати сайт виробника принтера, щоб побачити, якщо у них є відповідний файл конфігурації Klipper.
 
-If no configuration file for the printer can be found, but the type of printer control board is known, then look for an appropriate [config file](../config/) starting with a "generic-" prefix. These example printer board files should allow one to successfully complete the initial installation, but will require some customization to obtain full printer functionality.
+Якщо не вдається знайти файл конфігурації для принтера, але відомий тип плати керування принтером, знайдіть відповідний [файл конфігурації](../config/), який починається з префікса "generic-". Ці приклади файлів плати принтера повинні дозволити успішно завершити початкову інсталяцію, але потребують певних налаштувань для отримання повної функціональності принтера.
 
-It is also possible to define a new printer configuration from scratch. However, this requires significant technical knowledge about the printer and its electronics. It is recommended that most users start with an appropriate configuration file. If creating a new custom printer configuration file, then start with the closest example [config file](../config/) and use the Klipper [config reference](Config_Reference.md) for further information.
+Також можна визначити нову конфігурацію принтера з нуля. Однак для цього потрібні значні технічні знання про принтер та його електроніку. Рекомендується, щоб більшість користувачів починали з відповідного файлу конфігурації. Якщо ви створюєте новий власний файл конфігурації принтера, почніть із найближчого прикладу [конфігураційного файлу](../config/) і скористайтеся Klipper [конфігураційним посиланням](Config_Reference.md) для отримання додаткової інформації.
 
-## Interacting with Klipper
+## Інтерактивація з клиппером
 
-Klipper is a 3d printer firmware, so it needs some way for the user to interact with it.
+Klipper - це прошивка принтера 3d, тому вона потребує певного способу взаємодії з ним.
 
-Currently the best choices are front ends that retrieve information through the [Moonraker web API](https://moonraker.readthedocs.io/) and there is also the option to use [Octoprint](https://octoprint.org/) to control Klipper.
+В даний час кращі варіанти є передніми кінцями, які отримують інформацію через [Moonraker web API](https://moonraker.readthedocs.io/) і є також можливість використовувати [Octoprint](https://octoprint.org/) для управління Klipper.
 
-The choice is up to the user on what to use, but the underlying Klipper is the same in all cases. We encourage users to research the options available and make an informed decision.
+Вибір є користувачем на те, що використовувати, але основний кліппер є однаковим у всіх випадках. Ми заохочуємо користувачів до дослідження варіантів, доступних і прийняття рішення.
 
-## Obtaining an OS image for SBC's
+## Отримання образу ОС для SBC
 
-There are many ways to obtain an OS image for Klipper for SBC use, most depend on what front end you wish to use. Some manafactures of these SBC boards also provide their own Klipper-centric images.
+Існує багато способів отримання образу ОС для кріплень для використання SBC, більшість залежать від того, що передній кінець ви хочете використовувати. Деякі манфакси цих панелей SBC також надають свої власні Кліппер-центричні зображення.
 
-The two main Moonraker based front ends are [Fluidd](https://docs.fluidd.xyz/) and [Mainsail](https://docs.mainsail.xyz/), the latter of which has a premade install image ["MainsailOS"](http://docs.mainsailOS.xyz), this has the option for Raspberry Pi and some OrangePi varianta.
+Два основних Moonraker на основі передніх кінців [Fluidd](https://docs.fluidd.xyz/) і [Mainsail](https://docs.mainsail.xyz/), останнє з яких має попередньо встановлене зображення [MainsailOS"](http://docs.mainsailOS.xyz), це має варіант для Raspberry Pi і деякі варіанти OrangePi.
 
-Fluidd can be installed via KIAUH(Klipper Install And Update Helper), which is explained below and is a 3rd party installer for all things Klipper.
+Фрідд можна встановити через KIAUH(Klipper Install І Update Helper), який пояснюється нижче і є 3-й вечірній інсталятор для всіх речей Klipper.
 
-OctoPrint can be installed via the popular OctoPi image or via KIAUH, this process is explained in <OctoPrint.md>
+OctoPrint може бути встановлений за допомогою популярного OctoPi зображення або через KIAUH, цей процес пояснюється <OctoPrint.md>
 
-## Installing via KIAUH
+## Встановлення через КІАУХ
 
-Normally you would start with a base image for your SBC, RPiOS Lite for example, or in the case of a x86 Linux device, Ubuntu Server. Please note that Desktop variants are not recommended due to certain helper programs that can stop some Klipper functions working and even mask access to some print boards.
+Зазвичай ви почнете з базовим зображенням для вашого SBC, RPiOS Lite, наприклад, або у випадку пристрою x86 Linux, Ubuntu Server. Будь ласка, зверніть увагу, що варіанти робочого столу не рекомендуються через певні програми, які можуть зупинити деякі функції Klipper, які працюють і навіть маскувати доступ до деяких друкованих плат.
 
-KIAUH can be used to install Klipper and its associated programs on a variety of Linux based systems that run a form of Debian. More information can be found at https://github.com/dw-0/kiauh
+KIAUH може використовуватися для установки Klipper та його пов'язаних програм на різних Linux базових системах, які виконують форму Debian. Більше інформації можна знайти на https://github.com/dw-0/kiauh
 
-## Building and flashing the micro-controller
+## Будівництво та миготливий мікроконтролер
 
-To compile the micro-controller code, start by running these commands on your host device:
-
-```
-cd ~/klipper/
-make menuconfig
-```
-
-The comments at the top of the [printer configuration file](#obtain-a-klipper-configuration-file) should describe the settings that need to be set during "make menuconfig". Open the file in a web browser or text editor and look for these instructions near the top of the file. Once the appropriate "menuconfig" settings have been configured, press "Q" to exit, and then "Y" to save. Then run:
+Щоб компілювати код мікроконтролера, запустіть ці команди на пристрої хосту:
 
 ```
-make
+cd ~ / клиппер /
+налаштування меню
 ```
 
-If the comments at the top of the [printer configuration file](#obtain-a-klipper-configuration-file) describe custom steps for "flashing" the final image to the printer control board then follow those steps and then proceed to [configuring OctoPrint](#configuring-octoprint-to-use-klipper).
-
-Otherwise, the following steps are often used to "flash" the printer control board. First, it is necessary to determine the serial port connected to the micro-controller. Run the following:
+У коментарях у верхній частині файлу конфігурації [printer](#obtain-a-klipper-configuration-file) слід описати налаштування, які необхідно встановити під час меню "makeconfig". Відкрийте файл у веб-браузері або текстовому редакторі та ознайомтеся з цими інструкціями у верхній частині файлу. Після того, як було налаштовано відповідні налаштування "menuconfig", натисніть кнопку "Q" для виходу, а потім "Y" для збереження. Далі запустіть:
 
 ```
-ls /dev/serial/by-id/*
+зроби
 ```
 
-It should report something similar to the following:
+Якщо коментарі у верхній частині файлу конфігурації [printer](#obtain-a-klipper-configuration-file) описують користувацькі кроки для "flashing" кінцевого зображення до панелі керування принтером, а потім приступайте до [configuring OctoPrint](#configuring-octoprint-to-use-klipper).
+
+В іншому випадку часто використовуються наступні дії для "flash" обробної дошки. Спочатку необхідно визначити послідовний порт, підключений до мікроконтролера. Запустити наступне:
 
 ```
-/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+ls /dev/serial/by-id/ ім'я *
 ```
 
-It's common for each printer to have its own unique serial port name. This unique name will be used when flashing the micro-controller. It's possible there may be multiple lines in the above output - if so, choose the line corresponding to the micro-controller. If many items are listed and the choice is ambiguous, unplug the board and run the command again, the missing item will be your print board(see the [FAQ](FAQ.md#wheres-my-serial-port) for more information).
-
-For common micro-controllers with STM32 or clone chips, LPC chips and others it is usual that these need an initial Klipper flash via SD card.
-
-When flashing with this method, it is important to make sure that the print board is not connected with USB to the host, due to some boards being able to feed power back to the board and stopping a flash from occuring.
-
-For common micro-controllers using Atmega chips, for example the 2560, the code can be flashed with something similar to:
-
-```
-sudo service klipper stop
-make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
-sudo service klipper start
-```
-
-Be sure to update the FLASH_DEVICE with the printer's unique serial port name.
-
-For common micro-controllers using RP2040 chips, the code can be flashed with something similar to:
-
-```
-sudo service klipper stop
-make flash FLASH_DEVICE=first
-sudo service klipper start
-```
-
-It is important to note that RP2040 chips may need to be put into Boot mode before this operation.
-
-## Configuring Klipper
-
-The next step is to copy the [printer configuration file](#obtain-a-klipper-configuration-file) to the host.
-
-Arguably the easiest way to set the Klipper configuration file is using the built in editors in Mainsail or Fluidd. These will allow the user to open the configuration examples and save them to be printer.cfg.
-
-Another option is to use a desktop editor that supports editing files over the "scp" and/or "sftp" protocols. There are freely available tools that support this (eg, Notepad++, WinSCP, and Cyberduck). Load the printer config file in the editor and then save it as a file named "printer.cfg" in the home directory of the pi user (ie, /home/pi/printer.cfg).
-
-Alternatively, one can also copy and edit the file directly on the host via ssh. That may look something like the following (be sure to update the command to use the appropriate printer config filename):
-
-```
-cp ~/klipper/config/example-cartesian.cfg ~/printer.cfg
-nano ~/printer.cfg
-```
-
-It's common for each printer to have its own unique name for the micro-controller. The name may change after flashing Klipper, so rerun these steps again even if they were already done when flashing. Run:
-
-```
-ls /dev/serial/by-id/*
-```
-
-It should report something similar to the following:
+Повідомляти щось схоже на наступне:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-Then update the config file with the unique name. For example, update the `[mcu]` section to look something similar to:
+Це загальний для кожного принтера, щоб мати свою унікальну назву серійного порту. Це унікальне ім'я буде використовуватися при митті мікроконтролера. Можливо, є декілька рядків у вищевказаному виході - якщо так, виберіть рядок, що відповідає мікроконтролю. Якщо багато елементів вказані і вибір неоднозначні, розгорніть дошку і запустіть команду знову, відсутній пункт буде вашим друкованим дошкою (див. [FAQ](FAQ.md#wheres-my-serial-port) для отримання додаткової інформації).
+
+Для звичайних мікроконтролерів з чіпсами STM32 або клоном, чіпсами LPC та іншими стандартно, що ці дані потребують початкового спалаху Klipper через SD-карту.
+
+Якщо миготливий з цим методом, важливо переконатися, що друкована плата не підключена з USB до хосту, через деякі дошки, які здатні годувати живлення дошки і зупинити спалах від виникання.
+
+Для звичайних мікроконтролерів з використанням чіпсів Atmega, наприклад, 2560, код може бути спалахований чимось схожим на:
+
+```
+sudo обслуговування klipper стоп
+зробити флеш FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+sudo сервіс klipper старт
+```
+
+Будьте впевнені, що оновлення FLASH_DEVICE з унікальною серійною назвою принтера.
+
+Для звичайних мікроконтролерів з використанням чіпсів RP2040, код може бути спалахований чимось схожим на:
+
+```
+sudo обслуговування klipper стоп
+зробити флеш FLASH_DEVICE=перший
+sudo сервіс klipper старт
+```
+
+Важливо відзначити, що чіпси RP2040 можуть знадобитися вводити в режим завантаження до цієї операції.
+
+## Налаштування кліппера
+
+Наступним кроком є копіювання файлу конфігурації [printer](#obtain-a-klipper-configuration-file) до хосту.
+
+Важко найпростіший спосіб встановити файл конфігурації Klipper за допомогою вбудованих редакторів в Mainsail або Fluidd. Це дозволить користувачеві відкрити приклади конфігурації і зберегти їх на принтері.cfg.
+
+Ще одним варіантом є використання настільного редактора, який підтримує редагування файлів за протоколами "шприц" та/або "шрифт". Доступні інструменти, які підтримують це (наприклад, Notepad++, WinSCP та Cyberduck). Завантажте файл конфігурації принтера в редакторі, а потім збережіть його як файл, названий "printer.cfg" в домашньому каталозі користувача pi (тобто /home/pi/printer.cfg).
+
+Крім того, можна скопіювати і редагувати файл безпосередньо на сайті ssh. Що може виглядати щось схоже на наступне (обов'язково оновити команду, щоб використовувати відповідне ім'я конфігурації принтера):
+
+```
+javascript licenses api веб-сайт go1.13.8 ~/принтер.cfg
+javascript licenses api веб-сайт go1.13.8
+```
+
+Для кожного принтера необхідно мати власну унікальну назву мікроконтролера. Ім'я може змінитися після того, як миготливий кліппер, так що повторно виконайте ці кроки, навіть якщо вони вже робилися при флешці. Запуск:
+
+```
+ls /dev/serial/by-id/ ім'я *
+```
+
+Повідомляти щось схоже на наступне:
+
+```
+/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+```
+
+Потім оновити файл config з унікальною назвою. Наприклад, оновити розділ `[mcu]`, щоб подивитися щось схоже на:
 
 ```
 [mcu]
-serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+Серія: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-After creating and editing the file it will be necessary to issue a "restart" command in the command console to load the config. A "status" command will report the printer is ready if the Klipper config file is successfully read and the micro-controller is successfully found and configured.
+Після створення та редагування файлу потрібно буде випустити команду «решта» в консолі команди для завантаження конфігурації. Команда «статус» повідомить принтер готовим, якщо файл налаштування Klipper успішно читається, а мікроконтролер успішно знайдений і налаштований.
 
-When customizing the printer config file, it is not uncommon for Klipper to report a configuration error. If an error occurs, make any necessary corrections to the printer config file and issue "restart" until "status" reports the printer is ready.
+Коли налаштовує файл налаштування принтера, це не рідкість для Klipper, щоб повідомити помилку конфігурації. Якщо виникає помилка, зробіть будь-які необхідні корективи до файлу налаштувань принтера і виписку «рештарт» до звіту «статус».
 
-Klipper reports error messages via the command console and via pop up in Fluidd and Mainsail. The "status" command can be used to re-report error messages. A log is available and usually located in ~/printer_data/logs this is named klippy.log
+Klipper повідомляє повідомлення про помилки через консолі команд і через додаток в Fluidd і Mainsail. Команда «статус» може використовуватися для повторних повідомлень про помилки. Журнал доступний і зазвичай знаходиться в ~/printer_data/logs це називається klippy. Увійти
 
-After Klipper reports that the printer is ready, proceed to the [config check document](Config_checks.md) to perform some basic checks on the definitions in the config file. See the main [documentation reference](Overview.md) for other information.
+Після того, як Klipper повідомляє, що принтер готовий, приступайте до [config check документ](Config_checks.md) для виконання деяких базових перевірок на визначеннях у файлі конфігурації. Головна [Довідник](Overview.md) для іншої інформації.

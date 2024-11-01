@@ -1,78 +1,78 @@
 # Вирівнювання столу
 
-Bed leveling (sometimes also referred to as "bed tramming") is critical to getting high quality prints. If a bed is not properly "leveled" it can lead to poor bed adhesion, "warping", and subtle problems throughout the print. This document serves as a guide to performing bed leveling in Klipper.
+Вирівнювання ліжка (іноді його також називають «переміщенням ліжка») має вирішальне значення для отримання високоякісних відбитків. Якщо ложе неправильно «вирівняно», це може призвести до поганої адгезії ложа, «викривлення» та незначних проблем по всьому друку. Цей документ служить посібником для виконання вирівнювання ліжка в Klipper.
 
-It's important to understand the goal of bed leveling. If the printer is commanded to a position `X0 Y0 Z10` during a print, then the goal is for the printer's nozzle to be exactly 10mm from the printer's bed. Further, should the printer then be commanded to a position of `X50 Z10` the goal is for the nozzle to maintain an exact distance of 10mm from the bed during that entire horizontal move.
+Важливо розуміти мету вирівнювання грядки. Якщо під час друку принтер отримує команду перейти в положення `X0 Y0 Z10`, тоді мета полягає в тому, щоб сопло принтера було рівно 10 мм від станини принтера. Крім того, якщо потім принтеру буде надано команду перейти в положення "X50 Z10", мета полягає в тому, щоб сопло підтримувало точну відстань 10 мм від ліжка протягом усього цього горизонтального руху.
 
-In order to get good quality prints the printer should be calibrated so that Z distances are accurate to within about 25 microns (.025mm). This is a small distance - significantly smaller than the width of a typical human hair. This scale can not be measured "by eye". Subtle effects (such as heat expansion) impact measurements at this scale. The secret to getting high accuracy is to use a repeatable process and to use a leveling method that leverages the high accuracy of the printer's own motion system.
+Для отримання якісних відбитків принтер слід відкалібрувати так, щоб відстані Z були з точністю приблизно до 25 мікрон (0,025 мм). Це невелика відстань - значно менша за ширину звичайної людської волосини. Цей масштаб неможливо виміряти «на око». Незначні ефекти (наприклад, теплове розширення) впливають на вимірювання в цьому масштабі. Секрет досягнення високої точності полягає у використанні повторюваного процесу та методі вирівнювання, який використовує високу точність власної системи руху принтера.
 
-## Choose the appropriate calibration mechanism
+## Виберіть відповідний механізм калібрування
 
-Different types of printers use different methods for performing bed leveling. All of them ultimately depend on the "paper test" (described below). However, the actual process for a particular type of printer is described in other documents.
+Різні типи принтерів використовують різні методи для вирівнювання ложа. Усі вони зрештою залежать від «паперового тесту» (описаного нижче). Проте фактичний процес для конкретного типу принтера описано в інших документах.
 
-Prior to running any of these calibration tools, be sure to run the checks described in the [config check document](Config_checks.md). It is necessary to verify basic printer motion before performing bed leveling.
+Перш ніж запускати будь-який із цих інструментів калібрування, обов’язково виконайте перевірки, описані в [документі перевірки конфігурації](Config_checks.md). Необхідно перевірити основний рух принтера перед виконанням вирівнювання станини.
 
-For printers with an "automatic Z probe" be sure to calibrate the probe following the directions in the [Probe Calibrate](Probe_Calibrate.md) document. For delta printers, see the [Delta Calibrate](Delta_Calibrate.md) document. For printers with bed screws and traditional Z endstops, see the [Manual Level](Manual_Level.md) document.
+Для принтерів із «автоматичним зондом Z» обов’язково відкалібруйте датчик, дотримуючись вказівок у документі [Probe Calibrate](Probe_Calibrate.md). Щодо дельта-принтерів див. документ [Delta Calibrate](Delta_Calibrate.md). Інформацію про принтери з кріпильними гвинтами та традиційними торцевими упорами Z див. у документі [Manual Level](Manual_Level.md).
 
-During calibration it may be necessary to set the printer's Z `position_min` to a negative number (eg, `position_min = -2`). The printer enforces boundary checks even during calibration routines. Setting a negative number allows the printer to move below the nominal position of the bed, which may help when trying to determine the actual bed position.
+Під час калібрування може знадобитися встановити для Z `position_min` принтера від’ємне число (наприклад, `position_min = -2`). Принтер перевіряє межі навіть під час калібрування. Встановлення від’ємного числа дозволяє принтеру рухатися нижче номінального положення станини, що може допомогти під час спроби визначити фактичне положення станини.
 
-## The "paper test"
+## «Паперовий тест»
 
-The primary bed calibration mechanism is the "paper test". It involves placing a regular piece of "copy machine paper" between the printer's bed and nozzle, and then commanding the nozzle to different Z heights until one feels a small amount of friction when pushing the paper back and forth.
+Основним механізмом калібрування шару є «тест на папері». Це включає в себе розміщення звичайного шматка «копіювального паперу» між станиною принтера та соплом, а потім керування соплом на різній висоті Z, доки не відчується невелике тертя під час штовхання паперу вперед і назад.
 
-It is important to understand the "paper test" even if one has an "automatic Z probe". The probe itself often needs to be calibrated to get good results. That probe calibration is done using this "paper test".
+Важливо розуміти «паперовий тест», навіть якщо у вас є «автоматичний Z-зонд». Для отримання хороших результатів сам зонд часто потребує калібрування. Це калібрування зонда виконується за допомогою цього «паперового тесту».
 
 Для виконання паперового тесту виріжте невеликий прямокутний аркуш паперу за допомогою ножиць (наприклад, 5x3 см). Папір зазвичай має товщину близько 100 мікрон (0,100 мм). (Точна товщина паперу не має вирішального значення.)
 
-The first step of the paper test is to inspect the printer's nozzle and bed. Make sure there is no plastic (or other debris) on the nozzle or bed.
+Першим кроком перевірки паперу є перевірка сопла та ложа принтера. Переконайтеся, що на насадці чи ложі немає пластику (або іншого сміття).
 
-**Inspect the nozzle and bed to ensure no plastic is present!**
+**Огляньте сопло та ложе, щоб переконатися, що немає пластику!**
 
-If one always prints on a particular tape or printing surface then one may perform the paper test with that tape/surface in place. However, note that tape itself has a thickness and different tapes (or any other printing surface) will impact Z measurements. Be sure to rerun the paper test to measure each type of surface that is in use.
+Якщо завжди друкувати на певній стрічці чи поверхні для друку, можна виконати перевірку паперу з цією стрічкою/поверхнею на місці. Однак зауважте, що сама стрічка має товщину, і різні стрічки (або будь-яка інша поверхня для друку) впливатимуть на вимірювання Z. Обов’язково повторіть перевірку паперу, щоб виміряти кожен тип поверхні, яка використовується.
 
-If there is plastic on the nozzle then heat up the extruder and use a metal tweezers to remove that plastic. Wait for the extruder to fully cool to room temperature before continuing with the paper test. While the nozzle is cooling, use the metal tweezers to remove any plastic that may ooze out.
+Якщо на соплі є пластик, нагрійте екструдер і використовуйте металевий пінцет, щоб видалити цей пластик. Зачекайте, поки екструдер повністю охолоне до кімнатної температури, перш ніж продовжувати перевірку паперу. Поки насадка охолоджується, використовуйте металевий пінцет, щоб видалити будь-який пластик, який може просочитися.
 
-**Always perform the paper test when both nozzle and bed are at room temperature!**
+**Завжди виконуйте тест на папері, коли і сопло, і ложе мають кімнатну температуру!**
 
-When the nozzle is heated, its position (relative to the bed) changes due to thermal expansion. This thermal expansion is typically around a 100 microns, which is about the same thickness as a typical piece of printer paper. The exact amount of thermal expansion isn't crucial, just as the exact thickness of the paper isn't crucial. Start with the assumption that the two are equal (see below for a method of determining the difference between the two distances).
+При нагріванні насадки її положення (відносно ложа) змінюється за рахунок теплового розширення. Це теплове розширення зазвичай становить близько 100 мікрон, що приблизно дорівнює товщині типового шматка паперу для принтера. Точна величина теплового розширення не має вирішального значення, як і точна товщина паперу не має вирішального значення. Почніть із припущення, що ці дві відстані рівні (див. нижче спосіб визначення різниці між двома відстанями).
 
-It may seem odd to calibrate the distance at room temperature when the goal is to have a consistent distance when heated. However, if one calibrates when the nozzle is heated, it tends to impart small amounts of molten plastic on to the paper, which changes the amount of friction felt. That makes it harder to get a good calibration. Calibrating while the bed/nozzle is hot also greatly increases the risk of burning oneself. The amount of thermal expansion is stable, so it is easily accounted for later in the calibration process.
+Може здатися дивним калібрувати відстань за кімнатної температури, коли мета полягає в тому, щоб мати постійну відстань при нагріванні. Однак, якщо виконати калібрування, коли сопло нагріте, воно має тенденцію додавати невелику кількість розплавленого пластику на папір, що змінює рівень тертя. Це ускладнює отримання хорошого калібрування. Калібрування, коли ліжко/насадка гарячі, також значно підвищує ризик отримання опіків. Величина теплового розширення є стабільною, тому її легко врахувати пізніше в процесі калібрування.
 
-**Use an automated tool to determine precise Z heights!**
+**Використовуйте автоматизований інструмент, щоб визначити точну висоту Z!**
 
-Klipper has several helper scripts available (eg, MANUAL_PROBE, Z_ENDSTOP_CALIBRATE, PROBE_CALIBRATE, DELTA_CALIBRATE). See the documents [described above](#choose-the-appropriate-calibration-mechanism) to choose one of them.
+Klipper має кілька доступних допоміжних сценаріїв (наприклад, MANUAL_PROBE, Z_ENDSTOP_CALIBRATE, PROBE_CALIBRATE, DELTA_CALIBRATE). Перегляньте документи [описані вище](#choose-the-appropriate-calibration-mechanism), щоб вибрати один із них.
 
-Run the appropriate command in the OctoPrint terminal window. The script will prompt for user interaction in the OctoPrint terminal output. It will look something like:
+Виконайте відповідну команду у вікні терміналу OctoPrint. Сценарій запропонує користувачу взаємодіяти у вихідних даних терміналу OctoPrint. Це буде виглядати приблизно так:
 
 ```
-Recv: // Starting manual Z probe. Use TESTZ to adjust position.
-Recv: // Finish with ACCEPT or ABORT command.
-Recv: // Z position: ?????? --> 5.000 <-- ??????
+Recv: // Запуск ручного Z-зонда. Використовуйте TESTZ для налаштування положення.
+ Recv: // Завершити командою ACCEPT або ABORT.
+ Recv: // Позиція Z: ?????? --> 5.000 <-- ??????
 ```
 
-The current height of the nozzle (as the printer currently understands it) is shown between the "--> <--". The number to the right is the height of the last probe attempt just greater than the current height, and to the left is the last probe attempt less than the current height (or ?????? if no attempt has been made).
+Поточна висота сопла (як її зараз розуміє принтер) відображається між «--> <--». Число праворуч означає висоту останньої спроби зондування, трохи більшу за поточну висоту, а ліворуч означає останню спробу зондування, меншу за поточну висоту (або ??????, якщо спроби не було зроблено).
 
-Place the paper between the nozzle and bed. It can be useful to fold a corner of the paper so that it is easier to grab. (Try not to push down on the bed when moving the paper back and forth.)
+Помістіть папір між соплом і ложем. Може бути корисно загнути кут паперу, щоб його було легше захопити. (Намагайтеся не натискати на ліжко, коли рухаєте папір вперед-назад.)
 
-![paper-test](img/paper-test.jpg)
+![папір-тест](img/папер-тест.jpg)
 
-Use the TESTZ command to request the nozzle to move closer to the paper. For example:
+Використовуйте команду TESTZ, щоб попросити сопло наблизитися до паперу. Наприклад:
 
 ```
 TESTZ Z=-.1
 ```
 
-The TESTZ command will move the nozzle a relative distance from the nozzle's current position. (So, `Z=-.1` requests the nozzle to move closer to the bed by .1mm.) After the nozzle stops moving, push the paper back and forth to check if the nozzle is in contact with the paper and to feel the amount of friction. Continue issuing TESTZ commands until one feels a small amount of friction when testing with the paper.
+Команда TESTZ перемістить сопло на відносну відстань від поточного положення сопла. (Отже, `Z=-.1` вимагає, щоб насадка наблизилася до ліжка на 0,1 мм.) Після того, як насадка припинить рух, штовхніть папір вперед-назад, щоб перевірити, чи насадка торкається паперу, і відчути величина тертя. Продовжуйте видавати команди TESTZ, поки не відчуєте невелике тертя під час тестування з папером.
 
-If too much friction is found then one can use a positive Z value to move the nozzle up. It is also possible to use `TESTZ Z=+` or `TESTZ Z=-` to "bisect" the last position - that is to move to a position half way between two positions. For example, if one received the following prompt from a TESTZ command:
+Якщо виявлено занадто велике тертя, можна використовувати додатне значення Z, щоб перемістити сопло вгору. Також можна використовувати `TESTZ Z=+` або `TESTZ Z=-`, щоб «розділити» останню позицію навпіл, тобто перейти до позиції посередині між двома позиціями. Наприклад, якщо хтось отримав таке підказку від команди TESTZ:
 
 ```
 Recv: // Z position: 0.130 --> 0.230 <-- 0.280
 ```
 
-Then a `TESTZ Z=-` would move the nozzle to a Z position of 0.180 (half way between 0.130 and 0.230). One can use this feature to help rapidly narrow down to a consistent friction. It is also possible to use `Z=++` and `Z=--` to return directly to a past measurement - for example, after the above prompt a `TESTZ Z=--` command would move the nozzle to a Z position of 0.130.
+Тоді `TESTZ Z=-` перемістить сопло в положення Z 0,180 (на півдорозі між 0,130 і 0,230). Можна використовувати цю функцію, щоб допомогти швидко звузити коло до постійного тертя. Також можна використовувати `Z=++` і `Z=--`, щоб повернутися безпосередньо до минулого вимірювання - наприклад, після наведеного вище підказки команда `TESTZ Z=--` перемістить сопло до Z положення 0,130.
 
-After finding a small amount of friction run the ACCEPT command:
+Після виявлення невеликої кількості тертя виконайте команду ACCEPT:
 
 ```
 ПРИЙНЯТИ
@@ -82,18 +82,18 @@ After finding a small amount of friction run the ACCEPT command:
 
 Точна величина тертя не має вирішального значення, так само як величина теплового розширення та точна ширина паперу не мають вирішального значення. Просто намагайтеся отримати однакову кількість тертя кожного разу, коли запускаєте тест.
 
-If something goes wrong during the test, one can use the `ABORT` command to exit the calibration tool.
+Якщо під час тесту щось піде не так, можна скористатися командою `ABORT`, щоб вийти з інструменту калібрування.
 
-## Determining Thermal Expansion
+## Визначення теплового розширення
 
-After successfully performing bed leveling, one may go on to calculate a more precise value for the combined impact of "thermal expansion", "thickness of the paper", and "amount of friction felt during the paper test".
+Після успішного вирівнювання ліжка можна перейти до розрахунку більш точного значення сумарного впливу «теплового розширення», «товщини паперу» та «кількості тертя, яке відчувається під час випробування паперу».
 
-This type of calculation is generally not needed as most users find the simple "paper test" provides good results.
+Зазвичай цей тип обчислення не потрібен, оскільки більшість користувачів вважає, що простий «паперовий тест» дає хороші результати.
 
-The easiest way to make this calculation is to print a test object that has straight walls on all sides. The large hollow square found in [docs/prints/square.stl](prints/square.stl) can be used for this. When slicing the object, make sure the slicer uses the same layer height and extrusion widths for the first level that it does for all subsequent layers. Use a coarse layer height (the layer height should be around 75% of the nozzle diameter) and do not use a brim or raft.
+Найпростіший спосіб зробити цей розрахунок — надрукувати тестовий об’єкт, який має прямі стінки з усіх боків. Для цього можна використати великий порожнистий квадрат, знайдений у [docs/prints/square.stl](prints/square.stl). Розрізаючи об’єкт, переконайтеся, що слайсер використовує ту саму висоту шару та ширину екструзії для першого рівня, що й для всіх наступних шарів. Використовуйте грубу висоту шару (висота шару має становити близько 75% діаметра сопла) і не використовуйте краї або пліт.
 
-Print the test object, wait for it to cool, and remove it from the bed. Inspect the lowest layer of the object. (It may also be useful to run a finger or nail along the bottom edge.) If one finds the bottom layer bulges out slightly along all sides of the object then it indicates the nozzle was slightly closer to the bed then it should be. One can issue a `SET_GCODE_OFFSET Z=+.010` command to increase the height. In subsequent prints one can inspect for this behavior and make further adjustment as needed. Adjustments of this type are typically in 10s of microns (.010mm).
+Роздрукуйте тестовий об’єкт, зачекайте, поки він охолоне, і зніміть його з ложа. Огляньте нижній шар предмета. (Також може бути корисно провести пальцем або нігтем уздовж нижнього краю.) Якщо нижній шар злегка виступає вздовж усіх боків об’єкта, це означає, що сопло було трохи ближче до ложа, ніж повинно бути. Щоб збільшити висоту, можна виконати команду `SET_GCODE_OFFSET Z=+.010`. У наступних відбитках можна перевірити цю поведінку та за потреби внести додаткові коригування. Коригування цього типу, як правило, становить 10 мікрон (0,010 мм).
 
-If the bottom layer consistently appears narrower than subsequent layers then one can use the SET_GCODE_OFFSET command to make a negative Z adjustment. If one is unsure, then one can decrease the Z adjustment until the bottom layer of prints exhibit a small bulge, and then back-off until it disappears.
+Якщо нижній шар постійно здається вужчим, ніж наступні шари, можна використати команду SET_GCODE_OFFSET, щоб зробити негативне коригування Z. Якщо хтось не впевнений, можна зменшити коригування Z, доки нижній шар відбитків не покаже невелику опуклість, а потім відступити, доки вона не зникне.
 
-The easiest way to apply the desired Z adjustment is to create a START_PRINT g-code macro, arrange for the slicer to call that macro during the start of each print, and add a SET_GCODE_OFFSET command to that macro. See the [slicers](Slicers.md) document for further details.
+Найпростіший спосіб застосувати потрібне коригування Z — це створити макрос g-code START_PRINT, організувати виклик цього макросу зрізувачем на початку кожного друку та додати до цього макросу команду SET_GCODE_OFFSET. Додаткову інформацію див. у документі [slicers](Slicers.md).

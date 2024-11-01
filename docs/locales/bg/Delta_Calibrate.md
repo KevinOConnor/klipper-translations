@@ -1,8 +1,8 @@
 # Delta calibration
 
-This document describes Klipper's automatic calibration system for "delta" style printers.
+Този документ описва системата за автоматично калибриране на Klipper за принтери тип "делта".
 
-Delta calibration involves finding the tower endstop positions, tower angles, delta radius, and delta arm lengths. These settings control printer motion on a delta printer. Each one of these parameters has a non-obvious and non-linear impact and it is difficult to calibrate them manually. In contrast, the software calibration code can provide excellent results with just a few minutes of time. No special probing hardware is necessary.
+Делта калибрирането включва намиране на крайните позиции на кулата, ъглите на кулата, делта радиуса и дължината на делта рамото. Тези настройки управляват движението на принтера при делта принтер. Всеки един от тези параметри има неочевидно и нелинейно въздействие и е трудно да се калибрира ръчно. За разлика от тях софтуерният код за калибриране може да осигури отлични резултати само за няколко минути време. Не е необходим специален хардуер за сондиране.
 
 Ultimately, the delta calibration is dependent on the precision of the tower endstop switches. If one is using Trinamic stepper motor drivers then consider enabling [endstop phase](Endstop_Phase.md) detection to improve the accuracy of those switches.
 
@@ -131,7 +131,7 @@ SAVE_CONFIG
 
 The SAVE_CONFIG command will save both the updated delta parameters and information from the distance measurements. Future DELTA_CALIBRATE commands will also utilize this distance information. Do not attempt to reenter the raw distance measurements after running SAVE_CONFIG, as this command changes the printer configuration and the raw measurements no longer apply.
 
-### Additional notes
+### Допълнителни бележки
 
 * If the delta printer has good dimensional accuracy then the distance between any two pillars should be around 74mm and the width of every pillar should be around 9mm. (Specifically, the goal is for the distance between any two pillars minus the width of one of the pillars to be exactly 65mm.) Should there be a dimensional inaccuracy in the part then the DELTA_ANALYZE routine will calculate new delta parameters using both the distance measurements and the previous height measurements from the last DELTA_CALIBRATE command.
 * DELTA_ANALYZE may produce delta parameters that are surprising. For example, it may suggest arm lengths that do not match the printer's actual arm lengths. Despite this, testing has shown that DELTA_ANALYZE often produces superior results. It is believed that the calculated delta parameters are able to account for slight errors elsewhere in the hardware. For example, small differences in arm length may result in a tilt to the effector and some of that tilt may be accounted for by adjusting the arm length parameters.

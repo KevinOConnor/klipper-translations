@@ -1,10 +1,10 @@
 # Code overview
 
-This document describes the overall code layout and major code flow of Klipper.
+Този документ описва цялостното оформление на кода и основния поток на кода на Klipper.
 
-## Directory Layout
+## Оформление на директорията
 
-The **src/** directory contains the C source for the micro-controller code. The **src/atsam/**, **src/atsamd/**, **src/avr/**, **src/linux/**, **src/lpc176x/**, **src/pru/**, and **src/stm32/** directories contain architecture specific micro-controller code. The **src/simulator/** contains code stubs that allow the micro-controller to be test compiled on other architectures. The **src/generic/** directory contains helper code that may be useful across different architectures. The build arranges for includes of "board/somefile.h" to first look in the current architecture directory (eg, src/avr/somefile.h) and then in the generic directory (eg, src/generic/somefile.h).
+Директорията **src/** съдържа изходния код на С за кода на микроконтролера. Директориите **src/atsam/**, **src/atsamd/**, **src/avr/**, **src/linux/**, **src/lpc176x/**, **src/pru/** и **src/stm32/** съдържат специфичния за архитектурата код на микроконтролера. Директорията **src/simulator/** съдържа кодове, които позволяват тестово компилиране на микроконтролера на други архитектури. Директорията **src/generic/** съдържа помощен код, който може да бъде полезен за различни архитектури. Изграждането организира включването на "board/somefile.h" да се търси първо в директорията на текущата архитектура (напр. src/avr/somefile.h) и след това в директорията generic (напр. src/generic/somefile.h).
 
 The **klippy/** directory contains the host software. Most of the host software is written in Python, however the **klippy/chelper/** directory contains some C code helpers. The **klippy/kinematics/** directory contains the robot kinematics code. The **klippy/extras/** directory contains the host code extensible "modules".
 

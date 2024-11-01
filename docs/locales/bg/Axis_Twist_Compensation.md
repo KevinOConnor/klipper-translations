@@ -1,32 +1,32 @@
-# Axis Twist Compensation
+# Компенсация на усукването на оста
 
-This document describes the [axis_twist_compensation] module.
+Този документ описва модула [axis_twist_compensation].
 
 Some printers may have a small twist in their X rail which can skew the results of a probe attached to the X carriage. This is common in printers with designs like the Prusa MK3, Sovol SV06 etc and is further described under [probe location
 bias](Probe_Calibrate.md#location-bias-check). It may result in probe operations such as [Bed Mesh](Bed_Mesh.md), [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) etc returning inaccurate representations of the bed.
 
-This module uses manual measurements by the user to correct the probe's results. Note that if your axis is significantly twisted it is strongly recommended to first use mechanical means to fix it prior to applying software corrections.
+Този модул използва ръчните измервания на потребителя за коригиране на резултатите от сондата. Обърнете внимание, че ако оста е значително усукана, силно се препоръчва първо да използвате механични средства, за да я фиксирате, преди да прилагате софтуерни корекции.
 
-**Warning**: This module is not compatible with dockable probes yet and will try to probe the bed without attaching the probe if you use it.
+**Предупреждение**: Този модул все още не е съвместим с докинг сондите и ако го използвате, ще се опита да изследва леглото, без да е прикрепена сондата.
 
-## Overview of compensation usage
+## Преглед на използването на компенсациите
 
-> **Tip:** Make sure the [probe X and Y offsets](Config_Reference.md#probe) are correctly set as they greatly influence calibration.
+> **Съвет:** Уверете се, че [отместванията на сондата X и Y](Config_Reference.md#probe) са правилно зададени, тъй като те оказват голямо влияние върху калибрирането.
 
-1. After setting up the [axis_twist_compensation] module, perform `AXIS_TWIST_COMPENSATION_CALIBRATE`
+1. След като настроите модула [axis_twist_compensation], изпълнете `AXIS_TWIST_COMPENSATION_CALIBRATE`.
 
-* The calibration wizard will prompt you to measure the probe Z offset at a few points along the bed
-* The calibration defaults to 3 points but you can use the option `SAMPLE_COUNT=` to use a different number.
+* Съветникът за калибриране ще ви подкани да измерите изместването на сондата Z в няколко точки по протежение на леглото.
+* По подразбиране калибрирането е с 3 точки, но можете да използвате опцията `SAMPLE_COUNT=`, за да използвате друг брой.
 
-1. [Adjust your Z offset](Probe_Calibrate.md#calibrating-probe-z-offset)
-1. Perform automatic/probe-based bed tramming operations, such as [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) etc
-1. Home all axis, then perform a [Bed Mesh](Bed_Mesh.md) if required
-1. Perform a test print, followed by any [fine-tuning](Axis_Twist_Compensation.md#fine-tuning) as desired
+1. [Настройте изместването Z](Probe_Calibrate.md#calibrating-probe-z-offset)
+1. Извършване на автоматични/базирани на сонда операции за трамбоване на леглото, като например [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) и др.
+1. Поставете всички оси в изходно положение, след което при необходимост направете [Bed Mesh](Bed_Mesh.md)
+1. Извършете тестово отпечатване, последвано от [фина настройка](Axis_Twist_Compensation.md#fine-tuning) по желание.
 
-> **Tip:** Bed temperature and nozzle temperature and size do not seem to have an influence to the calibration process.
+> **Съвет:** Изглежда, че температурата на леглото и температурата и размерът на дюзата не оказват влияние върху процеса на калибриране.
 
-## [axis_twist_compensation] setup and commands
+## [axis_twist_compensation] настройка и команди
 
-Configuration options for [axis_twist_compensation] can be found in the [Configuration Reference](Config_Reference.md#axis_twist_compensation).
+Опциите за конфигуриране за [axis_twist_compensation] могат да бъдат намерени в [Configuration Reference](Config_Reference.md#axis_twist_compensation).
 
-Commands for [axis_twist_compensation] can be found in the [G-Codes Reference](G-Codes.md#axis_twist_compensation)
+Командите за [axis_twist_compensation] могат да бъдат намерени в [G-Codes Reference](G-Codes.md#axis_twist_compensation)

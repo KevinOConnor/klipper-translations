@@ -1,18 +1,18 @@
 # CANBUS
 
-This document describes Klipper's CAN bus support.
+Този документ описва поддръжката на CAN шината на Klipper.
 
-## Device Hardware
+## Хардуер на устройството
 
-Klipper currently supports CAN on stm32, SAME5x, and rp2040 chips. In addition, the micro-controller chip must be on a board that has a CAN transceiver.
+Понастоящем Klipper поддържа CAN на чипове stm32, SAME5x и rp2040. Освен това микроконтролерният чип трябва да е на платка, която има CAN приемо-предавател.
 
-To compile for CAN, run `make menuconfig` and select "CAN bus" as the communication interface. Finally, compile the micro-controller code and flash it to the target board.
+За да компилирате за CAN, стартирайте `make menuconfig` и изберете "CAN bus" като комуникационен интерфейс. Накрая компилирайте кода на микроконтролера и го прехвърлете на целевата платка.
 
-## Host Hardware
+## Хардуер на хоста
 
-In order to use a CAN bus, it is necessary to have a host adapter. It is recommended to use a "USB to CAN adapter". There are many different USB to CAN adapters available from different manufacturers. When choosing one, we recommend verifying that the firmware can be updated on it. (Unfortunately, we've found some USB adapters run defective firmware and are locked down, so verify before purchasing.) Look for adapters that can run Klipper directly (in its "USB to CAN bridge mode") or that run the [candlelight firmware](https://github.com/candle-usb/candleLight_fw).
+За да използвате CAN шина, е необходимо да разполагате с хост адаптер. Препоръчва се използването на "USB към CAN адаптер". Има много различни адаптери от USB към CAN, предлагани от различни производители. Когато избирате такъв, препоръчваме да проверите дали фърмуерът може да бъде актуализиран в него. (За съжаление, установихме, че някои USB адаптери работят с дефектен фърмуер и са блокирани, затова проверете преди покупка.) Търсете адаптери, които могат да стартират Klipper директно (в режим "USB към CAN мост") или които работят с фърмуера [candlelight firmware](https://github.com/candle-usb/candleLight_fw).
 
-It is also necessary to configure the host operating system to use the adapter. This is typically done by creating a new file named `/etc/network/interfaces.d/can0` with the following contents:
+Необходимо е също така да се конфигурира хост операционната система за използване на адаптера. Обикновено това се прави чрез създаване на нов файл с име `/etc/network/interfaces.d/can0` със следното съдържание:
 
 ```
 allow-hotplug can0
@@ -21,51 +21,51 @@ iface can0 can static
     up ip link set $IFACE txqueuelen 128
 ```
 
-## Terminating Resistors
+## Терминиращи резистори
 
-A CAN bus should have two 120 ohm resistors between the CANH and CANL wires. Ideally, one resistor located at each the end of the bus.
+Шината CAN трябва да има два 120-омови резистора между проводниците CANH и CANL. В идеалния случай по един резистор трябва да бъде разположен във всеки край на шината.
 
-Note that some devices have a builtin 120 ohm resistor that can not be easily removed. Some devices do not include a resistor at all. Other devices have a mechanism to select the resistor (typically by connecting a "pin jumper"). Be sure to check the schematics of all devices on the CAN bus to verify that there are two and only two 120 Ohm resistors on the bus.
+Имайте предвид, че някои устройства имат вграден 120-омов резистор, който не може да се отстрани лесно. Някои устройства изобщо не включват резистор. Други устройства имат механизъм за избор на резистор (обикновено чрез свързване на "джъмпер"). Не забравяйте да проверите схемите на всички устройства по шината CAN, за да се уверите, че в шината има два и само два 120-омови резистора.
 
-To test that the resistors are correct, one can remove power to the printer and use a multi-meter to check the resistance between the CANH and CANL wires - it should report ~60 ohms on a correctly wired CAN bus.
+За да проверите дали резисторите са правилни, можете да изключите захранването на принтера и да използвате мултиметър, за да проверите съпротивлението между проводниците CANH и CANL - при правилно свързана CAN шина той трябва да отчете ~60 ома.
 
-## Finding the canbus_uuid for new micro-controllers
+## Намиране на canbus_uuid за нови микроконтролери
 
-Each micro-controller on the CAN bus is assigned a unique id based on the factory chip identifier encoded into each micro-controller. To find each micro-controller device id, make sure the hardware is powered and wired correctly, and then run:
+На всеки микроконтролер по шината CAN се присвоява уникален идентификатор въз основа на фабричния идентификатор на чипа, кодиран във всеки микроконтролер. За да откриете идентификатора на устройството на всеки микроконтролер, уверете се, че хардуерът е захранен и свързан правилно, и след това го стартирайте:
 
 ```
 ~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0
 ```
 
-If uninitialized CAN devices are detected the above command will report lines like the following:
+Ако бъдат открити неинициализирани CAN устройства, горната команда ще отчете следните редове:
 
 ```
-Found canbus_uuid=11aa22bb33cc, Application: Klipper
+Намерено canbus_uuid=11aa22bb33cc, Приложение: Klipper
 ```
 
-Each device will have a unique identifier. In the above example, `11aa22bb33cc` is the micro-controller's "canbus_uuid".
+Всяко устройство ще има уникален идентификатор. В горния пример `11aa22bb33cc` е "canbus_uuid" на микроконтролера.
 
-Note that the `canbus_query.py` tool will only report uninitialized devices - if Klipper (or a similar tool) configures the device then it will no longer appear in the list.
+Имайте предвид, че инструментът `canbus_query.py` ще докладва само за неинициализирани устройства - ако Klipper (или подобен инструмент) конфигурира устройството, то вече няма да се появява в списъка.
 
-## Configuring Klipper
+## Конфигуриране на Klipper
 
-Update the Klipper [mcu configuration](Config_Reference.md#mcu) to use the CAN bus to communicate with the device - for example:
+Актуализирайте Klipper [mcu configuration](Config_Reference.md#mcu), за да използвате CAN шината за комуникация с устройството - например:
 
 ```
 [mcu my_can_mcu]
 canbus_uuid: 11aa22bb33cc
 ```
 
-## USB to CAN bus bridge mode
+## Режим на мост между USB и CAN шина
 
-Some micro-controllers support selecting "USB to CAN bus bridge" mode during Klipper's "make menuconfig". This mode may allow one to use a micro-controller as both a "USB to CAN bus adapter" and as a Klipper node.
+Някои микроконтролери поддържат избор на режим "USB to CAN bus bridge" (мост между USB и CAN шина) по време на "make menuconfig" на Klipper. Този режим може да позволи използването на микроконтролера едновременно като "адаптер от USB към CAN шина" и като възел на Klipper.
 
-When Klipper uses this mode the micro-controller appears as a "USB CAN bus adapter" under Linux. The "Klipper bridge mcu" itself will appear as if it was on this CAN bus - it can be identified via `canbus_query.py` and it must be configured like other CAN bus Klipper nodes.
+Когато Klipper използва този режим, микроконтролерът се появява като "USB CAN bus adapter" под Linux. Самият микропроцесор "Klipper bridge mcu" ще изглежда така, сякаш е на тази CAN шина - той може да бъде идентифициран чрез `canbus_query.py` и трябва да бъде конфигуриран като другите възли на Klipper с CAN шина.
 
-Some important notes when using this mode:
+Някои важни забележки при използването на този режим:
 
-* It is necessary to configure the `can0` (or similar) interface in Linux in order to communicate with the bus. However, Linux CAN bus speed and CAN bus bit-timing options are ignored by Klipper. Currently, the CAN bus frequency is specified during "make menuconfig" and the bus speed specified in Linux is ignored.
-* Whenever the "bridge mcu" is reset, Linux will disable the corresponding `can0` interface. To ensure proper handling of FIRMWARE_RESTART and RESTART commands, it is recommended to use `allow-hotplug` in the `/etc/network/interfaces.d/can0` file. For example:
+* Необходимо е да се конфигурира интерфейсът `can0` (или подобен) в Linux, за да се осъществи връзка с шината. Въпреки това скоростта на CAN шината в Linux и опциите за битово време на CAN шината се игнорират от Klipper. Понастоящем честотата на CAN шината се задава по време на "make menuconfig" и скоростта на шината, зададена в Linux, се игнорира.
+* Всеки път, когато "bridge mcu" се нулира, Linux ще деактивира съответния интерфейс `can0`. За да се осигури правилна обработка на командите FIRMWARE_RESTART и RESTART, се препоръчва да се използва `allow-hotplug` във файла `/etc/network/interfaces.d/can0`. Например:
 
 ```
 allow-hotplug can0
@@ -74,12 +74,12 @@ iface can0 can static
     up ip link set $IFACE txqueuelen 128
 ```
 
-* The "bridge mcu" is not actually on the CAN bus. Messages to and from the bridge mcu will not be seen by other adapters that may be on the CAN bus.
-* The available bandwidth to both the "bridge mcu" itself and all devices on the CAN bus is effectively limited by the CAN bus frequency. As a result, it is recommended to use a CAN bus frequency of 1000000 when using "USB to CAN bus bridge mode".
+* "Мостовият микропроцесор" всъщност не е включен в шината CAN. Съобщенията към и от мостовия микропроцесор няма да се виждат от други адаптери, които може да са на CAN шината.
+* Наличната широчина на честотната лента както за самия мостов микропроцесор, така и за всички устройства по шината CAN е ефективно ограничена от честотата на шината CAN. В резултат на това се препоръчва да се използва честота на CAN шината от 1000000, когато се използва "режим на мост от USB към CAN шина".
 
-   Even at a CAN bus frequency of 1000000, there may not be sufficient bandwidth to run a `SHAPER_CALIBRATE` test if both the XY steppers and the accelerometer all communicate via a single "USB to CAN bus" interface.
-* A USB to CAN bridge board will not appear as a USB serial device, it will not show up when running `ls /dev/serial/by-id`, and it can not be configured in Klipper's printer.cfg file with a `serial:` parameter. The bridge board appears as a "USB CAN adapter" and it is configured in the printer.cfg as a [CAN node](#configuring-klipper).
+   Дори при честота на шината CAN 1000000 може да няма достатъчна широчина на честотната лента за провеждане на теста `SHAPER_CALIBRATE`, ако стъпковите устройства XY и акселерометърът комуникират чрез един интерфейс "USB към шина CAN".
+* Платка с мост от USB към CAN няма да се появи като USB серийно устройство, няма да се появи при изпълнение на `ls /dev/serial/by-id` и не може да бъде конфигурирана във файла printer.cfg на Klipper с параметър `serial:`. Мостовата платка се появява като "USB CAN адаптер" и се конфигурира в printer.cfg като [CAN възел](#configuring-klipper).
 
-## Tips for troubleshooting
+## Съвети за отстраняване на неизправности
 
-See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document.
+Вижте документа [Отстраняване на неизправности по шината CAN](CANBUS_Troubleshooting.md).

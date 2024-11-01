@@ -1,10 +1,10 @@
 # Frequently Asked Questions
 
-## How can I donate to the project?
+## Как мога да направя дарение за проекта?
 
 Thank you for your support. See the [Sponsors page](Sponsors.md) for information.
 
-## How do I calculate the rotation_distance config parameter?
+## Как да изчисля конфигурационния параметър rotation_distance?
 
 See the [rotation distance document](Rotation_Distance.md).
 

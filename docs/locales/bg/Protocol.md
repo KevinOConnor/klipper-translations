@@ -1,6 +1,6 @@
 # Протокол
 
-The Klipper messaging protocol is used for low-level communication between the Klipper host software and the Klipper micro-controller software. At a high level the protocol can be thought of as a series of command and response strings that are compressed, transmitted, and then processed at the receiving side. An example series of commands in uncompressed human-readable format might look like:
+Протоколът за съобщения на Klipper се използва за комуникация на ниско ниво между хост софтуера на Klipper и софтуера на микроконтролера Klipper. На високо ниво протоколът може да се разглежда като поредица от низове с команди и отговори, които се компресират, предават и след това се обработват от приемащата страна. Примерна поредица от команди в некомпресиран формат, удобен за четене от човека, може да изглежда така:
 
 ```
 set_digital_out pin=PA3 value=1
@@ -10,57 +10,57 @@ queue_step oid=7 interval=7458 count=10 add=331
 queue_step oid=7 interval=11717 count=4 add=1281
 ```
 
-See the [mcu commands](MCU_Commands.md) document for information on available commands. See the [debugging](Debugging.md) document for information on how to translate a G-Code file into its corresponding human-readable micro-controller commands.
+Вижте документа [mcu commands](MCU_Commands.md) за информация относно наличните команди. Вижте документа [debugging](Debugging.md) за информация как да преведете G-Code файл в съответните му четими за човека команди за микроконтролера.
 
-This page provides a high-level description of the Klipper messaging protocol itself. It describes how messages are declared, encoded in binary format (the "compression" scheme), and transmitted.
+Тази страница съдържа описание на високо ниво на самия протокол за обмен на съобщения Klipper. Тя описва как съобщенията се декларират, кодират в двоичен формат ("компресираща" схема) и предават.
 
-The goal of the protocol is to enable an error-free communication channel between the host and micro-controller that is low-latency, low-bandwidth, and low-complexity for the micro-controller.
+Целта на протокола е да осигури безпогрешен комуникационен канал между хоста и микроконтролера, който е с ниска латентност, ниска честотна лента и ниска сложност за микроконтролера.
 
-## Micro-controller Interface
+## Интерфейс на микроконтролера
 
-The Klipper transmission protocol can be thought of as a [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) mechanism between micro-controller and host. The micro-controller software declares the commands that the host may invoke along with the response messages that it can generate. The host uses that information to command the micro-controller to perform actions and to interpret the results.
+Протоколът за предаване Klipper може да се разглежда като механизъм [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) между микроконтролера и хоста. Софтуерът на микроконтролера декларира командите, които хостът може да извика, заедно със съобщенията за отговор, които може да генерира. Домакинът използва тази информация, за да командва микроконтролера да извършва действия и да интерпретира резултатите.
 
-### Declaring commands
+### Деклариране на команди
 
-The micro-controller software declares a "command" by using the DECL_COMMAND() macro in the C code. For example:
+Софтуерът на микроконтролера декларира "команда", като използва макроса DECL_COMMAND() в кода на езика С. Например:
 
 ```
 DECL_COMMAND(command_update_digital_out, "update_digital_out oid=%c value=%c");
 ```
 
-The above declares a command named "update_digital_out". This allows the host to "invoke" this command which would cause the command_update_digital_out() C function to be executed in the micro-controller. The above also indicates that the command takes two integer parameters. When the command_update_digital_out() C code is executed, it will be passed an array containing these two integers - the first corresponding to the 'oid' and the second corresponding to the 'value'.
+Горното декларира команда с име "update_digital_out". Това позволява на хоста да "извика" тази команда, което ще доведе до изпълнение на функцията command_update_digital_out() C в микроконтролера. Горното също така показва, че командата приема два целочислени параметъра. Когато кодът command_update_digital_out() C бъде изпълнен, ще му бъде предаден масив, съдържащ тези две цели числа - първото, съответстващо на "oid", и второто, съответстващо на "value".
 
-In general, the parameters are described with printf() style syntax (eg, "%u"). The formatting directly corresponds to the human-readable view of commands (eg, "update_digital_out oid=7 value=1"). In the above example, "value=" is a parameter name and "%c" indicates the parameter is an integer. Internally, the parameter name is only used as documentation. In this example, the "%c" is also used as documentation to indicate the expected integer is 1 byte in size (the declared integer size does not impact the parsing or encoding).
+По принцип параметрите се описват със синтаксис в стил printf() (например "%u"). Форматирането пряко съответства на разбираемия за човека вид на командите (напр. "update_digital_out oid=7 value=1"). В горния пример "value=" е име на параметър, а "%c" показва, че параметърът е цяло число. Вътрешно името на параметъра се използва само като документация. В този пример "%c" се използва и като документация, за да покаже, че очакваното цяло число е с размер 1 байт (декларираният размер на цялото число не влияе на парсинга или кодирането).
 
-The micro-controller build will collect all commands declared with DECL_COMMAND(), determine their parameters, and arrange for them to be callable.
+Изграждането на микроконтролера ще събере всички команди, декларирани с DECL_COMMAND(), ще определи техните параметри и ще ги подготви за извикване.
 
-### Declaring responses
+### Деклариране на отговори
 
-To send information from the micro-controller to the host a "response" is generated. These are both declared and transmitted using the sendf() C macro. For example:
+За да се изпрати информация от микроконтролера към хоста, се генерира "отговор". Те се декларират и предават с помощта на макроса sendf() C. Например:
 
 ```
 sendf("status clock=%u status=%c", sched_read_time(), sched_is_shutdown());
 ```
 
-The above transmits a "status" response message that contains two integer parameters ("clock" and "status"). The micro-controller build automatically finds all sendf() calls and generates encoders for them. The first parameter of the sendf() function describes the response and it is in the same format as command declarations.
+В горния случай се предава съобщение за отговор "статус", което съдържа два целочислени параметъра ("clock" и "status"). Изграждането на микроконтролера автоматично открива всички sendf() повиквания и генерира енкодери за тях. Първият параметър на функцията sendf() описва отговора и е в същия формат като декларациите на командите.
 
-The host can arrange to register a callback function for each response. So, in effect, commands allow the host to invoke C functions in the micro-controller and responses allow the micro-controller software to invoke code in the host.
+Домакинът може да регистрира функция за обратно извикване за всеки отговор. Така на практика командите позволяват на хоста да извиква C функции в микроконтролера, а отговорите позволяват на софтуера на микроконтролера да извиква код в хоста.
 
-The sendf() macro should only be invoked from command or task handlers, and it should not be invoked from interrupts or timers. The code does not need to issue a sendf() in response to a received command, it is not limited in the number of times sendf() may be invoked, and it may invoke sendf() at any time from a task handler.
+Макросът sendf() трябва да се извиква само от обработчици на команди или задачи и не трябва да се извиква от прекъсвачи или таймери. Не е необходимо кодът да издава sendf() в отговор на получена команда, той не е ограничен в броя на случаите, в които може да бъде извикан sendf(), и може да извика sendf() по всяко време от обработчик на задачи.
 
-#### Output responses
+#### Изходни отговори
 
-To simplify debugging, there is also an output() C function. For example:
+За да се улесни отстраняването на грешки, има и функция output() C. Например:
 
 ```
 output("The value of %u is %s with size %u.", x, buf, buf_len);
 ```
 
-The output() function is similar in usage to printf() - it is intended to generate and format arbitrary messages for human consumption.
+Функцията output() е подобна на printf() - тя е предназначена за генериране и форматиране на произволни съобщения за човешка употреба.
 
-### Declaring enumerations
+### Деклариране на изброявания
 
-Enumerations allow the host code to use string identifiers for parameters that the micro-controller handles as integers. They are declared in the micro-controller code - for example:
+Изброяването позволява на кода на хоста да използва символни низове за параметри, които микроконтролерът обработва като цели числа. Те се декларират в кода на микроконтролера - например:
 
 ```
 DECL_ENUMERATION("spi_bus", "spi", 0);
@@ -68,45 +68,45 @@ DECL_ENUMERATION("spi_bus", "spi", 0);
 DECL_ENUMERATION_RANGE("pin", "PC0", 16, 8);
 ```
 
-If the first example, the DECL_ENUMERATION() macro defines an enumeration for any command/response message with a parameter name of "spi_bus" or parameter name with a suffix of "_spi_bus". For those parameters the string "spi" is a valid value and it will be transmitted with an integer value of zero.
+В първия пример макросът DECL_ENUMERATION() дефинира изброяване за всяко съобщение за команда/отговор с име на параметър "spi_bus" или име на параметър със суфикс "_spi_bus". За тези параметри низът "spi" е валидна стойност и тя ще бъде предадена с цяло число, равно на нула.
 
-It's also possible to declare an enumeration range. In the second example, a "pin" parameter (or any parameter with a suffix of "_pin") would accept PC0, PC1, PC2, ..., PC7 as valid values. The strings will be transmitted with integers 16, 17, 18, ..., 23.
+Възможно е също така да декларирате обхват на изброяване. Във втория пример параметърът "pin" (или всеки параметър със суфикс "_pin") ще приема като валидни стойности PC0, PC1, PC2, ..., PC7. Низовете ще се предават с цели числа 16, 17, 18, ..., 23.
 
-### Declaring constants
+### Деклариране на константи
 
-Constants can also be exported. For example, the following:
+Константите също могат да бъдат експортирани. Например, следното:
 
 ```
 DECL_CONSTANT("SERIAL_BAUD", 250000);
 ```
 
-would export a constant named "SERIAL_BAUD" with a value of 250000 from the micro-controller to the host. It is also possible to declare a constant that is a string - for example:
+ще експортира константа с име "SERIAL_BAUD" със стойност 250000 от микроконтролера към хоста. Възможно е също така да декларирате константа, която представлява низ - например:
 
 ```
 DECL_CONSTANT_STR("MCU", "pru");
 ```
 
-## Low-level message encoding
+## Кодиране на съобщения на ниско ниво
 
-To accomplish the above RPC mechanism, each command and response is encoded into a binary format for transmission. This section describes the transmission system.
+За да се осъществи горепосоченият механизъм RPC, всяка команда и отговор се кодират в двоичен формат за предаване. Този раздел описва системата за предаване.
 
-### Message Blocks
+### Блокове за съобщения
 
-All data sent from host to micro-controller and vice-versa are contained in "message blocks". A message block has a two byte header and a three byte trailer. The format of a message block is:
+Всички данни, изпращани от хоста към микроконтролера и обратно, се съдържат в "блокове за съобщения". Блокът от съобщения има два байта заглавие и три байта трейлър. Форматът на блока от съобщения е:
 
 ```
 <1 byte length><1 byte sequence><n-byte content><2 byte crc><1 byte sync>
 ```
 
-The length byte contains the number of bytes in the message block including the header and trailer bytes (thus the minimum message length is 5 bytes). The maximum message block length is currently 64 bytes. The sequence byte contains a 4 bit sequence number in the low-order bits and the high-order bits always contain 0x10 (the high-order bits are reserved for future use). The content bytes contain arbitrary data and its format is described in the following section. The crc bytes contain a 16bit CCITT [CRC](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) of the message block including the header bytes but excluding the trailer bytes. The sync byte is 0x7e.
+Байтът за дължина съдържа броя на байтовете в блока на съобщението, включително байтовете на заглавието и трейлъра (по този начин минималната дължина на съобщението е 5 байта). В момента максималната дължина на блока от съобщения е 64 байта. Байтът на последователността съдържа 4-битов номер на последователността в ниските битове, а високите битове винаги съдържат 0x10 (високите битове са запазени за бъдеща употреба). Байтовете със съдържание съдържат произволни данни и техният формат е описан в следващия раздел. Байтовете crc съдържат 16-битов CCITT [CRC](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) на блока от съобщения, включително байтовете на заглавието, но без байтовете на ремаркето. Синхронизиращият байт е 0x7e.
 
-The format of the message block is inspired by [HDLC](https://en.wikipedia.org/wiki/High-Level_Data_Link_Control) message frames. Like in HDLC, the message block may optionally contain an additional sync character at the start of the block. Unlike in HDLC, a sync character is not exclusive to the framing and may be present in the message block content.
+Форматът на блока от съобщения е вдъхновен от рамките от съобщения [HDLC](https://en.wikipedia.org/wiki/High-Level_Data_Link_Control). Подобно на HDLC, блокът от съобщения може по желание да съдържа допълнителен синхронизиращ символ в началото на блока. За разлика от HDLC, символът за синхронизация не е изключителен за рамкирането и може да присъства в съдържанието на блока от съобщения.
 
-### Message Block Contents
+### Съдържание на блока от съобщения
 
-Each message block sent from host to micro-controller contains a series of zero or more message commands in its contents. Each command starts with a [Variable Length Quantity](#variable-length-quantities) (VLQ) encoded integer command-id followed by zero or more VLQ parameters for the given command.
+Всеки блок от съобщения, изпратен от хоста към микроконтролера, съдържа поредица от нула или повече команди за съобщения. Всяка команда започва с [Variable Length Quantity](#variable-length-quantities) (VLQ) кодирано цяло число command-id, последвано от нула или повече VLQ параметри за дадената команда.
 
-As an example, the following four commands might be placed in a single message block:
+Например, следните четири команди могат да бъдат поставени в един блок от съобщения:
 
 ```
 update_digital_out oid=6 value=1
@@ -115,21 +115,21 @@ get_config
 get_clock
 ```
 
-and encoded into the following eight VLQ integers:
+и се кодират в следните осем VLQ цели числа:
 
 ```
 <id_update_digital_out><6><1><id_update_digital_out><5><0><id_get_config><id_get_clock>
 ```
 
-In order to encode and parse the message contents, both the host and micro-controller must agree on the command ids and the number of parameters each command has. So, in the above example, both the host and micro-controller would know that "id_update_digital_out" is always followed by two parameters, and "id_get_config" and "id_get_clock" have zero parameters. The host and micro-controller share a "data dictionary" that maps the command descriptions (eg, "update_digital_out oid=%c value=%c") to their integer command-ids. When processing the data, the parser will know to expect a specific number of VLQ encoded parameters following a given command id.
+За да се кодира и анализира съдържанието на съобщението, хостът и микроконтролерът трябва да се споразумеят за идентификаторите на командите и броя на параметрите на всяка команда. Така в горния пример и хостът, и микроконтролерът ще знаят, че "id_update_digital_out" винаги е последвана от два параметъра, а "id_get_config" и "id_get_clock" имат нула параметри. Домакинът и микроконтролерът споделят "речник на данните", който съпоставя описанията на командите (например "update_digital_out oid=%c value=%c") с техните целочислени идентификатори на командите. Когато обработва данните, анализаторът знае, че трябва да очаква определен брой VLQ кодирани параметри след даден идентификатор на команда.
 
-The message contents for blocks sent from micro-controller to host follow the same format. The identifiers in these messages are "response ids", but they serve the same purpose and follow the same encoding rules. In practice, message blocks sent from the micro-controller to the host never contain more than one response in the message block contents.
+Съдържанието на съобщенията за блоковете, изпращани от микроконтролера към хоста, следва същия формат. Идентификаторите в тези съобщения са "идентификатори на отговора", но те служат за същата цел и следват същите правила за кодиране. На практика блоковете от съобщения, изпращани от микроконтролера към хоста, никога не съдържат повече от един отговор в съдържанието на блока от съобщения.
 
-#### Variable Length Quantities
+#### Количества с променлива дължина
 
-See the [wikipedia article](https://en.wikipedia.org/wiki/Variable-length_quantity) for more information on the general format of VLQ encoded integers. Klipper uses an encoding scheme that supports both positive and negative integers. Integers close to zero use less bytes to encode and positive integers typically encode using less bytes than negative integers. The following table shows the number of bytes each integer takes to encode:
+Вижте статията в [Уикипедия](https://en.wikipedia.org/wiki/Variable-length_quantity) за повече информация относно общия формат на VLQ кодираните цели числа. Klipper използва схема за кодиране, която поддържа както положителни, така и отрицателни цели числа. Цели числа, близки до нула, използват по-малко байтове за кодиране, а положителните цели числа обикновено се кодират с по-малко байтове, отколкото отрицателните цели числа. Следващата таблица показва броя на байтовете, необходими за кодиране на всяко цяло число:
 
-| Integer | Encoded size |
+| Цели числа | Кодиран размер |
 | --- | --- |
 | -32 .. 95 | 1 |
 | -4096 .. 12287 | 2 |
@@ -137,38 +137,38 @@ See the [wikipedia article](https://en.wikipedia.org/wiki/Variable-length_quanti
 | -67108864 .. 201326591 | 4 |
 | -2147483648 .. 4294967295 | 5 |
 
-#### Variable length strings
+#### Низове с променлива дължина
 
-As an exception to the above encoding rules, if a parameter to a command or response is a dynamic string then the parameter is not encoded as a simple VLQ integer. Instead it is encoded by transmitting the length as a VLQ encoded integer followed by the contents itself:
+Като изключение от горните правила за кодиране, ако параметър на команда или отговор е динамичен низ, тогава параметърът не се кодира като просто цяло число VLQ. Вместо това той се кодира чрез предаване на дължината като VLQ кодирано цяло число, последвано от самото съдържание:
 
 ```
 <VLQ encoded length><n-byte contents>
 ```
 
-The command descriptions found in the data dictionary allow both the host and micro-controller to know which command parameters use simple VLQ encoding and which parameters use string encoding.
+Описанията на командите, които се намират в речника на данните, позволяват на хоста и микроконтролера да разберат кои параметри на командите използват просто VLQ кодиране и кои параметри използват символно кодиране.
 
-## Data Dictionary
+## Речник на данните
 
-In order for meaningful communications to be established between micro-controller and host, both sides must agree on a "data dictionary". This data dictionary contains the integer identifiers for commands and responses along with their descriptions.
+За да може да се установи смислена комуникация между микроконтролера и хоста, двете страни трябва да се споразумеят за "речник на данните". Този речник на данните съдържа целочислените идентификатори на командите и отговорите, както и техните описания.
 
-The micro-controller build uses the contents of DECL_COMMAND() and sendf() macros to generate the data dictionary. The build automatically assigns unique identifiers to each command and response. This system allows both the host and micro-controller code to seamlessly use descriptive human-readable names while still using minimal bandwidth.
+Изграждането на микроконтролера използва съдържанието на макросите DECL_COMMAND() и sendf(), за да генерира речника с данни. Изграждането автоматично присвоява уникални идентификатори на всяка команда и отговор. Тази система позволява както на кода на хоста, така и на кода на микроконтролера безпроблемно да използват описателни имена, които могат да се четат от човека, като същевременно използват минимална честотна лента.
 
-The host queries the data dictionary when it first connects to the micro-controller. Once the host downloads the data dictionary from the micro-controller, it uses that data dictionary to encode all commands and to parse all responses from the micro-controller. The host must therefore handle a dynamic data dictionary. However, to keep the micro-controller software simple, the micro-controller always uses its static (compiled in) data dictionary.
+При първоначалното свързване с микроконтролера хостът прави запитване към речника с данни. След като хостът изтегли речника на данните от микроконтролера, той използва този речник на данните, за да кодира всички команди и да анализира всички отговори от микроконтролера. Следователно хостът трябва да работи с динамичен речник на данните. Въпреки това, за да се запази софтуерът на микроконтролера прост, микроконтролерът винаги използва своя статичен (компилиран) речник на данните.
 
-The data dictionary is queried by sending "identify" commands to the micro-controller. The micro-controller will respond to each identify command with an "identify_response" message. Since these two commands are needed prior to obtaining the data dictionary, their integer ids and parameter types are hard-coded in both the micro-controller and the host. The "identify_response" response id is 0, the "identify" command id is 1. Other than having hard-coded ids the identify command and its response are declared and transmitted the same way as other commands and responses. No other command or response is hard-coded.
+В речника с данни се правят справки чрез изпращане на команди "идентификация" към микроконтролера. Микроконтролерът отговаря на всяка команда за идентификация със съобщение "identify_response". Тъй като тези две команди са необходими преди получаването на речника на данните, техните целочислени идентификатори и типове параметри са твърдо кодирани както в микроконтролера, така и в хоста. Идентификаторът на отговора "identify_response" е 0, а идентификаторът на командата "identify" е 1. Освен че имат твърдо кодирани идентификатори, командата "identify" и нейният отговор се декларират и предават по същия начин, както другите команди и отговори. Нито една друга команда или отговор не са твърдо кодирани.
 
-The format of the transmitted data dictionary itself is a zlib compressed JSON string. The micro-controller build process generates the string, compresses it, and stores it in the text section of the micro-controller flash. The data dictionary can be much larger than the maximum message block size - the host downloads it by sending multiple identify commands requesting progressive chunks of the data dictionary. Once all chunks are obtained the host will assemble the chunks, uncompress the data, and parse the contents.
+Самият формат на предавания речник с данни е компресиран от zlib JSON низ. Процесът на изграждане на микроконтролера генерира този низ, компресира го и го съхранява в текстовата секция на флаш паметта на микроконтролера. Речникът на данните може да бъде много по-голям от максималния размер на блока за съобщения - хостът го изтегля, като изпраща множество команди за идентификация, изискващи прогресивни части от речника на данните. След като получи всички части, хостът сглобява частите, разкомпресира данните и анализира съдържанието.
 
-In addition to information on the communication protocol, the data dictionary also contains the software version, enumerations (as defined by DECL_ENUMERATION), and constants (as defined by DECL_CONSTANT).
+В допълнение към информацията за комуникационния протокол, речникът на данните съдържа и версията на софтуера, изброявания (както са дефинирани от DECL_ENUMERATION) и константи (както са дефинирани от DECL_CONSTANT).
 
-## Message flow
+## Поток на съобщението
 
-Message commands sent from host to micro-controller are intended to be error-free. The micro-controller will check the CRC and sequence numbers in each message block to ensure the commands are accurate and in-order. The micro-controller always processes message blocks in-order - should it receive a block out-of-order it will discard it and any other out-of-order blocks until it receives blocks with the correct sequencing.
+Командите за съобщения, изпращани от хоста към микроконтролера, са предназначени да бъдат без грешки. Микроконтролерът проверява CRC и поредните номера във всеки блок от съобщения, за да гарантира, че командите са точни и подредени. Микроконтролерът винаги обработва блоковете със съобщения в правилен ред - ако получи блок с нарушен ред, той ще го изхвърли, както и всички други блокове с нарушен ред, докато не получи блокове с правилна последователност.
 
-The low-level host code implements an automatic retransmission system for lost and corrupt message blocks sent to the micro-controller. To facilitate this, the micro-controller transmits an "ack message block" after each successfully received message block. The host schedules a timeout after sending each block and it will retransmit should the timeout expire without receiving a corresponding "ack". In addition, if the micro-controller detects a corrupt or out-of-order block it may transmit a "nak message block" to facilitate fast retransmission.
+Кодът на ниско ниво на хоста имплементира система за автоматично препредаване на изгубени и повредени блокове от съобщения, изпратени към микроконтролера. За да се улесни това, микроконтролерът предава "блок със съобщение за потвърждение" след всеки успешно получен блок със съобщение. Домакинът планира времетраене след изпращането на всеки блок и ще препредава, ако времетраенето изтече, без да получи съответното "ack". Освен това, ако микроконтролерът открие повреден или неподреден блок, той може да предаде "nak message block", за да улесни бързото повторно предаване.
 
-An "ack" is a message block with empty content (ie, a 5 byte message block) and a sequence number greater than the last received host sequence number. A "nak" is a message block with empty content and a sequence number less than the last received host sequence number.
+"Ack" е блок от съобщения с празно съдържание (т.е. блок от 5 байта) и номер на последователността, по-голям от последния получен номер на последователността на хоста. "Nak" е блок от съобщения с празно съдържание и номер на последователността, по-малък от последния получен номер на последователността на хоста.
 
-The protocol facilitates a "window" transmission system so that the host can have many outstanding message blocks in-flight at a time. (This is in addition to the many commands that may be present in a given message block.) This allows maximum bandwidth utilization even in the event of transmission latency. The timeout, retransmit, windowing, and ack mechanism are inspired by similar mechanisms in [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol).
+Протоколът улеснява системата за предаване на "прозорци", така че хостът може да разполага с много неизпратени блокове от съобщения в движение в даден момент. (Това е в допълнение към многото команди, които могат да се съдържат в даден блок от съобщения.) Това позволява максимално използване на честотната лента дори в случай на забавяне на предаването. Механизмите за прекъсване на времето, препредаване, прозорци и потвърждение са вдъхновени от подобни механизми в [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol).
 
-In the other direction, message blocks sent from micro-controller to host are designed to be error-free, but they do not have assured transmission. (Responses should not be corrupt, but they may go missing.) This is done to keep the implementation in the micro-controller simple. There is no automatic retransmission system for responses - the high-level code is expected to be capable of handling an occasional missing response (usually by re-requesting the content or setting up a recurring schedule of response transmission). The sequence number field in message blocks sent to the host is always one greater than the last received sequence number of message blocks received from the host. It is not used to track sequences of response message blocks.
+В другата посока блоковете със съобщения, изпращани от микроконтролера към хоста, са проектирани така, че да не допускат грешки, но нямат гарантирано предаване. (Отговорите не трябва да са повредени, но могат да липсват.) Това е направено, за да се запази реализацията в микроконтролера проста. Няма автоматична система за препредаване на отговорите - очаква се кодът на високо ниво да може да се справя със случайни липсващи отговори (обикновено чрез повторно поискване на съдържанието или създаване на повтарящ се график за предаване на отговорите). Полето за пореден номер в блоковете от съобщения, изпращани към хоста, винаги е с единица по-голямо от последния получен пореден номер на блоковете от съобщения, получени от хоста. То не се използва за проследяване на последователността на блоковете със съобщения за отговор.

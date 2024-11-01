@@ -1,72 +1,72 @@
 # Слайсери
 
-This document provides some tips for configuring a "slicer" application for use with Klipper. Common slicers used with Klipper are Slic3r, Cura, Simplify3D, etc.
+Този документ предоставя някои съвети за конфигуриране на приложение "slicer" за използване с Klipper. Често срещани слайсери, използвани с Klipper, са Slic3r, Cura, Simplify3D и др.
 
-## Set the G-Code flavor to Marlin
+## Задайте вкуса на G-кода на Marlin
 
-Many slicers have an option to configure the "G-Code flavor". The default is frequently "Marlin" and that works well with Klipper. The "Smoothieware" setting also works well with Klipper.
+Много машини за нарязване имат възможност за конфигуриране на "вкуса на G-кода". По подразбиране често се избира "Marlin" и това работи добре с Klipper. Настройката "Smoothieware" също работи добре с Klipper.
 
 ## Klipper gcode_macro
 
-Slicers will often allow one to configure "Start G-Code" and "End G-Code" sequences. It is often convenient to define custom macros in the Klipper config file instead - such as: `[gcode_macro START_PRINT]` and `[gcode_macro END_PRINT]`. Then one can just run START_PRINT and END_PRINT in the slicer's configuration. Defining these actions in the Klipper configuration may make it easier to tweak the printer's start and end steps as changes do not require re-slicing.
+Резачките често позволяват конфигуриране на последователности "Начален G-код" и "Краен G-код". Вместо това често е удобно да се дефинират потребителски макроси в конфигурационния файл на Klipper - например: `[gcode_macro START_PRINT]` и `[gcode_macro END_PRINT]`. След това можете просто да стартирате START_PRINT и END_PRINT в конфигурацията на слайзера. Дефинирането на тези действия в конфигурацията на Klipper може да улесни промяната на началните и крайните стъпки на принтера, тъй като промените не изискват повторно нарязване.
 
-See [sample-macros.cfg](../config/sample-macros.cfg) for example START_PRINT and END_PRINT macros.
+Вижте [sample-macros.cfg](../config/sample-macros.cfg) за примерни макроси START_PRINT и END_PRINT.
 
-See the [config reference](Config_Reference.md#gcode_macro) for details on defining a gcode_macro.
+Вижте [config reference](Config_Reference.md#gcode_macro) за подробности относно дефинирането на gcode_macro.
 
-## Large retraction settings may require tuning Klipper
+## Големите настройки на прибиране може да изискват настройка на клипса
 
-The maximum speed and acceleration of retraction moves are controlled in Klipper by the `max_extrude_only_velocity` and `max_extrude_only_accel` config settings. These settings have a default value that should work well on many printers. However, if one has configured a large retraction in the slicer (eg, 5mm or greater) then one may find they limit the desired speed of retractions.
+Максималната скорост и ускорението на движенията за прибиране се контролират в Klipper чрез конфигурационните настройки `max_extrude_only_velocity` и `max_extrude_only_accel`. Тези настройки имат стойност по подразбиране, която би трябвало да работи добре при много принтери. Въпреки това, ако някой е конфигурирал голямо прибиране в слайсера (например 5 мм или повече), може да се окаже, че те ограничават желаната скорост на прибиране.
 
-If using a large retraction, consider tuning Klipper's [pressure advance](Pressure_Advance.md) instead. Otherwise, if one finds the toolhead seems to "pause" during retraction and priming, then consider explicitly defining `max_extrude_only_velocity` and `max_extrude_only_accel` in the Klipper config file.
+Ако използвате голямо прибиране, помислете за настройване на [аванс на налягането] на Klipper (Pressure_Advance.md) вместо това. В противен случай, ако установите, че главата на инструмента сякаш "спира" по време на прибиране и грундиране, помислете за изрично дефиниране на `max_extrude_only_velocity` и `max_extrude_only_accel` в конфигурационния файл на Klipper.
 
-## Do not enable "coasting"
+## Не разрешавайте функцията "coasting".
 
-The "coasting" feature is likely to result in poor quality prints with Klipper. Consider using Klipper's [pressure advance](Pressure_Advance.md) instead.
+Възможно е функцията за изчакване да доведе до ниско качество на разпечатките с Klipper. Вместо това помислете за използване на функцията [pressure advance](Pressure_Advance.md) на Klipper.
 
-Specifically, if the slicer dramatically changes the extrusion rate between moves then Klipper will perform deceleration and acceleration between moves. This is likely to make blobbing worse, not better.
+По-конкретно, ако слайсерът рязко променя скоростта на екструдиране между ходовете, Klipper ще извършва забавяне и ускоряване между ходовете. Това вероятно ще влоши, а не ще подобри блобинга.
 
-In contrast, it is okay (and often helpful) to use a slicer's "retract" setting, "wipe" setting, and/or "wipe on retract" setting.
+За разлика от това е добре (и често е полезно) да използвате настройките "прибиране", "избърсване" и/или "избърсване при прибиране" на резачката.
 
-## Do not use "extra restart distance" on Simplify3d
+## Не използвайте "допълнително разстояние за рестартиране" в Simplify3d
 
-This setting can cause dramatic changes to extrusion rates which can trigger Klipper's maximum extrusion cross-section check. Consider using Klipper's [pressure advance](Pressure_Advance.md) or the regular Simplify3d retract setting instead.
+Тази настройка може да доведе до драстични промени в скоростта на екструдиране, които могат да задействат проверката на Klipper за максимално напречно сечение на екструдиране. Вместо това помислете за използване на [pressure advance] (Pressure_Advance.md) на Klipper или обикновената настройка за прибиране на Simplify3d.
 
-## Disable "PreloadVE" on KISSlicer
+## Деактивиране на "PreloadVE" на KISSlicer
 
-If using KISSlicer slicing software then set "PreloadVE" to zero. Consider using Klipper's [pressure advance](Pressure_Advance.md) instead.
+Ако използвате софтуера за нарязване KISSlicer, задайте "PreloadVE" на нула. Вместо това помислете за използване на [Pressure advance] (Pressure_Advance.md) на Klipper.
 
-## Disable any "advanced extruder pressure" settings
+## Деактивирайте всички настройки за "разширено налягане на екструдера".
 
-Some slicers advertise an "advanced extruder pressure" capability. It is recommended to keep these options disabled when using Klipper as they are likely to result in poor quality prints. Consider using Klipper's [pressure advance](Pressure_Advance.md) instead.
+Някои машини за нарязване рекламират възможността за "усъвършенствано налягане на екструдера". Препоръчително е тези опции да бъдат изключени, когато използвате Klipper, тъй като има вероятност да доведат до ниско качество на разпечатките. Вместо това помислете за използване на [pressure advance](Pressure_Advance.md) на Klipper.
 
-Specifically, these slicer settings can instruct the firmware to make wild changes to the extrusion rate in the hope that the firmware will approximate those requests and the printer will roughly obtain a desirable extruder pressure. Klipper, however, utilizes precise kinematic calculations and timing. When Klipper is commanded to make significant changes to the extrusion rate it will plan out the corresponding changes to velocity, acceleration, and extruder movement - which is not the slicer's intent. The slicer may even command excessive extrusion rates to the point that it triggers Klipper's maximum extrusion cross-section check.
+По-конкретно, тези настройки на слайсерите могат да инструктират фърмуера да прави дивашки промени в скоростта на екструдиране с надеждата, че фърмуерът ще се доближи до тези заявки и принтерът приблизително ще получи желаното налягане на екструдера. Klipper обаче използва прецизни кинематични изчисления и синхронизация. Когато Klipper получи команда да направи значителни промени в скоростта на екструдиране, той ще планира съответните промени в скоростта, ускорението и движението на екструдера - което не е целта на слайсера. Режещата машина може дори да подаде команда за прекомерна скорост на екструдиране до такава степен, че да задейства проверката на Klipper за максимално сечение на екструдиране.
 
-In contrast, it is okay (and often helpful) to use a slicer's "retract" setting, "wipe" setting, and/or "wipe on retract" setting.
+За разлика от това е добре (и често е полезно) да използвате настройките "прибиране", "избърсване" и/или "избърсване при прибиране" на резачката.
 
-## START_PRINT macros
+## Макроси START_PRINT
 
-When using a START_PRINT macro or similar, it is useful to sometimes pass through parameters from the slicer variables to the macro.
+Когато се използва макрос START_PRINT или друг подобен макрос, понякога е полезно да се предават параметри от променливите на слайсера към макроса.
 
-In Cura, to pass through temperatures, the following start gcode would be used:
-
-```
-START_PRINT BED_TEMP={material_bed_temperature_layer_0} EXTRUDER_TEMP={material_print_temperature_layer_0}
-```
-
-In slic3r derivatives such as PrusaSlicer and SuperSlicer, the following would be used:
+В Cura за преминаване през температурите ще се използва следният стартов gcode:
 
 ```
-START_PRINT EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature]
+START_PRINT BED_TEMP={материал_легло_температура_слой_0} EXTRUDER_TEMP={материал_печатане_температура_слой_0}
 ```
 
-Also note that these slicers will insert their own heating codes when certain conditions are not met. In Cura, the existence of the `{material_bed_temperature_layer_0}` and `{material_print_temperature_layer_0}` variables is enough to mitigate this. In slic3r derivatives, you would use:
+В производните на slic3r, като PrusaSlicer и SuperSlicer, се използва следното:
+
+```
+START_PRINT EXTRUDER_TEMP=[температура на първия_слой] BED_TEMP=[температура на първия_слой_легло]
+```
+
+Също така имайте предвид, че тези резачки въвеждат свои собствени кодове за нагряване, когато не са изпълнени определени условия. В Cura съществуването на променливите `{материал_легло_температура_слой_0}` и `{материал_печат_температура_слой_0}` е достатъчно, за да се смекчи това. В производните на slic3r ще използвате:
 
 ```
 M140 S0
 M104 S0
 ```
 
-before the macro call. Also note that SuperSlicer has a "custom gcode only" button option, which achieves the same outcome.
+преди извикването на макроса. Също така имайте предвид, че SuperSlicer има опция за бутон "само потребителски gcode", с която се постига същият резултат.
 
-An example of a START_PRINT macro using these paramaters can be found in config/sample-macros.cfg
+Пример за макрос START_PRINT, използващ тези параметри, можете да намерите в config/sample-macros.cfg

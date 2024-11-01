@@ -20,7 +20,7 @@ sudo cp ./scripts/klipper-mcu.service /etc/systemd/system/
 sudo systemctl enable klipper-mcu.service
 ```
 
-## Building the micro-controller code
+## Erstellung des Mikrocontroller Codes
 
 Um den Code des Klipper Mikrocontrollers zu kompilieren, müssen Sie ihn zunächst für den "Linux-Prozess" konfigurieren:
 
@@ -31,7 +31,7 @@ make menuconfig
 
 Stellen Sie im Menü "Microcontroller Architecture" auf "Linux process", speichern und beenden Sie das Programm.
 
-To build and install the new micro-controller code, run:
+Um den neuen Mikrocontroller-Code zu erzeugen und zu installieren, führen Sie aus:
 
 ```
 sudo service klipper stop

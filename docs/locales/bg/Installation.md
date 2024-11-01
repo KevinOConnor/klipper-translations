@@ -38,7 +38,7 @@ Normally you would start with a base image for your SBC, RPiOS Lite for example,
 
 KIAUH can be used to install Klipper and its associated programs on a variety of Linux based systems that run a form of Debian. More information can be found at https://github.com/dw-0/kiauh
 
-## Building and flashing the micro-controller
+## Изграждане и мигане на микроконтролера
 
 To compile the micro-controller code, start by running these commands on your host device:
 
@@ -61,7 +61,7 @@ Otherwise, the following steps are often used to "flash" the printer control boa
 ls /dev/serial/by-id/*
 ```
 
-It should report something similar to the following:
+Тя трябва да отчете нещо подобно на следното:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
@@ -93,7 +93,7 @@ sudo service klipper start
 
 It is important to note that RP2040 chips may need to be put into Boot mode before this operation.
 
-## Configuring Klipper
+## Конфигуриране на Klipper
 
 The next step is to copy the [printer configuration file](#obtain-a-klipper-configuration-file) to the host.
 
@@ -114,7 +114,7 @@ It's common for each printer to have its own unique name for the micro-controlle
 ls /dev/serial/by-id/*
 ```
 
-It should report something similar to the following:
+Тя трябва да отчете нещо подобно на следното:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0

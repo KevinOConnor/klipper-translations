@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"PO-Revision-Date: 2024-11-05 21:00+0000\n"
 "Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
 "beaglebone/uk/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.8.2\n"
 
 #: docs/Beaglebone.md:block 1 (header)
 msgid "Beaglebone"
@@ -21,11 +21,11 @@ msgstr "BeagleBone"
 #: docs/Beaglebone.md:block 2 (paragraph)
 msgid ""
 "This document describes the process of running Klipper on a Beaglebone PRU."
-msgstr ""
+msgstr "Цей документ описує процес запуску Klipper на Beaglebone PRU."
 
 #: docs/Beaglebone.md:block 3 (header)
 msgid "Building an OS image"
-msgstr ""
+msgstr "Створення образу ОС"
 
 #: docs/Beaglebone.md:block 9 (code)
 msgid ""
@@ -34,10 +34,14 @@ msgid ""
 "virtualenv venv\n"
 "./venv/bin/python setup.py install\n"
 msgstr ""
+"git клон https://github.com/foosel/OctoPrint.git\n"
+" cd OctoPrint/\n"
+" virtualenv venv\n"
+" ./venv/bin/python setup.py install\n"
 
 #: docs/Beaglebone.md:block 10 (paragraph)
 msgid "And setup OctoPrint to start at bootup:"
-msgstr ""
+msgstr "І налаштуйте OctoPrint для запуску під час завантаження:"
 
 #: docs/Beaglebone.md:block 11 (code)
 msgid ""
@@ -46,6 +50,10 @@ msgid ""
 "sudo cp ~/OctoPrint/scripts/octoprint.default /etc/default/octoprint\n"
 "sudo update-rc.d octoprint defaults\n"
 msgstr ""
+"sudo cp ~/OctoPrint/scripts/octoprint.init /etc/init.d/octoprint\n"
+" sudo chmod +x /etc/init.d/octoprint\n"
+" sudo cp ~/OctoPrint/scripts/octoprint.default /etc/default/octoprint\n"
+" sudo update-rc.d octoprint за замовчуванням\n"
 
 #: docs/Beaglebone.md:block 12 (paragraph)
 msgid ""
@@ -55,18 +63,22 @@ msgid ""
 "`DAEMON` settings and change the references from `/home/pi/` to "
 "`/home/debian/`:"
 msgstr ""
+"Необхідно змінити файл конфігурації OctoPrint **/etc/default/octoprint**. "
+"Необхідно змінити користувача `OCTOPRINT_USER` на `debian`, змінити "
+"`NICELEVEL` на `0`, розкоментувати налаштування `BASEDIR`, `CONFIGFILE` і "
+"`DAEMON` і змінити посилання з `/home/pi/` на `/home/debian/`:"
 
 #: docs/Beaglebone.md:block 13 (code)
 msgid "sudo nano /etc/default/octoprint\n"
-msgstr ""
+msgstr "sudo nano /etc/default/octoprint\n"
 
 #: docs/Beaglebone.md:block 14 (paragraph)
 msgid "Then start the Octoprint service:"
-msgstr ""
+msgstr "Потім запустіть службу Octoprint:"
 
 #: docs/Beaglebone.md:block 15 (code)
 msgid "sudo systemctl start octoprint\n"
-msgstr ""
+msgstr "sudo systemctl запустити octoprint\n"
 
 #: docs/Beaglebone.md:block 19 (code)
 msgid ""
@@ -82,28 +94,33 @@ msgid ""
 "make flash\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+" зробити спалах\n"
+" sudo service klipper start\n"
 
 #: docs/Beaglebone.md:block 22 (paragraph)
 msgid ""
 "It is also necessary to compile and install the micro-controller code for a "
 "Linux host process. Configure it a second time for a \"Linux process\":"
 msgstr ""
+"Також необхідно скомпілювати та встановити код мікроконтролера для хост-"
+"процесу Linux. Налаштуйте його вдруге для «процесу Linux»:"
 
 #: docs/Beaglebone.md:block 23 (code)
 msgid "make menuconfig\n"
-msgstr ""
+msgstr "make menuconfig\n"
 
 #: docs/Beaglebone.md:block 24 (paragraph)
 msgid "Then install this micro-controller code as well:"
-msgstr ""
+msgstr "Потім також встановіть цей код мікроконтролера:"
 
 #: docs/Beaglebone.md:block 26 (header)
 msgid "Remaining configuration"
-msgstr ""
+msgstr "Конфігурація, що залишилася"
 
 #: docs/Beaglebone.md:block 28 (header)
 msgid "Printing on the Beaglebone"
-msgstr ""
+msgstr "Друк на бігльбоні"
 
 #: docs/Beaglebone.md:block 4 (paragraph)
 msgid ""
@@ -112,64 +129,82 @@ msgid ""
 "from either a micro-SD card or from builtin eMMC. If using the eMMC, install"
 " it to eMMC now by following the instructions from the above link."
 msgstr ""
+"Почніть із встановлення образу [Debian 11.7 2023-09-02 4GB microSD "
+"IoT](https://beagleboard.org/latest-images). Образ можна запустити з карти "
+"micro-SD або вбудованого eMMC. Якщо ви використовуєте eMMC, установіть його "
+"в eMMC зараз, дотримуючись інструкцій за посиланням вище."
 
 #: docs/Beaglebone.md:block 5 (paragraph)
 msgid ""
 "Then ssh into the Beaglebone machine (`ssh debian@beaglebone` -- password is"
 " `temppwd`)."
 msgstr ""
+"Потім увійдіть за допомогою ssh до машини Beaglebone (`ssh debian@beaglebone`"
+" -- пароль `temppwd`)."
 
 #: docs/Beaglebone.md:block 6 (paragraph)
 msgid ""
 "Before start installing Klipper you need to free-up additional space. there "
 "are 3 options to do that:"
 msgstr ""
+"Перед початком встановлення Klipper вам потрібно звільнити додаткове місце. "
+"для цього є 3 варіанти:"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid "remove some BeagleBone \"Demo\" resources"
-msgstr ""
+msgstr "видалити деякі «Демо» ресурси BeagleBone"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid ""
 "if you did boot from SD-Card, and it's bigger than 4Gb - you can expand "
 "current filesystem to take whole card space"
 msgstr ""
+"якщо ви завантажувалися з SD-карти, а її розмір перевищує 4 Гб, ви можете "
+"розширити поточну файлову систему, щоб зайняти весь простір на картці"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid "do option #1 and #2 together."
-msgstr ""
+msgstr "виконайте варіант №1 і №2 разом."
 
 #: docs/Beaglebone.md:block 8 (paragraph)
 msgid "To remove some BeagleBone \"Demo\" resources execute these commands"
-msgstr ""
+msgstr "Щоб видалити деякі «Демо» ресурси BeagleBone, виконайте ці команди"
 
 #: docs/Beaglebone.md:block 9 (code)
 msgid ""
 "sudo apt remove bb-node-red-installer\n"
 "sudo apt remove bb-code-server\n"
 msgstr ""
+"sudo apt видалити bb-node-red-installer\n"
+" sudo apt видалити bb-code-server\n"
 
 #: docs/Beaglebone.md:block 10 (paragraph)
 msgid ""
 "To expand filesystem to full size of your SD-Card execute this command, "
 "reboot is not required."
 msgstr ""
+"Щоб розширити файлову систему до повного розміру вашої SD-карти, виконайте "
+"цю команду, перезавантажувати не потрібно."
 
 #: docs/Beaglebone.md:block 11 (code)
 msgid ""
 "sudo growpart /dev/mmcblk0 1\n"
 "sudo resize2fs /dev/mmcblk0p1\n"
 msgstr ""
+"sudo growpart /dev/mmcblk0 1\n"
+" sudo resize2fs /dev/mmcblk0p1\n"
 
 #: docs/Beaglebone.md:block 12 (paragraph)
 msgid "Install Klipper by running the following commands:"
-msgstr ""
+msgstr "Встановіть Klipper, виконавши такі команди:"
 
 #: docs/Beaglebone.md:block 13 (code)
 msgid ""
 "git clone https://github.com/Klipper3d/klipper.git\n"
 "./klipper/scripts/install-beaglebone.sh\n"
 msgstr ""
+"git клон https://github.com/Klipper3d/klipper.git\n"
+" ./klipper/scripts/install-beaglebone.sh як\n"
 
 #: docs/Beaglebone.md:block 14 (paragraph)
 msgid ""
@@ -178,12 +213,18 @@ msgid ""
 "cases you can't directly connect pins to 5v or 12v based hardware without "
 "conversion boards."
 msgstr ""
+"Після встановлення Klipper вам потрібно вирішити, який тип розгортання вам "
+"потрібен, але візьміть до уваги, що BeagleBone — це обладнання на основі 3,3 "
+"В, і в більшості випадків ви не можете напряму підключити контакти до "
+"обладнання на основі 5 або 12 В без плат перетворення."
 
 #: docs/Beaglebone.md:block 15 (paragraph)
 msgid ""
 "As Klipper have multimodule architecture on BeagleBone you can achieve many "
 "different use cases, but general ones are following:"
 msgstr ""
+"Оскільки Klipper має багатомодульну архітектуру на BeagleBone, ви можете "
+"досягти багатьох різних варіантів використання, але загальні:"
 
 #: docs/Beaglebone.md:block 16 (paragraph)
 msgid ""
@@ -192,6 +233,10 @@ msgid ""
 "configuration will be driving external micro-controllers via "
 "serial/usb/canbus connections."
 msgstr ""
+"Випадок використання 1: Використовуйте BeagleBone лише як хост-систему для "
+"запуску Klipper і додаткового програмного забезпечення, наприклад OctoPrint/"
+"Fluidd + Moonraker/..., і ця конфігурація керуватиме зовнішніми "
+"мікроконтролерами через послідовні/usb/canbus з’єднання."
 
 #: docs/Beaglebone.md:block 17 (paragraph)
 msgid ""
@@ -200,46 +245,59 @@ msgid ""
 "it will drive extension board with BeagleBone PRU cores (2 additional cores "
 "200Mh, 32Bit)."
 msgstr ""
+"Випадок використання 2: Використовуйте BeagleBone із подовжувальною дошкою "
+"(накидкою), як дошка CRAMPS. у цій конфігурації BeagleBone розміщуватиме "
+"Klipper + додаткове програмне забезпечення, і він керуватиме платою "
+"розширення з ядрами BeagleBone PRU (2 додаткових ядра 200Mh, 32Bit)."
 
 #: docs/Beaglebone.md:block 18 (paragraph)
 msgid ""
 "Use case 3: It's same as \"Use case 1\" but additionally you want to drive "
 "BeagleBone GPIOs with high speed by utilizing PRU cores to offload main CPU."
 msgstr ""
+"Випадок використання 3: це те саме, що й «Випадок використання 1», але "
+"додатково ви хочете керувати BeagleBone GPIO з високою швидкістю, "
+"використовуючи ядра PRU, щоб розвантажити основний ЦП."
 
 #: docs/Beaglebone.md:block 19 (header)
 msgid "Installing Octoprint"
-msgstr ""
+msgstr "Встановлення Octoprint"
 
 #: docs/Beaglebone.md:block 20 (paragraph)
 msgid ""
 "One may then install Octoprint or fully skip this section if desired other "
 "software:"
 msgstr ""
+"Потім можна встановити Octoprint або повністю пропустити цей розділ, якщо "
+"потрібно інше програмне забезпечення:"
 
 #: docs/Beaglebone.md:block 28 (paragraph)
 msgid ""
 "Wait 1-2 minutes and make sure the OctoPrint web server is accessible - it "
 "should be at: <http://beaglebone:5000/>"
 msgstr ""
+"Зачекайте 1-2 хвилини та переконайтеся, що веб-сервер OctoPrint доступний – "
+"він має бути за адресою: <http://beaglebone:5000/>"
 
 #: docs/Beaglebone.md:block 29 (header)
 msgid "Building the BeagleBone PRU micro-controller code (PRU firmware)"
-msgstr ""
+msgstr "Створення коду мікроконтролера BeagleBone PRU (прошивка PRU)"
 
 #: docs/Beaglebone.md:block 30 (paragraph)
 msgid ""
 "This section is required for \"Use case 2\" and \"Use case 3\" mentioned "
 "above, you should skip it for \"Use case 1\"."
 msgstr ""
+"Цей розділ потрібен для згаданих вище «Випадків використання 2» і «Випадків "
+"використання 3». Для «Випадків використання 1» його слід пропустити."
 
 #: docs/Beaglebone.md:block 31 (paragraph)
 msgid "Check that required devices are present"
-msgstr ""
+msgstr "Перевірте наявність необхідних пристроїв"
 
 #: docs/Beaglebone.md:block 32 (code)
 msgid "sudo beagle-version\n"
-msgstr ""
+msgstr "sudo beagle-версія\n"
 
 #: docs/Beaglebone.md:block 33 (paragraph)
 msgid ""
@@ -252,6 +310,14 @@ msgid ""
 "options or with cape-overlays Just for reference some output of working "
 "BeagleBone Black configuration with CRAMPS board:"
 msgstr ""
+"Вам слід перевірити, чи вихідні дані містять успішне завантаження драйверів "
+"«remoteproc» і наявність ядер PRU, у ядрі 5.10 вони мають бути «remoteproc1» "
+"і «remoteproc2» (4a334000.pru, 4a338000.pru). Також перевірте, чи "
+"завантажено багато GPIO, це виглядатиме наприклад \"Allocated GPIO id=0 "
+"name='P8_03'\" Зазвичай усе гаразд і не потрібно налаштовувати обладнання. "
+"Якщо чогось не вистачає, спробуйте пограти з опціями «uboot overlays» або "
+"cape-overlays. Просто для довідки деякі результати робочої конфігурації "
+"BeagleBone Black із платою CRAMPS:"
 
 #: docs/Beaglebone.md:block 34 (code)
 msgid ""
@@ -274,6 +340,24 @@ msgid ""
 ".............\n"
 "\n"
 msgstr ""
+"модель: [TI_AM335x_BeagleBone_Black]\n"
+" UBOOT: Дерево завантажених пристроїв: [am335x-boneblack-uboot-univ.dts]\n"
+" UBOOT: завантажене накладення: [BB-ADC-00A0.bb.org-overlays]\n"
+" UBOOT: завантажене накладення: [BB-BONE-eMMC1-01-00A0.bb.org-overlays]\n"
+" ядро:[5.10.168-ti-r71]\n"
+" Налаштування /boot/uEnv.txt:\n"
+" uboot_overlay_options:[enable_uboot_overlays=1]\n"
+" uboot_overlay_options:[disable_uboot_overlay_video=0]\n"
+" uboot_overlay_options:[disable_uboot_overlay_audio=1]\n"
+" uboot_overlay_options:[disable_uboot_overlay_wireless=1]\n"
+" uboot_overlay_options:[enable_uboot_cape_universal=1]\n"
+" pkg:[bb-cape-overlays]:[4.14.20210821.0-0~bullseye+20210821]\n"
+" pkg:[bb-customizations]:[1.20230720.1-0~bullseye+20230720]\n"
+" pkg:[bb-usb-gadgets]:[1.20230414.0-0~bullseye+20230414]\n"
+" pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]\n"
+" .............\n"
+" .............\n"
+"\n"
 
 #: docs/Beaglebone.md:block 35 (paragraph)
 msgid ""
@@ -283,26 +367,36 @@ msgid ""
 "devices\" inside the \"Optional features\" because they will not fit in 8Kb "
 "PRU firmware memory, then exit and save config:"
 msgstr ""
+"Щоб скомпілювати код мікроконтролера Klipper, почніть із налаштування його "
+"для «Beaglebone PRU», для «BeagleBone Black» додатково вимкніть параметри «"
+"Підтримка пристроїв для розрядки GPIO» і вимкніть «Підтримка пристроїв LCD» "
+"у «Додаткових функціях», оскільки вони не поміщаються в пам’ять прошивки PRU "
+"розміром 8 Кб, тоді вийдіть і збережіть конфігурацію:"
 
 #: docs/Beaglebone.md:block 37 (paragraph)
 msgid "To build and install the new PRU micro-controller code, run:"
-msgstr ""
+msgstr "Щоб створити та встановити новий код мікроконтролера PRU, запустіть:"
 
 #: docs/Beaglebone.md:block 39 (paragraph)
 msgid ""
 "After previous commands was executed your PRU firmware should be ready and "
 "started to check if everything was fine you can execute following command"
 msgstr ""
+"Після виконання попередніх команд ваша мікропрограма PRU має бути готова та "
+"запущена, щоб перевірити, чи все було добре, ви можете виконати наступну "
+"команду"
 
 #: docs/Beaglebone.md:block 40 (code)
 msgid "dmesg\n"
-msgstr ""
+msgstr "Dmesg\n"
 
 #: docs/Beaglebone.md:block 41 (paragraph)
 msgid ""
 "and compare last messages with sample one which indicate that everything "
 "started properly:"
 msgstr ""
+"і порівняйте останні повідомлення зі зразком, який свідчить про те, що все "
+"почалося правильно:"
 
 #: docs/Beaglebone.md:block 42 (code)
 msgid ""
@@ -322,6 +416,28 @@ msgid ""
 "[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online\n"
 "[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/rpmsg_pru30\n"
 msgstr ""
+"[ 71.105499] remoteproc remoteproc1: доступний 4a334000.pru\n"
+" [ 71.157155] remoteproc remoteproc2: доступний 4a338000.pru\n"
+" [ 73.256287] remoteproc remoteproc1: увімкнення 4a334000.pru\n"
+" [ 73.279246] remoteproc remoteproc1: завантажувальний образ fw am335x-pru0-"
+"fw, розмір 97112\n"
+" [ 73.285807] remoteproc1#vdev0buffer: зареєстрований virtio0 (тип 7)\n"
+" [ 73.285836] remoteproc remoteproc1: віддалений процесор 4a334000.pru тепер "
+"працює\n"
+" [ 73.286322] remoteproc remoteproc2: увімкнення 4a338000.pru\n"
+" [ 73.313717] remoteproc remoteproc2: завантажувальний образ fw am335x-pru1-"
+"fw, розмір 188560\n"
+" [ 73.313753] remoteproc remoteproc2: таблиця ресурсів без заголовків\n"
+" [ 73.329964] remoteproc remoteproc2: таблиця ресурсів без заголовків\n"
+" [ 73.348321] remoteproc remoteproc2: віддалений процесор 4a338000.pru тепер "
+"працює\n"
+" [ 73.443355] virtio_rpmsg_bus virtio0: створення каналу rpmsg-pru addr "
+"0x1e\n"
+" [ 73.443727] virtio_rpmsg_bus virtio0: отримане повідомлення без "
+"одержувача\n"
+" [ 73.444352] virtio_rpmsg_bus virtio0: хост rpmsg онлайн\n"
+" [ 73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: новий пристрій rpmsg_pru: /"
+"dev/rpmsg_pru30\n"
 
 #: docs/Beaglebone.md:block 43 (paragraph)
 msgid ""
@@ -329,16 +445,21 @@ msgid ""
 "main mcu configuration this device is required to be present, if it's absent"
 " - your PRU cores did not start properly."
 msgstr ""
+"зверніть увагу на \"/dev/rpmsg_pru30\" - це ваш майбутній послідовний "
+"пристрій для основної конфігурації mcu, цей пристрій повинен бути присутнім, "
+"якщо його немає - ваші ядра PRU не запускаються належним чином."
 
 #: docs/Beaglebone.md:block 44 (header)
 msgid "Building and installing Linux host micro-controller code"
-msgstr ""
+msgstr "Створення та встановлення коду хост-мікроконтролера Linux"
 
 #: docs/Beaglebone.md:block 45 (paragraph)
 msgid ""
 "This section is required for \"Use case 2\" and optional for \"Use case 3\" "
 "mentioned above"
 msgstr ""
+"Цей розділ є обов’язковим для «Випадку використання 2» і необов’язковим для «"
+"Випадку використання 3», згаданого вище"
 
 #: docs/Beaglebone.md:block 50 (paragraph)
 msgid ""
@@ -347,6 +468,10 @@ msgid ""
 "\"scripts/klipper-mcu.service\" file, it was installed by previous commands,"
 " and it's responsible for it."
 msgstr ""
+"зверніть увагу на \"/tmp/klipper_host_mcu\" - це буде ваш майбутній "
+"послідовний пристрій для \"mcu host\", якщо цей файл не існує - зверніться "
+"до файлу \"scripts/klipper-mcu.service\", його було встановлено попередніми "
+"командами , і він відповідає за це."
 
 #: docs/Beaglebone.md:block 51 (paragraph)
 msgid ""
@@ -359,6 +484,15 @@ msgid ""
 "should be avoided because it will be creating additional load on main CPU "
 "and most probably you can't use them for stepper control."
 msgstr ""
+"Зверніть увагу на наступне: коли ви визначаєте конфігурацію принтера, вам "
+"слід завжди використовувати датчики температури від «mcu host», оскільки АЦП "
+"відсутні в «mcu» за замовчуванням (ядра PRU). Зразок конфігурації "
+"«sensor_pin» для екструдера та підігрітого шару доступний у «generic-cramps."
+"cfg». Ви можете використовувати будь-який інший GPIO безпосередньо з «mcu "
+"host», посилаючись на нього таким чином «host:gpiochip1/gpio17», але цього "
+"слід уникати тому що це створить додаткове навантаження на головний "
+"процесор, і, швидше за все, ви не зможете використовувати їх для крокового "
+"керування."
 
 #: docs/Beaglebone.md:block 53 (paragraph)
 msgid ""
@@ -366,6 +500,9 @@ msgid ""
 "in the main [Installation](Installation.md#configuring-octoprint-to-use-"
 "klipper) document."
 msgstr ""
+"Завершіть інсталяцію, налаштувавши Klipper, дотримуючись інструкцій в "
+"основному документі [Installation](Installation.md#configuring-octoprint-to-"
+"use-klipper)."
 
 #: docs/Beaglebone.md:block 55 (paragraph)
 msgid ""
@@ -377,10 +514,17 @@ msgid ""
 "directly from Klipper and disable any DEBUG or VERBOSE logging options if "
 "you did enable them."
 msgstr ""
+"На жаль, процесор Beaglebone іноді може погано працювати з OctoPrint. "
+"Відомо, що зупинки друку виникають під час складних відбитків (принтер може "
+"рухатися швидше, ніж OctoPrint може надсилати команди руху). Якщо це "
+"станеться, розгляньте можливість використання функції «virtual_sdcard» (див. "
+"[Довідник конфігурації](Config_Reference.md#virtual_sdcard) для отримання "
+"додаткової інформації) для друку безпосередньо з Klipper і вимкніть будь-які "
+"параметри журналювання DEBUG або VERBOSE, якщо ви їх увімкнули."
 
 #: docs/Beaglebone.md:block 56 (header)
 msgid "AVR micro-controller code build"
-msgstr ""
+msgstr "Побудова коду мікроконтролера AVR"
 
 #: docs/Beaglebone.md:block 57 (paragraph)
 msgid ""
@@ -390,27 +534,36 @@ msgid ""
 " need to remove PRU packages and install AVR packages by executing following"
 " commands"
 msgstr ""
+"У цьому середовищі є все для створення необхідного коду мікроконтролера, "
+"крім AVR, пакети AVR було видалено через конфлікт із пакетами PRU. якщо ви "
+"все ще хочете створити код мікроконтролера AVR у цьому середовищі, вам "
+"потрібно видалити пакети PRU та встановити пакети AVR, виконавши наступні "
+"команди"
 
 #: docs/Beaglebone.md:block 58 (code)
 msgid ""
 "sudo apt-get remove gcc-pru\n"
 "sudo apt-get install avrdude gcc-avr binutils-avr avr-libc\n"
 msgstr ""
+"sudo apt-get видалити gcc-pru\n"
+" sudo apt-get install avrdude gcc-avr binutils-avr avr-libc\n"
 
 #: docs/Beaglebone.md:block 59 (paragraph)
 msgid ""
 "if you need to restore PRU packages - then remove ARV packages before that"
-msgstr ""
+msgstr "якщо потрібно відновити пакети PRU - перед цим видаліть пакети ARV"
 
 #: docs/Beaglebone.md:block 60 (code)
 msgid ""
 "sudo apt-get remove avrdude gcc-avr binutils-avr avr-libc\n"
 "sudo apt-get install gcc-pru\n"
 msgstr ""
+"sudo apt-get видалити avrdude gcc-avr binutils-avr avr-libc\n"
+" sudo apt-get install gcc-pru\n"
 
 #: docs/Beaglebone.md:block 61 (header)
 msgid "Hardware Pin designation"
-msgstr ""
+msgstr "Позначення PIN-коду обладнання"
 
 #: docs/Beaglebone.md:block 62 (paragraph)
 msgid ""
@@ -423,6 +576,14 @@ msgid ""
 "i2c1_scl/can1_rx/gpio0_15/uart1_tx P9_26 - "
 "i2c1_sda/can1_tx/gpio0_14/uart1_rx"
 msgstr ""
+"BeagleBone є дуже гнучким щодо позначення контактів, той самий контакт можна "
+"налаштувати для різних функцій, але завжди одна функція для одного контакту, "
+"та сама функція може бути присутнім на різних контактах. Таким чином, ви не "
+"можете мати кілька функцій на одному контакті або мати однакову функцію на "
+"кількох контактах. Приклад: P9_20 - i2c2_sda/can0_tx/spi1_cs0/gpio0_12/"
+"uart1_ctsn P9_19 - i2c2_scl/can0_rx/spi1_cs1/gpio0_13/uart1_rtsn P9_24 - "
+"i2c1_scl/can1_rx/gpio0_15/uart1_tx P9_ 26 - i2c1_sda/can1_tx/gpio0_14/"
+"uart1_rx"
 
 #: docs/Beaglebone.md:block 63 (paragraph)
 msgid ""
@@ -430,20 +591,25 @@ msgid ""
 "loaded during linux boot they are configured by editing file /boot/uEnv.txt "
 "with elevated permissions"
 msgstr ""
+"Позначення PIN-коду визначається за допомогою спеціальних «накладок», які "
+"завантажуватимуться під час завантаження Linux, вони налаштовуються шляхом "
+"редагування файлу /boot/uEnv.txt із підвищеними правами доступу"
 
 #: docs/Beaglebone.md:block 64 (code)
 msgid "sudo editor /boot/uEnv.txt\n"
-msgstr ""
+msgstr "редактор sudo /boot/uEnv.txt\n"
 
 #: docs/Beaglebone.md:block 65 (paragraph)
 msgid ""
 "and defining which functionality to load, for example to enable CAN1 you "
 "need to define overlay for it"
 msgstr ""
+"і визначення того, які функції завантажувати, наприклад, щоб увімкнути CAN1, "
+"вам потрібно визначити для нього накладення"
 
 #: docs/Beaglebone.md:block 66 (code)
 msgid "uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo\n"
-msgstr ""
+msgstr "Uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo\n"
 
 #: docs/Beaglebone.md:block 67 (paragraph)
 msgid ""
@@ -453,10 +619,16 @@ msgid ""
 "some overlay - you can analyze source files in this location: "
 "/opt/sources/bb.org-overlays/src/arm/ or search info in BeagleBone forums."
 msgstr ""
+"Це накладення BB-CAN1-00A0.dtbo переконфігурує всі необхідні контакти для "
+"CAN1 і створить пристрій CAN у Linux. Будь-яка зміна накладок вимагатиме "
+"перезавантаження системи. Якщо вам потрібно зрозуміти, які піни задіяні в "
+"якомусь накладенні, ви можете проаналізувати вихідні файли в цьому місці: /"
+"opt/sources/bb.org-overlays/src/arm/ або пошукати інформацію на форумах "
+"BeagleBone."
 
 #: docs/Beaglebone.md:block 68 (header)
 msgid "Enabling hardware SPI"
-msgstr ""
+msgstr "Увімкнення апаратного SPI"
 
 #: docs/Beaglebone.md:block 69 (paragraph)
 msgid ""
@@ -467,32 +639,41 @@ msgid ""
 "SPI1 you need to disable HDMI Audio and enable SPI1 To do that edit file "
 "/boot/uEnv.txt with elevated permissions"
 msgstr ""
+"BeagleBone зазвичай має кілька апаратних шин SPI, наприклад, BeagleBone "
+"Black може мати 2 з них, вони можуть працювати до 48 МГц, але зазвичай вони "
+"обмежені 16 МГц деревом пристроїв ядра. За замовчуванням у BeagleBone Black "
+"деякі з контактів SPI1 налаштовано для виходу HDMI-Audio, щоб повністю "
+"ввімкнути 4-провідний SPI1, вам потрібно вимкнути HDMI Audio та ввімкнути "
+"SPI1. Для цього відредагуйте файл /boot/uEnv.txt із підвищеними правами "
+"доступу"
 
 #: docs/Beaglebone.md:block 71 (paragraph)
 msgid "uncomment variable"
-msgstr ""
+msgstr "розкоментуйте змінну"
 
 #: docs/Beaglebone.md:block 72 (code)
 msgid "disable_uboot_overlay_audio=1\n"
-msgstr ""
+msgstr "disable_uboot_overlay_audio =1\n"
 
 #: docs/Beaglebone.md:block 73 (paragraph)
 msgid "next uncomment variable and define it this way"
-msgstr ""
+msgstr "далі розкоментуйте змінну та визначте її таким чином"
 
 #: docs/Beaglebone.md:block 74 (code)
 msgid "uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo\n"
-msgstr ""
+msgstr "Uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo\n"
 
 #: docs/Beaglebone.md:block 75 (paragraph)
 msgid ""
 "Save changes in /boot/uEnv.txt and reboot the board. Now you have SPI1 "
 "Enabled, to verify its presence execute command"
 msgstr ""
+"Збережіть зміни в /boot/uEnv.txt і перезавантажте плату. Тепер у вас "
+"увімкнено SPI1, щоб перевірити його наявність, виконайте команду"
 
 #: docs/Beaglebone.md:block 76 (code)
 msgid "ls /dev/spidev1.*\n"
-msgstr ""
+msgstr "ls /dev/spidev1.*\n"
 
 #: docs/Beaglebone.md:block 77 (paragraph)
 msgid ""
@@ -503,10 +684,17 @@ msgid ""
 "they can accept 5v hardware, check CRAMPS board Schematics for pin "
 "references."
 msgstr ""
+"Зверніть увагу, що BeagleBone зазвичай базується на апаратному забезпеченні "
+"3,3 В, а для використання пристроїв SPI 5 В потрібно додати мікросхему Level-"
+"Shifting, наприклад SN74CBTD3861, SN74LVC1G34 або подібну. Якщо ви "
+"використовуєте плату CRAMPS - вона вже містить мікросхему зсуву рівня, і "
+"контакти SPI1 стануть доступними на порту P503, і вони можуть приймати "
+"апаратне забезпечення 5 В, перевірте схеми плати CRAMPS для посилань на "
+"контакти."
 
 #: docs/Beaglebone.md:block 78 (header)
 msgid "Enabling hardware I2C"
-msgstr ""
+msgstr "Увімкнення апаратного I2C"
 
 #: docs/Beaglebone.md:block 79 (paragraph)
 msgid ""
@@ -522,10 +710,22 @@ msgid ""
 "BB-I2C1-00A0.dtbo I2C1(400Kbit): BB-I2C1-FAST-00A0.dtbo I2C2(100Kbit): "
 "BB-I2C2-00A0.dtbo I2C2(400Kbit): BB-I2C2-FAST-00A0.dtbo"
 msgstr ""
+"У BeagleBone зазвичай є кілька апаратних шин I2C, наприклад, у BeagleBone "
+"Black їх може бути 3, вони підтримують швидкісний режим до 400 Кбіт. За "
+"замовчуванням у BeagleBone Black їх два (i2c-1 та i2c-2), зазвичай обидва "
+"вже налаштовані та присутні на P9, третій ic2-0 зазвичай зарезервований для "
+"внутрішнього використання. Якщо ви використовуєте плату CRAMPS, тоді i2c-2 "
+"присутній на порту P303 з рівнем 3,3 В. Якщо ви хочете отримати I2c-1 на "
+"платі CRAMPS - ви можете отримати їх на контактах Extruder1.Step, "
+"Extruder1.Dir, вони також є 3,3 на основі v, перевірте схеми плати CRAMPS "
+"для посилань на контакти. Пов’язані накладення для [Hardware Pin designation"
+"](#hardware-pin-designation): I2C1(100Kbit): BB-I2C1-00A0.dtbo I2C1(400Kbit):"
+" BB-I2C1-FAST-00A0.dtbo I2C2(100Kbit): BB-I2C2-00A0.dtbo I2C2 (400 Кбіт): BB-"
+"I2C2-FAST-00A0.dtbo"
 
 #: docs/Beaglebone.md:block 80 (header)
 msgid "Enabling hardware UART(Serial)/CAN"
-msgstr ""
+msgstr "Увімкнення апаратного UART (Serial)/CAN"
 
 #: docs/Beaglebone.md:block 81 (paragraph)
 msgid ""
@@ -538,6 +738,15 @@ msgid ""
 "(for CAN), TTL-RS485 (for RS-485) or something similar which can convert "
 "3.3v signals to appropriate levels."
 msgstr ""
+"BeagleBone має до 6 апаратних шин UART (Serial) (до 3 Мбіт) і до 2 апаратних "
+"шин CAN (1 Мбіт). UART1(RX,TX) і CAN1(TX,RX) і I2C2(SDA,SCL) використовують "
+"однакові контакти - тому вам потрібно вибрати, що використовувати "
+"UART1(CTSN,RTSN) і CAN0(TX,RX) і I2C1(SDA) ,SCL) використовують однакові "
+"контакти, тому вам потрібно вибрати, що використовувати. Усі контакти, пов’"
+"язані з UART/CAN, базуються на 3,3 В, тому вам потрібно буде використовувати "
+"мікросхеми/плати трансиверів, наприклад SN74LVC2G241DCUR (для UART), "
+"SN65HVD230 (для CAN), TTL-RS485 (для RS-485) або щось подібне, що може "
+"перетворювати сигнали 3,3 В на відповідні рівні."
 
 #: docs/Beaglebone.md:block 82 (paragraph)
 msgid ""
@@ -547,6 +756,11 @@ msgid ""
 "UART2(RX,TX): BB-UART2-00A0.dtbo UART3(RX,TX): BB-UART3-00A0.dtbo "
 "UART4(RS-485): BB-UART4-RS485-00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo"
 msgstr ""
+"Пов’язані накладки для [Hardware Pin designation](#hardware-pin-designation) "
+"CAN0: BB-CAN0-00A0.dtbo CAN1: BB-CAN1-00A0.dtbo UART0: - використовується "
+"для консолі UART1(RX,TX): BB-UART1-00A0.dtbo UART1(RTS,CTS): BB-UART1-RTSCTS-"
+"00A0.dtbo UART2(RX,TX): BB-UART2-00A0.dtbo UART3(RX,TX): BB-UART3-00A0.dtbo "
+"UART4 (RS-485): BB-UART4-RS485-00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo"
 
 #~ msgid ""
 #~ "Start by installing the [Debian 9.9 2019-08-03 4GB SD "

@@ -1,10 +1,21 @@
-#
+# Максим Горпиніч <mgorpinic2005@gmail.com>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-11-05 21:00+0000\n"
+"Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
+"eddy_probe/uk/>\n"
+"Language: uk\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.8.2\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Eddy_Probe.md:block 1 (header)
 msgid "Eddy Current Inductive probe"
-msgstr ""
+msgstr "Eddy Поточний індуктивний зонд"
 
 #: docs/Eddy_Probe.md:block 2 (paragraph)
 msgid ""
@@ -12,12 +23,16 @@ msgid ""
 "current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in "
 "Klipper."
 msgstr ""
+"Цей документ описує, як використовувати [видимий струм](https://en.wikipedia."
+"org/wiki/Eddy_current) індуктивний зонд в Klipper."
 
 #: docs/Eddy_Probe.md:block 3 (paragraph)
 msgid ""
 "Currently, an eddy current probe can not be used for Z homing. The sensor "
 "can only be used for Z probing."
 msgstr ""
+"В даний час eddy поточний зонд не може використовуватися для Z-"
+"підсмоктування. Датчик може використовуватися тільки для зондування Z."
 
 #: docs/Eddy_Probe.md:block 4 (paragraph)
 msgid ""
@@ -27,6 +42,10 @@ msgid ""
 " to require an `x_offset` and `y_offset`. If these values are not known, one"
 " should estimate the values during initial calibration."
 msgstr ""
+"Початок, декларування [probe_eddy_current_config section](Config_Reference."
+"md#probe_eddy_current) в файлі принтера.cfg. Рекомендується встановити "
+"`z_offset` до 0.5mm. Для датчика потрібно `x_offset` і `y_offset`. Якщо ці "
+"значення не відомі, слід оцінити значення при початковому калібруванні."
 
 #: docs/Eddy_Probe.md:block 5 (paragraph)
 msgid ""
@@ -40,6 +59,14 @@ msgid ""
 " completes, issue a `SAVE_CONFIG` command to save the results to the "
 "printer.cfg and restart."
 msgstr ""
+"Для визначення відповідного DRIVE_CURRENT для датчика. Головна принтер і "
+"навігація інструментальногоголови так, щоб датчик знаходиться біля центру "
+"ліжка і становить близько 20мм над ліжком. `LDC_CALIBRATE_DRIVE_CURRENT "
+"CHIP=<config_name>` команда. Наприклад, якщо розділ конфігурації був "
+"названий `[probe_eddy_current my_eddy_probe]` потім один буде курсувати `"
+"LDC_CALIBRATE_DRIVE_CURRENT CHIP=my_eddy_probe`. Ця команда повинна "
+"завершитися протягом декількох секунд. Після завершення випуску `SAVE_CONFIG`"
+" команди зберегти результати на принтері.cfg і перезавантаження."
 
 #: docs/Eddy_Probe.md:block 6 (paragraph)
 msgid ""
@@ -56,6 +83,18 @@ msgid ""
 "After the tool completes, issue a `SAVE_CONFIG` command to save the results "
 "to the printer.cfg and restart."
 msgstr ""
+"Другим кроком у калібруванні є співвіднесення показань датчика з "
+"відповідними висотами Z. Встановіть принтер і перемістіть інструментальну "
+"головку так, щоб сопло було поблизу центру станини. Потім запустіть команду `"
+"PROBE_EDDY_CURRENT_CALIBRATE CHIP=my_eddy_probe`. Коли інструмент "
+"запуститься, виконайте кроки, описані в [\"тест паперу\"](Bed_Level.md#the-"
+"paper-test), щоб визначити фактичну відстань між соплом і ложем у вказаному "
+"місці. Після завершення цих кроків можна «ПРИЙНЯТИ» позицію. Потім "
+"інструмент перемістить головку так, щоб датчик знаходився над точкою, де "
+"раніше було сопло, і виконає серію рухів, щоб співвіднести датчик із "
+"положеннями Z. Це займе кілька хвилин. Після завершення роботи інструменту "
+"введіть команду `SAVE_CONFIG`, щоб зберегти результати в printer.cfg і "
+"перезапустіть."
 
 #: docs/Eddy_Probe.md:block 7 (paragraph)
 msgid ""
@@ -66,12 +105,19 @@ msgid ""
 "`PROBE_EDDY_CURRENT_CALIBRATE` command (as described above) after making the"
 " change."
 msgstr ""
+"Після початкового калібрування це хороша ідея, щоб переконатися, що "
+"`x_offset` і `y_offset` є точним. Дотримуйтесь кроків до [calibrate probe x "
+"і y offsets](Probe_Calibrate.md#calibrating-probe-x-і-offsets). Якщо ви "
+"використовуєте `x_offset` або `y_offset`, то обов'язково запустіть "
+"`PROBE_EDDY_CURRENT_CALIBRATE` команди (як описано вище) після внесення змін."
 
 #: docs/Eddy_Probe.md:block 8 (paragraph)
 msgid ""
 "Once calibration is complete, one may use all the standard Klipper tools "
 "that use a Z probe."
 msgstr ""
+"Після завершення калібрування можна скористатися всіма стандартними "
+"інструментами для затискачів, які використовують зонд Z."
 
 #: docs/Eddy_Probe.md:block 9 (paragraph)
 msgid ""
@@ -82,10 +128,16 @@ msgid ""
 "important that calibration and probing is only done when the printer is at a"
 " stable temperature."
 msgstr ""
+"Зауважте, що датчики денного струму (і індуктивні зонди в цілому) схильні до "
+"«термального дрейфу». Таким чином, зміни температури можуть призвести до "
+"змін, внесених до висоти Z. Зміна температури поверхні ліжка або датчика "
+"температури апаратного пристрою можна розрізати результати. Важливо, що "
+"калібрування і пробування проводиться тільки при стабільній температурі "
+"принтера."
 
 #: docs/Eddy_Probe.md:block 10 (header)
 msgid "Thermal Drift Calibration"
-msgstr ""
+msgstr "Термозбіжне калібрування"
 
 #: docs/Eddy_Probe.md:block 11 (paragraph)
 msgid ""
@@ -96,6 +148,13 @@ msgid ""
 "eddy current probe the `[temperature_probe]` section must share a name with "
 "the `[probe_eddy_current]` section. For example:"
 msgstr ""
+"Як з усіма індуктивними зонами, вихровими струмовими зонами підлягають "
+"значному термічному дрейфу. Якщо eddy probe має датчик температури на "
+"котушкі, можна налаштувати `[температурний_probe]`, щоб повідомити "
+"температуру котушки і увімкнути компенсацію накопичувача програмного "
+"забезпечення. Щоб зв'язати температурний зонд до eddy поточного зонду "
+"`[температурний_probe]` розділ повинен ділитися назвою `[probe_eddy_current]`"
+" розділ. Наприклад:"
 
 #: docs/Eddy_Probe.md:block 12 (code)
 msgid ""
@@ -105,6 +164,11 @@ msgid ""
 "[temperature_probe my_probe]\n"
 "# temperature probe configuration...\n"
 msgstr ""
+"[probe_eddy_current my_probe]\n"
+"# eddy probe конфігурації ...\n"
+"\n"
+"[температура_пробе мій_пробе]\n"
+"# конфігурації температурного зонда ...\n"
 
 #: docs/Eddy_Probe.md:block 13 (paragraph)
 msgid ""
@@ -114,6 +178,11 @@ msgid ""
 "`extruder_heating_z`, and `calibration_bed_temp` options, as doing so will "
 "automate some of the steps outlined below."
 msgstr ""
+"Див. [Налаштування посилання](Config_Reference.md# Infrastructure_probe) для "
+"подальших відомостей про те, як налаштувати `темперія_probe`. Налаштуйте "
+"`calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, і "
+"`calibration_bed_temp` параметри, так як це буде автоматизувати деякі кроки, "
+"викладені нижче."
 
 #: docs/Eddy_Probe.md:block 14 (paragraph)
 msgid ""
@@ -123,6 +192,11 @@ msgid ""
 "on your system, the `temperature_probe` module offers a manual calibration "
 "procedure via the `TEMPERATURE_PROBE_CALIBRATE` gcode command."
 msgstr ""
+"Виробники Едді-пробе можуть запропонувати калібрування запасів, які можна "
+"вручну додавати до `drift_calibration` параметр `[probe_eddy_current]`. Якщо "
+"вони не є, або якщо калібрування запасів не виконує добре на вашій системі, "
+"модуль ` Температура_probe` пропонує процедуру ручного калібрування через "
+"`TEMPERATURE_PROBE_CALIBRATE` gcode команди."
 
 #: docs/Eddy_Probe.md:block 15 (paragraph)
 msgid ""
@@ -134,12 +208,21 @@ msgid ""
 "printer cold and finish with the coil at the maximum temperature it can "
 "reach."
 msgstr ""
+"Перед виконанням калібрування користувач повинен мати уявлення про те, що "
+"максимальна інтенсивна температура зондової температури є температура. Ця "
+"температура повинна бути використана для встановлення параметра `TARGET` "
+"`TEMPERATURE_PROBE_CALIBRATE`. Мета полягає в тому, щоб калібрувати по "
+"широкому діапазоні температур, таким чином, бажано починати з принтера "
+"холодом і закінчуючи котушкою при максимальній температурі вона може "
+"досягати."
 
 #: docs/Eddy_Probe.md:block 16 (paragraph)
 msgid ""
 "Once a `[temperature_probe]` is configured, the following steps may be taken"
 " to perform thermal drift calibration:"
 msgstr ""
+"Після того, як налаштовується `[температурний_probe]`, можна приймати "
+"наступні кроки для виконання термообробки:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -148,14 +231,18 @@ msgid ""
 "temperature during calibration which is necessary to perform thermal drift "
 "compensation."
 msgstr ""
+"Ви повинні бути калібровані за допомогою ` PROBE_EDDY_CURRENT_CALIBRATE` при "
+"налаштуванні та пов'язаному настройку `. Це захоплює температуру під час "
+"калібрування, яка необхідна для виконання теплової компенсації."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "Make sure the nozzle is free of debris and filament."
-msgstr ""
+msgstr "Переконайтеся, що сопла є безкоштовним від сміття і ниток."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "The bed, nozzle, and probe coil should be cold prior to calibration."
 msgstr ""
+"Ліжко, насадка, і пробіжна котушка повинна бути холодною до калібрування."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -163,11 +250,14 @@ msgid ""
 "`calibration_extruder_temp`, and `extruder_heating_z` options in "
 "`[temperature_probe]` are **NOT** configured:"
 msgstr ""
+"Наступні кроки потрібні, якщо `calibration_position`, "
+"`calibration_extruder_temp`, і `extruder_heating_z` параметри "
+"`[температур_probe]` **NOT** налаштовані:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "Move the tool to the center of the bed. Z should be 30mm+ above the bed."
-msgstr ""
+msgstr "Перемістити засіб до центру ліжка. З повинно бути 30мм+ над ліжком."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -175,12 +265,18 @@ msgid ""
 "150-170C should be sufficient for most configurations. The purpose of "
 "heating the extruder is to avoid nozzle expansion during calibration."
 msgstr ""
+"Підігрів екструдера до температури над максимальною кімнатною температурою. "
+"150-170К повинен бути достатнім для більшості конфігурацій. Мета обігріву "
+"екструдера полягає в тому, щоб уникнути розширення насадок під час "
+"калібрування."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When the extruder temperature has settled, move the Z axis down to about 1mm"
 " above the bed."
 msgstr ""
+"Коли температура екструдера влаштована, перемістіть осі Z до близько 1 мм "
+"над ліжком."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -192,6 +288,13 @@ msgid ""
 "extruder to the specified temperature the tool will move to the Z value "
 "specified by the`calibration_position`."
 msgstr ""
+"Почати калібрування дрейфу. Якщо ім'я пробе `my_probe` і максимальна "
+"температура проби ми можемо досягати 80C, відповідна команда gcode `"
+"TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`. При налаштуванні "
+"інструмент перейде до координат X,Y, зазначеного `calibration_position` і "
+"значення Z, зазначеного `extruder_heating_z`. Після нагріву екструдера до "
+"вказаної температури інструмент перейде до значення Z, зазначеного "
+"`calibration_position`."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -199,6 +302,9 @@ msgid ""
 " paper test and `ACCEPT`. The calibration procedure will take the first set "
 "of samples with the probe then park the probe in the heating position."
 msgstr ""
+"Процедуру буде вимагати ручного зонду. Виконайте ручний зонд з паперовим "
+"тестом та `ACCEPT`. Процедуру калібрування візьмуть перший набір зразків "
+"зондом, потім паркують зону в положенні опалення."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -206,6 +312,9 @@ msgid ""
 "the maximum safe temperature. Otherwise this step will be performed "
 "automatically."
 msgstr ""
+"Якщо `calibration_bed_temp` is **NOT** налаштовується поворот на вогні ліжка "
+"до максимальної безпечної температури. В іншому випадку цей крок буде "
+"виконуватися автоматично."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -216,34 +325,48 @@ msgid ""
 "`STEP` value, a value too high may request too few samples resulting in a "
 "poor calibration."
 msgstr ""
+"За замовчуванням процедура калібрування буде вимагати ручного зонду кожні 2C "
+"між зразками до досягнення `TARGET`. Температурний дельта між зразками можна "
+"налаштувати за допомогою параметра `STEP` `TEMPERATURE_PROBE_CALIBRATE`. "
+"Порада повинна бути прийнята при налаштуванні на замовлення ` STP` значення, "
+"значення занадто висока може вимагати занадто кілька зразків, що призводить "
+"до поганого калібрування."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "The following additional gcode commands are available during drift "
 "calibration:"
-msgstr ""
+msgstr "Для калібрування дрифт доступні наступні додаткові команди gcode:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_NEXT` may be used to force a new sample before the step "
 "delta has been reached."
 msgstr ""
+"`TEMPERATURE_PROBE_NEXT` може використовуватися для посилення нового зразка "
+"перед початком дельти."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_COMPLETE` may be used to complete calibration before the "
 "`TARGET` has been reached."
 msgstr ""
+"`TEMPERATURE_PROBE_COMPLETE` може використовуватися для повного калібрування "
+"до `TARGET`."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "`ABORT` may be used to end calibration and discard results."
 msgstr ""
+"`ABORT` може бути використана для кінцевого калібрування та результатів "
+"віддачі."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When calibration is finished use `SAVE_CONFIG` to store the drift "
 "calibration."
 msgstr ""
+"Після закінчення калібрування використовується `SAVE_CONFIG` для зберігання "
+"калібрування дрифту."
 
 #: docs/Eddy_Probe.md:block 18 (paragraph)
 msgid ""
@@ -251,3 +374,6 @@ msgid ""
 "challenging and time consuming than most other procedures. It may require "
 "practice and several attempts to achieve an optimal calibration."
 msgstr ""
+"Як можна зробити висновок, процес калібрування окреслено вище, є більш "
+"складним і трудомістким, ніж більшість інших процедур. Для досягнення "
+"оптимального калібрування може знадобитися практика та декілька спроб."

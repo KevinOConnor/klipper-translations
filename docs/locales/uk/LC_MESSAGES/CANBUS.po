@@ -1,41 +1,57 @@
-#
+# Максим Горпиніч <mgorpinic2005@gmail.com>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-11-05 21:00+0000\n"
+"Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/canbus/"
+"uk/>\n"
 "Language: uk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.8.2\n"
 
 msgid "This document describes Klipper's CAN bus support."
-msgstr ""
+msgstr "Цей документ описує підтримку автобусів Klipper's CAN."
 
 msgid "Device Hardware"
-msgstr ""
+msgstr "Обладнання для пристроїв"
 
 msgid "Host Hardware"
-msgstr ""
+msgstr "Хост обладнання"
 
 msgid ""
 "It is also necessary to configure the host operating system to use the "
 "adapter. This is typically done by creating a new file named "
 "`/etc/network/interfaces.d/can0` with the following contents:"
 msgstr ""
+"Також необхідно налаштувати операційну систему хосту для використання "
+"адаптера. Це, як правило, робиться шляхом створення нового файлу `/etc/"
+"network/interfaces.d/can0` з наступним вмістом:"
 
 msgid "Terminating Resistors"
-msgstr ""
+msgstr "Резистори"
 
 msgid ""
 "A CAN bus should have two 120 ohm resistors between the CANH and CANL wires."
 " Ideally, one resistor located at each the end of the bus."
 msgstr ""
+"Автобус CAN повинен мати два 120 ohm резистори між проводами CANH та CANL. В "
+"ідеалі один резистор розташований на кожному кінці автобуса."
 
 msgid ""
 "To test that the resistors are correct, one can remove power to the printer "
 "and use a multi-meter to check the resistance between the CANH and CANL "
 "wires - it should report ~60 ohms on a correctly wired CAN bus."
 msgstr ""
+"Щоб перевірити, що резистори правильні, можна видалити живлення на принтер і "
+"використовувати багатометр для перевірки опору між дротами CANH і CANL - він "
+"повинен повідомити ~60 омів на правильно проведеному автобусі CAN."
 
 msgid "Finding the canbus_uuid for new micro-controllers"
-msgstr ""
+msgstr "Пошук каналів_uid для нових мікроконтролерів"
 
 msgid ""
 "Each micro-controller on the CAN bus is assigned a unique id based on the "
@@ -43,42 +59,56 @@ msgid ""
 "micro-controller device id, make sure the hardware is powered and wired "
 "correctly, and then run:"
 msgstr ""
+"Кожен мікроконтролер на автобусі CAN призначений унікальним ідентифікатором "
+"на основі фабричного ідентифікатора чіпа, що зашифровується в кожен "
+"мікроконтролер. Щоб знайти кожен пристрій мікроконтролера id, переконайтеся, "
+"що апарат працює і проводжається правильно, а потім запустити:"
 
 msgid ""
 "If uninitialized CAN devices are detected the above command will report "
 "lines like the following:"
 msgstr ""
+"Якщо неініціалізовані пристрої CAN виявлені вище командні рядки, такі як:"
 
 msgid ""
 "Each device will have a unique identifier. In the above example, "
 "`11aa22bb33cc` is the micro-controller's \"canbus_uuid\"."
 msgstr ""
+"Кожен пристрій має унікальний ідентифікатор. У наведеному вище прикладі "
+"`11aa22bb33cc` є мікроконтролером \"канбус_uuid\"."
 
 msgid ""
 "Note that the `canbus_query.py` tool will only report uninitialized devices "
 "- if Klipper (or a similar tool) configures the device then it will no "
 "longer appear in the list."
 msgstr ""
+"Зауважте, що `canbus_query.py` інструмент буде звітувати тільки "
+"неініціалізовані пристрої - якщо Klipper (або аналогічний інструмент) "
+"налаштовує пристрій, потім він більше не з'явиться в списку."
 
 msgid "Configuring Klipper"
-msgstr ""
+msgstr "Налаштування кліппера"
 
 msgid ""
 "Update the Klipper [mcu configuration](Config_Reference.md#mcu) to use the "
 "CAN bus to communicate with the device - for example:"
 msgstr ""
+"Оновлення конфігурації Klipper [mcu](Config_Reference.md#mcu) для "
+"використання автобуса CAN для спілкування з пристроєм - наприклад:"
 
 msgid "~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0\n"
-msgstr ""
+msgstr "~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0\n"
 
 msgid ""
 "[mcu my_can_mcu]\n"
 "canbus_uuid: 11aa22bb33cc\n"
 msgstr ""
+"[mcu my_can_mcu]\n"
+"javascript licenses api веб-сайт go1.13.8\n"
 
 #: docs/CANBUS.md:block 1 (header)
 msgid "CANBUS"
-msgstr ""
+msgstr "КАНБУС"
 
 #: docs/CANBUS.md:block 5 (paragraph)
 msgid ""
@@ -86,14 +116,17 @@ msgid ""
 "communication interface. Finally, compile the micro-controller code and "
 "flash it to the target board."
 msgstr ""
+"Щоб компілювати для CAN, запустіть `make менюconfig` і виберіть \"CAN bus\" "
+"як інтерфейс зв'язку. Нарешті, компіляйте код мікроконтролера і перемішайте "
+"його на цільову дошку."
 
 #: docs/CANBUS.md:block 26 (header)
 msgid "USB to CAN bus bridge mode"
-msgstr ""
+msgstr "USB до CAN автобусний міст режим"
 
 #: docs/CANBUS.md:block 29 (paragraph)
 msgid "Some important notes when using this mode:"
-msgstr ""
+msgstr "Деякі важливі ноти при використанні цього режиму:"
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""
@@ -103,10 +136,14 @@ msgid ""
 "is specified during \"make menuconfig\" and the bus speed specified in Linux"
 " is ignored."
 msgstr ""
+"Для спілкування з автобусом необхідно налаштувати інтерфейс `can0` (або "
+"аналогічний) Тим не менш, швидкість автобуса Linux CAN і параметри біт-часів "
+"CAN ігноруються Klipper. В даний час частота автобуса CAN вказана під час "
+"\"налаштування меню\" та швидкості автобуса, зазначеної в Linux ігнорується."
 
 #: docs/CANBUS.md:block 20 (code)
 msgid "Found canbus_uuid=11aa22bb33cc, Application: Klipper\n"
-msgstr ""
+msgstr "Знайдено canbus_uid=11aa22bb33cc, Застосування: Клиппер\n"
 
 #: docs/CANBUS.md:block 4 (paragraph)
 msgid ""
@@ -114,6 +151,8 @@ msgid ""
 "addition, the micro-controller chip must be on a board that has a CAN "
 "transceiver."
 msgstr ""
+"Klipper в даний час підтримує CAN на stm32, SAME5x і rp2040 чіпси. Крім "
+"того, мікроконтролерний чіп повинен бути на дошці, яка має CAN-транзивер."
 
 #: docs/CANBUS.md:block 7 (paragraph)
 msgid ""
@@ -126,6 +165,14 @@ msgid ""
 "(in its \"USB to CAN bridge mode\") or that run the [candlelight "
 "firmware](https://github.com/candle-usb/candleLight_fw)."
 msgstr ""
+"Для того, щоб використовувати автобус CAN, необхідно мати перехідник. "
+"Рекомендується використовувати адаптер \"USB до CAN\". Є багато різних "
+"адаптерів USB до CAN, доступних з різних виробників. При виборі одного ми "
+"рекомендуємо переконатися, що прошивку можна оновити на ньому. (На жаль, ми "
+"знайшли деякі адаптери USB, що працюють з дефектною прошивкою і закривається "
+"вниз, тому перевірте перед покупкою.) Дивитися адаптери, які можуть "
+"запустити Klipper безпосередньо (в його \"USB до CAN мостового режиму\") або "
+"запустити [свічник прошивку](https://github.com/candle-usb/candleLight_fw)."
 
 #: docs/CANBUS.md:block 12 (paragraph)
 msgid ""
@@ -135,6 +182,11 @@ msgid ""
 "jumper\"). Be sure to check the schematics of all devices on the CAN bus to "
 "verify that there are two and only two 120 Ohm resistors on the bus."
 msgstr ""
+"Зверніть увагу, що деякі пристрої мають вбудований 120 ohm резистор, який не "
+"можна легко видалити. Деякі пристрої не включають резистор. Інші пристрої "
+"мають механізм вибору резистора (типово, з'єднуючи «шпильковий стрибок»). "
+"Обов'язково перевірте схеми всіх пристроїв на автобусі CAN, щоб "
+"переконатися, що на автобусі є два і тільки два 120 Ом резистори."
 
 #: docs/CANBUS.md:block 25 (paragraph)
 msgid ""
@@ -142,6 +194,9 @@ msgid ""
 "during Klipper's \"make menuconfig\". This mode may allow one to use a "
 "micro-controller as both a \"USB to CAN bus adapter\" and as a Klipper node."
 msgstr ""
+"Деякі мікроконтролери підтримують вибір \"USB до CAN автобусного мосту\" в "
+"режимі \"під ключ\". Цей режим може дозволити одному використовувати "
+"мікроконтролер як \"USB до CAN адаптера\" і як вузол Klipper."
 
 #: docs/CANBUS.md:block 26 (paragraph)
 msgid ""
@@ -150,6 +205,10 @@ msgid ""
 "it was on this CAN bus - it can be identified via `canbus_query.py` and it "
 "must be configured like other CAN bus Klipper nodes."
 msgstr ""
+"Коли Klipper використовує цей режим мікроконтролер з'являється як \"USB CAN "
+"адаптер\" під Linux. \"Klipper Bridge mcu\" себе з'явиться, якби він був на "
+"цьому автобусі CAN - він може бути ідентифікований через `canbus_query.py` і "
+"він повинен бути налаштований як інші CAN автобуси Klipper вузлів."
 
 #: docs/CANBUS.md:block 28 (unordered list)
 msgid ""
@@ -158,12 +217,18 @@ msgid ""
 "commands, it is recommended to use `allow-hotplug` in the "
 "`/etc/network/interfaces.d/can0` file. For example:"
 msgstr ""
+"Після того, як \"містечко\" скидається, Linux буде відключати відповідний "
+"інтерфейс `can0`. Щоб забезпечити належне обслуговування команд "
+"FIRMWARE_RESTART та RESTART, рекомендується використовувати `allow-hotplug` "
+"в `/etc/network/interfaces.d/can0` файл. Наприклад:"
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""
 "The \"bridge mcu\" is not actually on the CAN bus. Messages to and from the "
 "bridge mcu will not be seen by other adapters that may be on the CAN bus."
 msgstr ""
+"На автобусі CAN не існує жодних труднощів. Повідомлень і з мостового маку не "
+"будуть бачити інші адаптери, які можуть бути на автобусі CAN."
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""
@@ -172,6 +237,10 @@ msgid ""
 "it is recommended to use a CAN bus frequency of 1000000 when using \"USB to "
 "CAN bus bridge mode\"."
 msgstr ""
+"Доступна пропускна здатність як до «місто-мку» і всіх пристроїв на автобусі "
+"CAN ефективно обмежена частотою автобуса CAN. В результаті рекомендується "
+"використовувати автобусну частоту CAN 1000000 при використанні \"USB в CAN "
+"режимом мосту\"."
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""
@@ -179,6 +248,9 @@ msgid ""
 "bandwidth to run a `SHAPER_CALIBRATE` test if both the XY steppers and the "
 "accelerometer all communicate via a single \"USB to CAN bus\" interface."
 msgstr ""
+"Навіть при частоті автобуса CAN 1000000, може бути недостатньою пропускною "
+"здатністю для запуску `SHAPER_CALIBRATE` тест, якщо обидва кроки XY і "
+"акселерометр всі спілкуються по одному інтерфейсу \"USB до CAN\"."
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""
@@ -188,14 +260,19 @@ msgid ""
 "bridge board appears as a \"USB CAN adapter\" and it is configured in the "
 "printer.cfg as a [CAN node](#configuring-klipper)."
 msgstr ""
+"USB до CAN мостової дошки не з'явиться як послідовний пристрій USB, він не "
+"покаже при роботі `ls /dev/serial/by-id`, і він не може бути налаштований у "
+"принтері Klipper.cfg з параметром `серіал:`. Мостова дошка з'являється як "
+"\"USB CAN адаптер\" і налаштовується в принтері.cfg як [CAN node"
+"](#configuring-klipper)."
 
 #: docs/CANBUS.md:block 31 (header)
 msgid "Tips for troubleshooting"
-msgstr ""
+msgstr "Поради щодо усунення несправностей"
 
 #: docs/CANBUS.md:block 32 (paragraph)
 msgid "See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document."
-msgstr ""
+msgstr "Дивитися [CAN busshooting](CANBUS_Troubleshooting.md) документ."
 
 #: docs/CANBUS.md:block 9 (code)
 msgid ""
@@ -204,6 +281,10 @@ msgid ""
 "    bitrate 1000000\n"
 "    up ip link set $IFACE txqueuelen 128\n"
 msgstr ""
+"hYIP и SSL\n"
+"iface can0 може стати статичним\n"
+"бітрейт 1000000\n"
+"ip посилання набір $IFACE txqueuelen 128\n"
 
 #~ msgid ""
 #~ "allow-hotplug can0\n"

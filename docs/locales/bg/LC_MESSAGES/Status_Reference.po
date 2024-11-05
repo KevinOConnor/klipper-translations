@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"PO-Revision-Date: 2024-11-05 21:00+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
 "status_reference/bg/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.8.2\n"
 
 msgid ""
 "This document is a reference of printer status information available in "
@@ -182,7 +182,7 @@ msgstr ""
 "`filament_detected`: Връща True, ако сензорът е в състояние на задействане."
 
 msgid "filament_motion_sensor"
-msgstr ""
+msgstr "filament_motion_sensor"
 
 msgid ""
 "The following information is available in [filament_motion_sensor "
@@ -195,7 +195,7 @@ msgid "`enabled`: Returns True if the motion sensor is currently enabled."
 msgstr "`enabled`: Връща True, ако сензорът за движение в момента е активиран."
 
 msgid "firmware_retraction"
-msgstr ""
+msgstr "firmware_retraction"
 
 msgid ""
 "The following information is available in the "
@@ -216,7 +216,7 @@ msgstr ""
 "командата `SET_RETRACTION` ги промени."
 
 msgid "gcode_macro"
-msgstr ""
+msgstr "gcode_macro"
 
 msgid ""
 "The following information is available in [gcode_macro "
@@ -233,7 +233,7 @@ msgstr ""
 "[gcode_macro](Command_Templates.md#variables)."
 
 msgid "gcode_move"
-msgstr ""
+msgstr "gcode_move"
 
 msgid ""
 "The following information is available in the `gcode_move` object (this "
@@ -312,7 +312,7 @@ msgstr ""
 "екструдиране, или False, ако е в режим `M83` на относително екструдиране."
 
 msgid "hall_filament_width_sensor"
-msgstr ""
+msgstr "hall_filament_width_sensor"
 
 msgid ""
 "The following information is available in the "
@@ -398,7 +398,7 @@ msgstr ""
 "\"temperature_sensor electronics_temp\"]`."
 
 msgid "idle_timeout"
-msgstr ""
+msgstr "idle_timeout"
 
 msgid ""
 "The following information is available in the "
@@ -425,7 +425,7 @@ msgstr ""
 "\"Печат\" (както се следи от модула idle_timeout)."
 
 msgid "mcu"
-msgstr ""
+msgstr "mcu"
 
 msgid ""
 "The following information is available in [mcu](Config_Reference.md#mcu) and"
@@ -464,7 +464,7 @@ msgstr ""
 "микроконтролера."
 
 msgid "output_pin"
-msgstr ""
+msgstr "output_pin"
 
 msgid ""
 "The following information is available in [output_pin "
@@ -500,7 +500,7 @@ msgid "`is_splicing`: True when the Palette 2 is splicing filament."
 msgstr "`is_splicing`: Вярно, когато палитрата 2 е сплитаща нишка."
 
 msgid "pause_resume"
-msgstr ""
+msgstr "pause_resume"
 
 msgid ""
 "The following information is available in the "
@@ -517,7 +517,7 @@ msgstr ""
 "команда RESUME."
 
 msgid "print_stats"
-msgstr ""
+msgstr "print_stats"
 
 msgid ""
 "The following information is available in the `print_stats` object (this "
@@ -573,7 +573,7 @@ msgstr ""
 "преди макроса, съдържащ тази препратка."
 
 msgid "quad_gantry_level"
-msgstr ""
+msgstr "quad_gantry_level"
 
 msgid ""
 "The following information is available in the `quad_gantry_level` object "
@@ -590,7 +590,7 @@ msgstr ""
 "завършил успешно."
 
 msgid "query_endstops"
-msgstr ""
+msgstr "query_endstops"
 
 msgid ""
 "The following information is available in the `query_endstops` object (this "
@@ -629,7 +629,7 @@ msgstr ""
 "стойност между 0,0 и 1,0), свързана със сервоусилвателя."
 
 msgid "system_stats"
-msgstr ""
+msgstr "system_stats"
 
 msgid ""
 "The following information is available in the `system_stats` object (this "
@@ -655,7 +655,7 @@ msgid "`temperature`: The last read temperature from the sensor."
 msgstr "`температура`: Последната отчетена температура от сензора."
 
 msgid "temperature_fan"
-msgstr ""
+msgstr "temperature_fan"
 
 msgid ""
 "The following information is available in [temperature_fan "
@@ -668,7 +668,7 @@ msgid "`target`: The target temperature for the fan."
 msgstr "`Target`: Целевата температура за вентилатора."
 
 msgid "temperature_sensor"
-msgstr ""
+msgstr "temperature_sensor"
 
 msgid ""
 "The following information is available in [temperature_sensor "
@@ -742,7 +742,7 @@ msgstr ""
 "G-Code."
 
 msgid "virtual_sdcard"
-msgstr ""
+msgstr "virtual_sdcard"
 
 msgid ""
 "The following information is available in the "
@@ -765,7 +765,7 @@ msgid "`file_position`: The current position (in bytes) of an active print."
 msgstr "`file_position`: Текущата позиция (в байтове) на активния печат."
 
 msgid "webhooks"
-msgstr ""
+msgstr "webhooks"
 
 msgid ""
 "The following information is available in the `webhooks` object (this object"
@@ -789,7 +789,7 @@ msgstr ""
 "текущото състояние на Klipper."
 
 msgid "z_tilt"
-msgstr ""
+msgstr "z_tilt"
 
 msgid ""
 "The following information is available in the `z_tilt` object (this object "
@@ -806,7 +806,7 @@ msgstr ""
 "завършил успешно."
 
 msgid "dual_carriage"
-msgstr ""
+msgstr "dual_carriage"
 
 msgid "`file_path`: A full path to the file of currently loaded file."
 msgstr "`file_path`: Пълен път до файла на текущо заредения файл."
@@ -816,11 +816,11 @@ msgstr "`file_size`: Размерът на файла (в байтове) на �
 
 #: docs/Status_Reference.md:block 1 (header)
 msgid "Status reference"
-msgstr ""
+msgstr "Status reference"
 
 #: docs/Status_Reference.md:block 49 (header)
 msgid "motion_report"
-msgstr ""
+msgstr "motion_report"
 
 #: docs/Status_Reference.md:block 50 (paragraph)
 msgid ""
@@ -876,7 +876,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 89 (header)
 msgid "tmc drivers"
-msgstr ""
+msgstr "tmc drivers"
 
 #: docs/Status_Reference.md:block 90 (paragraph)
 msgid ""
@@ -967,7 +967,6 @@ msgstr ""
 "съобщава `None`)."
 
 #: docs/Status_Reference.md:block 49 (header)
-#, fuzzy
 msgid "led"
 msgstr "led"
 
@@ -1008,7 +1007,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 19 (header)
 msgid "exclude_object"
-msgstr ""
+msgstr "exclude_object"
 
 #: docs/Status_Reference.md:block 20 (paragraph)
 msgid ""
@@ -1058,6 +1057,28 @@ msgid ""
 "  }\n"
 "]\n"
 msgstr ""
+"[\n"
+"  {\n"
+"    \"polygon\": [\n"
+"      [ 156.25, 146.2511675 ],\n"
+"      [ 156.25, 153.7488325 ],\n"
+"      [ 163.75, 153.7488325 ],\n"
+"      [ 163.75, 146.2511675 ]\n"
+"    ],\n"
+"    \"name\": \"CYLINDER_2_STL_ID_2_COPY_0\",\n"
+"    \"center\": [ 160, 150 ]\n"
+"  },\n"
+"  {\n"
+"    \"polygon\": [\n"
+"      [ 146.25, 146.2511675 ],\n"
+"      [ 146.25, 153.7488325 ],\n"
+"      [ 153.75, 153.7488325 ],\n"
+"      [ 153.75, 146.2511675 ]\n"
+"    ],\n"
+"    \"name\": \"CYLINDER_2_STL_ID_1_COPY_0\",\n"
+"    \"center\": [ 150, 150 ]\n"
+"  }\n"
+"]\n"
 
 #: docs/Status_Reference.md:block 23 (unordered list)
 msgid ""
@@ -1072,7 +1093,7 @@ msgstr "`current_object`: Името на обекта, който се отпе
 
 #: docs/Status_Reference.md:block 57 (header)
 msgid "manual_probe"
-msgstr ""
+msgstr "manual_probe"
 
 #: docs/Status_Reference.md:block 58 (paragraph)
 msgid "The following information is available in the `manual_probe` object:"
@@ -1110,7 +1131,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 10 (header)
 msgid "bed_screws"
-msgstr ""
+msgstr "bed_screws"
 
 #: docs/Status_Reference.md:block 11 (paragraph)
 msgid ""
@@ -1145,7 +1166,7 @@ msgstr "`accepted_screws`: Броят на приетите винтове."
 
 #: docs/Status_Reference.md:block 27 (header)
 msgid "extruder_stepper"
-msgstr ""
+msgstr "extruder_stepper"
 
 #: docs/Status_Reference.md:block 28 (paragraph)
 msgid ""
@@ -1193,7 +1214,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 124 (header)
 msgid "z_thermal_adjust"
-msgstr ""
+msgstr "z_thermal_adjust"
 
 #: docs/Status_Reference.md:block 125 (paragraph)
 msgid ""
@@ -1237,7 +1258,7 @@ msgstr ""
 
 #: docs/Status_Reference.md:block 93 (header)
 msgid "screws_tilt_adjust"
-msgstr ""
+msgstr "screws_tilt_adjust"
 
 #: docs/Status_Reference.md:block 94 (paragraph)
 msgid ""
@@ -1303,8 +1324,9 @@ msgid "`is_base`: Returns True if this is the base screw."
 msgstr "`is_base`: Връща True, ако това е базовият винт."
 
 #: docs/Status_Reference.md:block 99 (header)
+#, fuzzy
 msgid "stepper_enable"
-msgstr ""
+msgstr "stepper_enable"
 
 #: docs/Status_Reference.md:block 100 (paragraph)
 msgid ""
@@ -1321,8 +1343,9 @@ msgstr ""
 "активиран."
 
 #: docs/Status_Reference.md:block 42 (header)
+#, fuzzy
 msgid "gcode_button"
-msgstr ""
+msgstr "gcode_button"
 
 #: docs/Status_Reference.md:block 43 (paragraph)
 msgid ""
@@ -1393,8 +1416,9 @@ msgstr ""
 "\"PRIMARY\", \"COPY\" и \"MIRROR\"."
 
 #: docs/Status_Reference.md:block 90 (header)
+#, fuzzy
 msgid "pwm_cycle_time"
-msgstr ""
+msgstr "pwm_cycle_time"
 
 #: docs/Status_Reference.md:block 91 (paragraph)
 msgid ""
@@ -1417,6 +1441,7 @@ msgstr ""
 "командата `SET_VELOCITY_LIMIT` (или `M204`) ги промени по време на работа."
 
 #: docs/Status_Reference.md:block 113 (paragraph)
+#, fuzzy
 msgid ""
 "[bme280 "
 "config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-"
@@ -1428,6 +1453,14 @@ msgid ""
 "config_section_name](Config_Reference.md#combined-temperature-sensor) "
 "objects:"
 msgstr ""
+"[bme280 config_section_name](Config_Reference.md#bmp280bme280bme680"
+"-temperature-sensor), [htu21d config_section_name](Config_Reference.md"
+"#htu21d-sensor), [sht3x config_section_name](Config_Reference."
+"md#sht31-sensor), [lm75 config_section_name](Config_Reference.md#lm75"
+"-temperature-sensor), [temperature_host config_section_name](Config_Reference"
+".md#host-temperature-sensor) and [temperature_combined "
+"config_section_name](Config_Reference.md#combined-temperature-sensor) "
+"objects:"
 
 #: docs/Status_Reference.md:block 114 (unordered list)
 msgid ""

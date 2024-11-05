@@ -1,103 +1,109 @@
 # Владислав <vlad.marusenko2000@gmail.com>, 2024.
 # Ruslan Kyba <kybargr@gmail.com>, 2024.
+# Максим Горпиніч <mgorpinic2005@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-07-19 16:04+0000\n"
-"Last-Translator: Ruslan Kyba <kybargr@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/measuring_resonances/uk/>\n"
+"PO-Revision-Date: 2024-11-05 21:00+0000\n"
+"Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
+"measuring_resonances/uk/>\n"
 "Language: uk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.7-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.8.2\n"
 
 msgid "Measuring Resonances"
 msgstr "Вимірювання Резонансів"
 
 msgid "Installation instructions"
-msgstr ""
+msgstr "Інструкція по монтажу"
 
 msgid "Wiring"
-msgstr ""
+msgstr "Прованс"
 
 msgid ""
 "You need to connect ADXL345 to your Raspberry Pi via SPI. Note that the I2C "
 "connection, which is suggested by ADXL345 documentation, has too low "
 "throughput and **will not work**. The recommended connection scheme:"
 msgstr ""
+"Вам потрібно підключити ADXL345 до Raspberry Pi через SPI. Зауважте, що "
+"підключення I2C, що пропонується документацією ADXL345, має занадто низький "
+"пропускний зв'язок і ** не працювати**. Рекомендована схема підключення:"
 
 msgid "ADXL345 pin"
-msgstr ""
+msgstr "ADXL345 шпилька"
 
 msgid "RPi pin"
-msgstr ""
+msgstr "RPI шпильки"
 
 msgid "RPi pin name"
-msgstr ""
+msgstr "Назва RPi"
 
 msgid "3V3 (or VCC)"
-msgstr ""
+msgstr "3V3 (або VCC)"
 
 msgid "01"
-msgstr ""
+msgstr "01 мар"
 
 msgid "3.3v DC power"
-msgstr ""
+msgstr "3.3v DC потужність"
 
 msgid "GND"
-msgstr ""
+msgstr "ГНД"
 
 msgid "06"
-msgstr ""
+msgstr "06 мар"
 
 msgid "Ground"
-msgstr ""
+msgstr "Головна"
 
 msgid "CS"
-msgstr ""
+msgstr "Р"
 
 msgid "24"
-msgstr ""
+msgstr "24"
 
 msgid "GPIO08 (SPI0_CE0_N)"
-msgstr ""
+msgstr "GPIO08 (SPI0_CE0_N)"
 
 msgid "SDO"
-msgstr ""
+msgstr "СДО"
 
 msgid "21"
-msgstr ""
+msgstr "21 мар"
 
 msgid "GPIO09 (SPI0_MISO)"
-msgstr ""
+msgstr "GPIO09 (SPI0_MISO)"
 
 msgid "SDA"
-msgstr ""
+msgstr "СДА"
 
 msgid "19"
-msgstr ""
+msgstr "19 мар"
 
 msgid "GPIO10 (SPI0_MOSI)"
-msgstr ""
+msgstr "GPIO10 (SPI0_MOSI)"
 
 msgid "SCL"
-msgstr ""
+msgstr "СКЛ"
 
 msgid "23"
-msgstr ""
+msgstr "23 мар"
 
 msgid "GPIO11 (SPI0_SCLK)"
-msgstr ""
+msgstr "GPIO11 (SPI0_SCLK)"
 
 msgid "Fritzing wiring diagrams for some of the ADXL345 boards:"
-msgstr ""
+msgstr "Фрицтінг схем електропроводки для деяких плат ADXL345:"
 
 msgid "![ADXL345-Rpi](img/adxl345-fritzing.png)"
-msgstr ""
+msgstr "![ADXL345-Rpi](IMG/adxl345-fritzing.png)"
 
 msgid "Mounting the accelerometer"
-msgstr ""
+msgstr "Монтаж акселерометра"
 
 msgid ""
 "The accelerometer must be attached to the toolhead. One needs to design a "
@@ -107,18 +113,28 @@ msgid ""
 " forth - it should be fine even if Z axis of accelerometer is X axis of the "
 "printer, etc.)."
 msgstr ""
+"Акселерометр повинен бути прикріплений до панелі інструментів. Для "
+"оформлення правильної кріплень, яка підходить для власних принтерів 3D. "
+"Краще вирівняти осі акселерометра з осями принтера (але якщо він робить його "
+"більш зручним, токси можуть бути опуклими - тобто не потрібно вирівняти вісь "
+"X з X і так далі - це повинно бути відмінно навіть якщо вісь акселерометра X "
+"осі принтера і т.д.)."
 
 msgid "An example of mounting ADXL345 on the SmartEffector:"
-msgstr ""
+msgstr "Приклад монтажу ADXL345 на SmartEffector:"
 
 msgid "![ADXL345 on SmartEffector](img/adxl345-mount.jpg)"
-msgstr ""
+msgstr "![ADXL345 на SmartEffector](img/adxl345-mount.jpg)"
 
 msgid ""
 "Note that on a bed slinger printer one must design 2 mounts: one for the "
 "toolhead and one for the bed, and run the measurements twice. See the "
 "corresponding [section](#bed-slinger-printers) for more details."
 msgstr ""
+"Зауважте, що на станковому стропальному принтері необхідно розробити 2 "
+"кріплення: одне для інструментальної головки та інше для станини, а також "
+"виконати вимірювання двічі. Додаткову інформацію див. у відповідному [розділі"
+"](#bed-slinger-printers)."
 
 msgid ""
 "**Attention:** make sure the accelerometer and any screws that hold it in "
@@ -127,36 +143,45 @@ msgid ""
 " from the printer frame. Failing to ensure that can create a ground loop in "
 "the system that may damage the electronics."
 msgstr ""
+"**Вміст:** переконайтеся, що акселерометр і будь-які гвинти, які тримати "
+"його в місці, не доторкнутися до будь-яких металевих деталей принтера. В "
+"основному, кріплення повинні бути розроблені таким чином, щоб забезпечити "
+"електричну ізоляцію акселерометра з коробки принтера. Включаючи для того, "
+"щоб створити заземну петлю в системі, яка може пошкодити електроніку."
 
 msgid "Software installation"
-msgstr ""
+msgstr "Встановлення програмного забезпечення"
 
 msgid ""
 "Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and"
 " enabling SPI under the \"Interfacing options\" menu."
 msgstr ""
+"Переконайтеся, що драйвер Linux SPI працює `sudo raspi-config` і дозволяє "
+"SPI під меню «Інфракційні параметри»."
 
 msgid ""
 "It is advised to start with 1 probe point, in the middle of the print bed, "
 "slightly above it."
-msgstr ""
+msgstr "Повідомляємо про початок з 1 точки зору, в середині принту, трохи вище."
 
 msgid "Restart Klipper via the `RESTART` command."
-msgstr ""
+msgstr "Рештарт Кліппер через команду `RESTART`."
 
 msgid "Measuring the resonances"
-msgstr ""
+msgstr "Вимірювання резонансів"
 
 msgid "Checking the setup"
-msgstr ""
+msgstr "Перевірка налаштування"
 
 msgid "Now you can test a connection."
-msgstr ""
+msgstr "Тепер можна перевірити підключення."
 
 msgid ""
 "For \"non bed-slingers\" (e.g. one accelerometer), in Octoprint, enter "
 "`ACCELEROMETER_QUERY`"
 msgstr ""
+"Для «не постільних речей» (наприклад, один акселерометр), в Octoprint, "
+"введіть `ACCELEROMETER_QUERY`"
 
 msgid ""
 "For \"bed-slingers\" (e.g. more than one accelerometer), enter "
@@ -164,11 +189,17 @@ msgid ""
 "entered, e.g. `CHIP=bed` (see: [bed-slinger](#bed-slinger-printers)) for all"
 " installed accelerometer chips."
 msgstr ""
+"Для \"дягачів\" (наприклад, більше одного акселерометра), введіть `"
+"ACCELEROMETER_QUERY CHIP=<chip>`, де `<chip>` є ім'ям чіпа, як-вхідний, "
+"наприклад, `CHIP=bed` (див.: [bed-slinger](#bed-slinger-printers) для всіх "
+"встановлених акселерометрових чіпів."
 
 msgid ""
 "You should see the current measurements from the accelerometer, including "
 "the free-fall acceleration, e.g."
 msgstr ""
+"Ви повинні бачити поточні вимірювання від акселерометра, включаючи "
+"прискорення вільного падіння, наприклад."
 
 msgid ""
 "Next, try running `MEASURE_AXES_NOISE` in Octoprint, you should get some "
@@ -177,15 +208,23 @@ msgid ""
 "can be indicative of the sensor issues, problems with its power, or too "
 "noisy imbalanced fans on a 3D printer."
 msgstr ""
+"Далі намагатися бігти `MEASURE_AXES_NOISE` в Октопринті, ви повинні отримати "
+"деякі базові номери для шуму акселерометра на осі (зварити десь в діапазоні "
+"~1-100). Занадто високий шум осі (наприклад, 1000 і більше) можна "
+"індексувати проблеми датчика, проблеми зі своєю потужністю, або занадто "
+"незбалансовані вентилятори на 3D принтері."
 
 msgid "Now you can run some real-life tests. Run the following command:"
-msgstr ""
+msgstr "Тепер ви можете запустити деякі реальні тести. Запустіть команду:"
 
 msgid ""
 "Note that it will create vibrations on X axis. It will also disable input "
 "shaping if it was enabled previously, as it is not valid to run the "
 "resonance testing with the input shaper enabled."
 msgstr ""
+"Зверніть увагу, що він створить вібрації на осі X. Він також буде відключити "
+"формулювання введення, якщо він був включений раніше, оскільки він не є "
+"дійсним для запуску резонансного тестування з ввімкненою формою введення."
 
 msgid ""
 "**Attention!** Be sure to observe the printer for the first time, to make "
@@ -195,9 +234,15 @@ msgid ""
 "lower than the default value for `accel_per_hz` parameter in "
 "`[resonance_tester]` section, e.g."
 msgstr ""
+"**Пригода!** Обов'язково дотримуватися принтера вперше, щоб переконатися, що "
+"коливання не стали занадто жорстокими (`M112` команди можна використовувати "
+"для видалення тесту в разі надзвичайної ситуації, сподіваємось, що це не "
+"прийде до цього. Якщо вібрація є занадто сильною, ви можете намагатися "
+"вказати нижче значення за замовчуванням для параметра `accel_per_hz` у "
+"розділі `[resonance_tester]`, наприклад."
 
 msgid "If it works for X axis, run for Y axis as well:"
-msgstr ""
+msgstr "Якщо він працює для осі X, запустіть для осі Y:"
 
 msgid ""
 "This script will generate the charts `/tmp/shaper_calibrate_x.png` and "
@@ -205,23 +250,30 @@ msgid ""
 "the suggested frequencies for each input shaper, as well as which input "
 "shaper is recommended for your setup. For example:"
 msgstr ""
+"Цей скрипт буде генерувати діаграми `/tmp/shaper_calibrate_x.png` і `/tmp/"
+"shaper_calibrate_y.png` з частотними відгуками. Ви також отримаєте "
+"запропоновані частоти для кожного ідентифікатора вводу, а також які вводні "
+"форми рекомендується для налаштування. Наприклад:"
 
 msgid "![Resonances](img/calibrate-y.png)"
-msgstr ""
+msgstr "![Резонанси](img/calibrate-y.png)"
 
 msgid ""
 "The suggested configuration can be added to `[input_shaper]` section of "
 "`printer.cfg`, e.g.:"
-msgstr ""
+msgstr "У розділі `printer.cfg`, наприклад:"
 
 msgid ""
 "or you can choose some other configuration yourself based on the generated "
 "charts: peaks in the power spectral density on the charts correspond to the "
 "resonance frequencies of the printer."
 msgstr ""
+"або ви можете вибрати іншу конфігурацію самостійно на основі створених "
+"графіків: піків в потужності спектральної щільності на діаграмах "
+"відповідають резонансним частотам принтера."
 
 msgid "Bed-slinger printers"
-msgstr ""
+msgstr "Принтери постільної білизни"
 
 msgid ""
 "If your printer is a bed slinger printer, you will need to change the "
@@ -230,14 +282,20 @@ msgid ""
 "toolhead and the resonances of Y axis - to the bed (the usual bed slinger "
 "setup)."
 msgstr ""
+"Якщо ваш принтер являє собою плащовий принтер, потрібно буде змінити місце "
+"розташування акселерометра між вимірюваннями для X і Y осі: вимірювати "
+"резонанси осі X з акселерометром, прикріпленим до панелі інструментів і "
+"резонансами осі Y - до ліжка (звичайне налаштування постільної білизни)."
 
 msgid ""
 "Then the commands `TEST_RESONANCES AXIS=X` and `TEST_RESONANCES AXIS=Y` will"
 " use the correct accelerometer for each axis."
 msgstr ""
+"Потім команди `TEST_RESONANCES AXIS=X` і `TEST_RESONANCES AXIS=Y` "
+"використовувати правильний акселерометр для кожної осі."
 
 msgid "Max smoothing"
-msgstr ""
+msgstr "Макс плавлення"
 
 msgid ""
 "Keep in mind that the input shaper can create some smoothing in parts. "
@@ -249,12 +307,20 @@ msgid ""
 "larger remaining vibrations. In these cases, you can request to limit the "
 "maximum smoothing from the input shaper."
 msgstr ""
+"Враховуйте, що вводний формувач може створити деякий розгладжування деталей. "
+"Автоматичне тюнінг вхідної форми, що виконується `calibrate_shaper.py` "
+"скрипт або `SHAPER_CALIBRATE` команда намагається не згасити плавлення, але "
+"в той же час вони намагаються мінімізувати отримані вібрації. Іноді вони "
+"можуть зробити субоптимальний вибір частоти фігури, або, можливо, ви просто "
+"віддаєте перевагу менше розгладжування деталей за рахунок більшої решти "
+"коливань. У цих випадках ви можете запитувати, щоб обмежити максимальне "
+"згладжування від вхідної форми."
 
 msgid "Let's consider the following results from the automatic tuning:"
-msgstr ""
+msgstr "Давайте розглянемо наступні результати з автоматичного тюнінгу:"
 
 msgid "![Resonances](img/calibrate-x.png)"
-msgstr ""
+msgstr "![Резонанси](img/calibrate-x.png)"
 
 msgid ""
 "Note that the reported `smoothing` values are some abstract projected "
@@ -265,26 +331,43 @@ msgid ""
 "`square_corner_velocity` parameters. Therefore, you should print some test "
 "prints to see how much smoothing exactly a chosen configuration creates."
 msgstr ""
+"Зверніть увагу, що повідомлені значення «згладжування» є деякими "
+"абстрактними прогнозованими значеннями. Ці значення можна використовувати "
+"для порівняння різних конфігурацій: чим вище значення, тим більше "
+"згладжування створить шейпер. Однак ці показники згладжування не "
+"представляють реальної міри згладжування, оскільки фактичне згладжування "
+"залежить від параметрів [`max_accel`](#selecting-max-accel) і "
+"`square_corner_velocity`. Тому вам слід надрукувати кілька пробних "
+"відбитків, щоб побачити, наскільки згладжування створює саме вибрана "
+"конфігурація."
 
 msgid ""
 "In the example above the suggested shaper parameters are not bad, but what "
 "if you want to get less smoothing on the X axis? You can try to limit the "
 "maximum shaper smoothing using the following command:"
 msgstr ""
+"На прикладі вище запропоновані параметри формера не погані, але що якщо ви "
+"хочете отримати менше розгладжування на осі X? Ви можете намагатися обмежити "
+"максимальне вирівнювання фігури за допомогою наступної команди:"
 
 msgid ""
 "which limits the smoothing to 0.2 score. Now you can get the following "
 "result:"
 msgstr ""
+"яка обмежує розгладжування до 0,2 балу. Тепер ви можете отримати наступний "
+"результат:"
 
 msgid "![Resonances](img/calibrate-x-max-smoothing.png)"
-msgstr ""
+msgstr "![Резонанси](img/calibrate-x-max-smoothing.png)"
 
 msgid ""
 "If you compare to the previously suggested parameters, the vibrations are a "
 "bit larger, but the smoothing is significantly smaller than previously, "
 "allowing larger maximum acceleration."
 msgstr ""
+"Якщо порівняти раніше запропоновані параметри, коли коливання трохи більше, "
+"але плавлення значно менше, ніж раніше, що дозволяє збільшити максимальне "
+"прискорення."
 
 msgid ""
 "When deciding which `max_smoothing` parameter to choose, you can use a "
@@ -299,20 +382,36 @@ msgid ""
 " the projected remaining vibrations reported by the script and make sure "
 "they are not too high."
 msgstr ""
+"При вирішенні, які `max_smoothing` параметр вибрати, ви можете "
+"використовувати пробний і-error підхід. Спробуйте кілька різних значень, які "
+"ви отримуєте. Зверніть увагу, що фактичне згладжування, вироблене за "
+"допомогою вхідного формера залежить, в першу чергу, на найнижчій частоті "
+"резонансу принтера: чим вище частота найнижчого резонансу - тим менша "
+"плавка. Таким чином, якщо ви запитуєте сценарій, щоб знайти конфігурацію "
+"вхідної форми з нереально малим розгладжуванням, це буде за рахунок "
+"збільшення кільця за найнижчими частотами резонансу (які, як правило, також "
+"більш помітні в друку). Таким чином, завжди подвійна точка проекту, що "
+"залишилися коливання, які повідомляються скриптом і переконайтеся, що вони "
+"не занадто високі."
 
 msgid ""
 "Note that if you chose a good `max_smoothing` value for both of your axes, "
 "you can store it in the `printer.cfg` as"
 msgstr ""
+"Зверніть увагу, що якщо ви вибрали добре `max_smoothing` значення для обох "
+"ваших осей, ви можете зберігати його в `printer.cfg` як"
 
 msgid ""
 "Then, if you [rerun](#input-shaper-re-calibration) the input shaper auto-"
 "tuning using `SHAPER_CALIBRATE` Klipper command in the future, it will use "
 "the stored `max_smoothing` value as a reference."
 msgstr ""
+"Потім, якщо ви [rerun](#input-shaper-re-calibration) за допомогою вхідної "
+"форми за допомогою `SHAPER_CALIBRATE` Команда Klipper в майбутньому, вона "
+"буде використовувати збережені `max_smoothing` значення як посилання."
 
 msgid "Selecting max_accel"
-msgstr ""
+msgstr "Вибір макс_accel"
 
 msgid ""
 "Since the input shaper can create some smoothing in parts, especially at "
@@ -329,12 +428,28 @@ msgid ""
 "the estimated values for X and Y axes, likely with some conservative safety "
 "margin."
 msgstr ""
+"Оскільки вводний форматор може створити деяке розгладжування деталей, "
+"особливо при високих прискореннях, вам все ще потрібно вибрати `max_accel` "
+"значення, яке не створює занадто багато розгладжування в друкованих "
+"частинах. Скрипт калібрування забезпечує оцінку параметра `max_accel`, який "
+"не повинен створювати занадто багато згладжування. Зауважте, що `max_accel`, "
+"як показано сценарій калібрування, є лише теоретичним, максимальним, при "
+"якому відповідний формар все ще здатний працювати без отримання занадто "
+"багато згладжування. Не можна рекомендувати для встановлення цього "
+"прискорення для друку. Максимальне прискорення вашого принтера дозволяє "
+"залишатися в залежності від механічних властивостей і максимального крутного "
+"моменту використовуваних крокових двигунів. Отже, пропонується встановити "
+"`max_accel` в розділі `[printer]`, яка не перевищує оцінені значення для X і "
+"Y осі, ймовірно, з деякими консервативними запасами безпеки."
 
 msgid ""
 "Alternatively, follow [this](Resonance_Compensation.md#selecting-max_accel) "
 "part of the input shaper tuning guide and print the test model to choose "
 "`max_accel` parameter experimentally."
 msgstr ""
+"Крім того, слідувати [this](Resonance_Compensation.md#selecting-max_accel) "
+"частини інструкції з налаштування вводу та друку тестової моделі для вибору "
+"`max_accel` експериментально."
 
 msgid ""
 "The same notice applies to the input shaper [auto-calibration](#input-"
@@ -342,21 +457,31 @@ msgid ""
 "necessary to choose the right `max_accel` value after the auto-calibration, "
 "and the suggested acceleration limits will not be applied automatically."
 msgstr ""
+"Те ж повідомлення відноситься до вхідного формера [auto-calibration](#input-"
+"shaper-auto-calibration) з `SHAPER_CALIBRATE` команда: вона все ще потрібно "
+"вибрати правильний `max_accel` значення після автоматичного калібрування, і "
+"запропоновані обмеження прискорення не будуть застосовуватися автоматично."
 
 msgid ""
 "If you are doing a shaper re-calibration and the reported smoothing for the "
 "suggested shaper configuration is almost the same as what you got during the"
 " previous calibration, this step can be skipped."
 msgstr ""
+"Якщо ви виконуєте рекалібрацію формувача і повідомляється розгладжування за "
+"запропонованою конфігурацією формера практично таким же, що ви отримали під "
+"час попереднього калібрування, цей крок можна пропустити."
 
 msgid "Input Shaper auto-calibration"
-msgstr ""
+msgstr "Вхідний шейпер автоматичного калібрування"
 
 msgid ""
 "Besides manually choosing the appropriate parameters for the input shaper "
 "feature, it is also possible to run the auto-tuning for the input shaper "
 "directly from Klipper. Run the following command via Octoprint terminal:"
 msgstr ""
+"Крім ручного вибору відповідних параметрів для функції вводу, можна також "
+"запустити автовизначення для вхідної форми безпосередньо від Klipper. "
+"Запустіть команду за допомогою терміналу Octoprint:"
 
 msgid ""
 "This will run the full test for both axes and generate the csv output "
@@ -365,6 +490,11 @@ msgid ""
 " each input shaper, as well as which input shaper is recommended for your "
 "setup, on Octoprint console. For example:"
 msgstr ""
+"Це буде запустити повну тест для обох осей і генерувати вихід csv (`/tmp/"
+"calibration_data_*.csv` за замовчуванням) для відповіді частоти і "
+"запропонованих форм введення. Ви також отримаєте запропоновані частоти для "
+"кожного ідентифікатора вводу, а також який вводний формувач рекомендується "
+"для налаштування, на Octoprint консолі. Наприклад:"
 
 msgid ""
 "If you agree with the suggested parameters, you can execute `SAVE_CONFIG` "
@@ -373,24 +503,36 @@ msgid ""
 "following the considerations in [Selecting max_accel](#selecting-max_accel) "
 "section."
 msgstr ""
+"Якщо ви погоджуєтесь з запропонованими параметрами, ви можете виконувати "
+"`SAVE_CONFIG`, щоб зберегти їх і перезапустити Klipper. Зверніть увагу, що "
+"це не буде оновлено `max_accel` значення в розділі `[printer]`. Ви повинні "
+"оновити її вручну за розглядами в розділі [Виберіть максимальну "
+"кількість_accel](#selecting-max_accel)."
 
 msgid ""
 "If your printer is a bed slinger printer, you can specify which axis to "
 "test, so that you can change the accelerometer mounting point between the "
 "tests (by default the test is performed for both axes):"
 msgstr ""
+"Якщо ваш принтер являє собою плащовий принтер, ви можете вказати яку віссю "
+"для тестування, так що ви можете змінити точку кріплення акселерометра між "
+"тестами (за замовчуванням тест виконується як для обох осей):"
 
 msgid "You can execute `SAVE_CONFIG` twice - after calibrating each axis."
 msgstr ""
+"Ви можете виконувати `SAVE_CONFIG` двічі - після калібрування кожної осі."
 
 msgid ""
 "However, if you connected two accelerometers simultaneously, you simply run "
 "`SHAPER_CALIBRATE` without specifying an axis to calibrate the input shaper "
 "for both axes in one go."
 msgstr ""
+"Тим не менш, якщо ви підключені два акселерометри одночасно, ви просто "
+"запустіть `SHAPER_CALIBRATE`, не вказавши вісь, щоб калібрувати вводну форму "
+"для обох осі в одному ходу."
 
 msgid "Input Shaper re-calibration"
-msgstr ""
+msgstr "Вхідний шейпер re-calibration"
 
 msgid ""
 "`SHAPER_CALIBRATE` command can be also used to re-calibrate the input shaper"
@@ -399,6 +541,11 @@ msgid ""
 "`SHAPER_CALIBRATE` command, or restrict the auto-calibration to a single "
 "axis by supplying `AXIS=` parameter, like"
 msgstr ""
+"`SHAPER_CALIBRATE` команда також може використовуватися для повторного "
+"калібрування вхідного форматора в майбутньому, особливо якщо деякі зміни "
+"принтера, які можуть вплинути на його кінематику. Один може або перебіг "
+"повного калібрування за допомогою `SHAPER_CALIBRATE`, або обмежити "
+"автоматичне калібрування на одну вісь, подаючи `AXIS=` параметр, як і"
 
 msgid ""
 "Also, due to some noise in measurements, it is possible that the tuning "
@@ -407,21 +554,33 @@ msgid ""
 "much. However, it is still advised to double-check the suggested parameters,"
 " and print some test prints before using them to confirm they are good."
 msgstr ""
+"Крім того, через деякий шум при вимірюванні, можливо, що результати тюнінга "
+"будуть трохи відрізнятися від одного калібрування за один до одного. Тим не "
+"менш, не очікується, що шум впливає на якість друку занадто багато. Тим не "
+"менш, він ще радий подвійним вирізом запропонованих параметрів і друкувати "
+"деякі тестові відбитки, перш ніж використовувати їх, щоб підтвердити, що "
+"вони добре."
 
 msgid "Offline processing of the accelerometer data"
-msgstr ""
+msgstr "Офлайн обробки даних акселерометра"
 
 msgid ""
 "It is possible to generate the raw accelerometer data and process it offline"
 " (e.g. on a host machine), for example to find resonances. In order to do "
 "so, run the following commands via Octoprint terminal:"
 msgstr ""
+"Генерувати дані акселерометра і обробляти її автономно (наприклад, на "
+"хост-машину), наприклад, для пошуку резонансів. Для того, щоб зробити це, "
+"запустіть наступні команди через термінал Octoprint:"
 
 msgid ""
 "ignoring any errors for `SET_INPUT_SHAPER` command. For `TEST_RESONANCES` "
 "command, specify the desired test axis. The raw data will be written into "
 "`/tmp` directory on the RPi."
 msgstr ""
+"ігнорування будь-яких помилок `SET_INPUT_SHAPER` команди. Для "
+"`TEST_RESONANCES` команда, вкажіть бажану вісь тесту. Сирі дані будуть "
+"записані в каталог `/tmp` на RPi."
 
 msgid ""
 "The data can be processed later by the following scripts: "
@@ -429,16 +588,23 @@ msgid ""
 "them accept one or several raw csv files as the input depending on the mode."
 " The graph_accelerometer.py script supports several modes of operation:"
 msgstr ""
+"`scripts/graph_accelerometer.py` і `scripts/calibrate_shaper.py`. Обидва "
+"вони приймають один або кілька сирих CSV файлів, як вхід в залежності від "
+"режиму. Граф_accelerometer.py скрипт підтримує кілька режимів роботи:"
 
 msgid ""
 "plotting raw accelerometer data (use `-r` parameter), only 1 input is "
 "supported;"
 msgstr ""
+"побудова необроблених даних акселерометра (використовуйте параметр `-r`), "
+"підтримується лише 1 вхід;"
 
 msgid ""
 "plotting a frequency response (no extra parameters required), if multiple "
 "inputs are specified, the average frequency response is computed;"
 msgstr ""
+"позначення періодичної реакції (не обов’язкові параметри), якщо вказані "
+"кілька вводів, комп’ютерна реакція середньої частоти;"
 
 msgid ""
 "comparison of the frequency response between several inputs (use `-c` "
@@ -446,6 +612,10 @@ msgid ""
 "consider via `-a x`, `-a y` or `-a z` parameter (if none specified, the sum "
 "of vibrations for all axes is used);"
 msgstr ""
+"порівняння частотної реакції між декількома входами (користування `-c` "
+"параметра); можна додатково вказати, яку осі акселерометра, щоб розглянути "
+"через `-a x`, `-a y` або `-a z` (якщо не вказано, сума вібрацій для всіх "
+"осей використовується);"
 
 msgid ""
 "plotting the spectrogram (use `-s` parameter), only 1 input is supported; "
@@ -453,19 +623,27 @@ msgid ""
 "x`, `-a y` or `-a z` parameter (if none specified, the sum of vibrations for"
 " all axes is used)."
 msgstr ""
+"розділяє спектрограму (використання `-s` параметра), підтримується тільки 1 "
+"вхід; можна додатково вказати, яку осі акселерометра, щоб розглянути за "
+"допомогою `-a x`, `-a y` або `-a z` (якщо не вказано, сума вібрацій для всіх "
+"осей використовується)."
 
 msgid ""
 "Note that graph_accelerometer.py script supports only the raw_data\\*.csv "
 "files and not resonances\\*.csv or calibration_data\\*.csv files."
 msgstr ""
+"Зауважте, що граф_accelerometer.py скрипт підтримує лише сиру_data\\*.csv "
+"файли і не резонанси\\*. JavaScript licenses API Веб-сайт Go1.13.8."
 
 msgid "For example,"
-msgstr ""
+msgstr "Наприклад,"
 
 msgid ""
 "will plot the comparison of several `/tmp/raw_data_x_*.csv` files for Z axis"
 " to `/tmp/resonances_x.png` file."
 msgstr ""
+"розділить порівняння кількох `/tmp/raw_data_x_*.csv` файлів для осі Z до `/"
+"tmp/resonances_x.png` файл."
 
 msgid ""
 "The shaper_calibrate.py script accepts 1 or several inputs and can run "
@@ -475,11 +653,18 @@ msgid ""
 "parameter is provided, or the CSV file if `-c output.csv` parameter is "
 "specified."
 msgstr ""
+"Скрипт формаr_calibrate.py приймає 1 або кілька вводів і може запустити "
+"автоматичне налаштування вхідної форми і запропонувати кращі параметри, які "
+"добре працюють для всіх наданих вводів. Друковано запропоновані параметри до "
+"консолі, а також може додатково генерувати діаграму, якщо параметр `-o вихід."
+"png` надається, або файл CSV, якщо `-c вихід.csv`."
 
 msgid ""
 "Providing several inputs to shaper_calibrate.py script can be useful if "
 "running some advanced tuning of the input shapers, for example:"
 msgstr ""
+"Надання декількох входів до форматора_calibrate.py скрипт може бути "
+"корисний, якщо запустити деякі розширені настройки вхідної форми, наприклад:"
 
 msgid ""
 "Running `TEST_RESONANCES AXIS=X OUTPUT=raw_data` (and `Y` axis) for a single"
@@ -488,15 +673,23 @@ msgid ""
 "second time in order to detect axes cross-resonances and attempt to cancel "
 "them with input shapers."
 msgstr ""
+"Запуск `TEST_RESONANCES AXIS=X OUTPUT=raw_data` (і `Y`) для одноосьового "
+"вісь двічі на прибиральному принтері з акселерометром, прикріпленим до "
+"інструментального керівника першого разу, а акселерометр прикріплюється до "
+"ліжка другий раз для виявлення осей крос-резонансів і спроб скасування їх "
+"вводними форматорами."
 
 msgid ""
 "Running `TEST_RESONANCES AXIS=Y OUTPUT=raw_data` twice on a bed slinger with"
 " a glass bed and a magnetic surfaces (which is lighter) to find the input "
 "shaper parameters that work well for any print surface configuration."
 msgstr ""
+"`TEST_ RESONANCES AXIS=Y OUTPUT=raw_data` двічі на вкладній шляпці зі "
+"скляним ліжком та магнітними поверхнями (який легше) знайти параметри вводу, "
+"які добре працюють для будь-якої конфігурації поверхні друку."
 
 msgid "Combining the resonance data from multiple test points."
-msgstr ""
+msgstr "Поєднання резонансних даних з декількох тестових точок."
 
 msgid ""
 "Combining the resonance data from 2 axis (e.g. on a bed slinger printer to "
@@ -504,15 +697,19 @@ msgid ""
 "vibrations of the *bed* in case the nozzle 'catches' a print when moving in "
 "X axis direction)."
 msgstr ""
+"Комбінація резонансних даних з осі 2 (наприклад, на постільному принтері для "
+"налаштовування вводу X-і осі X-резонансних резонансів для скасування "
+"вібрацій *bed* у випадку, якщо насадка 'catches' друку при переході в осі X)."
 
 msgid "~/klippy-env/bin/pip install -v numpy\n"
-msgstr ""
+msgstr "~/klippy-env/bin/pip встановлення -v numpy\n"
 
 msgid "Recv: // adxl345 values (x, y, z): 470.719200, 941.438400, 9728.196800\n"
 msgstr ""
+"Рев: // ADxl345 значення (x, y, z): 470.719200, 941.438400, 9728.196800\n"
 
 msgid "TEST_RESONANCES AXIS=X\n"
-msgstr ""
+msgstr "TEST_RESONANCES AXIS=X\n"
 
 msgid ""
 "[resonance_tester]\n"
@@ -520,14 +717,22 @@ msgid ""
 "accel_per_hz: 50  # default is 75\n"
 "probe_points: ...\n"
 msgstr ""
+"[resonance_tester]\n"
+" accel_chip: adxl345\n"
+" accel_per_hz: 50 # за замовчуванням 75\n"
+" точки_зонду: ...\n"
 
 msgid "TEST_RESONANCES AXIS=Y\n"
-msgstr ""
+msgstr "TEST_RESONANCES AXIS=Y\n"
 
 msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png\n"
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_y_*.csv -o /tmp/shaper_calibrate_y.png\n"
 msgstr ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/"
+"shaper_calibrate_x.png\n"
+" ~/klipper/scripts/calibrate_shaper.py /tmp/resonances_y_*.csv -o /tmp/"
+"shaper_calibrate_y.png\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 34.4 Hz (vibrations = 4.0%, smoothing ~= 0.132)\n"
@@ -542,6 +747,27 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 2800 mm/sec^2\n"
 "Recommended shaper is mzv @ 34.6 Hz\n"
 msgstr ""
+"В'язана формар 'zv' частота = 34.4 Hz (vibrations = 4.0%, розгладжування ~= 0"
+".132)\n"
+"Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel "
+"<= 4500 мм/сек^2\n"
+"В'язана формар 'mzv' частота = 34.6 Hz (vibrations = 0.0%, розгладжування ~= "
+"0.170)\n"
+"Щоб уникнути занадто багато плавлення з 'mzv', запропонував макс_accel <= "
+"3500 мм/сек^2\n"
+"В'язана формар 'е' частота = 41.4 Hz (vibrations = 0.0%, розгладжування ~= 0."
+"188)\n"
+"Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel "
+"<= 3200 мм/сек^2\n"
+"В'язана формар '2hump_ei' частота = 51.8 Hz (vibrations = 0.0%, "
+"розгладжування ~= 0.201)\n"
+"Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував "
+"макс_accel <= 3000 мм/сек^2\n"
+"В'язана формар '3hump_ei' частота = 61.8 Hz (vibrations = 0.0%, "
+"розгладжування ~= 0.215)\n"
+"Щоб уникнути занадто багато розгладжування з '3hump_ei', запропонував "
+"макс_accel <= 2800 мм/сек^2\n"
+"Рекомендований форматор - mzv @ 34.6 ХХз\n"
 
 msgid ""
 "[input_shaper]\n"
@@ -553,6 +779,14 @@ msgid ""
 "[printer]\n"
 "max_accel: 3000  # should not exceed the estimated max_accel for X and Y axes\n"
 msgstr ""
+"[input_shaper]\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"\n"
+"[принтер]\n"
+"max_accel: 3000 # не повинен перевищувати оцінений макс_accel для X і Y осі\n"
 
 msgid ""
 "[adxl345 hotend]\n"
@@ -569,6 +803,19 @@ msgid ""
 "accel_chip_y: adxl345 bed\n"
 "probe_points: ...\n"
 msgstr ""
+"[adxl345 hotend]\n"
+" # Припустимо, що мікросхему `hotend` підключено до RPi\n"
+" cs_pin: rpi: немає\n"
+"\n"
+" [adxl345 ліжко]\n"
+" # Припустимо, що мікросхему `bed` підключено до плати MCU принтера\n"
+" cs_pin: ... # Вибір мікросхеми SPI плати принтера (CS).\n"
+"\n"
+" [resonance_tester]\n"
+" # Припустимо типове налаштування принтера bed sling\n"
+" accel_chip_x: adxl345 hotend\n"
+" accel_chip_y: ліжко adxl345\n"
+" точки_зонду: ...\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 57.8 Hz (vibrations = 20.3%, smoothing ~= 0.053)\n"
@@ -583,11 +830,34 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 1500 mm/sec^2\n"
 "Recommended shaper is 2hump_ei @ 45.2 Hz\n"
 msgstr ""
+"В'язана формар 'zv' частота = 57.8 Hz (vibrations = 20.3%, розгладжування ~= "
+"0.053)\n"
+"Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel "
+"<= 13000 мм/сек^2\n"
+"В'язана формар 'mzv' частота = 34.8 Hz (vibrations = 3.6%, розгладжування ~= "
+"0.168)\n"
+"Щоб уникнути занадто багато плавлення з 'mzv', запропонував макс_accel <= "
+"3600 мм/сек^2\n"
+"В'язана формар 'е' частота = 48.8 Hz (vibrations = 4.9%, розгладжування ~= 0."
+"135)\n"
+"Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel "
+"<= 4400 мм/сек^2\n"
+"В'язана формар '2hump_ei' частота = 45.2 Hz (vibrations = 0.1%, "
+"розгладжування ~= 0.264)\n"
+"Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував "
+"макс_accel <= 2200 мм/sec^2\n"
+"В'язана формар '3hump_ei' частота = 48.0 Hz (vibrations = 0.0%, "
+"розгладжування ~= 0.356)\n"
+"Щоб уникнути занадто багато плавлення з '3hump_ei', запропонував макс_accel "
+"<= 1500 мм/сек^2\n"
+"Рекомендований форматор 2hump_ei @ 45.2 ХХз\n"
 
 msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
 "/tmp/shaper_calibrate_x.png --max_smoothing=0.2\n"
 msgstr ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/"
+"shaper_calibrate_x.png --max_smoothing=0,2\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 55.4 Hz (vibrations = 19.7%, smoothing ~= 0.057)\n"
@@ -602,6 +872,27 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 3900 mm/sec^2\n"
 "Recommended shaper is 3hump_ei @ 72.6 Hz\n"
 msgstr ""
+"В'язана формар 'zv' частота = 55.4 Hz (vibrations = 19.7%, розгладжування ~= "
+"0.057)\n"
+"Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel "
+"<= 12000 мм/сек^2\n"
+"В'язана формар 'mzv' частота = 34.6 Hz (vibrations = 3.6%, розгладжування ~= "
+"0.170)\n"
+"Щоб уникнути занадто багато плавлення з 'mzv', запропонував макс_accel <= "
+"3500 мм/сек^2\n"
+"В'язана формар 'е' частота = 48.2 Hz (vibrations = 4.8%, розгладжування ~= 0."
+"139)\n"
+"Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel "
+"<= 4300 мм/сек^2\n"
+"В'язана формар '2hump_ei' частота = 52.0 Hz (vibrations = 2.7%, "
+"розгладжування ~= 0.200)\n"
+"Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував "
+"макс_accel <= 3000 мм/сек^2\n"
+"В'язана формар '3hump_ei' частота = 72.6 Hz (vibrations = 1,4%, "
+"розгладжування ~= 0.155)\n"
+"Щоб уникнути занадто багато розгладжування з '3hump_ei', запропонував "
+"макс_accel <= 3900 мм/сек^2\n"
+"Рекомендований формар 3hump_ei @ 72.6 ХХз\n"
 
 msgid ""
 "[resonance_tester]\n"
@@ -609,9 +900,13 @@ msgid ""
 "probe_points: ...\n"
 "max_smoothing: 0.25  # an example\n"
 msgstr ""
+"[resonance_tester]\n"
+"accel_chip: ...\n"
+"теги: ...\n"
+"max_smoothing: 0.25 # приклад\n"
 
 msgid "SHAPER_CALIBRATE\n"
-msgstr ""
+msgstr "SHAPER_CALIBRATE\n"
 
 msgid ""
 "Calculating the best input shaper parameters for y axis\n"
@@ -627,26 +922,52 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 2500 mm/sec^2\n"
 "Recommended shaper_type_y = mzv, shaper_freq_y = 36.8 Hz\n"
 msgstr ""
+"Розрахунок кращих параметрів вводу для осі я\n"
+"В'язана формар 'zv' частота = 39.0 Hz (vibrations = 13.2%, розгладжування ~= "
+"0.105)\n"
+"Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel "
+"<= 5900 мм/сек^2\n"
+"В'язана формар 'mzv' частота = 36.8 Hz (vibrations = 1.7%, розгладжування ~= "
+"0.150)\n"
+"Щоб уникнути занадто багато розгладжування з 'mzv', запропонував макс_accel "
+"<= 4000 мм/сек^2\n"
+"В'язана формар 'я' частота = 36.6 Hz (vibrations = 2.2%, розгладжування ~= 0."
+"240)\n"
+"Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel "
+"<= 2500 мм/сек^2\n"
+"В'язана формар '2hump_ei' частота = 48.0 Hz (vibrations = 0.0%, "
+"розгладжування ~= 0.234)\n"
+"Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував "
+"макс_accel <= 2500 мм/сек^2\n"
+"В'язана формар '3hump_ei' частота = 59.0 Hz (vibrations = 0.0%, "
+"розгладжування ~= 0.235)\n"
+"Щоб уникнути занадто багато розгладжування з '3hump_ei', запропонував "
+"макс_accel <= 2500 мм/сек^2\n"
+"Рекомендований форматор_type_y = mzv, формаr_freq_y = 36.8 ХХз\n"
 
 msgid "SHAPER_CALIBRATE AXIS=Y\n"
-msgstr ""
+msgstr "SHAPER_CALIBRATE AXIS=Y\n"
 
 msgid "SHAPER_CALIBRATE AXIS=X\n"
-msgstr ""
+msgstr "SHAPER_CALIBRATE AXIS=X\n"
 
 msgid ""
 "SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0\n"
 "TEST_RESONANCES AXIS=X OUTPUT=raw_data\n"
 msgstr ""
+"СЕТ_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0\n"
+"TEST_RESONANCES AXIS=X OUTPUT=raw_data\n"
 
 msgid ""
 "~/klipper/scripts/graph_accelerometer.py /tmp/raw_data_x_*.csv -o "
 "/tmp/resonances_x.png -c -a z\n"
 msgstr ""
+"javascript licenses api веб-сайт go1.13.8 javascript licenses api веб-сайт "
+"go1.13.8\n"
 
 #: docs/Measuring_Resonances.md:block 80 (header)
 msgid "Testing custom axes"
-msgstr ""
+msgstr "Тестування користувальницьких осей"
 
 #: docs/Measuring_Resonances.md:block 81 (paragraph)
 msgid ""
@@ -654,36 +975,45 @@ msgid ""
 "useful for input shaper calibration, it can be used to study printer "
 "resonances in-depth and to check, for example, belt tension."
 msgstr ""
+"`TEST_RESONANCES` команда підтримує користувацькі осі. В той час як це не "
+"дуже корисно для калібрування вводу, його можна використовувати для вивчення "
+"резонансів принтера глибоко і для перевірки, наприклад, натяг стрічки."
 
 #: docs/Measuring_Resonances.md:block 82 (paragraph)
 msgid "To check the belt tension on CoreXY printers, execute"
-msgstr ""
+msgstr "Для перевірки натягу стрічки на принтерах CoreXY, виконання"
 
 #: docs/Measuring_Resonances.md:block 83 (code)
 msgid ""
 "TEST_RESONANCES AXIS=1,1 OUTPUT=raw_data\n"
 "TEST_RESONANCES AXIS=1,-1 OUTPUT=raw_data\n"
 msgstr ""
+"TEST_RESONANCES AXIS=1,1 OUTPUT=raw_data\n"
+"TEST_RESONANCES AXIS=1,-1 OUT PUT=raw_data\n"
 
 #: docs/Measuring_Resonances.md:block 84 (paragraph)
 msgid "and use `graph_accelerometer.py` to process the generated files, e.g."
-msgstr ""
+msgstr "`graph_accelerometer.py` для обробки створених файлів, наприклад."
 
 #: docs/Measuring_Resonances.md:block 85 (code)
 msgid ""
 "~/klipper/scripts/graph_accelerometer.py -c /tmp/raw_data_axis*.csv -o "
 "/tmp/resonances.png\n"
 msgstr ""
+"~/klipper/scripts/graph_accelero meter.py -c /tmp/raw_data_axis*.csv -o /tmp/"
+"resonances.png\n"
 
 #: docs/Measuring_Resonances.md:block 86 (paragraph)
 msgid "which will generate `/tmp/resonances.png` comparing the resonances."
-msgstr ""
+msgstr "`/tmp/resonances.png` порівняння резонансів."
 
 #: docs/Measuring_Resonances.md:block 87 (paragraph)
 msgid ""
 "For Delta printers with the default tower placement (tower A ~= 210 degrees,"
 " B ~= 330 degrees, and C ~= 90 degrees), execute"
 msgstr ""
+"Для принтерів Delta з розміщенням за замовчуванням (підтримка A ~= 210 "
+"градусів, B ~=330 градусів, а C ~= 90 градусів), виконання"
 
 #: docs/Measuring_Resonances.md:block 88 (code)
 msgid ""
@@ -691,14 +1021,17 @@ msgid ""
 "TEST_RESONANCES AXIS=-0.866025404,-0.5 OUTPUT=raw_data\n"
 "TEST_RESONANCES AXIS=0.866025404,-0.5 OUTPUT=raw_data\n"
 msgstr ""
+"TEST_RESONANCES AXIS=0,1 OUTPUT=raw_data\n"
+"TEST_RESONANCES AXIS=-0.866025404,-0.5 OUTPUT=raw_data\n"
+"TEST_RESONANCES AXIS=0.866025404,-0.5 OUTPUT=raw_data\n"
 
 #: docs/Measuring_Resonances.md:block 89 (paragraph)
 msgid "and then use the same command"
-msgstr ""
+msgstr "а потім використовувати однакову команду"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid "to generate `/tmp/resonances.png` comparing the resonances."
-msgstr ""
+msgstr "щоб створити `/tmp/resonances.png` для порівняння резонансів."
 
 #: docs/Measuring_Resonances.md:block 26 (code)
 msgid ""
@@ -713,6 +1046,16 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[mcu rpi]\n"
+"/tmp/klipper_host_mcu\n"
+"\n"
+"[adxl345]\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: adxl345\n"
+"Теги:\n"
+"100, 100, 20 # приклад\n"
 
 #: docs/Measuring_Resonances.md:block 111 (paragraph)
 msgid ""
@@ -721,30 +1064,34 @@ msgid ""
 "first to start the measurements, and then to stop them and write the output "
 "file. Refer to [G-Codes](G-Codes.md#adxl345) for more details."
 msgstr ""
+"Сирі дані також можуть бути отримані за допомогою запуску команди "
+"`ACCELEROMETER_MEASURE` команди двічі під час нормальної активності принтера "
+"- спочатку почати вимірювання, а потім зупинити їх і написати вихідний файл. "
+"[G-Codes](G-Codes.md#adxl345) Детальніше."
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "MPU-9250 pin"
-msgstr ""
+msgstr "МПУ-9250 шпилька"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "09"
-msgstr ""
+msgstr "09 мар"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "03"
-msgstr ""
+msgstr "03 мар"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "GPIO02 (SDA1)"
-msgstr ""
+msgstr "GPIO02 (SDA1)"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "05"
-msgstr ""
+msgstr "05 мар"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "GPIO03 (SCL1)"
-msgstr ""
+msgstr "GPIO03 (SCL1)"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -752,11 +1099,15 @@ msgid ""
 "additional software dependencies not installed by default. First, run on "
 "your Raspberry Pi the following commands:"
 msgstr ""
+"Зверніть увагу, що резонансні вимірювання та автоматичне калібрування "
+"формувача вимагають додаткових залежностей програмного забезпечення, не "
+"встановлених за замовчуванням. Спочатку запустіть на Raspberry Pi наступні "
+"команди:"
 
 #: docs/Measuring_Resonances.md:block 22 (paragraph)
 msgid ""
 "Next, in order to install NumPy in the Klipper environment, run the command:"
-msgstr ""
+msgstr "Далі, щоб встановити NumPy в середовищі Klipper, запустити команду:"
 
 #: docs/Measuring_Resonances.md:block 24 (paragraph)
 msgid ""
@@ -765,6 +1116,10 @@ msgid ""
 "installation. On some occasions, if the board has too little RAM the "
 "installation may fail and you will need to enable swap."
 msgstr ""
+"Зауважте, що в залежності від продуктивності ЦП може знадобитися *a багато* "
+"часу, до 10-20 хвилин. Будьте хворими і чекайте завершення монтажу. У деяких "
+"випадках, якщо дошка занадто мало оперативної пам'яті, установка може бути "
+"неможливим, і вам буде потрібно включити застібку."
 
 #: docs/Measuring_Resonances.md:block 31 (code)
 msgid ""
@@ -780,16 +1135,29 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[mcu rpi]\n"
+"/tmp/klipper_host_mcu\n"
+"\n"
+"[mpu9250]\n"
+"i2c_mcu: свінгери\n"
+"i2c_bus: i2c.1\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: mpu9250\n"
+"теги:\n"
+"100, 100, 20 # приклад\n"
 
 #: docs/Measuring_Resonances.md:block 8 (paragraph)
 msgid ""
 "***Double-check your wiring before powering up to prevent damaging your "
 "MCU/Raspberry Pi or the accelerometer.***"
 msgstr ""
+"***Подвійний контроль перед живленням, щоб запобігти знешкодженню MCU/"
+"Raspberry Pi або акселерометра.***"
 
 #: docs/Measuring_Resonances.md:block 9 (header)
 msgid "SPI Accelerometers"
-msgstr ""
+msgstr "SPI Акселерометри"
 
 #: docs/Measuring_Resonances.md:block 11 (code)
 msgid ""
@@ -797,72 +1165,77 @@ msgid ""
 "3.3V+MOSI\n"
 "SCLK+CS\n"
 msgstr ""
+"ГНД+МІСО\n"
+"3.3В+МОСИ\n"
+"СКЛК+КС\n"
 
 #: docs/Measuring_Resonances.md:block 12 (header)
 msgid "ADXL345"
-msgstr ""
+msgstr "АДСЛ345"
 
 #: docs/Measuring_Resonances.md:block 18 (header)
 msgid "I2C Accelerometers"
-msgstr ""
+msgstr "I2C Акселерометри"
 
 #: docs/Measuring_Resonances.md:block 20 (code)
 msgid ""
 "3.3V+SDA\n"
 "GND+SCL\n"
 msgstr ""
+"3.3В+СД\n"
+"ГНД+СКЛ\n"
 
 #: docs/Measuring_Resonances.md:block 21 (header)
 msgid "MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500"
-msgstr ""
+msgstr "МПУ-9250/МПУ-9255/МПУ-6515/МПУ-6050/МПУ-6500"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Recommended connection scheme for I2C on the Raspberry Pi:"
-msgstr ""
+msgstr "Рекомендована схема підключення I2C на Малина Пі:"
 
 #: docs/Measuring_Resonances.md:block 24 (table)
 msgid "VCC"
-msgstr ""
+msgstr "ВКЦ"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "RP2040 pin"
-msgstr ""
+msgstr "RP2040 шпилька"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "39"
-msgstr ""
+msgstr "39 хв"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "3v3"
-msgstr ""
+msgstr "3в3"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "38"
-msgstr ""
+msgstr "38 хв"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "GP0 (I2C0 SDA)"
-msgstr ""
+msgstr "GP0 (I2C0 SDA)"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "02"
-msgstr ""
+msgstr "02 мар"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "GP1 (I2C0 SCL)"
-msgstr ""
+msgstr "GP1 (I2C0 SCL)"
 
 #: docs/Measuring_Resonances.md:block 42 (header)
 msgid "Configure ADXL345 With RPi"
-msgstr ""
+msgstr "Налаштування ADXL345 з RPi"
 
 #: docs/Measuring_Resonances.md:block 44 (paragraph)
 msgid "Add the following to the printer.cfg file:"
-msgstr ""
+msgstr "Додати наступний до файлу принтера.cfg:"
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid "Configure MPU-6000/9000 series With RPi"
-msgstr ""
+msgstr "Налаштування серії MPU-6000/9000 з RPi"
 
 #: docs/Measuring_Resonances.md:block 48 (paragraph)
 msgid ""
@@ -870,18 +1243,21 @@ msgid ""
 " (see [Enabling I2C](RPi_microcontroller.md#optional-enabling-i2c) section "
 "for more details). Then, add the following to the printer.cfg:"
 msgstr ""
+"Переконайтеся, що драйвер Linux I2C ввімкнено, а курс baud встановлюється до "
+"400000 (див. [Включення I2C](RPi_microcontroller.md#optional-enabling-i2c) "
+"для більш детальної інформації). Потім додайте наступний до принтера.cfg:"
 
 #: docs/Measuring_Resonances.md:block 13 (header)
 msgid "Direct to Raspberry Pi"
-msgstr ""
+msgstr "Пряма до Малина Пі"
 
 #: docs/Measuring_Resonances.md:block 16 (table)
 msgid "3.3V DC power"
-msgstr ""
+msgstr "3.3V DC потужність"
 
 #: docs/Measuring_Resonances.md:block 19 (header)
 msgid "Using Raspberry Pi Pico"
-msgstr ""
+msgstr "Використання Raspberry Pico"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -891,6 +1267,12 @@ msgid ""
 "of GPIO. The Pico does not have much processing power, so make sure it is "
 "only running the accelerometer and not performing any other duties."
 msgstr ""
+"Ви можете підключити ADXL345 до вашого Raspberry Pico, а потім підключити "
+"Pico до вашого Малина Пі через USB. Це дозволяє легко використовувати "
+"акселерометр на інших пристроях Klipper, оскільки ви можете підключити через "
+"USB замість GPIO. Піко не має багатої потужності обробки, тому "
+"переконайтеся, що це тільки працює акселерометр і не виконує ніяких інших "
+"обов'язків."
 
 #: docs/Measuring_Resonances.md:block 21 (paragraph)
 msgid ""
@@ -898,70 +1280,73 @@ msgid ""
 "3.3V only. Depending on the board's layout, a level shifter may be present, "
 "which makes 5V dangerous for your RPi."
 msgstr ""
+"Для того, щоб уникнути пошкодження RPi переконайтеся, що підключення ADXL345 "
+"до 3.3V тільки. В залежності від макета дошки може бути присутнім перехідник "
+"рівня, що робить 5V небезпечним для вашого RPi."
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "Pico pin"
-msgstr ""
+msgstr "Піко шпильки"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "Pico pin name"
-msgstr ""
+msgstr "Назва поштового штифта Pico"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP1 (SPI0_CSn)"
-msgstr ""
+msgstr "GP1 (SPI 0_CSn)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP0 (SPI0_RX)"
-msgstr ""
+msgstr "GP0 (SPI0_RX)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP3 (SPI0_TX)"
-msgstr ""
+msgstr "GP3 (SPI0_TX)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP2 (SPI0_SCK)"
-msgstr ""
+msgstr "GP2 (SPI0_SCK)"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Wiring diagrams for some of the ADXL345 boards:"
-msgstr ""
+msgstr "Схема підключення для деяких плат ADXL345:"
 
 #: docs/Measuring_Resonances.md:block 24 (paragraph)
 msgid "![ADXL345-Pico](img/adxl345-pico.png)"
-msgstr ""
+msgstr "![ADXL345-Pico](img/adxl 345-pico.png)"
 
 #: docs/Measuring_Resonances.md:block 54 (header)
 msgid "Configure ADXL345 With Pi Pico"
-msgstr ""
+msgstr "Налаштування ADXL345 з Pico"
 
 #: docs/Measuring_Resonances.md:block 55 (header)
 msgid "Flash the Pico Firmware"
-msgstr ""
+msgstr "Прошивка Pico"
 
 #: docs/Measuring_Resonances.md:block 56 (paragraph)
 msgid "On your Raspberry Pi, compile the firmware for the Pico."
-msgstr ""
+msgstr "На Raspberry Pi, компіляція прошивки для Pico."
 
 #: docs/Measuring_Resonances.md:block 57 (code)
 msgid ""
@@ -969,20 +1354,25 @@ msgid ""
 "make clean\n"
 "make menuconfig\n"
 msgstr ""
+"cd ~ / клиппер\n"
+"чистий\n"
+"налаштування меню\n"
 
 #: docs/Measuring_Resonances.md:block 58 (paragraph)
 msgid "![Pico menuconfig](img/klipper_pico_menuconfig.png)"
-msgstr ""
+msgstr "![Pico менюconfig](img/klipper_pico_menuconfig.png)"
 
 #: docs/Measuring_Resonances.md:block 59 (paragraph)
 msgid ""
 "Now, while holding down the `BOOTSEL` button on the Pico, connect the Pico "
 "to the Raspberry Pi via USB. Compile and flash the firmware."
 msgstr ""
+"Тепер, утримуючи `BOOTSEL` кнопка на Піко, підключіть Піко до Малини Пі "
+"через USB. Прошивка і прошивка."
 
 #: docs/Measuring_Resonances.md:block 60 (code)
 msgid "make flash FLASH_DEVICE=first\n"
-msgstr ""
+msgstr "зробити флеш FLASH_DEVICE=перший\n"
 
 #: docs/Measuring_Resonances.md:block 61 (paragraph)
 msgid ""
@@ -990,10 +1380,13 @@ msgid ""
 "example, that's `make flash FLASH_DEVICE=2e8a:0003`. ![Determine flash "
 "device](img/flash_rp2040_FLASH_DEVICE.png)"
 msgstr ""
+"Якщо ви не змогли, ви сказали, що `FLASH_DEVICE` для використання. У цьому "
+"прикладі, що ` змія флеш FLASH_DEVICE=2e8a:0003`. ![Визначення "
+"флеш-пристрою](img/flash_rp2040_FLASH_DEVICE.png)"
 
 #: docs/Measuring_Resonances.md:block 62 (header)
 msgid "Configure the Connection"
-msgstr ""
+msgstr "Налаштування підключення"
 
 #: docs/Measuring_Resonances.md:block 63 (paragraph)
 msgid ""
@@ -1001,6 +1394,9 @@ msgid ""
 "serial device. Find the pico serial device with `ls /dev/serial/by-id/*`. "
 "You can now add an `adxl.cfg` file with the following settings:"
 msgstr ""
+"Піко тепер перезавантажить нову прошивку і повинен показати як серійний "
+"пристрій. Знайдіть послідовний пристрій піко з `ls /dev/serial/by-id/*`. "
+"Тепер можна додати файл `adxl.cfg` з наступними налаштуваннями:"
 
 #: docs/Measuring_Resonances.md:block 64 (code)
 msgid ""
@@ -1023,18 +1419,39 @@ msgid ""
 "[output_pin power_mode] # Improve power stability\n"
 "pin: adxl:gpio23\n"
 msgstr ""
+"[mcu adxl]\n"
+"Нема Змініть <mySerial>, щоб дізнатися вище. Наприклад,\n"
+"# usb-Klipper_rp2040_E661640843545B2E-if00\n"
+"/dev/serial/by-id/usb-Klipper_rp2040_<mySerial>\n"
+"\n"
+"[adxl345]\n"
+"cs_pin: adxl:gpio1\n"
+"spi_bus: spi0a\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: adxl345\n"
+"Теги:\n"
+"# Десь трохи вище середини вашого принту ліжко\n"
+"147,154, 20\n"
+"\n"
+"[вихід_pin power_mode] # Підвищення стабільності потужності\n"
+"шпилька: adxl:gpio23\n"
 
 #: docs/Measuring_Resonances.md:block 65 (paragraph)
 msgid ""
 "If setting up the ADXL345 configuration in a separate file, as shown above, "
 "you'll also want to modify your `printer.cfg` file to include this:"
 msgstr ""
+"Якщо налаштування конфігурації ADXL345 в окремому файлі, як показано вище, "
+"ви також хочете змінити файл `printer.cfg`, щоб включити цей:"
 
 #: docs/Measuring_Resonances.md:block 66 (code)
 msgid ""
 "[include adxl.cfg] # Comment this out when you disconnect the "
 "accelerometer\n"
 msgstr ""
+"[включає adxl.cfg] # Comment this out, коли ви відключите акселерометр\n"
 
 #: docs/Measuring_Resonances.md:block 81 (paragraph)
 msgid ""
@@ -1045,6 +1462,11 @@ msgid ""
 "power, the wiring (that it matches the schematics, no wire is broken or "
 "loose, etc.), and soldering quality."
 msgstr ""
+"Якщо ви отримуєте помилку, як `Invalid adxl345 id (got xx vs e5)`, де `xx` є "
+"інший ID, негайно спробуйте знову. Питання ініціалізації SPI. Якщо ви все ще "
+"отримуєте помилку, це індексує проблему з'єднання з ADXL345 або датчиком "
+"несправності. Подвійне зчепити потужність, електропроводка (тобто вона "
+"відповідає схемі, не зламаний дріт або пухкий і т.д.), і якість пайки."
 
 #: docs/Measuring_Resonances.md:block 100 (paragraph)
 msgid ""
@@ -1053,6 +1475,10 @@ msgid ""
 " for example, for the input shaper [re-calibration](#input-shaper-re-"
 "calibration)."
 msgstr ""
+"Зауважте, що альтернативно ви можете запустити вводну формувальну "
+"автоматичну калібрацію з Klipper [прямо](#input-shaper-auto-calibration), "
+"яка може бути зручною, наприклад, для вхідної форми [re-calibration](#input-"
+"shaper-re-calibration)."
 
 #: docs/Measuring_Resonances.md:block 152 (paragraph)
 msgid ""
@@ -1066,6 +1492,15 @@ msgid ""
 "Always check that all parts of the printer (including the ones that may "
 "normally not move) are securely fixed in place after each auto-tuning."
 msgstr ""
+"**Налаштування!** Не доцільно запустити автоматичну калібрацію фігурки дуже "
+"часто (наприклад, перед кожним друком або кожним днем). Для визначення "
+"резонансних частот автокальібрація створює інтенсивні коливання на кожному з "
+"осей. Зазвичай принтери 3D не призначені для витримки тривалого впливу "
+"коливань біля резонансних частот. Дозування може збільшити знос компонентів "
+"принтера і зменшити термін служби. Також є підвищений ризик виникнення "
+"певних частин, що незламні або стають пухкими. Завжди перевірте, що всі "
+"частини принтера (в тому числі тих, які можуть зазвичай не переходити) "
+"надійно зафіксовані в місці після кожного автовиїзду."
 
 #: docs/Measuring_Resonances.md:block 2 (paragraph)
 msgid ""
@@ -1079,6 +1514,15 @@ msgid ""
 "to the I2C interface of a Raspberry Pi directly, or to an I2C interface of "
 "an MCU board that supports 400kbit/s *fast mode* in Klipper."
 msgstr ""
+"Klipper має вбудовану підтримку ADXL345, MPU-9250 та LIS2DW сумісні "
+"акселерометри, які можуть бути використані для вимірювання резонансних "
+"частот принтера для різних осей, а також автоматичного відключення [вхідних "
+"форм](Resonance_Compensation.md) для компенсації резонансів. Зауважте, що за "
+"допомогою акселерометрів вимагає деяких паяльників і ламків. ADXL345/LIS2DW "
+"може бути підключений до інтерфейсу SPI Raspberry Pi або MCU (потрібно бути "
+"досить швидко). Сім'я МПУ може бути підключена до інтерфейсу I2C Raspberry "
+"Pi безпосередньо, або до інтерфейсу I2C дошки МКУ, яка підтримує 400kbit/s *"
+"fast режим* в Klipper."
 
 #: docs/Measuring_Resonances.md:block 3 (paragraph)
 msgid ""
@@ -1087,6 +1531,9 @@ msgid ""
 "connected to a 5V printer MCU ensure it has a voltage regulator and level "
 "shifters."
 msgstr ""
+"При стисканні акселерометрів слід розуміти, що існують різні зразки "
+"друкованої плати та різні клони їх. Якщо він буде підключений до принтера 5V "
+"MCU, щоб він має регулятор напруги та перемикачі рівня."
 
 #: docs/Measuring_Resonances.md:block 4 (paragraph)
 msgid ""
@@ -1094,6 +1541,9 @@ msgid ""
 "number of boards appear to be hard-configured for I2C by pulling SDO to "
 "GND)."
 msgstr ""
+"Для ADXL345s/LIS2DWs переконайтеся, що дошка підтримує режим SPI (дрібна "
+"кількість дощок з'являються, щоб бути важко налаштованими для I2C шляхом "
+"витягування SDO до GND)."
 
 #: docs/Measuring_Resonances.md:block 5 (paragraph)
 msgid ""
@@ -1101,60 +1551,65 @@ msgid ""
 "of board designs and clones with different I2C pull-up resistors which will "
 "need supplementing."
 msgstr ""
+"Для MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500 є також різноманітними "
+"платними конструкціями та клонами з різними резисторами I2C, які потребують "
+"доповнення."
 
 #: docs/Measuring_Resonances.md:block 6 (header)
 msgid "MCUs with Klipper I2C *fast-mode* Support"
-msgstr ""
+msgstr "MCU з Klipper I2C *fast-mode* Підтримка"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU Family"
-msgstr ""
+msgstr "МКУ Сім'я"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) Tested"
-msgstr ""
+msgstr "MCU(s) Тестовані"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) with Support"
-msgstr ""
+msgstr "MCU(s) з підтримкою"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "Raspberry Pi"
-msgstr "Raspberry Pi"
+msgstr "Малина Пі"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "3B+, Pico"
-msgstr ""
+msgstr "3B+, Піко"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "3A, 3A+, 3B, 4"
-msgstr ""
+msgstr "3А, 3А+, 3Б, 4"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AVR ATmega"
-msgstr ""
+msgstr "АВР АМПА"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "ATmega328p"
-msgstr ""
+msgstr "A Tmega328p"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid ""
 "ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, "
 "ATmega1284, ATmega2560"
 msgstr ""
+"ATmega 32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, "
+"ATmega1284, ATmega2560"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AVR AT90"
-msgstr ""
+msgstr "ВІДЕОРЕЄСТРАТОР AT90"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AT90usb646, AT90usb1286"
-msgstr ""
+msgstr "AT90 usb646, AT90usb1286"
 
 #: docs/Measuring_Resonances.md:block 10 (paragraph)
 msgid ""
@@ -1162,28 +1617,31 @@ msgid ""
 "recommended for signal integrity over a long distance. If you still "
 "experience signal integrity issues (SPI/I2C errors):"
 msgstr ""
+"Кабель ethernet з щитоподібними закрученими парами (кат5e або краще) "
+"рекомендується для цілісності сигналу на віддаленій відстані. Якщо ви все ще "
+"відчуваєте питання про цілісність сигналів (SPI/I2C):"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Double check the wiring with a digital multimeter for:"
-msgstr ""
+msgstr "Подвійний контроль проводки з цифровим мультиметром для:"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Correct connections when turned off (continuity)"
-msgstr ""
+msgstr "Правильні з'єднання при вимкненні (константильність)"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Correct power and ground voltages"
-msgstr ""
+msgstr "Правильна потужність і напруги"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "I2C only:"
-msgstr ""
+msgstr "I2C тільки:"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
 "Check the SCL and SDA lines' resistances to 3.3V are in the range of 900 "
 "ohms to 1.8K"
-msgstr ""
+msgstr "Перевірити стійкість SCL і SDA ліній до 3.3V в діапазоні 900 ом до 1.8K"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
@@ -1191,22 +1649,27 @@ msgid ""
 "and user manual UM10204](https://www.pololu.com/file/0J435/UM10204.pdf) for "
 "*fast-mode*"
 msgstr ""
+"Для отримання повної технічної інформації [chapter 7 специфікації та "
+"посібник користувача UM10204](https://www.pololu.com/file/0J435/UM10204.pdf) "
+"для *fast-mode*"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Shorten the cable"
-msgstr ""
+msgstr "Скорочення кабелю"
 
 #: docs/Measuring_Resonances.md:block 12 (paragraph)
 msgid "Connect ethernet cable shielding only to the MCU board/Pi ground."
-msgstr ""
+msgstr "Підключення електромережі тільки до плати МКУ/Пі мелені."
 
 #: docs/Measuring_Resonances.md:block 15 (paragraph)
 msgid "Suggested twisted pair order for three twisted pairs:"
-msgstr ""
+msgstr "Найяскравіший закручений парний порядок для трьох закручених пар:"
 
 #: docs/Measuring_Resonances.md:block 17 (paragraph)
 msgid "Note that unlike a cable shield, GND must be connected at both ends."
 msgstr ""
+"Зверніть увагу, що на відміну від кабельного щита, GND повинен бути "
+"підключений як на кінцях."
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -1214,10 +1677,13 @@ msgid ""
 "wiring and configuration will vary according to your specific board and "
 "available pins.**"
 msgstr ""
+"**Примітка: Багато MCUs буде працювати з ADXL345 в режимі SPI (наприклад, "
+"Pico), електропроводка і конфігурація будуть відрізнятися відповідно до "
+"вашої конкретної дошки і доступні шпильки **"
 
 #: docs/Measuring_Resonances.md:block 32 (paragraph)
 msgid "Suggested twisted pair order for three pairs (preferred):"
-msgstr ""
+msgstr "Найяскравіший закручений парний порядок для трьох пар (попередньо):"
 
 #: docs/Measuring_Resonances.md:block 33 (code)
 msgid ""
@@ -1225,16 +1691,21 @@ msgid ""
 "SDA+GND\n"
 "SCL+GND\n"
 msgstr ""
+"3.3В+ГНК\n"
+"СДА+GND\n"
+"СКЛ+GND\n"
 
 #: docs/Measuring_Resonances.md:block 34 (paragraph)
 msgid "or for two pairs:"
-msgstr ""
+msgstr "або для двох пар:"
 
 #: docs/Measuring_Resonances.md:block 36 (paragraph)
 msgid ""
 "Note that unlike a cable shield, any GND(s) should be connected at both "
 "ends."
 msgstr ""
+"Зауважте, що на відміну від кабельного щита, будь-які GND(s) повинні бути "
+"підключені до обох кінців."
 
 #: docs/Measuring_Resonances.md:block 38 (paragraph)
 msgid ""
@@ -1243,70 +1714,77 @@ msgid ""
 "include pull-ups, but some are too large at 10K and must be changed or "
 "supplemented by smaller parallel resistors."
 msgstr ""
+"Ці акселерометри були протестовані для роботи над I2C на RPi, RP2040 (Pico) "
+"та AVR на 400kbit/s (*fast mode*). Деякі модулі акселерометра МПУ включають "
+"витяги, але деякі занадто великі на 10K і повинні бути змінені або доповнені "
+"меншими паралельними резисторами."
 
 #: docs/Measuring_Resonances.md:block 41 (paragraph)
 msgid "The RPi has buit-in 1.8K pull-ups on both SCL and SDA."
-msgstr ""
+msgstr "RPi має buit-in 1.8K тяги на обох SCL і SDA."
 
 #: docs/Measuring_Resonances.md:block 42 (paragraph)
 msgid "![MPU-9250 connected to Pi](img/mpu9250-PI-fritzing.png)"
-msgstr ""
+msgstr "![MPU-9250 підключений до Pi](img/mpu9250-PI-fritzing.png)"
 
 #: docs/Measuring_Resonances.md:block 43 (paragraph)
 msgid "Recommended connection scheme for I2C (i2c0a) on the RP2040:"
-msgstr ""
+msgstr "Рекомендована схема підключення до I2C (i2c0a) на RP2040:"
 
 #: docs/Measuring_Resonances.md:block 44 (table)
 msgid "RP2040 pin name"
-msgstr ""
+msgstr "RP2040 Назва штифта"
 
 #: docs/Measuring_Resonances.md:block 45 (paragraph)
 msgid "The Pico does not include any built-in I2C pull-up resistors."
-msgstr ""
+msgstr "Піко не включає в себе будь-які вбудовані резистори I2C."
 
 #: docs/Measuring_Resonances.md:block 46 (paragraph)
 msgid "![MPU-9250 connected to Pico](img/mpu9250-PICO-fritzing.png)"
-msgstr ""
+msgstr "![MPU-9250 підключений до Pico](img/mpu9250-PICO-fritzing.png)"
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid ""
 "Recommended connection scheme for I2C(TWI) on the AVR ATmega328P Arduino "
 "Nano:"
 msgstr ""
+"Рекомендована схема підключення до I2C(TWI) на AVR ATmega328P Ардуїно Nano:"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Atmega328P TQFP32 pin"
-msgstr ""
+msgstr "Atmega328P TQFP32 шпилька"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Atmega328P pin name"
-msgstr ""
+msgstr "Атмега328П контактна назва"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Arduino Nano pin"
-msgstr ""
+msgstr "Arduino Нано шпилька"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "27"
-msgstr ""
+msgstr "27"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "28"
-msgstr ""
+msgstr "28"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "A5"
-msgstr ""
+msgstr "A5"
 
 #: docs/Measuring_Resonances.md:block 49 (paragraph)
 msgid ""
 "The Arduino Nano does not include any built-in pull-up resistors nor a 3.3V "
 "power pin."
 msgstr ""
+"Arduino Nano не включає в себе будь-які вбудовані резистори витяжки, ані "
+"3.3V силовий штифт."
 
 #: docs/Measuring_Resonances.md:block 63 (paragraph)
 msgid ""
@@ -1315,10 +1793,13 @@ msgid ""
 "Raspberry Pi. This will configure a second Klipper instance that runs on "
 "your Pi."
 msgstr ""
+"По-перше, перевірте та дотримуйтесь інструкцій в [RPi Microcontroller "
+"документ](RPi_microcontroller.md) для налаштування \"linux mcu\" на "
+"Raspberry Pi. Це налаштує другий екземпляр кліппера, який працює на Пі."
 
 #: docs/Measuring_Resonances.md:block 82 (header)
 msgid "Configure LIS2DW series"
-msgstr ""
+msgstr "Налаштування серії LIS2DW"
 
 #: docs/Measuring_Resonances.md:block 83 (code)
 msgid ""
@@ -1338,16 +1819,33 @@ msgid ""
 "    # Somewhere slightly above the middle of your print bed\n"
 "    147,154, 20\n"
 msgstr ""
+"[mcu lis]\n"
+"Нема Змініть <mySerial>, щоб дізнатися вище. Наприклад,\n"
+"# usb-Klipper_rp2040_E661640843545B2E-if00\n"
+"/dev/serial/by-id/usb-Klipper_rp2040_<mySerial>\n"
+"\n"
+"[lis2dw]\n"
+"cs_pin: lis:gpio1\n"
+"spi_bus: spi0a\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: lis2dw\n"
+"Теги:\n"
+"# Десь трохи вище середини вашого принту ліжко\n"
+"147,154, 20\n"
 
 #: docs/Measuring_Resonances.md:block 87 (header)
 msgid "Configure MPU-9520 Compatibles With Pico"
-msgstr ""
+msgstr "Налаштування MPU-9520 Сумісний з Pico"
 
 #: docs/Measuring_Resonances.md:block 88 (paragraph)
 msgid ""
 "Pico I2C is set to 400000 on default. Simply add the following to the "
 "printer.cfg:"
 msgstr ""
+"Pico I2C встановлюється до 400000 за замовчуванням. Просто додайте наступний "
+"до принтера.cfg:"
 
 #: docs/Measuring_Resonances.md:block 89 (code)
 msgid ""
@@ -1366,16 +1864,32 @@ msgid ""
 "[static_digital_output pico_3V3pwm] # Improve power stability\n"
 "pins: pico:gpio23\n"
 msgstr ""
+"[mcu pico]\n"
+"послідовність: /dev/serial/by-id/<your Серійний ID Pico>\n"
+"\n"
+"[mpu9250]\n"
+"i2c_mcu: pico\n"
+"i2c_bus: i2c0a\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: mpu9250\n"
+"Теги:\n"
+"100, 100, 20 # приклад\n"
+"\n"
+"[static_digital_вихід pico_3V3pwm] # Підвищення стабільності потужності\n"
+"шпильки: pico:gpio23\n"
 
 #: docs/Measuring_Resonances.md:block 90 (header)
 msgid "Configure MPU-9520 Compatibles with AVR"
-msgstr ""
+msgstr "Налаштування MPU-9520 Сумісний з AVR"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid ""
 "AVR I2C will be set to 400000 by the mpu9250 option. Simply add the "
 "following to the printer.cfg:"
 msgstr ""
+"AVR I2C буде встановлена до 400000 по параметру mpu9250. Просто додайте "
+"наступний до принтера.cfg:"
 
 #: docs/Measuring_Resonances.md:block 92 (code)
 msgid ""
@@ -1390,12 +1904,25 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[mcu нано]\n"
+"послідовність: /dev/serial/by-id/<your нано послідовний ідентифікатор>\n"
+"\n"
+"[mpu9250]\n"
+"i2c_mcu: нано\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: mpu9250\n"
+"Теги:\n"
+"100, 100, 20 # приклад\n"
 
 #: docs/Measuring_Resonances.md:block 101 (paragraph)
 msgid ""
 "**If you are using a MPU-9250 compatible accelerometer and it shows up as "
 "`mpu-unknown`, use with caution! They are probably refurbished chips!**"
 msgstr ""
+"**Якщо ви використовуєте сумісний акселерометр MPU-9250 і він показує як "
+"`mpu-unknown```, скористайтеся обережністю! Вони, ймовірно, відремонтовані "
+"чіпси! **"
 
 #: docs/Measuring_Resonances.md:block 122 (paragraph)
 msgid ""
@@ -1404,6 +1931,10 @@ msgid ""
 "MCU board), or to two different physical SPI interfaces on the same board "
 "(rarely available). Then they can be configured in the following manner:"
 msgstr ""
+"Тим не менш, ви також можете підключити два акселерометри одночасно, хоча "
+"ADXL345 повинні бути підключені до різних дощок (програш, до плати RPi і "
+"принтера MCU), або до двох різних фізичних інтерфейсів SPI на одній дошці ("
+"тільки доступні). Далі вони можуть бути налаштовані таким чином:"
 
 #: docs/Measuring_Resonances.md:block 124 (paragraph)
 msgid ""
@@ -1412,6 +1943,9 @@ msgid ""
 "pulled-down to 0V (address 104) and the other its AD0 pin pulled-up to 3.3V "
 "(address 105):"
 msgstr ""
+"Два MPU можуть поділитися одним автобусом I2C, але вони **cannot** "
+"вимірювати одночасно як 400kbit/s I2C автобус не дуже швидко. Потрібно мати "
+"шпильку AD0 до 0V (адреса 104) і інші її шпильки AD0 до 3.3V (адреса 105):"
 
 #: docs/Measuring_Resonances.md:block 125 (code)
 msgid ""
@@ -1431,18 +1965,38 @@ msgid ""
 "accel_chip_y: mpu9250 bed\n"
 "probe_points: ...\n"
 msgstr ""
+"[mpu9250 hotend]\n"
+" i2c_mcu: rpi\n"
+" i2c_bus: i2c.1\n"
+" i2c_address: 104 # Цей MPU має низький рівень контакту AD0\n"
+"\n"
+" [ліжко mpu9250]\n"
+" i2c_mcu: rpi\n"
+" i2c_bus: i2c.1\n"
+" i2c_address: 105 # Цей MPU має високий висновок AD0\n"
+"\n"
+" [resonance_tester]\n"
+" # Припустимо типове налаштування принтера bed sling\n"
+" accel_chip_x: mpu9250 hotend\n"
+" accel_chip_y: ліжко mpu9250\n"
+" точки_зонду: ...\n"
 
 #: docs/Measuring_Resonances.md:block 126 (paragraph)
 msgid ""
 "[Test with each MPU individually before connecting both to the bus for easy "
 "debugging.]"
 msgstr ""
+"[Тест з кожним МПУ в індивідуальному порядку перед підключенням до автобуса "
+"для легкого знеболювання.]"
 
 #: docs/Measuring_Resonances.md:block 58 (code)
 msgid ""
 "sudo apt update\n"
 "sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev\n"
 msgstr ""
+"sudo apt оновлення\n"
+"sudo apt встановити python3-numpy python3-matplotlib libatlas-base-dev "
+"libopenblas-dev\n"
 
 #: docs/Measuring_Resonances.md:block 148 (paragraph)
 msgid ""
@@ -1453,12 +2007,20 @@ msgid ""
 "you should inform the script about it by passing "
 "`--square_corner_velocity=...` parameter, e.g."
 msgstr ""
+"Враховуйте, що максимальне прискорення без зайвих зусиль залежить від "
+"`square_corner_velocity`. Загальні рекомендації не можна змінити його з його "
+"значення за замовчуванням 5.0, і це значення, яке використовується за "
+"замовчуванням `calibrate_shaper.py` скрипт. Якщо ви змінили його, ви повинні "
+"повідомити скрипт про це, пройшовши `-square_corner_velocity=...` параметр, "
+"наприклад."
 
 #: docs/Measuring_Resonances.md:block 149 (code)
 msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
 "/tmp/shaper_calibrate_x.png --square_corner_velocity=10.0\n"
 msgstr ""
+"~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/"
+"shaper_calib rate_x.png --square_corner_velocity=10.0\n"
 
 #: docs/Measuring_Resonances.md:block 150 (paragraph)
 msgid ""
@@ -1467,6 +2029,10 @@ msgid ""
 "`square_corner_velocity` parameter into account, and there is no need to "
 "specify it explicitly."
 msgstr ""
+"таким чином, можна правильно розрахувати максимальні рекомендації "
+"прискорення. Зауважте, що `SHAPER_CALIBRATE` команда вже приймає "
+"налаштовувані `square_corner_velocity` параметр враховується, і немає "
+"необхідності уточнювати його явно."
 
 #: docs/Measuring_Resonances.md:block 111 (paragraph)
 msgid ""
@@ -1478,6 +2044,14 @@ msgid ""
 "can be useful, for example, if resonance tests were done at multiple test "
 "points. Delete the extra CSV files if you do not desire to average them."
 msgstr ""
+"Це генерує файли 2 CSV (`/tmp/resonances_x_*.csv` та `/tmp/resonances_y_*."
+"csv`). Ці файли можна обробити за допомогою стаціонарного сценарію на "
+"Raspberry Pi. Цей скрипт призначений для запуску з одним файлом CSV для "
+"кожної осі вимірюється, хоча він може використовуватися з декількома файлами "
+"CSV, якщо ви хочете в середньому результати. Результати дослідження можуть "
+"бути корисними, наприклад, якщо резонансні тести були зроблені на декількох "
+"тестових точках. Видалення додаткових файлів CSV, якщо ви не бажаєте в "
+"середньому їх."
 
 #~ msgid ""
 #~ "This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and "

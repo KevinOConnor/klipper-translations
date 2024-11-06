@@ -1,17 +1,17 @@
-# Multiple Micro-controller Homing and Probing
+# Кілька мікроконтролерів Хімінг і Пробінг
 
-Klipper supports a mechanism for homing with an endstop attached to one micro-controller while its stepper motors are on a different micro-controller. This support is referred to as "multi-mcu homing". This feature is also used when a Z probe is on a different micro-controller than the Z stepper motors.
+Кліппер підтримує механізм для гоління з торцевою поверхнею, прикріпленою до одного мікроконтролера, при цьому його крокові двигуни знаходяться на різних мікроконтролерах. Ця підтримка називається "multi-mcu homing". Ця функція також використовується при зонді Z на різних мікроконтролерах, ніж крокові двигуни Z.
 
-This feature can be useful to simplify wiring, as it may be more convenient to attach an endstop or probe to a closer micro-controller. However, using this feature may result in "overshoot" of the stepper motors during homing and probing operations.
+Ця функція може бути корисною для спрощення проводки, оскільки вона може бути зручніше прикріпити торцеву поверхню або зону до ближнього мікроконтролера. Однак, за допомогою цієї функції може призвести до «повершення» крокових двигунів при операціях з дозування та пробування.
 
-The overshoot occurs due to possible message transmission delays between the micro-controller monitoring the endstop and the micro-controllers moving the stepper motors. The Klipper code is designed to limit this delay to no more than 25ms. (When multi-mcu homing is activated, the micro-controllers send periodic status messages and check that corresponding status messages are received within 25ms.)
+Затримки передачі повідомлень відбувається за рахунок можливого затримки передачі повідомлень між мікроконтролерами, що контролюють торцеву поверхню та мікроконтролерами, що переміщують крокові двигуни. Код затискачів призначений для обмеження цієї затримки не більше 25ms. (При активації багато-mcu, мікроконтролери надсилають періодичні повідомлення про стан та перевіряють, що відповідні повідомлення про стан надходять в межах 25ms.)
 
-So, for example, if homing at 10mm/s then it is possible for an overshoot of up to 0.250mm (10mm/s * .025s == 0.250mm). Care should be taken when configuring multi-mcu homing to account for this type of overshoot. Using slower homing or probing speeds can reduce the overshoot.
+Так, наприклад, якщо панування на 10 мм / с, то це можливо для перевизначення до 0,250 мм (10мм / с * .025s == 0.250мм). Догляд за ним слід приймати при налаштуванні багатоканального стрибка для облікового запису для цього типу. За допомогою повільних стрибків або пробокових швидкостей можна зменшити перевстановлення.
 
-Stepper motor overshoot should not adversely impact the precision of the homing and probing procedure. The Klipper code will detect the overshoot and account for it in its calculations. However, it is important that the hardware design is capable of handling overshoot without causing damage to the machine.
+Покроковий двигун з усуненням несправностей не повинен негативно впливати на точність процедури гоління і пробування. Код Кліппера виявить перевизначення та обліковий запис для нього в його розрахунку. Однак, важливо, щоб апаратний дизайн здатний обробляти несправність без пошкодження машини.
 
-In order to use this "multi-mcu homing" capability the hardware must have predictably low latency between the host computer and all of the micro-controllers. Typically the round-trip time must be consistently less than 10ms. High latency (even for short periods) is likely to result in homing failures.
+Для того, щоб використовувати цей "мульти-mcu homing" можливість апаратного забезпечення необхідно мати передбачувану низьку цілісність між комп'ютером і усіма мікроконтролерами. Зазвичай час круглої смуги повинен бути послідовно менше 10 м. Висока надійність (навіть на короткі періоди), швидше за все, призведе до збоїв хмелю.
 
-Should high latency result in a failure (or if some other communication issue is detected) then Klipper will raise a "Communication timeout during homing" error.
+Якщо ви виявите інші питання зв'язку, то Кліппер підніме "час спілкування під час хмінгу".
 
-Note that an axis with multiple steppers (eg, `stepper_z` and `stepper_z1`) need to be on the same micro-controller in order to use multi-mcu homing. For example, if an endstop is on a separate micro-controller from `stepper_z` then `stepper_z1` must be on the same micro-controller as `stepper_z`.
+Зверніть увагу, що вісь з декількома кроками (наприклад, `stepper_z` і `stepper_z1`) повинні бути на одному мікроконтролері, щоб використовувати багато-mcu homing. Наприклад, якщо ендостоп знаходиться на окремому мікроконтролері від `stepper_z` потім `stepper_z1` необхідно на одному мікроконтролері, як `stepper_z`.

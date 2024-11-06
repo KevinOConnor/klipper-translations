@@ -1,128 +1,128 @@
-# Manual leveling
+# Керівництво вирівнювання
 
-This document describes tools for calibrating a Z endstop and for performing adjustments to bed leveling screws.
+Цей документ описує інструменти для калібрування торцевої частини Z і для виконання настройок до вирівнюючих гвинтів.
 
-## Calibrating a Z endstop
+## Калібрування Z endstop
 
-An accurate Z endstop position is critical to obtaining high quality prints.
+Точна позиція Z Endstop є критичною для отримання високоякісних друку.
 
-Note, though, the accuracy of the Z endstop switch itself can be a limiting factor. If one is using Trinamic stepper motor drivers then consider enabling [endstop phase](Endstop_Phase.md) detection to improve the accuracy of the switch.
+Зауважте, що точність перемикача Z може бути обмеженим фактором. Якщо один використовує драйвери двигуна Trinamic, то врахуйте, що [endstop Phase](Endstop_Phase.md) для поліпшення точності перемикача.
 
-To perform a Z endstop calibration, home the printer, command the head to move to a Z position that is at least five millimeters above the bed (if it is not already), command the head to move to an XY position near the center of the bed, then navigate to the OctoPrint terminal tab and run:
-
-```
-Z_ENDSTOP_CALIBRATE
-```
-
-Then follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
+Щоб виконати калібрування Z, в домашніх умовах принтер, командуйте голову, щоб перейти на позицію Z, яка не менше п'яти міліметрів над ліжком (якщо це вже не так), зробіть голову, щоб перейти на позицію XY недалеко від центру ліжка, після чого навігувати на вкладку терміналу OctoPrint і запустити:
 
 ```
-SAVE_CONFIG
+З_ENDSTOP_CALIBRATE
 ```
 
-It's preferable to use a Z endstop switch on the opposite end of the Z axis from the bed. (Homing away from the bed is more robust as then it is generally always safe to home the Z.) However, if one must home towards the bed it is recommended to adjust the endstop so that it triggers a small distance (eg, .5mm) above the bed. Almost all endstop switches can safely be depressed a small distance beyond their trigger point. When this is done, one should find that the `Z_ENDSTOP_CALIBRATE` command reports a small positive value (eg, .5mm) for the Z position_endstop. Triggering the endstop while it is still some distance from the bed reduces the risk of inadvertent bed crashes.
+Далі слідуйте за кроками, описаними на [«паперовий тест"](Bed_Level.md#the-paper-test) для визначення фактичної відстані між насадкою і ліжком на даній локації. Після завершення цих кроків можна `ACCEPT` позицію та зберегти результати на файл config з:
 
-Some printers have the ability to manually adjust the location of the physical endstop switch. However, it's recommended to perform Z endstop positioning in software with Klipper - once the physical location of the endstop is in a convenient location, one can make any further adjustments by running Z_ENDSTOP_CALIBRATE or by manually updating the Z position_endstop in the configuration file.
+```
+ПРОКСИМУС
+```
 
-## Adjusting bed leveling screws
+Для використання перемикача Z на зворотному кінці осі Z з ліжка. (Відправлення від ліжка є більш надійним, оскільки він зазвичай завжди безпечний для дому Z.) Однак, якщо необхідно будинок до ліжка, рекомендується відрегулювати стільницю так, щоб він запускає невелику відстань (наприклад, .5мм) над ліжком. Практично всі кінцеві вимикачі можуть бути сміливо пригнічені невеликою відстанньою відстанцією. Коли це зроблено, слід знайти, що `Z_ENDSTOP_CALIBRATE` команда звітує про невелику позитивну цінність (наприклад, .5mm) за позицію Z_endstop. Тригерінг торцевого стоку, поки він ще не відрізняється від ліжка знижує ризик виникнення неперевершених постільних речей.
 
-The secret to getting good bed leveling with bed leveling screws is to utilize the printer's high precision motion system during the bed leveling process itself. This is done by commanding the nozzle to a position near each bed screw and then adjusting that screw until the bed is a set distance from the nozzle. Klipper has a tool to assist with this. In order to use the tool it is necessary to specify each screw XY location.
+Деякі принтери мають можливість вручну регулювати розташування фізичного перемикача. Тим не менш, рекомендується виконати позиціювання Z Endstop в програмному забезпеченні з Klipper - один раз на фізичну місцезнаходження endstop знаходиться в зручному місці, можна зробити будь-які додаткові налаштування, використовуючи Z_ENDSTOP_CALIBRATE або вручну оновити позицію Z_endstop у файлі конфігурації.
 
-This is done by creating a `[bed_screws]` config section. For example, it might look something similar to:
+## Регулювання вирівнювальних шурупів
+
+Секрет отримання гарного вирівнювання ліжко за допомогою саморізів постільних речей полягає в тому, щоб використовувати високу точність руху принтера під час процесу вирівнювання ліжко. Це робиться за допомогою насадки до положення біля кожного шнека ліжка, а потім регулюючи, що гвинт до моменту встановлення відстані від насадки. Klipper має інструмент, щоб допомогти з цим. Для того щоб скористатися інструментом необхідно вказати кожен гвинт XY місце розташування.
+
+Це зроблено шляхом створення `[bed_screws]` розділу налаштування. Наприклад, це може виглядати щось схоже на:
 
 ```
 [bed_screws]
-screw1: 100, 50
-screw2: 100, 150
-screw3: 150, 100
+шнек1: 100, 50
+шнек2: 100, 150
+шнек3: 150, 100
 ```
 
-If a bed screw is under the bed, then specify the XY position directly above the screw. If the screw is outside the bed then specify an XY position closest to the screw that is still within the range of the bed.
+Якщо під ліжком знаходиться гвинт, то вкажіть положення XY безпосередньо над гвинтом. Якщо шнек знаходиться поза ліжком, то вкажіть позицію XY найближче до шнека, який ще знаходиться в діапазоні ліжка.
 
-Once the config file is ready, run `RESTART` to load that config, and then one can start the tool by running:
+Після того, як файл config готовий, запустіть `RESTART`, щоб завантажити цю конфігурацію, а потім можна запустити інструмент за допомогою запуску:
 
 ```
 BED_SCREWS_ADJUST
 ```
 
-This tool will move the printer's nozzle to each screw XY location and then move the nozzle to a Z=0 height. At this point one can use the "paper test" to adjust the bed screw directly under the nozzle. See the information described in ["the paper test"](Bed_Level.md#the-paper-test), but adjust the bed screw instead of commanding the nozzle to different heights. Adjust the bed screw until there is a small amount of friction when pushing the paper back and forth.
+Цей інструмент перемістить насадку принтера до кожного гвинта XY розташування, а потім перемістіть насадку до висоти Z=0. У цей момент можна використовувати "паперовий тест" для регулювання гвинта ліжка безпосередньо під насадкою. Див. інформацію, описану в [«Паперовий тест"](Bed_Level.md#the-paper-test), але регулюйте гвинт замість закріплення сопла на різні висоти. Регулювання гвинта ліжка до тих пір, поки є невелика кількість тертя при натисканні паперу назад і вперед.
 
-Once the screw is adjusted so that a small amount of friction is felt, run either the `ACCEPT` or `ADJUSTED` command. Use the `ADJUSTED` command if the bed screw needed an adjustment (typically anything more than about 1/8th of a turn of the screw). Use the `ACCEPT` command if no significant adjustment is necessary. Both commands will cause the tool to proceed to the next screw. (When an `ADJUSTED` command is used, the tool will schedule an additional cycle of bed screw adjustments; the tool completes successfully when all bed screws are verified to not require any significant adjustments.) One can use the `ABORT` command to exit the tool early.
+Після того, як гвинт регулюється так, що невелика кількість тертя відчується, запустіть або команду `ACCEPT` або `ADJUSTED`. Використовуйте команду `ADJUSTED`, якщо шнековий гвинт необхідний регулювання (звичайно все більше 1 / 8-й повороту гвинта). Використовуйте команду `ACCEPT`, якщо не потрібно значне регулювання. Обидва команди будуть викликати інструмент, щоб перейти на наступний гвинт. (Коли використовується команда `ADJUSTED`, інструмент буде розкладати додатковий цикл регулювання шнека; інструмент успішно завершується, коли всі шурупи верифіковані, щоб не потрібно ніяких значних регулювань.) Один може використовувати команду `ABORT` для виходу інструменту рано.
 
-This system works best when the printer has a flat printing surface (such as glass) and has straight rails. Upon successful completion of the bed leveling tool the bed should be ready for printing.
+Ця система працює краще, коли принтер має плоску поверхню друку (наприклад, скло) і має прямі рейки. Після успішного завершення вирівнюючого інструменту ліжко необхідно підготуватися до друку.
 
-### Fine grained bed screw adjustments
+### Відмінні регулювання гвинтових шнеків зерна
 
-If the printer uses three bed screws and all three screws are under the bed, then it may be possible to perform a second "high precision" bed leveling step. This is done by commanding the nozzle to locations where the bed moves a larger distance with each bed screw adjustment.
+Якщо принтер використовує три шурупи і всі три шурупи під ліжком, то можна виконати другий «висока точність» крок вирівнювання ліжка. Це робиться за допомогою насадки на місця, де ліжко переміщається більшу відстань з кожним регулюванням гвинта.
 
-For example, consider a bed with screws at locations A, B, and C:
+Наприклад, розгляньте ліжко з гвинтами в місцях А, Б і С:
 
-![bed_screws](img/bed_screws.svg.png)
+![bed_screws](img/bed_screws.png)
 
-For each adjustment made to the bed screw at location C, the bed will swing along a pendulum defined by the remaining two bed screws (shown here as a green line). In this situation, each adjustment to the bed screw at C will move the bed at position D a further amount than directly at C. It is thus possible to make an improved C screw adjustment when the nozzle is at position D.
+Для кожного регулювання, виготовленого до грядки гвинта при локації С, ліжко буде гойдалитися уздовж ручки, визначеної рештою двома шурупами (проглянути тут як зелена лінія). У цій ситуації кожна корекція до гвинта ліжка на C перемістить ліжко на позиції D додатково на C. Таким чином, можна зробити поліпшену регулювання гвинта C при насадці D.
 
-To enable this feature, one would determine the additional nozzle coordinates and add them to the config file. For example, it might look like:
+Щоб увімкнути цю функцію, потрібно визначити додаткові координати сопла і додати їх в файл конфігурації. Наприклад, це може виглядати:
 
 ```
 [bed_screws]
-screw1: 100, 50
-screw1_fine_adjust: 0, 0
-screw2: 100, 150
-screw2_fine_adjust: 300, 300
-screw3: 150, 100
-screw3_fine_adjust: 0, 100
+шнек1: 100, 50
+гвинт1_fine_adjust: 0, 0
+шнек2: 100, 150
+гвинт2_fine_adjust: 300, 300
+шнек3: 150, 100
+гвинт3_fine_adjust: 0, 100
 ```
 
-When this feature is enabled, the `BED_SCREWS_ADJUST` tool will first prompt for coarse adjustments directly above each screw position, and once those are accepted, it will prompt for fine adjustments at the additional locations. Continue to use `ACCEPT` and `ADJUSTED` at each position.
+Коли ця функція ввімкнена, то `BED_SCREWS_ADJUST` інструмент спочатку підкаже для грубих регулювань безпосередньо над кожним гвинтовим положенням, і як тільки ті прийняті, він підкаже для тонких регулювань на додаткових місцях. Продовжити використання `ACCEPT` і `ADJUSTED` на кожній позиції.
 
-## Adjusting bed leveling screws using the bed probe
+## Регулювання вирівнювальних шурупів за допомогою постільної білизни
 
-This is another way to calibrate the bed level using the bed probe. To use it you must have a Z probe (BL Touch, Inductive sensor, etc).
+Це ще один спосіб калібрувати рівень ліжка за допомогою постільної білизни. Для цього необхідно мати зонд Z (BL Touch, індуктивний датчик тощо).
 
-To enable this feature, one would determine the nozzle coordinates such that the Z probe is above the screws, and then add them to the config file. For example, it might look like:
-
-```
-[screws_tilt_adjust]
-screw1: -5, 30
-screw1_name: front left screw
-screw2: 155, 30
-screw2_name: front right screw
-screw3: 155, 190
-screw3_name: rear right screw
-screw4: -5, 190
-screw4_name: rear left screw
-horizontal_move_z: 10.
-speed: 50.
-screw_thread: CW-M3
-```
-
-The screw1 is always the reference point for the others, so the system assumes that screw1 is at the correct height. Always run `G28` first and then run `SCREWS_TILT_CALCULATE` - it should produce output similar to:
+Щоб увімкнути цю функцію, можна визначити координати сопла, такі, що зонд Z над шурупами, а потім додати їх в файл конфігурації. Наприклад, це може виглядати:
 
 ```
-Send: G28
-Recv: ok
-Send: SCREWS_TILT_CALCULATE
-Recv: // 01:20 means 1 full turn and 20 minutes, CW=clockwise, CCW=counter-clockwise
-Recv: // front left screw (base) : x=-5.0, y=30.0, z=2.48750
-Recv: // front right screw : x=155.0, y=30.0, z=2.36000 : adjust CW 01:15
-Recv: // rear right screw : y=155.0, y=190.0, z=2.71500 : adjust CCW 00:50
-Recv: // read left screw : x=-5.0, y=190.0, z=2.47250 : adjust CW 00:02
-Recv: ok
+[Screws_tilt_adjust]
+шнек1: -5, 30
+гвинт1_name: передній лівий гвинт
+шнек2: 155, 30
+гвинт2_name: передній правий гвинт
+шнек3: 155, 190
+гвинт3_name: задній правий гвинт
+шнек4: -5, 190
+гвинт4_name: задній лівий гвинт
+горизонтальний_move_z: 10.
+швидкість: 50.
+шнек_тред.: CW-M3
 ```
 
-This means that:
+Шнек 1 завжди є пунктом посилання для інших, тому система припускає, що гвинт1 знаходиться на правій висоті. Завжди запустіть `G28` спочатку і потім запустіть `SCREWS_TILT_CALCULATE` - він повинен виробляти вихід аналогічно:
 
-- front left screw is the reference point you must not change it.
-- front right screw must be turned clockwise 1 full turn and a quarter turn
-- rear right screw must be turned counter-clockwise 50 minutes
-- rear left screw must be turned clockwise 2 minutes (not need it's ok)
+```
+Відправлення: G28
+Реквізити: ok
+Электронная пошта: sales@creWS.com
+Recv: // 01:20 означає 1 повний поворот і 20 хвилин, CW=clockwise, CCW=counter-clockwise
+Recv: // передній лівий гвинт (база) : x=-5.0, y=30.0, z=2.48750
+Recv: // передній правий гвинт : x=155.0, y=30.0, z=2.36000 : регулювати CW 01:15
+Recv: // задній правий гвинт : y=155.0, y=190.0, z=2.71500 : регулювати CCW 00:50
+Recv: // читати лівий гвинт : x=-5.0, y=190.0, z=2.47250 : регулювати CW 00:02
+Реквізити: ok
+```
 
-Note that "minutes" refers to "minutes of a clock face". So, for example, 15 minutes is a quarter of a full turn.
+Це означає:
 
-Repeat the process several times until you get a good level bed - normally when all adjustments are below 6 minutes.
+- передній лівий гвинт - це точка посилання, яку ви не повинні змінити.
+- передній правий гвинт повинен бути поворотним годинником 1 повний поворот і чверть повороту
+- задньому правому гвинту необхідно перевернути проти годинникової стрілки 50 хвилин
+- задній лівий гвинт повинен бути перевернутий годинниковою стрілкою 2 хвилини (не потрібно це ок)
 
-If using a probe that is mounted on the side of the hotend (that is, it has an X or Y offset) then note that adjusting the bed tilt will invalidate any previous probe calibration that was performed with a tilted bed. Be sure to run [probe calibration](Probe_Calibrate.md) after the bed screws have been adjusted.
+Зауважте, що "хвилини" відноситься до "хвилини годинникового обличчя". Так, наприклад, 15 хвилин є кварталом повного повороту.
 
-The `MAX_DEVIATION` parameter is useful when a saved bed mesh is used, to ensure that the bed level has not drifted too far from where it was when the mesh was created. For example, `SCREWS_TILT_CALCULATE MAX_DEVIATION=0.01` can be added to the custom start gcode of the slicer before the mesh is loaded. It will abort the print if the configured limit is exceeded (0.01mm in this example), giving the user a chance to adjust the screws and restart the print.
+Повторіть процес кілька разів, поки ви отримаєте гарне ліжко рівня - зазвичай, коли всі налаштування нижче 6 хвилин.
 
-The `DIRECTION` parameter is useful if you can turn your bed adjustment screws in one direction only. For example, you might have screws that start tightened in their lowest (or highest) possible position, which can only be turned in a single direction, to raise (or lower) the bed. If you can only turn the screws clockwise, run `SCREWS_TILT_CALCULATE DIRECTION=CW`. If you can only turn them counter-clockwise, run `SCREWS_TILT_CALCULATE DIRECTION=CCW`. A suitable reference point will be chosen such that the bed can be leveled by turning all the screws in the given direction.
+При використанні зонда, який кріпиться на боці гарячої дошки (тобто він має X або Y offset), після чого слід зазначити, що регулювання нахилу ліжка буде недійсним будь-якого попереднього калібрування, який був виконаний з нахилом ліжка. Обов'язково запустіть [пробе калібрування](Probe_Calibrate.md) після регулювання шнеків.
+
+`MAX_DEVIATION` параметр корисний, коли використовується збережена сіточка, щоб забезпечити, що рівень ліжка не дратувався занадто далеко від того, де була створена сіточка. Наприклад, `SCREWS_TILT_CALCULATE МАКС_DEVIATION=0.01` можна додавати до користувацького старту штрих-коду до завантаження сітки. При налаштуванні ліміту перевищено (0.01mm у цьому прикладі), надаючи користувачеві можливість регулювати гвинти і перезавантажити друк.
+
+Параметри параметра `DIRECTION` корисно, якщо ви можете перетворювати гвинти на один напрямок тільки. Наприклад, ви можете мати гвинти, які починають затягуватися в найнижчому (або найвищому) положенні, які можуть бути використані тільки в одному напрямку, щоб підняти (або нижній) ліжко. Якщо ви можете перетворювати шурупи, запустіть `SCREWS_TILT_CALCULATE DIRECTION=CW`. Якщо ви можете перетворювати їх проти годинникової стрілки, запустіть `SCREWS_TILT_CALCULATE DIRECTION=CCW`. Підійде довідкова точка буде обраний таким чином, що ліжко можна вирівняти, перетворюючи всі гвинти в заданому напрямку.

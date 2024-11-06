@@ -1,73 +1,73 @@
-# CANBUS Troubleshooting
+# КАНБУС Виправлення несправностей
 
-This document provides information on troubleshooting communication issues when using [Klipper with CAN bus](CANBUS.md).
+Цей документ надає інформацію про проблеми з усунення неполадок при використанні [Кліппер з автобусом CAN](CANBUS.md).
 
-## Verify CAN bus wiring
+## Verify CAN автобусний електропроводка
 
-The first step in troubleshooting communication issues is to verify the CAN bus wiring.
+Першим кроком у вирішенні проблемних питань зв'язку є перевірка проводки CAN.
 
 Be sure there are exactly two 120 Ohm [terminating
 resistors](CANBUS.md#terminating-resistors) on the CAN bus. If the resistors are not properly installed then messages may not be able to be sent at all or the connection may have sporadic instability.
 
-The CANH and CANL bus wiring should be twisted around each other. At a minimum, the wiring should have a twist every few centimeters. Avoid twisting the CANH and CANL wiring around power wires and ensure that power wires that travel parallel to the CANH and CANL wires do not have the same amount of twists.
+Автопроводка CANH та CANL повинна бути перекручена між собою. На мінімумі проводка повинна мати скручування кожні кілька сантиметрів. Уникайте скручування проводів CANH і CANL навколо проводів живлення і переконайтеся, що проводи живлення, які подорожують паралельно до проводів CANH і CANL, не мають однакової кількості скручувань.
 
-Verify that all plugs and wire crimps on the CAN bus wiring are fully secured. Movement of the printer toolhead may jostle the CAN bus wiring causing a bad wire crimp or unsecured plug to result in intermittent communication errors.
+Перевірити, що всі штекери та дротові креветки на автобусі CAN повністю закріплюються. Рух принтера інструментголова може зануритися в проводку CAN, викликаючи поганий дротовий щіпка або непропущений штепсель, щоб призвести до переривчастих помилок зв'язку.
 
-## Check for incrementing bytes_invalid counter
+## Перевірити для зняття байтів_інвалідний лічильник
 
-The Klipper log file will report a `Stats` line once a second when the printer is active. These "Stats" lines will have a `bytes_invalid` counter for each micro-controller. This counter should not increment during normal printer operation (it is normal for the counter to be non-zero after a RESTART and it is not a concern if the counter increments once a month or so). If this counter increments on a CAN bus micro-controller during normal printing (it increments every few hours or more frequently) then it is an indication of a severe problem.
+Файл журналу Klipper буде звітувати `Stats` рядок один раз, коли принтер активний. Ці лінійки «Стати» мають `байти_invalid` лічильник для кожного мікроконтролера. Цей лічильник не повинен підходити під час нормальної роботи принтера (це нормально для лічильника, щоб бути незеро після RESTART, і це не стосується, якщо протипоказання один раз на місяць або так). Якщо це протипоказання на мікроконтролері CAN на мікроконтролері CAN під час нормального друку (приблизні кожні кілька годин або частіше), то це індикація важкої проблеми.
 
-Incrementing `bytes_invalid` on a CAN bus connection is a symptom of reordered messages on the CAN bus. There are two known causes of reordered messages:
+Прискорення `bytes_invalid` на автобусному підключенні CAN є симптомом переадресованих повідомлень на автобусі CAN. Є два відомі причини переадресованих повідомлень:
 
-1. Old versions of the popular candlight_firmware for USB CAN adapters had a bug that could cause reordered messages. If using a USB CAN adapter running this firmware then make sure to update to the latest firmware if incrementing `bytes_invalid` is observed.
-1. Some Linux kernel builds for embedded devices have been known to reorder CAN bus messages. It may be necessary to use an alternative Linux kernel or to use alternative hardware that supports mainstream Linux kernels that do not exhibit this problem.
+1. Старі версії популярних адаптерів Candlight_firmware для USB CAN мали помилку, яка може викликати переадресовані повідомлення. Якщо ви використовуєте адаптер USB CAN, який працює цю прошивку, то переконайтеся, що оновлення до останньої прошивки, якщо спостерігається переробка `байтів_invalid`.
+1. Деякі ядра Linux для вбудованих пристроїв були відомі для переадресації CAN автобусних повідомлень. Ви можете використовувати альтернативне ядро Linux або використовувати альтернативне обладнання, яке підтримує основні ядра Linux, які не відображають цю проблему.
 
-Reordered messages is a severe problem that must be fixed. It will result in unstable behavior and can lead to confusing errors at any part of a print.
+Замовлені повідомлення є важкою проблемою, яка повинна бути виправлена. Це призведе до нестійкої поведінки і може призвести до заплутування помилок в будь-якій частині друку.
 
-## Use an appropriate txqueuelen setting
+## Використовуйте відповідні налаштування txqueuelen
 
-The Klipper code uses the Linux kernel to manage CAN bus traffic. By default, the kernel will only queue 10 CAN transmit packets. It is recommended to [configure the can0 device](CANBUS.md#host-hardware) with a `txqueuelen 128` to increase that size.
+Код Klipper використовує ядро Linux для управління трафіком CAN. За замовчуванням ядро буде тільки черга 10 CAN. Рекомендовано [configure the can0 device](CANBUS.md#host-hardware) з `txqueuelen 128` для збільшення цього розміру.
 
-If Klipper transmits a packet and Linux has filled all of its transmit queue space then Linux will drop that packet and messages like the following will appear in the Klipper log:
-
-```
-Got error -1 in can write: (105)No buffer space available
-```
-
-Klipper will automatically retransmit the lost messages as part of its normal application level message retransmit system. Thus, this log message is a warning and it does not indicate an unrecoverable error.
-
-If a complete CAN bus failure occurs (such as a CAN wire break) then Linux will not be able to transmit any messages on the CAN bus and it is common to find the above message in the Klipper log. In this case, the log message is a symptom of a larger problem (the inability to transmit any messages) and is not directly related to Linux `txqueuelen`.
-
-One may check the current queue size by running the Linux command `ip link show can0`. It should report a bunch of text including the snippet `qlen 128`. If one sees something like `qlen 10` then it indicates the CAN device has not been properly configured.
-
-It is not recommended to use a `txqueuelen` significantly larger than 128. A CAN bus running at a frequency of 1000000 will typically take around 120us to transmit a CAN packet. Thus a queue of 128 packets is likely to take around 15-20ms to drain. A substantially larger queue could cause excessive spikes in message round-trip-time which could lead to unrecoverable errors. Said another way, Klipper's application retransmit system is more robust if it does not have to wait for Linux to drain an excessively large queue of possibly stale data. This is analogous to the problem of [bufferbloat](https://en.wikipedia.org/wiki/Bufferbloat) on internet routers.
-
-Under normal circumstances Klipper may utilize ~25 queue slots per MCU - typically only utilizing more slots during retransmits. (Specifically, the Klipper host may transmit up to 192 bytes to each Klipper MCU before receiving an acknowledgment from that MCU.) If a single CAN bus has 5 or more Klipper MCUs on it, then it might be necessary to increase the `txqueuelen` above the recommended value of 128. However, as above, care should be taken when selecting a new value to avoid excessive round-trip-time latency.
-
-## Obtaining candump logs
-
-The CAN bus messages sent to and from the micro-controller are handled by the Linux kernel. It is possible to capture these messages from the kernel for debugging purposes. A log of these messages may be of use in diagnostics.
-
-The Linux [can-utils](https://github.com/linux-can/can-utils) tool provides the capture software. It is typically installed on a machine by running:
+Якщо Klipper передає пакет і Linux заповнить весь простір передачі, то Linux знизить цей пакет і повідомлення, як показано наступне, з'явиться в журналі Klipper:
 
 ```
-sudo apt-get update && sudo apt-get install can-utils
+Got error -1 in може написати: (105)Не доступний буферний простір
 ```
 
-Once installed, one may obtain a capture of all CAN bus messages on an interface with the following command:
+Klipper автоматично перетворить втрачені повідомлення в складі системи переадресації поточного рівня програми. Таким чином, це повідомлення журналу є попередженням і він не вказує на невідновлювальну помилку.
+
+Якщо відбувається повна відмова автобуса CAN (наприклад, перерву дроту CAN), то Linux не зможе передавати будь-які повідомлення на автобусі CAN і є загальним, щоб знайти вище повідомлення в журналі Klipper. У цьому випадку лог-повідомлення є симптомом більшої проблеми (здатність передачі будь-яких повідомлень) і не безпосередньо пов'язана з Linux `txqueuelen`.
+
+Один може перевірити поточний розмір черги за допомогою команди Linux `ip посилання show can0`. Повідомляти пучок тексту, включаючи хіппе `qlen 128`. Якщо ви бачите щось схоже `qlen 10`, то це вказує на пристрій CAN не було належним чином налаштовано.
+
+Не рекомендується використовувати `txqueuelen` значно більше 128. автобус CAN, який працює на частоті 1000000, зазвичай займе близько 120us для передачі пакету CAN. Таким чином, черга 128 пакетів, ймовірно, займе близько 15-20 метрів для зливу. Значно більша черга може призвести до надмірних спій в повідомлення кругло-часовому режимі, що може призвести до небажаних помилок. Збережіть ще один спосіб, система переадресації програми Klipper є більш надійним, якщо вона не повинна чекати Linux, щоб злити надмірно велику чергу, можливо, застою даних. Це аналог з проблемою [bufferbloat](https://en.wikipedia.org/wiki/Bufferbloat) в маршрутизаторах Інтернету.
+
+При нормальних обставинах Klipper може використовувати ~25 черги слотів для MCU - зазвичай тільки використовуючи більше слотів під час переадресації. (Своїсно, хост Кліппер може передавати до 192 байтів до кожного Кліппера МКУ перед отриманням відступу від цього МКУ.) Якщо один автобус CAN має 5 або більше Klipper MCUs на ньому, то це може знадобитися для збільшення `txqueuelen` над рекомендованою вартістю 128. Однак, як і вище, догляд слід приймати при виборі нового значення, щоб уникнути зайвої затримки часу.
+
+## Зберігаючі колоди
+
+Повідомлення автобуса CAN і з мікроконтролера керуються ядром Linux. Ви можете захопити ці повідомлення з ядра для розвантаження цілей. Журнал цих повідомлень може використовуватися в діагностиці.
+
+Інструмент Linux [can-utils](https://github.com/linux-can/can-utils) надає програмне забезпечення для захоплення. Зазвичай він встановлюється на машину за допомогою:
 
 ```
-candump -tz -Ddex can0,#FFFFFFFF > mycanlog
+sudo apt-get update & & sudo apt-get встановити can-utils
 ```
 
-One can view the resulting log file (`mycanlog` in the example above) to see each raw CAN bus message that was sent and received by Klipper. Understanding the content of these messages will likely require low-level knowledge of Klipper's [CANBUS protocol](CANBUS_protocol.md) and Klipper's [MCU commands](MCU_Commands.md).
-
-### Parsing Klipper messages in a candump log
-
-One may use the `parsecandump.py` tool to parse the low-level Klipper micro-controller messages contained in a candump log. Using this tool is an advanced topic that requires knowledge of Klipper [MCU commands](MCU_Commands.md). For example:
+Після встановлення, можна отримати захоплення всіх повідомлень про автобуси CAN на інтерфейсі з наступним командуванням:
 
 ```
-./scripts/parsecandump.py mycanlog 108 ./out/klipper.dict
+#FFFFFFFFFFFFFFFF > Дельсаль Груп Український
+```
+
+Один може переглянути отриманий файл журналу (`mycanlog`, щоб побачити кожну сиру CAN автобусне повідомлення, яке було відправлено і отримано Klipper. Розуміння вмісту цих повідомлень, ймовірно, зажадає низьким рівнем знань протоколу Klipper's [CANBUS](CANBUS_protocol.md) і Klipper's [MCU команди](MCU_Commands.md).
+
+### Повідомлень Кліппера в журналі кандемп
+
+Один може використовуватися `parsecandump.py` інструментом для запарювання низькорівневих мікроконтролерів, що містяться в кандump log. За допомогою цього інструменту є розширена тема, яка вимагає знання Klipper [MCU команди](MCU_Commands.md). Наприклад:
+
+```
+./scripts/parsecandump.py my canlog 108 ./out/klipper.dict
 ```
 
 This tool produces output similar to the [parsedump
@@ -76,16 +76,16 @@ tool](Debugging.md#translating-gcode-files-to-micro-controller-commands). See th
 In the above example, `108` is the [CAN bus
 id](CANBUS_protocol.md#micro-controller-id-assignment). It is a hexadecimal number. The id `108` is assigned by Klipper to the first micro-controller. If the CAN bus has multiple micro-controllers on it, then the second micro-controller would be `10a`, the third would be `10c`, and so on.
 
-The candump log must be produced using the `-tz -Ddex` command-line arguments (for example: `candump -tz -Ddex can0,#FFFFFFFF`) in order to use the `parsecandump.py` tool.
+Журнал може бути виготовлений за допомогою `-tz -Ddex` аргументів командного рядка (наприклад: `candump -tz -Ddex can0,#FFFFFFFFFF`) для використання `parsecandump.py`.
 
-## Using a logic analyzer on the canbus wiring
+## Використання логіки аналізатора на проводці каналів
 
-The [Sigrok Pulseview](https://sigrok.org/wiki/PulseView) software along with a low-cost [logic analyzer](https://en.wikipedia.org/wiki/Logic_analyzer) can be useful for diagnosing CAN bus signaling. This is an advanced topic likely only of interest to experts.
+[Sigrok Pulseview](https://sigrok.org/wiki/PulseView) програмне забезпечення разом з низькою вартістю [логічний аналізатор](https://en.wikipedia.org/wiki/Logic_analyzer) може бути корисною для діагностики автобусів CAN. Це розширена тема, швидше за все, тільки інтерес до експертів.
 
-One can often find "USB logic analyzers" for under $15 (US pricing as of 2023). These devices are often listed as "Saleae logic clones" or as "24MHz 8 channel USB logic analyzers".
+Часто можна знайти «УСБ-логічні аналізатори» за 15 доларів США (ВСЦ від 2023). Ці пристрої часто перераховані як "Продажі логічні клони" або як "24MHz 8 каналів USB-логічні аналізатори".
 
-![pulseview-canbus](img/pulseview-canbus.png)
+![pulseview -canbus](img/pulseview-canbus.png)
 
-The above picture was taken while using Pulseview with a "Saleae clone" logic analyzer. The Sigrok and Pulseview software was installed on a desktop machine (also install the "fx2lafw" firmware if that is packaged separately). The CH0 pin on the logic analyzer was routed to the CAN Rx line, the CH1 pin was wired to the CAN Tx pin, and GND was wired to GND. Pulseview was configured to only display the D0 and D1 lines (red "probe" icon center top toolbar). The number of samples was set to 5 million (top toolbar) and the sample rate was set to 24Mhz (top toolbar). The CAN decoder was added (yellow and green "bubble icon" right top toolbar). The D0 channel was labeled as RX and set to trigger on a falling edge (click on black D0 label at left). The D1 channel was labeled as TX (click on brown D1 label at left). The CAN decoder was configured for 1Mbit rate (click on green CAN label at left). The CAN decoder was moved to the top of the display (click and drag green CAN label). Finally, the capture was started (click "Run" at top left) and a packet was transmitted on the CAN bus (`cansend can0 123#121212121212`).
+Наведено вищезгадане зображення при використанні Pulseview з логікою "Saleae clone". Програма Sigrok і Pulseview була встановлена на настільній машині (також встановити прошивку "fx2lafw", якщо вона упакована окремо). Пиріг CH0 на логічному аналізаторі був маршрутизований до лінії CAN Rx, штифт CH1 проводився до шпильки CAN Tx, а ГНД проводився до GND. Імпульсний перегляд був налаштований тільки для відображення D0 і D1 ліній (червоний "пробе" іконковий центр панелі інструментів). Кількість зразків була встановлена до 5 мільйонів (під панелі інструментів) і частота зразка була встановлена до 24Mhz (під панелі інструментів). Додана декодер CAN (жовтий і зелений "чорний значок" правий верхній панелі інструментів). Канал D0 був позначений як RX і встановити, щоб запустити на падіння краю (натисніть на ярлик D0 зліва). Канал D1 був позначений як TX (клацніть на коричневому етикетці D1 зліва). CAN decoder було налаштовано на 1Mbit курс (клацніть на зелену CAN етикетку зліва). CAN decoder було переведено в верхній частині дисплея (натисніть і перетягніть зелену CAN етикетку). Нарешті, захоплення було розпочато (клацніть "Run" у верхньому лівому верхньому куті) і пакет було передано на автобусі CAN (`cansend can0 123#121212121212`).
 
-The logic analyzer provides an independent tool for capturing packets and verifying bit timing.
+Логічний аналізатор забезпечує незалежний інструмент для захоплення пачок і перевірки термінів.

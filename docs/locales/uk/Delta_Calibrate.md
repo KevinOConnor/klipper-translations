@@ -1,143 +1,143 @@
-# Delta calibration
+# Дельта калібрування
 
-This document describes Klipper's automatic calibration system for "delta" style printers.
+Цей документ описує автоматичну систему калібрування Klipper для принтерів стилю "delta".
 
-Delta calibration involves finding the tower endstop positions, tower angles, delta radius, and delta arm lengths. These settings control printer motion on a delta printer. Each one of these parameters has a non-obvious and non-linear impact and it is difficult to calibrate them manually. In contrast, the software calibration code can provide excellent results with just a few minutes of time. No special probing hardware is necessary.
+Дельта калібрування передбачає пошук позицій вежі, кути башти, радіус дельти і довжини дельти. Ці налаштування контрольного руху принтера на принтері delta. Кожна з цих параметрів має незрівняний і нелінійний вплив і важко їх калібрувати вручну. На відміну від коду калібрування програмного забезпечення може забезпечити відмінні результати всього за кілька хвилин часу. Не обов'язкове спеціальне протезування.
 
-Ultimately, the delta calibration is dependent on the precision of the tower endstop switches. If one is using Trinamic stepper motor drivers then consider enabling [endstop phase](Endstop_Phase.md) detection to improve the accuracy of those switches.
+В кінцевому підсумку, калібрування дельти залежить від точності вежних вимикачів. Якщо один використовує драйвери двигуна Trinamic, то врахуйте, що [ендстопна фаза](Endstop_Phase.md) для поліпшення точності перемикачів.
 
-## Automatic vs manual probing
+## Автоматичний проти ручного зондування
 
-Klipper supports calibrating the delta parameters via a manual probing method or via an automatic Z probe.
+Klipper підтримує калібрування параметрів дельти за допомогою ручного методу пробування або через автоматичний зонд Z.
 
-A number of delta printer kits come with automatic Z probes that are not sufficiently accurate (specifically, small differences in arm length can cause effector tilt which can skew an automatic probe). If using an automatic probe then first [calibrate the probe](Probe_Calibrate.md) and then check for a [probe location bias](Probe_Calibrate.md#location-bias-check). If the automatic probe has a bias of more than 25 microns (.025mm) then use manual probing instead. Manual probing only takes a few minutes and it eliminates error introduced by the probe.
+Кількість комплектів принтера дельта приходять з автоматичними зондами Z, які не є достатньо точними (спеціально, невеликими відмінностями в довжині руки може викликати ефектор нахилу, який може спрей автоматичним зондом). Якщо ви використовуєте автоматичний зонд, то спочатку [розрахувати зонд](Probe_Calibrate.md) і потім перевірте [пробесне розташування bias](Probe_Calibrate.md#location-bias-check). Якщо у автоматичному зонді з’явилася маса більше 25 мікронів (.025мм) замість цього використовуйте ручну пробірку. Ручна пробка тільки займає кілька хвилин, і вона усуває помилки, введені зондом.
 
-If using a probe that is mounted on the side of the hotend (that is, it has an X or Y offset) then note that performing delta calibration will invalidate the results of probe calibration. These types of probes are rarely suitable for use on a delta (because minor effector tilt will result in a probe location bias). If using the probe anyway, then be sure to rerun probe calibration after any delta calibration.
+Якщо за допомогою зонду, який кріпиться на боці гарячої палички (тобто він має X або Y offset), то зверніть увагу, що виконання дельта калібрування недійсним буде недійсним результатів калібрування зондів. Ці види зондів рідко підходять для використання на дельті (приблизно менший впливовий тент призведе до розміщення зондом зонду). Якщо використовувати пробе будь-яким чином, то обов'язково слідкувати за калібруванням зонда після будь-якого калібрування дельти.
 
-## Basic delta calibration
+## Базова калібрування дельти
 
-Klipper has a DELTA_CALIBRATE command that can perform basic delta calibration. This command probes seven different points on the bed and calculates new values for the tower angles, tower endstops, and delta radius.
+Klipper має команду DELTA_CALIBRATE, яка може виконувати базове калібрування дельта. Ця команда випускає сім різних точок на ліжку і розраховує нові значення для кутів башти, вежа і радіус дельти.
 
-In order to perform this calibration the initial delta parameters (arm lengths, radius, and endstop positions) must be provided and they should have an accuracy to within a few millimeters. Most delta printer kits will provide these parameters - configure the printer with these initial defaults and then go on to run the DELTA_CALIBRATE command as described below. If no defaults are available then search online for a delta calibration guide that can provide a basic starting point.
+Для того, щоб виконати цей калібрування початкових параметрів дельти (протягів, радіусів і позицій торцевої поверхні) необхідно надати і вони повинні мати точність в межах декількох міліметрів. Більшість комплектів принтера delta забезпечить ці параметри - налаштуйте принтер з цими початковими за замовчуванням, а потім перейдіть на, щоб запустити команду DELTA_CALIBRATE, як описано нижче. Якщо у вас немає за замовчуванням, то пошук онлайн для керівництва з калібруванням дельти, який може забезпечити базову початкову точку.
 
-During the delta calibration process it may be necessary for the printer to probe below what would otherwise be considered the plane of the bed. It is typical to permit this during calibration by updating the config so that the printer's `minimum_z_position=-5`. (Once calibration completes, one can remove this setting from the config.)
+Під час процесу калібрування дельта може знадобитися для принтера, щоб зробити його нижче, що інакше буде вважатися площиною ліжка. Це типово для отримання цього під час калібрування шляхом оновлення конфігурації, щоб принтер `minimum_z_position=-5`. (Одна калібрування завершується, можна видалити цю установку з конфігурації.)
 
-There are two ways to perform the probing - manual probing (`DELTA_CALIBRATE METHOD=manual`) and automatic probing (`DELTA_CALIBRATE`). The manual probing method will move the head near the bed and then wait for the user to follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location.
+Є два способи виконання пробування - ручне пробування (`DELTA_CALIBRATE METHOD=manual`) і автоматичне проблювання (`DELTA_CALIBRATE`). Метод ручного пров'язування буде переміщати голову біля ліжка, а потім чекати користувача, щоб слідувати за кроками, описаними на [Завантажити тест"](Bed_Level.md#the-paper-test), щоб визначити фактичну відстань між насадкою і ліжком на даній території.
 
-To perform the basic probe, make sure the config has a [delta_calibrate] section defined and then run the tool:
-
-```
-G28
-DELTA_CALIBRATE METHOD=manual
-```
-
-After probing the seven points new delta parameters will be calculated. Save and apply these parameters by running:
+Щоб виконати базовий зонд, переконайтеся, що конфігурація має розділ [delta_calibrate] і потім запустіть інструмент:
 
 ```
-SAVE_CONFIG
+Г28
+DELTA_CALIBRATE METHOD=ручний
 ```
 
-The basic calibration should provide delta parameters that are accurate enough for basic printing. If this is a new printer, this is a good time to print some basic objects and verify general functionality.
+Після отримання семи точок будуть розраховані нові параметри дельти. Заощаджуйте і застосуйте ці параметри за допомогою бігу:
 
-## Enhanced delta calibration
+```
+ПРОКСИМУС
+```
 
-The basic delta calibration generally does a good job of calculating delta parameters such that the nozzle is the correct distance from the bed. However, it does not attempt to calibrate X and Y dimensional accuracy. It's a good idea to perform an enhanced delta calibration to verify dimensional accuracy.
+Для базового друку необхідно надати параметри дельти, які є досить точними. Якщо це новий принтер, це хороший час для друку деяких базових об'єктів і перевірки загальної функціональності.
 
-This calibration procedure requires printing a test object and measuring parts of that test object with digital calipers.
+## Покращений калібрування дельти
 
-Prior to running an enhanced delta calibration one must run the basic delta calibration (via the DELTA_CALIBRATE command) and save the results (via the SAVE_CONFIG command). Make sure there hasn't been any notable change to the printer configuration nor hardware since last performing a basic delta calibration (if unsure, rerun the [basic delta calibration](#basic-delta-calibration), including SAVE_CONFIG, just prior to printing the test object described below.)
+Основне калібрування дельти в цілому робить хорошу роботу з розрахунку параметрів дельти, таких що насадка є правильною відстані від ліжка. Однак не намагатися калібрувати X і Y мірну точність. Це хороша ідея для виконання розширеного калібрування дельта для перевірки точності розмірів.
 
-Use a slicer to generate G-Code from the [docs/prints/calibrate_size.stl](prints/calibrate_size.stl) file. Slice the object using a slow speed (eg, 40mm/s). If possible, use a stiff plastic (such as PLA) for the object. The object has a diameter of 140mm. If this is too large for the printer then one can scale it down (but be sure to uniformly scale both the X and Y axes). If the printer supports significantly larger prints then this object can also be increased in size. A larger size can improve the measurement accuracy, but good print adhesion is more important than a larger print size.
+Ця процедура калібрування вимагає друку тестового об'єкта та вимірювання частин цього об'єкта тестування з цифровими затискачами.
 
-Print the test object and wait for it to fully cool. The commands described below must be run with the same printer settings used to print the calibration object (don't run DELTA_CALIBRATE between printing and measuring, or do something that would otherwise change the printer configuration).
+Перед запуском розширеного дельта-калібрування необхідно запустити базове дельта-калібрування (за допомогою команди DELTA_CALIBRATE) і зберегти результати (за допомогою команди SAVE_CONFIG). Переконайтеся, що після останнього виконання базового дельта-калібрування і не було помітних змін у конфігурації принтера чи апаратному забезпеченні (якщо не впевнені, повторно запустіть [базове дельта-калібрування](#basic-delta-calibration), включаючи SAVE_CONFIG, безпосередньо перед друком тестовий об’єкт, описаний нижче.)
 
-If possible, perform the measurements described below while the object is still attached to the print bed, but don't worry if the part detaches from the bed - just try to avoid bending the object when performing the measurements.
+Використовуйте скибочку для створення G-Code з [docs/prints/calibrate_size.stl](prints/calibrate_size.stl) файл. Нарізка об'єкта за допомогою повільної швидкості (наприклад, 40мм/с). Якщо це можливо, скористайтеся жорсткою пластиковою (наприклад, ПЛА) для об'єкта. Об'єкт має діаметр 140мм. Якщо це занадто великий для принтера, то можна масштабувати його вниз (але обов'язково рівномірно масштабувати як X, так і Y осі). Якщо принтер підтримує значно більші принти, то цей об'єкт також може бути збільшений за розміром. Більший розмір може поліпшити точність вимірювання, але хороша точність друку є більш важливим, ніж більший розмір друку.
 
-Start by measuring the distance between the center pillar and the pillar next to the "A" label (which should also be pointing towards the "A" tower).
+Друкувати об'єкт тесту і чекати його повністю охолонути. Команди, описані нижче, повинні працювати з тими самими параметрами принтера, які використовуються для друку об'єкта калібрування (не запустіть DELTA_CALIBRATE між друком і вимірювальними, або зробити щось, що інакше зміни конфігурації принтера).
+
+Якщо це можливо, виконайте виміри, описані нижче, поки об'єкт все ще прикріплюється до місця друку, але не хвилюйтеся, якщо частина відкладає від ліжка - просто спробуйте уникнути згинання об'єкта при виконанні вимірювань.
+
+Почати вимірювальну відстань між центральним стовпом і стовпом поруч з міткою "А" (що також слід вказувати на вежу "А".
 
 ![delta-a-distance](img/delta-a-distance.jpg)
 
-Then go counterclockwise and measure the distances between the center pillar and the other pillars (distance from center to pillar across from C label, distance from center to pillar with B label, etc.).
+Після цього вирушайте проти годинникової стрілки і заміряйте відстань між центральним стовпом та іншими стовпами (посадка від центру до стовпа через етикетку C, відстань від центру до стовпа з маркуванням B тощо).
 
 ![delta_cal_e_step1](img/delta_cal_e_step1.png)
 
-Enter these parameters into Klipper with a comma separated list of floating point numbers:
+Введіть ці параметри в Klipper з комою відокремленим переліком номерів точки плавлення:
 
 ```
 DELTA_ANALYZE CENTER_DISTS=<a_dist>,<far_c_dist>,<b_dist>,<far_a_dist>,<c_dist>,<far_b_dist>
 ```
 
-Provide the values without spaces between them.
+Забезпечити значення без пробілів.
 
-Then measure the distance between the A pillar and the pillar across from the C label.
+Потім виміряйте відстань між стовпцем A і стовпом через етикетку C.
 
 ![delta-ab-distance](img/delta-outer-distance.jpg)
 
-Then go counterclockwise and measure the distance between the pillar across from C to the B pillar, the distance between the B pillar and the pillar across from A, and so on.
+Після цього підійдіть проти годинникової стрілки і відміряйте відстань між стовпцем через С до стовпа B, відстань між стовпцем B і стовпом через A, і так далі.
 
 ![delta_cal_e_step2](img/delta_cal_e_step2.png)
 
-Enter these parameters into Klipper:
+Введіть ці параметри в Klipper:
 
 ```
-DELTA_ANALYZE OUTER_DISTS=<a_to_far_c>,<far_c_to_b>,<b_to_far_a>,<far_a_to_c>,<c_to_far_b>,<far_b_to_a>
+ДЕЛЬТА_АНАЛІЗ OUTER_DISTS=<a_to_far_c>,<far_c_to_b>,<b_to_far_a>,<far_a_to_c>,<c_to_far_b>,<far_b_to_a>
 ```
 
-At this point it is okay to remove the object from the bed. The final measurements are of the pillars themselves. Measure the size of the center pillar along the A spoke, then the B spoke, and then the C spoke.
+У цей момент варто прибрати об'єкт з ліжка. Заключні вимірювання – самі стовпи. Заміряйте розмір стовпа центру вздовж спиці, потім спицю Б, а потім спицю С.
 
 ![delta-a-pillar](img/delta-a-pillar.jpg)
 
 ![delta_cal_e_step3](img/delta_cal_e_step3.png)
 
-Enter them into Klipper:
+Введіть їх у Klipper:
 
 ```
-DELTA_ANALYZE CENTER_PILLAR_WIDTHS=<a>,<b>,<c>
+DELTA_ANALYZE CENTER_PILLAR_WIDTHS=<a>,<b>,<b>,<c>
 ```
 
-The final measurements are of the outer pillars. Start by measuring the distance of the A pillar along the line from A to the pillar across from C.
+Заключні вимірювання зовнішніх стовпів. Початок вимірювання відстані стовпа А по лінії від А до стовпа через С.
 
 ![delta-ab-pillar](img/delta-outer-pillar.jpg)
 
-Then go counterclockwise and measure the remaining outer pillars (pillar across from C along the line to B, B pillar along the line to pillar across from A, etc.).
+Потім вирушайте проти годинникової стрілки і заміряйте залишилися зовнішні стовпи (покладайте по C по лінії до B, B стовп по лінії, щоб стовпець через A і т.д.).
 
 ![delta_cal_e_step4](img/delta_cal_e_step4.png)
 
-And enter them into Klipper:
+І введіть їх в Klipper:
 
 ```
-DELTA_ANALYZE OUTER_PILLAR_WIDTHS=<a>,<far_c>,<b>,<far_a>,<c>,<far_b>
+ДЕЛЬТА_АНАЛІЗ OUTER_PILLAR_WIDTHS=<a>,<far_c>,<far_a>,<c>,<far_b>,<far_b>
 ```
 
-If the object was scaled to a smaller or larger size then provide the scale factor that was used when slicing the object:
+Якщо об'єкт був масштабований до меншого або більшого розміру, то забезпечує коефіцієнт масштабу, який був використаний при нарізанні об'єкта:
 
 ```
 DELTA_ANALYZE SCALE=1.0
 ```
 
-(A scale value of 2.0 would mean the object is twice its original size, 0.5 would be half its original size.)
+(Дальність ваги 2.0 означає, що об'єкт двічі його оригінальний розмір, 0.5 буде половину його оригінального розміру.)
 
-Finally, perform the enhanced delta calibration by running:
-
-```
-DELTA_ANALYZE CALIBRATE=extended
-```
-
-This command can take several minutes to complete. After completion it will calculate updated delta parameters (delta radius, tower angles, endstop positions, and arm lengths). Use the SAVE_CONFIG command to save and apply the settings:
+Нарешті, виконайте посилену калібрування дельти:
 
 ```
-SAVE_CONFIG
+DELTA_ANALYZE CALIBRATE=Розширений
 ```
 
-The SAVE_CONFIG command will save both the updated delta parameters and information from the distance measurements. Future DELTA_CALIBRATE commands will also utilize this distance information. Do not attempt to reenter the raw distance measurements after running SAVE_CONFIG, as this command changes the printer configuration and the raw measurements no longer apply.
+Ця команда може взяти кілька хвилин, щоб завершити. Після завершення він розрахує оновлені дельта параметри (по радіусу, кути башти, положення та довжини руки). Використовуйте команду SAVE_CONFIG, щоб зберегти і застосувати налаштування:
 
-### Additional notes
+```
+ПРОКСИМУС
+```
 
-* If the delta printer has good dimensional accuracy then the distance between any two pillars should be around 74mm and the width of every pillar should be around 9mm. (Specifically, the goal is for the distance between any two pillars minus the width of one of the pillars to be exactly 65mm.) Should there be a dimensional inaccuracy in the part then the DELTA_ANALYZE routine will calculate new delta parameters using both the distance measurements and the previous height measurements from the last DELTA_CALIBRATE command.
-* DELTA_ANALYZE may produce delta parameters that are surprising. For example, it may suggest arm lengths that do not match the printer's actual arm lengths. Despite this, testing has shown that DELTA_ANALYZE often produces superior results. It is believed that the calculated delta parameters are able to account for slight errors elsewhere in the hardware. For example, small differences in arm length may result in a tilt to the effector and some of that tilt may be accounted for by adjusting the arm length parameters.
+Команда SAVE_CONFIG заощадить як оновлені параметри дельти і інформацію від вимірювань відстані. Майбутні команди DELTA_CALIBRATE також використовують цю інформацію про відстань. Не намагайтеся повторно відреагувати заміри дистанції після запуску SAVE_CONFIG, так як ця команда змінює конфігурацію принтера і сирі вимірювання більше не застосовуються.
 
-## Using Bed Mesh on a Delta
+### Додаткові ноти
 
-It is possible to use [bed mesh](Bed_Mesh.md) on a delta. However, it is important to obtain good delta calibration prior to enabling a bed mesh. Running bed mesh with poor delta calibration will result in confusing and poor results.
+* Якщо принтер дельта має хорошу точність розмірів, то відстань між двома стовпами повинна бути близько 74 мм і ширина кожного стовпа повинна бути близько 9 мм. (Своїсно, метою є відстань між двома стовпами мінус ширина одного з стовпів, щоб бути рівно 65 мм.) Якщо у складі, то рутин DELTA_ANALYZE буде обчислювати нові параметри дельта, використовуючи як вимірювання відстані, так і попередні вимірювання висоти з останнього командування DELTA_CALIBRATE.
+* DELTA_ANALYZE може виробляти параметри дельти, які дивують. Наприклад, це може запропонувати довжину рук, які не відповідають фактичним довжинам принтера. Незважаючи на це, тестування показали, що DELTA_ANALYZE часто виробляє чудові результати. Вважають, що розрахункові параметри дельта здатні враховувати незначні помилки в фурнітурі. Наприклад, невеликі відмінності в довжині руки можуть призвести до нахилу до ефекту і деяких з них тент може бути врахований для регулювання параметрів довжини руки.
 
-Note that performing delta calibration will invalidate any previously obtained bed mesh. After performing a new delta calibration be sure to rerun BED_MESH_CALIBRATE.
+## Використання Бесплатної сітки на Делі
+
+Можливе використання [боротна сітка](Bed_Mesh.md) на дельті. Однак, важливо отримати хорошу калібрування дельти, перш ніж забезпечити сітчасту сіточку. Виконується сітчаста сіточка з поганим дельта калібруванням призведе до заплутування і бідних результатів.
+
+Зауважте, що виконання калібрування дельта буде недійсним будь-якої раніше отриманої сітки. Після виконання нового калібрування дельта обов'язково перезапуск BED_ MESH_CALIBRATE.

@@ -1,167 +1,167 @@
-# Contributing to Klipper
+# Внески до кліпперу
 
-Thank you for contributing to Klipper! This document describes the process for contributing changes to Klipper.
+Дякуємо за довіру до Klipper! Цей документ описує процес внесення змін до Кліпперу.
 
-Please see the [contact page](Contact.md) for information on reporting an issue or for details on contacting the developers.
+Будь ласка, ознайомтеся з [контактною сторінкою](Контакт.md) для отримання інформації про звітність або для отримання відомостей про контактні дані розробників.
 
-## Overview of Contribution Process
+## Огляд процесу вступу
 
-Contributions to Klipper generally follow a high-level process:
+Внески до Klipper, як правило, слідують за високим рівнем:
 
-1. A submitter starts by creating a [GitHub Pull Request](https://github.com/Klipper3d/klipper/pulls) when a submission is ready for widespread deployment.
-1. When a [reviewer](#reviewers) is available to [review](#what-to-expect-in-a-review) the submission, they will assign themselves to the Pull Request on GitHub. The goal of the review is to look for defects and to check that the submission follows documented guidelines.
-1. After a successful review, the reviewer will "approve the review" on GitHub and a [maintainer](#reviewers) will commit the change to the Klipper master branch.
+1. Відправник починає зі створення [запиту на отримання GitHub](https://github.com/Klipper3d/klipper/pulls), коли надсилання готове для широкого розгортання.
+1. Коли [reviewer](#reviewers) доступний для [review](#what-to-expect-in-a-review) подача, вони будуть призначати себе на вимогу Тягу на GitHub. Мета рецензування полягає в тому, щоб знайти дефекти і перевірити, що подача здійснюється задокументованими рекомендаціями.
+1. Після успішного огляду рецензент «затвердить рецензію» на GitHub та [заголовок](#reviewers) буде втілювати зміни в майстер-гілку Klipper.
 
-When working on enhancements, consider starting (or contributing to) a topic on [Klipper Discourse](Contact.md). An ongoing discussion on the forum can improve visibility of development work and may attract others interested in testing new work.
+Під час роботи над поліпшенням, розгляньте початок (або внесення до) тема [Klipper Discourse](Контакт.md). Постійна дискусія на форумі може покращити видимість роботи розвитку і може залучити інших зацікавлених у тестуванні нової роботи.
 
-## What to expect in a review
+## Що чекати в огляді
 
-Contributions to Klipper are reviewed before merging. The primary goal of the review process is to check for defects and to check that the submission follows guidelines specified in the Klipper documentation.
+Внески до Klipper відгукуються перед злиттям. Основною метою процесу рецензування є перевірка дефектів та перевірка того, що подання слідувати вказівкам, зазначеним у документації Кліппера.
 
-It is understood that there are many ways to accomplish a task; it is not the intent of the review to discuss the "best" implementation. Where possible, review discussions focused on facts and measurements are preferable.
+Зрозуміло, що існує багато способів виконання поставленого завдання; це не інтенсивний огляд, щоб обговорити «найкращий» виконання. Де це можливо, оглядові дискусії, присвячені фактам і вимірам, краще.
 
-The majority of submissions will result in feedback from a review. Be prepared to obtain feedback, provide further details, and to update the submission if needed.
+Більшість заявок призведе до зворотного зв’язку з оглядом. Щоб отримати зворотний зв'язок, додайте інформацію, і для оновлення подання, якщо це необхідно.
 
-Common things a reviewer will look for:
+Рецензент буде виглядати:
 
-1. Is the submission free of defects and is it ready to be widely deployed?
+1. Чи є подання без дефектів і він готовий бути широко розгорнутим?
 
-   Submitters are expected to test their changes prior to submission. The reviewers look for errors, but they don't, in general, test submissions. An accepted submission is often deployed to thousands of printers within a few weeks of acceptance. Quality of submissions is therefore considered a priority.
+   Подати заявку на перевірку змін до подання. Рецензенти дивляться на помилки, але вони не, в цілому, тестові подання. Прийнята подача часто розгортається до тисяч принтерів протягом декількох тижнів прийому. Якість заявок вважається пріоритетом.
 
-   The main [Klipper3d/klipper](https://github.com/Klipper3d/klipper) GitHub repository does not accept experimental work. Submitters should perform experimentation, debugging, and testing in their own repositories. The [Klipper Discourse](Contact.md) server is a good place to raise awareness of new work and to find users interested in providing real-world feedback.
+   Головна [Klipper3d/klipper](https://github.com/Klipper3d/klipper) Репозиторій GitHub не приймає експериментальних робіт. Підрядники повинні виконувати експериментацію, відбілювання і тестування в власних репозиторій. Сервер [Klipper Discourse](Контакт.md) - це гарне місце для підвищення обізнаності про нову роботу і пошуку користувачів, зацікавлених у наданні реальних відгуків.
 
-   Submissions must pass all [regression test cases](Debugging.md).
+   Видача повинні пройти всі [випадкові випадки](Debugging.md).
 
-   When fixing a defect in the code, submitters should have a general understanding of the root cause of that defect, and the fix should target that root cause.
+   При фіксуванні дефекту в коді подавачі повинні мати загальне розуміння першопричини цього дефекту, а фіксація повинна ціль, що викликає корінь.
 
-   Code submissions should not contain excessive debugging code, debugging options, nor run-time debug logging.
+   Подача коду не повинна містити зайвий код відключення, параметри відключення, а не записувати час.
 
-   Comments in code submissions should focus on enhancing code maintenance. Submissions should not contain "commented out code" nor excessive comments describing past implementations. There should not be excessive "todo" comments.
+   Коментарі до подачі коду повинні зосередитись на підвищенні вмісту коду. Подання не повинно містити «коду», а не зайвих коментарів, що описують останні виконання. Не варто зайвих «домо» коментарів.
 
-   Updates to documentation should not declare that they are a "work in progress".
-1. Does the submission provide a "high impact" benefit to real-world users performing real-world tasks?
+   Оновити документацію не варто заявити, що вони є «роботою в прогресі».
+1. Чи забезпечується подача «високий удар» на користь реальних користувачів, які виконують реальні завдання?
 
-   Reviewers need to identify, at least in their own minds, roughly "who the target audience is", a rough scale of "the size of that audience", the "benefit" they will obtain, how the "benefit is measured", and the "results of those measurement tests". In most cases this will be obvious to both the submitter and the reviewer, and it is not explicitly stated during a review.
+   Рецензенти повинні визначити, принаймні у власних розумах, грубо "хто цільова аудиторія", шорстку шкалу "розміри цієї аудиторії", "наряддя" вони отримають, як вимірюється "наряд", а "регулятори цих випробувань". У більшості випадків це буде очевидним як для відправника, так і рецензента, і він явно не зазначений під час рецензування.
 
-   Submissions to the master Klipper branch are expected to have a noteworthy target audience. As a general "rule of thumb", submissions should target a user base of at least a 100 real-world users.
+   Очікується, що гілка «Кліппер» має гідну цільову аудиторію. В якості загального "справи великого пальця", подання повинні зацікавити базу користувачів принаймні 100 реальних користувачів.
 
-   If a reviewer asks for details on the "benefit" of a submission, please don't consider it criticism. Being able to understand the real-world benefits of a change is a natural part of a review.
+   Якщо рецензент попросить деталі на тему «пошук» подання, будь ласка, не врахуйте її критикою. Зрозуміти зрозуміти переваги реального світу змін є природною частиною огляду.
 
-   When discussing benefits it is preferable to discuss "facts and measurements". In general, reviewers are not looking for responses of the form "someone may find option X useful", nor are they looking for responses of the form "this submission adds a feature that firmware X implements". Instead, it is generally preferable to discuss details on how the quality improvement was measured and what were the results of those measurements - for example, "tests on Acme X1000 printers show improved corners as seen in picture ...", or for example "print time of real-world object X on a Foomatic X900 printer went from 4 hours to 3.5 hours". It is understood that testing of this type can take significant time and effort. Some of Klipper's most notable features took months of discussion, rework, testing, and documentation prior to being merged into the master branch.
+   При обговоренні переваг бажано обговорити «Факти і вимірювання». В цілому рецензенти не шукають відповіді форми « someone може знайти варіант X корисною», ані вони шукають відповіді форми «це уявлення додає функцію, яку прошивку X реалізує». Замість цього, зазвичай бажано обговорити деталі про те, як було вимірено поліпшення якості, і які були результати цих вимірювань - наприклад, "тести на принтерах Acme X1000 показують поліпшені кути, як видно на малюнку ...", або наприклад " час друку об'єкта реального світу X на Foomatic X900 принтер пішов з 4 годин до 3,5 годин". Зрозуміло, що тестування цього типу може зайняти значний час і зусилля. Декілька найбільш нездатних функцій Кліппера взяли участь у обговоренні, реконструкції, тестування та документації до об’єднання в майстер-гілку.
 
-   All new modules, config options, commands, command parameters, and documents should have "high impact". We do not want to burden users with options that they can not reasonably configure nor do we want to burden them with options that don't provide a notable benefit.
+   Всі нові модулі, параметри налаштування, команди, параметри команд та документи повинні мати "високий вплив". Ми не хочемо обтягувати користувачів з опціями, які вони не можуть налаштовуватися, ані ми хочемо, щоб вони не отримували жодних можливостей.
 
-   A reviewer may ask for clarification on how a user is to configure an option - an ideal response will contain details on the process - for example, "users of the MegaX500 are expected to set option X to 99.3 while users of the Elite100Y are expected to calibrate option X using procedure ...".
+   Рецензент може попросити уточнення про те, як користувач повинен налаштувати варіант - ідеальний відповідь буде містити дані про процес - наприклад, "користувачі MegaX500 будуть очікувані встановити опцію X до 99.3, тоді як користувачі Elite100Y очікується, щоб калібрувати варіант X за допомогою процедури ...".
 
-   If the goal of an option is to make the code more modular then prefer using code constants instead of user facing config options.
+   Якщо мета параметра полягає в тому, щоб зробити код більш модульним, то віддайте перевагу за допомогою кодових констанцій замість параметрів налаштування користувацького інтерфейсу.
 
-   New modules, new options, and new parameters should not provide similar functionality to existing modules - if the differences are arbitrary than it's preferable to utilize the existing system or refactor the existing code.
-1. Is the copyright of the submission clear, non-gratuitous, and compatible?
+   Нові модулі, нові параметри і нові параметри не повинні забезпечити схожу функціональність до існуючих модулів - якщо відмінності довільні, ніж це бажано використовувати існуючу систему або рефакторувати існуючий код.
+1. Чи є авторське право подання чітким, нетерплим і сумісним?
 
-   New C files and Python files should have an unambiguous copyright statement. See the existing files for the preferred format. Declaring a copyright on an existing file when making minor changes to that file is discouraged.
+   Нові файли C та файли Python повинні мати неоднозначну інформацію про авторські права. Переглянути існуючі файли для бажаного формату. Визначте авторські права на існуючий файл при внесенні незначних змін до цього файлу.
 
-   Code taken from 3rd party sources must be compatible with the Klipper license (GNU GPLv3). Large 3rd party code additions should be added to the `lib/` directory (and follow the format described in [lib/README](../lib/README)).
+   Код, взятий із сторонніх джерел, має бути сумісним із ліцензією Klipper (GNU GPLv3). До каталогу `lib/` слід додавати великі коди сторонніх розробників (і дотримуватися формату, описаного в [lib/README](../lib/README)).
 
-   Submitters must provide a [Signed-off-by line](#format-of-commit-messages) using their full real name. It indicates the submitter agrees with the [developer certificate of origin](developer-certificate-of-origin).
-1. Does the submission follow guidelines specified in the Klipper documentation?
+   Підрядники повинні надати [Підпис](#format-of-commit-messages) використовуючи їх повне ім'я. Вказана заявка на подачу, яка погоджується з сертифікатом [розробник походження](розробник-сертифікат-оф-оригін).
+1. Чи вказаний в документації Кліппер?
 
-   In particular, code should follow the guidelines in <Code_Overview.md> and config files should follow the guidelines in <Example_Configs.md>.
-1. Is the Klipper documentation updated to reflect new changes?
+   Зокрема, код повинен дотримуватися інструкцій в <Code_Overview.md> та налаштування файлів слід дотримуватися інструкцій в <Example_Configs.md>.
+1. Чи оновлюється документація Klipper для відображення нових змін?
 
-   At a minimum, the reference documentation must be updated with corresponding changes to the code:
+   При мінімальному довідковому документі необхідно оновити відповідні зміни до коду:
 
-   * All commands and command parameters must be documented in <G-Codes.md>.
-   * All user facing modules and their config parameters must be documented in <Config_Reference.md>.
-   * All exported "status variables" must be documented in <Status_Reference.md>.
-   * All new "webhooks" and their parameters must be documented in <API_Server.md>.
-   * Any change that makes a non-backwards compatible change to a command or config file setting must be documented in <Config_Changes.md>.
+   * Всі параметри команд і команд повинні бути задокументовані в <G-Codes.md>.
+   * Всі користувацькі модулі та їх параметри налаштування повинні бути задокументовані в <Config_Reference.md>.
+   * Всі експортовані "статусні зміни" повинні бути задокументовані в <Status_Reference.md>.
+   * Всі нові "webhooks" і їх параметри повинні бути задокументовані в <API_Server.md>.
+   * Будь-яка зміна, яка робить неперевершені сумісні зміни в налаштування командного або конфігураційного файлу, необхідно задокументувати в <Config_Changes.md>.
 
-New documents should be added to <Overview.md> and be added to the website index [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml).
+Нові документи слід додати до <Overview.md> і до індексу веб-сайту [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml).
 
-1. Are commits well formed, address a single topic per commit, and independent?
+1. Чи добре сформовані коміти, адресуйте одну тему за коміс, і незалежно?
 
-   Commit messages should follow the [preferred format](#format-of-commit-messages).
+   Повідомлення про фіксацію мають відповідати [бажаному формату](#format-of-commit-messages).
 
-   Commits must not have a merge conflict. New additions to the Klipper master branch are always done via a "rebase" or "squash and rebase". It is generally not necessary for submitters to re-merge their submission on every update to the Klipper master repository. However, if there is a merge conflict, then submitters are recommended to use `git rebase` to address the conflict.
+   Товари не повинні володіти конфліктом. Нові доповнення в майстер-гілку Кліппер завжди виконуються через "ребазу" або "шкідку і базис". Як правило, не потрібно для відправників, щоб перезапустити їх подачу на кожен оновлення до майстер-репозиторію Кліппер. Однак, якщо є конфлікт зливу, то подача рекомендується використовувати `git rebase` для вирішення конфлікту.
 
-   Each commit should address a single high-level change. Large changes should be broken up into multiple independent commits. Each commit should "stand on its own" so that tools like `git bisect` and `git revert` work reliably.
+   Кожен комітаж повинен звернутися до однорівневої зміни. Великі зміни повинні бути розбиті в декілька незалежних комісій. Кожен комітаж повинен "стояти на власній" так, щоб інструменти, такі як `git bisect` і `git revert` працюють надійно.
 
-   Whitespace changes should not be mixed with functional changes. In general, gratuitous whitespace changes are not accepted unless they are from the established "owner" of the code being modified.
+   Не слід змішувати з функціональними змінами. В цілому, не приймаються зміни білого простору, якщо вони з встановленого "власника" коду, що є модифікованим.
 
-Klipper does not implement a strict "coding style guide", but modifications to existing code should follow the high-level code flow, code indentation style, and format of that existing code. Submissions of new modules and systems have more flexibility in coding style, but it is preferable for that new code to follow an internally consistent style and to generally follow industry wide coding norms.
+Кліппер не реалізує строгий "керівник стилю", але модифікації до існуючого коду повинні дотримуватися високого рівня, стилю відступу коду і формат цього існуючого коду. Запуски нових модулів і систем мають більш гнучкість в стилі кодування, але це бажано для цього нового коду, щоб дотримуватися внутрішнього послідовного стилю і, як правило, слідувати галузевим широким правилам кодування.
 
-It is not a goal of a review to discuss "better implementations". However, if a reviewer struggles to understand the implementation of a submission, then they may ask for changes to make the implementation more transparent. In particular, if reviewers can not convince themselves that a submission is free of defects then changes may be necessary.
+Не є метою ознайомлення з тематикою «закінчення реалізації». Однак, якщо рецензент бореться з розумінням виконання подання, то вони можуть попросити зміни, щоб зробити виконання більш прозорим. Зокрема, якщо рецензенти не можуть переконувати себе, що подання є безкоштовним від дефектів, то можуть бути необхідні зміни.
 
-As part of a review, a reviewer may create an alternate Pull Request for a topic. This may be done to avoid excessive "back and forth" on minor procedural items and thus streamline the submission process. It may also be done because the discussion inspires a reviewer to build an alternative implementation. Both situations are a normal result of a review and should not be considered criticism of the original submission.
+В рамках рецензування рецензент може створити альтернативний запит на Pull для теми. Це може бути зроблено для того, щоб уникнути зайвих "повернення і вперед" на незначних процесуальних пунктах і, таким чином, потокового процесу подання. Це також може бути зроблено, тому що обговорення надихає рецензента для створення альтернативної реалізації. Обидві ситуації є нормальним результатом рецензування і не слід вважати критикою оригінального подання.
 
-### Helping with reviews
+### Допомога з відгуками
 
-We appreciate help with reviews! It is not necessary to be a [listed reviewer](#reviewers) to perform a review. Submitters of GitHub Pull Requests are also encouraged to review their own submissions.
+Ми вдячні за відгуки! Не обов'язково бути [listed рецензент](#reviewers) для виконання рецензента. Підтверджувачі GitHub Pull Запити також заохочуються переглядати власні уявлення.
 
-To help with a review, follow the steps outlined in [what to expect in a review](#what-to-expect-in-a-review) to verify the submission. After completing the review, add a comment to the GitHub Pull Request with your findings. If the submission passes the review then please state that explicitly in the comment - for example something like "I reviewed this change according to the steps in the CONTRIBUTING document and everything looks good to me". If unable to complete some steps in the review then please explicitly state which steps were reviewed and which steps were not reviewed - for example something like "I didn't check the code for defects, but I reviewed everything else in the CONTRIBUTING document and it looks good".
+Щоб допомогти з оглядом, слідуйте за кроками, викладеними в [що очікувати в огляді](#what-to-expect-in-a-review) для перевірки подання. Після завершення рецензування додайте коментар до GitHub Pull Запит з вашими результатами. Якщо подача проходить рецензування, то будь ласка, стан, який явно в коментарях - наприклад, щось схоже "Я переглядав цю зміну відповідно до кроків у документі про КОНТРЕЙДУВАННЯ і все добре виглядає до мене". Якщо не вдалося завершити деякі кроки в огляді, то будь ласка, явно стану, які кроки були розглянуті, і які кроки не були розглянуті - наприклад, щось схоже "Я не перевірив код для дефектів, але я рецензував все інше в документі КОНТРЕЙДУВАННЯ і він добре виглядає".
 
-We also appreciate testing of submissions. If the code was tested then please add a comment to the GitHub Pull Request with the results of your test - success or failure. Please explicitly state that the code was tested and the results - for example something like "I tested this code on my Acme900Z printer with a vase print and the results were good".
+Ми також цінуємо тестування заявок. Якщо код був протестований, будь ласка, додайте коментар до GitHub Pull Запит з результатами тесту - успіху або невдачі. Будь ласка, явно стан, що код був протестований і результати - наприклад, щось схоже "Я перевірив цей код на моєму принтері Acme900Z з вазею друку і результати були хороші".
 
-### Reviewers
+### Редактори
 
-The Klipper "reviewers" are:
+Кліппер "відгуки" є:
 
-| Name | GitHub Id | Areas of interest |
+| Ім’я | GitHub Id | Зона інтересу |
 | --- | --- | --- |
-| Dmitry Butyugin | @dmbutyugin | Input shaping, resonance testing, kinematics |
-| Eric Callahan | @Arksine | Bed leveling, MCU flashing |
-| James Hartley | @JamesH1978 | Configuration files |
-| Kevin O'Connor | @KevinOConnor | Core motion system, Micro-controller code |
+| Дмитро Бутюгін | @d mbutyugin | Вхідне формування, резонансне тестування, кінематика |
+| Ерік Калаган | @Арксин | Вирівнювання ліжка, миготливий MCU |
+| Джеймс Хартлі | @ДжемсХ1978 | Налаштування файлів |
+| Кевін О'Коннор | @KevinOConнор | Система руху ядра, код Micro-controller |
 
-Please do not "ping" any of the reviewers and please do not direct submissions at them. All of the reviewers monitor the forums and PRs, and will take on reviews when they have time to.
+Будь ласка, не "ping" будь-який з рецензентів і будь ласка, не прямі надсилання. Всі рецензенти контролюють форуми та PR, а також прийматимуться на відгуки, коли вони встигнуть.
 
-The Klipper "maintainers" are:
+Кліппер «помічники»:
 
-| Name | GitHub name |
+| Ім’я | Ім'я GitHub |
 | --- | --- |
-| Kevin O'Connor | @KevinOConnor |
+| Кевін О'Коннор | @KevinOConнор |
 
-## Format of commit messages
+## Формат комісних повідомлень
 
-Each commit should have a commit message formatted similar to the following:
+Кожна комісія повинна мати повідомлення, відформатований аналогічним чином:
 
 ```
-module: Capitalized, short (50 chars or less) summary
+модуль: капіталізований, короткий (50 chars або менше) резюме
 
-More detailed explanatory text, if necessary.  Wrap it to about 75
-characters or so.  In some contexts, the first line is treated as the
-subject of an email and the rest of the text as the body.  The blank
-line separating the summary from the body is critical (unless you omit
-the body entirely); tools like rebase can get confused if you run the
-two together.
+Більш детальний пояснювальний текст, при необхідності. Обгортання до 75
+символи або так. У деяких контекстах оброблюється перша лінія як
+предмет електронної пошти та решти тексту як тіла. Заготовка
+лінія, що відокремлює резюме від тіла, є критичним (не знаєте, що ви
+тіло повністю; інструменти, такі як база, можуть плутати, якщо ви працюєте
+два разом.
 
-Further paragraphs come after blank lines..
+Далі абзаци приходять після порожніх ліній.
 
-Signed-off-by: My Name <myemail@example.org>
+Ім'я користувача <myemail@example.org>
 ```
 
-In the above example, `module` should be the name of a file or directory in the repository (without a file extension). For example, `clocksync: Fix typo in pause() call at connect time`. The purpose of specifying a module name in the commit message is to help provide context for the commit comments.
+У наведеному вище прикладі `модуль` має бути назва файлу або каталогу в репозиторію (без розширення файлу). Наприклад, `clocksync: Виправлення типу у паузи() виклику під час підключення `. Мета визначення імені модуля в комітовому повідомленні полягає в тому, щоб допомогти забезпечити контекст для коментарів.
 
-It is important to have a "Signed-off-by" line on each commit - it certifies that you agree to the [developer certificate of origin](developer-certificate-of-origin). It must contain your real name (sorry, no pseudonyms or anonymous contributions) and contain a current email address.
+Важливо мати лінійку «Signed-off-by» на кожну комісію - засвідчує, що ви погоджуєтесь на [developer сертифікат походження](developer-certificate-of-origin). Необхідно вказати Ваше ім'я (сорти, без псевдонімів або анонімних внесків) і містити точну адресу електронної пошти.
 
-## Contributing to Klipper Translations
+## Внесок до перекладу Klipper
 
-[Klipper-translations Project](https://github.com/Klipper3d/klipper-translations) is a project dedicated to translating Klipper to different languages. [Weblate](https://hosted.weblate.org/projects/klipper/) hosts all the Gettext strings for translating and reviewing. Locales can be displayed on [klipper3d.org](https://www.klipper3d.org) once they satisfy the following requirements:
+[Klipper-translations Project](https://github.com/Klipper3d/klipper-translations) - проект, присвячений перекладі Klipper на різні мови. [Weblate](https://hosted.weblate.org/projects/klipper/) проводить всі рядки Gettext для перекладу та перегляду. Місцеві жителі можуть відображатися на [klipper3d.org](https://www.klipper3d.org) після того, як вони задовольнять наступні вимоги:
 
-- [ ] 75% Total coverage
-- [ ] All titles (H1) are translated
-- [ ] An updated navigation hierarchy PR in klipper-translations.
+- [ ] 75% Всього покриття
+- [ ] Всі заголовки (H1) переведені
+- [ ] Оновлена навігаційна ієрархія PR в klipper-translations.
 
-To reduce the frustration of translating domain-specific terms and gain awareness of the ongoing translations, you can submit a PR modifying the [Klipper-translations Project](https://github.com/Klipper3d/klipper-translations) `readme.md`. Once a translation is ready, the corresponding modification to the Klipper project can be made.
+Для зменшення фрустрації перекладацьких умов та отримання обізнаності про постійні переклади можна подати PR, що модифікує проект [Кліппер-трансляції](https://github.com/Klipper3d/klipper-translations) `readme.md`. Після того, як переклад готовий, можна зробити відповідну модифікацію проекту Klipper.
 
-If a translation already exists in the Klipper repository and no longer meets the checklist above, it will be marked out-of-date after a month without updates.
+Якщо переклад вже існує в репозиторію Кліппер і більше не відповідає списку перевірок вище, він буде позначений станом на місяць без оновлення.
 
-Once the requirements are met, you need to:
+Після виконання вимог необхідно:
 
-1. update klipper-tranlations repository [active_translations](https://github.com/Klipper3d/klipper-translations/blob/translations/active_translations)
-1. Optional: add a manual-index.md file in klipper-translations repository's `docs\locals\<lang>` folder to replace the language specific index.md (generated index.md does not render correctly).
+1. [active_translations](https://github.com/Klipper3d/klipper-translations/blob/translations/active_translations)
+1. Додатково: додати ручний індекс. md файл в klipper-translations repository `docs\locals\<lang>` папка для заміни певного індексу мови.md (генерований індекс.md не дає права).
 
-Known Issues:
+Знанні питання:
 
-1. Currently, there isn't a method for correctly translating pictures in the documentation
-1. It is impossible to translate titles in mkdocs.yml.
+1. В даний час існує метод правильної перекладацької документації
+1. Не можна перевести назви в mkdocs.yml.

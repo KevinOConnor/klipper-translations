@@ -1,30 +1,30 @@
-# Sponsors
+# Спонсори
 
-Klipper is Free Software. We depend on the generous support from sponsors. Please consider sponsoring Klipper or supporting our sponsors.
+Klipper є безкоштовним програмним забезпеченням. Від спонсорів залежить щедра підтримка. Будь ласка, врахуйте спонсорів Klipper або підтримайте наших спонсорів.
 
-## BIGTREETECH
+## БІГТРИТЕХ
 
 [<img src="./img/sponsors/BTT_BTT.png" width="200" style="margin:25px"/>](https://bigtree-tech.com/collections/all-products)
 
-BIGTREETECH is the official mainboard sponsor of Klipper. BIGTREETECH is committed to developing innovative and competitive products to serve the 3D printing community better. Follow them on [Facebook](https://www.facebook.com/BIGTREETECH) or [Twitter](https://twitter.com/BigTreeTech).
+BIGTREETECH є офіційним спонсором материнської плати Klipper. BIGTREETECH прагне розробляти інноваційні та конкурентоспроможні продукти, щоб краще служити спільноті 3D-друку. Слідкуйте за ними у [Facebook](https://www.facebook.com/BIGTREETECH) або [Twitter](https://twitter.com/BigTreeTech).
 
-## Sponsors
+## Спонсори
 
 [<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor) [<img src="./img/sponsors/peopoly-logo.png" width="200" style="margin:25px" />](https://peopoly.net)
 
-## Klipper Developers
+## Розробники Klipper
 
-### Kevin O'Connor
+### Кевін О'Коннор
 
-Kevin is the original author and current maintainer of Klipper. Donate at: <https://ko-fi.com/koconnor> or <https://www.patreon.com/koconnor>
+Кевін є оригінальним автором і поточним прихильником Кліппера. Довідник: <https://ko-fi.com/koconnor> або <https://www.patreon.com/koconnor>
 
-### Eric Callahan
+### Ерік Калаган
 
-Eric is the author of bed_mesh, spi_flash, and several other Klipper modules. Eric has a donations page at: <https://ko-fi.com/arksine>
+Ерік є автором ліжко_меш, spi_flash, і декількох інших модулів Klipper. <https://ko-fi.com/arksine>
 
-## Related Klipper Projects
+## Пов'язані Klipper проекти
 
-Klipper is frequently used with other Free Software. Consider using or supporting these projects.
+Klipper часто використовується з іншими безкоштовним програмним забезпеченням. Розглянуто використання або супровід цих проектів.
 
 * [Moonraker](https://github.com/Arksine/moonraker)
 * [Mainsail](https://github.com/mainsail-crew/mainsail)

@@ -1,275 +1,275 @@
 # Компенсація резонансів
 
-Klipper supports Input Shaping - a technique that can be used to reduce ringing (also known as echoing, ghosting or rippling) in prints. Ringing is a surface printing defect when, typically, elements like edges repeat themselves on a printed surface as a subtle 'echo':
+Кліпперові опори Вхідне формування - це техніка, яка може бути використана для зменшення кільця (також відомий як ехоінг, приховує або перехоплення) у принтах. Кільце - це дефект поверхневого друку, коли, як правило, елементи, такі як краї повторюють себе на друкованій поверхні, як тонкий «ехо»:
 
-|![Ringing test](img/ringing-test.jpg)|![3D Benchy](img/ringing-3dbenchy.jpg)|
+|![Тест дзвінка](img/ringing-test.jpg)|![3D Benchy](img/ringing-3dbenchy.jpg)|
 
-Ringing is caused by mechanical vibrations in the printer due to quick changes of the printing direction. Note that ringing usually has mechanical origins: insufficiently rigid printer frame, non-tight or too springy belts, alignment issues of mechanical parts, heavy moving mass, etc. Those should be checked and fixed first, if possible.
+Кільце викликається механічними коливаннями в принтері через швидкі зміни напрямку друку. Зауважте, що кільце зазвичай має механічне походження: недостатньо жорсткі принтери рамки, нещільно або занадто пружинні ремені, вирівнюючі проблеми механічних деталей, важкої рухомої маси тощо. Якщо це можливо.
 
-[Input shaping](https://en.wikipedia.org/wiki/Input_shaping) is an open-loop control technique which creates a commanding signal that cancels its own vibrations. Input shaping requires some tuning and measurements before it can be enabled. Besides ringing, Input Shaping typically reduces the vibrations and shaking of the printer in general, and may also improve the reliability of the stealthChop mode of Trinamic stepper drivers.
+[Input shaping](https://en.wikipedia.org/wiki/Input_shaping) є відкритою технікою управління, яка створює сигнал, який скасовує власні вібрації. Перед тим як він може бути включений. Крім того, кільце, вхідне формування, як правило, зменшує вібрацій і погладжування принтера в цілому, а також може підвищити надійність крадіжкиChop режиму Trinamic stepper драйверів.
 
-## Tuning
+## Тюнінг
 
-Basic tuning requires measuring the ringing frequencies of the printer by printing a test model.
+Базове тюнінг вимагає вимірювання частоти кілець принтера шляхом друку тестової моделі.
 
-Slice the ringing test model, which can be found in [docs/prints/ringing_tower.stl](prints/ringing_tower.stl), in the slicer:
+Вимикайте модель ринг-тесту, яку можна знайти в [docs/prints/ringing_tower.stl](prints/ringing_tower.stl), в скибочку:
 
-* Suggested layer height is 0.2 or 0.25 mm.
-* Infill and top layers can be set to 0.
-* Use 1-2 perimeters, or even better the smooth vase mode with 1-2 mm base.
-* Use sufficiently high speed, around 80-100 mm/sec, for **external** perimeters.
-* Make sure that the minimum layer time is **at most** 3 seconds.
-* Make sure any "dynamic acceleration control" is disabled in the slicer.
-* Do not turn the model. The model has X and Y marks at the back of the model. Note the unusual location of the marks vs. the axes of the printer - it is not a mistake. The marks can be used later in the tuning process as a reference, because they show which axis the measurements correspond to.
+* Висота шару застигається 0,2 або 0,25 мм.
+* Наповнення і верхній шари можна встановити до 0.
+* Використовуйте 1-2 периметри, або навіть краще режим гладкої вази з підставою 1-2 мм.
+* Використовуйте досить високу швидкість, близько 80-100 мм / сек, для **зовнішній** периметри.
+* Переконайтеся, що мінімальний час шару ** в більшості** 3 секунди.
+* Переконайтеся, що будь-який "динамічний контроль прискорення" вимкнено в скибочках.
+* Не поверніть модель. Модель має позначки X і Y на спині моделі. Зверніть увагу на незвичайне розташування позначок проти осі принтера - це не помилка. Відмітки можуть бути використані пізніше в процесі тюнінгу як посилання, оскільки вони показують, що вісь виміри відповідають.
 
-### Ringing frequency
+### Частота кільця
 
-First, measure the **ringing frequency**.
+По-перше, заміряйте частоту **рингінгу **.
 
-1. If `square_corner_velocity` parameter was changed, revert it back to 5.0. It is not advised to increase it when using input shaper because it can cause more smoothing in parts - it is better to use higher acceleration value instead.
-1. Disable the `minimum_cruise_ratio` feature by issuing the following command: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
-1. Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
-1. If you have already added `[input_shaper]` section to the printer.cfg, execute `SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0` command. If you get "Unknown command" error, you can safely ignore it at this point and continue with the measurements.
-1. Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` Basically, we try to make ringing more pronounced by setting different large values for acceleration. This command will increase the acceleration every 5 mm starting from 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 and so forth up until 7000 mm/sec^2 at the last band.
-1. Print the test model sliced with the suggested parameters.
-1. You can stop the print earlier if the ringing is clearly visible and you see that acceleration gets too high for your printer (e.g. printer shakes too much or starts skipping steps).
-1. Use X and Y marks at the back of the model for reference. The measurements from the side with X mark should be used for X axis *configuration*, and Y mark - for Y axis configuration. Measure the distance *D* (in mm) between several oscillations on the part with X mark, near the notches, preferably skipping the first oscillation or two. To measure the distance between oscillations more easily, mark the oscillations first, then measure the distance between the marks with a ruler or calipers:
+1. Якщо змінено параметр `square_corner_velocity`, перевернув його назад до 5.0. Не радимо збільшити його при використанні вхідної форми, тому що вона може викликати більш плавлення деталей - краще використовувати більш високу вартість прискорення замість.
+1. Увімкніть функцію `minimum_cruise_ratio`, видавши наступну команду: `SET_VELOCITY_LIMIT МІНІМУМ_КРУС_РАТІО=0`
+1. Відключений тиск: `SET_PRESSURE_ADVANCE ADVANCE=0`
+1. Якщо ви вже додали `[input_shaper]` розділ до принтера.cfg, виконувати `SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0` команди. Якщо ви отримуєте "Невідоме командування" помилку, ви можете сміливо ігнорувати його в цій точці і продовжити вимірювання.
+1. Виконання команди: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5` В основному, ми намагаємося зробити кільце більш вираженим, встановлюючи різні великі значення для прискорення. Ця команда збільшить прискорення кожні 5 мм від 1500 мм/сек^2: 1500 мм/сек^2, 2000 мм/сек^2, 2500 мм/секек^2 і т.д. до 7000 мм/сек^2 на останню смугу.
+1. Друк тестової моделі зрізаний за допомогою запропонованих параметрів.
+1. Ви можете зупинити друк раніше, якщо кільце чітко видно, і ви бачите, що прискорення отримує занадто високий для вашого принтера (наприклад, принтер шейк занадто багато або починає пропустити кроки).
+1. Використовуйте позначки X і Y на спині моделі для посилання. Вимірювання з боку з позначкою X слід використовувати для осі X *конфігурація *, а знак Y - для налаштування осі Y. Виміряйте відстань *D* (в мм) між декількома коливаннями на складі з позначкою X, біля лавок, бажано пропустити першу коливання або два. Щоб виміряти відстань між коливаннями більш легко, спочатку позначте коливання, після чого виміряйте відстань між позначками з лінійкою або затискачами:
 
-   |![Mark ringing](img/ringing-mark.jpg)|![Measure ringing](img/ringing-measure.jpg)|
-1. Count how many oscillations *N* the measured distance *D* corresponds to. If you are unsure how to count the oscillations, refer to the picture above, which shows *N* = 6 oscillations.
-1. Compute the ringing frequency of X axis as *V* &middot; *N* / *D* (Hz), where *V* is the velocity for outer perimeters (mm/sec). For the example above, we marked 6 oscillations, and the test was printed at 100 mm/sec velocity, so the frequency is 100 * 6 / 12.14 ≈ 49.4 Hz.
-1. Do (8) - (10) for Y mark as well.
+   Увійти [Маркове кільце](img/ringing-mark.jpg) }} [Measure ringing](img/ringing-measure.jpg) }}
+1. Кількість коливань *N* вимірюється відстань *D* відповідає. Якщо ви не впевнені, як підрахувати коливання, зверніться до зображення вище, яке показує *N* = 6 коливань.
+1. Розгорніть частоту занурювання осі X, як *V* · *N* / *D* (Хз), де *V* є швидкістю зовнішнього периметра (мм/сек). На прикладі вище ми позначили 6 коливань, і тест був надрукований на швидкості 100 мм/сек, тому частота 100 * 6 / 12.14 ≈ 49.4 Гц.
+1. До (8) - (10) для марки Y.
 
-Note that ringing on the test print should follow the pattern of the curved notches, as in the picture above. If it doesn't, then this defect is not really a ringing and has a different origin - either mechanical, or an extruder issue. It should be fixed first before enabling and tuning input shapers.
+Зверніть увагу, що кільце на тестовому друку слідувати шаблону вигнутих лавок, як на малюнку вище. Якщо це не так, то цей дефект не є дійсно кільцем і має різне походження - або механічне, або зовнішнє питання. Перед застосуванням та налаштуванням вводних форм.
 
-If the measurements are not reliable because, say, the distance between the oscillations is not stable, it might mean that the printer has several resonance frequencies on the same axis. One may try to follow the tuning process described in [Unreliable measurements of ringing frequencies](#unreliable-measurements-of-ringing-frequencies) section instead and still get something out of the input shaping technique.
+Якщо вимірювання ненадійні через, скажімо, відстань між коливаннями нестабільна, це може означати, що принтер має кілька резонансних частот на одній осі. Натомість можна спробувати виконати процес налаштування, описаний у розділі [Ненадійні вимірювання частот дзвінків](#unreliable-measurements-of-ringing-frequencies), і все одно отримати щось із техніки формування вхідних даних.
 
-Ringing frequency can depend on the position of the model within the buildplate and Z height, *especially on delta printers*; you can check if you see the differences in frequencies at different positions along the sides of the test model and at different heights. You can calculate the average ringing frequencies over X and Y axes if that is the case.
+Частота забору може залежати від положення моделі в межах будівельної плити і висоти Z, * особливо від принтерів delta*; ви можете перевірити, якщо ви бачите відмінності в частотах на різних позиціях по сторонах тестової моделі і на різних висотах. Ви можете розрахувати середні частоти за допомогою X і Y, якщо це випадок.
 
-If the measured ringing frequency is very low (below approx 20-25 Hz), it might be a good idea to invest into stiffening the printer or decreasing the moving mass - depending on what is applicable in your case - before proceeding with further input shaping tuning, and re-measuring the frequencies afterwards. For many popular printer models there are often some solutions available already.
+Якщо виміряна частота дзвінка дуже низька (повторна приблизно 20-25 Гц), це може бути гарною ідеєю для інвестування в жорсткість принтера або зменшення рухомої маси - в залежності від того, яка застосовується у вашому випадку - перш ніж продовжити з подальшим входом на формування тюнінга, і повторно збільшуючи частоти після Для багатьох популярних моделей принтера часто є деякі рішення, доступні вже.
 
-Note that the ringing frequencies can change if the changes are made to the printer that affect the moving mass or change the stiffness of the system, for example:
+Зауважте, що частота кільця може змінюватися, якщо зміни внесені до принтера, які впливають на рухову масу або змінюють жорсткість системи, наприклад:
 
-* Some tools are installed, removed or replaced on the toolhead that change its mass, e.g. a new (heavier or lighter) stepper motor for direct extruder or a new hotend is installed, heavy fan with a duct is added, etc.
-* Belts are tightened.
-* Some addons to increase frame rigidity are installed.
-* Different bed is installed on a bed-slinger printer, or glass added, etc.
+* Деякі інструменти встановлюються, видалені або замінені на інструментголові, які змінюють свою масу, наприклад, новий (спадковий або запальний) кроковий двигун для прямого екструдера або нового гарячика встановлюється, важкий вентилятор з протоком додається і т.д.
+* Ремені затягуються.
+* Встановлено деякі додатки для збільшення жорсткості рами.
+* Додаткове ліжко встановлюється на плащовий принтер, або скло додано і т.д.
 
-If such changes are made, it is a good idea to at least measure the ringing frequencies to see if they have changed.
+Якщо такі зміни внесені, це хороша ідея, щоб принаймні виміряти частоту дзвінка, щоб побачити, якщо вони змінилися.
 
-### Input shaper configuration
+### Конфігурація формувача
 
-After the ringing frequencies for X and Y axes are measured, you can add the following section to your `printer.cfg`:
-
-```
-[input_shaper]
-shaper_freq_x: ...  # frequency for the X mark of the test model
-shaper_freq_y: ...  # frequency for the Y mark of the test model
-```
-
-For the example above, we get shaper_freq_x/y = 49.4.
-
-### Choosing input shaper
-
-Klipper supports several input shapers. They differ in their sensitivity to errors determining the resonance frequency and how much smoothing they cause in the printed parts. Also, some of the shapers like 2HUMP_EI and 3HUMP_EI should usually not be used with shaper_freq = resonance frequency - they are configured from different considerations to reduce several resonances at once.
-
-For most of the printers, either MZV or EI shapers can be recommended. This section describes a testing process to choose between them, and figure out a few other related parameters.
-
-Print the ringing test model as follows:
-
-1. Restart the firmware: `RESTART`
-1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
-1. Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`
-1. Execute: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`
-1. Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
-1. Print the test model sliced with the suggested parameters.
-
-If you see no ringing at this point, then MZV shaper can be recommended for use.
-
-If you do see some ringing, re-measure the frequencies using steps (8)-(10) described in [Ringing frequency](#ringing-frequency) section. If the frequencies differ significantly from the values you obtained earlier, a more complex input shaper configuration is needed. You can refer to Technical details of [Input shapers](#input-shapers) section. Otherwise, proceed to the next step.
-
-Now try EI input shaper. To try it, repeat steps (1)-(6) from above, but executing at step 4 the following command instead: `SET_INPUT_SHAPER SHAPER_TYPE=EI`.
-
-Compare two prints with MZV and EI input shaper. If EI shows noticeably better results than MZV, use EI shaper, otherwise prefer MZV. Note that EI shaper will cause more smoothing in printed parts (see the next section for further details). Add `shaper_type: mzv` (or ei) parameter to [input_shaper] section, e.g.:
+Після вимірюваних частот кільця для X і Y ви можете додати наступний розділ до вашого `printer.cfg`:
 
 ```
 [input_shaper]
-shaper_freq_x: ...
-shaper_freq_y: ...
-shaper_type: mzv
+shaper_freq_x: ... # частота для X маркування тестової моделі
+shaper_freq_y: ... # частота для знака Y тестової моделі
 ```
 
-A few notes on shaper selection:
+На прикладі вище ми отримуємо формувальну_freq_x/y = 49.4.
 
-* EI shaper may be more suited for bed slinger printers (if the resonance frequency and resulting smoothing allows): as more filament is deposited on the moving bed, the mass of the bed increases and the resonance frequency will decrease. Since EI shaper is more robust to resonance frequency changes, it may work better when printing large parts.
-* Due to the nature of delta kinematics, resonance frequencies can differ a lot in different parts of the build volume. Therefore, EI shaper can be a better fit for delta printers rather than MZV or ZV, and should be considered for the use. If the resonance frequency is sufficiently large (more than 50-60 Hz), then one can even attempt to test 2HUMP_EI shaper (by running the suggested test above with `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI`), but check the considerations in the [section below](#selecting-max_accel) before enabling it.
+### Вибір вхідної форми
 
-### Selecting max_accel
+Кліппер підтримує кілька форматорів введення. Вони відрізняються своєю чутливістю до помилок, що визначають резонансну частоту і скільки розгладжування вони викликають у друкованих деталях. Також деякі з форматорів, як 2HUMP_EI і 3HUMP_EI, як правило, не повинні використовуватися з форматором_freq = резонансна частота - вони налаштовані з різних міркування, щоб зменшити кілька резонансів одночасно.
 
-You should have a printed test for the shaper you chose from the previous step (if you don't, print the test model sliced with the [suggested parameters](#tuning) with the pressure advance disabled `SET_PRESSURE_ADVANCE ADVANCE=0` and with the tuning tower enabled as `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`). Note that at very high accelerations, depending on the resonance frequency and the input shaper you chose (e.g. EI shaper creates more smoothing than MZV), input shaping may cause too much smoothing and rounding of the parts. So, max_accel should be chosen such as to prevent that. Another parameter that can impact smoothing is `square_corner_velocity`, so it is not advisable to increase it above the default 5 mm/sec to prevent increased smoothing.
+Для більшості принтерів можна використовувати як MZV або EI. Цей розділ описує процес тестування, щоб вибрати між ними, і дізнатися кілька інших пов'язаних параметрів.
 
-In order to select a suitable max_accel value, inspect the model for the chosen input shaper. First, take a note at which acceleration ringing is still small - that you are comfortable with it.
+Друк моделі тестування кільця:
 
-Next, check the smoothing. To help with that, the test model has a small gap in the wall (0.15 mm):
+1. Решта прошивки: `RESTART`
+1. Підготовка до тестування: `SET_VELOCITY_LIMIT МІНІМУМ_КРУС_РАТІО=0`
+1. Відключений тиск: `SET_PRESSURE_ADVANCE ADVANCE=0`
+1. `SET_INPUT_SHAPER SHAPER_TYPE=MZV`
+1. Виконання команди: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
+1. Друк тестової моделі зрізаний за допомогою запропонованих параметрів.
 
-![Test gap](img/smoothing-test.png)
+Якщо ви не бачите кільце в цій точці, то для використання може бути рекомендований формар МЗВ.
 
-As the acceleration increases, so does the smoothing, and the actual gap in the print widens:
+Якщо ви бачите деякі кільця, перезабезпечте частоти за допомогою кроків (8)-(10), описаних в розділі [Рінг частота](#ringing-частота). Якщо частоти значно відрізняються від значень, які ви отримали раніше, потрібна більш складна конфігурація вводу. Ви можете звернутися до Технічних реквізитів розділу [Вхідні фігурки](#вхідні пастки). В іншому випадку приступаємо до наступного кроку.
 
-![Shaper smoothing](img/shaper-smoothing.jpg)
+Тепер спробуйте EI вхідної форми. Щоб спробувати це, повторіть кроки (1)-(6) з вище, але виконуючи на крок 4 наступні команди замість: `SET_INPUT_SHAPER SHAPER_TYPE=EI`.
 
-In this picture, the acceleration increases left to right, and the gap starts to grow starting from 3500 mm/sec^2 (5-th band from the left). So the good value for max_accel = 3000 (mm/sec^2) in this case to avoid the excessive smoothing.
+Порівняйте два друки з MZV і EI вводним форматором. Якщо EI показує помітно кращі результати, ніж MZV, скористайтеся формою EI, інакше віддають перевагу MZV. Зауважте, що EI форматор призведе до більш гладкості у друкованих деталях (див. наступний розділ для подальших деталей). Додати `shaper_type: mzv` (або ei) параметр до розділу [input_shaper], наприклад:
 
-Note the acceleration when the gap is still very small in your test print. If you see bulges, but no gap in the wall at all, even at high accelerations, it may be due to disabled Pressure Advance, especially on Bowden extruders. If that is the case, you may need to repeat the print with the PA enabled. It may also be a result of a miscalibrated (too high) filament flow, so it is a good idea to check that too.
+```
+[input_shaper]
+ shaper_freq_x: ...
+ shaper_freq_y: ...
+ тип_формувача: мзв
+```
 
-Choose the minimum out of the two acceleration values (from ringing and smoothing), and put it as `max_accel` into printer.cfg.
+Кілька нот на вибір формера:
 
-As a note, it may happen - especially at low ringing frequencies - that EI shaper will cause too much smoothing even at lower accelerations. In this case, MZV may be a better choice, because it may allow higher acceleration values.
+* ЕІ-форматор може бути більш придатним для принтерів лежачих (якщо резонансна частота і отримана розгладжування дозволяє): в якості більшої нитки приводиться на рухоме ліжко, маса спального місця збільшується і частота резонансу зменшиться. Оскільки EI-форматор більш надійний для резонансних змін частоти, він може працювати краще при друку великих деталей.
+* У зв'язку з характером дельти-кінематики, резонансні частоти можуть відрізнятися в різних частинах об'єму будівлі. Таким чином, EI-форматор може бути краще підходить для принтерів дельта, а не MZV або ZV, і слід враховувати для використання. Якщо резонансна частота досить велика (більше 50-60 Гц), то можна навіть намагатися перевірити 2HUMP_EI-форматор (для запуску запропонованого тесту над `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI`), але перевірте міркування в [розділ нижче](#selecting-max_accel) перед тим, як це зробити.
 
-At very low ringing frequencies (~25 Hz and below) even MZV shaper may create too much smoothing. If that is the case, you can also try to repeat the steps in [Choosing input shaper](#choosing-input-shaper) section with ZV shaper, by using `SET_INPUT_SHAPER SHAPER_TYPE=ZV` command instead. ZV shaper should show even less smoothing than MZV, but is more sensitive to errors in measuring the ringing frequencies.
+### Вибір макс_accel
 
-Another consideration is that if a resonance frequency is too low (below 20-25 Hz), it might be a good idea to increase the printer stiffness or reduce the moving mass. Otherwise, acceleration and printing speed may be limited due too much smoothing now instead of ringing.
+Ви повинні мати друкований тест для фігуратора, який ви вибрали з попереднього кроку (якщо ви не, роздрукуйте тестову модель, зрізану з [переглянуті параметри](#tuning) з передовим відключенням тиску `SET_PRESSURE_ADVANCE ADVANCE=0` і з тюнінговою вежею, включеною як `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`). Зверніть увагу, що при дуже високих прискореннях, в залежності від частоти резонансу та обраної форми вводу (наприклад, EI-форматор створює більш гладкі, ніж MZV), вводне формування може призвести занадто багато згладжування та округлення деталей. Таким чином, максимальна кількість відключень повинна бути обрана таким чином, щоб запобігти цьому. Ще один параметр, який може вплинути на розгладжування `square_corner_velocity`, тому не бажано збільшити його над за замовчуванням 5 мм/сек, щоб запобігти збільшенню згладжування.
 
-### Fine-tuning resonance frequencies
+Для вибору відповідного значення max_accel, перевірте модель для обраного вхідної форми. По-перше, візьміть замітку, при якому прискорення кільце все ще невелике - що ви комфортно з ним.
 
-Note that the precision of the resonance frequencies measurements using the ringing test model is sufficient for most purposes, so further tuning is not advised. If you still want to try to double-check your results (e.g. if you still see some ringing after printing a test model with an input shaper of your choice with the same frequencies as you have measured earlier), you can follow the steps in this section. Note that if you see ringing at different frequencies after enabling [input_shaper], this section will not help with that.
+Далі перевірте розгладжування. Щоб допомогти з тим, що модель тесту має невеликий проміжок в стіні (0.15 мм):
 
-Assuming that you have sliced the ringing model with suggested parameters, complete the following steps for each of the axes X and Y:
+! [Test gap](img/smoothing-test.png)
 
-1. Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
-1. Make sure Pressure Advance is disabled: `SET_PRESSURE_ADVANCE ADVANCE=0`
-1. Execute: `SET_INPUT_SHAPER SHAPER_TYPE=ZV`
-1. From the existing ringing test model with your chosen input shaper select the acceleration that shows ringing sufficiently well, and set it with: `SET_VELOCITY_LIMIT ACCEL=...`
-1. Calculate the necessary parameters for the `TUNING_TOWER` command to tune `shaper_freq_x` parameter as follows: start = shaper_freq_x * 83 / 132 and factor = shaper_freq_x / 66, where `shaper_freq_x` here is the current value in `printer.cfg`.
-1. Execute the command: `TUNING_TOWER COMMAND=SET_INPUT_SHAPER PARAMETER=SHAPER_FREQ_X START=start FACTOR=factor BAND=5` using `start` and `factor` values calculated at step (5).
-1. Print the test model.
-1. Reset the original frequency value: `SET_INPUT_SHAPER SHAPER_FREQ_X=...`.
-1. Find the band which shows ringing the least and count its number from the bottom starting at 1.
-1. Calculate the new shaper_freq_x value via old shaper_freq_x * (39 + 5 * #band-number) / 66.
+Як підвищується прискорення, тому робить розгладжування, а фактичний проміжок у принті ширше:
 
-Repeat these steps for the Y axis in the same manner, replacing references to X axis with the axis Y (e.g. replace `shaper_freq_x` with `shaper_freq_y` in the formulae and in the `TUNING_TOWER` command).
+! [Shaper Smoothing](img/shaper-smoothing.jpg)
 
-As an example, let's assume you have had measured the ringing frequency for one of the axis equal to 45 Hz. This gives start = 45 * 83 / 132 = 28.30 and factor = 45 / 66 = 0.6818 values for `TUNING_TOWER` command. Now let's assume that after printing the test model, the fourth band from the bottom gives the least ringing. This gives the updated shaper_freq_? value equal to 45 * (39 + 5 * 4) / 66 ≈ 40.23.
+У цій картині прискорення посилюється зліва направо, а зазор починає рости від 3500 мм/сек^2 (5-й смуги зліва). Отже, хороше значення для max_accel = 3000 (мм/сек^2) в цьому випадку, щоб уникнути зайвого згладжування.
 
-After both new `shaper_freq_x` and `shaper_freq_y` parameters have been calculated, you can update `[input_shaper]` section in `printer.cfg` with the new `shaper_freq_x` and `shaper_freq_y` values.
+Зверніть увагу на прискорення, коли проміжок ще дуже невеликий у своєму тестовому друку. Якщо ви бачите повзунки, але не зазор в стіні взагалі, навіть при високих прискореннях вона може бути пов'язана з відключенням тиску вперед, особливо на екструдерів Bowden. Якщо це випадок, вам може знадобитися повторити друк за допомогою ПА. Це також може бути результатом неправильного (до високого) потоку ниток, тому це гарна ідея для перевірки.
 
-### Pressure Advance
+Виберіть мінімум з двох значень прискорення (з кількості та згладжування), і покласти його як `max_accel` в принтер.cfg.
 
-If you use Pressure Advance, it may need to be re-tuned. Follow the [instructions](Pressure_Advance.md#tuning-pressure-advance) to find the new value, if it differs from the previous one. Make sure to restart Klipper before tuning Pressure Advance.
+Як замітка, це може статися - особливо на низьких частотах кільця - що форматор EI викличе занадто багато розгладжування навіть при нижніх прискореннях. У цьому випадку MZV може бути кращим вибором, оскільки це може дозволити більш високі значення прискорення.
 
-### Unreliable measurements of ringing frequencies
+На дуже низьких частотах дзвінка (~25 Гц і нижче) навіть формувач MZV може створити занадто сильне згладжування. Якщо це так, ви також можете спробувати повторити кроки в розділі [Вибір формувача введення](#choosing-input-shaper) із формувальником ZV, використовуючи натомість команду `SET_INPUT_SHAPER SHAPER_TYPE=ZV`. Формувальник ZV повинен демонструвати навіть менше згладжування, ніж MZV, але більш чутливий до помилок у вимірюванні частот дзвінка.
 
-If you are unable to measure the ringing frequencies, e.g. if the distance between the oscillations is not stable, you may still be able to take advantage of input shaping techniques, but the results may not be as good as with proper measurements of the frequencies, and will require a bit more tuning and printing the test model. Note that another possibility is to purchase and install an accelerometer and measure the resonances with it (refer to the [docs](Measuring_Resonances.md) describing the required hardware and the setup process) - but this option requires some crimping and soldering.
+Ще одна думка полягає в тому, що якщо резонансна частота занадто низька (до 20-25 Гц), вона може бути гарною ідеєю для збільшення жорсткості принтера або зменшення рухомої маси. В іншому випадку швидкість прискорення та друку може бути обмежена через занадто багато розгладжування, а не кільце.
 
-For tuning, add empty `[input_shaper]` section to your `printer.cfg`. Then, assuming that you have sliced the ringing model with suggested parameters, print the test model 3 times as follows. First time, prior to printing, run
+### Витончений резонансні частоти
+
+Зауважте, що точність вимірювань резонансних частот за допомогою тест-модель з кільця є достатньою для більшості цілей, тому подальше налаштування не рекомендується. Якщо ви все ще хочете спробувати подвійно перевірити ваші результати (наприклад, якщо ви все ще бачите деякі кільця після друку тестової моделі з входом формаром вашого вибору з однаковими частотами, як ви вимірювали раніше), ви можете дотримуватися кроків в цьому розділі. Зверніть увагу, що якщо ви бачите кільце на різних частотах після включення [input_shaper], цей розділ не допоможе з цим.
+
+Припустимо, що ви зрізаєте модель кільця з запропонованими параметрами, завершити наступні кроки для кожного з осей X і Y:
+
+1. Підготовка до тестування: `SET_VELOCITY_LIMIT МІНІМУМ_КРУС_РАТІО=0`
+1. Зареєструватися Розширений тиск: `SET_PRESSURE_ADVANCE ADVANCE=0`
+1. `SET_INPUT_SHAPER SHAPER_TYPE=ZV`
+1. З існуючої моделі тестування кільця з вибраним входом виберіть прискорення, що показує кільце досить добре, і встановити його з: `SET_VELOCITY_LIMIT ACCEL=...`
+1. Розрахувати необхідні параметри для параметра `TUNING_TOWER`, щоб налаштувати `shaper_freq_x`: start = shaper_freq_x * 83 / 132 і фактор = формаr_freq_x / 66, де `shaper_freq_x` тут є значення `printer.cfg`.
+1. Виконувати команду: `TUNING_TOWER COMMAND=SET_INPUT_SHAPER PARAMETER=SHAPER_FREQ_X START=start FACTOR=фактор BAND=5` за допомогою `start` і [136X]фактор` значення розраховані на крок (5).
+1. Друк тестової моделі.
+1. Заміна початкової частоти: `SET_INPUT_SHAPER SHAPER_FREQ_X=`.
+1. Знайдіть гурт, який показує кільце принаймні і відрахуйте його кількість знизу від 1.
+1. Обчислення нової форми_freq_x значення через старий форматор_freq_x * (39 + 5 * #band-number) / 66.
+
+Повторіть ці кроки для осі Y таким же чином, замінивши посилання на вісь X з віссю Y (наприклад, замініть `shaper_freq_x` з `shaper_freq_y` у формулі і в `TUNING_TOWER`).
+
+Як приклад, припустимо, що у вас була виміряна частота кільця для однієї з осі дорівнює 45 Гц. Це дає початок = 45 * 83 / 132 = 28.30 і фактор = 45 / 66 = 0,6818 значення для команди `TUNING_TOWER`. Тепер припустимо, що після друку тестової моделі четвертий гурт знизу дає найменше кільце. Це дає оновлений форматор_freq_? до 45 * (39 + 5 * 4) / 66 ≈ 40.23.
+
+Після нового `shaper_freq_x` і `shaper_freq_y` параметри можна оновити `[input_shaper]` розділ `printer.cfg` з новим `shaper_freq_x` і `shaper_freq_y` значення.
+
+### Тиск вперед
+
+Якщо ви використовуєте просунутий тиск, це може знадобитися повторно. Перейдіть за посиланням [instructions](Pressure_Advance.md#tuning-pressure-advance) для пошуку нового значення, якщо він відрізняється від попереднього. Переконайтеся, що перезавантажити кліппер перед перетягуванням тиску.
+
+### Ненадійні вимірювання частоти кільця
+
+Якщо ви не змогли вимірювати частоти кілець, наприклад, якщо відстань між коливаннями не стабільна, ви все ще зможете скористатися методиками вводу, але результати можуть бути як добре, так і при правильній вимірюванні частот, і вимагатиме трохи більше тюнінгу і друку тестової моделі. Зауважте, що ще одна можливість полягає в придбанні та встановленні акселерометра та вимірюванні резонансів з ним (відновлення до [довідок](Measuring_Resonances.md) опису необхідного обладнання та процесу налаштування) - але цей варіант вимагає деякої ламки і паяльниці.
+
+Для налаштування додайте порожні `[input_shaper]` розділ до розділу `printer.cfg`. Потім, припустимо, що ви зрізаєте модель з запропонованими параметрами, роздрукуйте модель тесту 3 рази наступним чином. Перший раз, до друку, бігти
 
 1. `RESTART`
-1. `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`
+1. `SET_VELOCITY_LIMIT МІНІМУМ_КРУС_РАТІО=0`
 1. `SET_PRESSURE_ADVANCE ADVANCE=0`
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
 
-and print the model. Then print the model again, but before printing run instead
+і друкувати модель. Потім друкуйте модель знову, але до друку запустіть замість
 
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=50 SHAPER_FREQ_Y=50`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
 
-Then print the model for the 3rd time, but now run
+Потім роздрукуйте модель на 3-й раз, але зараз запустіть
 
 1. `SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=40 SHAPER_FREQ_Y=40`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
 
-Essentially, we are printing the ringing test model with TUNING_TOWER using 2HUMP_EI shaper with shaper_freq = 60 Hz, 50 Hz, and 40 Hz.
+По суті, ми друкуємо моделі тестування кільця з TUNING_ TOWER за допомогою 2HUMP_EI формера з форматором_freq = 60 Гц, 50 Гц, 40 Гц.
 
-If none of the models demonstrate improvements in ringing, then, unfortunately, it does not look like the input shaping techniques can help with your case.
+Якщо жодна з моделей не означають поліпшення в кільці, то, на жаль, вона не схожа на способи формування вводу може допомогти вашому випадку.
 
-Otherwise, it may be that all models show no ringing, or some show the ringing and some - not so much. Choose the test model with the highest frequency that still shows good improvements in ringing. For example, if 40 Hz and 50 Hz models show almost no ringing, and 60 Hz model already shows some more ringing, stick with 50 Hz.
+В іншому випадку це може бути те, що всі моделі не відображаються, або деякі показують кільце і деякі - не так багато. Виберіть модель тесту з найвищою частотою, яка все ще показує хороші поліпшення в кільці. Наприклад, якщо моделі 40 Гц і 50 Гц показують майже не кільце, а модель 60 Гц вже показує ще одне кільце, приклеїти 50 Гц.
 
-Now check if EI shaper would be good enough in your case. Choose EI shaper frequency based on the frequency of 2HUMP_EI shaper you chose:
+Тепер перевірте, чи достатньо EI у вашому випадку. Виберіть частоту EI на основі частоти 2HUMP_ Ви вибрали:
 
-* For 2HUMP_EI 60 Hz shaper, use EI shaper with shaper_freq = 50 Hz.
-* For 2HUMP_EI 50 Hz shaper, use EI shaper with shaper_freq = 40 Hz.
-* For 2HUMP_EI 40 Hz shaper, use EI shaper with shaper_freq = 33 Hz.
+* Для 2HUMP_EI 60 Гц-форматор використовується EI-форматор з форматором_freq = 50 Гц.
+* Для 2HUMP_EI 50 Hz формар, використання EI формар з форматор_freq = 40 Гц.
+* Для 2HUMP_EI 40 Гц-форматор використовується EI-форматор з форматором_freq = 33 Гц.
 
-Now print the test model one more time, running
+Тепер роздрукуйте тестову модель ще раз, бігаючи
 
-1. `SET_INPUT_SHAPER SHAPER_TYPE=EI SHAPER_FREQ_X=... SHAPER_FREQ_Y=...`
+1. `SET_INPUT_SHAPER SHAPER_TYPE=EI SHAPER_FREQ_X=... SHAPER_FREQ_Y=`
 1. `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`
 
-providing the shaper_freq_x=... and shaper_freq_y=... as determined previously.
+надання формувача_freq_x=... і формаr_freq_y=... як визначено раніше.
 
-If EI shaper shows very comparable good results as 2HUMP_EI shaper, stick with EI shaper and the frequency determined earlier, otherwise use 2HUMP_EI shaper with the corresponding frequency. Add the results to `printer.cfg` as, e.g.
-
-```
-[input_shaper]
-shaper_freq_x: 50
-shaper_freq_y: 50
-shaper_type: 2hump_ei
-```
-
-Continue the tuning with [Selecting max_accel](#selecting-max_accel) section.
-
-## Troubleshooting and FAQ
-
-### I cannot get reliable measurements of resonance frequencies
-
-First, make sure it is not some other problem with the printer instead of ringing. If the measurements are not reliable because, say, the distance between the oscillations is not stable, it might mean that the printer has several resonance frequencies on the same axis. One may try to follow the tuning process described in [Unreliable measurements of ringing frequencies](#unreliable-measurements-of-ringing-frequencies) section and still get something out of the input shaping technique. Another possibility is to install an accelerometer, [measure](Measuring_Resonances.md) the resonances with it, and auto-tune the input shaper using the results of those measurements.
-
-### After enabling [input_shaper], I get too smoothed printed parts and fine details are lost
-
-Check the considerations in [Selecting max_accel](#selecting-max_accel) section. If the resonance frequency is low, one should not set too high max_accel or increase square_corner_velocity parameters. It might also be better to choose MZV or even ZV input shapers over EI (or 2HUMP_EI and 3HUMP_EI shapers).
-
-### After successfully printing for some time without ringing, it appears to come back
-
-It is possible that after some time the resonance frequencies have changed. E.g. maybe the belts tension has changed (belts got more loose), etc. It is a good idea to check and re-measure the ringing frequencies as described in [Ringing frequency](#ringing-frequency) section and update your config file if necessary.
-
-### Is dual carriage setup supported with input shapers?
-
-Yes. In this case, one should measure the resonances twice for each carriage. For example, if the second (dual) carriage is installed on X axis, it is possible to set different input shapers for X axis for the primary and dual carriages. However, the input shaper for Y axis should be the same for both carriages (as ultimately this axis is driven by one or more stepper motors each commanded to perform exactly the same steps). One possibility to configure the input shaper for such setups is to keep `[input_shaper]` section empty and additionally define a `[delayed_gcode]` section in the `printer.cfg` as follows:
+Якщо EI-форматор показує дуже вигідні результати, як 2HUMP_EI-форматор, приклеїти EI-форматором і частотою, визначеною раніше, інакше використовується 2HUMP_EI-форматор з відповідною частотою. Додати результати до `printer.cfg`, як, наприклад.
 
 ```
 [input_shaper]
-# Intentionally empty
+ shaper_freq_x: 50
+ shaper_freq_y: 50
+ shaper_type: 2hump_ei
+```
+
+Продовжити тюнінг з розділом [Виберіть max_accel](#selecting-max_accel).
+
+## Виправлення несправностей та FAQ
+
+### Я не можу отримати надійні вимірювання резонансних частот
+
+По-перше, переконайтеся, що це не одна інша проблема з принтером замість дзвінка. Якщо вимірювання ненадійні, тому що, скажеш, відстань між коливаннями не стабільна, це може означати, що принтер має кілька резонансних частот на одній осі. Один може спробувати слідувати процесу тюнінгу, описаному в розділі [Ненадійні вимірювання частоти рингів](#безпосередньо-збережені-закриття-підготовки-фракції) і все-таки отримати щось з техніки вводу. Ще однією можливістю є встановлення акселерометра, [застосування](Measuring_Resonances.md) резонансів з ним, а також автоматичного відключення вхідного формуляра за допомогою результатів цих вимірювань.
+
+### Після надання допомоги [input_shaper] я отримав занадто гладкі друковані частини і дрібні деталі втрачені
+
+Перевірити розгляди в розділі [Вибір максимальн_accel](#selecting-max_accel) Якщо резонансна частота низька, не варто встановлювати занадто високі показники максимальної потужності або збільшити параметри квадрата_corner_velocity. Також можна вибрати MZV або навіть ZV-форматори для входу в EI (або 2HUMP_EI та 3HUMP_EI).
+
+### Після успішного друку на деякий час без кільце, вона з'являється, щоб повернутися назад
+
+Імовірно, через деякий час резонансні частоти змінилися. наприклад можливо, змінився натяг ременів (послабилися ремені) тощо. Рекомендується перевірити та повторно виміряти частоти дзвінка, як описано в розділі [Частота дзвінка](#ringing-frequency), і за потреби оновити файл конфігурації .
+
+### Чи підтримується подвійна настройка вагонетки з вводами?
+
+Так. У цьому випадку слід заміряти резонанси двічі на кожне перевезення. Наприклад, якщо на осі X встановлена друга (подвійна) вагонка, можна встановити різні форми введення для осі X для первинних і подвійних вагонів. Тим не менш, вводний формувач для осі Y повинен бути таким же для обох вагонів (як в кінцевому підсумку це вісь приводиться до одного або декількох крокових моторів, які збираються виконувати точно ті ж кроки). У розділі ` натисніть кнопку `[delayed_gcode]`:
+
+```
+[input_shaper]
+Нема Важкий порожній
 
 [delayed_gcode init_shaper]
-initial_duration: 0.1
-gcode:
-  SET_DUAL_CARRIAGE CARRIAGE=1
-  SET_INPUT_SHAPER SHAPER_TYPE_X=<dual_carriage_shaper> SHAPER_FREQ_X=<dual_carriage_freq> SHAPER_TYPE_Y=<y_shaper> SHAPER_FREQ_Y=<y_freq>
-  SET_DUAL_CARRIAGE CARRIAGE=0
-  SET_INPUT_SHAPER SHAPER_TYPE_X=<primary_carriage_shaper> SHAPER_FREQ_X=<primary_carriage_freq> SHAPER_TYPE_Y=<y_shaper> SHAPER_FREQ_Y=<y_freq>
+початковий_duration: 0 р.
+гкод:
+SET_DUAL_CARRIAGE CARRIAGE=1
+СЕТ_INPUT_SHAPER SHAPER_TYPE_X=<dual_carriage_shaper> SHAPER_FREQ_X=<dual_carriage_freq> SHAPER_TYPE_Y=<y_shaper> SHAPER_FREQ_Y=<y_freq>
+SET_DUAL_CARRIAGE CARRIAGE=0
+СЕТ_INPUT_SHAPER SHAPER_TYPE_X=<primary_carriage_shaper> SHAPER_FREQ_X=<primary_carriage_freq> SHAPER_TYPE_Y=<y_shaper> SHAPER_FREQ_Y=<y_freq>
 ```
 
-Note that `SHAPER_TYPE_Y` and `SHAPER_FREQ_Y` should be the same in both commands. It is also possible to put a similar snippet into the start g-code in the slicer, however then the shaper will not be enabled until any print is started.
+Зверніть увагу, що `SHAPER_TYPE_Y` і `SHAPER_FREQ_Y` повинні бути такими ж, як команди. Також можна покласти схожу хіппе на старт g-код у скибочках, проте потім формар не буде ввімкнено до початку друку.
 
-Note that the input shaper only needs to be configured once. Subsequent changes of the carriages or their modes via `SET_DUAL_CARRIAGE` command will preserve the configured input shaper parameters.
+Зауважте, що форма входу потрібно налаштувати один раз. Послідовні зміни вагонів або їх режимів через `SET_DUAL_CARRIAGE` команди зберігати настрочені параметри вводу.
 
-### Does input_shaper affect print time?
+### Чи впливає на час друку?
 
-No, `input_shaper` feature has pretty much no impact on the print times by itself. However, the value of `max_accel` certainly does (tuning of this parameter described in [this section](#selecting-max_accel)).
+Немає, `input_shaper` функція має досить багато ніякого впливу на час друку. Тим не менш, значення `max_accel`, безумовно, робить (встановлення цього параметра, описаного в розділі [Цей розділ](#selecting-max_accel)).
 
-## Technical details
+## Технічні характеристики
 
-### Input shapers
+### Вхідні форми
 
-Input shapers used in Klipper are rather standard, and one can find more in-depth overview in the articles describing the corresponding shapers. This section contains a brief overview of some technical aspects of the supported input shapers. The table below shows some (usually approximate) parameters of each shaper.
+Вхідні форми, що використовуються в Кліппері, є досить стандартними, і можна знайти більш глибокий огляд у статтях, що характеризують відповідні форми. Цей розділ містить короткий огляд деяких технічних аспектів підтримуваних форм. Таблиця нижче показує деякі (зазвичай приблизні) параметри кожного фігуратора.
 
-| Input <br> shaper | Shaper <br> duration | Vibration reduction 20x <br> (5% vibration tolerance) | Vibration reduction 10x <br> (10% vibration tolerance) |
+| Вхід <br> формар | Шейпер <br> тривалість | Зменшення вібрації 20х <br> (5% толерантність до вібрації) | Зменшення вібрації 10x <br> (10% толерантність до вібрації) |
 | :-: | :-: | :-: | :-: |
-| ZV | 0.5 / shaper_freq | N/A | ± 5% shaper_freq |
-| MZV | 0.75 / shaper_freq | ± 4% shaper_freq | -10%...+15% shaper_freq |
-| ZVD | 1 / shaper_freq | ± 15% shaper_freq | ± 22% shaper_freq |
-| EI | 1 / shaper_freq | ± 20% shaper_freq | ± 25% shaper_freq |
-| 2HUMP_EI | 1.5 / shaper_freq | ± 35% shaper_freq | ± 40 shaper_freq |
-| 3HUMP_EI | 2 / shaper_freq | -45...+50% shaper_freq | -50%...+55% shaper_freq |
+| ЗВ | 0.5 / форма_freq | Невідомо | ± 5% формар_фрек |
+| МЗВ | 0 товар(ов) - 0.00 р | ± 4% формар_фрек | -10%...+15% формар_фрек |
+| ЗВД | 1 / формар_фрек | ± 15% формар_фрек | ± 22% формар_фрек |
+| ЕІ | 1 / формар_фрек | ± 20% формар_фрек | ± 25% формар_фрек |
+| 2HUMP_EI | 1.5 / формар_фрек | ± 35% формар_фрек | ± 40 формар_фрек |
+| 3HUMP_EI | 2 / форма_freq | -45...+50% формар_фрек | -50%...+55% форма_freq |
 
-A note on vibration reduction: the values in the table above are approximate. If the damping ratio of the printer is known for each axis, the shaper can be configured more precisely and it will then reduce the resonances in a bit wider range of frequencies. However, the damping ratio is usually unknown and is hard to estimate without a special equipment, so Klipper uses 0.1 value by default, which is a good all-round value. The frequency ranges in the table cover a number of different possible damping ratios around that value (approx. from 0.05 to 0.2).
+Замітка про зменшення вібрації: значення таблиці вище приблизні. Якщо коефіцієнт пошкодження принтера відомий за кожну віссю, то формар може бути налаштований більш точно, а потім зменшити резонанси в трохи ширшому діапазоні частот. Тим не менш, коефіцієнт пошкодження зазвичай невідомий і важко оцінити без спеціального обладнання, тому Klipper використовує значення 0.1 за замовчуванням, що є хорошим цілим значенням. Частота діапазонів в таблиці охоплює ряд різних можливих демпферних коефіцієнтів навколо цього значення (близько від 0,05 до 0,2).
 
-Also note that EI, 2HUMP_EI, and 3HUMP_EI are tuned to reduce vibrations to 5%, so the values for 10% vibration tolerance are provided only for the reference.
+Також зверніть увагу, що EI, 2HUMP_EI, 3HUMP_ EI налаштовані для зменшення коливань до 5%, тому значення для 10% толерантності до коливань передбачені тільки для посилання.
 
-**How to use this table:**
+**Як використовувати цей стіл:**
 
-* Shaper duration affects the smoothing in parts - the larger it is, the more smooth the parts are. This dependency is not linear, but can give a sense of which shapers 'smooth' more for the same frequency. The ordering by smoothing is like this: ZV < MZV < ZVD ≈ EI < 2HUMP_EI < 3HUMP_EI. Also, it is rarely practical to set shaper_freq = resonance freq for shapers 2HUMP_EI and 3HUMP_EI (they should be used to reduce vibrations for several frequencies).
-* One can estimate a range of frequencies in which the shaper reduces vibrations. For example, MZV with shaper_freq = 35 Hz reduces vibrations to 5% for frequencies [33.6, 36.4] Hz. 3HUMP_EI with shaper_freq = 50 Hz reduces vibrations to 5% in range [27.5, 75] Hz.
-* One can use this table to check which shaper they should be using if they need to reduce vibrations at several frequencies. For example, if one has resonances at 35 Hz and 60 Hz on the same axis: a) EI shaper needs to have shaper_freq = 35 / (1 - 0.2) = 43.75 Hz, and it will reduce resonances until 43.75 * (1 + 0.2) = 52.5 Hz, so it is not sufficient; b) 2HUMP_EI shaper needs to have shaper_freq = 35 / (1 - 0.35) = 53.85 Hz and will reduce vibrations until 53.85 * (1 + 0.35) = 72.7 Hz - so this is an acceptable configuration. Always try to use as high shaper_freq as possible for a given shaper (perhaps with some safety margin, so in this example shaper_freq ≈ 50-52 Hz would work best), and try to use a shaper with as small shaper duration as possible.
-* If one needs to reduce vibrations at several very different frequencies (say, 30 Hz and 100 Hz), they may see that the table above does not provide enough information. In this case one may have more luck with [scripts/graph_shaper.py](../scripts/graph_shaper.py) script, which is more flexible.
+* Тривалість шейпера впливає на розгладжування деталей - чим більше він, тим більш гладкі деталі. Ця залежність не лінійна, але може дати відчуття того, що фігурники 'smooth' більш для однакової частоти. Зварювальне замовлення: ZV < MZV < ZVD ≈ < 2HUMP_EI < 3HUMP_EI. Крім того, це рідко практичне встановлення формера_freq = резонансний фрек для форматорів 2HUMP_EI і 3HUMP_EI (вони слід використовувати для зменшення коливань на кілька частот).
+* Можна оцінити діапазон частот, в яких формар зменшує вібрації. Наприклад, MZV з форматором_freq = 35 Hz зменшує вібрації до 5% для частот [33.6, 36.4] Hz. 3HUMP_EI з форматор_freq = 50 Hz зменшує вібрації до 5% в діапазоні [27.5, 75] ХХз.
+* Можна використовувати цей столик, щоб перевірити, який форматор повинен використовуватися, якщо вони повинні зменшити вібрації на декількох частотах. Наприклад, якщо один має резонанси на 35 Гц і 60 Гц на тій же осі: a) EI формар повинен мати формар_freq = 35 / (1 - 0,2) = 43.75 Hz, і це знизить резонанси до 43.75 * (1 + 0,2) = 52.5 Hz, так що це не достатній; b) 2HUMP_EI формар повинен мати формар_freq = 35 / (1 - 0.35) = 53.85 Hz і зменшить вібрації до 53.85 * (1 + 0,35) = 72.7 Hz - так це прийнятна конфігурація. Завжди намагайтеся використовувати якомога вище формаr_freq як можна для даної форми (пергапи з деякими запасами безпеки, тому в цьому прикладі формаr_freq ≈ 50-52 Гц буде працювати краще), і спробувати використовувати фігурку з максимально невеликою тривалістю фігури.
+* Якщо комусь потрібно зменшити вібрацію на кількох дуже різних частотах (скажімо, 30 Гц і 100 Гц), вони можуть побачити, що таблиця вище не надає достатньо інформації. У цьому випадку вам може пощастити більше зі сценарієм [scripts/graph_shaper.py](../scripts/graph_shaper.py), який є більш гнучким.

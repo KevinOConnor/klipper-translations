@@ -1,49 +1,49 @@
 # Сенсор ширини філамента на датчику Холла
 
-This document describes Filament Width Sensor host module. Hardware used for developing this host module is based on two Hall linear sensors (ss49e for example). Sensors in the body are located on opposite sides. Principle of operation: two hall sensors work in differential mode, temperature drift same for sensor. Special temperature compensation not needed.
+Цей документ описує модуль датчика нитки. Обладнання, що використовується для розробки цього модуля хосту на основі двох лінійних датчиків холу (s49e наприклад). Датчики в тілі розташовані по протилежних сторонах. Принцип роботи: два датчики залу працюють в диференціальному режимі, температурний дрейф однаковий для датчика. Особлива температура не потрібна.
 
-You can find designs at [Thingiverse](https://www.thingiverse.com/thing:4138933), an assembly video is also available on [Youtube](https://www.youtube.com/watch?v=TDO9tME8vp4)
+Ви можете знайти зразки на [Thingiverse](https://www.thingiverse.com/thing:4138933), відео з збірки також доступний на [Youtube](https://www.youtube.com/watch?v=TDO9tME8vp4)
 
-To use Hall filament width sensor, read [Config Reference](Config_Reference.md#hall_filament_width_sensor) and [G-Code documentation](G-Codes.md#hall_filament_width_sensor).
+Для використання датчика ширини залів, читання [Config Reference](Config_Reference.md#hall_filament_width_sensor) і [G-Code документація](G-Codes.md#hall_filament_width_sensor).
 
-## How does it work?
+## # Як це працює?
 
-Sensor generates two analog output based on calculated filament width. Sum of output voltage always equals to detected filament width. Host module monitors voltage changes and adjusts extrusion multiplier. I use the aux2 connector on a ramps-like board with the analog11 and analog12 pins. You can use different pins and different boards.
+Датчик генерує дві аналогові виходи на основі розрахункової ширини нитки. Сума вихідної напруги завжди дорівнює виявленню ширини нитки. Модуль Хост відстежує зміни напруги і регулює екструзійне багатоплище. Я користуюсь роз'ємом aux2 на схожій дошці ramps з аналогом11 і аналоговими12 шпильками. Ви можете використовувати різні шпильки і різні дошки.
 
-## Template for menu variables
+## Шаблон змінних меню
 
 ```
-[menu __main __filament __width_current]
-type: command
-enable: {'hall_filament_width_sensor' in printer}
-name: Dia: {'%.2F' % printer.hall_filament_width_sensor.Diameter}
-index: 0
+__main __filament __width_current]
+Тип: команда
+Увімкніть: {'hall_filament_width_sensor' в принтері}
+name: Dia: {'%.2F' % принтер.hall_filament_width_sensor.Diameter}
+індекс: 0
 
-[menu __main __filament __raw_width_current]
-type: command
-enable: {'hall_filament_width_sensor' in printer}
-name: Raw: {'%4.0F' % printer.hall_filament_width_sensor.Raw}
-index: 1
+__main __filament __raw_width_current]
+Тип: команда
+Увімкніть: {'hall_filament_width_sensor' в принтері}
+Ім'я: Сирий: {'%4.0F' % принтер.hall_filament_width_sensor.Raw}
+Індекс: 1 час
 ```
 
-## Calibration procedure
+## Процедура калібрування
 
-To get raw sensor value you can use menu item or **QUERY_RAW_FILAMENT_WIDTH** command in terminal.
+Для отримання значення сирого датчика можна використовувати пункт меню або **QUERY_RAW_FILAMENT_WIDTH** в терміналі.
 
-1. Insert first calibration rod (1.5 mm size) get first raw sensor value
-1. Insert second calibration rod (2.0 mm size) get second raw sensor value
-1. Save raw sensor values in config parameter `Raw_dia1` and `Raw_dia2`
+1. Вставити перший калібрувальний стрижень (розмір 1,5 мм) отримати перше значення датчика
+1. Вставте другий калібрувальний стрижень (розмір 2,0 мм) отримайте друге значення датчика
+1. Зберегти значення датчика в параметрі конфігурації `Raw_dia1` і `Raw_dia2`
 
-## How to enable sensor
+## Як включити датчик
 
-By default, the sensor is disabled at power-on.
+За замовчуванням датчик вимкнено в Power-on.
 
-To enable the sensor, issue **ENABLE_FILAMENT_WIDTH_SENSOR** command or set the `enable` parameter to `true`.
+Щоб увімкнути датчик, номер **ENABLE_FILAMENT_WIDTH_SENSOR** команди або `встановити` параметр ` true`.
 
-## Logging
+## Журналювання
 
-By default, diameter logging is disabled at power-on.
+За замовчуванням, вхід діаметра відключений на Power-on.
 
-Issue **ENABLE_FILAMENT_WIDTH_LOG** command to start logging and issue **DISABLE_FILAMENT_WIDTH_LOG** command to stop logging. To enable logging at power-on, set the `logging` parameter to `true`.
+**ENABLE_FILAMENT_WIDTH_LOG** команди, щоб розпочати журналювання та випуск **DISABLE_FILAMENT_WIDTH_LOG** команди, щоб зупинити реєстрацію. Щоб увімкнути запис у Power-on, встановіть параметр ` ` до `true`.
 
-Filament diameter is logged on every measurement interval (10 mm by default).
+Діаметр фільтра вводять на кожен інтервал вимірювання (10 мм за замовчуванням).

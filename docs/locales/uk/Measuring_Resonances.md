@@ -1,303 +1,303 @@
 # Вимірювання Резонансів
 
-Klipper has built-in support for the ADXL345, MPU-9250 and LIS2DW compatible accelerometers which can be used to measure resonance frequencies of the printer for different axes, and auto-tune [input shapers](Resonance_Compensation.md) to compensate for resonances. Note that using accelerometers requires some soldering and crimping. The ADXL345/LIS2DW can be connected to the SPI interface of a Raspberry Pi or MCU board (it needs to be reasonably fast). The MPU family can be connected to the I2C interface of a Raspberry Pi directly, or to an I2C interface of an MCU board that supports 400kbit/s *fast mode* in Klipper.
+Klipper має вбудовану підтримку ADXL345, MPU-9250 та LIS2DW сумісні акселерометри, які можуть бути використані для вимірювання резонансних частот принтера для різних осей, а також автоматичного відключення [вхідних форм](Resonance_Compensation.md) для компенсації резонансів. Зауважте, що за допомогою акселерометрів вимагає деяких паяльників і ламків. ADXL345/LIS2DW може бути підключений до інтерфейсу SPI Raspberry Pi або MCU (потрібно бути досить швидко). Сім'я МПУ може бути підключена до інтерфейсу I2C Raspberry Pi безпосередньо, або до інтерфейсу I2C дошки МКУ, яка підтримує 400kbit/s *fast режим* в Klipper.
 
-When sourcing accelerometers, be aware that there are a variety of different PCB board designs and different clones of them. If it is going to be connected to a 5V printer MCU ensure it has a voltage regulator and level shifters.
+При стисканні акселерометрів слід розуміти, що існують різні зразки друкованої плати та різні клони їх. Якщо він буде підключений до принтера 5V MCU, щоб він має регулятор напруги та перемикачі рівня.
 
-For ADXL345s/LIS2DWs, make sure that the board supports SPI mode (a small number of boards appear to be hard-configured for I2C by pulling SDO to GND).
+Для ADXL345s/LIS2DWs переконайтеся, що дошка підтримує режим SPI (дрібна кількість дощок з'являються, щоб бути важко налаштованими для I2C шляхом витягування SDO до GND).
 
-For MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500s there are also a variety of board designs and clones with different I2C pull-up resistors which will need supplementing.
+Для MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500 є також різноманітними платними конструкціями та клонами з різними резисторами I2C, які потребують доповнення.
 
-## MCUs with Klipper I2C *fast-mode* Support
+## MCU з Klipper I2C *fast-mode* Підтримка
 
-| MCU Family | MCU(s) Tested | MCU(s) with Support |
+| МКУ Сім'я | MCU(s) Тестовані | MCU(s) з підтримкою |
 | :-: | :-- | :-- |
-| Raspberry Pi | 3B+, Pico | 3A, 3A+, 3B, 4 |
-| AVR ATmega | ATmega328p | ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, ATmega1284, ATmega2560 |
-| AVR AT90 | - | AT90usb646, AT90usb1286 |
+| Малина Пі | 3B+, Піко | 3А, 3А+, 3Б, 4 |
+| АВР АМПА | A Tmega328p | ATmega 32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, ATmega1284, ATmega2560 |
+| ВІДЕОРЕЄСТРАТОР AT90 | - | AT90 usb646, AT90usb1286 |
 
-## Installation instructions
+## Інструкція по монтажу
 
-### Wiring
+### Прованс
 
-An ethernet cable with shielded twisted pairs (cat5e or better) is recommended for signal integrity over a long distance. If you still experience signal integrity issues (SPI/I2C errors):
+Кабель ethernet з щитоподібними закрученими парами (кат5e або краще) рекомендується для цілісності сигналу на віддаленій відстані. Якщо ви все ще відчуваєте питання про цілісність сигналів (SPI/I2C):
 
-- Double check the wiring with a digital multimeter for:
-   - Correct connections when turned off (continuity)
-   - Correct power and ground voltages
-- I2C only:
-   - Check the SCL and SDA lines' resistances to 3.3V are in the range of 900 ohms to 1.8K
-   - For full technical details consult [chapter 7 of the I2C-bus specification and user manual UM10204](https://www.pololu.com/file/0J435/UM10204.pdf) for *fast-mode*
-- Shorten the cable
+- Подвійний контроль проводки з цифровим мультиметром для:
+   - Правильні з'єднання при вимкненні (константильність)
+   - Правильна потужність і напруги
+- I2C тільки:
+   - Перевірити стійкість SCL і SDA ліній до 3.3V в діапазоні 900 ом до 1.8K
+   - Для отримання повної технічної інформації [chapter 7 специфікації та посібник користувача UM10204](https://www.pololu.com/file/0J435/UM10204.pdf) для *fast-mode*
+- Скорочення кабелю
 
-Connect ethernet cable shielding only to the MCU board/Pi ground.
+Підключення електромережі тільки до плати МКУ/Пі мелені.
 
-***Double-check your wiring before powering up to prevent damaging your MCU/Raspberry Pi or the accelerometer.***
+***Подвійний контроль перед живленням, щоб запобігти знешкодженню MCU/Raspberry Pi або акселерометра.***
 
-### SPI Accelerometers
+### SPI Акселерометри
 
-Suggested twisted pair order for three twisted pairs:
+Найяскравіший закручений парний порядок для трьох закручених пар:
 
 ```
-GND+MISO
-3.3V+MOSI
-SCLK+CS
+ГНД+МІСО
+3.3В+МОСИ
+СКЛК+КС
 ```
 
-Note that unlike a cable shield, GND must be connected at both ends.
+Зверніть увагу, що на відміну від кабельного щита, GND повинен бути підключений як на кінцях.
 
-#### ADXL345
+#### АДСЛ345
 
-##### Direct to Raspberry Pi
+##### Пряма до Малина Пі
 
-**Note: Many MCUs will work with an ADXL345 in SPI mode (e.g. Pi Pico), wiring and configuration will vary according to your specific board and available pins.**
+**Примітка: Багато MCUs буде працювати з ADXL345 в режимі SPI (наприклад, Pico), електропроводка і конфігурація будуть відрізнятися відповідно до вашої конкретної дошки і доступні шпильки **
 
-You need to connect ADXL345 to your Raspberry Pi via SPI. Note that the I2C connection, which is suggested by ADXL345 documentation, has too low throughput and **will not work**. The recommended connection scheme:
+Вам потрібно підключити ADXL345 до Raspberry Pi через SPI. Зауважте, що підключення I2C, що пропонується документацією ADXL345, має занадто низький пропускний зв'язок і ** не працювати**. Рекомендована схема підключення:
 
-| ADXL345 pin | RPi pin | RPi pin name |
+| ADXL345 шпилька | RPI шпильки | Назва RPi |
 | :-: | :-: | :-: |
-| 3V3 (or VCC) | 01 | 3.3V DC power |
-| GND | 06 | Ground |
-| CS | 24 | GPIO08 (SPI0_CE0_N) |
-| SDO | 21 | GPIO09 (SPI0_MISO) |
-| SDA | 19 | GPIO10 (SPI0_MOSI) |
-| SCL | 23 | GPIO11 (SPI0_SCLK) |
+| 3V3 (або VCC) | 01 мар | 3.3V DC потужність |
+| ГНД | 06 мар | Головна |
+| Р | 24 | GPIO08 (SPI0_CE0_N) |
+| СДО | 21 мар | GPIO09 (SPI0_MISO) |
+| СДА | 19 мар | GPIO10 (SPI0_MOSI) |
+| СКЛ | 23 мар | GPIO11 (SPI0_SCLK) |
 
-Fritzing wiring diagrams for some of the ADXL345 boards:
+Фрицтінг схем електропроводки для деяких плат ADXL345:
 
-![ADXL345-Rpi](img/adxl345-fritzing.png)
+![ADXL345-Rpi](IMG/adxl345-fritzing.png)
 
-##### Using Raspberry Pi Pico
+##### Використання Raspberry Pico
 
-You may connect the ADXL345 to your Raspberry Pi Pico and then connect the Pico to your Raspberry Pi via USB. This makes it easy to reuse the accelerometer on other Klipper devices, as you can connect via USB instead of GPIO. The Pico does not have much processing power, so make sure it is only running the accelerometer and not performing any other duties.
+Ви можете підключити ADXL345 до вашого Raspberry Pico, а потім підключити Pico до вашого Малина Пі через USB. Це дозволяє легко використовувати акселерометр на інших пристроях Klipper, оскільки ви можете підключити через USB замість GPIO. Піко не має багатої потужності обробки, тому переконайтеся, що це тільки працює акселерометр і не виконує ніяких інших обов'язків.
 
-In order to avoid damage to your RPi make sure to connect the ADXL345 to 3.3V only. Depending on the board's layout, a level shifter may be present, which makes 5V dangerous for your RPi.
+Для того, щоб уникнути пошкодження RPi переконайтеся, що підключення ADXL345 до 3.3V тільки. В залежності від макета дошки може бути присутнім перехідник рівня, що робить 5V небезпечним для вашого RPi.
 
-| ADXL345 pin | Pico pin | Pico pin name |
+| ADXL345 шпилька | Піко шпильки | Назва поштового штифта Pico |
 | :-: | :-: | :-: |
-| 3V3 (or VCC) | 36 | 3.3V DC power |
-| GND | 38 | Ground |
-| CS | 2 | GP1 (SPI0_CSn) |
-| SDO | 1 | GP0 (SPI0_RX) |
-| SDA | 5 | GP3 (SPI0_TX) |
-| SCL | 4 | GP2 (SPI0_SCK) |
+| 3V3 (або VCC) | 36 | 3.3V DC потужність |
+| ГНД | 38 хв | Головна |
+| Р | 2 | GP1 (SPI 0_CSn) |
+| СДО | 1 | GP0 (SPI0_RX) |
+| СДА | 5 | GP3 (SPI0_TX) |
+| СКЛ | 4 | GP2 (SPI0_SCK) |
 
-Wiring diagrams for some of the ADXL345 boards:
+Схема підключення для деяких плат ADXL345:
 
-![ADXL345-Pico](img/adxl345-pico.png)
+![ADXL345-Pico](img/adxl 345-pico.png)
 
-### I2C Accelerometers
+### I2C Акселерометри
 
-Suggested twisted pair order for three pairs (preferred):
-
-```
-3.3V+GND
-SDA+GND
-SCL+GND
-```
-
-or for two pairs:
+Найяскравіший закручений парний порядок для трьох пар (попередньо):
 
 ```
-3.3V+SDA
-GND+SCL
+3.3В+ГНК
+СДА+GND
+СКЛ+GND
 ```
 
-Note that unlike a cable shield, any GND(s) should be connected at both ends.
+або для двох пар:
 
-#### MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500
+```
+3.3В+СД
+ГНД+СКЛ
+```
 
-These accelerometers have been tested to work over I2C on the RPi, RP2040 (Pico) and AVR at 400kbit/s (*fast mode*). Some MPU accelerometer modules include pull-ups, but some are too large at 10K and must be changed or supplemented by smaller parallel resistors.
+Зауважте, що на відміну від кабельного щита, будь-які GND(s) повинні бути підключені до обох кінців.
 
-Recommended connection scheme for I2C on the Raspberry Pi:
+#### МПУ-9250/МПУ-9255/МПУ-6515/МПУ-6050/МПУ-6500
 
-| MPU-9250 pin | RPi pin | RPi pin name |
+Ці акселерометри були протестовані для роботи над I2C на RPi, RP2040 (Pico) та AVR на 400kbit/s (*fast mode*). Деякі модулі акселерометра МПУ включають витяги, але деякі занадто великі на 10K і повинні бути змінені або доповнені меншими паралельними резисторами.
+
+Рекомендована схема підключення I2C на Малина Пі:
+
+| МПУ-9250 шпилька | RPI шпильки | Назва RPi |
 | :-: | :-: | :-: |
-| VCC | 01 | 3.3v DC power |
-| GND | 09 | Ground |
-| SDA | 03 | GPIO02 (SDA1) |
-| SCL | 05 | GPIO03 (SCL1) |
+| ВКЦ | 01 мар | 3.3v DC потужність |
+| ГНД | 09 мар | Головна |
+| СДА | 03 мар | GPIO02 (SDA1) |
+| СКЛ | 05 мар | GPIO03 (SCL1) |
 
-The RPi has buit-in 1.8K pull-ups on both SCL and SDA.
+RPi має buit-in 1.8K тяги на обох SCL і SDA.
 
-![MPU-9250 connected to Pi](img/mpu9250-PI-fritzing.png)
+![MPU-9250 підключений до Pi](img/mpu9250-PI-fritzing.png)
 
-Recommended connection scheme for I2C (i2c0a) on the RP2040:
+Рекомендована схема підключення до I2C (i2c0a) на RP2040:
 
-| MPU-9250 pin | RP2040 pin | RP2040 pin name |
+| МПУ-9250 шпилька | RP2040 шпилька | RP2040 Назва штифта |
 | :-: | :-: | :-: |
-| VCC | 36 | 3v3 |
-| GND | 38 | Ground |
-| SDA | 01 | GP0 (I2C0 SDA) |
-| SCL | 02 | GP1 (I2C0 SCL) |
+| ВКЦ | 36 | 3в3 |
+| ГНД | 38 хв | Головна |
+| СДА | 01 мар | GP0 (I2C0 SDA) |
+| СКЛ | 02 мар | GP1 (I2C0 SCL) |
 
-The Pico does not include any built-in I2C pull-up resistors.
+Піко не включає в себе будь-які вбудовані резистори I2C.
 
-![MPU-9250 connected to Pico](img/mpu9250-PICO-fritzing.png)
+![MPU-9250 підключений до Pico](img/mpu9250-PICO-fritzing.png)
 
-##### Recommended connection scheme for I2C(TWI) on the AVR ATmega328P Arduino Nano:
+##### Рекомендована схема підключення до I2C(TWI) на AVR ATmega328P Ардуїно Nano:
 
-| MPU-9250 pin | Atmega328P TQFP32 pin | Atmega328P pin name | Arduino Nano pin |
+| МПУ-9250 шпилька | Atmega328P TQFP32 шпилька | Атмега328П контактна назва | Arduino Нано шпилька |
 | :-: | :-: | :-: | :-: |
-| VCC | 39 | - | - |
-| GND | 38 | Ground | GND |
-| SDA | 27 | SDA | A4 |
-| SCL | 28 | SCL | A5 |
+| ВКЦ | 39 хв | - | - |
+| ГНД | 38 хв | Головна | ГНД |
+| СДА | 27 | СДА | A4 |
+| СКЛ | 28 | СКЛ | A5 |
 
-The Arduino Nano does not include any built-in pull-up resistors nor a 3.3V power pin.
+Arduino Nano не включає в себе будь-які вбудовані резистори витяжки, ані 3.3V силовий штифт.
 
-### Mounting the accelerometer
+### Монтаж акселерометра
 
-The accelerometer must be attached to the toolhead. One needs to design a proper mount that fits their own 3D printer. It is better to align the axes of the accelerometer with the printer's axes (but if it makes it more convenient, axes can be swapped - i.e. no need to align X axis with X and so forth - it should be fine even if Z axis of accelerometer is X axis of the printer, etc.).
+Акселерометр повинен бути прикріплений до панелі інструментів. Для оформлення правильної кріплень, яка підходить для власних принтерів 3D. Краще вирівняти осі акселерометра з осями принтера (але якщо він робить його більш зручним, токси можуть бути опуклими - тобто не потрібно вирівняти вісь X з X і так далі - це повинно бути відмінно навіть якщо вісь акселерометра X осі принтера і т.д.).
 
-An example of mounting ADXL345 on the SmartEffector:
+Приклад монтажу ADXL345 на SmartEffector:
 
-![ADXL345 on SmartEffector](img/adxl345-mount.jpg)
+![ADXL345 на SmartEffector](img/adxl345-mount.jpg)
 
-Note that on a bed slinger printer one must design 2 mounts: one for the toolhead and one for the bed, and run the measurements twice. See the corresponding [section](#bed-slinger-printers) for more details.
+Зауважте, що на станковому стропальному принтері необхідно розробити 2 кріплення: одне для інструментальної головки та інше для станини, а також виконати вимірювання двічі. Додаткову інформацію див. у відповідному [розділі](#bed-slinger-printers).
 
-**Attention:** make sure the accelerometer and any screws that hold it in place do not touch any metal parts of the printer. Basically, the mount must be designed such as to ensure the electrical isolation of the accelerometer from the printer frame. Failing to ensure that can create a ground loop in the system that may damage the electronics.
+**Вміст:** переконайтеся, що акселерометр і будь-які гвинти, які тримати його в місці, не доторкнутися до будь-яких металевих деталей принтера. В основному, кріплення повинні бути розроблені таким чином, щоб забезпечити електричну ізоляцію акселерометра з коробки принтера. Включаючи для того, щоб створити заземну петлю в системі, яка може пошкодити електроніку.
 
-### Software installation
+### Встановлення програмного забезпечення
 
-Note that resonance measurements and shaper auto-calibration require additional software dependencies not installed by default. First, run on your Raspberry Pi the following commands:
-
-```
-sudo apt update
-sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev
-```
-
-Next, in order to install NumPy in the Klipper environment, run the command:
+Зверніть увагу, що резонансні вимірювання та автоматичне калібрування формувача вимагають додаткових залежностей програмного забезпечення, не встановлених за замовчуванням. Спочатку запустіть на Raspberry Pi наступні команди:
 
 ```
-~/klippy-env/bin/pip install -v numpy
+sudo apt оновлення
+sudo apt встановити python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev
 ```
 
-Note that, depending on the performance of the CPU, it may take *a lot* of time, up to 10-20 minutes. Be patient and wait for the completion of the installation. On some occasions, if the board has too little RAM the installation may fail and you will need to enable swap.
+Далі, щоб встановити NumPy в середовищі Klipper, запустити команду:
 
-#### Configure ADXL345 With RPi
+```
+~/klippy-env/bin/pip встановлення -v numpy
+```
 
-First, check and follow the instructions in the [RPi Microcontroller document](RPi_microcontroller.md) to setup the "linux mcu" on the Raspberry Pi. This will configure a second Klipper instance that runs on your Pi.
+Зауважте, що в залежності від продуктивності ЦП може знадобитися *a багато* часу, до 10-20 хвилин. Будьте хворими і чекайте завершення монтажу. У деяких випадках, якщо дошка занадто мало оперативної пам'яті, установка може бути неможливим, і вам буде потрібно включити застібку.
 
-Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and enabling SPI under the "Interfacing options" menu.
+#### Налаштування ADXL345 з RPi
 
-Add the following to the printer.cfg file:
+По-перше, перевірте та дотримуйтесь інструкцій в [RPi Microcontroller документ](RPi_microcontroller.md) для налаштування "linux mcu" на Raspberry Pi. Це налаштує другий екземпляр кліппера, який працює на Пі.
+
+Переконайтеся, що драйвер Linux SPI працює `sudo raspi-config` і дозволяє SPI під меню «Інфракційні параметри».
+
+Додати наступний до файлу принтера.cfg:
 
 ```
 [mcu rpi]
-serial: /tmp/klipper_host_mcu
+/tmp/klipper_host_mcu
 
 [adxl345]
-cs_pin: rpi:None
+JavaScript licenses API Веб-сайт Go1.13.8
 
 [resonance_tester]
 accel_chip: adxl345
-probe_points:
-    100, 100, 20  # an example
+Теги:
+100, 100, 20 # приклад
 ```
 
-It is advised to start with 1 probe point, in the middle of the print bed, slightly above it.
+Повідомляємо про початок з 1 точки зору, в середині принту, трохи вище.
 
-#### Configure ADXL345 With Pi Pico
+#### Налаштування ADXL345 з Pico
 
-##### Flash the Pico Firmware
+##### Прошивка Pico
 
-On your Raspberry Pi, compile the firmware for the Pico.
-
-```
-cd ~/klipper
-make clean
-make menuconfig
-```
-
-![Pico menuconfig](img/klipper_pico_menuconfig.png)
-
-Now, while holding down the `BOOTSEL` button on the Pico, connect the Pico to the Raspberry Pi via USB. Compile and flash the firmware.
+На Raspberry Pi, компіляція прошивки для Pico.
 
 ```
-make flash FLASH_DEVICE=first
+cd ~ / клиппер
+чистий
+налаштування меню
 ```
 
-If that fails, you will be told which `FLASH_DEVICE` to use. In this example, that's `make flash FLASH_DEVICE=2e8a:0003`. ![Determine flash device](img/flash_rp2040_FLASH_DEVICE.png)
+![Pico менюconfig](img/klipper_pico_menuconfig.png)
 
-##### Configure the Connection
+Тепер, утримуючи `BOOTSEL` кнопка на Піко, підключіть Піко до Малини Пі через USB. Прошивка і прошивка.
 
-The Pico will now reboot with the new firmware and should show up as a serial device. Find the pico serial device with `ls /dev/serial/by-id/*`. You can now add an `adxl.cfg` file with the following settings:
+```
+зробити флеш FLASH_DEVICE=перший
+```
+
+Якщо ви не змогли, ви сказали, що `FLASH_DEVICE` для використання. У цьому прикладі, що ` змія флеш FLASH_DEVICE=2e8a:0003`. ![Визначення флеш-пристрою](img/flash_rp2040_FLASH_DEVICE.png)
+
+##### Налаштування підключення
+
+Піко тепер перезавантажить нову прошивку і повинен показати як серійний пристрій. Знайдіть послідовний пристрій піко з `ls /dev/serial/by-id/*`. Тепер можна додати файл `adxl.cfg` з наступними налаштуваннями:
 
 ```
 [mcu adxl]
-# Change <mySerial> to whatever you found above. For example,
+Нема Змініть <mySerial>, щоб дізнатися вище. Наприклад,
 # usb-Klipper_rp2040_E661640843545B2E-if00
-serial: /dev/serial/by-id/usb-Klipper_rp2040_<mySerial>
+/dev/serial/by-id/usb-Klipper_rp2040_<mySerial>
 
 [adxl345]
 cs_pin: adxl:gpio1
 spi_bus: spi0a
-axes_map: x,z,y
+JavaScript licenses API Веб-сайт Go1.13.8
 
 [resonance_tester]
 accel_chip: adxl345
-probe_points:
-    # Somewhere slightly above the middle of your print bed
-    147,154, 20
+Теги:
+# Десь трохи вище середини вашого принту ліжко
+147,154, 20
 
-[output_pin power_mode] # Improve power stability
-pin: adxl:gpio23
+[вихід_pin power_mode] # Підвищення стабільності потужності
+шпилька: adxl:gpio23
 ```
 
-If setting up the ADXL345 configuration in a separate file, as shown above, you'll also want to modify your `printer.cfg` file to include this:
+Якщо налаштування конфігурації ADXL345 в окремому файлі, як показано вище, ви також хочете змінити файл `printer.cfg`, щоб включити цей:
 
 ```
-[include adxl.cfg] # Comment this out when you disconnect the accelerometer
+[включає adxl.cfg] # Comment this out, коли ви відключите акселерометр
 ```
 
-Restart Klipper via the `RESTART` command.
+Рештарт Кліппер через команду `RESTART`.
 
-#### Configure LIS2DW series
+#### Налаштування серії LIS2DW
 
 ```
 [mcu lis]
-# Change <mySerial> to whatever you found above. For example,
+Нема Змініть <mySerial>, щоб дізнатися вище. Наприклад,
 # usb-Klipper_rp2040_E661640843545B2E-if00
-serial: /dev/serial/by-id/usb-Klipper_rp2040_<mySerial>
+/dev/serial/by-id/usb-Klipper_rp2040_<mySerial>
 
 [lis2dw]
 cs_pin: lis:gpio1
 spi_bus: spi0a
-axes_map: x,z,y
+JavaScript licenses API Веб-сайт Go1.13.8
 
 [resonance_tester]
 accel_chip: lis2dw
-probe_points:
-    # Somewhere slightly above the middle of your print bed
-    147,154, 20
+Теги:
+# Десь трохи вище середини вашого принту ліжко
+147,154, 20
 ```
 
-#### Configure MPU-6000/9000 series With RPi
+#### Налаштування серії MPU-6000/9000 з RPi
 
-Make sure the Linux I2C driver is enabled and the baud rate is set to 400000 (see [Enabling I2C](RPi_microcontroller.md#optional-enabling-i2c) section for more details). Then, add the following to the printer.cfg:
+Переконайтеся, що драйвер Linux I2C ввімкнено, а курс baud встановлюється до 400000 (див. [Включення I2C](RPi_microcontroller.md#optional-enabling-i2c) для більш детальної інформації). Потім додайте наступний до принтера.cfg:
 
 ```
 [mcu rpi]
-serial: /tmp/klipper_host_mcu
+/tmp/klipper_host_mcu
 
 [mpu9250]
-i2c_mcu: rpi
+i2c_mcu: свінгери
 i2c_bus: i2c.1
 
 [resonance_tester]
 accel_chip: mpu9250
-probe_points:
-    100, 100, 20  # an example
+теги:
+100, 100, 20 # приклад
 ```
 
-#### Configure MPU-9520 Compatibles With Pico
+#### Налаштування MPU-9520 Сумісний з Pico
 
-Pico I2C is set to 400000 on default. Simply add the following to the printer.cfg:
+Pico I2C встановлюється до 400000 за замовчуванням. Просто додайте наступний до принтера.cfg:
 
 ```
 [mcu pico]
-serial: /dev/serial/by-id/<your Pico's serial ID>
+послідовність: /dev/serial/by-id/<your Серійний ID Pico>
 
 [mpu9250]
 i2c_mcu: pico
@@ -305,267 +305,267 @@ i2c_bus: i2c0a
 
 [resonance_tester]
 accel_chip: mpu9250
-probe_points:
-    100, 100, 20  # an example
+Теги:
+100, 100, 20 # приклад
 
-[static_digital_output pico_3V3pwm] # Improve power stability
-pins: pico:gpio23
+[static_digital_вихід pico_3V3pwm] # Підвищення стабільності потужності
+шпильки: pico:gpio23
 ```
 
-#### Configure MPU-9520 Compatibles with AVR
+#### Налаштування MPU-9520 Сумісний з AVR
 
-AVR I2C will be set to 400000 by the mpu9250 option. Simply add the following to the printer.cfg:
+AVR I2C буде встановлена до 400000 по параметру mpu9250. Просто додайте наступний до принтера.cfg:
 
 ```
-[mcu nano]
-serial: /dev/serial/by-id/<your nano's serial ID>
+[mcu нано]
+послідовність: /dev/serial/by-id/<your нано послідовний ідентифікатор>
 
 [mpu9250]
-i2c_mcu: nano
+i2c_mcu: нано
 
 [resonance_tester]
 accel_chip: mpu9250
-probe_points:
-    100, 100, 20  # an example
+Теги:
+100, 100, 20 # приклад
 ```
 
-Restart Klipper via the `RESTART` command.
+Рештарт Кліппер через команду `RESTART`.
 
-## Measuring the resonances
+## Вимірювання резонансів
 
-### Checking the setup
+### Перевірка налаштування
 
-Now you can test a connection.
+Тепер можна перевірити підключення.
 
-- For "non bed-slingers" (e.g. one accelerometer), in Octoprint, enter `ACCELEROMETER_QUERY`
-- For "bed-slingers" (e.g. more than one accelerometer), enter `ACCELEROMETER_QUERY CHIP=<chip>` where `<chip>` is the name of the chip as-entered, e.g. `CHIP=bed` (see: [bed-slinger](#bed-slinger-printers)) for all installed accelerometer chips.
+- Для «не постільних речей» (наприклад, один акселерометр), в Octoprint, введіть `ACCELEROMETER_QUERY`
+- Для "дягачів" (наприклад, більше одного акселерометра), введіть `ACCELEROMETER_QUERY CHIP=<chip>`, де `<chip>` є ім'ям чіпа, як-вхідний, наприклад, `CHIP=bed` (див.: [bed-slinger](#bed-slinger-printers) для всіх встановлених акселерометрових чіпів.
 
-You should see the current measurements from the accelerometer, including the free-fall acceleration, e.g.
+Ви повинні бачити поточні вимірювання від акселерометра, включаючи прискорення вільного падіння, наприклад.
 
 ```
-Recv: // adxl345 values (x, y, z): 470.719200, 941.438400, 9728.196800
+Рев: // ADxl345 значення (x, y, z): 470.719200, 941.438400, 9728.196800
 ```
 
-If you get an error like `Invalid adxl345 id (got xx vs e5)`, where `xx` is some other ID, immediately try again. There's an issue with SPI initialization. If you still get an error, it is indicative of the connection problem with ADXL345, or the faulty sensor. Double-check the power, the wiring (that it matches the schematics, no wire is broken or loose, etc.), and soldering quality.
+Якщо ви отримуєте помилку, як `Invalid adxl345 id (got xx vs e5)`, де `xx` є інший ID, негайно спробуйте знову. Питання ініціалізації SPI. Якщо ви все ще отримуєте помилку, це індексує проблему з'єднання з ADXL345 або датчиком несправності. Подвійне зчепити потужність, електропроводка (тобто вона відповідає схемі, не зламаний дріт або пухкий і т.д.), і якість пайки.
 
-**If you are using a MPU-9250 compatible accelerometer and it shows up as `mpu-unknown`, use with caution! They are probably refurbished chips!**
+**Якщо ви використовуєте сумісний акселерометр MPU-9250 і він показує як `mpu-unknown```, скористайтеся обережністю! Вони, ймовірно, відремонтовані чіпси! **
 
-Next, try running `MEASURE_AXES_NOISE` in Octoprint, you should get some baseline numbers for the noise of accelerometer on the axes (should be somewhere in the range of ~1-100). Too high axes noise (e.g. 1000 and more) can be indicative of the sensor issues, problems with its power, or too noisy imbalanced fans on a 3D printer.
+Далі намагатися бігти `MEASURE_AXES_NOISE` в Октопринті, ви повинні отримати деякі базові номери для шуму акселерометра на осі (зварити десь в діапазоні ~1-100). Занадто високий шум осі (наприклад, 1000 і більше) можна індексувати проблеми датчика, проблеми зі своєю потужністю, або занадто незбалансовані вентилятори на 3D принтері.
 
-### Measuring the resonances
+### Вимірювання резонансів
 
-Now you can run some real-life tests. Run the following command:
+Тепер ви можете запустити деякі реальні тести. Запустіть команду:
 
 ```
 TEST_RESONANCES AXIS=X
 ```
 
-Note that it will create vibrations on X axis. It will also disable input shaping if it was enabled previously, as it is not valid to run the resonance testing with the input shaper enabled.
+Зверніть увагу, що він створить вібрації на осі X. Він також буде відключити формулювання введення, якщо він був включений раніше, оскільки він не є дійсним для запуску резонансного тестування з ввімкненою формою введення.
 
-**Attention!** Be sure to observe the printer for the first time, to make sure the vibrations do not become too violent (`M112` command can be used to abort the test in case of emergency; hopefully it will not come to this though). If the vibrations do get too strong, you can attempt to specify a lower than the default value for `accel_per_hz` parameter in `[resonance_tester]` section, e.g.
+**Пригода!** Обов'язково дотримуватися принтера вперше, щоб переконатися, що коливання не стали занадто жорстокими (`M112` команди можна використовувати для видалення тесту в разі надзвичайної ситуації, сподіваємось, що це не прийде до цього. Якщо вібрація є занадто сильною, ви можете намагатися вказати нижче значення за замовчуванням для параметра `accel_per_hz` у розділі `[resonance_tester]`, наприклад.
 
 ```
 [resonance_tester]
-accel_chip: adxl345
-accel_per_hz: 50  # default is 75
-probe_points: ...
+ accel_chip: adxl345
+ accel_per_hz: 50 # за замовчуванням 75
+ точки_зонду: ...
 ```
 
-If it works for X axis, run for Y axis as well:
+Якщо він працює для осі X, запустіть для осі Y:
 
 ```
 TEST_RESONANCES AXIS=Y
 ```
 
-This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and `/tmp/resonances_y_*.csv`). These files can be processed with the stand-alone script on a Raspberry Pi. This script is intended to be run with a single CSV file for each axis measured, although it can be used with multiple CSV files if you desire to average the results. Averaging results can be useful, for example, if resonance tests were done at multiple test points. Delete the extra CSV files if you do not desire to average them.
+Це генерує файли 2 CSV (`/tmp/resonances_x_*.csv` та `/tmp/resonances_y_*.csv`). Ці файли можна обробити за допомогою стаціонарного сценарію на Raspberry Pi. Цей скрипт призначений для запуску з одним файлом CSV для кожної осі вимірюється, хоча він може використовуватися з декількома файлами CSV, якщо ви хочете в середньому результати. Результати дослідження можуть бути корисними, наприклад, якщо резонансні тести були зроблені на декількох тестових точках. Видалення додаткових файлів CSV, якщо ви не бажаєте в середньому їх.
 
 ```
 ~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png
-~/klipper/scripts/calibrate_shaper.py /tmp/resonances_y_*.csv -o /tmp/shaper_calibrate_y.png
+ ~/klipper/scripts/calibrate_shaper.py /tmp/resonances_y_*.csv -o /tmp/shaper_calibrate_y.png
 ```
 
-This script will generate the charts `/tmp/shaper_calibrate_x.png` and `/tmp/shaper_calibrate_y.png` with frequency responses. You will also get the suggested frequencies for each input shaper, as well as which input shaper is recommended for your setup. For example:
+Цей скрипт буде генерувати діаграми `/tmp/shaper_calibrate_x.png` і `/tmp/shaper_calibrate_y.png` з частотними відгуками. Ви також отримаєте запропоновані частоти для кожного ідентифікатора вводу, а також які вводні форми рекомендується для налаштування. Наприклад:
 
-![Resonances](img/calibrate-y.png)
+![Резонанси](img/calibrate-y.png)
 
 ```
-Fitted shaper 'zv' frequency = 34.4 Hz (vibrations = 4.0%, smoothing ~= 0.132)
-To avoid too much smoothing with 'zv', suggested max_accel <= 4500 mm/sec^2
-Fitted shaper 'mzv' frequency = 34.6 Hz (vibrations = 0.0%, smoothing ~= 0.170)
-To avoid too much smoothing with 'mzv', suggested max_accel <= 3500 mm/sec^2
-Fitted shaper 'ei' frequency = 41.4 Hz (vibrations = 0.0%, smoothing ~= 0.188)
-To avoid too much smoothing with 'ei', suggested max_accel <= 3200 mm/sec^2
-Fitted shaper '2hump_ei' frequency = 51.8 Hz (vibrations = 0.0%, smoothing ~= 0.201)
-To avoid too much smoothing with '2hump_ei', suggested max_accel <= 3000 mm/sec^2
-Fitted shaper '3hump_ei' frequency = 61.8 Hz (vibrations = 0.0%, smoothing ~= 0.215)
-To avoid too much smoothing with '3hump_ei', suggested max_accel <= 2800 mm/sec^2
-Recommended shaper is mzv @ 34.6 Hz
+В'язана формар 'zv' частота = 34.4 Hz (vibrations = 4.0%, розгладжування ~= 0.132)
+Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel <= 4500 мм/сек^2
+В'язана формар 'mzv' частота = 34.6 Hz (vibrations = 0.0%, розгладжування ~= 0.170)
+Щоб уникнути занадто багато плавлення з 'mzv', запропонував макс_accel <= 3500 мм/сек^2
+В'язана формар 'е' частота = 41.4 Hz (vibrations = 0.0%, розгладжування ~= 0.188)
+Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel <= 3200 мм/сек^2
+В'язана формар '2hump_ei' частота = 51.8 Hz (vibrations = 0.0%, розгладжування ~= 0.201)
+Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував макс_accel <= 3000 мм/сек^2
+В'язана формар '3hump_ei' частота = 61.8 Hz (vibrations = 0.0%, розгладжування ~= 0.215)
+Щоб уникнути занадто багато розгладжування з '3hump_ei', запропонував макс_accel <= 2800 мм/сек^2
+Рекомендований форматор - mzv @ 34.6 ХХз
 ```
 
-The suggested configuration can be added to `[input_shaper]` section of `printer.cfg`, e.g.:
+У розділі `printer.cfg`, наприклад:
 
 ```
 [input_shaper]
-shaper_freq_x: ...
-shaper_type_x: ...
-shaper_freq_y: 34.6
-shaper_type_y: mzv
+JavaScript licenses API Веб-сайт Go1.13.8
+JavaScript licenses API Веб-сайт Go1.13.8
+JavaScript licenses API Веб-сайт Go1.13.8
+JavaScript licenses API Веб-сайт Go1.13.8
 
-[printer]
-max_accel: 3000  # should not exceed the estimated max_accel for X and Y axes
+[принтер]
+max_accel: 3000 # не повинен перевищувати оцінений макс_accel для X і Y осі
 ```
 
-or you can choose some other configuration yourself based on the generated charts: peaks in the power spectral density on the charts correspond to the resonance frequencies of the printer.
+або ви можете вибрати іншу конфігурацію самостійно на основі створених графіків: піків в потужності спектральної щільності на діаграмах відповідають резонансним частотам принтера.
 
-Note that alternatively you can run the input shaper auto-calibration from Klipper [directly](#input-shaper-auto-calibration), which can be convenient, for example, for the input shaper [re-calibration](#input-shaper-re-calibration).
+Зауважте, що альтернативно ви можете запустити вводну формувальну автоматичну калібрацію з Klipper [прямо](#input-shaper-auto-calibration), яка може бути зручною, наприклад, для вхідної форми [re-calibration](#input-shaper-re-calibration).
 
-### Bed-slinger printers
+### Принтери постільної білизни
 
-If your printer is a bed slinger printer, you will need to change the location of the accelerometer between the measurements for X and Y axes: measure the resonances of X axis with the accelerometer attached to the toolhead and the resonances of Y axis - to the bed (the usual bed slinger setup).
+Якщо ваш принтер являє собою плащовий принтер, потрібно буде змінити місце розташування акселерометра між вимірюваннями для X і Y осі: вимірювати резонанси осі X з акселерометром, прикріпленим до панелі інструментів і резонансами осі Y - до ліжка (звичайне налаштування постільної білизни).
 
-However, you can also connect two accelerometers simultaneously, though the ADXL345 must be connected to different boards (say, to an RPi and printer MCU board), or to two different physical SPI interfaces on the same board (rarely available). Then they can be configured in the following manner:
+Тим не менш, ви також можете підключити два акселерометри одночасно, хоча ADXL345 повинні бути підключені до різних дощок (програш, до плати RPi і принтера MCU), або до двох різних фізичних інтерфейсів SPI на одній дошці (тільки доступні). Далі вони можуть бути налаштовані таким чином:
 
 ```
 [adxl345 hotend]
-# Assuming `hotend` chip is connected to an RPi
-cs_pin: rpi:None
+ # Припустимо, що мікросхему `hotend` підключено до RPi
+ cs_pin: rpi: немає
 
-[adxl345 bed]
-# Assuming `bed` chip is connected to a printer MCU board
-cs_pin: ...  # Printer board SPI chip select (CS) pin
+ [adxl345 ліжко]
+ # Припустимо, що мікросхему `bed` підключено до плати MCU принтера
+ cs_pin: ... # Вибір мікросхеми SPI плати принтера (CS).
 
-[resonance_tester]
-# Assuming the typical setup of the bed slinger printer
-accel_chip_x: adxl345 hotend
-accel_chip_y: adxl345 bed
-probe_points: ...
+ [resonance_tester]
+ # Припустимо типове налаштування принтера bed sling
+ accel_chip_x: adxl345 hotend
+ accel_chip_y: ліжко adxl345
+ точки_зонду: ...
 ```
 
-Two MPUs can share one I2C bus, but they **cannot** measure simultaneously as the 400kbit/s I2C bus is not fast enough. One must have its AD0 pin pulled-down to 0V (address 104) and the other its AD0 pin pulled-up to 3.3V (address 105):
+Два MPU можуть поділитися одним автобусом I2C, але вони **cannot** вимірювати одночасно як 400kbit/s I2C автобус не дуже швидко. Потрібно мати шпильку AD0 до 0V (адреса 104) і інші її шпильки AD0 до 3.3V (адреса 105):
 
 ```
 [mpu9250 hotend]
-i2c_mcu: rpi
-i2c_bus: i2c.1
-i2c_address: 104 # This MPU has pin AD0 pulled low
+ i2c_mcu: rpi
+ i2c_bus: i2c.1
+ i2c_address: 104 # Цей MPU має низький рівень контакту AD0
 
-[mpu9250 bed]
-i2c_mcu: rpi
-i2c_bus: i2c.1
-i2c_address: 105 # This MPU has pin AD0 pulled high
+ [ліжко mpu9250]
+ i2c_mcu: rpi
+ i2c_bus: i2c.1
+ i2c_address: 105 # Цей MPU має високий висновок AD0
 
-[resonance_tester]
-# Assuming the typical setup of the bed slinger printer
-accel_chip_x: mpu9250 hotend
-accel_chip_y: mpu9250 bed
-probe_points: ...
+ [resonance_tester]
+ # Припустимо типове налаштування принтера bed sling
+ accel_chip_x: mpu9250 hotend
+ accel_chip_y: ліжко mpu9250
+ точки_зонду: ...
 ```
 
-[Test with each MPU individually before connecting both to the bus for easy debugging.]
+[Тест з кожним МПУ в індивідуальному порядку перед підключенням до автобуса для легкого знеболювання.]
 
-Then the commands `TEST_RESONANCES AXIS=X` and `TEST_RESONANCES AXIS=Y` will use the correct accelerometer for each axis.
+Потім команди `TEST_RESONANCES AXIS=X` і `TEST_RESONANCES AXIS=Y` використовувати правильний акселерометр для кожної осі.
 
-### Max smoothing
+### Макс плавлення
 
-Keep in mind that the input shaper can create some smoothing in parts. Automatic tuning of the input shaper performed by `calibrate_shaper.py` script or `SHAPER_CALIBRATE` command tries not to exacerbate the smoothing, but at the same time they try to minimize the resulting vibrations. Sometimes they can make a sub-optimal choice of the shaper frequency, or maybe you simply prefer to have less smoothing in parts at the expense of a larger remaining vibrations. In these cases, you can request to limit the maximum smoothing from the input shaper.
+Враховуйте, що вводний формувач може створити деякий розгладжування деталей. Автоматичне тюнінг вхідної форми, що виконується `calibrate_shaper.py` скрипт або `SHAPER_CALIBRATE` команда намагається не згасити плавлення, але в той же час вони намагаються мінімізувати отримані вібрації. Іноді вони можуть зробити субоптимальний вибір частоти фігури, або, можливо, ви просто віддаєте перевагу менше розгладжування деталей за рахунок більшої решти коливань. У цих випадках ви можете запитувати, щоб обмежити максимальне згладжування від вхідної форми.
 
-Let's consider the following results from the automatic tuning:
+Давайте розглянемо наступні результати з автоматичного тюнінгу:
 
-![Resonances](img/calibrate-x.png)
-
-```
-Fitted shaper 'zv' frequency = 57.8 Hz (vibrations = 20.3%, smoothing ~= 0.053)
-To avoid too much smoothing with 'zv', suggested max_accel <= 13000 mm/sec^2
-Fitted shaper 'mzv' frequency = 34.8 Hz (vibrations = 3.6%, smoothing ~= 0.168)
-To avoid too much smoothing with 'mzv', suggested max_accel <= 3600 mm/sec^2
-Fitted shaper 'ei' frequency = 48.8 Hz (vibrations = 4.9%, smoothing ~= 0.135)
-To avoid too much smoothing with 'ei', suggested max_accel <= 4400 mm/sec^2
-Fitted shaper '2hump_ei' frequency = 45.2 Hz (vibrations = 0.1%, smoothing ~= 0.264)
-To avoid too much smoothing with '2hump_ei', suggested max_accel <= 2200 mm/sec^2
-Fitted shaper '3hump_ei' frequency = 48.0 Hz (vibrations = 0.0%, smoothing ~= 0.356)
-To avoid too much smoothing with '3hump_ei', suggested max_accel <= 1500 mm/sec^2
-Recommended shaper is 2hump_ei @ 45.2 Hz
-```
-
-Note that the reported `smoothing` values are some abstract projected values. These values can be used to compare different configurations: the higher the value, the more smoothing a shaper will create. However, these smoothing scores do not represent any real measure of smoothing, because the actual smoothing depends on [`max_accel`](#selecting-max-accel) and `square_corner_velocity` parameters. Therefore, you should print some test prints to see how much smoothing exactly a chosen configuration creates.
-
-In the example above the suggested shaper parameters are not bad, but what if you want to get less smoothing on the X axis? You can try to limit the maximum shaper smoothing using the following command:
+![Резонанси](img/calibrate-x.png)
 
 ```
-~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png --max_smoothing=0.2
+В'язана формар 'zv' частота = 57.8 Hz (vibrations = 20.3%, розгладжування ~= 0.053)
+Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel <= 13000 мм/сек^2
+В'язана формар 'mzv' частота = 34.8 Hz (vibrations = 3.6%, розгладжування ~= 0.168)
+Щоб уникнути занадто багато плавлення з 'mzv', запропонував макс_accel <= 3600 мм/сек^2
+В'язана формар 'е' частота = 48.8 Hz (vibrations = 4.9%, розгладжування ~= 0.135)
+Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel <= 4400 мм/сек^2
+В'язана формар '2hump_ei' частота = 45.2 Hz (vibrations = 0.1%, розгладжування ~= 0.264)
+Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував макс_accel <= 2200 мм/sec^2
+В'язана формар '3hump_ei' частота = 48.0 Hz (vibrations = 0.0%, розгладжування ~= 0.356)
+Щоб уникнути занадто багато плавлення з '3hump_ei', запропонував макс_accel <= 1500 мм/сек^2
+Рекомендований форматор 2hump_ei @ 45.2 ХХз
 ```
 
-which limits the smoothing to 0.2 score. Now you can get the following result:
+Зверніть увагу, що повідомлені значення «згладжування» є деякими абстрактними прогнозованими значеннями. Ці значення можна використовувати для порівняння різних конфігурацій: чим вище значення, тим більше згладжування створить шейпер. Однак ці показники згладжування не представляють реальної міри згладжування, оскільки фактичне згладжування залежить від параметрів [`max_accel`](#selecting-max-accel) і `square_corner_velocity`. Тому вам слід надрукувати кілька пробних відбитків, щоб побачити, наскільки згладжування створює саме вибрана конфігурація.
 
-![Resonances](img/calibrate-x-max-smoothing.png)
+На прикладі вище запропоновані параметри формера не погані, але що якщо ви хочете отримати менше розгладжування на осі X? Ви можете намагатися обмежити максимальне вирівнювання фігури за допомогою наступної команди:
 
 ```
-Fitted shaper 'zv' frequency = 55.4 Hz (vibrations = 19.7%, smoothing ~= 0.057)
-To avoid too much smoothing with 'zv', suggested max_accel <= 12000 mm/sec^2
-Fitted shaper 'mzv' frequency = 34.6 Hz (vibrations = 3.6%, smoothing ~= 0.170)
-To avoid too much smoothing with 'mzv', suggested max_accel <= 3500 mm/sec^2
-Fitted shaper 'ei' frequency = 48.2 Hz (vibrations = 4.8%, smoothing ~= 0.139)
-To avoid too much smoothing with 'ei', suggested max_accel <= 4300 mm/sec^2
-Fitted shaper '2hump_ei' frequency = 52.0 Hz (vibrations = 2.7%, smoothing ~= 0.200)
-To avoid too much smoothing with '2hump_ei', suggested max_accel <= 3000 mm/sec^2
-Fitted shaper '3hump_ei' frequency = 72.6 Hz (vibrations = 1.4%, smoothing ~= 0.155)
-To avoid too much smoothing with '3hump_ei', suggested max_accel <= 3900 mm/sec^2
-Recommended shaper is 3hump_ei @ 72.6 Hz
+~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png --max_smoothing=0,2
 ```
 
-If you compare to the previously suggested parameters, the vibrations are a bit larger, but the smoothing is significantly smaller than previously, allowing larger maximum acceleration.
+яка обмежує розгладжування до 0,2 балу. Тепер ви можете отримати наступний результат:
 
-When deciding which `max_smoothing` parameter to choose, you can use a trial-and-error approach. Try a few different values and see which results you get. Note that the actual smoothing produced by the input shaper depends, primarily, on the lowest resonance frequency of the printer: the higher the frequency of the lowest resonance - the smaller the smoothing. Therefore, if you request the script to find a configuration of the input shaper with the unrealistically small smoothing, it will be at the expense of increased ringing at the lowest resonance frequencies (which are, typically, also more prominently visible in prints). So, always double-check the projected remaining vibrations reported by the script and make sure they are not too high.
+![Резонанси](img/calibrate-x-max-smoothing.png)
 
-Note that if you chose a good `max_smoothing` value for both of your axes, you can store it in the `printer.cfg` as
+```
+В'язана формар 'zv' частота = 55.4 Hz (vibrations = 19.7%, розгладжування ~= 0.057)
+Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel <= 12000 мм/сек^2
+В'язана формар 'mzv' частота = 34.6 Hz (vibrations = 3.6%, розгладжування ~= 0.170)
+Щоб уникнути занадто багато плавлення з 'mzv', запропонував макс_accel <= 3500 мм/сек^2
+В'язана формар 'е' частота = 48.2 Hz (vibrations = 4.8%, розгладжування ~= 0.139)
+Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel <= 4300 мм/сек^2
+В'язана формар '2hump_ei' частота = 52.0 Hz (vibrations = 2.7%, розгладжування ~= 0.200)
+Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував макс_accel <= 3000 мм/сек^2
+В'язана формар '3hump_ei' частота = 72.6 Hz (vibrations = 1,4%, розгладжування ~= 0.155)
+Щоб уникнути занадто багато розгладжування з '3hump_ei', запропонував макс_accel <= 3900 мм/сек^2
+Рекомендований формар 3hump_ei @ 72.6 ХХз
+```
+
+Якщо порівняти раніше запропоновані параметри, коли коливання трохи більше, але плавлення значно менше, ніж раніше, що дозволяє збільшити максимальне прискорення.
+
+При вирішенні, які `max_smoothing` параметр вибрати, ви можете використовувати пробний і-error підхід. Спробуйте кілька різних значень, які ви отримуєте. Зверніть увагу, що фактичне згладжування, вироблене за допомогою вхідного формера залежить, в першу чергу, на найнижчій частоті резонансу принтера: чим вище частота найнижчого резонансу - тим менша плавка. Таким чином, якщо ви запитуєте сценарій, щоб знайти конфігурацію вхідної форми з нереально малим розгладжуванням, це буде за рахунок збільшення кільця за найнижчими частотами резонансу (які, як правило, також більш помітні в друку). Таким чином, завжди подвійна точка проекту, що залишилися коливання, які повідомляються скриптом і переконайтеся, що вони не занадто високі.
+
+Зверніть увагу, що якщо ви вибрали добре `max_smoothing` значення для обох ваших осей, ви можете зберігати його в `printer.cfg` як
 
 ```
 [resonance_tester]
 accel_chip: ...
-probe_points: ...
-max_smoothing: 0.25  # an example
+теги: ...
+max_smoothing: 0.25 # приклад
 ```
 
-Then, if you [rerun](#input-shaper-re-calibration) the input shaper auto-tuning using `SHAPER_CALIBRATE` Klipper command in the future, it will use the stored `max_smoothing` value as a reference.
+Потім, якщо ви [rerun](#input-shaper-re-calibration) за допомогою вхідної форми за допомогою `SHAPER_CALIBRATE` Команда Klipper в майбутньому, вона буде використовувати збережені `max_smoothing` значення як посилання.
 
-### Selecting max_accel
+### Вибір макс_accel
 
-Since the input shaper can create some smoothing in parts, especially at high accelerations, you will still need to choose the `max_accel` value that does not create too much smoothing in the printed parts. A calibration script provides an estimate for `max_accel` parameter that should not create too much smoothing. Note that the `max_accel` as displayed by the calibration script is only a theoretical maximum at which the respective shaper is still able to work without producing too much smoothing. It is by no means a recommendation to set this acceleration for printing. The maximum acceleration your printer is able to sustain depends on its mechanical properties and the maximum torque of the used stepper motors. Therefore, it is suggested to set `max_accel` in `[printer]` section that does not exceed the estimated values for X and Y axes, likely with some conservative safety margin.
+Оскільки вводний форматор може створити деяке розгладжування деталей, особливо при високих прискореннях, вам все ще потрібно вибрати `max_accel` значення, яке не створює занадто багато розгладжування в друкованих частинах. Скрипт калібрування забезпечує оцінку параметра `max_accel`, який не повинен створювати занадто багато згладжування. Зауважте, що `max_accel`, як показано сценарій калібрування, є лише теоретичним, максимальним, при якому відповідний формар все ще здатний працювати без отримання занадто багато згладжування. Не можна рекомендувати для встановлення цього прискорення для друку. Максимальне прискорення вашого принтера дозволяє залишатися в залежності від механічних властивостей і максимального крутного моменту використовуваних крокових двигунів. Отже, пропонується встановити `max_accel` в розділі `[printer]`, яка не перевищує оцінені значення для X і Y осі, ймовірно, з деякими консервативними запасами безпеки.
 
-Alternatively, follow [this](Resonance_Compensation.md#selecting-max_accel) part of the input shaper tuning guide and print the test model to choose `max_accel` parameter experimentally.
+Крім того, слідувати [this](Resonance_Compensation.md#selecting-max_accel) частини інструкції з налаштування вводу та друку тестової моделі для вибору `max_accel` експериментально.
 
-The same notice applies to the input shaper [auto-calibration](#input-shaper-auto-calibration) with `SHAPER_CALIBRATE` command: it is still necessary to choose the right `max_accel` value after the auto-calibration, and the suggested acceleration limits will not be applied automatically.
+Те ж повідомлення відноситься до вхідного формера [auto-calibration](#input-shaper-auto-calibration) з `SHAPER_CALIBRATE` команда: вона все ще потрібно вибрати правильний `max_accel` значення після автоматичного калібрування, і запропоновані обмеження прискорення не будуть застосовуватися автоматично.
 
-Keep in mind that the maximum acceleration without too much smoothing depends on the `square_corner_velocity`. The general recommendation is not to change it from its default value 5.0, and this is the value used by default by the `calibrate_shaper.py` script. If you did change it though, you should inform the script about it by passing `--square_corner_velocity=...` parameter, e.g.
+Враховуйте, що максимальне прискорення без зайвих зусиль залежить від `square_corner_velocity`. Загальні рекомендації не можна змінити його з його значення за замовчуванням 5.0, і це значення, яке використовується за замовчуванням `calibrate_shaper.py` скрипт. Якщо ви змінили його, ви повинні повідомити скрипт про це, пройшовши `-square_corner_velocity=...` параметр, наприклад.
 
 ```
-~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png --square_corner_velocity=10.0
+~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calib rate_x.png --square_corner_velocity=10.0
 ```
 
-so that it can calculate the maximum acceleration recommendations correctly. Note that the `SHAPER_CALIBRATE` command already takes the configured `square_corner_velocity` parameter into account, and there is no need to specify it explicitly.
+таким чином, можна правильно розрахувати максимальні рекомендації прискорення. Зауважте, що `SHAPER_CALIBRATE` команда вже приймає налаштовувані `square_corner_velocity` параметр враховується, і немає необхідності уточнювати його явно.
 
-If you are doing a shaper re-calibration and the reported smoothing for the suggested shaper configuration is almost the same as what you got during the previous calibration, this step can be skipped.
+Якщо ви виконуєте рекалібрацію формувача і повідомляється розгладжування за запропонованою конфігурацією формера практично таким же, що ви отримали під час попереднього калібрування, цей крок можна пропустити.
 
-### Testing custom axes
+### Тестування користувальницьких осей
 
-`TEST_RESONANCES` command supports custom axes. While this is not really useful for input shaper calibration, it can be used to study printer resonances in-depth and to check, for example, belt tension.
+`TEST_RESONANCES` команда підтримує користувацькі осі. В той час як це не дуже корисно для калібрування вводу, його можна використовувати для вивчення резонансів принтера глибоко і для перевірки, наприклад, натяг стрічки.
 
-To check the belt tension on CoreXY printers, execute
+Для перевірки натягу стрічки на принтерах CoreXY, виконання
 
 ```
 TEST_RESONANCES AXIS=1,1 OUTPUT=raw_data
-TEST_RESONANCES AXIS=1,-1 OUTPUT=raw_data
+TEST_RESONANCES AXIS=1,-1 OUT PUT=raw_data
 ```
 
-and use `graph_accelerometer.py` to process the generated files, e.g.
+`graph_accelerometer.py` для обробки створених файлів, наприклад.
 
 ```
-~/klipper/scripts/graph_accelerometer.py -c /tmp/raw_data_axis*.csv -o /tmp/resonances.png
+~/klipper/scripts/graph_accelero meter.py -c /tmp/raw_data_axis*.csv -o /tmp/resonances.png
 ```
 
-which will generate `/tmp/resonances.png` comparing the resonances.
+`/tmp/resonances.png` порівняння резонансів.
 
-For Delta printers with the default tower placement (tower A ~= 210 degrees, B ~= 330 degrees, and C ~= 90 degrees), execute
+Для принтерів Delta з розміщенням за замовчуванням (підтримка A ~= 210 градусів, B ~=330 градусів, а C ~= 90 градусів), виконання
 
 ```
 TEST_RESONANCES AXIS=0,1 OUTPUT=raw_data
@@ -573,98 +573,98 @@ TEST_RESONANCES AXIS=-0.866025404,-0.5 OUTPUT=raw_data
 TEST_RESONANCES AXIS=0.866025404,-0.5 OUTPUT=raw_data
 ```
 
-and then use the same command
+а потім використовувати однакову команду
 
 ```
-~/klipper/scripts/graph_accelerometer.py -c /tmp/raw_data_axis*.csv -o /tmp/resonances.png
+~/klipper/scripts/graph_accelero meter.py -c /tmp/raw_data_axis*.csv -o /tmp/resonances.png
 ```
 
-to generate `/tmp/resonances.png` comparing the resonances.
+щоб створити `/tmp/resonances.png` для порівняння резонансів.
 
-## Input Shaper auto-calibration
+## Вхідний шейпер автоматичного калібрування
 
-Besides manually choosing the appropriate parameters for the input shaper feature, it is also possible to run the auto-tuning for the input shaper directly from Klipper. Run the following command via Octoprint terminal:
+Крім ручного вибору відповідних параметрів для функції вводу, можна також запустити автовизначення для вхідної форми безпосередньо від Klipper. Запустіть команду за допомогою терміналу Octoprint:
 
 ```
 SHAPER_CALIBRATE
 ```
 
-This will run the full test for both axes and generate the csv output (`/tmp/calibration_data_*.csv` by default) for the frequency response and the suggested input shapers. You will also get the suggested frequencies for each input shaper, as well as which input shaper is recommended for your setup, on Octoprint console. For example:
+Це буде запустити повну тест для обох осей і генерувати вихід csv (`/tmp/calibration_data_*.csv` за замовчуванням) для відповіді частоти і запропонованих форм введення. Ви також отримаєте запропоновані частоти для кожного ідентифікатора вводу, а також який вводний формувач рекомендується для налаштування, на Octoprint консолі. Наприклад:
 
 ```
-Calculating the best input shaper parameters for y axis
-Fitted shaper 'zv' frequency = 39.0 Hz (vibrations = 13.2%, smoothing ~= 0.105)
-To avoid too much smoothing with 'zv', suggested max_accel <= 5900 mm/sec^2
-Fitted shaper 'mzv' frequency = 36.8 Hz (vibrations = 1.7%, smoothing ~= 0.150)
-To avoid too much smoothing with 'mzv', suggested max_accel <= 4000 mm/sec^2
-Fitted shaper 'ei' frequency = 36.6 Hz (vibrations = 2.2%, smoothing ~= 0.240)
-To avoid too much smoothing with 'ei', suggested max_accel <= 2500 mm/sec^2
-Fitted shaper '2hump_ei' frequency = 48.0 Hz (vibrations = 0.0%, smoothing ~= 0.234)
-To avoid too much smoothing with '2hump_ei', suggested max_accel <= 2500 mm/sec^2
-Fitted shaper '3hump_ei' frequency = 59.0 Hz (vibrations = 0.0%, smoothing ~= 0.235)
-To avoid too much smoothing with '3hump_ei', suggested max_accel <= 2500 mm/sec^2
-Recommended shaper_type_y = mzv, shaper_freq_y = 36.8 Hz
+Розрахунок кращих параметрів вводу для осі я
+В'язана формар 'zv' частота = 39.0 Hz (vibrations = 13.2%, розгладжування ~= 0.105)
+Щоб уникнути занадто багато розгладжування з 'zv', запропонував макс_accel <= 5900 мм/сек^2
+В'язана формар 'mzv' частота = 36.8 Hz (vibrations = 1.7%, розгладжування ~= 0.150)
+Щоб уникнути занадто багато розгладжування з 'mzv', запропонував макс_accel <= 4000 мм/сек^2
+В'язана формар 'я' частота = 36.6 Hz (vibrations = 2.2%, розгладжування ~= 0.240)
+Щоб уникнути занадто багато розгладжування з 'ei', запропонував макс_accel <= 2500 мм/сек^2
+В'язана формар '2hump_ei' частота = 48.0 Hz (vibrations = 0.0%, розгладжування ~= 0.234)
+Щоб уникнути занадто багато розгладжування з '2hump_ei', запропонував макс_accel <= 2500 мм/сек^2
+В'язана формар '3hump_ei' частота = 59.0 Hz (vibrations = 0.0%, розгладжування ~= 0.235)
+Щоб уникнути занадто багато розгладжування з '3hump_ei', запропонував макс_accel <= 2500 мм/сек^2
+Рекомендований форматор_type_y = mzv, формаr_freq_y = 36.8 ХХз
 ```
 
-If you agree with the suggested parameters, you can execute `SAVE_CONFIG` now to save them and restart the Klipper. Note that this will not update `max_accel` value in `[printer]` section. You should update it manually following the considerations in [Selecting max_accel](#selecting-max_accel) section.
+Якщо ви погоджуєтесь з запропонованими параметрами, ви можете виконувати `SAVE_CONFIG`, щоб зберегти їх і перезапустити Klipper. Зверніть увагу, що це не буде оновлено `max_accel` значення в розділі `[printer]`. Ви повинні оновити її вручну за розглядами в розділі [Виберіть максимальну кількість_accel](#selecting-max_accel).
 
-If your printer is a bed slinger printer, you can specify which axis to test, so that you can change the accelerometer mounting point between the tests (by default the test is performed for both axes):
+Якщо ваш принтер являє собою плащовий принтер, ви можете вказати яку віссю для тестування, так що ви можете змінити точку кріплення акселерометра між тестами (за замовчуванням тест виконується як для обох осей):
 
 ```
 SHAPER_CALIBRATE AXIS=Y
 ```
 
-You can execute `SAVE_CONFIG` twice - after calibrating each axis.
+Ви можете виконувати `SAVE_CONFIG` двічі - після калібрування кожної осі.
 
-However, if you connected two accelerometers simultaneously, you simply run `SHAPER_CALIBRATE` without specifying an axis to calibrate the input shaper for both axes in one go.
+Тим не менш, якщо ви підключені два акселерометри одночасно, ви просто запустіть `SHAPER_CALIBRATE`, не вказавши вісь, щоб калібрувати вводну форму для обох осі в одному ходу.
 
-### Input Shaper re-calibration
+### Вхідний шейпер re-calibration
 
-`SHAPER_CALIBRATE` command can be also used to re-calibrate the input shaper in the future, especially if some changes to the printer that can affect its kinematics are made. One can either re-run the full calibration using `SHAPER_CALIBRATE` command, or restrict the auto-calibration to a single axis by supplying `AXIS=` parameter, like
+`SHAPER_CALIBRATE` команда також може використовуватися для повторного калібрування вхідного форматора в майбутньому, особливо якщо деякі зміни принтера, які можуть вплинути на його кінематику. Один може або перебіг повного калібрування за допомогою `SHAPER_CALIBRATE`, або обмежити автоматичне калібрування на одну вісь, подаючи `AXIS=` параметр, як і
 
 ```
 SHAPER_CALIBRATE AXIS=X
 ```
 
-**Warning!** It is not advisable to run the shaper auto-calibration very frequently (e.g. before every print, or every day). In order to determine resonance frequencies, auto-calibration creates intensive vibrations on each of the axes. Generally, 3D printers are not designed to withstand a prolonged exposure to vibrations near the resonance frequencies. Doing so may increase wear of the printer components and reduce their lifespan. There is also an increased risk of some parts unscrewing or becoming loose. Always check that all parts of the printer (including the ones that may normally not move) are securely fixed in place after each auto-tuning.
+**Налаштування!** Не доцільно запустити автоматичну калібрацію фігурки дуже часто (наприклад, перед кожним друком або кожним днем). Для визначення резонансних частот автокальібрація створює інтенсивні коливання на кожному з осей. Зазвичай принтери 3D не призначені для витримки тривалого впливу коливань біля резонансних частот. Дозування може збільшити знос компонентів принтера і зменшити термін служби. Також є підвищений ризик виникнення певних частин, що незламні або стають пухкими. Завжди перевірте, що всі частини принтера (в тому числі тих, які можуть зазвичай не переходити) надійно зафіксовані в місці після кожного автовиїзду.
 
-Also, due to some noise in measurements, it is possible that the tuning results will be slightly different from one calibration run to another one. Still, it is not expected that the noise will affect the print quality too much. However, it is still advised to double-check the suggested parameters, and print some test prints before using them to confirm they are good.
+Крім того, через деякий шум при вимірюванні, можливо, що результати тюнінга будуть трохи відрізнятися від одного калібрування за один до одного. Тим не менш, не очікується, що шум впливає на якість друку занадто багато. Тим не менш, він ще радий подвійним вирізом запропонованих параметрів і друкувати деякі тестові відбитки, перш ніж використовувати їх, щоб підтвердити, що вони добре.
 
-## Offline processing of the accelerometer data
+## Офлайн обробки даних акселерометра
 
-It is possible to generate the raw accelerometer data and process it offline (e.g. on a host machine), for example to find resonances. In order to do so, run the following commands via Octoprint terminal:
+Генерувати дані акселерометра і обробляти її автономно (наприклад, на хост-машину), наприклад, для пошуку резонансів. Для того, щоб зробити це, запустіть наступні команди через термінал Octoprint:
 
 ```
-SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0
+СЕТ_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0
 TEST_RESONANCES AXIS=X OUTPUT=raw_data
 ```
 
-ignoring any errors for `SET_INPUT_SHAPER` command. For `TEST_RESONANCES` command, specify the desired test axis. The raw data will be written into `/tmp` directory on the RPi.
+ігнорування будь-яких помилок `SET_INPUT_SHAPER` команди. Для `TEST_RESONANCES` команда, вкажіть бажану вісь тесту. Сирі дані будуть записані в каталог `/tmp` на RPi.
 
-The raw data can also be obtained by running the command `ACCELEROMETER_MEASURE` command twice during some normal printer activity - first to start the measurements, and then to stop them and write the output file. Refer to [G-Codes](G-Codes.md#adxl345) for more details.
+Сирі дані також можуть бути отримані за допомогою запуску команди `ACCELEROMETER_MEASURE` команди двічі під час нормальної активності принтера - спочатку почати вимірювання, а потім зупинити їх і написати вихідний файл. [G-Codes](G-Codes.md#adxl345) Детальніше.
 
-The data can be processed later by the following scripts: `scripts/graph_accelerometer.py` and `scripts/calibrate_shaper.py`. Both of them accept one or several raw csv files as the input depending on the mode. The graph_accelerometer.py script supports several modes of operation:
+`scripts/graph_accelerometer.py` і `scripts/calibrate_shaper.py`. Обидва вони приймають один або кілька сирих CSV файлів, як вхід в залежності від режиму. Граф_accelerometer.py скрипт підтримує кілька режимів роботи:
 
-* plotting raw accelerometer data (use `-r` parameter), only 1 input is supported;
-* plotting a frequency response (no extra parameters required), if multiple inputs are specified, the average frequency response is computed;
-* comparison of the frequency response between several inputs (use `-c` parameter); you can additionally specify which accelerometer axis to consider via `-a x`, `-a y` or `-a z` parameter (if none specified, the sum of vibrations for all axes is used);
-* plotting the spectrogram (use `-s` parameter), only 1 input is supported; you can additionally specify which accelerometer axis to consider via `-a x`, `-a y` or `-a z` parameter (if none specified, the sum of vibrations for all axes is used).
+* побудова необроблених даних акселерометра (використовуйте параметр `-r`), підтримується лише 1 вхід;
+* позначення періодичної реакції (не обов’язкові параметри), якщо вказані кілька вводів, комп’ютерна реакція середньої частоти;
+* порівняння частотної реакції між декількома входами (користування `-c` параметра); можна додатково вказати, яку осі акселерометра, щоб розглянути через `-a x`, `-a y` або `-a z` (якщо не вказано, сума вібрацій для всіх осей використовується);
+* розділяє спектрограму (використання `-s` параметра), підтримується тільки 1 вхід; можна додатково вказати, яку осі акселерометра, щоб розглянути за допомогою `-a x`, `-a y` або `-a z` (якщо не вказано, сума вібрацій для всіх осей використовується).
 
-Note that graph_accelerometer.py script supports only the raw_data\*.csv files and not resonances\*.csv or calibration_data\*.csv files.
+Зауважте, що граф_accelerometer.py скрипт підтримує лише сиру_data\*.csv файли і не резонанси\*. JavaScript licenses API Веб-сайт Go1.13.8.
 
-For example,
+Наприклад,
 
 ```
-~/klipper/scripts/graph_accelerometer.py /tmp/raw_data_x_*.csv -o /tmp/resonances_x.png -c -a z
+javascript licenses api веб-сайт go1.13.8 javascript licenses api веб-сайт go1.13.8
 ```
 
-will plot the comparison of several `/tmp/raw_data_x_*.csv` files for Z axis to `/tmp/resonances_x.png` file.
+розділить порівняння кількох `/tmp/raw_data_x_*.csv` файлів для осі Z до `/tmp/resonances_x.png` файл.
 
-The shaper_calibrate.py script accepts 1 or several inputs and can run automatic tuning of the input shaper and suggest the best parameters that work well for all provided inputs. It prints the suggested parameters to the console, and can additionally generate the chart if `-o output.png` parameter is provided, or the CSV file if `-c output.csv` parameter is specified.
+Скрипт формаr_calibrate.py приймає 1 або кілька вводів і може запустити автоматичне налаштування вхідної форми і запропонувати кращі параметри, які добре працюють для всіх наданих вводів. Друковано запропоновані параметри до консолі, а також може додатково генерувати діаграму, якщо параметр `-o вихід.png` надається, або файл CSV, якщо `-c вихід.csv`.
 
-Providing several inputs to shaper_calibrate.py script can be useful if running some advanced tuning of the input shapers, for example:
+Надання декількох входів до форматора_calibrate.py скрипт може бути корисний, якщо запустити деякі розширені настройки вхідної форми, наприклад:
 
-* Running `TEST_RESONANCES AXIS=X OUTPUT=raw_data` (and `Y` axis) for a single axis twice on a bed slinger printer with the accelerometer attached to the toolhead the first time, and the accelerometer attached to the bed the second time in order to detect axes cross-resonances and attempt to cancel them with input shapers.
-* Running `TEST_RESONANCES AXIS=Y OUTPUT=raw_data` twice on a bed slinger with a glass bed and a magnetic surfaces (which is lighter) to find the input shaper parameters that work well for any print surface configuration.
-* Combining the resonance data from multiple test points.
-* Combining the resonance data from 2 axis (e.g. on a bed slinger printer to configure X-axis input_shaper from both X and Y axes resonances to cancel vibrations of the *bed* in case the nozzle 'catches' a print when moving in X axis direction).
+* Запуск `TEST_RESONANCES AXIS=X OUTPUT=raw_data` (і `Y`) для одноосьового вісь двічі на прибиральному принтері з акселерометром, прикріпленим до інструментального керівника першого разу, а акселерометр прикріплюється до ліжка другий раз для виявлення осей крос-резонансів і спроб скасування їх вводними форматорами.
+* `TEST_ RESONANCES AXIS=Y OUTPUT=raw_data` двічі на вкладній шляпці зі скляним ліжком та магнітними поверхнями (який легше) знайти параметри вводу, які добре працюють для будь-якої конфігурації поверхні друку.
+* Поєднання резонансних даних з декількох тестових точок.
+* Комбінація резонансних даних з осі 2 (наприклад, на постільному принтері для налаштовування вводу X-і осі X-резонансних резонансів для скасування вібрацій *bed* у випадку, якщо насадка 'catches' друку при переході в осі X).

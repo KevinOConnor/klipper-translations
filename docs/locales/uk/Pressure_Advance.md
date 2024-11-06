@@ -1,61 +1,61 @@
-# Pressure advance
+# Прогнозування
 
-This document provides information on tuning the "pressure advance" configuration variable for a particular nozzle and filament. The pressure advance feature can be helpful in reducing ooze. For more information on how pressure advance is implemented see the [kinematics](Kinematics.md) document.
+Цей документ надає інформацію про налаштування параметра "Попередня інструкція" для конкретного сопла і нитки. Функція підвищення тиску може бути корисною для зниження ooze. Для отримання більш детальної інформації про те, як прогрес тиску реалізований див. документ [кінематика](кінематика.md).
 
-## Tuning pressure advance
+## Точний тиск
 
-Pressure advance does two useful things - it reduces ooze during non-extrude moves and it reduces blobbing during cornering. This guide uses the second feature (reducing blobbing during cornering) as a mechanism for tuning.
+Попереднє тиску - це два корисні речі - це зменшує ooze під час невиправних рухів, і це зменшує здуття під час кутів. Цей довідник використовує другу функцію (знижуючи баблінг під час кутингу) як механізм для тюнінгу.
 
-In order to calibrate pressure advance the printer must be configured and operational as the tuning test involves printing and inspecting a test object. It is a good idea to read this document in full prior to running the test.
+Для того, щоб збалансувати тиск заздалегідь принтер повинен бути налаштований і операційний, як тест на тюнінг передбачає друк і огляд тестового об'єкта. Це гарна ідея, щоб прочитати цей документ у повному обсязі до запуску тесту.
 
-Use a slicer to generate g-code for the large hollow square found in [docs/prints/square_tower.stl](prints/square_tower.stl). Use a high speed (eg, 100mm/s), zero infill, and a coarse layer height (the layer height should be around 75% of the nozzle diameter). Make sure any "dynamic acceleration control" is disabled in the slicer.
+Використовуйте скибочку для створення g-коду для великої рогатої площі, знайденої в [довідки/принти/кваре_tower.stl](prints/square_tower.stl). Використовуйте високу швидкість (наприклад, 100 мм / с), нульову заправку, а висоту грубого шару (висота шару повинна бути близько 75% діаметра сопла). Переконайтеся, що будь-який "динамічний контроль прискорення" вимкнено в скибочках.
 
-Prepare for the test by issuing the following G-Code command:
+Підготуйтеся до тесту, видавши наступний G-Code команду:
 
 ```
 SET_VELOCITY_LIMIT SQUARE_CORNER_VELOCITY=1 ACCEL=500
 ```
 
-This command makes the nozzle travel slower through corners to emphasize the effects of extruder pressure. Then for printers with a direct drive extruder run the command:
+Ця команда робить насадку повільніше через кути, щоб підкреслити вплив екструдерного тиску. Потім для принтерів з прямим приводом екструдера запустіть команду:
 
 ```
-TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=.005
+TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 ФАКТОР=.005
 ```
 
-For long bowden extruders use:
+Для довгих екструдерів лука використовуйте:
 
 ```
-TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=.020
+TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 ФАКТОР=.020
 ```
 
-Then print the object. When fully printed the test print looks like:
+Потім роздрукуйте об'єкт. При повністю друкуванні тестового друку виглядає так:
 
 ![tuning_tower](img/tuning_tower.jpg)
 
-The above TUNING_TOWER command instructs Klipper to alter the pressure_advance setting on each layer of the print. Higher layers in the print will have a larger pressure advance value set. Layers below the ideal pressure_advance setting will have blobbing at the corners, and layers above the ideal setting can lead to rounded corners and poor extrusion leading up to the corner.
+Вище TUNING_TOWER команди Instructs Klipper, щоб змінити налаштування тиску на кожен шар друку. Вищі шари в принті мають більший набір значень тиску. Шари нижче ідеального налаштування тиску_advance будуть здуті в кутах, а шари над ідеальною обстановкою можуть призвести до округлих кутів і бідних екструзій, що веде до кута.
 
-One can cancel the print early if one observes that the corners are no longer printing well (and thus one can avoid printing layers that are known to be above the ideal pressure_advance value).
+Один може скасувати друк рано, якщо один дотримує, що кути більше не друкуються добре (і таким чином, можна уникнути друкарських шарів, які відомі вище ідеального значення тиску.
 
-Inspect the print and then use a digital calipers to find the height that has the best quality corners. When in doubt, prefer a lower height.
+Перевірте друк, а потім використовуйте цифрові затискачі, щоб знайти висоту, яка має кращі якісні кути. При сумніві віддають перевагу нижньому висоті.
 
-![tune_pa](img/tune_pa.jpg)
+![tune_pa](IMG/tune_pa.jpg)
 
-The pressure_advance value can then be calculated as `pressure_advance = <start> + <measured_height> * <factor>`. (For example, `0 + 12.90 * .020` would be `.258`.)
+Натискання_доставка може бути обчислена як `pressure_advance = <start> + <measured_height> * <фактор>`. `0 + 12.90 * .020` `.258`.)
 
-It is possible to choose custom settings for START and FACTOR if that helps identify the best pressure advance setting. When doing this, be sure to issue the TUNING_TOWER command at the start of each test print.
+Ви можете вибрати користувацькі налаштування для START та FACTOR, якщо це допомагає визначити найкращу настройку тиску. При виконанні цього обов'язково вкажіть TUNING_ Команда TOWER на старті кожного тестового друку.
 
-Typical pressure advance values are between 0.050 and 1.000 (the high end usually only with bowden extruders). If there is no significant improvement with a pressure advance up to 1.000, then pressure advance is unlikely to improve the quality of prints. Return to a default configuration with pressure advance disabled.
+Типові значення переднього тиску між 0.050 і 1.000 (високий кінець, як правило, тільки з екструдери bowden). Якщо не існує суттєвого поліпшення тиску до 1.000, то передання тиску навряд чи покращує якість друку. Повернутися до конфігурації за замовчуванням з відключенням тиску.
 
-Although this tuning exercise directly improves the quality of corners, it's worth remembering that a good pressure advance configuration also reduces ooze throughout the print.
+Хоча це налаштування вправи безпосередньо покращує якість кутів, варто пам'ятати, що гарна конфігурація тиску також зменшує ooze протягом друку.
 
-At the completion of this test, set `pressure_advance = <calculated_value>` in the `[extruder]` section of the configuration file and issue a RESTART command. The RESTART command will clear the test state and return the acceleration and cornering speeds to their normal values.
+На завершення цього тесту встановіть `pressure_advance = <calculated_value>` в розділі `[extruder]` і випишіть команду RESTART. Команда RESTART очистить стан тесту і повернемо швидкість прискорення і повороту до своїх нормальних значень.
 
-## Important Notes
+## Важливі Примітки
 
-* The pressure advance value is dependent on the extruder, the nozzle, and the filament. It is common for filament from different manufactures or with different pigments to require significantly different pressure advance values. Therefore, one should calibrate pressure advance on each printer and with each spool of filament.
-* Printing temperature and extrusion rates can impact pressure advance. Be sure to tune the [extruder rotation_distance](Rotation_Distance.md#calibrating-rotation_distance-on-extruders) and [nozzle temperature](http://reprap.org/wiki/Triffid_Hunter%27s_Calibration_Guide#Nozzle_Temperature) prior to tuning pressure advance.
-* The test print is designed to run with a high extruder flow rate, but otherwise "normal" slicer settings. A high flow rate is obtained by using a high printing speed (eg, 100mm/s) and a coarse layer height (typically around 75% of the nozzle diameter). Other slicer settings should be similar to their defaults (eg, perimeters of 2 or 3 lines, normal retraction amount). It can be useful to set the external perimeter speed to be the same speed as the rest of the print, but it is not a requirement.
-* It is common for the test print to show different behavior on each corner. Often the slicer will arrange to change layers at one corner which can result in that corner being significantly different from the remaining three corners. If this occurs, then ignore that corner and tune pressure advance using the other three corners. It is also common for the remaining corners to vary slightly. (This can occur due to small differences in how the printer's frame reacts to cornering in certain directions.) Try to choose a value that works well for all the remaining corners. If in doubt, prefer a lower pressure advance value.
-* If a high pressure advance value (eg, over 0.200) is used then one may find that the extruder skips when returning to the printer's normal acceleration. The pressure advance system accounts for pressure by pushing in extra filament during acceleration and retracting that filament during deceleration. With a high acceleration and high pressure advance the extruder may not have enough torque to push the required filament. If this occurs, either use a lower acceleration value or disable pressure advance.
-* Once pressure advance is tuned in Klipper, it may still be useful to configure a small retract value in the slicer (eg, 0.75mm) and to utilize the slicer's "wipe on retract option" if available. These slicer settings may help counteract ooze caused by filament cohesion (filament pulled out of the nozzle due to the stickiness of the plastic). It is recommended to disable the slicer's "z-lift on retract" option.
-* The pressure advance system does not change the timing or path of the toolhead. A print with pressure advance enabled will take the same amount of time as a print without pressure advance. Pressure advance also does not change the total amount of filament extruded during a print. Pressure advance results in extra extruder movement during move acceleration and deceleration. A very high pressure advance setting will result in a very large amount of extruder movement during acceleration and deceleration, and no configuration setting places a limit on the amount of that movement.
+* Попереднє значення тиску залежить від екструдера, сопла і нитки. Застосовується для ниток різного типу або з різними пігментами, що вимагають значно різних значень тиску. Таким чином, слід заздалегідь калібрувати тиск на кожному принтері і з кожним куполом ниток.
+* Друк температури та екструзії може вплинути на тиск заздалегідь. Обов'язково налаштуйте [вихідний поворот_випадок](Rotation_Distance.md#calibrating-rotation_distance-on-extruders) і [безсонячна температура](http://reprap.org/wiki/Triffid_Hunter%27s_Carationlib_Guide#Nozzle_Temperature) перед тим, як зацікавити тиск.
+* Тестовий друк призначений для запуску з високою швидкістю потоку екструдера, але інакше "нормальні" настройки скибочка. Висока швидкість потоку виходить за допомогою високої швидкості друку (наприклад, 100мм / с) і висоти грубого шару (звичай близько 75% діаметра сопла). Інші параметри скибочка повинні бути схожими на їх за замовчуванням (наприклад, периметри 2 або 3 ліній, нормальна сума відкликання). Для встановлення зовнішньої швидкості периметра необхідно бути однаковою швидкістю, як і решта друку, але це не вимога.
+* Для того, щоб показати різну поведінку на кожному куті. Нерідко скибочка буде влаштовуватися для зміни шарів в одному куті, що може призвести до того, що кут значно відрізняється від решти трьох кутів. Якщо це відбувається, то ігноруйте цей кут і завчайте тиск за допомогою інших трьох кутів. Він також поширений для решти кутів, щоб трохи відрізнятися. (Це може статися через невеликі відмінності в тому, як рами принтера реагують на кути в певних напрямках.) Спробуйте вибрати значення, яке добре працює для всіх інших кутів. Якщо ви сумніваєтеся, віддайте перевагу нижчому значенні тиску.
+* Якщо значення високого тиску (наприклад, більше 0.200) використовується тоді, можливо, ви можете знайти, що виводні пропуски при поверненні до нормального прискорення принтера. Система підвищення тиску для тиску, штовхаючи в додатковому потоку під час прискорення та відшкодування, що під час декларації. З високою прискоренням і високим тиском заздалегідь екструдера може не мати достатньо крутного моменту, щоб підштовхнути необхідну тріщину. Якщо це відбувається, або використовуйте меншу вартість прискорення або відключити тиск заздалегідь.
+* Після того, як тиск заздалегідь налаштовується в Klipper, він ще може бути корисний для налаштування невеликого значення відліку в скибочках (наприклад, 0,75 мм) і для використання скибочка "попередня опція" при наявності. Ці налаштування скибочка можуть допомогти протидіяти ooze, викликаному запобіжним зчепленням (знімок витягується з сопла через липкість пластика). Рекомендується відключити скибочка «з-ліфт на відрахуванні» варіант.
+* Система підвищення тиску не змінює час або траєкторію інструментальної головки. Друк із увімкненим випередженням тиску займе стільки ж часу, скільки друк без випередження тиску. Випередження тиску також не змінює загальну кількість нитки, екструдованої під час друку. Попередження тиску призводить до додаткового руху екструдера під час прискорення та уповільнення руху. Налаштування випередження дуже високого тиску призведе до дуже великого руху екструдера під час прискорення та уповільнення, і жодне налаштування конфігурації не обмежує кількість цього руху.

@@ -1,13 +1,13 @@
 # сенсор ширини філаменту TSL1401CL
 
-This document describes Filament Width Sensor host module. Hardware used for developing this host module is based on TSL1401CL linear sensor array but it can work with any sensor array that has analog output. You can find designs at [Thingiverse](https://www.thingiverse.com/search?q=filament%20width%20sensor).
+Цей документ описує модуль датчика нитки. Обладнання, що використовується для розробки цього модуля хосту базується на масиві лінійного датчика TSL1401CL, але це може працювати з будь-яким діапазоном датчика, який має аналоговий вихід. Ви можете знайти зразки на [Thingiverse](https://www.thingiverse.com/search?q=filament%20width%20sensor).
 
-To use a sensor array as a filament width sensor, read [Config Reference](Config_Reference.md#tsl1401cl_filament_width_sensor) and [G-Code documentation](G-Codes.md#hall_filament_width_sensor).
+Для використання сенсорного масиву як датчик ширини нитки, читайте [Config Reference](Config_Reference.md#tsl1401cl_filament_width_sensor) і [G-Code документація](G-Codes.md#hall_filament_width_sensor).
 
-## How does it work?
+## # Як це працює?
 
-Sensor generates analog output based on calculated filament width. Output voltage always equals to detected filament width (Ex. 1.65v, 1.70v, 3.0v). Host module monitors voltage changes and adjusts extrusion multiplier.
+Датчик генерує аналоговий вихід на основі розрахункової ширини нитки. Вихідна напруга завжди дорівнює визначенню ширини нитки (Ex. 1.65v, 1.70v, 3.0v). Модуль Хост відстежує зміни напруги і регулює екструзійне багатоплище.
 
-## Note:
+## Примітка:
 
-Sensor readings done with 10 mm intervals by default. If necessary you are free to change this setting by editing ***MEASUREMENT_INTERVAL_MM*** parameter in **filament_width_sensor.py** file.
+Сенсорні читання, зроблені з інтервалами 10 мм за замовчуванням. При необхідності ви можете змінити цей параметр за допомогою редагування ***MEASUREMENT_INTERVAL_MM*** параметр **filament_width_sensor.py** файл.

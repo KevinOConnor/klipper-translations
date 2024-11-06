@@ -1,309 +1,309 @@
-# Bootloaders
+# Завантажувачі
 
-This document provides information on common bootloaders found on micro-controllers that Klipper supports.
+Цей документ надає інформацію про загальні завантажувачі, знайдені на мікроконтролерах, які підтримують Klipper.
 
-The bootloader is 3rd-party software that runs on the micro-controller when it is first powered on. It is typically used to flash a new application (eg, Klipper) to the micro-controller without requiring specialized hardware. Unfortunately, there is no industry wide standard for flashing a micro-controller, nor is there a standard bootloader that works across all micro-controllers. Worse, it is common for each bootloader to require a different set of steps to flash an application.
+Завантажувач - це 3-стороннє програмне забезпечення, яке працює на мікроконтролері, коли він спочатку працює. Зазвичай використовується для спалаху нової програми (наприклад, Klipper) до мікроконтролера без необхідності спеціалізованого обладнання. На жаль, не існує галузевого широкого стандарту для миття мікроконтролера, а не є стандартним завантажувачем, який працює по всій мікроконтролерах. Похиліть, це поширений для кожного завантажувача, щоб зажадати інший набір кроків, щоб флеш додаток.
 
-If one can flash a bootloader to a micro-controller then one can generally also use that mechanism to flash an application, but care should be taken when doing this as one may inadvertently remove the bootloader. In contrast, a bootloader will generally only permit a user to flash an application. It is therefore recommended to use a bootloader to flash an application where possible.
+Якщо один може спалахти завантажувача до мікроконтролера, то можна, як правило, використовувати цей механізм, щоб спалахувати додаток, але обережно слід приймати при виконанні цього, як один може неперевершено видалити завантажувач. На відміну від того, що завантажувач, як правило, дозволить користувачу зафіксувати додаток. Таким чином, рекомендується використовувати завантажувач для миття програми.
 
-This document attempts to describe common bootloaders, the steps needed to flash a bootloader, and the steps needed to flash an application. This document is not an authoritative reference; it is intended as a collection of useful information that the Klipper developers have accumulated.
+Цей документ намагається описати загальні завантажувачі, кроки, необхідні для спалаху завантажувача, і кроки, необхідні для спалаху програми. Цей документ не є авторським довідником; він призначений для збору корисної інформації, яку накопичили розробники Klipper.
 
-## AVR micro-controllers
+## Мікроконтролери AVR
 
-In general, the Arduino project is a good reference for bootloaders and flashing procedures on the 8-bit Atmel Atmega micro-controllers. In particular, the "boards.txt" file: <https://github.com/arduino/Arduino/blob/1.8.5/hardware/arduino/avr/boards.txt> is a useful reference.
+В цілому, проект Arduino є гарним довідником для завантажувачів і миготливих процедур на мікроконтролерах 8-bit Atmel Atmega. Зокрема, файл "boards.txt": <https://github.com/arduino/Arduino/blob/1.8.5/hardware/arduino/avr/boards.txt> є корисним посиланням.
 
-To flash a bootloader itself, the AVR chips require an external hardware flashing tool (which communicates with the chip using SPI). This tool can be purchased (for example, do a web search for "avr isp", "arduino isp", or "usb tiny isp"). It is also possible to use another Arduino or Raspberry Pi to flash an AVR bootloader (for example, do a web search for "program an avr using raspberry pi"). The examples below are written assuming an "AVR ISP Mk2" type device is in use.
+Для того, щоб спалахувати себе завантажувача, чіпси AVR вимагають зовнішнього обладнання, що блимає інструмент (який спілкується з чіпом за допомогою SPI). Цей інструмент може бути придбаний (наприклад, зробити веб-пошук для "avr isp", "arduino isp", або "usb tiny isp"). Також можна використовувати ще один Arduino або Малиновий Пі, щоб спалахувати AVR завантажувач (наприклад, зробити пошук для "програми avr за допомогою малинового пі"). Приклади нижче писуються, що припустимо пристрій типу "AVR ISP Mk2" у використанні.
 
-The "avrdude" program is the most common tool used to flash atmega chips (both bootloader flashing and application flashing).
+Програма "avrdude" є найбільш поширеним інструментом, який використовується для флеш-пам'яті atmega.
 
-### Atmega2560
+### Атмега2560
 
-This chip is typically found in the "Arduino Mega" and is very common in 3d printer boards.
+Цей чіп, як правило, знаходиться в "Arduino Mega" і дуже поширений в 3d друкованих плат.
 
-To flash the bootloader itself use something like:
+Для миття завантажувача використовуйте щось схоже:
 
 ```
-wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/stk500v2/stk500boot_v2_mega2560.hex'
+wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/loadloadloaders/stk500v2/stk500boot_v2_mega2560.hex Р
 
-avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:m -U efuse:w:0xFD:m -U hfuse:w:0xD8:m -U lfuse:w:0xFF:m
-avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U flash:w:stk500boot_v2_mega2560.hex
-avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m
+Avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -e -u -U замок:w:0x3F:m -U efuse:w:0xFD:m -U hfuse:w:0xD8:m -U lfuse:w:0xFF:m
+avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U спалах:w:stk500boot_v2_mega2560.hex
+avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U замок:w:0x0F:m
 ```
 
-To flash an application use something like:
+Для спалаху програми використовуйте щось схоже:
 
 ```
 avrdude -cwiring -patmega2560 -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/klipper.elf.hex:i
 ```
 
-### Atmega1280
+### Атмега1280
 
-This chip is typically found in earlier versions of the "Arduino Mega".
+Цей чіп зазвичай зустрічається в попередніх версіях "Ардуіно Мега".
 
-To flash the bootloader itself use something like:
+Для миття завантажувача використовуйте щось схоже:
 
 ```
-wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/atmega/ATmegaBOOT_168_atmega1280.hex'
+catalàDeutschEnglishEspañolFrançaisItalianoLatviešuLietuviųNederlandsNorskPolskiPortuguêsRomânăSlovenčinaSvenskaالعربيةفارسیעבריתΕλληνικάБългарскиРусскийСрпски / srpskiУкраїнська中文(台灣) Р
 
-avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:m -U efuse:w:0xF5:m -U hfuse:w:0xDA:m -U lfuse:w:0xFF:m
-avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U flash:w:ATmegaBOOT_168_atmega1280.hex
-avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m
+avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -e -u -U замок:w:0x3F:m -U efuse:w:0xF5:m -U hfuse:w:0xDA:m -U lfuse:w:0xFF:m
+avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U спалах:w:ATmegaBOOT_168_atmega1280.hex
+avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U замок:w:0x0F:m
 ```
 
-To flash an application use something like:
+Для спалаху програми використовуйте щось схоже:
 
 ```
 avrdude -carduino -patmega1280 -P/dev/ttyACM0 -b57600 -D -Uflash:w:out/klipper.elf.hex:i
 ```
 
-### Atmega1284p
+### Атмега1284p
 
-This chip is commonly found in "Melzi" style 3d printer boards.
+Цей чіп зазвичай знаходиться в стилі "Melzi" 3d принтер дошки.
 
-To flash the bootloader itself use something like:
+Для миття завантажувача використовуйте щось схоже:
 
 ```
-wget 'https://github.com/Lauszus/Sanguino/raw/1.0.2/bootloaders/optiboot/optiboot_atmega1284p.hex'
+wget 'https://github.com/Lauszus/Sanguino/raw/1.0.2/завантажити / перезавантажити/оптизавантажити_atmega1284p.hex Р
 
-avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:m -U efuse:w:0xFD:m -U hfuse:w:0xDE:m -U lfuse:w:0xFF:m
-avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U flash:w:optiboot_atmega1284p.hex
-avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m
+avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -e -u -U замок:w:0x3F:m -U efuse:w:0xFD:m -U hfuse:w:0xDE:m -U lfuse:w:0xFF:m
+avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U спалах:w:optiboot_atmega1284p.hex
+avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U замок:w:0x0F:m
 ```
 
-To flash an application use something like:
+Для спалаху програми використовуйте щось схоже:
 
 ```
 avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/klipper.elf.hex:i
 ```
 
-Note that a number of "Melzi" style boards come preloaded with a bootloader that uses a baud rate of 57600. In this case, to flash an application use something like this instead:
+Зауважте, що кількість дошок стилю «Мельці» прийшло попередньо завантажене завантажувачем, який використовує приманку 57600. У цьому випадку, щоб спалахувати додаток, використовуйте щось, як це замість:
 
 ```
 avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b57600 -D -Uflash:w:out/klipper.elf.hex:i
 ```
 
-### At90usb1286
+### Напляскване1286
 
-This document does not cover the method to flash a bootloader to the At90usb1286 nor does it cover general application flashing to this device.
+Цей документ не охоплює метод, щоб мити завантажувач до At90usb1286, а не охоплює загальний додаток, що миготливий до цього пристрою.
 
-The Teensy++ device from pjrc.com comes with a proprietary bootloader. It requires a custom flashing tool from <https://github.com/PaulStoffregen/teensy_loader_cli>. One can flash an application with it using something like:
-
-```
-teensy_loader_cli --mcu=at90usb1286 out/klipper.elf.hex -v
-```
-
-### Atmega168
-
-The atmega168 has limited flash space. If using a bootloader, it is recommended to use the Optiboot bootloader. To flash that bootloader use something like:
+Пристрій Teensy++ від pjrc.com поставляється з фірмовим завантажувачем. Для користувача миготливий інструмент від <https://github.com/PaulStoffregen/teensy_loader_cli>. За допомогою чогось іншого можна записати:
 
 ```
-wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega168.hex'
-
-avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:m -U efuse:w:0x04:m -U hfuse:w:0xDD:m -U lfuse:w:0xFF:m
-avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U flash:w:optiboot_atmega168.hex
-avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m
+підлітковий вік_loader_cli --mcu=at90usb1286 з/клиппер.elf.hex -р
 ```
 
-To flash an application via the Optiboot bootloader use something like:
+### Атмега168
+
+Atmega168 має обмежений простір спалаху. При використанні завантажувача рекомендується використовувати завантажувач Optiboot. Для спалаху, який завантажувач використовує щось схоже:
+
+```
+catalàDeutschEnglishEspañolFrançaisItalianoLatviešuLietuviųNederlandsNorskPolskiPortuguêsRomânăSlovenčinaSvenskaالعربيةفارسیעבריתΕλληνικάБългарскиРусскийСрпски / srpskiУкраїнська中文(台灣) Р
+
+avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -e -u -U замок:w:0x3F:m -U efuse:w:0x04:m -U hfuse:w:0xDDD:m -U lfuse:w:0xFF:m
+avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U спалах:w:optiboot_atmega168.hex
+avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U замок:w:0x0F:m
+```
+
+Для того, щоб мити додаток за допомогою Optibootloader використовуйте щось схоже:
 
 ```
 avrdude -carduino -patmega168 -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/klipper.elf.hex:i
 ```
 
-## SAM3 micro-controllers (Arduino Due)
+## Мікроконтролери SAM3 (Arduino Due)
 
-It is not common to use a bootloader with the SAM3 mcu. The chip itself has a ROM that allows the flash to be programmed from 3.3V serial port or from USB.
+Незвичайно використовувати завантажувач з SAM3 mcu. Сама чіп має ROM, що дозволяє спалаху програмувати з 3.3V серійного порту або з USB.
 
-To enable the ROM, the "erase" pin is held high during a reset, which erases the flash contents, and causes the ROM to run. On an Arduino Due, this sequence can be accomplished by setting a baud rate of 1200 on the "programming usb port" (the USB port closest to the power supply).
+Для того, щоб увімкнути ROM, штифт "запаювання" проводиться високою під час скидання, яка стирає вміст спалаху, і викликає ROM для запуску. На Arduino Due, цей послідовність може бути виконана шляхом встановлення швидкості шнура 1200 на "програмування USB-порту" (порт USB, найближчий до джерела живлення).
 
-The code at <https://github.com/shumatech/BOSSA> can be used to program the SAM3. It is recommended to use version 1.9 or later.
+Код <https://github.com/shumatech/BOSSA> може бути використаний для програми SAM3. Рекомендується використовувати версію 1.9 або пізніше.
 
-To flash an application use something like:
-
-```
-bossac -U -p /dev/ttyACM0 -a -e -w out/klipper.bin -v -b
-bossac -U -p /dev/ttyACM0 -R
-```
-
-## SAM4 micro-controllers (Duet Wifi)
-
-It is not common to use a bootloader with the SAM4 mcu. The chip itself has a ROM that allows the flash to be programmed from 3.3V serial port or from USB.
-
-To enable the ROM, the "erase" pin is held high during a reset, which erases the flash contents, and causes the ROM to run.
-
-The code at <https://github.com/shumatech/BOSSA> can be used to program the SAM4. It is necessary to use version `1.8.0` or higher.
-
-To flash an application use something like:
+Для спалаху програми використовуйте щось схоже:
 
 ```
-bossac --port=/dev/ttyACM0 -b -U -e -w -v -R out/klipper.bin
+bssac -U -p /dev/ttyACM0 -a -e -w out/klipper.bin -v -b
+Bssac -U -p /dev/ttyACM0 -R
 ```
 
-## SAMDC21 micro-controllers (Duet3D Toolboard 1LC)
+## Мікроконтролери SAM4 (Duet Wifi)
 
-The SAMC21 is flashed via the ARM Serial Wire Debug (SWD) interface. This is commonly done with a dedicated SWD hardware dongle. Alternatively, one can use a [Raspberry Pi with OpenOCD](#running-openocd-on-the-raspberry-pi).
+Незвичайно використовувати завантажувач SAM4 mcu. Сама чіп має ROM, що дозволяє спалаху програмувати з 3.3V серійного порту або з USB.
 
-When using OpenOCD with the SAMC21, extra steps must be taken to first put the chip into Cold Plugging mode if the board makes use of the SWD pins for other purposes. If using OpenOCD on a Rasberry Pi, this can be done by running the following commands before invoking OpenOCD.
+Для того, щоб увімкнути ROM, штифт "запаювання" проводиться високою під час скидання, яка стирає вміст спалаху, і викликає ROM для запуску.
+
+Код <https://github.com/shumatech/BOSSA> може використовуватися для програми SAM4. Потрібно використовувати версію `1.8.0` або вище.
+
+Для спалаху програми використовуйте щось схоже:
 
 ```
-SWCLK=25
-SWDIO=24
-SRST=18
+босак --порт=/dev/ttyACM0 -b -U -e -w -v -R з/клиппер.bin
+```
 
-echo "Exporting SWCLK and SRST pins."
-echo $SWCLK > /sys/class/gpio/export
-echo $SRST > /sys/class/gpio/export
+## Мікроконтролери SAMDC21 (Duet3D 1LC)
+
+SAMC21 миготливий через інтерфейс серійного дроту ARM (SWD). Це зазвичай робиться з виділеним SWD апаратним донголом. Крім того, можна скористатися [Равесняний Пі з OpenOCD](#running-openocd-on-the-raspberry-pi).
+
+При використанні OpenOCD з SAMC21 додаткові кроки повинні бути прийняті, щоб спочатку покласти чіп в режим холодного роз'єму, якщо дошка використовує SWD шпильки для інших цілей. Якщо використовувати OpenOCD на Rasberry Pi, це можна зробити, використовуючи команду, перш ніж викликати OpenOCD.
+
+```
+СКЛК=25
+ДІО=24
+СТ=18
+
+echo "Exporting SWCLK і SRST шпильки."
+Echo $SWCLK > /sys/class/gpio/export
+ехо $SRST > /sys/class/gpio/export
 echo "out" > /sys/class/gpio/gpio$SWCLK/direction
-echo "out" > /sys/class/gpio/gpio$SRST/direction
+ехо "out" > /sys/class/gpio/gpio$SRST/direction
 
-echo "Setting SWCLK low and pulsing SRST."
+echo "Setting SWCLK низький і пульсуючий SRST."
 echo "0" > /sys/class/gpio/gpio$SWCLK/value
 echo "0" > /sys/class/gpio/gpio$SRST/value
 echo "1" > /sys/class/gpio/gpio$SRST/value
 
-echo "Unexporting SWCLK and SRST pins."
-echo $SWCLK > /sys/class/gpio/unexport
-echo $SRST > /sys/class/gpio/unexport
+echo "Unexporting SWCLK і SRST шпильки."
+Echo $SWCLK > /sys/class/gpio/unexport
+Echo $SRST > /sys/class/gpio/unexport
 ```
 
-To flash a program with OpenOCD use the following chip config:
+Для спалаху програми з OpenOCD використовуйте наступні налаштування чіпа:
 
 ```
-source [find target/at91samdXX.cfg]
+домашня сторінка / Теґи Leuchtturm
 ```
 
-Obtain a program; for instance, klipper can be built for this chip. Flash with OpenOCD commands similar to:
+Зберігати програму; наприклад, klipper може бути побудована для цього чіпа. Флеш з командами OpenOCD аналогічно:
 
 ```
-at91samd chip-erase
-at91samd bootloader 0
-program out/klipper.elf verify
+at91samd чіп-сераза
+at91samd завантажити 0 р.
+javascript licenses api веб-сайт go1.13.8
 ```
 
-## SAMD21 micro-controllers (Arduino Zero)
+## Мікроконтролери SAMD21 (Arduino Zero)
 
-The SAMD21 bootloader is flashed via the ARM Serial Wire Debug (SWD) interface. This is commonly done with a dedicated SWD hardware dongle. Alternatively, one can use a [Raspberry Pi with OpenOCD](#running-openocd-on-the-raspberry-pi).
+Завантажувач SAMD21 прошивається через інтерфейс ARM Serial Wire Debug (SWD). Зазвичай це робиться за допомогою спеціального апаратного ключа SWD. Крім того, можна використовувати [Raspberry Pi з OpenOCD](#running-openocd-on-the-raspberry-pi).
 
-To flash a bootloader with OpenOCD use the following chip config:
-
-```
-source [find target/at91samdXX.cfg]
-```
-
-Obtain a bootloader - for example:
+Для миття завантажувача з OpenOCD використовуйте такі налаштування чіпа:
 
 ```
-wget 'https://github.com/arduino/ArduinoCore-samd/raw/1.8.3/bootloaders/zero/samd21_sam_ba.bin'
+домашня сторінка / Теґи Leuchtturm
 ```
 
-Flash with OpenOCD commands similar to:
+Зберігайте завантажувач - наприклад:
 
 ```
-at91samd bootloader 0
-program samd21_sam_ba.bin verify
+wget 'https://github.com/arduino/ArduinoCore-samd/raw/1.8.3/завантажувачі/zero/samd21_sam_ba.bin Р
 ```
 
-The most common bootloader on the SAMD21 is the one found on the "Arduino Zero". It uses an 8KiB bootloader (the application must be compiled with a start address of 8KiB). One can enter this bootloader by double clicking the reset button. To flash an application use something like:
+Флеш з командами OpenOCD аналогічно:
 
 ```
-bossac -U -p /dev/ttyACM0 --offset=0x2000 -w out/klipper.bin -v -b -R
+at91samd завантажити 0 р.
+javascript licenses api веб-сайт go1.13.8
 ```
 
-In contrast, the "Arduino M0" uses a 16KiB bootloader (the application must be compiled with a start address of 16KiB). To flash an application on this bootloader, reset the micro-controller and run the flash command within the first few seconds of boot - something like:
+Найпоширеніший завантажувач на SAMD21 є одним, знайденим на "Arduino Zero". Він використовує завантажувач 8KiB (додаток необхідно скомпільувати за допомогою стартової адреси 8KiB). Один може ввести цей завантажувач двічі натиснувши кнопку скидання. Для спалаху програми використовуйте щось схоже:
+
+```
+bssac -U -p /dev/ttyACM0 --offset=0x2000 -w/klipper.bin -v -b -R
+```
+
+На відміну від "Arduino M0" використовує 16KiB завантажувач (додаток необхідно скомпільувати з стартовою адресою 16KiB). Для того, щоб мити додаток на цьому завантажувачі, скидайте мікроконтролер і запустіть флеш-команду протягом перших декількох секунд завантаження - щось схоже:
 
 ```
 avrdude -c stk500v2 -p atmega2560 -P /dev/ttyACM0 -u -Uflash:w:out/klipper.elf.hex:i
 ```
 
-## SAMD51 micro-controllers (Adafruit Metro-M4 and similar)
+## Мікроконтролери SAMD51 (Adafruit Metro-M4)
 
-Like the SAMD21, the SAMD51 bootloader is flashed via the ARM Serial Wire Debug (SWD) interface. To flash a bootloader with [OpenOCD on a Raspberry Pi](#running-openocd-on-the-raspberry-pi) use the following chip config:
-
-```
-source [find target/atsame5x.cfg]
-```
-
-Obtain a bootloader - several bootloaders are available from <https://github.com/adafruit/uf2-samdx1/releases/latest>. For example:
+Як і SAMD21, завантажувач SAMD51 миготливий через інтерфейс ARM Serial Wire Debug (SWD). Для миття завантажувача з [OpenOCD на Малина Пі](#running-openocd-on-the-raspberry-pi) використовуйте наступне налаштування чіпа:
 
 ```
-wget 'https://github.com/adafruit/uf2-samdx1/releases/download/v3.7.0/bootloader-itsybitsy_m4-v3.7.0.bin'
+джерело [find цільовий/atsame5x.cfg]
 ```
 
-Flash with OpenOCD commands similar to:
+Зберігати завантажувач - кілька завантажувальних навантажувачів доступні з <https://github.com/adafruit/uf2-samdx1/ релізів/latest>. Наприклад:
 
 ```
-at91samd bootloader 0
-program bootloader-itsybitsy_m4-v3.7.0.bin verify
-at91samd bootloader 16384
+wget 'https://github.com/adafruit/uf2-samdx1/випуск/download/v3.7.0/завантажитиloader-itsybitsy_m4-v3.7.0.bin р
 ```
 
-The SAMD51 uses a 16KiB bootloader (the application must be compiled with a start address of 16KiB). To flash an application use something like:
+Флеш з командами OpenOCD аналогічно:
 
 ```
-bossac -U -p /dev/ttyACM0 --offset=0x4000 -w out/klipper.bin -v -b -R
+at91samd завантажити 0 р.
+програма bootloader-itsybitsy_m4-v3.7.0.b верифікації
+код товару: 16384
 ```
 
-## STM32F103 micro-controllers (Blue Pill devices)
-
-The STM32F103 devices have a ROM that can flash a bootloader or application via 3.3V serial. Typically one would wire the PA10 (MCU Rx) and PA9 (MCU Tx) pins to a 3.3V UART adapter. To access the ROM, one should connect the "boot 0" pin to high and "boot 1" pin to low, and then reset the device. The "stm32flash" package can then be used to flash the device using something like:
+SAMD51 використовує 16KiB завантажувач (додаток необхідно скомпільувати з стартовою адресою 16KiB). Для спалаху програми використовуйте щось схоже:
 
 ```
-stm32flash -w out/klipper.bin -v -g 0 /dev/ttyAMA0
+босак -U -p /dev/ttyACM0 --offset=0x4000 -w/klipper.bin -v -b -R
 ```
 
-Note that if one is using a Raspberry Pi for the 3.3V serial, the stm32flash protocol uses a serial parity mode which the Raspberry Pi's "mini UART" does not support. See <https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts> for details on enabling the full uart on the Raspberry Pi GPIO pins.
+## Мікроконтролери STM32F103 (синій підвіконня)
 
-After flashing, set both "boot 0" and "boot 1" back to low so that future resets boot from flash.
-
-### STM32F103 with stm32duino bootloader
-
-The "stm32duino" project has a USB capable bootloader - see: <https://github.com/rogerclarkmelbourne/STM32duino-bootloader>
-
-This bootloader can be flashed via 3.3V serial with something like:
+Пристрої STM32F103 мають ROM, які можуть спалахувати завантажувач або додаток через 3.3V серійний. Зазвичай одна б проводила PA10 (MCU Rx) і PA9 (MCU Tx) шпильки до адаптера 3.3V UART. Щоб отримати доступ до ROM, слід підключити "завантажити 0" шпильку до високих і "завантажити 1" шпильку до низьких, а потім скидати пристрій. Пакет "stm32flash" може бути використаний для того, щоб заблокувати пристрій за допомогою чогось:
 
 ```
-wget 'https://github.com/rogerclarkmelbourne/STM32duino-bootloader/raw/master/binaries/generic_boot20_pc13.bin'
-
-stm32flash -w generic_boot20_pc13.bin -v -g 0 /dev/ttyAMA0
+стм32фл -w/klipper.bin -v -g 0 /dev/ttyAMA0
 ```
 
-This bootloader uses 8KiB of flash space (the application must be compiled with a start address of 8KiB). Flash an application with something like:
+Зверніть увагу, що якщо один використовує Raspberry Pi для серії 3.3V, протокол Stm32flash використовує режим серійного парі, який Raspberry Pi's "mini UART" не підтримує. Див. <https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts> для деталей, що дозволяє повною мірою на Raspberry Pi GPIO шпильки.
+
+Після того, як миготливий, встановити як "завантажити 0" і "завантажити 1" назад до низького, так що майбутні скидки завантаження з флешки.
+
+### STM32F103 з стем32дуіно завантажувачем
+
+Проект "stm32duino" має USB-розвантажувач, який здатний завантажити - див. <https://github.com/rogerclarkmelbourne/STM32duino-loadloader>
+
+Цей завантажувач може бути спалахований через 3.3V серійно з чимось схожим:
 
 ```
-dfu-util -d 1eaf:0003 -a 2 -R -D out/klipper.bin
+wget 'https://github.com/rogerclarkmelbourne/STM32duino-loader/raw/master/binaries/generic_boot20_pc13.bin Р
+
+Стм32фл -w загальний_boot20_pc13.bin -v -g 0 /dev/ttyAMA0
 ```
 
-The bootloader typically runs for only a short period after boot. It may be necessary to time the above command so that it runs while the bootloader is still active (the bootloader will flash a board led while it is running). Alternatively, set the "boot 0" pin to low and "boot 1" pin to high to stay in the bootloader after a reset.
-
-### STM32F103 with HID bootloader
-
-The [HID bootloader](https://github.com/Serasidis/STM32_HID_Bootloader) is a compact, driverless bootloader capable of flashing over USB. Also available is a [fork with builds specific to the SKR Mini E3 1.2](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest).
-
-For generic STM32F103 boards such as the blue pill it is possible to flash the bootloader via 3.3V serial using stm32flash as noted in the stm32duino section above, substituting the file name for the desired hid bootloader binary (ie: hid_generic_pc13.bin for the blue pill).
-
-It is not possible to use stm32flash for the SKR Mini E3 as the boot0 pin is tied directly to ground and not broken out via header pins. It is recommended to use a STLink V2 with STM32Cubeprogrammer to flash the bootloader. If you don't have access to a STLink it is also possible to use a [Raspberry Pi and OpenOCD](#running-openocd-on-the-raspberry-pi) with the following chip config:
+Цей завантажувач використовує 8KiB флеш-простору (додаток необхідно скомпільувати з стартовою адресою 8KiB). Захопити додаток з чимось схожим:
 
 ```
-source [find target/stm32f1x.cfg]
+дфу-утил -d 1eaf:0003 -a 2 -R -D з/клиппер.бін
 ```
 
-If you wish you can make a backup of the current flash with the following command. Note that it may take some time to complete:
+Завантажувач зазвичай працює лише за короткий період після завантаження. Це може бути необхідно, щоб час вище команд, так що він працює в той час як завантажувач все ще активний (завантажувач буде спалахувати дошку під керівництвом, поки він працює). Крім того, встановіть "завантажити 0" шпильку на низький і "завантажити 1" шпильку для високого перебування в завантажувачі після скидання.
+
+### STM32F103 з HID завантажувачем
+
+The [HID Bootloader](https://github.com/Serasidis/STM32_HID_Bootloader) є компактним, без водіям завантажувача, здатний перемикатися USB. Також доступний [fork з побудовою специфіки SKR Mini E3 1.2](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest).
+
+Для генеричних щитів STM32F103, таких як синя таблетка, можливо, мити завантажувач через 3.3V серійний за допомогою stm32flash, як зазначено в розділі stm32duino вище, підкреслюючи назву файлу для бажаного ходового завантажувача бінарними (тобто: hid_generic_pc13.bin для синього стовпа).
+
+Неможливо використовувати stm32flash для SKR Mini E3, оскільки штифт boot0 прив’язаний безпосередньо до землі, а не роз’єднаний через контакти роз’єму. Рекомендується використовувати STLink V2 із STM32Cubeprogrammer для прошивки завантажувача. Якщо у вас немає доступу до STLink, також можна використовувати [Raspberry Pi та OpenOCD](#running-openocd-on-the-raspberry-pi) із такою конфігурацією чіпа:
+
+```
+джерело [find цільовий/stm32f1x.cfg]
+```
+
+Якщо ви хочете зробити резервну копію поточного спалаху з наступним командуванням. Зверніть увагу, що це може зайняти час для завершення:
 
 ```
 flash read_bank 0 btt_skr_mini_e3_backup.bin
 ```
 
-finally, you can flash with commands similar to:
+нарешті, ви можете спалахувати з командами, такими як:
 
 ```
-stm32f1x mass_erase 0
-program hid_btt_skr_mini_e3.bin verify 0x08000000
+stm32f1x маса_erase 0
+програма javascript licenses api веб-сайт go1.13.8
 ```
 
-NOTES:
+УВАГА:
 
-- The example above erases the chip then programs the bootloader. Regardless of the method chosen to flash it is recommended to erase the chip prior to flashing.
-- Prior flashing the SKR Mini E3 with this bootloader you should be aware that you will no longer be able to update firmware via the sdcard.
+- Приклад вище стирання чіпа потім програми завантажувача. Незалежно від способу, обраного для спалаху, рекомендується витирати чіп до спалаху.
+- Перед тим, як миготливий SKR Mini E3 з цим завантаженням ви повинні знати, що ви більше не зможете оновити прошивку через sdcard.
 - You may need to hold down the reset button on the board while launching OpenOCD. It should display something like:
    ```
    Open On-Chip Debugger 0.10.0+dev-01204-gc60252ac-dirty (2020-04-27-16:00)
@@ -320,208 +320,208 @@ Info : stm32f1x.cpu: external reset detected
 Info : starting gdb server for stm32f1x.cpu on 3333
 Info : Listening on port 3333 for gdb connections
    ```
-After which you can release the reset button.
+Після чого можна випустити скидання кнопки.
 
-This bootloader requires 2KiB of flash space (the application must be compiled with a start address of 2KiB).
+Цей завантажувач вимагає 2KiB флеш-простору (додаток необхідно скомпільувати з стартовою адресою 2KiB).
 
-The hid-flash program is used to upload a binary to the bootloader. You can install this software with the following commands:
-
-```
-sudo apt install libusb-1.0
-cd ~/klipper/lib/hidflash
-make
-```
-
-If the bootloader is running you can flash with something like:
+Програма hid-flash використовується для завантаження бінарних навантажувач. Ви можете встановити це програмне забезпечення за допомогою наступних команд:
 
 ```
-~/klipper/lib/hidflash/hid-flash ~/klipper/out/klipper.bin
+sudo apt встановити libusb-1.0
+javascript licenses api веб-сайт go1.13.8
+зроби
 ```
 
-alternatively, you can use `make flash` to flash klipper directly:
+Якщо ви завантажувач працюєте, ви можете спалахувати з чимось схожим:
 
 ```
-make flash FLASH_DEVICE=1209:BEBA
+~/klipper/lib/hidflash/hid-flash javascript licenses api веб-сайт go1.13.8
 ```
 
-OR if klipper has been previously flashed:
+ви можете використовувати `make flash` для флеш-кліппера безпосередньо:
 
 ```
-make flash FLASH_DEVICE=/dev/ttyACM0
+зробити флеш FLASH_DEVICE=1209: BEBA
 ```
 
-It may be necessary to manually enter the bootloader, this can be done by setting "boot 0" low and "boot 1" high. On the SKR Mini E3 "Boot 1" is not available, so it may be done by setting pin PA2 low if you flashed "hid_btt_skr_mini_e3.bin". This pin is labeled "TX0" on the TFT header in the SKR Mini E3's "PIN" document. There is a ground pin next to PA2 which you can use to pull PA2 low.
-
-### STM32F103/STM32F072 with MSC bootloader
-
-The [MSC bootloader](https://github.com/Telekatz/MSC-stm32f103-bootloader) is a driverless bootloader capable of flashing over USB.
-
-It is possible to flash the bootloader via 3.3V serial using stm32flash as noted in the stm32duino section above, substituting the file name for the desired MSC bootloader binary (ie: MSCboot-Bluepill.bin for the blue pill).
-
-For STM32F072 boards it is also possible to flash the bootloader over USB (via DFU) with something like:
+А якщо клиппер раніше спалахнув:
 
 ```
- dfu-util -d 0483:df11 -a 0 -R -D  MSCboot-STM32F072.bin -s0x08000000:leave
+зробити флеш FLASH_DEVICE=/dev/ttyACM0
 ```
 
-This bootloader uses 8KiB or 16KiB of flash space, see description of the bootloader (the application must be compiled with with the corresponding starting address).
+Може знадобитися вручну ввести завантажувач, це можна зробити за допомогою установки "завантаження 0" низькою і "завантаження 1" висока. На SKR Mini E3 "Ботт 1" не доступний, тому це може бути зроблено шляхом налаштування шпильки PA2 низькою, якщо ви спалахнули "hid_btt_skr_mini_e3.bin". Цей шпилька позначений "TX0" на заголовку TFT у документі SKR Mini E3. Є заземний шпилька поруч з PA2, який можна використовувати для витягування PA2 низькою.
 
-The bootloader can be activated by pressing the reset button of the board twice. As soon as the bootloader is activated, the board appears as a USB flash drive onto which the klipper.bin file can be copied.
+### STM32F103/STM32F072 з завантаженням MSC
 
-### STM32F103/STM32F0x2 with CanBoot bootloader
+[MSC bootloader](https://github.com/Telekatz/MSC-stm32f103-завантажувач) є бездротовим завантажувачем, здатним спалахувати над USB.
 
-The [CanBoot](https://github.com/Arksine/CanBoot) bootloader provides an option for uploading Klipper firmware over the CANBUS. The bootloader itself is derived from Klipper's source code. Currently CanBoot supports the STM32F103, STM32F042, and STM32F072 models.
+Можливо, мити завантажувач за допомогою 3.3V серійного за допомогою stm32flash, як зазначено в розділі stm32duino вище, підстановивши назву файлу для потрібного MSC завантажувача бінарного (тобто: MSCboot-Bluepill.bin для синього стовпа).
 
-It is recommended to use a ST-Link Programmer to flash CanBoot, however it should be possible to flash using `stm32flash` on STM32F103 devices, and `dfu-util` on STM32F042/STM32F072 devices. See the previous sections in this document for instructions on these flashing methods, substituting `canboot.bin` for the file name where appropriate. The CanBoot repository linked above provides instructions for building the bootloader.
+Для дощок STM32F072 також можна мити завантажувач над USB (через DFU) з чимось схожим:
 
-The first time CanBoot has been flashed it should detect that no application is present and enter the bootloader. If this doesn't occur it is possible to enter the bootloader by pressing the reset button twice in succession.
+```
+ javaScript licenses API Веб-сайт Go1.13.8
+```
 
-The `flash_can.py` utility supplied in the `lib/canboot` folder may be used to upload Klipper firmware. The device UUID is necessary to flash. If you do not have a UUID it is possible to query nodes currently running the bootloader:
+Цей завантажувач використовує 8KiB або 16KiB флеш-простору, див. опис завантажувача (додаток необхідно скомпільувати з відповідною стартовою адресою).
+
+Завантажувач може бути активований, натиснувши кнопку скидання дошки двічі. Як тільки активується завантажувач, дошка з'являється як флеш-накопичувач USB, на який файл klipper.bin можна копіювати.
+
+### STM32F103/STM32F0x2 з завантажувачем CanBoot
+
+[CanBoot](https://github.com/Arksine/CanBoot) bootloader забезпечує можливість завантаження прошивки Klipper над CANBUS. Сам завантажувач виходить з коду джерела Klipper. Сьогодні CanBoot підтримує моделі STM32F103, STM32F042 та STM32F072.
+
+Рекомендується використовувати ST-Link програміст для флешки CanBoot, однак він повинен бути можливим за допомогою `stm32flash` на пристроях STM32F103, а `dfu-util` на пристроях STM32F042/STM32F072. Переглянути попередні розділи в цьому документі для інструкцій щодо цих методів миття, заміни `canboot.bin` для імені файлу, де це доречно. Репозиторій CanBoot, пов'язаний вище, надає інструкції для побудови завантажувача.
+
+У перший раз CanBoot був спалахований, він повинен виявити, що немає програми присутні і ввести завантажувач. Якщо це не відбувається, можна ввести завантажувача, натиснувши кнопку скидання двічі у спадку.
+
+`flash_can.py` утиліта поставляється в папці `lib/canboot` може бути використана для завантаження прошивки Klipper. Пристрої UUID необхідно спалахувати. Якщо ви не маєте UUID, це можливо для запиту вузлів, які наразі працюють завантажувачем:
 
 ```
 python3 flash_can.py -q
 ```
 
-This will return UUIDs for all connected nodes not currently assigned a UUID. This should include all nodes currently in the bootloader.
+Це поверне UUIDs для всіх підключених вузлів, які не призначають UUID. Це повинно включати всі вузли в даний час в завантажувачі.
 
-Once you have a UUID, you may upload firmware with following command:
+Після того, як у вас є UUID, ви можете завантажити прошивку з наступним командуванням:
 
 ```
-python3 flash_can.py -i can0 -f ~/klipper/out/klipper.bin -u aabbccddeeff
+python3 flash_can.py -i can0 -р javascript licenses api веб-сайт go1.13.8 -u aabbccddeeff
 ```
 
-Where `aabbccddeeff` is replaced by your UUID. Note that the `-i` and `-f` options may be omitted, they default to `can0` and `~/klipper/out/klipper.bin` respectively.
+Де ` aabbccddeeff` замінено на UUID. Зверніть увагу, що параметри `-i` та `-f` можуть бути використані, вони за замовчуванням `can0` та ` ~/klipper/out/klipper.bin` відповідно.
 
-When building Klipper for use with CanBoot, select the 8 KiB Bootloader option.
+При побудові Кліппера для використання з CanBoot виберіть варіант завантаження 8 KiB.
 
-## STM32F4 micro-controllers (SKR Pro 1.1)
+## Мікроконтролери STM32F4 (SKR Pro 1.1)
 
-STM32F4 micro-controllers come equipped with a built-in system bootloader capable of flashing over USB (via DFU), 3.3V Serial, and various other methods (see STM Document AN2606 for more information). Some STM32F4 boards, such as the SKR Pro 1.1, are not able to enter the DFU bootloader. The HID bootloader is available for STM32F405/407 based boards should the user prefer flashing over USB over using the sdcard. Note that you may need to configure and build a version specific to your board, a [build for the SKR Pro 1.1 is available here](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest).
+Мікроконтролери STM32F4 обладнані вбудованим системним завантажувачем, здатним спалахувати над USB (через DFU), 3.3V Serial та різними способами (див. розділ STM AN2606 для отримання додаткової інформації). Деякі дошки STM32F4, такі як SKR Pro 1.1, не здатні ввести завантажувач DFU. HID Bootloader доступний для STM32F405/407 на підставі дошки повинні користувачеві віддати перевагу спалаху через USB через sdcard. Зауважте, що ви можете налаштувати і побудувати версію конкретно до вашої ради, [будування для SKR Pro 1.1 доступний тут](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest).
 
-Unless your board is DFU capable the most accessible flashing method is likely via 3.3V serial, which follows the same procedure as [flashing the STM32F103 using stm32flash](#stm32f103-micro-controllers-blue-pill-devices). For example:
+Якщо ваша дошка є DFU, можливо, найдоступніший спосіб миготіння, швидше за все, через 3.3V-серійне, що випливає з тієї ж процедури, як [розумка STM32F103 за допомогою stm32flash](#stm32f103-micro-controllers-blue-pill-devices). Наприклад:
 
 ```
 wget https://github.com/Arksine/STM32_HID_Bootloader/releases/download/v0.5-beta/hid_bootloader_SKR_PRO.bin
 
-stm32flash -w hid_bootloader_SKR_PRO.bin -v -g 0 /dev/ttyAMA0
+Стм32фл -р JavaScript licenses API Веб-сайт Go1.13.8
 ```
 
-This bootloader requires 16Kib of flash space on the STM32F4 (the application must be compiled with a start address of 16KiB).
+Цей завантажувач вимагає 16Kib флеш-простору на STM32F4 (додаток необхідно скомпільувати з стартовою адресою 16KiB).
 
-As with the STM32F1, the STM32F4 uses the hid-flash tool to upload binaries to the MCU. See the instructions above for details on how to build and use hid-flash.
+У STM32F1 STM32F4 використовується інструмент для завантаження бункерів до MCU. Див. інструкції, описані вище для деталей, як побудувати і використовувати hid-flash.
 
-It may be necessary to manually enter the bootloader, this can be done by setting "boot 0" low, "boot 1" high and plugging in the device. After programming is complete unplug the device and set "boot 1" back to low so the application will be loaded.
+Може знадобитися вручну ввести завантажувача, це може бути зроблено за допомогою налаштування "завантаження 0" низький, "завантаження 1" високий і роз'єм в пристрої. Після програмування завершено розгорнути пристрій і встановити "завантажити 1" назад до низького, тому додаток буде завантажено.
 
-## LPC176x micro-controllers (Smoothieboards)
+## LPC176x мікроконтролери (Smoothieboards)
 
-This document does not describe the method to flash a bootloader itself - see: <http://smoothieware.org/flashing-the-bootloader> for further information on that topic.
+Цей документ не описує метод, щоб спалахувати себе завантажувача - див. <http://smoothieware.org/flashing-the-bootloader> для подальшої інформації про цю тему.
 
-It is common for Smoothieboards to come with a bootloader from: <https://github.com/triffid/LPC17xx-DFU-Bootloader>. When using this bootloader the application must be compiled with a start address of 16KiB. The easiest way to flash an application with this bootloader is to copy the application file (eg, `out/klipper.bin`) to a file named `firmware.bin` on an SD card, and then to reboot the micro-controller with that SD card.
+Це звичайний для смузібордів, які приходять з завантажувачем з: <https://github.com/triffid/LPC17x-DFU-Bootloader>. При використанні цього завантажувача програма повинна бути складена з стартовою адресою 16KiB. Найпростіший спосіб спалахувати додаток з цим завантаженням для копіювання файлу програми (наприклад, `out/klipper.bin`) до файлу, названого `firmware.bin` на SD-карті, а потім перезавантажити мікроконтролер з цією SD-картою.
 
-## Running OpenOCD on the Raspberry PI
+## Запуск OpenOCD на Малини Пі
 
-OpenOCD is a software package that can perform low-level chip flashing and debugging. It can use the GPIO pins on a Raspberry Pi to communicate with a variety of ARM chips.
+OpenOCD - це програмний пакет, який може виконати низькорівневе чіп-флешинг і відключення. Він може використовувати штифти GPIO на Raspberry Pi для спілкування з різними чіпами ARM.
 
-This section describes how one can install and launch OpenOCD. It is derived from the instructions at: <https://learn.adafruit.com/programming-microcontrollers-using-openocd-on-raspberry-pi>
+Цей розділ описує, як можна встановити та запустити OpenOCD. <https://learn.adafruit.com/programming-microcontrollers-using-openocd-on-raspberry-pi>
 
-Begin by downloading and compiling the software (each step may take several minutes and the "make" step may take 30+ minutes):
+Починайте завантажувати та компілювати програмне забезпечення (навчальний крок може зайняти кілька хвилин і «зробити» крок може зайняти 30+ хвилин):
 
 ```
-sudo apt-get update
-sudo apt-get install autoconf libtool telnet
-mkdir ~/openocd
-cd ~/openocd/
-git clone http://openocd.zylin.com/openocd
+sudo apt-get оновлення
+sudo apt-get встановити autoconf libtool телnet
+javascript licenses api веб-сайт go1.13.8
+javascript licenses api веб-сайт go1.13.8
+git клон http://openocd.zylin.com/openocd
 cd openocd
-./bootstrap
+./перезавантаження
 ./configure --enable-sysfsgpio --enable-bcm2835gpio --prefix=/home/pi/openocd/install
-make
-make install
+зроби
+встановити
 ```
 
-### Configure OpenOCD
+### Налаштування OpenOCD
 
-Create an OpenOCD config file:
-
-```
-nano ~/openocd/openocd.cfg
-```
-
-Use a config similar to the following:
+Створіть файл налаштування OpenOCD:
 
 ```
-# Uses RPi pins: GPIO25 for SWDCLK, GPIO24 for SWDIO, GPIO18 for nRST
-source [find interface/raspberrypi2-native.cfg]
+javascript licenses api веб-сайт go1.13.8
+```
+
+Використовуйте конфігурацію, схожу на наступне:
+
+```
+Нема Використання RPi шпильки: GPIO25 для SWDCLK, GPIO24 для SWDIO, GPIO18 для nRST
+[find інтерфейс/raspberrypi2-native.cfg]
 bcm2835gpio_swd_nums 25 24
-bcm2835gpio_srst_num 18
-transport select swd
+bcm2835gpio_srst_num 18 років
+транспорт вибрати опуклий
 
-# Use hardware reset wire for chip resets
-reset_config srst_only
-adapter_nsrst_delay 100
-adapter_nsrst_assert_width 100
+Нема Використання апаратного скидання дроту для скидання чіпа
+JavaScript licenses API Веб-сайт
+Адаптер_nsrst_delay 100 р.
+Адаптер_nsrst_assert_width 100 р.
 
-# Specify the chip type
-source [find target/atsame5x.cfg]
+Нема Вкажіть тип чіпа
+джерело [find цільовий/atsame5x.cfg]
 
-# Set the adapter speed
-adapter_khz 40
+Нема Налаштування швидкості адаптера
+Адаптер_khz 40
 
-# Connect to chip
-init
-targets
-reset halt
+Нема Підключення до чіпа
+Увійти
+цілі
+скидання halt
 ```
 
-### Wire the Raspberry Pi to the target chip
+### Провід Малини Пі до цільового чіпа
 
-Poweroff both the the Raspberry Pi and the target chip before wiring! Verify the target chip uses 3.3V prior to connecting to a Raspberry Pi!
+Poweroff як малиновий Пі і цільовий чіп перед сережкою! Перевірити цільовий чіп використовує 3.3V перед підключенням до Raspberry Pi!
 
-Connect GND, SWDCLK, SWDIO, and RST on the target chip to GND, GPIO25, GPIO24, and GPIO18 respectively on the Raspberry Pi.
+Підключіть GND, SWDCLK, SWDIO та RST на цільовому чіпі до GND, GPIO25, GPIO24 та GPIO18 відповідно до Raspberry Pi.
 
-Then power up the Raspberry Pi and provide power to the target chip.
+Потім живлення Малини Пі і забезпечити живлення до цільового чіпа.
 
-### Run OpenOCD
+### Завантажити OpenOCD
 
-Run OpenOCD:
+Запуск OpenOCD:
 
 ```
-cd ~/openocd/
-sudo ~/openocd/install/bin/openocd -f ~/openocd/openocd.cfg
+javascript licenses api веб-сайт go1.13.8
+javascript licenses api веб-сайт go1.13.8 -f ~/openocd/openocd.cfg
 ```
 
-The above should cause OpenOCD to emit some text messages and then wait (it should not immediately return to the Unix shell prompt). If OpenOCD exits on its own or if it continues to emit text messages then double check the wiring.
+Визначені вище повинні викликати OpenOCD, щоб випромінювати деякі текстові повідомлення, а потім чекати (не варто негайно повернутися до командного рядка Unix). Якщо виходи OpenOCD самостійно або якщо він продовжує випромінювати текстові повідомлення, то подвійний перевірте проводку.
 
-Once OpenOCD is running and is stable, one can send it commands via telnet. Open another ssh session and run the following:
+Після того, як OpenOCD працює і стабільний, ви можете відправити його команди через телнет. Відкрийте чергову сш-сесію і запустіть наступне:
 
 ```
 telnet 127.0.0.1 4444
 ```
 
-(One can exit telnet by pressing ctrl+] and then running the "quit" command.)
+(Одно може вийти телнет, натиснувши ctrl+), а потім запустити команду "кинути".)
 
-### OpenOCD and gdb
+### OpenOCD і gdb
 
-It is possible to use OpenOCD with gdb to debug Klipper. The following commands assume one is running gdb on a desktop class machine.
+Можливе використання OpenOCD з gdb до debug Klipper. Наступні команди припускають один біговий диск на машині настільного класу.
 
-Add the following to the OpenOCD config file:
+Додайте наступний файл налаштування OpenOCD:
 
 ```
-bindto 0.0.0.0
-gdb_port 44444
+код товару: 0.0.0.0
+javascript licenses api веб-сайт go1.13.8
 ```
 
-Restart OpenOCD on the Raspberry Pi and then run the following Unix command on the desktop machine:
+Перезапустіть OpenOCD на Raspberry Pi, а потім запустіть команду Unix на настільній машині:
 
 ```
 cd /path/to/klipper/
-gdb out/klipper.elf
+javascript licenses api веб-сайт go1.13.8
 ```
 
-Within gdb run:
+В рамках gdb запуску:
 
 ```
-target remote octopi:44444
+ціль дистанційний octopi:44444
 ```
 
-(Replace "octopi" with the host name of the Raspberry Pi.) Once gdb is running it is possible to set breakpoints and to inspect registers.
+(Replace "octopi" з ім'ям хостів Малина Пі.) Після того, як gdb працює, можна встановити точки розбиття і перевіряти реєстри.

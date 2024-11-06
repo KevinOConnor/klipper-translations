@@ -1,175 +1,175 @@
-# Kinematics
+# Кінематика
 
-This document provides an overview of how Klipper implements robot motion (its [kinematics](https://en.wikipedia.org/wiki/Kinematics)). The contents may be of interest to both developers interested in working on the Klipper software as well as users interested in better understanding the mechanics of their machines.
+Цей документ надає огляд того, як Klipper реалізує рух роботи (їїї [кінематики](https://en.wikipedia.org/wiki/Kinematics)). Вміст може бути цікавим як розробникам, які зацікавлені в роботі на програмному забезпеченні, так і користувачам, які зацікавлені в кращому розумінні механіки їх машин.
 
-## Acceleration
+## Прискорення
 
-Klipper implements a constant acceleration scheme whenever the print head changes velocity - the velocity is gradually changed to the new speed instead of suddenly jerking to it. Klipper always enforces acceleration between the tool head and the print. The filament leaving the extruder can be quite fragile - rapid jerks and/or extruder flow changes lead to poor quality and poor bed adhesion. Even when not extruding, if the print head is at the same level as the print then rapid jerking of the head can cause disruption of recently deposited filament. Limiting speed changes of the print head (relative to the print) reduces risks of disrupting the print.
+Klipper реалізує постійну схему прискорення, коли швидкість зміни голови друку - швидкість поступово змінюється на нову швидкість замість раптового дрочіння до неї. Кліппер завжди застосовує прискорення між головою інструменту та друком. Запобігання, залишивши екструдера, може бути досить крихким - швидкими струменями та/або зовнішніми змінами потоку призводять до низької якості та слабкої адгезії. Навіть коли не викривлення, якщо головка друку на одному рівні, як друк, то швидке дрочіння голови може викликати порушення нещодавно відкладеного ниток. Зміна швидкості друку голови (відносна до друку) знижує ризики порушення друку.
 
-It is also important to limit acceleration so that the stepper motors do not skip or put excessive stress on the machine. Klipper limits the torque on each stepper by virtue of limiting the acceleration of the print head. Enforcing acceleration at the print head naturally also limits the torque of the steppers that move the print head (the inverse is not always true).
+Також важливо обмежити прискорення, щоб крокові двигуни не пропустити або покласти зайвий стрес на машині. Кліппер обмежує крутний момент на кожному степпері за рахунок обмеження прискорення головки друку. Захоплюючий прискорення на головці друку, природно, обмежує крутний момент степперів, які рухають голову друку (і навпаки не завжди вірно).
 
-Klipper implements constant acceleration. The key formula for constant acceleration is:
-
-```
-velocity(time) = start_velocity + accel*time
-```
-
-## Trapezoid generator
-
-Klipper uses a traditional "trapezoid generator" to model the motion of each move - each move has a start speed, it accelerates to a cruising speed at constant acceleration, it cruises at a constant speed, and then decelerates to the end speed using constant acceleration.
-
-![trapezoid](img/trapezoid.svg.png)
-
-It's called a "trapezoid generator" because a velocity diagram of the move looks like a trapezoid.
-
-The cruising speed is always greater than or equal to both the start speed and the end speed. The acceleration phase may be of zero duration (if the start speed is equal to the cruising speed), the cruising phase may be of zero duration (if the move immediately starts decelerating after acceleration), and/or the deceleration phase may be of zero duration (if the end speed is equal to the cruising speed).
-
-![trapezoids](img/trapezoids.svg.png)
-
-## Look-ahead
-
-The "look-ahead" system is used to determine cornering speeds between moves.
-
-Consider the following two moves contained on an XY plane:
-
-![corner](img/corner.svg.png)
-
-In the above situation it is possible to fully decelerate after the first move and then fully accelerate at the start of the next move, but that is not ideal as all that acceleration and deceleration would greatly increase the print time and the frequent changes in extruder flow would result in poor print quality.
-
-To solve this, the "look-ahead" mechanism queues multiple incoming moves and analyzes the angles between moves to determine a reasonable speed that can be obtained during the "junction" between two moves. If the next move is nearly in the same direction then the head need only slow down a little (if at all).
-
-![lookahead](img/lookahead.svg.png)
-
-However, if the next move forms an acute angle (the head is going to travel in nearly a reverse direction on the next move) then only a small junction speed is permitted.
-
-![lookahead](img/lookahead-slow.svg.png)
-
-The junction speeds are determined using "approximated centripetal acceleration". Best [described by the author](https://onehossshay.wordpress.com/2011/09/24/improving_grbl_cornering_algorithm/). However, in Klipper, junction speeds are configured by specifying the desired speed that a 90° corner should have (the "square corner velocity"), and the junction speeds for other angles are derived from that.
-
-Key formula for look-ahead:
+Klipper реалізує постійне прискорення. Основна формула для постійного прискорення:
 
 ```
-end_velocity^2 = start_velocity^2 + 2*accel*move_distance
+швидкість(час) = start_velocity + accel*time
 ```
 
-### Minimum cruise ratio
+## Трапезоїдний генератор
 
-Klipper also implements a mechanism for smoothing out the motions of short "zigzag" moves. Consider the following moves:
+Кліппер використовує традиційний "трапецієїдний генератор" для моделювання руху кожного руху - кожен рух має початкову швидкість, він прискорює до швидкості зрізу при постійному прискорення, він круїзує на постійній швидкості, а потім скасовує до кінцевої швидкості за допомогою постійного прискорення.
 
-![zigzag](img/zigzag.svg.png)
+![trapezoid](img/trapezoid..png)
 
-In the above, the frequent changes from acceleration to deceleration can cause the machine to vibrate which causes stress on the machine and increases the noise. Klipper implements a mechanism to ensure there is always some movement at a cruising speed between acceleration and deceleration. This is done by reducing the top speed of some moves (or sequence of moves) to ensure there is a minimum distance traveled at cruising speed relative to the distance traveled during acceleration and deceleration.
+Це називається "trapezoid генератор", оскільки схема швидкості руху виглядає як трапеція.
 
-Klipper implements this feature by tracking both a regular move acceleration as well as a virtual "acceleration to deceleration" rate:
+Швидкість зрізу завжди більше, ніж або дорівнює швидкості запуску і швидкості кінця. Фаза прискорення може бути від нульової тривалості (якщо початкова швидкість дорівнює швидкості зрізання), фаза зрізу може бути нульовою тривалістю (якщо рух негайно починає детекляцію після прискорення), а/або фазу декларації може бути нульовою тривалістю (якщо кінцева швидкість дорівнює швидкості зрізання).
 
-![smoothed](img/smoothed.svg.png)
+![trapezoids](img/trapezoids.png)
 
-Specifically, the code calculates what the velocity of each move would be if it were limited to this virtual "acceleration to deceleration" rate. In the above picture the dashed gray lines represent this virtual acceleration rate for the first move. If a move can not reach its full cruising speed using this virtual acceleration rate then its top speed is reduced to the maximum speed it could obtain at this virtual acceleration rate.
+## Дивитися
 
-For most moves the limit will be at or above the move's existing limits and no change in behavior is induced. For short zigzag moves, however, this limit reduces the top speed. Note that it does not change the actual acceleration within the move - the move continues to use the normal acceleration scheme up to its adjusted top-speed.
+Система "look-ahead" використовується для визначення швидкості кутів між переміщеннями.
 
-## Generating steps
+Розглянемо наступні два переміщення, що містяться на площині XY:
 
-Once the look-ahead process completes, the print head movement for the given move is fully known (time, start position, end position, velocity at each point) and it is possible to generate the step times for the move. This process is done within "kinematic classes" in the Klipper code. Outside of these kinematic classes, everything is tracked in millimeters, seconds, and in cartesian coordinate space. It's the task of the kinematic classes to convert from this generic coordinate system to the hardware specifics of the particular printer.
+![corner](img/corner.png)
 
-Klipper uses an [iterative solver](https://en.wikipedia.org/wiki/Root-finding_algorithm) to generate the step times for each stepper. The code contains the formulas to calculate the ideal cartesian coordinates of the head at each moment in time, and it has the kinematic formulas to calculate the ideal stepper positions based on those cartesian coordinates. With these formulas, Klipper can determine the ideal time that the stepper should be at each step position. The given steps are then scheduled at these calculated times.
+У вищезазначеній ситуації можна повністю детератувати після першого руху, а потім повністю прискорити при старті наступного руху, але це не ідеально, оскільки все, що прискорення і детелерація значно підвищить час друку і часті зміни в вихідного потоку призведе до низької якості друку.
 
-The key formula to determine how far a move should travel under constant acceleration is:
+Щоб вирішити це, механізм «look-ahead» чергує кілька незручних рухів і аналізує кути між переміщеннями, щоб визначити розумну швидкість, яка може бути отримана під час «включення» між двома переміщеннями. Якщо наступний рух майже в тому ж напрямку, то голову потрібно лише уповільнити трохи (якщо взагалі).
 
-```
-move_distance = (start_velocity + .5 * accel * move_time) * move_time
-```
+![lookahead](img/lookahead.png)
 
-and the key formula for movement with constant velocity is:
+Однак, якщо наступний рух утворює гострий кут (голова збирається подорожувати практично зворотним напрямком на наступному русі), то дозволяється тільки невелика швидкість з'єднання.
 
-```
-move_distance = cruise_velocity * move_time
-```
+![lookahead](img/lookahead-slow.png)
 
-The key formulas for determining the cartesian coordinate of a move given a move distance is:
+Швидкості перехрестя визначаються за допомогою "апроксимованого доцентрового прискорення". Найкраще [описано автором](https://onehossshay.wordpress.com/2011/09/24/improving_grbl_cornering_algorithm/). Однак у Klipper швидкості перехрестя налаштовуються шляхом визначення бажаної швидкості кута 90° («швидкість прямокутного кута»), і швидкості перехрестя для інших кутів виводяться з цього.
+
+Ключова формула для пошуку:
 
 ```
-cartesian_x_position = start_x + move_distance * total_x_movement / total_movement
-cartesian_y_position = start_y + move_distance * total_y_movement / total_movement
-cartesian_z_position = start_z + move_distance * total_z_movement / total_movement
+кінцева_швидкість^2 = початкова_швидкість^2 + 2*прискорення*відстань_переміщення
 ```
 
-### Cartesian Robots
+### Мінімальне співвідношення круїзу
 
-Generating steps for cartesian printers is the simplest case. The movement on each axis is directly related to the movement in cartesian space.
+Кліппер також реалізує механізм згладжування руху коротких «зигзагів». Розглянемо наступні переміщення:
 
-Key formulas:
+![zigzag](img/zigzag.png)
 
-```
-stepper_x_position = cartesian_x_position
-stepper_y_position = cartesian_y_position
-stepper_z_position = cartesian_z_position
-```
+У вищезазначених часті зміни від прискорення до депарації можуть викликати машину, щоб перемогти, що викликає стрес на машині і збільшує шум. Кліппер реалізує механізм забезпечення постійного руху на швидкості обробітку між прискоренням та декларацією. Це робиться шляхом зменшення верхньої швидкості деяких ходів (або послідовності руху) для забезпечення максимальної відстані, що подорожується на швидкості зрізу порівняно з дистанцією, що проходить під час прискорення та декларації.
 
-### CoreXY Robots
+Klipper реалізує цю функцію, відстежуючи як регулярне прискорення руху, так і віртуальну "прискорення до декларації" швидкість:
 
-Generating steps on a CoreXY machine is only a little more complex than basic cartesian robots. The key formulas are:
+![smoothed](img/smoothed.png)
 
-```
-stepper_a_position = cartesian_x_position + cartesian_y_position
-stepper_b_position = cartesian_x_position - cartesian_y_position
-stepper_z_position = cartesian_z_position
-```
+Зокрема, код розраховує, що швидкість кожного руху буде обмежена цим віртуальним «прискоренням до декларації» швидкістю. У вищезгаданому малюнку сірі лінії відображають цей віртуальний рівень прискорення для першого ходу. Якщо переїзд не може досягти повної швидкості за допомогою цієї швидкості віртуального прискорення, то його швидкість зводиться до максимальної швидкості, вона може отримати при цьому швидкість віртуального прискорення.
 
-### Delta Robots
+Для більшості переміщення ліміту буде або над існуючими лімітами руху, а не зміною поведінки індукується. Для коротких зигзаг рухається, однак, цей ліміт зменшує швидкість вершини. Зауважте, що не змінює фактичний прискорення в ході руху - переміщення продовжує використовувати нормальну схему прискорення до її регулювання швидкості.
 
-Step generation on a delta robot is based on Pythagoras's theorem:
+## Формування кроків
+
+Після завершення процесу пошуку, рух заголовка друку для даного руху повністю відомий (час, стартова позиція, кінцева позиція, швидкість в кожній точці) і можливість генерувати покрокові часи для руху. Цей процес виконується в рамках "кінематичних класів" в коді Кліппера. Зовні цих кінематичних класів, все відстежується в міліметрах, секундах і в карцесіанських координатних приміщеннях. Це завдання кінематичних класів для перетворення з цієї координатної системи в апаратні особливості конкретного принтера.
+
+Klipper використовує [інеративний розчинник](https://en.wikipedia.org/wiki/Root-finding_algorithm) для створення кроку для кожного кроку. Код містить формули для розрахунку ідеальної карцесійської координації голови в кожен момент, і він має кінематичні формули для розрахунку ідеальної крокової позиції на основі карцесійських координат. З цими формулами, Klipper може визначити ідеальний час, який крок повинен бути на кожному кроці позиції. Наведені кроки потім плануються в зазначені терміни.
+
+Основна формула, щоб визначити, наскільки далеко рух повинен подорожувати під постійним прискоренням:
 
 ```
-stepper_position = (sqrt(arm_length^2
-                         - (cartesian_x_position - tower_x_position)^2
-                         - (cartesian_y_position - tower_y_position)^2)
-                    + cartesian_z_position)
+відстань_переміщення = (швидкість_початку + .5 * прискорення * час_переміщення) * час_переміщення
 ```
 
-### Stepper motor acceleration limits
-
-With delta kinematics it is possible for a move that is accelerating in cartesian space to require an acceleration on a particular stepper motor greater than the move's acceleration. This can occur when a stepper arm is more horizontal than vertical and the line of movement passes near that stepper's tower. Although these moves could require a stepper motor acceleration greater than the printer's maximum configured move acceleration, the effective mass moved by that stepper would be smaller. Thus the higher stepper acceleration does not result in significantly higher stepper torque and it is therefore considered harmless.
-
-However, to avoid extreme cases, Klipper enforces a maximum ceiling on stepper acceleration of three times the printer's configured maximum move acceleration. (Similarly, the maximum velocity of the stepper is limited to three times the maximum move velocity.) In order to enforce this limit, moves at the extreme edge of the build envelope (where a stepper arm may be nearly horizontal) will have a lower maximum acceleration and velocity.
-
-### Extruder kinematics
-
-Klipper implements extruder motion in its own kinematic class. Since the timing and speed of each print head movement is fully known for each move, it's possible to calculate the step times for the extruder independently from the step time calculations of the print head movement.
-
-Basic extruder movement is simple to calculate. The step time generation uses the same formulas that cartesian robots use:
+і ключова формула для руху з постійною швидкістю:
 
 ```
-stepper_position = requested_e_position
+відстань_переміщення = крейсерська_швидкість * час_переміщення
 ```
 
-### Pressure advance
-
-Experimentation has shown that it's possible to improve the modeling of the extruder beyond the basic extruder formula. In the ideal case, as an extrusion move progresses, the same volume of filament should be deposited at each point along the move and there should be no volume extruded after the move. Unfortunately, it's common to find that the basic extrusion formulas cause too little filament to exit the extruder at the start of extrusion moves and for excess filament to extrude after extrusion ends. This is often referred to as "ooze".
-
-![ooze](img/ooze.svg.png)
-
-The "pressure advance" system attempts to account for this by using a different model for the extruder. Instead of naively believing that each mm^3 of filament fed into the extruder will result in that amount of mm^3 immediately exiting the extruder, it uses a model based on pressure. Pressure increases when filament is pushed into the extruder (as in [Hooke's law](https://en.wikipedia.org/wiki/Hooke%27s_law)) and the pressure necessary to extrude is dominated by the flow rate through the nozzle orifice (as in [Poiseuille's law](https://en.wikipedia.org/wiki/Poiseuille_law)). The key idea is that the relationship between filament, pressure, and flow rate can be modeled using a linear coefficient:
+Ключові формули визначення координаційної координати руху, наданої відстані руху:
 
 ```
-pa_position = nominal_position + pressure_advance_coefficient * nominal_velocity
+декартова_позиція = початок_x + відстань_переміщення * загальне_переміщення_x / загальне_переміщення
+ декартове_положення_у_позиції = початок_у + відстань_переміщення * загальне_переміщення_у / загальне_переміщення
+ decartesian_z_position = start_z + move_distance * total_z_movement / total_movement
 ```
 
-See the [pressure advance](Pressure_Advance.md) document for information on how to find this pressure advance coefficient.
+### Картезіанські роботи
 
-The basic pressure advance formula can cause the extruder motor to make sudden velocity changes. Klipper implements "smoothing" of the extruder movement to avoid this.
+Генерування кроків для принтерів карцезів - найпростіший випадок. Рух на кожній осі безпосередньо пов'язаний з переміщенням в карцесієвому просторі.
+
+Основні формули:
+
+```
+stepper_x_position = декартова_позиція_x
+ stepper_y_position = декартова_позиція_y
+ stepper_z_position = декартова_позиція_z
+```
+
+### CoreXY Роботи
+
+Генерування кроків на верстаті CoreXY є лише більш складним, ніж базові роботи карцесіанів. Основні формули:
+
+```
+stepper_a_posesian_x_posesian_y_tion
+stepper_b_позиція = cartesian_x_положення - cartesian_y_положення
+stepper_z_position = кошики_z_положення
+```
+
+### Дельта Роботи
+
+Покрокове покоління на роботі дельта на основі теореми Пітагораса:
+
+```
+stepper_position = (кв.м.)
+- (cartesian_x_tion - вежа_x_положення)^2
+- (cartesian_y_tion - вежа_y_положення)^2)
++ кошик
+```
+
+### Обмеження прискорення крокової двигуна
+
+За допомогою дельта-кінематики можна для переміщення, який прискорює в карцесієвому просторі, щоб вимагати прискорення на конкретному кроковому двигуні більше, ніж прискорення руху. Це може статися, коли кроковий кронштейн більш горизонтальний, ніж вертикальний і лінія руху проходить біля вежі крокової. Незважаючи на те, що ці переміщення можуть вимагати прискорення крокового двигуна, більше, ніж максимальне налаштування принтера, ефективна маса, яка переміщається, що stepper буде меншою. Таким чином, більший кроковий прискорення не призводить до значно вище крокової крутки і тому вважається нешкідливим.
+
+Тим не менш, щоб уникнути екстремальних випадків, Klipper застосовує максимальну стелю на степлері прискорення тричі налаштовується максимальна швидкість руху принтера. (Сімейно, максимальна швидкість крокової залози обмежена в три рази максимальна швидкість руху.) Для того, щоб забезпечити цей ліміт, пересувається на крайній край конструкції конверт (де кроковий кронштейн може бути майже горизонтальним) буде мати менший максимальний прискорення і швидкість.
+
+### Екструдер кінематики
+
+Кліппер реалізує екструдерний рух у власних кінематичних класах. З моменту закінчення і швидкості кожного руху голови друку повністю відомий для кожного руху, можна розрахувати покрокові часи для екструдера самостійно з покрокових розрахункових головок.
+
+Основний рух екструдера простий для розрахунку. Покрокове покоління часу використовує ті ж формули, які використовують кареські роботи:
+
+```
+stepper_position = запитуваний_e_положення
+```
+
+### Прогнозування
+
+Експериментація показало, що це можливо для поліпшення моделювання вирубки за базовою формулою екструдера. У ідеальному випадку, як екструзія рухається прогресу, однаковий об'єм нитки повинен бути відкладений в кожну точку вздовж руху і після руху не повинно бути об'єму, що виводиться після руху. На жаль, є загальним для того, щоб знайти, що основні екструзійні формули викликають занадто мало ниток, щоб вийти з екструзії при старті екструзійних ходів і для надлишку ниток, щоб екструдувати після екструзійних кінців. Це часто згадується як «зефір».
+
+![ooze](img/ooze.png)
+
+Система «випередження тиску» намагається врахувати це, використовуючи іншу модель для екструдера. Замість того, щоб наївно вірити, що кожен мм^3 нитки, що подається в екструдер, призведе до того, що така кількість мм^3 негайно виходить з екструдера, він використовує модель, засновану на тиску. Тиск зростає, коли нитка проштовхується в екструдер (як у [законі Гука](https://en.wikipedia.org/wiki/Hooke%27s_law)), і тиск, необхідний для екструдування, залежить від швидкості потоку через отвір сопла (як у [законі Пуазейля](https://en.wikipedia.org/wiki/Poiseuille_law)). Ключова ідея полягає в тому, що зв’язок між ниткою, тиском і швидкістю потоку можна змоделювати за допомогою лінійного коефіцієнта:
+
+```
+pa_позиція = номінальний_поставка + тиск_advance_coeff * номінальний_velocity
+```
+
+Див. [Налаштування](Pressure_Advance.md) документ для інформації про те, як знайти цей коефіцієнт підвищення тиску.
+
+Базова формула переднього тиску може викликати двигун екструдера, щоб зробити різкі зміни швидкості. Кліппер реалізує «змотування» руху екструдера, щоб уникнути цього.
 
 ![pressure-advance](img/pressure-velocity.png)
 
-The above graph shows an example of two extrusion moves with a non-zero cornering velocity between them. Note that the pressure advance system causes additional filament to be pushed into the extruder during acceleration. The higher the desired filament flow rate, the more filament must be pushed in during acceleration to account for pressure. During head deceleration the extra filament is retracted (the extruder will have a negative velocity).
+Наведений графік показує приклад двох екструзійних переходів з ненульною швидкістю кутів між ними. Зверніть увагу, що система підвищення тиску викликає додаткові нитки, щоб бути відштовховані в екструдера під час прискорення. Чим вище бажана швидкість потоку ниток, тим більше ниток потрібно підштовхуватися під час прискорення до обліку тиску. Під час декатерації голови екстра загинається (вихід буде мати негативну швидкість).
 
-The "smoothing" is implemented using a weighted average of the extruder position over a small time period (as specified by the `pressure_advance_smooth_time` config parameter). This averaging can span multiple g-code moves. Note how the extruder motor will start moving prior to the nominal start of the first extrusion move and will continue to move after the nominal end of the last extrusion move.
+"розморожування" реалізується за допомогою вагового посередина позиції екструдера протягом невеликого періоду часу (як зазначено `pressure_advance_smooth_time` параметр налаштування). Цей averaging може проміжок декількох g-кодових переходів. Зауважте, як двигун екструдера почне переміщатися до номінального запуску першого екструзійного руху і продовжить рухатися після номінального кінця останнього екструзійного руху.
 
-Key formula for "smoothed pressure advance":
+Ключова формула для "змоченого тиску заздалегідь":
 
 ```
-smooth_pa_position(t) =
-    ( definitive_integral(pa_position(x) * (smooth_time/2 - abs(t - x)) * dx,
-                          from=t-smooth_time/2, to=t+smooth_time/2)
-     / (smooth_time/2)^2 )
+гладка_pa_положення(t) =
+* (smooth_time/2 - abs(t - x) * dx,
+від=t-smooth_time/2, to=t+smooth_time/2)
+/ (smooth_time/2)^2 )
 ```

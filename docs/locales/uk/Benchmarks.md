@@ -311,9 +311,9 @@ The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (
 
 | samd51 | ticks |
 | --- | --- |
-| 1 stepper | 39 |
+| 1 stepper | 39 хв |
 | 3 stepper | 191 |
-| 1 stepper (200Mhz) | 39 |
+| 1 stepper (200Mhz) | 39 хв |
 | 3 stepper (200Mhz) | 181 |
 
 ### AR100 step rate benchmark

@@ -1,48 +1,48 @@
-# Using PWM tools
+# Використання інструментів PWM
 
-This document describes how to setup a PWM-controlled laser or spindle using `output_pin` and some macros.
+Цей документ описує, як налаштувати PWM-керований лазер або шпиндель за допомогою `виход_pin` і деякі макроси.
 
-## How does it work?
+## Як це працює?
 
-With re-purposing the printhead's fan pwm output, you can control lasers or spindles. This is useful if you use switchable print heads, for example the E3D toolchanger or a DIY solution. Usually, cam-tools such as LaserWeb can be configured to use `M3-M5` commands, which stand for *spindle speed CW* (`M3 S[0-255]`), *spindle speed CCW* (`M4 S[0-255]`) and *spindle stop* (`M5`).
+Ви можете керувати лазерами або шпиндельками. Це корисно, якщо ви використовуєте комутаційні головки друку, наприклад, інструмент обміну E3D або рішення DIY. Як правило, кам-інструменти, такі як LaserWeb можна налаштувати для використання `M3-M5` команди, які стоять для *spindle швидкість CW* (`M3 S[0-255]`), *spindle швидкість CCW* (`M4 S[0-255]`) і *spindle stop* (`M5[377X].
 
-**Warning:** When driving a laser, keep all security precautions that you can think of! Diode lasers are usually inverted. This means, that when the MCU restarts, the laser will be *fully on* for the time it takes the MCU to start up again. For good measure, it is recommended to *always* wear appropriate laser-goggles of the right wavelength if the laser is powered; and to disconnect the laser when it is not needed. Also, you should configure a safety timeout, so that when your host or MCU encounters an error, the tool will stop.
+**Навігація:** Коли водіння лазера, зберігайте всі запобіжні заходи безпеки, які ви можете подумати про! Неперевершені діодні лазери. Це означає, що при перезапускі МКУ лазер буде *fully on* на час, коли МКУ знову забирає. Для хорошого виміру рекомендується *always* носити відповідні лазерні окуляри правої довжини хвилі, якщо лазер працює; і від'єднати лазер, коли він не потрібен. Крім того, ви повинні налаштувати час служби безпеки, щоб коли ваш хост або MCU зіткнувся з помилкою, інструмент зупиниться.
 
-For an example configuration, see [config/sample-pwm-tool.cfg](/config/sample-pwm-tool.cfg).
+Наприклад конфігурація, див. [config/sample-pwm-tool.cfg](/config/sample-pwm-tool.cfg).
 
-## Current Limitations
+## Поточні обмеження
 
-There is a limitation of how frequent PWM updates may occur. While being very precise, a PWM update may only occur every 0.1 seconds, rendering it almost useless for raster engraving. However, there exists an [experimental branch](https://github.com/Cirromulus/klipper/tree/laser_tool) with its own tradeoffs. In long term, it is planned to add this functionality to main-line klipper.
+Існує обмеження, як часті оновлення PWM. В той час як дуже точний, оновлення PWM може відбуватися лише кожні 0,1 секунд, що дає йому практично без використання для гравірування растрових променів. Тим не менш, існує [експериментальне відділення](https://github.com/Cirromulus/klipper/tree/laser_tool) з власними торговими точками. У довгостроковій перспективі планується додати цю функціональність до основного клиппера.
 
-## Commands
+## Команди
 
-`M3/M4 S<value>` : Set PWM duty-cycle. Values between 0 and 255. `M5` : Stop PWM output to shutdown value.
+`M3/M4 S<value>` : Комплект PWM-цикл. Цінності між 0 і 255. `M5` : Stop PWM вихід для відключення значення.
 
-## Laserweb Configuration
+## Конфігурація веб-сайтів
 
-If you use Laserweb, a working configuration would be:
+Якщо ви використовуєте лазерний веб-сайт, робоча конфігурація буде:
 
     GCODE START:
-        M5            ; Disable Laser
-        G21           ; Set units to mm
-        G90           ; Absolute positioning
-        G0 Z0 F7000   ; Set Non-Cutting speed
+    M5 ; Відключений лазер
+    G21 ; Комплектуючі до мм
+    G90 ; Абсолютне позиціонування
+    G0 Z0 F7000 ; Настроювання швидкості
     
     GCODE END:
-        M5            ; Disable Laser
-        G91           ; relative
-        G0 Z+20 F4000 ;
-        G90           ; absolute
+    M5 ; Відключений лазер
+    G91 ; відносний
+    G0 Z+20 F4000 ;
+    G90 ; абсолютний
     
     GCODE HOMING:
-        M5            ; Disable Laser
-        G28           ; Home all axis
+    M5 ; Відключений лазер
+    G28 ; Головна вісь
     
-    TOOL ON:
-        M3 $INTENSITY
+    ОНОВЛЕННЯ:
+    M3 $інтенсивність
     
-    TOOL OFF:
-        M5            ; Disable Laser
+    ЗАМОВИТИ:
+    M5 ; Відключений лазер
     
-    LASER INTENSITY:
-        S
+    ЛАЗЕРНА ІНТЕНСІЯ:
+    Р

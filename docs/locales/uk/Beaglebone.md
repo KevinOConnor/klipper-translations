@@ -1,257 +1,257 @@
 # BeagleBone
 
-This document describes the process of running Klipper on a Beaglebone PRU.
+Цей документ описує процес запуску Klipper на Beaglebone PRU.
 
-## Building an OS image
+## Створення образу ОС
 
-Start by installing the [Debian 11.7 2023-09-02 4GB microSD IoT](https://beagleboard.org/latest-images) image. One may run the image from either a micro-SD card or from builtin eMMC. If using the eMMC, install it to eMMC now by following the instructions from the above link.
+Почніть із встановлення образу [Debian 11.7 2023-09-02 4GB microSD IoT](https://beagleboard.org/latest-images). Образ можна запустити з карти micro-SD або вбудованого eMMC. Якщо ви використовуєте eMMC, установіть його в eMMC зараз, дотримуючись інструкцій за посиланням вище.
 
-Then ssh into the Beaglebone machine (`ssh debian@beaglebone` -- password is `temppwd`).
+Потім увійдіть за допомогою ssh до машини Beaglebone (`ssh debian@beaglebone` -- пароль `temppwd`).
 
-Before start installing Klipper you need to free-up additional space. there are 3 options to do that:
+Перед початком встановлення Klipper вам потрібно звільнити додаткове місце. для цього є 3 варіанти:
 
-1. remove some BeagleBone "Demo" resources
-1. if you did boot from SD-Card, and it's bigger than 4Gb - you can expand current filesystem to take whole card space
-1. do option #1 and #2 together.
+1. видалити деякі «Демо» ресурси BeagleBone
+1. якщо ви завантажувалися з SD-карти, а її розмір перевищує 4 Гб, ви можете розширити поточну файлову систему, щоб зайняти весь простір на картці
+1. виконайте варіант №1 і №2 разом.
 
-To remove some BeagleBone "Demo" resources execute these commands
+Щоб видалити деякі «Демо» ресурси BeagleBone, виконайте ці команди
 
 ```
-sudo apt remove bb-node-red-installer
-sudo apt remove bb-code-server
+sudo apt видалити bb-node-red-installer
+ sudo apt видалити bb-code-server
 ```
 
-To expand filesystem to full size of your SD-Card execute this command, reboot is not required.
+Щоб розширити файлову систему до повного розміру вашої SD-карти, виконайте цю команду, перезавантажувати не потрібно.
 
 ```
 sudo growpart /dev/mmcblk0 1
-sudo resize2fs /dev/mmcblk0p1
+ sudo resize2fs /dev/mmcblk0p1
 ```
 
-Install Klipper by running the following commands:
+Встановіть Klipper, виконавши такі команди:
 
 ```
-git clone https://github.com/Klipper3d/klipper.git
-./klipper/scripts/install-beaglebone.sh
+git клон https://github.com/Klipper3d/klipper.git
+ ./klipper/scripts/install-beaglebone.sh як
 ```
 
-After installing Klipper you need to decide what kind of deployment do you need, but take a note that BeagleBone is 3.3v based hardware and in most cases you can't directly connect pins to 5v or 12v based hardware without conversion boards.
+Після встановлення Klipper вам потрібно вирішити, який тип розгортання вам потрібен, але візьміть до уваги, що BeagleBone — це обладнання на основі 3,3 В, і в більшості випадків ви не можете напряму підключити контакти до обладнання на основі 5 або 12 В без плат перетворення.
 
-As Klipper have multimodule architecture on BeagleBone you can achieve many different use cases, but general ones are following:
+Оскільки Klipper має багатомодульну архітектуру на BeagleBone, ви можете досягти багатьох різних варіантів використання, але загальні:
 
-Use case 1: Use BeagleBone only as a host system to run Klipper and additional software like OctoPrint/Fluidd + Moonraker/... and this configuration will be driving external micro-controllers via serial/usb/canbus connections.
+Випадок використання 1: Використовуйте BeagleBone лише як хост-систему для запуску Klipper і додаткового програмного забезпечення, наприклад OctoPrint/Fluidd + Moonraker/..., і ця конфігурація керуватиме зовнішніми мікроконтролерами через послідовні/usb/canbus з’єднання.
 
-Use case 2: Use BeagleBone with extension board (cape) like CRAMPS board. in this configuration BeagleBone will host Klipper + additional software, and it will drive extension board with BeagleBone PRU cores (2 additional cores 200Mh, 32Bit).
+Випадок використання 2: Використовуйте BeagleBone із подовжувальною дошкою (накидкою), як дошка CRAMPS. у цій конфігурації BeagleBone розміщуватиме Klipper + додаткове програмне забезпечення, і він керуватиме платою розширення з ядрами BeagleBone PRU (2 додаткових ядра 200Mh, 32Bit).
 
-Use case 3: It's same as "Use case 1" but additionally you want to drive BeagleBone GPIOs with high speed by utilizing PRU cores to offload main CPU.
+Випадок використання 3: це те саме, що й «Випадок використання 1», але додатково ви хочете керувати BeagleBone GPIO з високою швидкістю, використовуючи ядра PRU, щоб розвантажити основний ЦП.
 
-## Installing Octoprint
+## Встановлення Octoprint
 
-One may then install Octoprint or fully skip this section if desired other software:
+Потім можна встановити Octoprint або повністю пропустити цей розділ, якщо потрібно інше програмне забезпечення:
 
 ```
-git clone https://github.com/foosel/OctoPrint.git
-cd OctoPrint/
-virtualenv venv
-./venv/bin/python setup.py install
+git клон https://github.com/foosel/OctoPrint.git
+ cd OctoPrint/
+ virtualenv venv
+ ./venv/bin/python setup.py install
 ```
 
-And setup OctoPrint to start at bootup:
+І налаштуйте OctoPrint для запуску під час завантаження:
 
 ```
 sudo cp ~/OctoPrint/scripts/octoprint.init /etc/init.d/octoprint
-sudo chmod +x /etc/init.d/octoprint
-sudo cp ~/OctoPrint/scripts/octoprint.default /etc/default/octoprint
-sudo update-rc.d octoprint defaults
+ sudo chmod +x /etc/init.d/octoprint
+ sudo cp ~/OctoPrint/scripts/octoprint.default /etc/default/octoprint
+ sudo update-rc.d octoprint за замовчуванням
 ```
 
-It is necessary to modify OctoPrint's **/etc/default/octoprint** configuration file. One must change the `OCTOPRINT_USER` user to `debian`, change `NICELEVEL` to `0`, uncomment the `BASEDIR`, `CONFIGFILE`, and `DAEMON` settings and change the references from `/home/pi/` to `/home/debian/`:
+Необхідно змінити файл конфігурації OctoPrint **/etc/default/octoprint**. Необхідно змінити користувача `OCTOPRINT_USER` на `debian`, змінити `NICELEVEL` на `0`, розкоментувати налаштування `BASEDIR`, `CONFIGFILE` і `DAEMON` і змінити посилання з `/home/pi/` на `/home/debian/`:
 
 ```
 sudo nano /etc/default/octoprint
 ```
 
-Then start the Octoprint service:
+Потім запустіть службу Octoprint:
 
 ```
-sudo systemctl start octoprint
+sudo systemctl запустити octoprint
 ```
 
-Wait 1-2 minutes and make sure the OctoPrint web server is accessible - it should be at: <http://beaglebone:5000/>
+Зачекайте 1-2 хвилини та переконайтеся, що веб-сервер OctoPrint доступний – він має бути за адресою: <http://beaglebone:5000/>
 
-## Building the BeagleBone PRU micro-controller code (PRU firmware)
+## Створення коду мікроконтролера BeagleBone PRU (прошивка PRU)
 
-This section is required for "Use case 2" and "Use case 3" mentioned above, you should skip it for "Use case 1".
+Цей розділ потрібен для згаданих вище «Випадків використання 2» і «Випадків використання 3». Для «Випадків використання 1» його слід пропустити.
 
-Check that required devices are present
-
-```
-sudo beagle-version
-```
-
-You should check that output contains successful "remoteproc" drivers loading and presence of PRU cores, in Kernel 5.10 they should be "remoteproc1" and "remoteproc2" (4a334000.pru, 4a338000.pru) Also check that many GPIOs are loaded they will look like "Allocated GPIO id=0 name='P8_03'" Usually everything is fine and no hardware configuration is required. If something is missing - try to play with "uboot overlays" options or with cape-overlays Just for reference some output of working BeagleBone Black configuration with CRAMPS board:
+Перевірте наявність необхідних пристроїв
 
 ```
-model:[TI_AM335x_BeagleBone_Black]
-UBOOT: Booted Device-Tree:[am335x-boneblack-uboot-univ.dts]
-UBOOT: Loaded Overlay:[BB-ADC-00A0.bb.org-overlays]
-UBOOT: Loaded Overlay:[BB-BONE-eMMC1-01-00A0.bb.org-overlays]
-kernel:[5.10.168-ti-r71]
-/boot/uEnv.txt Settings:
-uboot_overlay_options:[enable_uboot_overlays=1]
-uboot_overlay_options:[disable_uboot_overlay_video=0]
-uboot_overlay_options:[disable_uboot_overlay_audio=1]
-uboot_overlay_options:[disable_uboot_overlay_wireless=1]
-uboot_overlay_options:[enable_uboot_cape_universal=1]
-pkg:[bb-cape-overlays]:[4.14.20210821.0-0~bullseye+20210821]
-pkg:[bb-customizations]:[1.20230720.1-0~bullseye+20230720]
-pkg:[bb-usb-gadgets]:[1.20230414.0-0~bullseye+20230414]
-pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]
-.............
-.............
+sudo beagle-версія
 ```
 
-To compile the Klipper micro-controller code, start by configuring it for the "Beaglebone PRU", for "BeagleBone Black" additionally disable options "Support GPIO Bit-banging devices" and disable "Support LCD devices" inside the "Optional features" because they will not fit in 8Kb PRU firmware memory, then exit and save config:
+Вам слід перевірити, чи вихідні дані містять успішне завантаження драйверів «remoteproc» і наявність ядер PRU, у ядрі 5.10 вони мають бути «remoteproc1» і «remoteproc2» (4a334000.pru, 4a338000.pru). Також перевірте, чи завантажено багато GPIO, це виглядатиме наприклад "Allocated GPIO id=0 name='P8_03'" Зазвичай усе гаразд і не потрібно налаштовувати обладнання. Якщо чогось не вистачає, спробуйте пограти з опціями «uboot overlays» або cape-overlays. Просто для довідки деякі результати робочої конфігурації BeagleBone Black із платою CRAMPS:
+
+```
+модель: [TI_AM335x_BeagleBone_Black]
+ UBOOT: Дерево завантажених пристроїв: [am335x-boneblack-uboot-univ.dts]
+ UBOOT: завантажене накладення: [BB-ADC-00A0.bb.org-overlays]
+ UBOOT: завантажене накладення: [BB-BONE-eMMC1-01-00A0.bb.org-overlays]
+ ядро:[5.10.168-ti-r71]
+ Налаштування /boot/uEnv.txt:
+ uboot_overlay_options:[enable_uboot_overlays=1]
+ uboot_overlay_options:[disable_uboot_overlay_video=0]
+ uboot_overlay_options:[disable_uboot_overlay_audio=1]
+ uboot_overlay_options:[disable_uboot_overlay_wireless=1]
+ uboot_overlay_options:[enable_uboot_cape_universal=1]
+ pkg:[bb-cape-overlays]:[4.14.20210821.0-0~bullseye+20210821]
+ pkg:[bb-customizations]:[1.20230720.1-0~bullseye+20230720]
+ pkg:[bb-usb-gadgets]:[1.20230414.0-0~bullseye+20230414]
+ pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]
+ .............
+ .............
+```
+
+Щоб скомпілювати код мікроконтролера Klipper, почніть із налаштування його для «Beaglebone PRU», для «BeagleBone Black» додатково вимкніть параметри «Підтримка пристроїв для розрядки GPIO» і вимкніть «Підтримка пристроїв LCD» у «Додаткових функціях», оскільки вони не поміщаються в пам’ять прошивки PRU розміром 8 Кб, тоді вийдіть і збережіть конфігурацію:
 
 ```
 cd ~ / клиппер /
 налаштування меню
 ```
 
-To build and install the new PRU micro-controller code, run:
+Щоб створити та встановити новий код мікроконтролера PRU, запустіть:
 
 ```
 sudo service klipper stop
-make flash
-sudo service klipper start
+ зробити спалах
+ sudo service klipper start
 ```
 
-After previous commands was executed your PRU firmware should be ready and started to check if everything was fine you can execute following command
+Після виконання попередніх команд ваша мікропрограма PRU має бути готова та запущена, щоб перевірити, чи все було добре, ви можете виконати наступну команду
 
 ```
-dmesg
+Dmesg
 ```
 
-and compare last messages with sample one which indicate that everything started properly:
+і порівняйте останні повідомлення зі зразком, який свідчить про те, що все почалося правильно:
 
 ```
-[   71.105499] remoteproc remoteproc1: 4a334000.pru is available
-[   71.157155] remoteproc remoteproc2: 4a338000.pru is available
-[   73.256287] remoteproc remoteproc1: powering up 4a334000.pru
-[   73.279246] remoteproc remoteproc1: Booting fw image am335x-pru0-fw, size 97112
-[   73.285807]  remoteproc1#vdev0buffer: registered virtio0 (type 7)
-[   73.285836] remoteproc remoteproc1: remote processor 4a334000.pru is now up
-[   73.286322] remoteproc remoteproc2: powering up 4a338000.pru
-[   73.313717] remoteproc remoteproc2: Booting fw image am335x-pru1-fw, size 188560
-[   73.313753] remoteproc remoteproc2: header-less resource table
-[   73.329964] remoteproc remoteproc2: header-less resource table
-[   73.348321] remoteproc remoteproc2: remote processor 4a338000.pru is now up
-[   73.443355] virtio_rpmsg_bus virtio0: creating channel rpmsg-pru addr 0x1e
-[   73.443727] virtio_rpmsg_bus virtio0: msg received with no recipient
-[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online
-[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/rpmsg_pru30
+[ 71.105499] remoteproc remoteproc1: доступний 4a334000.pru
+ [ 71.157155] remoteproc remoteproc2: доступний 4a338000.pru
+ [ 73.256287] remoteproc remoteproc1: увімкнення 4a334000.pru
+ [ 73.279246] remoteproc remoteproc1: завантажувальний образ fw am335x-pru0-fw, розмір 97112
+ [ 73.285807] remoteproc1#vdev0buffer: зареєстрований virtio0 (тип 7)
+ [ 73.285836] remoteproc remoteproc1: віддалений процесор 4a334000.pru тепер працює
+ [ 73.286322] remoteproc remoteproc2: увімкнення 4a338000.pru
+ [ 73.313717] remoteproc remoteproc2: завантажувальний образ fw am335x-pru1-fw, розмір 188560
+ [ 73.313753] remoteproc remoteproc2: таблиця ресурсів без заголовків
+ [ 73.329964] remoteproc remoteproc2: таблиця ресурсів без заголовків
+ [ 73.348321] remoteproc remoteproc2: віддалений процесор 4a338000.pru тепер працює
+ [ 73.443355] virtio_rpmsg_bus virtio0: створення каналу rpmsg-pru addr 0x1e
+ [ 73.443727] virtio_rpmsg_bus virtio0: отримане повідомлення без одержувача
+ [ 73.444352] virtio_rpmsg_bus virtio0: хост rpmsg онлайн
+ [ 73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: новий пристрій rpmsg_pru: /dev/rpmsg_pru30
 ```
 
-take a note about "/dev/rpmsg_pru30" - it's your future serial device for main mcu configuration this device is required to be present, if it's absent - your PRU cores did not start properly.
+зверніть увагу на "/dev/rpmsg_pru30" - це ваш майбутній послідовний пристрій для основної конфігурації mcu, цей пристрій повинен бути присутнім, якщо його немає - ваші ядра PRU не запускаються належним чином.
 
-## Building and installing Linux host micro-controller code
+## Створення та встановлення коду хост-мікроконтролера Linux
 
-This section is required for "Use case 2" and optional for "Use case 3" mentioned above
+Цей розділ є обов’язковим для «Випадку використання 2» і необов’язковим для «Випадку використання 3», згаданого вище
 
-It is also necessary to compile and install the micro-controller code for a Linux host process. Configure it a second time for a "Linux process":
+Також необхідно скомпілювати та встановити код мікроконтролера для хост-процесу Linux. Налаштуйте його вдруге для «процесу Linux»:
 
 ```
 make menuconfig
 ```
 
-Then install this micro-controller code as well:
+Потім також встановіть цей код мікроконтролера:
 
 ```
 sudo service klipper stop
-make flash
-sudo service klipper start
+ зробити спалах
+ sudo service klipper start
 ```
 
-take a note about "/tmp/klipper_host_mcu" - it will be your future serial device for "mcu host" if that file don't exist - refer to "scripts/klipper-mcu.service" file, it was installed by previous commands, and it's responsible for it.
+зверніть увагу на "/tmp/klipper_host_mcu" - це буде ваш майбутній послідовний пристрій для "mcu host", якщо цей файл не існує - зверніться до файлу "scripts/klipper-mcu.service", його було встановлено попередніми командами , і він відповідає за це.
 
-Take a note for "Use case 2" about following: when you will define printer configuration you should always use temperature sensors from "mcu host" because ADCs not present in default "mcu" (PRU cores). Sample configuration of "sensor_pin" for extruder and heated bed are available in "generic-cramps.cfg" You can use any other GPIO directly from "mcu host" by referencing them this way "host:gpiochip1/gpio17" but that should be avoided because it will be creating additional load on main CPU and most probably you can't use them for stepper control.
+Зверніть увагу на наступне: коли ви визначаєте конфігурацію принтера, вам слід завжди використовувати датчики температури від «mcu host», оскільки АЦП відсутні в «mcu» за замовчуванням (ядра PRU). Зразок конфігурації «sensor_pin» для екструдера та підігрітого шару доступний у «generic-cramps.cfg». Ви можете використовувати будь-який інший GPIO безпосередньо з «mcu host», посилаючись на нього таким чином «host:gpiochip1/gpio17», але цього слід уникати тому що це створить додаткове навантаження на головний процесор, і, швидше за все, ви не зможете використовувати їх для крокового керування.
 
-## Remaining configuration
+## Конфігурація, що залишилася
 
-Complete the installation by configuring Klipper following the instructions in the main [Installation](Installation.md#configuring-octoprint-to-use-klipper) document.
+Завершіть інсталяцію, налаштувавши Klipper, дотримуючись інструкцій в основному документі [Installation](Installation.md#configuring-octoprint-to-use-klipper).
 
-## Printing on the Beaglebone
+## Друк на бігльбоні
 
-Unfortunately, the Beaglebone processor can sometimes struggle to run OctoPrint well. Print stalls have been known to occur on complex prints (the printer may move faster than OctoPrint can send movement commands). If this occurs, consider using the "virtual_sdcard" feature (see [Config Reference](Config_Reference.md#virtual_sdcard) for details) to print directly from Klipper and disable any DEBUG or VERBOSE logging options if you did enable them.
+На жаль, процесор Beaglebone іноді може погано працювати з OctoPrint. Відомо, що зупинки друку виникають під час складних відбитків (принтер може рухатися швидше, ніж OctoPrint може надсилати команди руху). Якщо це станеться, розгляньте можливість використання функції «virtual_sdcard» (див. [Довідник конфігурації](Config_Reference.md#virtual_sdcard) для отримання додаткової інформації) для друку безпосередньо з Klipper і вимкніть будь-які параметри журналювання DEBUG або VERBOSE, якщо ви їх увімкнули.
 
-## AVR micro-controller code build
+## Побудова коду мікроконтролера AVR
 
-This environment have everything to build necessary micro-controller code except AVR, AVR packages was removed because of conflict with PRU packages. if you still want to build AVR micro-controller code in this environment you need to remove PRU packages and install AVR packages by executing following commands
-
-```
-sudo apt-get remove gcc-pru
-sudo apt-get install avrdude gcc-avr binutils-avr avr-libc
-```
-
-if you need to restore PRU packages - then remove ARV packages before that
+У цьому середовищі є все для створення необхідного коду мікроконтролера, крім AVR, пакети AVR було видалено через конфлікт із пакетами PRU. якщо ви все ще хочете створити код мікроконтролера AVR у цьому середовищі, вам потрібно видалити пакети PRU та встановити пакети AVR, виконавши наступні команди
 
 ```
-sudo apt-get remove avrdude gcc-avr binutils-avr avr-libc
-sudo apt-get install gcc-pru
+sudo apt-get видалити gcc-pru
+ sudo apt-get install avrdude gcc-avr binutils-avr avr-libc
 ```
 
-## Hardware Pin designation
-
-BeagleBone is very flexible in terms of pin designation, same pin can be configured for different function but always single function for single pin, same function can be present on different pins. So you can't have multiple functions on single pin or have same function on multiple pins. Example: P9_20 - i2c2_sda/can0_tx/spi1_cs0/gpio0_12/uart1_ctsn P9_19 - i2c2_scl/can0_rx/spi1_cs1/gpio0_13/uart1_rtsn P9_24 - i2c1_scl/can1_rx/gpio0_15/uart1_tx P9_26 - i2c1_sda/can1_tx/gpio0_14/uart1_rx
-
-Pin designation is defined by using special "overlays" which will be loaded during linux boot they are configured by editing file /boot/uEnv.txt with elevated permissions
+якщо потрібно відновити пакети PRU - перед цим видаліть пакети ARV
 
 ```
-sudo editor /boot/uEnv.txt
+sudo apt-get видалити avrdude gcc-avr binutils-avr avr-libc
+ sudo apt-get install gcc-pru
 ```
 
-and defining which functionality to load, for example to enable CAN1 you need to define overlay for it
+## Позначення PIN-коду обладнання
+
+BeagleBone є дуже гнучким щодо позначення контактів, той самий контакт можна налаштувати для різних функцій, але завжди одна функція для одного контакту, та сама функція може бути присутнім на різних контактах. Таким чином, ви не можете мати кілька функцій на одному контакті або мати однакову функцію на кількох контактах. Приклад: P9_20 - i2c2_sda/can0_tx/spi1_cs0/gpio0_12/uart1_ctsn P9_19 - i2c2_scl/can0_rx/spi1_cs1/gpio0_13/uart1_rtsn P9_24 - i2c1_scl/can1_rx/gpio0_15/uart1_tx P9_ 26 - i2c1_sda/can1_tx/gpio0_14/uart1_rx
+
+Позначення PIN-коду визначається за допомогою спеціальних «накладок», які завантажуватимуться під час завантаження Linux, вони налаштовуються шляхом редагування файлу /boot/uEnv.txt із підвищеними правами доступу
 
 ```
-uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo
+редактор sudo /boot/uEnv.txt
 ```
 
-This overlay BB-CAN1-00A0.dtbo will reconfigure all required pins for CAN1 and create CAN device in Linux. Any change in overlays will require system reboot to be applied. If you need to understand which pins are involved in some overlay - you can analyze source files in this location: /opt/sources/bb.org-overlays/src/arm/ or search info in BeagleBone forums.
-
-## Enabling hardware SPI
-
-BeagleBone usually have multiple hardware SPI buses, for example BeagleBone Black can have 2 of them, they can work up to 48Mhz, but usually they are limited to 16Mhz by Kernel Device-tree. By default, in BeagleBone Black some of SPI1 pins are configured for HDMI-Audio output, to fully enable 4-wire SPI1 you need to disable HDMI Audio and enable SPI1 To do that edit file /boot/uEnv.txt with elevated permissions
+і визначення того, які функції завантажувати, наприклад, щоб увімкнути CAN1, вам потрібно визначити для нього накладення
 
 ```
-sudo editor /boot/uEnv.txt
+Uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo
 ```
 
-uncomment variable
+Це накладення BB-CAN1-00A0.dtbo переконфігурує всі необхідні контакти для CAN1 і створить пристрій CAN у Linux. Будь-яка зміна накладок вимагатиме перезавантаження системи. Якщо вам потрібно зрозуміти, які піни задіяні в якомусь накладенні, ви можете проаналізувати вихідні файли в цьому місці: /opt/sources/bb.org-overlays/src/arm/ або пошукати інформацію на форумах BeagleBone.
+
+## Увімкнення апаратного SPI
+
+BeagleBone зазвичай має кілька апаратних шин SPI, наприклад, BeagleBone Black може мати 2 з них, вони можуть працювати до 48 МГц, але зазвичай вони обмежені 16 МГц деревом пристроїв ядра. За замовчуванням у BeagleBone Black деякі з контактів SPI1 налаштовано для виходу HDMI-Audio, щоб повністю ввімкнути 4-провідний SPI1, вам потрібно вимкнути HDMI Audio та ввімкнути SPI1. Для цього відредагуйте файл /boot/uEnv.txt із підвищеними правами доступу
 
 ```
-disable_uboot_overlay_audio=1
+редактор sudo /boot/uEnv.txt
 ```
 
-next uncomment variable and define it this way
+розкоментуйте змінну
 
 ```
-uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo
+disable_uboot_overlay_audio =1
 ```
 
-Save changes in /boot/uEnv.txt and reboot the board. Now you have SPI1 Enabled, to verify its presence execute command
+далі розкоментуйте змінну та визначте її таким чином
+
+```
+Uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo
+```
+
+Збережіть зміни в /boot/uEnv.txt і перезавантажте плату. Тепер у вас увімкнено SPI1, щоб перевірити його наявність, виконайте команду
 
 ```
 ls /dev/spidev1.*
 ```
 
-Take a note that BeagleBone usually is 3.3v based hardware and to use 5V SPI devices you need to add Level-Shifting chip, for example SN74CBTD3861, SN74LVC1G34 or similar. If you are using CRAMPS board - it already contains Level-Shifting chip and SPI1 pins will become available on P503 port, and they can accept 5v hardware, check CRAMPS board Schematics for pin references.
+Зверніть увагу, що BeagleBone зазвичай базується на апаратному забезпеченні 3,3 В, а для використання пристроїв SPI 5 В потрібно додати мікросхему Level-Shifting, наприклад SN74CBTD3861, SN74LVC1G34 або подібну. Якщо ви використовуєте плату CRAMPS - вона вже містить мікросхему зсуву рівня, і контакти SPI1 стануть доступними на порту P503, і вони можуть приймати апаратне забезпечення 5 В, перевірте схеми плати CRAMPS для посилань на контакти.
 
-## Enabling hardware I2C
+## Увімкнення апаратного I2C
 
-BeagleBone usually have multiple hardware I2C buses, for example BeagleBone Black can have 3 of them, they support speed up-to 400Kbit Fast mode. By default, in BeagleBone Black there are two of them (i2c-1 and i2c-2) usually both are already configured and present on P9, third ic2-0 usually reserved for internal use. If you are using CRAMPS board then i2c-2 is present on P303 port with 3.3v level, If you want to obtain I2c-1 in CRAMPS board - you can get them on Extruder1.Step, Extruder1.Dir pins, they also are 3.3v based, check CRAMPS board Schematics for pin references. Related overlays, for [Hardware Pin designation](#hardware-pin-designation): I2C1(100Kbit): BB-I2C1-00A0.dtbo I2C1(400Kbit): BB-I2C1-FAST-00A0.dtbo I2C2(100Kbit): BB-I2C2-00A0.dtbo I2C2(400Kbit): BB-I2C2-FAST-00A0.dtbo
+У BeagleBone зазвичай є кілька апаратних шин I2C, наприклад, у BeagleBone Black їх може бути 3, вони підтримують швидкісний режим до 400 Кбіт. За замовчуванням у BeagleBone Black їх два (i2c-1 та i2c-2), зазвичай обидва вже налаштовані та присутні на P9, третій ic2-0 зазвичай зарезервований для внутрішнього використання. Якщо ви використовуєте плату CRAMPS, тоді i2c-2 присутній на порту P303 з рівнем 3,3 В. Якщо ви хочете отримати I2c-1 на платі CRAMPS - ви можете отримати їх на контактах Extruder1.Step, Extruder1.Dir, вони також є 3,3 на основі v, перевірте схеми плати CRAMPS для посилань на контакти. Пов’язані накладення для [Hardware Pin designation](#hardware-pin-designation): I2C1(100Kbit): BB-I2C1-00A0.dtbo I2C1(400Kbit): BB-I2C1-FAST-00A0.dtbo I2C2(100Kbit): BB-I2C2-00A0.dtbo I2C2 (400 Кбіт): BB-I2C2-FAST-00A0.dtbo
 
-## Enabling hardware UART(Serial)/CAN
+## Увімкнення апаратного UART (Serial)/CAN
 
-BeagleBone have up to 6 hardware UART(Serial) buses (up to 3Mbit) and up to 2 hardware CAN(1Mbit) buses. UART1(RX,TX) and CAN1(TX,RX) and I2C2(SDA,SCL) are using same pins - so you need to chose what to use UART1(CTSN,RTSN) and CAN0(TX,RX) and I2C1(SDA,SCL) are using same pins - so you need to chose what to use All UART/CAN related pins are 3.3v based, so you will need to use Transceiver chips/boards like SN74LVC2G241DCUR (for UART), SN65HVD230 (for CAN), TTL-RS485 (for RS-485) or something similar which can convert 3.3v signals to appropriate levels.
+BeagleBone має до 6 апаратних шин UART (Serial) (до 3 Мбіт) і до 2 апаратних шин CAN (1 Мбіт). UART1(RX,TX) і CAN1(TX,RX) і I2C2(SDA,SCL) використовують однакові контакти - тому вам потрібно вибрати, що використовувати UART1(CTSN,RTSN) і CAN0(TX,RX) і I2C1(SDA) ,SCL) використовують однакові контакти, тому вам потрібно вибрати, що використовувати. Усі контакти, пов’язані з UART/CAN, базуються на 3,3 В, тому вам потрібно буде використовувати мікросхеми/плати трансиверів, наприклад SN74LVC2G241DCUR (для UART), SN65HVD230 (для CAN), TTL-RS485 (для RS-485) або щось подібне, що може перетворювати сигнали 3,3 В на відповідні рівні.
 
-Related overlays, for [Hardware Pin designation](#hardware-pin-designation) CAN0: BB-CAN0-00A0.dtbo CAN1: BB-CAN1-00A0.dtbo UART0: - used for Console UART1(RX,TX): BB-UART1-00A0.dtbo UART1(RTS,CTS): BB-UART1-RTSCTS-00A0.dtbo UART2(RX,TX): BB-UART2-00A0.dtbo UART3(RX,TX): BB-UART3-00A0.dtbo UART4(RS-485): BB-UART4-RS485-00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo
+Пов’язані накладки для [Hardware Pin designation](#hardware-pin-designation) CAN0: BB-CAN0-00A0.dtbo CAN1: BB-CAN1-00A0.dtbo UART0: - використовується для консолі UART1(RX,TX): BB-UART1-00A0.dtbo UART1(RTS,CTS): BB-UART1-RTSCTS-00A0.dtbo UART2(RX,TX): BB-UART2-00A0.dtbo UART3(RX,TX): BB-UART3-00A0.dtbo UART4 (RS-485): BB-UART4-RS485-00A0.dtbo UART5(RX,TX): BB-UART5-00A0.dtbo

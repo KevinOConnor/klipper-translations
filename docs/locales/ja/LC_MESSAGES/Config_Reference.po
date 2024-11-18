@@ -1,16 +1,18 @@
 # 京都タラレバ息子 <japan100@gmail.com>, 2023.
 # yubeshi <kt.yubeshi@gmail.com>, 2023.
+# immeteor2 <ryumeteor175@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-09-17 17:07+0000\n"
-"Last-Translator: yubeshi <kt.yubeshi@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/config_reference/ja/>\n"
+"PO-Revision-Date: 2024-11-07 00:01+0000\n"
+"Last-Translator: immeteor2 <ryumeteor175@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/"
+"config_reference/ja/>\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.8.2\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
@@ -454,7 +456,7 @@ msgid ""
 msgstr ""
 
 msgid "Additional stepper motors and extruders"
-msgstr ""
+msgstr "追加のステッピングモータと押出機"
 
 msgid "[stepper_z1]"
 msgstr "[stepper_z1]"

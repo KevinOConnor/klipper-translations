@@ -5,19 +5,19 @@
 # Bernardo Scolnik <bscolnik@gmail.com>, 2024.
 # Jhonny Rosa <jh0nny.rosa@gmail.com>, 2024.
 # Caio Henrique Dos Santos Carvalho <estudantecaiohsc@gmail.com>, 2024.
+# Rodrigo Altendorf Bernordi <risrdg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-09-08 09:09+0000\n"
-"Last-Translator: Caio Henrique Dos Santos Carvalho <estudantecaiohsc@gmail."
-"com>\n"
+"PO-Revision-Date: 2024-11-13 13:00+0000\n"
+"Last-Translator: Rodrigo Altendorf Bernordi <risrdg@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "klipper/config_reference/pt_BR/>\n"
 "Language: pt_BR\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
@@ -5906,7 +5906,7 @@ msgstr ""
 
 #: docs/Config_Reference.md:block 446 (header)
 msgid "ADS1220"
-msgstr ""
+msgstr "ADS1220"
 
 #: docs/Config_Reference.md:block 447 (paragraph)
 msgid ""

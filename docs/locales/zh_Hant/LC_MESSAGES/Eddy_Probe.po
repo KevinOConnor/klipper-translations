@@ -1,10 +1,20 @@
-#
+# rhuba8324 <qt8324@gmail.com>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-11-10 02:00+0000\n"
+"Last-Translator: rhuba8324 <qt8324@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/klipper/eddy_probe/zh_Hant/>\n"
+"Language: zh_Hant\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.8.2\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Eddy_Probe.md:block 1 (header)
 msgid "Eddy Current Inductive probe"
-msgstr ""
+msgstr "渦電流電感式探針"
 
 #: docs/Eddy_Probe.md:block 2 (paragraph)
 msgid ""
@@ -12,12 +22,14 @@ msgid ""
 "current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in "
 "Klipper."
 msgstr ""
+"本文件介紹如何在 Klipper 中使用[渦電流電感式探針](https://zh.wikipedia.org/"
+"zh-tw/%E6%B8%A6%E9%9B%BB%E6%B5%81)。"
 
 #: docs/Eddy_Probe.md:block 3 (paragraph)
 msgid ""
 "Currently, an eddy current probe can not be used for Z homing. The sensor "
 "can only be used for Z probing."
-msgstr ""
+msgstr "渦電流探針目前只能用於 Z 軸探高，無法用於 Z 軸歸零。"
 
 #: docs/Eddy_Probe.md:block 4 (paragraph)
 msgid ""
@@ -27,6 +39,10 @@ msgid ""
 " to require an `x_offset` and `y_offset`. If these values are not known, one"
 " should estimate the values during initial calibration."
 msgstr ""
+"首先在 printer.cfg 配置檔案中宣告 [probe\\_eddy\\_current "
+"配置部分](https://www.klipper3d.org/zh-Hant/Config_Reference."
+"html#probe_eddy_current)。建議將 `z_offset` 設定為 0.5mm。感測器通常會需要 "
+"`x_offset` 與 `y_offset`；若不知道這些數值，須在初始校準時估算。"
 
 #: docs/Eddy_Probe.md:block 5 (paragraph)
 msgid ""
@@ -40,6 +56,12 @@ msgid ""
 " completes, issue a `SAVE_CONFIG` command to save the results to the "
 "printer.cfg and restart."
 msgstr ""
+"校準的第一步驟是為感測器找出合適的 "
+"`DRIVE_CURRENT`。將列印機歸零，並移動工具頭，使感測器位於列印床中央上方約 "
+"20mm 處；然後輸入指令 `LDC_CALIBRATE_DRIVE_CURRENT CHIP=<配置名稱>` "
+"。舉例來說，若配置部分名為 `[probe_eddy_current my_eddy_probe]`，那則應輸入 `"
+"LDC_CALIBRATE_DRIVE_CURRENT CHIP=my_eddy_probe`。此指令應該會在幾秒內完成，"
+"然後輸入指令 `SAVE_CONFIG` 以將結果儲存到 printer.cfg 中並重新啟動。"
 
 #: docs/Eddy_Probe.md:block 6 (paragraph)
 msgid ""
@@ -56,6 +78,16 @@ msgid ""
 "After the tool completes, issue a `SAVE_CONFIG` command to save the results "
 "to the printer.cfg and restart."
 msgstr ""
+"第二步驟是連結感測器測量值與對應的 Z "
+"高度。將列印機歸零，並移動工具頭，使感測器位於列印床中央；然後輸入指令 `"
+"PROBE_EDDY_CURRENT_CALIBRATE "
+"CHIP=my_eddy_probe`。在程序開始後，按照[「A4紙測試法」](https://www.klipper3d"
+".org/zh-Hant/Bed_Level."
+"html#a4)找出在固定位置下，噴嘴與列印床中的確切距離。在測試完成後，輸入指令 "
+"`ACCEPT` "
+"確定該位置。接下來，該程序將會移動工具頭來使感測器位於噴嘴原本的位置上方，"
+"並透過一些移動以連結感測器與 Z 位置，這會需要幾分鐘時間。程序完成之後，"
+"輸入指令 `SAVE_CONFIG` 以將結果儲存到 printer.cfg 中並重新啟動。"
 
 #: docs/Eddy_Probe.md:block 7 (paragraph)
 msgid ""
@@ -66,12 +98,16 @@ msgid ""
 "`PROBE_EDDY_CURRENT_CALIBRATE` command (as described above) after making the"
 " change."
 msgstr ""
+"在初始校準完成後，最好依照[探針X/Y偏移校準](https://www.klipper3d.org/"
+"zh-Hant/Probe_Calibrate.html#xy)確認 `x_offset` 與 `y_offset` 是否準確。"
+"若要修改 `x_offset` 與 `y_offset` 數值，則須在變更後再次輸入指令 "
+"`PROBE_EDDY_CURRENT_CALIBRATE`（如上一段落所述）。"
 
 #: docs/Eddy_Probe.md:block 8 (paragraph)
 msgid ""
 "Once calibration is complete, one may use all the standard Klipper tools "
 "that use a Z probe."
-msgstr ""
+msgstr "校準完成之後，則可使用 Klipper 中所有 Z 探針相關功能。"
 
 #: docs/Eddy_Probe.md:block 9 (paragraph)
 msgid ""
@@ -82,10 +118,13 @@ msgid ""
 "important that calibration and probing is only done when the printer is at a"
 " stable temperature."
 msgstr ""
+"請留意渦電流感測器（與各種電感式探針）容易發生「熱飄移」現象，"
+"即為溫度變化會影響 Z 測高值。列印床或感測器硬體的溫度變化會使結果產生偏差，因"
+"此校準與測高必須在列印機溫度穩定後才能進行。"
 
 #: docs/Eddy_Probe.md:block 10 (header)
 msgid "Thermal Drift Calibration"
-msgstr ""
+msgstr "熱飄移校準"
 
 #: docs/Eddy_Probe.md:block 11 (paragraph)
 msgid ""
@@ -96,6 +135,10 @@ msgid ""
 "eddy current probe the `[temperature_probe]` section must share a name with "
 "the `[probe_eddy_current]` section. For example:"
 msgstr ""
+"就如所有電感式探針一樣，渦電流探針有顯著的熱飄移狀況。若渦電流探針的線圈上有"
+"溫度感測器，便能透過設定 `[temperature_probe]` 以取得線圈溫度並開啟軟體飄移補"
+"償。若要將溫度感測器與渦電流探針連結，`[temperature_probe]` 與 "
+"`[probe_eddy_current]` 部分必須使用相同的名稱，例如："
 
 #: docs/Eddy_Probe.md:block 12 (code)
 msgid ""
@@ -105,6 +148,11 @@ msgid ""
 "[temperature_probe my_probe]\n"
 "# temperature probe configuration...\n"
 msgstr ""
+"[probe_eddy_current my_probe]\n"
+"# 渦電流探針設定...\n"
+"\n"
+"[temperature_probe my_probe]\n"
+"# 溫度感測器設定...\n"
 
 #: docs/Eddy_Probe.md:block 13 (paragraph)
 msgid ""
@@ -114,6 +162,11 @@ msgid ""
 "`extruder_heating_z`, and `calibration_bed_temp` options, as doing so will "
 "automate some of the steps outlined below."
 msgstr ""
+"更多關於設定 `temperature_probe` 相關細節請見[配置參考](https://www.klipper3d"
+".org/zh-Hant/Config_Reference.html#_18)。建議先行設定 `calibration_position`"
+"、`calibration_extruder_temp`、`extruder_heating_z`、`calibration_bed_temp` "
+"部分，便能自動化下述一些步驟。若要校準的列印機是封閉式的，強烈建議將 "
+"`max_validation_temp` 設定在 100\\~120 之間。"
 
 #: docs/Eddy_Probe.md:block 14 (paragraph)
 msgid ""
@@ -123,6 +176,10 @@ msgid ""
 "on your system, the `temperature_probe` module offers a manual calibration "
 "procedure via the `TEMPERATURE_PROBE_CALIBRATE` gcode command."
 msgstr ""
+"渦電流探針的製造商可能會提供預設的飄移補償，可以將它手動添加到 "
+"`[probe_eddy_current]` 部分中的 `drift_calibration` "
+"設定。若是沒有、或預設補償效果不佳，可以輸入 `TEMPERATURE_PROBE_CALIBRATE` "
+"指令以使用 `[temperature_probe]` 功能中的手動校準流程。"
 
 #: docs/Eddy_Probe.md:block 15 (paragraph)
 msgid ""
@@ -134,12 +191,15 @@ msgid ""
 "printer cold and finish with the coil at the maximum temperature it can "
 "reach."
 msgstr ""
+"在開始校準之前，使用者必須知道探針線圈可能達到的最高溫度，這個溫度會在 "
+"`TEMPERATURE_PROBE_CALIBRATE` 指令中作為 `TARGET` 。校準的目標是涵蓋最大的溫"
+"度範圍，因此應在列印機冷卻後開始；並在線圈達到最高溫度時結束。"
 
 #: docs/Eddy_Probe.md:block 16 (paragraph)
 msgid ""
 "Once a `[temperature_probe]` is configured, the following steps may be taken"
 " to perform thermal drift calibration:"
-msgstr ""
+msgstr "在 `[temperature_probe]` 設定完成後，按照下列步驟執行熱飄移校準："
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -148,14 +208,17 @@ msgid ""
 "temperature during calibration which is necessary to perform thermal drift "
 "compensation."
 msgstr ""
+"當 `[temperature_probe]` 設定且連結完成後，使用 "
+"`PROBE_EDDY_CURRENT_CALIBRATE` "
+"指令開始校準探針，這會記錄熱飄移校準所需的過程溫度變化。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "Make sure the nozzle is free of debris and filament."
-msgstr ""
+msgstr "確保噴嘴乾淨且沒有耗材。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "The bed, nozzle, and probe coil should be cold prior to calibration."
-msgstr ""
+msgstr "列印床、噴嘴、探針線圈在開始前應為冷卻狀態。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -163,24 +226,27 @@ msgid ""
 "`calibration_extruder_temp`, and `extruder_heating_z` options in "
 "`[temperature_probe]` are **NOT** configured:"
 msgstr ""
+"若**沒有**設定 `[temperature_probe]` 部分中的 `calibration_position`、`calibr"
+"ation_extruder_temp`、`extruder_heating_z`，則須執行下列步驟："
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "Move the tool to the center of the bed. Z should be 30mm+ above the bed."
-msgstr ""
+msgstr "將工具頭移動至列印床中央。Z 軸須距離列印床 30mm 以上。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "Heat the extruder to a temperature above the maximum safe bed temperature. "
 "150-170C should be sufficient for most configurations. The purpose of "
 "heating the extruder is to avoid nozzle expansion during calibration."
-msgstr ""
+msgstr "將噴頭加熱至熱床最大安全溫度以上，多數情況下 150\\~170 "
+"度即可。加熱噴頭是為了避免在噴嘴在校準時發生熱膨脹。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When the extruder temperature has settled, move the Z axis down to about 1mm"
 " above the bed."
-msgstr ""
+msgstr "當噴頭達到穩定溫度之後，將 Z 軸移動至距離列印床約 1mm。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -192,20 +258,26 @@ msgid ""
 "extruder to the specified temperature the tool will move to the Z value "
 "specified by the`calibration_position`."
 msgstr ""
+"開始偏移校準。如果探針的名稱為 `my_probe`，且探針最高可達溫度為 80 度，"
+"那麼指令應為 `TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`。"
+"若有設定 `calibration_position` 與 `extruder_heating_z`，"
+"那工具頭會移動到指定的 XY 位置，並在到達指定溫度後移動到相應 Z 高度。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "The procedure will request a manual probe. Perform the manual probe with the"
 " paper test and `ACCEPT`. The calibration procedure will take the first set "
 "of samples with the probe then park the probe in the heating position."
-msgstr ""
+msgstr "此流程需要手動探高。按照 A4 紙測試法執行手動探高再輸入 `ACCEPT` "
+"指令。校準流程會取第一組樣本，然後將探針停在加熱位置。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "If the `calibration_bed_temp` is **NOT** configured turn on the bed heat to "
 "the maximum safe temperature. Otherwise this step will be performed "
 "automatically."
-msgstr ""
+msgstr "**沒有**設定 `calibration_bed_temp`，請設定列印床加熱至最高安全溫度。反之，這"
+"步驟將會自動執行。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -216,38 +288,42 @@ msgid ""
 "`STEP` value, a value too high may request too few samples resulting in a "
 "poor calibration."
 msgstr ""
+"預設校準流程中，每 2 度會需執行一次手動探高，直至到達設定之 `TARGET` 。"
+"此溫度變化量可以在 `TEMPERATURE_PROBE_CALIBRATE` 中的 `STEP` 自訂。"
+"請小心設定 `STEP` 數值，太高的數值會導致樣本數量不足而使校準結果不佳。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "The following additional gcode commands are available during drift "
 "calibration:"
-msgstr ""
+msgstr "校準過程中可使用下列額外指令："
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_NEXT` may be used to force a new sample before the step "
 "delta has been reached."
-msgstr ""
+msgstr "`TEMPERATURE_PROBE_NEXT` 可在溫度到達設定差值前強制取樣。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_COMPLETE` may be used to complete calibration before the "
 "`TARGET` has been reached."
-msgstr ""
+msgstr "`TEMPERATURE_PROBE_COMPLETE` 可在到達 `TARGET` 前提前結束校準。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "`ABORT` may be used to end calibration and discard results."
-msgstr ""
+msgstr "`ABORT` 可停止校準並拋棄結果。"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When calibration is finished use `SAVE_CONFIG` to store the drift "
 "calibration."
-msgstr ""
+msgstr "校準完成後，輸入 `SAVE_CONFIG` 指令以儲存飄移校準。"
 
 #: docs/Eddy_Probe.md:block 18 (paragraph)
 msgid ""
 "As one may conclude, the calibration process outlined above is more "
 "challenging and time consuming than most other procedures. It may require "
 "practice and several attempts to achieve an optimal calibration."
-msgstr ""
+msgstr "總而言之，上述的校準過程要比其它流程更複雜且耗時，需多次練習與嘗試才能取得最"
+"佳校準結果。"

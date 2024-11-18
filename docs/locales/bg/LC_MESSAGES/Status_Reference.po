@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-11-05 21:00+0000\n"
+"PO-Revision-Date: 2024-11-17 12:09+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
 "status_reference/bg/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid ""
 "This document is a reference of printer status information available in "
@@ -1324,7 +1324,6 @@ msgid "`is_base`: Returns True if this is the base screw."
 msgstr "`is_base`: Връща True, ако това е базовият винт."
 
 #: docs/Status_Reference.md:block 99 (header)
-#, fuzzy
 msgid "stepper_enable"
 msgstr "stepper_enable"
 
@@ -1343,7 +1342,6 @@ msgstr ""
 "активиран."
 
 #: docs/Status_Reference.md:block 42 (header)
-#, fuzzy
 msgid "gcode_button"
 msgstr "gcode_button"
 
@@ -1416,7 +1414,6 @@ msgstr ""
 "\"PRIMARY\", \"COPY\" и \"MIRROR\"."
 
 #: docs/Status_Reference.md:block 90 (header)
-#, fuzzy
 msgid "pwm_cycle_time"
 msgstr "pwm_cycle_time"
 
@@ -1441,7 +1438,6 @@ msgstr ""
 "командата `SET_VELOCITY_LIMIT` (или `M204`) ги промени по време на работа."
 
 #: docs/Status_Reference.md:block 113 (paragraph)
-#, fuzzy
 msgid ""
 "[bme280 "
 "config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-"

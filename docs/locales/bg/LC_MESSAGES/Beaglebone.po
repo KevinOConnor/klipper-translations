@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"PO-Revision-Date: 2024-11-17 12:09+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
 "beaglebone/bg/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: docs/Beaglebone.md:block 1 (header)
 msgid "Beaglebone"
@@ -109,7 +109,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 26 (header)
 msgid "Remaining configuration"
-msgstr ""
+msgstr "Остатъчна конфигурация"
 
 #: docs/Beaglebone.md:block 28 (header)
 msgid "Printing on the Beaglebone"

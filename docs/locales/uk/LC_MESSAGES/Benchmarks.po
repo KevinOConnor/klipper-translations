@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-11-05 21:00+0000\n"
+"PO-Revision-Date: 2024-11-07 00:00+0000\n"
 "Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
 "benchmarks/uk/>\n"
@@ -15,15 +15,17 @@ msgstr ""
 "X-Generator: Weblate 5.8.2\n"
 
 msgid "This document describes Klipper benchmarks."
-msgstr ""
+msgstr "Цей документ описує бендикти Klipper."
 
 msgid "Micro-controller Benchmarks"
-msgstr ""
+msgstr "Мікроконтролер бенчмарки"
 
 msgid ""
 "This section describes the mechanism used to generate the Klipper micro-"
 "controller step rate benchmarks."
 msgstr ""
+"Цей розділ описує механізм, який використовується для створення "
+"мікроконтролерів Klipper."
 
 msgid ""
 "The primary goal of the benchmarks is to provide a consistent mechanism for "
@@ -31,6 +33,10 @@ msgid ""
 " is to provide high-level metrics for comparing the performance between "
 "chips and between software platforms."
 msgstr ""
+"Основною метою оцінки є забезпечення послідовного механізму вимірювання "
+"впливу змін кодування в програмному забезпеченні. Другою метою є "
+"забезпечення високорівневої метрики для порівняння продуктивності між чіпами "
+"та між програмними платформами."
 
 msgid ""
 "The step rate benchmark is designed to find the maximum stepping rate that "
@@ -39,6 +45,12 @@ msgid ""
 "mcu/host communication, temperature reading, endstop checking) in any real-"
 "world usage."
 msgstr ""
+"Поетапний еталон призначений для пошуку максимальної швидкості крокування, "
+"яка може досягати обладнання та програмного забезпечення. Ця еталонна "
+"швидкість крокування не є обов'язковою в день-до дня використання як Klipper "
+"вимагає виконання інших завдань (наприклад, mcu/host спілкування, читання "
+"температури, перевірка кінцевих точок) в будь-якому режимі реального "
+"використання."
 
 msgid ""
 "In general, the pins for the benchmark tests are chosen to flash LEDs or "
@@ -46,9 +58,13 @@ msgid ""
 "configured pins prior to running a benchmark.** It is not recommended to "
 "drive an actual stepper during a benchmark."
 msgstr ""
+"В цілому, штифти для бендикційних тестів вибираються для спалаху "
+"світлодіодів або інших ненуклеозних штифтів. **Always Перевірте, що він "
+"безпечний для приводу налаштованих штифтів до запуску бенчмарка ** Не "
+"рекомендується приводити фактичний кроковий апарат під час бенчмарка."
 
 msgid "Step rate benchmark test"
-msgstr ""
+msgstr "Тест еталона кроку"
 
 msgid ""
 "The above tests three steppers simultaneously stepping. If running the above"
@@ -59,161 +75,173 @@ msgid ""
 "the test. It should be possible to bisect the ticks parameter until a stable"
 " value is found."
 msgstr ""
+"Наведені тести три крокети одночасно крокові. Якщо запущено вищевказані "
+"результати в параметрі \"Попередня таймер в минулому\" або \"Степпер занадто "
+"далеко за минулі\" помилки, то він вказує на `ticks` занадто низький (це "
+"призводить до покрокової швидкості, яка занадто швидко). Мета полягає в "
+"тому, щоб знайти найнижчий параметр ticks, який надійно призводить до "
+"успішного завершення тесту. Щоб уникнути параметра ticks до знайденого "
+"стабільного значення."
 
 msgid ""
 "On a failure, one can copy-and-paste the following to clear the error in "
 "preparation for the next test:"
 msgstr ""
+"На відмові можна копіювати і ставити наступне, щоб очистити помилку при "
+"підготовці до наступного тесту:"
 
 msgid "AVR step rate benchmark"
-msgstr ""
+msgstr "AVR покрокова оцінка"
 
 msgid "The following configuration sequence is used on AVR chips:"
-msgstr ""
+msgstr "На мікросхемах AVR використовуються наступні конфігурації:"
 
 msgid "avr"
-msgstr ""
+msgstr "авр"
 
 msgid "ticks"
-msgstr ""
+msgstr "кліщі"
 
 msgid "1 stepper"
-msgstr ""
+msgstr "1 крок"
 
 msgid "3 stepper"
-msgstr ""
+msgstr "3 крок"
 
 msgid "Arduino Due step rate benchmark"
-msgstr ""
+msgstr "Arduino еталон швидкості"
 
 msgid "The following configuration sequence is used on the Due:"
-msgstr ""
+msgstr "У зв'язку з цим використовується наступна послідовність конфігурації:"
 
 msgid "sam3x8e"
-msgstr ""
+msgstr "sam3x8e"
 
 msgid "Duet Maestro step rate benchmark"
-msgstr ""
+msgstr "Duet Maestro покрокова оцінка"
 
 msgid "The following configuration sequence is used on the Duet Maestro:"
-msgstr ""
+msgstr "Далі конфігурація використовується на Duet Maestro:"
 
 msgid "sam4s8c"
-msgstr ""
+msgstr "sam4s8c"
 
 msgid "70"
-msgstr ""
+msgstr "70"
 
 msgid "Duet Wifi step rate benchmark"
-msgstr ""
+msgstr "Duet Wifi покрокова оцінка"
 
 msgid "The following configuration sequence is used on the Duet Wifi:"
-msgstr ""
+msgstr "Далі конфігурація використовується на Duet Wifi:"
 
 msgid "sam4e8e"
-msgstr ""
+msgstr "sam4e8e"
 
 msgid "Beaglebone PRU step rate benchmark"
-msgstr ""
+msgstr "Beaglebone PRU покрокова оцінка"
 
 msgid "The following configuration sequence is used on the PRU:"
-msgstr ""
+msgstr "На PRU використовується наступна послідовність конфігурації:"
 
 msgid "pru"
-msgstr ""
+msgstr "прут"
 
 msgid "STM32F042 step rate benchmark"
-msgstr ""
+msgstr "STM32F042 покрокова оцінка"
 
 msgid "The following configuration sequence is used on the STM32F042:"
-msgstr ""
+msgstr "На STM32F042 використовується наступна послідовність конфігурації:"
 
 msgid "stm32f042"
-msgstr ""
+msgstr "стм32ф042"
 
 msgid "STM32F103 step rate benchmark"
-msgstr ""
+msgstr "STM32F103 покрокова оцінка"
 
 msgid "The following configuration sequence is used on the STM32F103:"
-msgstr ""
+msgstr "На STM32F103 використовується наступна послідовність конфігурації:"
 
 msgid "stm32f103"
-msgstr ""
+msgstr "стм32ф103"
 
 msgid "71"
-msgstr ""
+msgstr "71"
 
 msgid "STM32F4 step rate benchmark"
-msgstr ""
+msgstr "STM32F4 покрокова оцінка"
 
 msgid "The following configuration sequence is used on the STM32F4:"
-msgstr ""
+msgstr "На СТМ32Ф4 використовується наступна послідовність конфігурації:"
 
 msgid "stm32f446"
-msgstr ""
+msgstr "стм32ф446"
 
 msgid "51"
-msgstr ""
+msgstr "51"
 
 msgid "stm32f407"
-msgstr ""
+msgstr "стм32ф407"
 
 msgid "52"
-msgstr ""
+msgstr "52"
 
 msgid "LPC176x step rate benchmark"
-msgstr ""
+msgstr "LPC176x покрокова оцінка"
 
 msgid "The following configuration sequence is used on the LPC176x:"
-msgstr ""
+msgstr "Далі конфігурація використовується на LPC176x:"
 
 msgid "lpc1768"
-msgstr ""
+msgstr "лп1768"
 
 msgid "lpc1769"
-msgstr ""
+msgstr "лп1769"
 
 msgid "SAMD21 step rate benchmark"
-msgstr ""
+msgstr "Еталонна швидкість кроку SAMD21"
 
 msgid "The following configuration sequence is used on the SAMD21:"
-msgstr ""
+msgstr "На SAMD21 використовується наступна послідовність конфігурації:"
 
 msgid "samd21"
-msgstr ""
+msgstr "шемале21"
 
 msgid "SAMD51 step rate benchmark"
-msgstr ""
+msgstr "SAMD51 еталон швидкості"
 
 msgid "The following configuration sequence is used on the SAMD51:"
-msgstr ""
+msgstr "На SAMD51 використовується наступна послідовність конфігурації:"
 
 msgid "samd51"
-msgstr ""
+msgstr "шемале51"
 
 msgid "1 stepper (200Mhz)"
-msgstr ""
+msgstr "1 кроковий (200Mhz)"
 
 msgid "3 stepper (200Mhz)"
-msgstr ""
+msgstr "3 кроковий (200Mhz)"
 
 msgid "Linux MCU step rate benchmark"
-msgstr ""
+msgstr "Linux MCU покрокова оцінка"
 
 msgid "The following configuration sequence is used on a Raspberry Pi:"
-msgstr ""
+msgstr "Наступна послідовність конфігурації використовується на Raspberry Pi:"
 
 msgid "Linux (RPi3)"
-msgstr ""
+msgstr "Linux (RPi3)"
 
 msgid "Command dispatch benchmark"
-msgstr ""
+msgstr "Еталон для відправки команд"
 
 msgid ""
 "When the test completes, determine the difference between the clocks "
 "reported in the two \"uptime\" response messages. The total number of "
 "commands per second is then `100000 * mcu_frequency / clock_diff`."
 msgstr ""
+"Коли тест завершується, визначте різницю між годинниками, які повідомляються "
+"в двох \"часових\" повідомленнях відповіді. Загальна кількість команд за "
+"секунду — `100000 * mcu_ Частота / годинник_diff`."
 
 msgid ""
 "Note that this test may saturate the USB/CPU capacity of a Raspberry Pi. If "
@@ -222,129 +250,134 @@ msgid ""
 "applicable, the benchmarks below are with console.py running on a desktop "
 "class machine with the device connected via a high-speed hub."
 msgstr ""
+"Зауважте, що цей тест може наситити USB / CPU ємність Raspberry Pi. Якщо "
+"працює на Raspberry Pi, Beaglebone або аналогічний комп'ютер хосту, то "
+"збільшення затримки (наприклад, `DELAY {clock + 20*freq} get_uptime`). Де це "
+"можливо, бендикти нижче з консолі. py, що працює на машині настільного класу "
+"з пристроєм, підключеним через швидкісний вузол."
 
 msgid "MCU"
 msgstr "мікроконтролер"
 
 msgid "Rate"
-msgstr ""
+msgstr "Ціна"
 
 msgid "Build"
-msgstr ""
+msgstr "Почати"
 
 msgid "Build compiler"
-msgstr ""
+msgstr "Створити компілятор"
 
 msgid "stm32f042 (CAN)"
-msgstr ""
+msgstr "стм32ф042 (CAN)"
 
 msgid "18K"
-msgstr ""
+msgstr "18КХ"
 
 msgid "c105adc8"
-msgstr ""
+msgstr "c105adc8"
 
 msgid "arm-none-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1"
-msgstr ""
+msgstr "arm-on-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1"
 
 msgid "atmega2560 (serial)"
-msgstr ""
+msgstr "atmega2560 (серійне)"
 
 msgid "23K"
-msgstr ""
+msgstr "23КХ"
 
 msgid "b161a69e"
-msgstr ""
+msgstr "б161а69e"
 
 msgid "avr-gcc (GCC) 4.8.1"
-msgstr ""
+msgstr "avr-gcc (GCC) 4.8.1"
 
 msgid "sam3x8e (serial)"
-msgstr ""
+msgstr "sam3x8e (серійний)"
 
 msgid "arm-none-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
-msgstr ""
+msgstr "arm-on-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
 
 msgid "at90usb1286 (USB)"
-msgstr ""
+msgstr "в90усб1286 (USB)"
 
 msgid "75K"
-msgstr ""
+msgstr "75 КМ"
 
 msgid "01d2183f"
-msgstr ""
+msgstr "01д2183ф"
 
 msgid "avr-gcc (GCC) 5.4.0"
-msgstr ""
+msgstr "avr-gcc (GCC) 5.4.0"
 
 msgid "samd21 (USB)"
-msgstr ""
+msgstr "samd21 (USB)"
 
 msgid "223K"
-msgstr ""
+msgstr "223К"
 
 msgid "arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
-msgstr ""
+msgstr "arm-on-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
 
 msgid "pru (shared memory)"
-msgstr ""
+msgstr "pru (поголена пам'ять)"
 
 msgid "260K"
-msgstr ""
+msgstr "260КХ"
 
 msgid "c5968a08"
-msgstr ""
+msgstr "c5968a08"
 
 msgid "pru-gcc (GCC) 8.0.0 20170530 (experimental)"
-msgstr ""
+msgstr "pru-gcc (GCC) 8.0.0 20170530 (експериментально)"
 
 msgid "stm32f103 (USB)"
-msgstr ""
+msgstr "стм32ф103 (USB)"
 
 msgid "355K"
-msgstr ""
+msgstr "355K"
 
 msgid "sam3x8e (USB)"
-msgstr ""
+msgstr "sam3x8e (USB)"
 
 msgid "418K"
-msgstr ""
+msgstr "418K"
 
 msgid "lpc1768 (USB)"
-msgstr ""
+msgstr "лп1768 (USB)"
 
 msgid "534K"
-msgstr ""
+msgstr "534K"
 
 msgid "lpc1769 (USB)"
-msgstr ""
+msgstr "лп1769 (USB)"
 
 msgid "628K"
-msgstr ""
+msgstr "628K"
 
 msgid "sam4s8c (USB)"
-msgstr ""
+msgstr "sam4s8c (USB)"
 
 msgid "650K"
-msgstr ""
+msgstr "650K"
 
 msgid "8d4a5c16"
-msgstr ""
+msgstr "8d4a5c16"
 
 msgid "samd51 (USB)"
-msgstr ""
+msgstr "samd51 (USB)"
 
 msgid "864K"
-msgstr ""
+msgstr "864K"
 
 msgid "stm32f446 (USB)"
-msgstr ""
+msgstr "стм32ф446 (USB)"
 
 msgid "870K"
-msgstr ""
+msgstr "870K"
 
 msgid "Host Benchmarks"
-msgstr ""
+msgstr "Хост Бенчмарки"
 
 msgid ""
 "SET start_clock {clock+freq}\n"
@@ -368,57 +401,82 @@ msgid ""
 "set_next_step_dir oid=2 dir=1\n"
 "queue_step oid=2 interval=3000 count=1 add=0\n"
 msgstr ""
+"SET старт_clock {clock+freq}\n"
+"Тісточки SET 1000\n"
+"\n"
+"Электронная пошта: info@start_clock.com\n"
+"set_next_step_dir oid=0 dir=0\n"
+"string_step oid=0 інтервал={ticks} count=60000 add=0\n"
+"set_next_step_dir oid=0 dir=1\n"
+"string_step oid=0 інтервал=3000 count=1 add=0\n"
+"\n"
+"Электронная пошта: info@start_clock.com\n"
+"set_next_step_dir oid=1 dir=0\n"
+"string_step oid=1 інтервал={ticks} count=60000 add=0\n"
+"set_next_step_dir oid=1 dir=1\n"
+"string_step oid=1 інтервал=3000 count=1 add=0\n"
+"\n"
+"Электронная пошта: info@start_clock.com\n"
+"set_next_step_dir oid=2 dir=0\n"
+"string_step oid=2 інтервал={ticks} count=60000 add=0\n"
+"set_next_step_dir oid=2 dir=1\n"
+"string_step oid=2 інтервал=3000 count=1 add=0\n"
 
 msgid "clear_shutdown\n"
-msgstr ""
+msgstr "clear_shutdown\n"
 
 msgid "ECHO Test result is: {\"%.0fK\" % (3. * freq / ticks / 1000.)}\n"
-msgstr ""
+msgstr "ЕКОХО Результати випробувань: {\"%.0fK\" % (3. * freq / ticks / 1000.\n"
 
 msgid ""
 "DELAY {clock + 2*freq} get_uptime\n"
 "FLOOD 100000 0.0 debug_nop\n"
 "get_uptime\n"
 msgstr ""
+"DELAY {clock + 2*freq} Увійти\n"
+"FLOOD 100000 0.0 debug_nop\n"
+"Увійти\n"
 
 msgid ""
 "time ~/klippy-env/bin/python ./klippy/klippy.py config/example-cartesian.cfg"
 " -i something_complex.gcode -o /dev/null -d out/klipper.dict\n"
 msgstr ""
+"час ~/klippy-env/bin/python ./klippy/klippy.py config/example-cartesian.cfg -"
+"і javascript licenses api веб-сайт go1.13.8\n"
 
 msgid "RP2040 step rate benchmark"
-msgstr ""
+msgstr "RP2040 покрокова оцінка"
 
 msgid "The following configuration sequence is used on the RP2040:"
-msgstr ""
+msgstr "На RP2040 використовується наступна послідовність конфігурації:"
 
 msgid "rp2040"
-msgstr ""
+msgstr "рп2040"
 
 msgid "66"
-msgstr ""
+msgstr "66"
 
 msgid "5"
 msgstr "5"
 
 msgid "22"
-msgstr ""
+msgstr "22"
 
 msgid "rp2040 (USB)"
-msgstr ""
+msgstr "rp2040 (USB)"
 
 msgid "873K"
-msgstr ""
+msgstr "873K"
 
 msgid "c5667193"
-msgstr ""
+msgstr "п5667193"
 
 msgid "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
 
 #: docs/Benchmarks.md:block 1 (header)
 msgid "Benchmarks"
-msgstr ""
+msgstr "Бенчмарки"
 
 #: docs/Benchmarks.md:block 9 (paragraph)
 msgid ""
@@ -427,6 +485,9 @@ msgid ""
 "hardware platform (see below) and then the following is cut-and-paste into "
 "the console.py terminal window:"
 msgstr ""
+"Тест виконується за допомогою консолі. py інструмент (опис в <Debugging.md>)"
+". Мікроконтролер налаштовується для конкретної апаратної платформи (див. "
+"нижче) і після чого на пульті ріжучих і пасти. вікно терміналу py:"
 
 #: docs/Benchmarks.md:block 86 (paragraph)
 msgid ""
@@ -436,6 +497,10 @@ msgid ""
 "<Debugging.md>). The following is cut-and-paste into the console.py terminal"
 " window:"
 msgstr ""
+"Командний контрольний еталонний тест, скільки \"думій\" працює на "
+"мікроконтролері. В першу чергу тест апаратного механізму зв'язку. Тест "
+"здійснюється за допомогою консолі. py інструмент (опис в <Debugging.md>). "
+"Наступне ріжуча і паста в консолі. вікно терміналу py:"
 
 #: docs/Benchmarks.md:block 92 (paragraph)
 msgid ""
@@ -444,6 +509,10 @@ msgid ""
 " done by choosing a large and complex G-Code file and timing how long it "
 "takes for the host software to process it. For example:"
 msgstr ""
+"Ви можете запустити тестові тести на програмне забезпечення хосту за "
+"допомогою механізму обробки «податковий режим» (описаний в <Debugging.md>). "
+"Це, як правило, робиться, вибираючи великий і складний G-Code файл і "
+"терміни, як довго він займає для хост-програми для обробки його. Наприклад:"
 
 #: docs/Benchmarks.md:block 14 (paragraph)
 msgid ""
@@ -451,6 +520,9 @@ msgid ""
 "used, but only the first block of the above test is cut-and-paste into the "
 "console.py window."
 msgstr ""
+"Для отримання одноступінкових бендиктів використовується однакова "
+"послідовність конфігурацій, але тільки перший блок вищевказаного тесту "
+"ріжучий і простий в консолі. py вікно."
 
 #: docs/Benchmarks.md:block 17 (paragraph)
 msgid ""
@@ -461,6 +533,11 @@ msgid ""
 "pulse. For other micro-controllers use a `step_pulse_duration` corresponding"
 " to 100ns."
 msgstr ""
+"Для драйверів TMC працюють бендикти. Для мікроконтролерів, які підтримують "
+"`STEPPER_BOTH_EDGE=1` (як повідомляється в лінійці `MCU` при консолі. py "
+"first start) use `step_pulse_duration=0` і `invert_step=-1`, щоб увімкнути "
+"оптимізований крок на обох краях степового імпульсу. Для інших "
+"мікроконтролерів використовують `step_pulse_duration`, відповідну 100ns."
 
 #: docs/Benchmarks.md:block 20 (code)
 msgid ""
@@ -470,6 +547,14 @@ msgid ""
 "config_stepper oid=2 step_pin=PC7 dir_pin=PC6 invert_step=0 step_pulse_ticks=32\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PA5 dir_pin=PA4 invert_step=0 step_pulse_ticks="
+"32\n"
+"config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=0 step_pulse_ticks="
+"32\n"
+"config_stepper oid=2 step_pin=PC7 dir_pin=PC6 invert_step=0 step_pulse_ticks="
+"32\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 21 (paragraph)
 msgid ""
@@ -478,14 +563,17 @@ msgid ""
 "for an atmega644p (previous tests have confirmed simulavr results match "
 "tests on both a 16Mhz at90usb and a 16Mhz atmega2560)."
 msgstr ""
+"`59314d99` з версією Gcc `avr-gcc (GCC) 5.4.0`. Тести 16Mhz і 20Mhz були "
+"запущені за допомогою simulavr, налаштованих для atmega644p (передові тести "
+"підтвердили результати Ssimulavr на обох 16Mhz at90usb і 16Mhz atmega2560)."
 
 #: docs/Benchmarks.md:block 22 (table)
 msgid "102"
-msgstr ""
+msgstr "102"
 
 #: docs/Benchmarks.md:block 22 (table)
 msgid "486"
-msgstr ""
+msgstr "486"
 
 #: docs/Benchmarks.md:block 25 (code)
 msgid ""
@@ -495,16 +583,25 @@ msgid ""
 "config_stepper oid=2 step_pin=PA21 dir_pin=PC30 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PB27 dir_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB26 dir_pin=PC30 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA21 dr_pin=PC30 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 26 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 msgstr ""
+"`59314d99` з версією Gcc `arm-on-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 
 #: docs/Benchmarks.md:block 27 (table)
 msgid "257"
-msgstr ""
+msgstr "257"
 
 #: docs/Benchmarks.md:block 30 (code)
 msgid ""
@@ -514,10 +611,18 @@ msgid ""
 "config_stepper oid=2 step_pin=PC26 dir_pin=PB4 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PC26 dir_pin=PC18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PC26 dir_pin=PA8 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PC26 dir_pin=PB4 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 32 (table)
 msgid "260"
-msgstr ""
+msgstr "260"
 
 #: docs/Benchmarks.md:block 35 (code)
 msgid ""
@@ -527,20 +632,30 @@ msgid ""
 "config_stepper oid=2 step_pin=PD8 dir_pin=PD13 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PD6 dir_pin=PD11 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PD7 dr_pin=PD12 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PD8 dr_pin=PD13 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 36 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `gcc version "
 "10.3.1 20210621 (release) (GNU Arm Embedded Toolchain 10.3-2021.07)`."
 msgstr ""
+"Тест був останній курс на комітування `59314d99` з версією Gcc `gcc версії "
+"10.3.1 20210621 (випуск) (GNU Arm Embedded Toolchain 10.3-2021.07)`."
 
 #: docs/Benchmarks.md:block 37 (table)
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: docs/Benchmarks.md:block 37 (table)
 msgid "215"
-msgstr ""
+msgstr "215"
 
 #: docs/Benchmarks.md:block 40 (code)
 msgid ""
@@ -550,20 +665,28 @@ msgid ""
 "config_stepper oid=2 step_pin=gpio0_22 dir_pin=gpio2_1 invert_step=0 step_pulse_ticks=20\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=gpio0_23 dir_pin=gpio1_12 invert_step=0 "
+"step_pulse_ticks=20\n"
+"config_stepper oid=1 step_pin=gpio1_15 dir_pin=gpio0_26 invert_step=0 "
+"step_pulse_ticks=20\n"
+"config_stepper oid=2 step_pin=gpio0_22 dir_pin=gpio2_1 invert_step=0 "
+"step_pulse_ticks=20\n"
+"javascript licenses api веб-сайт go1.13.8\n"
 
 #: docs/Benchmarks.md:block 41 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `pru-gcc (GCC) "
 "8.0.0 20170530 (experimental)`."
-msgstr ""
+msgstr "`59314d99` з версією Gcc `pru-gcc (GCC) 8.0.0 20170530 (досвідчений)`."
 
 #: docs/Benchmarks.md:block 42 (table)
 msgid "231"
-msgstr ""
+msgstr "231"
 
 #: docs/Benchmarks.md:block 42 (table)
 msgid "847"
-msgstr ""
+msgstr "847"
 
 #: docs/Benchmarks.md:block 45 (code)
 msgid ""
@@ -573,14 +696,22 @@ msgid ""
 "config_stepper oid=2 step_pin=PB8 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PA1 dir_pin=PA2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PB8 dir_pin=PA2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 47 (table)
 msgid "59"
-msgstr ""
+msgstr "59"
 
 #: docs/Benchmarks.md:block 47 (table)
 msgid "249"
-msgstr ""
+msgstr "249"
 
 #: docs/Benchmarks.md:block 50 (code)
 msgid ""
@@ -590,14 +721,22 @@ msgid ""
 "config_stepper oid=2 step_pin=PA4 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PC13 dir_pin=PB5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB3 dir_pin=PB6 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA4 dir_pin=PB7 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 52 (table)
 msgid "61"
-msgstr ""
+msgstr "61"
 
 #: docs/Benchmarks.md:block 52 (table)
 msgid "264"
-msgstr ""
+msgstr "264"
 
 #: docs/Benchmarks.md:block 55 (code)
 msgid ""
@@ -607,6 +746,14 @@ msgid ""
 "config_stepper oid=2 step_pin=PB3 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PA5 dir_pin=PB5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB2 dir_pin=PB6 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PB3 dr_pin=PB7 invert_step=-1 step_pulse_ticks="
+"0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 56 (paragraph)
 msgid ""
@@ -614,14 +761,18 @@ msgid ""
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The STM32F407 results were obtained by "
 "running an STM32F407 binary on an STM32F446 (and thus using a 168Mhz clock)."
 msgstr ""
+"Тест востаннє запускався на коміті `59314d99` з версією gcc `arm-none-eabi-"
+"gcc (Fedora 10.2.0-4.fc34) 10.2.0`. Результати STM32F407 були отримані "
+"шляхом запуску двійкового файлу STM32F407 на STM32F446 (і, отже, з "
+"використанням тактової частоти 168 МГц)."
 
 #: docs/Benchmarks.md:block 57 (table)
 msgid "46"
-msgstr ""
+msgstr "46"
 
 #: docs/Benchmarks.md:block 57 (table)
 msgid "205"
-msgstr ""
+msgstr "205"
 
 #: docs/Benchmarks.md:block 61 (code)
 msgid ""
@@ -631,6 +782,14 @@ msgid ""
 "config_stepper oid=2 step_pin=P1.23 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=P1.20 dir_pin=P1.18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=P1.21 dir_pin=P1.18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=P1.23 dir_pin=P1.18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
@@ -638,10 +797,12 @@ msgid ""
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The 120Mhz LPC1769 results were obtained"
 " by overclocking an LPC1768 to 120Mhz."
 msgstr ""
+"`59314d99` з версією Gcc `arm-on-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`. "
+"120Mhz LPC1769 результати були отримані шляхом перекриття LPC1768 до 120Mhz."
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "222"
-msgstr ""
+msgstr "222"
 
 #: docs/Benchmarks.md:block 67 (code)
 msgid ""
@@ -651,16 +812,26 @@ msgid ""
 "config_stepper oid=2 step_pin=PA17 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PA27 dr_pin=PA20 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB3 dir_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA17 dr_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 68 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD21G18 micro-controller."
 msgstr ""
+"Тест був останній курс на комітування `59314d99` з версією Gcc `arm-non-eabi-"
+"gcc (Fedora 10.2.0-4.fc34) 10.2.0` на мікроконтролері SAMD21G18."
 
 #: docs/Benchmarks.md:block 69 (table)
 msgid "306"
-msgstr ""
+msgstr "306"
 
 #: docs/Benchmarks.md:block 72 (code)
 msgid ""
@@ -670,12 +841,22 @@ msgid ""
 "config_stepper oid=2 step_pin=PA22 dir_pin=PA19 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PA22 dir_pin=PA20 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PA22 dir_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA22 dir_pin=PA19 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 73 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD51J19A micro-controller."
 msgstr ""
+"Тест був останній курс на комітування `59314d99` з версією Gcc `arm-non-eabi-"
+"gcc (Fedora 10.2.0-4.fc34) 10.2.0` на мікроконтролері SAMD51J19A."
 
 #: docs/Benchmarks.md:block 74 (table)
 msgid "39"
@@ -683,11 +864,11 @@ msgstr "39 хв"
 
 #: docs/Benchmarks.md:block 74 (table)
 msgid "191"
-msgstr ""
+msgstr "191"
 
 #: docs/Benchmarks.md:block 74 (table)
 msgid "181"
-msgstr ""
+msgstr "181"
 
 #: docs/Benchmarks.md:block 77 (code)
 msgid ""
@@ -697,12 +878,22 @@ msgid ""
 "config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=gpio25 dir_pin=gpio3 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=gpio26 dir_pin=gpio4 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"javascript licenses api веб-сайт go1.13.8\n"
 
 #: docs/Benchmarks.md:block 78 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a Raspberry Pi Pico board."
 msgstr ""
+"Тест був останній курс на комітування `59314d99` з версією Gcc `arm-non-eabi-"
+"gcc (Fedora 10.2.0-4.fc34) 10.2.0` на дошці Raspberry Pico."
 
 #: docs/Benchmarks.md:block 82 (code)
 msgid ""
@@ -712,6 +903,14 @@ msgid ""
 "config_stepper oid=2 step_pin=gpio6 dir_pin=gpio17 invert_step=0 step_pulse_ticks=5\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=gpio2 dir_pin=gpio3 invert_step=0 "
+"step_pulse_ticks=5\n"
+"config_stepper oid=1 step_pin=gpio4 dir_pin=gpio5 invert_step=0 "
+"step_pulse_ticks=5\n"
+"config_stepper oid=2 step_pin=gpio6 dir_pin=gpio17 invert_step=0 "
+"step_pulse_ticks=5\n"
+"javascript licenses api веб-сайт go1.13.8\n"
 
 #: docs/Benchmarks.md:block 83 (paragraph)
 msgid ""
@@ -719,14 +918,17 @@ msgid ""
 "8.3.0-6+rpi1) 8.3.0` on a Raspberry Pi 3 (revision a02082). It was difficult"
 " to get stable results in this benchmark."
 msgstr ""
+"Тест був останній курс на комітування `59314d99` з версією Gcc `gcc ("
+"Raspbian 8.3.0-6+rpi1) 8.3.0` на Малині Пі 3 (редагування a02082). Це важко "
+"отримати стабільні результати в цьому еталоні."
 
 #: docs/Benchmarks.md:block 84 (table)
 msgid "160"
-msgstr ""
+msgstr "160"
 
 #: docs/Benchmarks.md:block 84 (table)
 msgid "380"
-msgstr ""
+msgstr "380"
 
 #: docs/Benchmarks.md:block 15 (paragraph)
 msgid ""
@@ -736,14 +938,19 @@ msgid ""
 "ticks parameter. The results are rounded to the nearest K. For example, with"
 " three active steppers:"
 msgstr ""
+"Для отримання бендиктів, знайдених в документі [Особливості](Features.md) "
+"сума кроків на другий обчислюється шляхом розмноження кількості активних "
+"кроків з номінальною частотою mcu і поділу за кінцевими показниками ticks. "
+"Результати закруглені до найближчого К. Наприклад, з трьома активними "
+"кроками:"
 
 #: docs/Benchmarks.md:block 59 (header)
 msgid "STM32G0B1 step rate benchmark"
-msgstr ""
+msgstr "STM32G0B1 покрокова оцінка"
 
 #: docs/Benchmarks.md:block 60 (paragraph)
 msgid "The following configuration sequence is used on the STM32G0B1:"
-msgstr ""
+msgstr "На СТМ32Г0Б1 використовується наступна послідовність конфігурації:"
 
 #: docs/Benchmarks.md:block 61 (code)
 msgid ""
@@ -753,32 +960,41 @@ msgid ""
 "config_stepper oid=2 step_pin=PB0 dir_pin=PC5 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PB13 dr_pin=PB12 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB10 dir_pin=PB2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PB0 dir_pin=PC5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
 "The test was last run on commit `247cd753` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 msgstr ""
+"`247cd753` з версією Gcc `arm-on-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "58"
-msgstr ""
+msgstr "58"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "243"
-msgstr ""
+msgstr "243"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "stm32g0b1"
-msgstr ""
+msgstr "stm32g0b1"
 
 #: docs/Benchmarks.md:block 59 (header)
 msgid "STM32H7 step rate benchmark"
-msgstr ""
+msgstr "STM32H7 покрокова оцінка"
 
 #: docs/Benchmarks.md:block 60 (paragraph)
 msgid "The following configuration sequence is used on a STM32H743VIT6:"
-msgstr ""
+msgstr "Далі конфігурація використовується на STM32H743VIT6:"
 
 #: docs/Benchmarks.md:block 61 (code)
 msgid ""
@@ -788,6 +1004,14 @@ msgid ""
 "config_stepper oid=2 step_pin=PE2 dir_pin=PE3 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PD4 dir_pin=PD3 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PA15 dir_pin=PA8 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PE2 dir_pin=PE3 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
 
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
@@ -795,27 +1019,30 @@ msgid ""
 "gcc (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) [gcc-8-branch revision "
 "273027]`."
 msgstr ""
+"Тест був останній курс на комітування `00191b5c` з версією Gcc `arm-non-eabi-"
+"gcc (15:8-2019-q3-1+b1) 8.3.1 20190703 (випуск) [gcc-8-branch version "
+"273027]`."
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "stm32h7"
-msgstr ""
+msgstr "стм32х7"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "44"
-msgstr ""
+msgstr "44"
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "198"
-msgstr ""
+msgstr "198"
 
 #: docs/Benchmarks.md:block 85 (header)
 msgid "AR100 step rate benchmark"
-msgstr ""
+msgstr "AR100 покрокова оцінка"
 
 #: docs/Benchmarks.md:block 86 (paragraph)
 msgid ""
 "The following configuration sequence is used on AR100 CPU (Allwinner A64):"
-msgstr ""
+msgstr "На AR100 використовується послідовність конфігурації (Allwinner A64):"
 
 #: docs/Benchmarks.md:block 87 (code)
 msgid ""
@@ -826,40 +1053,51 @@ msgid ""
 "finalize_config crc=0\n"
 "\n"
 msgstr ""
+"сортувати_oids count=3\n"
+"config_stepper oid=0 step_pin=PL10 dir_pin=PE14 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PL11 dr_pin=PE15 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PL12 dr_pin=PE16 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"JavaScript licenses API Веб-сайт Go1.13.8\n"
+"\n"
 
 #: docs/Benchmarks.md:block 88 (paragraph)
 msgid ""
 "The test was last run on commit `08d037c6` with gcc version `or1k-linux-"
 "musl-gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller."
 msgstr ""
+"Тест був останній курс на комітування `08d037c6` з версією Gcc `or1k-linux-"
+"musl-gcc (GCC) 9.2.0` на мікроконтролері Allwinner A64-H."
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "AR100 R_PIO"
-msgstr ""
+msgstr "АР100 Р_ПІО"
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "85"
-msgstr ""
+msgstr "85"
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "359"
-msgstr ""
+msgstr "359"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "ar100 (serial)"
-msgstr ""
+msgstr "ar100 (серійний)"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "138K"
-msgstr ""
+msgstr "138K"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "08d037c6"
-msgstr ""
+msgstr "08d037c6"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "or1k-linux-musl-gcc 9.3.0"
-msgstr ""
+msgstr "or1k-linux-musl-gcc 9.3.0 км"
 
 #~ msgid ""
 #~ "To produce the benchmarks found in the Features.md document, the total "

@@ -1,220 +1,220 @@
-# RPi microcontroller
+# Мікроконтролер RPi
 
-This document describes the process of running Klipper on a RPi and use the same RPi as secondary mcu.
+Цей документ описує процес запуску Klipper на RPi і використовувати той же RPi як вторинний Mcu.
 
-## Why use RPi as a secondary MCU?
+## Чому використовують RPi як вторинний MCU?
 
-Often the MCUs dedicated to controlling 3D printers have a limited and pre-configured number of exposed pins to manage the main printing functions (thermal resistors, extruders, steppers ...). Using the RPi where Klipper is installed as a secondary MCU gives the possibility to directly use the GPIOs and the buses (i2c, spi) of the RPi inside klipper without using Octoprint plugins (if used) or external programs giving the ability to control everything within the print GCODE.
+Часто МКУ, присвячені контролінгу 3D-принтерів, мають обмежену і попередньо налаштовану кількість піддаються шпилькам для управління основними функціями друку (термальні резистори, екструдери, крокуси ...). Використання RPi, де Klipper встановлюється як вторинний MCU дає можливість безпосередньо використовувати GPIOs і автобуси (i2c, spi) RPi всередині klipper без використання плагінів Octoprint (якщо використовується) або зовнішніх програм, що дають можливість контролювати всі в межах друку GCODE.
 
-**Warning**: If your platform is a *Beaglebone* and you have correctly followed the installation steps, the linux mcu is already installed and configured for your system.
+**Налаштування**: Якщо ваша платформа є *Beaglebone* і ви повинні правильно дотримуватися кроків установки, Linux mcu вже встановлена і налаштована для вашої системи.
 
-## Install the rc script
+## Встановіть rc скрипт
 
-If you want to use the host as a secondary MCU the klipper_mcu process must run before the klippy process.
+Якщо ви хочете використовувати хост як вторинний MCU, процес klipper_mcu повинен працювати перед процесом затискання.
 
-After installing Klipper, install the script. run:
-
-```
-cd ~/klipper/
-sudo cp ./scripts/klipper-mcu.service /etc/systemd/system/
-sudo systemctl enable klipper-mcu.service
-```
-
-## Building the micro-controller code
-
-To compile the Klipper micro-controller code, start by configuring it for the "Linux process":
+Після установки Кліппер, встановіть скрипт. Запуск:
 
 ```
-cd ~/klipper/
-make menuconfig
+cd ~ / клиппер /
+javascript licenses api веб-сайт go1.13.8
+sudo systemctl включити klipper-mcu.service
 ```
 
-In the menu, set "Microcontroller Architecture" to "Linux process," then save and exit.
+## Створення мікроконтролерного коду
 
-To build and install the new micro-controller code, run:
+Щоб компілювати код мікроконтролера Klipper, запустіть настройку для процесу "Linux":
+
+```
+cd ~ / клиппер /
+налаштування меню
+```
+
+У меню встановіть «Мікроконтролер Архітектура» на «Linux process», потім збережіть і виходите.
+
+Для побудови та встановлення нового мікроконтролюючого коду запустіть:
 
 ```
 sudo service klipper stop
-make flash
-sudo service klipper start
+ зробити спалах
+ sudo service klipper start
 ```
 
-If klippy.log reports a "Permission denied" error when attempting to connect to `/tmp/klipper_host_mcu` then you need to add your user to the tty group. The following command will add the "pi" user to the tty group:
+Якщо klippy.log повідомляє про помилку "Попередня відмова" при спробі підключення до `/tmp/klipper_host_mcu`, після чого потрібно додати користувача до групи шин. Наступне командування додасть користувачу "Пі" групі:
 
 ```
 sudo usermod -a -G tty pi
 ```
 
-## Remaining configuration
+## Конфігурація, що залишилася
 
-Complete the installation by configuring Klipper secondary MCU following the instructions in [RaspberryPi sample config](../config/sample-raspberry-pi.cfg) and [Multi MCU sample config](../config/sample-multi-mcu.cfg).
+Завершіть інсталяцію, налаштувавши вторинний MCU Klipper, дотримуючись інструкцій у [зразок конфігурації RaspberryPi](../config/sample-raspberry-pi.cfg) і [Зразок конфігурації кількох MCU](../config/sample-multi-mcu.cfg).
 
-## Optional: Enabling SPI
+## Додатково: збірка SPI
 
-Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and enabling SPI under the "Interfacing options" menu.
+Переконайтеся, що драйвер Linux SPI працює `sudo raspi-config` і дозволяє SPI під меню «Інфракційні параметри».
 
-## Optional: Enabling I2C
+## Додатково: Включення I2C
 
-Make sure the Linux I2C driver is enabled by running `sudo raspi-config` and enabling I2C under the "Interfacing options" menu. If planning to use I2C for the MPU accelerometer, it is also required to set the baud rate to 400000 by: adding/uncommenting `dtparam=i2c_arm=on,i2c_arm_baudrate=400000` in `/boot/config.txt` (or `/boot/firmware/config.txt` in some distros).
+Переконайтеся, що драйвер Linux I2C ввімкнено за допомогою запуску `sudo raspi-config` і дозволяє I2C під меню «Інфракційні параметри». Якщо планується використовувати I2C для акселерометра МПУ, необхідно також встановити курс на бас до 400000: додавання/розвантаження `dtparam=i2c_arm=on,i2c_arm_baudrate=400000` в `/завантаження/config.txt` (або `/завантаження/підтвердження/config.txt` в деяких дистроях).
 
-## Optional: Identify the correct gpiochip
+## Додатково: Визначте правильний gpiochip
 
-On Raspberry Pi and on many clones the pins exposed on the GPIO belong to the first gpiochip. They can therefore be used on klipper simply by referring them with the name `gpio0..n`. However, there are cases in which the exposed pins belong to gpiochips other than the first. For example in the case of some OrangePi models or if a Port Expander is used. In these cases it is useful to use the commands to access the *Linux GPIO character device* to verify the configuration.
+На Малини Пі і на багатьох клонах шпильки, які піддаються GPIO, належать до першого gpiochip. Таким чином, можна використовувати на клиппері, просто, посилаючи їх з назвою `gpio0.n`. Тим не менш, є випадки, в яких відкриті штифти належать gpiochips, крім першого. Наприклад, у випадку деяких моделей OrangePi або якщо використовується Port Expander. У цих випадках корисно використовувати команди для доступу до *Linux GPIO * для перевірки конфігурації.
 
-To install the *Linux GPIO character device - binary* on a debian based distro like octopi run:
-
-```
-sudo apt-get install gpiod
-```
-
-To check available gpiochip run:
+Щоб встановити *Linux GPIO пристрій персонажа - бінарний* на основі дебеля, як octopi запустити:
 
 ```
-gpiodetect
+sudo apt-get встановити gpiod
 ```
 
-To check the pin number and the pin availability tun:
+Для перевірки наявного gpiochip-сервера:
+
+```
+труси
+```
+
+Для перевірки номера шпильки і наявності шпильки:
 
 ```
 gpioinfo
 ```
 
-The chosen pin can thus be used within the configuration as `gpiochip<n>/gpio<o>` where **n** is the chip number as seen by the `gpiodetect` command and **o** is the line number seen by the`gpioinfo` command.
+Вибраний шпилька може використовуватися в конфігурації, як `gpiochip<n>/gpio<o>`, де **n** є номер чіпа, як видно `gpiodetect` команди і **o** є номер лінії, виданий`gpioinfo`.
 
-***Warning:*** only gpio marked as `unused` can be used. It is not possible for a *line* to be used by multiple processes simultaneously.
+***Попередня:*** тільки gpio позначений як `unused`. Не можна використовувати для *line* для одночасного використання декількох процесів.
 
-For example on a RPi 3B+ where klipper use the GPIO20 for a switch:
+Наприклад, на RPi 3B+, де клаппер використовують GPIO20 для перемикача:
 
 ```
 $ gpiodetect
-gpiochip0 [pinctrl-bcm2835] (54 lines)
-gpiochip1 [raspberrypi-exp-gpio] (8 lines)
+ gpiochip0 [pinctrl-bcm2835] (54 рядки)
+ gpiochip1 [raspberrypi-exp-gpio] (8 рядків)
 
-$ gpioinfo
-gpiochip0 - 54 lines:
-        line   0:      unnamed       unused   input  active-high
-        line   1:      unnamed       unused   input  active-high
-        line   2:      unnamed       unused   input  active-high
-        line   3:      unnamed       unused   input  active-high
-        line   4:      unnamed       unused   input  active-high
-        line   5:      unnamed       unused   input  active-high
-        line   6:      unnamed       unused   input  active-high
-        line   7:      unnamed       unused   input  active-high
-        line   8:      unnamed       unused   input  active-high
-        line   9:      unnamed       unused   input  active-high
-        line  10:      unnamed       unused   input  active-high
-        line  11:      unnamed       unused   input  active-high
-        line  12:      unnamed       unused   input  active-high
-        line  13:      unnamed       unused   input  active-high
-        line  14:      unnamed       unused   input  active-high
-        line  15:      unnamed       unused   input  active-high
-        line  16:      unnamed       unused   input  active-high
-        line  17:      unnamed       unused   input  active-high
-        line  18:      unnamed       unused   input  active-high
-        line  19:      unnamed       unused   input  active-high
-        line  20:      unnamed    "klipper"  output  active-high [used]
-        line  21:      unnamed       unused   input  active-high
-        line  22:      unnamed       unused   input  active-high
-        line  23:      unnamed       unused   input  active-high
-        line  24:      unnamed       unused   input  active-high
-        line  25:      unnamed       unused   input  active-high
-        line  26:      unnamed       unused   input  active-high
-        line  27:      unnamed       unused   input  active-high
-        line  28:      unnamed       unused   input  active-high
-        line  29:      unnamed       "led0"  output  active-high [used]
-        line  30:      unnamed       unused   input  active-high
-        line  31:      unnamed       unused   input  active-high
-        line  32:      unnamed       unused   input  active-high
-        line  33:      unnamed       unused   input  active-high
-        line  34:      unnamed       unused   input  active-high
-        line  35:      unnamed       unused   input  active-high
-        line  36:      unnamed       unused   input  active-high
-        line  37:      unnamed       unused   input  active-high
-        line  38:      unnamed       unused   input  active-high
-        line  39:      unnamed       unused   input  active-high
-        line  40:      unnamed       unused   input  active-high
-        line  41:      unnamed       unused   input  active-high
-        line  42:      unnamed       unused   input  active-high
-        line  43:      unnamed       unused   input  active-high
-        line  44:      unnamed       unused   input  active-high
-        line  45:      unnamed       unused   input  active-high
-        line  46:      unnamed       unused   input  active-high
-        line  47:      unnamed       unused   input  active-high
-        line  48:      unnamed       unused   input  active-high
-        line  49:      unnamed       unused   input  active-high
-        line  50:      unnamed       unused   input  active-high
-        line  51:      unnamed       unused   input  active-high
-        line  52:      unnamed       unused   input  active-high
-        line  53:      unnamed       unused   input  active-high
-gpiochip1 - 8 lines:
-        line   0:      unnamed       unused   input  active-high
-        line   1:      unnamed       unused   input  active-high
-        line   2:      unnamed       "led1"  output   active-low [used]
-        line   3:      unnamed       unused   input  active-high
-        line   4:      unnamed       unused   input  active-high
-        line   5:      unnamed       unused   input  active-high
-        line   6:      unnamed       unused   input  active-high
-        line   7:      unnamed       unused   input  active-high
+ $gpioinfo
+ gpiochip0 - 54 рядки:
+         рядок 0: безіменний невикористаний вхідний активний високий
+         рядок 1: безіменний невикористаний вхідний активний високий
+         рядок 2: безіменний невикористаний вхідний активний високий
+         рядок 3: безіменний невикористаний вхідний активний високий
+         рядок 4: безіменний невикористаний вхідний активний високий
+         рядок 5: безіменний невикористаний вхідний активний високий
+         рядок 6: безіменний невикористаний вхідний активний високий
+         рядок 7: безіменний невикористаний вхідний активний високий
+         рядок 8: безіменний невикористаний вхідний активний високий
+         рядок 9: безіменний невикористаний вхідний активний високий
+         рядок 10: безіменний невикористаний вхідний активний високий
+         рядок 11: безіменний невикористаний вхід активний-високий
+         рядок 12: безіменний невикористаний вхідний активний високий
+         рядок 13: безіменний невикористаний вхідний активний високий
+         рядок 14: безіменний невикористаний вхідний активний високий
+         рядок 15: безіменний невикористаний вхідний активний високий
+         рядок 16: безіменний невикористаний вхідний активний високий
+         рядок 17: безіменний невикористаний вхідний активний високий
+         рядок 18: безіменний невикористаний вхідний активний високий
+         рядок 19: безіменний невикористаний вхідний активний високий
+         рядок 20: безіменний вихід "klipper" активний високий [використовується]
+         рядок 21: безіменний невикористаний вхідний активний високий
+         рядок 22: безіменний невикористаний вхідний активний високий
+         рядок 23: безіменний невикористаний вхідний активний високий
+         рядок 24: безіменний невикористаний вхідний активний високий
+         рядок 25: безіменний невикористаний вхідний активний високий
+         рядок 26: безіменний невикористаний вхідний активний високий
+         рядок 27: безіменний невикористаний вхідний активний високий
+         рядок 28: безіменний невикористаний вхід активний-високий
+         рядок 29: безіменний вихід "led0" активний-високий [використовується]
+         рядок 30: безіменний невикористаний вхідний активний високий
+         рядок 31: безіменний невикористаний вхідний активний високий
+         рядок 32: безіменний невикористаний вхідний активний високий
+         рядок 33: безіменний невикористаний вхідний активний високий
+         рядок 34: безіменний невикористаний вхідний активний високий
+         рядок 35: безіменний невикористаний вхідний активний високий
+         рядок 36: безіменний невикористаний вхідний активний високий
+         рядок 37: безіменний невикористаний вхідний активний високий
+         рядок 38: безіменний невикористаний вхідний активний високий
+         рядок 39: безіменний невикористаний вхідний активний високий
+         рядок 40: безіменний невикористаний вхідний активний високий
+         рядок 41: безіменний невикористаний вхідний активний високий
+         рядок 42: безіменний невикористаний вхідний активний високий
+         рядок 43: безіменний невикористаний вхідний активний високий
+         рядок 44: безіменний невикористаний вхід активний-високий
+         рядок 45: безіменний невикористаний вхідний активний високий
+         рядок 46: безіменний невикористаний вхідний активний високий
+         рядок 47: безіменний невикористаний вхідний активний високий
+         рядок 48: безіменний невикористаний вхідний активний високий
+         рядок 49: безіменний невикористаний вхідний активний високий
+         рядок 50: безіменний невикористаний вхідний активний високий
+         рядок 51: безіменний невикористаний вхідний активний високий
+         рядок 52: безіменний невикористаний вхідний активний високий
+         рядок 53: безіменний невикористаний вхідний активний високий
+ gpiochip1 - 8 рядків:
+         рядок 0: безіменний невикористаний вхідний активний високий
+         рядок 1: безіменний невикористаний вхідний активний високий
+         рядок 2: безіменний вихід "led1" активний низький [використовується]
+         рядок 3: безіменний невикористаний вхідний активний високий
+         рядок 4: безіменний невикористаний вхідний активний високий
+         рядок 5: безіменний невикористаний вхідний активний високий
+         рядок 6: безіменний невикористаний вхідний активний високий
+         рядок 7: безіменний невикористаний вхідний активний високий
 ```
 
-## Optional: Hardware PWM
+## Додатково: Обладнання PWM
 
-Raspberry Pi's have two PWM channels (PWM0 and PWM1) which are exposed on the header or if not, can be routed to existing gpio pins. The Linux mcu daemon uses the pwmchip sysfs interface to control hardware pwm devices on Linux hosts. The pwm sysfs interface is not exposed by default on a Raspberry and can be activated by adding a line to `/boot/config.txt`:
-
-```
-# Enable pwmchip sysfs interface
-dtoverlay=pwm,pin=12,func=4
-```
-
-This example enables only PWM0 and routes it to gpio12. If both PWM channels need to be enabled you can use `pwm-2chan`:
+Raspberry Pi має два канали PWM (PWM0 і PWM1), які висвітлюються на заголовку або, якщо ні, можуть бути спрямовані на наявні контакти gpio. Демон Linux mcu використовує інтерфейс pwmchip sysfs для керування апаратними пристроями PWM на хостах Linux. Інтерфейс pwm sysfs не надається за замовчуванням на Raspberry, і його можна активувати, додавши рядок до `/boot/config.txt`:
 
 ```
-# Enable pwmchip sysfs interface
-dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4
+# Увімкнути інтерфейс pwmchip sysfs
+ dtoverlay=pwm,pin=12,func=4
 ```
 
-This example additionally enables PWM1 and routes it to gpio13.
-
-The overlay does not expose the pwm line on sysfs on boot and needs to be exported by echo'ing the number of the pwm channel to `/sys/class/pwm/pwmchip0/export`. This will create device `/sys/class/pwm/pwmchip0/pwm0` in the filesystem. The easiest way to do this is by adding this to `/etc/rc.local` before the `exit 0` line:
+Цей приклад дозволяє тільки PWM0 і маршрути його до gpio12. Якщо обидві канали PWM повинні бути включені, ви можете використовувати `pwm-2chan`:
 
 ```
-# Enable pwmchip sysfs interface
-echo 0 > /sys/class/pwm/pwmchip0/export
+# Увімкнути інтерфейс pwmchip sysfs
+ dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4
 ```
 
-When using both PWM channels, the number of the second channel needs to be echo'd as well:
+Цей приклад додатково дозволяє PWM1 і маршрути його до gpio13.
+
+Накладка не виводить лінію рами на сосфах на завантаженні і потрібно експортувати в ехо кількість каналу pwm до `/sys/class/pwmchip0/export`. Це створить пристрій `/sys/class/pwmchip0/pwm0` в файловій системі. Найпростіший спосіб зробити це, додавши до `/etc/rc.local` перед `exit 0` рядок:
 
 ```
-# Enable pwmchip sysfs interface
-echo 0 > /sys/class/pwm/pwmchip0/export
-echo 1 > /sys/class/pwm/pwmchip0/export
+Нема Увімкнути інтерфейс sysfs pwmchip
+echo 0 > /sys/class/pwmchip0/export
 ```
 
-With the sysfs in place, you can now use either the pwm channel(s) by adding the following piece of configuration to your `printer.cfg`:
+При використанні як каналів PWM, кількість другого каналу необхідно бути ехо і:
 
 ```
-[output_pin caselight]
-pin: host:pwmchip0/pwm0
-pwm: True
-hardware_pwm: True
-cycle_time: 0.000001
-
-[output_pin beeper]
-pin: host:pwmchip0/pwm1
-pwm: True
-hardware_pwm: True
-value: 0
-shutdown_value: 0
-cycle_time: 0.0005
+Нема Увімкнути інтерфейс sysfs pwmchip
+echo 0 > /sys/class/pwmchip0/export
+echo 1 > /sys/class/pwmchip0/export
 ```
 
-This will add hardware pwm control to gpio12 and gpio13 on the Pi (because the overlay was configured to route pwm0 to pin=12 and pwm1 to pin=13).
+За допомогою sysfs на місці ви можете використовувати або канал Pwm (s), додавши наступний шматок конфігурації до вашого `printer.cfg`:
 
-PWM0 can be routed to gpio12 and gpio18, PWM1 can be routed to gpio13 and gpio19:
+```
+[вихід_pin caselight]
+шпилька: господар:pwmchip0/pwm0
+pwm: Правда
+Обладнання_pwm: Про нас
+час: 0.000001
 
-| PWM | gpio PIN | Func |
+[вихід_pin beeper]
+шпилька: господар:pwmchip0/pwm1
+pwm: Правда
+Обладнання_pwm: Про нас
+значення: 0
+0 товар(ов) - 0.00 €
+час: 0.0005
+```
+
+Це додасть апаратне управління ромбами до gpio12 і gpio13 на Пі (при використанні накладу було налаштовано до маршруту pwm0 до шпильки=12 і pwm1 для шпильки=13).
+
+PWM0 може бути переданий до gpio12 і gpio18, PWM1 можна відстежити до gpio13 і gpio19:
+
+| ПВМ | христина белла | Панчохи |
 | --- | --- | --- |
-| 0 | 12 | 4 |
-| 0 | 18 | 2 |
+| 0 р | 12 | 4 |
+| 0 р | 18 | 2 |
 | 1 | 13 | 4 |
 | 1 | 19 | 2 |

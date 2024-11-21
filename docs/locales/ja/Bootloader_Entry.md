@@ -1,4 +1,4 @@
-# Bootloader Entry
+# ブートローダーのエントリー
 
 Klipper can be instructed to reboot into a [Bootloader](Bootloaders.md) in one of the following ways:
 
@@ -31,15 +31,15 @@ picocom -b 1200 <DEVICE>
 
 Where `<DEVICE>` is your serial device, such as `/dev/serial.by-id/usb-Klipper[...]` or `/dev/ttyACM0`
 
-`<Ctrl-A><Ctrl-P>` means holding `Ctrl`, pressing and releasing `a`, pressing and releasing `p`, then releasing `Ctrl`
+`<Ctrl-A><Ctrl-P>` は `Ctrl`を押したまま、 `a`、`p`を入力し、 `Ctrl`を離すことを意味します
 
 ### Physical serial
 
 If a physical serial port is being used on the MCU (even if a USB serial adapter is being used to connect to it), sending the string `<SPACE><FS><SPACE>Request Serial Bootloader!!<SPACE>~`.
 
-`<SPACE>` is an ASCII literal space, 0x20.
+`<SPACE>`はASCIIコードのスペース、 0x20 です。
 
-`<FS>` is the ASCII File Separator, 0x1c.
+`<FS>` はASCIIコードのファイル分離文字、 0x1c です。
 
 Note that this is not a valid message as per the [MCU Protocol](Protocol.md#micro-controller-interface), but sync characters(`~`) are still respected.
 
@@ -54,7 +54,7 @@ echo $'~ \x1c Request Serial Bootloader!! ~' >> /dev/<DEVICE>
 
 Where `<DEVICE>` is your serial port, such as `/dev/ttyS0`, or `/dev/serial/by-id/gpio-serial2`, and
 
-`<BAUD>` is the baud rate of the serial port, such as `115200`.
+`<BAUD>`は例えば `115200` のような、シリアルポートのボーレートです。
 
 ### CANBUS
 

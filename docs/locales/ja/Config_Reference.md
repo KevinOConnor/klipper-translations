@@ -1889,7 +1889,7 @@ calibrate_y: 112.5
 #   be near the center of the bed
 ```
 
-## Additional stepper motors and extruders
+## 追加のステッピングモータと押出機
 
 ### [stepper_z1]
 

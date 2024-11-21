@@ -14,7 +14,7 @@ Naviga nella console dei comandi e invia un comando M112 nel terminale. Questo c
 
 ## Verifica i riscaldatori
 
-Italiano
+Naviga nella sezione contenente il grafico delle temperature ed inserisci 50 seguito dall’ tasto enter nel riquadro della temperatura dell’extruder. La curva del grafico  della temperatura dell’exruder dovrebbe iniziare ad aumentare (in un tempo di circa 30 secondi) per arrivare ai 50 gradi impostati. Quindi posizionarsi  sul  e selezionare “Off”. Dopo alcuni minuti la temperature dovrebbe scendere e tornare al valore iniziale di temperatura ambiente. Se la temperatura non dovesse aumentare bisogna verificare  il settaggio
 
 Se la stampante ha il piatto riscaldato, eseguire nuovamente il test indicato in precedenza ma per il piatto.
 
@@ -24,9 +24,9 @@ Verifica che gli assi della stampante possano muoversi liberamente (I motori son
 
 ## Verifica i finecorsa
 
-Manually move all the printer axes so that none of them are in contact with an endstop. Send a QUERY_ENDSTOPS command via the command console. It should respond with the current state of all of the configured endstops and they should all report a state of "open". For each of the endstops, rerun the QUERY_ENDSTOPS command while manually triggering the endstop. The QUERY_ENDSTOPS command should report the endstop as "TRIGGERED".
+Muovi manualmente tutti gli assi della stamapante in modo che nessuno sia in contatto con gli ensdstop. Digita il comando QUERY_ENDSTOPS attraverso la consolle di comando. Dovrebbe essere visualizzato lo stato corrente degli endstop che dovrebbe essere per tutti e tre "open" (aperto). Per ogni endstop, digita di nuovo il comando QUERY_ENDSTOPS mentre manualmente chiudi, uno alla volta, gli endstop. Il comando QUERY_ENDSTOPS dovrebbe riportare l'endstop chiuso manualmente come "TRIGGERED".
 
-If the endstop appears inverted (it reports "open" when triggered and vice-versa) then add a "!" to the pin definition (for example, "endstop_pin: ^PA2"), or remove the "!" if there is already one present.
+Se l'endstop appare invertito (riporta "open" quando chiuso e viceversa) allora aggiungi "!" alla definizione del pin corrispondente (per esempio "endstop_pin: ^PA2 ") o rimuovi il punto esclamativo "!" se è presente.
 
 Se il segnale del finecorsa non cambia , può significare che il fine corsa è collegato a un pin diverso. Tuttavia, potrebbe essere necessaria una modifica all'impostazione pullup del pin (il '^' all'inizio del istruzione "endstop_pin".La maggior parte delle stampanti utilizzano un resistore pullup e l'istruzione '^' dovrebbe essere presente).
 

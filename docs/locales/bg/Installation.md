@@ -1,61 +1,61 @@
-# Installation
+# Инсталация
 
-These instructions assume the software will run on a linux based host running a Klipper compatible front end. It is recommended that a SBC(Small Board Computer) such as a Raspberry Pi or Debian based Linux device be used as the host machine (see the [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) for other options).
+Тези инструкции предполагат, че софтуерът ще работи на линукс базиран хост със съвместим с Klipper Front End. Препоръчително е за хост машина да се използва SBC(Small Board Computer), като Raspberry Pi или устройство, базирано на Debian Linux (вижте [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) за други възможности).
 
-For the purposes of these instructions host relates to the Linux device and mcu relates to the printboard. SBC relates to the term Small Board Computer such as the Raspberry Pi.
+За целите на тези инструкции хостът се отнася за устройството Linux, а mcu - за печатната платка. SBC се отнася до термина Small Board Computer, като например Raspberry Pi.
 
-## Obtain a Klipper Configuration File
+## Получаване на конфигурационен файл на Klipper
 
-Most Klipper settings are determined by a "printer configuration file" printer.cfg, that will be stored on the host. An appropriate configuration file can often be found by looking in the Klipper [config directory](../config/) for a file starting with a "printer-" prefix that corresponds to the target printer. The Klipper configuration file contains technical information about the printer that will be needed during the installation.
+Повечето настройки на Klipper се определят от "файл за конфигурация на принтера" printer.cfg, който се съхранява на хоста. Подходящият конфигурационен файл често може да бъде намерен, като се потърси в Klipper [config directory](../config/) за файл, започващ с префикс "printer-", който съответства на целевия принтер. Конфигурационният файл на Klipper съдържа техническа информация за принтера, която ще бъде необходима по време на инсталацията.
 
-If there isn't an appropriate printer configuration file in the Klipper config directory then try searching the printer manufacturer's website to see if they have an appropriate Klipper configuration file.
+Ако в директорията config на Klipper няма подходящ файл за конфигурация на принтера, опитайте се да потърсите на уебсайта на производителя на принтера, за да видите дали има подходящ файл за конфигурация на Klipper.
 
-If no configuration file for the printer can be found, but the type of printer control board is known, then look for an appropriate [config file](../config/) starting with a "generic-" prefix. These example printer board files should allow one to successfully complete the initial installation, but will require some customization to obtain full printer functionality.
+Ако не може да бъде намерен конфигурационен файл за принтера, но е известен типът на платката за управление на принтера, тогава потърсете подходящ [конфигурационен файл](../config/), започващ с префикс "generic-". Тези примерни файлове за платките на принтера би трябвало да позволят успешно завършване на първоначалната инсталация, но ще изискват някои настройки, за да се получи пълна функционалност на принтера.
 
-It is also possible to define a new printer configuration from scratch. However, this requires significant technical knowledge about the printer and its electronics. It is recommended that most users start with an appropriate configuration file. If creating a new custom printer configuration file, then start with the closest example [config file](../config/) and use the Klipper [config reference](Config_Reference.md) for further information.
+Възможно е също така да дефинирате нова конфигурация на принтера от нулата. Това обаче изисква значителни технически познания за принтера и неговата електроника. Препоръчително е повечето потребители да започнат с подходящ конфигурационен файл. Ако създавате нов потребителски конфигурационен файл за принтер, започнете с най-близкия примерен [config file](../config/) и използвайте Klipper [config reference](Config_Reference.md) за допълнителна информация.
 
-## Interacting with Klipper
+## Взаимодействие с Klipper
 
-Klipper is a 3d printer firmware, so it needs some way for the user to interact with it.
+Klipper е фърмуер за 3D принтер, така че се нуждае от някакъв начин, по който потребителят да взаимодейства с него.
 
-Currently the best choices are front ends that retrieve information through the [Moonraker web API](https://moonraker.readthedocs.io/) and there is also the option to use [Octoprint](https://octoprint.org/) to control Klipper.
+Понастоящем най-добрият избор са фронтовете, които извличат информация чрез [Moonraker web API](https://moonraker.readthedocs.io/), а също така има възможност да се използва [Octoprint](https://octoprint.org/) за управление на Klipper.
 
-The choice is up to the user on what to use, but the underlying Klipper is the same in all cases. We encourage users to research the options available and make an informed decision.
+Потребителят може да избере какво да използва, но основният Klipper е един и същ във всички случаи. Препоръчваме на потребителите да проучат наличните възможности и да вземат информирано решение.
 
-## Obtaining an OS image for SBC's
+## Получаване на образ на операционната система за SBC
 
-There are many ways to obtain an OS image for Klipper for SBC use, most depend on what front end you wish to use. Some manafactures of these SBC boards also provide their own Klipper-centric images.
+Има много начини за получаване на образ на операционната система Klipper за използване в SBC, повечето от които зависят от това какъв фронт енд искате да използвате. Някои производители на тези SBC платки също предоставят свои собствени образи, ориентирани към Klipper.
 
-The two main Moonraker based front ends are [Fluidd](https://docs.fluidd.xyz/) and [Mainsail](https://docs.mainsail.xyz/), the latter of which has a premade install image ["MainsailOS"](http://docs.mainsailOS.xyz), this has the option for Raspberry Pi and some OrangePi varianta.
+Двата основни фронт енда, базирани на Moonraker, са [Fluidd](https://docs.fluidd.xyz/) и [Mainsail](https://docs.mainsail.xyz/), последният от които има предварително подготвено инсталационно изображение ["MainsailOS"](http://docs.mainsailOS.xyz), което има опция за Raspberry Pi и някои варианти на OrangePi.
 
-Fluidd can be installed via KIAUH(Klipper Install And Update Helper), which is explained below and is a 3rd party installer for all things Klipper.
+Fluidd може да се инсталира чрез KIAUH (Klipper Install And Update Helper), който е обяснен по-долу и представлява инсталатор от трета страна за всичко, свързано с Klipper.
 
-OctoPrint can be installed via the popular OctoPi image or via KIAUH, this process is explained in <OctoPrint.md>
+OctoPrint може да бъде инсталиран чрез популярния образ OctoPi или чрез KIAUH, този процес е обяснен в <OctoPrint.md>
 
-## Installing via KIAUH
+## Инсталиране чрез KIAUH
 
-Normally you would start with a base image for your SBC, RPiOS Lite for example, or in the case of a x86 Linux device, Ubuntu Server. Please note that Desktop variants are not recommended due to certain helper programs that can stop some Klipper functions working and even mask access to some print boards.
+Обикновено започвате с базово изображение за вашия SBC, например RPiOS Lite, или в случай на устройство с x86 Linux - Ubuntu Server. Обърнете внимание, че вариантите Desktop не се препоръчват поради някои помощни програми, които могат да спрат работата на някои функции на Klipper и дори да маскират достъпа до някои печатни платки.
 
-KIAUH can be used to install Klipper and its associated programs on a variety of Linux based systems that run a form of Debian. More information can be found at https://github.com/dw-0/kiauh
+KIAUH може да се използва за инсталиране на Klipper и свързаните с него програми на различни системи, базирани на Linux, които работят под формата на Debian. Повече информация можете да намерите на адрес https://github.com/dw-0/kiauh
 
 ## Изграждане и мигане на микроконтролера
 
-To compile the micro-controller code, start by running these commands on your host device:
+За да компилирате кода на микроконтролера, започнете с изпълнението на тези команди на вашето хост устройство:
 
 ```
 cd ~/klipper/
 make menuconfig
 ```
 
-The comments at the top of the [printer configuration file](#obtain-a-klipper-configuration-file) should describe the settings that need to be set during "make menuconfig". Open the file in a web browser or text editor and look for these instructions near the top of the file. Once the appropriate "menuconfig" settings have been configured, press "Q" to exit, and then "Y" to save. Then run:
+Коментарите в горната част на файла [конфигурация на принтера](#obtain-a-klipper-configuration-file) трябва да описват настройките, които трябва да бъдат зададени по време на "make menuconfig". Отворете файла в уеб браузър или текстов редактор и потърсете тези инструкции близо до горната част на файла. След като конфигурирате съответните настройки на "menuconfig", натиснете "Q", за да излезете, и след това "Y", за да запазите. След това стартирайте:
 
 ```
 make
 ```
 
-If the comments at the top of the [printer configuration file](#obtain-a-klipper-configuration-file) describe custom steps for "flashing" the final image to the printer control board then follow those steps and then proceed to [configuring OctoPrint](#configuring-octoprint-to-use-klipper).
+Ако коментарите в горната част на файла [конфигурация на принтера](#obtain-a-klipper-configuration-file) описват персонализирани стъпки за "проблясване" на крайното изображение на контролната платка на принтера, следвайте тези стъпки и след това преминете към [конфигуриране на OctoPrint](#configuring-octoprint-to-use-klipper).
 
-Otherwise, the following steps are often used to "flash" the printer control board. First, it is necessary to determine the serial port connected to the micro-controller. Run the following:
+В противен случай често се използват следните стъпки за "флашване" на контролната платка на принтера. Първо е необходимо да се определи серийният порт, свързан с микроконтролера. Изпълнете следното:
 
 ```
 ls /dev/serial/by-id/*
@@ -67,13 +67,13 @@ ls /dev/serial/by-id/*
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-It's common for each printer to have its own unique serial port name. This unique name will be used when flashing the micro-controller. It's possible there may be multiple lines in the above output - if so, choose the line corresponding to the micro-controller. If many items are listed and the choice is ambiguous, unplug the board and run the command again, the missing item will be your print board(see the [FAQ](FAQ.md#wheres-my-serial-port) for more information).
+Обикновено всеки принтер има свое собствено уникално име на сериен порт. Това уникално име ще се използва при флашването на микроконтролера. Възможно е в горния изход да има няколко реда - ако е така, изберете реда, съответстващ на микроконтролера. Ако са изброени много елементи и изборът е двусмислен, изключете платката и изпълнете командата отново, като липсващият елемент ще бъде вашата печатна платка(за повече информация вижте [FAQ](FAQ.md#wheres-my-serial-port)).
 
-For common micro-controllers with STM32 or clone chips, LPC chips and others it is usual that these need an initial Klipper flash via SD card.
+За обикновените микроконтролери със STM32 или клонирани чипове, LPC чипове и други е обичайно те да се нуждаят от първоначална флаш памет на Klipper чрез SD карта.
 
-When flashing with this method, it is important to make sure that the print board is not connected with USB to the host, due to some boards being able to feed power back to the board and stopping a flash from occuring.
+При мигане с този метод е важно да се уверите, че печатната платка не е свързана с USB към хоста, тъй като някои платки могат да подават енергия обратно към платката и да спрат мигането.
 
-For common micro-controllers using Atmega chips, for example the 2560, the code can be flashed with something similar to:
+За обикновените микроконтролери, използващи чипове Atmega, например 2560, кодът може да се флашне с нещо подобно:
 
 ```
 sudo service klipper stop
@@ -81,9 +81,9 @@ make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 sudo service klipper start
 ```
 
-Be sure to update the FLASH_DEVICE with the printer's unique serial port name.
+Не забравяйте да актуализирате FLASH_DEVICE с уникалното име на серийния порт на принтера.
 
-For common micro-controllers using RP2040 chips, the code can be flashed with something similar to:
+За обикновените микроконтролери, използващи чипове RP2040, кодът може да бъде променен с нещо подобно на:
 
 ```
 sudo service klipper stop
@@ -91,24 +91,24 @@ make flash FLASH_DEVICE=first
 sudo service klipper start
 ```
 
-It is important to note that RP2040 chips may need to be put into Boot mode before this operation.
+Важно е да се отбележи, че преди тази операция може да се наложи чиповете RP2040 да бъдат въведени в режим на зареждане.
 
 ## Конфигуриране на Klipper
 
-The next step is to copy the [printer configuration file](#obtain-a-klipper-configuration-file) to the host.
+Следващата стъпка е да копирате [конфигурационния файл на принтера](#obtain-a-klipper-configuration-file) на хоста.
 
-Arguably the easiest way to set the Klipper configuration file is using the built in editors in Mainsail or Fluidd. These will allow the user to open the configuration examples and save them to be printer.cfg.
+Вероятно най-лесният начин за задаване на конфигурационния файл на Klipper е да използвате вградените редактори в Mainsail или Fluidd. Те ще позволят на потребителя да отвори конфигурационните примери и да ги запише като printer.cfg.
 
-Another option is to use a desktop editor that supports editing files over the "scp" and/or "sftp" protocols. There are freely available tools that support this (eg, Notepad++, WinSCP, and Cyberduck). Load the printer config file in the editor and then save it as a file named "printer.cfg" in the home directory of the pi user (ie, /home/pi/printer.cfg).
+Друга възможност е да използвате настолен редактор, който поддържа редактиране на файлове чрез протоколите "scp" и/или "sftp". Съществуват свободно достъпни инструменти, които поддържат това (например Notepad++, WinSCP и Cyberduck). Заредете файла с конфигурацията на принтера в редактора и след това го запишете като файл с име "printer.cfg" в домашната директория на потребителя на pi (т.е. /home/pi/printer.cfg).
 
-Alternatively, one can also copy and edit the file directly on the host via ssh. That may look something like the following (be sure to update the command to use the appropriate printer config filename):
+Освен това можете да копирате и редактирате файла директно на хоста чрез ssh. Това може да изглежда по следния начин (не забравяйте да актуализирате командата, за да използвате съответното име на файла с конфигурацията на принтера):
 
 ```
 cp ~/klipper/config/example-cartesian.cfg ~/printer.cfg
 nano ~/printer.cfg
 ```
 
-It's common for each printer to have its own unique name for the micro-controller. The name may change after flashing Klipper, so rerun these steps again even if they were already done when flashing. Run:
+Обичайно е всеки принтер да има свое собствено уникално име за микроконтролера. Името може да се промени след флашването на Klipper, така че повторете тези стъпки отново, дори ако те вече са били извършени при флашването. Изпълнете:
 
 ```
 ls /dev/serial/by-id/*
@@ -120,17 +120,17 @@ ls /dev/serial/by-id/*
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-Then update the config file with the unique name. For example, update the `[mcu]` section to look something similar to:
+След това актуализирайте файла с конфигурацията с уникалното име. Например актуализирайте раздела `[mcu]`, за да изглежда по следния начин:
 
 ```
 [mcu]
 serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-After creating and editing the file it will be necessary to issue a "restart" command in the command console to load the config. A "status" command will report the printer is ready if the Klipper config file is successfully read and the micro-controller is successfully found and configured.
+След като създадете и редактирате файла, ще е необходимо да издадете команда "restart" в командната конзола, за да заредите конфигурацията. Командата "статус" ще съобщи, че принтерът е готов, ако конфигурационният файл на Klipper е прочетен успешно и микроконтролерът е намерен и конфигуриран успешно.
 
-When customizing the printer config file, it is not uncommon for Klipper to report a configuration error. If an error occurs, make any necessary corrections to the printer config file and issue "restart" until "status" reports the printer is ready.
+При персонализиране на конфигурационния файл на принтера нерядко Klipper съобщава за грешка в конфигурацията. Ако възникне грешка, направете необходимите корекции в конфигурационния файл на принтера и издайте "restart", докато "status" отчете, че принтерът е готов.
 
-Klipper reports error messages via the command console and via pop up in Fluidd and Mainsail. The "status" command can be used to re-report error messages. A log is available and usually located in ~/printer_data/logs this is named klippy.log
+Klipper съобщава съобщения за грешки чрез командната конзола и чрез изскачащи прозорци в Fluidd и Mainsail. Командата "статус" може да се използва за повторно съобщаване на съобщения за грешки. Наличен е дневник, който обикновено се намира в ~/printer_data/logs и се нарича klippy.log
 
-After Klipper reports that the printer is ready, proceed to the [config check document](Config_checks.md) to perform some basic checks on the definitions in the config file. See the main [documentation reference](Overview.md) for other information.
+След като Klipper съобщи, че принтерът е готов, преминете към документа [config check document](Config_checks.md), за да извършите някои основни проверки на дефинициите в конфигурационния файл. За друга информация вижте основния документ [documentation reference](Overview.md).

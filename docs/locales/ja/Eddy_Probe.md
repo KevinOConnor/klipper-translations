@@ -37,7 +37,7 @@ Prior to performing calibration the user should have an idea of what the maximum
 Once a `[temperature_probe]` is configured, the following steps may be taken to perform thermal drift calibration:
 
 - The probe must be calibrated using `PROBE_EDDY_CURRENT_CALIBRATE` when a `[temperature_probe]` is configured and linked. This captures the temperature during calibration which is necessary to perform thermal drift compensation.
-- Make sure the nozzle is free of debris and filament.
+- ノズルにゴミやフィラメントが無いことを確認します。
 - The bed, nozzle, and probe coil should be cold prior to calibration.
 - The following steps are required if the `calibration_position`, `calibration_extruder_temp`, and `extruder_heating_z` options in `[temperature_probe]` are **NOT** configured:
    - Move the tool to the center of the bed. Z should be 30mm+ above the bed.

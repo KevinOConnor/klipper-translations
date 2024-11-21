@@ -1,56 +1,56 @@
-# Eddy Current Inductive probe
+# 渦電流電感式探針
 
-This document describes how to use an [eddy current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in Klipper.
+本文件介紹如何在 Klipper 中使用[渦電流電感式探針](https://zh.wikipedia.org/zh-tw/%E6%B8%A6%E9%9B%BB%E6%B5%81)。
 
-Currently, an eddy current probe can not be used for Z homing. The sensor can only be used for Z probing.
+渦電流探針目前只能用於 Z 軸探高，無法用於 Z 軸歸零。
 
-Start by declaring a [probe_eddy_current config section](Config_Reference.md#probe_eddy_current) in the printer.cfg file. It is recommended to set the `z_offset` to 0.5mm. It is typical for the sensor to require an `x_offset` and `y_offset`. If these values are not known, one should estimate the values during initial calibration.
+首先在 printer.cfg 配置檔案中宣告 [probe\_eddy\_current 配置部分](https://www.klipper3d.org/zh-Hant/Config_Reference.html#probe_eddy_current)。建議將 `z_offset` 設定為 0.5mm。感測器通常會需要 `x_offset` 與 `y_offset`；若不知道這些數值，須在初始校準時估算。
 
-The first step in calibration is to determine the appropriate DRIVE_CURRENT for the sensor. Home the printer and navigate the toolhead so that the sensor is near the center of the bed and is about 20mm above the bed. Then issue an `LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` command. For example, if the config section was named `[probe_eddy_current my_eddy_probe]` then one would run `LDC_CALIBRATE_DRIVE_CURRENT CHIP=my_eddy_probe`. This command should complete in a few seconds. After it completes, issue a `SAVE_CONFIG` command to save the results to the printer.cfg and restart.
+校準的第一步驟是為感測器找出合適的 `DRIVE_CURRENT`。將列印機歸零，並移動工具頭，使感測器位於列印床中央上方約 20mm 處；然後輸入指令 `LDC_CALIBRATE_DRIVE_CURRENT CHIP=<配置名稱>` 。舉例來說，若配置部分名為 `[probe_eddy_current my_eddy_probe]`，那則應輸入 `LDC_CALIBRATE_DRIVE_CURRENT CHIP=my_eddy_probe`。此指令應該會在幾秒內完成，然後輸入指令 `SAVE_CONFIG` 以將結果儲存到 printer.cfg 中並重新啟動。
 
-The second step in calibration is to correlate the sensor readings to the corresponding Z heights. Home the printer and navigate the toolhead so that the nozzle is near the center of the bed. Then run an `PROBE_EDDY_CURRENT_CALIBRATE CHIP=my_eddy_probe` command. Once the tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position. The tool will then move the the toolhead so that the sensor is above the point where the nozzle used to be and run a series of movements to correlate the sensor to Z positions. This will take a couple of minutes. After the tool completes, issue a `SAVE_CONFIG` command to save the results to the printer.cfg and restart.
+第二步驟是連結感測器測量值與對應的 Z 高度。將列印機歸零，並移動工具頭，使感測器位於列印床中央；然後輸入指令 `PROBE_EDDY_CURRENT_CALIBRATE CHIP=my_eddy_probe`。在程序開始後，按照[「A4紙測試法」](https://www.klipper3d.org/zh-Hant/Bed_Level.html#a4)找出在固定位置下，噴嘴與列印床中的確切距離。在測試完成後，輸入指令 `ACCEPT` 確定該位置。接下來，該程序將會移動工具頭來使感測器位於噴嘴原本的位置上方，並透過一些移動以連結感測器與 Z 位置，這會需要幾分鐘時間。程序完成之後，輸入指令 `SAVE_CONFIG` 以將結果儲存到 printer.cfg 中並重新啟動。
 
-After initial calibration it is a good idea to verify that the `x_offset` and `y_offset` are accurate. Follow the steps to [calibrate probe x and y offsets](Probe_Calibrate.md#calibrating-probe-x-and-y-offsets). If either the `x_offset` or `y_offset` is modified then be sure to run the `PROBE_EDDY_CURRENT_CALIBRATE` command (as described above) after making the change.
+在初始校準完成後，最好依照[探針X/Y偏移校準](https://www.klipper3d.org/zh-Hant/Probe_Calibrate.html#xy)確認 `x_offset` 與 `y_offset` 是否準確。若要修改 `x_offset` 與 `y_offset` 數值，則須在變更後再次輸入指令 `PROBE_EDDY_CURRENT_CALIBRATE`（如上一段落所述）。
 
-Once calibration is complete, one may use all the standard Klipper tools that use a Z probe.
+校準完成之後，則可使用 Klipper 中所有 Z 探針相關功能。
 
-Note that eddy current sensors (and inductive probes in general) are susceptible to "thermal drift". That is, changes in temperature can result in changes in reported Z height. Changes in either the bed surface temperature or sensor hardware temperature can skew the results. It is important that calibration and probing is only done when the printer is at a stable temperature.
+請留意渦電流感測器（與各種電感式探針）容易發生「熱飄移」現象，即為溫度變化會影響 Z 測高值。列印床或感測器硬體的溫度變化會使結果產生偏差，因此校準與測高必須在列印機溫度穩定後才能進行。
 
-## Thermal Drift Calibration
+## 熱飄移校準
 
-As with all inductive probes, eddy current probes are subject to significant thermal drift. If the eddy probe has a temperature sensor on the coil it is possible to configure a `[temperature_probe]` to report coil temperature and enable software drift compensation. To link a temperature probe to an eddy current probe the `[temperature_probe]` section must share a name with the `[probe_eddy_current]` section. For example:
+就如所有電感式探針一樣，渦電流探針有顯著的熱飄移狀況。若渦電流探針的線圈上有溫度感測器，便能透過設定 `[temperature_probe]` 以取得線圈溫度並開啟軟體飄移補償。若要將溫度感測器與渦電流探針連結，`[temperature_probe]` 與 `[probe_eddy_current]` 部分必須使用相同的名稱，例如：
 
 ```
 [probe_eddy_current my_probe]
-# eddy probe configuration...
+# 渦電流探針設定...
 
 [temperature_probe my_probe]
-# temperature probe configuration...
+# 溫度感測器設定...
 ```
 
-See the [configuration reference](Config_Reference.md#temperature_probe) for further details on how to configure a `temperature_probe`. It is advised to configure the `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, and `calibration_bed_temp` options, as doing so will automate some of the steps outlined below.
+更多關於設定 `temperature_probe` 相關細節請見[配置參考](https://www.klipper3d.org/zh-Hant/Config_Reference.html#_18)。建議先行設定 `calibration_position`、`calibration_extruder_temp`、`extruder_heating_z`、`calibration_bed_temp` 部分，便能自動化下述一些步驟。若要校準的列印機是封閉式的，強烈建議將 `max_validation_temp` 設定在 100\~120 之間。
 
-Eddy probe manufacturers may offer a stock drift calibration that can be manually added to `drift_calibration` option of the `[probe_eddy_current]` section. If they do not, or if the stock calibration does not perform well on your system, the `temperature_probe` module offers a manual calibration procedure via the `TEMPERATURE_PROBE_CALIBRATE` gcode command.
+渦電流探針的製造商可能會提供預設的飄移補償，可以將它手動添加到 `[probe_eddy_current]` 部分中的 `drift_calibration` 設定。若是沒有、或預設補償效果不佳，可以輸入 `TEMPERATURE_PROBE_CALIBRATE` 指令以使用 `[temperature_probe]` 功能中的手動校準流程。
 
-Prior to performing calibration the user should have an idea of what the maximum attainable temperature probe coil temperature is. This temperature should be used to set the `TARGET` parameter of the `TEMPERATURE_PROBE_CALIBRATE` command. The goal is to calibrate across the widest temperature range possible, thus its desirable to start with the printer cold and finish with the coil at the maximum temperature it can reach.
+在開始校準之前，使用者必須知道探針線圈可能達到的最高溫度，這個溫度會在 `TEMPERATURE_PROBE_CALIBRATE` 指令中作為 `TARGET` 。校準的目標是涵蓋最大的溫度範圍，因此應在列印機冷卻後開始；並在線圈達到最高溫度時結束。
 
-Once a `[temperature_probe]` is configured, the following steps may be taken to perform thermal drift calibration:
+在 `[temperature_probe]` 設定完成後，按照下列步驟執行熱飄移校準：
 
-- The probe must be calibrated using `PROBE_EDDY_CURRENT_CALIBRATE` when a `[temperature_probe]` is configured and linked. This captures the temperature during calibration which is necessary to perform thermal drift compensation.
-- Make sure the nozzle is free of debris and filament.
-- The bed, nozzle, and probe coil should be cold prior to calibration.
-- The following steps are required if the `calibration_position`, `calibration_extruder_temp`, and `extruder_heating_z` options in `[temperature_probe]` are **NOT** configured:
-   - Move the tool to the center of the bed. Z should be 30mm+ above the bed.
-   - Heat the extruder to a temperature above the maximum safe bed temperature. 150-170C should be sufficient for most configurations. The purpose of heating the extruder is to avoid nozzle expansion during calibration.
-   - When the extruder temperature has settled, move the Z axis down to about 1mm above the bed.
-- Start drift calibration. If the probe's name is `my_probe` and the maximum probe temperature we can achieve is 80C, the appropriate gcode command is `TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`. If configured, the tool will move to the X,Y coordinate specified by the `calibration_position` and the Z value specified by `extruder_heating_z`. After heating the extruder to the specified temperature the tool will move to the Z value specified by the`calibration_position`.
-- The procedure will request a manual probe. Perform the manual probe with the paper test and `ACCEPT`. The calibration procedure will take the first set of samples with the probe then park the probe in the heating position.
-- If the `calibration_bed_temp` is **NOT** configured turn on the bed heat to the maximum safe temperature. Otherwise this step will be performed automatically.
-- By default the calibration procedure will request a manual probe every 2C between samples until the `TARGET` is reached. The temperature delta between samples can be customized by setting the `STEP` parameter in `TEMPERATURE_PROBE_CALIBRATE`. Care should be taken when setting a custom `STEP` value, a value too high may request too few samples resulting in a poor calibration.
-- The following additional gcode commands are available during drift calibration:
-   - `TEMPERATURE_PROBE_NEXT` may be used to force a new sample before the step delta has been reached.
-   - `TEMPERATURE_PROBE_COMPLETE` may be used to complete calibration before the `TARGET` has been reached.
-   - `ABORT` may be used to end calibration and discard results.
-- When calibration is finished use `SAVE_CONFIG` to store the drift calibration.
+- 當 `[temperature_probe]` 設定且連結完成後，使用 `PROBE_EDDY_CURRENT_CALIBRATE` 指令開始校準探針，這會記錄熱飄移校準所需的過程溫度變化。
+- 確保噴嘴乾淨且沒有耗材。
+- 列印床、噴嘴、探針線圈在開始前應為冷卻狀態。
+- 若**沒有**設定 `[temperature_probe]` 部分中的 `calibration_position`、`calibration_extruder_temp`、`extruder_heating_z`，則須執行下列步驟：
+   - 將工具頭移動至列印床中央。Z 軸須距離列印床 30mm 以上。
+   - 將噴頭加熱至熱床最大安全溫度以上，多數情況下 150\~170 度即可。加熱噴頭是為了避免在噴嘴在校準時發生熱膨脹。
+   - 當噴頭達到穩定溫度之後，將 Z 軸移動至距離列印床約 1mm。
+- 開始偏移校準。如果探針的名稱為 `my_probe`，且探針最高可達溫度為 80 度，那麼指令應為 `TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`。若有設定 `calibration_position` 與 `extruder_heating_z`，那工具頭會移動到指定的 XY 位置，並在到達指定溫度後移動到相應 Z 高度。
+- 此流程需要手動探高。按照 A4 紙測試法執行手動探高再輸入 `ACCEPT` 指令。校準流程會取第一組樣本，然後將探針停在加熱位置。
+- **沒有**設定 `calibration_bed_temp`，請設定列印床加熱至最高安全溫度。反之，這步驟將會自動執行。
+- 預設校準流程中，每 2 度會需執行一次手動探高，直至到達設定之 `TARGET` 。此溫度變化量可以在 `TEMPERATURE_PROBE_CALIBRATE` 中的 `STEP` 自訂。請小心設定 `STEP` 數值，太高的數值會導致樣本數量不足而使校準結果不佳。
+- 校準過程中可使用下列額外指令：
+   - `TEMPERATURE_PROBE_NEXT` 可在溫度到達設定差值前強制取樣。
+   - `TEMPERATURE_PROBE_COMPLETE` 可在到達 `TARGET` 前提前結束校準。
+   - `ABORT` 可停止校準並拋棄結果。
+- 校準完成後，輸入 `SAVE_CONFIG` 指令以儲存飄移校準。
 
-As one may conclude, the calibration process outlined above is more challenging and time consuming than most other procedures. It may require practice and several attempts to achieve an optimal calibration.
+總而言之，上述的校準過程要比其它流程更複雜且耗時，需多次練習與嘗試才能取得最佳校準結果。

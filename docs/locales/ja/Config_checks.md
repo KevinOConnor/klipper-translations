@@ -1,4 +1,4 @@
-# Configuration checks
+# 設定の確認
 
 このドキュメントでは、Klipper printer.cfg ファイルのピン設定を確認するのに役立つステップのリストを提供します。[インストールドキュメント](Installation.md)の手順を踏んだ後に、これらの手順を実行するのがよいでしょう。
 

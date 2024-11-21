@@ -18,13 +18,13 @@ rotation_distance =<passos_complets_per_rotació> * <micropassos> * <distància_
 
 El valor `<full_steps_per_rotation>`(pasos per revolució) es determinat pel tipus de motor pas a pas. La majoria dels motors són del tipus "1.8 graus" i per tant necessiten 200 passos sencers per fer una revolució sencera (360 dividit entre 1.8 són 200 passos). Hi ha motors que son de "0.9 graus" i necessiten 400 passos per revolució. Altres opcions són menys freqüents. Si hi ha dubtes, no emprar cap valor per a full_steps_per_rotation en el fitxer de configuració i emprar 200 en la fómula donada.
 
-La configuració "<microssteps>" la determina el controlador del motor pas a pas. La majoria dels controladors utilitzen 16 micropassos. Si no esteu segur, configureu "microspasos: 16" a la configuració i utilitzeu 16 a la fórmula anterior.
+La configuració `<microssteps>` la determina el controlador del motor pas a pas. La majoria dels controladors utilitzen 16 micropassos. Si no esteu segur, configureu `microspasos: 16` a la configuració i utilitzeu 16 a la fórmula anterior.
 
-Gairebé totes les impressores haurien de tenir un nombre sencer per a 'rotation_distance' als eixos de tipus X, Y i Z. Si la fórmula anterior dóna com a resultat una distància de rotació que es troba a 0,01 d'un nombre sencer, arrodoneix el valor final a aquest nombre_sencer.
+Gairebé totes les impressores haurien de tenir un nombre sencer per a `rotation_distance` (distància de rotació) als eixos de tipus X, Y i Z. Si la fórmula anterior dóna com a resultat una distància de rotació que es troba a 0,01 d'un nombre sencer, arrodoneix el valor final al nombre enter.
 
 ## Calibrant rotation_distance a les extrusores
 
-En una extrusora, la 'rotation_distance' és la distància que recorre el filament durant una rotació completa del motor pas a pas. La millor manera d'obtenir un valor precís per a aquesta configuració és utilitzar un procediment de 'mesura i retalla'.
+En una extrusora, la `rotation_distance` és la distància que recorre el filament durant una rotació completa del motor pas a pas. La millor manera d'obtenir un valor precís per a aquesta configuració és utilitzar un procediment de "mesura i retalla".
 
 Primer comenceu amb una estimació inicial de la distància de rotació. Això es pot obtenir des de [steps_per_mm](#obtaining-rotation_distance-from-steps_per_mm-or-step_distance) o [inspeccionant el maquinari](#extruder).
 
@@ -32,7 +32,7 @@ A continuació, utilitzeu el procediment d'assaig i error com s'indica:
 
 1. Assegureu-vos que l'extrusora tingui filament, que l'hotend s'escalfi a una temperatura adequada i que la impressora estigui llesta per extruir.
 1. Utilitzeu un marcador per posar una marca al filament a uns 70 mm de l'entrada del cos de l'extrusora. A continuació, utilitzeu un calibrador digital per mesurar la distància real d'aquesta marca amb la màxima precisió possible. Tingueu en compte això com a `<marca_inicial>`.
-1. Extrudiu 50 mm de filament amb la següent seqüència d'ordres: "G91" seguit de "G1 E50 F60". Tingueu en compte 50 mm com a "<distància_de_extrusió_sol·licitada>". Espereu que l'extrusora acabi el moviment (trigarà uns 50 segons). És important utilitzar la velocitat d'extrusió lenta per a aquesta prova, ja que una velocitat més ràpida pot provocar una pressió alta a l'extrusora que distorsionarà els resultats. (No utilitzeu el "botó d'extrusió" als front-ends gràfics per a aquesta prova, ja que s'extrueixen a un ritme ràpid.)
+1. Extrudiu 50 mm de filament amb la següent seqüència d'ordres: `G91` seguit de `G1 E50 F60`. Tingueu en compte 50 mm com a `<requested_extrude_distance>` (distància d'extrusió sol·licitada). Espereu que l'extrusora acabi el moviment (trigarà uns 50 segons). És important utilitzar la velocitat d'extrusió lenta per a aquesta prova, ja que una velocitat més ràpida pot provocar una pressió alta a l'extrusora que distorsionarà els resultats. (No utilitzeu el "botó d'extrusió" als front-ends gràfics per a aquesta prova, ja que s'extrueixen a un ritme ràpid.)
 1. Utilitzeu les pinces digitals per mesurar la nova distància entre el cos de l'extrusora i la marca del filament. Tingueu en compte això com a `<marca_final>`. A continuació, calculeu: `actual_extrude_distance = <marca_inicial> - <marca_final>`
 1. Calculeu rotation_distance com: `rotation_distance = <distancia_rotació_prèvia> * <distancia_actual_extrusio> / <longitut_ordre_extrussió>` Arrodoneix la nova rotation_distance a tres decimals.
 

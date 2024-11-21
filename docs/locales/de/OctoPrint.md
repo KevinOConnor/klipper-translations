@@ -1,24 +1,24 @@
-# OctoPrint for Klipper
+# OctoPrint für Klipper
 
-Klipper has a few options for its front ends, Octoprint was the first and original front end for Klipper. This document will give a brief overview of installing with this option.
+Klipper hat ein paar Optionen für sein Frontend, OctoPrint war das erste und originale Frontend für Klipper. Dieses Dokument gibt eine kurze Übersicht über das Installieren mit dieser Option.
 
-## Install with OctoPi
+## Mit OctoPi installieren
 
-Start by installing [OctoPi](https://github.com/guysoft/OctoPi) on the Raspberry Pi computer. Use OctoPi v0.17.0 or later - see the [OctoPi releases](https://github.com/guysoft/OctoPi/releases) for release information.
+Beginnen Sie mit der Installation von [OctoPi](https://github.com/guysoft/OctoPi) auf dem Raspberry Pi. Benutzen Sie OctoPi v0.17.0 oder neuer - sehen Sie [OctoPi releases](https://github.com/guysoft/OctoPi/releases) für Information über Releases.
 
-One should verify that OctoPi boots and that the OctoPrint web server works. After connecting to the OctoPrint web page, follow the prompt to upgrade OctoPrint if needed.
+Man sollte sicherstellen, dass der OctoPi hochfährt und der OctoPrint-Webserver funktioniert. Nachdem Sie sich mit der OctoPrint-Webseite verbunden haben, folgen Sie, wenn nötig, der Anweisung, OctoPrint zu aktualisieren.
 
-After installing OctoPi and upgrading OctoPrint, it will be necessary to ssh into the target machine to run a handful of system commands.
+Nach der Installation und dem Upgrade von OctoPi wird es nötig sein, in das Zielgerät zu SSHen und eine Handvoll Systembefehle auszuführen.
 
-Start by running these commands on your host device:
+Beginnen Sie, indem Sie diese Befehle auf dem Host-Gerät ausführen:
 
-**If you do not have git installed, please do so with:**
+**Wenn Sie git nicht installiert haben, tun Sie das bitte mit:**
 
 ```
 sudo apt install git
 ```
 
-then proceed:
+dann fortfahren:
 
 ```
 cd ~
@@ -26,32 +26,32 @@ git clone https://github.com/Klipper3d/klipper
 ./klipper/scripts/install-octopi.sh
 ```
 
-The above will download Klipper, install the needed system dependencies, setup Klipper to run at system startup, and start the Klipper host software. It will require an internet connection and it may take a few minutes to complete.
+Das Obenstehende wird Klipper herunterladen, die notwendigen Systemabhängigkeiten installieren, Klipper aufsetzen, sodass es beim Hochfahren startet und die Klipper Host-Software starten. Es benötigt eine Internetverbindung und kann ein paar Minuten zum Fertigstellen brauchen.
 
-## Installing with KIAUH
+## Installation mit KIAUH
 
-KIAUH can be used to install OctoPrint on a variety of Linux based systems that run a form of Debian. More information can be found at https://github.com/dw-0/kiauh
+KIAUH kann verwendet werden, um OctoPrint auf einer Vielzahl an Linux-Systemen zu installieren, die auf einer Form von Debian laufen. Mehr Informationen können unter https://github.com/dw-0/kiauh gefunden werden
 
-## Configuring OctoPrint to use Klipper
+## Konfiguration von OctoPrint zur Nutzung mit Klipper
 
-The OctoPrint web server needs to be configured to communicate with the Klipper host software. Using a web browser, login to the OctoPrint web page and then configure the following items:
+Der OctoPrint-Webserver muss konfiguriert werden, um mit der Klipper Host-Software zu kommunizieren. Loggen Sie sich mit einem Webbrowser auf der OctoPrint-Website ein und konfigurieren Sie die folgenden Einträge:
 
-Navigate to the Settings tab (the wrench icon at the top of the page). Under "Serial Connection" in "Additional serial ports" add:
+Navigieren Sie zum Einstellungstab (Das Zahnradsymbol oben auf der Seite). Fügen Sie unter „Serial Connection“ in „Additional serial ports“ hinzu:
 
 ```
 ~/printer_data/comms/klippy.sock
 ```
 
-Then click "Save".
+Dann drücken Sie „Save“.
 
-*In some older setups this address may be `/tmp/printer`*
+*In einigen älteren Setups kann diese Adresse `/tmp/printer` sein*
 
-Enter the Settings tab again and under "Serial Connection" change the "Serial Port" setting to the one added above.
+Öffnen Sie den Einstellungstab erneut und ändern Sie unter „Serial Connection“ den „Serial Port“ zum oben hinzugefügten.
 
-In the Settings tab, navigate to the "Behavior" sub-tab and select the "Cancel any ongoing prints but stay connected to the printer" option. Click "Save".
+Navigieren Sie im Einstellungstab zum „Behavior“ Untertab und wählen Sie die Option „Cancel any ongoing prints but stay connected to the printer“. Klicken Sie „Speichern“.
 
-From the main page, under the "Connection" section (at the top left of the page) make sure the "Serial Port" is set to the new additional one added and click "Connect". (If it is not in the available selection then try reloading the page.)
+Von der Hauptseite aus, stellen sie sicher, dass unter der Sektion „Connection“ (oben links auf der Seite) der „Serial Port“ zum neuen, zusätzlichen gesetzt ist und klicken Sie „Connect“. (Wenn es nicht in der Auswahl verfügbar ist, versuchen Sie, die Seite neu zu laden.)
 
-Once connected, navigate to the "Terminal" tab and type "status" (without the quotes) into the command entry box and click "Send". The terminal window will likely report there is an error opening the config file - that means OctoPrint is successfully communicating with Klipper.
+Sobald Sie verbunden sind, navigieren Sie zum „Terminal“-Tab und geben sie „status“ (ohne die Anführungszeichen) in die Befehlseingabe und klicken Sie auf „Senden“. Das Terminal-Fenster wird wahrscheinlich melden, dass es einen Fehler beim Öffnen der Konfigurationsdatei gibt - das bedeutet, dass OctoPrint erfolgreich mit Klipper kommuniziert.
 
-Please proceed to <Installation.md> and the *Building and flashing the micro-controller* section
+Bitte fahren Sie mit <Installation.md> und der Sektion *Building and flashing the micro-controller* fort

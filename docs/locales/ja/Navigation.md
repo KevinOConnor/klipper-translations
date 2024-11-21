@@ -1,14 +1,14 @@
-Klipper documentation
+Klipper ドキュメント
 
 インストールと設定
 
-Configuration Reference
+設定リファレンス
 
 Bed Level
 
 Resonance Compensation
 
-Command templates
+コマンドテンプレート
 
 開発者向けドキュメント
 

@@ -1,4 +1,4 @@
-# RPi microcontroller
+# Микроконтролер RPi
 
 Този документ описва процеса на стартиране на Klipper на RPi и използване на същия RPi като вторичен mcu.
 
@@ -6,13 +6,13 @@
 
 Често MCU устройствата, предназначени за управление на 3D принтери, имат ограничен и предварително конфигуриран брой изводи за управление на основните функции за печат (термични резистори, екструдери, степери...). Използването на RPi, в който е инсталиран Klipper, като вторичен MCU дава възможност за директно използване на GPIO и шините (i2c, spi) на RPi в Klipper, без да се използват плъгини на Octoprint (ако се използват) или външни програми, което дава възможност за управление на всичко в рамките на GCODE за печат.
 
-**Warning**: If your platform is a *Beaglebone* and you have correctly followed the installation steps, the linux mcu is already installed and configured for your system.
+**Предупреждение**: Ако вашата платформа е *Beaglebone* и сте спазили правилно стъпките за инсталиране, Linux mcu вече е инсталиран и конфигуриран за вашата система.
 
-## Install the rc script
+## Инсталиране на скрипта rc
 
-If you want to use the host as a secondary MCU the klipper_mcu process must run before the klippy process.
+Ако искате да използвате хоста като вторичен MCU, процесът klipper_mcu трябва да се стартира преди процеса klippy.
 
-After installing Klipper, install the script. run:
+След като инсталирате Klipper, инсталирайте скрипта. стартирайте:
 
 ```
 cd ~/klipper/
@@ -20,18 +20,18 @@ sudo cp ./scripts/klipper-mcu.service /etc/systemd/system/
 sudo systemctl enable klipper-mcu.service
 ```
 
-## Building the micro-controller code
+## Изграждане на кода на микроконтролера
 
-To compile the Klipper micro-controller code, start by configuring it for the "Linux process":
+За да компилирате кода на микроконтролера Klipper, започнете с конфигурирането му за "Linux процес":
 
 ```
 cd ~/klipper/
 make menuconfig
 ```
 
-In the menu, set "Microcontroller Architecture" to "Linux process," then save and exit.
+В менюто задайте "Microcontroller Architecture" (Архитектура на микроконтролера) на "Linux process", след което запазете и излезте.
 
-To build and install the new micro-controller code, run:
+За да сглобите и инсталирате новия код на микроконтролера, изпълнете:
 
 ```
 sudo service klipper stop
@@ -39,51 +39,51 @@ make flash
 sudo service klipper start
 ```
 
-If klippy.log reports a "Permission denied" error when attempting to connect to `/tmp/klipper_host_mcu` then you need to add your user to the tty group. The following command will add the "pi" user to the tty group:
+Ако klippy.log съобщава за грешка "Permission denied" (отказ на разрешение) при опит за свързване към `/tmp/klipper_host_mcu`, тогава трябва да добавите своя потребител към групата tty. Следната команда ще добави потребителя "pi" към групата tty:
 
 ```
 sudo usermod -a -G tty pi
 ```
 
-## Remaining configuration
+## Остатъчна конфигурация
 
-Complete the installation by configuring Klipper secondary MCU following the instructions in [RaspberryPi sample config](../config/sample-raspberry-pi.cfg) and [Multi MCU sample config](../config/sample-multi-mcu.cfg).
+Завършете инсталацията, като конфигурирате вторичния MCU на Klipper, следвайки инструкциите в [RaspberryPi sample config](../config/sample-raspberry-pi.cfg) и [Multi MCU sample config](../config/sample-multi-mcu.cfg).
 
-## Optional: Enabling SPI
+## По избор: Включване на SPI
 
-Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and enabling SPI under the "Interfacing options" menu.
+Уверете се, че SPI драйверът на Linux е активиран, като стартирате `sudo raspi-config` и активирате SPI в менюто "Interfacing options".
 
-## Optional: Enabling I2C
+## По избор: Включване на I2C
 
-Make sure the Linux I2C driver is enabled by running `sudo raspi-config` and enabling I2C under the "Interfacing options" menu. If planning to use I2C for the MPU accelerometer, it is also required to set the baud rate to 400000 by: adding/uncommenting `dtparam=i2c_arm=on,i2c_arm_baudrate=400000` in `/boot/config.txt` (or `/boot/firmware/config.txt` in some distros).
+Уверете се, че драйверът I2C на Linux е активиран, като стартирате `sudo raspi-config` и активирате I2C в менюто "Interfacing options". Ако планирате да използвате I2C за акселерометъра на MPU, е необходимо също така да зададете скорост на предаване на данни 400000, като: добавите/отмените коментара на `dtparam=i2c_arm=on,i2c_arm_baudrate=400000` в `/boot/config.txt` (или `/boot/firmware/config.txt` в някои дистрибуции).
 
-## Optional: Identify the correct gpiochip
+## По избор: Идентифицирайте правилния gpiochip
 
-On Raspberry Pi and on many clones the pins exposed on the GPIO belong to the first gpiochip. They can therefore be used on klipper simply by referring them with the name `gpio0..n`. However, there are cases in which the exposed pins belong to gpiochips other than the first. For example in the case of some OrangePi models or if a Port Expander is used. In these cases it is useful to use the commands to access the *Linux GPIO character device* to verify the configuration.
+На Raspberry Pi и на много клонинги изложените на GPIO щифтове принадлежат на първия gpiochip. Поради това те могат да се използват в klipper просто като се посочат с името `gpio0..n`. Съществуват обаче случаи, при които изложените изводи принадлежат на gpioчипове, различни от първия. Например при някои модели OrangePi или ако се използва разширител на портове. В тези случаи е полезно да използвате командите за достъп до *Linux GPIO character device*, за да проверите конфигурацията.
 
-To install the *Linux GPIO character device - binary* on a debian based distro like octopi run:
+За да инсталирате *Linux GPIO character device - binary* на базирана на Debian дистрибуция като octopi, стартирайте:
 
 ```
 sudo apt-get install gpiod
 ```
 
-To check available gpiochip run:
+За да проверите наличния gpiochip, стартирайте:
 
 ```
 gpiodetect
 ```
 
-To check the pin number and the pin availability tun:
+За да проверите номера на пина и наличността на пина, тунирайте:
 
 ```
 gpioinfo
 ```
 
-The chosen pin can thus be used within the configuration as `gpiochip<n>/gpio<o>` where **n** is the chip number as seen by the `gpiodetect` command and **o** is the line number seen by the`gpioinfo` command.
+Така избраният пин може да се използва в конфигурацията като `gpiochip<n>/gpio<o>`, където **n** е номерът на чипа, видян от командата `gpiodetect`, а **o** е номерът на линията, видян от командата `gpioinfo`.
 
-***Warning:*** only gpio marked as `unused` can be used. It is not possible for a *line* to be used by multiple processes simultaneously.
+***Предупреждение:*** могат да се използват само gpio, маркирани като `unused`. Не е възможно една *линия* да се използва от няколко процеса едновременно.
 
-For example on a RPi 3B+ where klipper use the GPIO20 for a switch:
+Например на RPi 3B+, където klipper използва GPIO20 за превключвател:
 
 ```
 $ gpiodetect
@@ -157,32 +157,32 @@ gpiochip1 - 8 lines:
         line   7:      unnamed       unused   input  active-high
 ```
 
-## Optional: Hardware PWM
+## По избор: Хардуерна ШИМ
 
-Raspberry Pi's have two PWM channels (PWM0 and PWM1) which are exposed on the header or if not, can be routed to existing gpio pins. The Linux mcu daemon uses the pwmchip sysfs interface to control hardware pwm devices on Linux hosts. The pwm sysfs interface is not exposed by default on a Raspberry and can be activated by adding a line to `/boot/config.txt`:
+Raspberry Pi имат два ШИМ канала (ШИМ0 и ШИМ1), които са изложени на хедъра или, ако не са, могат да бъдат насочени към съществуващи gpio щифтове. Демонът Linux mcu използва интерфейса pwmchip sysfs за управление на хардуерни pwm устройства на Linux хостове. Интерфейсът pwm sysfs не е достъпен по подразбиране на Raspberry и може да бъде активиран чрез добавяне на ред в `/boot/config.txt`:
 
 ```
 # Enable pwmchip sysfs interface
 dtoverlay=pwm,pin=12,func=4
 ```
 
-This example enables only PWM0 and routes it to gpio12. If both PWM channels need to be enabled you can use `pwm-2chan`:
+Този пример активира само PWM0 и го насочва към gpio12. Ако трябва да се активират и двата ШИМ канала, можете да използвате `pwm-2chan`:
 
 ```
 # Enable pwmchip sysfs interface
 dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4
 ```
 
-This example additionally enables PWM1 and routes it to gpio13.
+Този пример допълнително активира PWM1 и го насочва към gpio13.
 
-The overlay does not expose the pwm line on sysfs on boot and needs to be exported by echo'ing the number of the pwm channel to `/sys/class/pwm/pwmchip0/export`. This will create device `/sys/class/pwm/pwmchip0/pwm0` in the filesystem. The easiest way to do this is by adding this to `/etc/rc.local` before the `exit 0` line:
+Покритието не разкрива pwm линията в sysfs при зареждане и трябва да бъде експортирано чрез ехо на номера на pwm канала към `/sys/class/pwm/pwmchip0/export`. Това ще създаде устройство `/sys/class/pwm/pwmchip0/pwm0` във файловата система. Най-лесният начин да направите това е като добавите това в `/etc/rc.local` преди реда `exit 0`:
 
 ```
 # Enable pwmchip sysfs interface
 echo 0 > /sys/class/pwm/pwmchip0/export
 ```
 
-When using both PWM channels, the number of the second channel needs to be echo'd as well:
+Когато използвате двата ШИМ канала, номерът на втория канал също трябва да се повтори:
 
 ```
 # Enable pwmchip sysfs interface
@@ -190,7 +190,7 @@ echo 0 > /sys/class/pwm/pwmchip0/export
 echo 1 > /sys/class/pwm/pwmchip0/export
 ```
 
-With the sysfs in place, you can now use either the pwm channel(s) by adding the following piece of configuration to your `printer.cfg`:
+След като sysfs е на мястото си, вече можете да използвате pwm канала(ите), като добавите следната част от конфигурацията към вашия `printer.cfg`:
 
 ```
 [output_pin caselight]
@@ -208,11 +208,11 @@ shutdown_value: 0
 cycle_time: 0.0005
 ```
 
-This will add hardware pwm control to gpio12 and gpio13 on the Pi (because the overlay was configured to route pwm0 to pin=12 and pwm1 to pin=13).
+Това ще добави хардуерно управление на pwm към gpio12 и gpio13 на Pi (защото наслагването е конфигурирано да насочва pwm0 към pin=12 и pwm1 към pin=13).
 
-PWM0 can be routed to gpio12 and gpio18, PWM1 can be routed to gpio13 and gpio19:
+PWM0 може да се насочи към gpio12 и gpio18, а PWM1 може да се насочи към gpio13 и gpio19:
 
-| PWM | gpio PIN | Func |
+| PWM | gpio PIN | FuncFunc |
 | --- | --- | --- |
 | 0 | 12 | 4 |
 | 0 | 18 | 2 |

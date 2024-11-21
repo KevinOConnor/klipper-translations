@@ -1,10 +1,10 @@
 # TMC drivers
 
-This document provides information on using Trinamic stepper motor drivers in SPI/UART mode on Klipper.
+Tento dokument poskytuje informácie o používaní ovládačov krokového motora Trinamic v zapnutom režime SPI/UART v Klipper.
 
-Klipper can also use Trinamic drivers in their "standalone mode". However, when the drivers are in this mode, no special Klipper configuration is needed and the advanced Klipper features discussed in this document are not available.
+Klipper môže tiež používať ovládače Trinamic v ich „samostatnom režime“. Keď sú však ovládače v tomto režime, nie je potrebná žiadna špeciálna konfigurácia Klippera a pokročilé funkcie Klipperu opísané v tomto dokumente nie sú dostupné.
 
-In addition to this document, be sure to review the [TMC driver config reference](Config_Reference.md#tmc-stepper-driver-configuration).
+Okrem tohto dokumentu si určite prečítajte aj [TMC driver config reference](Config_Reference.md#tmc-stepper-driver-configuration).
 
 ## Tuning motor current
 
@@ -40,9 +40,9 @@ For best positional accuracy consider using spreadCycle mode and disable interpo
 
 If using stealthChop mode then the positional inaccuracy from interpolation is small relative to the positional inaccuracy introduced from stealthChop mode. Therefore tuning interpolation is not considered useful when in stealthChop mode, and one can leave interpolation in its default state.
 
-## Sensorless Homing
+## Bezsenzorové navádzanie
 
-Sensorless homing allows to home an axis without the need for a physical limit switch. Instead, the carriage on the axis is moved into the mechanical limit making the stepper motor lose steps. The stepper driver senses the lost steps and indicates this to the controlling MCU (Klipper) by toggling a pin. This information can be used by Klipper as end stop for the axis.
+Bezsenzorové navádzanie umožňuje umiestniť os do pôvodného stavu bez potreby fyzického koncového spínača. Namiesto toho sa vozík na osi presunie do mechanického limitu, čím krokový motor stratí kroky. Krokový ovládač sníma stratené kroky a signalizuje to riadiacemu MCU (Klipper) prepnutím kolíka. Tieto informácie môže Klipper použiť ako koncový doraz pre os.
 
 This guide covers the setup of sensorless homing for the X axis of your (cartesian) printer. However, it works the same with all other axes (that require an end stop). You should configure and tune it for one axis at a time.
 

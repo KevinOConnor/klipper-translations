@@ -1,314 +1,314 @@
-# TMC drivers
+# Драйвери TMC
 
-This document provides information on using Trinamic stepper motor drivers in SPI/UART mode on Klipper.
+Цей документ надає інформацію про використання драйверів двигуна Trinamic stepper у режимі SPI / UART на Klipper.
 
-Klipper can also use Trinamic drivers in their "standalone mode". However, when the drivers are in this mode, no special Klipper configuration is needed and the advanced Klipper features discussed in this document are not available.
+Кліппер також може використовувати Тринамічні драйвери в режимі "standalone". Однак, коли драйвери знаходяться в цьому режимі, не потрібно спеціальної конфігурації Klipper і розширені функції Klipper обговорюються в цьому документі.
 
-In addition to this document, be sure to review the [TMC driver config reference](Config_Reference.md#tmc-stepper-driver-configuration).
+Додатково до цього документа обов'язково перегляньте посилання на налаштування драйвера [TMC](Config_Reference.md#tmc-stepper-driver-configuration).
 
-## Tuning motor current
+## Тюнінговий струм двигуна
 
-A higher driver current increases positional accuracy and torque. However, a higher current also increases the heat produced by the stepper motor and the stepper motor driver. If the stepper motor driver gets too hot it will disable itself and Klipper will report an error. If the stepper motor gets too hot, it loses torque and positional accuracy. (If it gets very hot it may also melt plastic parts attached to it or near it.)
+Більший струм водія збільшує точність позицій і крутний момент. Тим не менш, чим вище струм також підвищує тепло, що виробляється кроковим двигуном і кроковим двигуном. Якщо водій крокової двигуна занадто спекотний він буде відключити себе і Klipper повідомить про помилку. Якщо кроковий двигун занадто гаряча, він втрачає крутний момент і точність позицій. (Якщо вона дуже гаряча, вона також може розтопити пластикові деталі, прикріплені до неї або біля неї.)
 
-As a general tuning tip, prefer higher current values as long as the stepper motor does not get too hot and the stepper motor driver does not report warnings or errors. In general, it is okay for the stepper motor to feel warm, but it should not become so hot that it is painful to touch.
+В якості загального наконечника, віддайте перевагу більш високі значення струму до тих пір, поки кроковий двигун не отримує занадто спекотний і кроковий драйвер не повідомляє попередження або помилки. В цілому, для крокової мотора відчуває себе теплим, але це не повинно стати настільки гарячим, що це болісно доторкнеться.
 
-## Prefer to not specify a hold_current
+## Не вказуйте про утримання_поточної
 
-If one configures a `hold_current` then the TMC driver can reduce current to the stepper motor when it detects that the stepper is not moving. However, changing motor current may itself introduce motor movement. This may occur due to "detent forces" within the stepper motor (the permanent magnet in the rotor pulls towards the iron teeth in the stator) or due to external forces on the axis carriage.
+Якщо один налаштовує `hold_current`, то драйвер TMC може зменшити струм на кроковий двигун, коли він виявляє, що степпер не рухається. Однак, змінний струм двигуна може сам ввести рух двигуна. Це може виникати через "детентні сили" в рамках крокової мотори (постійний магніт в роторі тягнеться до залізних зубів в статорі) або через зовнішні сили на вісь-перевезення.
 
-Most stepper motors will not obtain a significant benefit to reducing current during normal prints, because few printing moves will leave a stepper motor idle for sufficiently long to activate the `hold_current` feature. And, it is unlikely that one would want to introduce subtle print artifacts to the few printing moves that do leave a stepper idle sufficiently long.
+Більшість крокових моторів не отримають суттєву користь для зменшення струму при нормальних друкух, оскільки деякі рухи друку залишать кроковий двигун свічки досить довго, щоб активувати функцію `hold_current`. І, навряд чи, що потрібно ввести тонкі артефакти друку на кілька перегонів друку, які залишають крокової свічки досить довго.
 
-If one wishes to reduce current to motors during print start routines, then consider issuing [SET_TMC_CURRENT](G-Codes.md#set_tmc_current) commands in a [START_PRINT macro](Slicers.md#klipper-gcode_macro) to adjust the current before and after normal printing moves.
+Якщо один хоче зменшити струм до моторів під час початку друку, то розглянути емітацію [SET_TMC_CURRENT](G-Codes.md#set_tmc_current) команди в [START_PRINT макро](Slicers.md#klipper-gcode_macro) для регулювання струму до і після нормального переміщення друку.
 
-Some printers with dedicated Z motors that are idle during normal printing moves (no bed_mesh, no bed_tilt, no Z skew_correction, no "vase mode" prints, etc.) may find that Z motors do run cooler with a `hold_current`. If implementing this then be sure to take into account this type of uncommanded Z axis movement during bed leveling, bed probing, probe calibration, and similar. The `driver_TPOWERDOWN` and `driver_IHOLDDELAY` should also be calibrated accordingly. If unsure, prefer to not specify a `hold_current`.
+Деякі принтери з виділеними Двигуни Z, які свічуються при нормальному перетворенні друку (не ліжко_меш, немає ліжко_тил, немає Z skew_correction, немає "масового режиму" принтів і т.д.) може знайти, що двигуни Z працюють охолоджувача з `hold_current`. При реалізації цього потім обов'язково враховуйте цей тип некомандованого руху осі Z під час вирівнювання місця, пров'язування ліжка, калібрування зонда та аналогічного. `driver_TPOWERDOWN` і `driver_IHOLDDELAY` також слід калібрувати відповідно. `hold_current`.
 
-## Setting "spreadCycle" vs "stealthChop" Mode
+## Налаштування "spreadCycle" проти "stealthChop" Mode
 
-By default, Klipper places the TMC drivers in "spreadCycle" mode. If the driver supports "stealthChop" then it can be enabled by adding `stealthchop_threshold: 999999` to the TMC config section.
+За замовчуванням Klipper розміщує драйвери TMC в режимі "spreadCycle". Якщо драйвер підтримує "stealthChop", то він може бути включений, додаючи `stealthchop_threshold: 999999999` до розділу налаштування TMC.
 
-In general, spreadCycle mode provides greater torque and greater positional accuracy than stealthChop mode. However, stealthChop mode may produce significantly lower audible noise on some printers.
+В цілому поширення Режим циклів забезпечує більший крутний момент і більша точність позицій, ніж стелтКхоп режим. Тим не менш, режим крадіжкиЧоп може значно знизити шум на деяких принтерах.
 
-Tests comparing modes have shown an increased "positional lag" of around 75% of a full-step during constant velocity moves when using stealthChop mode (for example, on a printer with 40mm rotation_distance and 200 steps_per_rotation, position deviation of constant speed moves increased by ~0.150mm). However, this "delay in obtaining the requested position" may not manifest as a significant print defect and one may prefer the quieter behavior of stealthChop mode.
+Випробування режимів порівняння показали підвищений "положений лаг" близько 75% повного кроку при постійному русі швидкості при використанні крадіжки Режим хопа (наприклад, на принтері з 40mm обертання_distance і 200 кроків_per_rotation, відхилення позицій постійного руху швидкості збільшено ~0.150mm). Тим не менш, це "деле в отриманні запитуваного положення" може не проявлятися як суттєвий дефект друку і може віддати перевагу тихій поведінці крадіжкиChop-моделі.
 
-It is recommended to always use "spreadCycle" mode (by not specifying `stealthchop_threshold`) or to always use "stealthChop" mode (by setting `stealthchop_threshold` to 999999). Unfortunately, the drivers often produce poor and confusing results if the mode changes while the motor is at a non-zero velocity.
+Рекомендовано завжди використовувати режим "спредКікле" (за умови `stealthchop_threshold`) або завжди використовувати режим "stealthChop" (встановивши `stealthchop_threshold` до 999999). На жаль, драйвери часто виробляють погані і переконливі результати, якщо зміни режиму, коли двигун знаходиться на неоднорідній швидкості.
 
-## TMC interpolate setting introduces small position deviation
+## Налаштування інтерполяції TMC вводить невелике відхилення позиції
 
-The TMC driver `interpolate` setting may reduce the audible noise of printer movement at the cost of introducing a small systemic positional error. This systemic positional error results from the driver's delay in executing "steps" that Klipper sends it. During constant velocity moves, this delay results in a positional error of nearly half a configured microstep (more precisely, the error is half a microstep distance minus a 512th of a full step distance). For example, on an axis with a 40mm rotation_distance, 200 steps_per_rotation, and 16 microsteps, the systemic error introduced during constant velocity moves is ~0.006mm.
+Драйвер TMC ` інтерпольат` може зменшити шум принтера за вартістю введення невеликої системної похибки. Цей системний результат похибки про похибки водія у виконанні "кроків", які відправляє її. Під час постійної швидкості рухи, це результат затримки в позиційній похибці майже половини налаштованого мікрокрокрокропу (точніше, похибка - половина мікрокроступної дистанції мінус 512-го поверху). Наприклад, на віссю з поворотом 40mm, 200 кроків_per_rotation, і 16 мікрокроступів, системна похибка, введена при постійному русі швидкості ~0.006mm.
 
-For best positional accuracy consider using spreadCycle mode and disable interpolation (set `interpolate: False` in the TMC driver config). When configured this way, one may increase the `microstep` setting to reduce audible noise during stepper movement. Typically, a microstep setting of `64` or `128` will have similar audible noise as interpolation, and do so without introducing a systemic positional error.
+Для найкращої точності позицій слід розглянути за допомогою поширення Режим циклу та відключення інтерполяції (set `interpolate: False` в налаштуваннях драйвера TMC). При налаштуванні цього шляху можна збільшити мікрокроп ` ` для зменшення шуму під час руху крокової атаки. Як правило, мікрокроступна установка `64` або `128` буде мати схожий шум, як інтерполяція, і зробити так без введення системної похибки.
 
-If using stealthChop mode then the positional inaccuracy from interpolation is small relative to the positional inaccuracy introduced from stealthChop mode. Therefore tuning interpolation is not considered useful when in stealthChop mode, and one can leave interpolation in its default state.
+При використанні стелс Хоп-режим, після чого послідовна неточність від інтерполяції невелика порівняно з позиційною неточністю, введеною з режиму крадіжкиЧоп. Таким чином, перевтілення інтерполяції не вважається корисною, коли в прихованому режимі, і можна залишити інтерполяції в його стандартному стані.
 
-## Sensorless Homing
+## Сенсорний блиск
 
-Sensorless homing allows to home an axis without the need for a physical limit switch. Instead, the carriage on the axis is moved into the mechanical limit making the stepper motor lose steps. The stepper driver senses the lost steps and indicates this to the controlling MCU (Klipper) by toggling a pin. This information can be used by Klipper as end stop for the axis.
+Безсенсорне замішування дозволяє в домашніх умовах вісь без необхідності фізичного вимикача. Замість, перевезення на віссю переноситься в механічний ліміт, що робить кроковий двигун пропускає кроки. Драйвер кроковий відзначає втрачені кроки і вказує на це для контролінгу MCU (Klipper) шляхом засвоєння шпильки. Ця інформація може бути використана Klipper як кінцева зупинка для осі.
 
-This guide covers the setup of sensorless homing for the X axis of your (cartesian) printer. However, it works the same with all other axes (that require an end stop). You should configure and tune it for one axis at a time.
+Цей посібник охоплює налаштування безсенсорного гоління для принтера X. Тим не менш, він працює однаково з усіма іншими осями (що вимагають закінчення зупинки). Ви повинні налаштовувати і налаштовувати його на одну вісь одночасно.
 
-### Limitations
+### Лімітації
 
-Be sure that your mechanical components are able to handle the load of the carriage bumping into the limit of the axis repeatedly. Especially leadscrews might generate a lot of force. Homing a Z axis by bumping the nozzle into the printing surface might not be a good idea. For best results, verify that the axis carriage will make a firm contact with the axis limit.
+Обов'язково, що Ваші механічні компоненти здатні обробити навантаження вагонки, що припливають в ліміт осі багаторазово. Тим не менш, це може створити багато сил. Пришийте вісь Z, змащуючи насадку на поверхню друку, може бути непогана ідея. Для кращих результатів перевірте, що вісь-перевезення зробить контакт фірми з обмеженням осі.
 
-Further, sensorless homing might not be accurate enough for your printer. While homing X and Y axes on a cartesian machine can work well, homing the Z axis is generally not accurate enough and may result in an inconsistent first layer height. Homing a delta printer sensorless is not advisable due to missing accuracy.
+Крім того, для принтера не буде достатньо точного. В той час як хмінг X і Y осі на картонній машині може добре працювати, хмінг осі Z, як правило, не точніше і може призвести до невідповідної висоти першого шару. Захоплення дельта принтера не бажано через відсутність точності.
 
-Further, the stall detection of the stepper driver is dependent on the mechanical load on the motor, the motor current and the motor temperature (coil resistance).
+Далі, стиглий виявлення крокового драйвера залежить від механічного навантаження на двигун, струм двигуна і температури двигуна (резистентність вологи).
 
-Sensorless homing works best at medium motor speeds. For very slow speeds (less than 10 RPM) the motor does not generate significant back EMF and the TMC cannot reliably detect motor stalls. Further, at very high speeds, the back EMF of the motor approaches the supply voltage of the motor, so the TMC cannot detect stalls anymore. It is advised to have a look in the datasheet of your specific TMCs. There you can also find more details on limitations of this setup.
+Відстеження безшумних голів найкраще працює на швидкості середнього двигуна. Для дуже повільних швидкостей (без 10 RPM) двигун не генерує значну задню EMF і TMC не може надійно виявити моторні стилі. далі, при дуже високих швидкостях, спина EMF мотора підійде напругу живлення мотора, тому TMC не може виявити столи. Повідомляємо, що в описі вашого конкретного TMCs ви можете переглянути опис. Ви також можете дізнатися більше про обмеження цього налаштування.
 
-### Prerequisites
+### Вимоги
 
-A few prerequisites are needed to use sensorless homing:
+Кілька передумов необхідно використовувати безсенсорне гоління:
 
-1. A stallGuard capable TMC stepper driver (tmc2130, tmc2209, tmc2660, or tmc5160).
-1. SPI / UART interface of the TMC driver wired to micro-controller (stand-alone mode does not work).
-1. The appropriate "DIAG" or "SG_TST" pin of TMC driver connected to the micro-controller.
-1. The steps in the [config checks](Config_checks.md) document must be run to confirm the stepper motors are configured and working properly.
+1. СталГуард здатний драйвера стартера TMC (tmc2130, tmc2209, tmc2660 або tmc5160).
+1. SPI / інтерфейс UART драйвера ТМC проводилася до мікроконтролера (режим витримки не працює).
+1. Привідний "DIAG" або "SG_TST" штифт драйвера TMC підключений до мікроконтролера.
+1. Заходи в документі [config checks](Config_checks.md) повинні працювати, щоб підтвердити крокові двигуни налаштовані і працюють належним чином.
 
-### Tuning
+### Тюнінг
 
-The procedure described here has six major steps:
+Процедура описана тут має шість основних кроків:
 
-1. Choose a homing speed.
-1. Configure the `printer.cfg` file to enable sensorless homing.
-1. Find the stallguard setting with highest sensitivity that successfully homes.
-1. Find the stallguard setting with lowest sensitivity that successfully homes with a single touch.
-1. Update the `printer.cfg` with the desired stallguard setting.
-1. Create or update `printer.cfg` macros to home consistently.
+1. Виберіть швидкість стрибка.
+1. Налаштуйте файл `printer.cfg`, щоб увімкнути сенсорне панування.
+1. Знайдіть налаштування стійкого захисту з найвищою чутливістю, яка успішно домовласників.
+1. Знайдіть налаштування траалгарду з найнижчою чутливістю, яка вдало домовласників з одним дотиком.
+1. Оновлення `printer.cfg` з бажаним налаштуванням траалгарду.
+1. Створення або оновлення `printer.cfg` макроси до дому послідовно.
 
-#### Choose homing speed
+#### Виберіть швидкість лосини
 
-The homing speed is an important choice when performing sensorless homing. It's desirable to use a slow homing speed so that the carriage does not exert excessive force on the frame when making contact with the end of the rail. However, the TMC drivers can't reliably detect a stall at very slow speeds.
+Швидкість панування є важливим вибором при виконанні безсенсорного гоління. Бажано використовувати повільну швидкість хмелю, щоб перевезення не вичерпувала зайву силу на каркасі при виготовленні контакту з закінченням рейки. Тим не менш, драйвери TMC не можуть надійно виявити високий рівень при дуже повільній швидкості.
 
-A good starting point for the homing speed is for the stepper motor to make a full rotation every two seconds. For many axes this will be the `rotation_distance` divided by two. For example:
+Хороша початкова точка для швидкості замішування є для крокової двигуна, щоб зробити повне обертання кожні два секунди. Для багатьох осей це буде `rotation_distance` розділений на два. Наприклад:
 
 ```
 [stepper_x]
-rotation_distance: 40
-homing_speed: 20
+обертання_distance: 40
+код товару: 20
 ...
 ```
 
-#### Configure printer.cfg for sensorless homing
+#### Налаштування принтера.cfg для безсенсорного гоління
 
-The `homing_retract_dist` setting must be set to zero in the `stepper_x` config section to disable the second homing move. The second homing attempt does not add value when using sensorless homing, it will not work reliably, and it will confuse the tuning process.
+`homing_retract_dist` налаштування повинна бути встановлена до нуля в `stepper_x` розділ налаштування для відключення другого підйому. Друга спроба хмінгу не додасть значення при використанні безсенсорного хмінгу, це не буде надійно працювати, і він буде плутати процес налаштування.
 
-Be sure that a `hold_current` setting is not specified in the TMC driver section of the config. (If a hold_current is set then after contact is made, the motor stops while the carriage is pressed against the end of the rail, and reducing the current while in that position may cause the carriage to move - that results in poor performance and will confuse the tuning process.)
+Переконайтеся, що параметр `hold_current` не вказано в розділі драйвера TMC config. (Якщо утримувати_поточний встановлюється після того, як з'явиться контакт, рух припиняється, поки перевезення натискається на кінець рейки, а зменшення струму в той час як в такому положенні може викликати перевезення, щоб пересуватися - це призводить до низької продуктивності і буде протистояти процесу тюнінгу.)
 
-It is necessary to configure the sensorless homing pins and to configure initial "stallguard" settings. A tmc2209 example configuration for an X axis might look like:
+Необхідно налаштовувати безсенсорні замшеві шпильки і налаштовувати початкові налаштування "стандарт". Прикладна конфігурація Tmc2209 для осі X може виглядати:
 
 ```
 [tmc2209 stepper_x]
-diag_pin: ^PA1      # Set to MCU pin connected to TMC DIAG pin
-driver_SGTHRS: 255  # 255 is most sensitive value, 0 is least sensitive
+diag_pin: ^PA1 # Комплект до MCU, підключений до штифта TMC DIAG
+Драйвери SGTHRS: 255 # 255 є найбільш чутливою вартістю, 0 найменш чутлива
 ...
 
 [stepper_x]
-endstop_pin: tmc2209_stepper_x:virtual_endstop
-homing_retract_dist: 0
+JavaScript licenses API Веб-сайт Go1.13.8
+код товару: 0
 ...
 ```
 
-An example tmc2130 or tmc5160 config might look like:
+Приклад tmc2130 або tmc5160 config може виглядати як:
 
 ```
 [tmc2130 stepper_x]
-diag1_pin: ^!PA1 # Pin connected to TMC DIAG1 pin (or use diag0_pin / DIAG0 pin)
-driver_SGT: -64  # -64 is most sensitive value, 63 is least sensitive
+diag1_pin: ^!PA1 # Pin підключений до штифта TMC DIAG1 (або використовувати діаг0_pin / DIAG0 шпилька)
+драйвер_SGT: -64 # -64 є найбільш чутливим значенням, 63 є найменш чутливим
 ...
 
 [stepper_x]
-endstop_pin: tmc2130_stepper_x:virtual_endstop
-homing_retract_dist: 0
+JavaScript licenses API Веб-сайт Go1.13.8
+код товару: 0
 ...
 ```
 
-An example tmc2660 config might look like:
+Приклад tmc2660 config може виглядати як:
 
 ```
 [tmc2660 stepper_x]
-driver_SGT: -64     # -64 is most sensitive value, 63 is least sensitive
+драйвер_SGT: -64 # -64 є найбільш чутливим значенням, 63 є найменш чутливим
 ...
 
 [stepper_x]
-endstop_pin: ^PA1   # Pin connected to TMC SG_TST pin
-homing_retract_dist: 0
+endstop_pin: ^PA1 # Pin підключений до TMC SG_TST шпильки
+код товару: 0
 ...
 ```
 
-The examples above only show settings specific to sensorless homing. See the [config reference](Config_Reference.md#tmc-stepper-driver-configuration) for all the available options.
+Приклади вище тільки показують параметри, специфічні для безсенсорного гоління. Дивитися посилання [config](Config_Reference.md#tmc-stepper-driver-configuration) для всіх доступних варіантів.
 
-#### Find highest sensitivity that successfully homes
+#### Знайдіть найвищу чутливість, яка успішно будинки
 
-Place the carriage near the center of the rail. Use the SET_TMC_FIELD command to set the highest sensitivity. For tmc2209:
-
-```
-SET_TMC_FIELD STEPPER=stepper_x FIELD=SGTHRS VALUE=255
-```
-
-For tmc2130, tmc5160, and tmc2660:
+Помістити вагонку біля центру рейки. Використовуйте команду SET_TMC_FIELD, щоб встановити найвищу чутливість. Для tmc2209:
 
 ```
-SET_TMC_FIELD STEPPER=stepper_x FIELD=sgt VALUE=-64
+СЕТ_TMC_FIELD СТЕППЕР=Степпер_x ФАЙЛД=СГТРС ВАЛУ=255
 ```
 
-Then issue a `G28 X0` command and verify the axis does not move at all or quickly stops moving. If the axis does not stop, then issue an `M112` to halt the printer - something is not correct with the diag/sg_tst pin wiring or configuration and it must be corrected before continuing.
+Для tmc2130, tmc5160 і tmc2660:
 
-Next, continually decrease the sensitivity of the `VALUE` setting and run the `SET_TMC_FIELD` `G28 X0` commands again to find the highest sensitivity that results in the carriage successfully moving all the way to the endstop and halting. (For tmc2209 drivers this will be decreasing SGTHRS, for other drivers it will be increasing sgt.) Be sure to start each attempt with the carriage near the center of the rail (if needed issue `M84` and then manually move the carriage to the center). It should be possible to find the highest sensitivity that homes reliably (settings with higher sensitivity result in small or no movement). Note the found value as *maximum_sensitivity*. (If the minimum possible sensitivity (SGTHRS=0 or sgt=63) is obtained without any carriage movement then something is not correct with the diag/sg_tst pin wiring or configuration and it must be corrected before continuing.)
+```
+СЕТ_TMC_FIELD СТЕППЕР=Степпер_x ФАЙЛД=СТ ВАЛЭ=-64
+```
 
-When searching for maximum_sensitivity, it may be convenient to jump to different VALUE settings (so as to bisect the VALUE parameter). If doing this then be prepared to issue an `M112` command to halt the printer, as a setting with a very low sensitivity may cause the axis to repeatedly "bang" into the end of the rail.
+Потім випишіть команду `G28 X0` і перевірте віссю не рухається на всіх або швидко зупиняється переміщення. Якщо вісь не зупиняється, то виписайте `M112`, щоб захопити принтер - щось не вірно з діаг / сg_tst шпилькою або конфігурацією, і її необхідно виправити до продовження.
 
-Be sure to wait a couple of seconds between each homing attempt. After the TMC driver detects a stall it may take a little time for it to clear its internal indicator and be capable of detecting another stall.
+Далі, безперервно зменшуючи чутливість параметра `VALUE` і запустити `SET_TMC_FIELD` `G28 X0` команди знову знайдуть найвищу чутливість, яка призводить до перевезення, успішно перемістивши весь шлях до кінця і жовчі. (Для драйверів tmc2209 це буде знешкоджено SGTHRS, для інших водіїв він буде збільшуватися sgt.) Обов'язково запустіть кожну спробу з перевезенням поруч з центром рейки (у разі необхідності `M84`, а потім вручну перемістіть перевезення до центру). Необхідно знайти найбільшу чутливість, що домівки надійно (постановки з вищим результатом чутливості в малому або без руху). Зверніть увагу, що знайшли значення *maximum_sensitivity*. (Якщо мінімальна можлива чутливість (SGTHRS=0 або sgt=63) отримується без будь-якого руху перевезення, то щось не правильне з діаг/сg_tst шпилькою або конфігурацією, і вона повинна бути виправлена до продовження.)
 
-During these tuning tests, if a `G28 X0` command does not move all the way to the axis limit, then be careful with issuing any regular movement commands (eg, `G1`). Klipper will not have a correct understanding of the carriage position and a move command may cause undesirable and confusing results.
+При пошуку максимальної_чутливості, це може бути зручно стрибати на різні налаштування VALUE (наприклад, для виявлення параметра VALUE). Якщо це зробити, то приготувавши, щоб випустити `M112`, щоб захопити принтер, так як установка з дуже низькою чутливістю може викликати вісь для багаторазового "чубчик" в кінці рейки.
 
-#### Find lowest sensitivity that homes with one touch
+Обов'язково почекайте пару секунд між кожною спробою. Після того, як драйвер TMC виявляє високий рівень, він може зайняти трохи часу для того, щоб очистити його внутрішній показник і бути здатний виявляти інший високий рівень.
 
-When homing with the found *maximum_sensitivity* value, the axis should move to the end of the rail and stop with a "single touch" - that is, there should not be a "clicking" or "banging" sound. (If there is a banging or clicking sound at maximum_sensitivity then the homing_speed may be too low, the driver current may be too low, or sensorless homing may not be a good choice for the axis.)
+Під час цих тестів, якщо команда `G28 X0` не пересуває весь шлях до обмеження осі, то будьте обережні з видачею будь-яких регулярних команд руху (наприклад, `G1`). Кліппер не має правильного розуміння положення про перевезення та команди руху може викликати небажані та переконливі результати.
 
-The next step is to again continually move the carriage to a position near the center of the rail, decrease the sensitivity, and run the `SET_TMC_FIELD` `G28 X0` commands - the goal is now to find the lowest sensitivity that still results in the carriage successfully homing with a "single touch". That is, it does not "bang" or "click" when contacting the end of the rail. Note the found value as *minimum_sensitivity*.
+#### Знайти найменшу чутливість, які будинки з одним дотиком
 
-#### Update printer.cfg with sensitivity value
+Коли захоплення з знайденим *maximum_sensitivity* значення, вісь повинна переходити до кінця рейки і зупинитися з "сингом дотиком" - тобто не повинно бути "затискання" або "чуття" звуку. (Якщо є чубчик або натискання звуку в максимальній_чутливості, то хмінг_швидкість може бути занадто низьким, струм водія може бути занадто низьким, або безсенсорне хміння може бути недобрим вибором для осі.)
 
-After finding *maximum_sensitivity* and *minimum_sensitivity*, use a calculator to obtain the recommend sensitivity as *minimum_sensitivity + (maximum_sensitivity - minimum_sensitivity)/3*. The recommended sensitivity should be in the range between the minimum and maximum, but slightly closer to the minimum. Round the final value to the nearest integer value.
+Наступний крок полягає в тому, щоб знову безперервно перемістити перевезення в позицію недалеко від центру рейки, зменшити чутливість і запустити `SET_TMC_FIELD` `G28 X0` команди - ціль тепер знайти найнижчу чутливість, яка все ще призводить до перевезення, вдало занурення з "синглінним дотиком". Що це, це не "чубчик" або "клацання" при контакті з закінченням рейки. Зверніть увагу, що знайшли значення *minimum_sensitivity*.
 
-For tmc2209 set this in the config as `driver_SGTHRS`, for other TMC drivers set this in the config as `driver_SGT`.
+#### Оновлення принтера.cfg з значенням чутливості
 
-If the range between *maximum_sensitivity* and *minimum_sensitivity* is small (eg, less than 5) then it may result in unstable homing. A faster homing speed may increase the range and make the operation more stable.
+*maximum_sensitivity* і *minimum_sensitivity*, використовуйте калькулятор для отримання рекомендувати чутливість як *minimum_sensitivity + (maximum_sensitivity - мінімум_sensitivity)/3*. Рекомендована чутливість повинна бути в діапазоні між мінімальним і максимальним, але трохи ближче до мінімуму. Закруглити кінцеве значення до найближчого цілого значення.
 
-Note that if any change is made to driver current, homing speed, or a notable change is made to the printer hardware, then it will be necessary to run the tuning process again.
+Для tmc2209 встановити це в конфігурації, як `driver_SGTHRS`, для інших драйверів TMC встановити це в конфігурації, як `driver_SGT`.
 
-#### Using Macros when Homing
+Якщо діапазон між *maximum_sensitivity* і *minimum_sensitivity* є невеликим (наприклад, менше 5), то це може призвести до нестабільного панування. Швидша швидкість замші може збільшити діапазон і зробити операцію більш стабільною.
 
-After sensorless homing completes the carriage will be pressed against the end of the rail and the stepper will exert a force on the frame until the carriage is moved away. It is a good idea to create a macro to home the axis and immediately move the carriage away from the end of the rail.
+Зверніть увагу, що якщо будь-яка зміна виконана на струм драйвера, швидкість замішування або нездатна зміна проводиться до обладнання принтера, то буде потрібно знову запустити процес налаштування.
 
-It is a good idea for the macro to pause at least 2 seconds prior to starting sensorless homing (or otherwise ensure that there has been no movement on the stepper for 2 seconds). Without a delay it is possible for the driver's internal stall flag to still be set from a previous move.
+#### Використання Macros при голодуванні
 
-It can also be useful to have that macro set the driver current before homing and set a new current after the carriage has moved away.
+Після безшумного гоління завершується перевалка буде натискати на кінець рейки, а кроковий крок закріпить сили на каркасі до того, як перевезення переміщається. Це гарна ідея для створення макросу до будинку осі і відразу ж перемістити перевезення з кінця рейки.
 
-An example macro might look something like:
+Це хороша ідея для макросу, щоб пауза принаймні 2 секунди до початку безсенсорного гоління (або іншим чином, не існує руху на степпері протягом 2 секунд). Без затримки можна за внутрішнім стиглим прапором, щоб все-таки було встановлено з попереднього ходу.
+
+Також можна скористатися тим, що макроси встановлюють струм драйвера перед замішуванням і встановлюють новий струм після переїзду.
+
+Наприклад, макро може виглядати щось схоже:
 
 ```
 [gcode_macro SENSORLESS_HOME_X]
-gcode:
-    {% set HOME_CUR = 0.700 %}
-    {% set driver_config = printer.configfile.settings['tmc2209 stepper_x'] %}
-    {% set RUN_CUR = driver_config.run_current %}
-    # Set current for sensorless homing
-    SET_TMC_CURRENT STEPPER=stepper_x CURRENT={HOME_CUR}
-    # Pause to ensure driver stall flag is clear
-    G4 P2000
-    # Home
-    G28 X0
-    # Move away
-    G90
-    G1 X5 F1200
-    # Set current during print
-    SET_TMC_CURRENT STEPPER=stepper_x CURRENT={RUN_CUR}
+гкод:
+{% встановити HOME_CUR = 0.700 %}
+{% встановити драйвер_config = принтер.configfile.settings['tmc2209 stepper_x'] %}
+{% встановити RUN_CUR = драйвер_config.run_current %}
+# Встановити струм для безсенсорного гоління
+SET_TMC_CURRENT STEPPER=Степпер_x КУРЕНТ={HOME_CUR}
+#Застосувати, щоб забезпечити водій стиглий прапор ясно
+Г4 П2000
+# Головна
+Г28 Х0
+#Перемістити
+Г90
+Г1 Х5 Ф1200
+# Встановити струм під час друку
+SET_TMC_CURRENT STEPPER=Степпер_x КУРЕНТ={RUN_CUR}
 ```
 
-The resulting macro can be called from a [homing_override config section](Config_Reference.md#homing_override) or from a [START_PRINT macro](Slicers.md#klipper-gcode_macro).
+Отриманий макрос можна назвати з розділу [homing_override config](Config_Reference.md#homing_override) або з [START_PRINT макро](Slicers.md#klipper-gcode_macro).
 
-Note that if the driver current during homing is changed, then the tuning process should be run again.
+Зверніть увагу, що якщо змінено струм водія, то процес налаштування повинен знову працювати.
 
-### Tips for sensorless homing on CoreXY
+### Поради щодо безсенсорного гоління на CoreXY
 
-It is possible to use sensorless homing on the X and Y carriages of a CoreXY printer. Klipper uses the `[stepper_x]` stepper to detect stalls when homing the X carriage and uses the `[stepper_y]` stepper to detect stalls when homing the Y carriage.
+Можливе використання безсенсорних штрихів на X і Y-колесках принтера CoreXY. Klipper використовує `[stepper_x]` stepper для виявлення стол, коли захоплення X-транспорту і використовує `[stepper_y]` stepper для виявлення стол, коли панування Y-транспорту.
 
-Use the tuning guide described above to find the appropriate "stall sensitivity" for each carriage, but be aware of the following restrictions:
+Використовуйте посібник, описаний вище, щоб знайти відповідну "високу чутливість" для кожного перевезення, але врахувати такі обмеження:
 
-1. When using sensorless homing on CoreXY, make sure there is no `hold_current` configured for either stepper.
-1. While tuning, make sure both the X and Y carriages are near the center of their rails before each home attempt.
-1. After tuning is complete, when homing both X and Y, use macros to ensure that one axis is homed first, then move that carriage away from the axis limit, pause for at least 2 seconds, and then start the homing of the other carriage. The move away from the axis avoids homing one axis while the other is pressed against the axis limit (which may skew the stall detection). The pause is necessary to ensure the driver's stall flag is cleared prior to homing again.
+1. При використанні безсенсорного гоління на CoreXY, переконайтеся, що немає `hold_current` налаштовано для будь-якого кроку.
+1. В той час як тюнінг, переконайтеся, що обидві вагони X і Y знаходяться недалеко від центру своїх рейок до кожної домашньої спроби.
+1. Після того, як тюнінг завершений, коли панування як X, так і Y використовуйте макроси, щоб забезпечити, що одна вісь спочатку додається, потім перемістіть, що перевозиться від обмеження осі, пауза не менше 2 секунд, а потім починайте гоління іншого перевезення. Відіймається від осі уникає захоплення однієї осі, а інший притискається до обмеження осі (що може скребити стійке виявлення). Пауза необхідна для того, щоб забезпечити дорожний прапор водія був очищений до того, як знову захопити.
 
-An example CoreXY homing macro might look like:
+Наприклад, CoreXY кодування макро може виглядати:
 
 ```
 [gcode_macro HOME]
-gcode:
-    G90
-    # Home Z
-    G28 Z0
-    G1 Z10 F1200
-    # Home Y
-    G28 Y0
-    G1 Y5 F1200
-    # Home X
-    G4 P2000
-    G28 X0
-    G1 X5 F1200
+гкод:
+Г90
+# Головна З
+Г28 З0
+Г1 З10 Ф1200
+# Головна Y
+Г28 Y0
+G1 Y5 F1200
+# Головна X
+Г4 П2000
+Г28 Х0
+Г1 Х5 Ф1200
 ```
 
-## Querying and diagnosing driver settings
+## Налаштування драйвера та діагностики
 
-The `[DUMP_TMC command](G-Codes.md#dump_tmc) is a useful tool when configuring and diagnosing the drivers. It will report all fields configured by Klipper as well as all fields that can be queried from the driver.
+`[DUMP_TMC команди](G-Codes.md#dump_tmc) є корисним інструментом при налаштуванні та діагностуванні драйверів. Повідомляти всі поля, налаштовані Klipper, а також всі поля, які можуть бути перевірені з водія.
 
-All of the reported fields are defined in the Trinamic datasheet for each driver. These datasheets can be found on the [Trinamic website](https://www.trinamic.com/). Obtain and review the Trinamic datasheet for the driver to interpret the results of DUMP_TMC.
+Всі зазначені поля визначені в таблиці даних Trinamic для кожного водія. Ці таблиці можна знайти на сайті [Тринадимий сайт](https://www.trinamic.com/). Ознайомтеся з та ознайомтеся з табличкою даних для водія, щоб інтерпретувати результати DUMP_TMC.
 
-## Configuring driver_XXX settings
+## Налаштування параметрів драйвера_XXX
 
-Klipper supports configuring many low-level driver fields using `driver_XXX` settings. The [TMC driver config reference](Config_Reference.md#tmc-stepper-driver-configuration) has the full list of fields available for each type of driver.
+Klipper підтримує налаштування багатьох драйверів низького рівня за допомогою параметра `driver_XXX`. [Налаштування драйвера TMC](Config_Reference.md#tmc-stepper-driver-configuration) має повний перелік полів, доступних для кожного типу драйвера.
 
-In addition, almost all fields can be modified at run-time using the [SET_TMC_FIELD command](G-Codes.md#set_tmc_field).
+Крім того, майже всі поля можуть бути змінені в режимі run-time за допомогою команди [SET_TMC_FIELD](G-Codes.md#set_tmc_field).
 
-Each of these fields is defined in the Trinamic datasheet for each driver. These datasheets can be found on the [Trinamic website](https://www.trinamic.com/).
+Кожна з цих полів визначається в таблиці даних Trinamic для кожного водія. Ці таблиці можна знайти на сайті [Тринадимий сайт](https://www.trinamic.com/).
 
-Note that the Trinamic datasheets sometime use wording that can confuse a high-level setting (such as "hysteresis end") with a low-level field value (eg, "HEND"). In Klipper, `driver_XXX` and SET_TMC_FIELD always set the low-level field value that is actually written to the driver. So, for example, if the Trinamic datasheet states that a value of 3 must be written to the HEND field to obtain a "hysteresis end" of 0, then set `driver_HEND=3` to obtain the high-level value of 0.
+Зауважте, що Тринамічні описи іноді використовують формулювання, яке може заплутати налаштування високого рівня (наприклад, "гістерез енд") з низькою вартістю поля (наприклад, "HEND"). У Klipper `driver_XXX` і SET_TMC_FIELD завжди встановлюють значення поля низького рівня, яке фактично написано водієм. Так, наприклад, якщо Тринамічний опис таблиці стверджує, що значення 3 має бути написано на поле HEND, щоб отримати "гістерезний кінець" 0, потім встановити `driver_HEND=3` для отримання високої ціни 0.
 
-## Common Questions
+## Загальні питання
 
-### Can I use stealthChop mode on an extruder with pressure advance?
+### Чи можу я використовувати прихованийChop режим на екструдера з передовим тиском?
 
-Many people successfully use "stealthChop" mode with Klipper's pressure advance. Klipper implements [smooth pressure advance](Kinematics.md#pressure-advance) which does not introduce any instantaneous velocity changes.
+Багато людей успішно використовують режим «stealthChop» з передовим тиском Klipper. Klipper впроваджує [попереднє оновлення тиску](кінематика.md#pressure-advance), що не вводить будь-які миттєві зміни швидкості.
 
-However, "stealthChop" mode may produce lower motor torque and/or produce higher motor heat. It may or may not be an adequate mode for your particular printer.
+Однак режим «stealthChop» може виготовити нижню моторну крутку та/або виготовити більш високу моторну спеку. Не може бути достатній режим для вашого конкретного принтера.
 
-### I keep getting "Unable to read tmc uart 'stepper_x' register IFCNT" errors?
+### Я тримую "Не вдалося прочитати tmc uart 'stepper_x' реєстрація IFCNT" помилки?
 
-This occurs when Klipper is unable to communicate with a tmc2208 or tmc2209 driver.
+Це відбувається, коли Klipper не може спілкуватися з драйвером tmc2208 або tmc2209.
 
-Make sure that the motor power is enabled, as the stepper motor driver generally needs motor power before it can communicate with the micro-controller.
+Переконайтеся, що моторна потужність ввімкнена, як кроковий двигун водій, як правило, потребує моторної потужності, перш ніж вона може спілкуватися з мікроконтролером.
 
-If this error occurs after flashing Klipper for the first time, then the stepper driver may have been previously programmed in a state that is not compatible with Klipper. To reset the state, remove all power from the printer for several seconds (physically unplug both USB and power plugs).
+Якщо ця помилка виникає після того, як миготливий ковпачок вперше, то драйвер може попередньо запрограмований в штаті, який не сумісний з Klipper. Щоб скидати стан, видаліть всю потужність з принтера протягом декількох секунд (фізично не розгорніть як USB, так і заглушки живлення).
 
-Otherwise, this error is typically the result of incorrect UART pin wiring or an incorrect Klipper configuration of the UART pin settings.
+В іншому випадку, ця помилка, як правило, є результатом неправильного UART шприцом або неправильною конфігурацією клиппера UART настройок.
 
-### I keep getting "Unable to write tmc spi 'stepper_x' register ..." errors?
+### Я тримую "Неможливо писати tmc spi 'stepper_x' реєстрація ..." помилки?
 
-This occurs when Klipper is unable to communicate with a tmc2130 or tmc5160 driver.
+Це відбувається, коли Klipper не може спілкуватися з драйвером tmc2130 або tmc5160.
 
-Make sure that the motor power is enabled, as the stepper motor driver generally needs motor power before it can communicate with the micro-controller.
+Переконайтеся, що моторна потужність ввімкнена, як кроковий двигун водій, як правило, потребує моторної потужності, перш ніж вона може спілкуватися з мікроконтролером.
 
-Otherwise, this error is typically the result of incorrect SPI wiring, an incorrect Klipper configuration of the SPI settings, or an incomplete configuration of devices on an SPI bus.
+В іншому випадку, ця помилка, як правило, є результатом неправильної передачі SPI, неправильної конфігурації Klipper параметрів SPI або неповної конфігурації пристроїв на автобусі SPI.
 
-Note that if the driver is on a shared SPI bus with multiple devices then be sure to fully configure every device on that shared SPI bus in Klipper. If a device on a shared SPI bus is not configured, then it may incorrectly respond to commands not intended for it and corrupt the communication to the intended device. If there is a device on a shared SPI bus that can not be configured in Klipper, then use a [static_digital_output config section](Config_Reference.md#static_digital_output) to set the CS pin of the unused device high (so that it will not attempt to use the SPI bus). The board's schematic is often a useful reference for finding which devices are on an SPI bus and their associated pins.
+Зверніть увагу, що якщо водій знаходиться на спільному автобусі SPI з декількома пристроями, то обов'язково в повній мірі налаштовувати кожен пристрій на цьому спільному автобусі SPI в Klipper. Якщо пристрій на спільному автобусі SPI не налаштовується, то він може некоректно реагувати на команди, які не призначені для нього і псувати зв'язок до призначеного пристрою. Якщо є пристрій на спільному автобусі SPI, який не може бути налаштований в Klipper, то скористайтеся [static_digital_вихідна конфігурація розділу](Config_Reference.md#static_digital_вихід) для встановлення CS шпильки невикористаного пристрою високої (так що він не намагатиметься використовувати SPI автобус). Дошка схема часто є корисною для пошуку, які пристрої знаходяться на автобусі SPI і їх пов'язані шпильки.
 
-### Why did I get a "TMC reports error: ..." error?
+### Чому я отримав "TMC повідомлення про помилку: ..." помилка?
 
-This type of error indicates the TMC driver detected a problem and has disabled itself. That is, the driver stopped holding its position and ignored movement commands. If Klipper detects that an active driver has disabled itself, it will transition the printer into a "shutdown" state.
+Цей тип помилки показує, що драйвер TMC виявив проблему і відключив себе. Таким чином, водій припинив позицію та ігнорував командування руху. Якщо Klipper виявляє, що активний водій відключився самостійно, він перетворить принтер в стан «пошуку».
 
-It's also possible that a **TMC reports error** shutdown occurs due to SPI errors that prevent communication with the driver (on tmc2130, tmc5160, or tmc2660). If this occurs, it's common for the reported driver status to show `00000000` or `ffffffff` - for example: `TMC reports error: DRV_STATUS: ffffffff ...` OR `TMC reports error: READRSP@RDSEL2: 00000000 ...`. Such a failure may be due to an SPI wiring problem or may be due to a self-reset or failure of the TMC driver.
+Також можливо, що **TMC звітує про помилку** виникає через помилки SPI, які запобігають зв'язкам з водієм (на tmc2130, tmc5160 або tmc2660). Якщо це відбувається, це загальний для вказаного стану драйвера, щоб показати `0000000000000000` або `ffffffffffffffffffffffffff` - наприклад: `TMC Повідомлення: DRV_STATUS: ffffffffff ...` OR `TMC повідомлення про помилку: READRSP@RDSEL2: 00000000 ...`. Таку несправність може бути пов’язано з проблемою електропроводки SPI або може бути пов’язано з самовідновленням або збою драйвера TMC.
 
-Some common errors and tips for diagnosing them:
+Деякі загальні помилки і поради щодо діагностики їх:
 
-#### TMC reports error: `... ot=1(OvertempError!)`
+#### `... ot=1(OvertempError!)`
 
-This indicates the motor driver disabled itself because it became too hot. Typical solutions are to decrease the stepper motor current, increase cooling on the stepper motor driver, and/or increase cooling on the stepper motor.
+Це говорить про те, що водій відключився, тому що він став занадто гарячим. Типові рішення є зменшення струменя крокового двигуна, збільшення охолодження на кроковий двигун водія, а/або збільшення охолодження на кроковий двигун.
 
-#### TMC reports error: `... ShortToGND` OR `ShortToSupply`
+#### TMC повідомляє про помилку: `... ShortToGND` АБО `ShortToSupply`
 
-This indicates the driver has disabled itself because it detected very high current passing through the driver. This may indicate a loose or shorted wire to the stepper motor or within the stepper motor itself.
+Це говорить про те, що водій відключився себе, тому що він виявлений дуже високий струм проходження через драйвер. Це може вказати пухкий або скорочений дріт на кроковий двигун або всередині самого крокової двигуна.
 
-This error may also occur if using stealthChop mode and the TMC driver is not able to accurately predict the mechanical load of the motor. (If the driver makes a poor prediction then it may send too much current through the motor and trigger its own over-current detection.) To test this, disable stealthChop mode and check if the errors continue to occur.
+Ця помилка також може виникнути при використанні крадіжки Шоп-режим і драйвер TMC точно не здатний прогнозувати механічне навантаження двигуна. (Якщо водій робить поганий прогноз, то він може надсилати занадто багато струму через двигун і запускати його самостійно за рахунок виявлення.) Щоб перевірити це, відключити крадіжкуChop режим і перевірити, якщо помилки продовжують виникати.
 
-#### TMC reports error: `... reset=1(Reset)` OR `CS_ACTUAL=0(Reset?)` OR `SE=0(Reset?)`
+#### TMC повідомляє про помилку: `... reset=1(Reset)` АБО `CS_ACTUAL=0(Reset?)` АБО `SE=0(Reset?)`
 
-This indicates that the driver has reset itself mid-print. This may be due to voltage or wiring issues.
+Це вказує на те, що водій скинути себе середнім друком. Це може бути пов'язано з питаннями напруги або проводки.
 
-#### TMC reports error: `... uv_cp=1(Undervoltage!)`
+#### TMC повідомляє про помилку: `... uv_cp=1(Знижена напруга!)`
 
-This indicates the driver has detected a low-voltage event and has disabled itself. This may be due to wiring or power supply issues.
+Це свідчить про те, що водій виявив низьковольтний захід і відключив себе. Це може бути пов'язано з питаннями електропроводки або електропостачання.
 
-### How do I tune spreadCycle/coolStep/etc. mode on my drivers?
+### Як я налаштовую поширенняCycle/coolStep/etc. режим на драйверах?
 
-The [Trinamic website](https://www.trinamic.com/) has guides on configuring the drivers. These guides are often technical, low-level, and may require specialized hardware. Regardless, they are the best source of information.
+[Trinamic веб-сайт](https://www.trinamic.com/) має керівництва щодо налаштування драйверів. Ці керівництва часто технічні, низький рівень, і може знадобитися спеціалізоване обладнання. Незалежно від того, що вони є найкращим джерелом інформації.

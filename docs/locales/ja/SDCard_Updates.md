@@ -27,7 +27,7 @@ Supported boards can be listed with the following command:
 
 If you do not see your board listed it may be necessary to add a new board definition as [described below](#board-definitions).
 
-## Advanced Usage
+## 高度な使用法
 
 The above commands assume that your MCU connects at the default baud rate of 250000 and the firmware is located at `~/klipper/out/klipper.bin`. The `flash-sdcard.sh` script provides options for changing these defaults. All options can be viewed by the help screen:
 

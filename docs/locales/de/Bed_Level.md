@@ -24,21 +24,21 @@ Die Kenntis des "Papiertests" ist wichtig, selbst wenn der Drucker einen "automa
 
 In order to perform the paper test, cut a small rectangular piece of paper using a pair of scissors (eg, 5x3 cm). The paper generally has a thickness of around 100 microns (0.100mm). (The exact thickness of the paper isn't crucial.)
 
-Der erste Schritt des Papiertests besteht in der Kontrolle der Düse und des Druckbetts des Druckers. Stellen sie sicher dass keine Plastikreste oder andere Verschmutzungen an der Düse oder auf dem Bett vorhanden sind.
+Der erste Schritt des Papiertests besteht in der Kontrolle der Düse und des Druckbetts des Druckers. Stellen sie sicher, dass keine Plastikreste oder andere Verschmutzungen an der Düse oder auf dem Bett vorhanden sind.
 
-**Kontrollieren sie die Düse und das Druckbett um sicherzustellen dass keine Plastikreste vorhanden sind!**
+**Kontrollieren sie die Düse und das Druckbett um sicherzustellen, dass keine Plastikreste vorhanden sind!**
 
 If one always prints on a particular tape or printing surface then one may perform the paper test with that tape/surface in place. However, note that tape itself has a thickness and different tapes (or any other printing surface) will impact Z measurements. Be sure to rerun the paper test to measure each type of surface that is in use.
 
-Falls Plastikreste an der Düse vorhanden sind, heizen sie die Düse auf und verwenden sie eine Metallpinzette um Reste zu entfernen. Warten sie bis die Düse wieder vollständig auf Zimmertemperatur abgekühlt ist bevor sie mit dem Papiertest fortfahren. Während die Düse abkühlt, verwenden sie die Metallpinzette um weitere Plastikreste, die evtl. auslaufen, zu entfernen.
+Falls Plastikreste an der Düse vorhanden sind, heizen sie die Düse auf und verwenden sie eine Metallpinzette, um Reste zu entfernen. Warten Sie, bis die Düse wieder vollständig auf Zimmertemperatur abgekühlt ist, bevor sie mit dem Papiertest fortfahren. Während die Düse abkühlt, verwenden sie die Metallpinzette um weitere Plastikreste, die evtl. auslaufen, zu entfernen.
 
 **Führen sie den Papiertest nur durch wenn sich Druckdüse und Druckbett auf Zimmertemperatur befinden!**
 
 When the nozzle is heated, its position (relative to the bed) changes due to thermal expansion. This thermal expansion is typically around a 100 microns, which is about the same thickness as a typical piece of printer paper. The exact amount of thermal expansion isn't crucial, just as the exact thickness of the paper isn't crucial. Start with the assumption that the two are equal (see below for a method of determining the difference between the two distances).
 
-Es mag komisch vorkommen den Abstand bei Zimmertemperatur zu kalibrieren, obwohl das Ziel ein reproduzierbarer Abstand im aufgeheizten Zustand ist. Wird die Kalbrierung jedoch im aufgeheizten Zustand durchgeführt, können kleine Mengen an geschmolzenem Plastik auf dem Papier zurückbleiben, was die gefühlte Menge Reibung beeinflussen kann. Eine Kalbrierung mit aufgeheizter Düse und Druckbett erhöht außerdem das Risiko für Brandverletzungen. Die Wärmeausdehnung ist konstant, daher ist es sehr einfach sie später im Kalibrierungsprozess zu berücksichtigen.
+Es mag komisch vorkommen, den Abstand bei Zimmertemperatur zu kalibrieren, obwohl das Ziel ein reproduzierbarer Abstand im aufgeheizten Zustand ist. Wird die Kalbrierung jedoch im aufgeheizten Zustand durchgeführt, können kleine Mengen an geschmolzenem Plastik auf dem Papier zurückbleiben, was die gefühlte Menge Reibung beeinflussen kann. Eine Kalbrierung mit aufgeheizter Düse und Druckbett erhöht außerdem das Risiko für Brandverletzungen. Die Wärmeausdehnung ist konstant, daher ist es sehr einfach sie später im Kalibrierungsprozess zu berücksichtigen.
 
-**Benutzen sie ein automatisiertes Werkzeug um die genaue Z Höhe festzustellen!**
+**Benutzen sie ein automatisiertes Werkzeug, um die genaue Z-Höhe festzustellen!**
 
 Klipper stellt einige Hilfe-Skripte zur Verfügung (z.b. MANUAL_PROBE, Z_ENDSTOP_CALIBRATE, PROBE_CALIBRATE, DELTA_CALIBRATE). Prüfen sie die [obige](#choose-the-appropriate-calibration-mechanism) Dokumentation um das passende Skript auszuwählen.
 

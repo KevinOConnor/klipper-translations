@@ -1,10 +1,10 @@
-# SDCard updates
+# Актуализации на SDCard
 
 Много от популярните днес контролни платки се доставят с буутлоудър, който може да актуализира фърмуера чрез SD карта. Въпреки че това е удобно при много обстоятелства, тези буутлоудъри обикновено не предоставят друг начин за актуализиране на фърмуера. Това може да бъде неудобно, ако вашата платка е монтирана на място, което е труднодостъпно, или ако трябва често да актуализирате фърмуера. След като Klipper е бил първоначално флашнат на контролер, е възможно да се прехвърли нов фърмуер на SD картата и да се започне процедура за флашване чрез ssh.
 
 ## Типична процедура за надграждане
 
-The procedure for updating MCU firmware using the SD Card is similar to that of other methods. Instead of using `make flash` it is necessary to run a helper script, `flash-sdcard.sh`. Updating a BigTreeTech SKR 1.3 might look like the following:
+Процедурата за актуализиране на фърмуера на MCU чрез SD картата е подобна на тази при другите методи. Вместо да се използва `make flash`, е необходимо да се стартира помощен скрипт, `flash-sdcard.sh`. Обновяването на BigTreeTech SKR 1.3 може да изглежда по следния начин:
 
 ```
 sudo service klipper stop
@@ -17,19 +17,19 @@ make
 sudo service klipper start
 ```
 
-It is up to the user to determine the device location and board name. If a user needs to flash multiple boards, `flash-sdcard.sh` (or `make flash` if appropriate) should be run for each board prior to restarting the Klipper service.
+Потребителят трябва да определи местоположението на устройството и името на борда. Ако потребителят трябва да флашне няколко платки, `flash-sdcard.sh` (или `make flash`, ако е подходящо) трябва да се стартира за всяка платка преди рестартиране на услугата Klipper.
 
-Supported boards can be listed with the following command:
+Поддържаните платки могат да бъдат изброени със следната команда:
 
 ```
 ./scripts/flash-sdcard.sh -l
 ```
 
-If you do not see your board listed it may be necessary to add a new board definition as [described below](#board-definitions).
+Ако не виждате своя борд в списъка, може да се наложи да добавите нова дефиниция на борд, както е описано по-долу (#board-definitions).
 
-## Advanced Usage
+## Усъвършенствана употреба
 
-The above commands assume that your MCU connects at the default baud rate of 250000 and the firmware is located at `~/klipper/out/klipper.bin`. The `flash-sdcard.sh` script provides options for changing these defaults. All options can be viewed by the help screen:
+Горните команди предполагат, че вашият MCU се свързва със скорост по подразбиране 250000 бода, а фърмуерът се намира на адрес `~/klipper/out/klipper.bin`. Скриптът `flash-sdcard.sh` предоставя опции за промяна на тези настройки по подразбиране. Всички опции могат да бъдат разгледани от помощния екран:
 
 ```
 ./scripts/flash-sdcard.sh -h
@@ -50,31 +50,31 @@ optional arguments:
   -f <firmware>   path to klipper.bin
 ```
 
-If your board is flashed with firmware that connects at a custom baud rate it is possible to upgrade by specifying the `-b` option:
+Ако вашата платка е подсилена с фърмуер, който се свързва с потребителска скорост на предаване, е възможно да се актуализира чрез посочване на опцията `-b`:
 
 ```
 ./scripts/flash-sdcard.sh -b 115200 /dev/ttyAMA0 btt-skr-v1.3
 ```
 
-If you wish to flash a build of Klipper located somewhere other than the default location it can be done by specifying the `-f` option:
+Ако желаете да флашнете компилация на Klipper, намираща се на място, различно от мястото по подразбиране, това може да стане, като посочите опцията `-f`:
 
 ```
 ./scripts/flash-sdcard.sh -f ~/downloads/klipper.bin /dev/ttyAMA0 btt-skr-v1.3
 ```
 
-Note that when upgrading a MKS Robin E3 it is not necessary to manually run `update_mks_robin.py` and supply the resulting binary to `flash-sdcard.sh`. This procedure is automated during the upload process.
+Имайте предвид, че при обновяване на MKS Robin E3 не е необходимо да стартирате ръчно файла `update_mks_robin.py` и да предоставяте получената бинарна информация на файла `flash-sdcard.sh`. Тази процедура е автоматизирана по време на процеса на качване.
 
-The `-c` option is used to perform a check or verify-only operation to test if the board is running the specified firmware correctly. This option is primarily intended for cases where a manual power-cycle is necessary to complete the flashing procedure, such as with bootloaders that use SDIO mode instead of SPI to access their SD Cards. (See Caveats below) But, it can also be used anytime to verify if the code flashed into the board matches the version in your build folder on any supported board.
+Опцията `-c` се използва за извършване на операция за проверка или само за проверка, за да се провери дали платката работи с посочения фърмуер правилно. Тази опция е предназначена предимно за случаи, в които е необходим ръчен цикъл на захранване, за да се завърши процедурата по флаширане, като например при буутлоудъри, които използват SDIO режим вместо SPI за достъп до своите SD карти. (Вижте "Предупреждения" по-долу) Но тя може да се използва и по всяко време, за да се провери дали кодът, флашнат в платката, съответства на версията във вашата папка за изграждане на всяка поддържана платка.
 
 ## Предупреждения
 
-- As mentioned in the introduction, this method only works for upgrading firmware. The initial flashing procedure must be done manually per the instructions that apply to your controller board.
-- While it is possible to flash a build that changes the Serial Baud or connection interface (ie: from USB to UART), verification will always fail as the script will be unable to reconnect to the MCU to verify the current version.
-- Only boards that use SPI for SD Card communication are supported. Boards that use SDIO, such as the Flymaker Flyboard and MKS Robin Nano V1/V2, will not work in SDIO mode. However, it's usually possible to flash such boards using Software SPI mode instead. But if the board's bootloader only uses SDIO mode to access the SD Card, a power-cycle of the board and SD Card will be necessary so that the mode can switch from SPI back to SDIO to complete reflashing. Such boards should be defined with `skip_verify` enabled to skip the verify step immediately after flashing. Then after the manual power-cycle, you can rerun the exact same `./scripts/flash-sdcard.sh` command, but add the `-c` option to complete the check/verify operation. See [Flashing Boards that use SDIO](#flashing-boards-that-use-sdio) for examples.
+- Както беше споменато във въведението, този метод работи само за обновяване на фърмуера. Процедурата за първоначално проблясване трябва да се извърши ръчно съгласно инструкциите, които се отнасят за вашата контролна платка.
+- Въпреки че е възможно да флашнете компилация, която променя интерфейса за серийно предаване или връзката (т.е. от USB към UART), проверката винаги ще бъде неуспешна, тъй като скриптът няма да може да се свърже отново с MCU, за да провери текущата версия.
+- Поддържат се само платки, които използват SPI за комуникация с SD картата. Платките, които използват SDIO, като Flymaker Flyboard и MKS Robin Nano V1/V2, няма да работят в режим SDIO. Обикновено обаче е възможно да флашнете такива платки, като вместо това използвате софтуерен SPI режим. Но ако буутлоудърът на платката използва само режим SDIO за достъп до SD картата, ще е необходим захранващ цикъл на платката и SD картата, за да може режимът да премине от SPI обратно към SDIO и да завърши препрограмирането. Такива платки трябва да бъдат дефинирани с активирана функция `skip_verify`, за да се прескочи стъпката за проверка веднага след флашване. След това, след ръчно включване на захранването, можете да изпълните отново същата команда `./scripts/flash-sdcard.sh`, но да добавите опцията `-c`, за да завършите операцията по проверка/верификация. Вижте [Flashing Boards that use SDIO](#flashing-boards-that-use-sdio) за примери.
 
-## Board Definitions
+## Определения на борда
 
-Most common boards should be available, however it is possible to add a new board definition if necessary. Board definitions are located in `~/klipper/scripts/spi_flash/board_defs.py`. The definitions are stored in dictionary, for example:
+Най-често срещаните табла трябва да са налични, но при необходимост е възможно да се добави ново определение на табло. Дефинициите на платки се намират в `~/klipper/scripts/spi_flash/board_defs.py`. Дефинициите се съхраняват в речник, например:
 
 ```python
 BOARD_DEFS = {
@@ -87,22 +87,22 @@ BOARD_DEFS = {
 }
 ```
 
-The following fields may be specified:
+Могат да бъдат зададени следните полета:
 
-- `mcu`: The mcu type. This can be retrieved after configuring the build via `make menuconfig` by running `cat .config | grep CONFIG_MCU`. This field is required.
-- `spi_bus`: The SPI bus connected to the SD Card. This should be retrieved from the board's schematic. This field is required.
-- `cs_pin`: The Chip Select Pin connected to the SD Card. This should be retrieved from the board schematic. This field is required.
-- `firmware_path`: The path on the SD Card where firmware should be transferred. The default is `firmware.bin`.
-- `current_firmware_path`: The path on the SD Card where the renamed firmware file is located after a successful flash. The default is `firmware.cur`.
-- `skip_verify`: This defines a boolean value which tells the scripts to skip the firmware verification step during the flashing process. The default is `False`. It can be set to `True` for boards that require a manual power-cycle to complete flashing. To verify the firmware afterward, run the script again with the `-c` option to perform the verification step. [See caveats with SDIO cards](#caveats)
+- `mcu`: Типът mcu. Той може да бъде получен след конфигуриране на компилацията чрез `make menuconfig`, като се стартира `cat .config | grep CONFIG_MCU`. Това поле е задължително.
+- `spi_bus`: SPI шината, свързана към SD картата. Това трябва да се извлече от схемата на платката. Това поле е задължително.
+- `cs_pin`: Пинът за избор на чип, свързан към SD картата. Той трябва да се извлече от схемата на платката. Това поле е задължително.
+- `firmware_path`: Пътят в SD картата, по който трябва да се прехвърли фърмуерът. По подразбиране е `firmware.bin`.
+- `current_firmware_path`: Пътят на SD картата, където се намира преименуваният файл с фърмуера след успешна флаш памет. По подразбиране е `firmware.cur`.
+- `skip_verify`: Това е булева стойност, която указва на скриптовете да прескочат етапа на проверка на фърмуера по време на процеса на флашване. По подразбиране е `False`. Тя може да бъде зададена на `True` за платки, които изискват ръчен цикъл на захранване, за да завършат мигането. За да проверите фърмуера след това, стартирайте скрипта отново с опцията `-c`, за да извършите стъпката за проверка. [Вижте предупрежденията при SDIO картите](#caveats)
 
-If software SPI is required, the `spi_bus` field should be set to `swspi` and the following additional field should be specified:
+Ако се изисква софтуерен SPI, полето `spi_bus` трябва да се зададе на `swspi` и да се посочи следното допълнително поле:
 
-- `spi_pins`: This should be 3 comma separated pins that are connected to the SD Card in the format of `miso,mosi,sclk`.
+- `spi_pins`: Това трябва да са 3 щифта, разделени със запетая, които са свързани към SD картата под формата на `miso,mosi,sclk`.
 
-It should be exceedingly rare that Software SPI is necessary, typically only boards with design errors or boards that normally only support SDIO mode for their SD Card will require it. The `btt-skr-pro` board definition provides an example of the former, and the `btt-octopus-f446-v1` board definition provides an example of the latter.
+Софтуерният SPI е необходим изключително рядко, обикновено това се налага само при платки с грешки в дизайна или при платки, които обикновено поддържат само режим SDIO за своята SD карта. Дефиницията на платката `btt-skr-pro` дава пример за първото, а дефиницията на платката `btt-octopus-f446-v1` дава пример за второто.
 
-Prior to creating a new board definition one should check to see if an existing board definition meets the criteria necessary for the new board. If this is the case, a `BOARD_ALIAS` may be specified. For example, the following alias may be added to specify `my-new-board` as an alias for `generic-lpc1768`:
+Преди да създадете нова дефиниция на съвет, трябва да проверите дали съществуваща дефиниция на съвет отговаря на критериите, необходими за новия съвет. Ако това е така, може да се посочи `BOARD_ALIAS`. Например може да се добави следният псевдоним, за да се посочи `my-new-board` като псевдоним на `generic-lpc1768`:
 
 ```python
 BOARD_ALIASES = {
@@ -111,17 +111,17 @@ BOARD_ALIASES = {
 }
 ```
 
-If you need a new board definition and you are uncomfortable with the procedure outlined above it is recommended that you request one in the [Klipper Community Discord](Contact.md#discord).
+Ако се нуждаете от нова дефиниция на дъската и не ви е удобна процедурата, описана по-горе, препоръчваме да я поискате в [Klipper Community Discord](Contact.md#discord).
 
-## Flashing Boards that use SDIO
+## Мигащи платки, които използват SDIO
 
-[As mentioned in the Caveats](#caveats), boards whose bootloader uses SDIO mode to access their SD Card require a power-cycle of the board, and specifically the SD Card itself, in order to switch from the SPI Mode used while writing the file to the SD Card back to SDIO mode for the bootloader to flash it into the board. These board definitions will use the `skip_verify` flag, which tells the flashing tool to stop after writing the firmware to the SD Card so that the board can be manually power-cycled and the verification step deferred until that's complete.
+[Както е споменато в Caveats](#caveats), платките, чийто буутлоудър използва SDIO режим за достъп до SD картата, изискват захранващ цикъл на платката и по-специално на самата SD карта, за да се превключи от SPI режим, използван при записването на файла в SD картата, обратно към SDIO режим, за да може буутлоудърът да го флашне в платката. При тези дефиниции на платки ще се използва флагът `skip_verify`, който указва на инструмента за флашване да спре след записването на фърмуера на SD картата, така че платката да може да се захрани ръчно и стъпката за проверка да се отложи, докато приключи.
 
-There are two scenarios -- one with the RPi Host running on a separate power supply and the other when the RPi Host is running on the same power supply as the main board being flashed. The difference is whether or not it's necessary to also shutdown the RPi and then `ssh` again after the flashing is complete in order to do the verification step, or if the verification can be done immediately. Here's examples of the two scenarios:
+Има два сценария - единият с RPi Host, работещ с отделно захранване, а другият - когато RPi Host работи със същото захранване като основната платка, която се флашва. Разликата е в това дали е необходимо да се изключи RPi и след това отново да се `ssh` след приключване на флашването, за да се извърши проверката, или проверката може да се извърши веднага. Ето примери за двата сценария:
 
-### SDIO Programming with RPi on Separate Power Supply
+### Програмиране на SDIO с RPi на отделно захранване
 
-A typical session with the RPi on a Separate Power Supply looks like the following. You will, of course, need to use your proper device path and board name:
+Една типична сесия с RPi с отделно захранване изглежда по следния начин. Разбира се, ще трябва да използвате правилния път до устройството и името на платката:
 
 ```
 sudo service klipper stop
@@ -136,9 +136,9 @@ make
 sudo service klipper start
 ```
 
-### SDIO Programming with RPi on the Same Power Supply
+### Програмиране на SDIO с RPi на едно и също захранване
 
-A typical session with the RPi on the Same Power Supply looks like the following. You will, of course, need to use your proper device path and board name:
+Една типична сесия с RPi на същото захранване изглежда по следния начин. Разбира се, ще трябва да използвате правилния път до устройството и името на платката:
 
 ```
 sudo service klipper stop
@@ -156,23 +156,23 @@ cd ~/klipper
 sudo service klipper start
 ```
 
-In this case, since the RPi Host is being restarted, which will restart the `klipper` service, it's necessary to stop `klipper` again before doing the verification step and restart it after verification is complete.
+В този случай, тъй като RPi Host се рестартира, което ще доведе до рестартиране на услугата `klipper`, е необходимо да спрете `klipper` отново, преди да извършите стъпката за проверка, и да я рестартирате след приключване на проверката.
 
-### SDIO to SPI Pin Mapping
+### Картографиране на изводите SDIO към SPI
 
-If your board's schematic uses SDIO for its SD Card, you can map the pins as described in the chart below to determine the compatible Software SPI pins to assign in the `board_defs.py` file:
+Ако схемата на вашата платка използва SDIO за SD картата, можете да картографирате изводите, както е описано в таблицата по-долу, за да определите съвместимите софтуерни SPI изводи, които да зададете във файла `board_defs.py`:
 
-| SD Card Pin | Micro SD Card Pin | SDIO Pin Name | SPI Pin Name |
+| Щифт за SD карта | Щифт за Micro SD карта | Име на щифта SDIO | Име на SPI извод |
 | :-: | :-: | :-: | :-: |
-| 9 | 1 | DATA2 | None (PU)* |
+| 9 | 1 | DATA2 | Няма (PU)* |
 | 1 | 2 | CD/DATA3 | CS |
 | 2 | 3 | CMD | MOSI |
 | 4 | 4 | +3.3V (VDD) | +3.3V (VDD) |
 | 5 | 5 | CLK | SCLK |
 | 3 | 6 | GND (VSS) | GND (VSS) |
 | 7 | 7 | DATA0 | MISO |
-| 8 | 8 | DATA1 | None (PU)* |
-| N/A | 9 | Card Detect (CD) | Card Detect (CD) |
+| 8 | 8 | DATA1 | Няма (PU)* |
+| N/A | 9 | Разпознаване на карти (CD) | Разпознаване на карти (CD) |
 | 6 | 10 | GND | GND |
 
-\* None (PU) indicates an unused pin with a pull-up resistor
+\* Няма (PU) показва неизползван извод с издърпващ резистор

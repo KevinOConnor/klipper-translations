@@ -94,7 +94,7 @@ section](Config_Reference.md#axis_twist_compensation) is enabled.
 
 #### BED_MESH_CALIBRATE
 
-`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file. If ADAPTIVE=1 is specified then the objects defined by the Gcode file being printed will be used to define the probed area. The optional `ADAPTIVE_MARGIN` value overrides the `adaptive_margin` option specified in the config file.
+`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`：此命令使用配置中的参数指定的生成点探测床。探测后，将生成一个网格，并根据网格调整 z 方向的移动。网格将保存到由 `PROFILE` 参数指定的配置文件中，如果未指定，则保存到 `default` 中。有关可选探测参数的详细信息，请参阅 PROBE 命令。如果指定了 METHOD=manual，则将激活手动探测工具 - 有关此工具处于活动状态时可用的其他命令的详细信息，请参阅上面的 MANUAL_PROBE 命令。可选的 `HORIZONTAL_MOVE_Z` 值将覆盖配置文件中指定的 `horizontal_move_z` 选项。如果指定了 ADAPTIVE=1，则将使用正在打印的 Gcode 文件定义的对象来定义探测区域。可选的 `ADAPTIVE_MARGIN` 值将覆盖配置文件中指定的 `adaptive_margin` 选项。
 
 #### BED_MESH_OUTPUT
 
@@ -114,7 +114,7 @@ section](Config_Reference.md#axis_twist_compensation) is enabled.
 
 #### BED_MESH_OFFSET
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value]`: Applies X, Y, and/or ZFADE offsets to the mesh lookup. This is useful for printers with independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change. Note that a ZFADE offset does not apply additional z-adjustment directly, it is used to correct the `fade` calculation when a `gcode offset` has been applied to the Z axis.
+`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value]`：将 X、Y 和/或 ZFADE 偏移应用于网格查找。这对于具有独立挤出机的打印机非常有用，因为在更换工具后，偏移对于产生正确的 Z 调整是必需的。请注意，ZFADE 偏移不会直接应用额外的 z 调整，它用于在将 `gcode 偏移` 应用于 Z 轴时校正 `fade` 计算。
 
 ### [bed_screws]
 
@@ -130,7 +130,7 @@ section](Config_Reference.md#axis_twist_compensation) is enabled.
 
 #### BED_TILT_CALIBRATE
 
-`BED_TILT_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`: This command will probe the points specified in the config and then recommend updated x and y tilt adjustments. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file.
+`BED_TILT_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`：此命令将探测配置中指定的点，然后推荐更新的 x 和 y 倾斜调整。有关可选探测参数的详细信息，请参阅 PROBE 命令。如果指定了 METHOD=manual，则将激活手动探测工具 - 有关此工具处于活动状态时可用的其他命令的详细信息，请参阅上面的 MANUAL_PROBE 命令。可选的 `HORIZONTAL_MOVE_Z` 值将覆盖配置文件中指定的 `horizontal_move_z` 选项。
 
 ### [bltouch]
 
@@ -166,7 +166,7 @@ The following commands are available when the [delta_calibrate config section](C
 
 #### DELTA_CALIBRATE
 
-`DELTA_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`: This command will probe seven points on the bed and recommend updated endstop positions, tower angles, and radius. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified in the config file.
+`DELTA_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`：此命令将探测床上的七个点并推荐更新的限位位置、塔角度和半径。有关可选探测参数的详细信息，请参阅 PROBE 命令。如果指定了 METHOD=manual，则将激活手动探测工具 - 有关此工具处于活动状态时可用的其他命令的详细信息，请参阅上面的 MANUAL_PROBE 命令。可选的 `HORIZONTAL_MOVE_Z` 值将覆盖配置文件中指定的 `horizontal_move_z` 选项。
 
 #### DELTA_ANALYZE
 
@@ -599,7 +599,7 @@ The following commands are available when a [probe_eddy_current config section](
 
 #### LDC_CALIBRATE_DRIVE_CURRENT
 
-`LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` This tool will calibrate the ldc1612 DRIVE_CURRENT0 register. Prior to using this tool, move the sensor so that it is near the center of the bed and about 20mm above the bed surface. Run this command to determine an appropriate DRIVE_CURRENT for the sensor. After running this command use the SAVE_CONFIG command to store that new setting in the printer.cfg config file.
+`LDC_CALIBRATE_DRIVE_CURRENT CHIP=<config_name>` 此工具将校准 ldc1612 DRIVE_CURRENT0 寄存器。在使用此工具之前，请移动传感器，使其靠近床的中心，并距床表面约 20 毫米。运行此命令以确定传感器的适当 DRIVE_CURRENT。运行此命令后，使用 SAVE_CONFIG 命令将新设置存储在 Printer.cfg 配置文件中。
 
 ### [pwm_cycle_time]
 
@@ -655,7 +655,7 @@ The following standard G-Code commands are available when the [respond config se
 
 - `RESPOND MSG="<message>"`：回显带有配置的默认前缀的消息（没有配置前缀则默认 `echo: `为前缀 ）。
 - `RESPOND TYPE=echo MSG="<消息>"`：回显`echo:`开头消息。
-- `RESPOND TYPE=echo_no_space MSG="<message>"`: echo the message prepended with `echo:` without a space between prefix and message, helpful for compatibility with some octoprint plugins that expect very specific formatting.
+- `RESPOND TYPE=echo_no_space MSG="<message>"`：回显以`echo:`为前缀的消息，前缀和消息之间没有空格，有助于兼容一些需要非常特定格式的 octoprint 插件。
 - `RESPOND TYPE=command MSG="<消息>"`：回显以`/`为前缀的消息。可以配置 OctoPrint 对这些消息进行响应（例如，`RESPOND TYPE=command MSG=action:pause`）。
 - `RESPOND TYPE=error MSG="<消息>"`：回显以 `!!`开头的消息。
 - `RESPOND PREFIX=<prefix> MSG="<message>"`: 回应以`<prefix>`为前缀的信息。(`PREFIX`参数将优先于`TYPE`参数)
@@ -754,7 +754,7 @@ The following commands are available when any of the [tmcXXXX config sections](C
 
 #### DUMP_TMC
 
-`DUMP_TMC STEPPER=<name> [REGISTER=<name>]`: This command will read all TMC driver registers and report their values. If a REGISTER is provided, only the specified register will be dumped.
+`DUMP_TMC STEPPER=<name> [REGISTER=<name>]`：此命令将读取所有 TMC 驱动器寄存器并报告其值。如果提供了 REGISTER，则只会转储指定的寄存器。
 
 #### INIT_TMC
 
@@ -844,7 +844,7 @@ The following commands are available when a [temperature_probe config section](C
 
 #### 关于
 
-`ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
+`ABORT`：中止校准过程，丢弃当前结果。此命令仅在漂移校准期间可用。
 
 ### TEMPERATURE_PROBE_ENABLE
 

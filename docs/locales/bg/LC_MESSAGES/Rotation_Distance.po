@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"PO-Revision-Date: 2024-11-21 11:00+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
 "rotation_distance/bg/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid ""
 "Stepper motor drivers on Klipper require a `rotation_distance` parameter in "
@@ -241,21 +241,25 @@ msgid ""
 "rotation_distance = <full_steps_per_rotation> * <microsteps> / "
 "<steps_per_mm>\n"
 msgstr ""
+"rotation_distance = <full_steps_per_rotation> * <microsteps> / <steps_per_mm>"
+"\n"
 
 msgid ""
 "rotation_distance = <full_steps_per_rotation> * <microsteps> * "
 "<step_distance>\n"
 msgstr ""
+"rotation_distance = <full_steps_per_rotation> * <microsteps> * "
+"<step_distance>\n"
 
 msgid "rotation_distance = <belt_pitch> * <number_of_teeth_on_pulley>\n"
-msgstr ""
+msgstr "rotation_distance = <belt_pitch> * <number_of_teeth_on_pulley>\n"
 
 msgid "rotation_distance = <screw_pitch> * <number_of_separate_threads>\n"
-msgstr ""
+msgstr "rotation_distance = <screw_pitch> * <number_of_separate_threads>\n"
 
 #: docs/Rotation_Distance.md:block 1 (header)
 msgid "Rotation distance"
-msgstr ""
+msgstr "Rotation distance"
 
 #: docs/Rotation_Distance.md:block 15 (ordered list)
 msgid ""

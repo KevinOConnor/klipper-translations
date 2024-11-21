@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:00+0000\n"
+"PO-Revision-Date: 2024-11-21 11:00+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
 "config_changes/bg/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid ""
 "This document covers recent software changes to the config file that are not"
@@ -136,9 +136,8 @@ msgid ""
 "port, it must be specified explicitly."
 msgstr ""
 
-#, fuzzy
 msgid "20201020: Klipper v0.9.0 released."
-msgstr "20201020: Klipper v0.9.0"
+msgstr "20201020: Klipper v0.9.0 released."
 
 msgid ""
 "20200902: The RTD resistance-to-temperature calculation for MAX31865 "
@@ -159,6 +158,10 @@ msgid ""
 "`printer.gcode.action_respond_info()` with `action_respond_info()`, and "
 "`printer.gcode.action_respond_error()` with `action_raise_error()`."
 msgstr ""
+"20200816: The gcode macro \"action_\" system has changed. Replace any calls "
+"to `printer.gcode.action_emergency_stop()` with `action_emergency_stop()`, "
+"`printer.gcode.action_respond_info()` with `action_respond_info()`, and "
+"`printer.gcode.action_respond_error()` with `action_raise_error()`."
 
 msgid ""
 "20200809: The menu system has been rewritten. If the menu has been "
@@ -309,7 +312,7 @@ msgid ""
 msgstr ""
 
 msgid "20191021: Klipper v0.8.0 released"
-msgstr ""
+msgstr "20191021: Klipper v0.8.0 released"
 
 msgid ""
 "20191003: The move_to_previous option in [safe_z_homing] now defaults to "
@@ -432,7 +435,7 @@ msgid ""
 msgstr ""
 
 msgid "20181220: Klipper v0.7.0 released"
-msgstr ""
+msgstr "20181220: Klipper v0.7.0 released"
 
 msgid ""
 "20210703: A `samd_sercom` config section must now specify the sercom bus it "
@@ -518,7 +521,7 @@ msgstr ""
 
 #: docs/Config_Changes.md:block 8 (paragraph)
 msgid "20210929: Klipper v0.10.0 released."
-msgstr ""
+msgstr "20210929: Klipper v0.10.0 released."
 
 #: docs/Config_Changes.md:block 18 (paragraph)
 msgid ""
@@ -658,7 +661,7 @@ msgstr ""
 
 #: docs/Config_Changes.md:block 7 (paragraph)
 msgid "20221128: Klipper v0.11.0 released."
-msgstr ""
+msgstr "20221128: Klipper v0.11.0 released."
 
 #: docs/Config_Changes.md:block 5 (paragraph)
 msgid ""
@@ -805,7 +808,7 @@ msgstr ""
 
 #: docs/Config_Changes.md:block 12 (paragraph)
 msgid "20231110: Klipper v0.12.0 released."
-msgstr ""
+msgstr "20231110: Klipper v0.12.0 released."
 
 #: docs/Config_Changes.md:block 5 (paragraph)
 msgid ""

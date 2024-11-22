@@ -7,17 +7,19 @@
 # kasım atmaca <kasim.atmaca13@gmail.com>, 2024.
 # Sümer Okan <smr.okan@gmail.com>, 2024.
 # Murateba <robloxmurat5@gmail.com>, 2024.
+# Tuna Dinçer <hweord@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-08-20 15:09+0000\n"
-"Last-Translator: Murateba <robloxmurat5@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/tr/>\n"
+"PO-Revision-Date: 2024-11-23 08:00+0000\n"
+"Last-Translator: Tuna Dinçer <hweord@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/klipper/overview/"
+"tr/>\n"
 "Language: tr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -290,12 +292,16 @@ msgid ""
 "[Skew correction](Skew_Correction.md): Adjustments for axes not perfectly "
 "square."
 msgstr ""
+"[Eğim düzetme](Skew_Correction.md): Tamamen kare olmayan eksenler için "
+"ayarlamalar."
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid ""
 "[Beaglebone](Beaglebone.md): Details for running Klipper on the Beaglebone "
 "PRU."
 msgstr ""
+"[Beaglebone](Beaglebone.md): Klipper'ı Beaglebone PRU üzerinde çalıştırmak "
+"için ayrıntılar."
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Hall filament width sensor](Hall_Filament_Width_Sensor.md)"

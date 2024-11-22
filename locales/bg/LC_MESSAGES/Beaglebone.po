@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"PO-Revision-Date: 2024-11-21 11:00+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
 "beaglebone/bg/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: docs/Beaglebone.md:block 1 (header)
 msgid "Beaglebone"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 13 (code)
 msgid "sudo nano /etc/default/octoprint\n"
-msgstr ""
+msgstr "sudo nano /etc/default/octoprint\n"
 
 #: docs/Beaglebone.md:block 14 (paragraph)
 msgid "Then start the Octoprint service:"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 15 (code)
 msgid "sudo systemctl start octoprint\n"
-msgstr ""
+msgstr "sudo systemctl start octoprint\n"
 
 #: docs/Beaglebone.md:block 19 (code)
 msgid ""
@@ -109,7 +109,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 26 (header)
 msgid "Remaining configuration"
-msgstr ""
+msgstr "Остатъчна конфигурация"
 
 #: docs/Beaglebone.md:block 28 (header)
 msgid "Printing on the Beaglebone"
@@ -158,6 +158,8 @@ msgid ""
 "sudo apt remove bb-node-red-installer\n"
 "sudo apt remove bb-code-server\n"
 msgstr ""
+"sudo apt remove bb-node-red-installer\n"
+"sudo apt remove bb-code-server\n"
 
 #: docs/Beaglebone.md:block 10 (paragraph)
 msgid ""
@@ -170,6 +172,8 @@ msgid ""
 "sudo growpart /dev/mmcblk0 1\n"
 "sudo resize2fs /dev/mmcblk0p1\n"
 msgstr ""
+"sudo growpart /dev/mmcblk0 1\n"
+"sudo resize2fs /dev/mmcblk0p1\n"
 
 #: docs/Beaglebone.md:block 12 (paragraph)
 msgid "Install Klipper by running the following commands:"
@@ -180,6 +184,8 @@ msgid ""
 "git clone https://github.com/Klipper3d/klipper.git\n"
 "./klipper/scripts/install-beaglebone.sh\n"
 msgstr ""
+"git clone https://github.com/Klipper3d/klipper.git\n"
+"./klipper/scripts/install-beaglebone.sh\n"
 
 #: docs/Beaglebone.md:block 14 (paragraph)
 msgid ""
@@ -249,7 +255,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 32 (code)
 msgid "sudo beagle-version\n"
-msgstr ""
+msgstr "sudo beagle-version\n"
 
 #: docs/Beaglebone.md:block 33 (paragraph)
 msgid ""
@@ -284,6 +290,24 @@ msgid ""
 ".............\n"
 "\n"
 msgstr ""
+"model:[TI_AM335x_BeagleBone_Black]\n"
+"UBOOT: Booted Device-Tree:[am335x-boneblack-uboot-univ.dts]\n"
+"UBOOT: Loaded Overlay:[BB-ADC-00A0.bb.org-overlays]\n"
+"UBOOT: Loaded Overlay:[BB-BONE-eMMC1-01-00A0.bb.org-overlays]\n"
+"kernel:[5.10.168-ti-r71]\n"
+"/boot/uEnv.txt Settings:\n"
+"uboot_overlay_options:[enable_uboot_overlays=1]\n"
+"uboot_overlay_options:[disable_uboot_overlay_video=0]\n"
+"uboot_overlay_options:[disable_uboot_overlay_audio=1]\n"
+"uboot_overlay_options:[disable_uboot_overlay_wireless=1]\n"
+"uboot_overlay_options:[enable_uboot_cape_universal=1]\n"
+"pkg:[bb-cape-overlays]:[4.14.20210821.0-0~bullseye+20210821]\n"
+"pkg:[bb-customizations]:[1.20230720.1-0~bullseye+20230720]\n"
+"pkg:[bb-usb-gadgets]:[1.20230414.0-0~bullseye+20230414]\n"
+"pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]\n"
+".............\n"
+".............\n"
+"\n"
 
 #: docs/Beaglebone.md:block 35 (paragraph)
 msgid ""
@@ -306,7 +330,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 40 (code)
 msgid "dmesg\n"
-msgstr ""
+msgstr "dmesg\n"
 
 #: docs/Beaglebone.md:block 41 (paragraph)
 msgid ""
@@ -332,6 +356,27 @@ msgid ""
 "[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online\n"
 "[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/rpmsg_pru30\n"
 msgstr ""
+"[   71.105499] remoteproc remoteproc1: 4a334000.pru is available\n"
+"[   71.157155] remoteproc remoteproc2: 4a338000.pru is available\n"
+"[   73.256287] remoteproc remoteproc1: powering up 4a334000.pru\n"
+"[   73.279246] remoteproc remoteproc1: Booting fw image am335x-pru0-fw, size "
+"97112\n"
+"[   73.285807]  remoteproc1#vdev0buffer: registered virtio0 (type 7)\n"
+"[   73.285836] remoteproc remoteproc1: remote processor 4a334000.pru is now "
+"up\n"
+"[   73.286322] remoteproc remoteproc2: powering up 4a338000.pru\n"
+"[   73.313717] remoteproc remoteproc2: Booting fw image am335x-pru1-fw, size "
+"188560\n"
+"[   73.313753] remoteproc remoteproc2: header-less resource table\n"
+"[   73.329964] remoteproc remoteproc2: header-less resource table\n"
+"[   73.348321] remoteproc remoteproc2: remote processor 4a338000.pru is now "
+"up\n"
+"[   73.443355] virtio_rpmsg_bus virtio0: creating channel rpmsg-pru addr "
+"0x1e\n"
+"[   73.443727] virtio_rpmsg_bus virtio0: msg received with no recipient\n"
+"[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online\n"
+"[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/"
+"rpmsg_pru30\n"
 
 #: docs/Beaglebone.md:block 43 (paragraph)
 msgid ""
@@ -390,7 +435,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 56 (header)
 msgid "AVR micro-controller code build"
-msgstr ""
+msgstr "AVR micro-controller code build"
 
 #: docs/Beaglebone.md:block 57 (paragraph)
 msgid ""
@@ -406,6 +451,8 @@ msgid ""
 "sudo apt-get remove gcc-pru\n"
 "sudo apt-get install avrdude gcc-avr binutils-avr avr-libc\n"
 msgstr ""
+"sudo apt-get remove gcc-pru\n"
+"sudo apt-get install avrdude gcc-avr binutils-avr avr-libc\n"
 
 #: docs/Beaglebone.md:block 59 (paragraph)
 msgid ""
@@ -417,6 +464,8 @@ msgid ""
 "sudo apt-get remove avrdude gcc-avr binutils-avr avr-libc\n"
 "sudo apt-get install gcc-pru\n"
 msgstr ""
+"sudo apt-get remove avrdude gcc-avr binutils-avr avr-libc\n"
+"sudo apt-get install gcc-pru\n"
 
 #: docs/Beaglebone.md:block 61 (header)
 msgid "Hardware Pin designation"
@@ -443,7 +492,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 64 (code)
 msgid "sudo editor /boot/uEnv.txt\n"
-msgstr ""
+msgstr "sudo editor /boot/uEnv.txt\n"
 
 #: docs/Beaglebone.md:block 65 (paragraph)
 msgid ""
@@ -453,7 +502,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 66 (code)
 msgid "uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo\n"
-msgstr ""
+msgstr "uboot_overlay_addr4=/lib/firmware/BB-CAN1-00A0.dtbo\n"
 
 #: docs/Beaglebone.md:block 67 (paragraph)
 msgid ""
@@ -484,7 +533,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 72 (code)
 msgid "disable_uboot_overlay_audio=1\n"
-msgstr ""
+msgstr "disable_uboot_overlay_audio=1\n"
 
 #: docs/Beaglebone.md:block 73 (paragraph)
 msgid "next uncomment variable and define it this way"
@@ -492,7 +541,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 74 (code)
 msgid "uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo\n"
-msgstr ""
+msgstr "uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo\n"
 
 #: docs/Beaglebone.md:block 75 (paragraph)
 msgid ""
@@ -502,7 +551,7 @@ msgstr ""
 
 #: docs/Beaglebone.md:block 76 (code)
 msgid "ls /dev/spidev1.*\n"
-msgstr ""
+msgstr "ls /dev/spidev1.*\n"
 
 #: docs/Beaglebone.md:block 77 (paragraph)
 msgid ""

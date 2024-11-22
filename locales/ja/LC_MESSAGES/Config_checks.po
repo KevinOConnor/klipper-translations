@@ -2,17 +2,19 @@
 # Lol A-girl-with-tea <f300f300f300@gmail.com>, 2023.
 # ktyubeshi <kt.yubeshi@gmail.com>, 2023.
 # umesaburo sagawa <atowa-notonare-yamatonare427@pm.me>, 2024.
+# immeteor2 <ryumeteor175@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-08-07 04:56+0000\n"
-"Last-Translator: umesaburo sagawa <atowa-notonare-yamatonare427@pm.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/config_checks/ja/>\n"
+"PO-Revision-Date: 2024-11-07 00:00+0000\n"
+"Last-Translator: immeteor2 <ryumeteor175@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/"
+"config_checks/ja/>\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8.2\n"
 
 msgid ""
 "This document provides a list of steps to help confirm the pin settings in "
@@ -143,7 +145,7 @@ msgstr ""
 
 #: docs/Config_checks.md:block 1 (header)
 msgid "Configuration checks"
-msgstr ""
+msgstr "設定の確認"
 
 #: docs/Config_checks.md:block 28 (paragraph)
 msgid ""

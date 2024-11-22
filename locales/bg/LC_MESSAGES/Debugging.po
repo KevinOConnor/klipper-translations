@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:01+0000\n"
+"PO-Revision-Date: 2024-11-21 11:00+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipper/"
 "debugging/bg/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid "This document describes some of the Klipper debugging tools."
 msgstr ""
@@ -170,35 +170,45 @@ msgid ""
 "make menuconfig\n"
 "make\n"
 msgstr ""
+"make menuconfig\n"
+"make\n"
 
 msgid ""
 "~/klippy-env/bin/python ./klippy/klippy.py ~/printer.cfg -i test.gcode -o "
 "test.serial -v -d out/klipper.dict\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/klippy.py ~/printer.cfg -i test.gcode -o "
+"test.serial -v -d out/klipper.dict\n"
 
 msgid ""
 "~/klippy-env/bin/python ./klippy/parsedump.py out/klipper.dict test.serial >"
 " test.txt\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/parsedump.py out/klipper.dict test.serial > "
+"test.txt\n"
 
 msgid ""
 "~/klippy-env/bin/python ./klippy/klippy.py config/generic-simulavr.cfg -i "
 "test.gcode -v\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/klippy.py config/generic-simulavr.cfg -i "
+"test.gcode -v\n"
 
 msgid "gtkwave avrsim.vcd\n"
-msgstr ""
+msgstr "gtkwave avrsim.vcd\n"
 
 msgid "~/klippy-env/bin/python ./klippy/console.py /tmp/pseudoserial\n"
-msgstr ""
+msgstr "~/klippy-env/bin/python ./klippy/console.py /tmp/pseudoserial\n"
 
 msgid ""
 "sudo apt-get update\n"
 "sudo apt-get install python-matplotlib\n"
 msgstr ""
+"sudo apt-get update\n"
+"sudo apt-get install python-matplotlib\n"
 
 msgid "~/klipper/scripts/graphstats.py /tmp/klippy.log -o loadgraph.png\n"
-msgstr ""
+msgstr "~/klipper/scripts/graphstats.py /tmp/klippy.log -o loadgraph.png\n"
 
 msgid ""
 "mkdir work_directory\n"
@@ -206,18 +216,25 @@ msgid ""
 "cp /tmp/klippy.log .\n"
 "~/klipper/scripts/logextract.py ./klippy.log\n"
 msgstr ""
+"mkdir work_directory\n"
+"cd work_directory\n"
+"cp /tmp/klippy.log .\n"
+"~/klipper/scripts/logextract.py ./klippy.log\n"
 
 msgid "./scripts/check_whitespace.sh\n"
-msgstr ""
+msgstr "./scripts/check_whitespace.sh\n"
 
 msgid ""
 "tar xfz klipper-dict-20??????.tar.gz\n"
 "~/klippy-env/bin/python ~/klipper/scripts/test_klippy.py -d dict/ ~/klipper/test/klippy/*.test\n"
 msgstr ""
+"tar xfz klipper-dict-20??????.tar.gz\n"
+"~/klippy-env/bin/python ~/klipper/scripts/test_klippy.py -d dict/ ~/klipper/"
+"test/klippy/*.test\n"
 
 #: docs/Debugging.md:block 1 (header)
 msgid "Debugging"
-msgstr ""
+msgstr "Debugging"
 
 #: docs/Debugging.md:block 24 (header)
 msgid "Motion analysis and data logging"
@@ -236,7 +253,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 27 (code)
 msgid "~/klipper/scripts/motan/data_logger.py /tmp/klippy_uds mylog\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/data_logger.py /tmp/klippy_uds mylog\n"
 
 #: docs/Debugging.md:block 28 (paragraph)
 msgid ""
@@ -283,6 +300,8 @@ msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)\"], [\"trapq(toolhead,accel)\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '[[\"trapq(toolhead,velocity)"
+"\"], [\"trapq(toolhead,accel)\"]]'\n"
 
 #: docs/Debugging.md:block 36 (paragraph)
 msgid ""
@@ -292,7 +311,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 37 (code)
 msgid "~/klipper/scripts/motan/motan_graph.py -l\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/motan_graph.py -l\n"
 
 #: docs/Debugging.md:block 38 (paragraph)
 msgid ""
@@ -304,6 +323,8 @@ msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '[[\"trapq"
+"(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 
 #: docs/Debugging.md:block 40 (paragraph)
 msgid ""
@@ -323,6 +344,8 @@ msgid ""
 "cd /path/to/klipper\n"
 "make menuconfig\n"
 msgstr ""
+"cd /path/to/klipper\n"
+"make menuconfig\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""
@@ -336,6 +359,8 @@ msgid ""
 "PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf"
 " -t PORTA.PORT,PORTC.PORT\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf "
+"-t PORTA.PORT,PORTC.PORT\n"
 
 #: docs/Debugging.md:block 7 (paragraph)
 msgid ""
@@ -367,6 +392,10 @@ msgid ""
 "make python\n"
 "make build\n"
 msgstr ""
+"git clone git://git.savannah.nongnu.org/simulavr.git\n"
+"cd simulavr\n"
+"make python\n"
+"make build\n"
 
 #: docs/Debugging.md:block 59 (paragraph)
 msgid ""
@@ -376,7 +405,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 60 (code)
 msgid "ls ./build/pysimulavr/_pysimulavr.*.so\n"
-msgstr ""
+msgstr "ls ./build/pysimulavr/_pysimulavr.*.so\n"
 
 #: docs/Debugging.md:block 62 (paragraph)
 msgid ""
@@ -392,12 +421,18 @@ msgid ""
 "make cfgclean python debian\n"
 "sudo dpkg -i build/debian/python3-simulavr*.deb\n"
 msgstr ""
+"sudo apt update\n"
+"sudo apt install g++ make cmake swig rst2pdf help2man texinfo\n"
+"make cfgclean python debian\n"
+"sudo dpkg -i build/debian/python3-simulavr*.deb\n"
 
 #: docs/Debugging.md:block 67 (code)
 msgid ""
 "PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py "
 "out/klipper.elf\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py out/"
+"klipper.elf\n"
 
 #: docs/Debugging.md:block 68 (paragraph)
 msgid ""
@@ -407,7 +442,7 @@ msgstr ""
 
 #: docs/Debugging.md:block 69 (code)
 msgid "./scripts/avrsim.py out/klipper.elf\n"
-msgstr ""
+msgstr "./scripts/avrsim.py out/klipper.elf\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""

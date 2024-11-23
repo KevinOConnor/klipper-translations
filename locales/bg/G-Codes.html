@@ -1335,11 +1335,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-commands" class="md-nav__link">
-    Additional Commands
+  <a href="#_1" class="md-nav__link">
+    Допълнителни команди
   </a>
   
-    <nav class="md-nav" aria-label="Additional Commands">
+    <nav class="md-nav" aria-label="Допълнителни команди">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1384,7 +1384,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     [ъгъл]
   </a>
   
@@ -1493,7 +1493,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     [винтове за легло]
   </a>
   
@@ -1627,7 +1627,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     [дисплей]
   </a>
   
@@ -1927,8 +1927,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#help" class="md-nav__link">
-    HELP
+  <a href="#_5" class="md-nav__link">
+    ПОМОЩ
   </a>
   
 </li>
@@ -3008,7 +3008,7 @@
 <ul>
 <li>Move (G0 or G1): <code>G1 [X&lt;pos&gt;] [Y&lt;pos&gt;] [Z&lt;pos&gt;] [E&lt;pos&gt;] [F&lt;speed&gt;]</code></li>
 <li>Dwell: <code>G4 P&lt;milliseconds&gt;</code></li>
-<li>Move to origin: <code>G28 [X] [Y] [Z]</code></li>
+<li>Преместване към произхода: <code>G28 [X] [Y] [Z]</code></li>
 <li>Turn off motors: <code>M18</code> or <code>M84</code></li>
 <li>Wait for current moves to finish: <code>M400</code></li>
 <li>Use absolute/relative distances for extrusion: <code>M82</code>, <code>M83</code></li>
@@ -3016,88 +3016,88 @@
 <li>Set position: <code>G92 [X&lt;pos&gt;] [Y&lt;pos&gt;] [Z&lt;pos&gt;] [E&lt;pos&gt;]</code></li>
 <li>Set speed factor override percentage: <code>M220 S&lt;percent&gt;</code></li>
 <li>Set extrude factor override percentage: <code>M221 S&lt;percent&gt;</code></li>
-<li>Set acceleration: <code>M204 S&lt;value&gt;</code> OR <code>M204 P&lt;value&gt; T&lt;value&gt;</code><ul>
-<li>Note: If S is not specified and both P and T are specified, then the acceleration is set to the minimum of P and T. If only one of P or T is specified, the command has no effect.</li>
+<li>Задаване на ускорение: <code>M204 S&lt;стойност&gt;</code> ИЛИ <code>M204 P&lt;стойност&gt; T&lt;стойност&gt;</code><ul>
+<li>Забележка: Ако не е посочено S и са посочени P и T, ускорението се задава на минимума от P и T. Ако е посочено само едно от P или T, командата няма ефект.</li>
 </ul>
 </li>
-<li>Get extruder temperature: <code>M105</code></li>
+<li>Получаване на температурата на екструдера: <code>M105</code></li>
 <li>Set extruder temperature: <code>M104 [T&lt;index&gt;] [S&lt;temperature&gt;]</code></li>
 <li>Set extruder temperature and wait: <code>M109 [T&lt;index&gt;] S&lt;temperature&gt;</code><ul>
-<li>Note: M109 always waits for temperature to settle at requested value</li>
+<li>Забележка: M109 винаги изчаква температурата да се установи на заявената стойност.</li>
 </ul>
 </li>
-<li>Set bed temperature: <code>M140 [S&lt;temperature&gt;]</code></li>
-<li>Set bed temperature and wait: <code>M190 S&lt;temperature&gt;</code><ul>
-<li>Note: M190 always waits for temperature to settle at requested value</li>
+<li>Задаване на температура на леглото: <code>M140 [S&lt;temperature&gt;]</code></li>
+<li>Задайте температурата на леглото и изчакайте: <code>M190 S&lt;температура&gt;</code><ul>
+<li>Забележка: M190 винаги изчаква температурата да се установи на заявената стойност.</li>
 </ul>
 </li>
 <li>Set fan speed: <code>M106 S&lt;value&gt;</code></li>
 <li>Turn fan off: <code>M107</code></li>
 <li>Emergency stop: <code>M112</code></li>
-<li>Get current position: <code>M114</code></li>
-<li>Get firmware version: <code>M115</code></li>
+<li>Получаване на текущата позиция: <code>M114</code></li>
+<li>Получаване на версия на фърмуера: <code>M115</code></li>
 </ul>
-<p>For further details on the above commands see the <a href="http://reprap.org/wiki/G-code">RepRap G-Code documentation</a>.</p>
-<p>Klipper's goal is to support the G-Code commands produced by common 3rd party software (eg, OctoPrint, Printrun, Slic3r, Cura, etc.) in their standard configurations. It is not a goal to support every possible G-Code command. Instead, Klipper prefers human readable <a href="#additional-commands">"extended G-Code commands"</a>. Similarly, the G-Code terminal output is only intended to be human readable - see the <a href="API_Server.html">API Server document</a> if controlling Klipper from external software.</p>
-<p>If one requires a less common G-Code command then it may be possible to implement it with a custom <a href="Config_Reference.html#gcode_macro">gcode_macro config section</a>. For example, one might use this to implement: <code>G12</code>, <code>G29</code>, <code>G30</code>, <code>G31</code>, <code>M42</code>, <code>M80</code>, <code>M81</code>, <code>T1</code>, etc.</p>
-<h2 id="additional-commands">Additional Commands<a class="headerlink" href="#additional-commands" title="Permanent link">&para;</a></h2>
-<p>Klipper uses "extended" G-Code commands for general configuration and status. These extended commands all follow a similar format - they start with a command name and may be followed by one or more parameters. For example: <code>SET_SERVO SERVO=myservo ANGLE=5.3</code>. In this document, the commands and parameters are shown in uppercase, however they are not case sensitive. (So, "SET_SERVO" and "set_servo" both run the same command.)</p>
+<p>За повече подробности относно горните команди вижте <a href="http://reprap.org/wiki/G-code">Документация на RepRap G-Code</a>.</p>
+<p>Целта на Klipper е да поддържа командите G-Code, създавани от общия софтуер на трети страни (например OctoPrint, Printrun, Slic3r, Cura и т.н.) в техните стандартни конфигурации. Целта не е да се поддържат всички възможни G-Code команди. Вместо това Klipper предпочита четими от човека <a href="#additional-commands">"разширени G-Code команди"</a>. Аналогично, изходът на G-Code терминала е предназначен само за четене от човек - вижте документа <a href="API_Server.html">API Server</a>, ако управлявате Klipper от външен софтуер.</p>
+<p>Ако е необходима по-рядко срещана команда на G-Code, може да е възможно тя да бъде реализирана с потребителски раздел <a href="Config_Reference.html#gcode_macro">gcode_macro config</a>. Например това може да се използва за реализиране на: <code>G12</code>, <code>G29</code>, <code>G30</code>, <code>G31</code>, <code>M42</code>, <code>M80</code>, <code>M81</code>, <code>T1</code> и т.н.</p>
+<h2 id="_1">Допълнителни команди<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Klipper използва "разширени" G-Code команди за обща конфигурация и състояние. Всички тези разширени команди следват подобен формат - започват с името на командата и могат да бъдат последвани от един или повече параметри. Например: <code>SET_SERVO SERVO=myservo ANGLE=5,3</code>. В този документ командите и параметрите са показани с главни букви, но те не са чувствителни към големи и малки букви. (Така че "SET_SERVO" и "set_servo" изпълняват една и съща команда.)</p>
 <p>This section is organized by Klipper module name, which generally follows the section names specified in the <a href="Config_Reference.html">printer configuration file</a>. Note that some modules are automatically loaded.</p>
 <h3 id="adxl345">[adxl345]<a class="headerlink" href="#adxl345" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when an <a href="Config_Reference.html#adxl345">adxl345 config section</a> is enabled.</p>
 <h4 id="accelerometer_measure">ACCELEROMETER_MEASURE<a class="headerlink" href="#accelerometer_measure" title="Permanent link">&para;</a></h4>
-<p><code>ACCELEROMETER_MEASURE [CHIP=&lt;config_name&gt;] [NAME=&lt;value&gt;]</code>: Starts accelerometer measurements at the requested number of samples per second. If CHIP is not specified it defaults to "adxl345". The command works in a start-stop mode: when executed for the first time, it starts the measurements, next execution stops them. The results of measurements are written to a file named <code>/tmp/adxl345-&lt;chip&gt;-&lt;name&gt;.csv</code> where <code>&lt;chip&gt;</code> is the name of the accelerometer chip (<code>my_chip_name</code> from <code>[adxl345 my_chip_name]</code>) and <code>&lt;name&gt;</code> is the optional NAME parameter. If NAME is not specified it defaults to the current time in "YYYYMMDD_HHMMSS" format. If the accelerometer does not have a name in its config section (simply <code>[adxl345]</code>) then <code>&lt;chip&gt;</code> part of the name is not generated.</p>
+<p><code>ACCELEROMETER_MEASURE [CHIP=&lt;config_name&gt;] [NAME=&lt;value&gt;]</code>: Стартира измервания на акселерометъра със заявения брой проби в секунда. Ако не е зададен CHIP, по подразбиране се задава "adxl345". Командата работи в режим старт-стоп: когато се изпълни за първи път, тя стартира измерванията, а следващото изпълнение ги спира. Резултатите от измерванията се записват във файл с име <code>/tmp/adxl345-&lt;chip&gt;-&lt;name&gt;.csv</code>, където <code>&lt;chip&gt;</code> е името на чипа на акселерометъра (<code>my_chip_name</code> от <code>[adxl345 my_chip_name]</code>), а <code>&lt;name&gt;</code> е незадължителният параметър NAME. Ако не е посочено NAME, по подразбиране се задава текущото време във формат "YYYYMMDD_HHMMSS". Ако акселерометърът няма име в секцията си за конфигуриране (просто <code>[adxl345]</code>), частта от името <code>&lt;chip&gt;</code> не се генерира.</p>
 <h4 id="accelerometer_query">ACCELEROMETER_QUERY<a class="headerlink" href="#accelerometer_query" title="Permanent link">&para;</a></h4>
-<p><code>ACCELEROMETER_QUERY [CHIP=&lt;config_name&gt;] [RATE=&lt;value&gt;]</code>: queries accelerometer for the current value. If CHIP is not specified it defaults to "adxl345". If RATE is not specified, the default value is used. This command is useful to test the connection to the ADXL345 accelerometer: one of the returned values should be a free-fall acceleration (+/- some noise of the chip).</p>
+<p><code>ACCELEROMETER_QUERY [CHIP=&lt;config_name&gt;] [RATE=&lt;value&gt;]</code>: запитва акселерометъра за текущата стойност. Ако не е зададен CHIP, по подразбиране се задава "adxl345". Ако не е зададена RATE, се използва стойността по подразбиране. Тази команда е полезна за тестване на връзката с акселерометъра ADXL345: една от върнатите стойности трябва да бъде ускорение при свободно падане (+/- известен шум на чипа).</p>
 <h4 id="accelerometer_debug_read">ACCELEROMETER_DEBUG_READ<a class="headerlink" href="#accelerometer_debug_read" title="Permanent link">&para;</a></h4>
-<p><code>ACCELEROMETER_DEBUG_READ [CHIP=&lt;config_name&gt;] REG=&lt;register&gt;</code>: queries ADXL345 register "register" (e.g. 44 or 0x2C). Can be useful for debugging purposes.</p>
+<p><code>ACCELEROMETER_DEBUG_READ [CHIP=&lt;config_name&gt;] REG=&lt;register&gt;</code>: запитва регистъра ADXL345 за "регистър" (напр. 44 или 0x2C). Може да бъде полезно за целите на отстраняване на грешки.</p>
 <h4 id="accelerometer_debug_write">ACCELEROMETER_DEBUG_WRITE<a class="headerlink" href="#accelerometer_debug_write" title="Permanent link">&para;</a></h4>
-<p><code>ACCELEROMETER_DEBUG_WRITE [CHIP=&lt;config_name&gt;] REG=&lt;register&gt; VAL=&lt;value&gt;</code>: Writes raw "value" into a register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to ADXL345 data sheet for the reference.</p>
-<h3 id="_1">[ъгъл]<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><code>ACCELEROMETER_DEBUG_WRITE [CHIP=&lt;config_name&gt;] REG=&lt;register&gt; VAL=&lt;value&gt;</code>: Записва необработена "стойност" в регистър "register". И "value", и "register" могат да бъдат десетични или шестнадесетични цели числа. Използвайте ги внимателно и направете справка в информационния лист на ADXL345.</p>
+<h3 id="_2">[ъгъл]<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when an <a href="Config_Reference.html#angle">angle config section</a> is enabled.</p>
 <h4 id="angle_calibrate">ANGLE_CALIBRATE<a class="headerlink" href="#angle_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>ANGLE_CALIBRATE CHIP=&lt;chip_name&gt;</code>: Perform angle calibration on the given sensor (there must be an <code>[angle chip_name]</code> config section that has specified a <code>stepper</code> parameter). IMPORTANT - this tool will command the stepper motor to move without checking the normal kinematic boundary limits. Ideally the motor should be disconnected from any printer carriage before performing calibration. If the stepper can not be disconnected from the printer, make sure the carriage is near the center of its rail before starting calibration. (The stepper motor may move forwards or backwards two full rotations during this test.) After completing this test use the <code>SAVE_CONFIG</code> command to save the calibration data to the config file. In order to use this tool the Python "numpy" package must be installed (see the <a href="Measuring_Resonances.html#software-installation">measuring resonance document</a> for more information).</p>
+<p><code>ANGLE_CALIBRATE CHIP=&lt;chip_name&gt;</code>: Извършва калибриране на ъгъла на дадения сензор (трябва да има конфигурационен раздел <code>[име на чип за ъгъла]</code>, в който е зададен параметър <code>степер</code>). ВАЖНО - този инструмент ще даде команда на стъпковия двигател да се движи, без да проверява нормалните кинематични гранични стойности. В идеалния случай двигателят трябва да бъде изключен от всяка каретка на принтера, преди да се извърши калибриране. Ако стъпковият двигател не може да бъде изключен от принтера, уверете се, че каретата е близо до центъра на релсата си, преди да започнете калибрирането. (По време на този тест стъпковият двигател може да се придвижи напред или назад с две пълни завъртания.) След приключване на този тест използвайте командата <code>SAVE_CONFIG</code>, за да запишете данните от калибрирането в конфигурационния файл. За да използвате този инструмент, трябва да бъде инсталиран пакетът Python "numpy" (за повече информация вижте документа <a href="Measuring_Resonances.html#software-installation">измерване на резонанси</a>).</p>
 <h4 id="angle_debug_read">ANGLE_DEBUG_READ<a class="headerlink" href="#angle_debug_read" title="Permanent link">&para;</a></h4>
-<p><code>ANGLE_DEBUG_READ CHIP=&lt;config_name&gt; REG=&lt;register&gt;</code>: Queries sensor register "register" (e.g. 44 or 0x2C). Can be useful for debugging purposes. This is only available for tle5012b chips.</p>
+<p><code>ANGLE_DEBUG_READ CHIP=&lt;config_name&gt; REG=&lt;register&gt;</code>: Запитва "регистъра" на сензора (напр. 44 или 0x2C). Може да бъде полезно за целите на отстраняване на грешки. Това е налично само за чипове tle5012b.</p>
 <h4 id="angle_debug_write">ANGLE_DEBUG_WRITE<a class="headerlink" href="#angle_debug_write" title="Permanent link">&para;</a></h4>
-<p><code>ANGLE_DEBUG_WRITE CHIP=&lt;config_name&gt; REG=&lt;register&gt; VAL=&lt;value&gt;</code>: Writes raw "value" into register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to sensor data sheet for the reference. This is only available for tle5012b chips.</p>
+<p><code>ANGLE_DEBUG_WRITE CHIP=&lt;config_name&gt; REG=&lt;register&gt; VAL=&lt;value&gt;</code>: Записва необработена "стойност" в регистър "регистър". Както "value", така и "register" могат да бъдат десетични или шестнадесетични цели числа. Използвайте ги внимателно и направете справка в информационния лист на сензора. Това е налично само за чипове tle5012b.</p>
 <h3 id="axis_twist_compensation">[axis_twist_compensation]<a class="headerlink" href="#axis_twist_compensation" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#axis_twist_compensation">axis_twist_compensation config
 section</a> is enabled.</p>
 <h4 id="axis_twist_compensation_calibrate">AXIS_TWIST_COMPENSATION_CALIBRATE<a class="headerlink" href="#axis_twist_compensation_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=&lt;value&gt;]</code>: Initiates the X twist calibration wizard. <code>SAMPLE_COUNT</code> specifies the number of points along the X axis to calibrate at and defaults to 3.</p>
+<p><code>AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=&lt;value&gt;]</code>: Инициира съветника за калибриране на X twist. <code>SAMPLE_COUNT</code> задава броя на точките по оста X за калибриране и по подразбиране е 3.</p>
 <h3 id="bed_mesh">[bed_mesh]<a class="headerlink" href="#bed_mesh" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#bed_mesh">bed_mesh config section</a> is enabled (also see the <a href="Bed_Mesh.html">bed mesh guide</a>).</p>
 <h4 id="bed_mesh_calibrate">BED_MESH_CALIBRATE<a class="headerlink" href="#bed_mesh_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>BED_MESH_CALIBRATE [PROFILE=&lt;name&gt;] [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;] [&lt;mesh_parameter&gt;=&lt;value&gt;] [ADAPTIVE=1] [ADAPTIVE_MARGIN=&lt;value&gt;]</code>: This command probes the bed using generated points specified by the parameters in the config. After probing, a mesh is generated and z-movement is adjusted according to the mesh. The mesh will be saved into a profile specified by the <code>PROFILE</code> parameter, or <code>default</code> if unspecified. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the <code>horizontal_move_z</code> option specified in the config file. If ADAPTIVE=1 is specified then the objects defined by the Gcode file being printed will be used to define the probed area. The optional <code>ADAPTIVE_MARGIN</code> value overrides the <code>adaptive_margin</code> option specified in the config file.</p>
+<p><code>BED_MESH_CALIBRATE [PROFILE=&lt;name&gt;] [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;] [&lt;mesh_parameter&gt;=&lt;value&gt;] [ADAPTIVE=1] [ADAPTIVE_MARGIN=&lt;value&gt;]</code>: Тази команда сондира леглото, като използва генерирани точки, определени от параметрите в конфигурацията. След сондирането се генерира мрежа и движението z се регулира в съответствие с мрежата. Мрежата се записва в профил, посочен от параметъра <code>PROFILE</code>, или <code>по подразбиране</code>, ако не е посочен. Вижте командата PROBE за подробности относно незадължителните параметри на профила. Ако е зададено METHOD=manual, се активира инструментът за ръчно сондиране - вижте командата MANUAL_PROBE по-горе за подробности относно допълнителните команди, налични, когато този инструмент е активен. Незадължителната стойност <code>HORIZONTAL_MOVE_Z</code> отменя опцията <code>horizontal_move_z</code>, зададена в конфигурационния файл. Ако е зададена ADAPTIVE=1, тогава обектите, дефинирани от отпечатвания Gcode файл, ще бъдат използвани за дефиниране на зоната на сондиране. Незадължителната стойност <code>ADAPTIVE_MARGIN</code> замества опцията <code>adaptive_margin</code>, зададена в конфигурационния файл.</p>
 <h4 id="bed_mesh_output">BED_MESH_OUTPUT<a class="headerlink" href="#bed_mesh_output" title="Permanent link">&para;</a></h4>
-<p><code>BED_MESH_OUTPUT PGP=[&lt;0:1&gt;]</code>: This command outputs the current probed z values and current mesh values to the terminal. If PGP=1 is specified the X, Y coordinates generated by bed_mesh, along with their associated indices, will be output to the terminal.</p>
+<p><code>BED_MESH_OUTPUT PGP=[&lt;0:1&gt;]</code>: Тази команда извежда на терминала текущите стойности на сондата z и текущите стойности на мрежата. Ако е зададено PGP=1, на терминала ще бъдат изведени координатите X, Y, генерирани от bed_mesh, заедно със съответните им индекси.</p>
 <h4 id="bed_mesh_map">BED_MESH_MAP<a class="headerlink" href="#bed_mesh_map" title="Permanent link">&para;</a></h4>
-<p><code>BED_MESH_MAP</code>: Like to BED_MESH_OUTPUT, this command prints the current state of the mesh to the terminal. Instead of printing the values in a human readable format, the state is serialized in json format. This allows octoprint plugins to easily capture the data and generate height maps approximating the bed's surface.</p>
+<p><code>BED_MESH_MAP</code>: Подобно на BED_MESH_OUTPUT, тази команда отпечатва текущото състояние на мрежата на терминала. Вместо да се отпечатват стойностите в разбираем за човека формат, състоянието се сериализира в json формат. Това позволява на плъгините на octoprint лесно да улавят данните и да генерират карти на височината, приближаващи повърхността на леглото.</p>
 <h4 id="bed_mesh_clear">BED_MESH_CLEAR<a class="headerlink" href="#bed_mesh_clear" title="Permanent link">&para;</a></h4>
-<p><code>BED_MESH_CLEAR</code>: This command clears the mesh and removes all z adjustment. It is recommended to put this in your end-gcode.</p>
+<p><code>BED_MESH_CLEAR</code>: Тази команда изчиства мрежата и премахва всички z корекции. Препоръчително е да я поставите в крайния си код.</p>
 <h4 id="bed_mesh_profile">BED_MESH_PROFILE<a class="headerlink" href="#bed_mesh_profile" title="Permanent link">&para;</a></h4>
-<p><code>BED_MESH_PROFILE LOAD=&lt;name&gt; SAVE=&lt;name&gt; REMOVE=&lt;name&gt;</code>: This command provides profile management for mesh state. LOAD will restore the mesh state from the profile matching the supplied name. SAVE will save the current mesh state to a profile matching the supplied name. Remove will delete the profile matching the supplied name from persistent memory. Note that after SAVE or REMOVE operations have been run the SAVE_CONFIG gcode must be run to make the changes to persistent memory permanent.</p>
+<p><code>BED_MESH_PROFILE LOAD=&lt;име&gt; SAVE=&lt;име&gt; REMOVE=&lt;име&gt;</code>: Тази команда осигурява управление на профила за състоянието на мрежата. LOAD ще възстанови състоянието на мрежата от профила, отговарящ на въведеното име. SAVE (Запазване) ще запази текущото състояние на мрежата в профил, отговарящ на предоставеното име. Remove (Премахване) ще изтрие профила, отговарящ на въведеното име, от постоянната памет. Имайте предвид, че след изпълнение на операциите SAVE (Запазване) или REMOVE (Премахване) трябва да се изпълни gcode SAVE_CONFIG (Запазване на конфигурацията), за да станат промените в постоянната памет постоянни.</p>
 <h4 id="bed_mesh_offset">BED_MESH_OFFSET<a class="headerlink" href="#bed_mesh_offset" title="Permanent link">&para;</a></h4>
-<p><code>BED_MESH_OFFSET [X=&lt;value&gt;] [Y=&lt;value&gt;] [ZFADE=&lt;value]</code>: Applies X, Y, and/or ZFADE offsets to the mesh lookup. This is useful for printers with independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change. Note that a ZFADE offset does not apply additional z-adjustment directly, it is used to correct the <code>fade</code> calculation when a <code>gcode offset</code> has been applied to the Z axis.</p>
-<h3 id="_2">[винтове за легло]<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><code>BED_MESH_OFFSET [X=&lt;стойност&gt;] [Y=&lt;стойност&gt;] [ZFADE=&lt;стойност]</code>: Прилага отмествания X, Y и/или ZFADE към търсенето на мрежата. Това е полезно за принтери с независими екструдери, тъй като е необходимо отместване, за да се получи правилна Z настройка след смяна на инструмента. Обърнете внимание, че отместването на ZFADE не прилага директно допълнителна Z-корекция, а се използва за коригиране на изчислението на <code>затихването</code>, когато към оста Z е приложено отместване на <code>gcode</code>.</p>
+<h3 id="_3">[винтове за легло]<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#bed_screws">bed_screws config section</a> is enabled (also see the <a href="Manual_Level.html#adjusting-bed-leveling-screws">manual level guide</a>).</p>
 <h4 id="bed_screws_adjust">BED_SCREWS_ADJUST<a class="headerlink" href="#bed_screws_adjust" title="Permanent link">&para;</a></h4>
-<p><code>BED_SCREWS_ADJUST</code>: This command will invoke the bed screws adjustment tool. It will command the nozzle to different locations (as defined in the config file) and allow one to make adjustments to the bed screws so that the bed is a constant distance from the nozzle.</p>
+<p><code>BED_SCREWS_ADJUST</code>: Тази команда ще задейства инструмента за регулиране на винтовете на леглото. Той ще командва дюзата на различни места (както е определено във файла за конфигуриране) и ще позволи да се направят настройки на винтовете на леглото, така че леглото да е на постоянно разстояние от дюзата.</p>
 <h3 id="bed_tilt">[bed_tilt]<a class="headerlink" href="#bed_tilt" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#bed_tilt">bed_tilt config section</a> is enabled.</p>
 <h4 id="bed_tilt_calibrate">BED_TILT_CALIBRATE<a class="headerlink" href="#bed_tilt_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>BED_TILT_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will probe the points specified in the config and then recommend updated x and y tilt adjustments. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the <code>horizontal_move_z</code> option specified in the config file.</p>
+<p><code>BED_TILT_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: Тази команда ще сондира точките, посочени в конфигурацията, и след това ще препоръча актуализирани настройки на наклона x и y. За подробности относно незадължителните параметри на сондата вижте командата PROBE. Ако е зададено METHOD=manual, се активира инструментът за ръчно сондиране - вижте командата MANUAL_PROBE по-горе за подробности относно допълнителните команди, налични, когато този инструмент е активен. Незадължителната стойност <code>HORIZONTAL_MOVE_Z</code> отменя опцията <code>horizontal_move_z</code>, зададена в конфигурационния файл.</p>
 <h3 id="bltouch">[bltouch]<a class="headerlink" href="#bltouch" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a <a href="Config_Reference.html#bltouch">bltouch config section</a> is enabled (also see the <a href="BLTouch.html">BL-Touch guide</a>).</p>
 <h4 id="bltouch_debug">BLTOUCH_DEBUG<a class="headerlink" href="#bltouch_debug" title="Permanent link">&para;</a></h4>
-<p><code>BLTOUCH_DEBUG COMMAND=&lt;command&gt;</code>: This sends a command to the BLTouch. It may be useful for debugging. Available commands are: <code>pin_down</code>, <code>touch_mode</code>, <code>pin_up</code>, <code>self_test</code>, <code>reset</code>. A BL-Touch V3.0 or V3.1 may also support <code>set_5V_output_mode</code>, <code>set_OD_output_mode</code>, <code>output_mode_store</code> commands.</p>
+<p><code>BLTOUCH_DEBUG COMMAND=&lt;command&gt;</code>: Изпраща команда към BLTouch. Тя може да бъде полезна за отстраняване на грешки. Наличните команди са: <code>pin_down</code>, <code>touch_mode</code>, <code>pin_up</code>, <code>self_test</code>, <code>reset</code>. BL-Touch V3.0 или V3.1 може също да поддържа командите <code>set_5V_output_mode</code>, <code>set_OD_output_mode</code>, <code>output_mode_store</code>.</p>
 <h4 id="bltouch_store">BLTOUCH_STORE<a class="headerlink" href="#bltouch_store" title="Permanent link">&para;</a></h4>
-<p><code>BLTOUCH_STORE MODE=&lt;output_mode&gt;</code>: This stores an output mode in the EEPROM of a BLTouch V3.1 Available output_modes are: <code>5V</code>, <code>OD</code></p>
+<p><code>BLTOUCH_STORE MODE=&lt;output_mode&gt;</code>: Това запаметява изходен режим в EEPROM на BLTouch V3.1 Наличните output_modes са: <code>5V</code>, <code>OD</code></p>
 <h3 id="configfile">[configfile]<a class="headerlink" href="#configfile" title="Permanent link">&para;</a></h3>
 <p>The configfile module is automatically loaded.</p>
 <h4 id="save_config">SAVE_CONFIG<a class="headerlink" href="#save_config" title="Permanent link">&para;</a></h4>
-<p><code>SAVE_CONFIG</code>: This command will overwrite the main printer config file and restart the host software. This command is used in conjunction with other calibration commands to store the results of calibration tests.</p>
+<p><code>SAVE_CONFIG</code>: Тази команда ще презапише основния конфигурационен файл на принтера и ще рестартира хост софтуера. Тази команда се използва заедно с други команди за калибриране, за да се съхранят резултатите от тестовете за калибриране.</p>
 <h3 id="_gcode">[отложен_gcode]<a class="headerlink" href="#_gcode" title="Permanent link">&para;</a></h3>
 <p>The following command is enabled if a <a href="Config_Reference.html#delayed_gcode">delayed_gcode config section</a> has been enabled (also see the <a href="Command_Templates.html#delayed-gcodes">template guide</a>).</p>
 <h4 id="update_delayed_gcode">UPDATE_DELAYED_GCODE<a class="headerlink" href="#update_delayed_gcode" title="Permanent link">&para;</a></h4>
@@ -3105,10 +3105,10 @@ section</a> is enabled.</p>
 <h3 id="delta_calibrate">[delta_calibrate]<a class="headerlink" href="#delta_calibrate" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#linear-delta-kinematics">delta_calibrate config section</a> is enabled (also see the <a href="Delta_Calibrate.html">delta calibrate guide</a>).</p>
 <h4 id="delta_calibrate_1">DELTA_CALIBRATE<a class="headerlink" href="#delta_calibrate_1" title="Permanent link">&para;</a></h4>
-<p><code>DELTA_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will probe seven points on the bed and recommend updated endstop positions, tower angles, and radius. See the PROBE command for details on the optional probe parameters. If METHOD=manual is specified then the manual probing tool is activated - see the MANUAL_PROBE command above for details on the additional commands available while this tool is active. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the <code>horizontal_move_z</code> option specified in the config file.</p>
+<p><code>DELTA_ANALYZE</code>: Тази команда се използва по време на подобрено делта калибриране. За подробности вижте <a href="Delta_Calibrate.html">Delta Calibrate</a>.</p>
 <h4 id="delta_analyze">DELTA_ANALYZE<a class="headerlink" href="#delta_analyze" title="Permanent link">&para;</a></h4>
-<p><code>DELTA_ANALYZE</code>: This command is used during enhanced delta calibration. See <a href="Delta_Calibrate.html">Delta Calibrate</a> for details.</p>
-<h3 id="_3">[дисплей]<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><code>DELTA_ANALYZE</code>: Тази команда се използва по време на подобрено делта калибриране. За подробности вижте <a href="Delta_Calibrate.html">Delta Calibrate</a>.</p>
+<h3 id="_4">[дисплей]<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a <a href="Config_Reference.html#gcode_macro">display config section</a> is enabled.</p>
 <h4 id="set_display_group">SET_DISPLAY_GROUP<a class="headerlink" href="#set_display_group" title="Permanent link">&para;</a></h4>
 <p><code>SET_DISPLAY_GROUP [DISPLAY=&lt;display&gt;] GROUP=&lt;group&gt;</code>: Set the active display group of an lcd display. This allows to define multiple display data groups in the config, e.g. <code>[display_data &lt;group&gt; &lt;elementname&gt;]</code> and switch between them using this extended gcode command. If DISPLAY is not specified it defaults to "display" (the primary display).</p>
@@ -3116,9 +3116,9 @@ section</a> is enabled.</p>
 <p>The display_status module is automatically loaded if a <a href="Config_Reference.html#display">display config section</a> is enabled. It provides the following standard G-Code commands:</p>
 <ul>
 <li>Display Message: <code>M117 &lt;message&gt;</code></li>
-<li>Set build percentage: <code>M73 P&lt;percent&gt;</code></li>
+<li>Задаване на процент на изграждане: <code>M73 P&lt;percent&gt;</code></li>
 </ul>
-<p>Also provided is the following extended G-Code command:</p>
+<p>Предоставена е и следната разширена команда G-Code:</p>
 <ul>
 <li><code>SET_DISPLAY_TEXT MSG=&lt;message&gt;</code>: Performs the equivalent of M117, setting the supplied <code>MSG</code> as the current display message. If <code>MSG</code> is omitted the display will be cleared.</li>
 </ul>
@@ -3127,38 +3127,38 @@ section</a> is enabled.</p>
 <h4 id="set_dual_carriage">SET_DUAL_CARRIAGE<a class="headerlink" href="#set_dual_carriage" title="Permanent link">&para;</a></h4>
 <p><code>SET_DUAL_CARRIAGE CARRIAGE=[0|1] [MODE=[PRIMARY|COPY|MIRROR]]</code>: This command will change the mode of the specified carriage. If no <code>MODE</code> is provided it defaults to <code>PRIMARY</code>. Setting the mode to <code>PRIMARY</code> deactivates the other carriage and makes the specified carriage execute subsequent G-Code commands as-is. <code>COPY</code> and <code>MIRROR</code> modes are supported only for <code>CARRIAGE=1</code>. When set to either of these modes, carriage 1 will then track the subsequent moves of the carriage 0 and either copy relative movements of it (in <code>COPY</code> mode) or execute them in the opposite (mirror) direction (in <code>MIRROR</code> mode).</p>
 <h4 id="save_dual_carriage_state">SAVE_DUAL_CARRIAGE_STATE<a class="headerlink" href="#save_dual_carriage_state" title="Permanent link">&para;</a></h4>
-<p><code>SAVE_DUAL_CARRIAGE_STATE [NAME=&lt;state_name&gt;]</code>: Save the current positions of the dual carriages and their modes. Saving and restoring DUAL_CARRIAGE state can be useful in scripts and macros, as well as in homing routine overrides. If NAME is provided it allows one to name the saved state to the given string. If NAME is not provided it defaults to "default".</p>
+<p><code>SAVE_DUAL_CARRIAGE_STATE [NAME=&lt;state_name&gt;]</code>: Записва текущите позиции на двойните вагони и техните режими. Запаметяването и възстановяването на състоянието на DUAL_CARRIAGE може да бъде полезно в скриптове и макроси, както и при пренасочване на рутинни процедури за насочване. Ако е предоставено ИМЕ, това позволява да се даде име на запаметеното състояние в дадения низ. Ако не е предоставено NAME, по подразбиране е "default" (по подразбиране).</p>
 <h4 id="restore_dual_carriage_state">RESTORE_DUAL_CARRIAGE_STATE<a class="headerlink" href="#restore_dual_carriage_state" title="Permanent link">&para;</a></h4>
-<p><code>RESTORE_DUAL_CARRIAGE_STATE [NAME=&lt;state_name&gt;] [MOVE=[0|1] [MOVE_SPEED=&lt;speed&gt;]]</code>: Restore the previously saved positions of the dual carriages and their modes, unless "MOVE=0" is specified, in which case only the saved modes will be restored, but not the positions of the carriages. If positions are being restored and "MOVE_SPEED" is specified, then the toolhead moves will be performed with the given speed (in mm/s); otherwise the toolhead move will use the rail homing speed. Note that the carriages restore their positions only over their own axis, which may be necessary to correctly restore COPY and MIRROR mode of the dual carraige.</p>
+<p><code>RESTORE_DUAL_CARRIAGE_STATE [NAME=&lt;state_name&gt;] [MOVE=[0|1] [MOVE_SPEED=&lt;speed&gt;]]</code>: Възстановява запаметените преди това позиции на двойните колички и техните режими, освен ако не е зададено "MOVE=0", в който случай ще бъдат възстановени само запаметените режими, но не и позициите на количките. Ако се възстановяват позиции и е зададено "MOVE_SPEED", тогава преместването на инструменталната глава ще се извърши със зададената скорост (в mm/s); в противен случай преместването на инструменталната глава ще използва скоростта на релсовото самонасочване. Обърнете внимание, че вагончетата възстановяват позициите си само по собствената си ос, което може да е необходимо за правилното възстановяване на режимите COPY и MIRROR на двойното вагонче.</p>
 <h3 id="endstop_phase">[endstop_phase]<a class="headerlink" href="#endstop_phase" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when an <a href="Config_Reference.html#endstop_phase">endstop_phase config section</a> is enabled (also see the <a href="Endstop_Phase.html">endstop phase guide</a>).</p>
 <h4 id="endstop_phase_calibrate">ENDSTOP_PHASE_CALIBRATE<a class="headerlink" href="#endstop_phase_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>ENDSTOP_PHASE_CALIBRATE [STEPPER=&lt;config_name&gt;]</code>: If no STEPPER parameter is provided then this command will reports statistics on endstop stepper phases during past homing operations. When a STEPPER parameter is provided it arranges for the given endstop phase setting to be written to the config file (in conjunction with the SAVE_CONFIG command).</p>
+<p><code>ENDSTOP_PHASE_CALIBRATE [STEPPER=&lt;config_name&gt;]</code>: Ако не е зададен параметър STEPPER, тази команда ще отчете статистически данни за фазите на стъпковия механизъм за крайно спиране по време на минали операции по самонасочване. Когато е зададен параметър STEPPER, тя организира записването на дадената настройка на фазата на крайния стоп в конфигурационния файл (във връзка с командата SAVE_CONFIG).</p>
 <h3 id="exclude_object">[exclude_object]<a class="headerlink" href="#exclude_object" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when an <a href="Config_Reference.html#exclude_object">exclude_object config section</a> is enabled (also see the <a href="Exclude_Object.html">exclude object guide</a>):</p>
 <h4 id="exclude_object_1"><code>EXCLUDE_OBJECT</code><a class="headerlink" href="#exclude_object_1" title="Permanent link">&para;</a></h4>
-<p><code>EXCLUDE_OBJECT [NAME=object_name] [CURRENT=1] [RESET=1]</code>: With no parameters, this will return a list of all currently excluded objects.</p>
+<p><code>EXCLUDE_OBJECT [NAME=object_name] [CURRENT=1] [RESET=1]</code>: Без параметри тази опция ще върне списък с всички изключени в момента обекти.</p>
 <p>When the <code>NAME</code> parameter is given, the named object will be excluded from printing.</p>
 <p>When the <code>CURRENT</code> parameter is given, the current object will be excluded from printing.</p>
 <p>When the <code>RESET</code> parameter is given, the list of excluded objects will be cleared. Additionally including <code>NAME</code> will only reset the named object. This <strong>can</strong> cause print failures, if layers were already skipped.</p>
 <h4 id="exclude_object_define"><code>EXCLUDE_OBJECT_DEFINE</code><a class="headerlink" href="#exclude_object_define" title="Permanent link">&para;</a></h4>
-<p><code>EXCLUDE_OBJECT_DEFINE [NAME=object_name [CENTER=X,Y] [POLYGON=[[x,y],...]] [RESET=1] [JSON=1]</code>: Provides a summary of an object in the file.</p>
+<p><code>EXCLUDE_OBJECT_DEFINE [NAME=име_обекта [CENTER=X,Y] [POLYGON=[[x,y],...]] [RESET=1] [JSON=1]</code>: Предоставя резюме на даден обект във файла.</p>
 <p>With no parameters provided, this will list the defined objects known to Klipper. Returns a list of strings, unless the <code>JSON</code> parameter is given, when it will return object details in json format.</p>
 <p>When the <code>NAME</code> parameter is included, this defines an object to be excluded.</p>
 <ul>
-<li><code>NAME</code>: This parameter is required. It is the identifier used by other commands in this module.</li>
-<li><code>CENTER</code>: An X,Y coordinate for the object.</li>
-<li><code>POLYGON</code>: An array of X,Y coordinates that provide an outline for the object.</li>
+<li><code>NAME</code>: Този параметър е задължителен. Той е идентификаторът, използван от други команди в този модул.</li>
+<li><code>CENTER</code>: Координати X,Y за обекта.</li>
+<li><code>POLYGON</code>: Масив от координати X,Y, които осигуряват контур на обекта.</li>
 </ul>
 <p>When the <code>RESET</code> parameter is provided, all defined objects will be cleared, and the <code>[exclude_object]</code> module will be reset.</p>
 <h4 id="exclude_object_start"><code>EXCLUDE_OBJECT_START</code><a class="headerlink" href="#exclude_object_start" title="Permanent link">&para;</a></h4>
-<p><code>EXCLUDE_OBJECT_START NAME=object_name</code>: This command takes a <code>NAME</code> parameter and denotes the start of the gcode for an object on the current layer.</p>
+<p><code>EXCLUDE_OBJECT_START NAME=object_name</code>: Тази команда приема параметър <code>NAME</code> и обозначава началото на gcode за даден обект на текущия слой.</p>
 <h4 id="exclude_object_end"><code>EXCLUDE_OBJECT_END</code><a class="headerlink" href="#exclude_object_end" title="Permanent link">&para;</a></h4>
-<p><code>EXCLUDE_OBJECT_END [NAME=object_name]</code>: Denotes the end of the object's gcode for the layer. It is paired with <code>EXCLUDE_OBJECT_START</code>. A <code>NAME</code> parameter is optional, and will only warn when the provided name does not match the current object.</p>
+<p><code>EXCLUDE_OBJECT_END [NAME=object_name]</code>: Обозначава края на gcode на обекта за слоя. Съчетава се с <code>EXCLUDE_OBJECT_START</code>. Параметърът <code>NAME</code> не е задължителен и ще предупреждава само когато предоставеното име не съвпада с текущия обект.</p>
 <h3 id="extruder">[extruder]<a class="headerlink" href="#extruder" title="Permanent link">&para;</a></h3>
 <p>The following commands are available if an <a href="Config_Reference.html#extruder">extruder config section</a> is enabled:</p>
 <h4 id="activate_extruder">ACTIVATE_EXTRUDER<a class="headerlink" href="#activate_extruder" title="Permanent link">&para;</a></h4>
-<p><code>ACTIVATE_EXTRUDER EXTRUDER=&lt;config_name&gt;</code>: In a printer with multiple <a href="Config_Reference.html#extruder">extruder</a> config sections, this command changes the active hotend.</p>
+<p><code>ACTIVATE_EXTRUDER EXTRUDER=&lt;config_name&gt;</code>: В принтер с няколко конфигурационни секции <a href="Config_Reference.html#extruder">extruder</a> тази команда променя активния горещ модул.</p>
 <h4 id="set_pressure_advance">SET_PRESSURE_ADVANCE<a class="headerlink" href="#set_pressure_advance" title="Permanent link">&para;</a></h4>
 <p><code>SET_PRESSURE_ADVANCE [EXTRUDER=&lt;config_name&gt;] [ADVANCE=&lt;pressure_advance&gt;] [SMOOTH_TIME=&lt;pressure_advance_smooth_time&gt;]</code>: Set pressure advance parameters of an extruder stepper (as defined in an <a href="Config_Reference.html#extruder">extruder</a> or <a href="Config_Reference.html#extruder_stepper">extruder_stepper</a> config section). If EXTRUDER is not specified, it defaults to the stepper defined in the active hotend.</p>
 <h4 id="set_extruder_rotation_distance">SET_EXTRUDER_ROTATION_DISTANCE<a class="headerlink" href="#set_extruder_rotation_distance" title="Permanent link">&para;</a></h4>
@@ -3172,43 +3172,43 @@ section</a> is enabled.</p>
 <h3 id="filament_switch_sensor">[filament_switch_sensor]<a class="headerlink" href="#filament_switch_sensor" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a <a href="Config_Reference.html#filament_switch_sensor">filament_switch_sensor</a> or <a href="Config_Reference.html#filament_motion_sensor">filament_motion_sensor</a> config section is enabled.</p>
 <h4 id="query_filament_sensor">QUERY_FILAMENT_SENSOR<a class="headerlink" href="#query_filament_sensor" title="Permanent link">&para;</a></h4>
-<p><code>QUERY_FILAMENT_SENSOR SENSOR=&lt;sensor_name&gt;</code>: Queries the current status of the filament sensor. The data displayed on the terminal will depend on the sensor type defined in the configuration.</p>
+<p><code>QUERY_FILAMENT_SENSOR SENSOR=&lt;sensor_name&gt;</code>: Запитва за текущото състояние на сензора за нишки. Данните, които се показват на терминала, зависят от типа на сензора, дефиниран в конфигурацията.</p>
 <h4 id="set_filament_sensor">SET_FILAMENT_SENSOR<a class="headerlink" href="#set_filament_sensor" title="Permanent link">&para;</a></h4>
 <p><code>SET_FILAMENT_SENSOR SENSOR=&lt;sensor_name&gt; ENABLE=[0|1]</code>: Sets the filament sensor on/off. If ENABLE is set to 0, the filament sensor will be disabled, if set to 1 it is enabled.</p>
 <h3 id="firmware_retraction">[firmware_retraction]<a class="headerlink" href="#firmware_retraction" title="Permanent link">&para;</a></h3>
 <p>The following standard G-Code commands are available when the <a href="Config_Reference.html#firmware_retraction">firmware_retraction config section</a> is enabled. These commands allow you to utilize the firmware retraction feature available in many slicers, to reduce stringing during non-extrusion moves from one part of the print to another. Appropriately configuring pressure advance reduces the length of retraction required.</p>
 <ul>
-<li><code>G10</code>: Retracts the extruder using the currently configured parameters.</li>
-<li><code>G11</code>: Unretracts the extruder using the currently configured parameters.</li>
+<li><code>G10</code>: Изтегля екструдера, като използва текущо конфигурираните параметри.</li>
+<li><code>G11</code>: Развързва екструдера, като използва конфигурираните в момента параметри.</li>
 </ul>
 <p>The following additional commands are also available.</p>
 <h4 id="set_retraction">SET_RETRACTION<a class="headerlink" href="#set_retraction" title="Permanent link">&para;</a></h4>
 <p><code>SET_RETRACTION [RETRACT_LENGTH=&lt;mm&gt;] [RETRACT_SPEED=&lt;mm/s&gt;] [UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;]</code>: Adjust the parameters used by firmware retraction. RETRACT_LENGTH determines the length of filament to retract and unretract. The speed of retraction is adjusted via RETRACT_SPEED, and is typically set relatively high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and is not particularly critical, although often lower than RETRACT_SPEED. In some cases it is useful to add a small amount of additional length on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH. SET_RETRACTION is commonly set as part of slicer per-filament configuration, as different filaments require different parameter settings.</p>
 <h4 id="get_retraction">GET_RETRACTION<a class="headerlink" href="#get_retraction" title="Permanent link">&para;</a></h4>
-<p><code>GET_RETRACTION</code>: Queries the current parameters used by firmware retraction and displays them on the terminal.</p>
+<p><code>GET_RETRACTION</code>: Запитва за текущите параметри, използвани от привличането на фърмуера, и ги показва на терминала.</p>
 <h3 id="force_move">[force_move]<a class="headerlink" href="#force_move" title="Permanent link">&para;</a></h3>
 <p>The force_move module is automatically loaded, however some commands require setting <code>enable_force_move</code> in the <a href="Config_Reference.html#force_move">printer config</a>.</p>
 <h4 id="stepper_buzz">STEPPER_BUZZ<a class="headerlink" href="#stepper_buzz" title="Permanent link">&para;</a></h4>
 <p><code>STEPPER_BUZZ STEPPER=&lt;config_name&gt;</code>: Move the given stepper forward one mm and then backward one mm, repeated 10 times. This is a diagnostic tool to help verify stepper connectivity.</p>
 <h4 id="force_move_1">FORCE_MOVE<a class="headerlink" href="#force_move_1" title="Permanent link">&para;</a></h4>
-<p><code>FORCE_MOVE STEPPER=&lt;config_name&gt; DISTANCE=&lt;value&gt; VELOCITY=&lt;value&gt; [ACCEL=&lt;value&gt;]</code>: This command will forcibly move the given stepper the given distance (in mm) at the given constant velocity (in mm/s). If ACCEL is specified and is greater than zero, then the given acceleration (in mm/s^2) will be used; otherwise no acceleration is performed. No boundary checks are performed; no kinematic updates are made; other parallel steppers on an axis will not be moved. Use caution as an incorrect command could cause damage! Using this command will almost certainly place the low-level kinematics in an incorrect state; issue a G28 afterwards to reset the kinematics. This command is intended for low-level diagnostics and debugging.</p>
+<p><code>FORCE_MOVE STEPPER=&lt;config_name&gt; DISTANCE=&lt;value&gt; VELOCITY=&lt;value&gt; [ACCEL=&lt;value&gt;]</code>: Тази команда ще премести принудително дадения стъпков механизъм на зададеното разстояние (в mm) с дадената постоянна скорост (в mm/s). Ако е зададено ACCEL и е по-голямо от нула, ще се използва даденото ускорение (в mm/s^2); в противен случай не се извършва ускорение. Не се извършват гранични проверки; не се извършват кинематични актуализации; други паралелни степери по дадена ос няма да бъдат преместени. Бъдете внимателни, тъй като неправилната команда може да причини повреда! Използването на тази команда почти сигурно ще постави кинематиката на ниско ниво в неправилно състояние; издайте G28 след това, за да нулирате кинематиката. Тази команда е предназначена за диагностика на ниско ниво и отстраняване на грешки.</p>
 <h4 id="set_kinematic_position">SET_KINEMATIC_POSITION<a class="headerlink" href="#set_kinematic_position" title="Permanent link">&para;</a></h4>
 <p><code>SET_KINEMATIC_POSITION [X=&lt;value&gt;] [Y=&lt;value&gt;] [Z=&lt;value&gt;]</code>: Force the low-level kinematic code to believe the toolhead is at the given cartesian position. This is a diagnostic and debugging command; use SET_GCODE_OFFSET and/or G92 for regular axis transformations. If an axis is not specified then it will default to the position that the head was last commanded to. Setting an incorrect or invalid position may lead to internal software errors. This command may invalidate future boundary checks; issue a G28 afterwards to reset the kinematics.</p>
 <h3 id="gcode">[gcode]<a class="headerlink" href="#gcode" title="Permanent link">&para;</a></h3>
 <p>The gcode module is automatically loaded.</p>
 <h4 id="restart">RESTART<a class="headerlink" href="#restart" title="Permanent link">&para;</a></h4>
-<p><code>RESTART</code>: This will cause the host software to reload its config and perform an internal reset. This command will not clear error state from the micro-controller (see FIRMWARE_RESTART) nor will it load new software (see <a href="FAQ.html#how-do-i-upgrade-to-the-latest-software">the FAQ</a>).</p>
+<p><code>RESTART</code>: Това ще накара хост софтуера да презареди конфигурацията си и да извърши вътрешно нулиране. Тази команда няма да изчисти състоянието на грешка от микроконтролера (вж. FIRMWARE_RESTART), нито ще зареди нов софтуер (вж. <a href="FAQ.html#how-do-i-upgrade-to-the-latest-software">често задавани въпроси</a>).</p>
 <h4 id="firmware_restart">FIRMWARE_RESTART<a class="headerlink" href="#firmware_restart" title="Permanent link">&para;</a></h4>
-<p><code>FIRMWARE_RESTART</code>: This is similar to a RESTART command, but it also clears any error state from the micro-controller.</p>
+<p><code>FIRMWARE_RESTART</code>: Това е подобно на командата RESTART, но също така изчиства състоянието на грешки от микроконтролера.</p>
 <h4 id="status">STATUS<a class="headerlink" href="#status" title="Permanent link">&para;</a></h4>
 <p><code>STATUS</code>: Report the Klipper host software status.</p>
-<h4 id="help">HELP<a class="headerlink" href="#help" title="Permanent link">&para;</a></h4>
-<p><code>HELP</code>: Report the list of available extended G-Code commands.</p>
+<h4 id="_5">ПОМОЩ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><code>HELP</code>: Отчита списъка на наличните разширени команди на G-Code.</p>
 <h3 id="gcode_arcs">[gcode_arcs]<a class="headerlink" href="#gcode_arcs" title="Permanent link">&para;</a></h3>
 <p>The following standard G-Code commands are available if a <a href="Config_Reference.html#gcode_arcs">gcode_arcs config section</a> is enabled:</p>
 <ul>
 <li>Arc Move Clockwise (G2), Arc Move Counter-clockwise (G3): <code>G2|G3 [X&lt;pos&gt;] [Y&lt;pos&gt;] [Z&lt;pos&gt;] [E&lt;pos&gt;] [F&lt;speed&gt;] I&lt;value&gt; J&lt;value&gt;|I&lt;value&gt; K&lt;value&gt;|J&lt;value&gt; K&lt;value&gt;</code></li>
-<li>Arc Plane Select: G17 (XY plane), G18 (XZ plane), G19 (YZ plane)</li>
+<li>Избор на равнина на дъгата: G17 (равнина XY), G18 (равнина XZ), G19 (равнина YZ)</li>
 </ul>
 <h3 id="gcode_macro">[gcode_macro]<a class="headerlink" href="#gcode_macro" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a <a href="Config_Reference.html#gcode_macro">gcode_macro config section</a> is enabled (also see the <a href="Command_Templates.html">command templates guide</a>).</p>
@@ -3217,29 +3217,29 @@ section</a> is enabled.</p>
 <h3 id="gcode_move">[gcode_move]<a class="headerlink" href="#gcode_move" title="Permanent link">&para;</a></h3>
 <p>The gcode_move module is automatically loaded.</p>
 <h4 id="get_position">GET_POSITION<a class="headerlink" href="#get_position" title="Permanent link">&para;</a></h4>
-<p><code>GET_POSITION</code>: Return information on the current location of the toolhead. See the developer documentation of <a href="Code_Overview.html#coordinate-systems">GET_POSITION output</a> for more information.</p>
+<p><code>GET_POSITION</code>: Връща информация за текущото местоположение на главата на инструмента. За повече информация вижте документацията за разработчици на <a href="Code_Overview.html#coordinate-systems">GET_POSITION output</a>.</p>
 <h4 id="set_gcode_offset">SET_GCODE_OFFSET<a class="headerlink" href="#set_gcode_offset" title="Permanent link">&para;</a></h4>
 <p><code>SET_GCODE_OFFSET [X=&lt;pos&gt;|X_ADJUST=&lt;adjust&gt;] [Y=&lt;pos&gt;|Y_ADJUST=&lt;adjust&gt;] [Z=&lt;pos&gt;|Z_ADJUST=&lt;adjust&gt;] [MOVE=1 [MOVE_SPEED=&lt;speed&gt;]]</code>: Set a positional offset to apply to future G-Code commands. This is commonly used to virtually change the Z bed offset or to set nozzle XY offsets when switching extruders. For example, if "SET_GCODE_OFFSET Z=0.2" is sent, then future G-Code moves will have 0.2mm added to their Z height. If the X_ADJUST style parameters are used, then the adjustment will be added to any existing offset (eg, "SET_GCODE_OFFSET Z=-0.2" followed by "SET_GCODE_OFFSET Z_ADJUST=0.3" would result in a total Z offset of 0.1). If "MOVE=1" is specified then a toolhead move will be issued to apply the given offset (otherwise the offset will take effect on the next absolute G-Code move that specifies the given axis). If "MOVE_SPEED" is specified then the toolhead move will be performed with the given speed (in mm/s); otherwise the toolhead move will use the last specified G-Code speed.</p>
 <h4 id="save_gcode_state">SAVE_GCODE_STATE<a class="headerlink" href="#save_gcode_state" title="Permanent link">&para;</a></h4>
-<p><code>SAVE_GCODE_STATE [NAME=&lt;state_name&gt;]</code>: Save the current g-code coordinate parsing state. Saving and restoring the g-code state is useful in scripts and macros. This command saves the current g-code absolute coordinate mode (G90/G91), absolute extrude mode (M82/M83), origin (G92), offset (SET_GCODE_OFFSET), speed override (M220), extruder override (M221), move speed, current XYZ position, and relative extruder "E" position. If NAME is provided it allows one to name the saved state to the given string. If NAME is not provided it defaults to "default".</p>
+<p><code>SAVE_GCODE_STATE [NAME=&lt;state_name&gt;]</code>: Запазване на текущото състояние на обработката на координатите на g-кода. Запазването и възстановяването на състоянието на g-кода е полезно в скриптове и макроси. Тази команда запазва текущия режим на абсолютните координати на g-кода (G90/G91), абсолютния режим на екструдиране (M82/M83), произхода (G92), отместването (SET_GCODE_OFFSET), отмяната на скоростта (M220), отмяната на екструдера (M221), скоростта на движение, текущата позиция XYZ и относителната позиция на екструдера "E". Ако е предоставено NAME (Име), това позволява да се даде име на запаметеното състояние в дадения низ. Ако не е предоставено NAME, по подразбиране е "default" (по подразбиране).</p>
 <h4 id="restore_gcode_state">RESTORE_GCODE_STATE<a class="headerlink" href="#restore_gcode_state" title="Permanent link">&para;</a></h4>
-<p><code>RESTORE_GCODE_STATE [NAME=&lt;state_name&gt;] [MOVE=1 [MOVE_SPEED=&lt;speed&gt;]]</code>: Restore a state previously saved via SAVE_GCODE_STATE. If "MOVE=1" is specified then a toolhead move will be issued to move back to the previous XYZ position. If "MOVE_SPEED" is specified then the toolhead move will be performed with the given speed (in mm/s); otherwise the toolhead move will use the restored g-code speed.</p>
+<p><code>RESTORE_GCODE_STATE [NAME=&lt;state_name&gt;] [MOVE=1 [MOVE_SPEED=&lt;speed&gt;]]</code>: Възстановяване на състояние, записано преди това чрез SAVE_GCODE_STATE. Ако е зададено "MOVE=1", ще бъде издадено движение на главата на инструмента, за да се върне в предишната позиция XYZ. Ако е зададено "MOVE_SPEED", тогава преместването на главата на инструмента ще се извърши със зададената скорост (в mm/s); в противен случай преместването на главата на инструмента ще използва възстановената скорост на g-кода.</p>
 <h3 id="______">[сензор_за_широчина_на_нишката_на_хол]<a class="headerlink" href="#______" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#tsl1401cl_filament_width_sensor">tsl1401cl filament width sensor config section</a> or <a href="Config_Reference.html#hall_filament_width_sensor">hall filament width sensor config section</a> is enabled (also see <a href="TSL1401CL_Filament_Width_Sensor.html">TSLl401CL Filament Width Sensor</a> and <a href="Hall_Filament_Width_Sensor.html">Hall Filament Width Sensor</a>):</p>
 <h4 id="query_filament_width">QUERY_FILAMENT_WIDTH<a class="headerlink" href="#query_filament_width" title="Permanent link">&para;</a></h4>
-<p><code>QUERY_FILAMENT_WIDTH</code>: Return the current measured filament width.</p>
+<p><code>QUERY_FILAMENT_WIDTH</code>: Връща текущата измерена ширина на нишката.</p>
 <h4 id="reset_filament_width_sensor">RESET_FILAMENT_WIDTH_SENSOR<a class="headerlink" href="#reset_filament_width_sensor" title="Permanent link">&para;</a></h4>
-<p><code>RESET_FILAMENT_WIDTH_SENSOR</code>: Clear all sensor readings. Helpful after filament change.</p>
+<p><code>RESET_FILAMENT_WIDTH_SENSOR</code>: Изчистване на всички показания на сензора. Полезно след смяна на нишката.</p>
 <h4 id="disable_filament_width_sensor">DISABLE_FILAMENT_WIDTH_SENSOR<a class="headerlink" href="#disable_filament_width_sensor" title="Permanent link">&para;</a></h4>
-<p><code>DISABLE_FILAMENT_WIDTH_SENSOR</code>: Turn off the filament width sensor and stop using it for flow control.</p>
+<p><code>DISABLE_FILAMENT_WIDTH_SENSOR</code>: Изключете сензора за широчина на нишката и спрете да го използвате за контрол на потока.</p>
 <h4 id="enable_filament_width_sensor">ENABLE_FILAMENT_WIDTH_SENSOR<a class="headerlink" href="#enable_filament_width_sensor" title="Permanent link">&para;</a></h4>
-<p><code>ENABLE_FILAMENT_WIDTH_SENSOR</code>: Turn on the filament width sensor and start using it for flow control.</p>
+<p><code>ENABLE_FILAMENT_WIDTH_SENSOR</code>: Включете сензора за широчина на нишката и започнете да го използвате за контрол на потока.</p>
 <h4 id="query_raw_filament_width">QUERY_RAW_FILAMENT_WIDTH<a class="headerlink" href="#query_raw_filament_width" title="Permanent link">&para;</a></h4>
-<p><code>QUERY_RAW_FILAMENT_WIDTH</code>: Return the current ADC channel readings and RAW sensor value for calibration points.</p>
+<p><code>QUERY_RAW_FILAMENT_WIDTH</code>: Върнете текущите показания на ADC канала и RAW стойността на сензора за точките на калибриране.</p>
 <h4 id="enable_filament_width_log">ENABLE_FILAMENT_WIDTH_LOG<a class="headerlink" href="#enable_filament_width_log" title="Permanent link">&para;</a></h4>
-<p><code>ENABLE_FILAMENT_WIDTH_LOG</code>: Turn on diameter logging.</p>
+<p><code>ENABLE_FILAMENT_WIDTH_LOG</code>: Включва регистрирането на диаметъра.</p>
 <h4 id="disable_filament_width_log">DISABLE_FILAMENT_WIDTH_LOG<a class="headerlink" href="#disable_filament_width_log" title="Permanent link">&para;</a></h4>
-<p><code>DISABLE_FILAMENT_WIDTH_LOG</code>: Turn off diameter logging.</p>
+<p><code>DISABLE_FILAMENT_WIDTH_LOG</code>: Изключва регистрирането на диаметъра.</p>
 <h3 id="heaters">[heaters]<a class="headerlink" href="#heaters" title="Permanent link">&para;</a></h3>
 <p>The heaters module is automatically loaded if a heater is defined in the config file.</p>
 <h4 id="turn_off_heaters">TURN_OFF_HEATERS<a class="headerlink" href="#turn_off_heaters" title="Permanent link">&para;</a></h4>
@@ -3259,10 +3259,10 @@ section</a> is enabled.</p>
 <h3 id="manual_probe">[manual_probe]<a class="headerlink" href="#manual_probe" title="Permanent link">&para;</a></h3>
 <p>The manual_probe module is automatically loaded.</p>
 <h4 id="manual_probe_1">MANUAL_PROBE<a class="headerlink" href="#manual_probe_1" title="Permanent link">&para;</a></h4>
-<p><code>MANUAL_PROBE [SPEED=&lt;speed&gt;]</code>: Run a helper script useful for measuring the height of the nozzle at a given location. If SPEED is specified, it sets the speed of TESTZ commands (the default is 5mm/s). During a manual probe, the following additional commands are available:</p>
+<p><code>MANUAL_PROBE [SPEED=&lt;speed&gt;]</code>: Изпълнява помощен скрипт, полезен за измерване на височината на дюзата на дадено място. Ако е зададена СКОРОСТ, тя задава скоростта на командите TESTZ (по подразбиране е 5 mm/s). По време на ръчна проба са налични следните допълнителни команди:</p>
 <ul>
-<li><code>ACCEPT</code>: This command accepts the current Z position and concludes the manual probing tool.</li>
-<li><code>ABORT</code>: This command terminates the manual probing tool.</li>
+<li><code>ACCEPT</code>: Тази команда приема текущата Z-позиция и прекратява работата на инструмента за ръчно сондиране.</li>
+<li><code>ABORT</code>: Тази команда прекратява работата на инструмента за ръчно сондиране.</li>
 <li><code>TESTZ Z=&lt;value&gt;</code>: This command moves the nozzle up or down by the amount specified in "value". For example, <code>TESTZ Z=-.1</code> would move the nozzle down .1mm while <code>TESTZ Z=.1</code> would move the nozzle up .1mm. The value may also be <code>+</code>, <code>-</code>, <code>++</code>, or <code>--</code> to move the nozzle up or down an amount relative to previous attempts.</li>
 </ul>
 <h4 id="z_endstop_calibrate">Z_ENDSTOP_CALIBRATE<a class="headerlink" href="#z_endstop_calibrate" title="Permanent link">&para;</a></h4>
@@ -3272,7 +3272,7 @@ section</a> is enabled.</p>
 <h3 id="manual_stepper">[manual_stepper]<a class="headerlink" href="#manual_stepper" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a <a href="Config_Reference.html#manual_stepper">manual_stepper config section</a> is enabled.</p>
 <h4 id="manual_stepper_1">MANUAL_STEPPER<a class="headerlink" href="#manual_stepper_1" title="Permanent link">&para;</a></h4>
-<p><code>MANUAL_STEPPER STEPPER=config_name [ENABLE=[0|1]] [SET_POSITION=&lt;pos&gt;] [SPEED=&lt;speed&gt;] [ACCEL=&lt;accel&gt;] [MOVE=&lt;pos&gt; [STOP_ON_ENDSTOP=[1|2|-1|-2]] [SYNC=0]]</code>: This command will alter the state of the stepper. Use the ENABLE parameter to enable/disable the stepper. Use the SET_POSITION parameter to force the stepper to think it is at the given position. Use the MOVE parameter to request a movement to the given position. If SPEED and/or ACCEL is specified then the given values will be used instead of the defaults specified in the config file. If an ACCEL of zero is specified then no acceleration will be performed. If STOP_ON_ENDSTOP=1 is specified then the move will end early should the endstop report as triggered (use STOP_ON_ENDSTOP=2 to complete the move without error even if the endstop does not trigger, use -1 or -2 to stop when the endstop reports not triggered). Normally future G-Code commands will be scheduled to run after the stepper move completes, however if a manual stepper move uses SYNC=0 then future G-Code movement commands may run in parallel with the stepper movement.</p>
+<p><code>MANUAL_STEPPER STEPPER=config_name [ENABLE=[0|1]] [SET_POSITION=&lt;pos&gt;] [SPEED=&lt;speed&gt;] [ACCEL=&lt;accel&gt;] [MOVE=&lt;pos&gt; [STOP_ON_ENDSTOP=[1|2|-1|-2]] [SYNC=0]]</code>: Тази команда ще промени състоянието на стъпковия механизъм. Използвайте параметъра ENABLE, за да активирате/деактивирате стъпковия механизъм. Използвайте параметъра SET_POSITION, за да накарате стъпковия механизъм да мисли, че се намира в зададената позиция. Използвайте параметъра MOVE (Преместване), за да заявите преместване до зададената позиция. Ако е зададена скорост и/или ускорение, ще се използват дадените стойности вместо стойностите по подразбиране, зададени в конфигурационния файл. Ако е зададено нулево ACCEL, няма да се извършва ускорение. Ако е зададено STOP_ON_ENDSTOP=1, движението ще завърши по-рано, ако крайният ограничител се отчете като задействан (използвайте STOP_ON_ENDSTOP=2, за да завършите движението без грешка, дори ако крайният ограничител не се задейства, използвайте -1 или -2, за да спрете, когато крайният ограничител не се отчете като задействан). Обикновено бъдещите команди G-Code се планират да се изпълняват след завършване на движението на стъпковия механизъм, но ако при ръчно движение на стъпковия механизъм се използва SYNC=0, бъдещите команди за движение на G-Code могат да се изпълняват паралелно с движението на стъпковия механизъм.</p>
 <h3 id="mcp4018">[mcp4018]<a class="headerlink" href="#mcp4018" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a <a href="Config_Reference.html#mcp4018">mcp4018 config section</a> is enabled.</p>
 <h4 id="set_digipot">SET_DIGIPOT<a class="headerlink" href="#set_digipot" title="Permanent link">&para;</a></h4>
@@ -3289,35 +3289,35 @@ section</a> is enabled.</p>
 <p><code>SET_PIN PIN=config_name VALUE=&lt;value&gt;</code>: Set the pin to the given output <code>VALUE</code>. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and <code>scale</code> if a scale is configured in the output_pin config section.</p>
 <h3 id="palette2">[palette2]<a class="headerlink" href="#palette2" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#palette2">palette2 config section</a> is enabled.</p>
-<p>Palette prints work by embedding special OCodes (Omega Codes) in the GCode file:</p>
+<p>Отпечатъците на палитрата работят чрез вграждане на специални OCodes (кодове Omega) във файла GCode:</p>
 <ul>
-<li><code>O1</code>...<code>O32</code>: These codes are read from the GCode stream and processed by this module and passed to the Palette 2 device.</li>
+<li><code>O1</code>...<code>O32</code>: Тези кодове се четат от потока GCode, обработват се от този модул и се предават на устройството Palette 2.</li>
 </ul>
 <p>The following additional commands are also available.</p>
 <h4 id="palette_connect">PALETTE_CONNECT<a class="headerlink" href="#palette_connect" title="Permanent link">&para;</a></h4>
-<p><code>PALETTE_CONNECT</code>: This command initializes the connection with the Palette 2.</p>
+<p><code>PALETTE_CONNECT</code>: Тази команда инициализира връзката с Palette 2.</p>
 <h4 id="palette_disconnect">PALETTE_DISCONNECT<a class="headerlink" href="#palette_disconnect" title="Permanent link">&para;</a></h4>
-<p><code>PALETTE_DISCONNECT</code>: This command disconnects from the Palette 2.</p>
+<p><code>PALETTE_DISCONNECT</code>: Тази команда прекъсва връзката с палитрата 2.</p>
 <h4 id="palette_clear">PALETTE_CLEAR<a class="headerlink" href="#palette_clear" title="Permanent link">&para;</a></h4>
-<p><code>PALETTE_CLEAR</code>: This command instructs the Palette 2 to clear all of the input and output paths of filament.</p>
+<p><code>``PALETTE_CLEAR</code>: Тази команда инструктира Palette 2 да изчисти всички входни и изходни трасета от нишки.</p>
 <h4 id="palette_cut">PALETTE_CUT<a class="headerlink" href="#palette_cut" title="Permanent link">&para;</a></h4>
-<p><code>PALETTE_CUT</code>: This command instructs the Palette 2 to cut the filament currently loaded in the splice core.</p>
+<p><code>PALETTE_CUT</code>: Тази команда указва на Палитра 2 да отреже нишката, която в момента е заредена в ядрото за снаждане.</p>
 <h4 id="palette_smart_load">PALETTE_SMART_LOAD<a class="headerlink" href="#palette_smart_load" title="Permanent link">&para;</a></h4>
-<p><code>PALETTE_SMART_LOAD</code>: This command start the smart load sequence on the Palette 2. Filament is loaded automatically by extruding it the distance calibrated on the device for the printer, and instructs the Palette 2 once the loading has been completed. This command is the same as pressing <strong>Smart Load</strong> directly on the Palette 2 screen after the filament load is complete.</p>
+<p><code>PALETTE_SMART_LOAD</code>: Тази команда стартира последователността на интелигентно зареждане на палитрата 2. Филаментът се зарежда автоматично, като се екструдира на разстоянието, калибрирано в устройството за принтера, и инструктира Palette 2, след като зареждането приключи. Тази команда е същата като натискането на <strong>Smart Load</strong> директно на екрана на Палитра 2, след като зареждането на филамента е приключило.</p>
 <h3 id="pid_calibrate">[pid_calibrate]<a class="headerlink" href="#pid_calibrate" title="Permanent link">&para;</a></h3>
 <p>The pid_calibrate module is automatically loaded if a heater is defined in the config file.</p>
 <h4 id="pid_calibrate_1">PID_CALIBRATE<a class="headerlink" href="#pid_calibrate_1" title="Permanent link">&para;</a></h4>
-<p><code>PID_CALIBRATE HEATER=&lt;config_name&gt; TARGET=&lt;temperature&gt; [WRITE_FILE=1]</code>: Perform a PID calibration test. The specified heater will be enabled until the specified target temperature is reached, and then the heater will be turned off and on for several cycles. If the WRITE_FILE parameter is enabled, then the file /tmp/heattest.txt will be created with a log of all temperature samples taken during the test.</p>
+<p><code>PID_CALIBRATE HEATER=&lt;config_name&gt; TARGET=&lt;temperature&gt; [WRITE_FILE=1]</code>: Извършва тест за калибриране на PID. Определеният нагревател ще бъде активиран до достигане на определената целева температура, след което нагревателят ще бъде изключен и включен за няколко цикъла. Ако параметърът WRITE_FILE е разрешен, ще се създаде файл /tmp/heattest.txt с дневник на всички температурни проби, взети по време на теста.</p>
 <h3 id="pause_resume">[pause_resume]<a class="headerlink" href="#pause_resume" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#pause_resume">pause_resume config section</a> is enabled:</p>
 <h4 id="pause">PAUSE<a class="headerlink" href="#pause" title="Permanent link">&para;</a></h4>
-<p><code>PAUSE</code>: Pauses the current print. The current position is captured for restoration upon resume.</p>
+<p><code>PAUSE</code>: Спира текущото отпечатване. Текущата позиция се запаметява, за да се възстанови при възобновяване.</p>
 <h4 id="resume">RESUME<a class="headerlink" href="#resume" title="Permanent link">&para;</a></h4>
-<p><code>RESUME [VELOCITY=&lt;value&gt;]</code>: Resumes the print from a pause, first restoring the previously captured position. The VELOCITY parameter determines the speed at which the tool should return to the original captured position.</p>
+<p><code>RESUME [VELOCITY=&lt;value&gt;]</code>: Възобновява отпечатването от пауза, като първо възстановява предишната заснета позиция. Параметърът VELOCITY определя скоростта, с която инструментът трябва да се върне в първоначално заснетата позиция.</p>
 <h4 id="clear_pause">CLEAR_PAUSE<a class="headerlink" href="#clear_pause" title="Permanent link">&para;</a></h4>
-<p><code>CLEAR_PAUSE</code>: Clears the current paused state without resuming the print. This is useful if one decides to cancel a print after a PAUSE. It is recommended to add this to your start gcode to make sure the paused state is fresh for each print.</p>
+<p><code>CLEAR_PAUSE</code>: Изтрива текущото състояние на пауза, без да възобновява печата. Това е полезно, ако решите да отмените печат след ПАУЗА. Препоръчително е да добавите това към стартовия gcode, за да сте сигурни, че състоянието на пауза е ново за всеки печат.</p>
 <h4 id="cancel_print">CANCEL_PRINT<a class="headerlink" href="#cancel_print" title="Permanent link">&para;</a></h4>
-<p><code>CANCEL_PRINT</code>: Cancels the current print.</p>
+<p><code>CANCEL_PRINT</code>: Отменя текущия печат.</p>
 <h3 id="print_stats">[print_stats]<a class="headerlink" href="#print_stats" title="Permanent link">&para;</a></h3>
 <p>The print_stats module is automatically loaded.</p>
 <h4 id="set_print_stats_info">SET_PRINT_STATS_INFO<a class="headerlink" href="#set_print_stats_info" title="Permanent link">&para;</a></h4>
@@ -3325,21 +3325,21 @@ section</a> is enabled.</p>
 <h3 id="probe">[probe]<a class="headerlink" href="#probe" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when a <a href="Config_Reference.html#probe">probe config section</a> or <a href="Config_Reference.html#bltouch">bltouch config section</a> is enabled (also see the <a href="Probe_Calibrate.html">probe calibrate guide</a>).</p>
 <h4 id="probe_1">PROBE<a class="headerlink" href="#probe_1" title="Permanent link">&para;</a></h4>
-<p><code>PROBE [PROBE_SPEED=&lt;mm/s&gt;] [LIFT_SPEED=&lt;mm/s&gt;] [SAMPLES=&lt;count&gt;] [SAMPLE_RETRACT_DIST=&lt;mm&gt;] [SAMPLES_TOLERANCE=&lt;mm&gt;] [SAMPLES_TOLERANCE_RETRIES=&lt;count&gt;] [SAMPLES_RESULT=median|average]</code>: Move the nozzle downwards until the probe triggers. If any of the optional parameters are provided they override their equivalent setting in the <a href="Config_Reference.html#probe">probe config section</a>.</p>
+<p><code>PROBE [PROBE_SPEED=&lt;mm/s&gt;] [LIFT_SPEED=&lt;mm/s&gt;] [SAMPLES=&lt;count&gt;] [SAMPLE_RETRACT_DIST=&lt;mm&gt;] [SAMPLES_TOLERANCE=&lt;mm&gt;] [SAMPLES_TOLERANCE_RETRIES=&lt;count&gt;] [SAMPLES_RESULT=median|average]</code>: Преместете дюзата надолу, докато сондата се задейства. Ако са зададени някои от незадължителните параметри, те отменят еквивалентната им настройка в раздела <a href="Config_Reference.html#probe">конфигурация на сондата</a>.</p>
 <h4 id="query_probe">QUERY_PROBE<a class="headerlink" href="#query_probe" title="Permanent link">&para;</a></h4>
-<p><code>QUERY_PROBE</code>: Report the current status of the probe ("triggered" or "open").</p>
+<p><code>QUERY_PROBE</code>: Докладва текущото състояние на сондата ("задействана" или "отворена").</p>
 <h4 id="probe_accuracy">PROBE_ACCURACY<a class="headerlink" href="#probe_accuracy" title="Permanent link">&para;</a></h4>
-<p><code>PROBE_ACCURACY [PROBE_SPEED=&lt;mm/s&gt;] [SAMPLES=&lt;count&gt;] [SAMPLE_RETRACT_DIST=&lt;mm&gt;]</code>: Calculate the maximum, minimum, average, median, and standard deviation of multiple probe samples. By default, 10 SAMPLES are taken. Otherwise the optional parameters default to their equivalent setting in the probe config section.</p>
+<p><code>PROBE_ACCURACY [PROBE_SPEED=&lt;mm/s&gt;] [SAMPLES=&lt;count&gt;] [SAMPLE_RETRACT_DIST=&lt;mm&gt;]</code>: Изчислява максимума, минимума, средната стойност, медианата и стандартното отклонение на множество проби от сонди. По подразбиране се вземат 10 ПРОБИ. В противен случай незадължителните параметри по подразбиране отговарят на еквивалентните им настройки в раздела за конфигурация на сондата.</p>
 <h4 id="probe_calibrate">PROBE_CALIBRATE<a class="headerlink" href="#probe_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>PROBE_CALIBRATE [SPEED=&lt;speed&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: Run a helper script useful for calibrating the probe's z_offset. See the PROBE command for details on the optional probe parameters. See the MANUAL_PROBE command for details on the SPEED parameter and the additional commands available while the tool is active. Please note, the PROBE_CALIBRATE command uses the speed variable to move in XY direction as well as Z.</p>
+<p><code>PROBE_CALIBRATE [SPEED=&lt;speed&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: Изпълнява помощен скрипт, полезен за калибриране на z_offset на сондата. За подробности относно незадължителните параметри на сондата вижте командата PROBE. Вижте командата MANUAL_PROBE за подробности относно параметъра SPEED и допълнителните команди, които са на разположение, докато инструментът е активен. Обърнете внимание, че командата PROBE_CALIBRATE използва променливата скорост за движение в посока XY, както и в посока Z.</p>
 <h4 id="z_offset_apply_probe">Z_OFFSET_APPLY_PROBE<a class="headerlink" href="#z_offset_apply_probe" title="Permanent link">&para;</a></h4>
 <p><code>Z_OFFSET_APPLY_PROBE</code>: Take the current Z Gcode offset (aka, babystepping), and subtract if from the probe's z_offset. This acts to take a frequently used babystepping value, and "make it permanent". Requires a <code>SAVE_CONFIG</code> to take effect.</p>
 <h3 id="probe_eddy_current">[probe_eddy_current]<a class="headerlink" href="#probe_eddy_current" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when a <a href="Config_Reference.html#probe_eddy_current">probe_eddy_current config section</a> is enabled.</p>
 <h4 id="probe_eddy_current_calibrate">PROBE_EDDY_CURRENT_CALIBRATE<a class="headerlink" href="#probe_eddy_current_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>PROBE_EDDY_CURRENT_CALIBRATE CHIP=&lt;config_name&gt;</code>: This starts a tool that calibrates the sensor resonance frequencies to corresponding Z heights. The tool will take a couple of minutes to complete. After completion, use the SAVE_CONFIG command to store the results in the printer.cfg file.</p>
+<p><code>PROBE_EDDY_CURRENT_CALIBRATE CHIP=&lt;config_name&gt;</code>: Това стартира инструмент, който калибрира резонансните честоти на сензора към съответните височини Z. Завършването на инструмента ще отнеме няколко минути. След приключването му използвайте командата SAVE_CONFIG, за да съхраните резултатите във файла printer.cfg.</p>
 <h4 id="ldc_calibrate_drive_current">LDC_CALIBRATE_DRIVE_CURRENT<a class="headerlink" href="#ldc_calibrate_drive_current" title="Permanent link">&para;</a></h4>
-<p><code>LDC_CALIBRATE_DRIVE_CURRENT CHIP=&lt;config_name&gt;</code> This tool will calibrate the ldc1612 DRIVE_CURRENT0 register. Prior to using this tool, move the sensor so that it is near the center of the bed and about 20mm above the bed surface. Run this command to determine an appropriate DRIVE_CURRENT for the sensor. After running this command use the SAVE_CONFIG command to store that new setting in the printer.cfg config file.</p>
+<p><code>LDC_CALIBRATE_DRIVE_CURRENT CHIP=&lt;config_name&gt;</code> Този инструмент ще калибрира регистъра ldc1612 DRIVE_CURRENT0. Преди да използвате този инструмент, преместете сензора така, че да се намира близо до центъра на леглото и на около 20 мм над повърхността на леглото. Изпълнете тази команда, за да определите подходящ DRIVE_CURRENT за сензора. След изпълнението на тази команда използвайте командата SAVE_CONFIG, за да съхраните новата настройка в конфигурационния файл printer.cfg.</p>
 <h3 id="pwm_cycle_time">[pwm_cycle_time]<a class="headerlink" href="#pwm_cycle_time" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a <a href="Config_Reference.html#pwm_cycle_time">pwm_cycle_time config section</a> is enabled.</p>
 <h4 id="set_pin_1">SET_PIN<a class="headerlink" href="#set_pin_1" title="Permanent link">&para;</a></h4>
@@ -3347,18 +3347,18 @@ section</a> is enabled.</p>
 <h3 id="query_adc">[query_adc]<a class="headerlink" href="#query_adc" title="Permanent link">&para;</a></h3>
 <p>The query_adc module is automatically loaded.</p>
 <h4 id="query_adc_1">QUERY_ADC<a class="headerlink" href="#query_adc_1" title="Permanent link">&para;</a></h4>
-<p><code>QUERY_ADC [NAME=&lt;config_name&gt;] [PULLUP=&lt;value&gt;]</code>: Report the last analog value received for a configured analog pin. If NAME is not provided, the list of available adc names are reported. If PULLUP is provided (as a value in Ohms), the raw analog value along with the equivalent resistance given that pullup is reported.</p>
+<p><code>QUERY_ADC [NAME=&lt;config_name&gt;] [PULLUP=&lt;value&gt;]</code>: Отчита последната аналогова стойност, получена за конфигуриран аналогов извод. Ако не е предоставено име, се докладва списъкът с наличните имена adc. Ако е посочен PULLUP (като стойност в омове), се отчита суровата аналогова стойност заедно с еквивалентното съпротивление при този pullup.</p>
 <h3 id="query_endstops">[query_endstops]<a class="headerlink" href="#query_endstops" title="Permanent link">&para;</a></h3>
 <p>The query_endstops module is automatically loaded. The following standard G-Code commands are currently available, but using them is not recommended:</p>
 <ul>
-<li>Get Endstop Status: <code>M119</code> (Use QUERY_ENDSTOPS instead.)</li>
+<li>Получаване на състояние на Endstop: (Използвайте QUERY_ENDSTOPS вместо това.)</li>
 </ul>
 <h4 id="query_endstops_1">QUERY_ENDSTOPS<a class="headerlink" href="#query_endstops_1" title="Permanent link">&para;</a></h4>
-<p><code>QUERY_ENDSTOPS</code>: Probe the axis endstops and report if they are "triggered" or in an "open" state. This command is typically used to verify that an endstop is working correctly.</p>
+<p><code>QUERY_ENDSTOPS</code>: Проучва крайните ограничители на оста и докладва дали са "задействани" или са в състояние "отворено". Тази команда обикновено се използва, за да се провери дали даден краен ограничител работи правилно.</p>
 <h3 id="resonance_tester">[resonance_tester]<a class="headerlink" href="#resonance_tester" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when a <a href="Config_Reference.html#resonance_tester">resonance_tester config section</a> is enabled (also see the <a href="Measuring_Resonances.html">measuring resonances guide</a>).</p>
 <h4 id="measure_axes_noise">MEASURE_AXES_NOISE<a class="headerlink" href="#measure_axes_noise" title="Permanent link">&para;</a></h4>
-<p><code>MEASURE_AXES_NOISE</code>: Measures and outputs the noise for all axes of all enabled accelerometer chips.</p>
+<p><code>MEASURE_AXES_NOISE</code>: Измерва и извежда шума за всички оси на всички активирани акселерометрични чипове.</p>
 <h4 id="test_resonances">TEST_RESONANCES<a class="headerlink" href="#test_resonances" title="Permanent link">&para;</a></h4>
 <p><code>TEST_RESONANCES AXIS=&lt;axis&gt; OUTPUT=&lt;resonances,raw_data&gt; [NAME=&lt;name&gt;] [FREQ_START=&lt;min_freq&gt;] [FREQ_END=&lt;max_freq&gt;] [HZ_PER_SEC=&lt;hz_per_sec&gt;] [CHIPS=&lt;adxl345_chip_name&gt;] [POINT=x,y,z] [INPUT_SHAPING=[&lt;0:1&gt;]]</code>: Runs the resonance test in all configured probe points for the requested "axis" and measures the acceleration using the accelerometer chips configured for the respective axis. "axis" can either be X or Y, or specify an arbitrary direction as <code>AXIS=dx,dy</code>, where dx and dy are floating point numbers defining a direction vector (e.g. <code>AXIS=X</code>, <code>AXIS=Y</code>, or <code>AXIS=1,-1</code> to define a diagonal direction). Note that <code>AXIS=dx,dy</code> and <code>AXIS=-dx,-dy</code> is equivalent. <code>adxl345_chip_name</code> can be one or more configured adxl345 chip,delimited with comma, for example <code>CHIPS="adxl345, adxl345 rpi"</code>. Note that <code>adxl345</code> can be omitted from named adxl345 chips. If POINT is specified it will override the point(s) configured in <code>[resonance_tester]</code>. If <code>INPUT_SHAPING=0</code> or not set(default), disables input shaping for the resonance testing, because it is not valid to run the resonance testing with the input shaper enabled. <code>OUTPUT</code> parameter is a comma-separated list of which outputs will be written. If <code>raw_data</code> is requested, then the raw accelerometer data is written into a file or a series of files <code>/tmp/raw_data_&lt;axis&gt;_[&lt;chip_name&gt;_][&lt;point&gt;_]&lt;name&gt;.csv</code> with (<code>&lt;point&gt;_</code> part of the name generated only if more than 1 probe point is configured or POINT is specified). If <code>resonances</code> is specified, the frequency response is calculated (across all probe points) and written into <code>/tmp/resonances_&lt;axis&gt;_&lt;name&gt;.csv</code> file. If unset, OUTPUT defaults to <code>resonances</code>, and NAME defaults to the current time in "YYYYMMDD_HHMMSS" format.</p>
 <h4 id="shaper_calibrate">SHAPER_CALIBRATE<a class="headerlink" href="#shaper_calibrate" title="Permanent link">&para;</a></h4>
@@ -3366,34 +3366,34 @@ section</a> is enabled.</p>
 <h3 id="respond">[respond]<a class="headerlink" href="#respond" title="Permanent link">&para;</a></h3>
 <p>The following standard G-Code commands are available when the <a href="Config_Reference.html#respond">respond config section</a> is enabled:</p>
 <ul>
-<li><code>M118 &lt;message&gt;</code>: echo the message prepended with the configured default prefix (or <code>echo:</code> if no prefix is configured).</li>
+<li><code>M118 &lt;съобщение&gt;</code>: ехо на съобщението, допълнено с конфигурирания префикс по подразбиране (или <code>echo:</code>, ако не е конфигуриран префикс).</li>
 </ul>
 <p>The following additional commands are also available.</p>
 <h4 id="respond_1">RESPOND<a class="headerlink" href="#respond_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>RESPOND MSG="&lt;message&gt;"</code>: echo the message prepended with the configured default prefix (or <code>echo:</code> if no prefix is configured).</li>
-<li><code>RESPOND TYPE=echo MSG="&lt;message&gt;"</code>: echo the message prepended with <code>echo:</code>.</li>
-<li><code>RESPOND TYPE=echo_no_space MSG="&lt;message&gt;"</code>: echo the message prepended with <code>echo:</code> without a space between prefix and message, helpful for compatibility with some octoprint plugins that expect very specific formatting.</li>
-<li><code>RESPOND TYPE=command MSG="&lt;message&gt;"</code>: echo the message prepended with <code>//</code>. OctoPrint can be configured to respond to these messages (e.g. <code>RESPOND TYPE=command MSG=action:pause</code>).</li>
-<li><code>RESPOND TYPE=error MSG="&lt;message&gt;"</code>: echo the message prepended with <code>!!</code>.</li>
-<li><code>RESPOND PREFIX=&lt;prefix&gt; MSG="&lt;message&gt;"</code>: echo the message prepended with <code>&lt;prefix&gt;</code>. (The <code>PREFIX</code> parameter will take priority over the <code>TYPE</code> parameter)</li>
+<li><code>RESPOND MSG="&lt;съобщение&gt;"</code>: повтаря съобщението, допълнено с конфигурирания префикс по подразбиране (или <code>echo:</code>, ако не е конфигуриран префикс).</li>
+<li><code>RESPOND TYPE=echo MSG="&lt;message&gt;"</code>: повтаря съобщението, допълнено с <code>echo:</code>.</li>
+<li><code>RESPOND TYPE=echo_no_space MSG="&lt;message&gt;"</code>: повтаря съобщението, предшествано от <code>echo:</code>, без интервал между префикса и съобщението, което е полезно за съвместимост с някои приставки на octoprint, които очакват много специфично форматиране.</li>
+<li><code>RESPOND TYPE=команда MSG="&lt;съобщение&gt;"</code>: повтаря съобщението, допълнено с <code>//</code>. OctoPrint може да бъде конфигуриран да отговаря на тези съобщения (например <code>RESPOND TYPE=command MSG=action:pause</code>).</li>
+<li><code>RESPOND TYPE=error MSG="&lt;message&gt;"</code>: повтори съобщението, допълнено с <code>!!!</code>.</li>
+<li><code>RESPOND PREFIX=&lt;prefix&gt; MSG="&lt;message&gt;"</code>: повтаря съобщението, допълнено с <code>&lt;prefix&gt;</code>. (Параметърът <code>PREFIX</code> има приоритет пред параметъра <code>TYPE</code>)</li>
 </ul>
 <h3 id="save_variables">[save_variables]<a class="headerlink" href="#save_variables" title="Permanent link">&para;</a></h3>
 <p>The following command is enabled if a <a href="Config_Reference.html#save_variables">save_variables config section</a> has been enabled.</p>
 <h4 id="save_variable">SAVE_VARIABLE<a class="headerlink" href="#save_variable" title="Permanent link">&para;</a></h4>
-<p><code>SAVE_VARIABLE VARIABLE=&lt;name&gt; VALUE=&lt;value&gt;</code>: Saves the variable to disk so that it can be used across restarts. All stored variables are loaded into the <code>printer.save_variables.variables</code> dict at startup and can be used in gcode macros. The provided VALUE is parsed as a Python literal.</p>
+<p><code>SAVE_VARIABLE VARIABLE=&lt;име&gt; VALUE=&lt;стойност&gt;</code>: Записва променливата на диска, така че да може да се използва при рестартиране. Всички съхранени променливи се зареждат в диктовката <code>printer.save_variables.variables</code> при стартиране и могат да се използват в макросите на gcode. Предоставената VALUE се анализира като Python литерал.</p>
 <h3 id="screws_tilt_adjust">[screws_tilt_adjust]<a class="headerlink" href="#screws_tilt_adjust" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#screws_tilt_adjust">screws_tilt_adjust config section</a> is enabled (also see the <a href="Manual_Level.html#adjusting-bed-leveling-screws-using-the-bed-probe">manual level guide</a>).</p>
 <h4 id="screws_tilt_calculate">SCREWS_TILT_CALCULATE<a class="headerlink" href="#screws_tilt_calculate" title="Permanent link">&para;</a></h4>
-<p><code>SCREWS_TILT_CALCULATE [DIRECTION=CW|CCW] [MAX_DEVIATION=&lt;value&gt;] [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will invoke the bed screws adjustment tool. It will command the nozzle to different locations (as defined in the config file) probing the z height and calculate the number of knob turns to adjust the bed level. If DIRECTION is specified, the knob turns will all be in the same direction, clockwise (CW) or counterclockwise (CCW). See the PROBE command for details on the optional probe parameters. IMPORTANT: You MUST always do a G28 before using this command. If MAX_DEVIATION is specified, the command will raise a gcode error if any difference in the screw height relative to the base screw height is greater than the value provided. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the <code>horizontal_move_z</code> option specified in the config file.</p>
+<p><code>SCREWS_TILT_CALCULATE [DIRECTION=CW|CCW] [MAX_DEVIATION=&lt;value&gt;] [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: Тази команда ще задейства инструмента за регулиране на винтовете на леглото. Той ще подаде команда на дюзата към различни места (както е определено във файла за конфигуриране), сондирайки височината z, и ще изчисли броя на завъртанията на копчето за регулиране на нивото на леглото. Ако е зададена ДИРЕКЦИЯ, всички завъртания на копчето ще бъдат в една и съща посока - по посока на часовниковата стрелка (CW) или обратно на нея (CCW). За подробности относно допълнителните параметри на сондата вижте командата PROBE. ВАЖНО: Винаги ТРЯБВА да правите G28, преди да използвате тази команда. Ако е зададена MAX_DEVIATION, командата ще предизвика грешка в gcode, ако разликата във височината на винта спрямо базовата височина на винта е по-голяма от зададената стойност. Незадължителната стойност <code>HORIZONTAL_MOVE_Z</code> отменя опцията <code>horizontal_move_z</code>, зададена в конфигурационния файл.</p>
 <h3 id="sdcard_loop">[sdcard_loop]<a class="headerlink" href="#sdcard_loop" title="Permanent link">&para;</a></h3>
 <p>When the <a href="Config_Reference.html#sdcard_loop">sdcard_loop config section</a> is enabled, the following extended commands are available.</p>
 <h4 id="sdcard_loop_begin">SDCARD_LOOP_BEGIN<a class="headerlink" href="#sdcard_loop_begin" title="Permanent link">&para;</a></h4>
-<p><code>SDCARD_LOOP_BEGIN COUNT=&lt;count&gt;</code>: Begin a looped section in the SD print. A count of 0 indicates that the section should be looped indefinitely.</p>
+<p><code>SDCARD_LOOP_BEGIN COUNT=&lt;count&gt;</code>: Започва зациклена секция в SD печат. Брояч от 0 показва, че секцията трябва да бъде зациклена за неопределено време.</p>
 <h4 id="sdcard_loop_end">SDCARD_LOOP_END<a class="headerlink" href="#sdcard_loop_end" title="Permanent link">&para;</a></h4>
-<p><code>SDCARD_LOOP_END</code>: End a looped section in the SD print.</p>
+<p><code>SDCARD_LOOP_END</code>: Край на зациклена секция в SD принта.</p>
 <h4 id="sdcard_loop_desist">SDCARD_LOOP_DESIST<a class="headerlink" href="#sdcard_loop_desist" title="Permanent link">&para;</a></h4>
-<p><code>SDCARD_LOOP_DESIST</code>: Complete existing loops without further iterations.</p>
+<p><code>SDCARD_LOOP_DESIST</code>: Завършване на съществуващите цикли без допълнителни итерации.</p>
 <h3 id="servo">[servo]<a class="headerlink" href="#servo" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when a <a href="Config_Reference.html#servo">servo config section</a> is enabled.</p>
 <h4 id="set_servo">SET_SERVO<a class="headerlink" href="#set_servo" title="Permanent link">&para;</a></h4>
@@ -3403,9 +3403,9 @@ section</a> is enabled.</p>
 <h4 id="set_skew">SET_SKEW<a class="headerlink" href="#set_skew" title="Permanent link">&para;</a></h4>
 <p><code>SET_SKEW [XY=&lt;ac_length,bd_length,ad_length&gt;] [XZ=&lt;ac,bd,ad&gt;] [YZ=&lt;ac,bd,ad&gt;] [CLEAR=&lt;0|1&gt;]</code>: Configures the [skew_correction] module with measurements (in mm) taken from a calibration print. One may enter measurements for any combination of planes, planes not entered will retain their current value. If <code>CLEAR=1</code> is entered then all skew correction will be disabled.</p>
 <h4 id="get_current_skew">GET_CURRENT_SKEW<a class="headerlink" href="#get_current_skew" title="Permanent link">&para;</a></h4>
-<p><code>GET_CURRENT_SKEW</code>: Reports the current printer skew for each plane in both radians and degrees. The skew is calculated based on parameters provided via the <code>SET_SKEW</code> gcode.</p>
+<p><code>GET_CURRENT_SKEW</code>: Съобщава текущото отклонение на принтера за всяка равнина в радиани и градуси. Наклонението се изчислява въз основа на параметрите, предоставени чрез gcode <code>SET_SKEW</code>.</p>
 <h4 id="calc_measured_skew">CALC_MEASURED_SKEW<a class="headerlink" href="#calc_measured_skew" title="Permanent link">&para;</a></h4>
-<p><code>CALC_MEASURED_SKEW [AC=&lt;ac_length&gt;] [BD=&lt;bd_length&gt;] [AD=&lt;ad_length&gt;]</code>: Calculates and reports the skew (in radians and degrees) based on a measured print. This can be useful for determining the printer's current skew after correction has been applied. It may also be useful before correction is applied to determine if skew correction is necessary. See <a href="Skew_Correction.html">Skew Correction</a> for details on skew calibration objects and measurements.</p>
+<p><code>CALC_MEASURED_SKEW [AC=&lt;ac_length&gt;] [BD=&lt;bd_length&gt;] [AD=&lt;ad_length&gt;]</code>: Изчислява и отчита наклона (в радиани и градуси) въз основа на измерен отпечатък. Това може да бъде полезно за определяне на текущото изкривяване на принтера след прилагане на корекция. Тя може да бъде полезна и преди прилагането на корекцията, за да се определи дали е необходима корекция на изкривяването. Вижте <a href="Skew_Correction.html">Skew Correction</a> за подробности относно обектите и измерванията за калибриране на наклона.</p>
 <h4 id="skew_profile">SKEW_PROFILE<a class="headerlink" href="#skew_profile" title="Permanent link">&para;</a></h4>
 <p><code>SKEW_PROFILE [LOAD=&lt;name&gt;] [SAVE=&lt;name&gt;] [REMOVE=&lt;name&gt;]</code>: Profile management for skew_correction. LOAD will restore skew state from the profile matching the supplied name. SAVE will save the current skew state to a profile matching the supplied name. Remove will delete the profile matching the supplied name from persistent memory. Note that after SAVE or REMOVE operations have been run the SAVE_CONFIG gcode must be run to make the changes to persistent memory permanent.</p>
 <h3 id="smart_effector">[smart_effector]<a class="headerlink" href="#smart_effector" title="Permanent link">&para;</a></h3>
@@ -3413,7 +3413,7 @@ section</a> is enabled.</p>
 <h4 id="set_smart_effector">SET_SMART_EFFECTOR<a class="headerlink" href="#set_smart_effector" title="Permanent link">&para;</a></h4>
 <p><code>SET_SMART_EFFECTOR [SENSITIVITY=&lt;sensitivity&gt;] [ACCEL=&lt;accel&gt;] [RECOVERY_TIME=&lt;time&gt;]</code>: Set the Smart Effector parameters. When <code>SENSITIVITY</code> is specified, the respective value is written to the SmartEffector EEPROM (requires <code>control_pin</code> to be provided). Acceptable <code>&lt;sensitivity&gt;</code> values are 0..255, the default is 50. Lower values require less nozzle contact force to trigger (but there is a higher risk of false triggering due to vibrations during probing), and higher values reduce false triggering (but require larger contact force to trigger). Since the sensitivity is written to EEPROM, it is preserved after the shutdown, and so it does not need to be configured on every printer startup. <code>ACCEL</code> and <code>RECOVERY_TIME</code> allow to override the corresponding parameters at run-time, see the <a href="Config_Reference.html#smart_effector">config section</a> of Smart Effector for more info on those parameters.</p>
 <h4 id="reset_smart_effector">RESET_SMART_EFFECTOR<a class="headerlink" href="#reset_smart_effector" title="Permanent link">&para;</a></h4>
-<p><code>RESET_SMART_EFFECTOR</code>: Resets Smart Effector sensitivity to its factory settings. Requires <code>control_pin</code> to be provided in the config section.</p>
+<p><code>RESET_SMART_EFFECTOR</code>: Възстановява фабричните настройки на чувствителността на Smart Effector. Изисква в секцията config да се посочи <code>control_pin</code>.</p>
 <h3 id="stepper_enable">[stepper_enable]<a class="headerlink" href="#stepper_enable" title="Permanent link">&para;</a></h3>
 <p>The stepper_enable module is automatically loaded.</p>
 <h4 id="set_stepper_enable">SET_STEPPER_ENABLE<a class="headerlink" href="#set_stepper_enable" title="Permanent link">&para;</a></h4>
@@ -3425,9 +3425,9 @@ section</a> is enabled.</p>
 <h3 id="tmcxxxx">[tmcXXXX]<a class="headerlink" href="#tmcxxxx" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when any of the <a href="Config_Reference.html#tmc-stepper-driver-configuration">tmcXXXX config sections</a> are enabled.</p>
 <h4 id="dump_tmc">DUMP_TMC<a class="headerlink" href="#dump_tmc" title="Permanent link">&para;</a></h4>
-<p><code>DUMP_TMC STEPPER=&lt;name&gt; [REGISTER=&lt;name&gt;]</code>: This command will read all TMC driver registers and report their values. If a REGISTER is provided, only the specified register will be dumped.</p>
+<p><code>DUMP_TMC STEPPER=&lt;име&gt; [REGISTER=&lt;име&gt;]</code>: Тази команда ще прочете всички регистри на TMC драйвера и ще отчете техните стойности. Ако е посочен РЕГИСТЪР, ще бъде изведен само посоченият регистър.</p>
 <h4 id="init_tmc">INIT_TMC<a class="headerlink" href="#init_tmc" title="Permanent link">&para;</a></h4>
-<p><code>INIT_TMC STEPPER=&lt;name&gt;</code>: This command will initialize the TMC registers. Needed to re-enable the driver if power to the chip is turned off then back on.</p>
+<p><code>INIT_TMC STEPPER=&lt;име&gt;</code>: Тази команда ще инициализира регистрите на TMC. Необходима е, за да се активира отново драйверът, ако захранването на чипа е изключено и отново включено.</p>
 <h4 id="set_tmc_current">SET_TMC_CURRENT<a class="headerlink" href="#set_tmc_current" title="Permanent link">&para;</a></h4>
 <p><code>SET_TMC_CURRENT STEPPER=&lt;name&gt; CURRENT=&lt;amps&gt; HOLDCURRENT=&lt;amps&gt;</code>: This will adjust the run and hold currents of the TMC driver. <code>HOLDCURRENT</code> is not applicable to tmc2660 drivers. When used on a driver which has the <code>globalscaler</code> field (tmc5160 and tmc2240), if StealthChop2 is used, the stepper must be held at standstill for &gt;130ms so that the driver executes the AT#1 calibration.</p>
 <h4 id="set_tmc_field">SET_TMC_FIELD<a class="headerlink" href="#set_tmc_field" title="Permanent link">&para;</a></h4>
@@ -3441,26 +3441,26 @@ section</a> is enabled.</p>
 <h4 id="tuning_tower_1">TUNING_TOWER<a class="headerlink" href="#tuning_tower_1" title="Permanent link">&para;</a></h4>
 <p><code>TUNING_TOWER COMMAND=&lt;command&gt; PARAMETER=&lt;name&gt; START=&lt;value&gt; [SKIP=&lt;value&gt;] [FACTOR=&lt;value&gt; [BAND=&lt;value&gt;]] | [STEP_DELTA=&lt;value&gt; STEP_HEIGHT=&lt;value&gt;]</code>: A tool for tuning a parameter on each Z height during a print. The tool will run the given <code>COMMAND</code> with the given <code>PARAMETER</code> assigned to a value that varies with <code>Z</code> according to a formula. Use <code>FACTOR</code> if you will use a ruler or calipers to measure the Z height of the optimum value, or <code>STEP_DELTA</code> and <code>STEP_HEIGHT</code> if the tuning tower model has bands of discrete values as is common with temperature towers. If <code>SKIP=&lt;value&gt;</code> is specified, the tuning process doesn't begin until Z height <code>&lt;value&gt;</code> is reached, and below that the value will be set to <code>START</code>; in this case, the <code>z_height</code> used in the formulas below is actually <code>max(z - skip, 0)</code>. There are three possible combinations of options:</p>
 <ul>
-<li><code>FACTOR</code>: The value changes at a rate of <code>factor</code> per millimeter. The formula used is: <code>value = start + factor * z_height</code>. You can plug the optimum Z height directly into the formula to determine the optimum parameter value.</li>
-<li><code>FACTOR</code> and <code>BAND</code>: The value changes at an average rate of <code>factor</code> per millimeter, but in discrete bands where the adjustment will only be made every <code>BAND</code> millimeters of Z height. The formula used is: <code>value = start + factor * ((floor(z_height / band) + .5) * band)</code>.</li>
+<li><code>FACTOR</code>: Стойността се променя със скорост <code>фактор</code> на милиметър. Използваната формула е: <code>стойност = старт + фактор * z_височина</code>. Можете да включите оптималната височина Z директно във формулата, за да определите оптималната стойност на параметъра.</li>
+<li><code>FACTOR</code> и <code>BAND</code>: Стойността се променя със средна скорост от <code>фактор</code> на милиметър, но в дискретни диапазони, където корекцията ще се извършва само на всеки <code>БАНД</code> милиметра от височината Z. Използваната формула е: <code>стойност = старт + фактор * ((floor(z_height / band) + .5) * band)</code>.</li>
 <li><code>STEP_DELTA</code> and <code>STEP_HEIGHT</code>: The value changes by <code>STEP_DELTA</code> every <code>STEP_HEIGHT</code> millimeters. The formula used is: <code>value = start + step_delta * floor(z_height / step_height)</code>. You can simply count bands or read tuning tower labels to determine the optimum value.</li>
 </ul>
 <h3 id="virtual_sdcard">[virtual_sdcard]<a class="headerlink" href="#virtual_sdcard" title="Permanent link">&para;</a></h3>
-<p>Klipper supports the following standard G-Code commands if the <a href="Config_Reference.html#virtual_sdcard">virtual_sdcard config section</a> is enabled:</p>
+<p>Klipper поддържа следните стандартни G-Code команди, ако е активиран разделът <a href="Config_Reference.html#virtual_sdcard">virtual_sdcard config</a>:</p>
 <ul>
-<li>List SD card: <code>M20</code></li>
-<li>Initialize SD card: <code>M21</code></li>
-<li>Select SD file: <code>M23 &lt;filename&gt;</code></li>
+<li>Списък на SD картата: <code>M20</code></li>
+<li>Инициирайте SD картата: <code>M21</code></li>
+<li>Изберете SD файл: `M23 &lt;името на файла&gt;``</li>
 <li>Start/resume SD print: <code>M24</code></li>
-<li>Pause SD print: <code>M25</code></li>
+<li>Пауза на SD печат: <code>M25</code></li>
 <li>Set SD position: <code>M26 S&lt;offset&gt;</code></li>
-<li>Report SD print status: <code>M27</code></li>
+<li>Доклад за състоянието на печат на SD: <code>M27</code></li>
 </ul>
-<p>In addition, the following extended commands are available when the "virtual_sdcard" config section is enabled.</p>
+<p>Освен това следните разширени команди са налични, когато секцията за конфигуриране "virtual_sdcard" е активирана.</p>
 <h4 id="sdcard_print_file">SDCARD_PRINT_FILE<a class="headerlink" href="#sdcard_print_file" title="Permanent link">&para;</a></h4>
-<p><code>SDCARD_PRINT_FILE FILENAME=&lt;filename&gt;</code>: Load a file and start SD print.</p>
+<p><code>SDCARD_PRINT_FILE FILENAME=&lt;име на файла&gt;</code>: Зареждане на файл и стартиране на SD печат.</p>
 <h4 id="sdcard_reset_file">SDCARD_RESET_FILE<a class="headerlink" href="#sdcard_reset_file" title="Permanent link">&para;</a></h4>
-<p><code>SDCARD_RESET_FILE</code>: Unload file and clear SD state.</p>
+<p><code>SDCARD_RESET_FILE</code>: Разтоварване на файла и изчистване на състоянието на SD.</p>
 <h3 id="z_thermal_adjust">[z_thermal_adjust]<a class="headerlink" href="#z_thermal_adjust" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#z_thermal_adjust">z_thermal_adjust config section</a> is enabled.</p>
 <h4 id="set_z_thermal_adjust">SET_Z_THERMAL_ADJUST<a class="headerlink" href="#set_z_thermal_adjust" title="Permanent link">&para;</a></h4>
@@ -3478,7 +3478,7 @@ section</a> is enabled.</p>
 <h4 id="temperature_probe_complete">TEMPERATURE_PROBE_COMPLETE:<a class="headerlink" href="#temperature_probe_complete" title="Permanent link">&para;</a></h4>
 <p><code>TEMPERATURE_PROBE_COMPLETE</code>: Can be used to end calibration and save the current result before the <code>TARGET</code> temperature is reached. This command is only available during calibration.</p>
 <h4 id="abort">ABORT<a class="headerlink" href="#abort" title="Permanent link">&para;</a></h4>
-<p><code>ABORT</code>: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.</p>
+<p><code>ABORT</code>: Прекратява процеса на калибриране, като изхвърля текущите резултати. Тази команда е достъпна само по време на калибриране на дрейфа.</p>
 <h3 id="temperature_probe_enable">TEMPERATURE_PROBE_ENABLE<a class="headerlink" href="#temperature_probe_enable" title="Permanent link">&para;</a></h3>
 <p><code>TEMPERATURE_PROBE_ENABLE ENABLE=[0|1]</code>: Sets temperature drift compensation on or off. If ENABLE is set to 0, drift compensation will be disabled, if set to 1 it is enabled.</p>
 

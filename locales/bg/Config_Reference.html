@@ -4361,20 +4361,20 @@ axis:
 #enable_pin:
 #microsteps:
 #rotation_distance:
-# Вижте раздела &quot;Stepper&quot; за описание на тези параметри.
-#величина:
-# Задайте скоростта по подразбиране (в mm/s) за стъпковия механизъм. Тази стойност
-# ще бъде използвана, ако командата MANUAL_STEPPER не укаже SPEED
-# параметър. По подразбиране е 5 mm/s.
+#   See the &quot;stepper&quot; section for a description of these parameters.
+#velocity:
+#   Set the default velocity (in mm/s) for the stepper. This value
+#   will be used if a MANUAL_STEPPER command does not specify a SPEED
+#   parameter. The default is 5mm/s.
 #accel:
-# Задайте ускорението по подразбиране (в mm/s^2) за стъпковия механизъм. На
-# ускорение нула няма да доведе до никакво ускорение. Тази стойност
-# ще бъде използвана, ако командата MANUAL_STEPPER не зададе ACCEL
-# параметър. По подразбиране е нула.
+#   Set the default acceleration (in mm/s^2) for the stepper. An
+#   acceleration of zero will result in no acceleration. This value
+#   will be used if a MANUAL_STEPPER command does not specify an ACCEL
+#   parameter. The default is zero.
 #endstop_pin:
-# Извод за откриване на превключвател за спиране. Ако е посочен, тогава може да се извърши
-# &quot;ходове на самонасочване&quot;, като се добави параметър STOP_ON_ENDSTOP към
-# командите за движение MANUAL_STEPPER.
+#   Endstop switch detection pin. If specified, then one may perform
+#   &quot;homing moves&quot; by adding a STOP_ON_ENDSTOP parameter to
+#   MANUAL_STEPPER movement commands.
 </code></pre></div>
 
 <h2 id="_20">Персонализирани нагреватели и сензори<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
@@ -5010,23 +5010,23 @@ pin:
 #green_pin:
 #blue_pin:
 #white_pin:
-# Изводът, управляващ дадения цвят на светодиода. Поне един от горните
-# параметри трябва да бъдат предоставени.
+#   The pin controlling the given LED color. At least one of the above
+#   parameters must be provided.
 #cycle_time: 0.010
-# Времето (в секунди) за един ШИМ цикъл. Препоръчва се
-# това да бъде 10 милисекунди или повече, когато се използва софтуерно базирана ШИМ.
-# По подразбиране е 0,010 секунди.
+#   The amount of time (in seconds) per PWM cycle. It is recommended
+#   this be 10 milliseconds or greater when using software based PWM.
+#   The default is 0.010 seconds.
 #hardware_pwm: False
-# Активирайте това, за да използвате хардуерна ШИМ вместо софтуерна ШИМ. Когато
-# използване на хардуерна ШИМ действителното време на цикъла се ограничава от
-# изпълнението и може да се различава значително от
-# заявеното време на цикъла. По подразбиране е False.
+#   Enable this to use hardware PWM instead of software PWM. When
+#   using hardware PWM the actual cycle time is constrained by the
+#   implementation and may be significantly different than the
+#   requested cycle_time. The default is False.
 #initial_RED: 0.0
 #initial_GREEN: 0.0
 #initial_BLUE: 0.0
 #initial_WHITE: 0.0
-# Задава първоначалния цвят на светодиода. Всяка стойност трябва да е между 0,0 и
-# 1.0. По подразбиране за всеки цвят е 0.
+#   Sets the initial LED color. Each value should be between 0.0 and
+#   1.0. The default for each color is 0.
 </code></pre></div>
 
 <h3 id="neopixel">[neopixel]<a class="headerlink" href="#neopixel" title="Permanent link">&para;</a></h3>

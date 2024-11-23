@@ -1403,7 +1403,7 @@
 <p>Poskytnutie presnej sondy z_offset je rozhodujúce pre získanie vysoko kvalitných výtlačkov. Z_offset je vzdialenosť medzi tryskou a lôžkom, keď sa sonda spustí. Na získanie tejto hodnoty je možné použiť nástroj Klipper <code>PROBE_CALIBRATE</code> – spustí automatickú sondu na meranie polohy spúšťania Z sondy a potom spustí manuálnu sondu na získanie výšky Z trysky. Z týchto meraní sa potom vypočíta z_offset sondy.</p>
 <p>Začnite umiestnením tlačiarne a potom presuňte hlavu do polohy blízko stredu postele. Prejdite na kartu terminálu OctoPrint a spustite nástroj <code>PROBE_CALIBRATE</code>.</p>
 <p>Tento nástroj vykoná automatickú sondu, potom zdvihne hlavu, presunie dýzu nad miesto bodu sondy a spustí ručnú sondu. Ak sa dýza nepohne do polohy nad bodom automatickej sondy, potom  <code>ABORT</code> nástroj manuálnej sondy a vykonajte vyššie opísanú kalibráciu posunu sondy XY.</p>
-<p>Once the manual probe tool starts, follow the steps described at <a href="Bed_Level.html#the-paper-test">"the paper test"</a> to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can <code>ACCEPT</code> the position and save the results to the config file with:</p>
+<p>Po spustení nástroja manuálnej sondy postupujte podľa krokov popísaných v časti <a href="Bed_Level.html#the-paper-test">"test papiera"</a>, aby ste určili skutočnú vzdialenosť medzi tryskou a lôžkom na danom mieste. Po dokončení týchto krokov môžete pozíciu „PRIJAŤ“ a uložiť výsledky do konfiguračného súboru pomocou:</p>
 <div class="highlight"><pre><span></span><code>SAVE_CONFIG
 </code></pre></div>
 

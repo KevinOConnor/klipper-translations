@@ -13,7 +13,7 @@
     
     
       
-        <title>Bootloader Entry - Klipper documentation</title>
+        <title>ブートローダーのエントリー - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bootloader-entry" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bootloader Entry
+              ブートローダーのエントリー
             
           </span>
         </div>
@@ -1451,7 +1451,7 @@
 </a>
 
 
-<h1 id="bootloader-entry">Bootloader Entry<a class="headerlink" href="#bootloader-entry" title="Permanent link">&para;</a></h1>
+<h1 id="_1">ブートローダーのエントリー<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>Klipper can be instructed to reboot into a <a href="Bootloaders.html">Bootloader</a> in one of the following ways:</p>
 <h2 id="requesting-the-bootloader">Requesting the bootloader<a class="headerlink" href="#requesting-the-bootloader" title="Permanent link">&para;</a></h2>
 <h3 id="virtual-serial">Virtual Serial<a class="headerlink" href="#virtual-serial" title="Permanent link">&para;</a></h3>
@@ -1471,11 +1471,11 @@ Entering<span class="w"> </span>bootloader<span class="w"> </span>on<span class=
 </code></pre></div>
 
 <p>Where <code>&lt;DEVICE&gt;</code> is your serial device, such as <code>/dev/serial.by-id/usb-Klipper[...]</code> or <code>/dev/ttyACM0</code></p>
-<p><code>&lt;Ctrl-A&gt;&lt;Ctrl-P&gt;</code> means holding <code>Ctrl</code>, pressing and releasing <code>a</code>, pressing and releasing <code>p</code>, then releasing <code>Ctrl</code></p>
+<p><code>&lt;Ctrl-A&gt;&lt;Ctrl-P&gt;</code> は <code>Ctrl</code>を押したまま、 <code>a</code>、<code>p</code>を入力し、 <code>Ctrl</code>を離すことを意味します</p>
 <h3 id="physical-serial">Physical serial<a class="headerlink" href="#physical-serial" title="Permanent link">&para;</a></h3>
 <p>If a physical serial port is being used on the MCU (even if a USB serial adapter is being used to connect to it), sending the string <code>&lt;SPACE&gt;&lt;FS&gt;&lt;SPACE&gt;Request Serial Bootloader!!&lt;SPACE&gt;~</code>.</p>
-<p><code>&lt;SPACE&gt;</code> is an ASCII literal space, 0x20.</p>
-<p><code>&lt;FS&gt;</code> is the ASCII File Separator, 0x1c.</p>
+<p><code>&lt;SPACE&gt;</code>はASCIIコードのスペース、 0x20 です。</p>
+<p><code>&lt;FS&gt;</code> はASCIIコードのファイル分離文字、 0x1c です。</p>
 <p>Note that this is not a valid message as per the <a href="Protocol.html#micro-controller-interface">MCU Protocol</a>, but sync characters(<code>~</code>) are still respected.</p>
 <p>Because this message must be the only thing in the "block" it is received in, prefixing an extra sync character can increase reliability if other tools were previously accessing the serial port.</p>
 <h4 id="shell">Shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h4>
@@ -1484,7 +1484,7 @@ Entering<span class="w"> </span>bootloader<span class="w"> </span>on<span class=
 </code></pre></div>
 
 <p>Where <code>&lt;DEVICE&gt;</code> is your serial port, such as <code>/dev/ttyS0</code>, or <code>/dev/serial/by-id/gpio-serial2</code>, and</p>
-<p><code>&lt;BAUD&gt;</code> is the baud rate of the serial port, such as <code>115200</code>.</p>
+<p><code>&lt;BAUD&gt;</code>は例えば <code>115200</code> のような、シリアルポートのボーレートです。</p>
 <h3 id="canbus">CANBUS<a class="headerlink" href="#canbus" title="Permanent link">&para;</a></h3>
 <p>If CANBUS is in use, a special <a href="CANBUS_protocol.html#admin-messages">admin message</a> will request the bootloader. This message will be respected even if the device already has a nodeid, and will also be processed if the mcu is shutdown.</p>
 <p>This method also applies to devices operating in <a href="CANBUS.html#usb-to-can-bus-bridge-mode">CANBridge</a> mode.</p>

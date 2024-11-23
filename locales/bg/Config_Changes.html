@@ -1420,7 +1420,7 @@ document</a> for examples.</p>
 <p>20201112: The time reported by <code>print_stats.print_duration</code> has changed. The duration prior to the first detected extrusion is now excluded.</p>
 <p>20201029: The neopixel <code>color_order_GRB</code> config option has been removed. If necessary, update the config to set the new <code>color_order</code> option to RGB, GRB, RGBW, or GRBW.</p>
 <p>20201029: The serial option in the mcu config section no longer defaults to /dev/ttyS0. In the rare situation where /dev/ttyS0 is the desired serial port, it must be specified explicitly.</p>
-<p>20201020: Klipper v0.9.0</p>
+<p>20201020: Klipper v0.9.0 released.</p>
 <p>20200902: The RTD resistance-to-temperature calculation for MAX31865 converters has been corrected to not read low. If you are using such a device, you should recalibrate your print temperature and PID settings.</p>
 <p>20200816: The gcode macro <code>printer.gcode</code> object has been renamed to <code>printer.gcode_move</code>. Several undocumented variables in <code>printer.toolhead</code> and <code>printer.gcode</code> have been removed. See docs/Command_Templates.md for a list of available template variables.</p>
 <p>20200816: The gcode macro "action_" system has changed. Replace any calls to <code>printer.gcode.action_emergency_stop()</code> with <code>action_emergency_stop()</code>, <code>printer.gcode.action_respond_info()</code> with <code>action_respond_info()</code>, and <code>printer.gcode.action_respond_error()</code> with <code>action_raise_error()</code>.</p>

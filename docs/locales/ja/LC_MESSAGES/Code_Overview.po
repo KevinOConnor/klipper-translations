@@ -1,9 +1,16 @@
-#
+# Meteor2 <ryumeteor175@gmail.com>, 2024.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-11-26 07:14+0000\n"
+"Last-Translator: Meteor2 <ryumeteor175@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/"
+"code_overview/ja/>\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid ""
 "This document describes the overall code layout and major code flow of "
@@ -11,7 +18,7 @@ msgid ""
 msgstr ""
 
 msgid "Directory Layout"
-msgstr ""
+msgstr "ディレクトリレイアウト"
 
 msgid ""
 "The **src/** directory contains the C source for the micro-controller code. "
@@ -41,7 +48,7 @@ msgstr ""
 
 msgid ""
 "The **config/** directory contains example printer configuration files."
-msgstr ""
+msgstr "**config/** ディレクトリにはプリンターの設定ファイルの例があります。"
 
 msgid ""
 "The **scripts/** directory contains build-time scripts useful for compiling "

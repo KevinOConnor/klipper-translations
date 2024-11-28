@@ -1,19 +1,20 @@
 # Hideki Matsunobu <maznobu@gmail.com>, 2024.
+# Meteor2 <ryumeteor175@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-19 05:50+0000\n"
-"Last-Translator: Hideki Matsunobu <maznobu@gmail.com>\n"
+"PO-Revision-Date: 2024-11-27 06:32+0000\n"
+"Last-Translator: Meteor2 <ryumeteor175@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/"
 "benchmarks/ja/>\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid "This document describes Klipper benchmarks."
-msgstr ""
+msgstr "このドキュメントではKlipperのベンチマークについて説明します。"
 
 msgid "Micro-controller Benchmarks"
 msgstr ""
@@ -70,10 +71,10 @@ msgid "The following configuration sequence is used on AVR chips:"
 msgstr ""
 
 msgid "avr"
-msgstr ""
+msgstr "avr"
 
 msgid "ticks"
-msgstr ""
+msgstr "ティック"
 
 msgid "1 stepper"
 msgstr ""
@@ -88,7 +89,7 @@ msgid "The following configuration sequence is used on the Due:"
 msgstr ""
 
 msgid "sam3x8e"
-msgstr ""
+msgstr "sam3x8e"
 
 msgid "Duet Maestro step rate benchmark"
 msgstr ""
@@ -97,10 +98,10 @@ msgid "The following configuration sequence is used on the Duet Maestro:"
 msgstr ""
 
 msgid "sam4s8c"
-msgstr ""
+msgstr "sam4s8c"
 
 msgid "70"
-msgstr ""
+msgstr "70"
 
 msgid "Duet Wifi step rate benchmark"
 msgstr ""
@@ -109,7 +110,7 @@ msgid "The following configuration sequence is used on the Duet Wifi:"
 msgstr ""
 
 msgid "sam4e8e"
-msgstr ""
+msgstr "sam4e8e"
 
 msgid "Beaglebone PRU step rate benchmark"
 msgstr ""
@@ -148,16 +149,16 @@ msgid "The following configuration sequence is used on the STM32F4:"
 msgstr ""
 
 msgid "stm32f446"
-msgstr ""
+msgstr "stm32f446"
 
 msgid "51"
-msgstr ""
+msgstr "51"
 
 msgid "stm32f407"
-msgstr ""
+msgstr "stm32f407"
 
 msgid "52"
-msgstr ""
+msgstr "52"
 
 msgid "LPC176x step rate benchmark"
 msgstr ""
@@ -166,10 +167,10 @@ msgid "The following configuration sequence is used on the LPC176x:"
 msgstr ""
 
 msgid "lpc1768"
-msgstr ""
+msgstr "lpc1768"
 
 msgid "lpc1769"
-msgstr ""
+msgstr "lpc1769"
 
 msgid "SAMD21 step rate benchmark"
 msgstr ""
@@ -177,8 +178,9 @@ msgstr ""
 msgid "The following configuration sequence is used on the SAMD21:"
 msgstr ""
 
+#, fuzzy
 msgid "samd21"
-msgstr ""
+msgstr "samd21"
 
 msgid "SAMD51 step rate benchmark"
 msgstr ""
@@ -228,79 +230,79 @@ msgid "Rate"
 msgstr ""
 
 msgid "Build"
-msgstr ""
+msgstr "ビルド"
 
 msgid "Build compiler"
-msgstr ""
+msgstr "コンパイラ"
 
 msgid "stm32f042 (CAN)"
 msgstr ""
 
 msgid "18K"
-msgstr ""
+msgstr "18K"
 
 msgid "c105adc8"
-msgstr ""
+msgstr "c105adc8"
 
 msgid "arm-none-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1"
-msgstr ""
+msgstr "arm-none-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1"
 
 msgid "atmega2560 (serial)"
 msgstr ""
 
 msgid "23K"
-msgstr ""
+msgstr "23K"
 
 msgid "b161a69e"
-msgstr ""
+msgstr "b161a69e"
 
 msgid "avr-gcc (GCC) 4.8.1"
-msgstr ""
+msgstr "avr-gcc (GCC) 4.8.1"
 
 msgid "sam3x8e (serial)"
 msgstr ""
 
 msgid "arm-none-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
 
 msgid "at90usb1286 (USB)"
 msgstr ""
 
 msgid "75K"
-msgstr ""
+msgstr "75K"
 
 msgid "01d2183f"
-msgstr ""
+msgstr "01d2183f"
 
 msgid "avr-gcc (GCC) 5.4.0"
-msgstr ""
+msgstr "avr-gcc (GCC) 5.4.0"
 
 msgid "samd21 (USB)"
 msgstr ""
 
 msgid "223K"
-msgstr ""
+msgstr "223K"
 
 msgid "arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
 
 msgid "pru (shared memory)"
 msgstr ""
 
 msgid "260K"
-msgstr ""
+msgstr "260K"
 
 msgid "c5968a08"
-msgstr ""
+msgstr "c5968a08"
 
 msgid "pru-gcc (GCC) 8.0.0 20170530 (experimental)"
-msgstr ""
+msgstr "pru-gcc (GCC) 8.0.0 20170530 (experimental)"
 
 msgid "stm32f103 (USB)"
 msgstr ""
 
 msgid "355K"
-msgstr ""
+msgstr "355K"
 
 msgid "sam3x8e (USB)"
 msgstr ""

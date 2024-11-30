@@ -2,17 +2,19 @@
 # Milton Miranda Neto <voidmmn@gmail.com>, 2023.
 # Matheus Mösken Diegues <dmosken2015@gmail.com>, 2024.
 # Emerson Jhones <ejhones@gmail.com>, 2024.
+# Thomas Martin Bueno de Moraes <thomasmbmoraes@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-07-02 15:09+0000\n"
-"Last-Translator: Emerson Jhones <ejhones@gmail.com>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/klipper/g-codes/pt/>\n"
+"PO-Revision-Date: 2024-12-01 17:08+0000\n"
+"Last-Translator: Thomas Martin Bueno de Moraes <thomasmbmoraes@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/klipper/"
+"g-codes/pt/>\n"
 "Language: pt\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -742,6 +744,11 @@ msgid ""
 "\"register\" can be a decimal or a hexadecimal integer. Use with care, and "
 "refer to ADXL345 data sheet for the reference."
 msgstr ""
+"'ACCELEROMETER_DEBUG_WRITE [CHIP=<config_name>] REG=<register> VAL=<value>:' "
+"Grava o \"valor\" bruto em um \"registrador\". Tanto \"valor\" quanto "
+"\"registrador\" podem ser números inteiros em formato decimal ou "
+"hexadecimal. Use com cuidado e consulte a folha de dados do ADXL345 como "
+"referência."
 
 #: docs/G-Codes.md:block 22 (header)
 msgid "[bed_mesh]"
@@ -2537,13 +2544,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 401 (header)
 msgid "ABORT"
-msgstr ""
+msgstr "ABORTAR"
 
 #: docs/G-Codes.md:block 402 (paragraph)
 msgid ""
 "`ABORT`: Aborts the calibration process, discarding the current results. "
 "This command is only available during drift calibration."
 msgstr ""
+"'ABORTAR': Aborta o processo de calibração, descartando os resultados "
+"atuais. Este comando está disponível apenas durante a calibração de desvio."
 
 #: docs/G-Codes.md:block 403 (header)
 msgid "TEMPERATURE_PROBE_ENABLE"

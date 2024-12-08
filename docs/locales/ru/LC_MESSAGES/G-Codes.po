@@ -11,11 +11,12 @@
 # Кирилл Еремеев <kirnet79@gmail.com>, 2024.
 # Тихон Титовец <titovetstixon@gmail.com>, 2024.
 # Alexandr Voznyuk <9169208719av@gmail.com>, 2024.
+# Arseniy <arseniy@neburalis.space>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-17 23:15+0000\n"
-"Last-Translator: Alexandr Voznyuk <9169208719av@gmail.com>\n"
+"PO-Revision-Date: 2024-12-08 11:43+0000\n"
+"Last-Translator: Arseniy <arseniy@neburalis.space>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/g-codes/"
 "ru/>\n"
 "Language: ru\n"
@@ -23,15 +24,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.9-dev\n"
 
-#, fuzzy
 msgid ""
 "This document describes the commands that Klipper supports. These are "
 "commands that one may enter into the OctoPrint terminal tab."
 msgstr ""
-"JВ этом документе описаны команды, поддерживаемые Klipper. Это команды, "
-"которые можно ввести на вкладке терминала OctoPrint."
+"Этот документ описываетJВ этом документе описаны команды, поддерживаемые "
+"Klipper. Это команды, которые можно ввести на вкладке терминала OctoPrint. "
+"команды, поддерживаемые Klipper. Это команды, которые можно ввести на "
+"вкладке терминала OctoPrint."
 
 msgid "G-Code commands"
 msgstr "Команды G-кода"
@@ -44,7 +46,7 @@ msgstr ""
 "Перемещение (G0 или G1): `G1 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>]`"
 
 msgid "Dwell: `G4 P<milliseconds>`"
-msgstr ""
+msgstr "Ожидание: `G4 P<time(ms)>`"
 
 msgid "Move to origin: `G28 [X] [Y] [Z]`"
 msgstr "Перемещение в начало координат: `G28 [X] [Y] [Z]`."
@@ -53,25 +55,29 @@ msgid "Turn off motors: `M18` or `M84`"
 msgstr "Выключите моторы: `М18` или `М84`"
 
 msgid "Wait for current moves to finish: `M400`"
-msgstr ""
+msgstr "Ожидание окончания всех перемещений в планировщике: `M400`"
 
 msgid "Use absolute/relative distances for extrusion: `M82`, `M83`"
 msgstr ""
+"Использовать абсолютное/относительное расстояния для выдавливания "
+"экструдером: `M82`/`M83`"
 
 msgid "Use absolute/relative coordinates: `G90`, `G91`"
-msgstr ""
+msgstr "Использовать абсолютные/относительные координаты: `G90`, `G91`"
 
 msgid "Set position: `G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]`"
 msgstr ""
+"Установить указанное значение положения: `G92 [X<pos>] [Y<pos>] [Z<pos>] "
+"[E<pos>]`"
 
 msgid "Set speed factor override percentage: `M220 S<percent>`"
-msgstr ""
+msgstr "Установите процентный коэффициент скорости: `M220 S<percent>`"
 
 msgid "Set extrude factor override percentage: `M221 S<percent>`"
-msgstr ""
+msgstr "Установите коэффициент потока: `M221 S<percent>`"
 
 msgid "Set acceleration: `M204 S<value>` OR `M204 P<value> T<value>`"
-msgstr ""
+msgstr "Установка ускорений: `M204 S<value>` OR `M204 P<value> T<value>`"
 
 msgid ""
 "Note: If S is not specified and both P and T are specified, then the "
@@ -80,45 +86,51 @@ msgid ""
 msgstr ""
 
 msgid "Get extruder temperature: `M105`"
-msgstr ""
+msgstr "Получить температуру экструдера: `M105`"
 
 msgid "Set extruder temperature: `M104 [T<index>] [S<temperature>]`"
-msgstr ""
+msgstr "Установить температуру экструдеру: `M104 [T<index>] [S<temperature>]`"
 
 msgid "Set extruder temperature and wait: `M109 [T<index>] S<temperature>`"
 msgstr ""
+"Установить температуру экструдеру и ожидать нагрева: `M109 [T<index>] "
+"S<temperature>`"
 
 msgid "Note: M109 always waits for temperature to settle at requested value"
 msgstr ""
+"Примечание: M109 ждет, пока температура установится на требуемом значении."
 
 msgid "Set bed temperature: `M140 [S<temperature>]`"
-msgstr ""
+msgstr "Установить температуру стола: `M140 [S<temperature>]`"
 
 msgid "Set bed temperature and wait: `M190 S<temperature>`"
-msgstr ""
+msgstr "Установить температуру стола и ждать нагрева: `M190 S<temperature>`"
 
 msgid "Note: M190 always waits for temperature to settle at requested value"
 msgstr ""
+"Примечание: M190 ждет, пока температура установится на требуемом значении."
 
 msgid "Set fan speed: `M106 S<value>`"
-msgstr ""
+msgstr "Установить скорость вентилятору: `M106 S<value>`"
 
 msgid "Turn fan off: `M107`"
-msgstr ""
+msgstr "Выключить вентилятор: `M107`"
 
 msgid "Emergency stop: `M112`"
-msgstr ""
+msgstr "Аварийная остановка: `M112`"
 
 msgid "Get current position: `M114`"
-msgstr ""
+msgstr "Получить текущее значение положения активного инструмента: `M114`"
 
 msgid "Get firmware version: `M115`"
-msgstr ""
+msgstr "Получить информацию о прошивке: `M115`"
 
 msgid ""
 "For further details on the above commands see the [RepRap G-Code "
 "documentation](http://reprap.org/wiki/G-code)."
 msgstr ""
+"Дополнительные сведения о приведенных выше командах см. в документации ["
+"RepRap G-Code](http://reprap.org/wiki/G-code)."
 
 msgid ""
 "If one requires a less common G-Code command then it may be possible to "
@@ -126,15 +138,20 @@ msgid ""
 "section](Config_Reference.md#gcode_macro). For example, one might use this "
 "to implement: `G12`, `G29`, `G30`, `G31`, `M42`, `M80`, `M81`, `T1`, etc."
 msgstr ""
+"Если требуется менее распространенная команда G-Code, то ее можно "
+"реализовать с помощью [пользовательского макроса "
+"gcode_macro](Config_Reference.md#gcode_macro). Например, это можно "
+"использовать для реализации: `G12`, `G29`, `G30`, `G31`, `M42`, `M80`, `M81`"
+", `T1`, и т.д."
 
 msgid "List SD card: `M20`"
-msgstr ""
+msgstr "Список SD-карт: `M20`"
 
 msgid "Initialize SD card: `M21`"
-msgstr ""
+msgstr "Инициализация SD-карты: `M21`"
 
 msgid "Select SD file: `M23 <filename>`"
-msgstr ""
+msgstr "Выбрать SD файл: `M23 <filename>`"
 
 msgid "Start/resume SD print: `M24`"
 msgstr ""
@@ -170,6 +187,12 @@ msgid ""
 " and parameters are shown in uppercase, however they are not case sensitive."
 " (So, \"SET_SERVO\" and \"set_servo\" both run the same command.)"
 msgstr ""
+"Klipper использует «расширенные» команды G-Code для общей конфигурации и "
+"статуса. Все эти расширенные команды следуют схожему формату — они "
+"начинаются с имени команды и могут сопровождаться одним или несколькими "
+"параметрами. Например: `SET_SERVO SERVO=myservo ANGLE=5.3`. В этом документе "
+"команды и параметры показаны в верхнем регистре, однако они не чувствительны "
+"к регистру. (Так, «SET_SERVO» и «set_servo» запускают одну и ту же команду.)"
 
 msgid ""
 "`QUERY_ENDSTOPS`: Probe the axis endstops and report if they are "

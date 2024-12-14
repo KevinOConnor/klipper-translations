@@ -3,17 +3,20 @@
 # Kamil Kostrzewa <kamilianos3@gmail.com>, 2022.
 # Jan P <jasiek.kliper06@gmail.com>, 2023.
 # Bartosz Trojan <51444728+ethylowy@users.noreply.github.com>, 2024.
+# Dawid <dawidgorski.m@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-07-31 08:45+0000\n"
-"Last-Translator: Bartosz Trojan <51444728+ethylowy@users.noreply.github.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/g-codes/pl/>\n"
+"PO-Revision-Date: 2024-12-15 06:11+0000\n"
+"Last-Translator: Dawid <dawidgorski.m@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/g-codes/"
+"pl/>\n"
 "Language: pl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.7-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.9-rc\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are "
@@ -320,6 +323,8 @@ msgid ""
 "`ACCEPT`: This command accepts the current Z position and concludes the "
 "manual probing tool."
 msgstr ""
+"`ACCEPT`: Ta komenda akceptuje bieżącą pozycję Z i zakańcza działanie "
+"narzędzia do ręcznego sondowania."
 
 msgid "`ABORT`: This command terminates the manual probing tool."
 msgstr "`ABORT`: Ta komenda terminuje protokół sondowania ręcznego."
@@ -823,7 +828,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 16 (header)
 msgid "ACCELEROMETER_QUERY"
-msgstr ""
+msgstr "ACCELEROMETER_QUERY"
 
 #: docs/G-Codes.md:block 18 (header)
 msgid "ACCELEROMETER_DEBUG_READ"
@@ -841,7 +846,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 20 (header)
 msgid "ACCELEROMETER_DEBUG_WRITE"
-msgstr ""
+msgstr "ACCELEROMETER_DEBUG_WRITE"
 
 #: docs/G-Codes.md:block 21 (paragraph)
 msgid ""
@@ -1082,7 +1087,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 81 (header)
 msgid "ACTIVATE_EXTRUDER"
-msgstr ""
+msgstr "ACTIVATE_EXTRUDER"
 
 #: docs/G-Codes.md:block 83 (header)
 msgid "SET_PRESSURE_ADVANCE"
@@ -1892,6 +1897,9 @@ msgid ""
 "[extruder](Config_Reference.md#extruder) config sections, this command "
 "changes the active hotend."
 msgstr ""
+"`ACTIVATE _ EXTRUDER EXTRUDER =<config_name>`: W drukarce z wieloma sekcjami "
+"konfiguracyjnymi [extruder] (Config _ Reference.md # extruder) to polecenie "
+"zmienia aktywny hotend."
 
 #: docs/G-Codes.md:block 22 (header)
 msgid "[angle]"
@@ -1923,10 +1931,24 @@ msgid ""
 "the [measuring resonance document](Measuring_Resonances.md#software-"
 "installation) for more information)."
 msgstr ""
+"`ANGLE_CALIBRATE CHIP=<chip_name>`: Wykonaj kalibrację kąta na podanym "
+"czujniku (musi istnieć sekcja konfiguracji `[angle chip_name]`, która "
+"określa parametr `stepper`). WAŻNE - to narzędzie wyda polecenie silnikowi "
+"krokowemu, aby się przesunął, bez sprawdzania normalnych granic granicznych "
+"kinematyki. W idealnym przypadku silnik powinien być odłączony od karetki "
+"drukarki przed wykonaniem kalibracji. Jeśli silnika krokowego nie można "
+"odłączyć od drukarki, upewnij się, że karetka znajduje się blisko środka "
+"swojej szyny przed rozpoczęciem kalibracji. (Silnik krokowy może przesunąć "
+"się do przodu lub do tyłu o dwa pełne obroty podczas tego testu.) Po "
+"zakończeniu tego testu użyj polecenia `SAVE_CONFIG`, aby zapisać dane "
+"kalibracji w pliku konfiguracyjnym. Aby użyć tego narzędzia, musi być "
+"zainstalowany pakiet Pythona „numpy” (więcej informacji można znaleźć w ["
+"dokumencie pomiaru rezonansu](Measuring_Resonances.md#software-"
+"installation))."
 
 #: docs/G-Codes.md:block 26 (header)
 msgid "ANGLE_DEBUG_READ"
-msgstr ""
+msgstr "ANGLE_DEBUG_READ"
 
 #: docs/G-Codes.md:block 27 (paragraph)
 msgid ""
@@ -1934,10 +1956,13 @@ msgid ""
 "register \"register\" (e.g. 44 or 0x2C). Can be useful for debugging "
 "purposes. This is only available for tle5012b chips."
 msgstr ""
+"`ANGLE_DEBUG_READ CHIP=<config_name> REG=<register>`: Zapytania do rejestru "
+"czujnika „register” (np. 44 lub 0x2C). Może być przydatne do celów "
+"debugowania. Jest to dostępne tylko dla układów tle5012b."
 
 #: docs/G-Codes.md:block 28 (header)
 msgid "ANGLE_DEBUG_WRITE"
-msgstr ""
+msgstr "ANGLE_DEBUG_WRITE"
 
 #: docs/G-Codes.md:block 29 (paragraph)
 msgid ""
@@ -1947,6 +1972,11 @@ msgid ""
 "sensor data sheet for the reference. This is only available for tle5012b "
 "chips."
 msgstr ""
+"`ANGLE_DEBUG_WRITE CHIP=<config_name> REG=<register> VAL=<value>`: Zapisuje "
+"surową „value” do rejestru „register”. Zarówno „value”, jak i „register” "
+"mogą być liczbami całkowitymi dziesiętnymi lub szesnastkowymi. Używaj "
+"ostrożnie i zapoznaj się z kartą danych czujnika, aby uzyskać odniesienie. "
+"Jest to dostępne tylko dla układów tle5012b."
 
 #: docs/G-Codes.md:block 199 (header)
 msgid "[led]"
@@ -2337,6 +2367,9 @@ msgid ""
 "[Y<pos>] [Z<pos>] [E<pos>] [F<speed>] I<value> J<value>|I<value> "
 "K<value>|J<value> K<value>`"
 msgstr ""
+"Ruch łuku zgodnie z ruchem wskazówek zegara (G2), ruch łuku przeciwnie do "
+"ruchu wskazówek zegara (G3): `G2|G3 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] "
+"[F<speed>] I<value> J<value>|I<value> K<value>|J<value> K<value>`"
 
 #: docs/G-Codes.md:block 158 (unordered list)
 msgid "Arc Plane Select: G17 (XY plane), G18 (XZ plane), G19 (YZ plane)"
@@ -2679,13 +2712,15 @@ msgstr ""
 
 #: docs/G-Codes.md:block 401 (header)
 msgid "ABORT"
-msgstr ""
+msgstr "ANULUJ"
 
 #: docs/G-Codes.md:block 402 (paragraph)
 msgid ""
 "`ABORT`: Aborts the calibration process, discarding the current results. "
 "This command is only available during drift calibration."
 msgstr ""
+"`ABORT`: Anuluje proces kalibracji, odrzucając bieżące wyniki. Ta komenda "
+"jest dostępna tylko podczas kalibracji driftu."
 
 #: docs/G-Codes.md:block 403 (header)
 msgid "TEMPERATURE_PROBE_ENABLE"

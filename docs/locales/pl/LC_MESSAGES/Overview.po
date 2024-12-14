@@ -3,17 +3,20 @@
 # gnu-ewm <gnu.ewm@protonmail.com>, 2022.
 # Daviteusz <imefiu3@gmail.com>, 2023.
 # Woo Cash <woocash87@gmail.com>, 2024.
+# Dawid <dawidgorski.m@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-02-08 13:01+0000\n"
-"Last-Translator: Woo Cash <woocash87@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/overview/pl/>\n"
+"PO-Revision-Date: 2024-12-15 06:11+0000\n"
+"Last-Translator: Dawid <dawidgorski.m@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/overview/"
+"pl/>\n"
 "Language: pl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.9-rc\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -320,7 +323,7 @@ msgstr ""
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader."
-msgstr ""
+msgstr "[Bootloader Entry](Bootloader_Entry.md): Czekanie na bootloader."
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid ""
@@ -333,10 +336,11 @@ msgstr ""
 #: docs/Overview.md:block 6 (unordered list)
 msgid "[Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper."
 msgstr ""
+"[Octoprint](OctoPrint.md): Przewodnik do instalacji Octoprint z Klipperem."
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Eddy Current Inductive probe](Eddy_Probe.md)"
-msgstr ""
+msgstr "[Sonda Eddy Current Inductive](Eddy_Probe.md)"
 
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "

@@ -6,11 +6,11 @@ Thank you for your support. See the [Sponsors page](Sponsors.md) for information
 
 ## rotasyon_distance yapılandırma parametresini nasıl hesaplarım?
 
-See the [rotation distance document](Rotation_Distance.md).
+[rotation distance document](Rotation_Distance.md) göz atın.
 
-## Where's my serial port?
+## Seri port'um nerede?
 
-The general way to find a USB serial port is to run `ls /dev/serial/by-id/*` from an ssh terminal on the host machine. It will likely produce output similar to the following:
+Seri portu bulmanın yaygın yolu host makinesinein ssh terminalinden `ls /dev/serial/by-id/*` komutunu çalıştırmaktır. Aşağıdaki gibi bir çıktı vermesi beklenir:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
@@ -24,7 +24,7 @@ make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 sudo service klipper start
 ```
 
-and the updated config might look like:
+ve güncellenmiş config şu şekilde olmalıdır:
 
 ```
 [mcu]

@@ -71,15 +71,15 @@ The following commands are available when an [angle config section](Config_Refer
 
 #### Kalibracja kąta
 
-`ANGLE_CALIBRATE CHIP=<chip_name>`: Perform angle calibration on the given sensor (there must be an `[angle chip_name]` config section that has specified a `stepper` parameter). IMPORTANT - this tool will command the stepper motor to move without checking the normal kinematic boundary limits. Ideally the motor should be disconnected from any printer carriage before performing calibration. If the stepper can not be disconnected from the printer, make sure the carriage is near the center of its rail before starting calibration. (The stepper motor may move forwards or backwards two full rotations during this test.) After completing this test use the `SAVE_CONFIG` command to save the calibration data to the config file. In order to use this tool the Python "numpy" package must be installed (see the [measuring resonance document](Measuring_Resonances.md#software-installation) for more information).
+`ANGLE_CALIBRATE CHIP=<chip_name>`: Wykonaj kalibrację kąta na podanym czujniku (musi istnieć sekcja konfiguracji `[angle chip_name]`, która określa parametr `stepper`). WAŻNE - to narzędzie wyda polecenie silnikowi krokowemu, aby się przesunął, bez sprawdzania normalnych granic granicznych kinematyki. W idealnym przypadku silnik powinien być odłączony od karetki drukarki przed wykonaniem kalibracji. Jeśli silnika krokowego nie można odłączyć od drukarki, upewnij się, że karetka znajduje się blisko środka swojej szyny przed rozpoczęciem kalibracji. (Silnik krokowy może przesunąć się do przodu lub do tyłu o dwa pełne obroty podczas tego testu.) Po zakończeniu tego testu użyj polecenia `SAVE_CONFIG`, aby zapisać dane kalibracji w pliku konfiguracyjnym. Aby użyć tego narzędzia, musi być zainstalowany pakiet Pythona „numpy” (więcej informacji można znaleźć w [dokumencie pomiaru rezonansu](Measuring_Resonances.md#software-installation)).
 
 #### ANGLE_DEBUG_READ
 
-`ANGLE_DEBUG_READ CHIP=<config_name> REG=<register>`: Queries sensor register "register" (e.g. 44 or 0x2C). Can be useful for debugging purposes. This is only available for tle5012b chips.
+`ANGLE_DEBUG_READ CHIP=<config_name> REG=<register>`: Zapytania do rejestru czujnika „register” (np. 44 lub 0x2C). Może być przydatne do celów debugowania. Jest to dostępne tylko dla układów tle5012b.
 
 #### ANGLE_DEBUG_WRITE
 
-`ANGLE_DEBUG_WRITE CHIP=<config_name> REG=<register> VAL=<value>`: Writes raw "value" into register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to sensor data sheet for the reference. This is only available for tle5012b chips.
+`ANGLE_DEBUG_WRITE CHIP=<config_name> REG=<register> VAL=<value>`: Zapisuje surową „value” do rejestru „register”. Zarówno „value”, jak i „register” mogą być liczbami całkowitymi dziesiętnymi lub szesnastkowymi. Używaj ostrożnie i zapoznaj się z kartą danych czujnika, aby uzyskać odniesienie. Jest to dostępne tylko dla układów tle5012b.
 
 ### [axis_twist_compensation]
 
@@ -259,7 +259,7 @@ The following commands are available if an [extruder config section](Config_Refe
 
 #### ACTIVATE_EXTRUDER
 
-`ACTIVATE_EXTRUDER EXTRUDER=<config_name>`: In a printer with multiple [extruder](Config_Reference.md#extruder) config sections, this command changes the active hotend.
+`ACTIVATE _ EXTRUDER EXTRUDER =<config_name>`: W drukarce z wieloma sekcjami konfiguracyjnymi [extruder] (Config _ Reference.md # extruder) to polecenie zmienia aktywny hotend.
 
 #### SET_PRESSURE_ADVANCE
 
@@ -350,7 +350,7 @@ The gcode module is automatically loaded.
 
 Następujące standardowe polecenia G-Code są dostępne, jeśli włączona jest sekcja konfiguracyjna [gcode_arcs](Config_Reference.md#gcode_arcs):
 
-- Arc Move Clockwise (G2), Arc Move Counter-clockwise (G3): `G2|G3 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>] I<value> J<value>|I<value> K<value>|J<value> K<value>`
+- Ruch łuku zgodnie z ruchem wskazówek zegara (G2), ruch łuku przeciwnie do ruchu wskazówek zegara (G3): `G2|G3 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>] I<value> J<value>|I<value> K<value>|J<value> K<value>`
 - Arc Plane Select: G17 (XY plane), G18 (XZ plane), G19 (YZ plane)
 
 ### [gcode_macro]
@@ -455,7 +455,7 @@ The manual_probe module is automatically loaded.
 
 `MANUAL_PROBE [SPEED=<speed>]`: Run a helper script useful for measuring the height of the nozzle at a given location. If SPEED is specified, it sets the speed of TESTZ commands (the default is 5mm/s). During a manual probe, the following additional commands are available:
 
-- `ACCEPT`: This command accepts the current Z position and concludes the manual probing tool.
+- `ACCEPT`: Ta komenda akceptuje bieżącą pozycję Z i zakańcza działanie narzędzia do ręcznego sondowania.
 - `ABORT`: Ta komenda terminuje protokół sondowania ręcznego.
 - `TESTZ Z=<value>`: This command moves the nozzle up or down by the amount specified in "value". For example, `TESTZ Z=-.1` would move the nozzle down .1mm while `TESTZ Z=.1` would move the nozzle up .1mm. The value may also be `+`, `-`, `++`, or `--` to move the nozzle up or down an amount relative to previous attempts.
 
@@ -846,9 +846,9 @@ The following commands are available when a [temperature_probe config section](C
 
 `TEMPERATURE_PROBE_COMPLETE`: Can be used to end calibration and save the current result before the `TARGET` temperature is reached. This command is only available during calibration.
 
-#### ABORT
+#### ANULUJ
 
-`ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
+`ABORT`: Anuluje proces kalibracji, odrzucając bieżące wyniki. Ta komenda jest dostępna tylko podczas kalibracji driftu.
 
 ### TEMPERATURE_PROBE_ENABLE
 

@@ -4,50 +4,50 @@
 
 ## 构建一个操作系统镜像
 
-Start by installing the [Debian 11.7 2023-09-02 4GB microSD IoT](https://beagleboard.org/latest-images) image. One may run the image from either a micro-SD card or from builtin eMMC. If using the eMMC, install it to eMMC now by following the instructions from the above link.
+首先安装 [Debian 11.7 2023-09-02 4GB microSD IoT]（https://beagleboard.org/latest-images） 镜像。可以从 micro-SD 卡或内置 eMMC 运行映像。如果使用 eMMC，请按照上述链接中的说明立即将其安装到 eMMC。
 
-Then ssh into the Beaglebone machine (`ssh debian@beaglebone` -- password is `temppwd`).
+然后 ssh 进入 Beaglebone 机器(`ssh debian@beaglebone` -- password is `temppwd`).
 
-Before start installing Klipper you need to free-up additional space. there are 3 options to do that:
+开始之前安装Klipper你需要腾出额外空间。 有3个选项中做到这一点：
 
-1. remove some BeagleBone "Demo" resources
-1. if you did boot from SD-Card, and it's bigger than 4Gb - you can expand current filesystem to take whole card space
-1. do option #1 and #2 together.
+1. 删除一些 BeagleBone“Demo”资源
+1. 如果你确实从 SD 卡启动，并且它大于 4Gb - 你可以扩展当前文件系统以占用整个卡空间
+1. 同时执行选项 #1 和 #2。
 
-To remove some BeagleBone "Demo" resources execute these commands
+要删除一些 BeagleBone“Demo”资源，请执行以下命令
 
 ```
 sudo apt remove bb-node-red-installer
 sudo apt remove bb-code-server
 ```
 
-To expand filesystem to full size of your SD-Card execute this command, reboot is not required.
+要将文件系统扩展至 SD 卡的全部大小，请执行此命令，无需重新启动。
 
 ```
 sudo growpart /dev/mmcblk0 1
 sudo resize2fs /dev/mmcblk0p1
 ```
 
-Install Klipper by running the following commands:
+通过运行以下命令安装 Klipper：
 
 ```
 git clone https://github.com/Klipper3d/klipper.git
 ./klipper/scripts/install-beaglebone.sh
 ```
 
-After installing Klipper you need to decide what kind of deployment do you need, but take a note that BeagleBone is 3.3v based hardware and in most cases you can't directly connect pins to 5v or 12v based hardware without conversion boards.
+安装 Klipper 后，您需要决定需要什么样的部署，但请注意，BeagleBone 是基于 3.3v 的硬件，在大多数情况下，如果没有转换板，您不能直接将引脚连接到基于 5v 或 12v 的硬件。
 
-As Klipper have multimodule architecture on BeagleBone you can achieve many different use cases, but general ones are following:
+由于 Klipper 在 BeagleBone 上具有多模块架构，因此您可以实现许多不同的用例，但一般用例如下：
 
-Use case 1: Use BeagleBone only as a host system to run Klipper and additional software like OctoPrint/Fluidd + Moonraker/... and this configuration will be driving external micro-controllers via serial/usb/canbus connections.
+用例 1：仅使用 BeagleBone 作为主机系统来运行 Klipper 和其他软件，如 OctoPrint/Fluidd + Moonraker/...，并且此配置将通过串行/usb/canbus 连接驱动外部微控制器。
 
-Use case 2: Use BeagleBone with extension board (cape) like CRAMPS board. in this configuration BeagleBone will host Klipper + additional software, and it will drive extension board with BeagleBone PRU cores (2 additional cores 200Mh, 32Bit).
+用例 2：将 BeagleBone 与 CRAMPS 板等扩展板（cape）一起使用。在此配置下，BeagleBone 将托管 Klipper + 附加软件，并使用 BeagleBone PRU 内核（2 个附加内核 200Mh，32Bit）驱动扩展板。
 
-Use case 3: It's same as "Use case 1" but additionally you want to drive BeagleBone GPIOs with high speed by utilizing PRU cores to offload main CPU.
+用例 3：它与“用例 1”相同，但此外您还想利用 PRU 核心卸载主 CPU，以高速驱动 BeagleBone GPIO。
 
-## Installing Octoprint
+## 安装 Octoprint
 
-One may then install Octoprint or fully skip this section if desired other software:
+然后可以安装 Octoprint，或者如果需要其他软件，可以完全跳过此部分：
 
 ```
 git clone https://github.com/foosel/OctoPrint.git
@@ -77,19 +77,19 @@ sudo nano /etc/default/octoprint
 sudo systemctl start octoprint
 ```
 
-Wait 1-2 minutes and make sure the OctoPrint web server is accessible - it should be at: <http://beaglebone:5000/>
+等待 1-2 分钟，确保 OctoPrint 网络服务器可访问 - 它应该位于：<http://beaglebone:5000/>
 
-## Building the BeagleBone PRU micro-controller code (PRU firmware)
+## 构建 BeagleBone PRU 微控制器代码（PRU 固件）
 
-This section is required for "Use case 2" and "Use case 3" mentioned above, you should skip it for "Use case 1".
+此部分对于上面提到的“用例 2”和“用例 3”是必需的，对于“用例 1”，则应跳过此部分。
 
-Check that required devices are present
+检查是否存在所需设备
 
 ```
 sudo beagle-version
 ```
 
-You should check that output contains successful "remoteproc" drivers loading and presence of PRU cores, in Kernel 5.10 they should be "remoteproc1" and "remoteproc2" (4a334000.pru, 4a338000.pru) Also check that many GPIOs are loaded they will look like "Allocated GPIO id=0 name='P8_03'" Usually everything is fine and no hardware configuration is required. If something is missing - try to play with "uboot overlays" options or with cape-overlays Just for reference some output of working BeagleBone Black configuration with CRAMPS board:
+您应该检查输出是否包含成功的“remoteproc”驱动程序加载和 PRU 核心的存在，在内核 5.10 中，它们应该是“remoteproc1”和“remoteproc2”（4a334000.pru、4a338000.pru）还应检查是否加载了许多 GPIO，它们看起来像“分配的 GPIO id=0 name='P8_03'”通常一切都很好，不需要硬件配置。如果缺少某些东西 - 尝试使用“uboot overlays”选项或 cape-overlays 仅供参考，使用 CRAMPS 板工作的 BeagleBone Black 配置的一些输出：
 
 ```
 model:[TI_AM335x_BeagleBone_Black]

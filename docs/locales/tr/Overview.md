@@ -34,7 +34,7 @@ Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , [özell
 - [TMC Drivers](TMC_Drivers.md): Klipper ile Trinamic step motor sürücülerini kullanma.
 - [Multi-MCU Homing](Multi_MCU_Homing.md): Homing and probing using multiple micro-controllers.
 - [Dilimleyiciler](Slicers.md): Klipper için "dilimleyici" yazılımını yapılandırın.
-- [Skew correction](Skew_Correction.md): Adjustments for axes not perfectly square.
+- [Eğim düzetme](Skew_Correction.md): Tamamen kare olmayan eksenler için ayarlamalar.
 - [PWM araçları](Using_PWM_Tools.md): Lazerler veya iş milleri gibi PWM kontrollü araçların nasıl kullanılacağına ilişkin kılavuz.
 - [Exclude Object](Exclude_Object.md): The guide to the Exclude Objects implementation.
 
@@ -56,7 +56,7 @@ Klipper dökümantasyonuna hoş geldiniz. Eğer Klipper'de yeni iseniz , [özell
 - [Örnek yapılandırmalar](Example_Configs.md): Klipper'a örnek bir yapılandırma dosyası ekleme üzerine bilgilendirme.
 - [SDCard Güncellemeleri](SDCard_Updates.md): Bir mikro-denetleyiciyi, sdcard içine bir ikili dosya (binary) kopyalayarak flashlama.
 - [Mikro denetleyici olarak Raspberry Pi](RPi_microcontroller.md): Bir Raspberry Pi üzerindeki GPIO pinlerine bağlı cihazları kontrol etmek için ayrıntılar.
-- [Beaglebone](Beaglebone.md): Details for running Klipper on the Beaglebone PRU.
+- [Beaglebone](Beaglebone.md): Klipper'ı Beaglebone PRU üzerinde çalıştırmak için ayrıntılar.
 - [Önyükleyiciler](Bootloaders.md): Mikro denetleyici flashlama hakkında geliştirici bilgilendirmesi.
 - [Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader.
 - [CAN veri yolu](CANBUS.md): Klipper ile CAN veri yolu kullanımı üzerine bilgilendirme.

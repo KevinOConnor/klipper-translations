@@ -40,7 +40,7 @@ X偏移值为 `喷嘴X坐标值 - 探针X坐标值`， 类似地， Y偏移值�
 
 工具首先会令探针进行一次自动探测，获取触发探针的z位置，之后，控制喷嘴上升，并将喷嘴的X/Y位置移动到探针对应位置上，并开始手动调平流程。如果喷嘴没有移动到探针进行自动探测的位置，输入`ABORT`以停止手动调平，并上文根据X、y偏移校准流程进行探针X、Y校准。
 
-Once the manual probe tool starts, follow the steps described at ["the paper test"](Bed_Level.md#the-paper-test) to determine the actual distance between the nozzle and bed at the given location. Once those steps are complete one can `ACCEPT` the position and save the results to the config file with:
+手动探测工具启动后，按照 ["纸张测试"](Bed_Level.md#the-paper-test) 中描述的步骤确定给定位置处喷嘴和床之间的实际距离。完成这些步骤后，可以`接受` 位置并将结果保存到配置文件中：
 
 ```
 SAVE_CONFIG

@@ -61,7 +61,7 @@ The following commands are available when an [adxl345 config section](Config_Ref
 
 #### ACCELEROMETER_DEBUG_WRITE
 
-`ACCELEROMETER_DEBUG_WRITE [CHIP=<config_name>] REG=<register> VAL=<value>`: Writes raw "value" into a register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to ADXL345 data sheet for the reference.
+'ACCELEROMETER_DEBUG_WRITE [CHIP=<config_name>] REG=<register> VAL=<value>:' Grava o "valor" bruto em um "registrador". Tanto "valor" quanto "registrador" podem ser números inteiros em formato decimal ou hexadecimal. Use com cuidado e consulte a folha de dados do ADXL345 como referência.
 
 ### [angle]
 
@@ -842,9 +842,9 @@ The following commands are available when a [temperature_probe config section](C
 
 `TEMPERATURE_PROBE_COMPLETE`: Can be used to end calibration and save the current result before the `TARGET` temperature is reached. This command is only available during calibration.
 
-#### ABORT
+#### ABORTAR
 
-`ABORT`: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.
+'ABORTAR': Aborta o processo de calibração, descartando os resultados atuais. Este comando está disponível apenas durante a calibração de desvio.
 
 ### TEMPERATURE_PROBE_ENABLE
 

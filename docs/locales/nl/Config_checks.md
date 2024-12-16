@@ -38,7 +38,7 @@ If the stepper does not move at all, then verify the "enable_pin" and "step_pin"
 
 Draai de voorgaande test voor elke stappenmotor zoals gedefinieerd in het configuratiebestand. (Stel de STEPPER-parameters van het STEPPER_BUZZ-commando in op de naam zoals gebruikt in het configuratiebestand.) Als er geen filament geladen is, kan STEPPER_BUZZ ook gebruikt worden voor de extrudermotor (gebruik STEPPER=extruder). Test anders de extrudermotor afzonderlijk (zie de volgende sectie).
 
-After verifying all endstops and verifying all stepper motors the homing mechanism should be tested. Issue a G28 command to home all axes. Remove power from the printer if it does not home properly. Rerun the endstop and stepper motor verification steps if necessary.
+Na het verifiëren van alle eindstops en het controleren van alle steppermotoren, moet het homingmechanisme worden getest. Geef een G28-opdracht om alle assen te home. Verwijder de stroom van de printer als het niet correct homet. Voer indien nodig de verificatiestappen voor de eindstops en steppermotoren opnieuw uit.
 
 ## Verifieer extrudermotor
 

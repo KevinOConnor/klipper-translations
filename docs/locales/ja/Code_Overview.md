@@ -2,7 +2,7 @@
 
 This document describes the overall code layout and major code flow of Klipper.
 
-## Directory Layout
+## ディレクトリレイアウト
 
 The **src/** directory contains the C source for the micro-controller code. The **src/atsam/**, **src/atsamd/**, **src/avr/**, **src/linux/**, **src/lpc176x/**, **src/pru/**, and **src/stm32/** directories contain architecture specific micro-controller code. The **src/simulator/** contains code stubs that allow the micro-controller to be test compiled on other architectures. The **src/generic/** directory contains helper code that may be useful across different architectures. The build arranges for includes of "board/somefile.h" to first look in the current architecture directory (eg, src/avr/somefile.h) and then in the generic directory (eg, src/generic/somefile.h).
 
@@ -10,7 +10,7 @@ The **klippy/** directory contains the host software. Most of the host software 
 
 The **lib/** directory contains external 3rd-party library code that is necessary to build some targets.
 
-The **config/** directory contains example printer configuration files.
+**config/** ディレクトリにはプリンターの設定ファイルの例があります。
 
 The **scripts/** directory contains build-time scripts useful for compiling the micro-controller code.
 

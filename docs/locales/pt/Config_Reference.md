@@ -305,7 +305,7 @@ radius:
 #   just prior to starting a probe operation. The default is 5.
 ```
 
-### Deltesian Kinematics
+### Cinemática Deltesiana
 
 See [example-deltesian.cfg](../config/example-deltesian.cfg) for an example deltesian kinematics config file.
 
@@ -377,7 +377,7 @@ arm_x_length:
 [stepper_y]
 ```
 
-### CoreXY Kinematics
+### Cinemática CoreXY
 
 See [example-corexy.cfg](../config/example-corexy.cfg) for an example corexy (and h-bot) kinematics file.
 
@@ -409,7 +409,7 @@ max_z_accel:
 [stepper_z]
 ```
 
-### CoreXZ Kinematics
+### Cinemática CoreXZ
 
 See [example-corexz.cfg](../config/example-corexz.cfg) for an example corexz kinematics config file.
 
@@ -1176,7 +1176,7 @@ See also: [extended g-code commands](G-Codes.md#z_thermal_adjust).
 #   parameter.
 ```
 
-## Customized homing
+## Homing Personalizado
 
 ### [safe_z_home]
 
@@ -2008,7 +2008,7 @@ Manual steppers (one may define any number of sections with a "manual_stepper" p
 #   MANUAL_STEPPER movement commands.
 ```
 
-## Custom heaters and sensors
+## Aquecedores e sensores personalizados
 
 ### [verify_heater]
 
@@ -2065,7 +2065,7 @@ Tool to disable heaters when homing or probing an axis.
 
 ### [thermistor]
 
-Custom thermistors (one may define any number of sections with a "thermistor" prefix). A custom thermistor may be used in the sensor_type field of a heater config section. (For example, if one defines a "[thermistor my_thermistor]" section then one may use a "sensor_type: my_thermistor" when defining a heater.) Be sure to place the thermistor section in the config file above its first use in a heater section.
+Termistores Personalizados (é possível definir qualquer número de seções com o prefixo "thermistor"). Um termistor personalizado pode ser usado no campo sensor_type de uma seção de configuração de aquecedor. (Por exemplo, se for definida uma seção "[thermistor my_thermistor]", então é possível usar "sensor_type: my_thermistor" ao definir um aquecedor.) Certifique-se de colocar a seção do termistor no arquivo de configuração acima de sua primeira utilização em uma seção de aquecedor.
 
 ```
 [thermistor my_thermistor]
@@ -2088,7 +2088,7 @@ Custom thermistors (one may define any number of sections with a "thermistor" pr
 
 ### [adc_temperature]
 
-Custom ADC temperature sensors (one may define any number of sections with an "adc_temperature" prefix). This allows one to define a custom temperature sensor that measures a voltage on an Analog to Digital Converter (ADC) pin and uses linear interpolation between a set of configured temperature/voltage (or temperature/resistance) measurements to determine the temperature. The resulting sensor can be used as a sensor_type in a heater section. (For example, if one defines a "[adc_temperature my_sensor]" section then one may use a "sensor_type: my_sensor" when defining a heater.) Be sure to place the sensor section in the config file above its first use in a heater section.
+Sensores de temperatura personalizados ADC (é possível definir qualquer número de seções com o prefixo "adc_temperature"). Isso permite configurar um sensor de temperatura personalizado que mede uma tensão em um pino do Conversor Analógico-Digital (ADC) e utiliza interpolação linear entre um conjunto de medições configuradas de temperatura/tensão (ou temperatura/resistência) para determinar a temperatura. O sensor resultante pode ser usado como um sensor_type em uma seção de aquecimento. (Por exemplo, se uma seção "[adc_temperature my_sensor]" for definida, é possível usar "sensor_type: my_sensor" ao configurar um aquecedor). Certifique-se de colocar a seção do sensor no arquivo de configuração acima de sua primeira utilização em uma seção de aquecimento.
 
 ```
 [adc_temperature my_sensor]
@@ -2256,9 +2256,9 @@ sensor_pin:
 #   The ADC voltage offset (in Volts). The default is 0.
 ```
 
-### Directly connected PT1000 sensor
+### Sensor PT1000 diretamente conectado
 
-Directly connected PT1000 sensor. The following parameters are available in heater sections that use one of these sensors.
+Sensor PT1000 diretamente conectado. Os seguintes parâmetros estão disponíveis nas seções de aquecedor que utilizam um desses sensores.
 
 ```
 sensor_type: PT1000
@@ -2598,7 +2598,7 @@ Heater cooling fans (one may define any number of sections with a "heater_fan" p
 
 ### [controller_fan]
 
-Controller cooling fan (one may define any number of sections with a "controller_fan" prefix). A "controller fan" is a fan that will be enabled whenever its associated heater or its associated stepper driver is active. The fan will stop whenever an idle_timeout is reached to ensure no overheating will occur after deactivating a watched component.
+Ventoinha de resfriamento do controlador (pode-se definir qualquer número de seções com o prefixo 'controller_fan'). Uma 'ventoinha do controlador' é uma ventoinha que será ativada sempre que o aquecedor associado ou o driver do motor de passo associado estiver ativo. A ventoinha será desligada sempre que um 'idle_timeout' for atingido, garantindo que não ocorra superaquecimento após a desativação de um componente monitorado.
 
 ```
 [controller_fan my_controller_fan]
@@ -3126,7 +3126,7 @@ run_current:
 
 ### [tmc2208]
 
-Configure a TMC2208 (or TMC2224) stepper motor driver via single wire UART. To use this feature, define a config section with a "tmc2208" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2208 stepper_x]").
+Configure um driver de motor de passo TMC2208 (ou TMC2224) via UART de fio único. Para usar este recurso, defina uma seção de configuração com o prefixo 'tmc2208' seguido pelo nome da seção de configuração do motor de passo correspondente (por exemplo, '[tmc2208 stepper_x]').
 
 ```
 [tmc2208 stepper_x]
@@ -3185,7 +3185,7 @@ run_current:
 
 ### [tmc2209]
 
-Configure a TMC2209 stepper motor driver via single wire UART. To use this feature, define a config section with a "tmc2209" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2209 stepper_x]").
+Configure um driver de motor de passo TMC2209 via UART de fio único. Para usar este recurso, defina uma seção de configuração com o prefixo 'tmc2209' seguido pelo nome da seção de configuração do motor de passo correspondente (por exemplo, '[tmc2209 stepper_x]').
 
 ```
 [tmc2209 stepper_x]
@@ -3245,7 +3245,7 @@ run_current:
 
 ### [tmc2660]
 
-Configure a TMC2660 stepper motor driver via SPI bus. To use this feature, define a config section with a tmc2660 prefix followed by the name of the corresponding stepper config section (for example, "[tmc2660 stepper_x]").
+Configure um driver de motor de passo TMC2660 via barramento SPI. Para usar este recurso, defina uma seção de configuração com o prefixo 'tmc2660' seguido pelo nome da seção de configuração do motor de passo correspondente (por exemplo, '[tmc2660 stepper_x]').
 
 ```
 [tmc2660 stepper_x]
@@ -3314,7 +3314,7 @@ run_current:
 
 ### [tmc2240]
 
-Configure a TMC2240 stepper motor driver via SPI bus or UART. To use this feature, define a config section with a "tmc2240" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2240 stepper_x]").
+Configure um driver de motor de passo TMC2240 via barramento SPI ou UART. Para usar este recurso, defina uma seção de configuração com o prefixo 'tmc2240' seguido pelo nome da seção de configuração do motor de passo correspondente (por exemplo, '[tmc2240 stepper_x]').
 
 ```
 [tmc2240 stepper_x]
@@ -3447,7 +3447,7 @@ run_current:
 
 ### [tmc5160]
 
-Configure a TMC5160 stepper motor driver via SPI bus. To use this feature, define a config section with a "tmc5160" prefix followed by the name of the corresponding stepper config section (for example, "[tmc5160 stepper_x]").
+Configure um driver de motor de passo TMC5160 via barramento SPI. Para usar este recurso, defina uma seção de configuração com o prefixo 'tmc5160' seguido pelo nome da seção de configuração do motor de passo correspondente (por exemplo, '[tmc5160 stepper_x]').
 
 ```
 [tmc5160 stepper_x]
@@ -3981,7 +3981,7 @@ text:
 
 ### [display_template]
 
-Display data text "macros" (one may define any number of sections with a display_template prefix). See the [command templates](Command_Templates.md) document for information on template evaluation.
+Texto de dados de exibição "macros" (pode-se definir qualquer número de seções com o prefixo display_template). Consulte o documento de templates de comando (Command_Templates.md) para informações sobre a avaliação de modelos.
 
 This feature allows one to reduce repetitive definitions in display_data sections. One may use the builtin `render()` function in display_data sections to evaluate a template. For example, if one were to define `[display_template my_template]` then one could use `{ render('my_template') }` in a display_data section.
 
@@ -4006,7 +4006,7 @@ text:
 
 ### [display_glyph]
 
-Display a custom glyph on displays that support it. The given name will be assigned the given display data which can then be referenced in the display templates by their name surrounded by two "tilde" symbols i.e. `~my_display_glyph~`
+Exibe um glifo personalizado em displays que o suportam. O nome fornecido será atribuído aos dados de display, que podem ser referenciados nos modelos de display pelo nome, cercado por dois símbolos "til" (ou seja, '~my_display_glyph~').
 
 See [sample-glyphs.cfg](../config/sample-glyphs.cfg) for some examples.
 
@@ -4041,7 +4041,7 @@ If a primary [display] section has been defined in printer.cfg as shown above it
 
 ### [menu]
 
-Customizable lcd display menus.
+Menus de Display LCD Personalizáveis
 
 Um [default set of menus](../klippy/extras/display/menu.cfg) é criado automaticamente. Pode substituir ou estender o menu substituindo os padrões no ficheiro de configuração principal printer.cfg.
 

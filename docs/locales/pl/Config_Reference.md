@@ -1,4 +1,4 @@
-# Configuration reference
+# Odniesienie do konfiguracji
 
 Niniejszy dokument jest odnośnikiem do opcji dostępnych w pliku konfiguracyjnym Klippera.
 
@@ -18,7 +18,7 @@ Note, some config sections may "create" additional pins. Where this occurs, the 
 
 ### [mcu]
 
-Configuration of the primary micro-controller.
+Konfiguracja głównego mikrokontrolera.
 
 ```
 [mcu]
@@ -51,14 +51,14 @@ serial:
 
 ### [mcu my_extra_mcu]
 
-Additional micro-controllers (one may define any number of sections with an "mcu" prefix). Additional micro-controllers introduce additional pins that may be configured as heaters, steppers, fans, etc.. For example, if an "[mcu extra_mcu]" section is introduced, then pins such as "extra_mcu:ar9" may then be used elsewhere in the config (where "ar9" is a hardware pin name or alias name on the given mcu).
+Dodatkowe mikrokontrolery (można zdefiniować dowolną liczbę sekcji z prefiksem „mcu”). Dodatkowe mikrokontrolery wprowadzają dodatkowe piny, które mogą być skonfigurowane jako grzałki, silniki krokowe, wentylatory itp. Na przykład, jeśli zostanie wprowadzona sekcja „[mcu extra_mcu]”, wówczas piny takie jak „extra_mcu:ar9” mogą być użyte gdzie indziej w konfiguracji (gdzie „ar9” jest nazwą pinu sprzętowego lub nazwą aliasu na danym mcu).
 
 ```
 [mcu my_extra_mcu]
 # See the "mcu" section for configuration parameters.
 ```
 
-## Common kinematic settings
+## Typowe ustawienia kinematyczne
 
 ### [printer]
 
@@ -192,7 +192,7 @@ position_max:
 #   if near position_min.
 ```
 
-### Cartesian Kinematics
+### Kinematyka kartezjańska
 
 See [example-cartesian.cfg](../config/example-cartesian.cfg) for an example cartesian kinematics config file.
 
@@ -377,7 +377,7 @@ arm_x_length:
 [stepper_y]
 ```
 
-### CoreXY Kinematics
+### CoreXY Kinematyka
 
 See [example-corexy.cfg](../config/example-corexy.cfg) for an example corexy (and h-bot) kinematics file.
 
@@ -409,7 +409,7 @@ max_z_accel:
 [stepper_z]
 ```
 
-### CoreXZ Kinematics
+### CoreXZ Kinematyka
 
 See [example-corexz.cfg](../config/example-corexz.cfg) for an example corexz kinematics config file.
 
@@ -625,13 +625,13 @@ radius:
 #   just prior to starting a probe operation. The default is 5.
 ```
 
-### Cable winch Kinematics
+### Kinematyka wyciągarki linowej
 
 See the [example-winch.cfg](../config/example-winch.cfg) for an example cable winch kinematics config file.
 
 Only parameters specific to cable winch printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
 
-CABLE WINCH SUPPORT IS EXPERIMENTAL. Homing is not implemented on cable winch kinematics. In order to home the printer, manually send movement commands until the toolhead is at 0, 0, 0 and then issue a `G28` command.
+WSPARCIE WCIĄGARKI LINOWEJ JEST EKSPERYMENTALNE. Pozycja początkowa nie jest zaimplementowana w kinematyce wciągarki linowej. Aby ustawić drukarkę w pozycji początkowej, należy ręcznie wysyłać polecenia ruchu, aż głowica narzędzia znajdzie się w położeniu 0, 0, 0, a następnie wydać polecenie `G28`.
 
 ```
 [printer]
@@ -665,7 +665,7 @@ max_accel: 1
 #   values are not used for "none" kinematics.
 ```
 
-## Common extruder and heated bed support
+## Wspólna wytłaczarka i obsługa podgrzewanego stołu
 
 ### [extruder]
 
@@ -810,7 +810,7 @@ max_temp:
 #   See the "extruder" section for a description of the above parameters.
 ```
 
-## Bed level support
+## Wsparcie na poziomie łóżka
 
 ### [bed_mesh]
 
@@ -843,131 +843,130 @@ Visual Examples:
 ```
 [bed_mesh]
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+# Prędkość (w mm/s) ruchów niesondażowych podczas kalibracji.
+# Wartość domyślna to 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+# Wysokość (w mm), na którą głowica powinna zostać poproszona, aby się przesunęła
+# tuż przed rozpoczęciem operacji sondowania. Wartość domyślna to 5.
 #mesh_radius:
-#   Defines the radius of the mesh to probe for round beds. Note that
-#   the radius is relative to the coordinate specified by the
-#   mesh_origin option. This parameter must be provided for round beds
-#   and omitted for rectangular beds.
+# Definiuje promień siatki do sondowania dla okrągłych łóżek. Należy pamiętać, że
+# promień jest względny do współrzędnej określonej przez
+# opcję mesh_origin. Ten parametr musi być podany dla okrągłych łóżek
+# i pominięty dla prostokątnych łóżek.
 #mesh_origin:
-#   Defines the center X, Y coordinate of the mesh for round beds. This
-#   coordinate is relative to the probe's location. It may be useful
-#   to adjust the mesh_origin in an effort to maximize the size of the
-#   mesh radius. Default is 0, 0. This parameter must be omitted for
-#   rectangular beds.
-#mesh_min:
-#   Defines the minimum X, Y coordinate of the mesh for rectangular
-#   beds. This coordinate is relative to the probe's location. This
-#   will be the first point probed, nearest to the origin. This
-#   parameter must be provided for rectangular beds.
+# Definiuje współrzędne środka X, Y siatki dla okrągłych łóżek. Ta
+# współrzędna jest względna do położenia sondy. Może być przydatne
+# dostosowanie mesh_origin w celu zmaksymalizowania rozmiaru
+# promienia siatki. Wartość domyślna to 0, 0. Ten parametr musi być pominięty dla
+# prostokątnych łóżek.
+ #mesh_min:
+# Definiuje minimalną współrzędną X, Y siatki dla prostokątnych
+# łóżek. Ta współrzędna jest względna do położenia sondy. To
+# będzie pierwszy punkt sondowany, najbliższy początku. Ten
+# parametr musi być podany dla prostokątnych łóżek.
 #mesh_max:
-#   Defines the maximum X, Y coordinate of the mesh for rectangular
-#   beds. Adheres to the same principle as mesh_min, however this will
-#   be the furthest point probed from the bed's origin. This parameter
-#   must be provided for rectangular beds.
+# Definiuje maksymalną współrzędną X, Y siatki dla prostokątnych
+# łóżek. Przestrzega tej samej zasady co mesh_min, jednak będzie to
+# najdalszy punkt sondowany od początku łóżka. Ten
+# parametr musi być podany dla prostokątnych łóżek.
 #probe_count: 3, 3
-#   For rectangular beds, this is a comma separate pair of integer
-#   values X, Y defining the number of points to probe along each
-#   axis. A single value is also valid, in which case that value will
-#   be applied to both axes. Default is 3, 3.
+# W przypadku prostokątnych łóżek jest to para oddzielonych przecinkiem wartości całkowitych
+# X, Y, definiująca liczbę punktów sondowanych wzdłuż każdej
+# osi. Pojedyncza wartość jest również prawidłowa, w takim przypadku wartość ta
+# zostanie zastosowana do obu osi.  Domyślnie jest to 3, 3.
 #round_probe_count: 5
-#   For round beds, this integer value defines the maximum number of
-#   points to probe along each axis. This value must be an odd number.
-#   Default is 5.
+# W przypadku łóżek okrągłych ta wartość całkowita definiuje maksymalną liczbę
+# punktów do sondowania wzdłuż każdej osi. Ta wartość musi być liczbą nieparzystą.
+# Domyślnie jest to 5.
 #fade_start: 1.0
-#   The gcode z position in which to start phasing out z-adjustment
-#   when fade is enabled. Default is 1.0.
+# Pozycja z kodu gcode, w której rozpoczyna się wygaszanie regulacji z,
+# gdy zanikanie jest włączone. Domyślnie jest to 1.0.
 #fade_end: 0.0
-#   The gcode z position in which phasing out completes. When set to a
-#   value below fade_start, fade is disabled. It should be noted that
-#   fade may add unwanted scaling along the z-axis of a print. If a
-#   user wishes to enable fade, a value of 10.0 is recommended.
-#   Default is 0.0, which disables fade.
+# Pozycja z kodu gcode, w której wygaszanie jest zakończone. Po ustawieniu na wartość
+# poniżej fade_start, zanikanie jest wyłączone. Należy pamiętać, że
+# zanikanie może dodać niepożądane skalowanie wzdłuż osi z wydruku. Jeśli
+# użytkownik chce włączyć zanikanie, zalecana jest wartość 10.0.
+# Domyślnie jest to 0.0, co wyłącza zanikanie.
 #fade_target:
-#   The z position in which fade should converge. When this value is
-#   set to a non-zero value it must be within the range of z-values in
-#   the mesh. Users that wish to converge to the z homing position
-#   should set this to 0. Default is the average z value of the mesh.
+# Pozycja z, w której zanikanie powinno się zbiegać.  Gdy ta wartość jest
+# ustawiona na wartość różną od zera, musi mieścić się w zakresie wartości z w
+# siatce. Użytkownicy, którzy chcą zbiec do pozycji wyjściowej z
+# powinni ustawić ją na 0. Domyślnie jest to średnia wartość z siatki.
 #split_delta_z: .025
-#   The amount of Z difference (in mm) along a move that will trigger
-#   a split. Default is .025.
+# Wielkość różnicy Z (w mm) wzdłuż ruchu, która spowoduje
+# podział. Domyślnie jest to .025.
 #move_check_distance: 5.0
-#   The distance (in mm) along a move to check for split_delta_z.
-#   This is also the minimum length that a move can be split. Default
-#   is 5.0.
+# Odległość (w mm) wzdłuż ruchu, aby sprawdzić split_delta_z.
+# Jest to również minimalna długość, na jaką można podzielić ruch. Domyślnie
+# jest to 5.0.
 #mesh_pps: 2, 2
-#   A comma separated pair of integers X, Y defining the number of
-#   points per segment to interpolate in the mesh along each axis. A
-#   "segment" can be defined as the space between each probed point.
-#   The user may enter a single value which will be applied to both
-#   axes. Default is 2, 2.
+# Para liczb całkowitych X, Y rozdzielonych przecinkiem, definiująca liczbę
+# punktów na segment do interpolacji w siatce wzdłuż każdej osi.
+# „Segment” można zdefiniować jako przestrzeń między każdym badanym punktem.
+ # Użytkownik może wprowadzić pojedynczą wartość, która zostanie zastosowana do obu
+# osi. Domyślnie jest to 2, 2.
 #algorithm: lagrange
-#   The interpolation algorithm to use. May be either "lagrange" or
-#   "bicubic". This option will not affect 3x3 grids, which are forced
-#   to use lagrange sampling. Default is lagrange.
+# Algorytm interpolacji, który ma zostać użyty. Może to być „lagrange” lub
+# „bicubic”. Ta opcja nie wpłynie na siatki 3x3, które są zmuszone
+# do używania próbkowania lagrange. Domyślnie jest to lagrange.
 #bicubic_tension: .2
-#   When using the bicubic algorithm the tension parameter above may
-#   be applied to change the amount of slope interpolated. Larger
-#   numbers will increase the amount of slope, which results in more
-#   curvature in the mesh. Default is .2.
+# Podczas korzystania z algorytmu bicubic parametr napięcia powyżej
+# może zostać zastosowany w celu zmiany wielkości interpolowanego nachylenia. Większe
+# liczby zwiększą wielkość nachylenia, co spowoduje większą
+# krzywiznę w siatce. Domyślnie jest to .2.
 #zero_reference_position:
-#   An optional X,Y coordinate that specifies the location on the bed
-#   where Z = 0.  When this option is specified the mesh will be offset
-#   so that zero Z adjustment occurs at this location.  The default is
-#   no zero reference.
-#faulty_region_1_min:
+# Opcjonalna współrzędna X,Y, która określa lokalizację na łożu,
+# gdzie Z = 0. Gdy ta opcja jest określona, siatka zostanie przesunięta,
+# tak, że w tej lokalizacji nastąpi zerowe dopasowanie Z. Domyślnie jest
+# brak zerowego odniesienia.  #faulty_region_1_min:
 #faulty_region_1_max:
-#   Optional points that define a faulty region.  See docs/Bed_Mesh.md
-#   for details on faulty regions.  Up to 99 faulty regions may be added.
-#   By default no faulty regions are set.
+# Opcjonalne punkty definiujące wadliwy region. Więcej informacji na temat wadliwych regionów można znaleźć w docs/Bed_Mesh.md
+# . Można dodać do 99 wadliwych regionów.
+# Domyślnie nie są ustawione żadne wadliwe regiony.
 #adaptive_margin:
-#   An optional margin (in mm) to be added around the bed area used by
-#   the defined print objects when generating an adaptive mesh.
+# Opcjonalny margines (w mm), który należy dodać wokół obszaru łóżka używanego przez
+# zdefiniowane obiekty wydruku podczas generowania adaptacyjnej siatki.
 #scan_overshoot:
-#  The maximum amount of travel (in mm) available outside of the mesh.
-#  For rectangular beds this applies to travel on the X axis, and for round beds
-#  it applies to the entire radius.  The tool must be able to travel the amount
-#  specified outside of the mesh.  This value is used to optimize the travel
-#  path when performing a "rapid scan".  The minimum value that may be specified
-#  is 1.  The default is no overshoot.
+# Maksymalna ilość przesuwu (w mm) dostępna poza siatką.
+# W przypadku łóżek prostokątnych dotyczy to przesuwu na osi X, a w przypadku łóżek okrągłych dotyczy to
+# całego promienia. Narzędzie musi być w stanie przesunąć się o określoną
+# odległość poza siatką. Ta wartość jest używana do optymalizacji ścieżki
+# przesuwu podczas wykonywania „szybkiego skanowania”. Minimalna wartość, która może być określona,
+# to 1. Domyślnie nie ma przesuwu.
 ```
 
 ### [Łóżko_tytuł]
 
-Bed tilt compensation. One may define a bed_tilt config section to enable move transformations that account for a tilted bed. Note that bed_mesh and bed_tilt are incompatible; both cannot be defined.
+Kompensacja pochylenia łóżka. Można zdefiniować sekcję konfiguracji bed_tilt, aby włączyć transformacje ruchu uwzględniające pochylone łóżko. Należy pamiętać, że bed_mesh i bed_tilt są niekompatybilne; nie można zdefiniować obu.
 
 See the [command reference](G-Codes.md#bed_tilt) for additional information.
 
 ```
 [bed_tilt]
 #x_adjust: 0
-#   The amount to add to each move's Z height for each mm on the X
-#   axis. The default is 0.
+# Wartość do dodania do wysokości Z każdego ruchu dla każdego mm na osi X
+#. Wartość domyślna to 0.
 #y_adjust: 0
-#   The amount to add to each move's Z height for each mm on the Y
-#   axis. The default is 0.
+# Wartość do dodania do wysokości Z każdego ruchu dla każdego mm na osi Y
+#. Wartość domyślna to 0.
 #z_adjust: 0
-#   The amount to add to the Z height when the nozzle is nominally at
-#   0, 0. The default is 0.
-# The remaining parameters control a BED_TILT_CALIBRATE extended
-# g-code command that may be used to calibrate appropriate x and y
-# adjustment parameters.
+# Wartość do dodania do wysokości Z, gdy dysza jest nominalnie w
+# 0, 0. Wartość domyślna to 0.
+# Pozostałe parametry sterują rozszerzonym poleceniem BED_TILT_CALIBRATE
+# kodu g, którego można użyć do kalibracji odpowiednich parametrów regulacji x i y
+#.
 #points:
-#   A list of X, Y coordinates (one per line; subsequent lines
-#   indented) that should be probed during a BED_TILT_CALIBRATE
-#   command. Specify coordinates of the nozzle and be sure the probe
-#   is above the bed at the given nozzle coordinates. The default is
-#   to not enable the command.
+# Lista współrzędnych X, Y (po jednym w wierszu; kolejne wiersze
+# są wcięte), które powinny zostać zbadane podczas polecenia BED_TILT_CALIBRATE
+#. Określ współrzędne dyszy i upewnij się, że sonda
+# znajduje się nad łóżkiem przy podanych współrzędnych dyszy.  Domyślnie jest to
+#, aby nie włączać polecenia.
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+# Prędkość (w mm/s) ruchów niesondażowych podczas kalibracji.
+# Domyślnie jest to 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+# Wysokość (w mm), na którą należy nakazać przesunięcie głowicy
+# tuż przed rozpoczęciem operacji sondowania. Domyślnie jest to 5.
 ```
 
 ### [łóżkowe_śruby]
@@ -1177,7 +1176,7 @@ See also: [extended g-code commands](G-Codes.md#z_thermal_adjust).
 #   parameter.
 ```
 
-## Customized homing
+## Dostosowane naprowadzanie
 
 ### [safe_z_home]
 
@@ -1303,18 +1302,18 @@ G-Code macros (one may define any number of sections with a "gcode_macro" prefix
 Execute a gcode on a set delay. See the [command template guide](Command_Templates.md#delayed-gcodes) and [command reference](G-Codes.md#delayed_gcode) for more information.
 
 ```
-[delayed_gcode my_delayed_gcode]
+[opóźniony _ gcode mój _ opóźniony _ gcode]
 gcode:
-#   A list of G-Code commands to execute when the delay duration has
-#   elapsed. G-Code templates are supported. This parameter must be
-#   provided.
-#initial_duration: 0.0
-#   The duration of the initial delay (in seconds). If set to a
-#   non-zero value the delayed_gcode will execute the specified number
-#   of seconds after the printer enters the "ready" state. This can be
-#   useful for initialization procedures or a repeating delayed_gcode.
-#   If set to 0 the delayed_gcode will not execute on startup.
-#   Default is 0.
+# Lista poleceń G- Code do wykonania, gdy czas opóźnienia ma
+# eaded. Obsługiwane są szablony kodu G-. Ten parametr musi być
+# provided.
+# initial _ time: 0.0
+# Czas trwania początkowego opóźnienia (w sekundach). Jeśli ustawiono
+# non-zero wartość opóźnionego _ gcode będzie wykonywał określoną liczbę
+# sekund po wejściu drukarki w stan "gotowy". To może być
+# przydatne dla procedur inicjalizacji lub powtarzającego się opóźnionego _ gcode.
+# Jeśli ustawiono na 0, opóźniony _ gcode nie zostanie uruchomiony przy starcie.
+# Domyślnie 0.
 ```
 
 ### [save_variables]
@@ -1347,7 +1346,7 @@ Idle timeout. An idle timeout is automatically enabled - add an explicit idle_ti
 
 ### [virtual_sdcard]
 
-A virtual sdcard may be useful if the host machine is not fast enough to run OctoPrint well. It allows the Klipper host software to directly print gcode files stored in a directory on the host using standard sdcard G-Code commands (eg, M24).
+Wirtualna karta SD może być przydatna, jeśli maszyna hosta nie jest wystarczająco szybka, aby dobrze uruchomić OctoPrint. Umożliwia ona oprogramowaniu hosta Klipper bezpośrednie drukowanie plików gcode przechowywanych w katalogu na hoście przy użyciu standardowych poleceń sdcard G-Code (np. M24).
 
 ```
 [virtual_sdcard]
@@ -1501,29 +1500,26 @@ Support for ADXL345 accelerometers. This support allows one to query acceleromet
 ```
 [adxl345]
 cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
+# Pin włączający SPI dla czujnika. Ten parametr musi zostać podany.
 #spi_speed: 5000000
-#   The SPI speed (in hz) to use when communicating with the chip.
-#   The default is 5000000.
+# Prędkość SPI (w Hz) używana podczas komunikacji z układem.
+# Wartość domyślna to 5000000.
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+# Opis powyższych parametrów znajduje się w sekcji „wspólne ustawienia SPI”.
 #axes_map: x, y, z
-#   The accelerometer axis for each of the printer's X, Y, and Z axes.
-#   This may be useful if the accelerometer is mounted in an
-#   orientation that does not match the printer orientation. For
-#   example, one could set this to "y, x, z" to swap the X and Y axes.
-#   It is also possible to negate an axis if the accelerometer
-#   direction is reversed (eg, "x, z, -y"). The default is "x, y, z".
+# Oś akcelerometra dla każdej z osi X, Y i Z drukarki.
+# Może to być przydatne, jeśli akcelerometr jest zamontowany w orientacji,
+# która nie odpowiada orientacji drukarki. Na przykład można ustawić to na „y, x, z”, aby zamienić osie X i Y.
+ # Można również zanegować oś, jeśli kierunek akcelerometru
+# jest odwrócony (np. „x, z, -y”). Domyślnie jest to „x, y, z”.
 #rate: 3200
-#   Output data rate for ADXL345. ADXL345 supports the following data
-#   rates: 3200, 1600, 800, 400, 200, 100, 50, and 25. Note that it is
-#   not recommended to change this rate from the default 3200, and
-#   rates below 800 will considerably affect the quality of resonance
-#   measurements.
+# Szybkość transmisji danych wyjściowych dla ADXL345. ADXL345 obsługuje następujące szybkości transmisji danych
+#: 3200, 1600, 800, 400, 200, 100, 50 i 25. Należy pamiętać, że
+# nie zaleca się zmiany tej szybkości z domyślnej 3200, a
+# szybkości poniżej 800 znacznie wpłyną na jakość pomiarów rezonansu.
 ```
 
 ### [lis2dw]
@@ -1617,11 +1613,11 @@ Support for resonance testing and automatic input shaper calibration. In order t
 #   (Hz/sec == sec^-2).
 ```
 
-## Config file helpers
+## Pomocnicy plików konfiguracyjnych
 
 ### [board_pins]
 
-Board pin aliases (one may define any number of sections with a "board_pins" prefix). Use this to define aliases for the pins on a micro-controller.
+Aliasy pinów płytki (można zdefiniować dowolną liczbę sekcji z prefiksem „board_pins”). Użyj tego, aby zdefiniować aliasy dla pinów mikrokontrolera.
 
 ```
 [board_pins my_aliases]
@@ -1658,7 +1654,7 @@ pins:
 #   provided.
 ```
 
-## Bed probing hardware
+## Sprzęt do sondowania łóżka
 
 ### [probe]
 
@@ -1725,45 +1721,41 @@ z_offset:
 
 ### [dotyk]
 
-BLTouch probe. One may define this section (instead of a probe section) to enable a BLTouch probe. See [BL-Touch guide](BLTouch.md) and [command reference](G-Codes.md#bltouch) for further information. A virtual "probe:z_virtual_endstop" pin is also created (see the "probe" section for the details).
+Sonda BLTouch. Można zdefiniować tę sekcję (zamiast sekcji sondy), aby włączyć sondę BLTouch. Więcej informacji można znaleźć w [przewodniku BL-Touch](BLTouch.md) i [odniesieniu do poleceń](G-Codes.md#bltouch). Tworzony jest również wirtualny pin „probe:z_virtual_endstop” (szczegóły można znaleźć w sekcji „probe”).
 
 ```
 [bltouch]
 sensor_pin:
-#   Pin connected to the BLTouch sensor pin. Most BLTouch devices
-#   require a pullup on the sensor pin (prefix the pin name with "^").
-#   This parameter must be provided.
+# Pin podłączony do pinu czujnika BLTouch. Większość urządzeń BLTouch
+# wymaga pullup na pinie czujnika (nazwę pinu należy poprzedzić znakiem „^”).
+# Ten parametr musi być podany.
 control_pin:
-#   Pin connected to the BLTouch control pin. This parameter must be
-#   provided.
-#pin_move_time: 0.680
-#   The amount of time (in seconds) to wait for the BLTouch pin to
-#   move up or down. The default is 0.680 seconds.
+# Pin podłączony do pinu sterującego BLTouch. Ten parametr musi być
+# podany.
+#pin_move_time: 0,680
+# Czas (w sekundach) oczekiwania na przesunięcie pinu BLTouch
+# w górę lub w dół. Wartość domyślna to 0,680 sekundy.
 #stow_on_each_sample: True
-#   This determines if Klipper should command the pin to move up
-#   between each probe attempt when performing a multiple probe
-#   sequence. Read the directions in docs/BLTouch.md before setting
-#   this to False. The default is True.
-#probe_with_touch_mode: False
-#   If this is set to True then Klipper will probe with the device in
-#   "touch_mode". The default is False (probing in "pin_down" mode).
+# Określa, czy Klipper powinien nakazać pinowi przesunięcie się w górę
+# między każdą próbą sondowania podczas wykonywania sekwencji wielu sond. Przeczytaj instrukcje w docs/BLTouch.md przed ustawieniem
+# tego na False. Wartość domyślna to True.  #probe_with_touch_mode: False
+# Jeśli jest ustawione na True, Klipper będzie sondował urządzenie w
+# „touch_mode”. Domyślnie jest False (sondowanie w trybie „pin_down”).
 #pin_up_reports_not_triggered: True
-#   Set if the BLTouch consistently reports the probe in a "not
-#   triggered" state after a successful "pin_up" command. This should
-#   be True for all genuine BLTouch devices. Read the directions in
-#   docs/BLTouch.md before setting this to False. The default is True.
+# Ustaw, jeśli BLTouch stale raportuje sondę w stanie „niewyzwalany” po pomyślnym poleceniu „pin_up”. Powinno to
+# być True dla wszystkich oryginalnych urządzeń BLTouch. Przeczytaj instrukcje w
+# docs/BLTouch.md przed ustawieniem tego na False. Domyślnie jest True.
 #pin_up_touch_mode_reports_triggered: True
-#   Set if the BLTouch consistently reports a "triggered" state after
-#   the commands "pin_up" followed by "touch_mode". This should be
-#   True for all genuine BLTouch devices. Read the directions in
-#   docs/BLTouch.md before setting this to False. The default is True.
+# Ustaw, jeśli BLTouch stale raportuje stan „wyzwalany” po
+# poleceniu „pin_up”, po którym następuje „touch_mode”. Powinno to
+# być True dla wszystkich oryginalnych urządzeń BLTouch. Przeczytaj instrukcje w
+# docs/BLTouch.md przed ustawieniem tego na False.  Domyślnie jest to True.
 #set_output_mode:
-#   Request a specific sensor pin output mode on the BLTouch V3.0 (and
-#   later). This setting should not be used on other types of probes.
-#   Set to "5V" to request a sensor pin output of 5 Volts (only use if
-#   the controller board needs 5V mode and is 5V tolerant on its input
-#   signal line). Set to "OD" to request the sensor pin output use
-#   open drain mode. The default is to not request an output mode.
+# Żądanie określonego trybu wyjściowego pinu czujnika w BLTouch V3.0 (i
+# nowszych). Tego ustawienia nie należy używać w przypadku innych typów sond.
+# Ustaw na „5V”, aby zażądać wyjścia pinu czujnika o napięciu 5 V (użyj tylko, jeśli
+# płyta kontrolera wymaga trybu 5 V i jest tolerancyjna na 5 V na swojej linii sygnału wejściowego). Ustaw na „OD”, aby zażądać wyjścia pinu czujnika o
+# trybie otwartego drenażu. Domyślnie nie żąda się trybu wyjściowego.
 #x_offset:
 #y_offset:
 #z_offset:
@@ -1774,7 +1766,7 @@ control_pin:
 #samples_result:
 #samples_tolerance:
 #samples_tolerance_retries:
-#   See the "probe" section for information on these parameters.
+# Informacje na temat tych parametrów można znaleźć w sekcji „probe”.
 ```
 
 ### [smart_effector]
@@ -1864,32 +1856,31 @@ sensor_type: ldc1612
 
 ### [axis_twist_compensation]
 
-A tool to compensate for inaccurate probe readings due to twist in X gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
+Narzędzie do kompensacji niedokładnych odczytów sondy z powodu skręcenia w bramie X. Zobacz [Przewodnik po kompensacji skrętu osi](Axis_Twist_Compensation.md) w celu uzyskania bardziej szczegółowych informacji dotyczących objawów, konfiguracji i ustawień.
 
 ```
 [axis_twist_compensation]
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+# Prędkość (w mm/s) ruchów niesondażowych podczas kalibracji.
+# Wartość domyślna to 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+# Wysokość (w mm), na którą głowica powinna zostać poproszona o przesunięcie
+# tuż przed rozpoczęciem operacji sondowania. Wartość domyślna to 5.
 calibrate_start_x: 20
-#   Defines the minimum X coordinate of the calibration
-#   This should be the X coordinate that positions the nozzle at the starting
-#   calibration position. This parameter must be provided.
+# Definiuje minimalną współrzędną X kalibracji
+# Powinna to być współrzędna X, która pozycjonuje dyszę w początkowej
+# pozycji kalibracji. Ten parametr musi zostać podany.
 calibrate_end_x: 200
-#   Defines the maximum X coordinate of the calibration
-#   This should be the X coordinate that positions the nozzle at the ending
-#   calibration position. This parameter must be provided.
+# Definiuje maksymalną współrzędną X kalibracji
+# Powinna to być współrzędna X, która pozycjonuje dyszę w końcowej
+# pozycji kalibracji. Ten parametr musi zostać podany.
 calibrate_y: 112.5
-#   Defines the Y coordinate of the calibration
-#   This should be the Y coordinate that positions the nozzle during the
-#   calibration process. This parameter must be provided and is recommended to
-#   be near the center of the bed
+# Definiuje współrzędną Y kalibracji
+# Powinna to być współrzędna Y, która pozycjonuje dyszę podczas
+# procesu kalibracji.  Ten parametr musi zostać podany i zaleca się, aby znajdował się w pobliżu środka łóżka
 ```
 
-## Additional stepper motors and extruders
+## Dodatkowe silniki krokowe i wytłaczarki
 
 ### [stepper_z1]
 
@@ -1931,7 +1922,7 @@ See [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) for an exam
 
 Support for cartesian and hybrid_corexy/z printers with dual carriages on a single axis. The carriage mode can be set via the SET_DUAL_CARRIAGE extended g-code command. For example, "SET_DUAL_CARRIAGE CARRIAGE=1" command will activate the carriage defined in this section (CARRIAGE=0 will return activation to the primary carriage). Dual carriage support is typically combined with extra extruders - the SET_DUAL_CARRIAGE command is often called at the same time as the ACTIVATE_EXTRUDER command. Be sure to park the carriages during deactivation. Note that during G28 homing, typically the primary carriage is homed first followed by the carriage defined in the `[dual_carriage]` config section. However, the `[dual_carriage]` carriage will be homed first if both carriages home in a positive direction and the [dual_carriage] carriage has a `position_endstop` greater than the primary carriage, or if both carriages home in a negative direction and the `[dual_carriage]` carriage has a `position_endstop` less than the primary carriage.
 
-Additionally, one could use "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" or "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" commands to activate either copying or mirroring mode of the dual carriage, in which case it will follow the motion of the carriage 0 accordingly. These commands can be used to print two parts simultaneously - either two identical parts (in COPY mode) or mirrored parts (in MIRROR mode). Note that COPY and MIRROR modes also require appropriate configuration of the extruder on the dual carriage, which can typically be achieved with "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" or a similar command.
+Dodatkowo, można użyć poleceń "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" lub "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR", aby aktywować tryb kopiowania lub lustrzanego odbicia podwójnego wózka, w którym to przypadku będzie on podążał za ruchem wózka 0. Te polecenia mogą być używane do drukowania dwóch części jednocześnie - albo dwóch identycznych części (w trybie COPY), albo lustrzanych odbić (w trybie MIRROR). Należy zauważyć, że tryby COPY i MIRROR wymagają również odpowiedniej konfiguracji ekstrudera na podwójnym wózku, co zazwyczaj można osiągnąć za pomocą polecenia "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" lub podobnego.
 
 See [sample-idex.cfg](../config/sample-idex.cfg) for an example configuration.
 
@@ -2009,7 +2000,7 @@ Manual steppers (one may define any number of sections with a "manual_stepper" p
 #   MANUAL_STEPPER movement commands.
 ```
 
-## Custom heaters and sensors
+## Ogrzewacze i sensory niestandardowe
 
 ### [verify_heater]
 
@@ -2066,7 +2057,7 @@ Tool to disable heaters when homing or probing an axis.
 
 ### [thermistor]
 
-Custom thermistors (one may define any number of sections with a "thermistor" prefix). A custom thermistor may be used in the sensor_type field of a heater config section. (For example, if one defines a "[thermistor my_thermistor]" section then one may use a "sensor_type: my_thermistor" when defining a heater.) Be sure to place the thermistor section in the config file above its first use in a heater section.
+Niestandardowe termistory (można zdefiniować dowolną liczbę sekcji z prefiksem "termistora"). W polu _ typu czujnika sekcji konfiguracji grzejnika można zastosować własny termistor. (Na przykład, jeśli zdefiniowano sekcję "[thermistor my _ thermistor]]", to można użyć "sensor _ type: my _ thermistor" przy definiowaniu grzejnika.) Pamiętaj, aby umieścić sekcję termistora w pliku konfiguracyjnym nad jej pierwszym użyciem w sekcji grzejnika.
 
 ```
 [thermistor my_thermistor]
@@ -2089,7 +2080,7 @@ Custom thermistors (one may define any number of sections with a "thermistor" pr
 
 ### [adc_temperature]
 
-Custom ADC temperature sensors (one may define any number of sections with an "adc_temperature" prefix). This allows one to define a custom temperature sensor that measures a voltage on an Analog to Digital Converter (ADC) pin and uses linear interpolation between a set of configured temperature/voltage (or temperature/resistance) measurements to determine the temperature. The resulting sensor can be used as a sensor_type in a heater section. (For example, if one defines a "[adc_temperature my_sensor]" section then one may use a "sensor_type: my_sensor" when defining a heater.) Be sure to place the sensor section in the config file above its first use in a heater section.
+Niestandardowe czujniki temperatury ADC (można zdefiniować dowolną liczbę sekcji z prefiksem "adc _ temperature"). Pozwala to na zdefiniowanie własnego czujnika temperatury, który mierzy napięcie na przypince Analog do Digital Converter (ADC) i wykorzystuje liniową interpolację pomiędzy zestawem skonfigurowanych pomiarów temperatury / napięcia (lub temperatury / oporu) w celu określenia temperatury. Wynikający z tego czujnik może być stosowany jako typ _ czujnika w sekcji grzejnika. (Na przykład, jeśli definiuje się sekcję "[adc _ temperature my _ sensor]]", to można użyć "sensor _ type: my _ sensor" przy definiowaniu grzejnika.) Pamiętaj, aby umieścić sekcję czujników w pliku konfiguracyjnym nad jej pierwszym użyciem w sekcji grzejnika.
 
 ```
 [adc_temperature my_sensor]
@@ -2098,22 +2089,20 @@ Custom ADC temperature sensors (one may define any number of sections with an "a
 #temperature2:
 #voltage2:
 #...
-#   A set of temperatures (in Celsius) and voltages (in Volts) to use
-#   as reference when converting a temperature. A heater section using
-#   this sensor may also specify adc_voltage and voltage_offset
-#   parameters to define the ADC voltage (see "Common temperature
-#   amplifiers" section for details). At least two measurements must
-#   be provided.
+# Zestaw temperatur (w stopniach Celsjusza) i napięć (w woltach) do wykorzystania
+# jako odniesienie podczas konwersji temperatury. Sekcja grzejna używająca
+# tego czujnika może również określić parametry adc_voltage i voltage_offset
+# w celu zdefiniowania napięcia ADC (szczegóły w sekcji „Wspólne wzmacniacze
+# temperatury”). Należy podać co najmniej dwa pomiary.
 #temperature1:
 #resistance1:
 #temperature2:
 #resistance2:
 #...
-#   Alternatively one may specify a set of temperatures (in Celsius)
-#   and resistance (in Ohms) to use as reference when converting a
-#   temperature. A heater section using this sensor may also specify a
-#   pullup_resistor parameter (see "extruder" section for details). At
-#   least two measurements must be provided.
+# Alternatywnie można określić zestaw temperatur (w stopniach Celsjusza)
+# i rezystancji (w omach) do wykorzystania jako odniesienie podczas konwersji
+# temperatury. Sekcja grzejna używająca tego czujnika może również określić
+# parametr pullup_resistor (szczegóły w sekcji „extruder”). Należy podać co najmniej dwa pomiary.
 ```
 
 ### [heater_generic]
@@ -2218,9 +2207,9 @@ Reports probe coil temperature. Includes optional thermal drift calibration for 
 
 Klipper includes definitions for many types of temperature sensors. These sensors may be used in any config section that requires a temperature sensor (such as an `[extruder]` or `[heater_bed]` section).
 
-### Common thermistors
+### Typowe termistory
 
-Common thermistors. The following parameters are available in heater sections that use one of these sensors.
+Typowe termistory. Następujące parametry są dostępne w sekcjach grzewczych, które wykorzystują jeden z tych czujników.
 
 ```
 sensor_type:
@@ -2240,9 +2229,9 @@ sensor_pin:
 #   The default is 0 ohms.
 ```
 
-### Common temperature amplifiers
+### Typowe wzmacniacze temperatury
 
-Common temperature amplifiers. The following parameters are available in heater sections that use one of these sensors.
+Popularne wzmacniacze temperatury. Następujące parametry są dostępne w sekcjach grzewczych, które wykorzystują jeden z tych czujników.
 
 ```
 sensor_type:
@@ -2257,9 +2246,9 @@ sensor_pin:
 #   The ADC voltage offset (in Volts). The default is 0.
 ```
 
-### Directly connected PT1000 sensor
+### Bezpośrednio podłączony czujnik PT1000
 
-Directly connected PT1000 sensor. The following parameters are available in heater sections that use one of these sensors.
+Bezpośrednio połączony z PT1000 sensor. Poniższe parametry są dostępne w sekcjach ciepła, które używają jednego z tych czujników.
 
 ```
 sensor_type: PT1000
@@ -2305,9 +2294,9 @@ sensor_pin:
 #   name in the above list.
 ```
 
-### BMP180/BMP280/BME280/BMP388/BME680 temperature sensor
+### Czujnik temperatury BMP180/BMP280/BME280/BMP388/BME680
 
-BMP180/BMP280/BME280/BMP388/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
+Czujniki środowiskowe BMP180/BMP280/BME280/BMP388/BME680 z interfejsem dwuprzewodowym (I2C). Należy pamiętać, że czujniki te nie są przeznaczone do stosowania z wytłaczarkami i łożami grzewczymi, ale raczej do monitorowania temperatury otoczenia (C), ciśnienia (hPa), wilgotności względnej, a w przypadku BME680 poziomu gazu. Zobacz [sample-macros.cfg](../config/sample-macros.cfg) dla gcode_macro, którego można użyć do raportowania ciśnienia i wilgotności oprócz temperatury.
 
 ```
 sensor_type: BME280
@@ -2323,9 +2312,9 @@ sensor_type: BME280
 #   above parameters.
 ```
 
-### AHT10/AHT20/AHT21 temperature sensor
+### Czujnik temperatury AHT10/AHT20/AHT21
 
-AHT10/AHT20/AHT21 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C) and relative humidity. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report humidity in addition to temperature.
+Czujniki środowiskowe AHT10/AHT20/AHT21 z interfejsem dwuprzewodowym (I2C). Należy pamiętać, że czujniki te nie są przeznaczone do użytku z wytłaczarkami i łożami grzewczymi, ale raczej do monitorowania temperatury otoczenia (C) i wilgotności względnej. Zobacz [sample-macros.cfg](../config/sample-macros.cfg) dla gcode_macro, którego można użyć do raportowania wilgotności oprócz temperatury.
 
 ```
 sensor_type: AHT10
@@ -2413,7 +2402,7 @@ sensor_type: LM75
 #   0.5.
 ```
 
-### Builtin micro-controller temperature sensor
+### Wbudowany czujnik temperatury mikrokontrolera
 
 The atsam, atsamd, and stm32 micro-controllers contain an internal temperature sensor. One can use the "temperature_mcu" sensor to monitor these temperatures.
 
@@ -2474,9 +2463,9 @@ serial_no:
 #   The micro-controller to read from. Must be the host_mcu
 ```
 
-### Combined temperature sensor
+### Połączony czujnik temperatury
 
-Combined temperature sensor is a virtual temperature sensor based on several other sensors. This sensor can be used with extruders, heater_generic and heater beds.
+Combined temperature sensor to wirtualny czujnik temperatury oparty na kilku innych czujnikach. Ten czujnik może być używany z ekstruderami, heater_generic i łożami grzewczymi.
 
 ```
 sensor_type: temperature_combined
@@ -2599,41 +2588,41 @@ Heater cooling fans (one may define any number of sections with a "heater_fan" p
 
 ### [controller_fan]
 
-Controller cooling fan (one may define any number of sections with a "controller_fan" prefix). A "controller fan" is a fan that will be enabled whenever its associated heater or its associated stepper driver is active. The fan will stop whenever an idle_timeout is reached to ensure no overheating will occur after deactivating a watched component.
+Wentylator chłodzący sterownika (można zdefiniować dowolną liczbę sekcji z prefiksem "controller _ fan"). "Wentylator sterownika" jest wentylatorem, który zostanie włączony za każdym razem, gdy włącza się odpowiedni grzejnik lub związany z nim sterownik. Wentylator zatrzyma się, gdy tylko zostanie osiągnięty _ timeout, aby upewnić się, że nie nastąpi przegrzanie po wyłączeniu monitorowanego komponentu.
 
 ```
-[controller_fan my_controller_fan]
-#pin:
-#max_power:
-#shutdown_speed:
-#cycle_time:
-#hardware_pwm:
-#kick_start_time:
-#off_below:
-#tachometer_pin:
-#tachometer_ppr:
-#tachometer_poll_interval:
-#enable_pin:
-#   See the "fan" section for a description of the above parameters.
-#fan_speed: 1.0
-#   The fan speed (expressed as a value from 0.0 to 1.0) that the fan
-#   will be set to when a heater or stepper driver is active.
-#   The default is 1.0
-#idle_timeout:
-#   The amount of time (in seconds) after a stepper driver or heater
-#   was active and the fan should be kept running. The default
-#   is 30 seconds.
-#idle_speed:
-#   The fan speed (expressed as a value from 0.0 to 1.0) that the fan
-#   will be set to when a heater or stepper driver was active and
-#   before the idle_timeout is reached. The default is fan_speed.
-#heater:
-#stepper:
-#   Name of the config section defining the heater/stepper that this fan
-#   is associated with. If a comma separated list of heater/stepper names
-#   is provided here, then the fan will be enabled when any of the given
-#   heaters/steppers are enabled. The default heater is "extruder", the
-#   default stepper is all of them.
+[controller _ fan my _ controller _ fan]
+# pin:
+# max _ power:
+# shutdown _ speed:
+# cycle _ time:
+# hardware _ pwm:
+# kick _ start _ time:
+# off _ below:
+# tachometr _ pin:
+# tachometr _ ppr:
+# tachometr _ poll _ interval:
+# enable _ pin:
+# Opis powyższych parametrów znajduje się w sekcji "wentylator".
+# fan _ speed: 1.0
+# Prędkość wentylatora (wyrażona jako wartość od 0,0 do 1,0), że wentylator
+# zostanie ustawiony, gdy grzejnik lub steper driver jest aktywny.
+# Domyślnie 1,0
+# idle _ timeout:
+# Ilość czasu (w sekundach) po sterowniku steperów lub ogrzewaczu
+# był aktywny, a wentylator powinien być uruchomiony. Domyślny
+30 sekund.
+# idle _ speed:
+# Prędkość wentylatora (wyrażona jako wartość od 0,0 do 1,0), że wentylator
+# będzie ustawiony, gdy grzejnik lub stepper driver był aktywny i
+# before the peep _ timeout is achieved. Domyślnie jest fan _ speed.
+# grzejnik:
+# Stepper:
+# Nazwa sekcji konfiguracyjnej określającej grzejnik / steper, który ten wentylator
+# jest związany z. Jeżeli oddzielona przecinkami lista nazw grzejników / steperów
+# jest dostarczany tutaj, wtedy wentylator będzie włączony, gdy którykolwiek z podanych
+# grzejniki / stepy są włączone. Domyślny grzejnik to "wytłaczarka",
+# default stepper is all of them.
 ```
 
 ### [temperature_fan]
@@ -2846,7 +2835,7 @@ PCA9632 LED support. The PCA9632 is used on the FlashForge Dreamer.
 #   See the "led" section for information on these parameters.
 ```
 
-## Additional servos, buttons, and other pins
+## Dodatkowe serwomechanizmy, przyciski i inne piny
 
 ### [servo]
 
@@ -3008,11 +2997,11 @@ pins:
 
 ## TMC stepper driver configuration
 
-Configuration of Trinamic stepper motor drivers in UART/SPI mode. Additional information is in the [TMC Drivers guide](TMC_Drivers.md) and in the [command reference](G-Codes.md#tmcxxxx).
+Konfiguracja sterowników silników krokowych Trinamic w trybie UART/SPI. Dodatkowe informacje znajdują się w [TMC Drivers guide](TMC_Drivers.md) i w [command reference](G-Codes.md#tmcxxxx).
 
 ### [tmc2130]
 
-Configure a TMC2130 stepper motor driver via SPI bus. To use this feature, define a config section with a "tmc2130" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2130 stepper_x]").
+Skonfiguruj sterownik silnika krokowego TMC2130 za pomocą magistrali SPI. Aby użyć tej funkcji, zdefiniuj sekcję konfiguracji z prefiksem „tmc2130”, po którym następuje nazwa odpowiedniej sekcji konfiguracji silnika krokowego (na przykład „[tmc2130 stepper_x]”).
 
 ```
 [tmc2130 stepper_x]
@@ -3127,7 +3116,7 @@ run_current:
 
 ### [tmc2208]
 
-Configure a TMC2208 (or TMC2224) stepper motor driver via single wire UART. To use this feature, define a config section with a "tmc2208" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2208 stepper_x]").
+Skonfiguruj sterownik silnika krokowego TMC2208 (lub TMC2224) za pomocą pojedynczego przewodu UART. Aby użyć tej funkcji, zdefiniuj sekcję konfiguracji z prefiksem „tmc2208”, po którym następuje nazwa odpowiedniej sekcji konfiguracji silnika krokowego (na przykład „[tmc2208 stepper_x]”).
 
 ```
 [tmc2208 stepper_x]
@@ -3186,7 +3175,7 @@ run_current:
 
 ### [tmc2209]
 
-Configure a TMC2209 stepper motor driver via single wire UART. To use this feature, define a config section with a "tmc2209" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2209 stepper_x]").
+Skonfiguruj sterownik silnika krokowego TMC2209 za pomocą pojedynczego przewodu UART. Aby użyć tej funkcji, zdefiniuj sekcję konfiguracji z prefiksem „tmc2209”, po którym następuje nazwa odpowiedniej sekcji konfiguracji silnika krokowego (na przykład „[tmc2209 stepper_x]”).
 
 ```
 [tmc2209 stepper_x]
@@ -3246,7 +3235,7 @@ run_current:
 
 ### [tmc2660]
 
-Configure a TMC2660 stepper motor driver via SPI bus. To use this feature, define a config section with a tmc2660 prefix followed by the name of the corresponding stepper config section (for example, "[tmc2660 stepper_x]").
+Skonfiguruj sterownik silnika krokowego TMC2660 za pomocą magistrali SPI. Aby użyć tej funkcji, zdefiniuj sekcję konfiguracji z prefiksem tmc2660, po którym następuje nazwa odpowiedniej sekcji konfiguracji silnika krokowego (na przykład „[tmc2660 stepper_x]”).
 
 ```
 [tmc2660 stepper_x]
@@ -3315,7 +3304,7 @@ run_current:
 
 ### [tmc2240]
 
-Configure a TMC2240 stepper motor driver via SPI bus or UART. To use this feature, define a config section with a "tmc2240" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2240 stepper_x]").
+Skonfiguruj sterownik silnika krokowego TMC2240 za pomocą magistrali SPI lub UART. Aby użyć tej funkcji, zdefiniuj sekcję konfiguracji z prefiksem „tmc2240”, po którym następuje nazwa odpowiedniej sekcji konfiguracji silnika krokowego (na przykład „[tmc2240 stepper_x]”).
 
 ```
 [tmc2240 stepper_x]
@@ -3448,7 +3437,7 @@ run_current:
 
 ### [tmc5160]
 
-Configure a TMC5160 stepper motor driver via SPI bus. To use this feature, define a config section with a "tmc5160" prefix followed by the name of the corresponding stepper config section (for example, "[tmc5160 stepper_x]").
+Konfigurować TMC5160 Stepper kierowcy silnika za pośrednictwem SPI autobus. Aby skorzystać z tej funkcji, należy zdefiniować sekcję konfiguracyjną z prefiksem "tmc5160", po której następuje nazwa odpowiedniej sekcji konfiguracyjnej stepper (na przykład "[tmc5160 stepper _ x]").
 
 ```
 [tmc5160 stepper_x]
@@ -3966,7 +3955,7 @@ lcd_type:
 
 Support for displaying custom data on an lcd screen. One may create any number of display groups and any number of data items under those groups. The display will show all the data items for a given group if the display_group option in the [display] section is set to the given group name.
 
-A [default set of display groups](../klippy/extras/display/display.cfg) are automatically created. One can replace or extend these display_data items by overriding the defaults in the main printer.cfg config file.
+[Domyślny zestaw grup wyświetlania](../klippy/extras/display/display.cfg) jest tworzony automatycznie. Można zastąpić lub rozszerzyć te elementy display_data, nadpisując ustawienia domyślne w głównym pliku konfiguracyjnym printer.cfg.
 
 ```
 [display_data my_group_name my_data_name]
@@ -4007,7 +3996,7 @@ text:
 
 ### [display_glyph]
 
-Display a custom glyph on displays that support it. The given name will be assigned the given display data which can then be referenced in the display templates by their name surrounded by two "tilde" symbols i.e. `~my_display_glyph~`
+Wyświetla własny glif na wyświetlaczach, które go obsługują. Podaną nazwę przypisane zostaną dane wyświetlania, które następnie mogą być wymienione w szablonach wyświetlacza przez ich nazwę otoczone dwoma symbolami "tilde", tj. / My _ display _ glyph
 
 See [sample-glyphs.cfg](../config/sample-glyphs.cfg) for some examples.
 
@@ -4042,78 +4031,77 @@ If a primary [display] section has been defined in printer.cfg as shown above it
 
 ### [menu]
 
-Customizable lcd display menus.
+Dostosowalne menu wyświetlacza lcd.
 
 [default set of menus](../klippy/extras/display/menu.cfg) jest automatycznie tworzony. Możesz zamienić lub rozszerzyć menu poprzez nadpisywanie domyślnych ustawień w głównym pliku konfiguracyjnym printer.cfg.
 
 See the [command template document](Command_Templates.md#menu-templates) for information on menu attributes available during template rendering.
 
 ```
-# Common parameters available for all menu config sections.
+# Wspólne parametry dostępne dla wszystkich sekcji konfiguracji menu.
 #[menu __some_list __some_name]
 #type: disabled
-#   Permanently disabled menu element, only required attribute is 'type'.
-#   Allows you to easily disable/hide existing menu items.
+# Trwale wyłączony element menu, jedynym wymaganym atrybutem jest 'type'.
+# Umożliwia łatwe wyłączanie/ukrywanie istniejących elementów menu.
 
 #[menu some_name]
 #type:
-#   One of command, input, list, text:
-#       command - basic menu element with various script triggers
-#       input   - same like 'command' but has value changing capabilities.
-#                 Press will start/stop edit mode.
-#       list    - it allows for menu items to be grouped together in a
-#                 scrollable list.  Add to the list by creating menu
-#                 configurations using "some_list" as a prefix - for
-#                 example: [menu some_list some_item_in_the_list]
-#       vsdlist - same as 'list' but will append files from virtual sdcard
-#                 (will be removed in the future)
+# Jedno z poleceń, input, list, text:
+# command - podstawowy element menu z różnymi wyzwalaczami skryptów
+# input - taki sam jak 'command', ale ma możliwość zmiany wartości.
+# Naciśnięcie uruchamia/zatrzymuje tryb edycji.
+# list - umożliwia grupowanie elementów menu w
+# przewijalnej liście.  Dodaj do listy, tworząc konfiguracje menu
+# używając prefiksu „some_list” - na przykład:
+# [menu some_list some_item_in_the_list]
+# vsdlist - tak samo jak „list”, ale doda pliki z wirtualnej karty SD
+# (zostanie usunięte w przyszłości)
 #name:
-#   Name of menu item - evaluated as a template.
+# Nazwa elementu menu - oceniana jako szablon.
 #enable:
-#   Template that evaluates to True or False.
+# Szablon, który oceniany jest jako True lub False.
 #index:
-#   Position where an item needs to be inserted in list. By default
-#   the item is added at the end.
+# Pozycja, w której element musi zostać wstawiony na liście. Domyślnie
+# element jest dodawany na końcu.
 
 #[menu some_list]
 #type: list
 #name:
 #enable:
-#   See above for a description of these parameters.
+# Opis tych parametrów znajduje się powyżej.
 
 #[menu some_list some_command]
 #type: command
 #name:
 #enable:
-#   See above for a description of these parameters.
+# Opis tych parametrów znajduje się powyżej.
 #gcode:
-#   Script to run on button click or long click. Evaluated as a
-#   template.
+# Skrypt uruchamiany po kliknięciu przycisku lub długim kliknięciu. Oceniany jako
+# szablon.
 
-#[menu some_list some_input]
+ #[menu some_list some_input]
 #type: input
 #name:
 #enable:
-#   See above for a description of these parameters.
+# Opis tych parametrów znajduje się powyżej.
 #input:
-#   Initial value to use when editing - evaluated as a template.
-#   Result must be float.
+# Wartość początkowa do użycia podczas edycji — oceniana jako szablon.
+# Wynik musi być typu float.
 #input_min:
-#   Minimum value of range - evaluated as a template. Default -99999.
+# Minimalna wartość zakresu — oceniana jako szablon. Domyślnie -99999.
 #input_max:
-#   Maximum value of range - evaluated as a template. Default 99999.
+# Maksymalna wartość zakresu — oceniana jako szablon. Domyślnie 99999.
 #input_step:
-#   Editing step - Must be a positive integer or float value. It has
-#   internal fast rate step. When "(input_max - input_min) /
-#   input_step > 100" then fast rate step is 10 * input_step else fast
-#   rate step is same input_step.
+# Krok edycji — musi być dodatnią liczbą całkowitą lub wartością zmiennoprzecinkową. Ma
+# wewnętrzny krok szybkiego tempa. Gdy „(input_max - input_min) /
+# input_step > 100”, krok szybkiego tempa wynosi 10 * input_step, w przeciwnym razie krok szybkiego tempa
+# jest taki sam jak input_step.
 #realtime:
-#   This attribute accepts static boolean value. When enabled then
-#   gcode script is run after each value change. The default is False.
-#gcode:
-#   Script to run on button click, long click or value change.
-#   Evaluated as a template. The button click will trigger the edit
-#   mode start or end.
+# Ten atrybut akceptuje statyczną wartość logiczną. Gdy jest włączony,
+# skrypt gcode jest uruchamiany po każdej zmianie wartości. Domyślnie jest to False.
+ #gcode:
+# Skrypt uruchamiany po kliknięciu przycisku, długim kliknięciu lub zmianie wartości.
+# Oceniany jako szablon. Kliknięcie przycisku uruchomi początek lub koniec trybu edycji.
 ```
 
 ## Filament sensors
@@ -4342,11 +4330,11 @@ data_ready_pin:
 #   The default is 660
 ```
 
-## Board specific hardware support
+## Obsługa sprzętu specyficznego dla płyty
 
 ### [sx1509]
 
-Configure an SX1509 I2C to GPIO expander. Due to the delay incurred by I2C communication you should NOT use SX1509 pins as stepper enable, step or dir pins or any other pin that requires fast bit-banging. They are best used as static or gcode controlled digital outputs or hardware-pwm pins for e.g. fans. One may define any number of sections with an "sx1509" prefix. Each expander provides a set of 16 pins (sx1509_my_sx1509:PIN_0 to sx1509_my_sx1509:PIN_15) which can be used in the printer configuration.
+Skonfiguruj ekspander SX1509 I2C do GPIO. Ze względu na opóźnienie spowodowane komunikacją I2C NIE NALEŻY używać pinów SX1509 jako pinów włączających krokowy, pinów step lub dir ani żadnego innego pinu wymagającego szybkiego bit-bangingu. Najlepiej używać ich jako statycznych lub sterowanych kodem g-code wyjść cyfrowych lub pinów sprzętowego PWM, np. dla wentylatorów. Można zdefiniować dowolną liczbę sekcji z prefiksem „sx1509”. Każdy ekspander zapewnia zestaw 16 pinów (sx1509_my_sx1509:PIN_0 do sx1509_my_sx1509:PIN_15), które można wykorzystać w konfiguracji drukarki.
 
 See the [generic-duet2-duex.cfg](../config/generic-duet2-duex.cfg) file for an example.
 
@@ -4509,32 +4497,31 @@ Magnetic hall angle sensor support for reading stepper motor angle shaft measure
 ```
 [angle my_angle_sensor]
 sensor_type:
-#   The type of the magnetic hall sensor chip. Available choices are
-#   "a1333", "as5047d", and "tle5012b". This parameter must be
-#   specified.
-#sample_period: 0.000400
-#   The query period (in seconds) to use during measurements. The
-#   default is 0.000400 (which is 2500 samples per second).
+# Typ układu czujnika magnetycznego Halla. Dostępne opcje to
+# „a1333”, „as5047d” i „tle5012b”. Ten parametr musi być
+# określony.
+#sample_period: 0,000400
+# Okres zapytania (w sekundach) używany podczas pomiarów.
+# Wartość domyślna to 0,000400 (czyli 2500 próbek na sekundę).
 #stepper:
-#   The name of the stepper that the angle sensor is attached to (eg,
-#   "stepper_x"). Setting this value enables an angle calibration
-#   tool. To use this feature, the Python "numpy" package must be
-#   installed. The default is to not enable angle calibration for the
-#   angle sensor.
+# Nazwa silnika krokowego, do którego podłączony jest czujnik kąta (np.
+# „stepper_x”). Ustawienie tej wartości włącza narzędzie
+# kalibracji kąta. Aby użyć tej funkcji, musi być
+# zainstalowany pakiet Python „numpy”. Domyślnie kalibracja kąta dla
+# czujnika kąta nie jest włączana.
 cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
-#spi_speed:
+# Pin włączający SPI dla czujnika. Ten parametr musi być podany.
+ #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+# Opis powyższych parametrów można znaleźć w sekcji „wspólne ustawienia SPI”.
 ```
 
-## Common bus parameters
+## Wspólne parametry magistrali
 
-### Common SPI settings
+### Typowe ustawienia SPI
 
 The following parameters are generally available for devices using an SPI bus.
 
@@ -4555,7 +4542,7 @@ The following parameters are generally available for devices using an SPI bus.
 #   "software spi".
 ```
 
-### Common I2C settings
+### Typowe ustawienia I2C
 
 The following parameters are generally available for devices using an I2C bus.
 

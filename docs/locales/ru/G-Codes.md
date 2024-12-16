@@ -1,45 +1,45 @@
 # G-коды
 
-JВ этом документе описаны команды, поддерживаемые Klipper. Это команды, которые можно ввести на вкладке терминала OctoPrint.
+Этот документ описываетJВ этом документе описаны команды, поддерживаемые Klipper. Это команды, которые можно ввести на вкладке терминала OctoPrint. команды, поддерживаемые Klipper. Это команды, которые можно ввести на вкладке терминала OctoPrint.
 
 ## Команды G-кода
 
 Klipper поддерживает следующие стандартные команды G-кода:
 
 - Перемещение (G0 или G1): `G1 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>]`
-- Dwell: `G4 P<milliseconds>`
+- Ожидание: `G4 P<time(ms)>`
 - Перемещение в начало координат: `G28 [X] [Y] [Z]`.
 - Выключите моторы: `М18` или `М84`
-- Wait for current moves to finish: `M400`
-- Use absolute/relative distances for extrusion: `M82`, `M83`
-- Use absolute/relative coordinates: `G90`, `G91`
-- Set position: `G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]`
-- Set speed factor override percentage: `M220 S<percent>`
-- Set extrude factor override percentage: `M221 S<percent>`
-- Set acceleration: `M204 S<value>` OR `M204 P<value> T<value>`
+- Ожидание окончания всех перемещений в планировщике: `M400`
+- Использовать абсолютное/относительное расстояния для выдавливания экструдером: `M82`/`M83`
+- Использовать абсолютные/относительные координаты: `G90`, `G91`
+- Установить указанное значение положения: `G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]`
+- Установите процентный коэффициент скорости: `M220 S<percent>`
+- Установите коэффициент потока: `M221 S<percent>`
+- Установка ускорений: `M204 S<value>` OR `M204 P<value> T<value>`
    - Note: If S is not specified and both P and T are specified, then the acceleration is set to the minimum of P and T. If only one of P or T is specified, the command has no effect.
-- Get extruder temperature: `M105`
-- Set extruder temperature: `M104 [T<index>] [S<temperature>]`
-- Set extruder temperature and wait: `M109 [T<index>] S<temperature>`
-   - Note: M109 always waits for temperature to settle at requested value
-- Set bed temperature: `M140 [S<temperature>]`
-- Set bed temperature and wait: `M190 S<temperature>`
-   - Note: M190 always waits for temperature to settle at requested value
-- Set fan speed: `M106 S<value>`
-- Turn fan off: `M107`
-- Emergency stop: `M112`
-- Get current position: `M114`
-- Get firmware version: `M115`
+- Получить температуру экструдера: `M105`
+- Установить температуру экструдеру: `M104 [T<index>] [S<temperature>]`
+- Установить температуру экструдеру и ожидать нагрева: `M109 [T<index>] S<temperature>`
+   - Примечание: M109 ждет, пока температура установится на требуемом значении.
+- Установить температуру стола: `M140 [S<temperature>]`
+- Установить температуру стола и ждать нагрева: `M190 S<temperature>`
+   - Примечание: M190 ждет, пока температура установится на требуемом значении.
+- Установить скорость вентилятору: `M106 S<value>`
+- Выключить вентилятор: `M107`
+- Аварийная остановка: `M112`
+- Получить текущее значение положения активного инструмента: `M114`
+- Получить информацию о прошивке: `M115`
 
-For further details on the above commands see the [RepRap G-Code documentation](http://reprap.org/wiki/G-code).
+Дополнительные сведения о приведенных выше командах см. в документации [RepRap G-Code](http://reprap.org/wiki/G-code).
 
 Klipper's goal is to support the G-Code commands produced by common 3rd party software (eg, OctoPrint, Printrun, Slic3r, Cura, etc.) in their standard configurations. It is not a goal to support every possible G-Code command. Instead, Klipper prefers human readable ["extended G-Code commands"](#additional-commands). Similarly, the G-Code terminal output is only intended to be human readable - see the [API Server document](API_Server.md) if controlling Klipper from external software.
 
-If one requires a less common G-Code command then it may be possible to implement it with a custom [gcode_macro config section](Config_Reference.md#gcode_macro). For example, one might use this to implement: `G12`, `G29`, `G30`, `G31`, `M42`, `M80`, `M81`, `T1`, etc.
+Если требуется менее распространенная команда G-Code, то ее можно реализовать с помощью [пользовательского макроса gcode_macro](Config_Reference.md#gcode_macro). Например, это можно использовать для реализации: `G12`, `G29`, `G30`, `G31`, `M42`, `M80`, `M81`, `T1`, и т.д.
 
 ## Additional Commands
 
-Klipper uses "extended" G-Code commands for general configuration and status. These extended commands all follow a similar format - they start with a command name and may be followed by one or more parameters. For example: `SET_SERVO SERVO=myservo ANGLE=5.3`. In this document, the commands and parameters are shown in uppercase, however they are not case sensitive. (So, "SET_SERVO" and "set_servo" both run the same command.)
+Klipper использует «расширенные» команды G-Code для общей конфигурации и статуса. Все эти расширенные команды следуют схожему формату — они начинаются с имени команды и могут сопровождаться одним или несколькими параметрами. Например: `SET_SERVO SERVO=myservo ANGLE=5.3`. В этом документе команды и параметры показаны в верхнем регистре, однако они не чувствительны к регистру. (Так, «SET_SERVO» и «set_servo» запускают одну и ту же команду.)
 
 This section is organized by Klipper module name, which generally follows the section names specified in the [printer configuration file](Config_Reference.md). Note that some modules are automatically loaded.
 
@@ -792,9 +792,9 @@ The tuning_tower module is automatically loaded.
 
 Klipper supports the following standard G-Code commands if the [virtual_sdcard config section](Config_Reference.md#virtual_sdcard) is enabled:
 
-- List SD card: `M20`
-- Initialize SD card: `M21`
-- Select SD file: `M23 <filename>`
+- Список SD-карт: `M20`
+- Инициализация SD-карты: `M21`
+- Выбрать SD файл: `M23 <filename>`
 - Start/resume SD print: `M24`
 - Pause SD print: `M25`
 - Set SD position: `M26 S<offset>`

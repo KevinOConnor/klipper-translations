@@ -13,7 +13,7 @@ Witaj w dokumentacji Klipper. Jeśli jesteś nowy, zapoznaj się z [funkcjami](F
 ## Instalacja i konfiguracja
 
 - [Instalacja](Installation.md): Przewodnik po instalacji Klippera.
-   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
+   - [Octoprint](OctoPrint.md): Przewodnik do instalacji Octoprint z Klipperem.
 - [Odniesienie do konfiguracji](Config_Reference.md): Opis parametrów konfiguracji.
    - [Odległość obrotu](Rotation_Distance.md): Obliczanie parametru krokowego rotation_distance.
 - [Kontrola konfiguracji](Config_checks.md): Weryfikacja podstawowych ustawień pinów w pliku konfiguracyjnym.
@@ -58,9 +58,9 @@ Witaj w dokumentacji Klipper. Jeśli jesteś nowy, zapoznaj się z [funkcjami](F
 - [Raspberry Pi jako mikrokontroler](RPi_microcontroller.md): Szczegóły dotyczące sterowania urządzeniami podłączonymi do pinów GPIO Raspberry Pi.
 - [Beaglebone](Beaglebone.md): Szczegóły dotyczące uruchamiania Klippera na Beaglebone PRU.
 - [Bootloadery](Bootloaders.md): Informacje dla programistów dotyczące programowania mikrokontrolerów.
-- [Bootloader Entry](Bootloader_Entry.md): Requesting the bootloader.
+- [Bootloader Entry](Bootloader_Entry.md): Czekanie na bootloader.
 - [Magistrala CAN](CANBUS.md): Informacje na temat korzystania z magistrali CAN z Klipperem.
    - [Rozwiązywanie problemów CAN](CANBUS_Troubleshooting.md): Wskazówki dotyczące rozwiązywania problemów z magistralą CAN.
 - [Czujnik szerokości filamentu TSL1401CL](TSL1401CL_Filament_Width_Sensor.md)
 - [Czujnik szerokości filamentu Halla](Hall_Filament_Width_Sensor.md)
-- [Eddy Current Inductive probe](Eddy_Probe.md)
+- [Sonda Eddy Current Inductive](Eddy_Probe.md)

@@ -1,12 +1,12 @@
 # 安装
 
-These instructions assume the software will run on a linux based host running a Klipper compatible front end. It is recommended that a SBC(Small Board Computer) such as a Raspberry Pi or Debian based Linux device be used as the host machine (see the [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3) for other options).
+这些说明假设软件将在运行 Klipper 兼容前端的 Linux 主机上运行。建议使用 SBC（小型板计算机），例如 Raspberry Pi 或基于 Debian 的 Linux 设备作为主机（有关其他选项，请参阅 [FAQ](FAQ.md#can-i-run-klipper-on-something-other-than-a-raspberry-pi-3)）。
 
-For the purposes of these instructions host relates to the Linux device and mcu relates to the printboard. SBC relates to the term Small Board Computer such as the Raspberry Pi.
+就本说明而言，主机与 Linux 设备相关，而 mcu 与印刷电路板相关。SBC 与术语“小型板计算机”相关，例如 Raspberry Pi。
 
 ## 获取 Klipper 配置文件
 
-Most Klipper settings are determined by a "printer configuration file" printer.cfg, that will be stored on the host. An appropriate configuration file can often be found by looking in the Klipper [config directory](../config/) for a file starting with a "printer-" prefix that corresponds to the target printer. The Klipper configuration file contains technical information about the printer that will be needed during the installation.
+大多数 Klipper 设置由“打印机配置文件”printer.cfg 决定，该文件将存储在主机上。通常可以通过在 Klipper [config 目录](../config/) 中查找以“printer-”前缀开头且与目标打印机相对应的文件来找到适当的配置文件。Klipper 配置文件包含安装过程中需要的有关打印机的技术信息。
 
 如果 Klipper 配置目录中没有合适的打印机配置文件，请尝试搜索打印机制造商的网站，看看他们是否有合适的 Klipper 配置文件。
 
@@ -14,33 +14,33 @@ Most Klipper settings are determined by a "printer configuration file" printer.c
 
 也可以从头开始定义一个新的打印机配置。然而，这需要关于打印机及其电子系统的大量技术知识。建议大多数用户从一个适当的配置文件开始。如果需要创建一个新的自定义打印机配置文件，那么可以先从最接近的[配置文件](../config/)的例子开始，并从 Klipper [配置参考文档](Config_Reference.md)了解进一步信息。
 
-## Interacting with Klipper
+## 与 Klipper 交互
 
-Klipper is a 3d printer firmware, so it needs some way for the user to interact with it.
+Klipper 是一个 3D 打印机固件，因此需要某种方式让用户与其进行交互。
 
-Currently the best choices are front ends that retrieve information through the [Moonraker web API](https://moonraker.readthedocs.io/) and there is also the option to use [Octoprint](https://octoprint.org/) to control Klipper.
+目前最好的选择是通过 [Moonraker web API](https://moonraker.readthedocs.io/) 检索信息的前端，也可以选择使用 [Octoprint](https://octoprint.org/) 来控制 Klipper。
 
-The choice is up to the user on what to use, but the underlying Klipper is the same in all cases. We encourage users to research the options available and make an informed decision.
+用户可自行选择使用哪种工具，但底层的 Klipper 在所有情况下都是相同的。我们鼓励用户研究可用的选项并做出明智的决定。
 
-## Obtaining an OS image for SBC's
+## 获取 SBC 的操作系统映像
 
-There are many ways to obtain an OS image for Klipper for SBC use, most depend on what front end you wish to use. Some manafactures of these SBC boards also provide their own Klipper-centric images.
+有多种方法可以获取用于 SBC 的 Klipper 操作系统映像，大多数方法取决于您希望使用哪种前端。这些 SBC 板的一些制造商还提供自己的以 Klipper 为中心的映像。
 
-The two main Moonraker based front ends are [Fluidd](https://docs.fluidd.xyz/) and [Mainsail](https://docs.mainsail.xyz/), the latter of which has a premade install image ["MainsailOS"](http://docs.mainsailOS.xyz), this has the option for Raspberry Pi and some OrangePi varianta.
+两个主要的基于 Moonraker 的前端是 [Fluidd](https://docs.fluidd.xyz/) 和 [Mainsail](https://docs.mainsail.xyz/)，后者具有预制的安装映像 ["MainsailOS"](http://docs.mainsailOS.xyz)，它有适用于 Raspberry Pi 和一些 OrangePi 变体的选项。
 
-Fluidd can be installed via KIAUH(Klipper Install And Update Helper), which is explained below and is a 3rd party installer for all things Klipper.
+Fluidd 可以通过 KIAUH（Klipper 安装和更新助手）进行安装，如下所述，它是所有 Klipper 的第三方安装程序。
 
-OctoPrint can be installed via the popular OctoPi image or via KIAUH, this process is explained in <OctoPrint.md>
+OctoPrint 可以通过流行的 OctoPi 镜像或通过 KIAUH 安装，此过程在 <OctoPrint.md> 中有说明
 
-## Installing via KIAUH
+## 通过 KIAUH 安装
 
-Normally you would start with a base image for your SBC, RPiOS Lite for example, or in the case of a x86 Linux device, Ubuntu Server. Please note that Desktop variants are not recommended due to certain helper programs that can stop some Klipper functions working and even mask access to some print boards.
+通常，您会从 SBC 的基本映像（例如 RPiOS Lite）开始，或者在 x86 Linux 设备的情况下，从 Ubuntu Server 开始。请注意，不建议使用桌面版本，因为某些辅助程序可能会阻止某些 Klipper 功能运行，甚至屏蔽对某些打印板的访问。
 
-KIAUH can be used to install Klipper and its associated programs on a variety of Linux based systems that run a form of Debian. More information can be found at https://github.com/dw-0/kiauh
+KIAUH 可用于在运行 Debian 的各种 Linux 系统上安装 Klipper 及其相关程序。更多信息请访问 https://github.com/dw-0/kiauh
 
 ## 构建和刷写微控制器
 
-To compile the micro-controller code, start by running these commands on your host device:
+要编译微控制器代码，首先在主机设备上运行以下命令：
 
 ```
 cd ~/klipper/
@@ -67,11 +67,11 @@ ls /dev/serial/by-id/*
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-It's common for each printer to have its own unique serial port name. This unique name will be used when flashing the micro-controller. It's possible there may be multiple lines in the above output - if so, choose the line corresponding to the micro-controller. If many items are listed and the choice is ambiguous, unplug the board and run the command again, the missing item will be your print board(see the [FAQ](FAQ.md#wheres-my-serial-port) for more information).
+通常，每台打印机都有自己独特的串行端口名称。此唯一名称将在刷新微控制器时使用。上面的输出中可能有多行 - 如果是这样，请选择与微控制器相对应的行。如果列出了许多项目并且选择不明确，请拔下电路板并再次运行命令，缺少的项目将是您的打印板（有关更多信息，请参阅 [FAQ](FAQ.md#wheres-my-serial-port)）。
 
-For common micro-controllers with STM32 or clone chips, LPC chips and others it is usual that these need an initial Klipper flash via SD card.
+对于带有 STM32 或克隆芯片、LPC 芯片和其他芯片的常见微控制器，通常需要通过 SD 卡进行初始 Klipper 闪存。
 
-When flashing with this method, it is important to make sure that the print board is not connected with USB to the host, due to some boards being able to feed power back to the board and stopping a flash from occuring.
+使用此方法进行闪烁时，务必确保打印板未通过 USB 连接到主机，因为某些电路板能够将电源反馈给电路板并阻止发生闪烁。
 
 For common micro-controllers using Atmega chips, for example the 2560, the code can be flashed with something similar to:
 

@@ -13,7 +13,7 @@
 ## Установка и настройка
 
 - [Установка](Installation.md): Гайд по установке Klipper.
-   - [Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper.
+   - [Octoprint](OctoPrint.md): Руководство по установке Octoprint вместе с Klipper.
 - [Справочник по конфигурации](Config_Reference.md): Описание параметров конфигурации.
    - [Дистанция поворота](Rotation_Distance.md): Расчет параметра дистанции попорота(Rotation_distance).
 - [Проверки конфигурации](Config_checks.md): Проверка основных настроек контактов в файле конфигурации.
@@ -22,30 +22,30 @@
    - [Probe calibrate](Probe_Calibrate.md): Калибровка автоматический Z-зондов.
    - [BL-Touch](BLTouch.md): Конфигурация Z-зондов "BL-Touch".
    - [Manual level](Manual_Level.md): Калибровка крайних точек Z ( и подобные).
-   - [Bed Mesh](Bed_Mesh.md): корректировки высоты стола относительно  координат по  XY.
+   - [Bed Mesh](Bed_Mesh.md): корректировки высоты стола относительно координат по XY.
    - [Endstop phase](Endstop_Phase.md): Позиционирование концевого упора Z с помощью шарового двигателя.
    - [Axis Twist Compensation](Axis_Twist_Compensation.md): Инструмент для компенсации неточных показаний датчика, вызванных перекосом на оси X.
 - [Resonance compensation](Resonance_Compensation.md): Инструмент для уменьшения звона при печати.
    - [Measuring resonances](Measuring_Resonances.md): информация по использованию adxl345 акселерометра для "железных" измерений резонанса.
 - [Pressure advance](Pressure_Advance.md): калибровка давления экструдера, основанная на действиях кинематики в конкретный момент.
-- [G-Codes](G-Codes.md): Информация о командах, поддерживаемых Klipper.
-- Command Templates](Command_Templates.md): G-Code макросы и условный прогресс.
-   - [Status Reference](Status_Reference.md): Информация, доступная макросам (и им подобным).
-- [TMC Drivers](TMC_Drivers.md): Использование драйверов шаговых двигателей Trinamic с Klipper.
+- [G-Codes](G-Codes.md): информация о командах поддерживаемых Klipper.
+- [Command Templates](Command_Templates.md): G-Code макросы и условный прогресс.
+   - [Status Reference](Status_Reference.md): информация доступная в макросах(и тому подобное).
+- [TMC Drivers](TMC_Drivers.md): Использование драйверов Trinamic для шаговых двигателей совместно с Klipper.
 - [Multi-MCU Homing](Multi_MCU_Homing.md): Наведение и зондирование с использованием нескольких микроконтроллеров.
 - [Slicers](Slicers.md): Конфигурация программного комплекса "slicer" для Klipper.
 - [Коррекция перекоса](Skew_Correction.md): Корректировка для осей, не являющихся идеально квадратными.
-- [PWM tools](Using_PWM_Tools.md): Руководство по использованию инструментов с ШИМ-управлением, таких как лазеры или шпиндели.
+- [PWM tools](Using_PWM_Tools.md): Руководство по использованию оборудования с ШИМ модуляцией, таких как шпиндели или лазеры.
 - [Exclude Object](Exclude_Object.md): Руководство по реализации исключаемых объектов.
 
 ## Документация для разработчиков
 
 - [Обзор кода](Code_Overview.md): Разработчики должны прочитать это в первую очередь.
 - [Кинематика](Kinematics.md): Технические подробности о том, как Klipper реализует движение.
-- [Protocol](Protocol.md): Информация о низкоуровневом протоколе обмена сообщениями между хостом и микроконтроллером.
-- [API Server](API_Server.md): Информация о командно-контрольном API Klipper.
-- [Команды MCU](MCU_Commands.md): Описание низкоуровневых команд, реализованных в программном обеспечении микроконтроллера.
-- [Протокол шины CAN](CANBUS_protocol.md): Формат сообщений шины CAN от Klipper.
+- [Protocol](Protocol.md): Информация о низкоуровневых сообщениях протокола обмена между хостом и микроконтроллером.
+- [API Server](API_Server.md): Информация о Klipper командах и контролирующем API.
+- [MCU commands](MCU_Commands.md): Описание низкоуровневых команд, реализованных в программном обеспечении микроконтроллера.
+- [CAN bus protocol](CANBUS_protocol.md): формат сообщений Klipper для CAN шины.
 - [Debugging](Debugging.md): Информация о том, как тестировать и отлаживать Klipper.
 - [Benchmarks](Benchmarks.md): Информация об эталонном методе Klipper.
 - [Contributing](CONTRIBUTING.md): Информация о том, как вносить улучшения в Klipper.

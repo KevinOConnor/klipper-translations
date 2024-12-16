@@ -1,6 +1,6 @@
 # Benchmarks
 
-This document describes Klipper benchmarks.
+このドキュメントではKlipperのベンチマークについて説明します。
 
 ## Micro-controller Benchmarks
 
@@ -71,7 +71,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `avr-gcc (GCC) 5.4.0`. Both the 16Mhz and 20Mhz tests were run using simulavr configured for an atmega644p (previous tests have confirmed simulavr results match tests on both a 16Mhz at90usb and a 16Mhz atmega2560).
 
-| avr | ticks |
+| avr | ティック |
 | --- | --- |
 | 1 stepper | 102 |
 | 3 stepper | 486 |
@@ -90,7 +90,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`.
 
-| sam3x8e | ticks |
+| sam3x8e | ティック |
 | --- | --- |
 | 1 stepper | 66 |
 | 3 stepper | 257 |
@@ -109,7 +109,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`.
 
-| sam4s8c | ticks |
+| sam4s8c | ティック |
 | --- | --- |
 | 1 stepper | 71 |
 | 3 stepper | 260 |
@@ -128,7 +128,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `gcc version 10.3.1 20210621 (release) (GNU Arm Embedded Toolchain 10.3-2021.07)`.
 
-| sam4e8e | ticks |
+| sam4e8e | ティック |
 | --- | --- |
 | 1 stepper | 48 |
 | 3 stepper | 215 |
@@ -147,7 +147,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `pru-gcc (GCC) 8.0.0 20170530 (experimental)`.
 
-| pru | ticks |
+| pru | ティック |
 | --- | --- |
 | 1 stepper | 231 |
 | 3 stepper | 847 |
@@ -166,7 +166,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`.
 
-| stm32f042 | ticks |
+| stm32f042 | ティック |
 | --- | --- |
 | 1 stepper | 59 |
 | 3 stepper | 249 |
@@ -185,7 +185,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`.
 
-| stm32f103 | ticks |
+| stm32f103 | ティック |
 | --- | --- |
 | 1 stepper | 61 |
 | 3 stepper | 264 |
@@ -204,12 +204,12 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The STM32F407 results were obtained by running an STM32F407 binary on an STM32F446 (and thus using a 168Mhz clock).
 
-| stm32f446 | ticks |
+| stm32f446 | ティック |
 | --- | --- |
 | 1 stepper | 46 |
 | 3 stepper | 205 |
 
-| stm32f407 | ticks |
+| stm32f407 | ティック |
 | --- | --- |
 | 1 stepper | 46 |
 | 3 stepper | 205 |
@@ -228,7 +228,7 @@ finalize_config crc=0
 
 The test was last run on commit `00191b5c` with gcc version `arm-none-eabi-gcc (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) [gcc-8-branch revision 273027]`.
 
-| stm32h7 | ticks |
+| stm32h7 | ティック |
 | --- | --- |
 | 1 stepper | 44 |
 | 3 stepper | 198 |
@@ -247,7 +247,7 @@ finalize_config crc=0
 
 The test was last run on commit `247cd753` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`.
 
-| stm32g0b1 | ticks |
+| stm32g0b1 | ティック |
 | --- | --- |
 | 1 stepper | 58 |
 | 3 stepper | 243 |
@@ -266,12 +266,12 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The 120Mhz LPC1769 results were obtained by overclocking an LPC1768 to 120Mhz.
 
-| lpc1768 | ticks |
+| lpc1768 | ティック |
 | --- | --- |
 | 1 stepper | 52 |
 | 3 stepper | 222 |
 
-| lpc1769 | ticks |
+| lpc1769 | ティック |
 | --- | --- |
 | 1 stepper | 51 |
 | 3 stepper | 222 |
@@ -290,7 +290,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD21G18 micro-controller.
 
-| samd21 | ticks |
+| samd21 | ティック |
 | --- | --- |
 | 1 stepper | 70 |
 | 3 stepper | 306 |
@@ -309,7 +309,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD51J19A micro-controller.
 
-| samd51 | ticks |
+| samd51 | ティック |
 | --- | --- |
 | 1 stepper | 39 |
 | 3 stepper | 191 |
@@ -330,7 +330,7 @@ finalize_config crc=0
 
 The test was last run on commit `08d037c6` with gcc version `or1k-linux-musl-gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller.
 
-| AR100 R_PIO | ticks |
+| AR100 R_PIO | ティック |
 | --- | --- |
 | 1 stepper | 85 |
 | 3 stepper | 359 |
@@ -349,7 +349,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a Raspberry Pi Pico board.
 
-| rp2040 | ticks |
+| rp2040 | ティック |
 | --- | --- |
 | 1 stepper | 5 |
 | 3 stepper | 22 |
@@ -368,7 +368,7 @@ finalize_config crc=0
 
 The test was last run on commit `59314d99` with gcc version `gcc (Raspbian 8.3.0-6+rpi1) 8.3.0` on a Raspberry Pi 3 (revision a02082). It was difficult to get stable results in this benchmark.
 
-| Linux (RPi3) | ticks |
+| Linux (RPi3) | ティック |
 | --- | --- |
 | 1 stepper | 160 |
 | 3 stepper | 380 |
@@ -387,7 +387,7 @@ When the test completes, determine the difference between the clocks reported in
 
 Note that this test may saturate the USB/CPU capacity of a Raspberry Pi. If running on a Raspberry Pi, Beaglebone, or similar host computer then increase the delay (eg, `DELAY {clock + 20*freq} get_uptime`). Where applicable, the benchmarks below are with console.py running on a desktop class machine with the device connected via a high-speed hub.
 
-| マイクロコントローラ | Rate | Build | Build compiler |
+| マイクロコントローラ | Rate | ビルド | コンパイラ |
 | --- | --- | --- | --- |
 | stm32f042 (CAN) | 18K | c105adc8 | arm-none-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1 |
 | atmega2560 (serial) | 23K | b161a69e | avr-gcc (GCC) 4.8.1 |

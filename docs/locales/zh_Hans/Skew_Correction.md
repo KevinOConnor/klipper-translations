@@ -10,7 +10,7 @@
 
 ## 进行测量
 
-The `[skew_correction]` module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.
+`[skew_correction]` 模块要求对您想要校正的每个平面进行 3 次测量；从角 A 到角 C 的长度、从角 B 到角 D 的长度以及从角 A 到角 D 的长度。测量长度 AD 时不包括某些测试对象提供的角落上的平面。
 
 ![skew_lengths](img/skew_lengths.png)
 

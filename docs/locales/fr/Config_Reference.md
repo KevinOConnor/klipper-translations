@@ -3537,29 +3537,29 @@ Digipots AD5206 configurés statiquement et connectés via un bus SPI (on peut d
 
 ```
 [ad5206 my_digipot]
-enable_pin :
+enable_pin :
 #    La broche correspondant à la ligne de sélection de la puce AD5206. Cette broche
 #    sera réglée à un niveau bas au début des messages SPI et sera relevée à un niveau élevé
 #    après la fin du message. Ce paramètre doit être fourni.
-#spi_speed :
-#spi_bus :
-#spi_software_sclk_pin :
-#spi_software_mosi_pin :
-#spi_software_miso_pin :
+#spi_speed :
+#spi_bus :
+#spi_software_sclk_pin :
+#spi_software_mosi_pin :
+#spi_software_miso_pin :
 #    Voir la section "paramètres communs SPI" pour une description des paramètres ci-dessus.
 #
-#channel_1 :
-#channel_2 :
-#channel_3 :
-#channel_4 :
-#channel_5 :
-#channel_6 :
+#channel_1 :
+#channel_2 :
+#channel_3 :
+#channel_4 :
+#channel_5 :
+#channel_6 :
 #     La valeur pour définir statiquement le canal AD5206 donné. Cette valeur est
 #     généralement définie sur un nombre compris entre 0,0 et 1,0. 1,0 étant la résistance
 #     la plus élevée et 0,0 la résistance la plus faible. Cependant,  la plage peut être
 #     modifiée à l'aide du paramètre 'scale' (voir ci-dessous).
 #     Si un canal n'est pas spécifié, il n'est pas configuré.
-# scale :
+# scale :
 #    Ce paramètre peut être utilisé pour modifier l'interprétation des paramètres 'channel_x'.
 #    S'il est fourni, alors les paramètres 'channel_x' doivent être compris entre 0.0 et 'scale'.
 #    Cela peut être utile lorsque le AD5206 est utilisé pour définir des références de tension

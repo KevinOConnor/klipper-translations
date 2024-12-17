@@ -2961,8 +2961,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#abort" class="md-nav__link">
-    ABORT
+  <a href="#anuluj" class="md-nav__link">
+    ANULUJ
   </a>
   
 </li>
@@ -3057,11 +3057,11 @@
 <h3 id="kat">kąt<a class="headerlink" href="#kat" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when an <a href="Config_Reference.html#angle">angle config section</a> is enabled.</p>
 <h4 id="kalibracja-kata">Kalibracja kąta<a class="headerlink" href="#kalibracja-kata" title="Permanent link">&para;</a></h4>
-<p><code>ANGLE_CALIBRATE CHIP=&lt;chip_name&gt;</code>: Perform angle calibration on the given sensor (there must be an <code>[angle chip_name]</code> config section that has specified a <code>stepper</code> parameter). IMPORTANT - this tool will command the stepper motor to move without checking the normal kinematic boundary limits. Ideally the motor should be disconnected from any printer carriage before performing calibration. If the stepper can not be disconnected from the printer, make sure the carriage is near the center of its rail before starting calibration. (The stepper motor may move forwards or backwards two full rotations during this test.) After completing this test use the <code>SAVE_CONFIG</code> command to save the calibration data to the config file. In order to use this tool the Python "numpy" package must be installed (see the <a href="Measuring_Resonances.html#software-installation">measuring resonance document</a> for more information).</p>
+<p><code>ANGLE_CALIBRATE CHIP=&lt;chip_name&gt;</code>: Wykonaj kalibrację kąta na podanym czujniku (musi istnieć sekcja konfiguracji <code>[angle chip_name]</code>, która określa parametr <code>stepper</code>). WAŻNE - to narzędzie wyda polecenie silnikowi krokowemu, aby się przesunął, bez sprawdzania normalnych granic granicznych kinematyki. W idealnym przypadku silnik powinien być odłączony od karetki drukarki przed wykonaniem kalibracji. Jeśli silnika krokowego nie można odłączyć od drukarki, upewnij się, że karetka znajduje się blisko środka swojej szyny przed rozpoczęciem kalibracji. (Silnik krokowy może przesunąć się do przodu lub do tyłu o dwa pełne obroty podczas tego testu.) Po zakończeniu tego testu użyj polecenia <code>SAVE_CONFIG</code>, aby zapisać dane kalibracji w pliku konfiguracyjnym. Aby użyć tego narzędzia, musi być zainstalowany pakiet Pythona „numpy” (więcej informacji można znaleźć w <a href="Measuring_Resonances.html#software-installation">dokumencie pomiaru rezonansu</a>).</p>
 <h4 id="angle_debug_read">ANGLE_DEBUG_READ<a class="headerlink" href="#angle_debug_read" title="Permanent link">&para;</a></h4>
-<p><code>ANGLE_DEBUG_READ CHIP=&lt;config_name&gt; REG=&lt;register&gt;</code>: Queries sensor register "register" (e.g. 44 or 0x2C). Can be useful for debugging purposes. This is only available for tle5012b chips.</p>
+<p><code>ANGLE_DEBUG_READ CHIP=&lt;config_name&gt; REG=&lt;register&gt;</code>: Zapytania do rejestru czujnika „register” (np. 44 lub 0x2C). Może być przydatne do celów debugowania. Jest to dostępne tylko dla układów tle5012b.</p>
 <h4 id="angle_debug_write">ANGLE_DEBUG_WRITE<a class="headerlink" href="#angle_debug_write" title="Permanent link">&para;</a></h4>
-<p><code>ANGLE_DEBUG_WRITE CHIP=&lt;config_name&gt; REG=&lt;register&gt; VAL=&lt;value&gt;</code>: Writes raw "value" into register "register". Both "value" and "register" can be a decimal or a hexadecimal integer. Use with care, and refer to sensor data sheet for the reference. This is only available for tle5012b chips.</p>
+<p><code>ANGLE_DEBUG_WRITE CHIP=&lt;config_name&gt; REG=&lt;register&gt; VAL=&lt;value&gt;</code>: Zapisuje surową „value” do rejestru „register”. Zarówno „value”, jak i „register” mogą być liczbami całkowitymi dziesiętnymi lub szesnastkowymi. Używaj ostrożnie i zapoznaj się z kartą danych czujnika, aby uzyskać odniesienie. Jest to dostępne tylko dla układów tle5012b.</p>
 <h3 id="axis_twist_compensation">[axis_twist_compensation]<a class="headerlink" href="#axis_twist_compensation" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the <a href="Config_Reference.html#axis_twist_compensation">axis_twist_compensation config
 section</a> is enabled.</p>
@@ -3159,7 +3159,7 @@ section</a> is enabled.</p>
 <h3 id="extruder">[extruder]<a class="headerlink" href="#extruder" title="Permanent link">&para;</a></h3>
 <p>The following commands are available if an <a href="Config_Reference.html#extruder">extruder config section</a> is enabled:</p>
 <h4 id="activate_extruder">ACTIVATE_EXTRUDER<a class="headerlink" href="#activate_extruder" title="Permanent link">&para;</a></h4>
-<p><code>ACTIVATE_EXTRUDER EXTRUDER=&lt;config_name&gt;</code>: In a printer with multiple <a href="Config_Reference.html#extruder">extruder</a> config sections, this command changes the active hotend.</p>
+<p><code>ACTIVATE _ EXTRUDER EXTRUDER =&lt;config_name&gt;</code>: W drukarce z wieloma sekcjami konfiguracyjnymi [extruder] (Config _ Reference.md # extruder) to polecenie zmienia aktywny hotend.</p>
 <h4 id="set_pressure_advance">SET_PRESSURE_ADVANCE<a class="headerlink" href="#set_pressure_advance" title="Permanent link">&para;</a></h4>
 <p><code>SET_PRESSURE_ADVANCE [EXTRUDER=&lt;config_name&gt;] [ADVANCE=&lt;pressure_advance&gt;] [SMOOTH_TIME=&lt;pressure_advance_smooth_time&gt;]</code>: Set pressure advance parameters of an extruder stepper (as defined in an <a href="Config_Reference.html#extruder">extruder</a> or <a href="Config_Reference.html#extruder_stepper">extruder_stepper</a> config section). If EXTRUDER is not specified, it defaults to the stepper defined in the active hotend.</p>
 <h4 id="set_extruder_rotation_distance">SET_EXTRUDER_ROTATION_DISTANCE<a class="headerlink" href="#set_extruder_rotation_distance" title="Permanent link">&para;</a></h4>
@@ -3208,7 +3208,7 @@ section</a> is enabled.</p>
 <h3 id="gcode_arcs">[gcode_arcs]<a class="headerlink" href="#gcode_arcs" title="Permanent link">&para;</a></h3>
 <p>Następujące standardowe polecenia G-Code są dostępne, jeśli włączona jest sekcja konfiguracyjna <a href="Config_Reference.html#gcode_arcs">gcode_arcs</a>:</p>
 <ul>
-<li>Arc Move Clockwise (G2), Arc Move Counter-clockwise (G3): <code>G2|G3 [X&lt;pos&gt;] [Y&lt;pos&gt;] [Z&lt;pos&gt;] [E&lt;pos&gt;] [F&lt;speed&gt;] I&lt;value&gt; J&lt;value&gt;|I&lt;value&gt; K&lt;value&gt;|J&lt;value&gt; K&lt;value&gt;</code></li>
+<li>Ruch łuku zgodnie z ruchem wskazówek zegara (G2), ruch łuku przeciwnie do ruchu wskazówek zegara (G3): <code>G2|G3 [X&lt;pos&gt;] [Y&lt;pos&gt;] [Z&lt;pos&gt;] [E&lt;pos&gt;] [F&lt;speed&gt;] I&lt;value&gt; J&lt;value&gt;|I&lt;value&gt; K&lt;value&gt;|J&lt;value&gt; K&lt;value&gt;</code></li>
 <li>Arc Plane Select: G17 (XY plane), G18 (XZ plane), G19 (YZ plane)</li>
 </ul>
 <h3 id="gcode_macro">[gcode_macro]<a class="headerlink" href="#gcode_macro" title="Permanent link">&para;</a></h3>
@@ -3263,7 +3263,7 @@ section</a> is enabled.</p>
 <h4 id="manual_probe_1">MANUAL_PROBE<a class="headerlink" href="#manual_probe_1" title="Permanent link">&para;</a></h4>
 <p><code>MANUAL_PROBE [SPEED=&lt;speed&gt;]</code>: Run a helper script useful for measuring the height of the nozzle at a given location. If SPEED is specified, it sets the speed of TESTZ commands (the default is 5mm/s). During a manual probe, the following additional commands are available:</p>
 <ul>
-<li><code>ACCEPT</code>: This command accepts the current Z position and concludes the manual probing tool.</li>
+<li><code>ACCEPT</code>: Ta komenda akceptuje bieżącą pozycję Z i zakańcza działanie narzędzia do ręcznego sondowania.</li>
 <li><code>ABORT</code>: Ta komenda terminuje protokół sondowania ręcznego.</li>
 <li><code>TESTZ Z=&lt;value&gt;</code>: This command moves the nozzle up or down by the amount specified in "value". For example, <code>TESTZ Z=-.1</code> would move the nozzle down .1mm while <code>TESTZ Z=.1</code> would move the nozzle up .1mm. The value may also be <code>+</code>, <code>-</code>, <code>++</code>, or <code>--</code> to move the nozzle up or down an amount relative to previous attempts.</li>
 </ul>
@@ -3479,8 +3479,8 @@ section</a> is enabled.</p>
 <p><code>TEMPERATURE_PROBE_NEXT</code>: After calibration has started this command is run to take the next sample. It is automatically scheduled to run when the delta specified by <code>STEP</code> has been reached, however its also possible to manually run this command to force a new sample. This command is only available during calibration.</p>
 <h4 id="temperature_probe_complete">TEMPERATURE_PROBE_COMPLETE:<a class="headerlink" href="#temperature_probe_complete" title="Permanent link">&para;</a></h4>
 <p><code>TEMPERATURE_PROBE_COMPLETE</code>: Can be used to end calibration and save the current result before the <code>TARGET</code> temperature is reached. This command is only available during calibration.</p>
-<h4 id="abort">ABORT<a class="headerlink" href="#abort" title="Permanent link">&para;</a></h4>
-<p><code>ABORT</code>: Aborts the calibration process, discarding the current results. This command is only available during drift calibration.</p>
+<h4 id="anuluj">ANULUJ<a class="headerlink" href="#anuluj" title="Permanent link">&para;</a></h4>
+<p><code>ABORT</code>: Anuluje proces kalibracji, odrzucając bieżące wyniki. Ta komenda jest dostępna tylko podczas kalibracji driftu.</p>
 <h3 id="temperature_probe_enable">TEMPERATURE_PROBE_ENABLE<a class="headerlink" href="#temperature_probe_enable" title="Permanent link">&para;</a></h3>
 <p><code>TEMPERATURE_PROBE_ENABLE ENABLE=[0|1]</code>: Sets temperature drift compensation on or off. If ENABLE is set to 0, drift compensation will be disabled, if set to 1 it is enabled.</p>
 

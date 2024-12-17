@@ -1342,8 +1342,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wheres-my-serial-port" class="md-nav__link">
-    Where's my serial port?
+  <a href="#seri-portum-nerede" class="md-nav__link">
+    Seri port'um nerede?
   </a>
   
 </li>
@@ -1516,9 +1516,9 @@
 <h2 id="projeye-nasl-bags-yapabilirim">Projeye nasıl bağış yapabilirim?<a class="headerlink" href="#projeye-nasl-bags-yapabilirim" title="Permanent link">&para;</a></h2>
 <p>Thank you for your support. See the <a href="Sponsors.html">Sponsors page</a> for information.</p>
 <h2 id="rotasyon_distance-yaplandrma-parametresini-nasl-hesaplarm">rotasyon_distance yapılandırma parametresini nasıl hesaplarım?<a class="headerlink" href="#rotasyon_distance-yaplandrma-parametresini-nasl-hesaplarm" title="Permanent link">&para;</a></h2>
-<p>See the <a href="Rotation_Distance.html">rotation distance document</a>.</p>
-<h2 id="wheres-my-serial-port">Where's my serial port?<a class="headerlink" href="#wheres-my-serial-port" title="Permanent link">&para;</a></h2>
-<p>The general way to find a USB serial port is to run <code>ls /dev/serial/by-id/*</code> from an ssh terminal on the host machine. It will likely produce output similar to the following:</p>
+<p><a href="Rotation_Distance.html">rotation distance document</a> göz atın.</p>
+<h2 id="seri-portum-nerede">Seri port'um nerede?<a class="headerlink" href="#seri-portum-nerede" title="Permanent link">&para;</a></h2>
+<p>Seri portu bulmanın yaygın yolu host makinesinein ssh terminalinden <code>ls /dev/serial/by-id/*</code> komutunu çalıştırmaktır. Aşağıdaki gibi bir çıktı vermesi beklenir:</p>
 <div class="highlight"><pre><span></span><code>/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 </code></pre></div>
 
@@ -1528,7 +1528,7 @@ make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 sudo service klipper start
 </code></pre></div>
 
-<p>and the updated config might look like:</p>
+<p>ve güncellenmiş config şu şekilde olmalıdır:</p>
 <div class="highlight"><pre><span></span><code>[mcu]
 serial: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 </code></pre></div>

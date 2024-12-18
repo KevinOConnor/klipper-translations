@@ -1,15 +1,18 @@
 # Oleg Romanov <gensoloone@outlook.com>, 2023.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-12-22 23:07+0000\n"
-"Last-Translator: Oleg Romanov <gensoloone@outlook.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/canbus_troubleshooting/ru/>\n"
+"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"canbus_troubleshooting/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 1 (header)
 msgid "CANBUS Troubleshooting"
@@ -25,13 +28,15 @@ msgstr ""
 
 #: docs/CANBUS_Troubleshooting.md:block 3 (header)
 msgid "Verify CAN bus wiring"
-msgstr ""
+msgstr "Проверьте правильность подключения проводников шины CAN"
 
 #: docs/CANBUS_Troubleshooting.md:block 4 (paragraph)
 msgid ""
 "The first step in troubleshooting communication issues is to verify the CAN "
 "bus wiring."
 msgstr ""
+"Первым шагом в устранении проблем со связью является проверка проводки шины "
+"CAN."
 
 #: docs/CANBUS_Troubleshooting.md:block 5 (paragraph)
 msgid ""
@@ -40,6 +45,10 @@ msgid ""
 " are not properly installed then messages may not be able to be sent at all "
 "or the connection may have sporadic instability."
 msgstr ""
+"Убедитесь, что на шине CAN установлено ровно два по 120 Ом "
+"[согласующих резистора](CANBUS.md#terminating-resistors). Если резисторы "
+"установлены неправильно, то сообщения могут не отправляться вообще или "
+"соединение может быть нестабильным."
 
 #: docs/CANBUS_Troubleshooting.md:block 6 (paragraph)
 msgid ""
@@ -49,6 +58,11 @@ msgid ""
 "wires that travel parallel to the CANH and CANL wires do not have the same "
 "amount of twists."
 msgstr ""
+"Провода шин CANH и CANL должны быть скручены вокруг друг друга. Как минимум, "
+"проводка должна иметь скрутку через каждые несколько сантиметров. Избегайте "
+"скручивания проводов CANH и CANL вокруг силовых проводов и следите за тем, "
+"чтобы силовые провода, идущие параллельно проводам CANH и CANL, не имели "
+"одинакового количества скруток."
 
 #: docs/CANBUS_Troubleshooting.md:block 7 (paragraph)
 msgid ""
@@ -57,10 +71,14 @@ msgid ""
 "causing a bad wire crimp or unsecured plug to result in intermittent "
 "communication errors."
 msgstr ""
+"Убедитесь, что все штекеры и обжимки проводов на шине CAN полностью "
+"закреплены. Движение инструментальной головки принтера может привести к "
+"смещению проводки шины CAN, в результате чего плохой обжим провода или "
+"незакрепленный штекер могут привести к прерывистым ошибкам связи."
 
 #: docs/CANBUS_Troubleshooting.md:block 8 (header)
 msgid "Check for incrementing bytes_invalid counter"
-msgstr ""
+msgstr "Проверка на увеличение счетчика bytes_invalid"
 
 #: docs/CANBUS_Troubleshooting.md:block 9 (paragraph)
 msgid ""
@@ -73,6 +91,14 @@ msgid ""
 "printing (it increments every few hours or more frequently) then it is an "
 "indication of a severe problem."
 msgstr ""
+"Лог-файл Klipper будет сообщать о строке `Stats` раз в секунду, когда "
+"принтер активен. Эти строки \"Stats\" будут содержать счетчик `bytes_invalid`"
+" для каждого микроконтроллера. Этот счетчик не должен увеличиваться во время "
+"нормальной работы принтера (нормально, если счетчик будет ненулевым после "
+"перезагрузки, и не страшно, если счетчик будет увеличиваться раз в месяц или "
+"около того). Если этот счетчик увеличивается на микроконтроллере шины CAN во "
+"время нормальной печати (он увеличивается каждые несколько часов или чаще), "
+"это свидетельствует о серьезной проблеме."
 
 #: docs/CANBUS_Troubleshooting.md:block 10 (paragraph)
 msgid ""
@@ -80,6 +106,9 @@ msgid ""
 "reordered messages on the CAN bus. There are two known causes of reordered "
 "messages:"
 msgstr ""
+"Увеличение `bytes_invalid` при подключении к шине CAN является симптомом "
+"неупорядоченных сообщений на шине CAN. Известны две причины возникновения "
+"неупорядоченных сообщений:"
 
 #: docs/CANBUS_Troubleshooting.md:block 11 (ordered list)
 msgid ""
@@ -88,6 +117,11 @@ msgid ""
 "this firmware then make sure to update to the latest firmware if "
 "incrementing `bytes_invalid` is observed."
 msgstr ""
+"В старых версиях популярной прошивки candlight_firmware для USB CAN-"
+"адаптеров была обнаружена ошибка, которая могла привести к "
+"переупорядочиванию сообщений. Если вы используете USB CAN адаптер с этой "
+"прошивкой, то обязательно обновите ее до последней версии, если наблюдается "
+"увеличение `bytes_invalid`."
 
 #: docs/CANBUS_Troubleshooting.md:block 11 (ordered list)
 msgid ""
@@ -96,16 +130,23 @@ msgid ""
 "use alternative hardware that supports mainstream Linux kernels that do not "
 "exhibit this problem."
 msgstr ""
+"Известно, что некоторые сборки ядра Linux для встраиваемых устройств "
+"перестраивают сообщения шины CAN. Может потребоваться использование "
+"альтернативного ядра Linux или использование альтернативного оборудования, "
+"поддерживающего основные ядра Linux, в которых эта проблема не наблюдается."
 
 #: docs/CANBUS_Troubleshooting.md:block 12 (paragraph)
 msgid ""
 "Reordered messages is a severe problem that must be fixed. It will result in"
 " unstable behavior and can lead to confusing errors at any part of a print."
 msgstr ""
+"Переупорядоченные сообщения - серьезная проблема, которую необходимо "
+"устранить. Она приводит к нестабильному поведению и может стать причиной "
+"ошибок на любом этапе печати."
 
 #: docs/CANBUS_Troubleshooting.md:block 13 (header)
 msgid "Obtaining candump logs"
-msgstr ""
+msgstr "Получение журналов candump"
 
 #: docs/CANBUS_Troubleshooting.md:block 14 (paragraph)
 msgid ""
@@ -114,6 +155,9 @@ msgid ""
 "for debugging purposes. A log of these messages may be of use in "
 "diagnostics."
 msgstr ""
+"Сообщения шины CAN, отправляемые в микроконтроллер и из него, обрабатываются "
+"ядром Linux. Можно перехватить эти сообщения из ядра для отладки. Журнал "
+"этих сообщений может быть полезен при диагностике."
 
 #: docs/CANBUS_Troubleshooting.md:block 15 (paragraph)
 msgid ""

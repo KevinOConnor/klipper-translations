@@ -7,11 +7,12 @@
 # Michail Fedorov <fedorovmichail50@gmail.com>, 2024.
 # V R <hardorzz@gmail.com>, 2024.
 # Тихон Титовец <titovetstixon@gmail.com>, 2024.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-04 14:37+0000\n"
-"Last-Translator: Тихон Титовец <titovetstixon@gmail.com>\n"
+"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "config_reference/ru/>\n"
 "Language: ru\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
@@ -76,15 +77,20 @@ msgid ""
 "occurs, the config section defining the pins must be listed in the config "
 "file before any sections using those pins."
 msgstr ""
+"Обратите внимание, что некоторые секции конфигурации могут \"создавать\" "
+"дополнительные пины. Если это происходит, секция конфигурации, определяющая "
+"контакты, должна быть указана в файле конфигурации перед секциями, "
+"использующими эти контакты."
 
 msgid "[mcu]"
 msgstr "[mcu]"
 
 msgid "Configuration of the primary micro-controller."
-msgstr ""
+msgstr "Конфигурация основного микроконтроллера."
 
+#, fuzzy
 msgid "[mcu my_extra_mcu]"
-msgstr ""
+msgstr "[mcu my_extra_mcu]"
 
 msgid ""
 "Additional micro-controllers (one may define any number of sections with an "
@@ -94,15 +100,22 @@ msgid ""
 "\"extra_mcu:ar9\" may then be used elsewhere in the config (where \"ar9\" is"
 " a hardware pin name or alias name on the given mcu)."
 msgstr ""
+"Дополнительные микроконтроллеры (можно определить любое количество секций с "
+"префиксом \"mcu\"). Дополнительные микроконтроллеры вводят дополнительные "
+"контакты, которые могут быть сконфигурированы как нагреватели, шаговики, "
+"вентиляторы и т. д.. Например, если введена секция \"[mcu extra_mcu]\", то "
+"такие пины, как \"extra_mcu:ar9\", могут быть использованы в других местах "
+"конфигурации (где \"ar9\" - это имя аппаратного пина или псевдоним данного "
+"mcu)."
 
 msgid "Common kinematic settings"
-msgstr ""
+msgstr "Общие кинематические настройки"
 
 msgid "[printer]"
 msgstr "[принтер]"
 
 msgid "The printer section controls high level printer settings."
-msgstr ""
+msgstr "Раздел принтера управляет высокоуровневыми настройками принтера."
 
 msgid "[stepper]"
 msgstr "[шаговый]"

@@ -1,17 +1,20 @@
 # Comocen <Comoc_en@mail.ru>, 2022.
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # Evgeniy Khramov <thejenjagamertjg@gmail.com>, 2022.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-12-07 05:47+0000\n"
-"Last-Translator: Evgeniy Khramov <thejenjagamertjg@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/benchmarks/ru/>\n"
+"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"benchmarks/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 msgid "This document describes Klipper benchmarks."
 msgstr "В этом документе описываются эталонные тесты Klipper."
@@ -51,17 +54,16 @@ msgstr ""
 "микроконтроллером и хостом, считывание температуры, проверка конечной "
 "остановки) при любом реальном использовании."
 
-#, fuzzy
 msgid ""
 "In general, the pins for the benchmark tests are chosen to flash LEDs or "
 "other innocuous pins. **Always verify that it is safe to drive the "
 "configured pins prior to running a benchmark.** It is not recommended to "
 "drive an actual stepper during a benchmark."
 msgstr ""
-"Как правило, контакты для эталонных тестов выбираются для мигания "
-"светодиодов или других безвредных контактов. **Всегда проверяйте, безопасно "
-"ли управлять сконфигурированными выводами перед запуском теста.** Не "
-"рекомендуется управлять настоящим шаговым двигателем во время теста."
+"Обычно для эталонных тестов выбирают пины, на которых будут мигать "
+"светодиоды или другие безобидные пины. **Всегда проверяйте безопасность "
+"управления сконфигурированными контактами перед запуском эталонного теста.** "
+"Не рекомендуется управлять реальным степпером во время эталонного теста."
 
 msgid "Step rate benchmark test"
 msgstr "Эталонный тест скорости шага"
@@ -102,7 +104,7 @@ msgid "avr"
 msgstr "avr"
 
 msgid "ticks"
-msgstr ""
+msgstr "клещи"
 
 msgid "1 stepper"
 msgstr "1 шаговый двигатель"

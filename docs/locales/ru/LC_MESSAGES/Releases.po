@@ -1,17 +1,20 @@
 # Comocen <Comoc_en@mail.ru>, 2022.
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # Evgeniy Khramov <thejenjagamertjg@gmail.com>, 2022.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-11-30 10:48+0000\n"
-"Last-Translator: Evgeniy Khramov <thejenjagamertjg@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/releases/ru/>\n"
+"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/releases/"
+"ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 msgid ""
 "History of Klipper releases. Please see [installation](Installation.md) for "
@@ -70,18 +73,24 @@ msgid ""
 " and micro-controllers can now report their unique serial numbers during USB"
 " identification."
 msgstr ""
+"Улучшена идентификация USB. Klipper теперь имеет свой собственный "
+"идентификационный код USB, а микроконтроллеры теперь могут сообщать свои "
+"уникальные серийные номера при идентификации USB."
 
 msgid "New kinematic support for \"Rotary Delta\" and \"CoreXZ\" printers."
-msgstr ""
+msgstr "Новая кинематическая поддержка принтеров \"Rotary Delta\" и \"CoreXZ\"."
 
 msgid ""
 "Micro-controller improvements: support for stm32f070, support for stm32f207,"
 " support for GPIO pins on \"Linux MCU\", stm32 \"HID bootloader\" support, "
 "Chitu bootloader support, MKS Robin bootloader support."
 msgstr ""
+"Улучшения микроконтроллеров: поддержка stm32f070, поддержка stm32f207, "
+"поддержка выводов GPIO на \"Linux MCU\", поддержка stm32 \"HID bootloader\", "
+"поддержка Chitu bootloader, поддержка MKS Robin bootloader."
 
 msgid "Improved handling of Python \"garbage collection\" events."
-msgstr ""
+msgstr "Улучшена обработка событий \"сборки мусора\" в Python."
 
 msgid ""
 "Many additional modules added: adc_scaled, adxl345, bme280, display_status, "
@@ -90,12 +99,18 @@ msgid ""
 "shaper_calibrate, query_adc, graph_accelerometer, graph_extruder, "
 "graph_motion, graph_shaper, graph_temp_sensor, whconsole"
 msgstr ""
+"Добавлено множество дополнительных модулей: adc_scaled, adxl345, bme280, "
+"display_status, extruder_stepper, fan_generic, hall_filament_width_sensor, "
+"htu21d, homing_heaters, input_shaper, lm75, print_stats, resonance_tester, "
+"shaper_calibrate, query_adc, graph_accelerometer, graph_extruder, "
+"graph_motion, graph_shaper, graph_temp_sensor, whconsole"
 
 msgid "Several bug fixes and code cleanups."
-msgstr ""
+msgstr "Несколько исправлений ошибок и чистка кода."
 
+#, fuzzy
 msgid "Klipper 0.9.1"
-msgstr ""
+msgstr "Klipper 0.9.1"
 
 msgid "Available on 20201028. Release containing only bug fixes."
 msgstr ""

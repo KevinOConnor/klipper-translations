@@ -1,16 +1,19 @@
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # VICTOR <subfyn@gmail.com>, 2023.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-07-21 13:06+0000\n"
-"Last-Translator: VICTOR <subfyn@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/bootloaders/ru/>\n"
+"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"bootloaders/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 msgid ""
 "This document provides information on common bootloaders found on micro-"
@@ -92,31 +95,36 @@ msgstr ""
 "используемым для прошивки микросхем atmega (как для прошивки загрузчика, так"
 " и для прошивки приложений)."
 
+#, fuzzy
 msgid "Atmega2560"
-msgstr ""
+msgstr "Atmega2560"
 
 msgid ""
 "This chip is typically found in the \"Arduino Mega\" and is very common in "
 "3d printer boards."
 msgstr ""
+"Этот чип обычно встречается в \"Arduino Mega\" и очень распространен в "
+"платах для 3d-принтеров."
 
 msgid "To flash the bootloader itself use something like:"
-msgstr ""
+msgstr "Чтобы прошить сам загрузчик, используйте что-то вроде:"
 
 msgid "To flash an application use something like:"
-msgstr ""
+msgstr "Чтобы прошить приложение, используйте что-то вроде:"
 
+#, fuzzy
 msgid "Atmega1280"
-msgstr ""
+msgstr "Atmega1280"
 
 msgid "This chip is typically found in earlier versions of the \"Arduino Mega\"."
-msgstr ""
+msgstr "Этот чип обычно встречается в ранних версиях \"Arduino Mega\"."
 
+#, fuzzy
 msgid "Atmega1284p"
-msgstr ""
+msgstr "Atmega1284p"
 
 msgid "This chip is commonly found in \"Melzi\" style 3d printer boards."
-msgstr ""
+msgstr "Этот чип часто встречается в платах для 3d-принтеров типа \"Melzi\"."
 
 msgid ""
 "Note that a number of \"Melzi\" style boards come preloaded with a "

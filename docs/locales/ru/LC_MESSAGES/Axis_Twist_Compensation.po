@@ -1,10 +1,11 @@
 # Oleg Romanov <gensoloone@outlook.com>, 2023.
 # Тихон Титовец <titovetstixon@gmail.com>, 2024.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-04 14:37+0000\n"
-"Last-Translator: Тихон Титовец <titovetstixon@gmail.com>\n"
+"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "axis_twist_compensation/ru/>\n"
 "Language: ru\n"
@@ -12,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #: docs/Axis_Twist_Compensation.md:block 1 (header)
 msgid "Axis Twist Compensation"
@@ -33,6 +34,14 @@ msgid ""
 "Adjust](G-Codes.md#z_tilt_adjust) etc returning inaccurate representations "
 "of the bed."
 msgstr ""
+"Некоторые принтеры могут иметь небольшой изгиб в X-образной направляющей, "
+"что может исказить результаты измерений датчиком, прикрепленным к X-каретке. "
+"Это характерно для принтеров таких конструкций, как Prusa MK3, Sovol SV06 и "
+"т. д., и более подробно описано в разделе [смещение местоположения датчика]"
+"(Probe_Calibrate.md#location-bias-check). Это может привести к тому, что "
+"такие операции датчика, как [Bed Mesh](Bed_Mesh.md), [Screws Tilt Adjust]"
+"(G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) и "
+"т. д., будут возвращать неточные изображения станины."
 
 #: docs/Axis_Twist_Compensation.md:block 4 (paragraph)
 msgid ""
@@ -41,44 +50,62 @@ msgid ""
 "recommended to first use mechanical means to fix it prior to applying "
 "software corrections."
 msgstr ""
+"Этот модуль использует ручные измерения пользователя для коррекции "
+"результатов измерений датчика. Обратите внимание, что если ваша ось "
+"значительно искривлена, настоятельно рекомендуется сначала использовать "
+"механические средства для ее исправления, прежде чем применять программные "
+"корректировки."
 
 #: docs/Axis_Twist_Compensation.md:block 5 (paragraph)
 msgid ""
 "**Warning**: This module is not compatible with dockable probes yet and will"
 " try to probe the bed without attaching the probe if you use it."
 msgstr ""
+"**Предупреждение**: Этот модуль пока не совместим со стыкуемыми зондами и "
+"при его использовании будет пытаться прощупать кровать, не прикрепляя зонд."
 
 #: docs/Axis_Twist_Compensation.md:block 6 (header)
 msgid "Overview of compensation usage"
-msgstr ""
+msgstr "Обзор использования компенсаций"
 
 #: docs/Axis_Twist_Compensation.md:block 7 (quote)
 msgid ""
 "**Tip:** Make sure the [probe X and Y offsets](Config_Reference.md#probe) "
 "are correctly set as they greatly influence calibration."
 msgstr ""
+"**Совет:** Убедитесь, что параметры [смещения зонда по X и Y]"
+"(Config_Reference.md#probe) установлены правильно, так как они сильно влияют "
+"на калибровку."
 
 #: docs/Axis_Twist_Compensation.md:block 8 (ordered list)
 msgid ""
 "After setting up the [axis_twist_compensation] module, perform "
 "`AXIS_TWIST_COMPENSATION_CALIBRATE`"
 msgstr ""
+"После настройки модуля [axis_twist_compensation] выполните команду "
+"`AXIS_TWIST_COMPENSATION_CALIBRATE`"
 
 #: docs/Axis_Twist_Compensation.md:block 9 (unordered list)
 msgid ""
 "The calibration wizard will prompt you to measure the probe Z offset at a "
 "few points along the bed"
 msgstr ""
+"Мастер калибровки предложит вам измерить смещение зонда по оси Z в "
+"нескольких точках вдоль станины"
 
 #: docs/Axis_Twist_Compensation.md:block 9 (unordered list)
 msgid ""
 "The calibration defaults to 3 points but you can use the option "
 "`SAMPLE_COUNT=` to use a different number."
 msgstr ""
+"По умолчанию калибровка выполняется по 3 точкам, но вы можете использовать "
+"опцию `SAMPLE_COUNT=`, чтобы использовать другое число."
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid "[Adjust your Z offset](Probe_Calibrate.md#calibrating-probe-z-offset)"
 msgstr ""
+"[Отрегулируйте смещение по оси Z](Probe_Calibrate.md#calibrating-"
+"probe-z-offset)"
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid ""
@@ -86,22 +113,30 @@ msgid ""
 "Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt "
 "Adjust](G-Codes.md#z_tilt_adjust) etc"
 msgstr ""
+"Выполняйте автоматические/зондовые операции трамбовки кровати, такие как "
+"[[Регулировка наклона винтов](G-Codes.md#screws_tilt_adjust), "
+"[Регулировка наклона по Z](G-Codes.md#z_tilt_adjust) и т.д"
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid "Home all axis, then perform a [Bed Mesh](Bed_Mesh.md) if required"
 msgstr ""
+"Установите все оси, затем выполните [Bed Mesh](Bed_Mesh.md), если требуется"
 
 #: docs/Axis_Twist_Compensation.md:block 10 (ordered list)
 msgid ""
 "Perform a test print, followed by any [fine-"
 "tuning](Axis_Twist_Compensation.md#fine-tuning) as desired"
 msgstr ""
+"Выполните пробную печать, а затем выполните любую [тонкую настройку]"
+"(Axis_Twist_Compensation.md#fine-tuning) по желанию"
 
 #: docs/Axis_Twist_Compensation.md:block 11 (quote)
 msgid ""
 "**Tip:** Bed temperature and nozzle temperature and size do not seem to have"
 " an influence to the calibration process."
 msgstr ""
+"**Совет: ** Температура слоя, температура и размер сопла не оказывают "
+"влияния на процесс калибровки."
 
 #: docs/Axis_Twist_Compensation.md:block 12 (header)
 msgid "[axis_twist_compensation] setup and commands"

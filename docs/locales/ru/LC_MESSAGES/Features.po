@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/features/"
 "ru/>\n"
@@ -261,6 +261,9 @@ msgid ""
 "Standard G-Code support. Common g-code commands that are produced by typical"
 " \"slicers\" (SuperSlicer, Cura, PrusaSlicer, etc.) are supported."
 msgstr ""
+"Поддержка стандартного G-кода. Поддерживаются общие команды g-кода, которые "
+"производятся типичными \"слайсерами\" (SuperSlicer, Cura, PrusaSlicer и т. "
+"д.)."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
@@ -271,6 +274,12 @@ msgid ""
 "micro-controller temperature sensor and the internal temperature sensor of a"
 " Raspberry Pi."
 msgstr ""
+"Поддержка распространенных датчиков температуры (например, обычных "
+"термисторов, AD595, AD597, AD849x, PT100, PT1000, MAX6675, MAX31855, "
+"MAX31856, MAX31865, BME280, HTU21D, DS18B20 и LM75). Также можно настроить "
+"пользовательские термисторы и аналоговые датчики температуры. Можно "
+"контролировать внутренний датчик температуры микроконтроллера и внутренний "
+"датчик температуры Raspberry Pi."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
@@ -278,16 +287,22 @@ msgid ""
 "need to keep fans running when the printer is idle. Fan speed can be "
 "monitored on fans that have a tachometer."
 msgstr ""
+"Поддержка стандартных вентиляторов, вентиляторов сопел и вентиляторов с "
+"контролем температуры. Нет необходимости держать вентиляторы включенными, "
+"когда принтер простаивает. Скорость вращения вентиляторов можно отслеживать "
+"на вентиляторах, оснащенных тахометром."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
 "Support for filament presence sensors, filament motion sensors, and filament"
 " width sensors."
 msgstr ""
+"Поддержка датчиков наличия нити, датчиков движения нити и датчиков ширины "
+"нити."
 
 #: docs/Features.md:block 10 (table)
 msgid "1 stepper active"
-msgstr ""
+msgstr "1 шаговый активный"
 
 #: docs/Features.md:block 10 (table)
 msgid "157K"

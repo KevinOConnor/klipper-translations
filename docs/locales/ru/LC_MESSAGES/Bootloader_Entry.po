@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "bootloader_entry/ru/>\n"
@@ -118,11 +118,11 @@ msgstr ""
 
 #: docs/Bootloader_Entry.md:block 17 (paragraph)
 msgid "`<SPACE>` is an ASCII literal space, 0x20."
-msgstr ""
+msgstr "`<SPACE>` - это буквенный пробел ASCII, 0x20."
 
 #: docs/Bootloader_Entry.md:block 18 (paragraph)
 msgid "`<FS>` is the ASCII File Separator, 0x1c."
-msgstr ""
+msgstr "`<FS>` - это разделитель файлов ASCII, 0x1c."
 
 #: docs/Bootloader_Entry.md:block 19 (paragraph)
 msgid ""
@@ -130,6 +130,9 @@ msgid ""
 "Protocol](Protocol.md#micro-controller-interface), but sync characters(`~`) "
 "are still respected."
 msgstr ""
+"Обратите внимание, что это не является корректным сообщением согласно "
+"[MCU протокола](Protocol.md#micro-controller-interface), но символы "
+"синхронизации (`~`) по-прежнему соблюдаются."
 
 #: docs/Bootloader_Entry.md:block 20 (paragraph)
 msgid ""
@@ -137,30 +140,42 @@ msgid ""
 "in, prefixing an extra sync character can increase reliability if other "
 "tools were previously accessing the serial port."
 msgstr ""
+"Поскольку это сообщение должно быть единственным в \"блоке\", в котором оно "
+"получено, добавление дополнительного символа синхронизации может повысить "
+"надежность, если ранее к последовательному порту обращались другие "
+"инструменты."
 
 #: docs/Bootloader_Entry.md:block 21 (header)
+#, fuzzy
 msgid "Shell"
-msgstr ""
+msgstr "Shell"
 
 #: docs/Bootloader_Entry.md:block 22 (code)
 msgid ""
 "stty <BAUD> < /dev/<DEVICE>\n"
 "echo $'~ \\x1c Request Serial Bootloader!! ~' >> /dev/<DEVICE>\n"
 msgstr ""
+"stty <BAUD> < /dev/<DEVICE>\n"
+"echo $'~ \\x1c Запрос последовательного загрузчика!! ~' >> /dev/<DEVICE>\n"
 
 #: docs/Bootloader_Entry.md:block 23 (paragraph)
 msgid ""
 "Where `<DEVICE>` is your serial port, such as `/dev/ttyS0`, or "
 "`/dev/serial/by-id/gpio-serial2`, and"
 msgstr ""
+"Где `<DEVICE>` - это ваш последовательный порт, например `/dev/ttyS0`, или `/"
+"dev/serial/by-id/gpio-serial2`, и"
 
 #: docs/Bootloader_Entry.md:block 24 (paragraph)
 msgid "`<BAUD>` is the baud rate of the serial port, such as `115200`."
 msgstr ""
+"`<BAUD>` - это скорость передачи данных последовательного порта, например "
+"`115200`."
 
 #: docs/Bootloader_Entry.md:block 25 (header)
+#, fuzzy
 msgid "CANBUS"
-msgstr ""
+msgstr "CANBUS"
 
 #: docs/Bootloader_Entry.md:block 26 (paragraph)
 msgid ""
@@ -169,30 +184,40 @@ msgid ""
 "if the device already has a nodeid, and will also be processed if the mcu is"
 " shutdown."
 msgstr ""
+"Если используется CANBUS, специальное сообщение [сообщение администратора]"
+"(CANBUS_protocol.md#admin-messages) запросит загрузчик. Это сообщение будет "
+"принято, даже если устройство уже имеет nodeid, а также будет обработано, "
+"если mcu выключен."
 
 #: docs/Bootloader_Entry.md:block 27 (paragraph)
 msgid ""
 "This method also applies to devices operating in [CANBridge](CANBUS.md#usb-"
 "to-can-bus-bridge-mode) mode."
 msgstr ""
+"Этот метод также применим к устройствам, работающим в режиме [CANBridge]"
+"(CANBUS.md#usb-to-can-bus-bridge-mode)."
 
 #: docs/Bootloader_Entry.md:block 28 (header)
+#, fuzzy
 msgid "Katapult's flashtool.py"
-msgstr ""
+msgstr "Katapult's flashtool.py"
 
 #: docs/Bootloader_Entry.md:block 29 (code)
+#, fuzzy
 msgid "python3 ./katapult/scripts/flashtool.py -i <CAN_IFACE> -u <UUID> -r\n"
-msgstr ""
+msgstr "python3 ./katapult/scripts/flashtool.py -i <CAN_IFACE> -u <UUID> -r\n"
 
 #: docs/Bootloader_Entry.md:block 30 (paragraph)
 msgid ""
 "Where `<CAN_IFACE>` is the can interface to use. If using `can0`, both the "
 "`-i` and `<CAN_IFACE>` may be omitted."
 msgstr ""
+"Где `<CAN_IFACE>` - используемый интерфейс can. Если используется `can0`, то "
+"и `-i`, и `<CAN_IFACE>` могут быть опущены."
 
 #: docs/Bootloader_Entry.md:block 31 (paragraph)
 msgid "`<UUID>` is the UUID of your CAN device."
-msgstr ""
+msgstr "`<UUID>` - это UUID вашего CAN-устройства."
 
 #: docs/Bootloader_Entry.md:block 32 (paragraph)
 msgid ""

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "octoprint/ru/>\n"
@@ -126,30 +126,40 @@ msgid ""
 "Klipper host software. Using a web browser, login to the OctoPrint web page "
 "and then configure the following items:"
 msgstr ""
+"Веб-сервер OctoPrint должен быть настроен для связи с хост-программой "
+"Klipper. Используя веб-браузер, войдите на веб-страницу OctoPrint, а затем "
+"настройте следующие элементы:"
 
 #: docs/OctoPrint.md:block 17 (paragraph)
 msgid ""
 "Navigate to the Settings tab (the wrench icon at the top of the page). Under"
 " \"Serial Connection\" in \"Additional serial ports\" add:"
 msgstr ""
+"Перейдите на вкладку \"Настройки\" (значок гаечного ключа в верхней части "
+"страницы). В разделе \"Последовательное соединение\" в пункте "
+"\"Дополнительные последовательные порты\" добавьте:"
 
 #: docs/OctoPrint.md:block 18 (code)
+#, fuzzy
 msgid "~/printer_data/comms/klippy.sock\n"
-msgstr ""
+msgstr "~/printer_data/comms/klippy.sock\n"
 
 #: docs/OctoPrint.md:block 19 (paragraph)
 msgid "Then click \"Save\"."
-msgstr ""
+msgstr "Затем нажмите \"Сохранить\"."
 
 #: docs/OctoPrint.md:block 20 (paragraph)
 msgid "*In some older setups this address may be `/tmp/printer`*"
-msgstr ""
+msgstr "*В некоторых старых системах этот адрес может быть `/tmp/printer`*"
 
 #: docs/OctoPrint.md:block 21 (paragraph)
 msgid ""
 "Enter the Settings tab again and under \"Serial Connection\" change the "
 "\"Serial Port\" setting to the one added above."
 msgstr ""
+"Снова откройте вкладку \"Настройки\" и в разделе "
+"\"Последовательное соединение\" измените параметр \"Последовательный порт\" "
+"на тот, который был добавлен выше."
 
 #: docs/OctoPrint.md:block 22 (paragraph)
 msgid ""
@@ -157,6 +167,10 @@ msgid ""
 "\"Cancel any ongoing prints but stay connected to the printer\" option. "
 "Click \"Save\"."
 msgstr ""
+"На вкладке \"Настройки\" перейдите на подвкладку \"Поведение\" и выберите "
+"опцию "
+"\"Отменить все текущие отпечатки, но оставаться подключенным к принтеру\". "
+"Нажмите \"Сохранить\"."
 
 #: docs/OctoPrint.md:block 23 (paragraph)
 msgid ""
@@ -165,6 +179,10 @@ msgid ""
 "and click \"Connect\". (If it is not in the available selection then try "
 "reloading the page.)"
 msgstr ""
+"На главной странице в разделе \"Подключение\" (в левом верхнем углу страницы)"
+" убедитесь, что \"Последовательный порт\" установлен на новый дополнительный "
+"порт, и нажмите \"Подключить\". (Если его нет в списке доступных вариантов, "
+"попробуйте перезагрузить страницу)"
 
 #: docs/OctoPrint.md:block 24 (paragraph)
 msgid ""
@@ -173,9 +191,15 @@ msgid ""
 "terminal window will likely report there is an error opening the config file"
 " - that means OctoPrint is successfully communicating with Klipper."
 msgstr ""
+"После подключения перейдите на вкладку \"Терминал\", введите \"статус\" (без "
+"кавычек) в поле ввода команды и нажмите \"Отправить\". В окне терминала, "
+"скорее всего, появится сообщение об ошибке при открытии файла конфигурации - "
+"это означает, что OctoPrint успешно взаимодействует с Klipper."
 
 #: docs/OctoPrint.md:block 25 (paragraph)
 msgid ""
 "Please proceed to <Installation.md> and the *Building and flashing the "
 "micro-controller* section"
 msgstr ""
+"Пожалуйста, перейдите к разделу <Installation.md> и *Сборка и прошивка "
+"микроконтроллера*"

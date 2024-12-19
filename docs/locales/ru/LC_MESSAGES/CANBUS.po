@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:53+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/canbus/"
 "ru/>\n"
@@ -263,6 +263,9 @@ msgid ""
 "bandwidth to run a `SHAPER_CALIBRATE` test if both the XY steppers and the "
 "accelerometer all communicate via a single \"USB to CAN bus\" interface."
 msgstr ""
+"Даже при частоте шины CAN 1000000 может не хватить пропускной способности "
+"для выполнения теста `SHAPER_CALIBRATE`, если шаговики XY и акселерометр "
+"обмениваются данными через один интерфейс \"USB - шина CAN\"."
 
 #: docs/CANBUS.md:block 30 (unordered list)
 msgid ""
@@ -272,22 +275,34 @@ msgid ""
 "bridge board appears as a \"USB CAN adapter\" and it is configured in the "
 "printer.cfg as a [CAN node](#configuring-klipper)."
 msgstr ""
+"Мостовая плата USB to CAN не отображается как последовательное устройство "
+"USB, она не показывается при выполнении команды `ls /dev/serial/by-id`, и ее "
+"нельзя настроить в файле printer.cfg Klipper с параметром `serial:`. Плата "
+"моста отображается как \"USB CAN адаптер\" и конфигурируется в printer.cfg "
+"как [CAN узел](#configuring-klipper)."
 
 #: docs/CANBUS.md:block 31 (header)
 msgid "Tips for troubleshooting"
-msgstr ""
+msgstr "Советы по устранению неполадок"
 
 #: docs/CANBUS.md:block 32 (paragraph)
 msgid "See the [CAN bus troubleshooting](CANBUS_Troubleshooting.md) document."
 msgstr ""
+"Смотрите документ [Устранение неисправностей шины CAN]"
+"(CANBUS_Troubleshooting.md)."
 
 #: docs/CANBUS.md:block 9 (code)
+#, fuzzy
 msgid ""
 "allow-hotplug can0\n"
 "iface can0 can static\n"
 "    bitrate 1000000\n"
 "    up ip link set $IFACE txqueuelen 128\n"
 msgstr ""
+"allow-hotplug can0\n"
+"iface can0 can static\n"
+"    bitrate 1000000\n"
+"    up ip link set $IFACE txqueuelen 128\n"
 
 #~ msgid ""
 #~ "allow-hotplug can0\n"

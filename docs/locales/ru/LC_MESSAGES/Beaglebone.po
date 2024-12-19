@@ -1,17 +1,20 @@
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # VICTOR <subfyn@gmail.com>, 2023.
 # xXx <xxx_xxx_xxxxxxxxx@mail.ru>, 2023.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-09-29 19:44+0000\n"
-"Last-Translator: xXx <xxx_xxx_xxxxxxxxx@mail.ru>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/beaglebone/ru/>\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"beaglebone/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #: docs/Beaglebone.md:block 1 (header)
 msgid "Beaglebone"
@@ -136,64 +139,87 @@ msgid ""
 "from either a micro-SD card or from builtin eMMC. If using the eMMC, install"
 " it to eMMC now by following the instructions from the above link."
 msgstr ""
+"Начните с установки образа [Debian 11.7 2023-09-02 4GB microSD IoT](https://"
+"beagleboard.org/latest-images). Образ можно запустить как с карты micro-SD, "
+"так и со встроенной eMMC. Если вы используете eMMC, установите его на eMMC, "
+"следуя инструкциям по ссылке выше."
 
 #: docs/Beaglebone.md:block 5 (paragraph)
 msgid ""
 "Then ssh into the Beaglebone machine (`ssh debian@beaglebone` -- password is"
 " `temppwd`)."
 msgstr ""
+"Затем зайдите по ssh на машину Beaglebone (`ssh debian@beaglebone` -- пароль "
+"`temppwd`)."
 
 #: docs/Beaglebone.md:block 6 (paragraph)
 msgid ""
 "Before start installing Klipper you need to free-up additional space. there "
 "are 3 options to do that:"
 msgstr ""
+"Перед началом установки Klipper необходимо освободить дополнительное "
+"пространство. Для этого есть 3 варианта:"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid "remove some BeagleBone \"Demo\" resources"
-msgstr ""
+msgstr "удалить некоторые \"демонстрационные\" ресурсы BeagleBone"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid ""
 "if you did boot from SD-Card, and it's bigger than 4Gb - you can expand "
 "current filesystem to take whole card space"
 msgstr ""
+"Если вы загрузились с SD-карты, и ее объем превышает 4 Гб - вы можете "
+"расширить текущую файловую систему, чтобы она заняла все пространство карты"
 
 #: docs/Beaglebone.md:block 7 (ordered list)
 msgid "do option #1 and #2 together."
-msgstr ""
+msgstr "выполните варианты №1 и №2 вместе."
 
 #: docs/Beaglebone.md:block 8 (paragraph)
 msgid "To remove some BeagleBone \"Demo\" resources execute these commands"
 msgstr ""
+"Чтобы удалить некоторые ресурсы BeagleBone \"Демо\", выполните следующие "
+"команды"
 
 #: docs/Beaglebone.md:block 9 (code)
+#, fuzzy
 msgid ""
 "sudo apt remove bb-node-red-installer\n"
 "sudo apt remove bb-code-server\n"
 msgstr ""
+"sudo apt remove bb-node-red-installer\n"
+"sudo apt remove bb-code-server\n"
 
 #: docs/Beaglebone.md:block 10 (paragraph)
 msgid ""
 "To expand filesystem to full size of your SD-Card execute this command, "
 "reboot is not required."
 msgstr ""
+"Чтобы расширить файловую систему до полного размера SD-карты, выполните эту "
+"команду, перезагрузка не требуется."
 
 #: docs/Beaglebone.md:block 11 (code)
+#, fuzzy
 msgid ""
 "sudo growpart /dev/mmcblk0 1\n"
 "sudo resize2fs /dev/mmcblk0p1\n"
 msgstr ""
+"sudo growpart /dev/mmcblk0 1\n"
+"sudo resize2fs /dev/mmcblk0p1\n"
 
 #: docs/Beaglebone.md:block 12 (paragraph)
 msgid "Install Klipper by running the following commands:"
-msgstr ""
+msgstr "Установите Klipper, выполнив следующие команды:"
 
 #: docs/Beaglebone.md:block 13 (code)
+#, fuzzy
 msgid ""
 "git clone https://github.com/Klipper3d/klipper.git\n"
 "./klipper/scripts/install-beaglebone.sh\n"
 msgstr ""
+"git clone https://github.com/Klipper3d/klipper.git\n"
+"./klipper/scripts/install-beaglebone.sh\n"
 
 #: docs/Beaglebone.md:block 14 (paragraph)
 msgid ""
@@ -202,6 +228,10 @@ msgid ""
 "cases you can't directly connect pins to 5v or 12v based hardware without "
 "conversion boards."
 msgstr ""
+"После установки Klipper вам нужно решить, какой тип развертки вам нужен, но "
+"учтите, что BeagleBone - это оборудование на базе 3,3 В, и в большинстве "
+"случаев вы не можете напрямую подключить контакты к оборудованию на базе 5 "
+"или 12 В без плат-переходников."
 
 #: docs/Beaglebone.md:block 15 (paragraph)
 msgid ""

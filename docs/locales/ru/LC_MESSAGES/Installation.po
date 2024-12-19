@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "installation/ru/>\n"
@@ -224,6 +224,12 @@ msgid ""
 "as the host machine (see the [FAQ](FAQ.md#can-i-run-klipper-on-something-"
 "other-than-a-raspberry-pi-3) for other options)."
 msgstr ""
+"Эти инструкции предполагают, что программное обеспечение будет работать на "
+"хосте под управлением linux, на котором установлен фронт-энд, совместимый с "
+"Klipper. В качестве хост-машины рекомендуется использовать SBC (Small Board "
+"Computer), например, Raspberry Pi или Linux-устройство на базе Debian ("
+"другие варианты см. в [FAQ](FAQ.md#can-i-run-klipper-on-something-other-"
+"than-a-raspberry-pi-3))."
 
 #: docs/Installation.md:block 3 (paragraph)
 msgid ""
@@ -231,6 +237,9 @@ msgid ""
 "mcu relates to the printboard. SBC relates to the term Small Board Computer "
 "such as the Raspberry Pi."
 msgstr ""
+"Для целей данной инструкции host относится к устройству Linux, а mcu - к "
+"печатной плате. SBC относится к термину Small Board Computer, например, "
+"Raspberry Pi."
 
 #: docs/Installation.md:block 5 (paragraph)
 msgid ""
@@ -242,16 +251,24 @@ msgid ""
 "technical information about the printer that will be needed during the "
 "installation."
 msgstr ""
+"Большинство настроек Klipper определяется \"файлом конфигурации принтера\" "
+"printer.cfg, который будет храниться на хосте. Подходящий файл конфигурации "
+"часто можно найти, заглянув в каталог Klipper [config](../config/) для "
+"поиска файла, начинающегося с префикса \"printer-\", который соответствует "
+"целевому принтеру. Конфигурационный файл Klipper содержит техническую "
+"информацию о принтере, которая понадобится во время установки."
 
 #: docs/Installation.md:block 9 (header)
 msgid "Interacting with Klipper"
-msgstr ""
+msgstr "Взаимодействие с Klipper"
 
 #: docs/Installation.md:block 10 (paragraph)
 msgid ""
 "Klipper is a 3d printer firmware, so it needs some way for the user to "
 "interact with it."
 msgstr ""
+"Klipper - это прошивка для 3d-принтера, поэтому пользователю нужно как-то "
+"взаимодействовать с ней."
 
 #: docs/Installation.md:block 11 (paragraph)
 msgid ""
@@ -259,6 +276,10 @@ msgid ""
 "the [Moonraker web API](https://moonraker.readthedocs.io/) and there is also"
 " the option to use [Octoprint](https://octoprint.org/) to control Klipper."
 msgstr ""
+"В настоящее время лучшим выбором являются фронт-энды, получающие информацию "
+"через [Moonraker web API](https://moonraker.readthedocs.io/), также есть "
+"возможность использовать [Octoprint](https://octoprint.org/) для управления "
+"Klipper."
 
 #: docs/Installation.md:block 12 (paragraph)
 msgid ""
@@ -266,6 +287,9 @@ msgid ""
 "the same in all cases. We encourage users to research the options available "
 "and make an informed decision."
 msgstr ""
+"Выбор остается за пользователем, но основа Klipper во всех случаях "
+"одинакова. Мы рекомендуем пользователям изучить доступные варианты и принять "
+"взвешенное решение."
 
 #: docs/Installation.md:block 13 (header)
 msgid "Obtaining an OS image for SBC's"

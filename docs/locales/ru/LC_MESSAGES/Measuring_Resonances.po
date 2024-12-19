@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:53+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "measuring_resonances/ru/>\n"
@@ -45,9 +45,8 @@ msgstr "Контакт RPi"
 msgid "RPi pin name"
 msgstr "Название выводов RPi"
 
-#, fuzzy
 msgid "3V3 (or VCC)"
-msgstr "3V3 (or VCC)"
+msgstr "3V3 (или VCC)"
 
 #, fuzzy
 msgid "01"
@@ -77,42 +76,51 @@ msgstr "24"
 msgid "GPIO08 (SPI0_CE0_N)"
 msgstr "GPIO08 (SPI0_CE0_N)"
 
+#, fuzzy
 msgid "SDO"
-msgstr ""
+msgstr "SDO"
 
+#, fuzzy
 msgid "21"
-msgstr ""
+msgstr "21"
 
+#, fuzzy
 msgid "GPIO09 (SPI0_MISO)"
-msgstr ""
+msgstr "GPIO09 (SPI0_MISO)"
 
+#, fuzzy
 msgid "SDA"
-msgstr ""
+msgstr "SDA"
 
 #, fuzzy
 msgid "19"
 msgstr "19"
 
+#, fuzzy
 msgid "GPIO10 (SPI0_MOSI)"
-msgstr ""
+msgstr "GPIO10 (SPI0_MOSI)"
 
+#, fuzzy
 msgid "SCL"
-msgstr ""
+msgstr "SCL"
 
+#, fuzzy
 msgid "23"
-msgstr ""
+msgstr "23"
 
+#, fuzzy
 msgid "GPIO11 (SPI0_SCLK)"
-msgstr ""
+msgstr "GPIO11 (SPI0_SCLK)"
 
 msgid "Fritzing wiring diagrams for some of the ADXL345 boards:"
-msgstr ""
+msgstr "Схемы подключения некоторых плат ADXL345:"
 
+#, fuzzy
 msgid "![ADXL345-Rpi](img/adxl345-fritzing.png)"
-msgstr ""
+msgstr "![ADXL345-Rpi](img/adxl345-fritzing.png)"
 
 msgid "Mounting the accelerometer"
-msgstr ""
+msgstr "Монтаж акселерометра"
 
 msgid ""
 "The accelerometer must be attached to the toolhead. One needs to design a "
@@ -122,12 +130,19 @@ msgid ""
 " forth - it should be fine even if Z axis of accelerometer is X axis of the "
 "printer, etc.)."
 msgstr ""
+"Акселерометр должен быть прикреплен к инструментальной головке. Необходимо "
+"разработать соответствующее крепление, которое подойдет для вашего 3D-"
+"принтера. Оси акселерометра лучше совместить с осями принтера (но если так "
+"будет удобнее, оси можно поменять местами - то есть не нужно совмещать ось X "
+"с X и так далее - все будет хорошо, даже если ось Z акселерометра будет "
+"совпадать с осью X принтера и т. д.)."
 
 msgid "An example of mounting ADXL345 on the SmartEffector:"
-msgstr ""
+msgstr "Пример установки ADXL345 на SmartEffector:"
 
+#, fuzzy
 msgid "![ADXL345 on SmartEffector](img/adxl345-mount.jpg)"
-msgstr ""
+msgstr "![ADXL345 on SmartEffector](img/adxl345-mount.jpg)"
 
 msgid ""
 "Note that on a bed slinger printer one must design 2 mounts: one for the "

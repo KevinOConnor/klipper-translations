@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/sponsors/"
 "ru/>\n"
@@ -112,12 +112,16 @@ msgstr ""
 "<https://www.patreon.com/koconnor>"
 
 #: docs/Sponsors.md:block 4 (paragraph)
+#, fuzzy
 msgid ""
 "[<img src=\"./img/sponsors/BTT_BTT.png\" width=\"200\" "
 "style=\"margin:25px\"/>](https://bigtree-tech.com/collections/all-products)"
 msgstr ""
+"[<img src=\"./img/sponsors/BTT_BTT.png\" width=\"200\" style=\"margin:25px\""
+"/>](https://bigtree-tech.com/collections/all-products)"
 
 #: docs/Sponsors.md:block 7 (paragraph)
+#, fuzzy
 msgid ""
 "[<img src=\"./img/sponsors/obico-light-horizontal.png\" width=\"200\" "
 "style=\"margin:25px\" "
@@ -125,6 +129,10 @@ msgid ""
 "src=\"./img/sponsors/peopoly-logo.png\" width=\"200\" style=\"margin:25px\" "
 "/>](https://peopoly.net)"
 msgstr ""
+"[<img src=\"./img/sponsors/obico-light-horizontal.png\" width=\"200\" style="
+"\"margin:25px\" />](https://obico.io/klipper.html?source=klipper_sponsor) ["
+"<img src=\"./img/sponsors/peopoly-logo.png\" width=\"200\" style="
+"\"margin:25px\" />](https://peopoly.net)"
 
 #~ msgid ""
 #~ "[<img src=\"./img/sponsors/BTT_BTT.png\" width=\"200\" />](https://bigtree-"

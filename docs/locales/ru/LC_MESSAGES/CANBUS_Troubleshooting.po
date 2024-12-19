@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "canbus_troubleshooting/ru/>\n"
@@ -164,20 +164,27 @@ msgid ""
 "The Linux [can-utils](https://github.com/linux-can/can-utils) tool provides "
 "the capture software. It is typically installed on a machine by running:"
 msgstr ""
+"Инструмент Linux [can-utils](https://github.com/linux-can/can-utils) "
+"обеспечивает программное обеспечение для захвата. Обычно она устанавливается "
+"на машину путем запуска:"
 
 #: docs/CANBUS_Troubleshooting.md:block 16 (code)
+#, fuzzy
 msgid "sudo apt-get update && sudo apt-get install can-utils\n"
-msgstr ""
+msgstr "sudo apt-get update && sudo apt-get install can-utils\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 17 (paragraph)
 msgid ""
 "Once installed, one may obtain a capture of all CAN bus messages on an "
 "interface with the following command:"
 msgstr ""
+"После установки можно получить захват всех сообщений CAN-шины на интерфейсе "
+"с помощью следующей команды:"
 
 #: docs/CANBUS_Troubleshooting.md:block 18 (code)
+#, fuzzy
 msgid "candump -tz -Ddex can0,#FFFFFFFF > mycanlog\n"
-msgstr ""
+msgstr "candump -tz -Ddex can0,#FFFFFFFF > mycanlog\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 19 (paragraph)
 msgid ""
@@ -187,10 +194,15 @@ msgid ""
 "knowledge of Klipper's [CANBUS protocol](CANBUS_protocol.md) and Klipper's "
 "[MCU commands](MCU_Commands.md)."
 msgstr ""
+"Можно просмотреть полученный файл журнала (`mycanlog` в примере выше), чтобы "
+"увидеть каждое необработанное сообщение CAN-шины, которое было отправлено и "
+"получено Klipper. Для понимания содержания этих сообщений, скорее всего, "
+"потребуются знания низкого уровня протокола [CANBUS](CANBUS_protocol.md) и "
+"команд [MCU](MCU_Commands.md) Klipper."
 
 #: docs/CANBUS_Troubleshooting.md:block 20 (header)
 msgid "Parsing Klipper messages in a candump log"
-msgstr ""
+msgstr "Разбор сообщений Klipper в журнале candump"
 
 #: docs/CANBUS_Troubleshooting.md:block 21 (paragraph)
 msgid ""
@@ -199,10 +211,15 @@ msgid ""
 "advanced topic that requires knowledge of Klipper [MCU "
 "commands](MCU_Commands.md). For example:"
 msgstr ""
+"Для разбора низкоуровневых сообщений микроконтроллера Klipper, содержащихся "
+"в журнале candump, можно использовать инструмент `parsecandump.py`. "
+"Использование этого инструмента является продвинутой темой, требующей знания "
+"Klipper [команд MCU](MCU_Commands.md). Например:"
 
 #: docs/CANBUS_Troubleshooting.md:block 22 (code)
+#, fuzzy
 msgid "./scripts/parsecandump.py mycanlog 108 ./out/klipper.dict\n"
-msgstr ""
+msgstr "./scripts/parsecandump.py mycanlog 108 ./out/klipper.dict\n"
 
 #: docs/CANBUS_Troubleshooting.md:block 23 (paragraph)
 msgid ""
@@ -211,6 +228,10 @@ msgid ""
 "See the documentation for that tool for information on generating the "
 "Klipper micro-controller data dictionary."
 msgstr ""
+"Этот инструмент выдает результаты, аналогичные [инструмент parsedump]"
+"(Debugging.md#translating-gcode-files-to-micro-controller-commands). "
+"Информацию о генерации словаря данных микроконтроллера Klipper см. в "
+"документации к этому инструменту."
 
 #: docs/CANBUS_Troubleshooting.md:block 24 (paragraph)
 msgid ""
@@ -220,6 +241,11 @@ msgid ""
 "multiple micro-controllers on it, then the second micro-controller would be "
 "`10a`, the third would be `10c`, and so on."
 msgstr ""
+"В приведенном выше примере `108` - это [идентификатор шины CAN]"
+"(CANBUS_protocol.md#micro-controller-id-assignment). Это шестнадцатеричное "
+"число. Идентификатор `108` назначается Klipper первому микроконтроллеру. "
+"Если на шине CAN подключено несколько микроконтроллеров, то второй "
+"микроконтроллер будет `10a`, третий - `10c` и так далее."
 
 #: docs/CANBUS_Troubleshooting.md:block 25 (paragraph)
 msgid ""
@@ -227,10 +253,13 @@ msgid ""
 "arguments (for example: `candump -tz -Ddex can0,#FFFFFFFF`) in order to use "
 "the `parsecandump.py` tool."
 msgstr ""
+"Для использования инструмента `parsecandump.py` необходимо создать журнал "
+"candump, используя аргументы командной строки `-tz -Ddex` (например: `"
+"candump -tz -Ddex can0,#FFFFFF`)."
 
 #: docs/CANBUS_Troubleshooting.md:block 26 (header)
 msgid "Using a logic analyzer on the canbus wiring"
-msgstr ""
+msgstr "Использование логического анализатора в проводке canbus"
 
 #: docs/CANBUS_Troubleshooting.md:block 27 (paragraph)
 msgid ""
@@ -240,6 +269,10 @@ msgid ""
 "diagnosing CAN bus signaling. This is an advanced topic likely only of "
 "interest to experts."
 msgstr ""
+"Программное обеспечение [Sigrok Pulseview](https://sigrok.org/wiki/PulseView)"
+" вместе с недорогим [логическим анализатором](https://en.wikipedia.org/wiki/"
+"Logic_analyzer) может быть полезно для диагностики сигналов шины CAN. Это "
+"сложная тема, которая может быть интересна только специалистам."
 
 #: docs/CANBUS_Troubleshooting.md:block 28 (paragraph)
 msgid ""
@@ -247,10 +280,15 @@ msgid ""
 "2023). These devices are often listed as \"Saleae logic clones\" or as "
 "\"24MHz 8 channel USB logic analyzers\"."
 msgstr ""
+"Часто можно найти \"логические USB-анализаторы\" по цене менее 15 долларов ("
+"цены в США по состоянию на 2023 год). Эти устройства часто перечисляются как "
+"\"логические клоны Saleae\" или как "
+"\"24 МГц 8-канальные USB логические анализаторы\"."
 
 #: docs/CANBUS_Troubleshooting.md:block 29 (paragraph)
+#, fuzzy
 msgid "![pulseview-canbus](img/pulseview-canbus.png)"
-msgstr ""
+msgstr "![pulseview-canbus](img/pulseview-canbus.png)"
 
 #: docs/CANBUS_Troubleshooting.md:block 30 (paragraph)
 msgid ""

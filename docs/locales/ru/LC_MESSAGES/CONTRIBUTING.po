@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "contributing/ru/>\n"
@@ -299,6 +299,10 @@ msgid ""
 "`lib/` directory (and follow the format described in "
 "[lib/README](../lib/README))."
 msgstr ""
+"Код, взятый из сторонних источников, должен быть совместим с лицензией "
+"Klipper (GNU GPLv3). Крупные дополнения к стороннему коду должны быть "
+"добавлены в каталог `lib/` (и соответствовать формату, описанному в "
+"[lib/README](../lib/README))."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -306,74 +310,100 @@ msgid ""
 "using their full real name. It indicates the submitter agrees with the "
 "[developer certificate of origin](developer-certificate-of-origin)."
 msgstr ""
+"Отправители должны предоставить строку [Signed-off-by](#format-of-commit-"
+"messages), используя свое полное настоящее имя. Она указывает, что "
+"отправитель согласен с [сертификатом происхождения разработчика](developer-"
+"certificate-of-origin)."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "Does the submission follow guidelines specified in the Klipper "
 "documentation?"
 msgstr ""
+"Соответствует ли подача материала рекомендациям, указанным в документации "
+"Klipper?"
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "In particular, code should follow the guidelines in <Code_Overview.md> and "
 "config files should follow the guidelines in <Example_Configs.md>."
 msgstr ""
+"В частности, код должен следовать рекомендациям в <Code_Overview.md>, а "
+"файлы конфигурации - рекомендациям в <Example_Configs.md>."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid "Is the Klipper documentation updated to reflect new changes?"
-msgstr ""
+msgstr "Обновляется ли документация Klipper, чтобы отразить новые изменения?"
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "At a minimum, the reference documentation must be updated with corresponding"
 " changes to the code:"
 msgstr ""
+"Как минимум, справочная документация должна быть обновлена с учетом "
+"соответствующих изменений в коде:"
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "All commands and command parameters must be documented in <G-Codes.md>."
 msgstr ""
+"Все команды и параметры команд должны быть задокументированы в <G-Codes.md>."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "All user facing modules and their config parameters must be documented in "
 "<Config_Reference.md>."
 msgstr ""
+"Все модули, предназначенные для пользователей, и их параметры конфигурации "
+"должны быть задокументированы в <Config_Reference.md>."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "All exported \"status variables\" must be documented in "
 "<Status_Reference.md>."
 msgstr ""
+"Все экспортируемые \"переменные состояния\" должны быть задокументированы в "
+"<Status_Reference.md>."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "All new \"webhooks\" and their parameters must be documented in "
 "<API_Server.md>."
 msgstr ""
+"Все новые \"веб-крючки\" и их параметры должны быть задокументированы в "
+"<API_Server.md>."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "Any change that makes a non-backwards compatible change to a command or "
 "config file setting must be documented in <Config_Changes.md>."
 msgstr ""
+"Любое изменение, которое вносит несовместимые с обратным ходом изменения в "
+"команду или настройки файла конфигурации, должно быть задокументировано в "
+"<Config_Changes.md>."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "New documents should be added to <Overview.md> and be added to the website "
 "index [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml)."
 msgstr ""
+"Новые документы должны быть добавлены в <Overview.md> и добавлены в индекс "
+"сайта [docs/_klipper3d/mkdocs.yml](../docs/_klipper3d/mkdocs.yml)."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "Are commits well formed, address a single topic per commit, and independent?"
 msgstr ""
+"Хорошо ли сформированы коммиты, касаются ли они одной темы в каждом коммите "
+"и являются ли они независимыми?"
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "Commit messages should follow the [preferred format](#format-of-commit-"
 "messages)."
 msgstr ""
+"Сообщения коммитов должны соответствовать [предпочтительному формату]"
+"(#format-of-commit-messages)."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -384,6 +414,12 @@ msgid ""
 "conflict, then submitters are recommended to use `git rebase` to address the"
 " conflict."
 msgstr ""
+"Коммиты не должны иметь конфликтов слияния. Новые добавления в мастер-ветку "
+"Klipper всегда выполняются через \"rebase\" или \"слияние и возврат\". Как "
+"правило, сабмиттерам нет необходимости повторно сливать свои коммиты при "
+"каждом обновлении мастер-репозитория Klipper. Однако, если возникает "
+"конфликт слияния, рекомендуется использовать `git rebase` для устранения "
+"конфликта."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -391,6 +427,10 @@ msgid ""
 "be broken up into multiple independent commits. Each commit should \"stand "
 "on its own\" so that tools like `git bisect` and `git revert` work reliably."
 msgstr ""
+"Каждый коммит должен относиться к одному высокоуровневому изменению. Большие "
+"изменения должны быть разбиты на несколько независимых коммитов. Каждый "
+"коммит должен \"стоять на своём\", чтобы такие инструменты, как `git bisect` "
+"и `git revert`, работали надёжно."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -398,12 +438,18 @@ msgid ""
 "gratuitous whitespace changes are not accepted unless they are from the "
 "established \"owner\" of the code being modified."
 msgstr ""
+"Изменения пробельных символов не должны смешиваться с функциональными "
+"изменениями. В целом, беспричинные изменения пробельных символов не "
+"принимаются, если только они не исходят от признанного \"владельца\" "
+"модифицируемого кода."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "Does the submission provide a \"high impact\" benefit to real-world users "
 "performing real-world tasks?"
 msgstr ""
+"Приносит ли заявка \"большую пользу\" реальным пользователям, выполняющим "
+"реальные задачи?"
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -414,6 +460,12 @@ msgid ""
 "to both the submitter and the reviewer, and it is not explicitly stated "
 "during a review."
 msgstr ""
+"Рецензенты должны хотя бы приблизительно определить, "
+"\"кто является целевой аудиторией\", приблизительную шкалу "
+"\"размера этой аудитории\", \"пользу\", которую они получат, как "
+"\"польза измеряется\" и \"результаты этих измерений\". В большинстве случаев "
+"это очевидно как для автора, так и для рецензента, и не указывается в явном "
+"виде во время рецензирования."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -421,6 +473,10 @@ msgid ""
 "target audience. As a general \"rule of thumb\", submissions should target a"
 " user base of at least a 100 real-world users."
 msgstr ""
+"Ожидается, что материалы, отправляемые в мастер-ветку Klipper, будут иметь "
+"заметную целевую аудиторию. В качестве общего \"эмпирического правила\", "
+"представленные материалы должны быть нацелены на базу пользователей, "
+"состоящую не менее чем из 100 реальных пользователей."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -428,6 +484,9 @@ msgid ""
 "don't consider it criticism. Being able to understand the real-world "
 "benefits of a change is a natural part of a review."
 msgstr ""
+"Если рецензент просит подробно рассказать о \"пользе\" работы, не считайте "
+"это критикой. Возможность понять реальную пользу от изменений - естественная "
+"часть рецензирования."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""

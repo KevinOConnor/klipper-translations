@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:53+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "benchmarks/ru/>\n"
@@ -130,8 +130,9 @@ msgstr "В Duet Maestro используется следующая послед
 msgid "sam4s8c"
 msgstr "sam4s8c"
 
+#, fuzzy
 msgid "70"
-msgstr ""
+msgstr "70"
 
 msgid "Duet Wifi step rate benchmark"
 msgstr "Тест скорости шага Duet Wifi"

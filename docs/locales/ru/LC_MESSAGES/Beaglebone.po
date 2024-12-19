@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "beaglebone/ru/>\n"
@@ -238,6 +238,9 @@ msgid ""
 "As Klipper have multimodule architecture on BeagleBone you can achieve many "
 "different use cases, but general ones are following:"
 msgstr ""
+"Поскольку Klipper имеет многомодульную архитектуру на BeagleBone, вы можете "
+"реализовать множество различных сценариев использования, но общие из них "
+"следующие:"
 
 #: docs/Beaglebone.md:block 16 (paragraph)
 msgid ""
@@ -246,6 +249,11 @@ msgid ""
 "configuration will be driving external micro-controllers via "
 "serial/usb/canbus connections."
 msgstr ""
+"Вариант использования 1: использование BeagleBone только в качестве хост-"
+"системы для запуска Klipper и дополнительного программного обеспечения, "
+"такого как OctoPrint/Fluidd + Moonraker/... и эта конфигурация будет "
+"управлять внешними микроконтроллерами через последовательные/usb/canbus "
+"соединения."
 
 #: docs/Beaglebone.md:block 17 (paragraph)
 msgid ""
@@ -254,46 +262,62 @@ msgid ""
 "it will drive extension board with BeagleBone PRU cores (2 additional cores "
 "200Mh, 32Bit)."
 msgstr ""
+"Вариант использования 2: использование BeagleBone с платой расширения "
+"(накидкой), подобной плате CRAMPS. В этой конфигурации BeagleBone будет "
+"размещать Klipper + дополнительное программное обеспечение, и он будет "
+"управлять платой расширения с помощью ядер BeagleBone PRU (2 дополнительных "
+"ядра 200Mh, 32Bit)."
 
 #: docs/Beaglebone.md:block 18 (paragraph)
 msgid ""
 "Use case 3: It's same as \"Use case 1\" but additionally you want to drive "
 "BeagleBone GPIOs with high speed by utilizing PRU cores to offload main CPU."
 msgstr ""
+"Пример 3: То же самое, что и в случае 1, но дополнительно вы хотите "
+"управлять GPIO BeagleBone с высокой скоростью, используя ядра PRU, чтобы "
+"разгрузить основной процессор."
 
 #: docs/Beaglebone.md:block 19 (header)
 msgid "Installing Octoprint"
-msgstr ""
+msgstr "Установка Octoprint"
 
 #: docs/Beaglebone.md:block 20 (paragraph)
 msgid ""
 "One may then install Octoprint or fully skip this section if desired other "
 "software:"
 msgstr ""
+"После этого можно установить Octoprint или полностью пропустить этот раздел "
+"при желании установить другое программное обеспечение:"
 
 #: docs/Beaglebone.md:block 28 (paragraph)
 msgid ""
 "Wait 1-2 minutes and make sure the OctoPrint web server is accessible - it "
 "should be at: <http://beaglebone:5000/>"
 msgstr ""
+"Подождите 1-2 минуты и убедитесь, что веб-сервер OctoPrint доступен - он "
+"должен находиться по адресу: <http://beaglebone:5000/>"
 
 #: docs/Beaglebone.md:block 29 (header)
 msgid "Building the BeagleBone PRU micro-controller code (PRU firmware)"
-msgstr ""
+msgstr "Создание кода микроконтроллера BeagleBone PRU (прошивка PRU)"
 
 #: docs/Beaglebone.md:block 30 (paragraph)
 msgid ""
 "This section is required for \"Use case 2\" and \"Use case 3\" mentioned "
 "above, you should skip it for \"Use case 1\"."
 msgstr ""
+"Этот раздел необходим для \"Варианта использования 2\" и "
+"\"Варианта использования 3\", упомянутых выше, для "
+"\"Варианта использования 1\" его следует пропустить."
 
 #: docs/Beaglebone.md:block 31 (paragraph)
 msgid "Check that required devices are present"
-msgstr ""
+msgstr "Проверьте наличие необходимых устройств"
 
 #: docs/Beaglebone.md:block 32 (code)
+#, fuzzy
 msgid "sudo beagle-version\n"
-msgstr ""
+msgstr "sudo beagle-version\n"
 
 #: docs/Beaglebone.md:block 33 (paragraph)
 msgid ""
@@ -306,8 +330,17 @@ msgid ""
 "options or with cape-overlays Just for reference some output of working "
 "BeagleBone Black configuration with CRAMPS board:"
 msgstr ""
+"Необходимо проверить, что вывод содержит успешную загрузку драйверов "
+"\"remoteproc\" и наличие ядер PRU, в Kernel 5.10 это должны быть "
+"\"remoteproc1\" и \"remoteproc2\" (4a334000.pru, 4a338000.pru) Также "
+"проверьте, что многие GPIO загружены, они будут выглядеть как "
+"\"Allocated GPIO id=0 name='P8_03'\" Обычно все в порядке и не требуется "
+"аппаратная настройка. Если чего-то не хватает - попробуйте поиграть с "
+"опциями \"uboot overlays\" или с cape-overlays Просто для справки несколько "
+"выводов рабочей конфигурации BeagleBone Black с платой CRAMPS:"
 
 #: docs/Beaglebone.md:block 34 (code)
+#, fuzzy
 msgid ""
 "model:[TI_AM335x_BeagleBone_Black]\n"
 "UBOOT: Booted Device-Tree:[am335x-boneblack-uboot-univ.dts]\n"
@@ -328,6 +361,24 @@ msgid ""
 ".............\n"
 "\n"
 msgstr ""
+"model:[TI_AM335x_BeagleBone_Black]\n"
+"UBOOT: Booted Device-Tree:[am335x-boneblack-uboot-univ.dts]\n"
+"UBOOT: Loaded Overlay:[BB-ADC-00A0.bb.org-overlays]\n"
+"UBOOT: Loaded Overlay:[BB-BONE-eMMC1-01-00A0.bb.org-overlays]\n"
+"kernel:[5.10.168-ti-r71]\n"
+"/boot/uEnv.txt Settings:\n"
+"uboot_overlay_options:[enable_uboot_overlays=1]\n"
+"uboot_overlay_options:[disable_uboot_overlay_video=0]\n"
+"uboot_overlay_options:[disable_uboot_overlay_audio=1]\n"
+"uboot_overlay_options:[disable_uboot_overlay_wireless=1]\n"
+"uboot_overlay_options:[enable_uboot_cape_universal=1]\n"
+"pkg:[bb-cape-overlays]:[4.14.20210821.0-0~bullseye+20210821]\n"
+"pkg:[bb-customizations]:[1.20230720.1-0~bullseye+20230720]\n"
+"pkg:[bb-usb-gadgets]:[1.20230414.0-0~bullseye+20230414]\n"
+"pkg:[bb-wl18xx-firmware]:[1.20230414.0-0~bullseye+20230414]\n"
+".............\n"
+".............\n"
+"\n"
 
 #: docs/Beaglebone.md:block 35 (paragraph)
 msgid ""
@@ -337,28 +388,41 @@ msgid ""
 "devices\" inside the \"Optional features\" because they will not fit in 8Kb "
 "PRU firmware memory, then exit and save config:"
 msgstr ""
+"Чтобы скомпилировать код микроконтроллера Klipper, начните с его настройки "
+"для \"Beaglebone PRU\", для \"BeagleBone Black\" дополнительно отключите "
+"опции \" Поддержка GPIO Bit-banging устройств\" и отключите "
+"\"Поддержка LCD устройств\" в разделе \"Дополнительные функции\", так как "
+"они не поместятся в 8 Кб памяти прошивки PRU, затем выйдите и сохраните "
+"конфиг:"
 
 #: docs/Beaglebone.md:block 37 (paragraph)
 msgid "To build and install the new PRU micro-controller code, run:"
 msgstr ""
+"Чтобы собрать и установить новый код микроконтроллера PRU, выполните команду:"
 
 #: docs/Beaglebone.md:block 39 (paragraph)
 msgid ""
 "After previous commands was executed your PRU firmware should be ready and "
 "started to check if everything was fine you can execute following command"
 msgstr ""
+"После выполнения предыдущих команд прошивка вашего PRU должна быть готова и "
+"запущена, чтобы проверить, все ли в порядке, выполните следующую команду"
 
 #: docs/Beaglebone.md:block 40 (code)
+#, fuzzy
 msgid "dmesg\n"
-msgstr ""
+msgstr "dmesg\n"
 
 #: docs/Beaglebone.md:block 41 (paragraph)
 msgid ""
 "and compare last messages with sample one which indicate that everything "
 "started properly:"
 msgstr ""
+"и сравните последние сообщения с образцом, который показывает, что все "
+"запустилось правильно:"
 
 #: docs/Beaglebone.md:block 42 (code)
+#, fuzzy
 msgid ""
 "[   71.105499] remoteproc remoteproc1: 4a334000.pru is available\n"
 "[   71.157155] remoteproc remoteproc2: 4a338000.pru is available\n"
@@ -376,6 +440,27 @@ msgid ""
 "[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online\n"
 "[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/rpmsg_pru30\n"
 msgstr ""
+"[   71.105499] remoteproc remoteproc1: 4a334000.pru is available\n"
+"[   71.157155] remoteproc remoteproc2: 4a338000.pru is available\n"
+"[   73.256287] remoteproc remoteproc1: powering up 4a334000.pru\n"
+"[   73.279246] remoteproc remoteproc1: Booting fw image am335x-pru0-fw, size "
+"97112\n"
+"[   73.285807]  remoteproc1#vdev0buffer: registered virtio0 (type 7)\n"
+"[   73.285836] remoteproc remoteproc1: remote processor 4a334000.pru is now "
+"up\n"
+"[   73.286322] remoteproc remoteproc2: powering up 4a338000.pru\n"
+"[   73.313717] remoteproc remoteproc2: Booting fw image am335x-pru1-fw, size "
+"188560\n"
+"[   73.313753] remoteproc remoteproc2: header-less resource table\n"
+"[   73.329964] remoteproc remoteproc2: header-less resource table\n"
+"[   73.348321] remoteproc remoteproc2: remote processor 4a338000.pru is now "
+"up\n"
+"[   73.443355] virtio_rpmsg_bus virtio0: creating channel rpmsg-pru addr "
+"0x1e\n"
+"[   73.443727] virtio_rpmsg_bus virtio0: msg received with no recipient\n"
+"[   73.444352] virtio_rpmsg_bus virtio0: rpmsg host is online\n"
+"[   73.540993] rpmsg_pru virtio0.rpmsg-pru.-1.30: new rpmsg_pru device: /dev/"
+"rpmsg_pru30\n"
 
 #: docs/Beaglebone.md:block 43 (paragraph)
 msgid ""
@@ -383,6 +468,10 @@ msgid ""
 "main mcu configuration this device is required to be present, if it's absent"
 " - your PRU cores did not start properly."
 msgstr ""
+"обратите внимание на \"/dev/rpmsg_pru30\" - это ваше будущее "
+"последовательное устройство для основной конфигурации mcu. Это устройство "
+"должно присутствовать, если оно отсутствует - ваши ядра PRU не запустились "
+"должным образом."
 
 #: docs/Beaglebone.md:block 44 (header)
 msgid "Building and installing Linux host micro-controller code"

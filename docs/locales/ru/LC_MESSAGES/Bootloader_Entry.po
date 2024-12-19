@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "bootloader_entry/ru/>\n"
@@ -224,14 +224,16 @@ msgid ""
 "See the [CANBUS Documentation](CANBUS.md#finding-the-canbus_uuid-for-new-"
 "micro-controllers) for information on finding the CAN UUID of your devices."
 msgstr ""
+"Информацию о поиске CAN UUID ваших устройств смотрите в [CANBUS документации]"
+"(CANBUS.md#finding-the-canbus_uuid-for-new-micro-controllers)."
 
 #: docs/Bootloader_Entry.md:block 33 (header)
 msgid "Entering the bootloader"
-msgstr ""
+msgstr "Вход в загрузчик"
 
 #: docs/Bootloader_Entry.md:block 34 (paragraph)
 msgid "When klipper receives one of the above bootloader requests:"
-msgstr ""
+msgstr "Когда klipper получает один из вышеперечисленных запросов загрузчика:"
 
 #: docs/Bootloader_Entry.md:block 35 (paragraph)
 msgid ""
@@ -239,6 +241,9 @@ msgid ""
 "that Katapult stay active on the next boot, then reset the MCU (therefore "
 "entering Katapult)."
 msgstr ""
+"Если Katapult (ранее известный как CANBoot) доступен, klipper запросит, "
+"чтобы Katapult оставался активным при следующей загрузке, а затем сбросит "
+"MCU (таким образом, войдя в Katapult)."
 
 #: docs/Bootloader_Entry.md:block 36 (paragraph)
 msgid ""
@@ -246,26 +251,33 @@ msgid ""
 "specific bootloader, such as STM32's DFU mode([see note](#stm32-dfu-"
 "warning))."
 msgstr ""
+"Если Katapult недоступен, klipper попытается войти в специфический для "
+"платформы загрузчик, например, в режим DFU STM32([[смотрите примечание]"
+"(#stm32-dfu-warning)])."
 
 #: docs/Bootloader_Entry.md:block 37 (paragraph)
 msgid ""
 "In short, Klipper will reboot to Katapult if installed, then a hardware "
 "specific bootloader if available."
 msgstr ""
+"Короче говоря, Klipper перезагрузится в Katapult, если он установлен, а "
+"затем в аппаратный загрузчик, если он доступен."
 
 #: docs/Bootloader_Entry.md:block 38 (paragraph)
 msgid ""
 "For details about the specific bootloaders on various platforms see "
 "[Bootloaders](Bootloaders.md)"
 msgstr ""
+"Подробную информацию о конкретных загрузчиках для различных платформ можно "
+"найти в разделе [Bootloaders](Bootloaders.md)"
 
 #: docs/Bootloader_Entry.md:block 39 (header)
 msgid "Notes"
-msgstr ""
+msgstr "Примечания"
 
 #: docs/Bootloader_Entry.md:block 40 (header)
 msgid "STM32 DFU Warning"
-msgstr ""
+msgstr "Предупреждение STM32 DFU"
 
 #: docs/Bootloader_Entry.md:block 41 (paragraph)
 msgid ""
@@ -275,3 +287,9 @@ msgid ""
 "operations when using DFU mode. Consult the documentation for your board for"
 " more details."
 msgstr ""
+"Обратите внимание, что на некоторых платах, например Octopus Pro v1, вход в "
+"режим DFU может привести к нежелательным действиям (например, включению "
+"питания нагревателя в режиме DFU). Рекомендуется отключать нагреватели и "
+"иным образом предотвращать нежелательные действия при использовании режима "
+"DFU. Для получения более подробной информации обратитесь к документации на "
+"вашу плату."

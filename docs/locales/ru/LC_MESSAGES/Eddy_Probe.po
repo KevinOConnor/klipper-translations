@@ -2,16 +2,16 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "eddy_probe/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.9.2-dev\n"
-"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Eddy_Probe.md:block 1 (header)
 msgid "Eddy Current Inductive probe"
@@ -227,6 +227,8 @@ msgid ""
 "Once a `[temperature_probe]` is configured, the following steps may be taken"
 " to perform thermal drift calibration:"
 msgstr ""
+"После настройки `[temperature_probe]` можно выполнить следующие шаги для "
+"калибровки теплового дрейфа:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -235,14 +237,18 @@ msgid ""
 "temperature during calibration which is necessary to perform thermal drift "
 "compensation."
 msgstr ""
+"Датчик должен быть откалиброван с помощью `PROBE_EDDY_CURRENT_CALIBRATE`, "
+"когда настроен и связан `[temperature_probe]`. При этом фиксируется "
+"температура во время калибровки, что необходимо для компенсации теплового "
+"дрейфа."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "Make sure the nozzle is free of debris and filament."
-msgstr ""
+msgstr "Убедитесь, что в сопле нет мусора и нити."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "The bed, nozzle, and probe coil should be cold prior to calibration."
-msgstr ""
+msgstr "Перед калибровкой станина, сопло и катушка зонда должны быть холодными."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -250,11 +256,15 @@ msgid ""
 "`calibration_extruder_temp`, and `extruder_heating_z` options in "
 "`[temperature_probe]` are **NOT** configured:"
 msgstr ""
+"Следующие шаги необходимы, если опции `calibration_position`, "
+"`calibration_extruder_temp` и `extruder_heating_z` в `[temperature_probe]` "
+"не настроены **НЕТ**:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "Move the tool to the center of the bed. Z should be 30mm+ above the bed."
 msgstr ""
+"Переместите инструмент в центр станины. Z должна быть на 30 мм выше станины."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -262,12 +272,17 @@ msgid ""
 "150-170C should be sufficient for most configurations. The purpose of "
 "heating the extruder is to avoid nozzle expansion during calibration."
 msgstr ""
+"Нагрейте экструдер до температуры, превышающей максимальную безопасную "
+"температуру слоя. Для большинства конфигураций достаточно 150-170C. Цель "
+"нагрева экструдера - избежать расширения сопла во время калибровки."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When the extruder temperature has settled, move the Z axis down to about 1mm"
 " above the bed."
 msgstr ""
+"Когда температура экструдера установится, переместите ось Z вниз на высоту "
+"около 1 мм над станиной."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -279,6 +294,13 @@ msgid ""
 "extruder to the specified temperature the tool will move to the Z value "
 "specified by the`calibration_position`."
 msgstr ""
+"Запустите калибровку дрейфа. Если имя зонда `my_probe` и максимальная "
+"температура зонда, которую мы можем достичь, равна 80C, то соответствующая "
+"команда gcode будет `TEMPERATURE_PROBE_CALIBRATE PROBE=my_probe TARGET=80`. "
+"Если инструмент настроен, он переместится в координаты X,Y, указанные в "
+"`calibration_position`, и в значение Z, указанное в `extruder_heating_z`. "
+"После нагрева экструдера до заданной температуры инструмент переместится к "
+"значению Z, указанному в `calibration_position`."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -286,6 +308,9 @@ msgid ""
 " paper test and `ACCEPT`. The calibration procedure will take the first set "
 "of samples with the probe then park the probe in the heating position."
 msgstr ""
+"Процедура запросит ручной тест. Выполните ручной зонд с бумажным тестом и "
+"`ПРИНЯТЬ`. Процедура калибровки возьмет первый набор проб с помощью зонда, а "
+"затем припаркует зонд в положении нагрева."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -293,6 +318,9 @@ msgid ""
 "the maximum safe temperature. Otherwise this step will be performed "
 "automatically."
 msgstr ""
+"Если параметр `calibration_bed_temp` **НЕ** настроен, включите подогрев "
+"кровати до максимальной безопасной температуры. В противном случае этот шаг "
+"будет выполнен автоматически."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
@@ -303,24 +331,35 @@ msgid ""
 "`STEP` value, a value too high may request too few samples resulting in a "
 "poor calibration."
 msgstr ""
+"По умолчанию процедура калибровки будет запрашивать ручной зонд каждые 2C "
+"между образцами, пока не будет достигнуто значение `TARGET`. Дельта "
+"температур между пробами может быть настроена путем установки параметра "
+"`STEP` в `TEMPERATURE_PROBE_CALIBRATE`. Следует быть осторожным при "
+"установке пользовательского значения `STEP`, слишком высокое значение может "
+"запросить слишком мало образцов, что приведет к плохой калибровке."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "The following additional gcode commands are available during drift "
 "calibration:"
 msgstr ""
+"Во время калибровки дрейфа доступны следующие дополнительные команды gcode:"
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_NEXT` may be used to force a new sample before the step "
 "delta has been reached."
 msgstr ""
+"`TEMPERATURE_PROBE_NEXT` может использоваться для принудительного взятия "
+"нового образца до достижения дельты шага."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "`TEMPERATURE_PROBE_COMPLETE` may be used to complete calibration before the "
 "`TARGET` has been reached."
 msgstr ""
+"`TEMPERATURE_PROBE_COMPLETE` может использоваться для завершения калибровки "
+"до достижения `TARGET`."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "`ABORT` may be used to end calibration and discard results."

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "skew_correction/ru/>\n"
@@ -149,16 +149,18 @@ msgid "Once you have a saved profile, you may load it:"
 msgstr "Если у вас есть сохраненный профиль, вы можете загрузить его:"
 
 #: docs/Skew_Correction.md:block 20 (code)
+#, fuzzy
 msgid "SKEW_PROFILE LOAD=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE LOAD=my_skew_profile\n"
 
 #: docs/Skew_Correction.md:block 21 (paragraph)
 msgid "It is also possible to remove an old or out of date profile:"
 msgstr "Также возможно удалить старый или устаревший профиль:"
 
 #: docs/Skew_Correction.md:block 22 (code)
+#, fuzzy
 msgid "SKEW_PROFILE REMOVE=my_skew_profile\n"
-msgstr ""
+msgstr "SKEW_PROFILE REMOVE=my_skew_profile\n"
 
 #: docs/Skew_Correction.md:block 23 (paragraph)
 msgid ""
@@ -185,8 +187,9 @@ msgstr ""
 "сообщаются через `GET_CURRENT_SKEW`."
 
 #: docs/Skew_Correction.md:block 26 (code)
+#, fuzzy
 msgid "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
-msgstr ""
+msgstr "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
 
 #: docs/Skew_Correction.md:block 27 (header)
 msgid "Caveats"
@@ -227,6 +230,10 @@ msgid ""
 "measuring length AD do not include the flats on the corners that some test "
 "objects provide."
 msgstr ""
+"Модуль `[skew_correction]` требует 3 измерения для каждой плоскости, которую "
+"вы хотите исправить: длина от угла A до угла C, длина от угла B до угла D и "
+"длина от угла A до угла D. При измерении длины AD не учитывайте плоские "
+"поверхности на углах, которые обеспечивают некоторые тестовые объекты."
 
 #~ msgid ""
 #~ "The `[skew_correcton]` module requires 3 measurements for each plane you "

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-18 14:15+0000\n"
+"PO-Revision-Date: 2024-12-19 09:53+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/releases/"
 "ru/>\n"
@@ -114,54 +114,65 @@ msgstr "Klipper 0.9.1"
 
 msgid "Available on 20201028. Release containing only bug fixes."
 msgstr ""
+"Доступно на сайте 20201028. Выпуск, содержащий только исправления ошибок."
 
+#, fuzzy
 msgid "Klipper 0.8.0"
-msgstr ""
+msgstr "Klipper 0.8.0"
 
 msgid "Available on 20191021. Major changes in this release:"
-msgstr ""
+msgstr "Доступно на сайте 20191021. Основные изменения в этом выпуске:"
 
 msgid ""
 "New G-Code command template support. G-Code in the config file is now "
 "evaluated with the Jinja2 template language."
 msgstr ""
+"Новая поддержка шаблонов команд G-Code. G-код в конфигурационном файле "
+"теперь оценивается с помощью языка шаблонов Jinja2."
 
 msgid "Improvements to Trinamic stepper drivers:"
-msgstr ""
+msgstr "Улучшения в шаговых драйверах Trinamic:"
 
 msgid "New support for TMC2209 and TMC5160 drivers."
-msgstr ""
+msgstr "Новая поддержка драйверов TMC2209 и TMC5160."
 
 msgid "Improved DUMP_TMC, SET_TMC_CURRENT, and INIT_TMC G-Code commands."
-msgstr ""
+msgstr "Улучшены команды DUMP_TMC, SET_TMC_CURRENT и INIT_TMC G-Code."
 
 msgid "Improved support for TMC UART handling with an analog mux."
-msgstr ""
+msgstr "Улучшена поддержка работы TMC UART с аналоговым mux."
 
 msgid "Improved homing, probing, and bed leveling support:"
-msgstr ""
+msgstr "Улучшенная поддержка наведения, зондирования и выравнивания кровати:"
 
 msgid ""
 "New manual_probe, bed_screws, screws_tilt_adjust, skew_correction, "
 "safe_z_home modules added."
 msgstr ""
+"Добавлены новые модули manual_probe, bed_screws, screws_tilt_adjust, "
+"skew_correction, safe_z_home."
 
 msgid "Enhanced multi-sample probing with median, average, and retry logic."
 msgstr ""
+"Улучшенное многовыборочное тестирование с медианным, средним значением и "
+"логикой повторных попыток."
 
 msgid ""
 "Improved documentation for BL-Touch, probe calibration, endstop calibration,"
 " delta calibration, sensorless homing, and endstop phase calibration."
 msgstr ""
+"Улучшена документация по BL-Touch, калибровке датчика, калибровке конечного "
+"останова, калибровке дельты, бессенсорному самонаведению и калибровке фазы "
+"конечного останова."
 
 msgid "Improved homing support on a large Z axis."
-msgstr ""
+msgstr "Улучшена поддержка самонаведения на большой оси Z."
 
 msgid "Many Klipper micro-controller improvements:"
-msgstr ""
+msgstr "Множество усовершенствований микроконтроллера Klipper:"
 
 msgid "Klipper ported to: SAM3X8C, SAM4S8C, SAMD51, STM32F042, STM32F4"
-msgstr ""
+msgstr "Klipper портирован на: SAM3X8C, SAM4S8C, SAMD51, STM32F042, STM32F4"
 
 msgid "New USB CDC driver implementations on SAM3X, SAM4, STM32F4."
 msgstr ""

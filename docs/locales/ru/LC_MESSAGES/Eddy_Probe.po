@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "eddy_probe/ru/>\n"
@@ -364,12 +364,16 @@ msgstr ""
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid "`ABORT` may be used to end calibration and discard results."
 msgstr ""
+"Для завершения калибровки и отмены результатов можно использовать команду "
+"`ABORT`."
 
 #: docs/Eddy_Probe.md:block 17 (unordered list)
 msgid ""
 "When calibration is finished use `SAVE_CONFIG` to store the drift "
 "calibration."
 msgstr ""
+"По окончании калибровки используйте `SAVE_CONFIG` для сохранения калибровки "
+"дрейфа."
 
 #: docs/Eddy_Probe.md:block 18 (paragraph)
 msgid ""
@@ -377,3 +381,6 @@ msgid ""
 "challenging and time consuming than most other procedures. It may require "
 "practice and several attempts to achieve an optimal calibration."
 msgstr ""
+"Как можно заключить, описанный выше процесс калибровки является более "
+"сложным и трудоемким, чем большинство других процедур. Для достижения "
+"оптимальной калибровки может потребоваться практика и несколько попыток."

@@ -1,16 +1,19 @@
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # Evgeniy Khramov <thejenjagamertjg@gmail.com>, 2022.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-12-08 10:47+0000\n"
-"Last-Translator: Evgeniy Khramov <thejenjagamertjg@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/status_reference/ru/>\n"
+"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"status_reference/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 msgid ""
 "This document is a reference of printer status information available in "
@@ -141,50 +144,69 @@ msgstr ""
 "последнего перезапуска микроконтроллера."
 
 msgid "fan"
-msgstr ""
+msgstr "вентилятор"
 
 msgid ""
 "The following information is available in [fan](Config_Reference.md#fan), "
 "[heater_fan some_name](Config_Reference.md#heater_fan) and [controller_fan "
 "some_name](Config_Reference.md#controller_fan) objects:"
 msgstr ""
+"Следующая информация доступна в объектах [вентилятор]"
+"(Config_Reference.md#fan), [heater_fan some_name]"
+"(Config_Reference.md#heater_fan) и [controller_fan some_name]"
+"(Config_Reference.md#controller_fan):"
 
 msgid "`speed`: The fan speed as a float between 0.0 and 1.0."
 msgstr ""
+"`Скорость`: Скорость вращения вентилятора в виде плавающей величины между "
+"0,0 и 1,0."
 
 msgid ""
 "`rpm`: The measured fan speed in rotations per minute if the fan has a "
 "tachometer_pin defined."
 msgstr ""
+"`rpm`: Измеренная скорость вращения вентилятора в оборотах в минуту, если у "
+"вентилятора определен контакт тахометра (tachometer_pin)."
 
+#, fuzzy
 msgid "filament_switch_sensor"
-msgstr ""
+msgstr "filament_switch_sensor"
 
 msgid ""
 "The following information is available in [filament_switch_sensor "
 "some_name](Config_Reference.md#filament_switch_sensor) objects:"
 msgstr ""
+"Следующая информация доступна в объектах [filament_switch_sensor some_name]"
+"(Config_Reference.md#filament_switch_sensor):"
 
 msgid "`enabled`: Returns True if the switch sensor is currently enabled."
 msgstr ""
+"`включен`: Возвращает истину, если датчик переключателя в данный момент "
+"включен."
 
 msgid ""
 "`filament_detected`: Returns True if the sensor is in a triggered state."
 msgstr ""
+"`filament_detected`: Возвращает истину, если датчик находится в состоянии "
+"срабатывания."
 
+#, fuzzy
 msgid "filament_motion_sensor"
-msgstr ""
+msgstr "filament_motion_sensor"
 
 msgid ""
 "The following information is available in [filament_motion_sensor "
 "some_name](Config_Reference.md#filament_motion_sensor) objects:"
 msgstr ""
+"Следующая информация доступна в объектах [filament_motion_sensor some_name]"
+"(Config_Reference.md#filament_motion_sensor):"
 
 msgid "`enabled`: Returns True if the motion sensor is currently enabled."
-msgstr ""
+msgstr "`включен`: Возвращает истину, если датчик движения включен."
 
+#, fuzzy
 msgid "firmware_retraction"
-msgstr ""
+msgstr "firmware_retraction"
 
 msgid ""
 "The following information is available in the "

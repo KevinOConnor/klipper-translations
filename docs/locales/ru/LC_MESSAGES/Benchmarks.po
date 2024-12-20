@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:53+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "benchmarks/ru/>\n"
@@ -197,29 +197,33 @@ msgstr "Тест скорости шага LPC176x"
 msgid "The following configuration sequence is used on the LPC176x:"
 msgstr "В LPC176x используется следующая последовательность конфигурации:"
 
+#, fuzzy
 msgid "lpc1768"
-msgstr ""
+msgstr "lpc1768"
 
+#, fuzzy
 msgid "lpc1769"
-msgstr ""
+msgstr "lpc1769"
 
 msgid "SAMD21 step rate benchmark"
-msgstr ""
+msgstr "Контрольный показатель скорости шага SAMD21"
 
 msgid "The following configuration sequence is used on the SAMD21:"
-msgstr ""
+msgstr "Для SAMD21 используется следующая последовательность настройки:"
 
+#, fuzzy
 msgid "samd21"
-msgstr ""
+msgstr "samd21"
 
 msgid "SAMD51 step rate benchmark"
-msgstr ""
+msgstr "Эталонный показатель частоты шагов SAMD51"
 
 msgid "The following configuration sequence is used on the SAMD51:"
-msgstr ""
+msgstr "Для SAMD51 используется следующая последовательность настройки:"
 
+#, fuzzy
 msgid "samd51"
-msgstr ""
+msgstr "samd51"
 
 msgid "1 stepper (200Mhz)"
 msgstr ""

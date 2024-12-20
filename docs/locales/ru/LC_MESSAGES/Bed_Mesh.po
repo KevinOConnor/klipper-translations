@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-19 09:54+0000\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/bed_mesh/"
 "ru/>\n"
@@ -97,8 +97,9 @@ msgstr ""
 "вдоль начала сетки. Это значение должно быть нечетным, так как требуется, "
 "чтобы центр сетки был прозондирован."
 
+#, fuzzy
 msgid "![bedmesh_round_basic](img/bedmesh_round_basic.svg)"
-msgstr "![кровать_круглая_базовая](img/bedmesh_round_basic.svg)"
+msgstr "![bedmesh_round_basic](img/bedmesh_round_basic.svg)"
 
 msgid "Advanced Configuration"
 msgstr "Расширенная конфигурация"
@@ -304,73 +305,89 @@ msgstr ""
 "соответствуют областям в приведенном выше примере конфигурации. Точки замены "
 "и их координаты выделены зеленым цветом."
 
+#, fuzzy
 msgid "![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)"
-msgstr ""
+msgstr "![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)"
 
 msgid "Bed Mesh Gcodes"
-msgstr ""
+msgstr "Кроватная сетка Gcodes"
 
 msgid "Calibration"
-msgstr ""
+msgstr "Калибровка"
 
 msgid ""
 "It is possible to specify mesh parameters to modify the probed area. The "
 "following parameters are available:"
 msgstr ""
+"Можно задать параметры сетки, чтобы изменить зондируемую область. Доступны "
+"следующие параметры:"
 
 msgid "Rectangular beds (cartesian):"
-msgstr ""
+msgstr "Прямоугольные кровати (картезианские):"
 
+#, fuzzy
 msgid "`MESH_MIN`"
-msgstr ""
+msgstr "`MESH_MIN`"
 
+#, fuzzy
 msgid "`MESH_MAX`"
-msgstr ""
+msgstr "`MESH_MAX`"
 
+#, fuzzy
 msgid "`PROBE_COUNT`"
-msgstr ""
+msgstr "`PROBE_COUNT`"
 
 msgid "Round beds (delta):"
-msgstr ""
+msgstr "Круглые кровати (дельта):"
 
+#, fuzzy
 msgid "`MESH_RADIUS`"
-msgstr ""
+msgstr "`MESH_RADIUS`"
 
+#, fuzzy
 msgid "`MESH_ORIGIN`"
-msgstr ""
+msgstr "`MESH_ORIGIN`"
 
+#, fuzzy
 msgid "`ROUND_PROBE_COUNT`"
-msgstr ""
+msgstr "`ROUND_PROBE_COUNT`"
 
 msgid "All beds:"
-msgstr ""
+msgstr "Все кровати:"
 
 msgid "Profiles"
-msgstr ""
+msgstr "Профили"
 
 msgid "`BED_MESH_PROFILE REMOVE=default`"
-msgstr ""
+msgstr "`BED_MESH_PROFILE REMOVE=по умолчанию`"
 
 msgid ""
 "Any other saved profile can be removed in the same fashion, replacing "
 "*default* with the named profile you wish to remove."
 msgstr ""
+"Любой другой сохраненный профиль можно удалить таким же образом, заменив * "
+"по умолчанию* на именованный профиль, который вы хотите удалить."
 
 msgid "Output"
-msgstr ""
+msgstr "Выход"
 
+#, fuzzy
 msgid "`BED_MESH_OUTPUT PGP=[0 | 1]`"
-msgstr ""
+msgstr "`BED_MESH_OUTPUT PGP=[0 | 1]`"
 
 msgid ""
 "Outputs the current mesh state to the terminal. Note that the mesh itself is"
 " output"
 msgstr ""
+"Выводит текущее состояние сетки на терминал. Обратите внимание, что сама "
+"сетка выводится"
 
 msgid ""
 "The PGP parameter is shorthand for \"Print Generated Points\". If `PGP=1` is"
 " set, the generated probed points will be output to the terminal:"
 msgstr ""
+"Параметр PGP - это сокращение от \"Print Generated Points\". Если задано "
+"`PGP=1`, сгенерированные точки зондирования будут выводиться на терминал:"
 
 msgid ""
 "The \"Tool Adjusted\" points refer to the nozzle location for each point, "

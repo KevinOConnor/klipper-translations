@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-20 10:47+0000\n"
+"PO-Revision-Date: 2024-12-21 18:58+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "contributing/ru/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Contributing to Klipper"
 msgstr "Вклад в Klipper"
@@ -495,6 +495,10 @@ msgid ""
 "that they can not reasonably configure nor do we want to burden them with "
 "options that don't provide a notable benefit."
 msgstr ""
+"Все новые модули, опции конфигурации, команды, параметры команд и документы "
+"должны иметь \"высокую степень воздействия\". Мы не хотим нагружать "
+"пользователей опциями, которые они не могут разумно настроить, а также не "
+"хотим нагружать их опциями, которые не дают заметных преимуществ."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -503,12 +507,19 @@ msgid ""
 "\"users of the MegaX500 are expected to set option X to 99.3 while users of "
 "the Elite100Y are expected to calibrate option X using procedure ...\"."
 msgstr ""
+"Рецензент может попросить разъяснить, как пользователь должен настраивать ту "
+"или иную опцию - идеальный ответ будет содержать подробную информацию о "
+"процессе, например, \"пользователи MegaX500 должны установить опцию X на "
+"99,3, а пользователи Elite100Y должны откалибровать опцию X с помощью "
+"процедуры ...\"."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
 "If the goal of an option is to make the code more modular then prefer using "
 "code constants instead of user facing config options."
 msgstr ""
+"Если цель опции - сделать код более модульным, то лучше использовать "
+"константы кода, а не опции конфигурации, обращенные к пользователю."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -517,6 +528,10 @@ msgid ""
 "it's preferable to utilize the existing system or refactor the existing "
 "code."
 msgstr ""
+"Новые модули, новые опции и новые параметры не должны предоставлять "
+"функциональность, аналогичную существующим модулям - если различия "
+"произвольны, предпочтительнее использовать существующую систему или "
+"рефакторить существующий код."
 
 #: docs/CONTRIBUTING.md:block 14 (paragraph)
 msgid ""
@@ -527,6 +542,12 @@ msgid ""
 "preferable for that new code to follow an internally consistent style and to"
 " generally follow industry wide coding norms."
 msgstr ""
+"Klipper не использует строгое \"руководство по стилю кодирования\", но "
+"модификации существующего кода должны следовать высокоуровневому потоку "
+"кода, стилю отступов и формату существующего кода. Новые модули и системы "
+"могут быть более гибкими в отношении стиля кодирования, но предпочтительно, "
+"чтобы новый код следовал внутренне согласованному стилю и в целом "
+"соответствовал общепринятым в отрасли нормам кодирования."
 
 #: docs/CONTRIBUTING.md:block 15 (paragraph)
 msgid ""
@@ -536,6 +557,11 @@ msgid ""
 "In particular, if reviewers can not convince themselves that a submission is"
 " free of defects then changes may be necessary."
 msgstr ""
+"Обсуждение \"лучших реализаций\" не является целью рецензии. Однако если "
+"рецензенту трудно понять реализацию представленного материала, он может "
+"попросить внести изменения, чтобы сделать реализацию более прозрачной. В "
+"частности, если рецензенты не могут убедить себя в том, что в представленном "
+"материале нет дефектов, то могут потребоваться изменения."
 
 #: docs/CONTRIBUTING.md:block 16 (paragraph)
 msgid ""
@@ -546,10 +572,17 @@ msgid ""
 "implementation. Both situations are a normal result of a review and should "
 "not be considered criticism of the original submission."
 msgstr ""
+"В рамках рецензирования рецензент может создать альтернативный Pull Request "
+"для темы. Это может быть сделано для того, чтобы избежать чрезмерного "
+"обсуждения мелких процедурных вопросов и тем самым упростить процесс "
+"отправки. Также это может быть сделано, потому что обсуждение вдохновляет "
+"рецензента на создание альтернативной реализации. Обе ситуации являются "
+"нормальным результатом рецензирования и не должны рассматриваться как "
+"критика исходной заявки."
 
 #: docs/CONTRIBUTING.md:block 17 (header)
 msgid "Helping with reviews"
-msgstr ""
+msgstr "Помощь в написании обзоров"
 
 #: docs/CONTRIBUTING.md:block 18 (paragraph)
 msgid ""
@@ -557,6 +590,10 @@ msgid ""
 "reviewer](#reviewers) to perform a review. Submitters of GitHub Pull "
 "Requests are also encouraged to review their own submissions."
 msgstr ""
+"Мы благодарны за помощь с рецензиями! Не обязательно быть "
+"[перечисленным рецензентом](#reviewers), чтобы выполнять рецензирование. "
+"Авторам GitHub Pull Requests также рекомендуется рецензировать свои "
+"собственные заявки."
 
 #: docs/CONTRIBUTING.md:block 19 (paragraph)
 msgid ""
@@ -572,6 +609,16 @@ msgid ""
 " but I reviewed everything else in the CONTRIBUTING document and it looks "
 "good\"."
 msgstr ""
+"Чтобы помочь с рецензированием, выполните шаги, описанные в "
+"[What to expect in a review](#what-to-expect-in-a-review), чтобы проверить "
+"отправку. После завершения проверки добавьте комментарий к GitHub Pull "
+"Request с вашими выводами. Если заявка прошла проверку, укажите это в "
+"комментарии - например, что-то вроде \"Я проверил это изменение в "
+"соответствии с шагами в документе CONTRIBUTING, и мне кажется, что все "
+"хорошо\". Если вы не смогли выполнить некоторые этапы рецензирования, "
+"укажите, какие этапы были рассмотрены, а какие нет - например, что-то вроде "
+"\"Я не проверял код на наличие дефектов, но я рассмотрел все остальное в "
+"документе CONTRIBUTING, и все выглядит хорошо\"."
 
 #: docs/CONTRIBUTING.md:block 20 (paragraph)
 msgid ""
@@ -581,10 +628,16 @@ msgid ""
 "and the results - for example something like \"I tested this code on my "
 "Acme900Z printer with a vase print and the results were good\"."
 msgstr ""
+"Мы также признательны за тестирование представленных материалов. Если код "
+"был протестирован, пожалуйста, добавьте комментарий к GitHub Pull Request с "
+"результатами тестирования - успешными или неудачными. Пожалуйста, явно "
+"укажите, что код был протестирован, и результаты - например, что-то вроде \"Я"
+" протестировал этот код на принтере Acme900Z с печатью вазы, и результаты "
+"были хорошими\"."
 
 #: docs/CONTRIBUTING.md:block 21 (header)
 msgid "Reviewers"
-msgstr ""
+msgstr "Рецензенты"
 
 #: docs/CONTRIBUTING.md:block 22 (paragraph)
 msgid "The Klipper \"reviewers\" are:"
@@ -592,11 +645,12 @@ msgstr "\"Рецензентами\" Клиппера являются:"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Name"
-msgstr ""
+msgstr "Название"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
+#, fuzzy
 msgid "GitHub Id"
-msgstr ""
+msgstr "GitHub Id"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Areas of interest"
@@ -604,27 +658,29 @@ msgstr "Сферы интересов"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Dmitry Butyugin"
-msgstr ""
+msgstr "Дмитрий Бутюгин"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
+#, fuzzy
 msgid "@dmbutyugin"
-msgstr ""
+msgstr "@dmbutyugin"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Input shaping, resonance testing, kinematics"
-msgstr ""
+msgstr "Формирование входного сигнала, резонансное тестирование, кинематика"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Eric Callahan"
 msgstr "Эрик Каллахан"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
+#, fuzzy
 msgid "@Arksine"
-msgstr ""
+msgstr "@Arksine"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Bed leveling, MCU flashing"
-msgstr ""
+msgstr "Выравнивание кровати, прошивка MCU"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Kevin O'Connor"
@@ -632,11 +688,11 @@ msgstr "Кевин О'Коннор"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "@KevinOConnor"
-msgstr ""
+msgstr "@КевинОконнор"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Core motion system, Micro-controller code"
-msgstr ""
+msgstr "Основная система движения, код микроконтроллера"
 
 #: docs/CONTRIBUTING.md:block 24 (paragraph)
 msgid ""
@@ -644,10 +700,13 @@ msgid ""
 "submissions at them. All of the reviewers monitor the forums and PRs, and "
 "will take on reviews when they have time to."
 msgstr ""
+"Пожалуйста, не пингуйте рецензентов и не направляйте им заявки. Все "
+"рецензенты следят за форумами и PR, и берут на себя рецензии, когда у них "
+"есть время."
 
 #: docs/CONTRIBUTING.md:block 25 (paragraph)
 msgid "The Klipper \"maintainers\" are:"
-msgstr ""
+msgstr "\"Сопровождающими\" Клиппера являются:"
 
 #: docs/CONTRIBUTING.md:block 26 (table)
 msgid "GitHub name"

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-20 10:47+0000\n"
+"PO-Revision-Date: 2024-12-21 18:58+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "debugging/ru/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "This document describes some of the Klipper debugging tools."
 msgstr "В этом документе описаны некоторые инструменты отладки Klipper."
@@ -383,47 +383,61 @@ msgid "Graphs can be generated with a command like the following:"
 msgstr "Графики можно построить с помощью следующей команды:"
 
 #: docs/Debugging.md:block 33 (code)
+#, fuzzy
 msgid "~/klipper/scripts/motan/motan_graph.py mylog -o mygraph.png\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/motan_graph.py mylog -o mygraph.png\n"
 
 #: docs/Debugging.md:block 34 (paragraph)
 msgid ""
 "One can use the `-g` option to specify the datasets to graph (it takes a "
 "Python literal containing a list of lists). For example:"
 msgstr ""
+"Можно использовать опцию `-g`, чтобы указать наборы данных для построения "
+"графика (она принимает Python-литерал, содержащий список списков). Например:"
 
 #: docs/Debugging.md:block 35 (code)
+#, fuzzy
 msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)\"], [\"trapq(toolhead,accel)\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '"
+"[[\"trapq(toolhead,velocity)\"], [\"trapq(toolhead,accel)\"]]'\n"
 
 #: docs/Debugging.md:block 36 (paragraph)
 msgid ""
 "The list of available datasets can be found using the `-l` option - for "
 "example:"
 msgstr ""
+"Список доступных наборов данных можно найти с помощью опции `-l` - например:"
 
 #: docs/Debugging.md:block 37 (code)
+#, fuzzy
 msgid "~/klipper/scripts/motan/motan_graph.py -l\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/motan_graph.py -l\n"
 
 #: docs/Debugging.md:block 38 (paragraph)
 msgid ""
 "It is also possible to specify matplotlib plot options for each dataset:"
 msgstr ""
+"Также можно указать параметры графиков matplotlib для каждого набора данных:"
 
 #: docs/Debugging.md:block 39 (code)
+#, fuzzy
 msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '"
+"[[\"trapq(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 
 #: docs/Debugging.md:block 40 (paragraph)
 msgid ""
 "Many matplotlib options are available; some examples are \"color\", "
 "\"label\", \"alpha\", and \"linestyle\"."
 msgstr ""
+"Доступно множество опций matplotlib; некоторые примеры - \" цвет\", \"метка\""
+", \"альфа\" и \"стиль линии\"."
 
 #: docs/Debugging.md:block 41 (paragraph)
 msgid ""
@@ -431,12 +445,19 @@ msgid ""
 "the `--help` option to see a list. It may also be convenient to view/modify "
 "the [motan_graph.py](../scripts/motan/motan_graph.py) script itself."
 msgstr ""
+"Инструмент `motan_graph.py` поддерживает несколько других опций командной "
+"строки - используйте опцию `--help` для просмотра списка. Также может быть "
+"удобно просматривать/изменять сам скрипт [motan_graph.py](../scripts/motan/"
+"motan_graph.py)."
 
 #: docs/Debugging.md:block 60 (code)
+#, fuzzy
 msgid ""
 "cd /path/to/klipper\n"
 "make menuconfig\n"
 msgstr ""
+"cd /path/to/klipper\n"
+"make menuconfig\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""
@@ -444,12 +465,18 @@ msgid ""
 "SIMULAVR software emulation support. Then one can compile Klipper (run "
 "`make`) and then start the simulation with:"
 msgstr ""
+"скомпилируйте программное обеспечение микроконтроллера для AVR atmega644p и "
+"выберите поддержку программной эмуляции SIMULAVR. Затем можно скомпилировать "
+"Klipper (запустить `make`) и запустить моделирование с помощью:"
 
 #: docs/Debugging.md:block 67 (code)
+#, fuzzy
 msgid ""
 "PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf"
 " -t PORTA.PORT,PORTC.PORT\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf "
+"-t PORTA.PORT,PORTC.PORT\n"
 
 #: docs/Debugging.md:block 7 (paragraph)
 msgid ""
@@ -458,6 +485,10 @@ msgid ""
 "github](https://github.com/Klipper3d/klipper/issues/1438). Once the data "
 "dictionaries are downloaded, use the following to run the regression suite:"
 msgstr ""
+"Набор регрессионных тестов Klippy требует \"словарей данных\" со многих "
+"платформ. Самый простой способ получить их - [скачать с github](https://"
+"github.com/Klipper3d/klipper/issues/1438). После загрузки словарей данных "
+"запустите регрессионный набор следующим образом:"
 
 #: docs/Debugging.md:block 42 (paragraph)
 msgid ""
@@ -466,6 +497,11 @@ msgid ""
 "the data with a Unix command like the following: `gunzip < mylog.json.gz | "
 "tr '\\03' '\\n' | less`"
 msgstr ""
+"Журналы необработанных данных, создаваемые инструментом `data_logger.py`, "
+"имеют формат, описанный в [API Server](API_Server.md). Может оказаться "
+"полезным просмотреть данные с помощью Unix-команды, например, следующей: `"
+"gunzip < mylog.json.gz | tr '\\03' '\\n"
+"' | less`"
 
 #: docs/Debugging.md:block 57 (paragraph)
 msgid ""
@@ -473,24 +509,35 @@ msgid ""
 "support. Note that the build system may need to have some packages (such as "
 "swig) installed in order to build the python module."
 msgstr ""
+"Чтобы использовать simulavr, загрузите пакет simulavr и скомпилируйте его с "
+"поддержкой python. Обратите внимание, что для сборки модуля python в системе "
+"сборки могут быть установлены некоторые пакеты (например, swig)."
 
 #: docs/Debugging.md:block 58 (code)
+#, fuzzy
 msgid ""
 "git clone git://git.savannah.nongnu.org/simulavr.git\n"
 "cd simulavr\n"
 "make python\n"
 "make build\n"
 msgstr ""
+"git clone git://git.savannah.nongnu.org/simulavr.git\n"
+"cd simulavr\n"
+"make python\n"
+"make build\n"
 
 #: docs/Debugging.md:block 59 (paragraph)
 msgid ""
 "Make sure a file like **./build/pysimulavr/_pysimulavr.*.so** is present "
 "after the above compilation:"
 msgstr ""
+"Убедитесь, что после вышеуказанной компиляции присутствует файл вида: **./"
+"build/pysimulavr/_pysimulavr.*.so**"
 
 #: docs/Debugging.md:block 60 (code)
+#, fuzzy
 msgid "ls ./build/pysimulavr/_pysimulavr.*.so\n"
-msgstr ""
+msgstr "ls ./build/pysimulavr/_pysimulavr.*.so\n"
 
 #: docs/Debugging.md:block 62 (paragraph)
 msgid ""
@@ -498,30 +545,45 @@ msgid ""
 "the following packages and generate *.deb files for system-wide installation"
 " of simulavr:"
 msgstr ""
+"Если вы работаете в системе на базе Debian (Debian, Ubuntu и т.д.), вы "
+"можете установить следующие пакеты и сгенерировать файлы *.deb для установки "
+"simulavr в масштабах всей системы:"
 
 #: docs/Debugging.md:block 63 (code)
+#, fuzzy
 msgid ""
 "sudo apt update\n"
 "sudo apt install g++ make cmake swig rst2pdf help2man texinfo\n"
 "make cfgclean python debian\n"
 "sudo dpkg -i build/debian/python3-simulavr*.deb\n"
 msgstr ""
+"sudo apt update\n"
+"sudo apt install g++ make cmake swig rst2pdf help2man texinfo\n"
+"make cfgclean python debian\n"
+"sudo dpkg -i build/debian/python3-simulavr*.deb\n"
 
 #: docs/Debugging.md:block 67 (code)
+#, fuzzy
 msgid ""
 "PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py "
 "out/klipper.elf\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py out/"
+"klipper.elf\n"
 
 #: docs/Debugging.md:block 68 (paragraph)
 msgid ""
 "Note that if you have installed python3-simulavr system-wide, you do not "
 "need to set `PYTHONPATH`, and can simply run the simulator as"
 msgstr ""
+"Обратите внимание, что если вы установили python3-simulavr по всей системе, "
+"вам не нужно задавать `PYTHONPATH`, и вы можете просто запустить симулятор "
+"как"
 
 #: docs/Debugging.md:block 69 (code)
+#, fuzzy
 msgid "./scripts/avrsim.py out/klipper.elf\n"
-msgstr ""
+msgstr "./scripts/avrsim.py out/klipper.elf\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""
@@ -529,6 +591,8 @@ msgid ""
 "**./build/pysimulavr/_pysimulavr.cpython-39-x86_64-linux-gnu.so**) and not "
 "an error."
 msgstr ""
+"Эта команда должна сообщить о конкретном файле (например, **./build/"
+"pysimulavr/_pysimulavr.cpython-39-x86_64-linux-gnu.so**), а не об ошибке."
 
 #~ msgid ""
 #~ "This commmand should report a specific file (e.g. "

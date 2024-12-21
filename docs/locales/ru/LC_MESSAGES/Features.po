@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-20 10:47+0000\n"
+"PO-Revision-Date: 2024-12-21 18:58+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/features/"
 "ru/>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Klipper has several compelling features:"
 msgstr "Клиппер обладает несколькими привлекательными функциями:"
@@ -429,6 +429,8 @@ msgid ""
 "Further details on the benchmarks are available in the [Benchmarks "
 "document](Benchmarks.md)."
 msgstr ""
+"Более подробная информация о бенчмарках доступна в документе [Benchmarks]"
+"(Benchmarks.md)."
 
 #: docs/Features.md:block 10 (table)
 #, fuzzy
@@ -440,40 +442,49 @@ msgid "1103K"
 msgstr "1103 тыс."
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "790K"
-msgstr ""
+msgstr "790K"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAMD21"
-msgstr ""
+msgstr "SAMD21"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "STM32F103"
-msgstr ""
+msgstr "STM32F103"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAM3X8E"
-msgstr ""
+msgstr "SAM3X8E"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAM4S8C"
-msgstr ""
+msgstr "SAM4S8C"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "LPC1768"
-msgstr ""
+msgstr "LPC1768"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "LPC1769"
-msgstr ""
+msgstr "LPC1769"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "RP2040"
-msgstr ""
+msgstr "RP2040"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAM4E8E"
-msgstr ""
+msgstr "SAM4E8E"
 
 #: docs/Features.md:block 10 (table)
 msgid "SAMD51"

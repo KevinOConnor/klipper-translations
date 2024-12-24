@@ -1,17 +1,20 @@
 # Comocen <Comoc_en@mail.ru>, 2022.
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # Evgeniy Khramov <thejenjagamertjg@gmail.com>, 2022.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2022-12-07 05:47+0000\n"
-"Last-Translator: Evgeniy Khramov <thejenjagamertjg@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/benchmarks/ru/>\n"
+"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"benchmarks/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "This document describes Klipper benchmarks."
 msgstr "В этом документе описываются эталонные тесты Klipper."
@@ -51,17 +54,16 @@ msgstr ""
 "микроконтроллером и хостом, считывание температуры, проверка конечной "
 "остановки) при любом реальном использовании."
 
-#, fuzzy
 msgid ""
 "In general, the pins for the benchmark tests are chosen to flash LEDs or "
 "other innocuous pins. **Always verify that it is safe to drive the "
 "configured pins prior to running a benchmark.** It is not recommended to "
 "drive an actual stepper during a benchmark."
 msgstr ""
-"Как правило, контакты для эталонных тестов выбираются для мигания "
-"светодиодов или других безвредных контактов. **Всегда проверяйте, безопасно "
-"ли управлять сконфигурированными выводами перед запуском теста.** Не "
-"рекомендуется управлять настоящим шаговым двигателем во время теста."
+"Обычно для эталонных тестов выбирают пины, на которых будут мигать "
+"светодиоды или другие безобидные пины. **Всегда проверяйте безопасность "
+"управления сконфигурированными контактами перед запуском эталонного теста.** "
+"Не рекомендуется управлять реальным степпером во время эталонного теста."
 
 msgid "Step rate benchmark test"
 msgstr "Эталонный тест скорости шага"
@@ -102,7 +104,7 @@ msgid "avr"
 msgstr "avr"
 
 msgid "ticks"
-msgstr ""
+msgstr "клещи"
 
 msgid "1 stepper"
 msgstr "1 шаговый двигатель"
@@ -128,8 +130,9 @@ msgstr "В Duet Maestro используется следующая послед
 msgid "sam4s8c"
 msgstr "sam4s8c"
 
+#, fuzzy
 msgid "70"
-msgstr ""
+msgstr "70"
 
 msgid "Duet Wifi step rate benchmark"
 msgstr "Тест скорости шага Duet Wifi"
@@ -194,53 +197,61 @@ msgstr "Тест скорости шага LPC176x"
 msgid "The following configuration sequence is used on the LPC176x:"
 msgstr "В LPC176x используется следующая последовательность конфигурации:"
 
+#, fuzzy
 msgid "lpc1768"
-msgstr ""
+msgstr "lpc1768"
 
+#, fuzzy
 msgid "lpc1769"
-msgstr ""
+msgstr "lpc1769"
 
 msgid "SAMD21 step rate benchmark"
-msgstr ""
+msgstr "Контрольный показатель скорости шага SAMD21"
 
 msgid "The following configuration sequence is used on the SAMD21:"
-msgstr ""
+msgstr "Для SAMD21 используется следующая последовательность настройки:"
 
+#, fuzzy
 msgid "samd21"
-msgstr ""
+msgstr "samd21"
 
 msgid "SAMD51 step rate benchmark"
-msgstr ""
+msgstr "Эталонный показатель частоты шагов SAMD51"
 
 msgid "The following configuration sequence is used on the SAMD51:"
-msgstr ""
+msgstr "Для SAMD51 используется следующая последовательность настройки:"
 
+#, fuzzy
 msgid "samd51"
-msgstr ""
+msgstr "samd51"
 
 msgid "1 stepper (200Mhz)"
-msgstr ""
+msgstr "1 шаговый механизм (200 МГц)"
 
 msgid "3 stepper (200Mhz)"
-msgstr ""
+msgstr "3 шаговика (200 МГц)"
 
 msgid "Linux MCU step rate benchmark"
-msgstr ""
+msgstr "Эталонный образец частоты шагов для Linux MCU"
 
 msgid "The following configuration sequence is used on a Raspberry Pi:"
-msgstr ""
+msgstr "Следующая последовательность конфигурации используется на Raspberry Pi:"
 
+#, fuzzy
 msgid "Linux (RPi3)"
-msgstr ""
+msgstr "Linux (RPi3)"
 
 msgid "Command dispatch benchmark"
-msgstr ""
+msgstr "Эталон командной диспетчерской службы"
 
 msgid ""
 "When the test completes, determine the difference between the clocks "
 "reported in the two \"uptime\" response messages. The total number of "
 "commands per second is then `100000 * mcu_frequency / clock_diff`."
 msgstr ""
+"По завершении теста определите разницу между часами, указанными в двух "
+"ответных сообщениях \"uptime\". Общее количество команд в секунду равно `"
+"100000 * mcu_frequency / clock_diff`."
 
 msgid ""
 "Note that this test may saturate the USB/CPU capacity of a Raspberry Pi. If "
@@ -249,63 +260,82 @@ msgid ""
 "applicable, the benchmarks below are with console.py running on a desktop "
 "class machine with the device connected via a high-speed hub."
 msgstr ""
+"Обратите внимание, что этот тест может насытить USB/CPU Raspberry Pi. Если "
+"тест выполняется на Raspberry Pi, Beaglebone или аналогичном хост-"
+"компьютере, увеличьте задержку (например, `DELAY {clock + 20*freq} "
+"get_uptime`). Там, где это применимо, ниже приведены контрольные показатели "
+"с запуском console.py на настольной машине класса с устройством, "
+"подключенным через высокоскоростной концентратор."
 
+#, fuzzy
 msgid "MCU"
-msgstr ""
+msgstr "MCU"
 
 msgid "Rate"
-msgstr ""
+msgstr "Тариф"
 
 msgid "Build"
-msgstr ""
+msgstr "Сборка"
 
 msgid "Build compiler"
-msgstr ""
+msgstr "Сборка компилятора"
 
+#, fuzzy
 msgid "stm32f042 (CAN)"
-msgstr ""
+msgstr "stm32f042 (CAN)"
 
+#, fuzzy
 msgid "18K"
-msgstr ""
+msgstr "18K"
 
+#, fuzzy
 msgid "c105adc8"
-msgstr ""
+msgstr "c105adc8"
 
 msgid "arm-none-eabi-gcc (GNU Tools 7-2018-q3-update) 7.3.1"
-msgstr ""
+msgstr "arm-none-eabi-gcc (GNU Инструменты 7-2018-q3-обновление) 7.3.1"
 
 msgid "atmega2560 (serial)"
-msgstr ""
+msgstr "atmega2560 (серийный)"
 
+#, fuzzy
 msgid "23K"
-msgstr ""
+msgstr "23K"
 
+#, fuzzy
 msgid "b161a69e"
-msgstr ""
+msgstr "b161a69e"
 
+#, fuzzy
 msgid "avr-gcc (GCC) 4.8.1"
-msgstr ""
+msgstr "avr-gcc (GCC) 4.8.1"
 
 msgid "sam3x8e (serial)"
-msgstr ""
+msgstr "sam3x8e (серийный)"
 
+#, fuzzy
 msgid "arm-none-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 7.1.0-5.fc27) 7.1.0"
 
+#, fuzzy
 msgid "at90usb1286 (USB)"
-msgstr ""
+msgstr "at90usb1286 (USB)"
 
+#, fuzzy
 msgid "75K"
-msgstr ""
+msgstr "75K"
 
+#, fuzzy
 msgid "01d2183f"
-msgstr ""
+msgstr "01d2183f"
 
+#, fuzzy
 msgid "avr-gcc (GCC) 5.4.0"
-msgstr ""
+msgstr "avr-gcc (GCC) 5.4.0"
 
+#, fuzzy
 msgid "samd21 (USB)"
-msgstr ""
+msgstr "samd21 (USB)"
 
 msgid "223K"
 msgstr ""

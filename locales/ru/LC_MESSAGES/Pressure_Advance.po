@@ -1,17 +1,20 @@
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # VICTOR <subfyn@gmail.com>, 2023.
 # xXx <xxx_xxx_xxxxxxxxx@mail.ru>, 2023.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-09-29 19:44+0000\n"
-"Last-Translator: xXx <xxx_xxx_xxxxxxxxx@mail.ru>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/pressure_advance/ru/>\n"
+"PO-Revision-Date: 2024-12-20 10:47+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"pressure_advance/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 msgid ""
 "This document provides information on tuning the \"pressure advance\" "
@@ -84,9 +87,8 @@ msgstr ""
 "Затем распечатайте объект. Полностью распечатанный тестовый отпечаток "
 "выглядит так:"
 
-#, fuzzy
 msgid "![tuning_tower](img/tuning_tower.jpg)"
-msgstr "![tuning_tower](img/tuning_tower.jpg)"
+msgstr "![тюнинг_башня](img/tuning_tower.jpg)"
 
 msgid ""
 "The above TUNING_TOWER command instructs Klipper to alter the "
@@ -305,16 +307,16 @@ msgid ""
 "TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 "
 "FACTOR=.005\n"
 msgstr ""
-"TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 "
-"FACTOR=.005\n"
+"TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=."
+"005\n"
 
 #, fuzzy
 msgid ""
 "TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 "
 "FACTOR=.020\n"
 msgstr ""
-"TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 "
-"FACTOR=.020\n"
+"TUNING_TOWER COMMAND=SET_PRESSURE_ADVANCE PARAMETER=ADVANCE START=0 FACTOR=."
+"020\n"
 
 #: docs/Pressure_Advance.md:block 1 (header)
 msgid "Pressure advance"

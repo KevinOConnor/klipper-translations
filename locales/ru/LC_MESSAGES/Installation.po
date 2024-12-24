@@ -3,17 +3,20 @@
 # WofWca <wofwca@protonmail.com>, 2022.
 # Evgeniy Khramov <thejenjagamertjg@gmail.com>, 2022.
 # xXx <xxx_xxx_xxxxxxxxx@mail.ru>, 2023.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-09-29 19:44+0000\n"
-"Last-Translator: xXx <xxx_xxx_xxxxxxxxx@mail.ru>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/installation/ru/>\n"
+"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"installation/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Building and flashing the micro-controller"
 msgstr "Компиляция и прошивка микроконтроллера"
@@ -50,14 +53,15 @@ msgstr "ls /dev/serial/by-id/*\n"
 msgid "/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 msgstr "/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 
-#, fuzzy
 msgid ""
 "sudo service klipper stop\n"
 "make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
 "sudo service klipper start\n"
 msgstr ""
 "sudo service klipper stop\n"
+"\n"
 "make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0\n"
+"\n"
 "sudo service klipper start\n"
 
 #, fuzzy
@@ -220,6 +224,12 @@ msgid ""
 "as the host machine (see the [FAQ](FAQ.md#can-i-run-klipper-on-something-"
 "other-than-a-raspberry-pi-3) for other options)."
 msgstr ""
+"Эти инструкции предполагают, что программное обеспечение будет работать на "
+"хосте под управлением linux, на котором установлен фронт-энд, совместимый с "
+"Klipper. В качестве хост-машины рекомендуется использовать SBC (Small Board "
+"Computer), например, Raspberry Pi или Linux-устройство на базе Debian ("
+"другие варианты см. в [FAQ](FAQ.md#can-i-run-klipper-on-something-other-"
+"than-a-raspberry-pi-3))."
 
 #: docs/Installation.md:block 3 (paragraph)
 msgid ""
@@ -227,6 +237,9 @@ msgid ""
 "mcu relates to the printboard. SBC relates to the term Small Board Computer "
 "such as the Raspberry Pi."
 msgstr ""
+"Для целей данной инструкции host относится к устройству Linux, а mcu - к "
+"печатной плате. SBC относится к термину Small Board Computer, например, "
+"Raspberry Pi."
 
 #: docs/Installation.md:block 5 (paragraph)
 msgid ""
@@ -238,16 +251,24 @@ msgid ""
 "technical information about the printer that will be needed during the "
 "installation."
 msgstr ""
+"Большинство настроек Klipper определяется \"файлом конфигурации принтера\" "
+"printer.cfg, который будет храниться на хосте. Подходящий файл конфигурации "
+"часто можно найти, заглянув в каталог Klipper [config](../config/) для "
+"поиска файла, начинающегося с префикса \"printer-\", который соответствует "
+"целевому принтеру. Конфигурационный файл Klipper содержит техническую "
+"информацию о принтере, которая понадобится во время установки."
 
 #: docs/Installation.md:block 9 (header)
 msgid "Interacting with Klipper"
-msgstr ""
+msgstr "Взаимодействие с Klipper"
 
 #: docs/Installation.md:block 10 (paragraph)
 msgid ""
 "Klipper is a 3d printer firmware, so it needs some way for the user to "
 "interact with it."
 msgstr ""
+"Klipper - это прошивка для 3d-принтера, поэтому пользователю нужно как-то "
+"взаимодействовать с ней."
 
 #: docs/Installation.md:block 11 (paragraph)
 msgid ""
@@ -255,6 +276,10 @@ msgid ""
 "the [Moonraker web API](https://moonraker.readthedocs.io/) and there is also"
 " the option to use [Octoprint](https://octoprint.org/) to control Klipper."
 msgstr ""
+"В настоящее время лучшим выбором являются фронт-энды, получающие информацию "
+"через [Moonraker web API](https://moonraker.readthedocs.io/), также есть "
+"возможность использовать [Octoprint](https://octoprint.org/) для управления "
+"Klipper."
 
 #: docs/Installation.md:block 12 (paragraph)
 msgid ""
@@ -262,10 +287,13 @@ msgid ""
 "the same in all cases. We encourage users to research the options available "
 "and make an informed decision."
 msgstr ""
+"Выбор остается за пользователем, но основа Klipper во всех случаях "
+"одинакова. Мы рекомендуем пользователям изучить доступные варианты и принять "
+"взвешенное решение."
 
 #: docs/Installation.md:block 13 (header)
 msgid "Obtaining an OS image for SBC's"
-msgstr ""
+msgstr "Получение образа ОС для SBC"
 
 #: docs/Installation.md:block 14 (paragraph)
 msgid ""
@@ -273,6 +301,10 @@ msgid ""
 "depend on what front end you wish to use. Some manafactures of these SBC "
 "boards also provide their own Klipper-centric images."
 msgstr ""
+"Существует множество способов получить образ ОС для Klipper для "
+"использования на SBC, большинство из них зависит от того, какой фронт-энд вы "
+"хотите использовать. Некоторые производители этих плат SBC также "
+"предоставляют свои собственные образы, ориентированные на Klipper."
 
 #: docs/Installation.md:block 15 (paragraph)
 msgid ""
@@ -282,22 +314,32 @@ msgid ""
 "install image [\"MainsailOS\"](http://docs.mainsailOS.xyz), this has the "
 "option for Raspberry Pi and some OrangePi varianta."
 msgstr ""
+"Два основных фронт-энда на базе Moonraker - это [Fluidd](https://"
+"docs.fluidd.xyz/) и [Mainsail](https://docs.mainsail.xyz/), последний из "
+"которых имеет готовый установочный образ [\"MainsailOS\"]"
+"(http://docs.mainsailOS.xyz), в котором есть возможность установки на "
+"Raspberry Pi и некоторые варианты OrangePi."
 
 #: docs/Installation.md:block 16 (paragraph)
 msgid ""
 "Fluidd can be installed via KIAUH(Klipper Install And Update Helper), which "
 "is explained below and is a 3rd party installer for all things Klipper."
 msgstr ""
+"Fluidd можно установить с помощью KIAUH (Klipper Install And Update Helper), "
+"о котором рассказывается ниже, и который является сторонним инсталлятором "
+"для всех вещей Klipper."
 
 #: docs/Installation.md:block 17 (paragraph)
 msgid ""
 "OctoPrint can be installed via the popular OctoPi image or via KIAUH, this "
 "process is explained in <OctoPrint.md>"
 msgstr ""
+"OctoPrint может быть установлен через популярный образ OctoPi или через "
+"KIAUH, этот процесс описан в <OctoPrint.md>"
 
 #: docs/Installation.md:block 18 (header)
 msgid "Installing via KIAUH"
-msgstr ""
+msgstr "Установка через KIAUH"
 
 #: docs/Installation.md:block 19 (paragraph)
 msgid ""
@@ -307,6 +349,11 @@ msgid ""
 "that can stop some Klipper functions working and even mask access to some "
 "print boards."
 msgstr ""
+"Обычно вы начинаете с базового образа для вашего SBC, например, RPiOS Lite "
+"или, в случае устройства с x86 Linux, Ubuntu Server. Обратите внимание, что "
+"Desktop-варианты не рекомендуются из-за некоторых вспомогательных программ, "
+"которые могут помешать работе некоторых функций Klipper и даже заблокировать "
+"доступ к некоторым печатающим платам."
 
 #: docs/Installation.md:block 20 (paragraph)
 msgid ""
@@ -314,12 +361,17 @@ msgid ""
 "variety of Linux based systems that run a form of Debian. More information "
 "can be found at https://github.com/dw-0/kiauh"
 msgstr ""
+"KIAUH можно использовать для установки Klipper и связанных с ним программ на "
+"различные системы на базе Linux, работающие под управлением Debian. Более "
+"подробную информацию можно найти на сайте https://github.com/dw-0/kiauh"
 
 #: docs/Installation.md:block 22 (paragraph)
 msgid ""
 "To compile the micro-controller code, start by running these commands on "
 "your host device:"
 msgstr ""
+"Чтобы скомпилировать код микроконтроллера, начните с выполнения этих команд "
+"на хост-устройстве:"
 
 #: docs/Installation.md:block 31 (paragraph)
 msgid ""
@@ -331,12 +383,22 @@ msgid ""
 " item will be your print board(see the [FAQ](FAQ.md#wheres-my-serial-port) "
 "for more information)."
 msgstr ""
+"Обычно каждый принтер имеет свое уникальное имя последовательного порта. Это "
+"уникальное имя будет использоваться при прошивке микроконтроллера. Возможно, "
+"в приведенном выше выводе будет несколько строк - если это так, выберите "
+"строку, соответствующую микроконтроллеру. Если в списке много элементов и "
+"выбор неоднозначен, отключите плату и запустите команду снова, недостающим "
+"элементом будет ваша печатная плата (см. дополнительную информацию в [FAQ]"
+"(FAQ.md#wheres-my-serial-port))."
 
 #: docs/Installation.md:block 32 (paragraph)
 msgid ""
 "For common micro-controllers with STM32 or clone chips, LPC chips and others"
 " it is usual that these need an initial Klipper flash via SD card."
 msgstr ""
+"Для распространенных микроконтроллеров с микросхемами STM32 или клонами, "
+"микросхемами LPC и другими обычно требуется начальная прошивка Klipper через "
+"SD-карту."
 
 #: docs/Installation.md:block 33 (paragraph)
 msgid ""
@@ -344,37 +406,52 @@ msgid ""
 "board is not connected with USB to the host, due to some boards being able "
 "to feed power back to the board and stopping a flash from occuring."
 msgstr ""
+"При прошивке этим методом важно убедиться, что печатная плата не подключена "
+"к хосту через USB, так как некоторые платы могут подавать питание обратно на "
+"плату и препятствовать возникновению вспышки."
 
 #: docs/Installation.md:block 34 (paragraph)
 msgid ""
 "For common micro-controllers using Atmega chips, for example the 2560, the "
 "code can be flashed with something similar to:"
 msgstr ""
+"Для распространенных микроконтроллеров, использующих микросхемы Atmega, "
+"например 2560, код можно прошить примерно так:"
 
 #: docs/Installation.md:block 37 (paragraph)
 msgid ""
 "For common micro-controllers using RP2040 chips, the code can be flashed "
 "with something similar to:"
 msgstr ""
+"Для распространенных микроконтроллеров, использующих микросхемы RP2040, код "
+"можно прошить примерно так:"
 
 #: docs/Installation.md:block 38 (code)
+#, fuzzy
 msgid ""
 "sudo service klipper stop\n"
 "make flash FLASH_DEVICE=first\n"
 "sudo service klipper start\n"
 msgstr ""
+"sudo service klipper stop\n"
+"make flash FLASH_DEVICE=first\n"
+"sudo service klipper start\n"
 
 #: docs/Installation.md:block 39 (paragraph)
 msgid ""
 "It is important to note that RP2040 chips may need to be put into Boot mode "
 "before this operation."
 msgstr ""
+"Важно отметить, что перед этой операцией микросхемы RP2040 могут быть "
+"переведены в режим загрузки."
 
 #: docs/Installation.md:block 41 (paragraph)
 msgid ""
 "The next step is to copy the [printer configuration file](#obtain-a-klipper-"
 "configuration-file) to the host."
 msgstr ""
+"Следующим шагом будет копирование [файла конфигурации принтера](#obtain-a"
+"-klipper-configuration-file) на хост."
 
 #: docs/Installation.md:block 42 (paragraph)
 msgid ""
@@ -382,6 +459,9 @@ msgid ""
 "built in editors in Mainsail or Fluidd. These will allow the user to open "
 "the configuration examples and save them to be printer.cfg."
 msgstr ""
+"Пожалуй, самый простой способ настроить конфигурационный файл Klipper - это "
+"использовать встроенные редакторы в Mainsail или Fluidd. Они позволят "
+"пользователю открыть примеры конфигурации и сохранить их в файле printer.cfg."
 
 #: docs/Installation.md:block 43 (paragraph)
 msgid ""
@@ -391,6 +471,12 @@ msgid ""
 "config file in the editor and then save it as a file named \"printer.cfg\" "
 "in the home directory of the pi user (ie, /home/pi/printer.cfg)."
 msgstr ""
+"Другой вариант - использовать настольный редактор, поддерживающий "
+"редактирование файлов по протоколам \"scp\" и/или \"sftp\". Существуют "
+"свободно распространяемые инструменты, поддерживающие эту функцию (например, "
+"Notepad++, WinSCP и Cyberduck). Загрузите файл конфигурации принтера в "
+"редактор, а затем сохраните его в виде файла с именем \"printer.cfg\" в "
+"домашнем каталоге пользователя pi (например, /home/pi/printer.cfg)."
 
 #: docs/Installation.md:block 44 (paragraph)
 msgid ""
@@ -398,6 +484,10 @@ msgid ""
 "ssh. That may look something like the following (be sure to update the "
 "command to use the appropriate printer config filename):"
 msgstr ""
+"В качестве альтернативы можно скопировать и отредактировать файл "
+"непосредственно на хосте через ssh. Это может выглядеть примерно так (не "
+"забудьте обновить команду, чтобы использовать соответствующее имя файла "
+"конфигурации принтера):"
 
 #: docs/Installation.md:block 52 (paragraph)
 msgid ""
@@ -407,6 +497,10 @@ msgid ""
 "successfully read and the micro-controller is successfully found and "
 "configured."
 msgstr ""
+"После создания и редактирования файла необходимо будет выполнить команду "
+"\"restart\" в командной консоли для загрузки конфигурации. Команда \"status\""
+" сообщит о готовности принтера, если файл конфигурации Klipper успешно "
+"прочитан, а микроконтроллер успешно найден и настроен."
 
 #: docs/Installation.md:block 54 (paragraph)
 msgid ""
@@ -415,6 +509,10 @@ msgid ""
 "messages. A log is available and usually located in ~/printer_data/logs this"
 " is named klippy.log"
 msgstr ""
+"Klipper сообщает об ошибках через командную консоль и всплывающие окна во "
+"Fluidd и Mainsail. Команда \"статус\" может быть использована для повторного "
+"отображения сообщений об ошибках. Имеется журнал, который обычно "
+"располагается в ~/printer_data/logs и имеет имя klippy.log"
 
 #~ msgid ""
 #~ "These instructions assume the software will run on a Raspberry Pi computer "

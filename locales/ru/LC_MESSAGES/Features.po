@@ -1,17 +1,20 @@
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # Evgeniy Khramov <thejenjagamertjg@gmail.com>, 2022.
 # VICTOR <subfyn@gmail.com>, 2023.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-07-21 13:06+0000\n"
-"Last-Translator: VICTOR <subfyn@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/features/ru/>\n"
+"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/features/"
+"ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Klipper has several compelling features:"
 msgstr "Клиппер обладает несколькими привлекательными функциями:"
@@ -99,6 +102,10 @@ msgid ""
 "thermistor algorithms, etc. are all written in Python. This makes it easier "
 "to develop new functionality."
 msgstr ""
+"Более простой код. В Klipper используется язык очень высокого уровня (Python)"
+" для большей части кода. Алгоритмы кинематики, парсинг G-кода, алгоритмы "
+"нагрева и терморезисторов и т.д. написаны на Python. Это облегчает "
+"разработку новых функций."
 
 msgid ""
 "Custom programmable macros. New G-Code commands can be defined in the "
@@ -106,6 +113,10 @@ msgid ""
 "programmable - allowing them to produce different actions depending on the "
 "state of the printer."
 msgstr ""
+"Пользовательские программируемые макросы. Новые команды G-Code можно "
+"определить в файле конфигурации принтера (изменения кода не требуются). Эти "
+"команды можно программировать - они могут выполнять различные действия в "
+"зависимости от состояния принтера."
 
 msgid ""
 "Builtin API server. In addition to the standard G-Code interface, Klipper "
@@ -118,15 +129,17 @@ msgstr ""
 "принтером."
 
 msgid "Additional features"
-msgstr ""
+msgstr "Дополнительные возможности"
 
 msgid "Klipper supports many standard 3d printer features:"
-msgstr ""
+msgstr "Klipper поддерживает множество стандартных функций 3d-принтера:"
 
 msgid ""
 "Support for multiple extruders. Extruders with shared heaters and extruders "
 "on independent carriages (IDEX) are also supported."
 msgstr ""
+"Поддержка нескольких экструдеров. Также поддерживаются экструдеры с общими "
+"нагревателями и экструдеры на независимых каретках (IDEX)."
 
 msgid ""
 "Automatic bed leveling support. Klipper can be configured for basic bed tilt"
@@ -135,21 +148,34 @@ msgid ""
 "Most Z height probes are supported, including BL-Touch probes and servo "
 "activated probes."
 msgstr ""
+"Поддержка автоматического выравнивания кровати. Klipper может быть настроен "
+"на базовое определение наклона станины или полное выравнивание станины по "
+"сетке. Если в станине используется несколько Z-шаговиков, Klipper также "
+"может выравнивать станину, независимо управляя Z-шаговиками. Поддерживается "
+"большинство датчиков высоты Z, включая датчики BL-Touch и датчики с "
+"сервоприводом."
 
 msgid ""
 "Automatic delta calibration support. The calibration tool can perform basic "
 "height calibration as well as an enhanced X and Y dimension calibration. The"
 " calibration can be done with a Z height probe or via manual probing."
 msgstr ""
+"Поддержка автоматической дельта-калибровки. Инструмент калибровки может "
+"выполнять базовую калибровку по высоте, а также расширенную калибровку по "
+"размерам X и Y. Калибровка может выполняться с помощью датчика высоты Z или "
+"вручную."
 
 msgid "Basic thermal heater protection enabled by default."
-msgstr ""
+msgstr "Базовая тепловая защита нагревателя включена по умолчанию."
 
 msgid ""
 "Support for common LCD displays attached directly to the printer. A default "
 "menu is also available. The contents of the display and menu can be fully "
 "customized via the config file."
 msgstr ""
+"Поддержка распространенных ЖК-дисплеев, подключаемых непосредственно к "
+"принтеру. Также доступно меню по умолчанию. Содержимое дисплея и меню можно "
+"полностью настроить с помощью файла конфигурации."
 
 msgid ""
 "Constant acceleration and \"look-ahead\" support. All printer moves will "
@@ -159,50 +185,69 @@ msgid ""
 "direction will be optimized to reduce print stalls and improve overall print"
 " time."
 msgstr ""
+"Постоянное ускорение и поддержка \"опережения\". Все движения принтера "
+"постепенно ускоряются от остановки до крейсерской скорости, а затем "
+"замедляются до остановки. Поступающий поток команд движения G-кода ставится "
+"в очередь и анализируется - ускорение между движениями в одном направлении "
+"будет оптимизировано для уменьшения задержек печати и улучшения общего "
+"времени печати."
 
 msgid ""
 "Klipper implements a \"stepper phase endstop\" algorithm that can improve "
 "the accuracy of typical endstop switches. When properly tuned it can improve"
 " a print's first layer bed adhesion."
 msgstr ""
+"В Klipper реализован алгоритм \"шагового фазового концевика\", который "
+"позволяет повысить точность типичных концевых выключателей. При правильной "
+"настройке он может улучшить адгезию первого слоя отпечатка."
 
 msgid ""
 "Support for limiting the top speed of short \"zigzag\" moves to reduce "
 "printer vibration and noise. See the [kinematics](Kinematics.md) document "
 "for more information."
 msgstr ""
+"Поддержка ограничения максимальной скорости коротких \"зигзагообразных\" "
+"движений для уменьшения вибрации и шума принтера. Дополнительные сведения "
+"см. в документе [кинематика ](Kinematics.md)."
 
 msgid ""
 "Sample configuration files are available for many common printers. Check the"
 " [config directory](../config/) for a list."
 msgstr ""
+"Для многих распространенных принтеров доступны образцы конфигурационных "
+"файлов. Список можно найти в каталоге [config](../config/)."
 
 msgid ""
 "To get started with Klipper, read the [installation](Installation.md) guide."
 msgstr ""
+"Чтобы начать работу с Klipper, прочитайте руководство [установка]"
+"(Installation.md)."
 
 msgid "Step Benchmarks"
-msgstr ""
+msgstr "Шаговые ориентиры"
 
 msgid ""
 "Below are the results of stepper performance tests. The numbers shown "
 "represent total number of steps per second on the micro-controller."
 msgstr ""
+"Ниже приведены результаты тестов производительности степпера. Цифры "
+"показывают общее количество шагов в секунду на микроконтроллере."
 
 msgid "Micro-controller"
 msgstr "Микроконтроллер"
 
 msgid "3 steppers active"
-msgstr ""
+msgstr "3 шаговика активны"
 
 msgid "16Mhz AVR"
-msgstr ""
+msgstr "16 МГц AVR"
 
 msgid "20Mhz AVR"
-msgstr ""
+msgstr "20МГц AVR"
 
+#, fuzzy
 msgid "Beaglebone PRU"
-msgstr ""
+msgstr "Beaglebone PRU"
 
 msgid "686K"
 msgstr "686 тыс."
@@ -216,6 +261,9 @@ msgid ""
 "Standard G-Code support. Common g-code commands that are produced by typical"
 " \"slicers\" (SuperSlicer, Cura, PrusaSlicer, etc.) are supported."
 msgstr ""
+"Поддержка стандартного G-кода. Поддерживаются общие команды g-кода, которые "
+"производятся типичными \"слайсерами\" (SuperSlicer, Cura, PrusaSlicer и т. "
+"д.)."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
@@ -226,6 +274,12 @@ msgid ""
 "micro-controller temperature sensor and the internal temperature sensor of a"
 " Raspberry Pi."
 msgstr ""
+"Поддержка распространенных датчиков температуры (например, обычных "
+"термисторов, AD595, AD597, AD849x, PT100, PT1000, MAX6675, MAX31855, "
+"MAX31856, MAX31865, BME280, HTU21D, DS18B20 и LM75). Также можно настроить "
+"пользовательские термисторы и аналоговые датчики температуры. Можно "
+"контролировать внутренний датчик температуры микроконтроллера и внутренний "
+"датчик температуры Raspberry Pi."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
@@ -233,16 +287,22 @@ msgid ""
 "need to keep fans running when the printer is idle. Fan speed can be "
 "monitored on fans that have a tachometer."
 msgstr ""
+"Поддержка стандартных вентиляторов, вентиляторов сопел и вентиляторов с "
+"контролем температуры. Нет необходимости держать вентиляторы включенными, "
+"когда принтер простаивает. Скорость вращения вентиляторов можно отслеживать "
+"на вентиляторах, оснащенных тахометром."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
 "Support for filament presence sensors, filament motion sensors, and filament"
 " width sensors."
 msgstr ""
+"Поддержка датчиков наличия нити, датчиков движения нити и датчиков ширины "
+"нити."
 
 #: docs/Features.md:block 10 (table)
 msgid "1 stepper active"
-msgstr ""
+msgstr "1 шаговый активный"
 
 #: docs/Features.md:block 10 (table)
 msgid "157K"
@@ -369,6 +429,8 @@ msgid ""
 "Further details on the benchmarks are available in the [Benchmarks "
 "document](Benchmarks.md)."
 msgstr ""
+"Более подробная информация о бенчмарках доступна в документе [Benchmarks]"
+"(Benchmarks.md)."
 
 #: docs/Features.md:block 10 (table)
 #, fuzzy
@@ -380,40 +442,49 @@ msgid "1103K"
 msgstr "1103 тыс."
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "790K"
-msgstr ""
+msgstr "790K"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAMD21"
-msgstr ""
+msgstr "SAMD21"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "STM32F103"
-msgstr ""
+msgstr "STM32F103"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAM3X8E"
-msgstr ""
+msgstr "SAM3X8E"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAM4S8C"
-msgstr ""
+msgstr "SAM4S8C"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "LPC1768"
-msgstr ""
+msgstr "LPC1768"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "LPC1769"
-msgstr ""
+msgstr "LPC1769"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "RP2040"
-msgstr ""
+msgstr "RP2040"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAM4E8E"
-msgstr ""
+msgstr "SAM4E8E"
 
 #: docs/Features.md:block 10 (table)
 msgid "SAMD51"

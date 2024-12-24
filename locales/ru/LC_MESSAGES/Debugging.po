@@ -1,16 +1,19 @@
 # Дмитрий Васильевич Григорьевский <gr.dmitriy@gmail.com>, 2022.
 # VICTOR <subfyn@gmail.com>, 2023.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-07-21 13:06+0000\n"
-"Last-Translator: VICTOR <subfyn@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/debugging/ru/>\n"
+"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
+"debugging/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "This document describes some of the Klipper debugging tools."
 msgstr "В этом документе описаны некоторые инструменты отладки Klipper."
@@ -70,9 +73,14 @@ msgid ""
 "commands and the above output. The generated data is useful for testing and "
 "inspection; it is not useful for sending to a real micro-controller."
 msgstr ""
+"Пакетный режим отключает определенные команды ответа/запроса, чтобы "
+"функционировать. В результате будут наблюдаться некоторые различия между "
+"фактическими командами и приведенными выше выходными данными. "
+"Сгенерированные данные полезны для тестирования и проверки; они не годятся "
+"для отправки в реальный микроконтроллер."
 
 msgid "Testing with simulavr"
-msgstr ""
+msgstr "Тестирование с помощью симулятора"
 
 msgid ""
 "The [simulavr](http://www.nongnu.org/simulavr/) tool enables one to simulate"
@@ -89,6 +97,8 @@ msgstr ""
 
 msgid "To compile Klipper for use in simulavr, run:"
 msgstr ""
+"Чтобы скомпилировать Klipper для использования в симуляторе, выполните "
+"команду:"
 
 msgid ""
 "Then, with simulavr running in another window, one can run the following to "
@@ -96,24 +106,35 @@ msgid ""
 "send it to Klipper running in simulavr (see [installation](Installation.md) "
 "for the steps necessary to build the python virtual environment):"
 msgstr ""
+"Затем, запустив симулятор в другом окне, можно выполнить следующие действия, "
+"чтобы считать gcode из файла (например, \"test.gcode\"), обработать его с "
+"помощью Klippy и отправить в Klipper, запущенный в симуляторе (шаги, "
+"необходимые для создания виртуальной среды python, смотрите в [Установка]"
+"(Installation.md)):"
 
 msgid "Using simulavr with gtkwave"
-msgstr ""
+msgstr "Использование simulavr с gtkwave"
 
 msgid ""
 "One useful feature of simulavr is its ability to create signal wave "
 "generation files with the exact timing of events. To do this, follow the "
 "directions above, but run avrsim.py with a command-line like the following:"
 msgstr ""
+"Одной из полезных особенностей симулятора является его способность создавать "
+"файлы генерации волны сигнала с точным указанием времени событий. Для этого "
+"следуйте инструкциям выше, но запустите avrsim.py с помощью командной "
+"строки, как показано ниже:"
 
 msgid ""
 "The above would create a file **avrsim.vcd** with information on each change"
 " to the GPIOs on PORTA and PORTB. This could then be viewed using gtkwave "
 "with:"
 msgstr ""
+"Вышеописанное создаст файл **avrsim.vcd** с информацией о каждом изменении "
+"GPIO на PORTA и PORTB. Затем его можно просмотреть с помощью gtkwave:"
 
 msgid "Manually sending commands to the micro-controller"
-msgstr ""
+msgstr "Ручная отправка команд на микроконтроллер"
 
 msgid ""
 "Normally, the host klippy.py process would be used to translate gcode "
@@ -121,44 +142,58 @@ msgid ""
 "to manually send these MCU commands (functions marked with the "
 "DECL_COMMAND() macro in the Klipper source code). To do so, run:"
 msgstr ""
+"Обычно для преобразования команд gcode в команды микроконтроллера Klipper "
+"используется процесс klippy.py. Однако можно и вручную отправить эти команды "
+"MCU (функции, отмеченные макросом DECL_COMMAND() в исходном коде Klipper). "
+"Для этого выполните команду:"
 
 msgid ""
 "See the \"HELP\" command within the tool for more information on its "
 "functionality."
 msgstr ""
+"Дополнительную информацию о функциях инструмента можно найти в команде "
+"\" ПОМОЩЬ \"."
 
 msgid ""
 "Some command-line options are available. For more information run: "
 "`~/klippy-env/bin/python ./klippy/console.py --help`"
 msgstr ""
+"Доступны некоторые параметры командной строки. Для получения дополнительной "
+"информации выполните команду: `~/klippy-env/bin/python ./klippy/console.py "
+"--help`"
 
 msgid "Generating load graphs"
-msgstr ""
+msgstr "Создание графиков нагрузки"
 
 msgid ""
 "The Klippy log file (/tmp/klippy.log) stores statistics on bandwidth, micro-"
 "controller load, and host buffer load. It can be useful to graph these "
 "statistics after a print."
 msgstr ""
+"В файле журнала Klippy (/tmp/klippy.log) хранится статистика пропускной "
+"способности, загрузки микроконтроллера и загрузки буфера хоста. Может быть "
+"полезно построить график этой статистики после печати."
 
 msgid ""
 "To generate a graph, a one time step is necessary to install the "
 "\"matplotlib\" package:"
-msgstr ""
+msgstr "Чтобы сгенерировать график, необходимо установить пакет \"matplotlib\":"
 
 msgid "Then graphs can be produced with:"
-msgstr ""
+msgstr "Затем можно построить графики:"
 
 msgid "One can then view the resulting **loadgraph.png** file."
-msgstr ""
+msgstr "Затем можно просмотреть полученный файл **loadgraph.png**."
 
 msgid ""
 "Different graphs can be produced. For more information run: "
 "`~/klipper/scripts/graphstats.py --help`"
 msgstr ""
+"Могут быть получены различные графики. Для получения дополнительной "
+"информации выполните команду: `~/klipper/scripts/graphstats.py --help`"
 
 msgid "Extracting information from the klippy.log file"
-msgstr ""
+msgstr "Извлечение информации из файла klippy.log"
 
 msgid ""
 "The Klippy log file (/tmp/klippy.log) also contains debugging information. "
@@ -166,6 +201,10 @@ msgid ""
 "controller shutdown or similar problem. It is typically run with something "
 "like:"
 msgstr ""
+"Файл журнала Klippy (/tmp/klippy.log) также содержит отладочную информацию. "
+"Существует скрипт logextract.py, который может быть полезен при анализе "
+"отключения микроконтроллера или других подобных проблем. Обычно его "
+"запускают с такими словами, как:"
 
 msgid ""
 "The script will extract the printer config file and will extract MCU "
@@ -173,74 +212,109 @@ msgid ""
 "present) will be reordered by timestamp to assist in diagnosing cause and "
 "effect scenarios."
 msgstr ""
+"Сценарий извлечет файл конфигурации принтера и информацию о выключении MCU. "
+"Дампы информации о выключении MCU (если они присутствуют) будут упорядочены "
+"по временной метке, что поможет в диагностике причинно-следственных связей."
 
 msgid "Running the regression tests"
-msgstr ""
+msgstr "Запуск регрессионных тестов"
 
 msgid ""
 "The main Klipper GitHub repository uses \"github actions\" to run a series "
 "of regression tests. It can be useful to run some of these tests locally."
 msgstr ""
+"Основной репозиторий Klipper на GitHub использует \"github actions\" для "
+"запуска серии регрессионных тестов. Может быть полезно запускать некоторые "
+"из этих тестов локально."
 
 msgid "The source code \"whitespace check\" can be run with:"
 msgstr ""
+"Исходный код \"Проверка пробельных символов\" можно запустить с помощью:"
 
+#, fuzzy
 msgid ""
 "make menuconfig\n"
 "make\n"
 msgstr ""
+"make menuconfig\n"
+"make\n"
 
+#, fuzzy
 msgid ""
 "~/klippy-env/bin/python ./klippy/klippy.py ~/printer.cfg -i test.gcode -o "
 "test.serial -v -d out/klipper.dict\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/klippy.py ~/printer.cfg -i test.gcode -o "
+"test.serial -v -d out/klipper.dict\n"
 
+#, fuzzy
 msgid ""
 "~/klippy-env/bin/python ./klippy/parsedump.py out/klipper.dict test.serial >"
 " test.txt\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/parsedump.py out/klipper.dict test.serial > "
+"test.txt\n"
 
+#, fuzzy
 msgid ""
 "~/klippy-env/bin/python ./klippy/klippy.py config/generic-simulavr.cfg -i "
 "test.gcode -v\n"
 msgstr ""
+"~/klippy-env/bin/python ./klippy/klippy.py config/generic-simulavr.cfg -i "
+"test.gcode -v\n"
 
+#, fuzzy
 msgid "gtkwave avrsim.vcd\n"
-msgstr ""
+msgstr "gtkwave avrsim.vcd\n"
 
+#, fuzzy
 msgid "~/klippy-env/bin/python ./klippy/console.py /tmp/pseudoserial\n"
-msgstr ""
+msgstr "~/klippy-env/bin/python ./klippy/console.py /tmp/pseudoserial\n"
 
+#, fuzzy
 msgid ""
 "sudo apt-get update\n"
 "sudo apt-get install python-matplotlib\n"
 msgstr ""
+"sudo apt-get update\n"
+"sudo apt-get install python-matplotlib\n"
 
+#, fuzzy
 msgid "~/klipper/scripts/graphstats.py /tmp/klippy.log -o loadgraph.png\n"
-msgstr ""
+msgstr "~/klipper/scripts/graphstats.py /tmp/klippy.log -o loadgraph.png\n"
 
+#, fuzzy
 msgid ""
 "mkdir work_directory\n"
 "cd work_directory\n"
 "cp /tmp/klippy.log .\n"
 "~/klipper/scripts/logextract.py ./klippy.log\n"
 msgstr ""
+"mkdir work_directory\n"
+"cd work_directory\n"
+"cp /tmp/klippy.log .\n"
+"~/klipper/scripts/logextract.py ./klippy.log\n"
 
+#, fuzzy
 msgid "./scripts/check_whitespace.sh\n"
-msgstr ""
+msgstr "./scripts/check_whitespace.sh\n"
 
+#, fuzzy
 msgid ""
 "tar xfz klipper-dict-20??????.tar.gz\n"
 "~/klippy-env/bin/python ~/klipper/scripts/test_klippy.py -d dict/ ~/klipper/test/klippy/*.test\n"
 msgstr ""
+"tar xfz klipper-dict-20??????.tar.gz\n"
+"~/klippy-env/bin/python ~/klipper/scripts/test_klippy.py -d dict/ ~/klipper/"
+"test/klippy/*.test\n"
 
 #: docs/Debugging.md:block 1 (header)
 msgid "Debugging"
-msgstr ""
+msgstr "Отладка"
 
 #: docs/Debugging.md:block 24 (header)
 msgid "Motion analysis and data logging"
-msgstr ""
+msgstr "Анализ движений и регистрация данных"
 
 #: docs/Debugging.md:block 25 (paragraph)
 msgid ""
@@ -248,14 +322,20 @@ msgid ""
 "analyzed. To use this feature, Klipper must be started with the [API "
 "Server](API_Server.md) enabled."
 msgstr ""
+"Klipper поддерживает запись в журнал внутренней истории движения, которую "
+"впоследствии можно проанализировать. Чтобы использовать эту функцию, Klipper "
+"должен быть запущен с включенным [API Server](API_Server.md)."
 
 #: docs/Debugging.md:block 26 (paragraph)
 msgid "Data logging is enabled with the `data_logger.py` tool. For example:"
 msgstr ""
+"Регистрация данных включается с помощью инструмента `data_logger.py`. "
+"Например:"
 
 #: docs/Debugging.md:block 27 (code)
+#, fuzzy
 msgid "~/klipper/scripts/motan/data_logger.py /tmp/klippy_uds mylog\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/data_logger.py /tmp/klippy_uds mylog\n"
 
 #: docs/Debugging.md:block 28 (paragraph)
 msgid ""
@@ -266,6 +346,13 @@ msgid ""
 "prints and other actions - the logging will continue in the background. When"
 " done logging, hit `ctrl-c` to exit from the `data_logger.py` tool."
 msgstr ""
+"Эта команда подключается к API-серверу Klipper, подписывается на информацию "
+"о состоянии и движении и записывает результаты в журнал. При этом "
+"генерируются два файла - сжатый файл данных и индексный файл (например, "
+"`mylog.json.gz` и `mylog.index.gz`). После запуска логирования можно "
+"завершить печать и другие действия - логирование будет продолжаться в "
+"фоновом режиме. После завершения протоколирования нажмите `ctrl-c` для "
+"выхода из инструмента `data_logger.py`."
 
 #: docs/Debugging.md:block 29 (paragraph)
 msgid ""
@@ -273,6 +360,9 @@ msgid ""
 " To generate graphs on a Raspberry Pi, a one time step is necessary to "
 "install the \"matplotlib\" package:"
 msgstr ""
+"Полученные файлы можно прочитать и построить графики с помощью инструмента "
+"`motan_graph.py`. Для создания графиков на Raspberry Pi необходимо один раз "
+"установить пакет matplotlib:"
 
 #: docs/Debugging.md:block 31 (paragraph)
 msgid ""
@@ -282,53 +372,72 @@ msgid ""
 "[Python](https://python.org) and [Matplotlib](https://matplotlib.org/) "
 "installed."
 msgstr ""
+"Однако, возможно, будет удобнее скопировать файлы данных на машину "
+"настольного класса вместе с кодом Python в директорию `scripts/motan/`. "
+"Сценарии анализа движения должны выполняться на любой машине с установленной "
+"последней версией [Python](https://python.org) и [Matplotlib](https://"
+"matplotlib.org/)."
 
 #: docs/Debugging.md:block 32 (paragraph)
 msgid "Graphs can be generated with a command like the following:"
-msgstr ""
+msgstr "Графики можно построить с помощью следующей команды:"
 
 #: docs/Debugging.md:block 33 (code)
+#, fuzzy
 msgid "~/klipper/scripts/motan/motan_graph.py mylog -o mygraph.png\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/motan_graph.py mylog -o mygraph.png\n"
 
 #: docs/Debugging.md:block 34 (paragraph)
 msgid ""
 "One can use the `-g` option to specify the datasets to graph (it takes a "
 "Python literal containing a list of lists). For example:"
 msgstr ""
+"Можно использовать опцию `-g`, чтобы указать наборы данных для построения "
+"графика (она принимает Python-литерал, содержащий список списков). Например:"
 
 #: docs/Debugging.md:block 35 (code)
+#, fuzzy
 msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)\"], [\"trapq(toolhead,accel)\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '"
+"[[\"trapq(toolhead,velocity)\"], [\"trapq(toolhead,accel)\"]]'\n"
 
 #: docs/Debugging.md:block 36 (paragraph)
 msgid ""
 "The list of available datasets can be found using the `-l` option - for "
 "example:"
 msgstr ""
+"Список доступных наборов данных можно найти с помощью опции `-l` - например:"
 
 #: docs/Debugging.md:block 37 (code)
+#, fuzzy
 msgid "~/klipper/scripts/motan/motan_graph.py -l\n"
-msgstr ""
+msgstr "~/klipper/scripts/motan/motan_graph.py -l\n"
 
 #: docs/Debugging.md:block 38 (paragraph)
 msgid ""
 "It is also possible to specify matplotlib plot options for each dataset:"
 msgstr ""
+"Также можно указать параметры графиков matplotlib для каждого набора данных:"
 
 #: docs/Debugging.md:block 39 (code)
+#, fuzzy
 msgid ""
 "~/klipper/scripts/motan/motan_graph.py mylog -g "
 "'[[\"trapq(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 msgstr ""
+"~/klipper/scripts/motan/motan_graph.py mylog -g '"
+"[[\"trapq(toolhead,velocity)?color=red&alpha=0.4\"]]'\n"
 
 #: docs/Debugging.md:block 40 (paragraph)
 msgid ""
 "Many matplotlib options are available; some examples are \"color\", "
 "\"label\", \"alpha\", and \"linestyle\"."
 msgstr ""
+"Доступно множество опций matplotlib; некоторые примеры - \" цвет\", \"метка\""
+", \"альфа\" и \"стиль линии\"."
 
 #: docs/Debugging.md:block 41 (paragraph)
 msgid ""
@@ -336,12 +445,19 @@ msgid ""
 "the `--help` option to see a list. It may also be convenient to view/modify "
 "the [motan_graph.py](../scripts/motan/motan_graph.py) script itself."
 msgstr ""
+"Инструмент `motan_graph.py` поддерживает несколько других опций командной "
+"строки - используйте опцию `--help` для просмотра списка. Также может быть "
+"удобно просматривать/изменять сам скрипт [motan_graph.py](../scripts/motan/"
+"motan_graph.py)."
 
 #: docs/Debugging.md:block 60 (code)
+#, fuzzy
 msgid ""
 "cd /path/to/klipper\n"
 "make menuconfig\n"
 msgstr ""
+"cd /path/to/klipper\n"
+"make menuconfig\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""
@@ -349,12 +465,18 @@ msgid ""
 "SIMULAVR software emulation support. Then one can compile Klipper (run "
 "`make`) and then start the simulation with:"
 msgstr ""
+"скомпилируйте программное обеспечение микроконтроллера для AVR atmega644p и "
+"выберите поддержку программной эмуляции SIMULAVR. Затем можно скомпилировать "
+"Klipper (запустить `make`) и запустить моделирование с помощью:"
 
 #: docs/Debugging.md:block 67 (code)
+#, fuzzy
 msgid ""
 "PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf"
 " -t PORTA.PORT,PORTC.PORT\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf "
+"-t PORTA.PORT,PORTC.PORT\n"
 
 #: docs/Debugging.md:block 7 (paragraph)
 msgid ""
@@ -363,6 +485,10 @@ msgid ""
 "github](https://github.com/Klipper3d/klipper/issues/1438). Once the data "
 "dictionaries are downloaded, use the following to run the regression suite:"
 msgstr ""
+"Набор регрессионных тестов Klippy требует \"словарей данных\" со многих "
+"платформ. Самый простой способ получить их - [скачать с github](https://"
+"github.com/Klipper3d/klipper/issues/1438). После загрузки словарей данных "
+"запустите регрессионный набор следующим образом:"
 
 #: docs/Debugging.md:block 42 (paragraph)
 msgid ""
@@ -371,6 +497,11 @@ msgid ""
 "the data with a Unix command like the following: `gunzip < mylog.json.gz | "
 "tr '\\03' '\\n' | less`"
 msgstr ""
+"Журналы необработанных данных, создаваемые инструментом `data_logger.py`, "
+"имеют формат, описанный в [API Server](API_Server.md). Может оказаться "
+"полезным просмотреть данные с помощью Unix-команды, например, следующей: `"
+"gunzip < mylog.json.gz | tr '\\03' '\\n"
+"' | less`"
 
 #: docs/Debugging.md:block 57 (paragraph)
 msgid ""
@@ -378,24 +509,35 @@ msgid ""
 "support. Note that the build system may need to have some packages (such as "
 "swig) installed in order to build the python module."
 msgstr ""
+"Чтобы использовать simulavr, загрузите пакет simulavr и скомпилируйте его с "
+"поддержкой python. Обратите внимание, что для сборки модуля python в системе "
+"сборки могут быть установлены некоторые пакеты (например, swig)."
 
 #: docs/Debugging.md:block 58 (code)
+#, fuzzy
 msgid ""
 "git clone git://git.savannah.nongnu.org/simulavr.git\n"
 "cd simulavr\n"
 "make python\n"
 "make build\n"
 msgstr ""
+"git clone git://git.savannah.nongnu.org/simulavr.git\n"
+"cd simulavr\n"
+"make python\n"
+"make build\n"
 
 #: docs/Debugging.md:block 59 (paragraph)
 msgid ""
 "Make sure a file like **./build/pysimulavr/_pysimulavr.*.so** is present "
 "after the above compilation:"
 msgstr ""
+"Убедитесь, что после вышеуказанной компиляции присутствует файл вида: **./"
+"build/pysimulavr/_pysimulavr.*.so**"
 
 #: docs/Debugging.md:block 60 (code)
+#, fuzzy
 msgid "ls ./build/pysimulavr/_pysimulavr.*.so\n"
-msgstr ""
+msgstr "ls ./build/pysimulavr/_pysimulavr.*.so\n"
 
 #: docs/Debugging.md:block 62 (paragraph)
 msgid ""
@@ -403,30 +545,45 @@ msgid ""
 "the following packages and generate *.deb files for system-wide installation"
 " of simulavr:"
 msgstr ""
+"Если вы работаете в системе на базе Debian (Debian, Ubuntu и т.д.), вы "
+"можете установить следующие пакеты и сгенерировать файлы *.deb для установки "
+"simulavr в масштабах всей системы:"
 
 #: docs/Debugging.md:block 63 (code)
+#, fuzzy
 msgid ""
 "sudo apt update\n"
 "sudo apt install g++ make cmake swig rst2pdf help2man texinfo\n"
 "make cfgclean python debian\n"
 "sudo dpkg -i build/debian/python3-simulavr*.deb\n"
 msgstr ""
+"sudo apt update\n"
+"sudo apt install g++ make cmake swig rst2pdf help2man texinfo\n"
+"make cfgclean python debian\n"
+"sudo dpkg -i build/debian/python3-simulavr*.deb\n"
 
 #: docs/Debugging.md:block 67 (code)
+#, fuzzy
 msgid ""
 "PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py "
 "out/klipper.elf\n"
 msgstr ""
+"PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py out/"
+"klipper.elf\n"
 
 #: docs/Debugging.md:block 68 (paragraph)
 msgid ""
 "Note that if you have installed python3-simulavr system-wide, you do not "
 "need to set `PYTHONPATH`, and can simply run the simulator as"
 msgstr ""
+"Обратите внимание, что если вы установили python3-simulavr по всей системе, "
+"вам не нужно задавать `PYTHONPATH`, и вы можете просто запустить симулятор "
+"как"
 
 #: docs/Debugging.md:block 69 (code)
+#, fuzzy
 msgid "./scripts/avrsim.py out/klipper.elf\n"
-msgstr ""
+msgstr "./scripts/avrsim.py out/klipper.elf\n"
 
 #: docs/Debugging.md:block 61 (paragraph)
 msgid ""
@@ -434,6 +591,8 @@ msgid ""
 "**./build/pysimulavr/_pysimulavr.cpython-39-x86_64-linux-gnu.so**) and not "
 "an error."
 msgstr ""
+"Эта команда должна сообщить о конкретном файле (например, **./build/"
+"pysimulavr/_pysimulavr.cpython-39-x86_64-linux-gnu.so**), а не об ошибке."
 
 #~ msgid ""
 #~ "This commmand should report a specific file (e.g. "

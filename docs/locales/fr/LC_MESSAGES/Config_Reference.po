@@ -5,18 +5,19 @@
 # Francis Poulizac <francis@poulizac.fr>, 2022, 2023.
 # Alfredo Monclus <alfredomonclus@gmail.com>, 2023.
 # Rundredoffi <contact.rundred@gmail.com>, 2024.
+# Zefut <zefut.pro@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-05 23:02+0000\n"
-"Last-Translator: Rundredoffi <contact.rundred@gmail.com>\n"
+"PO-Revision-Date: 2024-12-28 14:00+0000\n"
+"Last-Translator: Zefut <zefut.pro@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/klipper/"
 "config_reference/fr/>\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config "
@@ -7075,8 +7076,9 @@ msgstr ""
 "100000 et ignorent le paramètre `i2c_speed`."
 
 #: docs/Config_Reference.md:block 171 (header)
+#, fuzzy
 msgid "[lis2dw]"
-msgstr ""
+msgstr "[lis2dw]"
 
 #: docs/Config_Reference.md:block 172 (paragraph)
 msgid "Support for LIS2DW accelerometers."
@@ -7332,14 +7334,18 @@ msgstr ""
 
 #: docs/Config_Reference.md:block 277 (header)
 msgid "Combined temperature sensor"
-msgstr ""
+msgstr "Capteur de température combiné"
 
 #: docs/Config_Reference.md:block 278 (paragraph)
+#, fuzzy
 msgid ""
 "Combined temperature sensor is a virtual temperature sensor based on several"
 " other sensors. This sensor can be used with extruders, heater_generic and "
 "heater beds."
 msgstr ""
+"Le capteur de température combiné est un capteur virtuel basé sur plusieurs "
+"autres capteurs Ce capteur peut être utilisé avec des extrudeurs, des "
+"chauffages génériques et des plateaux chauffants."
 
 #: docs/Config_Reference.md:block 279 (code)
 msgid ""
@@ -8018,7 +8024,7 @@ msgstr ""
 
 #: docs/Config_Reference.md:block 262 (header)
 msgid "BMP180/BMP280/BME280/BMP388/BME680 temperature sensor"
-msgstr ""
+msgstr "Capteur de température BMP180/BMP280/BME280/BMP388/BME680"
 
 #: docs/Config_Reference.md:block 263 (paragraph)
 msgid ""
@@ -8494,8 +8500,9 @@ msgid ""
 msgstr ""
 
 #: docs/Config_Reference.md:block 436 (header)
+#, fuzzy
 msgid "Load Cells"
-msgstr ""
+msgstr "Cellules de charge"
 
 #: docs/Config_Reference.md:block 437 (header)
 msgid "[load_cell]"
@@ -8545,8 +8552,9 @@ msgid ""
 msgstr ""
 
 #: docs/Config_Reference.md:block 443 (header)
+#, fuzzy
 msgid "HX717"
-msgstr ""
+msgstr "HX717"
 
 #: docs/Config_Reference.md:block 444 (paragraph)
 msgid ""
@@ -8575,7 +8583,6 @@ msgid ""
 msgstr ""
 
 #: docs/Config_Reference.md:block 446 (header)
-#, fuzzy
 msgid "ADS1220"
 msgstr "ADS1220"
 

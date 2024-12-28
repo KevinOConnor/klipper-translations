@@ -1,10 +1,21 @@
-#
+# Tomasz Matuszewski <garage.make.zone@gmail.com>, 2024.
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2024-12-28 14:00+0000\n"
+"Last-Translator: Tomasz Matuszewski <garage.make.zone@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/klipper/octoprint/"
+"pl/>\n"
+"Language: pl\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.10-dev\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/OctoPrint.md:block 1 (header)
 msgid "OctoPrint for Klipper"
-msgstr ""
+msgstr "OctoPrint dla Klippera"
 
 #: docs/OctoPrint.md:block 2 (paragraph)
 msgid ""
@@ -12,6 +23,9 @@ msgid ""
 "original front end for Klipper. This document will give a brief overview of "
 "installing with this option."
 msgstr ""
+"Klipper ma kilka opcji interfejsów użytkownika, a Octoprint był pierwszym i "
+"oryginalnym interfejsem dla Klippera. Ten dokument zawiera krótki przegląd "
+"instalacji przy użyciu tej opcji."
 
 #: docs/OctoPrint.md:block 3 (header)
 msgid "Install with OctoPi"

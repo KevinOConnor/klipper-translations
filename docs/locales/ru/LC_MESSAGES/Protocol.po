@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-30 05:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/protocol/"
 "ru/>\n"
@@ -644,7 +644,6 @@ msgstr ""
 "сообщений, полученных от хоста. Оно не используется для отслеживания "
 "последовательности блоков ответных сообщений."
 
-#, fuzzy
 msgid ""
 "set_digital_out pin=PA3 value=1\n"
 "set_digital_out pin=PA7 value=1\n"
@@ -652,11 +651,11 @@ msgid ""
 "queue_step oid=7 interval=7458 count=10 add=331\n"
 "queue_step oid=7 interval=11717 count=4 add=1281\n"
 msgstr ""
-"set_digital_out pin=PA3 value=1\n"
-"set_digital_out pin=PA7 value=1\n"
-"schedule_digital_out oid=8 clock=4000000 value=0\n"
-"queue_step oid=7 interval=7458 count=10 add=331\n"
-"queue_step oid=7 interval=11717 count=4 add=1281\n"
+"set_digital_out pin=PA3 значение=1\n"
+"set_digital_out pin=PA7 значение=1\n"
+"schedule_digital_out oid=8 часы=4000000 значение=0\n"
+"queue_step oid=7 интервал=7458 счет=10 добавить=331\n"
+"queue_step oid=7 интервал=11717 счет=4 добавить=1281\n"
 
 #, fuzzy
 msgid ""
@@ -695,11 +694,11 @@ msgstr "DECL_CONSTANT(\"SERIAL_BAUD\", 250000);\n"
 msgid "DECL_CONSTANT_STR(\"MCU\", \"pru\");\n"
 msgstr "DECL_CONSTANT_STR(\"MCU\", \"pru\");\n"
 
-#, fuzzy
 msgid ""
 "<1 byte length><1 byte sequence><n-byte content><2 byte crc><1 byte sync>\n"
 msgstr ""
-"<1 byte length><1 byte sequence><n-byte content><2 byte crc><1 byte sync>\n"
+"<1 байт длины><1 байт последовательности><n байт содержимого><2 байта crc><1 "
+"байт sync>\n"
 
 #, fuzzy
 msgid ""
@@ -721,7 +720,7 @@ msgstr ""
 "\n"
 
 msgid "<VLQ encoded length><n-byte contents>\n"
-msgstr ""
+msgstr "<Длина в кодировке VLQ><n-байтовое содержимое>\n"
 
 #: docs/Protocol.md:block 1 (header)
 msgid "Protocol"

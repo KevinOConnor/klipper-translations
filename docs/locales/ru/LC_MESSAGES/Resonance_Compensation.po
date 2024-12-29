@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-30 05:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "resonance_compensation/ru/>\n"
@@ -609,9 +609,8 @@ msgstr ""
 "оборудования и процесса настройки) - но этот вариант требует некоторой "
 "обжимки и пайки."
 
-#, fuzzy
 msgid "`RESTART`"
-msgstr "`RESTART`"
+msgstr "`ЗАПУСК`"
 
 msgid ""
 "and print the model. Then print the model again, but before printing run "
@@ -673,14 +672,18 @@ msgstr ""
 
 msgid "For 2HUMP_EI 40 Hz shaper, use EI shaper with shaper_freq = 33 Hz."
 msgstr ""
+"Для формирователя 2HUMP_EI 40 Гц используйте формирователь EI с shaper_freq "
+"= 33 Гц."
 
 msgid "Now print the test model one more time, running"
-msgstr ""
+msgstr "Теперь распечатайте тестовую модель еще раз, выполнив команду"
 
 msgid ""
 "providing the shaper_freq_x=... and shaper_freq_y=... as determined "
 "previously."
 msgstr ""
+"обеспечивая значения shaper_freq_x=... и shaper_freq_y=..., определенные "
+"ранее."
 
 msgid ""
 "If EI shaper shows very comparable good results as 2HUMP_EI shaper, stick "
@@ -688,17 +691,21 @@ msgid ""
 "shaper with the corresponding frequency. Add the results to `printer.cfg` "
 "as, e.g."
 msgstr ""
+"Если формирователь EI показывает очень сопоставимые с формирователем "
+"2HUMP_EI хорошие результаты, используйте формирователь EI и определенную "
+"ранее частоту, в противном случае используйте формирователь 2HUMP_EI с "
+"соответствующей частотой. Добавьте результаты в файл `printer.cfg`, например."
 
 msgid ""
 "Continue the tuning with [Selecting max_accel](#selecting-max_accel) "
 "section."
-msgstr ""
+msgstr "Продолжите настройку в разделе [Выбор max_accel](#selecting-max_accel)."
 
 msgid "Troubleshooting and FAQ"
-msgstr ""
+msgstr "Поиск и устранение неисправностей и часто задаваемые вопросы"
 
 msgid "I cannot get reliable measurements of resonance frequencies"
-msgstr ""
+msgstr "Я не могу получить надежные измерения резонансных частот"
 
 msgid ""
 "First, make sure it is not some other problem with the printer instead of "
@@ -712,11 +719,22 @@ msgid ""
 "resonances with it, and auto-tune the input shaper using the results of "
 "those measurements."
 msgstr ""
+"Сначала убедитесь, что вместо звона в принтере нет других проблем. Если "
+"измерения ненадежны, например, потому, что расстояние между колебаниями не "
+"стабильно, это может означать, что принтер имеет несколько резонансных "
+"частот на одной оси. Можно попробовать следовать процессу настройки, "
+"описанному в разделе [Ненадежные измерения частот звонка](#unreliable-"
+"measurements-of-ringing-frequencies), и все же получить что-то от техники "
+"формирования входного сигнала. Другая возможность - установить акселерометр, "
+"[измерить](Measuring_Resonances.md) резонансы с его помощью и автоматически "
+"настроить входной формирователь, используя результаты этих измерений."
 
 msgid ""
 "After enabling [input_shaper], I get too smoothed printed parts and fine "
 "details are lost"
 msgstr ""
+"После включения [input_shaper] я получаю слишком сглаженные напечатанные "
+"детали, и мелкие детали теряются"
 
 msgid ""
 "Check the considerations in [Selecting max_accel](#selecting-max_accel) "
@@ -725,11 +743,18 @@ msgid ""
 "better to choose MZV or even ZV input shapers over EI (or 2HUMP_EI and "
 "3HUMP_EI shapers)."
 msgstr ""
+"Ознакомьтесь с соображениями в разделе [ Selecting max_accel](#selecting-"
+"max_accel). Если резонансная частота низкая, не следует устанавливать "
+"слишком высокую max_accel или увеличивать параметры square_corner_velocity. "
+"Также, возможно, лучше выбрать входные формирователи MZV или даже ZV, а не "
+"EI (или формирователи 2HUMP_EI и 3HUMP_EI)."
 
 msgid ""
 "After successfully printing for some time without ringing, it appears to "
 "come back"
 msgstr ""
+"После успешной печати в течение некоторого времени без звонка он снова "
+"появляется"
 
 msgid ""
 "It is possible that after some time the resonance frequencies have changed. "
@@ -738,24 +763,32 @@ msgid ""
 "[Ringing frequency](#ringing-frequency) section and update your config file "
 "if necessary."
 msgstr ""
+"Возможно, что через некоторое время резонансные частоты изменились. "
+"Например, возможно, изменилось натяжение ремней (ремни стали более "
+"свободными) и т. д. Рекомендуется проверить и повторно измерить резонансные "
+"частоты, как описано в разделе [Ringing frequency](#ringing-frequency), и "
+"при необходимости обновить файл конфигурации."
 
 msgid "Is dual carriage setup supported with input shapers?"
-msgstr ""
+msgstr "Поддерживается ли установка двух кареток с входными формирователями?"
 
 msgid "Does input_shaper affect print time?"
-msgstr ""
+msgstr "Влияет ли input_shaper на время печати?"
 
 msgid ""
 "No, `input_shaper` feature has pretty much no impact on the print times by "
 "itself. However, the value of `max_accel` certainly does (tuning of this "
 "parameter described in [this section](#selecting-max_accel))."
 msgstr ""
+"Нет, функция `input_shaper` сама по себе практически не влияет на время "
+"печати. Однако значение параметра `max_accel`, безусловно, влияет (настройка "
+"этого параметра описана в [этом разделе](#selecting-max_accel))."
 
 msgid "Technical details"
-msgstr ""
+msgstr "Технические детали"
 
 msgid "Input shapers"
-msgstr ""
+msgstr "Входные формирователи"
 
 msgid ""
 "Input shapers used in Klipper are rather standard, and one can find more in-"
@@ -764,87 +797,114 @@ msgid ""
 " input shapers. The table below shows some (usually approximate) parameters "
 "of each shaper."
 msgstr ""
+"Формирователи ввода, используемые в Klipper, довольно стандартны, и более "
+"подробный обзор можно найти в статьях, описывающих соответствующие "
+"формирователи. Этот раздел содержит краткий обзор некоторых технических "
+"аспектов поддерживаемых входных формирователей. В таблице ниже приведены "
+"некоторые (обычно приблизительные) параметры каждого формирователя."
 
 msgid "Input <br> shaper"
-msgstr ""
+msgstr "Входной <br> формирователь"
 
 msgid "Shaper <br> duration"
-msgstr ""
+msgstr "Формирователь <br> продолжительность"
 
 msgid "Vibration reduction 20x <br> (5% vibration tolerance)"
-msgstr ""
+msgstr "Снижение вибрации 20x <br> (допустимая вибрация 5%)"
 
 msgid "Vibration reduction 10x <br> (10% vibration tolerance)"
-msgstr ""
+msgstr "Снижение вибрации в 10 раз <br> (допустимая вибрация 10%)"
 
+#, fuzzy
 msgid "ZV"
-msgstr ""
+msgstr "ZV"
 
+#, fuzzy
 msgid "0.5 / shaper_freq"
-msgstr ""
+msgstr "0.5 / shaper_freq"
 
 msgid "N/A"
 msgstr "Н/Д"
 
+#, fuzzy
 msgid "± 5% shaper_freq"
-msgstr ""
+msgstr "± 5% shaper_freq"
 
+#, fuzzy
 msgid "MZV"
-msgstr ""
+msgstr "MZV"
 
+#, fuzzy
 msgid "0.75 / shaper_freq"
-msgstr ""
+msgstr "0.75 / shaper_freq"
 
+#, fuzzy
 msgid "± 4% shaper_freq"
-msgstr ""
+msgstr "± 4% shaper_freq"
 
+#, fuzzy
 msgid "-10%...+15% shaper_freq"
-msgstr ""
+msgstr "-10%...+15% shaper_freq"
 
+#, fuzzy
 msgid "ZVD"
-msgstr ""
+msgstr "ZVD"
 
+#, fuzzy
 msgid "1 / shaper_freq"
-msgstr ""
+msgstr "1 / shaper_freq"
 
+#, fuzzy
 msgid "± 15% shaper_freq"
-msgstr ""
+msgstr "± 15% shaper_freq"
 
+#, fuzzy
 msgid "± 22% shaper_freq"
-msgstr ""
+msgstr "± 22% shaper_freq"
 
+#, fuzzy
 msgid "EI"
-msgstr ""
+msgstr "EI"
 
+#, fuzzy
 msgid "± 20% shaper_freq"
-msgstr ""
+msgstr "± 20% shaper_freq"
 
+#, fuzzy
 msgid "± 25% shaper_freq"
-msgstr ""
+msgstr "± 25% shaper_freq"
 
+#, fuzzy
 msgid "2HUMP_EI"
-msgstr ""
+msgstr "2HUMP_EI"
 
+#, fuzzy
 msgid "1.5 / shaper_freq"
-msgstr ""
+msgstr "1.5 / shaper_freq"
 
+#, fuzzy
 msgid "± 35% shaper_freq"
-msgstr ""
+msgstr "± 35% shaper_freq"
 
+#, fuzzy
 msgid "± 40 shaper_freq"
-msgstr ""
+msgstr "± 40 shaper_freq"
 
+#, fuzzy
 msgid "3HUMP_EI"
-msgstr ""
+msgstr "3HUMP_EI"
 
+#, fuzzy
 msgid "2 / shaper_freq"
-msgstr ""
+msgstr "2 / shaper_freq"
 
+#, fuzzy
 msgid "-45...+50% shaper_freq"
-msgstr ""
+msgstr "-45...+50% shaper_freq"
 
+#, fuzzy
 msgid "-50%...+55% shaper_freq"
-msgstr ""
+msgstr "-50%...+55% shaper_freq"
 
 msgid ""
 "A note on vibration reduction: the values in the table above are "
@@ -856,15 +916,27 @@ msgid ""
 "frequency ranges in the table cover a number of different possible damping "
 "ratios around that value (approx. from 0.05 to 0.2)."
 msgstr ""
+"Примечание по снижению вибраций: значения в таблице выше являются "
+"приблизительными. Если известен коэффициент демпфирования принтера для "
+"каждой оси, шейпер можно настроить более точно, и тогда он будет уменьшать "
+"резонансы в более широком диапазоне частот. Однако коэффициент демпфирования "
+"обычно неизвестен, и его трудно оценить без специального оборудования, "
+"поэтому Klipper по умолчанию использует значение 0,1, которое является "
+"хорошим универсальным значением. Диапазоны частот в таблице охватывают "
+"несколько различных возможных коэффициентов демпфирования вокруг этого "
+"значения (примерно от 0,05 до 0,2)."
 
 msgid ""
 "Also note that EI, 2HUMP_EI, and 3HUMP_EI are tuned to reduce vibrations to "
 "5%, so the values for 10% vibration tolerance are provided only for the "
 "reference."
 msgstr ""
+"Также обратите внимание, что EI, 2HUMP_EI и 3HUMP_EI настроены на снижение "
+"вибраций до 5 %, поэтому значения для 10 % допустимых вибраций приведены "
+"только для справки."
 
 msgid "**How to use this table:**"
-msgstr ""
+msgstr "**Как использовать эту таблицу:**"
 
 msgid ""
 "Shaper duration affects the smoothing in parts - the larger it is, the more "
@@ -875,6 +947,14 @@ msgid ""
 " and 3HUMP_EI (they should be used to reduce vibrations for several "
 "frequencies)."
 msgstr ""
+"Длительность шейпера влияет на сглаживание в частях - чем она больше, тем "
+"более сглаженными получаются части. Эта зависимость не линейна, но может "
+"дать представление о том, какие шейперы \"сглаживают\" больше для одной и "
+"той же частоты. Упорядочивание по сглаживанию выглядит следующим образом: ZV "
+"< MZV < ZVD ≈ EI < 2HUMP_EI < 3HUMP_EI. Кроме того, для формирователей "
+"2HUMP_EI и 3HUMP_EI редко бывает целесообразно устанавливать shaper_freq = "
+"resonance freq (их следует использовать для уменьшения колебаний на "
+"нескольких частотах)."
 
 msgid ""
 "One can estimate a range of frequencies in which the shaper reduces "

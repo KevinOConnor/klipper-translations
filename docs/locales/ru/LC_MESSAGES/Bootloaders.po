@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-30 05:01+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "bootloaders/ru/>\n"
@@ -520,15 +520,20 @@ msgid ""
 "Restart OpenOCD on the Raspberry Pi and then run the following Unix command "
 "on the desktop machine:"
 msgstr ""
+"Перезапустите OpenOCD на Raspberry Pi, а затем выполните следующую команду "
+"Unix на настольной машине:"
 
 msgid "Within gdb run:"
-msgstr ""
+msgstr "Запустите gdb:"
 
 msgid ""
 "(Replace \"octopi\" with the host name of the Raspberry Pi.) Once gdb is "
 "running it is possible to set breakpoints and to inspect registers."
 msgstr ""
+"(Замените \"octopi\" на имя хоста Raspberry Pi.) После запуска gdb можно "
+"устанавливать точки останова и проверять регистры."
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/stk500v2/stk500boot_v2_mega2560.hex'\n"
 "\n"
@@ -536,12 +541,24 @@ msgid ""
 "avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U flash:w:stk500boot_v2_mega2560.hex\n"
 "avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/"
+"bootloaders/stk500v2/stk500boot_v2_mega2560.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:"
+"m -U efuse:w:0xFD:m -U hfuse:w:0xD8:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U "
+"flash:w:stk500boot_v2_mega2560.hex\n"
+"avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -cwiring -patmega2560 -P/dev/ttyACM0 -b115200 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -cwiring -patmega2560 -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/atmega/ATmegaBOOT_168_atmega1280.hex'\n"
 "\n"
@@ -549,12 +566,24 @@ msgid ""
 "avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U flash:w:ATmegaBOOT_168_atmega1280.hex\n"
 "avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/"
+"bootloaders/atmega/ATmegaBOOT_168_atmega1280.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:"
+"m -U efuse:w:0xF5:m -U hfuse:w:0xDA:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U "
+"flash:w:ATmegaBOOT_168_atmega1280.hex\n"
+"avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega1280 -P/dev/ttyACM0 -b57600 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega1280 -P/dev/ttyACM0 -b57600 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/Lauszus/Sanguino/raw/1.0.2/bootloaders/optiboot/optiboot_atmega1284p.hex'\n"
 "\n"
@@ -562,20 +591,36 @@ msgid ""
 "avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U flash:w:optiboot_atmega1284p.hex\n"
 "avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/Lauszus/Sanguino/raw/1.0.2/bootloaders/optiboot/"
+"optiboot_atmega1284p.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -e -u -U "
+"lock:w:0x3F:m -U efuse:w:0xFD:m -U hfuse:w:0xDE:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U "
+"flash:w:optiboot_atmega1284p.hex\n"
+"avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b115200 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b57600 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b57600 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid "teensy_loader_cli --mcu=at90usb1286 out/klipper.elf.hex -v\n"
-msgstr ""
+msgstr "teensy_loader_cli --mcu=at90usb1286 out/klipper.elf.hex -v\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega168.hex'\n"
 "\n"
@@ -583,81 +628,124 @@ msgid ""
 "avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U flash:w:optiboot_atmega168.hex\n"
 "avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/"
+"bootloaders/optiboot/optiboot_atmega168.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:"
+"m -U efuse:w:0x04:m -U hfuse:w:0xDD:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U "
+"flash:w:optiboot_atmega168.hex\n"
+"avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega168 -P/dev/ttyACM0 -b115200 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega168 -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "bossac -U -p /dev/ttyACM0 -a -e -w out/klipper.bin -v -b\n"
 "bossac -U -p /dev/ttyACM0 -R\n"
 msgstr ""
+"bossac -U -p /dev/ttyACM0 -a -e -w out/klipper.bin -v -b\n"
+"bossac -U -p /dev/ttyACM0 -R\n"
 
+#, fuzzy
 msgid "bossac --port=/dev/ttyACM0 -b -U -e -w -v -R out/klipper.bin\n"
-msgstr ""
+msgstr "bossac --port=/dev/ttyACM0 -b -U -e -w -v -R out/klipper.bin\n"
 
 msgid "source [find target/at91samdXX.cfg]\n"
-msgstr ""
+msgstr "источник [найти target/at91samdXX.cfg]\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/ArduinoCore-"
 "samd/raw/1.8.3/bootloaders/zero/samd21_sam_ba.bin'\n"
 msgstr ""
+"wget 'https://github.com/arduino/ArduinoCore-samd/raw/1.8.3/bootloaders/zero/"
+"samd21_sam_ba.bin'\n"
 
+#, fuzzy
 msgid ""
 "at91samd bootloader 0\n"
 "program samd21_sam_ba.bin verify\n"
 msgstr ""
+"at91samd bootloader 0\n"
+"program samd21_sam_ba.bin verify\n"
 
+#, fuzzy
 msgid "bossac -U -p /dev/ttyACM0 --offset=0x2000 -w out/klipper.bin -v -b -R\n"
-msgstr ""
+msgstr "bossac -U -p /dev/ttyACM0 --offset=0x2000 -w out/klipper.bin -v -b -R\n"
 
+#, fuzzy
 msgid ""
 "avrdude -c stk500v2 -p atmega2560 -P /dev/ttyACM0 -u "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -c stk500v2 -p atmega2560 -P /dev/ttyACM0 -u -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
 msgid "source [find target/atsame5x.cfg]\n"
-msgstr ""
+msgstr "источник [найти target/atsame5x.cfg]\n"
 
+#, fuzzy
 msgid ""
 "wget "
 "'https://github.com/adafruit/uf2-samdx1/releases/download/v3.7.0/bootloader-"
 "itsybitsy_m4-v3.7.0.bin'\n"
 msgstr ""
+"wget 'https://github.com/adafruit/uf2-samdx1/releases/download/v3.7.0/"
+"bootloader-itsybitsy_m4-v3.7.0.bin'\n"
 
+#, fuzzy
 msgid ""
 "at91samd bootloader 0\n"
 "program bootloader-itsybitsy_m4-v3.7.0.bin verify\n"
 "at91samd bootloader 16384\n"
 msgstr ""
+"at91samd bootloader 0\n"
+"program bootloader-itsybitsy_m4-v3.7.0.bin verify\n"
+"at91samd bootloader 16384\n"
 
+#, fuzzy
 msgid "bossac -U -p /dev/ttyACM0 --offset=0x4000 -w out/klipper.bin -v -b -R\n"
-msgstr ""
+msgstr "bossac -U -p /dev/ttyACM0 --offset=0x4000 -w out/klipper.bin -v -b -R\n"
 
+#, fuzzy
 msgid "stm32flash -w out/klipper.bin -v -g 0 /dev/ttyAMA0\n"
-msgstr ""
+msgstr "stm32flash -w out/klipper.bin -v -g 0 /dev/ttyAMA0\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/rogerclarkmelbourne/STM32duino-bootloader/raw/master/binaries/generic_boot20_pc13.bin'\n"
 "\n"
 "stm32flash -w generic_boot20_pc13.bin -v -g 0 /dev/ttyAMA0\n"
 msgstr ""
+"wget 'https://github.com/rogerclarkmelbourne/STM32duino-bootloader/raw/"
+"master/binaries/generic_boot20_pc13.bin'\n"
+"\n"
+"stm32flash -w generic_boot20_pc13.bin -v -g 0 /dev/ttyAMA0\n"
 
+#, fuzzy
 msgid "dfu-util -d 1eaf:0003 -a 2 -R -D out/klipper.bin\n"
-msgstr ""
+msgstr "dfu-util -d 1eaf:0003 -a 2 -R -D out/klipper.bin\n"
 
 msgid "source [find target/stm32f1x.cfg]\n"
-msgstr ""
+msgstr "источник [найти target/stm32f1x.cfg]\n"
 
+#, fuzzy
 msgid "flash read_bank 0 btt_skr_mini_e3_backup.bin\n"
-msgstr ""
+msgstr "flash read_bank 0 btt_skr_mini_e3_backup.bin\n"
 
 msgid ""
 "stm32f1x mass_erase 0\n"
 "program hid_btt_skr_mini_e3.bin verify 0x08000000\n"
 msgstr ""
+"stm32f1x mass_erase 0\n"
+"программа hid_btt_skr_mini_e3.bin проверка 0x08000000\n"
 
 msgid ""
 "You may need to hold down the reset button on the board while launching OpenOCD. It should display something like:Open On-Chip Debugger 0.10.0+dev-01204-gc60252ac-dirty (2020-04-27-16:00)\n"
@@ -674,31 +762,60 @@ msgid ""
 "Info : starting gdb server for stm32f1x.cpu on 3333\n"
 "Info : Listening on port 3333 for gdb connections\n"
 msgstr ""
+"Возможно, вам придется удерживать кнопку сброса на плате во время запуска "
+"OpenOCD. На экране должно появиться что-то вроде:Open On-Chip Debugger "
+"0.10.0+dev-01204-gc60252ac-dirty (2020-04-27-16:00)\n"
+"Лицензия GNU GPL v2\n"
+"Для сообщений об ошибках читайте\n"
+"        http://openocd.org/doc/doxygen/bugs.html\n"
+"DEPRECATED! Используйте 'adapter speed', а не 'adapter_khz'\n"
+"Информация : Драйвер битбанга BCM2835 GPIO JTAG/SWD\n"
+"Информация : Включены режимы JTAG и SWD\n"
+"Информация : тактовая частота 40 кГц\n"
+"Информация : SWD DPIDR 0x1ba01477\n"
+"Информация : stm32f1x.cpu: аппаратное обеспечение имеет 6 точек останова, 4 "
+"точки наблюдения\n"
+"Информация : stm32f1x.cpu: обнаружен внешний сброс\n"
+"Информация : Запуск gdb-сервера для stm32f1x.cpu на 3333\n"
+"Информация : прослушивание порта 3333 для gdb-соединений\n"
 
 msgid "After which you can release the reset button."
-msgstr ""
+msgstr "После этого можно отпустить кнопку сброса."
 
+#, fuzzy
 msgid ""
 "sudo apt install libusb-1.0\n"
 "cd ~/klipper/lib/hidflash\n"
 "make\n"
 msgstr ""
+"sudo apt install libusb-1.0\n"
+"cd ~/klipper/lib/hidflash\n"
+"make\n"
 
+#, fuzzy
 msgid "~/klipper/lib/hidflash/hid-flash ~/klipper/out/klipper.bin\n"
-msgstr ""
+msgstr "~/klipper/lib/hidflash/hid-flash ~/klipper/out/klipper.bin\n"
 
+#, fuzzy
 msgid "make flash FLASH_DEVICE=1209:BEBA\n"
-msgstr ""
+msgstr "make flash FLASH_DEVICE=1209:BEBA\n"
 
+#, fuzzy
 msgid "make flash FLASH_DEVICE=/dev/ttyACM0\n"
-msgstr ""
+msgstr "make flash FLASH_DEVICE=/dev/ttyACM0\n"
 
+#, fuzzy
 msgid ""
 "wget https://github.com/Arksine/STM32_HID_Bootloader/releases/download/v0.5-beta/hid_bootloader_SKR_PRO.bin\n"
 "\n"
 "stm32flash -w hid_bootloader_SKR_PRO.bin -v -g 0 /dev/ttyAMA0\n"
 msgstr ""
+"wget https://github.com/Arksine/STM32_HID_Bootloader/releases/download/"
+"v0.5-beta/hid_bootloader_SKR_PRO.bin\n"
+"\n"
+"stm32flash -w hid_bootloader_SKR_PRO.bin -v -g 0 /dev/ttyAMA0\n"
 
+#, fuzzy
 msgid ""
 "sudo apt-get update\n"
 "sudo apt-get install autoconf libtool telnet\n"
@@ -711,9 +828,21 @@ msgid ""
 "make\n"
 "make install\n"
 msgstr ""
+"sudo apt-get update\n"
+"sudo apt-get install autoconf libtool telnet\n"
+"mkdir ~/openocd\n"
+"cd ~/openocd/\n"
+"git clone http://openocd.zylin.com/openocd\n"
+"cd openocd\n"
+"./bootstrap\n"
+"./configure --enable-sysfsgpio --enable-bcm2835gpio --prefix=/home/pi/"
+"openocd/install\n"
+"make\n"
+"make install\n"
 
+#, fuzzy
 msgid "nano ~/openocd/openocd.cfg\n"
-msgstr ""
+msgstr "nano ~/openocd/openocd.cfg\n"
 
 msgid ""
 "# Uses RPi pins: GPIO25 for SWDCLK, GPIO24 for SWDIO, GPIO18 for nRST\n"
@@ -738,31 +867,63 @@ msgid ""
 "targets\n"
 "reset halt\n"
 msgstr ""
+"# Использует выводы RPi: GPIO25 для SWDCLK, GPIO24 для SWDIO, GPIO18 для "
+"nRST\n"
+"source [find interface/raspberrypi2-native.cfg]\n"
+"bcm2835gpio_swd_nums 25 24\n"
+"bcm2835gpio_srst_num 18\n"
+"выбор транспорта swd\n"
+"\n"
+"# Используйте провод аппаратного сброса для сброса микросхемы\n"
+"reset_config srst_only\n"
+"adapter_nsrst_delay 100\n"
+"adapter_nsrst_assert_width 100\n"
+"\n"
+"# Укажите тип микросхемы\n"
+"source [find target/atsame5x.cfg]\n"
+"\n"
+"# Установите скорость адаптера\n"
+"adapter_khz 40\n"
+"\n"
+"# Подключиться к чипу\n"
+"init\n"
+"targets\n"
+"сброс остановка\n"
 
+#, fuzzy
 msgid ""
 "cd ~/openocd/\n"
 "sudo ~/openocd/install/bin/openocd -f ~/openocd/openocd.cfg\n"
 msgstr ""
+"cd ~/openocd/\n"
+"sudo ~/openocd/install/bin/openocd -f ~/openocd/openocd.cfg\n"
 
+#, fuzzy
 msgid "telnet 127.0.0.1 4444\n"
-msgstr ""
+msgstr "telnet 127.0.0.1 4444\n"
 
+#, fuzzy
 msgid ""
 "bindto 0.0.0.0\n"
 "gdb_port 44444\n"
 msgstr ""
+"bindto 0.0.0.0\n"
+"gdb_port 44444\n"
 
+#, fuzzy
 msgid ""
 "cd /path/to/klipper/\n"
 "gdb out/klipper.elf\n"
 msgstr ""
+"cd /path/to/klipper/\n"
+"gdb out/klipper.elf\n"
 
 msgid "target remote octopi:44444\n"
-msgstr ""
+msgstr "целевой удаленный octopi:44444\n"
 
 #: docs/Bootloaders.md:block 1 (header)
 msgid "Bootloaders"
-msgstr ""
+msgstr "Загрузчики"
 
 #: docs/Bootloaders.md:block 7 (paragraph)
 msgid ""
@@ -772,6 +933,10 @@ msgid ""
 "<https://github.com/arduino/Arduino/blob/1.8.5/hardware/arduino/avr/boards.txt>"
 " is a useful reference."
 msgstr ""
+"В целом, проект Arduino является хорошим справочником по загрузчикам и "
+"процедурам прошивки 8-битных микроконтроллеров Atmel Atmega. В частности, "
+"файл \"boards.txt\": <https://github.com/arduino/Arduino/blob/1.8.5/hardware/"
+"arduino/avr/boards.txt> является полезным справочником."
 
 #: docs/Bootloaders.md:block 32 (paragraph)
 msgid ""
@@ -780,12 +945,19 @@ msgid ""
 "<https://github.com/PaulStoffregen/teensy_loader_cli>. One can flash an "
 "application with it using something like:"
 msgstr ""
+"Устройство Teensy++ от pjrc.com поставляется с проприетарным загрузчиком. "
+"Для его прошивки требуется пользовательская утилита с сайта <https://"
+"github.com/PaulStoffregen/teensy_loader_cli>. С его помощью можно прошить "
+"приложение, используя что-то вроде:"
 
 #: docs/Bootloaders.md:block 42 (paragraph)
 msgid ""
 "The code at <https://github.com/shumatech/BOSSA> can be used to program the "
 "SAM3. It is recommended to use version 1.9 or later."
 msgstr ""
+"Для программирования SAM3 можно использовать код по адресу <https://"
+"github.com/shumatech/BOSSA>. Рекомендуется использовать версию 1.9 или более "
+"позднюю."
 
 #: docs/Bootloaders.md:block 48 (paragraph)
 msgid ""

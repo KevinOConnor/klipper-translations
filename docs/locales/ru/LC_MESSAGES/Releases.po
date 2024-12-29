@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-30 05:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/releases/"
 "ru/>\n"
@@ -400,41 +400,50 @@ msgid ""
 "Support for G-Code M220/M221 commands (speed factor override / extrude "
 "factor override)"
 msgstr ""
+"Поддержка команд G-Code M220/M221 (переопределение коэффициента скорости / "
+"переопределение коэффициента экструзии)"
 
 msgid "Several documentation updates:"
-msgstr ""
+msgstr "Несколько обновлений документации:"
 
 msgid "New multiple MCU config example"
-msgstr ""
+msgstr "Новый пример конфигурации нескольких MCU"
 
 msgid "New bltouch sensor config example"
-msgstr ""
+msgstr "Новый пример конфигурации датчика bltouch"
 
 msgid "New FAQ, config check, and G-Code documents"
-msgstr ""
+msgstr "Новые документы FAQ, проверка конфигурации и G-Code"
 
 msgid ""
 "Initial support for continuous integration testing on all github commits"
 msgstr ""
+"Начальная поддержка непрерывного интеграционного тестирования всех коммитов "
+"на github"
 
+#, fuzzy
 msgid "Klipper 0.5.0"
-msgstr ""
+msgstr "Klipper 0.5.0"
 
 msgid "Available on 20171025. Major changes in this release:"
-msgstr ""
+msgstr "Доступно на сайте 20171025. Основные изменения в этом выпуске:"
 
 msgid "Support for printers with multiple extruders."
-msgstr ""
+msgstr "Поддержка принтеров с несколькими экструдерами."
 
 msgid ""
 "Initial support for running on the Beaglebone PRU. Initial support for the "
 "Replicape board."
 msgstr ""
+"Начальная поддержка работы на Beaglebone PRU. Начальная поддержка платы "
+"Replicape."
 
 msgid ""
 "Initial support for running the micro-controller code in a real-time Linux "
 "process."
 msgstr ""
+"Начальная поддержка выполнения кода микроконтроллера в Linux-процессе в "
+"реальном времени."
 
 msgid ""
 "Support for multiple micro-controllers. (For example, one could control an "
@@ -442,135 +451,176 @@ msgid ""
 "another.) Software clock synchronization is implemented to coordinate "
 "actions between micro-controllers."
 msgstr ""
+"Поддержка нескольких микроконтроллеров. (Например, можно управлять "
+"экструдером с помощью одного микроконтроллера, а остальными частями принтера "
+"- с помощью другого). Для координации действий между микроконтроллерами "
+"реализована программная синхронизация часов."
 
 msgid ""
 "Stepper performance improvements (20Mhz AVRs up to 189K steps per second)."
 msgstr ""
+"Повышение производительности степпера (20Mhz AVR до 189K шагов в секунду)."
 
 msgid ""
 "Support for controlling servos and support for defining nozzle cooling fans."
 msgstr ""
+"Поддержка управления сервоприводами и поддержка определения вентиляторов "
+"охлаждения сопел."
 
+#, fuzzy
 msgid "Klipper 0.4.0"
-msgstr ""
+msgstr "Klipper 0.4.0"
 
 msgid "Available on 20170503. Major changes in this release:"
-msgstr ""
+msgstr "Доступно на сайте 20170503. Основные изменения в этом выпуске:"
 
 msgid ""
 "Improved installation on Raspberry Pi machines. Most of the install is now "
 "scripted."
 msgstr ""
+"Улучшена установка на машины с Raspberry Pi. Большая часть установки теперь "
+"выполняется с помощью сценариев."
 
 msgid "Support for corexy kinematics"
-msgstr ""
+msgstr "Поддержка корексированной кинематики"
 
 msgid ""
 "Documentation updates: New Kinematics document, new Pressure Advance tuning "
 "guide, new example config files, and more"
 msgstr ""
+"Обновления документации: Новый документ по кинематике, новое руководство по "
+"настройке Pressure Advance, новые примеры файлов конфигурации и многое другое"
 
 msgid ""
 "Stepper performance improvements (20Mhz AVRs over 175K steps per second, "
 "Arduino Due over 460K)"
 msgstr ""
+"Повышение производительности шагового механизма (20Mhz AVR более 175K шагов "
+"в секунду, Arduino Due более 460K)"
 
 msgid ""
 "Support for automatic micro-controller resets. Support for resets via "
 "toggling USB power on Raspberry Pi."
 msgstr ""
+"Поддержка автоматического сброса микроконтроллера. Поддержка сброса через "
+"переключение питания USB на Raspberry Pi."
 
 msgid ""
 "The pressure advance algorithm now works with look-ahead to reduce pressure "
 "changes during cornering."
 msgstr ""
+"Алгоритм опережения давления теперь работает с опережением, чтобы уменьшить "
+"изменения давления в поворотах."
 
 msgid "Support for limiting the top speed of short zigzag moves"
 msgstr ""
+"Поддержка ограничения максимальной скорости коротких зигзагообразных движений"
 
 msgid "Support for AD595 sensors"
-msgstr ""
+msgstr "Поддержка датчиков AD595"
 
+#, fuzzy
 msgid "Klipper 0.3.0"
-msgstr ""
+msgstr "Klipper 0.3.0"
 
 msgid "Available on 20161223. Major changes in this release:"
-msgstr ""
+msgstr "Доступно на сайте 20161223. Основные изменения в этом выпуске:"
 
 msgid "Improved documentation"
-msgstr ""
+msgstr "Улучшенная документация"
 
 msgid "Support for robots with delta kinematics"
-msgstr ""
+msgstr "Поддержка роботов с дельта-кинематикой"
 
 msgid "Support for Arduino Due micro-controller (ARM cortex-M3)"
-msgstr ""
+msgstr "Поддержка микроконтроллера Arduino Due (ARM cortex-M3)"
 
 msgid "Support for USB based AVR micro-controllers"
-msgstr ""
+msgstr "Поддержка микроконтроллеров AVR на базе USB"
 
 msgid ""
 "Support for \"pressure advance\" algorithm - it reduces ooze during prints."
 msgstr ""
+"Поддержка алгоритма \"опережения давления\" - он уменьшает образование "
+"соплей при печати."
 
 msgid ""
 "New \"stepper phased based endstop\" feature - enables higher precision on "
 "endstop homing."
 msgstr ""
+"Новая функция \"шагового фазированного концевого упора\" - обеспечивает "
+"более высокую точность наведения концевого упора."
 
 msgid ""
 "Support for \"extended g-code\" commands such as \"help\", \"restart\", and "
 "\"status\"."
 msgstr ""
+"Поддержка команд \"расширенного g-кода\", таких как \" помощь\", "
+"\"перезапуск\" и \"статус\"."
 
 msgid ""
 "Support for reloading the Klipper config and restarting the host software by"
 " issuing a \"restart\" command from the terminal."
 msgstr ""
+"Поддержка перезагрузки конфигурации Klipper и перезапуска хост-программы "
+"путем подачи команды \" перезапуск\" из терминала."
 
 msgid ""
 "Stepper performance improvements (20Mhz AVRs up to 158K steps per second)."
 msgstr ""
+"Повышение производительности степпера (20-мегагерцовые AVR до 158 тысяч "
+"шагов в секунду)."
 
 msgid ""
 "Improved error reporting. Most errors now shown via the terminal along with "
 "help on how to resolve."
 msgstr ""
+"Улучшено отображение ошибок. Большинство ошибок теперь отображается через "
+"терминал вместе с подсказкой по их устранению."
 
+#, fuzzy
 msgid "Klipper 0.2.0"
-msgstr ""
+msgstr "Klipper 0.2.0"
 
 msgid ""
 "Initial release of Klipper. Available on 20160525. Major features available "
 "in the initial release include:"
 msgstr ""
+"Первоначальный выпуск Klipper. Доступен на сайте 20160525. Основные "
+"возможности, доступные в начальном выпуске, включают:"
 
 msgid ""
 "Basic support for cartesian printers (steppers, extruder, heated bed, "
 "cooling fan)."
 msgstr ""
+"Базовая поддержка картезианских принтеров (степперы, экструдер, нагрев "
+"станины, вентилятор охлаждения)."
 
 msgid ""
 "Support for common g-code commands. Support for interfacing with OctoPrint."
 msgstr ""
+"Поддержка распространенных команд g-кода. Поддержка взаимодействия с "
+"OctoPrint."
 
 msgid "Acceleration and lookahead handling"
-msgstr ""
+msgstr "Ускорение и управление опережением"
 
 msgid "Support for AVR micro-controllers via standard serial ports"
 msgstr ""
+"Поддержка микроконтроллеров AVR через стандартные последовательные порты"
 
 #: docs/Releases.md:block 1 (header)
 msgid "Releases"
 msgstr "Релизы"
 
 #: docs/Releases.md:block 3 (header)
+#, fuzzy
 msgid "Klipper 0.10.0"
-msgstr ""
+msgstr "Klipper 0.10.0"
 
 #: docs/Releases.md:block 4 (paragraph)
 msgid "Available on 20210929. Major changes in this release:"
-msgstr ""
+msgstr "Доступно на сайте 20210929. Основные изменения в этом выпуске:"
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
@@ -578,12 +628,18 @@ msgid ""
 " its endstop to be wired to separate micro-controllers. This simplifies "
 "wiring of Z probes on \"toolhead boards\"."
 msgstr ""
+"Поддержка \"Multi-MCU Homing\". Теперь шаговый двигатель и его концевой упор "
+"могут быть подключены к отдельным микроконтроллерам. Это упрощает "
+"подключение Z-зондов на \"платах инструментальных головок\"."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "Klipper now has a [Community Discord Server](https://discord.klipper3d.org) "
 "and a [Community Discourse Server](https://community.klipper3d.org)."
 msgstr ""
+"Теперь у Клиппера есть [Community Discord Server]"
+"(https://discord.klipper3d.org) и [Community Discourse Server]"
+"(https://community.klipper3d.org)."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
@@ -591,10 +647,13 @@ msgid ""
 "infrastructure. There is also a [Klipper "
 "Translations](https://github.com/Klipper3d/klipper-translations) project."
 msgstr ""
+"Веб-сайт [Klipper](https://www.klipper3d.org) теперь использует "
+"инфраструктуру \"mkdocs\". Также существует проект [Klipper Translations]"
+"(https://github.com/Klipper3d/klipper-translations)."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid "Automated support for flashing firmware via sdcard on many boards."
-msgstr ""
+msgstr "Автоматизированная поддержка прошивки через sdcard на многих платах."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid "New kinematic support for \"Hybrid CoreXY\" and \"Hybrid CoreXZ\" printers."

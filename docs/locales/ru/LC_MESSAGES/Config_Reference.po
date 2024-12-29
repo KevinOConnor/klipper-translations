@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-30 05:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "config_reference/ru/>\n"
@@ -497,8 +497,9 @@ msgstr ""
 msgid "Optional G-Code features"
 msgstr ""
 
+#, fuzzy
 msgid "[virtual_sdcard]"
-msgstr ""
+msgstr "[virtual_sdcard]"
 
 msgid ""
 "A virtual sdcard may be useful if the host machine is not fast enough to run"
@@ -506,9 +507,14 @@ msgid ""
 " files stored in a directory on the host using standard sdcard G-Code "
 "commands (eg, M24)."
 msgstr ""
+"Виртуальная sdcard может быть полезна, если хост-машина недостаточно быстра "
+"для хорошей работы OctoPrint. Она позволяет хост-программе Klipper напрямую "
+"печатать файлы gcode, хранящиеся в каталоге на хосте, используя стандартные "
+"команды sdcard G-Code (например, M24)."
 
+#, fuzzy
 msgid "[sdcard_loop]"
-msgstr ""
+msgstr "[sdcard_loop]"
 
 msgid ""
 "Some printers with stage-clearing features, such as a part ejector or a belt"
@@ -516,39 +522,51 @@ msgid ""
 " to print the same part over and over, or repeat the a section of a part for"
 " a chain or other repeated pattern)."
 msgstr ""
+"Некоторые принтеры с функцией очистки этапа, такие как выталкиватель деталей "
+"или ленточный принтер, могут найти применение в зацикливании секций файла "
+"sdcard. (Например, для печати одной и той же детали снова и снова или "
+"повторения участка детали для создания цепочки или другого повторяющегося "
+"узора)."
 
+#, fuzzy
 msgid "[force_move]"
-msgstr ""
+msgstr "[force_move]"
 
+#, fuzzy
 msgid "[pause_resume]"
-msgstr ""
+msgstr "[pause_resume]"
 
+#, fuzzy
 msgid "[firmware_retraction]"
-msgstr ""
+msgstr "[firmware_retraction]"
 
+#, fuzzy
 msgid "[gcode_arcs]"
-msgstr ""
+msgstr "[gcode_arcs]"
 
 msgid "Support for gcode arc (G2/G3) commands."
-msgstr ""
+msgstr "Поддержка команд gcode arc (G2/G3)."
 
+#, fuzzy
 msgid "[respond]"
-msgstr ""
+msgstr "[respond]"
 
 msgid "Resonance compensation"
 msgstr "Компенсация резонанса"
 
+#, fuzzy
 msgid "[input_shaper]"
-msgstr ""
+msgstr "[input_shaper]"
 
 msgid "[adxl345]"
 msgstr "[adxl345]"
 
+#, fuzzy
 msgid "[resonance_tester]"
-msgstr ""
+msgstr "[resonance_tester]"
 
 msgid "Config file helpers"
-msgstr ""
+msgstr "Помощники для конфигурационных файлов"
 
 msgid "[board_pins]"
 msgstr ""
@@ -558,20 +576,26 @@ msgid ""
 "\"board_pins\" prefix). Use this to define aliases for the pins on a micro-"
 "controller."
 msgstr ""
+"Псевдонимы выводов платы (можно задать любое количество секций с префиксом "
+"\"board_pins\"). Используйте это для определения псевдонимов выводов "
+"микроконтроллера."
 
 msgid "[include]"
-msgstr ""
+msgstr "[включить]"
 
 msgid ""
 "Include file support. One may include additional config file from the main "
 "printer config file. Wildcards may also be used (eg, \"configs/*.cfg\")."
 msgstr ""
+"Поддержка включаемых файлов. Можно включить дополнительный файл конфигурации "
+"из основного файла конфигурации принтера. Также могут использоваться символы "
+"подстановки (например, \"configs/*.cfg\")."
 
 msgid "Bed probing hardware"
-msgstr ""
+msgstr "Оборудование для зондирования кровати"
 
 msgid "[probe]"
-msgstr ""
+msgstr "[зонд]"
 
 msgid ""
 "Z height probe. One may define this section to enable Z height probing "
@@ -583,6 +607,16 @@ msgid ""
 "probe in place of a z endstop. If using \"probe:z_virtual_endstop\" then do "
 "not define a position_endstop in the stepper_z config section."
 msgstr ""
+"Датчик высоты Z. Эту секцию можно определить, чтобы включить аппаратное "
+"обеспечение зондирования высоты Z. Когда эта секция включена, становятся "
+"доступными расширенные команды [g-кода] PROBE и QUERY_PROBE "
+"(G-Codes.md#probe). Также см. руководство по калибровке [probe calibrate]"
+"(Probe_Calibrate.md). Секция probe также создает виртуальный вывод "
+"\"probe:z_virtual_endstop\". На принтерах картезианского типа, использующих "
+"датчик вместо концевого упора по оси z, можно установить контакт stepper_z "
+"endstop_pin на этот виртуальный контакт. Если вы используете "
+"\"probe:z_virtual_endstop\", то не определяйте position_endstop в разделе "
+"конфигурации stepper_z."
 
 msgid "[bltouch]"
 msgstr ""
@@ -594,12 +628,18 @@ msgid ""
 "\"probe:z_virtual_endstop\" pin is also created (see the \"probe\" section "
 "for the details)."
 msgstr ""
+"Сенсорный датчик BLTouch. Можно определить эту секцию (вместо секции зонда), "
+"чтобы включить зонд BLTouch. Дополнительную информацию см. в [BL-Touch guide]"
+"(BLTouch.md) и [command reference](G-Codes.md#bltouch). Также создается "
+"виртуальный вывод \"probe:z_virtual_endstop\" (подробности см. в разделе "
+"\"probe\")."
 
 msgid "Additional stepper motors and extruders"
-msgstr ""
+msgstr "Дополнительные шаговые двигатели и экструдеры"
 
+#, fuzzy
 msgid "[stepper_z1]"
-msgstr ""
+msgstr "[stepper_z1]"
 
 msgid ""
 "Multi-stepper axes. On a cartesian style printer, the stepper controlling a "
@@ -608,9 +648,14 @@ msgid ""
 " sections with a numeric suffix starting at 1 (for example, \"stepper_z1\", "
 "\"stepper_z2\", etc.)."
 msgstr ""
+"Многошаговые оси. В принтере, работающем в картезианском стиле, степпер, "
+"управляющий данной осью, может иметь дополнительные блоки конфигурации, "
+"определяющие степперы, которые должны работать в паре с основным степпером. "
+"Можно задать любое количество секций с числовым суффиксом, начиная с 1 ("
+"например, \"stepper_z1\", \"stepper_z2\" и т. д.)."
 
 msgid "[extruder1]"
-msgstr ""
+msgstr "[экструдер1]"
 
 msgid ""
 "In a multi-extruder printer add an additional extruder section for each "
@@ -618,51 +663,70 @@ msgid ""
 "\"extruder1\", \"extruder2\", \"extruder3\", and so on. See the \"extruder\""
 " section for a description of available parameters."
 msgstr ""
+"В принтере с несколькими экструдерами добавьте дополнительную секцию для "
+"каждого экструдера. Дополнительные секции экструдера должны называться "
+"\" экструдер1\", \"экструдер2\", \"экструдер3\" и так далее. Описание "
+"доступных параметров смотрите в разделе \"Экструдер\"."
 
 msgid ""
 "See [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) for an "
 "example configuration."
 msgstr ""
+"Пример конфигурации смотрите в [sample-multi-extruder.cfg](../config/sample-"
+"multi-extruder.cfg)."
 
+#, fuzzy
 msgid "[dual_carriage]"
-msgstr ""
+msgstr "[dual_carriage]"
 
 msgid ""
 "See [sample-idex.cfg](../config/sample-idex.cfg) for an example "
 "configuration."
 msgstr ""
+"Пример конфигурации смотрите в [sample-idex.cfg](../config/sample-idex.cfg)."
 
+#, fuzzy
 msgid "[extruder_stepper]"
-msgstr ""
+msgstr "[extruder_stepper]"
 
 msgid ""
 "Support for additional steppers synchronized to the movement of an extruder "
 "(one may define any number of sections with an \"extruder_stepper\" prefix)."
 msgstr ""
+"Поддержка дополнительных степперов, синхронизированных с движением "
+"экструдера (можно определить любое количество секций с префиксом "
+"\"extruder_stepper\")."
 
+#, fuzzy
 msgid "[manual_stepper]"
-msgstr ""
+msgstr "[manual_stepper]"
 
 msgid "Custom heaters and sensors"
-msgstr ""
+msgstr "Индивидуальные нагреватели и датчики"
 
+#, fuzzy
 msgid "[verify_heater]"
-msgstr ""
+msgstr "[verify_heater]"
 
 msgid ""
 "Heater and temperature sensor verification. Heater verification is "
 "automatically enabled for each heater that is configured on the printer. Use"
 " verify_heater sections to change the default settings."
 msgstr ""
+"Проверка нагревателя и датчика температуры. Проверка нагревателя "
+"автоматически включается для каждого нагревателя, настроенного на принтере. "
+"Используйте секции verify_heater, чтобы изменить настройки по умолчанию."
 
+#, fuzzy
 msgid "[homing_heaters]"
-msgstr ""
+msgstr "[homing_heaters]"
 
 msgid "Tool to disable heaters when homing or probing an axis."
 msgstr ""
+"Инструмент для отключения нагревателей при наведении или зондировании оси."
 
 msgid "[thermistor]"
-msgstr ""
+msgstr "[термистор]"
 
 msgid ""
 "Custom thermistors (one may define any number of sections with a "
@@ -672,9 +736,17 @@ msgid ""
 "my_thermistor\" when defining a heater.) Be sure to place the thermistor "
 "section in the config file above its first use in a heater section."
 msgstr ""
+"Пользовательские термисторы (можно определить любое количество секций с "
+"префиксом \"термистор\"). Пользовательский термистор может быть использован "
+"в поле sensor_type секции конфигурации нагревателя. (Например, если "
+"определить секцию \"[термистор мой_термистор]\", то при определении "
+"нагревателя можно использовать \"тип_датчика: мой_термистор\"). Обязательно "
+"поместите секцию термистора в конфигурационный файл выше ее первого "
+"использования в секции нагревателя."
 
+#, fuzzy
 msgid "[adc_temperature]"
-msgstr ""
+msgstr "[adc_temperature]"
 
 msgid ""
 "Custom ADC temperature sensors (one may define any number of sections with "
@@ -688,20 +760,35 @@ msgid ""
 "defining a heater.) Be sure to place the sensor section in the config file "
 "above its first use in a heater section."
 msgstr ""
+"Пользовательские датчики температуры АЦП (можно определить любое количество "
+"секций с префиксом \"adc_temperature\"). Это позволяет определить "
+"пользовательский датчик температуры, который измеряет напряжение на выводе "
+"аналого-цифрового преобразователя (ADC) и использует линейную интерполяцию "
+"между набором настроенных измерений температуры/напряжения (или "
+"температуры/сопротивления) для определения температуры. Полученный датчик "
+"можно использовать как тип_датчика в секции нагревателя. (Например, если "
+"определить секцию \"[adc_temperature my_sensor]\", то при определении "
+"нагревателя можно использовать \"sensor_type: my_sensor\"). Обязательно "
+"поместите секцию датчика в конфигурационный файл выше ее первого "
+"использования в секции нагревателя."
 
+#, fuzzy
 msgid "[heater_generic]"
-msgstr ""
+msgstr "[heater_generic]"
 
+#, fuzzy
 msgid "[temperature_sensor]"
-msgstr ""
+msgstr "[temperature_sensor]"
 
 msgid ""
 "Generic temperature sensors. One can define any number of additional "
 "temperature sensors that are reported via the M105 command."
 msgstr ""
+"Общие датчики температуры. Можно определить любое количество дополнительных "
+"датчиков температуры, которые будут сообщаться с помощью команды M105."
 
 msgid "Temperature sensors"
-msgstr ""
+msgstr "Датчики температуры"
 
 msgid "Common thermistors"
 msgstr ""

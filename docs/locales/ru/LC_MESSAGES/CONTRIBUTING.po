@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-30 05:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "contributing/ru/>\n"
@@ -710,16 +710,17 @@ msgstr "\"Сопровождающими\" Клиппера являются:"
 
 #: docs/CONTRIBUTING.md:block 26 (table)
 msgid "GitHub name"
-msgstr ""
+msgstr "Название GitHub"
 
 #: docs/CONTRIBUTING.md:block 27 (header)
 msgid "Format of commit messages"
-msgstr ""
+msgstr "Формат сообщений фиксации"
 
 #: docs/CONTRIBUTING.md:block 28 (paragraph)
 msgid ""
 "Each commit should have a commit message formatted similar to the following:"
 msgstr ""
+"Каждая фиксация должна содержать сообщение о фиксации в следующем формате:"
 
 #: docs/CONTRIBUTING.md:block 30 (paragraph)
 msgid ""
@@ -728,6 +729,10 @@ msgid ""
 " in pause() call at connect time`. The purpose of specifying a module name "
 "in the commit message is to help provide context for the commit comments."
 msgstr ""
+"В приведенном выше примере `module` должно быть именем файла или каталога в "
+"репозитории (без расширения файла). Например, `clocksync: Fix typo in pause()"
+" call at connect time`. Цель указания имени модуля в сообщении о фиксации - "
+"помочь обеспечить контекст для комментариев к фиксации."
 
 #: docs/CONTRIBUTING.md:block 33 (paragraph)
 msgid ""
@@ -738,14 +743,20 @@ msgid ""
 " on [klipper3d.org](https://www.klipper3d.org) once they satisfy the "
 "following requirements:"
 msgstr ""
+"[Klipper-translations Project](https://github.com/Klipper3d/klipper-"
+"translations) - проект, посвященный переводу Klipper на разные языки. На "
+"сайте [Weblate](https://hosted.weblate.org/projects/klipper/) размещены все "
+"строки Gettext для перевода и просмотра. Локализации могут быть отображены "
+"на [klipper3d.org](https://www.klipper3d.org), если они удовлетворяют "
+"следующим требованиям:"
 
 #: docs/CONTRIBUTING.md:block 34 (unordered list)
 msgid "All titles (H1) are translated"
-msgstr ""
+msgstr "Все заголовки (H1) переведены"
 
 #: docs/CONTRIBUTING.md:block 37 (paragraph)
 msgid "Once the requirements are met, you need to:"
-msgstr ""
+msgstr "После того как требования будут выполнены, вам необходимо:"
 
 #: docs/CONTRIBUTING.md:block 38 (ordered list)
 msgid ""
@@ -753,6 +764,9 @@ msgid ""
 "[active_translations](https://github.com/Klipper3d/klipper-"
 "translations/blob/translations/active_translations)"
 msgstr ""
+"обновить репозиторий klipper-tranlations [active_translations](https://"
+"github.com/Klipper3d/klipper-translations/blob/translations/"
+"active_translations)"
 
 #: docs/CONTRIBUTING.md:block 38 (ordered list)
 msgid ""
@@ -760,6 +774,9 @@ msgid ""
 "`docs\\locals\\<lang>` folder to replace the language specific index.md "
 "(generated index.md does not render correctly)."
 msgstr ""
+"Дополнительно: добавьте файл manual-index.md в папку `docs\\locals\\<lang>` "
+"репозитория klipper-translations, чтобы заменить специфичный для каждого "
+"языка index.md (сгенерированный index.md отображается некорректно)."
 
 #: docs/CONTRIBUTING.md:block 39 (paragraph)
 msgid "Known Issues:"
@@ -770,10 +787,11 @@ msgid ""
 "Currently, there isn't a method for correctly translating pictures in the "
 "documentation"
 msgstr ""
+"В настоящее время в документации нет метода правильного перевода изображений"
 
 #: docs/CONTRIBUTING.md:block 40 (ordered list)
 msgid "It is impossible to translate titles in mkdocs.yml."
-msgstr ""
+msgstr "Невозможно перевести заголовки в mkdocs.yml."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -790,6 +808,19 @@ msgid ""
 "Some of Klipper's most notable features took months of discussion, rework, "
 "testing, and documentation prior to being merged into the master branch."
 msgstr ""
+"При обсуждении преимуществ предпочтительнее обсуждать \"факты и измерения\". "
+"В целом, рецензенты не ищут ответов типа "
+"\"кто-то может найти опцию X полезной\", равно как и ответов типа "
+"\"эта заявка добавляет функцию, которая реализована в прошивке X\". Вместо "
+"этого, как правило, предпочтительнее обсудить детали того, как измерялось "
+"улучшение качества и каковы были результаты этих измерений - например, "
+"\"тесты на принтерах Acme X1000 показали улучшение углов, как видно на "
+"рисунке...\", или, например, \"время печати реального объекта X на принтере "
+"Foomatic X900 сократилось с 4 часов до 3,5 часов\". Понятно, что "
+"тестирование такого рода может занять много времени и сил. Некоторые из "
+"наиболее заметных функций Klipper потребовались месяцы обсуждений, "
+"доработок, тестирования и документирования, прежде чем они были добавлены в "
+"основную ветку."
 
 #: docs/CONTRIBUTING.md:block 13 (ordered list)
 msgid ""
@@ -797,18 +828,22 @@ msgid ""
 "understanding of the root cause of that defect, and the fix should target "
 "that root cause."
 msgstr ""
+"Исправляя дефект в коде, отправители должны иметь общее представление о "
+"первопричине этого дефекта, и исправление должно быть направлено на эту "
+"первопричину."
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "James Hartley"
-msgstr ""
+msgstr "Джеймс Хартли"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
+#, fuzzy
 msgid "@JamesH1978"
-msgstr ""
+msgstr "@JamesH1978"
 
 #: docs/CONTRIBUTING.md:block 23 (table)
 msgid "Configuration files"
-msgstr ""
+msgstr "Конфигурационные файлы"
 
 #~ msgid "Paul McGowan"
 #~ msgstr ""

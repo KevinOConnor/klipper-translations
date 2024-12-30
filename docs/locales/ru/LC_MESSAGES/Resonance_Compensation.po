@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-30 05:00+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "resonance_compensation/ru/>\n"
@@ -962,6 +962,10 @@ msgid ""
 "5% for frequencies [33.6, 36.4] Hz. 3HUMP_EI with shaper_freq = 50 Hz "
 "reduces vibrations to 5% in range [27.5, 75] Hz."
 msgstr ""
+"Можно оценить диапазон частот, на которых шейпер снижает вибрации. Например, "
+"MZV с shaper_freq = 35 Гц снижает вибрации до 5 % для частот [33,6, 36,4] "
+"Гц. 3HUMP_EI с shaper_freq = 50 Гц снижает вибрации до 5 % в диапазоне "
+"[27,5, 75] Гц."
 
 msgid ""
 "One can use this table to check which shaper they should be using if they "
@@ -976,6 +980,18 @@ msgid ""
 "50-52 Hz would work best), and try to use a shaper with as small shaper "
 "duration as possible."
 msgstr ""
+"С помощью этой таблицы можно проверить, какой формирователь следует "
+"использовать, если нужно уменьшить вибрации на нескольких частотах. "
+"Например, если на одной оси есть резонансы на 35 и 60 Гц: a) формирователь "
+"EI должен иметь shaper_freq = 35 / (1 - 0,2) = 43,75 Гц, и он будет "
+"уменьшать резонансы до 43,75 * (1 + 0,2) = 52. 5 Гц, так что этого "
+"недостаточно; б) шейпер 2HUMP_EI должен иметь shaper_freq = 35 / (1 - 0,35) "
+"= 53,85 Гц и будет уменьшать колебания до 53,85 * (1 + 0,35) = 72,7 Гц - так "
+"что это приемлемая конфигурация. Всегда старайтесь использовать как можно "
+"более высокий shaper_freq для данного шейпера (возможно, с некоторым запасом "
+"прочности, так что в данном примере лучше всего подойдет shaper_freq ≈ 50-52 "
+"Гц), и старайтесь использовать шейпер с как можно меньшей длительностью "
+"шейпера."
 
 msgid ""
 "If one needs to reduce vibrations at several very different frequencies "
@@ -984,32 +1000,52 @@ msgid ""
 "[scripts/graph_shaper.py](../scripts/graph_shaper.py) script, which is more "
 "flexible."
 msgstr ""
+"Если нужно уменьшить вибрации на нескольких очень разных частотах (скажем, "
+"30 Гц и 100 Гц), может оказаться, что приведенная выше таблица не дает "
+"достаточно информации. В этом случае удачнее использовать скрипт "
+"[scripts/graph_shaper.py](../scripts/graph_shaper.py), который является "
+"более гибким."
 
 msgid ""
 "[input_shaper]\n"
 "shaper_freq_x: ...  # frequency for the X mark of the test model\n"
 "shaper_freq_y: ...  # frequency for the Y mark of the test model\n"
 msgstr ""
+"[input_shaper]\n"
+"shaper_freq_x: ...  # частота для метки X тестовой модели\n"
+"shaper_freq_y: ...  # частота для метки Y тестовой модели\n"
 
+#, fuzzy
 msgid ""
 "[input_shaper]\n"
 "shaper_freq_x: ...\n"
 "shaper_freq_y: ...\n"
 "shaper_type: mzv\n"
 msgstr ""
+"[input_shaper]\n"
+"shaper_freq_x: ...\n"
+"shaper_freq_y: ...\n"
+"shaper_type: mzv\n"
 
+#, fuzzy
 msgid ""
 "[input_shaper]\n"
 "shaper_freq_x: 50\n"
 "shaper_freq_y: 50\n"
 "shaper_type: 2hump_ei\n"
 msgstr ""
+"[input_shaper]\n"
+"shaper_freq_x: 50\n"
+"shaper_freq_y: 50\n"
+"shaper_type: 2hump_ei\n"
 
 #: docs/Resonance_Compensation.md:block 7 (paragraph)
 msgid ""
 "Basic tuning requires measuring the ringing frequencies of the printer by "
 "printing a test model."
 msgstr ""
+"Базовая настройка требует измерения частоты звона принтера путем печати "
+"тестовой модели."
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid ""
@@ -1018,10 +1054,14 @@ msgid ""
 "more smoothing in parts - it is better to use higher acceleration value "
 "instead."
 msgstr ""
+"Если параметр `square_corner_velocity` был изменен, верните его к значению "
+"5.0. Не рекомендуется увеличивать этот параметр при использовании входного "
+"формирователя, поскольку это может привести к сглаживанию деталей - вместо "
+"этого лучше использовать более высокое значение ускорения."
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid "Disable Pressure Advance: `SET_PRESSURE_ADVANCE ADVANCE=0`"
-msgstr ""
+msgstr "Отключить опережение давления: `SET_PRESSURE_ADVANCE ADVANCE=0`"
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid ""
@@ -1032,28 +1072,36 @@ msgid ""
 "starting from 1500 mm/sec^2: 1500 mm/sec^2, 2000 mm/sec^2, 2500 mm/sec^2 and"
 " so forth up until 7000 mm/sec^2 at the last band."
 msgstr ""
+"Выполните команду: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL "
+"START=1500 STEP_DELTA=500 STEP_HEIGHT=5` По сути, мы пытаемся сделать звон "
+"более выраженным, задавая различные большие значения ускорения. Эта команда "
+"будет увеличивать ускорение каждые 5 мм, начиная с 1500 мм/сек^2: 1500 "
+"мм/сек^2, 2000 мм/сек^2, 2500 мм/сек^2 и так далее до 7000 мм/сек^2 на "
+"последнем диапазоне."
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid "Do (8) - (10) for Y mark as well."
-msgstr ""
+msgstr "Выполните пункты (8) - (10) для метки Y."
 
 #: docs/Resonance_Compensation.md:block 27 (paragraph)
 msgid "Print the ringing test model as follows:"
-msgstr ""
+msgstr "Распечатайте тестовую модель звонка следующим образом:"
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Restart the firmware: `RESTART`"
-msgstr ""
+msgstr "Перезапустите прошивку: `ПЕРЕЗАПУСК`"
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Execute: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`"
-msgstr ""
+msgstr "Выполнить: `SET_INPUT_SHAPER SHAPER_TYPE=MZV`"
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid ""
 "Execute the command: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT "
 "PARAMETER=ACCEL START=1500 STEP_DELTA=500 STEP_HEIGHT=5`"
 msgstr ""
+"Выполните команду: `TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL "
+"START=1500 STEP_DELTA=500 STEP_HEIGHT=5`"
 
 #: docs/Resonance_Compensation.md:block 31 (paragraph)
 msgid ""
@@ -1061,6 +1109,9 @@ msgid ""
 "executing at step 4 the following command instead: `SET_INPUT_SHAPER "
 "SHAPER_TYPE=EI`."
 msgstr ""
+"Теперь попробуйте использовать входной формирователь EI. Для этого повторите "
+"шаги (1)-(6), описанные выше, но на шаге 4 выполните следующую команду: `"
+"SET_INPUT_SHAPER SHAPER_TYPE=EI`."
 
 #: docs/Resonance_Compensation.md:block 37 (paragraph)
 msgid ""
@@ -1077,27 +1128,47 @@ msgid ""
 "`square_corner_velocity`, so it is not advisable to increase it above the "
 "default 5 mm/sec to prevent increased smoothing."
 msgstr ""
+"У вас должен быть распечатан тест для шейпера, который вы выбрали на "
+"предыдущем шаге (если его нет, распечатайте тестовую модель, нарезанную с "
+"[предложенными параметрами](#tuning) с отключенным опережением давления `"
+"SET_PRESSURE_ADVANCE ADVANCE=0` и с включенной настроечной башней `"
+"TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 "
+"STEP_DELTA=500 STEP_HEIGHT=5`). Обратите внимание, что при очень высоких "
+"ускорениях, в зависимости от резонансной частоты и выбранного входного "
+"формирователя (например, формирователь EI создает больше сглаживания, чем "
+"MZV), входной формирователь может вызвать слишком сильное сглаживание и "
+"округление деталей. Поэтому max_accel следует выбирать так, чтобы этого не "
+"произошло. Еще один параметр, который может повлиять на сглаживание, - `"
+"square_corner_velocity, поэтому не рекомендуется увеличивать его выше "
+"установленного по умолчанию значения 5 мм/с, чтобы предотвратить усиление "
+"сглаживания."
 
 #: docs/Resonance_Compensation.md:block 45 (paragraph)
 msgid ""
 "Choose the minimum out of the two acceleration values (from ringing and "
 "smoothing), and put it as `max_accel` into printer.cfg."
 msgstr ""
+"Выберите минимальное из двух значений ускорения (от звонка и сглаживания) и "
+"поместите его как `max_accel` в printer.cfg."
 
 #: docs/Resonance_Compensation.md:block 51 (paragraph)
 msgid ""
 "Assuming that you have sliced the ringing model with suggested parameters, "
 "complete the following steps for each of the axes X and Y:"
 msgstr ""
+"Предполагая, что вы нарезали модель звона с предложенными параметрами, "
+"выполните следующие шаги для каждой из осей X и Y:"
 
 #: docs/Resonance_Compensation.md:block 52 (ordered list)
 msgid ""
 "Make sure Pressure Advance is disabled: `SET_PRESSURE_ADVANCE ADVANCE=0`"
 msgstr ""
+"Убедитесь, что опережение давления отключено: `SET_PRESSURE_ADVANCE "
+"ADVANCE=0`"
 
 #: docs/Resonance_Compensation.md:block 52 (ordered list)
 msgid "Execute: `SET_INPUT_SHAPER SHAPER_TYPE=ZV`"
-msgstr ""
+msgstr "Выполнить: `SET_INPUT_SHAPER SHAPER_TYPE=ZV`"
 
 #: docs/Resonance_Compensation.md:block 52 (ordered list)
 msgid ""
@@ -1105,6 +1176,9 @@ msgid ""
 "the acceleration that shows ringing sufficiently well, and set it with: "
 "`SET_VELOCITY_LIMIT ACCEL=...`"
 msgstr ""
+"Из существующей тестовой модели звона с выбранным вами входным "
+"формирователем выберите ускорение, которое достаточно хорошо показывает "
+"звон, и установите его с помощью: `SET_VELOCITY_LIMIT ACCEL=...`"
 
 #: docs/Resonance_Compensation.md:block 52 (ordered list)
 msgid ""
@@ -1112,6 +1186,9 @@ msgid ""
 "PARAMETER=SHAPER_FREQ_X START=start FACTOR=factor BAND=5` using `start` and "
 "`factor` values calculated at step (5)."
 msgstr ""
+"Выполните команду: `TUNING_TOWER COMMAND=SET_INPUT_SHAPER "
+"PARAMETER=SHAPER_FREQ_X START=start FACTOR=factor BAND=5`, используя "
+"значения `start` и `factor`, рассчитанные на шаге (5)."
 
 #: docs/Resonance_Compensation.md:block 57 (paragraph)
 msgid ""
@@ -1120,6 +1197,10 @@ msgid ""
 "value, if it differs from the previous one. Make sure to restart Klipper "
 "before tuning Pressure Advance."
 msgstr ""
+"Если вы используете функцию Pressure Advance, ее, возможно, придется "
+"настроить заново. Следуйте [инструкциям](Pressure_Advance.md#tuning-pressure-"
+"advance), чтобы найти новое значение, если оно отличается от предыдущего. "
+"Перед настройкой Pressure Advance обязательно перезапустите Klipper."
 
 #: docs/Resonance_Compensation.md:block 60 (paragraph)
 msgid ""
@@ -1127,35 +1208,50 @@ msgid ""
 "assuming that you have sliced the ringing model with suggested parameters, "
 "print the test model 3 times as follows. First time, prior to printing, run"
 msgstr ""
+"Для настройки добавьте пустой раздел `[input_shaper]` в ваш `printer.cfg`. "
+"Затем, предположив, что вы нарезали модель звона с предложенными "
+"параметрами, распечатайте тестовую модель 3 раза следующим образом. В первый "
+"раз, перед печатью, выполните команду"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
+#, fuzzy
 msgid "`SET_PRESSURE_ADVANCE ADVANCE=0`"
-msgstr ""
+msgstr "`SET_PRESSURE_ADVANCE ADVANCE=0`"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
+#, fuzzy
 msgid ""
 "`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`"
 msgstr ""
+"`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=60 SHAPER_FREQ_Y=60`"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
+#, fuzzy
 msgid ""
 "`TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 "
 "STEP_DELTA=500 STEP_HEIGHT=5`"
 msgstr ""
+"`TUNING_TOWER COMMAND=SET_VELOCITY_LIMIT PARAMETER=ACCEL START=1500 "
+"STEP_DELTA=500 STEP_HEIGHT=5`"
 
 #: docs/Resonance_Compensation.md:block 63 (ordered list)
+#, fuzzy
 msgid ""
 "`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=50 SHAPER_FREQ_Y=50`"
 msgstr ""
+"`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=50 SHAPER_FREQ_Y=50`"
 
 #: docs/Resonance_Compensation.md:block 65 (ordered list)
+#, fuzzy
 msgid ""
 "`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=40 SHAPER_FREQ_Y=40`"
 msgstr ""
+"`SET_INPUT_SHAPER SHAPER_TYPE=2HUMP_EI SHAPER_FREQ_X=40 SHAPER_FREQ_Y=40`"
 
 #: docs/Resonance_Compensation.md:block 72 (ordered list)
+#, fuzzy
 msgid "`SET_INPUT_SHAPER SHAPER_TYPE=EI SHAPER_FREQ_X=... SHAPER_FREQ_Y=...`"
-msgstr ""
+msgstr "`SET_INPUT_SHAPER SHAPER_TYPE=EI SHAPER_FREQ_X=... SHAPER_FREQ_Y=...`"
 
 #: docs/Resonance_Compensation.md:block 85 (paragraph)
 msgid ""
@@ -1169,6 +1265,16 @@ msgid ""
 "section empty and additionally define a `[delayed_gcode]` section in the "
 "`printer.cfg` as follows:"
 msgstr ""
+"Да. В этом случае необходимо дважды измерить резонансы для каждой каретки. "
+"Например, если вторая (сдвоенная) каретка установлена на оси X, можно "
+"установить разные входные формирователи для оси X для основной и сдвоенной "
+"кареток. Однако входной формирователь для оси Y должен быть одинаковым для "
+"обеих кареток (поскольку в конечном итоге эта ось приводится в движение "
+"одним или несколькими шаговыми двигателями, каждый из которых получает "
+"команду на выполнение одинаковых шагов). Один из вариантов настройки "
+"входного формирователя для таких установок - оставить секцию `[input_shaper]`"
+" пустой и дополнительно определить секцию `[delayed_gcode]` в файле `"
+"printer.cfg следующим образом:"
 
 #: docs/Resonance_Compensation.md:block 86 (code)
 msgid ""
@@ -1183,6 +1289,20 @@ msgid ""
 "  SET_DUAL_CARRIAGE CARRIAGE=0\n"
 "  SET_INPUT_SHAPER SHAPER_TYPE_X=<primary_carriage_shaper> SHAPER_FREQ_X=<primary_carriage_freq> SHAPER_TYPE_Y=<y_shaper> SHAPER_FREQ_Y=<y_freq>\n"
 msgstr ""
+"[input_shaper]\n"
+"# Намеренно пустой\n"
+"\n"
+"[delayed_gcode init_shaper]\n"
+"начальная_длительность: 0.1\n"
+"gcode:\n"
+"  SET_DUAL_CARRIAGE CARRIAGE=1\n"
+"  SET_INPUT_SHAPER SHAPER_TYPE_X=<dual_carriage_shaper> "
+"SHAPER_FREQ_X=<dual_carriage_freq> SHAPER_TYPE_Y=<y_shaper> "
+"SHAPER_FREQ_Y=<y_freq>\n"
+"  SET_DUAL_CARRIAGE CARRIAGE=0\n"
+"  SET_INPUT_SHAPER SHAPER_TYPE_X=<основная_каретка_шапера> "
+"SHAPER_FREQ_X=<основная_каретка_фрека> SHAPER_TYPE_Y=<y_shaper> "
+"SHAPER_FREQ_Y=<y_freq>\n"
 
 #: docs/Resonance_Compensation.md:block 87 (paragraph)
 msgid ""
@@ -1191,6 +1311,10 @@ msgid ""
 " in the slicer, however then the shaper will not be enabled until any print "
 "is started."
 msgstr ""
+"Обратите внимание, что `SHAPER_TYPE_Y` и `SHAPER_FREQ_Y` должны быть "
+"одинаковыми в обеих командах. Можно также поместить аналогичный фрагмент в g-"
+"код запуска слайсера, однако тогда шейпер не будет включен до тех пор, пока "
+"не будет запущена печать."
 
 #: docs/Resonance_Compensation.md:block 88 (paragraph)
 msgid ""
@@ -1198,20 +1322,26 @@ msgid ""
 "changes of the carriages or their modes via `SET_DUAL_CARRIAGE` command will"
 " preserve the configured input shaper parameters."
 msgstr ""
+"Обратите внимание, что входной формирователь должен быть настроен только "
+"один раз. Последующие изменения кареток или их режимов с помощью команды "
+"`SET_DUAL_CARRIAGE` сохранят настроенные параметры входного формирователя."
 
 #: docs/Resonance_Compensation.md:block 28 (ordered list)
 msgid "Prepare for test: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
-msgstr ""
+msgstr "Подготовьтесь к тесту: `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 
 #: docs/Resonance_Compensation.md:block 61 (ordered list)
+#, fuzzy
 msgid "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
-msgstr ""
+msgstr "`SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 
 #: docs/Resonance_Compensation.md:block 12 (ordered list)
 msgid ""
 "Disable the `minimum_cruise_ratio` feature by issuing the following command:"
 " `SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 msgstr ""
+"Отключите функцию `minimum_cruise_ratio`, выполнив следующую команду: `"
+"SET_VELOCITY_LIMIT MINIMUM_CRUISE_RATIO=0`"
 
 #~ msgid ""
 #~ "Disable the `miminum_cruise_ratio` feature by issuing the following command:"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-30 05:00+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/bed_mesh/"
 "ru/>\n"
@@ -1339,42 +1339,52 @@ msgstr ""
 msgid ""
 "`METHOD=manual`: enables manual probing using the nozzle and the paper test"
 msgstr ""
+"`METHOD=manual`: включает ручное зондирование с помощью насадки и бумажного "
+"теста"
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid "`METHOD=automatic`: Automatic (standard) probing. This is the default."
 msgstr ""
+"`METHOD=автоматический`: Автоматическое (стандартное) зондирование. "
+"Используется по умолчанию."
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid ""
 "`METHOD=scan`: Enables surface scanning. The tool will pause over each "
 "position to collect a sample."
 msgstr ""
+"`METHOD=scan`: Включает сканирование поверхности. Инструмент будет "
+"останавливаться на каждой позиции, чтобы собрать образец."
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid "`METHOD=rapid_scan`: Enables continuous surface scanning."
-msgstr ""
+msgstr "`METHOD=rapid_scan`: Включает непрерывное сканирование поверхности."
 
 #: docs/Bed_Mesh.md:block 79 (paragraph)
 msgid ""
 "XY positions are automatically adjusted to include the X and/or Y offsets "
 "when a probing method other than `manual` is selected."
 msgstr ""
+"Позиции XY автоматически корректируются с учетом смещений X и/или Y, если "
+"выбран метод зондирования, отличный от `ручного`."
 
 #: docs/Bed_Mesh.md:block 81 (unordered list)
+#, fuzzy
 msgid "`MESH_PPS`"
-msgstr ""
+msgstr "`MESH_PPS`"
 
 #: docs/Bed_Mesh.md:block 107 (header)
 msgid "Bed Mesh Webhooks APIs"
-msgstr ""
+msgstr "API-интерфейсы Bed Mesh Webhooks"
 
 #: docs/Bed_Mesh.md:block 108 (header)
 msgid "Dumping mesh data"
-msgstr ""
+msgstr "Выгрузка данных о сетке"
 
 #: docs/Bed_Mesh.md:block 109 (paragraph)
+#, fuzzy
 msgid "`{\"id\": 123, \"method\": \"bed_mesh/dump_mesh\"}`"
-msgstr ""
+msgstr "`{\"id\": 123, \"method\": \"bed_mesh/dump_mesh\"}`"
 
 #: docs/Bed_Mesh.md:block 110 (paragraph)
 msgid ""
@@ -1395,7 +1405,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 112 (header)
 msgid "Visualization and analysis"
-msgstr ""
+msgstr "Визуализация и анализ"
 
 #: docs/Bed_Mesh.md:block 113 (paragraph)
 msgid ""
@@ -1406,6 +1416,12 @@ msgid ""
 "analysis, particularly useful for debugging hardware or the results produced"
 " by `bed_mesh`:"
 msgstr ""
+"Большинство пользователей, скорее всего, сочтут, что визуализаторов, "
+"входящих в состав таких приложений, как Mainsail, Fluidd и Octoprint, "
+"достаточно для базового анализа. Однако в папке scripts Klipper находится "
+"скрипт `graph_mesh.py`, который можно использовать для дополнительной "
+"визуализации и более детального анализа, особенно полезного для отладки "
+"оборудования или результатов, полученных с помощью `bed_mesh`:"
 
 #: docs/Bed_Mesh.md:block 114 (code)
 msgid ""
@@ -1423,10 +1439,23 @@ msgid ""
 "options:\n"
 "  -h, --help            show this help message and exit\n"
 msgstr ""
+"Использование: graph_mesh.py [-h] {list,plot,analyze,dump} ...\n"
+"\n"
+"График данных сетки кровати\n"
+"\n"
+"позиционные аргументы:\n"
+"  {list,plot,analyze,dump}\n"
+"    list Список доступных типов графиков\n"
+"    plot Построить график указанного типа\n"
+"    analyze Выполнить анализ данных сетки\n"
+"    dump Выгрузить ответ API в json-файл\n"
+"\n"
+"опции:\n"
+"  -h, --help Показать сообщение о помощи и выйти\n"
 
 #: docs/Bed_Mesh.md:block 115 (header)
 msgid "Pre-requisites"
-msgstr ""
+msgstr "Пререквизиты"
 
 #: docs/Bed_Mesh.md:block 116 (paragraph)
 msgid ""
@@ -1439,16 +1468,27 @@ msgid ""
 "be rotated and zoomed in preview mode, and the path visualizations can "
 "optionally be animated in preview mode."
 msgstr ""
+"Как и большинство инструментов для построения графиков, предоставляемых "
+"Klipper, `graph_mesh.py` требует python-зависимости `matplotlib` и `numpy`. "
+"Кроме того, для подключения к Klipper через веб-сокет Moonraker требуется "
+"python-зависимость `websockets`. Хотя все визуализации могут быть выведены в "
+"файл `svg, большинство визуализаций, предлагаемых `graph_mesh.py`, лучше "
+"просматривать в режиме живого просмотра на настольном компьютере. Например, "
+"3D-визуализации можно поворачивать и масштабировать в режиме "
+"предварительного просмотра, а визуализации путей могут быть анимированы в "
+"режиме предварительного просмотра."
 
 #: docs/Bed_Mesh.md:block 117 (header)
 msgid "Plotting Mesh data"
-msgstr ""
+msgstr "Построение графика данных сетки"
 
 #: docs/Bed_Mesh.md:block 118 (paragraph)
 msgid ""
 "The `graph_mesh.py` tool can plot several types of visualizations. Available"
 " types can be shown by running `graph_mesh.py list`:"
 msgstr ""
+"Инструмент `graph_mesh.py` может строить несколько типов визуализаций. "
+"Доступные типы можно посмотреть, выполнив команду `graph_mesh.py list`:"
 
 #: docs/Bed_Mesh.md:block 119 (code)
 msgid ""
@@ -1461,10 +1501,18 @@ msgid ""
 "overlay   Plots the current probed mesh overlaid with a profile\n"
 "delta     Plots the delta between current probed mesh and a profile\n"
 msgstr ""
+"graph_mesh.py list\n"
+"точки     Построить исходные сгенерированные точки\n"
+"path       Построить траекторию движения зонда\n"
+"rapid      Построить путь быстрого сканирования\n"
+"probedz    Построить значения Z зонда\n"
+"meshz      Построить значения Z сетки\n"
+"Наложение    Изображает текущую сетку, наложенную на профиль\n"
+"delta      Показывает дельту между текущей зондированной сеткой и профилем\n"
 
 #: docs/Bed_Mesh.md:block 120 (paragraph)
 msgid "Several options are available when plotting visualizations:"
-msgstr ""
+msgstr "При построении визуализаций доступно несколько вариантов:"
 
 #: docs/Bed_Mesh.md:block 121 (code)
 msgid ""
@@ -1483,10 +1531,27 @@ msgid ""
 "  -o OUTPUT, --output OUTPUT\n"
 "                        Output file path\n"
 msgstr ""
+"использование: graph_mesh.py plot [-h] [-a] [-s] [-p PROFILE_NAME] "
+"[-o OUTPUT] <тип графика> <вход>\n"
+"\n"
+"позиционные аргументы:\n"
+"  <plot type> Тип данных для построения графика\n"
+"  <input> Path/url к Klipper Socket или путь к json-файлу\n"
+"\n"
+"опции:\n"
+"  -h, --help показать это справочное сообщение и выйти\n"
+"  -a, --анимировать Анимировать пути в живом предварительном просмотре\n"
+"  -s, --scale-plot Использовать пределы осей, сообщаемые Klipper, для "
+"масштабирования графика X/Y\n"
+"  -p PROFILE_NAME, --profile-name PROFILE_NAME\n"
+"                        Опциональное имя профиля для построения графика для "
+"'probedz'\n"
+"  -o OUTPUT, --output OUTPUT\n"
+"                        Output file path\n"
 
 #: docs/Bed_Mesh.md:block 122 (paragraph)
 msgid "Below is a description of each argument:"
-msgstr ""
+msgstr "Ниже приведено описание каждого аргумента:"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1494,30 +1559,37 @@ msgid ""
 "visualization to generate. Must be one of the types output by the "
 "`graph_mesh.py list` command."
 msgstr ""
+"`Тип участка`: Необходимый позиционный аргумент, указывающий тип "
+"генерируемой визуализации. Должен быть одним из типов, выводимых командой `"
+"graph_mesh.py list`."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
 "`input`: A required positional argument containing a path or url to the "
 "input source. This must be one of the following:"
 msgstr ""
+"`ввод`: Обязательный позиционный аргумент, содержащий путь или url к "
+"источнику входных данных. Это должно быть одно из следующих значений:"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A path to Klipper's Unix Domain Socket"
-msgstr ""
+msgstr "Путь к Unix-доменному сокету Клиппера"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A url to an instance of Moonraker"
-msgstr ""
+msgstr "url на экземпляр Moonraker"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A path to a json file produced by `graph_mesh.py dump <input>`"
-msgstr ""
+msgstr "Путь к json-файлу, создаваемому командой `graph_mesh.py dump <input>`"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
 "`-a`: Optional animation for the `path` and `rapid` visualization types. "
 "Animations only apply to a live preview."
 msgstr ""
+"`-a`: Необязательная анимация для типов визуализации `путь` и `скорость`. "
+"Анимация применяется только для живого предварительного просмотра."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1525,6 +1597,9 @@ msgid ""
 "values reported by Klipper's `toolhead` object when the dump file was "
 "generated."
 msgstr ""
+"`-s`: Опционально масштабирует график, используя значения `axis_minimum` и "
+"`axis_maximum`, сообщенные объектом Klipper `toolhead` при создании файла "
+"дампа."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1532,6 +1607,9 @@ msgid ""
 "mesh visualization. When generating an `overlay` or `delta` visualization "
 "this argument must be provided."
 msgstr ""
+"`-p`: Имя профиля, которое может быть указано при генерации 3D-визуализации "
+"сетки `probedz`. При генерации визуализации `overlay` или `delta` этот "
+"аргумент должен быть указан."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1539,38 +1617,48 @@ msgid ""
 "visualization to this location rather than run in preview mode. Images are "
 "saved in `svg` format."
 msgstr ""
+"`-o`: Необязательный путь к файлу, указывающий, что скрипт должен сохранить "
+"визуализацию в этом месте, а не запускать в режиме предварительного "
+"просмотра. Изображения сохраняются в формате `svg`."
 
 #: docs/Bed_Mesh.md:block 124 (paragraph)
 msgid ""
 "For example, to plot an animated rapid path, connecting via Klipper's unix "
 "socket:"
 msgstr ""
+"Например, чтобы построить анимированный быстрый путь, подключившись через "
+"unix-сокет Klipper:"
 
 #: docs/Bed_Mesh.md:block 125 (code)
+#, fuzzy
 msgid "graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock\n"
-msgstr ""
+msgstr "graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock\n"
 
 #: docs/Bed_Mesh.md:block 126 (paragraph)
 msgid "Or to plot a 3d visualization of the mesh, connecting via Moonraker:"
-msgstr ""
+msgstr "Или постройте 3d-визуализацию сетки, подключившись через Moonraker:"
 
 #: docs/Bed_Mesh.md:block 127 (code)
+#, fuzzy
 msgid "graph_mesh.py plot meshz http://my-printer.local\n"
-msgstr ""
+msgstr "graph_mesh.py plot meshz http://my-printer.local\n"
 
 #: docs/Bed_Mesh.md:block 128 (header)
 msgid "Bed Mesh Analysis"
-msgstr ""
+msgstr "Анализ сетки кровати"
 
 #: docs/Bed_Mesh.md:block 129 (paragraph)
 msgid ""
 "The `graph_mesh.py` tool may also be used to perform an analysis on the data"
 " provided by the [bed_mesh/dump_mesh](#dumping-mesh-data) API:"
 msgstr ""
+"Инструмент `graph_mesh.py` также может быть использован для анализа данных, "
+"предоставляемых API [bed_mesh/dump_mesh](#dumping-mesh-data):"
 
 #: docs/Bed_Mesh.md:block 130 (code)
+#, fuzzy
 msgid "graph_mesh.py analyze <input>\n"
-msgstr ""
+msgstr "graph_mesh.py analyze <input>\n"
 
 #: docs/Bed_Mesh.md:block 131 (paragraph)
 msgid ""
@@ -1578,6 +1666,9 @@ msgid ""
 "socket, a URL to an instance of Moonraker, or a path to a json file "
 "generated by the dump command."
 msgstr ""
+"Как и в команде `plot`, `<input>` должен представлять собой путь к unix-"
+"сокету Klipper, URL-адрес экземпляра Moonraker или путь к json-файлу, "
+"сгенерированному командой dump."
 
 #: docs/Bed_Mesh.md:block 132 (paragraph)
 msgid ""
@@ -1585,30 +1676,41 @@ msgid ""
 "paths generated by `bed_mesh` at the time of the dump. This includes the "
 "following:"
 msgstr ""
+"Для начала анализ выполнит различные проверки точек и траекторий зондов, "
+"сгенерированных `bed_mesh` во время создания дампа. К ним относятся "
+"следующие:"
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The number of probe points generated, without any additions"
-msgstr ""
+msgstr "Количество точек зондирования, созданных без каких-либо дополнений"
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
 "The number of probe points generated including any points generated as the "
 "result faulty regions and/or a configured zero reference position."
 msgstr ""
+"Количество сгенерированных точек зонда, включая любые точки, сгенерированные "
+"в результате неисправных областей и/или сконфигурированного нулевого "
+"опорного положения."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The number of probe points generated when performing a rapid scan."
 msgstr ""
+"Количество точек зондирования, создаваемых при выполнении быстрого "
+"сканирования."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The total number of moves generated for a rapid scan."
-msgstr ""
+msgstr "Общее количество ходов, созданных для быстрого сканирования."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
 "A validation that the probe points generated for a rapid scan are identical "
 "to the probe points generated for a standard probing procedure."
 msgstr ""
+"Проверка того, что точки зондирования, созданные для быстрого сканирования, "
+"идентичны точкам зондирования, созданным для стандартной процедуры "
+"зондирования."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
@@ -1619,6 +1721,14 @@ msgid ""
 "scan in an attempt to avoid entering a faulty region when approaching or "
 "leaving a probe location, however should never occur otherwise."
 msgstr ""
+"Проверка \"обратного хода\" как для стандартной траектории зондирования, так "
+"и для траектории быстрого сканирования. Обратный ход можно определить как "
+"перемещение в одну и ту же позицию более одного раза во время процедуры "
+"зондирования. Обратный путь никогда не должен возникать во время "
+"стандартного зондирования. Неисправные области *могут* привести к "
+"отступлению во время быстрого сканирования в попытке избежать попадания в "
+"неисправную область при приближении или удалении от места зондирования, "
+"однако в противном случае этого не должно происходить."
 
 #: docs/Bed_Mesh.md:block 134 (paragraph)
 msgid ""
@@ -1626,62 +1736,72 @@ msgid ""
 "the mesh loaded at the time of the dump (if present) and followed by any "
 "saved profiles. The following data is extracted:"
 msgstr ""
+"Далее анализируется каждая зондируемая сетка, присутствующая в дампе, "
+"начиная с сетки, загруженной во время дампа (если она присутствует), и затем "
+"все сохраненные профили. Извлекаются следующие данные:"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mesh shape (Min X,Y, Max X,Y Probe Count)"
 msgstr ""
+"Форма сетки (минимальное количество зондов X,Y, максимальное количество "
+"зондов X,Y)"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mesh Z range, (Minimum Z, Maximum Z)"
-msgstr ""
+msgstr "Диапазон Z сетки, (минимальный Z, максимальный Z)"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mean Z value in the mesh"
-msgstr ""
+msgstr "Среднее значение Z в сетке"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Standard Deviation of the Z values in the Mesh"
-msgstr ""
+msgstr "Стандартное отклонение значений Z в сетке"
 
 #: docs/Bed_Mesh.md:block 136 (paragraph)
 msgid ""
 "In addition to the above, a delta analysis is performed between meshes with "
 "the same shape, reporting the following:"
 msgstr ""
+"Кроме того, между сетками одинаковой формы проводится дельта-анализ, который "
+"дает следующие результаты:"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The range of the delta between to meshes (Minimum and Maximum)"
-msgstr ""
+msgstr "Диапазон дельты между сетками (минимум и максимум)"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The mean delta"
-msgstr ""
+msgstr "Средняя дельта"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "Standard Deviation of the delta"
-msgstr ""
+msgstr "Стандартное отклонение дельты"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The absolute maximum difference"
-msgstr ""
+msgstr "Абсолютная максимальная разница"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The absolute mean"
-msgstr ""
+msgstr "Среднее абсолютное значение"
 
 #: docs/Bed_Mesh.md:block 138 (header)
 msgid "Save mesh data to a file"
-msgstr ""
+msgstr "Сохраните данные сетки в файл"
 
 #: docs/Bed_Mesh.md:block 139 (paragraph)
 msgid ""
 "The `dump` command may be used to save the response to a file which can be "
 "shared for analysis when troubleshooting:"
 msgstr ""
+"Команда `dump` может быть использована для сохранения ответа в файл, который "
+"можно использовать для анализа при устранении неполадок:"
 
 #: docs/Bed_Mesh.md:block 140 (code)
+#, fuzzy
 msgid "graph_mesh.py dump -o <output file name> <input>\n"
-msgstr ""
+msgstr "graph_mesh.py dump -o <output file name> <input>\n"
 
 #: docs/Bed_Mesh.md:block 141 (paragraph)
 msgid ""
@@ -1690,10 +1810,15 @@ msgid ""
 "the output file. If omitted, the file will be saved in the working "
 "directory, with a file name in the following format:"
 msgstr ""
+"Параметр `<input>` должен представлять собой путь к unix-сокету Klipper или "
+"URL-адрес экземпляра Moonraker. Опция `-o` может быть использована для "
+"указания пути к выходному файлу. Если опция опущена, файл будет сохранен в "
+"рабочем каталоге с именем в следующем формате:"
 
 #: docs/Bed_Mesh.md:block 142 (paragraph)
+#, fuzzy
 msgid "`klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`"
-msgstr ""
+msgstr "`klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`"
 
 #~ msgid ""
 #~ "The mesh will be saved into a profile specified by the `PROFILE` parameter, "

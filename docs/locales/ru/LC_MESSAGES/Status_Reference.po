@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-30 05:01+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "status_reference/ru/>\n"
@@ -836,48 +836,59 @@ msgid "dual_carriage"
 msgstr "dual_carriage"
 
 msgid "`file_path`: A full path to the file of currently loaded file."
-msgstr ""
+msgstr "`file_path`: Полный путь к файлу текущего загруженного файла."
 
 msgid "`file_size`: The file size (in bytes) of currently loaded file."
-msgstr ""
+msgstr "`file_size`: Размер файла (в байтах) текущего загруженного файла."
 
 #: docs/Status_Reference.md:block 1 (header)
 msgid "Status reference"
-msgstr ""
+msgstr "Ссылка на статус"
 
 #: docs/Status_Reference.md:block 49 (header)
+#, fuzzy
 msgid "motion_report"
-msgstr ""
+msgstr "motion_report"
 
 #: docs/Status_Reference.md:block 50 (paragraph)
 msgid ""
 "The following information is available in the `motion_report` object (this "
 "object is automatically available if any stepper config section is defined):"
 msgstr ""
+"Следующая информация доступна в объекте `motion_report` (этот объект "
+"автоматически доступен, если определена любая секция конфигурации степпера):"
 
 #: docs/Status_Reference.md:block 51 (unordered list)
 msgid ""
 "`live_position`: The requested toolhead position interpolated to the current"
 " time."
 msgstr ""
+"`live_position`: Запрашиваемая позиция головки инструмента, "
+"интерполированная к текущему времени."
 
 #: docs/Status_Reference.md:block 51 (unordered list)
 msgid ""
 "`live_velocity`: The requested toolhead velocity (in mm/s) at the current "
 "time."
 msgstr ""
+"`live_velocity`: Запрашиваемая скорость головки инструмента (в мм/с) в "
+"текущий момент времени."
 
 #: docs/Status_Reference.md:block 51 (unordered list)
 msgid ""
 "`live_extruder_velocity`: The requested extruder velocity (in mm/s) at the "
 "current time."
 msgstr ""
+"`live_extruder_velocity`: Запрашиваемая скорость экструдера (в мм/с) в "
+"текущий момент времени."
 
 #: docs/Status_Reference.md:block 9 (unordered list)
 msgid ""
 "`save_config_pending`: Returns true if there are updates that a "
 "`SAVE_CONFIG` command may persist to disk."
 msgstr ""
+"`save_config_pending`: Возвращает true, если есть обновления, которые "
+"команда `SAVE_CONFIG` может сохранить на диске."
 
 #: docs/Status_Reference.md:block 9 (unordered list)
 msgid ""
@@ -885,10 +896,14 @@ msgid ""
 "will be a dictionary containing a `type` and `message` field (both strings)."
 " Additional fields may be available depending on the type of warning."
 msgstr ""
+"`предупреждения`: Список предупреждений о параметрах конфигурации. Каждая "
+"запись в списке будет представлять собой словарь, содержащий поле `type` и "
+"`message` (оба - строки). В зависимости от типа предупреждения могут быть "
+"доступны дополнительные поля."
 
 #: docs/Status_Reference.md:block 89 (header)
 msgid "tmc drivers"
-msgstr ""
+msgstr "драйверы tmc"
 
 #: docs/Status_Reference.md:block 90 (paragraph)
 msgid ""
@@ -896,6 +911,9 @@ msgid ""
 "driver](Config_Reference.md#tmc-stepper-driver-configuration) objects (eg, "
 "`[tmc2208 stepper_x]`):"
 msgstr ""
+"Следующая информация доступна в объектах [TMC stepper driver]"
+"(Config_Reference.md#tmc-stepper-driver-configuration) (например, `"
+"[tmc2208 stepper_x]`):"
 
 #: docs/Status_Reference.md:block 91 (unordered list)
 msgid ""
@@ -903,6 +921,9 @@ msgid ""
 " the driver's \"zero\" phase. This field may be null if the phase offset is "
 "not known."
 msgstr ""
+"`mcu_phase_offset`: Позиция шага микроконтроллера, соответствующая "
+"\"нулевой\" фазе драйвера. Это поле может быть нулевым, если смещение фазы "
+"неизвестно."
 
 #: docs/Status_Reference.md:block 91 (unordered list)
 msgid ""
@@ -910,6 +931,8 @@ msgid ""
 "driver's \"zero\" phase. This field may be null if the phase offset is not "
 "known."
 msgstr ""
+"`phase_offset_position`: \"Заданное положение\", соответствующее \"нулевой\" "
+"фазе водителя. Это поле может быть нулевым, если смещение фазы неизвестно."
 
 #: docs/Status_Reference.md:block 91 (unordered list)
 msgid ""
@@ -917,38 +940,45 @@ msgid ""
 "fields are reported.) This field will be null if the driver is not enabled "
 "(and thus is not periodically queried)."
 msgstr ""
+"`drv_status`: Результаты последнего запроса состояния драйвера. (Сообщаются "
+"только ненулевые поля.) Это поле будет равно нулю, если драйвер не включен ("
+"и, следовательно, периодически не запрашивается)."
 
 #: docs/Status_Reference.md:block 91 (unordered list)
 msgid "`run_current`: The currently set run current."
-msgstr ""
+msgstr "`run_current`: Текущее значение тока выполнения."
 
 #: docs/Status_Reference.md:block 91 (unordered list)
 msgid "`hold_current`: The currently set hold current."
-msgstr ""
+msgstr "`hold_current`: Установленный в данный момент ток удержания."
 
 #: docs/Status_Reference.md:block 36 (unordered list)
 msgid "`Diameter`: The last reading from the sensor in mm."
-msgstr ""
+msgstr "`Диаметр`: Последнее показание датчика в мм."
 
 #: docs/Status_Reference.md:block 36 (unordered list)
 msgid "`Raw`: The last raw ADC reading from the sensor."
-msgstr ""
+msgstr "`Сырой`: Последнее необработанное показание АЦП с датчика."
 
 #: docs/Status_Reference.md:block 6 (unordered list)
 msgid ""
 "`profiles`: The set of currently defined profiles as setup using "
 "BED_MESH_PROFILE."
 msgstr ""
+"`профайлы`: Набор определенных в данный момент профилей, установленных с "
+"помощью BED_MESH_PROFILE."
 
 #: docs/Status_Reference.md:block 4 (header)
 msgid "angle"
-msgstr ""
+msgstr "угол"
 
 #: docs/Status_Reference.md:block 5 (paragraph)
 msgid ""
 "The following information is available in [angle "
 "some_name](Config_Reference.md#angle) objects:"
 msgstr ""
+"Следующая информация доступна в объектах [angle some_name]"
+"(Config_Reference.md#angle):"
 
 #: docs/Status_Reference.md:block 6 (unordered list)
 msgid ""
@@ -957,10 +987,14 @@ msgid ""
 "tle5012b chip and if measurements are in progress (otherwise it reports "
 "`None`)."
 msgstr ""
+"`температура`: Последнее показание температуры (в градусах Цельсия) с "
+"магнитного датчика Холла tle5012b. Это значение доступно только в том "
+"случае, если датчик угла является микросхемой tle5012b и если ведутся "
+"измерения (в противном случае он сообщает `Нет`)."
 
 #: docs/Status_Reference.md:block 49 (header)
 msgid "led"
-msgstr ""
+msgstr "светодиод"
 
 #: docs/Status_Reference.md:block 50 (paragraph)
 msgid ""
@@ -968,6 +1002,10 @@ msgid ""
 " led_name]`, `[dotstar led_name]`, `[pca9533 led_name]`, and `[pca9632 "
 "led_name]` config section defined in printer.cfg:"
 msgstr ""
+"Следующая информация доступна для каждого раздела конфигурации `"
+"[led led_name]`, `[neopixel led_name]`, `[dotstar led_name]`, `"
+"[pca9533 led_name]` и `[pca9632 led_name]`, определенного в файле "
+"printer.cfg:"
 
 #: docs/Status_Reference.md:block 51 (unordered list)
 msgid ""
@@ -978,22 +1016,33 @@ msgid ""
 "color list) of the second neopixel in a chain could be accessed at "
 "`printer[\"neopixel <config_name>\"].color_data[1][2]`."
 msgstr ""
+"`color_data`: Список списков цветов, содержащих значения RGBW для светодиода "
+"в цепочке. Каждое значение представлено в виде float от 0.0 до 1.0. Каждый "
+"список цветов содержит 4 элемента (красный, зеленый, синий, белый), даже "
+"если подстроечный светодиод поддерживает меньшее количество цветовых "
+"каналов. Например, значение синего цвета (3-й элемент в списке цветов) "
+"второго неопикселя в цепочке может быть доступно по адресу `printer"
+"[\"neopixel <config_name>\"].color_data[1][2]`."
 
 #: docs/Status_Reference.md:block 12 (unordered list)
 msgid ""
 "`save_config_pending_items`: Contains the sections and options that were "
 "changed and would be persisted by a `SAVE_CONFIG`."
 msgstr ""
+"`save_config_pending_items`: Содержит секции и опции, которые были изменены "
+"и будут сохранены при `SAVE_CONFIG`."
 
 #: docs/Status_Reference.md:block 19 (header)
+#, fuzzy
 msgid "exclude_object"
-msgstr ""
+msgstr "exclude_object"
 
 #: docs/Status_Reference.md:block 20 (paragraph)
 msgid ""
 "The following information is available in the "
 "[exclude_object](Exclude_Object.md) object:"
 msgstr ""
+"Следующая информация доступна в объекте [exclude_object](Exclude_Object.md):"
 
 #: docs/Status_Reference.md:block 21 (unordered list)
 msgid ""
@@ -1002,12 +1051,18 @@ msgid ""
 "the `EXCLUDE_OBJECT VERBOSE=1` command. The `center` and `polygon` fields "
 "will only be present if provided in the original `EXCLUDE_OBJECT_DEFINE`"
 msgstr ""
+"`объекты`: Массив известных объектов, предоставленных командой "
+"`EXCLUDE_OBJECT_DEFINE`. Это та же информация, которую предоставляет команда "
+"`EXCLUDE_OBJECT VERBOSE=1`. Поля `центр` и `полигон` будут присутствовать "
+"только в том случае, если они были указаны в исходной команде "
+"`EXCLUDE_OBJECT_DEFINE`"
 
 #: docs/Status_Reference.md:block 21 (unordered list)
 msgid "Here is a JSON sample:"
-msgstr ""
+msgstr "Вот пример JSON:"
 
 #: docs/Status_Reference.md:block 22 (code)
+#, fuzzy
 msgid ""
 "[\n"
 "  {\n"
@@ -1032,118 +1087,165 @@ msgid ""
 "  }\n"
 "]\n"
 msgstr ""
+"[\n"
+"  {\n"
+"    \"polygon\": [\n"
+"      [ 156.25, 146.2511675 ],\n"
+"      [ 156.25, 153.7488325 ],\n"
+"      [ 163.75, 153.7488325 ],\n"
+"      [ 163.75, 146.2511675 ]\n"
+"    ],\n"
+"    \"name\": \"CYLINDER_2_STL_ID_2_COPY_0\",\n"
+"    \"center\": [ 160, 150 ]\n"
+"  },\n"
+"  {\n"
+"    \"polygon\": [\n"
+"      [ 146.25, 146.2511675 ],\n"
+"      [ 146.25, 153.7488325 ],\n"
+"      [ 153.75, 153.7488325 ],\n"
+"      [ 153.75, 146.2511675 ]\n"
+"    ],\n"
+"    \"name\": \"CYLINDER_2_STL_ID_1_COPY_0\",\n"
+"    \"center\": [ 150, 150 ]\n"
+"  }\n"
+"]\n"
 
 #: docs/Status_Reference.md:block 23 (unordered list)
 msgid ""
 "`excluded_objects`: An array of strings listing the names of excluded "
 "objects."
 msgstr ""
+"`excluded_objects`: Массив строк, в которых перечислены имена исключенных "
+"объектов."
 
 #: docs/Status_Reference.md:block 23 (unordered list)
 msgid "`current_object`: The name of the object currently being printed."
-msgstr ""
+msgstr "`current_object`: Имя объекта, который печатается в данный момент."
 
 #: docs/Status_Reference.md:block 57 (header)
+#, fuzzy
 msgid "manual_probe"
-msgstr ""
+msgstr "manual_probe"
 
 #: docs/Status_Reference.md:block 58 (paragraph)
 msgid "The following information is available in the `manual_probe` object:"
-msgstr ""
+msgstr "В объекте `manual_probe` доступна следующая информация:"
 
 #: docs/Status_Reference.md:block 59 (unordered list)
 msgid ""
 "`is_active`: Returns True if a manual probing helper script is currently "
 "active."
 msgstr ""
+"`is_active`: Возвращает True, если в данный момент активен вспомогательный "
+"скрипт ручного зондирования."
 
 #: docs/Status_Reference.md:block 59 (unordered list)
 msgid ""
 "`z_position`: The current height of the nozzle (as the printer currently "
 "understands it)."
-msgstr ""
+msgstr "`z_position`: Текущая высота сопла (как ее понимает принтер)."
 
 #: docs/Status_Reference.md:block 59 (unordered list)
 msgid ""
 "`z_position_lower`: Last probe attempt just lower than the current height."
-msgstr ""
+msgstr "`z_position_lower`: Последняя попытка зондирования ниже текущей высоты."
 
 #: docs/Status_Reference.md:block 59 (unordered list)
 msgid ""
 "`z_position_upper`: Last probe attempt just greater than the current height."
 msgstr ""
+"`z_position_upper`: Последняя попытка зондирования, превышающая текущую "
+"высоту."
 
 #: docs/Status_Reference.md:block 10 (header)
+#, fuzzy
 msgid "bed_screws"
-msgstr ""
+msgstr "bed_screws"
 
 #: docs/Status_Reference.md:block 11 (paragraph)
 msgid ""
 "The following information is available in the "
 "`Config_Reference.md#bed_screws` object:"
 msgstr ""
+"Следующая информация доступна в объекте `Config_Reference.md#bed_screws`:"
 
 #: docs/Status_Reference.md:block 12 (unordered list)
 msgid ""
 "`is_active`: Returns True if the bed screws adjustment tool is currently "
 "active."
 msgstr ""
+"`is_active`: Возвращает True, если инструмент регулировки винтов станины "
+"активен в данный момент."
 
 #: docs/Status_Reference.md:block 12 (unordered list)
 msgid ""
 "`state`: The bed screws adjustment tool state. It is one of the following "
 "strings: \"adjust\", \"fine\"."
 msgstr ""
+"`Состояние`: Состояние инструмента для регулировки винтов кровати. Это одна "
+"из следующих строк: \" регулировать\", \"тонкий\"."
 
 #: docs/Status_Reference.md:block 12 (unordered list)
 msgid "`current_screw`: The index for the current screw being adjusted."
-msgstr ""
+msgstr "`current_screw`: Индекс для текущего винта, который регулируется."
 
 #: docs/Status_Reference.md:block 12 (unordered list)
 msgid "`accepted_screws`: The number of accepted screws."
-msgstr ""
+msgstr "`accepted_screws`: Количество принимаемых винтов."
 
 #: docs/Status_Reference.md:block 27 (header)
+#, fuzzy
 msgid "extruder_stepper"
-msgstr ""
+msgstr "extruder_stepper"
 
 #: docs/Status_Reference.md:block 28 (paragraph)
 msgid ""
 "The following information is available for extruder_stepper objects (as well"
 " as [extruder](Config_Reference.md#extruder) objects):"
 msgstr ""
+"Следующая информация доступна для объектов extruder_stepper (а также для "
+"объектов [extruder](Config_Reference.md#extruder)):"
 
 #: docs/Status_Reference.md:block 29 (unordered list)
 msgid ""
 "`pressure_advance`: The current [pressure advance](Pressure_Advance.md) "
 "value."
 msgstr ""
+"`pressure_advance`: Текущее значение [pressure advance](Pressure_Advance.md)."
 
 #: docs/Status_Reference.md:block 29 (unordered list)
 msgid "`smooth_time`: The current pressure advance smooth time."
-msgstr ""
+msgstr "`smooth_time`: Текущее время плавного повышения давления."
 
 #: docs/Status_Reference.md:block 114 (unordered list)
 msgid ""
 "For Delta printers the `cone_start_z` is the max z height at maximum radius "
 "(`printer.toolhead.cone_start_z`)."
 msgstr ""
+"Для принтеров Delta значение `cone_start_z` - это максимальная высота по оси "
+"z при максимальном радиусе (`printer.toolhead.cone_start_z`)."
 
 #: docs/Status_Reference.md:block 83 (unordered list)
 msgid ""
 "`info.total_layer`: The total layer value of the last `SET_PRINT_STATS_INFO "
 "TOTAL_LAYER=<value>` G-Code command."
 msgstr ""
+"`info.total_layer`: Значение общего слоя, полученное в результате выполнения "
+"последней команды G-кода `SET_PRINT_STATS_INFO TOTAL_LAYER=<значение>`."
 
 #: docs/Status_Reference.md:block 83 (unordered list)
 msgid ""
 "`info.current_layer`: The current layer value of the last "
 "`SET_PRINT_STATS_INFO CURRENT_LAYER=<value>` G-Code command."
 msgstr ""
+"`info.current_layer`: Значение текущего слоя, полученное в результате "
+"выполнения последней команды G-кода `SET_PRINT_STATS_INFO "
+"CURRENT_LAYER=<значение>`."
 
 #: docs/Status_Reference.md:block 124 (header)
+#, fuzzy
 msgid "z_thermal_adjust"
-msgstr ""
+msgstr "z_thermal_adjust"
 
 #: docs/Status_Reference.md:block 125 (paragraph)
 msgid ""
@@ -1151,42 +1253,49 @@ msgid ""
 "(this object is available if "
 "[z_thermal_adjust](Config_Reference.md#z_thermal_adjust) is defined)."
 msgstr ""
+"Следующая информация доступна в объекте `z_thermal_adjust` (этот объект "
+"доступен, если определен [z_thermal_adjust]"
+"(Config_Reference.md#z_thermal_adjust))."
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid "`enabled`: Returns True if adjustment is enabled."
-msgstr ""
+msgstr "`включено`: Возвращает True, если настройка включена."
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid ""
 "`temperature`: Current (smoothed) temperature of the defined sensor. [degC]"
 msgstr ""
+"`температура`: Текущая (сглаженная) температура определенного датчика. [degC]"
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid "`measured_min_temp`: Minimum measured temperature. [degC]"
-msgstr ""
+msgstr "`measured_min_temp`: Минимальная измеренная температура. [degC]"
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid "`measured_max_temp`: Maximum measured temperature. [degC]"
-msgstr ""
+msgstr "`measured_max_temp`: Максимальная измеренная температура. [degC]"
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid "`current_z_adjust`: Last computed Z adjustment [mm]."
-msgstr ""
+msgstr "`current_z_adjust`: Последняя вычисленная корректировка по Z [мм]."
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid ""
 "`z_adjust_ref_temperature`: Current reference temperature used for "
 "calculation of Z `current_z_adjust` [degC]."
 msgstr ""
+"`z_adjust_ref_temperature`: Текущая опорная температура, используемая для "
+"расчета Z `current_z_adjust` [degC]."
 
 #: docs/Status_Reference.md:block 93 (header)
+#, fuzzy
 msgid "screws_tilt_adjust"
-msgstr ""
+msgstr "screws_tilt_adjust"
 
 #: docs/Status_Reference.md:block 94 (paragraph)
 msgid ""
 "The following information is available in the `screws_tilt_adjust` object:"
-msgstr ""
+msgstr "Следующая информация доступна в объекте `screws_tilt_adjust`:"
 
 #: docs/Status_Reference.md:block 95 (unordered list)
 msgid ""
@@ -1194,10 +1303,13 @@ msgid ""
 "included the `MAX_DEVIATION` parameter and any of the probed screw points "
 "exceeded the specified `MAX_DEVIATION`."
 msgstr ""
+"`error`: Возвращает True, если последняя команда `SCREWS_TILT_CALCULATE` "
+"включала параметр `MAX_DEVIATION` и любая из точек зондирования винта "
+"превысила указанное значение `MAX_DEVIATION`."
 
 #: docs/Status_Reference.md:block 95 (unordered list)
 msgid "`z`: The measured Z height of the screw location."
-msgstr ""
+msgstr "`z`: Измеренная высота Z расположения винта."
 
 #: docs/Status_Reference.md:block 95 (unordered list)
 msgid ""
@@ -1206,6 +1318,11 @@ msgid ""
 " number of \"minutes of a clock face\" representing a partial screw turn. "
 "(E.g. \"01:15\" would mean to turn the screw one and a quarter revolutions.)"
 msgstr ""
+"`adjust`: Количество оборотов винта для регулировки, заданное в формате "
+"\"HH:MM\", где \"HH\" - количество полных оборотов винта, а \"MM\" - "
+"количество \"минут циферблата часов\", представляющих собой неполный оборот "
+"винта. (Например, \"01:15\" означает, что нужно повернуть винт на один и "
+"четверть оборота)"
 
 #: docs/Status_Reference.md:block 29 (unordered list)
 msgid ""
@@ -1213,52 +1330,67 @@ msgid ""
 "currently synchronized to. This is reported as `None` if the extruder "
 "stepper is not currently associated with an extruder."
 msgstr ""
+"`motion_queue`: Имя экструдера, с которым в данный момент синхронизирован "
+"этот шаговый механизм экструдера. Сообщается как `Нет`, если шаговый "
+"механизм экструдера в данный момент не связан с экструдером."
 
 #: docs/Status_Reference.md:block 86 (unordered list)
 msgid "`name`: Returns the name of the probe in use."
-msgstr ""
+msgstr "`name`: Возвращает имя используемого зонда."
 
 #: docs/Status_Reference.md:block 95 (unordered list)
 msgid "`results[\"<screw>\"]`: A dictionary containing the following keys:"
-msgstr ""
+msgstr "`results[\"<screw>\"]`: Словарь, содержащий следующие ключи:"
 
 #: docs/Status_Reference.md:block 95 (unordered list)
 msgid ""
 "`sign`: A string specifying the direction to turn to screw for the necessary"
 " adjustment. Either \"CW\" for clockwise or \"CCW\" for counterclockwise."
 msgstr ""
+"`знак`: Строка, указывающая направление вращения винта для необходимой "
+"регулировки. Либо \"CW\" - по часовой стрелке, либо \"CCW\" - против часовой "
+"стрелки."
 
 #: docs/Status_Reference.md:block 95 (unordered list)
 msgid "`is_base`: Returns True if this is the base screw."
-msgstr ""
+msgstr "`is_base`: Возвращает True, если это базовый винт."
 
 #: docs/Status_Reference.md:block 99 (header)
+#, fuzzy
 msgid "stepper_enable"
-msgstr ""
+msgstr "stepper_enable"
 
 #: docs/Status_Reference.md:block 100 (paragraph)
 msgid ""
 "The following information is available in the `stepper_enable` object (this "
 "object is available if any stepper is defined):"
 msgstr ""
+"Следующая информация доступна в объекте `stepper_enable` (этот объект "
+"доступен, если определен любой степпер):"
 
 #: docs/Status_Reference.md:block 101 (unordered list)
 msgid "`steppers[\"<stepper>\"]`: Returns True if the given stepper is enabled."
 msgstr ""
+"`steppers[\"<stepper>\"]`: Возвращает True, если указанный степпер включен."
 
 #: docs/Status_Reference.md:block 42 (header)
+#, fuzzy
 msgid "gcode_button"
-msgstr ""
+msgstr "gcode_button"
 
 #: docs/Status_Reference.md:block 43 (paragraph)
 msgid ""
 "The following information is available in [gcode_button "
 "some_name](Config_Reference.md#gcode_button) objects:"
 msgstr ""
+"Следующая информация доступна в объектах [gcode_button some_name]"
+"(Config_Reference.md#gcode_button):"
 
 #: docs/Status_Reference.md:block 44 (unordered list)
 msgid "`state`: The current button state returned as \"PRESSED\" or \"RELEASED\""
 msgstr ""
+"`состояние`: Текущее состояние кнопки, возвращаемое как \"НАЖАТО\" или "
+"\"ОТПУЩЕНО\""
 
 #: docs/Status_Reference.md:block 59 (unordered list)
 msgid ""
@@ -1267,12 +1399,19 @@ msgid ""
 " While a temperature sensor is always available to read, a temperature "
 "monitor may not be available and will return null in such case."
 msgstr ""
+"`available_monitors`: Возвращает список всех доступных на данный момент "
+"температурных мониторов по их полным именам секций конфигурации, например, `"
+"[\"tmc2240 stepper_x\"]`. В то время как датчик температуры всегда доступен "
+"для чтения, монитор температуры может быть недоступен, и в этом случае будет "
+"возвращен null."
 
 #: docs/Status_Reference.md:block 98 (unordered list)
 msgid ""
 "`max_deviation`: Return the last `MAX_DEVIATION` value of the most recent "
 "`SCREWS_TILT_CALCULATE` command."
 msgstr ""
+"`max_deviation`: Возвращает последнее значение `MAX_DEVIATION` последней "
+"команды `SCREWS_TILT_CALCULATE`."
 
 #: docs/Status_Reference.md:block 120 (unordered list)
 msgid ""
@@ -1280,6 +1419,9 @@ msgid ""
 "will be null if the driver is not enabled or if the driver does not support "
 "temperature reporting."
 msgstr ""
+"`температура`: Внутренняя температура, о которой сообщает драйвер. Это поле "
+"будет равно null, если драйвер не включен или если драйвер не поддерживает "
+"отчет о температуре."
 
 #: docs/Status_Reference.md:block 125 (paragraph)
 msgid ""
@@ -1287,28 +1429,38 @@ msgid ""
 "[dual_carriage](Config_Reference.md#dual_carriage) on a cartesian, "
 "hybrid_corexy or hybrid_corexz robot"
 msgstr ""
+"Следующая информация доступна в [dual_carriage]"
+"(Config_Reference.md#dual_carriage) для робота cartesian, hybrid_corexy или "
+"hybrid_corexz"
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid ""
 "`carriage_0`: The mode of the carriage 0. Possible values are: \"INACTIVE\" "
 "and \"PRIMARY\"."
 msgstr ""
+"`carriage_0`: Режим работы каретки 0. Возможные значения: \" ИНАКТИВНЫЙ\" и "
+"\"ПЕРВИЧНЫЙ\"."
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid ""
 "`carriage_1`: The mode of the carriage 1. Possible values are: \"INACTIVE\","
 " \"PRIMARY\", \"COPY\", and \"MIRROR\"."
 msgstr ""
+"`Карета_1`: Режим работы каретки 1. Возможные значения: \" ИНАКТИВНЫЙ\", "
+"\"ПЕРВИЧНЫЙ\", \"КОПИРОВАНИЕ\" и \"ЗЕРКАЛО\"."
 
 #: docs/Status_Reference.md:block 90 (header)
+#, fuzzy
 msgid "pwm_cycle_time"
-msgstr ""
+msgstr "pwm_cycle_time"
 
 #: docs/Status_Reference.md:block 91 (paragraph)
 msgid ""
 "The following information is available in [pwm_cycle_time "
 "some_name](Config_Reference.md#pwm_cycle_time) objects:"
 msgstr ""
+"Следующая информация доступна в объектах [pwm_cycle_time some_name]"
+"(Config_Reference.md#pwm_cycle_time):"
 
 #: docs/Status_Reference.md:block 126 (unordered list)
 msgid ""
@@ -1317,8 +1469,13 @@ msgid ""
 "This may differ from the config file settings if a `SET_VELOCITY_LIMIT` (or "
 "`M204`) command alters them at run-time."
 msgstr ""
+"`max_velocity`, `max_accel`, `minimum_cruise_ratio`, "
+"`square_corner_velocity`: Текущие действующие ограничения печати. Они могут "
+"отличаться от настроек файла конфигурации, если команда `SET_VELOCITY_LIMIT` "
+"(или `M204`) изменит их во время выполнения."
 
 #: docs/Status_Reference.md:block 113 (paragraph)
+#, fuzzy
 msgid ""
 "[bme280 "
 "config_section_name](Config_Reference.md#bmp280bme280bme680-temperature-"
@@ -1330,12 +1487,22 @@ msgid ""
 "config_section_name](Config_Reference.md#combined-temperature-sensor) "
 "objects:"
 msgstr ""
+"[bme280 config_section_name](Config_Reference.md#bmp280bme280bme680"
+"-temperature-sensor), [htu21d config_section_name](Config_Reference.md"
+"#htu21d-sensor), [sht3x config_section_name]"
+"(Config_Reference.md#sht31-sensor), [lm75 config_section_name]"
+"(Config_Reference.md#lm75-temperature-sensor), "
+"[temperature_host config_section_name](Config_Reference.md#host-temperature-"
+"sensor) and [temperature_combined config_section_name](Config_Reference.md"
+"#combined-temperature-sensor) objects:"
 
 #: docs/Status_Reference.md:block 114 (unordered list)
 msgid ""
 "`humidity`, `pressure`, `gas`: The last read values from the sensor (only on"
 " bme280, htu21d, sht3x and lm75 sensors)."
 msgstr ""
+"`влажность`, `давление`, `газ`: Последние считанные значения с датчика ("
+"только для датчиков bme280, htu21d, sht3x и lm75)."
 
 #~ msgid ""
 #~ "`humidity`, `pressure`, `gas`: The last read values from the sensor (only on"

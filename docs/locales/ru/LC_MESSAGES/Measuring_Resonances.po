@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-30 05:00+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "measuring_resonances/ru/>\n"
@@ -1074,11 +1074,11 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 89 (paragraph)
 msgid "and then use the same command"
-msgstr ""
+msgstr "а затем выполните ту же команду"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid "to generate `/tmp/resonances.png` comparing the resonances."
-msgstr ""
+msgstr "чтобы создать файл `/tmp/resonances.png`, сравнивающий резонансы."
 
 #: docs/Measuring_Resonances.md:block 26 (code)
 msgid ""
@@ -1093,6 +1093,16 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[mcu rpi]\n"
+"serial: /tmp/klipper_host_mcu\n"
+"\n"
+"[adxl345]\n"
+"cs_pin: rpi: Нет\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: adxl345\n"
+"probe_points:\n"
+"    100, 100, 20 # пример\n"
 
 #: docs/Measuring_Resonances.md:block 111 (paragraph)
 msgid ""
@@ -1101,30 +1111,40 @@ msgid ""
 "first to start the measurements, and then to stop them and write the output "
 "file. Refer to [G-Codes](G-Codes.md#adxl345) for more details."
 msgstr ""
+"Необработанные данные можно также получить, выполнив команду "
+"`ACCELEROMETER_MEASURE` дважды во время обычной работы принтера - сначала "
+"для запуска измерений, а затем для их остановки и записи выходного файла. "
+"Более подробную информацию см. в [G-Codes](G-Codes.md#adxl345)."
 
 #: docs/Measuring_Resonances.md:block 9 (table)
+#, fuzzy
 msgid "MPU-9250 pin"
-msgstr ""
+msgstr "MPU-9250 pin"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
+#, fuzzy
 msgid "09"
-msgstr ""
+msgstr "09"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
+#, fuzzy
 msgid "03"
-msgstr ""
+msgstr "03"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
+#, fuzzy
 msgid "GPIO02 (SDA1)"
-msgstr ""
+msgstr "GPIO02 (SDA1)"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
+#, fuzzy
 msgid "05"
-msgstr ""
+msgstr "05"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
+#, fuzzy
 msgid "GPIO03 (SCL1)"
-msgstr ""
+msgstr "GPIO03 (SCL1)"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -1132,11 +1152,14 @@ msgid ""
 "additional software dependencies not installed by default. First, run on "
 "your Raspberry Pi the following commands:"
 msgstr ""
+"Обратите внимание, что для измерения резонанса и автоматической калибровки "
+"шейпера требуются дополнительные программные зависимости, не установленные "
+"по умолчанию. Сначала выполните на вашем Raspberry Pi следующие команды:"
 
 #: docs/Measuring_Resonances.md:block 22 (paragraph)
 msgid ""
 "Next, in order to install NumPy in the Klipper environment, run the command:"
-msgstr ""
+msgstr "Далее, чтобы установить NumPy в среду Klipper, выполните команду:"
 
 #: docs/Measuring_Resonances.md:block 24 (paragraph)
 msgid ""
@@ -1145,6 +1168,11 @@ msgid ""
 "installation. On some occasions, if the board has too little RAM the "
 "installation may fail and you will need to enable swap."
 msgstr ""
+"Обратите внимание, что в зависимости от производительности процессора это "
+"может занять *много* времени, до 10-20 минут. Наберитесь терпения и "
+"дождитесь завершения установки. В некоторых случаях, если на плате слишком "
+"мало оперативной памяти, установка может закончиться неудачей, и вам "
+"придется включить своп."
 
 #: docs/Measuring_Resonances.md:block 31 (code)
 msgid ""
@@ -1160,89 +1188,119 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[mcu rpi]\n"
+"serial: /tmp/klipper_host_mcu\n"
+"\n"
+"[mpu9250]\n"
+"i2c_mcu: rpi\n"
+"i2c_bus: i2c.1\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: mpu9250\n"
+"probe_points:\n"
+"    100, 100, 20 # пример\n"
 
 #: docs/Measuring_Resonances.md:block 8 (paragraph)
 msgid ""
 "***Double-check your wiring before powering up to prevent damaging your "
 "MCU/Raspberry Pi or the accelerometer.***"
 msgstr ""
+"***Двойная проверка проводов перед включением питания, чтобы не повредить "
+"MCU/Raspberry Pi или акселерометр.***"
 
 #: docs/Measuring_Resonances.md:block 9 (header)
 msgid "SPI Accelerometers"
-msgstr ""
+msgstr "Акселерометры SPI"
 
 #: docs/Measuring_Resonances.md:block 11 (code)
+#, fuzzy
 msgid ""
 "GND+MISO\n"
 "3.3V+MOSI\n"
 "SCLK+CS\n"
 msgstr ""
+"GND+MISO\n"
+"3.3V+MOSI\n"
+"SCLK+CS\n"
 
 #: docs/Measuring_Resonances.md:block 12 (header)
+#, fuzzy
 msgid "ADXL345"
-msgstr ""
+msgstr "ADXL345"
 
 #: docs/Measuring_Resonances.md:block 18 (header)
 msgid "I2C Accelerometers"
-msgstr ""
+msgstr "Акселерометры I2C"
 
 #: docs/Measuring_Resonances.md:block 20 (code)
+#, fuzzy
 msgid ""
 "3.3V+SDA\n"
 "GND+SCL\n"
 msgstr ""
+"3.3V+SDA\n"
+"GND+SCL\n"
 
 #: docs/Measuring_Resonances.md:block 21 (header)
+#, fuzzy
 msgid "MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500"
-msgstr ""
+msgstr "MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Recommended connection scheme for I2C on the Raspberry Pi:"
-msgstr ""
+msgstr "Рекомендуемая схема подключения I2C на Raspberry Pi:"
 
 #: docs/Measuring_Resonances.md:block 24 (table)
+#, fuzzy
 msgid "VCC"
-msgstr ""
+msgstr "VCC"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
+#, fuzzy
 msgid "RP2040 pin"
-msgstr ""
+msgstr "RP2040 pin"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
+#, fuzzy
 msgid "39"
-msgstr ""
+msgstr "39"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
+#, fuzzy
 msgid "3v3"
-msgstr ""
+msgstr "3v3"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
+#, fuzzy
 msgid "38"
-msgstr ""
+msgstr "38"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
+#, fuzzy
 msgid "GP0 (I2C0 SDA)"
-msgstr ""
+msgstr "GP0 (I2C0 SDA)"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
+#, fuzzy
 msgid "02"
-msgstr ""
+msgstr "02"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
+#, fuzzy
 msgid "GP1 (I2C0 SCL)"
-msgstr ""
+msgstr "GP1 (I2C0 SCL)"
 
 #: docs/Measuring_Resonances.md:block 42 (header)
 msgid "Configure ADXL345 With RPi"
-msgstr ""
+msgstr "Настройка ADXL345 с помощью RPi"
 
 #: docs/Measuring_Resonances.md:block 44 (paragraph)
 msgid "Add the following to the printer.cfg file:"
-msgstr ""
+msgstr "Добавьте следующее в файл printer.cfg:"
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid "Configure MPU-6000/9000 series With RPi"
-msgstr ""
+msgstr "Настройка MPU-6000/9000 серии с помощью RPi"
 
 #: docs/Measuring_Resonances.md:block 48 (paragraph)
 msgid ""
@@ -1250,18 +1308,22 @@ msgid ""
 " (see [Enabling I2C](RPi_microcontroller.md#optional-enabling-i2c) section "
 "for more details). Then, add the following to the printer.cfg:"
 msgstr ""
+"Убедитесь, что драйвер Linux I2C включен, а скорость передачи данных "
+"установлена на 400000 (подробнее см. в разделе [Enabling I2C]"
+"(RPi_microcontroller.md#optional-enabling-i2c)). Затем добавьте следующее в "
+"файл printer.cfg:"
 
 #: docs/Measuring_Resonances.md:block 13 (header)
 msgid "Direct to Raspberry Pi"
-msgstr ""
+msgstr "Прямое подключение к Raspberry Pi"
 
 #: docs/Measuring_Resonances.md:block 16 (table)
 msgid "3.3V DC power"
-msgstr ""
+msgstr "Питание 3,3 В постоянного тока"
 
 #: docs/Measuring_Resonances.md:block 19 (header)
 msgid "Using Raspberry Pi Pico"
-msgstr ""
+msgstr "Использование Raspberry Pi Pico"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -1271,6 +1333,12 @@ msgid ""
 "of GPIO. The Pico does not have much processing power, so make sure it is "
 "only running the accelerometer and not performing any other duties."
 msgstr ""
+"Вы можете подключить ADXL345 к Raspberry Pi Pico, а затем подключить Pico к "
+"Raspberry Pi через USB. Это упрощает повторное использование акселерометра в "
+"других устройствах Klipper, так как вы можете подключить его через USB, а не "
+"через GPIO. Pico не обладает большой вычислительной мощностью, поэтому "
+"убедитесь, что он работает только с акселерометром и не выполняет никаких "
+"других функций."
 
 #: docs/Measuring_Resonances.md:block 21 (paragraph)
 msgid ""
@@ -1278,91 +1346,109 @@ msgid ""
 "3.3V only. Depending on the board's layout, a level shifter may be present, "
 "which makes 5V dangerous for your RPi."
 msgstr ""
+"Во избежание повреждения RPi убедитесь, что ADXL345 подключен только к 3,3 "
+"В. В зависимости от разводки платы может присутствовать переключатель "
+"уровней, что сделает 5 В опасным для вашей RPi."
 
 #: docs/Measuring_Resonances.md:block 22 (table)
+#, fuzzy
 msgid "Pico pin"
-msgstr ""
+msgstr "Pico pin"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "Pico pin name"
-msgstr ""
+msgstr "Название вывода Pico"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
+#, fuzzy
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "2"
 msgstr "2"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
+#, fuzzy
 msgid "GP1 (SPI0_CSn)"
-msgstr ""
+msgstr "GP1 (SPI0_CSn)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "1"
 msgstr "1"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
+#, fuzzy
 msgid "GP0 (SPI0_RX)"
-msgstr ""
+msgstr "GP0 (SPI0_RX)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "5"
 msgstr "5"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
+#, fuzzy
 msgid "GP3 (SPI0_TX)"
-msgstr ""
+msgstr "GP3 (SPI0_TX)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "4"
 msgstr "4"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
+#, fuzzy
 msgid "GP2 (SPI0_SCK)"
-msgstr ""
+msgstr "GP2 (SPI0_SCK)"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Wiring diagrams for some of the ADXL345 boards:"
-msgstr ""
+msgstr "Схемы подключения некоторых плат ADXL345:"
 
 #: docs/Measuring_Resonances.md:block 24 (paragraph)
+#, fuzzy
 msgid "![ADXL345-Pico](img/adxl345-pico.png)"
-msgstr ""
+msgstr "![ADXL345-Pico](img/adxl345-pico.png)"
 
 #: docs/Measuring_Resonances.md:block 54 (header)
 msgid "Configure ADXL345 With Pi Pico"
-msgstr ""
+msgstr "Настройка ADXL345 с Pi Pico"
 
 #: docs/Measuring_Resonances.md:block 55 (header)
 msgid "Flash the Pico Firmware"
-msgstr ""
+msgstr "Прошивка микропрограммы Pico"
 
 #: docs/Measuring_Resonances.md:block 56 (paragraph)
 msgid "On your Raspberry Pi, compile the firmware for the Pico."
-msgstr ""
+msgstr "На вашем Raspberry Pi скомпилируйте прошивку для Pico."
 
 #: docs/Measuring_Resonances.md:block 57 (code)
+#, fuzzy
 msgid ""
 "cd ~/klipper\n"
 "make clean\n"
 "make menuconfig\n"
 msgstr ""
+"cd ~/klipper\n"
+"make clean\n"
+"make menuconfig\n"
 
 #: docs/Measuring_Resonances.md:block 58 (paragraph)
+#, fuzzy
 msgid "![Pico menuconfig](img/klipper_pico_menuconfig.png)"
-msgstr ""
+msgstr "![Pico menuconfig](img/klipper_pico_menuconfig.png)"
 
 #: docs/Measuring_Resonances.md:block 59 (paragraph)
 msgid ""
 "Now, while holding down the `BOOTSEL` button on the Pico, connect the Pico "
 "to the Raspberry Pi via USB. Compile and flash the firmware."
 msgstr ""
+"Теперь, удерживая кнопку `BOOTSEL` на Pico, подключите Pico к Raspberry Pi "
+"через USB. Скомпилируйте и прошейте прошивку."
 
 #: docs/Measuring_Resonances.md:block 60 (code)
+#, fuzzy
 msgid "make flash FLASH_DEVICE=first\n"
-msgstr ""
+msgstr "make flash FLASH_DEVICE=first\n"
 
 #: docs/Measuring_Resonances.md:block 61 (paragraph)
 msgid ""
@@ -1370,10 +1456,13 @@ msgid ""
 "example, that's `make flash FLASH_DEVICE=2e8a:0003`. ![Determine flash "
 "device](img/flash_rp2040_FLASH_DEVICE.png)"
 msgstr ""
+"Если это не удастся, вам будет указано, какой `FLASH_DEVICE` следует "
+"использовать. В данном примере это `make flash FLASH_DEVICE=2e8a:0003`. !"
+"[Определить флеш-устройство](img/flash_rp2040_FLASH_DEVICE.png)"
 
 #: docs/Measuring_Resonances.md:block 62 (header)
 msgid "Configure the Connection"
-msgstr ""
+msgstr "Настройка соединения"
 
 #: docs/Measuring_Resonances.md:block 63 (paragraph)
 msgid ""
@@ -1381,6 +1470,10 @@ msgid ""
 "serial device. Find the pico serial device with `ls /dev/serial/by-id/*`. "
 "You can now add an `adxl.cfg` file with the following settings:"
 msgstr ""
+"Теперь Pico перезагрузится с новой прошивкой и будет отображаться как "
+"последовательное устройство. Найдите последовательное устройство pico с "
+"помощью `ls /dev/serial/by-id/*`. Теперь вы можете добавить файл `adxl.cfg` "
+"со следующими настройками:"
 
 #: docs/Measuring_Resonances.md:block 64 (code)
 msgid ""
@@ -1403,18 +1496,38 @@ msgid ""
 "[output_pin power_mode] # Improve power stability\n"
 "pin: adxl:gpio23\n"
 msgstr ""
+"[mcu adxl]\n"
+"# Измените <mySerial> на то, что вы нашли выше. Например,\n"
+"# usb-Klipper_rp2040_E661640843545B2E-if00\n"
+"serial: /dev/serial/by-id/usb-Klipper_rp2040_<mySerial>\n"
+"\n"
+"[adxl345]\n"
+"cs_pin: adxl:gpio1\n"
+"spi_bus: spi0a\n"
+"axes_map: x,z,y\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: adxl345\n"
+"probe_points:\n"
+"    # Где-то чуть выше середины печатной формы\n"
+"    147,154, 20\n"
+"\n"
+"[output_pin power_mode] # Улучшение стабильности питания\n"
+"вывод: adxl:gpio23\n"
 
 #: docs/Measuring_Resonances.md:block 65 (paragraph)
 msgid ""
 "If setting up the ADXL345 configuration in a separate file, as shown above, "
 "you'll also want to modify your `printer.cfg` file to include this:"
 msgstr ""
+"Если конфигурация ADXL345 задается в отдельном файле, как показано выше, вам "
+"также потребуется изменить файл `printer.cfg`, чтобы включить его:"
 
 #: docs/Measuring_Resonances.md:block 66 (code)
 msgid ""
 "[include adxl.cfg] # Comment this out when you disconnect the "
 "accelerometer\n"
-msgstr ""
+msgstr "[include adxl.cfg] # Закомментируйте это при отключении акселерометра\n"
 
 #: docs/Measuring_Resonances.md:block 81 (paragraph)
 msgid ""
@@ -1425,6 +1538,12 @@ msgid ""
 "power, the wiring (that it matches the schematics, no wire is broken or "
 "loose, etc.), and soldering quality."
 msgstr ""
+"Если вы получите ошибку типа `Invalid adxl345 id (got xx vs e5)`, где `xx` - "
+"это какой-то другой ID, немедленно повторите попытку. Это проблема с "
+"инициализацией SPI. Если вы по-прежнему получаете ошибку, это говорит о "
+"проблеме с подключением ADXL345 или неисправном датчике. Дважды проверьте "
+"питание, проводку (соответствует ли она схеме, нет ли оборванных или "
+"ослабленных проводов и т.д.) и качество пайки."
 
 #: docs/Measuring_Resonances.md:block 100 (paragraph)
 msgid ""
@@ -1433,6 +1552,10 @@ msgid ""
 " for example, for the input shaper [re-calibration](#input-shaper-re-"
 "calibration)."
 msgstr ""
+"Обратите внимание, что в качестве альтернативы вы можете запустить "
+"автокалибровку входного формирователя из Klipper [напрямую](#input-shaper-"
+"auto-calibration), что может быть удобно, например, для повторной калибровки "
+"входного формирователя [re-calibration](#input-shaper-re-calibration)."
 
 #: docs/Measuring_Resonances.md:block 152 (paragraph)
 msgid ""
@@ -1446,6 +1569,15 @@ msgid ""
 "Always check that all parts of the printer (including the ones that may "
 "normally not move) are securely fixed in place after each auto-tuning."
 msgstr ""
+"**Предупреждение!** Не рекомендуется выполнять автокалибровку шейпера очень "
+"часто (например, перед каждой печатью или каждый день). Для определения "
+"резонансных частот автокалибровка создает интенсивные вибрации по каждой из "
+"осей. Как правило, 3D-принтеры не рассчитаны на длительное воздействие "
+"вибраций, близких к резонансным частотам. Это может увеличить износ "
+"компонентов принтера и сократить срок их службы. Также повышается риск "
+"откручивания или ослабления некоторых деталей. Всегда проверяйте, чтобы все "
+"детали принтера (включая те, которые обычно не двигаются) были надежно "
+"закреплены на месте после каждой автонастройки."
 
 #: docs/Measuring_Resonances.md:block 2 (paragraph)
 msgid ""
@@ -1459,6 +1591,15 @@ msgid ""
 "to the I2C interface of a Raspberry Pi directly, or to an I2C interface of "
 "an MCU board that supports 400kbit/s *fast mode* in Klipper."
 msgstr ""
+"В Klipper встроена поддержка акселерометров, совместимых с ADXL345, MPU-9250 "
+"и LIS2DW, которые можно использовать для измерения резонансных частот "
+"принтера по разным осям и автоматической настройки [входных формирователей]"
+"(Resonance_Compensation.md) для компенсации резонансов. Обратите внимание, "
+"что использование акселерометров требует некоторой пайки и обжима. ADXL345/"
+"LIS2DW можно подключить к интерфейсу SPI платы Raspberry Pi или MCU (он "
+"должен быть достаточно быстрым). Семейство MPU может быть подключено к "
+"интерфейсу I2C Raspberry Pi напрямую или к интерфейсу I2C платы MCU, "
+"поддерживающей 400 кбит/с *быстрый режим* в Klipper."
 
 #: docs/Measuring_Resonances.md:block 3 (paragraph)
 msgid ""
@@ -1467,6 +1608,10 @@ msgid ""
 "connected to a 5V printer MCU ensure it has a voltage regulator and level "
 "shifters."
 msgstr ""
+"При поиске акселерометров имейте в виду, что существует множество различных "
+"конструкций печатных плат и их клонов. Если акселерометр будет подключен к "
+"MCU принтера с напряжением 5 В, убедитесь, что он оснащен стабилизатором "
+"напряжения и переключателями уровней."
 
 #: docs/Measuring_Resonances.md:block 4 (paragraph)
 msgid ""
@@ -1474,6 +1619,9 @@ msgid ""
 "number of boards appear to be hard-configured for I2C by pulling SDO to "
 "GND)."
 msgstr ""
+"Для ADXL345s/LIS2DWs убедитесь, что плата поддерживает режим SPI (небольшое "
+"количество плат, похоже, жестко сконфигурировано для I2C путем подтягивания "
+"SDO к GND)."
 
 #: docs/Measuring_Resonances.md:block 5 (paragraph)
 msgid ""
@@ -1481,60 +1629,74 @@ msgid ""
 "of board designs and clones with different I2C pull-up resistors which will "
 "need supplementing."
 msgstr ""
+"Для MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500 также существует множество "
+"вариантов плат и клонов с различными подтягивающими резисторами I2C, которые "
+"необходимо дополнить."
 
 #: docs/Measuring_Resonances.md:block 6 (header)
 msgid "MCUs with Klipper I2C *fast-mode* Support"
-msgstr ""
+msgstr "MCU с поддержкой *быстрого режима* I2C от Klipper"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU Family"
-msgstr ""
+msgstr "Семейство MCU"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) Tested"
-msgstr ""
+msgstr "Тестируемый микроконтроллер(ы)"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) with Support"
-msgstr ""
+msgstr "MCU с поддержкой"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "Raspberry Pi"
-msgstr ""
+msgstr "Raspberry Pi"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "3B+, Pico"
-msgstr ""
+msgstr "3B+, Pico"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "3A, 3A+, 3B, 4"
-msgstr ""
+msgstr "3A, 3A+, 3B, 4"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "AVR ATmega"
-msgstr ""
+msgstr "AVR ATmega"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "ATmega328p"
-msgstr ""
+msgstr "ATmega328p"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid ""
 "ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, "
 "ATmega1284, ATmega2560"
 msgstr ""
+"ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, "
+"ATmega1284, ATmega2560"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "AVR AT90"
-msgstr ""
+msgstr "AVR AT90"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
+#, fuzzy
 msgid "AT90usb646, AT90usb1286"
-msgstr ""
+msgstr "AT90usb646, AT90usb1286"
 
 #: docs/Measuring_Resonances.md:block 10 (paragraph)
 msgid ""
@@ -1542,28 +1704,34 @@ msgid ""
 "recommended for signal integrity over a long distance. If you still "
 "experience signal integrity issues (SPI/I2C errors):"
 msgstr ""
+"Для обеспечения целостности сигнала на большом расстоянии рекомендуется "
+"использовать кабель ethernet с экранированными витыми парами (cat5e или "
+"лучше). Если вы по-прежнему испытываете проблемы с целостностью сигнала ("
+"ошибки SPI/I2C):"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Double check the wiring with a digital multimeter for:"
-msgstr ""
+msgstr "Дважды проверьте проводку с помощью цифрового мультиметра:"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Correct connections when turned off (continuity)"
-msgstr ""
+msgstr "Правильные соединения в выключенном состоянии (целостность)"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Correct power and ground voltages"
-msgstr ""
+msgstr "Правильное напряжение питания и заземления"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "I2C only:"
-msgstr ""
+msgstr "Только I2C:"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
 "Check the SCL and SDA lines' resistances to 3.3V are in the range of 900 "
 "ohms to 1.8K"
 msgstr ""
+"Проверьте, что сопротивление линий SCL и SDA по отношению к 3,3 В находится "
+"в диапазоне от 900 Ом до 1,8K"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
@@ -1571,22 +1739,27 @@ msgid ""
 "and user manual UM10204](https://www.pololu.com/file/0J435/UM10204.pdf) for "
 "*fast-mode*"
 msgstr ""
+"Для получения полной технической информации обратитесь к "
+"[главе 7 спецификации шины I2C и руководству пользователя UM10204](https://"
+"www.pololu.com/file/0J435/UM10204.pdf) для *быстрого режима*"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Shorten the cable"
-msgstr ""
+msgstr "Укоротить кабель"
 
 #: docs/Measuring_Resonances.md:block 12 (paragraph)
 msgid "Connect ethernet cable shielding only to the MCU board/Pi ground."
-msgstr ""
+msgstr "Подключите экран кабеля Ethernet только к заземлению платы MCU/Pi."
 
 #: docs/Measuring_Resonances.md:block 15 (paragraph)
 msgid "Suggested twisted pair order for three twisted pairs:"
-msgstr ""
+msgstr "Предлагаемый порядок витой пары для трех витых пар:"
 
 #: docs/Measuring_Resonances.md:block 17 (paragraph)
 msgid "Note that unlike a cable shield, GND must be connected at both ends."
 msgstr ""
+"Обратите внимание, что в отличие от экрана кабеля, GND должен быть подключен "
+"с обоих концов."
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -1594,27 +1767,36 @@ msgid ""
 "wiring and configuration will vary according to your specific board and "
 "available pins.**"
 msgstr ""
+"**Примечание: Многие MCU будут работать с ADXL345 в режиме SPI (например, Pi "
+"Pico), подключение и конфигурация зависят от конкретной платы и доступных "
+"выводов**"
 
 #: docs/Measuring_Resonances.md:block 32 (paragraph)
 msgid "Suggested twisted pair order for three pairs (preferred):"
-msgstr ""
+msgstr "Предлагаемый порядок витой пары - три пары (предпочтительно):"
 
 #: docs/Measuring_Resonances.md:block 33 (code)
+#, fuzzy
 msgid ""
 "3.3V+GND\n"
 "SDA+GND\n"
 "SCL+GND\n"
 msgstr ""
+"3.3V+GND\n"
+"SDA+GND\n"
+"SCL+GND\n"
 
 #: docs/Measuring_Resonances.md:block 34 (paragraph)
 msgid "or for two pairs:"
-msgstr ""
+msgstr "или для двух пар:"
 
 #: docs/Measuring_Resonances.md:block 36 (paragraph)
 msgid ""
 "Note that unlike a cable shield, any GND(s) should be connected at both "
 "ends."
 msgstr ""
+"Обратите внимание, что в отличие от экрана кабеля, любые GND(ы) должны быть "
+"подключены с обоих концов."
 
 #: docs/Measuring_Resonances.md:block 38 (paragraph)
 msgid ""
@@ -1623,70 +1805,84 @@ msgid ""
 "include pull-ups, but some are too large at 10K and must be changed or "
 "supplemented by smaller parallel resistors."
 msgstr ""
+"Эти акселерометры протестированы на работу по протоколу I2C на RPi, RP2040 "
+"(Pico) и AVR со скоростью 400 кбит/с (*быстрый режим*). Некоторые модули "
+"акселерометров MPU включают подтягивающие резисторы, но некоторые из них "
+"слишком велики - 10K, и их необходимо заменить или дополнить меньшими "
+"параллельными резисторами."
 
 #: docs/Measuring_Resonances.md:block 41 (paragraph)
 msgid "The RPi has buit-in 1.8K pull-ups on both SCL and SDA."
-msgstr ""
+msgstr "RPi имеет встроенные подтяжки 1,8K на SCL и SDA."
 
 #: docs/Measuring_Resonances.md:block 42 (paragraph)
 msgid "![MPU-9250 connected to Pi](img/mpu9250-PI-fritzing.png)"
-msgstr ""
+msgstr "![MPU-9250 подключен к Pi](img/mpu9250-PI-fritzing.png)"
 
 #: docs/Measuring_Resonances.md:block 43 (paragraph)
 msgid "Recommended connection scheme for I2C (i2c0a) on the RP2040:"
-msgstr ""
+msgstr "Рекомендуемая схема подключения I2C (i2c0a) на RP2040:"
 
 #: docs/Measuring_Resonances.md:block 44 (table)
 msgid "RP2040 pin name"
-msgstr ""
+msgstr "Название выводов RP2040"
 
 #: docs/Measuring_Resonances.md:block 45 (paragraph)
 msgid "The Pico does not include any built-in I2C pull-up resistors."
-msgstr ""
+msgstr "В Pico нет встроенных подтягивающих резисторов I2C."
 
 #: docs/Measuring_Resonances.md:block 46 (paragraph)
 msgid "![MPU-9250 connected to Pico](img/mpu9250-PICO-fritzing.png)"
-msgstr ""
+msgstr "![MPU-9250 подключен к Pico](img/mpu9250-PICO-fritzing.png)"
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid ""
 "Recommended connection scheme for I2C(TWI) on the AVR ATmega328P Arduino "
 "Nano:"
 msgstr ""
+"Рекомендуемая схема подключения I2C(TWI) на AVR ATmega328P Arduino Nano:"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
+#, fuzzy
 msgid "Atmega328P TQFP32 pin"
-msgstr ""
+msgstr "Atmega328P TQFP32 pin"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Atmega328P pin name"
-msgstr ""
+msgstr "Название выводов Atmega328P"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
+#, fuzzy
 msgid "Arduino Nano pin"
-msgstr ""
+msgstr "Arduino Nano pin"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
+#, fuzzy
 msgid "27"
-msgstr ""
+msgstr "27"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
+#, fuzzy
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
+#, fuzzy
 msgid "28"
-msgstr ""
+msgstr "28"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
+#, fuzzy
 msgid "A5"
-msgstr ""
+msgstr "A5"
 
 #: docs/Measuring_Resonances.md:block 49 (paragraph)
 msgid ""
 "The Arduino Nano does not include any built-in pull-up resistors nor a 3.3V "
 "power pin."
 msgstr ""
+"В Arduino Nano нет ни встроенных подтягивающих резисторов, ни вывода питания "
+"3,3 В."
 
 #: docs/Measuring_Resonances.md:block 63 (paragraph)
 msgid ""
@@ -1695,10 +1891,14 @@ msgid ""
 "Raspberry Pi. This will configure a second Klipper instance that runs on "
 "your Pi."
 msgstr ""
+"Сначала проверьте и следуйте инструкциям в документе [RPi Microcontroller]"
+"(RPi_microcontroller.md), чтобы настроить \"linux mcu\" на Raspberry Pi. Это "
+"позволит настроить второй экземпляр Klipper, который будет работать на вашем "
+"Pi."
 
 #: docs/Measuring_Resonances.md:block 82 (header)
 msgid "Configure LIS2DW series"
-msgstr ""
+msgstr "Настройка серии LIS2DW"
 
 #: docs/Measuring_Resonances.md:block 83 (code)
 msgid ""
@@ -1718,16 +1918,33 @@ msgid ""
 "    # Somewhere slightly above the middle of your print bed\n"
 "    147,154, 20\n"
 msgstr ""
+"[mcu lis]\n"
+"# Измените <mySerial> на то, что вы нашли выше. Например,\n"
+"# usb-Klipper_rp2040_E661640843545B2E-if00\n"
+"serial: /dev/serial/by-id/usb-Klipper_rp2040_<mySerial>\n"
+"\n"
+"[lis2dw]\n"
+"cs_pin: lis:gpio1\n"
+"шина spi_bus: spi0a\n"
+"axes_map: x,z,y\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: lis2dw\n"
+"probe_points:\n"
+"    # Где-то чуть выше середины печатной формы\n"
+"    147,154, 20\n"
 
 #: docs/Measuring_Resonances.md:block 87 (header)
 msgid "Configure MPU-9520 Compatibles With Pico"
-msgstr ""
+msgstr "Настройка совместимости MPU-9520 с Pico"
 
 #: docs/Measuring_Resonances.md:block 88 (paragraph)
 msgid ""
 "Pico I2C is set to 400000 on default. Simply add the following to the "
 "printer.cfg:"
 msgstr ""
+"По умолчанию для Pico I2C установлено значение 400000. Просто добавьте "
+"следующее в файл printer.cfg:"
 
 #: docs/Measuring_Resonances.md:block 89 (code)
 msgid ""
@@ -1746,16 +1963,32 @@ msgid ""
 "[static_digital_output pico_3V3pwm] # Improve power stability\n"
 "pins: pico:gpio23\n"
 msgstr ""
+"[mcu pico]\n"
+"serial: /dev/serial/by-id/<серийный идентификатор вашего Pico>\n"
+"\n"
+"[mpu9250]\n"
+"i2c_mcu: pico\n"
+"i2c_bus: i2c0a\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: mpu9250\n"
+"probe_points:\n"
+"    100, 100, 20 # пример\n"
+"\n"
+"[static_digital_output pico_3V3pwm] # Улучшение стабильности питания\n"
+"выводы: pico:gpio23\n"
 
 #: docs/Measuring_Resonances.md:block 90 (header)
 msgid "Configure MPU-9520 Compatibles with AVR"
-msgstr ""
+msgstr "Настройка совместимости MPU-9520 с AVR"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid ""
 "AVR I2C will be set to 400000 by the mpu9250 option. Simply add the "
 "following to the printer.cfg:"
 msgstr ""
+"Для AVR I2C будет установлено значение 400000 с помощью опции mpu9250. "
+"Просто добавьте следующее в файл printer.cfg:"
 
 #: docs/Measuring_Resonances.md:block 92 (code)
 msgid ""
@@ -1770,12 +2003,25 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[mcu nano]\n"
+"serial: /dev/serial/by-id/<серийный идентификатор вашего nano>\n"
+"\n"
+"[mpu9250]\n"
+"i2c_mcu: nano\n"
+"\n"
+"[resonance_tester]\n"
+"accel_chip: mpu9250\n"
+"probe_points:\n"
+"    100, 100, 20   # пример\n"
 
 #: docs/Measuring_Resonances.md:block 101 (paragraph)
 msgid ""
 "**If you are using a MPU-9250 compatible accelerometer and it shows up as "
 "`mpu-unknown`, use with caution! They are probably refurbished chips!**"
 msgstr ""
+"**Если вы используете акселерометр, совместимый с MPU-9250, и он "
+"отображается как `mpu-unknown`, используйте его с осторожностью! Скорее "
+"всего, это восстановленные микросхемы!**"
 
 #: docs/Measuring_Resonances.md:block 122 (paragraph)
 msgid ""

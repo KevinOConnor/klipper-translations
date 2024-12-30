@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-30 05:00+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/releases/"
 "ru/>\n"
@@ -658,38 +658,49 @@ msgstr "Автоматизированная поддержка прошивки
 #: docs/Releases.md:block 5 (unordered list)
 msgid "New kinematic support for \"Hybrid CoreXY\" and \"Hybrid CoreXZ\" printers."
 msgstr ""
+"Новая кинематическая поддержка принтеров \"Hybrid CoreXY\" и "
+"\"Hybrid CoreXZ\"."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "Klipper now uses `rotation_distance` to configure stepper motor travel "
 "distances."
 msgstr ""
+"Klipper теперь использует `rotation_distance` для настройки расстояния "
+"перемещения шагового двигателя."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "The main Klipper host code can now directly communicate with micro-"
 "controllers using CAN bus."
 msgstr ""
+"Теперь основной хост-код Klipper может напрямую взаимодействовать с "
+"микроконтроллерами по шине CAN."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "New \"motion analysis\" system. Klipper's internal motion updates and sensor"
 " results can be tracked and logged for analysis."
 msgstr ""
+"Новая система \"анализа движения\". Внутренние обновления движения Klipper и "
+"результаты работы датчиков можно отслеживать и записывать в журнал для "
+"анализа."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "Trinamic stepper motor drivers are now continuously monitored for error "
 "conditions."
 msgstr ""
+"Драйверы шаговых двигателей Trinamic теперь постоянно контролируются на "
+"наличие ошибок."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid "Support for the rp2040 micro-controller (Raspberry Pi Pico boards)."
-msgstr ""
+msgstr "Поддержка микроконтроллера rp2040 (платы Raspberry Pi Pico)."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid "The \"make menuconfig\" system now utilizes kconfiglib."
-msgstr ""
+msgstr "Система \"make menuconfig\" теперь использует kconfiglib."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
@@ -697,50 +708,63 @@ msgid ""
 "filament_motion_sensor, palette2, motion_report, pca9533, pulse_counter, "
 "save_variables, sdcard_loop, temperature_host, temperature_mcu"
 msgstr ""
+"Добавлено множество дополнительных модулей: ds18b20, duplicate_pin_override, "
+"filament_motion_sensor, palette2, motion_report, pca9533, pulse_counter, "
+"save_variables, sdcard_loop, temperature_host, temperature_mcu"
 
 #: docs/Releases.md:block 3 (header)
+#, fuzzy
 msgid "Klipper 0.11.0"
-msgstr ""
+msgstr "Klipper 0.11.0"
 
 #: docs/Releases.md:block 4 (paragraph)
 msgid "Available on 20221128. Major changes in this release:"
-msgstr ""
+msgstr "Доступно на сайте 20221128. Основные изменения в этом выпуске:"
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid "Trinamic stepper motor driver \"step on both edges\" optimization."
 msgstr ""
+"Оптимизация драйвера шагового двигателя Trinamic \"шаг по обоим краям\"."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "Support for Python3. The Klipper host code will run with either Python2 or "
 "Python3."
 msgstr ""
+"Поддержка Python3. Код хоста Klipper может работать как с Python2, так и с "
+"Python3."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "Enhanced CAN bus support. Support for CAN bus on rp2040, stm32g0, stm32h7, "
 "same51, and same54 chips. Support for \"USB to CAN bus bridge\" mode."
 msgstr ""
+"Расширенная поддержка шины CAN. Поддержка шины CAN на чипах rp2040, stm32g0, "
+"stm32h7, same51 и same54. Поддержка режима \"мост между USB и CAN-шиной\"."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid "Support for CanBoot bootloader."
-msgstr ""
+msgstr "Поддержка загрузчика CanBoot."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid "Support for mpu9250 and mpu6050 accelerometers."
-msgstr ""
+msgstr "Поддержка акселерометров mpu9250 и mpu6050."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "Improved error handling for max31856, max31855, max31865, and max6675 "
 "temperature sensors."
 msgstr ""
+"Улучшена обработка ошибок для температурных датчиков max31856, max31855, "
+"max31865 и max6675."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
 "It is now possible to configure LEDs to update during long running G-Code "
 "commands using LED \"template\" support."
 msgstr ""
+"Теперь можно настроить светодиоды на обновление во время длительного "
+"выполнения команд G-Code, используя поддержку \"шаблонов\" светодиодов."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
@@ -750,6 +774,11 @@ msgid ""
 " based event dispatch. New rp2040 support for \"make flash\", i2c, and "
 "rp2040-e5 USB errata."
 msgstr ""
+"Несколько улучшений микроконтроллеров. Новая поддержка микросхем stm32h743, "
+"stm32h750, stm32l412, stm32g0b1, same70, same51 и same54. Поддержка чтения "
+"по i2c на atsamd и stm32f0. Поддержка аппаратного pwm на stm32. "
+"Диспетчеризация событий на основе сигналов Linux mcu. Новая поддержка rp2040 "
+"для \"make flash\", i2c и rp2040-e5 USB errata."
 
 #: docs/Releases.md:block 5 (unordered list)
 msgid ""
@@ -757,3 +786,6 @@ msgid ""
 " smart_effector, z_thermal_adjust. New deltesian kinematics added. New "
 "dump_mcu tool added."
 msgstr ""
+"Добавлены новые модули: angle, dac084S085, exclude_object, led, mpu9250, "
+"pca9632, smart_effector, z_thermal_adjust. Добавлена новая дельтезианская "
+"кинематика. Добавлен новый инструмент dump_mcu."

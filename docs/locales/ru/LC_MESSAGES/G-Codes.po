@@ -16,7 +16,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-30 05:00+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/g-codes/"
 "ru/>\n"
@@ -1124,26 +1124,34 @@ msgid ""
 "section](Config_Reference.md#bed_mesh) is enabled (also see the [bed mesh "
 "guide](Bed_Mesh.md))."
 msgstr ""
+"Следующие команды доступны, если включен раздел [bed_mesh config]"
+"(Config_Reference.md#bed_mesh) (также см. руководство по [bed mesh]"
+"(Bed_Mesh.md))."
 
 #: docs/G-Codes.md:block 24 (header)
+#, fuzzy
 msgid "BED_MESH_CALIBRATE"
-msgstr ""
+msgstr "BED_MESH_CALIBRATE"
 
 #: docs/G-Codes.md:block 26 (header)
+#, fuzzy
 msgid "BED_MESH_OUTPUT"
-msgstr ""
+msgstr "BED_MESH_OUTPUT"
 
 #: docs/G-Codes.md:block 28 (header)
+#, fuzzy
 msgid "BED_MESH_MAP"
-msgstr ""
+msgstr "BED_MESH_MAP"
 
 #: docs/G-Codes.md:block 30 (header)
+#, fuzzy
 msgid "BED_MESH_CLEAR"
-msgstr ""
+msgstr "BED_MESH_CLEAR"
 
 #: docs/G-Codes.md:block 32 (header)
+#, fuzzy
 msgid "BED_MESH_PROFILE"
-msgstr ""
+msgstr "BED_MESH_PROFILE"
 
 #: docs/G-Codes.md:block 33 (paragraph)
 msgid ""
@@ -1155,14 +1163,24 @@ msgid ""
 "SAVE or REMOVE operations have been run the SAVE_CONFIG gcode must be run to"
 " make the changes to persistent memory permanent."
 msgstr ""
+"`BED_MESH_PROFILE LOAD=<имя> SAVE=<имя> REMOVE=<имя>`: Эта команда "
+"обеспечивает управление профилем для состояния сетки. LOAD восстановит "
+"состояние сетки из профиля, соответствующего указанному имени. SAVE сохранит "
+"текущее состояние сетки в профиле, соответствующем указанному имени. Remove "
+"удалит профиль, соответствующий указанному имени, из постоянной памяти. "
+"Обратите внимание, что после выполнения операций SAVE или REMOVE необходимо "
+"запустить код SAVE_CONFIG, чтобы изменения в постоянной памяти стали "
+"постоянными."
 
 #: docs/G-Codes.md:block 34 (header)
+#, fuzzy
 msgid "BED_MESH_OFFSET"
-msgstr ""
+msgstr "BED_MESH_OFFSET"
 
 #: docs/G-Codes.md:block 36 (header)
+#, fuzzy
 msgid "[bed_screws]"
-msgstr ""
+msgstr "[bed_screws]"
 
 #: docs/G-Codes.md:block 37 (paragraph)
 msgid ""
@@ -1170,29 +1188,37 @@ msgid ""
 "section](Config_Reference.md#bed_screws) is enabled (also see the [manual "
 "level guide](Manual_Level.md#adjusting-bed-leveling-screws))."
 msgstr ""
+"Следующие команды доступны, если включен раздел [bed_screws config]"
+"(Config_Reference.md#bed_screws) (также см. руководство [manual level guide]"
+"(Manual_Level.md#adjusting-bed-leveling-screws))."
 
 #: docs/G-Codes.md:block 38 (header)
+#, fuzzy
 msgid "BED_SCREWS_ADJUST"
-msgstr ""
+msgstr "BED_SCREWS_ADJUST"
 
 #: docs/G-Codes.md:block 40 (header)
 #, fuzzy
 msgid "[bed_tilt]"
-msgstr "[кровать_наклон]"
+msgstr "[bed_tilt]"
 
 #: docs/G-Codes.md:block 41 (paragraph)
 msgid ""
 "The following commands are available when the [bed_tilt config "
 "section](Config_Reference.md#bed_tilt) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел [bed_tilt config]"
+"(Config_Reference.md#bed_tilt)."
 
 #: docs/G-Codes.md:block 42 (header)
+#, fuzzy
 msgid "BED_TILT_CALIBRATE"
-msgstr ""
+msgstr "BED_TILT_CALIBRATE"
 
 #: docs/G-Codes.md:block 44 (header)
+#, fuzzy
 msgid "[bltouch]"
-msgstr ""
+msgstr "[bltouch]"
 
 #: docs/G-Codes.md:block 45 (paragraph)
 msgid ""
@@ -1200,10 +1226,13 @@ msgid ""
 "section](Config_Reference.md#bltouch) is enabled (also see the [BL-Touch "
 "guide](BLTouch.md))."
 msgstr ""
+"Следующая команда доступна, если включен раздел [bltouch config]"
+"(Config_Reference.md#bltouch) (также см. руководство [BL-Touch](BLTouch.md))."
 
 #: docs/G-Codes.md:block 46 (header)
+#, fuzzy
 msgid "BLTOUCH_DEBUG"
-msgstr ""
+msgstr "BLTOUCH_DEBUG"
 
 #: docs/G-Codes.md:block 47 (paragraph)
 msgid ""
@@ -1213,22 +1242,29 @@ msgid ""
 "also support `set_5V_output_mode`, `set_OD_output_mode`, `output_mode_store`"
 " commands."
 msgstr ""
+"`BLTOUCH_DEBUG COMMAND=<команда>`: Это отправляет команду на BLTouch. Это "
+"может быть полезно для отладки. Доступны следующие команды: `pin_down`, "
+"`touch_mode`, `pin_up`, `self_test`, `reset`. BL-Touch V3.0 или V3.1 также "
+"может поддерживать команды `set_5V_output_mode`, `set_OD_output_mode`, "
+"`output_mode_store`."
 
 #: docs/G-Codes.md:block 48 (header)
+#, fuzzy
 msgid "BLTOUCH_STORE"
-msgstr ""
+msgstr "BLTOUCH_STORE"
 
 #: docs/G-Codes.md:block 50 (header)
 msgid "[configfile]"
-msgstr ""
+msgstr "[ конфигурационный файл ]"
 
 #: docs/G-Codes.md:block 51 (paragraph)
 msgid "The configfile module is automatically loaded."
-msgstr ""
+msgstr "Модуль конфигурационного файла загружается автоматически."
 
 #: docs/G-Codes.md:block 52 (header)
+#, fuzzy
 msgid "SAVE_CONFIG"
-msgstr ""
+msgstr "SAVE_CONFIG"
 
 #: docs/G-Codes.md:block 54 (header)
 msgid "[delayed_gcode]"
@@ -1240,14 +1276,19 @@ msgid ""
 "section](Config_Reference.md#delayed_gcode) has been enabled (also see the "
 "[template guide](Command_Templates.md#delayed-gcodes))."
 msgstr ""
+"Следующая команда включается, если включен раздел конфигурации "
+"[delayed_gcode](Config_Reference.md#delayed_gcode) (также см. руководство по "
+"[шаблонам](Command_Templates.md#delayed-gcodes))."
 
 #: docs/G-Codes.md:block 56 (header)
+#, fuzzy
 msgid "UPDATE_DELAYED_GCODE"
-msgstr ""
+msgstr "UPDATE_DELAYED_GCODE"
 
 #: docs/G-Codes.md:block 58 (header)
+#, fuzzy
 msgid "[delta_calibrate]"
-msgstr ""
+msgstr "[delta_calibrate]"
 
 #: docs/G-Codes.md:block 59 (paragraph)
 msgid ""
@@ -1255,32 +1296,41 @@ msgid ""
 "section](Config_Reference.md#linear-delta-kinematics) is enabled (also see "
 "the [delta calibrate guide](Delta_Calibrate.md))."
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации "
+"[delta_calibrate config](Config_Reference.md#linear-delta-kinematics) (также "
+"см. руководство [delta calibrate](Delta_Calibrate.md))."
 
 #: docs/G-Codes.md:block 60 (header)
+#, fuzzy
 msgid "DELTA_CALIBRATE"
-msgstr ""
+msgstr "DELTA_CALIBRATE"
 
 #: docs/G-Codes.md:block 62 (header)
+#, fuzzy
 msgid "DELTA_ANALYZE"
-msgstr ""
+msgstr "DELTA_ANALYZE"
 
 #: docs/G-Codes.md:block 64 (header)
 msgid "[display]"
-msgstr ""
+msgstr "[дисплей]"
 
 #: docs/G-Codes.md:block 65 (paragraph)
 msgid ""
 "The following command is available when a [display config "
 "section](Config_Reference.md#gcode_macro) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен [display config section]"
+"(Config_Reference.md#gcode_macro)."
 
 #: docs/G-Codes.md:block 66 (header)
+#, fuzzy
 msgid "SET_DISPLAY_GROUP"
-msgstr ""
+msgstr "SET_DISPLAY_GROUP"
 
 #: docs/G-Codes.md:block 68 (header)
+#, fuzzy
 msgid "[display_status]"
-msgstr ""
+msgstr "[display_status]"
 
 #: docs/G-Codes.md:block 69 (paragraph)
 msgid ""
@@ -1288,6 +1338,9 @@ msgid ""
 "section](Config_Reference.md#display) is enabled. It provides the following "
 "standard G-Code commands:"
 msgstr ""
+"Модуль display_status автоматически загружается, если включен раздел "
+"[display config](Config_Reference.md#display). Он предоставляет следующие "
+"стандартные команды G-кода:"
 
 #: docs/G-Codes.md:block 71 (header)
 msgid "[dual_carriage]"
@@ -1298,10 +1351,13 @@ msgid ""
 "The following command is available when the [dual_carriage config "
 "section](Config_Reference.md#dual_carriage) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел [dual_carriage config]"
+"(Config_Reference.md#dual_carriage)."
 
 #: docs/G-Codes.md:block 73 (header)
+#, fuzzy
 msgid "SET_DUAL_CARRIAGE"
-msgstr ""
+msgstr "SET_DUAL_CARRIAGE"
 
 #: docs/G-Codes.md:block 75 (header)
 msgid "[endstop_phase]"
@@ -1313,10 +1369,14 @@ msgid ""
 "section](Config_Reference.md#endstop_phase) is enabled (also see the "
 "[endstop phase guide](Endstop_Phase.md))."
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации [endstop_phase]"
+"(Config_Reference.md#endstop_phase) (также см. руководство по [endstop phase]"
+"(Endstop_Phase.md))."
 
 #: docs/G-Codes.md:block 77 (header)
+#, fuzzy
 msgid "ENDSTOP_PHASE_CALIBRATE"
-msgstr ""
+msgstr "ENDSTOP_PHASE_CALIBRATE"
 
 #: docs/G-Codes.md:block 79 (header)
 msgid "[extruder]"
@@ -1327,22 +1387,28 @@ msgid ""
 "The following commands are available if an [extruder config "
 "section](Config_Reference.md#extruder) is enabled:"
 msgstr ""
+"Следующие команды доступны, если включен раздел [Extruder config]"
+"(Config_Reference.md#extruder):"
 
 #: docs/G-Codes.md:block 81 (header)
+#, fuzzy
 msgid "ACTIVATE_EXTRUDER"
-msgstr ""
+msgstr "ACTIVATE_EXTRUDER"
 
 #: docs/G-Codes.md:block 83 (header)
+#, fuzzy
 msgid "SET_PRESSURE_ADVANCE"
-msgstr ""
+msgstr "SET_PRESSURE_ADVANCE"
 
 #: docs/G-Codes.md:block 85 (header)
+#, fuzzy
 msgid "SET_EXTRUDER_ROTATION_DISTANCE"
-msgstr ""
+msgstr "SET_EXTRUDER_ROTATION_DISTANCE"
 
 #: docs/G-Codes.md:block 87 (header)
+#, fuzzy
 msgid "SYNC_EXTRUDER_MOTION"
-msgstr ""
+msgstr "SYNC_EXTRUDER_MOTION"
 
 #: docs/G-Codes.md:block 93 (header)
 msgid "[fan_generic]"
@@ -1353,16 +1419,22 @@ msgid ""
 "The following command is available when a [fan_generic config "
 "section](Config_Reference.md#fan_generic) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел конфигурации "
+"[fan_generic config](Config_Reference.md#fan_generic)."
 
 #: docs/G-Codes.md:block 95 (header)
+#, fuzzy
 msgid "SET_FAN_SPEED"
-msgstr ""
+msgstr "SET_FAN_SPEED"
 
 #: docs/G-Codes.md:block 96 (paragraph)
 msgid ""
 "`SET_FAN_SPEED FAN=config_name SPEED=<speed>` This command sets the speed of"
 " a fan. \"speed\" must be between 0.0 and 1.0."
 msgstr ""
+"`SET_FAN_SPEED FAN=config_name SPEED=<speed>` Эта команда устанавливает "
+"скорость вентилятора. Значение \"speed\" должно быть в диапазоне от 0,0 до "
+"1,0."
 
 #: docs/G-Codes.md:block 97 (header)
 msgid "[firmware_retraction]"
@@ -1378,22 +1450,32 @@ msgid ""
 " print to another. Appropriately configuring pressure advance reduces the "
 "length of retraction required."
 msgstr ""
+"Следующие стандартные команды G-кода доступны, если включен раздел "
+"конфигурации [firmware_retraction config]"
+"(Config_Reference.md#firmware_retraction). Эти команды позволяют "
+"использовать встроенную функцию втягивания, доступную во многих слайсерах, "
+"для уменьшения натяжения струн во время перемещения без экструзии из одной "
+"части печати в другую. Соответствующая настройка опережения давления "
+"позволяет уменьшить длительность втягивания."
 
 #: docs/G-Codes.md:block 100 (paragraph)
 msgid "The following additional commands are also available."
-msgstr ""
+msgstr "Также доступны следующие дополнительные команды."
 
 #: docs/G-Codes.md:block 101 (header)
+#, fuzzy
 msgid "SET_RETRACTION"
-msgstr ""
+msgstr "SET_RETRACTION"
 
 #: docs/G-Codes.md:block 103 (header)
+#, fuzzy
 msgid "GET_RETRACTION"
-msgstr ""
+msgstr "GET_RETRACTION"
 
 #: docs/G-Codes.md:block 105 (header)
+#, fuzzy
 msgid "[filament_switch_sensor]"
-msgstr ""
+msgstr "[filament_switch_sensor]"
 
 #: docs/G-Codes.md:block 106 (paragraph)
 msgid ""
@@ -1402,6 +1484,9 @@ msgid ""
 "[filament_motion_sensor](Config_Reference.md#filament_motion_sensor) config "
 "section is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел конфигурации "
+"[filament_switch_sensor](Config_Reference.md#filament_switch_sensor) или "
+"[filament_motion_sensor](Config_Reference.md#filament_motion_sensor)."
 
 #: docs/G-Codes.md:block 107 (header)
 msgid "QUERY_FILAMENT_SENSOR"
@@ -1413,50 +1498,60 @@ msgid ""
 "the filament sensor. The data displayed on the terminal will depend on the "
 "sensor type defined in the configuration."
 msgstr ""
+"`QUERY_FILAMENT_SENSOR SENSOR=<имя_сенсора>`: Запрашивает текущее состояние "
+"датчика нити. Данные, отображаемые на терминале, зависят от типа датчика, "
+"определенного в конфигурации."
 
 #: docs/G-Codes.md:block 109 (header)
+#, fuzzy
 msgid "SET_FILAMENT_SENSOR"
-msgstr ""
+msgstr "SET_FILAMENT_SENSOR"
 
 #: docs/G-Codes.md:block 114 (header)
 msgid "[force_move]"
 msgstr ""
 
 #: docs/G-Codes.md:block 116 (header)
+#, fuzzy
 msgid "STEPPER_BUZZ"
-msgstr ""
+msgstr "STEPPER_BUZZ"
 
 #: docs/G-Codes.md:block 118 (header)
+#, fuzzy
 msgid "FORCE_MOVE"
-msgstr ""
+msgstr "FORCE_MOVE"
 
 #: docs/G-Codes.md:block 120 (header)
+#, fuzzy
 msgid "SET_KINEMATIC_POSITION"
-msgstr ""
+msgstr "SET_KINEMATIC_POSITION"
 
 #: docs/G-Codes.md:block 122 (header)
+#, fuzzy
 msgid "[gcode]"
-msgstr ""
+msgstr "[gcode]"
 
 #: docs/G-Codes.md:block 123 (paragraph)
 msgid "The gcode module is automatically loaded."
-msgstr ""
+msgstr "Модуль gcode загружается автоматически."
 
 #: docs/G-Codes.md:block 124 (header)
 msgid "RESTART"
-msgstr ""
+msgstr "ПЕРЕЗАПУСК"
 
 #: docs/G-Codes.md:block 126 (header)
+#, fuzzy
 msgid "FIRMWARE_RESTART"
-msgstr ""
+msgstr "FIRMWARE_RESTART"
 
 #: docs/G-Codes.md:block 128 (header)
+#, fuzzy
 msgid "STATUS"
-msgstr ""
+msgstr "STATUS"
 
 #: docs/G-Codes.md:block 130 (header)
 msgid "HELP"
-msgstr ""
+msgstr "ПОМОЩЬ"
 
 #: docs/G-Codes.md:block 132 (header)
 msgid "[gcode_arcs]"
@@ -1472,38 +1567,48 @@ msgid ""
 "section](Config_Reference.md#gcode_macro) is enabled (also see the [command "
 "templates guide](Command_Templates.md))."
 msgstr ""
+"Следующая команда доступна, если включен раздел конфигурации [gcode_macro]"
+"(Config_Reference.md#gcode_macro) (также см. руководство по [шаблонам команд]"
+"(Command_Templates.md))."
 
 #: docs/G-Codes.md:block 137 (header)
+#, fuzzy
 msgid "SET_GCODE_VARIABLE"
-msgstr ""
+msgstr "SET_GCODE_VARIABLE"
 
 #: docs/G-Codes.md:block 139 (header)
+#, fuzzy
 msgid "[gcode_move]"
-msgstr ""
+msgstr "[gcode_move]"
 
 #: docs/G-Codes.md:block 140 (paragraph)
 msgid "The gcode_move module is automatically loaded."
-msgstr ""
+msgstr "Модуль gcode_move загружается автоматически."
 
 #: docs/G-Codes.md:block 141 (header)
+#, fuzzy
 msgid "GET_POSITION"
-msgstr ""
+msgstr "GET_POSITION"
 
 #: docs/G-Codes.md:block 143 (header)
+#, fuzzy
 msgid "SET_GCODE_OFFSET"
-msgstr ""
+msgstr "SET_GCODE_OFFSET"
 
 #: docs/G-Codes.md:block 145 (header)
+#, fuzzy
 msgid "SAVE_GCODE_STATE"
-msgstr ""
+msgstr "SAVE_GCODE_STATE"
 
 #: docs/G-Codes.md:block 147 (header)
+#, fuzzy
 msgid "RESTORE_GCODE_STATE"
-msgstr ""
+msgstr "RESTORE_GCODE_STATE"
 
 #: docs/G-Codes.md:block 149 (header)
+#, fuzzy
 msgid "[hall_filament_width_sensor]"
-msgstr ""
+msgstr "[hall_filament_width_sensor]"
 
 #: docs/G-Codes.md:block 150 (paragraph)
 msgid ""
@@ -1514,6 +1619,13 @@ msgid ""
 "see [TSLl401CL Filament Width Sensor](TSL1401CL_Filament_Width_Sensor.md) "
 "and [Hall Filament Width Sensor](Hall_Filament_Width_Sensor.md)):"
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации "
+"[tsl1401cl filament width sensor config]"
+"(Config_Reference.md#tsl1401cl_filament_width_sensor) или "
+"[hall filament width sensor config section](Config_Reference. "
+"md#hall_filament_width_sensor) включен (см. также "
+"[TSLl401CL Filament Width Sensor](TSL1401CL_Filament_Width_Sensor.md) и "
+"[Hall Filament Width Sensor](Hall_Filament_Width_Sensor.md)):"
 
 #: docs/G-Codes.md:block 151 (header)
 msgid "QUERY_FILAMENT_WIDTH"
@@ -1521,85 +1633,104 @@ msgstr "Запрос ширины филамента"
 
 #: docs/G-Codes.md:block 152 (paragraph)
 msgid "`QUERY_FILAMENT_WIDTH`: Return the current measured filament width."
-msgstr ""
+msgstr "`QUERY_FILAMENT_WIDTH`: Возвращает текущую измеренную ширину нити."
 
 #: docs/G-Codes.md:block 153 (header)
+#, fuzzy
 msgid "RESET_FILAMENT_WIDTH_SENSOR"
-msgstr ""
+msgstr "RESET_FILAMENT_WIDTH_SENSOR"
 
 #: docs/G-Codes.md:block 154 (paragraph)
 msgid ""
 "`RESET_FILAMENT_WIDTH_SENSOR`: Clear all sensor readings. Helpful after "
 "filament change."
 msgstr ""
+"`RESET_FILAMENT_WIDTH_SENSOR`: Очищает все показания датчика. Полезно после "
+"замены нити."
 
 #: docs/G-Codes.md:block 155 (header)
+#, fuzzy
 msgid "DISABLE_FILAMENT_WIDTH_SENSOR"
-msgstr ""
+msgstr "DISABLE_FILAMENT_WIDTH_SENSOR"
 
 #: docs/G-Codes.md:block 156 (paragraph)
 msgid ""
 "`DISABLE_FILAMENT_WIDTH_SENSOR`: Turn off the filament width sensor and stop"
 " using it for flow control."
 msgstr ""
+"`DISABLE_FILAMENT_WIDTH_SENSOR`: Отключите датчик ширины нити и перестаньте "
+"использовать его для управления потоком."
 
 #: docs/G-Codes.md:block 157 (header)
+#, fuzzy
 msgid "ENABLE_FILAMENT_WIDTH_SENSOR"
-msgstr ""
+msgstr "ENABLE_FILAMENT_WIDTH_SENSOR"
 
 #: docs/G-Codes.md:block 158 (paragraph)
 msgid ""
 "`ENABLE_FILAMENT_WIDTH_SENSOR`: Turn on the filament width sensor and start "
 "using it for flow control."
 msgstr ""
+"`ENABLE_FILAMENT_WIDTH_SENSOR`: Включите датчик ширины нити и начните "
+"использовать его для управления потоком."
 
 #: docs/G-Codes.md:block 159 (header)
+#, fuzzy
 msgid "QUERY_RAW_FILAMENT_WIDTH"
-msgstr ""
+msgstr "QUERY_RAW_FILAMENT_WIDTH"
 
 #: docs/G-Codes.md:block 160 (paragraph)
 msgid ""
 "`QUERY_RAW_FILAMENT_WIDTH`: Return the current ADC channel readings and RAW "
 "sensor value for calibration points."
 msgstr ""
+"`QUERY_RAW_FILAMENT_WIDTH`: Возвращает текущие показания каналов АЦП и "
+"значение датчика в формате RAW для точек калибровки."
 
 #: docs/G-Codes.md:block 161 (header)
+#, fuzzy
 msgid "ENABLE_FILAMENT_WIDTH_LOG"
-msgstr ""
+msgstr "ENABLE_FILAMENT_WIDTH_LOG"
 
 #: docs/G-Codes.md:block 162 (paragraph)
 msgid "`ENABLE_FILAMENT_WIDTH_LOG`: Turn on diameter logging."
-msgstr ""
+msgstr "`ENABLE_FILAMENT_WIDTH_LOG`: Включите ведение журнала диаметра."
 
 #: docs/G-Codes.md:block 163 (header)
+#, fuzzy
 msgid "DISABLE_FILAMENT_WIDTH_LOG"
-msgstr ""
+msgstr "DISABLE_FILAMENT_WIDTH_LOG"
 
 #: docs/G-Codes.md:block 164 (paragraph)
 msgid "`DISABLE_FILAMENT_WIDTH_LOG`: Turn off diameter logging."
-msgstr ""
+msgstr "`DISABLE_FILAMENT_WIDTH_LOG`: Отключает ведение журнала диаметра."
 
 #: docs/G-Codes.md:block 165 (header)
 msgid "[heaters]"
-msgstr ""
+msgstr "[обогреватели]"
 
 #: docs/G-Codes.md:block 166 (paragraph)
 msgid ""
 "The heaters module is automatically loaded if a heater is defined in the "
 "config file."
 msgstr ""
+"Модуль нагревателей загружается автоматически, если в файле конфигурации "
+"определен нагреватель."
 
 #: docs/G-Codes.md:block 167 (header)
+#, fuzzy
 msgid "TURN_OFF_HEATERS"
-msgstr ""
+msgstr "TURN_OFF_HEATERS"
 
 #: docs/G-Codes.md:block 169 (header)
+#, fuzzy
 msgid "TEMPERATURE_WAIT"
-msgstr ""
+msgstr "TEMPERATURE_WAIT"
 
 #: docs/G-Codes.md:block 171 (header)
+#, fuzzy
 msgid "SET_HEATER_TEMPERATURE"
-msgstr ""
+msgstr "SET_HEATER_TEMPERATURE"
 
 #: docs/G-Codes.md:block 173 (header)
 msgid "[idle_timeout]"
@@ -1607,11 +1738,12 @@ msgstr ""
 
 #: docs/G-Codes.md:block 174 (paragraph)
 msgid "The idle_timeout module is automatically loaded."
-msgstr ""
+msgstr "Модуль idle_timeout загружается автоматически."
 
 #: docs/G-Codes.md:block 175 (header)
+#, fuzzy
 msgid "SET_IDLE_TIMEOUT"
-msgstr ""
+msgstr "SET_IDLE_TIMEOUT"
 
 #: docs/G-Codes.md:block 177 (header)
 msgid "[input_shaper]"
@@ -1623,30 +1755,38 @@ msgid ""
 "section](Config_Reference.md#input_shaper) has been enabled (also see the "
 "[resonance compensation guide](Resonance_Compensation.md))."
 msgstr ""
+"Следующая команда активируется, если включен раздел [input_shaper config]"
+"(Config_Reference.md#input_shaper) (также см. руководство по "
+"[resonance compensation](Resonance_Compensation.md))."
 
 #: docs/G-Codes.md:block 179 (header)
+#, fuzzy
 msgid "SET_INPUT_SHAPER"
-msgstr ""
+msgstr "SET_INPUT_SHAPER"
 
 #: docs/G-Codes.md:block 181 (header)
+#, fuzzy
 msgid "[manual_probe]"
-msgstr ""
+msgstr "[manual_probe]"
 
 #: docs/G-Codes.md:block 182 (paragraph)
 msgid "The manual_probe module is automatically loaded."
-msgstr ""
+msgstr "Модуль manual_probe загружается автоматически."
 
 #: docs/G-Codes.md:block 183 (header)
+#, fuzzy
 msgid "MANUAL_PROBE"
-msgstr ""
+msgstr "MANUAL_PROBE"
 
 #: docs/G-Codes.md:block 186 (header)
+#, fuzzy
 msgid "Z_ENDSTOP_CALIBRATE"
-msgstr ""
+msgstr "Z_ENDSTOP_CALIBRATE"
 
 #: docs/G-Codes.md:block 188 (header)
+#, fuzzy
 msgid "Z_OFFSET_APPLY_ENDSTOP"
-msgstr ""
+msgstr "Z_OFFSET_APPLY_ENDSTOP"
 
 #: docs/G-Codes.md:block 190 (header)
 msgid "[manual_stepper]"
@@ -1657,14 +1797,18 @@ msgid ""
 "The following command is available when a [manual_stepper config "
 "section](Config_Reference.md#manual_stepper) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел [manual_stepper config]"
+"(Config_Reference.md#manual_stepper)."
 
 #: docs/G-Codes.md:block 192 (header)
+#, fuzzy
 msgid "MANUAL_STEPPER"
-msgstr ""
+msgstr "MANUAL_STEPPER"
 
 #: docs/G-Codes.md:block 196 (header)
+#, fuzzy
 msgid "SET_LED"
-msgstr ""
+msgstr "SET_LED"
 
 #: docs/G-Codes.md:block 198 (header)
 msgid "[output_pin]"
@@ -1675,10 +1819,13 @@ msgid ""
 "The following command is available when an [output_pin config "
 "section](Config_Reference.md#output_pin) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел [output_pin config]"
+"(Config_Reference.md#output_pin)."
 
 #: docs/G-Codes.md:block 200 (header)
+#, fuzzy
 msgid "SET_PIN"
-msgstr ""
+msgstr "SET_PIN"
 
 #: docs/G-Codes.md:block 202 (header)
 msgid "[palette2]"
@@ -1689,36 +1836,46 @@ msgid ""
 "The following commands are available when the [palette2 config "
 "section](Config_Reference.md#palette2) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел [palette2 config]"
+"(Config_Reference.md#palette2)."
 
 #: docs/G-Codes.md:block 207 (header)
+#, fuzzy
 msgid "PALETTE_CONNECT"
-msgstr ""
+msgstr "PALETTE_CONNECT"
 
 #: docs/G-Codes.md:block 209 (header)
+#, fuzzy
 msgid "PALETTE_DISCONNECT"
-msgstr ""
+msgstr "PALETTE_DISCONNECT"
 
 #: docs/G-Codes.md:block 211 (header)
+#, fuzzy
 msgid "PALETTE_CLEAR"
-msgstr ""
+msgstr "PALETTE_CLEAR"
 
 #: docs/G-Codes.md:block 213 (header)
+#, fuzzy
 msgid "PALETTE_CUT"
-msgstr ""
+msgstr "PALETTE_CUT"
 
 #: docs/G-Codes.md:block 215 (header)
+#, fuzzy
 msgid "PALETTE_SMART_LOAD"
-msgstr ""
+msgstr "PALETTE_SMART_LOAD"
 
 #: docs/G-Codes.md:block 217 (header)
+#, fuzzy
 msgid "[pid_calibrate]"
-msgstr ""
+msgstr "[pid_calibrate]"
 
 #: docs/G-Codes.md:block 218 (paragraph)
 msgid ""
 "The pid_calibrate module is automatically loaded if a heater is defined in "
 "the config file."
 msgstr ""
+"Модуль pid_calibrate загружается автоматически, если в конфигурационном "
+"файле задан нагреватель."
 
 #: docs/G-Codes.md:block 219 (header)
 msgid "PID_CALIBRATE"

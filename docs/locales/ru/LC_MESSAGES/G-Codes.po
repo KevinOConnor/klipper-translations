@@ -16,7 +16,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-31 06:00+0000\n"
+"PO-Revision-Date: 2024-12-31 11:20+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/g-codes/"
 "ru/>\n"
@@ -1878,8 +1878,9 @@ msgstr ""
 "файле задан нагреватель."
 
 #: docs/G-Codes.md:block 219 (header)
+#, fuzzy
 msgid "PID_CALIBRATE"
-msgstr ""
+msgstr "PID_CALIBRATE"
 
 #: docs/G-Codes.md:block 221 (header)
 msgid "[pause_resume]"
@@ -1887,19 +1888,21 @@ msgstr ""
 
 #: docs/G-Codes.md:block 223 (header)
 msgid "PAUSE"
-msgstr ""
+msgstr "ПАУЗА"
 
 #: docs/G-Codes.md:block 225 (header)
 msgid "RESUME"
-msgstr ""
+msgstr "РЕЗЮМЕ"
 
 #: docs/G-Codes.md:block 227 (header)
+#, fuzzy
 msgid "CLEAR_PAUSE"
-msgstr ""
+msgstr "CLEAR_PAUSE"
 
 #: docs/G-Codes.md:block 229 (header)
+#, fuzzy
 msgid "CANCEL_PRINT"
-msgstr ""
+msgstr "CANCEL_PRINT"
 
 #: docs/G-Codes.md:block 231 (header)
 msgid "[probe]"
@@ -1912,14 +1915,18 @@ msgid ""
 "section](Config_Reference.md#bltouch) is enabled (also see the [probe "
 "calibrate guide](Probe_Calibrate.md))."
 msgstr ""
+"Следующие команды доступны, если включен раздел [probe config]"
+"(Config_Reference.md#probe) или [bltouch config](Config_Reference.md#bltouch)"
+" (также см. руководство [probe calibrate](Probe_Calibrate.md))."
 
 #: docs/G-Codes.md:block 233 (header)
 msgid "PROBE"
 msgstr "Проба"
 
 #: docs/G-Codes.md:block 235 (header)
+#, fuzzy
 msgid "QUERY_PROBE"
-msgstr ""
+msgstr "QUERY_PROBE"
 
 #: docs/G-Codes.md:block 237 (header)
 msgid "PROBE_ACCURACY"
@@ -1930,16 +1937,19 @@ msgid "PROBE_CALIBRATE"
 msgstr "Калибровка пробы"
 
 #: docs/G-Codes.md:block 241 (header)
+#, fuzzy
 msgid "Z_OFFSET_APPLY_PROBE"
-msgstr ""
+msgstr "Z_OFFSET_APPLY_PROBE"
 
 #: docs/G-Codes.md:block 243 (header)
+#, fuzzy
 msgid "[query_adc]"
-msgstr ""
+msgstr "[query_adc]"
 
 #: docs/G-Codes.md:block 245 (header)
+#, fuzzy
 msgid "QUERY_ADC"
-msgstr ""
+msgstr "QUERY_ADC"
 
 #: docs/G-Codes.md:block 247 (header)
 msgid "[query_endstops]"
@@ -1950,6 +1960,8 @@ msgid ""
 "The query_endstops module is automatically loaded. The following standard "
 "G-Code commands are currently available, but using them is not recommended:"
 msgstr ""
+"Модуль query_endstops загружается автоматически. В настоящее время доступны "
+"следующие стандартные команды G-кода, но использовать их не рекомендуется:"
 
 #: docs/G-Codes.md:block 250 (header)
 msgid "QUERY_ENDSTOPS"
@@ -1965,32 +1977,40 @@ msgid ""
 "section](Config_Reference.md#resonance_tester) is enabled (also see the "
 "[measuring resonances guide](Measuring_Resonances.md))."
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации "
+"[resonance_tester](Config_Reference.md#resonance_tester) (также см. "
+"руководство по [измерению резонансов](Measuring_Resonances.md))."
 
 #: docs/G-Codes.md:block 254 (header)
+#, fuzzy
 msgid "MEASURE_AXES_NOISE"
-msgstr ""
+msgstr "MEASURE_AXES_NOISE"
 
 #: docs/G-Codes.md:block 256 (header)
+#, fuzzy
 msgid "TEST_RESONANCES"
-msgstr ""
+msgstr "TEST_RESONANCES"
 
 #: docs/G-Codes.md:block 258 (header)
+#, fuzzy
 msgid "SHAPER_CALIBRATE"
-msgstr ""
+msgstr "SHAPER_CALIBRATE"
 
 #: docs/G-Codes.md:block 260 (header)
 msgid "[respond]"
-msgstr ""
+msgstr "[ответить]"
 
 #: docs/G-Codes.md:block 261 (paragraph)
 msgid ""
 "The following standard G-Code commands are available when the [respond "
 "config section](Config_Reference.md#respond) is enabled:"
 msgstr ""
+"Следующие стандартные команды G-кода доступны, если включен раздел "
+"[respond config](Config_Reference.md#respond):"
 
 #: docs/G-Codes.md:block 264 (header)
 msgid "RESPOND"
-msgstr ""
+msgstr "ОТВЕТИТЬ"
 
 #: docs/G-Codes.md:block 265 (unordered list)
 msgid ""
@@ -1998,6 +2018,9 @@ msgid ""
 "`// `. OctoPrint can be configured to respond to these messages (e.g. "
 "`RESPOND TYPE=command MSG=action:pause`)."
 msgstr ""
+"`RESPOND TYPE=command MSG=\"<message>\"`: эхо сообщения, дополненного `//`. "
+"OctoPrint может быть настроен на ответ на эти сообщения (например, `RESPOND "
+"TYPE=command MSG=action:pause`)."
 
 #: docs/G-Codes.md:block 266 (header)
 msgid "[save_variables]"
@@ -2008,10 +2031,13 @@ msgid ""
 "The following command is enabled if a [save_variables config "
 "section](Config_Reference.md#save_variables) has been enabled."
 msgstr ""
+"Следующая команда включается, если был включен раздел [save_variables config]"
+"(Config_Reference.md#save_variables)."
 
 #: docs/G-Codes.md:block 268 (header)
+#, fuzzy
 msgid "SAVE_VARIABLE"
-msgstr ""
+msgstr "SAVE_VARIABLE"
 
 #: docs/G-Codes.md:block 270 (header)
 msgid "[screws_tilt_adjust]"
@@ -2024,10 +2050,15 @@ msgid ""
 "[manual level guide](Manual_Level.md#adjusting-bed-leveling-screws-using-"
 "the-bed-probe))."
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации "
+"[screws_tilt_adjust](Config_Reference.md#screws_tilt_adjust) (также см. "
+"руководство [manual level guide](Manual_Level.md#adjusting-bed-leveling-"
+"screws-using-the bed-probe))."
 
 #: docs/G-Codes.md:block 272 (header)
+#, fuzzy
 msgid "SCREWS_TILT_CALCULATE"
-msgstr ""
+msgstr "SCREWS_TILT_CALCULATE"
 
 #: docs/G-Codes.md:block 274 (header)
 msgid "[sdcard_loop]"
@@ -2038,24 +2069,32 @@ msgid ""
 "When the [sdcard_loop config section](Config_Reference.md#sdcard_loop) is "
 "enabled, the following extended commands are available."
 msgstr ""
+"Когда раздел [sdcard_loop config](Config_Reference.md#sdcard_loop) включен, "
+"доступны следующие расширенные команды."
 
 #: docs/G-Codes.md:block 276 (header)
+#, fuzzy
 msgid "SDCARD_LOOP_BEGIN"
-msgstr ""
+msgstr "SDCARD_LOOP_BEGIN"
 
 #: docs/G-Codes.md:block 277 (paragraph)
 msgid ""
 "`SDCARD_LOOP_BEGIN COUNT=<count>`: Begin a looped section in the SD print. A"
 " count of 0 indicates that the section should be looped indefinitely."
 msgstr ""
+"`SDCARD_LOOP_BEGIN COUNT=<count>`: Начало зацикленной секции в SD-печати. "
+"Счетчик, равный 0, указывает на то, что секцию следует зацикливать "
+"бесконечно."
 
 #: docs/G-Codes.md:block 278 (header)
+#, fuzzy
 msgid "SDCARD_LOOP_END"
-msgstr ""
+msgstr "SDCARD_LOOP_END"
 
 #: docs/G-Codes.md:block 280 (header)
+#, fuzzy
 msgid "SDCARD_LOOP_DESIST"
-msgstr ""
+msgstr "SDCARD_LOOP_DESIST"
 
 #: docs/G-Codes.md:block 282 (header)
 msgid "[servo]"
@@ -2066,10 +2105,13 @@ msgid ""
 "The following commands are available when a [servo config "
 "section](Config_Reference.md#servo) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел [config серво]"
+"(Config_Reference.md#servo)."
 
 #: docs/G-Codes.md:block 284 (header)
+#, fuzzy
 msgid "SET_SERVO"
-msgstr ""
+msgstr "SET_SERVO"
 
 #: docs/G-Codes.md:block 286 (header)
 msgid "[skew_correction]"
@@ -2081,22 +2123,29 @@ msgid ""
 "section](Config_Reference.md#skew_correction) is enabled (also see the [Skew"
 " Correction](Skew_Correction.md) guide)."
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации "
+"[skew_correction](Config_Reference.md#skew_correction) (также см. "
+"руководство [Skew Correction](Skew_Correction.md))."
 
 #: docs/G-Codes.md:block 288 (header)
+#, fuzzy
 msgid "SET_SKEW"
-msgstr ""
+msgstr "SET_SKEW"
 
 #: docs/G-Codes.md:block 290 (header)
+#, fuzzy
 msgid "GET_CURRENT_SKEW"
-msgstr ""
+msgstr "GET_CURRENT_SKEW"
 
 #: docs/G-Codes.md:block 292 (header)
+#, fuzzy
 msgid "CALC_MEASURED_SKEW"
-msgstr ""
+msgstr "CALC_MEASURED_SKEW"
 
 #: docs/G-Codes.md:block 294 (header)
+#, fuzzy
 msgid "SKEW_PROFILE"
-msgstr ""
+msgstr "SKEW_PROFILE"
 
 #: docs/G-Codes.md:block 295 (paragraph)
 msgid ""
@@ -2108,18 +2157,27 @@ msgid ""
 "REMOVE operations have been run the SAVE_CONFIG gcode must be run to make "
 "the changes to persistent memory permanent."
 msgstr ""
+"`SKEW_PROFILE [LOAD=<имя>] [SAVE=<имя>] [REMOVE=<имя>]`: Управление профилем "
+"для исправления перекоса. LOAD восстанавливает состояние перекоса из "
+"профиля, соответствующего указанному имени. SAVE сохранит текущее состояние "
+"перекоса в профиле, соответствующем указанному имени. Remove удалит профиль, "
+"соответствующий указанному имени, из постоянной памяти. Обратите внимание, "
+"что после выполнения операций SAVE или REMOVE необходимо запустить код "
+"SAVE_CONFIG, чтобы изменения в постоянной памяти стали постоянными."
 
 #: docs/G-Codes.md:block 296 (header)
+#, fuzzy
 msgid "[stepper_enable]"
-msgstr ""
+msgstr "[stepper_enable]"
 
 #: docs/G-Codes.md:block 297 (paragraph)
 msgid "The stepper_enable module is automatically loaded."
-msgstr ""
+msgstr "Модуль stepper_enable загружается автоматически."
 
 #: docs/G-Codes.md:block 298 (header)
+#, fuzzy
 msgid "SET_STEPPER_ENABLE"
-msgstr ""
+msgstr "SET_STEPPER_ENABLE"
 
 #: docs/G-Codes.md:block 300 (header)
 msgid "[temperature_fan]"
@@ -2130,10 +2188,13 @@ msgid ""
 "The following command is available when a [temperature_fan config "
 "section](Config_Reference.md#temperature_fan) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел [temperature_fan config]"
+"(Config_Reference.md#temperature_fan)."
 
 #: docs/G-Codes.md:block 302 (header)
+#, fuzzy
 msgid "SET_TEMPERATURE_FAN_TARGET"
-msgstr ""
+msgstr "SET_TEMPERATURE_FAN_TARGET"
 
 #: docs/G-Codes.md:block 303 (paragraph)
 msgid ""
@@ -2143,24 +2204,34 @@ msgid ""
 " If a target is not supplied, it is set to the specified temperature in the "
 "config file. If speeds are not supplied, no change is applied."
 msgstr ""
+"`SET_TEMPERATURE_FAN_TARGET temperature_fan=<имя_температурного_вентилятора> "
+"[target=<target_temperature>] [min_speed=<min_speed>] [max_speed=<max_speed>]"
+"`: Устанавливает целевую температуру для вентилятора temperature_fan. Если "
+"целевая температура не указана, она устанавливается на указанную температуру "
+"в файле конфигурации. Если скорость не указана, изменения не применяются."
 
 #: docs/G-Codes.md:block 304 (header)
+#, fuzzy
 msgid "[tmcXXXX]"
-msgstr ""
+msgstr "[tmcXXXX]"
 
 #: docs/G-Codes.md:block 305 (paragraph)
 msgid ""
 "The following commands are available when any of the [tmcXXXX config "
 "sections](Config_Reference.md#tmc-stepper-driver-configuration) are enabled."
 msgstr ""
+"Следующие команды доступны, если включен любой из разделов [tmcXXXX config]"
+"(Config_Reference.md#tmc-stepper-driver-configuration)."
 
 #: docs/G-Codes.md:block 306 (header)
+#, fuzzy
 msgid "DUMP_TMC"
-msgstr ""
+msgstr "DUMP_TMC"
 
 #: docs/G-Codes.md:block 308 (header)
+#, fuzzy
 msgid "INIT_TMC"
-msgstr ""
+msgstr "INIT_TMC"
 
 #: docs/G-Codes.md:block 309 (paragraph)
 msgid ""
@@ -2168,38 +2239,46 @@ msgid ""
 "Needed to re-enable the driver if power to the chip is turned off then back "
 "on."
 msgstr ""
+"`INIT_TMC STEPPER=<имя>`: Эта команда инициализирует регистры TMC. "
+"Необходима для повторного включения драйвера, если питание микросхемы "
+"отключается, а затем снова включается."
 
 #: docs/G-Codes.md:block 310 (header)
+#, fuzzy
 msgid "SET_TMC_CURRENT"
-msgstr ""
+msgstr "SET_TMC_CURRENT"
 
 #: docs/G-Codes.md:block 312 (header)
+#, fuzzy
 msgid "SET_TMC_FIELD"
-msgstr ""
+msgstr "SET_TMC_FIELD"
 
 #: docs/G-Codes.md:block 314 (header)
 msgid "[toolhead]"
-msgstr ""
+msgstr "[головка инструмента]"
 
 #: docs/G-Codes.md:block 315 (paragraph)
 msgid "The toolhead module is automatically loaded."
-msgstr ""
+msgstr "Модуль инструментальной головки загружается автоматически."
 
 #: docs/G-Codes.md:block 316 (header)
+#, fuzzy
 msgid "SET_VELOCITY_LIMIT"
-msgstr ""
+msgstr "SET_VELOCITY_LIMIT"
 
 #: docs/G-Codes.md:block 318 (header)
+#, fuzzy
 msgid "[tuning_tower]"
-msgstr ""
+msgstr "[tuning_tower]"
 
 #: docs/G-Codes.md:block 319 (paragraph)
 msgid "The tuning_tower module is automatically loaded."
-msgstr ""
+msgstr "Модуль tuning_tower загружается автоматически."
 
 #: docs/G-Codes.md:block 320 (header)
+#, fuzzy
 msgid "TUNING_TOWER"
-msgstr ""
+msgstr "TUNING_TOWER"
 
 #: docs/G-Codes.md:block 322 (unordered list)
 msgid ""
@@ -2208,6 +2287,10 @@ msgid ""
 "optimum Z height directly into the formula to determine the optimum "
 "parameter value."
 msgstr ""
+"`ФАКТОР`: Значение изменяется со скоростью `фактор` на миллиметр. "
+"Используется следующая формула: `значение = старт + фактор * z_высота`. Вы "
+"можете подставить оптимальную высоту Z непосредственно в формулу, чтобы "
+"определить оптимальное значение параметра."
 
 #: docs/G-Codes.md:block 322 (unordered list)
 msgid ""
@@ -2216,6 +2299,10 @@ msgid ""
 "every `BAND` millimeters of Z height. The formula used is: `value = start + "
 "factor * ((floor(z_height / band) + .5) * band)`."
 msgstr ""
+"`ФАКТОР` и `ПОЛОСА`: Значение изменяется со средней скоростью `фактор` на "
+"миллиметр, но в дискретных диапазонах, где корректировка будет производиться "
+"только через каждые `BAND` миллиметров высоты Z. Используется следующая "
+"формула: `value = start + factor * ((floor(z_height / band) + .5) * band)`."
 
 #: docs/G-Codes.md:block 322 (unordered list)
 msgid ""
@@ -2224,6 +2311,11 @@ msgid ""
 "* floor(z_height / step_height)`. You can simply count bands or read tuning "
 "tower labels to determine the optimum value."
 msgstr ""
+"`STEP_DELTA` и `STEP_HEIGHT`: Значение изменяется на `STEP_DELTA` каждые "
+"`STEP_HEIGHT` миллиметров. Используется следующая формула: `value = start + "
+"step_delta * floor(z_height / step_height)`. Чтобы определить оптимальное "
+"значение, можно просто посчитать диапазоны или прочитать метки настроечных "
+"башен."
 
 #: docs/G-Codes.md:block 323 (header)
 msgid "[virtual_sdcard]"
@@ -2235,29 +2327,36 @@ msgid ""
 "[virtual_sdcard config section](Config_Reference.md#virtual_sdcard) is "
 "enabled:"
 msgstr ""
+"Klipper поддерживает следующие стандартные команды G-Code, если включен "
+"раздел [virtual_sdcard config](Config_Reference.md#virtual_sdcard):"
 
 #: docs/G-Codes.md:block 326 (paragraph)
 msgid ""
 "In addition, the following extended commands are available when the "
 "\"virtual_sdcard\" config section is enabled."
 msgstr ""
+"Кроме того, следующие расширенные команды доступны, если включен раздел "
+"конфигурации \"virtual_sdcard\"."
 
 #: docs/G-Codes.md:block 327 (header)
+#, fuzzy
 msgid "SDCARD_PRINT_FILE"
-msgstr ""
+msgstr "SDCARD_PRINT_FILE"
 
 #: docs/G-Codes.md:block 328 (paragraph)
 msgid ""
 "`SDCARD_PRINT_FILE FILENAME=<filename>`: Load a file and start SD print."
 msgstr ""
+"`SDCARD_PRINT_FILE FILENAME=<filename>`: Загрузка файла и запуск SD-печати."
 
 #: docs/G-Codes.md:block 329 (header)
+#, fuzzy
 msgid "SDCARD_RESET_FILE"
-msgstr ""
+msgstr "SDCARD_RESET_FILE"
 
 #: docs/G-Codes.md:block 330 (paragraph)
 msgid "`SDCARD_RESET_FILE`: Unload file and clear SD state."
-msgstr ""
+msgstr "`SDCARD_RESET_FILE`: Выгружает файл и очищает состояние SD."
 
 #: docs/G-Codes.md:block 331 (header)
 msgid "[z_tilt]"
@@ -2268,10 +2367,13 @@ msgid ""
 "The following commands are available when the [z_tilt config "
 "section](Config_Reference.md#z_tilt) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел [z_tilt config]"
+"(Config_Reference.md#z_tilt)."
 
 #: docs/G-Codes.md:block 333 (header)
+#, fuzzy
 msgid "Z_TILT_ADJUST"
-msgstr ""
+msgstr "Z_TILT_ADJUST"
 
 #: docs/G-Codes.md:block 7 (paragraph)
 msgid ""
@@ -2283,6 +2385,14 @@ msgid ""
 "only intended to be human readable - see the [API Server "
 "document](API_Server.md) if controlling Klipper from external software."
 msgstr ""
+"Цель Klipper - поддерживать команды G-Code, создаваемые распространенным "
+"программным обеспечением сторонних производителей (например, OctoPrint, "
+"Printrun, Slic3r, Cura и т.д.) в их стандартных конфигурациях. Целью не "
+"является поддержка всех возможных команд G-кода. Вместо этого Klipper отдает "
+"предпочтение человекочитаемым [\"расширенным командам G-Code\"](#additional-"
+"commands). Аналогично, вывод терминала в G-коде предназначен только для "
+"чтения человеком - см. документ [API Server](API_Server.md), если вы "
+"управляете Klipper из внешнего программного обеспечения."
 
 #: docs/G-Codes.md:block 139 (paragraph)
 msgid ""
@@ -2290,6 +2400,9 @@ msgid ""
 "See the developer documentation of [GET_POSITION "
 "output](Code_Overview.md#coordinate-systems) for more information."
 msgstr ""
+"`GET_POSITION`: Возвращает информацию о текущем местоположении головки "
+"инструмента. Дополнительную информацию см. в документации разработчика "
+"[GET_POSITION output](Code_Overview.md#coordinate-systems)."
 
 #: docs/G-Codes.md:block 82 (paragraph)
 msgid ""
@@ -2297,16 +2410,21 @@ msgid ""
 "[extruder](Config_Reference.md#extruder) config sections, this command "
 "changes the active hotend."
 msgstr ""
+"`ACTIVATE_EXTRUDER EXTRUDER=<имя_конфигурации>`: В принтере с несколькими "
+"разделами конфигурации [extruder](Config_Reference.md#extruder) эта команда "
+"изменяет активный хотэнд."
 
 #: docs/G-Codes.md:block 22 (header)
 msgid "[angle]"
-msgstr ""
+msgstr "[угол]"
 
 #: docs/G-Codes.md:block 23 (paragraph)
 msgid ""
 "The following commands are available when an [angle config "
 "section](Config_Reference.md#angle) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел [angle config]"
+"(Config_Reference.md#angle)."
 
 #: docs/G-Codes.md:block 24 (header)
 msgid "ANGLE_CALIBRATE"
@@ -2328,10 +2446,24 @@ msgid ""
 "the [measuring resonance document](Measuring_Resonances.md#software-"
 "installation) for more information)."
 msgstr ""
+"`ANGLE_CALIBRATE CHIP=<имя_чипа>`: Выполняет калибровку угла на заданном "
+"датчике (должна быть секция конфигурации `[имя_чипа_угла]`, в которой указан "
+"параметр `шаговый двигатель`). ВАЖНО - этот инструмент даст команду шаговому "
+"двигателю двигаться без проверки обычных кинематических границ. В идеале "
+"перед выполнением калибровки двигатель должен быть отсоединен от каретки "
+"принтера. Если шаговый двигатель не может быть отсоединен от принтера, перед "
+"началом калибровки убедитесь, что каретка находится вблизи центра своей "
+"направляющей. (Во время этого теста шаговый двигатель может переместиться "
+"вперед или назад на два полных оборота). После завершения теста "
+"воспользуйтесь командой `SAVE_CONFIG`, чтобы сохранить данные калибровки в "
+"файле config. Для использования этого инструмента необходимо установить "
+"пакет Python \"numpy\" (более подробную информацию см. в документе "
+"[Измерение резонансов](Measuring_Resonances.md#software-installation))."
 
 #: docs/G-Codes.md:block 26 (header)
+#, fuzzy
 msgid "ANGLE_DEBUG_READ"
-msgstr ""
+msgstr "ANGLE_DEBUG_READ"
 
 #: docs/G-Codes.md:block 27 (paragraph)
 msgid ""
@@ -2339,10 +2471,14 @@ msgid ""
 "register \"register\" (e.g. 44 or 0x2C). Can be useful for debugging "
 "purposes. This is only available for tle5012b chips."
 msgstr ""
+"`ANGLE_DEBUG_READ CHIP=<имя_конфигурации> REG=<регистр>`: Запрашивает "
+"\"регистр\" датчика (например, 44 или 0x2C). Может быть полезен для целей "
+"отладки. Эта функция доступна только для чипов tle5012b."
 
 #: docs/G-Codes.md:block 28 (header)
+#, fuzzy
 msgid "ANGLE_DEBUG_WRITE"
-msgstr ""
+msgstr "ANGLE_DEBUG_WRITE"
 
 #: docs/G-Codes.md:block 29 (paragraph)
 msgid ""
@@ -2352,16 +2488,24 @@ msgid ""
 "sensor data sheet for the reference. This is only available for tle5012b "
 "chips."
 msgstr ""
+"`ANGLE_DEBUG_WRITE CHIP=<имя_конфигурации> REG=<регистр> VAL=<значение>`: "
+"Записывает необработанное \"значение\" в регистр \"register\". И \"значение\""
+", и \"регистр\" могут быть десятичными или шестнадцатеричными целыми "
+"числами. Используйте с осторожностью и обратитесь к спецификации датчика. "
+"Эта функция доступна только для чипов tle5012b."
 
 #: docs/G-Codes.md:block 199 (header)
+#, fuzzy
 msgid "[led]"
-msgstr ""
+msgstr "[led]"
 
 #: docs/G-Codes.md:block 200 (paragraph)
 msgid ""
 "The following command is available when any of the [led config "
 "sections](Config_Reference.md#leds) are enabled."
 msgstr ""
+"Следующая команда доступна, если включен любой из разделов [led config]"
+"(Config_Reference.md#leds)."
 
 #: docs/G-Codes.md:block 202 (paragraph)
 msgid ""
@@ -2381,10 +2525,28 @@ msgid ""
 "timeout. If careful timing is not needed, the optional SYNC=0 parameter can "
 "be specified to apply the changes without resetting the idle timeout."
 msgstr ""
+"`SET_LED LED=<config_name> RED=<value> GREEN=<value> BLUE=<value> "
+"WHITE=<value> [INDEX=<index>] [TRANSMIT=0] [SYNC=1]`: Устанавливает выход "
+"светодиодов. Каждый цвет `<значения>` должен быть в диапазоне от 0,0 до 1,0. "
+"Опция WHITE действительна только для RGBW-светодиодов. Если светодиод "
+"поддерживает несколько чипов в последовательной цепочке, можно указать INDEX "
+"для изменения цвета только данного чипа (1 для первого чипа, 2 для второго и "
+"т. д.). Если INDEX не указан, то все светодиоды в последовательной цепочке "
+"будут настроены на заданный цвет. Если указано TRANSMIT=0, то изменение "
+"цвета будет происходить только при следующей команде SET_LED, в которой не "
+"указано TRANSMIT=0; это может быть полезно в сочетании с параметром INDEX "
+"для пакетного обновления нескольких светодиодов в последовательной цепочке. "
+"По умолчанию команда SET_LED синхронизирует свои изменения с другими "
+"текущими командами gcode. Это может привести к нежелательному поведению, "
+"если светодиоды устанавливаются в то время, когда принтер не печатает, так "
+"как это приведет к сбросу таймаута простоя. Если тщательная синхронизация не "
+"требуется, можно указать дополнительный параметр SYNC=0, чтобы применить "
+"изменения без сброса таймаута простоя."
 
 #: docs/G-Codes.md:block 203 (header)
+#, fuzzy
 msgid "SET_LED_TEMPLATE"
-msgstr ""
+msgstr "SET_LED_TEMPLATE"
 
 #: docs/G-Codes.md:block 204 (paragraph)
 msgid ""
@@ -2405,14 +2567,32 @@ msgid ""
 "template assigned to the LED (one can then use `SET_LED` commands to manage "
 "the LED's color settings)."
 msgstr ""
+"`SET_LED_TEMPLATE LED=<имя_леда> TEMPLATE=<имя_шаблона> [<param_x>=<литерал>]"
+" [INDEX=<индекс>]`: Присваивает [display_template]"
+"(Config_Reference.md#display_template) заданному [LED]"
+"(Config_Reference.md#leds). Например, если определить секцию конфигурации `"
+"[display_template my_led_template]`, то здесь можно назначить "
+"`TEMPLATE=my_led_template`. Шаблон display_template должен создавать строку, "
+"разделенную запятыми, содержащую четыре числа с плавающей точкой, "
+"соответствующие настройкам красного, зеленого, синего и белого цветов. "
+"Шаблон будет постоянно оцениваться, и светодиод будет автоматически "
+"устанавливаться на полученные цвета. Можно задать параметры display_template "
+"для использования во время оценки шаблона (параметры будут разобраны как "
+"литералы Python). Если INDEX не указан, то все чипы в последовательной "
+"цепочке светодиода будут установлены в соответствии с шаблоном, в противном "
+"случае будет обновлен только чип с заданным индексом. Если TEMPLATE - пустая "
+"строка, то эта команда очистит любой предыдущий шаблон, назначенный "
+"светодиоду (после этого можно использовать команды `SET_LED` для управления "
+"настройками цвета светодиода)."
 
 #: docs/G-Codes.md:block 251 (paragraph)
 msgid "The query_adc module is automatically loaded."
-msgstr ""
+msgstr "Модуль query_adc загружается автоматически."
 
 #: docs/G-Codes.md:block 303 (header)
+#, fuzzy
 msgid "[smart_effector]"
-msgstr ""
+msgstr "[smart_effector]"
 
 #: docs/G-Codes.md:block 304 (paragraph)
 msgid ""
@@ -2423,10 +2603,17 @@ msgid ""
 " before changing the Smart Effector parameters. Also check the [probe "
 "calibration guide](Probe_Calibrate.md)."
 msgstr ""
+"Несколько команд доступны, если включен раздел конфигурации [smart_effector]"
+"(Config_Reference.md#smart_effector). Перед изменением параметров Smart "
+"Effector обязательно ознакомьтесь с официальной документацией по Smart "
+"Effector на [Duet3D Wiki](https://duet3d.dozuki.com/Wiki/"
+"Smart_effector_and_carriage_adapters_for_delta_printer). Также ознакомьтесь "
+"с руководством по калибровке [Probe calibration guide](Probe_Calibrate.md)."
 
 #: docs/G-Codes.md:block 305 (header)
+#, fuzzy
 msgid "SET_SMART_EFFECTOR"
-msgstr ""
+msgstr "SET_SMART_EFFECTOR"
 
 #: docs/G-Codes.md:block 306 (paragraph)
 msgid ""
@@ -2444,16 +2631,33 @@ msgid ""
 "see the [config section](Config_Reference.md#smart_effector) of Smart "
 "Effector for more info on those parameters."
 msgstr ""
+"`SET_SMART_EFFECTOR [SENSITIVITY=<чувствительность>] [ACCEL=<ускорение>] "
+"[RECOVERY_TIME=<время>]`: Установка параметров интеллектуального эффектора. "
+"При указании `SENSITIVITY` соответствующее значение записывается в EEPROM "
+"SmartEffector (требуется наличие `control_pin`). Допустимые значения "
+"`<чувствительности>` - 0...255, по умолчанию - 50. При меньших значениях "
+"требуется меньшее усилие контакта с соплом для срабатывания (но возрастает "
+"риск ложного срабатывания из-за вибраций во время зондирования), а при "
+"больших значениях уменьшается количество ложных срабатываний (но требуется "
+"большее усилие контакта для срабатывания). Поскольку чувствительность "
+"записывается в EEPROM, она сохраняется после выключения, и поэтому ее не "
+"нужно настраивать при каждом запуске принтера. Параметры `ACCEL` и "
+"`RECOVERY_TIME` позволяют переопределять соответствующие параметры во время "
+"выполнения, более подробную информацию об этих параметрах см. в разделе "
+"[config](Config_Reference.md#smart_effector) Smart Effector."
 
 #: docs/G-Codes.md:block 307 (header)
+#, fuzzy
 msgid "RESET_SMART_EFFECTOR"
-msgstr ""
+msgstr "RESET_SMART_EFFECTOR"
 
 #: docs/G-Codes.md:block 308 (paragraph)
 msgid ""
 "`RESET_SMART_EFFECTOR`: Resets Smart Effector sensitivity to its factory "
 "settings. Requires `control_pin` to be provided in the config section."
 msgstr ""
+"`RESET_SMART_EFFECTOR`: Возвращает чувствительность Smart Effector к "
+"заводским настройкам. Требует указания `control_pin` в секции config."
 
 #: docs/G-Codes.md:block 11 (paragraph)
 msgid ""
@@ -2461,10 +2665,15 @@ msgid ""
 "the section names specified in the [printer configuration "
 "file](Config_Reference.md). Note that some modules are automatically loaded."
 msgstr ""
+"Этот раздел организован по названиям модулей Klipper, которые обычно следуют "
+"за названиями разделов, указанными в [файле конфигурации принтера]"
+"(Config_Reference.md). Обратите внимание, что некоторые модули загружаются "
+"автоматически."
 
 #: docs/G-Codes.md:block 87 (header)
+#, fuzzy
 msgid "[exclude_object]"
-msgstr ""
+msgstr "[exclude_object]"
 
 #: docs/G-Codes.md:block 88 (paragraph)
 msgid ""
@@ -2472,28 +2681,36 @@ msgid ""
 "section](Config_Reference.md#exclude_object) is enabled (also see the "
 "[exclude object guide](Exclude_Object.md)):"
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации [exclude_object]"
+"(Config_Reference.md#exclude_object) (также см. руководство по "
+"[exclude object](Exclude_Object.md)):"
 
 #: docs/G-Codes.md:block 89 (header)
+#, fuzzy
 msgid "`EXCLUDE_OBJECT`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT`"
 
 #: docs/G-Codes.md:block 90 (paragraph)
 msgid ""
 "`EXCLUDE_OBJECT [NAME=object_name] [CURRENT=1] [RESET=1]`: With no "
 "parameters, this will return a list of all currently excluded objects."
 msgstr ""
+"`EXCLUDE_OBJECT [NAME=имя_объекта] [CURRENT=1] [RESET=1]`: Без параметров "
+"возвращает список всех исключенных в данный момент объектов."
 
 #: docs/G-Codes.md:block 91 (paragraph)
 msgid ""
 "When the `NAME` parameter is given, the named object will be excluded from "
 "printing."
 msgstr ""
+"Если указан параметр `НАЗВАНИЕ`, именованный объект будет исключен из печати."
 
 #: docs/G-Codes.md:block 92 (paragraph)
 msgid ""
 "When the `CURRENT` parameter is given, the current object will be excluded "
 "from printing."
 msgstr ""
+"Если указан параметр `СЕРВИС`, то текущий объект будет исключен из печати."
 
 #: docs/G-Codes.md:block 93 (paragraph)
 msgid ""
@@ -2501,16 +2718,22 @@ msgid ""
 "cleared. Additionally including `NAME` will only reset the named object. "
 "This **can** cause print failures, if layers were already skipped."
 msgstr ""
+"При указании параметра `СБРОС` список исключенных объектов будет очищен. "
+"Дополнительно указав `НАЗВАНИЕ`, вы сбросите только названный объект. Это "
+"**может** привести к сбоям печати, если слои уже были пропущены."
 
 #: docs/G-Codes.md:block 94 (header)
+#, fuzzy
 msgid "`EXCLUDE_OBJECT_DEFINE`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT_DEFINE`"
 
 #: docs/G-Codes.md:block 95 (paragraph)
 msgid ""
 "`EXCLUDE_OBJECT_DEFINE [NAME=object_name [CENTER=X,Y] [POLYGON=[[x,y],...]] "
 "[RESET=1] [JSON=1]`: Provides a summary of an object in the file."
 msgstr ""
+"`EXCLUDE_OBJECT_DEFINE [NAME=имя_объекта [CENTER=X,Y] [POLYGON=[[x,y],...]] "
+"[RESET=1] [JSON=1]`: Предоставляет краткую информацию об объекте в файле."
 
 #: docs/G-Codes.md:block 96 (paragraph)
 msgid ""
@@ -2518,38 +2741,47 @@ msgid ""
 "Klipper. Returns a list of strings, unless the `JSON` parameter is given, "
 "when it will return object details in json format."
 msgstr ""
+"Без указания параметров выводит список определенных объектов, известных "
+"Klipper. Возвращает список строк, если не указан параметр `JSON`, тогда "
+"возвращает информацию об объекте в формате json."
 
 #: docs/G-Codes.md:block 97 (paragraph)
 msgid ""
 "When the `NAME` parameter is included, this defines an object to be "
 "excluded."
 msgstr ""
+"Если включен параметр `NAME`, это определяет объект, который нужно исключить."
 
 #: docs/G-Codes.md:block 98 (unordered list)
 msgid ""
 "`NAME`: This parameter is required. It is the identifier used by other "
 "commands in this module."
 msgstr ""
+"`НАЗВАНИЕ`: Этот параметр является обязательным. Это идентификатор, "
+"используемый другими командами в этом модуле."
 
 #: docs/G-Codes.md:block 98 (unordered list)
 msgid "`CENTER`: An X,Y coordinate for the object."
-msgstr ""
+msgstr "`ЦЕНТР`: Координаты X,Y для объекта."
 
 #: docs/G-Codes.md:block 98 (unordered list)
 msgid ""
 "`POLYGON`: An array of X,Y coordinates that provide an outline for the "
 "object."
-msgstr ""
+msgstr "`POLYGON`: Массив координат X,Y, которые обеспечивают контур объекта."
 
 #: docs/G-Codes.md:block 99 (paragraph)
 msgid ""
 "When the `RESET` parameter is provided, all defined objects will be cleared,"
 " and the `[exclude_object]` module will be reset."
 msgstr ""
+"При указании параметра `СБРОС` все определенные объекты будут очищены, а "
+"модуль `[exclude_object]` будет сброшен."
 
 #: docs/G-Codes.md:block 100 (header)
+#, fuzzy
 msgid "`EXCLUDE_OBJECT_START`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT_START`"
 
 #: docs/G-Codes.md:block 101 (paragraph)
 msgid ""
@@ -2557,10 +2789,13 @@ msgid ""
 "parameter and denotes the start of the gcode for an object on the current "
 "layer."
 msgstr ""
+"`EXCLUDE_OBJECT_START NAME=имя_объекта`: Эта команда принимает параметр "
+"`НАЗВАНИЕ` и обозначает начало g-кода для объекта на текущем слое."
 
 #: docs/G-Codes.md:block 102 (header)
+#, fuzzy
 msgid "`EXCLUDE_OBJECT_END`"
-msgstr ""
+msgstr "`EXCLUDE_OBJECT_END`"
 
 #: docs/G-Codes.md:block 103 (paragraph)
 msgid ""
@@ -2569,6 +2804,10 @@ msgid ""
 "parameter is optional, and will only warn when the provided name does not "
 "match the current object."
 msgstr ""
+"`EXCLUDE_OBJECT_END [NAME=имя_объекта]`: Обозначает конец g-кода объекта для "
+"слоя. Он работает в паре с `EXCLUDE_OBJECT_START`. Параметр `NAME` "
+"необязателен, и предупреждение будет выдано только в том случае, если "
+"указанное имя не соответствует текущему объекту."
 
 #: docs/G-Codes.md:block 109 (paragraph)
 msgid ""
@@ -2580,6 +2819,12 @@ msgid ""
 " EXTRUDER is not specified, it defaults to the stepper defined in the active"
 " hotend."
 msgstr ""
+"`SET_PRESSURE_ADVANCE [EXTRUDER=<config_name>] [ADVANCE=<pressure_advance>] "
+"[SMOOTH_TIME=<pressure_advance_smooth_time>]`: Установка параметров "
+"опережения давления шагового экструдера (как определено в разделе "
+"конфигурации [extruder](Config_Reference.md#extruder) или [extruder_stepper]"
+"(Config_Reference.md#extruder_stepper)). Если EXTRUDER не указан, по "
+"умолчанию используется степпер, определенный в активном хотэнде."
 
 #: docs/G-Codes.md:block 111 (paragraph)
 msgid ""
@@ -2595,6 +2840,18 @@ msgid ""
 "Do proper calibration with filament before use. If 'DISTANCE' value is not "
 "provided then this command will return the current rotation distance."
 msgstr ""
+"`SET_EXTRUDER_ROTATION_DISTANCE EXTRUDER=<config_name> [DISTANCE=<distance>]"
+"`: Устанавливает новое значение для \"расстояния вращения\" шагового "
+"механизма экструдера (как определено в разделе конфигурации [extruder]"
+"(Config_Reference.md#extruder) или [extruder_stepper]"
+"(Config_Reference.md#extruder_stepper)). Если расстояние поворота - "
+"отрицательное число, то шаговое движение будет инвертировано (относительно "
+"направления шагового движения, указанного в файле конфигурации). Измененные "
+"настройки не сохраняются при перезагрузке Klipper. Используйте настройки с "
+"осторожностью, так как небольшие изменения могут привести к чрезмерному "
+"давлению между экструдером и хотэндом. Перед использованием выполните "
+"правильную калибровку с помощью филамента. Если значение 'DISTANCE' не "
+"задано, то эта команда вернет текущее расстояние вращения."
 
 #: docs/G-Codes.md:block 113 (paragraph)
 msgid ""
@@ -2607,6 +2864,14 @@ msgid ""
 " If MOTION_QUEUE is an empty string then the stepper will be desynchronized "
 "from all extruder movement."
 msgstr ""
+"`SYNC_EXTRUDER_MOTION EXTRUDER=<имя> MOTION_QUEUE=<имя>`: Эта команда "
+"заставит степпер, указанный EXTRUDER (как определено в разделе конфигурации "
+"[extruder](Config_Reference.md#extruder) или [extruder_stepper]"
+"(Config_Reference.md#extruder_stepper)), стать синхронизированным с "
+"движением экструдера, указанного MOTION_QUEUE (как определено в разделе "
+"конфигурации [extruder](Config_Reference.md#extruder)). Если MOTION_QUEUE - "
+"пустая строка, то степпер будет десинхронизирован от всех движений "
+"экструдера."
 
 #: docs/G-Codes.md:block 137 (paragraph)
 msgid ""
@@ -2614,6 +2879,9 @@ msgid ""
 " setting `enable_force_move` in the [printer "
 "config](Config_Reference.md#force_move)."
 msgstr ""
+"Модуль force_move загружается автоматически, однако некоторые команды "
+"требуют установки `enable_force_move` в [printer config]"
+"(Config_Reference.md#force_move)."
 
 #: docs/G-Codes.md:block 281 (paragraph)
 msgid ""
@@ -2646,7 +2914,7 @@ msgstr ""
 
 #: docs/G-Codes.md:block 79 (paragraph)
 msgid "Also provided is the following extended G-Code command:"
-msgstr ""
+msgstr "Также предоставляется следующая расширенная команда G-Code:"
 
 #: docs/G-Codes.md:block 80 (unordered list)
 msgid ""
@@ -2654,6 +2922,9 @@ msgid ""
 "the supplied `MSG` as the current display message. If `MSG` is omitted the "
 "display will be cleared."
 msgstr ""
+"`SET_DISPLAY_TEXT MSG=<message>`: Выполняет эквивалент команды M117, "
+"устанавливая заданное значение `MSG` в качестве текущего сообщения на "
+"дисплее. Если `MSG` не задано, дисплей будет очищен."
 
 #: docs/G-Codes.md:block 291 (unordered list)
 msgid ""
@@ -2662,6 +2933,10 @@ msgid ""
 "compatibility with some octoprint plugins that expect very specific "
 "formatting."
 msgstr ""
+"`RESPOND TYPE=echo_no_space MSG=\"<message>\"`: эхо сообщения, дополненного "
+"`echo:`, без пробела между префиксом и сообщением, полезно для совместимости "
+"с некоторыми плагинами octoprint, которые ожидают очень специфического "
+"форматирования."
 
 #: docs/G-Codes.md:block 218 (header)
 msgid "[mcp4018]"
@@ -2672,10 +2947,13 @@ msgid ""
 "The following command is available when a [mcp4018 config "
 "section](Config_Reference.md#mcp4018) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел [mcp4018 config]"
+"(Config_Reference.md#mcp4018)."
 
 #: docs/G-Codes.md:block 220 (header)
+#, fuzzy
 msgid "SET_DIGIPOT"
-msgstr ""
+msgstr "SET_DIGIPOT"
 
 #: docs/G-Codes.md:block 221 (paragraph)
 msgid ""
@@ -2684,18 +2962,24 @@ msgid ""
 " and 1.0, unless a 'scale' is defined in the config. When 'scale' is "
 "defined, then this value should be between 0.0 and 'scale'."
 msgstr ""
+"`SET_DIGIPOT DIGIPOT=config_name WIPER=<value>`: Эта команда изменит текущее "
+"значение дигипота. Обычно это значение должно быть между 0.0 и 1.0, если "
+"только в конфигурации не задан 'scale'. Если 'scale' определено, то это "
+"значение должно быть между 0.0 и 'scale'."
 
 #: docs/G-Codes.md:block 261 (header)
+#, fuzzy
 msgid "[print_stats]"
-msgstr ""
+msgstr "[print_stats]"
 
 #: docs/G-Codes.md:block 262 (paragraph)
 msgid "The print_stats module is automatically loaded."
-msgstr ""
+msgstr "Модуль print_stats загружается автоматически."
 
 #: docs/G-Codes.md:block 263 (header)
+#, fuzzy
 msgid "SET_PRINT_STATS_INFO"
-msgstr ""
+msgstr "SET_PRINT_STATS_INFO"
 
 #: docs/G-Codes.md:block 264 (paragraph)
 msgid ""
@@ -2706,20 +2990,30 @@ msgid ""
 "<current_layer>]` at the layer change gcode section to pass layer "
 "information from your slicer to Klipper."
 msgstr ""
+"`SET_PRINT_STATS_INFO [TOTAL_LAYER=<total_layer_count>] "
+"[CURRENT_LAYER= <current_layer>]`: Передача информации слайсера, такой как "
+"действие слоя и общее количество, в Klipper. Добавьте `SET_PRINT_STATS_INFO "
+"[TOTAL_LAYER=<total_layer_count>]` в секцию gcode запуска слайсера и `"
+"SET_PRINT_STATS_INFO [CURRENT_LAYER= <current_layer>]` в секцию gcode "
+"изменения слоя, чтобы передать информацию о слоях из слайсера в Klipper."
 
 #: docs/G-Codes.md:block 371 (header)
+#, fuzzy
 msgid "[z_thermal_adjust]"
-msgstr ""
+msgstr "[z_thermal_adjust]"
 
 #: docs/G-Codes.md:block 372 (paragraph)
 msgid ""
 "The following commands are available when the [z_thermal_adjust config "
 "section](Config_Reference.md#z_thermal_adjust) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел [z_thermal_adjust config]"
+"(Config_Reference.md#z_thermal_adjust)."
 
 #: docs/G-Codes.md:block 373 (header)
+#, fuzzy
 msgid "SET_Z_THERMAL_ADJUST"
-msgstr ""
+msgstr "SET_Z_THERMAL_ADJUST"
 
 #: docs/G-Codes.md:block 374 (paragraph)
 msgid ""
@@ -2735,6 +3029,18 @@ msgid ""
 " homing (for use in e.g. non-standard homing routines) - will be reset "
 "automatically upon homing."
 msgstr ""
+"`SET_Z_THERMAL_ADJUST [ENABLE=<0:1>] [TEMP_COEFF=<значение>] "
+"[REF_TEMP=<значение>]`: Включите или отключите терморегулировку Z с помощью "
+"`ENABLE`. Отключение не удаляет уже примененную регулировку, но замораживает "
+"текущее значение регулировки - это предотвращает потенциально опасное "
+"движение вниз по Z. Повторное включение может привести к перемещению "
+"инструмента вверх при обновлении и применении регулировки. `TEMP_COEFF` "
+"позволяет настраивать температурный коэффициент регулировки (т.е. параметр "
+"конфигурации `TEMP_COEFF`). Значения `TEMP_COEFF` не сохраняются в "
+"конфигурации. `REF_TEMP` вручную переопределяет эталонную температуру, "
+"обычно устанавливаемую при наведении (для использования, например, в "
+"нестандартных процедурах наведения) - автоматически сбрасывается при "
+"наведении."
 
 #: docs/G-Codes.md:block 158 (unordered list)
 msgid ""
@@ -2742,10 +3048,15 @@ msgid ""
 "[Y<pos>] [Z<pos>] [E<pos>] [F<speed>] I<value> J<value>|I<value> "
 "K<value>|J<value> K<value>`"
 msgstr ""
+"Перемещение по дуге по часовой стрелке (G2), перемещение по дуге против "
+"часовой стрелки (G3): `G2|G3 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>] [F<speed>] "
+"I<value> J<value>|I<value> K<value>|J<value> K<value>`."
 
 #: docs/G-Codes.md:block 158 (unordered list)
 msgid "Arc Plane Select: G17 (XY plane), G18 (XZ plane), G19 (YZ plane)"
 msgstr ""
+"Выбор плоскости дуги: G17 (плоскость XY), G18 (плоскость XZ), G19 (плоскость "
+"YZ)"
 
 #: docs/G-Codes.md:block 51 (paragraph)
 msgid ""
@@ -2758,6 +3069,15 @@ msgid ""
 "while this tool is active. The optional `HORIZONTAL_MOVE_Z` value overrides "
 "the `horizontal_move_z` option specified in the config file."
 msgstr ""
+"`BED_TILT_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] "
+"[<probe_parameter>=<value>]`: Эта команда зондирует точки, указанные в "
+"конфигурации, а затем рекомендует обновленные корректировки наклона по x и "
+"y. Подробности о дополнительных параметрах зондирования см. в команде PROBE. "
+"Если указан METHOD=manual, то активируется инструмент ручного зондирования - "
+"см. выше команду MANUAL_PROBE для получения подробной информации о "
+"дополнительных командах, доступных при активном инструменте. Необязательное "
+"значение `HORIZONTAL_MOVE_Z` отменяет параметр `horizontal_move_z`, "
+"указанный в файле конфигурации."
 
 #: docs/G-Codes.md:block 69 (paragraph)
 msgid ""
@@ -2770,6 +3090,15 @@ msgid ""
 "available while this tool is active. The optional `HORIZONTAL_MOVE_Z` value "
 "overrides the `horizontal_move_z` option specified in the config file."
 msgstr ""
+"`DELTA_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=<value>] "
+"[<probe_parameter>=<value>]`: Эта команда прощупывает семь точек на станине "
+"и рекомендует обновить положение конечных упоров, углы наклона башни и "
+"радиус. Подробности о дополнительных параметрах зондирования см. в команде "
+"PROBE. Если указан METHOD=manual, то активируется инструмент ручного "
+"зондирования - см. выше команду MANUAL_PROBE для получения подробной "
+"информации о дополнительных командах, доступных при активном инструменте. "
+"Необязательное значение `HORIZONTAL_MOVE_Z` отменяет параметр "
+"`horizontal_move_z`, указанный в файле конфигурации."
 
 #: docs/G-Codes.md:block 308 (paragraph)
 msgid ""
@@ -2786,6 +3115,19 @@ msgid ""
 "height is greater than the value provided. The optional `HORIZONTAL_MOVE_Z` "
 "value overrides the `horizontal_move_z` option specified in the config file."
 msgstr ""
+"`SCREWS_TILT_CALCULATE [DIRECTION=CW|CCW] [MAX_DEVIATION=<значение>] "
+"[HORIZONTAL_MOVE_Z=<значение>] [<параметр_зонда>=<значение>]`: Эта команда "
+"вызывает инструмент регулировки винтов станины. Она направит сопло в разные "
+"места (как определено в файле конфигурации), измеряя высоту z, и рассчитает "
+"количество поворотов ручки для регулировки уровня станины. Если указано "
+"значение DIRECTION, все повороты ручки будут выполняться в одном направлении "
+"- по часовой стрелке (CW) или против часовой стрелки (CCW). Подробные "
+"сведения о дополнительных параметрах датчика см. в команде PROBE. ВАЖНО: "
+"Перед использованием этой команды всегда необходимо выполнить G28. Если "
+"указано MAX_DEVIATION, команда выдаст ошибку gcode, если разница в высоте "
+"винта по отношению к базовой высоте винта будет больше указанного значения. "
+"Необязательное значение `HORIZONTAL_MOVE_Z` переопределяет опцию "
+"`horizontal_move_z`, указанную в файле конфигурации."
 
 #: docs/G-Codes.md:block 348 (paragraph)
 msgid ""
@@ -2793,6 +3135,9 @@ msgid ""
 "driver registers and report their values. If a REGISTER is provided, only "
 "the specified register will be dumped."
 msgstr ""
+"`DUMP_TMC STEPPER=<имя> [REGISTER=<имя>]`: Эта команда считывает все "
+"регистры драйвера TMC и сообщает их значения. Если указан REGISTER, то в "
+"дамп попадет только указанный регистр."
 
 #: docs/G-Codes.md:block 352 (paragraph)
 msgid ""
@@ -2803,6 +3148,11 @@ msgid ""
 "stepper must be held at standstill for >130ms so that the driver executes "
 "the AT#1 calibration."
 msgstr ""
+"`SET_TMC_CURRENT STEPPER=<имя> CURRENT=<амперы> HOLDCURRENT=<амперы>`: Это "
+"настроит токи запуска и удержания драйвера TMC. `HOLDCURRENT` не применяется "
+"к драйверам tmc2660. При использовании драйвера с полем `globalscaler` ("
+"tmc5160 и tmc2240), если используется StealthChop2, шаговик должен быть "
+"остановлен в течение >130 мс, чтобы драйвер выполнил калибровку AT#1."
 
 #: docs/G-Codes.md:block 354 (paragraph)
 msgid ""
@@ -2817,6 +3167,16 @@ msgid ""
 "representation. Only use the VELOCITY argument for fields that represent "
 "velocities."
 msgstr ""
+"`SET_TMC_FIELD STEPPER=<имя> FIELD=<поле> VALUE=<значение> "
+"VELOCITY=<значение>`: Эта команда изменит значение указанного поля регистра "
+"драйвера TMC. Эта команда предназначена только для низкоуровневой "
+"диагностики и отладки, поскольку изменение полей во время выполнения может "
+"привести к нежелательному и потенциально опасному поведению вашего принтера. "
+"Для внесения постоянных изменений следует использовать файл конфигурации "
+"принтера. Никаких проверок на вменяемость для заданных значений не "
+"производится. Вместо VALUE можно также указать VELOCITY. Эта скорость "
+"преобразуется в 20-битное представление значений на основе TSTEP. "
+"Используйте аргумент VELOCITY только для полей, представляющих скорости."
 
 #: docs/G-Codes.md:block 379 (paragraph)
 msgid ""
@@ -2827,6 +3187,12 @@ msgid ""
 "`HORIZONTAL_MOVE_Z` value overrides the `horizontal_move_z` option specified"
 " in the config file."
 msgstr ""
+"`Z_TILT_ADJUST [HORIZONTAL_MOVE_Z=<значение>] [<параметр_зонда>=<значение>]`:"
+" Эта команда зондирует точки, указанные в конфигурации, а затем выполняет "
+"независимую регулировку каждого шага Z для компенсации наклона. Подробности "
+"о дополнительных параметрах зондирования см. в команде PROBE. Необязательное "
+"значение `HORIZONTAL_MOVE_Z` отменяет параметр `horizontal_move_z`, "
+"указанный в файле конфигурации."
 
 #: docs/G-Codes.md:block 84 (paragraph)
 msgid ""

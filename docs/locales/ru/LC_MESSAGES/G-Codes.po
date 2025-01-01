@@ -12,11 +12,11 @@
 # Тихон Титовец <titovetstixon@gmail.com>, 2024.
 # Alexandr Voznyuk <9169208719av@gmail.com>, 2024.
 # Arseniy <arseniy@neburalis.space>, 2024.
-# gfbdrgng <hnaofegnp@hldrive.com>, 2024.
+# gfbdrgng <hnaofegnp@hldrive.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-31 11:20+0000\n"
+"PO-Revision-Date: 2025-01-01 13:01+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/g-codes/"
 "ru/>\n"
@@ -2911,6 +2911,34 @@ msgid ""
 "`resonances`, and NAME defaults to the current time in \"YYYYMMDD_HHMMSS\" "
 "format."
 msgstr ""
+"`TEST_RESONANCES AXIS=<axis> OUTPUT=<resonances,raw_data> [NAME=<name>] "
+"[FREQ_START=<min_freq>] [FREQ_END=<max_freq>] [HZ_PER_SEC=<hz_per_sec>] "
+"[CHIPS=<adxl345_chip_name>] [POINT=x,y,z] [INPUT_SHAPING=[<0:1>]]`: "
+"Запускает резонансный тест во всех настроенных точках зондирования для "
+"заданной \"оси\" и измеряет ускорение с помощью чипов акселерометров, "
+"настроенных для соответствующей оси. \"Ось\" может быть либо X или Y, либо "
+"задавать произвольное направление как `AXIS=dx,dy`, где dx и dy - числа с "
+"плавающей точкой, определяющие вектор направления (например, `AXIS=X`, "
+"`AXIS=Y`, или `AXIS=1,-1` для определения диагонального направления). "
+"Обратите внимание, что `AXIS=dx,dy` и `AXIS=-dx,-dy` эквивалентны. "
+"`adxl345_chip_name` может быть одним или несколькими сконфигурированными "
+"чипами adxl345, разделенными запятыми, например `CHIPS="
+"\"adxl345, adxl345 rpi\"`. Обратите внимание, что `adxl345` может быть "
+"опущено в именованных чипах adxl345. Если указано POINT, то оно "
+"переопределяет точку (точки), настроенную в `[resonance_tester]`. Если "
+"`INPUT_SHAPING=0` или не задан (по умолчанию), то отключается формирование "
+"входного сигнала для резонансного тестирования, так как запуск резонансного "
+"тестирования с включенным формирователем входного сигнала недопустим. "
+"Параметр `OUTPUT` - это список, разделенный запятыми, в который будут "
+"записаны выходные данные. Если запрашивается `raw_data`, то необработанные "
+"данные акселерометра записываются в файл или серию файлов `/tmp/"
+"raw_data_<axis>_[<имя_чипа>_][<point>_]<имя>.csv` с (`<point>_` часть имени "
+"генерируется только если настроено более 1 точки зонда или указано POINT). "
+"Если указано `resonances`, вычисляется частотная характеристика (по всем "
+"точкам зондирования) и записывается в файл `/tmp/"
+"resonances_<axis>_<name>.csv`. Если значение не задано, OUTPUT по умолчанию "
+"принимает значение `resonances`, а NAME по умолчанию принимает значение "
+"текущего времени в формате \"YYYYMMDD_HHMMSS\"."
 
 #: docs/G-Codes.md:block 79 (paragraph)
 msgid "Also provided is the following extended G-Code command:"
@@ -3206,10 +3234,20 @@ msgid ""
 " it (in `COPY` mode) or execute them in the opposite (mirror) direction (in "
 "`MIRROR` mode)."
 msgstr ""
+"`SET_DUAL_CARRIAGE CARRIAGE=[0|1] [MODE=[PRIMARY|COPY|MIRROR]]`: Эта команда "
+"изменяет режим указанной каретки. Если не указан `MODE`, то по умолчанию "
+"устанавливается `PRIMARY`. Установка режима на `PRIMARY` деактивирует другую "
+"каретку и заставляет указанную каретку выполнять последующие команды G-Code "
+"как есть. Режимы `COPY` и `MIRROR` поддерживаются только для `CARRIAGE=1`. "
+"При установке любого из этих режимов каретка 1 будет отслеживать последующие "
+"перемещения каретки 0 и либо копировать ее относительные перемещения (в "
+"режиме `COPY`), либо выполнять их в противоположном (зеркальном) направлении "
+"(в режиме `MIRROR`)."
 
 #: docs/G-Codes.md:block 85 (header)
+#, fuzzy
 msgid "SAVE_DUAL_CARRIAGE_STATE"
-msgstr ""
+msgstr "SAVE_DUAL_CARRIAGE_STATE"
 
 #: docs/G-Codes.md:block 86 (paragraph)
 msgid ""
@@ -3219,10 +3257,17 @@ msgid ""
 "overrides. If NAME is provided it allows one to name the saved state to the "
 "given string. If NAME is not provided it defaults to \"default\"."
 msgstr ""
+"`SAVE_DUAL_CARRIAGE_STATE [NAME=<имя_состояния>]`: Сохраняет текущие "
+"положения сдвоенных вагонеток и их режимы. Сохранение и восстановление "
+"состояния DUAL_CARRIAGE может быть полезно в скриптах и макросах, а также в "
+"переопределении процедур самонаведения. Если указано NAME, то можно дать имя "
+"сохраненному состоянию в виде заданной строки. Если NAME не указано, то по "
+"умолчанию используется значение \"default\"."
 
 #: docs/G-Codes.md:block 87 (header)
+#, fuzzy
 msgid "RESTORE_DUAL_CARRIAGE_STATE"
-msgstr ""
+msgstr "RESTORE_DUAL_CARRIAGE_STATE"
 
 #: docs/G-Codes.md:block 88 (paragraph)
 msgid ""
@@ -3236,6 +3281,17 @@ msgid ""
 "carriages restore their positions only over their own axis, which may be "
 "necessary to correctly restore COPY and MIRROR mode of the dual carraige."
 msgstr ""
+"`RESTORE_DUAL_CARRIAGE_STATE [NAME=<имя_состояния>] [MOVE=[0|1] "
+"[MOVE_SPEED=<speed>]]`: Восстанавливает ранее сохраненные позиции сдвоенных "
+"кареток и их режимы, если только не указано \"MOVE=0\", в этом случае будут "
+"восстановлены только сохраненные режимы, но не позиции кареток. Если "
+"восстанавливаются позиции и указано \"MOVE_SPEED\", то перемещения "
+"инструментальной головки будут выполняться с заданной скоростью (в мм/с); в "
+"противном случае для перемещения инструментальной головки будет "
+"использоваться скорость наведения рельса. Обратите внимание, что каретки "
+"восстанавливают свои позиции только по своей оси, что может потребоваться "
+"для корректного восстановления режимов COPY и MIRROR сдвоенного кареточного "
+"узла."
 
 #: docs/G-Codes.md:block 298 (paragraph)
 msgid ""
@@ -3256,20 +3312,42 @@ msgid ""
 "`SAVE_CONFIG` command, and if `[input_shaper]` was already enabled "
 "previously, these parameters take effect immediately."
 msgstr ""
+"`SHAPER_CALIBRATE [AXIS=<axis>] [NAME=<name>] [FREQ_START=<min_freq>] "
+"[FREQ_END=<max_freq>] [HZ_PER_SEC=<hz_per_sec>] [CHIPS=<adxl345_chip_name>] "
+"[MAX_SMOOTHING=<max_smoothing>]`: Аналогично `TEST_RESONANCES`, запускает "
+"резонансный тест, как настроено, и пытается найти оптимальные параметры для "
+"входного формирователя для требуемой оси (или обеих осей X и Y, если "
+"параметр `AXIS` не установлен). Если параметр `MAX_SMOOTHING` не установлен, "
+"его значение берется из секции `[resonance_tester]`, по умолчанию значение "
+"не установлено. Дополнительные сведения об использовании этой функции см. в "
+"разделе [Максимальное сглаживание](Measuring_Resonances.md#max-smoothing) "
+"руководства по измерению резонансов. Результаты настройки выводятся на "
+"консоль, а частотные характеристики и значения различных входных "
+"формирователей записываются в CSV-файл(ы) `/tmp/"
+"calibration_data_<axis>_<name>.csv`. Если не указано, по умолчанию NAME - "
+"это текущее время в формате \"YYYYMMDD_HHMMSS\". Обратите внимание, что "
+"предложенные параметры входного формирователя можно сохранить в "
+"конфигурации, выполнив команду `SAVE_CONFIG`, и если `[input_shaper]` уже "
+"был включен ранее, эти параметры вступят в силу немедленно."
 
 #: docs/G-Codes.md:block 376 (header)
+#, fuzzy
 msgid "[axis_twist_compensation]"
-msgstr ""
+msgstr "[axis_twist_compensation]"
 
 #: docs/G-Codes.md:block 377 (paragraph)
 msgid ""
 "The following commands are available when the [axis_twist_compensation "
 "config section](Config_Reference.md#axis_twist_compensation) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел "
+"[Конфигурация axis_twist_compensation]"
+"(Config_Reference.md#axis_twist_compensation)."
 
 #: docs/G-Codes.md:block 378 (header)
+#, fuzzy
 msgid "AXIS_TWIST_COMPENSATION_CALIBRATE"
-msgstr ""
+msgstr "AXIS_TWIST_COMPENSATION_CALIBRATE"
 
 #: docs/G-Codes.md:block 379 (paragraph)
 msgid ""
@@ -3277,6 +3355,9 @@ msgid ""
 "twist calibration wizard. `SAMPLE_COUNT` specifies the number of points "
 "along the X axis to calibrate at and defaults to 3."
 msgstr ""
+"`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<значение>]`: Запускает "
+"мастер калибровки кручения по оси X. `SAMPLE_COUNT` задает количество точек "
+"вдоль оси X для калибровки и по умолчанию равно 3."
 
 #: docs/G-Codes.md:block 37 (paragraph)
 msgid ""
@@ -3296,6 +3377,23 @@ msgid ""
 "used to define the probed area. The optional `ADAPTIVE_MARGIN` value "
 "overrides the `adaptive_margin` option specified in the config file."
 msgstr ""
+"`BED_MESH_CALIBRATE [PROFILE=<name>] [METHOD=manual] "
+"[HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>] "
+"[<mesh_parameter>=<value>] [ADAPTIVE=1] [ADAPTIVE_MARGIN=<value>]`: Эта "
+"команда производит зондирование ложа с помощью сгенерированных точек, "
+"заданных параметрами в конфигурации. После зондирования генерируется сетка и "
+"в соответствии с ней корректируется перемещение по оси z. Сетка будет "
+"сохранена в профиль, указанный параметром `PROFILE`, или `default`, если он "
+"не указан. Подробности о дополнительных параметрах зонда см. в команде "
+"PROBE. Если указан METHOD=manual, то активируется инструмент ручного "
+"зондирования - см. выше команду MANUAL_PROBE для получения подробной "
+"информации о дополнительных командах, доступных при активном инструменте. "
+"Необязательное значение `HORIZONTAL_MOVE_Z` отменяет опцию "
+"`horizontal_move_z`, указанную в файле конфигурации. Если задано значение "
+"ADAPTIVE=1, то для определения области зондирования будут использоваться "
+"объекты, заданные в печатаемом Gcode-файле. Необязательное значение "
+"`ADAPTIVE_MARGIN` отменяет опцию `adaptive_margin`, указанную в файле "
+"конфигурации."
 
 #: docs/G-Codes.md:block 47 (paragraph)
 msgid ""
@@ -3306,6 +3404,13 @@ msgid ""
 "additional z-adjustment directly, it is used to correct the `fade` "
 "calculation when a `gcode offset` has been applied to the Z axis."
 msgstr ""
+"`BED_MESH_OFFSET [X=<значение>] [Y=<значение>] [ZFADE=<значение]`: Применяет "
+"смещения X, Y и/или ZFADE к поиску сетки. Это полезно для принтеров с "
+"независимыми экструдерами, поскольку смещение необходимо для правильной "
+"настройки Z после смены инструмента. Обратите внимание, что смещение ZFADE "
+"не применяет дополнительную корректировку по оси Z напрямую, оно "
+"используется для корректировки расчета `fade`, когда к оси Z было применено "
+"смещение `gcode`."
 
 #: docs/G-Codes.md:block 235 (paragraph)
 msgid ""
@@ -3314,6 +3419,10 @@ msgid ""
 "set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is"
 " configured in the output_pin config section."
 msgstr ""
+"`SET_PIN PIN=config_name VALUE=<value>`: Устанавливает пин на заданный выход "
+"`VALUE`. Для \"цифровых\" выводов VALUE должно быть 0 или 1. Для ШИМ-выводов "
+"установите значение между 0.0 и 1.0 или между 0.0 и `scale`, если шкала "
+"задана в секции конфигурации output_pin."
 
 #: docs/G-Codes.md:block 281 (header)
 msgid "[pwm_cycle_time]"
@@ -3324,6 +3433,8 @@ msgid ""
 "The following command is available when a [pwm_cycle_time config "
 "section](Config_Reference.md#pwm_cycle_time) is enabled."
 msgstr ""
+"Следующая команда доступна, если включен раздел конфигурации [pwm_cycle_time]"
+"(Config_Reference.md#pwm_cycle_time)."
 
 #: docs/G-Codes.md:block 284 (paragraph)
 msgid ""
@@ -3335,6 +3446,13 @@ msgid ""
 "CYCLE_TIME parameter will use the `cycle_time` specified in the "
 "pwm_cycle_time config section)."
 msgstr ""
+"`SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: Эта "
+"команда работает аналогично командам [output_pin](#output_pin) SET_PIN. "
+"Здесь команда поддерживает установку явного времени цикла с помощью "
+"параметра CYCLE_TIME (задается в секундах). Обратите внимание, что параметр "
+"CYCLE_TIME не сохраняется между командами SET_PIN (любая команда SET_PIN без "
+"явного параметра CYCLE_TIME будет использовать `cycle_time`, указанное в "
+"разделе конфигурации pwm_cycle_time)."
 
 #: docs/G-Codes.md:block 365 (paragraph)
 msgid ""
@@ -3344,20 +3462,29 @@ msgid ""
 "config file. See the [printer config section](Config_Reference.md#printer) "
 "for a description of each parameter."
 msgstr ""
+"`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] "
+"[MINIMUM_CRUISE_RATIO=<value>] [SQUARE_CORNER_VELOCITY=<value>]`: Эта "
+"команда может изменить ограничения скорости, указанные в файле конфигурации "
+"принтера. Описание каждого параметра см. в разделе [Конфигурация принтера]"
+"(Config_Reference.md#printer)."
 
 #: docs/G-Codes.md:block 281 (header)
+#, fuzzy
 msgid "[probe_eddy_current]"
-msgstr ""
+msgstr "[probe_eddy_current]"
 
 #: docs/G-Codes.md:block 282 (paragraph)
 msgid ""
 "The following commands are available when a [probe_eddy_current config "
 "section](Config_Reference.md#probe_eddy_current) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел конфигурации "
+"[probe_eddy_current](Config_Reference.md#probe_eddy_current)."
 
 #: docs/G-Codes.md:block 283 (header)
+#, fuzzy
 msgid "PROBE_EDDY_CURRENT_CALIBRATE"
-msgstr ""
+msgstr "PROBE_EDDY_CURRENT_CALIBRATE"
 
 #: docs/G-Codes.md:block 284 (paragraph)
 msgid ""
@@ -3366,10 +3493,16 @@ msgid ""
 "tool will take a couple of minutes to complete. After completion, use the "
 "SAVE_CONFIG command to store the results in the printer.cfg file."
 msgstr ""
+"`PROBE_EDDY_CURRENT_CALIBRATE CHIP=<имя_конфигурации>`: Это запускает "
+"инструмент, который калибрует резонансные частоты датчиков по "
+"соответствующим высотам Z. Работа инструмента займет пару минут. После "
+"завершения используйте команду SAVE_CONFIG, чтобы сохранить результаты в "
+"файле printer.cfg."
 
 #: docs/G-Codes.md:block 285 (header)
+#, fuzzy
 msgid "LDC_CALIBRATE_DRIVE_CURRENT"
-msgstr ""
+msgstr "LDC_CALIBRATE_DRIVE_CURRENT"
 
 #: docs/G-Codes.md:block 286 (paragraph)
 msgid ""
@@ -3380,20 +3513,31 @@ msgid ""
 " sensor. After running this command use the SAVE_CONFIG command to store "
 "that new setting in the printer.cfg config file."
 msgstr ""
+"`LDC_CALIBRATE_DRIVE_CURRENT CHIP=<имя_конфигурации>` Этот инструмент "
+"откалибрует регистр ldc1612 DRIVE_CURRENT0. Перед использованием этого "
+"инструмента переместите датчик так, чтобы он находился около центра станины "
+"и примерно на 20 мм выше ее поверхности. Выполните эту команду, чтобы "
+"определить подходящее значение DRIVE_CURRENT для датчика. После выполнения "
+"этой команды воспользуйтесь командой SAVE_CONFIG, чтобы сохранить новую "
+"настройку в файле конфигурации printer.cfg."
 
 #: docs/G-Codes.md:block 393 (header)
+#, fuzzy
 msgid "[temperature_probe]"
-msgstr ""
+msgstr "[temperature_probe]"
 
 #: docs/G-Codes.md:block 394 (paragraph)
 msgid ""
 "The following commands are available when a [temperature_probe config "
 "section](Config_Reference.md#temperature_probe) is enabled."
 msgstr ""
+"Следующие команды доступны, если включен раздел [temperature_probe config]"
+"(Config_Reference.md#temperature_probe)."
 
 #: docs/G-Codes.md:block 395 (header)
+#, fuzzy
 msgid "TEMPERATURE_PROBE_CALIBRATE"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_CALIBRATE"
 
 #: docs/G-Codes.md:block 396 (paragraph)
 msgid ""
@@ -3405,10 +3549,19 @@ msgid ""
 "samples. After a sample has been taken, this delta is used to schedule a "
 "call to `TEMPERATURE_PROBE_NEXT`. The default `STEP` is 2."
 msgstr ""
+"`TEMPERATURE_PROBE_CALIBRATE [PROBE=<имя зонда>] [TARGET=<значение>] "
+"[STEP=<значение>]`: Запускает калибровку дрейфа зонда для зондов на основе "
+"вихревых токов. Параметр `TARGET` - это целевая температура для последнего "
+"образца. Когда температура, зарегистрированная во время пробы, превысит "
+"`TARGET`, калибровка будет завершена. Параметр `STEP` задает дельту "
+"температуры (в C) между пробами. После взятия пробы эта дельта используется "
+"для планирования вызова `TEMPERATURE_PROBE_NEXT`. По умолчанию `STEP` равен "
+"2."
 
 #: docs/G-Codes.md:block 397 (header)
+#, fuzzy
 msgid "TEMPERATURE_PROBE_NEXT"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_NEXT"
 
 #: docs/G-Codes.md:block 398 (paragraph)
 msgid ""
@@ -3418,10 +3571,16 @@ msgid ""
 " run this command to force a new sample. This command is only available "
 "during calibration."
 msgstr ""
+"`TEMPERATURE_PROBE_NEXT`: После начала калибровки эта команда запускается "
+"для взятия следующего образца. Она автоматически запланирована на выполнение "
+"при достижении дельты, указанной в `STEP`, однако ее можно выполнить и "
+"вручную, чтобы заставить взять новый образец. Эта команда доступна только во "
+"время калибровки."
 
 #: docs/G-Codes.md:block 399 (header)
+#, fuzzy
 msgid "TEMPERATURE_PROBE_COMPLETE:"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_COMPLETE:"
 
 #: docs/G-Codes.md:block 400 (paragraph)
 msgid ""
@@ -3429,23 +3588,26 @@ msgid ""
 "current result before the `TARGET` temperature is reached. This command is "
 "only available during calibration."
 msgstr ""
+"`TEMPERATURE_PROBE_COMPLETE`: Может использоваться для завершения калибровки "
+"и сохранения текущего результата до достижения температуры `TARGET`. Эта "
+"команда доступна только во время калибровки."
 
 #: docs/G-Codes.md:block 401 (header)
 msgid "ABORT"
 msgstr "ПРЕРВАТЬ"
 
 #: docs/G-Codes.md:block 402 (paragraph)
-#, fuzzy
 msgid ""
 "`ABORT`: Aborts the calibration process, discarding the current results. "
 "This command is only available during drift calibration."
 msgstr ""
-"'ПРЕРВАТЬ': Прерывание калибровочного процесса, откат текущих результатов. "
-"Эта команда доступна только во время калибровки дрейфа"
+"`ABORT`: Прерывает процесс калибровки, отменяя текущие результаты. Эта "
+"команда доступна только во время калибровки дрейфа."
 
 #: docs/G-Codes.md:block 403 (header)
+#, fuzzy
 msgid "TEMPERATURE_PROBE_ENABLE"
-msgstr ""
+msgstr "TEMPERATURE_PROBE_ENABLE"
 
 #: docs/G-Codes.md:block 404 (paragraph)
 msgid ""
@@ -3453,6 +3615,9 @@ msgid ""
 " on or off. If ENABLE is set to 0, drift compensation will be disabled, if "
 "set to 1 it is enabled."
 msgstr ""
+"`TEMPERATURE_PROBE_ENABLE ENABLE=[0|1]`: Устанавливает включение или "
+"выключение компенсации температурного дрейфа. Если ENABLE установлен в 0, "
+"компенсация дрейфа будет отключена, если установлен в 1 - включена."
 
 #~ msgid ""
 #~ "`SET_VELOCITY_LIMIT [VELOCITY=<value>] [ACCEL=<value>] "

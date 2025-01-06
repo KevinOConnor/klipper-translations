@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "benchmarks/ru/>\n"
@@ -337,72 +337,92 @@ msgstr "avr-gcc (GCC) 5.4.0"
 msgid "samd21 (USB)"
 msgstr "samd21 (USB)"
 
+#, fuzzy
 msgid "223K"
-msgstr ""
+msgstr "223K"
 
+#, fuzzy
 msgid "arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0"
 
 msgid "pru (shared memory)"
-msgstr ""
+msgstr "pru (общая память)"
 
+#, fuzzy
 msgid "260K"
-msgstr ""
+msgstr "260K"
 
+#, fuzzy
 msgid "c5968a08"
-msgstr ""
+msgstr "c5968a08"
 
 msgid "pru-gcc (GCC) 8.0.0 20170530 (experimental)"
-msgstr ""
+msgstr "pru-gcc (GCC) 8.0.0 20170530 (экспериментальный)"
 
+#, fuzzy
 msgid "stm32f103 (USB)"
-msgstr ""
+msgstr "stm32f103 (USB)"
 
+#, fuzzy
 msgid "355K"
-msgstr ""
+msgstr "355K"
 
+#, fuzzy
 msgid "sam3x8e (USB)"
-msgstr ""
+msgstr "sam3x8e (USB)"
 
+#, fuzzy
 msgid "418K"
-msgstr ""
+msgstr "418K"
 
+#, fuzzy
 msgid "lpc1768 (USB)"
-msgstr ""
+msgstr "lpc1768 (USB)"
 
+#, fuzzy
 msgid "534K"
-msgstr ""
+msgstr "534K"
 
+#, fuzzy
 msgid "lpc1769 (USB)"
-msgstr ""
+msgstr "lpc1769 (USB)"
 
+#, fuzzy
 msgid "628K"
-msgstr ""
+msgstr "628K"
 
+#, fuzzy
 msgid "sam4s8c (USB)"
-msgstr ""
+msgstr "sam4s8c (USB)"
 
+#, fuzzy
 msgid "650K"
-msgstr ""
+msgstr "650K"
 
+#, fuzzy
 msgid "8d4a5c16"
-msgstr ""
+msgstr "8d4a5c16"
 
+#, fuzzy
 msgid "samd51 (USB)"
-msgstr ""
+msgstr "samd51 (USB)"
 
+#, fuzzy
 msgid "864K"
-msgstr ""
+msgstr "864K"
 
+#, fuzzy
 msgid "stm32f446 (USB)"
-msgstr ""
+msgstr "stm32f446 (USB)"
 
+#, fuzzy
 msgid "870K"
-msgstr ""
+msgstr "870K"
 
 msgid "Host Benchmarks"
-msgstr ""
+msgstr "Контрольные показатели хоста"
 
+#, fuzzy
 msgid ""
 "SET start_clock {clock+freq}\n"
 "SET ticks 1000\n"
@@ -425,57 +445,91 @@ msgid ""
 "set_next_step_dir oid=2 dir=1\n"
 "queue_step oid=2 interval=3000 count=1 add=0\n"
 msgstr ""
+"SET start_clock {clock+freq}\n"
+"SET ticks 1000\n"
+"\n"
+"reset_step_clock oid=0 clock={start_clock}\n"
+"set_next_step_dir oid=0 dir=0\n"
+"queue_step oid=0 interval={ticks} count=60000 add=0\n"
+"set_next_step_dir oid=0 dir=1\n"
+"queue_step oid=0 interval=3000 count=1 add=0\n"
+"\n"
+"reset_step_clock oid=1 clock={start_clock}\n"
+"set_next_step_dir oid=1 dir=0\n"
+"queue_step oid=1 interval={ticks} count=60000 add=0\n"
+"set_next_step_dir oid=1 dir=1\n"
+"queue_step oid=1 interval=3000 count=1 add=0\n"
+"\n"
+"reset_step_clock oid=2 clock={start_clock}\n"
+"set_next_step_dir oid=2 dir=0\n"
+"queue_step oid=2 interval={ticks} count=60000 add=0\n"
+"set_next_step_dir oid=2 dir=1\n"
+"queue_step oid=2 interval=3000 count=1 add=0\n"
 
+#, fuzzy
 msgid "clear_shutdown\n"
-msgstr ""
+msgstr "clear_shutdown\n"
 
 msgid "ECHO Test result is: {\"%.0fK\" % (3. * freq / ticks / 1000.)}\n"
-msgstr ""
+msgstr "ECHO Результат теста: {\"%.0fK\" % (3. * freq / ticks / 1000.)}\n"
 
 msgid ""
 "DELAY {clock + 2*freq} get_uptime\n"
 "FLOOD 100000 0.0 debug_nop\n"
 "get_uptime\n"
 msgstr ""
+"ЗАДЕРЖКА {часы + 2*частота} get_uptime\n"
+"ПОТОК 100000 0.0 debug_nop\n"
+"get_uptime\n"
 
+#, fuzzy
 msgid ""
 "time ~/klippy-env/bin/python ./klippy/klippy.py config/example-cartesian.cfg"
 " -i something_complex.gcode -o /dev/null -d out/klipper.dict\n"
 msgstr ""
+"time ~/klippy-env/bin/python ./klippy/klippy.py config/example-cartesian.cfg "
+"-i something_complex.gcode -o /dev/null -d out/klipper.dict\n"
 
 msgid "RP2040 step rate benchmark"
-msgstr ""
+msgstr "Эталон скорости шага RP2040"
 
 msgid "The following configuration sequence is used on the RP2040:"
-msgstr ""
+msgstr "Для RP2040 используется следующая последовательность настройки:"
 
+#, fuzzy
 msgid "rp2040"
-msgstr ""
+msgstr "rp2040"
 
+#, fuzzy
 msgid "66"
-msgstr ""
+msgstr "66"
 
 msgid "5"
 msgstr "5"
 
+#, fuzzy
 msgid "22"
-msgstr ""
+msgstr "22"
 
+#, fuzzy
 msgid "rp2040 (USB)"
-msgstr ""
+msgstr "rp2040 (USB)"
 
+#, fuzzy
 msgid "873K"
-msgstr ""
+msgstr "873K"
 
+#, fuzzy
 msgid "c5667193"
-msgstr ""
+msgstr "c5667193"
 
+#, fuzzy
 msgid "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
 
 #: docs/Benchmarks.md:block 1 (header)
 msgid "Benchmarks"
-msgstr ""
+msgstr "Бенчмарки"
 
 #: docs/Benchmarks.md:block 9 (paragraph)
 msgid ""
@@ -484,6 +538,9 @@ msgid ""
 "hardware platform (see below) and then the following is cut-and-paste into "
 "the console.py terminal window:"
 msgstr ""
+"Тест выполняется с помощью инструмента console.py (описан в <Debugging.md>). "
+"Микроконтроллер конфигурируется под конкретную аппаратную платформу (см. "
+"ниже), а затем в окно терминала console.py вставляется следующий текст:"
 
 #: docs/Benchmarks.md:block 86 (paragraph)
 msgid ""
@@ -493,6 +550,11 @@ msgid ""
 "<Debugging.md>). The following is cut-and-paste into the console.py terminal"
 " window:"
 msgstr ""
+"Контрольный тест на диспетчеризацию команд проверяет, сколько \"фиктивных\" "
+"команд может обработать микроконтроллер. Это, прежде всего, тест аппаратного "
+"механизма связи. Тест выполняется с помощью инструмента console.py (описан в "
+"<Debugging.md>). Нижеприведенный текст вырезается и вставляется в окно "
+"терминала console.py:"
 
 #: docs/Benchmarks.md:block 92 (paragraph)
 msgid ""
@@ -501,6 +563,10 @@ msgid ""
 " done by choosing a large and complex G-Code file and timing how long it "
 "takes for the host software to process it. For example:"
 msgstr ""
+"Можно запустить тесты времени на хост-программе, используя механизм "
+"обработки в \"пакетном режиме\" (описан в <Debugging.md>). Обычно для этого "
+"выбирают большой и сложный файл G-кода и засекают время, которое требуется "
+"хост-программе для его обработки. Например:"
 
 #: docs/Benchmarks.md:block 14 (paragraph)
 msgid ""
@@ -508,6 +574,9 @@ msgid ""
 "used, but only the first block of the above test is cut-and-paste into the "
 "console.py window."
 msgstr ""
+"Для получения бенчмарков одиночного шага используется та же "
+"последовательность конфигурации, но в окно console.py вырезается и "
+"вставляется только первый блок приведенного выше теста."
 
 #: docs/Benchmarks.md:block 17 (paragraph)
 msgid ""
@@ -518,8 +587,15 @@ msgid ""
 "pulse. For other micro-controllers use a `step_pulse_duration` corresponding"
 " to 100ns."
 msgstr ""
+"Бенчмарки запускаются с параметрами, подходящими для TMC-драйверов. Для "
+"микроконтроллеров, поддерживающих `STEPPER_BOTH_EDGE=1` (как сообщается в "
+"строке `MCU config` при первом запуске console.py), используйте "
+"`step_pulse_duration=0` и `invert_step=-1`, чтобы включить оптимизированный "
+"степпинг по обоим фронтам шагового импульса. Для других микроконтроллеров "
+"используйте `step_pulse_duration`, соответствующую 100 нс."
 
 #: docs/Benchmarks.md:block 20 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PA5 dir_pin=PA4 invert_step=0 step_pulse_ticks=32\n"
@@ -527,6 +603,14 @@ msgid ""
 "config_stepper oid=2 step_pin=PC7 dir_pin=PC6 invert_step=0 step_pulse_ticks=32\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PA5 dir_pin=PA4 invert_step=0 step_pulse_ticks="
+"32\n"
+"config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=0 step_pulse_ticks="
+"32\n"
+"config_stepper oid=2 step_pin=PC7 dir_pin=PC6 invert_step=0 step_pulse_ticks="
+"32\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 21 (paragraph)
 msgid ""
@@ -535,16 +619,23 @@ msgid ""
 "for an atmega644p (previous tests have confirmed simulavr results match "
 "tests on both a 16Mhz at90usb and a 16Mhz atmega2560)."
 msgstr ""
+"Последний раз тест был запущен на коммите `59314d99` с gcc версии `avr-gcc "
+"(GCC) 5.4.0`. Тесты на 16 и 20 МГц проводились с использованием simulavr, "
+"настроенного на atmega644p (предыдущие тесты подтвердили, что результаты "
+"simulavr совпадают с тестами на 16 МГц at90usb и 16 МГц atmega2560)."
 
 #: docs/Benchmarks.md:block 22 (table)
+#, fuzzy
 msgid "102"
-msgstr ""
+msgstr "102"
 
 #: docs/Benchmarks.md:block 22 (table)
+#, fuzzy
 msgid "486"
-msgstr ""
+msgstr "486"
 
 #: docs/Benchmarks.md:block 25 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PB27 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
@@ -552,18 +643,30 @@ msgid ""
 "config_stepper oid=2 step_pin=PA21 dir_pin=PC30 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PB27 dir_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB26 dir_pin=PC30 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA21 dir_pin=PC30 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 26 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 msgstr ""
+"Последний раз тест выполнялся на коммите `59314d99` с gcc версии `arm-none-"
+"eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 
 #: docs/Benchmarks.md:block 27 (table)
+#, fuzzy
 msgid "257"
-msgstr ""
+msgstr "257"
 
 #: docs/Benchmarks.md:block 30 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PC26 dir_pin=PC18 invert_step=-1 step_pulse_ticks=0\n"
@@ -571,12 +674,22 @@ msgid ""
 "config_stepper oid=2 step_pin=PC26 dir_pin=PB4 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PC26 dir_pin=PC18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PC26 dir_pin=PA8 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PC26 dir_pin=PB4 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 32 (table)
+#, fuzzy
 msgid "260"
-msgstr ""
+msgstr "260"
 
 #: docs/Benchmarks.md:block 35 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PD6 dir_pin=PD11 invert_step=-1 step_pulse_ticks=0\n"
@@ -584,22 +697,35 @@ msgid ""
 "config_stepper oid=2 step_pin=PD8 dir_pin=PD13 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PD6 dir_pin=PD11 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PD7 dir_pin=PD12 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PD8 dir_pin=PD13 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 36 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `gcc version "
 "10.3.1 20210621 (release) (GNU Arm Embedded Toolchain 10.3-2021.07)`."
 msgstr ""
+"Последний раз тест выполнялся на коммите `59314d99` с версией gcc `gcc "
+"версии 10.3.1 20210621 (release) (GNU Arm Embedded Toolchain 10.3-2021.07)`."
 
 #: docs/Benchmarks.md:block 37 (table)
+#, fuzzy
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: docs/Benchmarks.md:block 37 (table)
+#, fuzzy
 msgid "215"
-msgstr ""
+msgstr "215"
 
 #: docs/Benchmarks.md:block 40 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=gpio0_23 dir_pin=gpio1_12 invert_step=0 step_pulse_ticks=20\n"
@@ -607,22 +733,35 @@ msgid ""
 "config_stepper oid=2 step_pin=gpio0_22 dir_pin=gpio2_1 invert_step=0 step_pulse_ticks=20\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=gpio0_23 dir_pin=gpio1_12 invert_step=0 "
+"step_pulse_ticks=20\n"
+"config_stepper oid=1 step_pin=gpio1_15 dir_pin=gpio0_26 invert_step=0 "
+"step_pulse_ticks=20\n"
+"config_stepper oid=2 step_pin=gpio0_22 dir_pin=gpio2_1 invert_step=0 "
+"step_pulse_ticks=20\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 41 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `pru-gcc (GCC) "
 "8.0.0 20170530 (experimental)`."
 msgstr ""
+"Последний раз тест был запущен на коммите `59314d99` с gcc версии `pru-gcc "
+"(GCC) 8.0.0 20170530 (experimental)`."
 
 #: docs/Benchmarks.md:block 42 (table)
+#, fuzzy
 msgid "231"
-msgstr ""
+msgstr "231"
 
 #: docs/Benchmarks.md:block 42 (table)
+#, fuzzy
 msgid "847"
-msgstr ""
+msgstr "847"
 
 #: docs/Benchmarks.md:block 45 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PA1 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
@@ -630,16 +769,27 @@ msgid ""
 "config_stepper oid=2 step_pin=PB8 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PA1 dir_pin=PA2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PB8 dir_pin=PA2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 47 (table)
+#, fuzzy
 msgid "59"
-msgstr ""
+msgstr "59"
 
 #: docs/Benchmarks.md:block 47 (table)
+#, fuzzy
 msgid "249"
-msgstr ""
+msgstr "249"
 
 #: docs/Benchmarks.md:block 50 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PC13 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0\n"
@@ -647,16 +797,27 @@ msgid ""
 "config_stepper oid=2 step_pin=PA4 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PC13 dir_pin=PB5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB3 dir_pin=PB6 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA4 dir_pin=PB7 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 52 (table)
+#, fuzzy
 msgid "61"
-msgstr ""
+msgstr "61"
 
 #: docs/Benchmarks.md:block 52 (table)
+#, fuzzy
 msgid "264"
-msgstr ""
+msgstr "264"
 
 #: docs/Benchmarks.md:block 55 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PA5 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0\n"
@@ -664,6 +825,14 @@ msgid ""
 "config_stepper oid=2 step_pin=PB3 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PA5 dir_pin=PB5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB2 dir_pin=PB6 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PB3 dir_pin=PB7 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 56 (paragraph)
 msgid ""
@@ -671,16 +840,23 @@ msgid ""
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The STM32F407 results were obtained by "
 "running an STM32F407 binary on an STM32F446 (and thus using a 168Mhz clock)."
 msgstr ""
+"Последний раз тест выполнялся на коммите `59314d99` с gcc версии `arm-none-"
+"eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`. Результаты для STM32F407 были "
+"получены путем запуска бинарного файла STM32F407 на STM32F446 (и, таким "
+"образом, с использованием тактовой частоты 168 МГц)."
 
 #: docs/Benchmarks.md:block 57 (table)
+#, fuzzy
 msgid "46"
-msgstr ""
+msgstr "46"
 
 #: docs/Benchmarks.md:block 57 (table)
+#, fuzzy
 msgid "205"
-msgstr ""
+msgstr "205"
 
 #: docs/Benchmarks.md:block 61 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=P1.20 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
@@ -688,6 +864,14 @@ msgid ""
 "config_stepper oid=2 step_pin=P1.23 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=P1.20 dir_pin=P1.18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=P1.21 dir_pin=P1.18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=P1.23 dir_pin=P1.18 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
@@ -695,12 +879,17 @@ msgid ""
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The 120Mhz LPC1769 results were obtained"
 " by overclocking an LPC1768 to 120Mhz."
 msgstr ""
+"Последний раз тест выполнялся на коммите `59314d99` с gcc версии `arm-none-"
+"eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`. Результаты 120 МГц LPC1769 были "
+"получены путем разгона LPC1768 до 120 МГц."
 
 #: docs/Benchmarks.md:block 63 (table)
+#, fuzzy
 msgid "222"
-msgstr ""
+msgstr "222"
 
 #: docs/Benchmarks.md:block 67 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PA27 dir_pin=PA20 invert_step=-1 step_pulse_ticks=0\n"
@@ -708,18 +897,30 @@ msgid ""
 "config_stepper oid=2 step_pin=PA17 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PA27 dir_pin=PA20 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB3 dir_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA17 dir_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 68 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD21G18 micro-controller."
 msgstr ""
+"Последний раз тест был выполнен на коммите `59314d99` с gcc версии `arm-none-"
+"eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0` на микроконтроллере SAMD21G18."
 
 #: docs/Benchmarks.md:block 69 (table)
+#, fuzzy
 msgid "306"
-msgstr ""
+msgstr "306"
 
 #: docs/Benchmarks.md:block 72 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PA22 dir_pin=PA20 invert_step=-1 step_pulse_ticks=0\n"
@@ -727,26 +928,40 @@ msgid ""
 "config_stepper oid=2 step_pin=PA22 dir_pin=PA19 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PA22 dir_pin=PA20 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PA22 dir_pin=PA21 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PA22 dir_pin=PA19 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 73 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD51J19A micro-controller."
 msgstr ""
+"Последний раз тест был выполнен на коммите `59314d99` с gcc версии `arm-none-"
+"eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0` на микроконтроллере SAMD51J19A."
 
 #: docs/Benchmarks.md:block 74 (table)
+#, fuzzy
 msgid "39"
-msgstr ""
+msgstr "39"
 
 #: docs/Benchmarks.md:block 74 (table)
+#, fuzzy
 msgid "191"
-msgstr ""
+msgstr "191"
 
 #: docs/Benchmarks.md:block 74 (table)
+#, fuzzy
 msgid "181"
-msgstr ""
+msgstr "181"
 
 #: docs/Benchmarks.md:block 77 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=gpio25 dir_pin=gpio3 invert_step=-1 step_pulse_ticks=0\n"
@@ -754,14 +969,25 @@ msgid ""
 "config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=gpio25 dir_pin=gpio3 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=gpio26 dir_pin=gpio4 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 78 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a Raspberry Pi Pico board."
 msgstr ""
+"Последний раз тест был выполнен на коммите `59314d99` с gcc версии `arm-none-"
+"eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0` на плате Raspberry Pi Pico."
 
 #: docs/Benchmarks.md:block 82 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=gpio2 dir_pin=gpio3 invert_step=0 step_pulse_ticks=5\n"
@@ -769,6 +995,14 @@ msgid ""
 "config_stepper oid=2 step_pin=gpio6 dir_pin=gpio17 invert_step=0 step_pulse_ticks=5\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=gpio2 dir_pin=gpio3 invert_step=0 "
+"step_pulse_ticks=5\n"
+"config_stepper oid=1 step_pin=gpio4 dir_pin=gpio5 invert_step=0 "
+"step_pulse_ticks=5\n"
+"config_stepper oid=2 step_pin=gpio6 dir_pin=gpio17 invert_step=0 "
+"step_pulse_ticks=5\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 83 (paragraph)
 msgid ""
@@ -776,14 +1010,19 @@ msgid ""
 "8.3.0-6+rpi1) 8.3.0` on a Raspberry Pi 3 (revision a02082). It was difficult"
 " to get stable results in this benchmark."
 msgstr ""
+"Последний раз тест выполнялся на коммите `59314d99` с gcc версии `gcc ("
+"Raspbian 8.3.0-6+rpi1) 8.3.0` на Raspberry Pi 3 (ревизия a02082). В этом "
+"бенчмарке было сложно получить стабильные результаты."
 
 #: docs/Benchmarks.md:block 84 (table)
+#, fuzzy
 msgid "160"
-msgstr ""
+msgstr "160"
 
 #: docs/Benchmarks.md:block 84 (table)
+#, fuzzy
 msgid "380"
-msgstr ""
+msgstr "380"
 
 #: docs/Benchmarks.md:block 15 (paragraph)
 msgid ""
@@ -793,16 +1032,23 @@ msgid ""
 "ticks parameter. The results are rounded to the nearest K. For example, with"
 " three active steppers:"
 msgstr ""
+"Для получения эталонов, приведенных в документе [Features](Features.md), "
+"общее количество шагов в секунду рассчитывается путем умножения числа "
+"активных степперов на номинальную частоту mcu и деления на параметр final "
+"ticks. Результаты округляются до ближайшего К. Например, при трех активных "
+"шаговиках:"
 
 #: docs/Benchmarks.md:block 59 (header)
 msgid "STM32G0B1 step rate benchmark"
-msgstr ""
+msgstr "Эталонный образец частоты шагов STM32G0B1"
 
 #: docs/Benchmarks.md:block 60 (paragraph)
 msgid "The following configuration sequence is used on the STM32G0B1:"
 msgstr ""
+"Для STM32G0B1 используется следующая последовательность конфигурирования:"
 
 #: docs/Benchmarks.md:block 61 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PB13 dir_pin=PB12 invert_step=-1 step_pulse_ticks=0\n"
@@ -810,34 +1056,49 @@ msgid ""
 "config_stepper oid=2 step_pin=PB0 dir_pin=PC5 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PB13 dir_pin=PB12 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PB10 dir_pin=PB2 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PB0 dir_pin=PC5 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
 "The test was last run on commit `247cd753` with gcc version `arm-none-eabi-"
 "gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 msgstr ""
+"Последний раз тест выполнялся на коммите `247cd753` с gcc версии `arm-none-"
+"eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
 
 #: docs/Benchmarks.md:block 63 (table)
+#, fuzzy
 msgid "58"
-msgstr ""
+msgstr "58"
 
 #: docs/Benchmarks.md:block 63 (table)
+#, fuzzy
 msgid "243"
-msgstr ""
+msgstr "243"
 
 #: docs/Benchmarks.md:block 63 (table)
+#, fuzzy
 msgid "stm32g0b1"
-msgstr ""
+msgstr "stm32g0b1"
 
 #: docs/Benchmarks.md:block 59 (header)
 msgid "STM32H7 step rate benchmark"
-msgstr ""
+msgstr "Эталонный образец частоты шагов STM32H7"
 
 #: docs/Benchmarks.md:block 60 (paragraph)
 msgid "The following configuration sequence is used on a STM32H743VIT6:"
 msgstr ""
+"Для STM32H743VIT6 используется следующая последовательность конфигурирования:"
 
 #: docs/Benchmarks.md:block 61 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PD4 dir_pin=PD3 invert_step=-1 step_pulse_ticks=0\n"
@@ -845,6 +1106,14 @@ msgid ""
 "config_stepper oid=2 step_pin=PE2 dir_pin=PE3 invert_step=-1 step_pulse_ticks=0\n"
 "finalize_config crc=0\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PD4 dir_pin=PD3 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PA15 dir_pin=PA8 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PE2 dir_pin=PE3 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
 
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
@@ -852,29 +1121,38 @@ msgid ""
 "gcc (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) [gcc-8-branch revision "
 "273027]`."
 msgstr ""
+"Последний раз тест был запущен на коммите `00191b5c` с gcc версии `arm-none-"
+"eabi-gcc (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) "
+"[gcc-8-branch revision 273027]`."
 
 #: docs/Benchmarks.md:block 63 (table)
+#, fuzzy
 msgid "stm32h7"
-msgstr ""
+msgstr "stm32h7"
 
 #: docs/Benchmarks.md:block 63 (table)
+#, fuzzy
 msgid "44"
-msgstr ""
+msgstr "44"
 
 #: docs/Benchmarks.md:block 63 (table)
+#, fuzzy
 msgid "198"
-msgstr ""
+msgstr "198"
 
 #: docs/Benchmarks.md:block 85 (header)
 msgid "AR100 step rate benchmark"
-msgstr ""
+msgstr "Эталонный показатель скорости шага AR100"
 
 #: docs/Benchmarks.md:block 86 (paragraph)
 msgid ""
 "The following configuration sequence is used on AR100 CPU (Allwinner A64):"
 msgstr ""
+"Для процессора AR100 (Allwinner A64) используется следующая "
+"последовательность конфигурирования:"
 
 #: docs/Benchmarks.md:block 87 (code)
+#, fuzzy
 msgid ""
 "allocate_oids count=3\n"
 "config_stepper oid=0 step_pin=PL10 dir_pin=PE14 invert_step=-1 step_pulse_ticks=0\n"
@@ -883,40 +1161,57 @@ msgid ""
 "finalize_config crc=0\n"
 "\n"
 msgstr ""
+"allocate_oids count=3\n"
+"config_stepper oid=0 step_pin=PL10 dir_pin=PE14 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=1 step_pin=PL11 dir_pin=PE15 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"config_stepper oid=2 step_pin=PL12 dir_pin=PE16 invert_step=-1 "
+"step_pulse_ticks=0\n"
+"finalize_config crc=0\n"
+"\n"
 
 #: docs/Benchmarks.md:block 88 (paragraph)
 msgid ""
 "The test was last run on commit `08d037c6` with gcc version `or1k-linux-"
 "musl-gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller."
 msgstr ""
+"Последний раз тест выполнялся на коммите `08d037c6` с gcc версии `or1k-linux-"
+"musl-gcc (GCC) 9.2.0` на микроконтроллере Allwinner A64-H."
 
 #: docs/Benchmarks.md:block 89 (table)
+#, fuzzy
 msgid "AR100 R_PIO"
-msgstr ""
+msgstr "AR100 R_PIO"
 
 #: docs/Benchmarks.md:block 89 (table)
+#, fuzzy
 msgid "85"
-msgstr ""
+msgstr "85"
 
 #: docs/Benchmarks.md:block 89 (table)
+#, fuzzy
 msgid "359"
-msgstr ""
+msgstr "359"
 
 #: docs/Benchmarks.md:block 105 (table)
 msgid "ar100 (serial)"
-msgstr ""
+msgstr "ar100 (серийный)"
 
 #: docs/Benchmarks.md:block 105 (table)
+#, fuzzy
 msgid "138K"
-msgstr ""
+msgstr "138K"
 
 #: docs/Benchmarks.md:block 105 (table)
+#, fuzzy
 msgid "08d037c6"
-msgstr ""
+msgstr "08d037c6"
 
 #: docs/Benchmarks.md:block 105 (table)
+#, fuzzy
 msgid "or1k-linux-musl-gcc 9.3.0"
-msgstr ""
+msgstr "or1k-linux-musl-gcc 9.3.0"
 
 #~ msgid ""
 #~ "To produce the benchmarks found in the Features.md document, the total "

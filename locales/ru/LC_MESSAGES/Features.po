@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-30 05:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/features/"
 "ru/>\n"
@@ -487,16 +487,19 @@ msgid "SAM4E8E"
 msgstr "SAM4E8E"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "SAMD51"
-msgstr ""
+msgstr "SAMD51"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "STM32F407"
-msgstr ""
+msgstr "STM32F407"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "STM32F446"
-msgstr ""
+msgstr "STM32F446"
 
 #: docs/Features.md:block 11 (paragraph)
 msgid ""
@@ -504,18 +507,24 @@ msgid ""
 "appropriate [config file](../config/), and look for the micro-controller "
 "name in the comments at the top of that file."
 msgstr ""
+"Если вы не знаете, какой микроконтроллер установлен на конкретной плате, "
+"найдите соответствующий файл [config](../config/) и найдите название "
+"микроконтроллера в комментариях в верхней части этого файла."
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "STM32H743"
-msgstr ""
+msgstr "STM32H743"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "9091K"
-msgstr ""
+msgstr "9091K"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "6061K"
-msgstr ""
+msgstr "6061K"
 
 #: docs/Features.md:block 3 (unordered list)
 msgid ""
@@ -530,6 +539,16 @@ msgid ""
 "of acceleration and the physics of the machine kinematics. More precise "
 "stepper movement provides quieter and more stable printer operation."
 msgstr ""
+"Высокоточное шаговое движение. Klipper использует прикладной процессор ("
+"например, недорогой Raspberry Pi) при расчете движений принтера. Прикладной "
+"процессор определяет, когда нужно сделать шаг каждому шаговому двигателю, "
+"сжимает эти события, передает их микроконтроллеру, а затем микроконтроллер "
+"выполняет каждое событие в требуемое время. Каждое событие шагового "
+"двигателя запланировано с точностью 25 микросекунд или лучше. Программное "
+"обеспечение не использует кинематические оценки (такие как алгоритм "
+"Брезенхема) - вместо этого оно рассчитывает точное время шага, основываясь "
+"на физике ускорения и физике кинематики машины. Более точное движение "
+"шагового механизма обеспечивает более тихую и стабильную работу принтера."
 
 #: docs/Features.md:block 3 (unordered list)
 msgid ""
@@ -540,6 +559,12 @@ msgid ""
 "to). This makes it easier to use available hardware, to upgrade to new "
 "hardware, and to have confidence in the hardware."
 msgstr ""
+"Klipper не зависит от аппаратного обеспечения. Вы должны получать одинаково "
+"точное время независимо от низкоуровневого электронного оборудования. Код "
+"микроконтроллера Klipper разработан таким образом, чтобы точно следовать "
+"расписанию, предоставленному хост-программой Klipper (или предупреждать "
+"пользователя, если это не удается). Это облегчает использование имеющегося "
+"оборудования, переход на новое оборудование и уверенность в нем."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
@@ -548,18 +573,28 @@ msgid ""
 "browser. The same Raspberry Pi that runs Klipper can also run the web "
 "interface."
 msgstr ""
+"Доступно несколько веб-интерфейсов. Работает с Mainsail, Fluidd, OctoPrint и "
+"другими. Это позволяет управлять принтером с помощью обычного веб-браузера. "
+"На том же Raspberry Pi, на котором работает Klipper, можно запустить "
+"веб-интерфейс."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
 "Support for cartesian, delta, corexy, corexz, hybrid-corexy, hybrid-corexz, "
 "deltesian, rotary delta, polar, and cable winch style printers."
 msgstr ""
+"Поддерживаются принтеры, работающие в форматах cartesian, delta, corexy, "
+"corexz, hybrid-corexy, hybrid-corexz, deltesian, rotary delta, polar и cable "
+"winch."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
 "Run-time \"exclude object\" support. When configured, this module may "
 "facilitate canceling of just one object in a multi-part print."
 msgstr ""
+"Поддержка функции \"исключить объект\" во время выполнения. При настройке "
+"этот модуль может облегчить отмену только одного объекта в печати, состоящей "
+"из нескольких частей."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
@@ -568,12 +603,18 @@ msgid ""
 "current control of traditional stepper drivers via AD5206, DAC084S085, "
 "MCP4451, MCP4728, MCP4018, and PWM pins."
 msgstr ""
+"Поддержка конфигурирования во время выполнения драйверов шаговых двигателей "
+"TMC2130, TMC2208/TMC2224, TMC2209, TMC2660 и TMC5160. Также поддерживается "
+"управление током традиционных шаговых драйверов с помощью AD5206, "
+"DAC084S085, MCP4451, MCP4728, MCP4018 и выводов ШИМ."
 
 #: docs/Features.md:block 6 (unordered list)
 msgid ""
 "Support for measuring and recording acceleration using an adxl345, mpu9250, "
 "and mpu6050 accelerometers."
 msgstr ""
+"Поддержка измерения и регистрации ускорения с помощью акселерометров "
+"adxl345, mpu9250 и mpu6050."
 
 #: docs/Features.md:block 3 (unordered list)
 msgid ""
@@ -584,18 +625,28 @@ msgid ""
 "higher print velocities. The stepper event timing remains precise even at "
 "high speeds which improves overall stability."
 msgstr ""
+"Лучшая в своем классе производительность. Klipper способен достичь высокой "
+"скорости шагов как на новых, так и на старых микроконтроллерах. Даже на "
+"старых 8-битных микроконтроллерах можно получить скорость более 175 тысяч "
+"шагов в секунду. На более современных микроконтроллерах возможно выполнение "
+"нескольких миллионов шагов в секунду. Более высокая частота шагов позволяет "
+"увеличить скорость печати. Временные характеристики шагового механизма "
+"остаются точными даже на высоких скоростях, что повышает общую стабильность."
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "AR100"
-msgstr ""
+msgstr "AR100"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "3529K"
-msgstr ""
+msgstr "3529K"
 
 #: docs/Features.md:block 10 (table)
+#, fuzzy
 msgid "2507K"
-msgstr ""
+msgstr "2507K"
 
 #~ msgid ""
 #~ "Best in class performance. Klipper is able to achieve high stepping rates on"

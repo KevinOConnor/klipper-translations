@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-31 11:20+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/bed_mesh/"
 "ru/>\n"
@@ -520,7 +520,6 @@ msgstr ""
 "Профили можно загрузить, выполнив команду `BED_MESH_PROFILE LOAD=<имя>`."
 
 #: docs/Bed_Mesh.md:block 7 (code)
-#, fuzzy
 msgid ""
 "[bed_mesh]\n"
 "speed: 120\n"
@@ -530,7 +529,7 @@ msgid ""
 "probe_count: 5, 3\n"
 msgstr ""
 "[bed_mesh]\n"
-"speed: 120\n"
+"скорость: 120\n"
 "horizontal_move_z: 5\n"
 "mesh_min: 35, 6\n"
 "mesh_max: 240, 198\n"
@@ -564,7 +563,6 @@ msgstr ""
 "требуется минимальное количество зондов (probe_count) по 3 вдоль каждой оси."
 
 #: docs/Bed_Mesh.md:block 13 (code)
-#, fuzzy
 msgid ""
 "[bed_mesh]\n"
 "speed: 120\n"
@@ -574,7 +572,7 @@ msgid ""
 "round_probe_count: 5\n"
 msgstr ""
 "[bed_mesh]\n"
-"speed: 120\n"
+"скорость: 120\n"
 "horizontal_move_z: 5\n"
 "mesh_radius: 75\n"
 "mesh_origin: 0, 0\n"
@@ -594,7 +592,6 @@ msgstr ""
 "иллюстрацию ниже."
 
 #: docs/Bed_Mesh.md:block 21 (code)
-#, fuzzy
 msgid ""
 "[bed_mesh]\n"
 "speed: 120\n"
@@ -607,13 +604,13 @@ msgid ""
 "bicubic_tension: 0.2\n"
 msgstr ""
 "[bed_mesh]\n"
-"speed: 120\n"
+"скорость: 120\n"
 "horizontal_move_z: 5\n"
 "mesh_min: 35, 6\n"
 "mesh_max: 240, 198\n"
 "probe_count: 5, 3\n"
 "mesh_pps: 2, 3\n"
-"algorithm: bicubic\n"
+"алгоритм: бикубический\n"
 "bicubic_tension: 0.2\n"
 
 #: docs/Bed_Mesh.md:block 22 (unordered list)
@@ -642,7 +639,6 @@ msgstr ""
 "напрямую."
 
 #: docs/Bed_Mesh.md:block 27 (code)
-#, fuzzy
 msgid ""
 "[bed_mesh]\n"
 "speed: 120\n"
@@ -654,7 +650,7 @@ msgid ""
 "split_delta_z: .025\n"
 msgstr ""
 "[bed_mesh]\n"
-"speed: 120\n"
+"скорость: 120\n"
 "horizontal_move_z: 5\n"
 "mesh_min: 35, 6\n"
 "mesh_max: 240, 198\n"
@@ -663,7 +659,6 @@ msgstr ""
 "split_delta_z: .025\n"
 
 #: docs/Bed_Mesh.md:block 32 (code)
-#, fuzzy
 msgid ""
 "[bed_mesh]\n"
 "speed: 120\n"
@@ -676,7 +671,7 @@ msgid ""
 "fade_target: 0\n"
 msgstr ""
 "[bed_mesh]\n"
-"speed: 120\n"
+"скорость: 120\n"
 "horizontal_move_z: 5\n"
 "mesh_min: 35, 6\n"
 "mesh_max: 240, 198\n"
@@ -686,7 +681,6 @@ msgstr ""
 "fade_target: 0\n"
 
 #: docs/Bed_Mesh.md:block 42 (code)
-#, fuzzy
 msgid ""
 "[bed_mesh]\n"
 "speed: 120\n"
@@ -704,7 +698,7 @@ msgid ""
 "faulty_region_4_max: 45.0, 210.0\n"
 msgstr ""
 "[bed_mesh]\n"
-"speed: 120\n"
+"скорость: 120\n"
 "horizontal_move_z: 5\n"
 "mesh_min: 35, 6\n"
 "mesh_max: 240, 198\n"
@@ -743,14 +737,21 @@ msgid ""
 "Alternatively the old behavior of loading a profile at startup can be "
 "restored with a `[delayed_gcode]`:"
 msgstr ""
+"В качестве альтернативы можно восстановить старое поведение загрузки профиля "
+"при запуске с помощью `[delayed_gcode]`:"
 
 #: docs/Bed_Mesh.md:block 64 (code)
+#, fuzzy
 msgid ""
 "[delayed_gcode bed_mesh_init]\n"
 "initial_duration: .01\n"
 "gcode:\n"
 "  BED_MESH_PROFILE LOAD=default\n"
 msgstr ""
+"[delayed_gcode bed_mesh_init]\n"
+"initial_duration: .01\n"
+"gcode:\n"
+"  BED_MESH_PROFILE LOAD=default\n"
 
 #: docs/Bed_Mesh.md:block 2 (paragraph)
 msgid ""
@@ -762,6 +763,13 @@ msgid ""
 "accurate then the bed_mesh module will not receive accurate results from the"
 " probing process."
 msgstr ""
+"Модуль Bed Mesh можно использовать для компенсации неровностей поверхности "
+"кровати, чтобы добиться лучшего первого слоя по всей кровати. Следует "
+"отметить, что программная коррекция не позволяет достичь идеальных "
+"результатов, она может лишь приблизительно повторить форму ложа. Сетка "
+"станины также не может компенсировать механические и электрические проблемы. "
+"Если ось перекошена или датчик неточен, модуль bed_mesh не получит точных "
+"результатов от процесса измерения."
 
 #: docs/Bed_Mesh.md:block 15 (paragraph)
 msgid ""
@@ -769,6 +777,9 @@ msgid ""
 " see, setting the `mesh_origin` to (-10, 0) allows us to specify a larger "
 "mesh radius of 85."
 msgstr ""
+"На рисунке ниже показано, как генерируются точки зондирования. Как видите, "
+"установка `mesh_origin` в (-10, 0) позволяет нам задать больший радиус сетки "
+"- 85."
 
 #: docs/Bed_Mesh.md:block 20 (paragraph)
 msgid ""
@@ -779,6 +790,13 @@ msgid ""
 "mesh, attempting to simulate the material properties of the bed. Bed Mesh "
 "offers lagrange and bicubic interpolation to accomplish this."
 msgstr ""
+"Хотя для определения Z-величин между точками зондирования можно напрямую "
+"использовать матрицу зондирования с помощью простой билинейной интерполяции, "
+"часто бывает полезно интерполировать дополнительные точки с помощью более "
+"сложных алгоритмов интерполяции для увеличения плотности сетки. Эти "
+"алгоритмы добавляют кривизну в сетку, пытаясь имитировать свойства материала "
+"постели. В Bed Mesh для этого используются алгоритмы интерполяции Лагранжа и "
+"бикубической интерполяции."
 
 #: docs/Bed_Mesh.md:block 29 (paragraph)
 msgid ""
@@ -787,6 +805,10 @@ msgid ""
 "an advanced user may wish to experiment with these options in an effort to "
 "squeeze out the optimal first layer."
 msgstr ""
+"Как правило, значений по умолчанию для этих параметров достаточно, а "
+"значение по умолчанию 5 мм для `move_check_distance` может оказаться "
+"излишним. Однако опытный пользователь может захотеть поэкспериментировать с "
+"этими параметрами, пытаясь выжать оптимальный первый слой."
 
 #: docs/Bed_Mesh.md:block 33 (unordered list)
 msgid ""
@@ -803,6 +825,19 @@ msgid ""
 "of the mesh is used, however it may be desirable to manually adjust the fade"
 " target if one wants to print on a specific portion of the bed."
 msgstr ""
+"`fade_target: 0` *Значение по умолчанию: Среднее значение Z сетки* Значение "
+"`fade_target` можно рассматривать как дополнительное смещение Z, применяемое "
+"ко всему слою после завершения затухания. Вообще говоря, мы хотели бы, чтобы "
+"это значение было равно 0, однако есть обстоятельства, при которых оно не "
+"должно быть таким. Например, предположим, что ваше положение самонаведения "
+"на кровати - это выброс, оно на 0,2 мм ниже, чем средняя измеренная высота "
+"кровати. Если `fade_target` равно 0, fade уменьшит отпечаток в среднем на .2 "
+"мм по всей станине. Если задать `fade_target` равным .2, то область, в "
+"которую попадает отпечаток, расширится на .2 мм, однако остальная часть ложа "
+"будет иметь точные размеры. Обычно рекомендуется не задавать `fade_target` в "
+"конфигурации, чтобы использовалась средняя высота сетки, однако может быть "
+"желательно вручную настроить цель затухания, если требуется печать на "
+"определенной части ложа."
 
 #: docs/Bed_Mesh.md:block 58 (paragraph)
 msgid ""
@@ -810,10 +845,13 @@ msgid ""
 "state is automatically saved to the *default* profile. The *default* profile"
 " can be removed as follows:"
 msgstr ""
+"Следует отметить, что каждый раз, когда происходит BED_MESH_CALIBRATE, "
+"текущее состояние автоматически сохраняется в профиль *по умолчанию*. "
+"Профиль *по умолчанию* можно удалить следующим образом:"
 
 #: docs/Bed_Mesh.md:block 34 (header)
 msgid "Configuring the zero reference position"
-msgstr ""
+msgstr "Настройка нулевого опорного положения"
 
 #: docs/Bed_Mesh.md:block 35 (paragraph)
 msgid ""
@@ -828,6 +866,16 @@ msgid ""
 "performed. The bed_mesh module provides the `zero_reference_position` option"
 " for specifying this coordinate:"
 msgstr ""
+"Многие датчики подвержены \"дрейфу\", т. е. неточностям в измерениях, "
+"вызванным нагревом или помехами. Это может затруднить расчет смещения "
+"датчика по оси Z, особенно при различных температурах станины. Поэтому в "
+"некоторых принтерах используется концевой упор для наведения оси Z и датчик "
+"для калибровки сетки. При такой конфигурации можно сместить сетку так, чтобы "
+"в `опорном положении` (X, Y) применялась нулевая корректировка. В качестве `"
+"опорного положения` должно выступать место на станине, где выполняется тест "
+"бумаги [Z_ENDSTOP_CALIBRATE](./Manual_Level#calibrating-a-z-endstop). Модуль "
+"bed_mesh предоставляет опцию `zero_reference_position` для указания этой "
+"координаты:"
 
 #: docs/Bed_Mesh.md:block 36 (code)
 msgid ""
@@ -839,6 +887,13 @@ msgid ""
 "zero_reference_position: 125, 110\n"
 "probe_count: 5, 3\n"
 msgstr ""
+"[bed_mesh]\n"
+"скорость: 120\n"
+"horizontal_move_z: 5\n"
+"mesh_min: 35, 6\n"
+"mesh_max: 240, 198\n"
+"zero_reference_position: 125, 110\n"
+"probe_count: 5, 3\n"
 
 #: docs/Bed_Mesh.md:block 37 (unordered list)
 msgid ""
@@ -851,10 +906,19 @@ msgid ""
 "z-offset. Note that this coordinate must NOT be in a location specified as a"
 " `faulty_region` if a probe is necessary."
 msgstr ""
+"`zero_reference_position: ` *Значение по умолчанию: None (отключено)* "
+"Функция `zero_reference_position` ожидает координату (X, Y), совпадающую с "
+"координатой `reference position`, описанной выше. Если координата находится "
+"внутри сетки, то сетка будет смещена, так что к опорной позиции будет "
+"применена нулевая корректировка. Если координата лежит вне сетки, то она "
+"будет измерена после калибровки, а полученное значение z будет использовано "
+"в качестве z-смещения. Обратите внимание, что эта координата НЕ должна "
+"находиться в месте, указанном как `faulty_region`, если необходимо выполнить "
+"зондирование."
 
 #: docs/Bed_Mesh.md:block 38 (header)
 msgid "The deprecated relative_reference_index"
-msgstr ""
+msgstr "Устаревший индекс relative_reference_index"
 
 #: docs/Bed_Mesh.md:block 39 (paragraph)
 msgid ""
@@ -865,6 +929,12 @@ msgid ""
 " for the `zero_reference_position`. The output will look similar to the "
 "following:"
 msgstr ""
+"Существующие конфигурации, использующие опцию `relative_reference_index`, "
+"должны быть обновлены для использования `zero_reference_position`. Ответ на "
+"команду [BED_MESH_OUTPUT PGP=1](#output) gcode будет включать координату (X, "
+"Y), связанную с индексом; эта позиция может быть использована в качестве "
+"значения для `нулевой позиции_ссылки`. Вывод будет выглядеть следующим "
+"образом:"
 
 #: docs/Bed_Mesh.md:block 40 (code)
 msgid ""
@@ -877,12 +947,22 @@ msgid ""
 "... (additional generated points)\n"
 "// bed_mesh: relative_reference_index 24 is (131.5, 108.0)\n"
 msgstr ""
+"// bed_mesh: сгенерированные точки\n"
+"// Индекс | Настроенный инструмент | Зонд\n"
+"// 0 | (1.0, 1.0) | (24.0, 6.0)\n"
+"// 1 | (36.7, 1.0) | (59.7, 6.0)\n"
+"// 2 | (72.3, 1.0) | (95.3, 6.0)\n"
+"// 3 | (108.0, 1.0) | (131.0, 6.0)\n"
+"... (дополнительные сгенерированные точки)\n"
+"// bed_mesh: relative_reference_index 24 is (131.5, 108.0)\n"
 
 #: docs/Bed_Mesh.md:block 41 (paragraph)
 msgid ""
 "*Note: The above output is also printed in `klippy.log` during "
 "initialization.*"
 msgstr ""
+"*Примечание: Вышеприведенный вывод также выводится в `klippy.log` во время "
+"инициализации.*"
 
 #: docs/Bed_Mesh.md:block 42 (paragraph)
 msgid ""
@@ -890,10 +970,13 @@ msgid ""
 "printed along with its coordinate. Thus the `zero_reference_position` is "
 "`131.5, 108`."
 msgstr ""
+"На примере выше мы видим, что `относительный_индекс_ссылки` выводится вместе "
+"с его координатой. Таким образом, `нулевая_позиция_ссылки` равна `131.5, "
+"108`."
 
 #: docs/Bed_Mesh.md:block 50 (header)
 msgid "Adaptive Meshes"
-msgstr ""
+msgstr "Адаптивные сетки"
 
 #: docs/Bed_Mesh.md:block 51 (paragraph)
 msgid ""
@@ -902,6 +985,10 @@ msgid ""
 "the method will automatically adjust the mesh parameters based on the area "
 "occupied by the defined print objects."
 msgstr ""
+"Адаптивное зацепление станины - это способ ускорить генерацию сетки станины, "
+"используя только область станины, занятую печатаемыми объектами. При "
+"использовании этого метода параметры сетки автоматически настраиваются в "
+"зависимости от площади, занимаемой заданными объектами печати."
 
 #: docs/Bed_Mesh.md:block 52 (paragraph)
 msgid ""
@@ -912,6 +999,12 @@ msgid ""
 "of the default mesh area and the adapted mesh area. To illustrate this "
 "consider the following example:"
 msgstr ""
+"Адаптированная область сетки будет вычислена из области, определенной "
+"границами всех определенных объектов печати, так что она охватывает все "
+"объекты, включая любые поля, определенные в конфигурации. После вычисления "
+"области количество точек зондирования будет уменьшено на основе соотношения "
+"площади сетки по умолчанию и адаптированной площади сетки. Для иллюстрации "
+"этого рассмотрим следующий пример:"
 
 #: docs/Bed_Mesh.md:block 53 (paragraph)
 msgid ""
@@ -920,16 +1013,24 @@ msgid ""
 "area of `50,50` means a ratio of `0.5x0.5` between the adapted area and "
 "default mesh area."
 msgstr ""
+"Для кровати 150x150 мм с `mesh_min`, установленной на `25,25`, и `mesh_max`, "
+"установленной на `125,125`, площадь сетки по умолчанию составляет квадрат "
+"100 ммx100 мм. Адаптированная площадь сетки `50,50` означает соотношение "
+"`0,5x0,5` между адаптированной площадью и площадью сетки по умолчанию."
 
 #: docs/Bed_Mesh.md:block 54 (paragraph)
 msgid ""
 "If the `bed_mesh` configuration specified `probe_count` as `7x7`, the "
 "adapted bed mesh will use 4x4 probe points (7 * 0.5 rounded up)."
 msgstr ""
+"Если в конфигурации `bed_mesh` указано `probe_count` как `7x7`, то "
+"адаптированная сетка кровати будет использовать 4x4 точки зондирования (7 * "
+"0.5 с округлением вверх)."
 
 #: docs/Bed_Mesh.md:block 55 (paragraph)
+#, fuzzy
 msgid "![adaptive_bedmesh](img/adaptive_bed_mesh.svg)"
-msgstr ""
+msgstr "![adaptive_bedmesh](img/adaptive_bed_mesh.svg)"
 
 #: docs/Bed_Mesh.md:block 56 (code)
 msgid ""
@@ -941,6 +1042,13 @@ msgid ""
 "probe_count: 5, 3\n"
 "adaptive_margin: 5\n"
 msgstr ""
+"[bed_mesh]\n"
+"скорость: 120\n"
+"horizontal_move_z: 5\n"
+"mesh_min: 35, 6\n"
+"mesh_max: 240, 198\n"
+"probe_count: 5, 3\n"
+"adaptive_margin: 5\n"
 
 #: docs/Bed_Mesh.md:block 57 (unordered list)
 msgid ""
@@ -950,10 +1058,17 @@ msgid ""
 " in green) is computed as the used bed area (area in blue) plus the defined "
 "margin."
 msgstr ""
+"`adaptive_margin` *Значение по умолчанию: 0* Граница (в мм) для добавления "
+"вокруг области кровати, используемой определенными объектами. На рисунке "
+"ниже показана адаптированная область сетки кровати с `adaptive_margin` в 5 "
+"мм. Адаптированная площадь сетки (площадь, выделенная зеленым цветом) "
+"рассчитывается как используемая площадь ложа (площадь, выделенная синим "
+"цветом) плюс определенная маржа."
 
 #: docs/Bed_Mesh.md:block 57 (unordered list)
+#, fuzzy
 msgid "![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)"
-msgstr ""
+msgstr "![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)"
 
 #: docs/Bed_Mesh.md:block 58 (paragraph)
 msgid ""
@@ -963,6 +1078,12 @@ msgid ""
 " meshes should not be re-used. The expectation is that a new mesh will be "
 "generated for each print if adaptive meshing is used."
 msgstr ""
+"По своей природе адаптивные сетки печатной основы используют объекты, "
+"определенные файлом Gcode, на котором выполняется печать. Поэтому ожидается, "
+"что каждый Gcode-файл будет генерировать сетку, которая будет охватывать "
+"разные области печатного слоя. Поэтому адаптированные сетки станины не "
+"следует использовать повторно. При использовании адаптивного зацепления "
+"предполагается, что для каждой печати будет создаваться новая сетка."
 
 #: docs/Bed_Mesh.md:block 59 (paragraph)
 msgid ""
@@ -975,18 +1096,28 @@ msgid ""
 "taken when using adaptive bed meshes and attempting print moves outside of "
 "the meshed area."
 msgstr ""
+"Также важно учитывать, что адаптивное зацепление ложа лучше всего "
+"использовать на машинах, которые могут нормально прощупать все ложе и "
+"достичь максимального отклонения менее или равного 1 высоте слоя. Машины с "
+"механическими проблемами, которые обычно компенсируются полной сеткой "
+"станины, могут получить нежелательные результаты при попытке перемещения "
+"печати **за пределами** зоны зондирования. Если полная сетка кровати имеет "
+"дисперсию более 1 высоты слоя, необходимо соблюдать осторожность при "
+"использовании адаптивных сеток кровати и попытках перемещения печати за "
+"пределы зоны сетки."
 
 #: docs/Bed_Mesh.md:block 66 (unordered list)
 msgid "`ADAPTIVE`"
-msgstr ""
+msgstr "`АДАПТИВНОСТЬ`"
 
 #: docs/Bed_Mesh.md:block 66 (unordered list)
+#, fuzzy
 msgid "`ADAPTIVE_MARGIN`"
-msgstr ""
+msgstr "`ADAPTIVE_MARGIN`"
 
 #: docs/Bed_Mesh.md:block 89 (paragraph)
 msgid "`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`"
-msgstr ""
+msgstr "`BED_MESH_OFFSET [X=<значение>] [Y=<значение>] [ZFADE=<значение>]`"
 
 #: docs/Bed_Mesh.md:block 90 (paragraph)
 msgid ""
@@ -999,6 +1130,14 @@ msgid ""
 "extruder, and a positive ZFADE offset should be specified if the secondary "
 "extruder's nozzle is above the primary extruder's."
 msgstr ""
+"Это полезно для принтеров с несколькими независимыми экструдерами, поскольку "
+"смещение необходимо для правильной регулировки Z после смены инструмента. "
+"Смещение следует указывать относительно первичного экструдера. То есть "
+"положительное смещение по X должно быть указано, если вторичный экструдер "
+"установлен справа от первичного, положительное смещение по Y должно быть "
+"указано, если вторичный экструдер установлен \"позади\" первичного, и "
+"положительное смещение по ZFADE должно быть указано, если сопло вторичного "
+"экструдера находится над соплом первичного экструдера."
 
 #: docs/Bed_Mesh.md:block 91 (paragraph)
 msgid ""
@@ -1008,6 +1147,12 @@ msgid ""
 " and needs a negative gcode offset, ie: `SET_GCODE_OFFSET Z=-.2`, it can be "
 "accounted for in `bed_mesh` with `BED_MESH_OFFSET ZFADE=.2`."
 msgstr ""
+"Обратите внимание, что смещение ZFADE *НЕ* непосредственно применяет "
+"дополнительную корректировку. Оно предназначено для компенсации `смещения "
+"gcode` при включении [mesh fade](#mesh-fade). Например, если вторичный "
+"экструдер расположен выше основного и ему требуется отрицательное смещение "
+"gcode, т.е. `SET_GCODE_OFFSET Z=-.2`, это может быть учтено в `bed_mesh` с `"
+"BED_MESH_OFFSET ZFADE=.2`."
 
 #: docs/Bed_Mesh.md:block 8 (unordered list)
 msgid ""
@@ -1016,10 +1161,14 @@ msgid ""
 "process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is "
 "relative to the probe's location."
 msgstr ""
+"`mesh_max: 240, 198` *Обязательно* Самая удаленная от начала координата. Это "
+"не обязательно последняя точка, так как процесс зондирования происходит "
+"зигзагообразно. Как и в случае с `mesh_min`, эта координата является "
+"относительной по отношению к местоположению зонда."
 
 #: docs/Bed_Mesh.md:block 60 (header)
 msgid "Surface Scans"
-msgstr ""
+msgstr "Сканирование поверхности"
 
 #: docs/Bed_Mesh.md:block 61 (paragraph)
 msgid ""
@@ -1029,10 +1178,15 @@ msgid ""
 "the `METHOD=scan` or `METHOD=rapid_scan` probe parameter should be passed in"
 " the `BED_MESH_CALIBRATE` gcode command."
 msgstr ""
+"Некоторые датчики, например [Eddy Current Probe](./Eddy_Probe.md), способны "
+"\"сканировать\" поверхность станины. То есть эти зонды могут брать пробы "
+"сетки, не поднимая инструмент между пробами. Чтобы активировать режим "
+"сканирования, в gcode-команде `BED_MESH_CALIBRATE` следует передать параметр "
+"зонда `METHOD=scan` или `METHOD=rapid_scan`."
 
 #: docs/Bed_Mesh.md:block 62 (header)
 msgid "Scan Height"
-msgstr ""
+msgstr "Высота сканирования"
 
 #: docs/Bed_Mesh.md:block 63 (paragraph)
 msgid ""
@@ -1040,6 +1194,9 @@ msgid ""
 " addition it can be supplied with the `BED_MESH_CALIBRATE` gcode command via"
 " the `HORIZONTAL_MOVE_Z` parameter."
 msgstr ""
+"Высота сканирования задается параметром `horizontal_move_z` в `[bed_mesh]`. "
+"Кроме того, она может быть задана командой gcode `BED_MESH_CALIBRATE` через "
+"параметр `HORIZONTAL_MOVE_Z`."
 
 #: docs/Bed_Mesh.md:block 64 (paragraph)
 msgid ""
@@ -1047,6 +1204,9 @@ msgid ""
 " a height of 2mm (ie: `HORIZONTAL_MOVE_Z=2`) should work well, presuming "
 "that the probe is mounted correctly."
 msgstr ""
+"Высота сканирования должна быть достаточно низкой, чтобы избежать ошибок "
+"сканирования. Обычно высота в 2 мм (т.е. `HORIZONTAL_MOVE_Z=2`) должна "
+"работать хорошо, при условии, что датчик установлен правильно."
 
 #: docs/Bed_Mesh.md:block 65 (paragraph)
 msgid ""
@@ -1055,10 +1215,14 @@ msgid ""
 "severe surface deviation or beds with extreme tilt that hasn't been "
 "corrected."
 msgstr ""
+"Следует отметить, что если зонд находится на высоте более 4 мм от "
+"поверхности, результаты будут недействительными. Таким образом, сканирование "
+"невозможно на кроватях с сильным отклонением поверхности или на кроватях с "
+"сильным наклоном, который не был исправлен."
 
 #: docs/Bed_Mesh.md:block 66 (header)
 msgid "Rapid (Continuous) Scanning"
-msgstr ""
+msgstr "Быстрое (непрерывное) сканирование"
 
 #: docs/Bed_Mesh.md:block 67 (paragraph)
 msgid ""
@@ -1067,6 +1231,11 @@ msgid ""
 "large print areas with reasonably thick layer heights. Some probes may be "
 "more prone to error than others."
 msgstr ""
+"При выполнении `быстрого_сканирования` следует учитывать, что результаты "
+"будут иметь некоторую погрешность. Эта погрешность должна быть достаточно "
+"низкой, чтобы быть полезной для больших областей печати с достаточно большой "
+"высотой слоя. Некоторые датчики могут быть более склонны к ошибкам, чем "
+"другие."
 
 #: docs/Bed_Mesh.md:block 68 (paragraph)
 msgid ""
@@ -1075,6 +1244,10 @@ msgid ""
 "sensor, and a dense mesh will reflect this noise (ie: there will be peaks "
 "and valleys)."
 msgstr ""
+"Не рекомендуется использовать быстрый режим для сканирования \"плотной\" "
+"сетки. Часть ошибки, вносимой при быстром сканировании, может быть гауссовым "
+"шумом от датчика, и плотная сетка будет отражать этот шум (т. е. будут пики "
+"и долины)."
 
 #: docs/Bed_Mesh.md:block 69 (paragraph)
 msgid ""
@@ -1085,6 +1258,12 @@ msgid ""
 "it requires that the mesh be configured in a way that allows the tool to "
 "travel outside of the mesh."
 msgstr ""
+"Bed Mesh попытается оптимизировать траекторию движения, чтобы обеспечить "
+"наилучший результат в зависимости от конфигурации. Это включает в себя "
+"избегание дефектных областей при сборе образцов и \"проскакивание\" сетки "
+"при изменении направления. Такой пролет улучшает отбор проб на краях сетки, "
+"однако для этого необходимо, чтобы сетка была настроена таким образом, чтобы "
+"инструмент мог перемещаться за ее пределы."
 
 #: docs/Bed_Mesh.md:block 70 (code)
 msgid ""
@@ -1096,6 +1275,13 @@ msgid ""
 "probe_count: 5\n"
 "scan_overshoot: 8\n"
 msgstr ""
+"[bed_mesh]\n"
+"скорость: 120\n"
+"horizontal_move_z: 5\n"
+"mesh_min: 35, 6\n"
+"mesh_max: 240, 198\n"
+"probe_count: 5\n"
+"scan_overshoot: 8\n"
 
 #: docs/Bed_Mesh.md:block 71 (unordered list)
 msgid ""
@@ -1107,12 +1293,22 @@ msgid ""
 "scan\". The minimum value that may be specified is 1. The default is no "
 "overshoot."
 msgstr ""
+"`scan_overshoot` *Значение по умолчанию: 0 (отключено)* Максимальная "
+"величина перемещения (в мм), доступная за пределами сетки. Для прямоугольных "
+"станин это значение относится к перемещению по оси X, а для круглых станин - "
+"по всему радиусу. Инструмент должен иметь возможность перемещаться на "
+"указанную величину за пределами сетки. Это значение используется для "
+"оптимизации траектории движения при выполнении \"быстрого сканирования\". "
+"Минимальное значение, которое может быть указано, - 1. По умолчанию "
+"проскакивание отсутствует."
 
 #: docs/Bed_Mesh.md:block 72 (paragraph)
 msgid ""
 "If no scan overshoot is configured then travel path optimization will not be"
 " applied to changes in direction."
 msgstr ""
+"Если не настроено превышение сканирования, то оптимизация траектории "
+"движения не будет применяться при изменении направления."
 
 #: docs/Bed_Mesh.md:block 75 (paragraph)
 msgid ""
@@ -1122,6 +1318,12 @@ msgid ""
 "*Default Method: automatic if a probe is detected, otherwise manual*  "
 "*Default Adaptive: 0*  *Default Adaptive Margin: 0*"
 msgstr ""
+"`BED_MESH_CALIBRATE PROFILE=<имя> METHOD="
+"[ ручное | автоматическое | сканирование | rapid_scan] \\ "
+"[<probe_parameter>=<значение>] [<mesh_parameter>=<значение>] [ADAPTIVE=[0|1] "
+"\\ [ADAPTIVE_MARGIN=<значение>]` * Профиль по умолчанию: по умолчанию* * "
+"Метод по умолчанию: автоматический, если обнаружен зонд, иначе ручной* * "
+"Адаптивный по умолчанию: 0* * Адаптивный маржа по умолчанию: 0*"
 
 #: docs/Bed_Mesh.md:block 77 (paragraph)
 msgid ""
@@ -1129,47 +1331,59 @@ msgid ""
 "or `default` if unspecified. The `METHOD` parameter takes one of the "
 "following values:"
 msgstr ""
+"Сетка будет сохранена в профиль, указанный параметром `ПРОФИЛЬ`, или `по "
+"умолчанию`, если он не указан. Параметр `МЕТОД` принимает одно из следующих "
+"значений:"
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid ""
 "`METHOD=manual`: enables manual probing using the nozzle and the paper test"
 msgstr ""
+"`METHOD=manual`: включает ручное зондирование с помощью насадки и бумажного "
+"теста"
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid "`METHOD=automatic`: Automatic (standard) probing. This is the default."
 msgstr ""
+"`METHOD=автоматический`: Автоматическое (стандартное) зондирование. "
+"Используется по умолчанию."
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid ""
 "`METHOD=scan`: Enables surface scanning. The tool will pause over each "
 "position to collect a sample."
 msgstr ""
+"`METHOD=scan`: Включает сканирование поверхности. Инструмент будет "
+"останавливаться на каждой позиции, чтобы собрать образец."
 
 #: docs/Bed_Mesh.md:block 78 (unordered list)
 msgid "`METHOD=rapid_scan`: Enables continuous surface scanning."
-msgstr ""
+msgstr "`METHOD=rapid_scan`: Включает непрерывное сканирование поверхности."
 
 #: docs/Bed_Mesh.md:block 79 (paragraph)
 msgid ""
 "XY positions are automatically adjusted to include the X and/or Y offsets "
 "when a probing method other than `manual` is selected."
 msgstr ""
+"Позиции XY автоматически корректируются с учетом смещений X и/или Y, если "
+"выбран метод зондирования, отличный от `ручного`."
 
 #: docs/Bed_Mesh.md:block 81 (unordered list)
+#, fuzzy
 msgid "`MESH_PPS`"
-msgstr ""
+msgstr "`MESH_PPS`"
 
 #: docs/Bed_Mesh.md:block 107 (header)
 msgid "Bed Mesh Webhooks APIs"
-msgstr ""
+msgstr "API-интерфейсы Bed Mesh Webhooks"
 
 #: docs/Bed_Mesh.md:block 108 (header)
 msgid "Dumping mesh data"
-msgstr ""
+msgstr "Выгрузка данных о сетке"
 
 #: docs/Bed_Mesh.md:block 109 (paragraph)
 msgid "`{\"id\": 123, \"method\": \"bed_mesh/dump_mesh\"}`"
-msgstr ""
+msgstr "`{\" идентификатор\": 123, \"метод\": \"bed_mesh/dump_mesh\"}`."
 
 #: docs/Bed_Mesh.md:block 110 (paragraph)
 msgid ""
@@ -1190,7 +1404,7 @@ msgstr ""
 
 #: docs/Bed_Mesh.md:block 112 (header)
 msgid "Visualization and analysis"
-msgstr ""
+msgstr "Визуализация и анализ"
 
 #: docs/Bed_Mesh.md:block 113 (paragraph)
 msgid ""
@@ -1201,6 +1415,12 @@ msgid ""
 "analysis, particularly useful for debugging hardware or the results produced"
 " by `bed_mesh`:"
 msgstr ""
+"Большинство пользователей, скорее всего, сочтут, что визуализаторов, "
+"входящих в состав таких приложений, как Mainsail, Fluidd и Octoprint, "
+"достаточно для базового анализа. Однако в папке scripts Klipper находится "
+"скрипт `graph_mesh.py`, который можно использовать для дополнительной "
+"визуализации и более детального анализа, особенно полезного для отладки "
+"оборудования или результатов, полученных с помощью `bed_mesh`:"
 
 #: docs/Bed_Mesh.md:block 114 (code)
 msgid ""
@@ -1218,10 +1438,23 @@ msgid ""
 "options:\n"
 "  -h, --help            show this help message and exit\n"
 msgstr ""
+"Использование: graph_mesh.py [-h] {list,plot,analyze,dump} ...\n"
+"\n"
+"График данных сетки кровати\n"
+"\n"
+"позиционные аргументы:\n"
+"  {list,plot,analyze,dump}\n"
+"    list Список доступных типов графиков\n"
+"    plot Построить график указанного типа\n"
+"    analyze Выполнить анализ данных сетки\n"
+"    dump Выгрузить ответ API в json-файл\n"
+"\n"
+"опции:\n"
+"  -h, --help Показать сообщение о помощи и выйти\n"
 
 #: docs/Bed_Mesh.md:block 115 (header)
 msgid "Pre-requisites"
-msgstr ""
+msgstr "Пререквизиты"
 
 #: docs/Bed_Mesh.md:block 116 (paragraph)
 msgid ""
@@ -1234,16 +1467,27 @@ msgid ""
 "be rotated and zoomed in preview mode, and the path visualizations can "
 "optionally be animated in preview mode."
 msgstr ""
+"Как и большинство инструментов для построения графиков, предоставляемых "
+"Klipper, `graph_mesh.py` требует python-зависимости `matplotlib` и `numpy`. "
+"Кроме того, для подключения к Klipper через веб-сокет Moonraker требуется "
+"python-зависимость `websockets`. Хотя все визуализации могут быть выведены в "
+"файл `svg, большинство визуализаций, предлагаемых `graph_mesh.py`, лучше "
+"просматривать в режиме живого просмотра на настольном компьютере. Например, "
+"3D-визуализации можно поворачивать и масштабировать в режиме "
+"предварительного просмотра, а визуализации путей могут быть анимированы в "
+"режиме предварительного просмотра."
 
 #: docs/Bed_Mesh.md:block 117 (header)
 msgid "Plotting Mesh data"
-msgstr ""
+msgstr "Построение графика данных сетки"
 
 #: docs/Bed_Mesh.md:block 118 (paragraph)
 msgid ""
 "The `graph_mesh.py` tool can plot several types of visualizations. Available"
 " types can be shown by running `graph_mesh.py list`:"
 msgstr ""
+"Инструмент `graph_mesh.py` может строить несколько типов визуализаций. "
+"Доступные типы можно посмотреть, выполнив команду `graph_mesh.py list`:"
 
 #: docs/Bed_Mesh.md:block 119 (code)
 msgid ""
@@ -1256,10 +1500,18 @@ msgid ""
 "overlay   Plots the current probed mesh overlaid with a profile\n"
 "delta     Plots the delta between current probed mesh and a profile\n"
 msgstr ""
+"graph_mesh.py list\n"
+"точки     Построить исходные сгенерированные точки\n"
+"path       Построить траекторию движения зонда\n"
+"rapid      Построить путь быстрого сканирования\n"
+"probedz    Построить значения Z зонда\n"
+"meshz      Построить значения Z сетки\n"
+"Наложение    Изображает текущую сетку, наложенную на профиль\n"
+"delta      Показывает дельту между текущей зондированной сеткой и профилем\n"
 
 #: docs/Bed_Mesh.md:block 120 (paragraph)
 msgid "Several options are available when plotting visualizations:"
-msgstr ""
+msgstr "При построении визуализаций доступно несколько вариантов:"
 
 #: docs/Bed_Mesh.md:block 121 (code)
 msgid ""
@@ -1278,10 +1530,27 @@ msgid ""
 "  -o OUTPUT, --output OUTPUT\n"
 "                        Output file path\n"
 msgstr ""
+"использование: graph_mesh.py plot [-h] [-a] [-s] [-p PROFILE_NAME] "
+"[-o OUTPUT] <тип графика> <вход>\n"
+"\n"
+"позиционные аргументы:\n"
+"  <plot type> Тип данных для построения графика\n"
+"  <input> Path/url к Klipper Socket или путь к json-файлу\n"
+"\n"
+"опции:\n"
+"  -h, --help показать это справочное сообщение и выйти\n"
+"  -a, --анимировать Анимировать пути в живом предварительном просмотре\n"
+"  -s, --scale-plot Использовать пределы осей, сообщаемые Klipper, для "
+"масштабирования графика X/Y\n"
+"  -p PROFILE_NAME, --profile-name PROFILE_NAME\n"
+"                        Опциональное имя профиля для построения графика для "
+"'probedz'\n"
+"  -o OUTPUT, --output OUTPUT\n"
+"                        Output file path\n"
 
 #: docs/Bed_Mesh.md:block 122 (paragraph)
 msgid "Below is a description of each argument:"
-msgstr ""
+msgstr "Ниже приведено описание каждого аргумента:"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1289,30 +1558,37 @@ msgid ""
 "visualization to generate. Must be one of the types output by the "
 "`graph_mesh.py list` command."
 msgstr ""
+"`Тип участка`: Необходимый позиционный аргумент, указывающий тип "
+"генерируемой визуализации. Должен быть одним из типов, выводимых командой `"
+"graph_mesh.py list`."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
 "`input`: A required positional argument containing a path or url to the "
 "input source. This must be one of the following:"
 msgstr ""
+"`ввод`: Обязательный позиционный аргумент, содержащий путь или url к "
+"источнику входных данных. Это должно быть одно из следующих значений:"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A path to Klipper's Unix Domain Socket"
-msgstr ""
+msgstr "Путь к Unix-доменному сокету Клиппера"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A url to an instance of Moonraker"
-msgstr ""
+msgstr "url на экземпляр Moonraker"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid "A path to a json file produced by `graph_mesh.py dump <input>`"
-msgstr ""
+msgstr "Путь к json-файлу, создаваемому командой `graph_mesh.py dump <input>`"
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
 "`-a`: Optional animation for the `path` and `rapid` visualization types. "
 "Animations only apply to a live preview."
 msgstr ""
+"`-a`: Необязательная анимация для типов визуализации `путь` и `скорость`. "
+"Анимация применяется только для живого предварительного просмотра."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1320,6 +1596,9 @@ msgid ""
 "values reported by Klipper's `toolhead` object when the dump file was "
 "generated."
 msgstr ""
+"`-s`: Опционально масштабирует график, используя значения `axis_minimum` и "
+"`axis_maximum`, сообщенные объектом Klipper `toolhead` при создании файла "
+"дампа."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1327,6 +1606,9 @@ msgid ""
 "mesh visualization. When generating an `overlay` or `delta` visualization "
 "this argument must be provided."
 msgstr ""
+"`-p`: Имя профиля, которое может быть указано при генерации 3D-визуализации "
+"сетки `probedz`. При генерации визуализации `overlay` или `delta` этот "
+"аргумент должен быть указан."
 
 #: docs/Bed_Mesh.md:block 123 (unordered list)
 msgid ""
@@ -1334,38 +1616,48 @@ msgid ""
 "visualization to this location rather than run in preview mode. Images are "
 "saved in `svg` format."
 msgstr ""
+"`-o`: Необязательный путь к файлу, указывающий, что скрипт должен сохранить "
+"визуализацию в этом месте, а не запускать в режиме предварительного "
+"просмотра. Изображения сохраняются в формате `svg`."
 
 #: docs/Bed_Mesh.md:block 124 (paragraph)
 msgid ""
 "For example, to plot an animated rapid path, connecting via Klipper's unix "
 "socket:"
 msgstr ""
+"Например, чтобы построить анимированный быстрый путь, подключившись через "
+"unix-сокет Klipper:"
 
 #: docs/Bed_Mesh.md:block 125 (code)
+#, fuzzy
 msgid "graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock\n"
-msgstr ""
+msgstr "graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock\n"
 
 #: docs/Bed_Mesh.md:block 126 (paragraph)
 msgid "Or to plot a 3d visualization of the mesh, connecting via Moonraker:"
-msgstr ""
+msgstr "Или постройте 3d-визуализацию сетки, подключившись через Moonraker:"
 
 #: docs/Bed_Mesh.md:block 127 (code)
+#, fuzzy
 msgid "graph_mesh.py plot meshz http://my-printer.local\n"
-msgstr ""
+msgstr "graph_mesh.py plot meshz http://my-printer.local\n"
 
 #: docs/Bed_Mesh.md:block 128 (header)
 msgid "Bed Mesh Analysis"
-msgstr ""
+msgstr "Анализ сетки кровати"
 
 #: docs/Bed_Mesh.md:block 129 (paragraph)
 msgid ""
 "The `graph_mesh.py` tool may also be used to perform an analysis on the data"
 " provided by the [bed_mesh/dump_mesh](#dumping-mesh-data) API:"
 msgstr ""
+"Инструмент `graph_mesh.py` также может быть использован для анализа данных, "
+"предоставляемых API [bed_mesh/dump_mesh](#dumping-mesh-data):"
 
 #: docs/Bed_Mesh.md:block 130 (code)
+#, fuzzy
 msgid "graph_mesh.py analyze <input>\n"
-msgstr ""
+msgstr "graph_mesh.py analyze <input>\n"
 
 #: docs/Bed_Mesh.md:block 131 (paragraph)
 msgid ""
@@ -1373,6 +1665,9 @@ msgid ""
 "socket, a URL to an instance of Moonraker, or a path to a json file "
 "generated by the dump command."
 msgstr ""
+"Как и в команде `plot`, `<input>` должен представлять собой путь к unix-"
+"сокету Klipper, URL-адрес экземпляра Moonraker или путь к json-файлу, "
+"сгенерированному командой dump."
 
 #: docs/Bed_Mesh.md:block 132 (paragraph)
 msgid ""
@@ -1380,30 +1675,41 @@ msgid ""
 "paths generated by `bed_mesh` at the time of the dump. This includes the "
 "following:"
 msgstr ""
+"Для начала анализ выполнит различные проверки точек и траекторий зондов, "
+"сгенерированных `bed_mesh` во время создания дампа. К ним относятся "
+"следующие:"
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The number of probe points generated, without any additions"
-msgstr ""
+msgstr "Количество точек зондирования, созданных без каких-либо дополнений"
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
 "The number of probe points generated including any points generated as the "
 "result faulty regions and/or a configured zero reference position."
 msgstr ""
+"Количество сгенерированных точек зонда, включая любые точки, сгенерированные "
+"в результате неисправных областей и/или сконфигурированного нулевого "
+"опорного положения."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The number of probe points generated when performing a rapid scan."
 msgstr ""
+"Количество точек зондирования, создаваемых при выполнении быстрого "
+"сканирования."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid "The total number of moves generated for a rapid scan."
-msgstr ""
+msgstr "Общее количество ходов, созданных для быстрого сканирования."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
 "A validation that the probe points generated for a rapid scan are identical "
 "to the probe points generated for a standard probing procedure."
 msgstr ""
+"Проверка того, что точки зондирования, созданные для быстрого сканирования, "
+"идентичны точкам зондирования, созданным для стандартной процедуры "
+"зондирования."
 
 #: docs/Bed_Mesh.md:block 133 (unordered list)
 msgid ""
@@ -1414,6 +1720,14 @@ msgid ""
 "scan in an attempt to avoid entering a faulty region when approaching or "
 "leaving a probe location, however should never occur otherwise."
 msgstr ""
+"Проверка \"обратного хода\" как для стандартной траектории зондирования, так "
+"и для траектории быстрого сканирования. Обратный ход можно определить как "
+"перемещение в одну и ту же позицию более одного раза во время процедуры "
+"зондирования. Обратный путь никогда не должен возникать во время "
+"стандартного зондирования. Неисправные области *могут* привести к "
+"отступлению во время быстрого сканирования в попытке избежать попадания в "
+"неисправную область при приближении или удалении от места зондирования, "
+"однако в противном случае этого не должно происходить."
 
 #: docs/Bed_Mesh.md:block 134 (paragraph)
 msgid ""
@@ -1421,62 +1735,72 @@ msgid ""
 "the mesh loaded at the time of the dump (if present) and followed by any "
 "saved profiles. The following data is extracted:"
 msgstr ""
+"Далее анализируется каждая зондируемая сетка, присутствующая в дампе, "
+"начиная с сетки, загруженной во время дампа (если она присутствует), и затем "
+"все сохраненные профили. Извлекаются следующие данные:"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mesh shape (Min X,Y, Max X,Y Probe Count)"
 msgstr ""
+"Форма сетки (минимальное количество зондов X,Y, максимальное количество "
+"зондов X,Y)"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mesh Z range, (Minimum Z, Maximum Z)"
-msgstr ""
+msgstr "Диапазон Z сетки, (минимальный Z, максимальный Z)"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Mean Z value in the mesh"
-msgstr ""
+msgstr "Среднее значение Z в сетке"
 
 #: docs/Bed_Mesh.md:block 135 (unordered list)
 msgid "Standard Deviation of the Z values in the Mesh"
-msgstr ""
+msgstr "Стандартное отклонение значений Z в сетке"
 
 #: docs/Bed_Mesh.md:block 136 (paragraph)
 msgid ""
 "In addition to the above, a delta analysis is performed between meshes with "
 "the same shape, reporting the following:"
 msgstr ""
+"Кроме того, между сетками одинаковой формы проводится дельта-анализ, который "
+"дает следующие результаты:"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The range of the delta between to meshes (Minimum and Maximum)"
-msgstr ""
+msgstr "Диапазон дельты между сетками (минимум и максимум)"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The mean delta"
-msgstr ""
+msgstr "Средняя дельта"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "Standard Deviation of the delta"
-msgstr ""
+msgstr "Стандартное отклонение дельты"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The absolute maximum difference"
-msgstr ""
+msgstr "Абсолютная максимальная разница"
 
 #: docs/Bed_Mesh.md:block 137 (unordered list)
 msgid "The absolute mean"
-msgstr ""
+msgstr "Среднее абсолютное значение"
 
 #: docs/Bed_Mesh.md:block 138 (header)
 msgid "Save mesh data to a file"
-msgstr ""
+msgstr "Сохраните данные сетки в файл"
 
 #: docs/Bed_Mesh.md:block 139 (paragraph)
 msgid ""
 "The `dump` command may be used to save the response to a file which can be "
 "shared for analysis when troubleshooting:"
 msgstr ""
+"Команда `dump` может быть использована для сохранения ответа в файл, который "
+"можно использовать для анализа при устранении неполадок:"
 
 #: docs/Bed_Mesh.md:block 140 (code)
+#, fuzzy
 msgid "graph_mesh.py dump -o <output file name> <input>\n"
-msgstr ""
+msgstr "graph_mesh.py dump -o <output file name> <input>\n"
 
 #: docs/Bed_Mesh.md:block 141 (paragraph)
 msgid ""
@@ -1485,10 +1809,15 @@ msgid ""
 "the output file. If omitted, the file will be saved in the working "
 "directory, with a file name in the following format:"
 msgstr ""
+"Параметр `<input>` должен представлять собой путь к unix-сокету Klipper или "
+"URL-адрес экземпляра Moonraker. Опция `-o` может быть использована для "
+"указания пути к выходному файлу. Если опция опущена, файл будет сохранен в "
+"рабочем каталоге с именем в следующем формате:"
 
 #: docs/Bed_Mesh.md:block 142 (paragraph)
+#, fuzzy
 msgid "`klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`"
-msgstr ""
+msgstr "`klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`"
 
 #~ msgid ""
 #~ "The mesh will be saved into a profile specified by the `PROFILE` parameter, "

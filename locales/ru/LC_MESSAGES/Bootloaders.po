@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-21 18:58+0000\n"
+"PO-Revision-Date: 2024-12-31 06:00+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
 "bootloaders/ru/>\n"
@@ -520,15 +520,20 @@ msgid ""
 "Restart OpenOCD on the Raspberry Pi and then run the following Unix command "
 "on the desktop machine:"
 msgstr ""
+"Перезапустите OpenOCD на Raspberry Pi, а затем выполните следующую команду "
+"Unix на настольной машине:"
 
 msgid "Within gdb run:"
-msgstr ""
+msgstr "Запустите gdb:"
 
 msgid ""
 "(Replace \"octopi\" with the host name of the Raspberry Pi.) Once gdb is "
 "running it is possible to set breakpoints and to inspect registers."
 msgstr ""
+"(Замените \"octopi\" на имя хоста Raspberry Pi.) После запуска gdb можно "
+"устанавливать точки останова и проверять регистры."
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/stk500v2/stk500boot_v2_mega2560.hex'\n"
 "\n"
@@ -536,12 +541,24 @@ msgid ""
 "avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U flash:w:stk500boot_v2_mega2560.hex\n"
 "avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/"
+"bootloaders/stk500v2/stk500boot_v2_mega2560.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:"
+"m -U efuse:w:0xFD:m -U hfuse:w:0xD8:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U "
+"flash:w:stk500boot_v2_mega2560.hex\n"
+"avrdude -cavrispv2 -patmega2560 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -cwiring -patmega2560 -P/dev/ttyACM0 -b115200 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -cwiring -patmega2560 -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/atmega/ATmegaBOOT_168_atmega1280.hex'\n"
 "\n"
@@ -549,12 +566,24 @@ msgid ""
 "avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U flash:w:ATmegaBOOT_168_atmega1280.hex\n"
 "avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/"
+"bootloaders/atmega/ATmegaBOOT_168_atmega1280.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:"
+"m -U efuse:w:0xF5:m -U hfuse:w:0xDA:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U "
+"flash:w:ATmegaBOOT_168_atmega1280.hex\n"
+"avrdude -cavrispv2 -patmega1280 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega1280 -P/dev/ttyACM0 -b57600 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega1280 -P/dev/ttyACM0 -b57600 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/Lauszus/Sanguino/raw/1.0.2/bootloaders/optiboot/optiboot_atmega1284p.hex'\n"
 "\n"
@@ -562,20 +591,36 @@ msgid ""
 "avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U flash:w:optiboot_atmega1284p.hex\n"
 "avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/Lauszus/Sanguino/raw/1.0.2/bootloaders/optiboot/"
+"optiboot_atmega1284p.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -e -u -U "
+"lock:w:0x3F:m -U efuse:w:0xFD:m -U hfuse:w:0xDE:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U "
+"flash:w:optiboot_atmega1284p.hex\n"
+"avrdude -cavrispv2 -patmega1284p -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b115200 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b57600 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega1284p -P/dev/ttyACM0 -b57600 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid "teensy_loader_cli --mcu=at90usb1286 out/klipper.elf.hex -v\n"
-msgstr ""
+msgstr "teensy_loader_cli --mcu=at90usb1286 out/klipper.elf.hex -v\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega168.hex'\n"
 "\n"
@@ -583,81 +628,124 @@ msgid ""
 "avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U flash:w:optiboot_atmega168.hex\n"
 "avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 msgstr ""
+"wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/"
+"bootloaders/optiboot/optiboot_atmega168.hex'\n"
+"\n"
+"avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -e -u -U lock:w:0x3F:"
+"m -U efuse:w:0x04:m -U hfuse:w:0xDD:m -U lfuse:w:0xFF:m\n"
+"avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U "
+"flash:w:optiboot_atmega168.hex\n"
+"avrdude -cavrispv2 -patmega168 -P/dev/ttyACM0 -b115200 -U lock:w:0x0F:m\n"
 
+#, fuzzy
 msgid ""
 "avrdude -carduino -patmega168 -P/dev/ttyACM0 -b115200 -D "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -carduino -patmega168 -P/dev/ttyACM0 -b115200 -D -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
+#, fuzzy
 msgid ""
 "bossac -U -p /dev/ttyACM0 -a -e -w out/klipper.bin -v -b\n"
 "bossac -U -p /dev/ttyACM0 -R\n"
 msgstr ""
+"bossac -U -p /dev/ttyACM0 -a -e -w out/klipper.bin -v -b\n"
+"bossac -U -p /dev/ttyACM0 -R\n"
 
+#, fuzzy
 msgid "bossac --port=/dev/ttyACM0 -b -U -e -w -v -R out/klipper.bin\n"
-msgstr ""
+msgstr "bossac --port=/dev/ttyACM0 -b -U -e -w -v -R out/klipper.bin\n"
 
 msgid "source [find target/at91samdXX.cfg]\n"
-msgstr ""
+msgstr "источник [найти target/at91samdXX.cfg]\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/arduino/ArduinoCore-"
 "samd/raw/1.8.3/bootloaders/zero/samd21_sam_ba.bin'\n"
 msgstr ""
+"wget 'https://github.com/arduino/ArduinoCore-samd/raw/1.8.3/bootloaders/zero/"
+"samd21_sam_ba.bin'\n"
 
+#, fuzzy
 msgid ""
 "at91samd bootloader 0\n"
 "program samd21_sam_ba.bin verify\n"
 msgstr ""
+"at91samd bootloader 0\n"
+"program samd21_sam_ba.bin verify\n"
 
+#, fuzzy
 msgid "bossac -U -p /dev/ttyACM0 --offset=0x2000 -w out/klipper.bin -v -b -R\n"
-msgstr ""
+msgstr "bossac -U -p /dev/ttyACM0 --offset=0x2000 -w out/klipper.bin -v -b -R\n"
 
+#, fuzzy
 msgid ""
 "avrdude -c stk500v2 -p atmega2560 -P /dev/ttyACM0 -u "
 "-Uflash:w:out/klipper.elf.hex:i\n"
 msgstr ""
+"avrdude -c stk500v2 -p atmega2560 -P /dev/ttyACM0 -u -Uflash:w:out/"
+"klipper.elf.hex:i\n"
 
 msgid "source [find target/atsame5x.cfg]\n"
-msgstr ""
+msgstr "источник [найти target/atsame5x.cfg]\n"
 
+#, fuzzy
 msgid ""
 "wget "
 "'https://github.com/adafruit/uf2-samdx1/releases/download/v3.7.0/bootloader-"
 "itsybitsy_m4-v3.7.0.bin'\n"
 msgstr ""
+"wget 'https://github.com/adafruit/uf2-samdx1/releases/download/v3.7.0/"
+"bootloader-itsybitsy_m4-v3.7.0.bin'\n"
 
+#, fuzzy
 msgid ""
 "at91samd bootloader 0\n"
 "program bootloader-itsybitsy_m4-v3.7.0.bin verify\n"
 "at91samd bootloader 16384\n"
 msgstr ""
+"at91samd bootloader 0\n"
+"program bootloader-itsybitsy_m4-v3.7.0.bin verify\n"
+"at91samd bootloader 16384\n"
 
+#, fuzzy
 msgid "bossac -U -p /dev/ttyACM0 --offset=0x4000 -w out/klipper.bin -v -b -R\n"
-msgstr ""
+msgstr "bossac -U -p /dev/ttyACM0 --offset=0x4000 -w out/klipper.bin -v -b -R\n"
 
+#, fuzzy
 msgid "stm32flash -w out/klipper.bin -v -g 0 /dev/ttyAMA0\n"
-msgstr ""
+msgstr "stm32flash -w out/klipper.bin -v -g 0 /dev/ttyAMA0\n"
 
+#, fuzzy
 msgid ""
 "wget 'https://github.com/rogerclarkmelbourne/STM32duino-bootloader/raw/master/binaries/generic_boot20_pc13.bin'\n"
 "\n"
 "stm32flash -w generic_boot20_pc13.bin -v -g 0 /dev/ttyAMA0\n"
 msgstr ""
+"wget 'https://github.com/rogerclarkmelbourne/STM32duino-bootloader/raw/"
+"master/binaries/generic_boot20_pc13.bin'\n"
+"\n"
+"stm32flash -w generic_boot20_pc13.bin -v -g 0 /dev/ttyAMA0\n"
 
+#, fuzzy
 msgid "dfu-util -d 1eaf:0003 -a 2 -R -D out/klipper.bin\n"
-msgstr ""
+msgstr "dfu-util -d 1eaf:0003 -a 2 -R -D out/klipper.bin\n"
 
 msgid "source [find target/stm32f1x.cfg]\n"
-msgstr ""
+msgstr "источник [найти target/stm32f1x.cfg]\n"
 
+#, fuzzy
 msgid "flash read_bank 0 btt_skr_mini_e3_backup.bin\n"
-msgstr ""
+msgstr "flash read_bank 0 btt_skr_mini_e3_backup.bin\n"
 
 msgid ""
 "stm32f1x mass_erase 0\n"
 "program hid_btt_skr_mini_e3.bin verify 0x08000000\n"
 msgstr ""
+"stm32f1x mass_erase 0\n"
+"программа hid_btt_skr_mini_e3.bin проверка 0x08000000\n"
 
 msgid ""
 "You may need to hold down the reset button on the board while launching OpenOCD. It should display something like:Open On-Chip Debugger 0.10.0+dev-01204-gc60252ac-dirty (2020-04-27-16:00)\n"
@@ -674,31 +762,60 @@ msgid ""
 "Info : starting gdb server for stm32f1x.cpu on 3333\n"
 "Info : Listening on port 3333 for gdb connections\n"
 msgstr ""
+"Возможно, вам придется удерживать кнопку сброса на плате во время запуска "
+"OpenOCD. На экране должно появиться что-то вроде:Open On-Chip Debugger "
+"0.10.0+dev-01204-gc60252ac-dirty (2020-04-27-16:00)\n"
+"Лицензия GNU GPL v2\n"
+"Для сообщений об ошибках читайте\n"
+"        http://openocd.org/doc/doxygen/bugs.html\n"
+"DEPRECATED! Используйте 'adapter speed', а не 'adapter_khz'\n"
+"Информация : Драйвер битбанга BCM2835 GPIO JTAG/SWD\n"
+"Информация : Включены режимы JTAG и SWD\n"
+"Информация : тактовая частота 40 кГц\n"
+"Информация : SWD DPIDR 0x1ba01477\n"
+"Информация : stm32f1x.cpu: аппаратное обеспечение имеет 6 точек останова, 4 "
+"точки наблюдения\n"
+"Информация : stm32f1x.cpu: обнаружен внешний сброс\n"
+"Информация : Запуск gdb-сервера для stm32f1x.cpu на 3333\n"
+"Информация : прослушивание порта 3333 для gdb-соединений\n"
 
 msgid "After which you can release the reset button."
-msgstr ""
+msgstr "После этого можно отпустить кнопку сброса."
 
+#, fuzzy
 msgid ""
 "sudo apt install libusb-1.0\n"
 "cd ~/klipper/lib/hidflash\n"
 "make\n"
 msgstr ""
+"sudo apt install libusb-1.0\n"
+"cd ~/klipper/lib/hidflash\n"
+"make\n"
 
+#, fuzzy
 msgid "~/klipper/lib/hidflash/hid-flash ~/klipper/out/klipper.bin\n"
-msgstr ""
+msgstr "~/klipper/lib/hidflash/hid-flash ~/klipper/out/klipper.bin\n"
 
+#, fuzzy
 msgid "make flash FLASH_DEVICE=1209:BEBA\n"
-msgstr ""
+msgstr "make flash FLASH_DEVICE=1209:BEBA\n"
 
+#, fuzzy
 msgid "make flash FLASH_DEVICE=/dev/ttyACM0\n"
-msgstr ""
+msgstr "make flash FLASH_DEVICE=/dev/ttyACM0\n"
 
+#, fuzzy
 msgid ""
 "wget https://github.com/Arksine/STM32_HID_Bootloader/releases/download/v0.5-beta/hid_bootloader_SKR_PRO.bin\n"
 "\n"
 "stm32flash -w hid_bootloader_SKR_PRO.bin -v -g 0 /dev/ttyAMA0\n"
 msgstr ""
+"wget https://github.com/Arksine/STM32_HID_Bootloader/releases/download/"
+"v0.5-beta/hid_bootloader_SKR_PRO.bin\n"
+"\n"
+"stm32flash -w hid_bootloader_SKR_PRO.bin -v -g 0 /dev/ttyAMA0\n"
 
+#, fuzzy
 msgid ""
 "sudo apt-get update\n"
 "sudo apt-get install autoconf libtool telnet\n"
@@ -711,9 +828,21 @@ msgid ""
 "make\n"
 "make install\n"
 msgstr ""
+"sudo apt-get update\n"
+"sudo apt-get install autoconf libtool telnet\n"
+"mkdir ~/openocd\n"
+"cd ~/openocd/\n"
+"git clone http://openocd.zylin.com/openocd\n"
+"cd openocd\n"
+"./bootstrap\n"
+"./configure --enable-sysfsgpio --enable-bcm2835gpio --prefix=/home/pi/"
+"openocd/install\n"
+"make\n"
+"make install\n"
 
+#, fuzzy
 msgid "nano ~/openocd/openocd.cfg\n"
-msgstr ""
+msgstr "nano ~/openocd/openocd.cfg\n"
 
 msgid ""
 "# Uses RPi pins: GPIO25 for SWDCLK, GPIO24 for SWDIO, GPIO18 for nRST\n"
@@ -738,31 +867,63 @@ msgid ""
 "targets\n"
 "reset halt\n"
 msgstr ""
+"# Использует выводы RPi: GPIO25 для SWDCLK, GPIO24 для SWDIO, GPIO18 для "
+"nRST\n"
+"source [find interface/raspberrypi2-native.cfg]\n"
+"bcm2835gpio_swd_nums 25 24\n"
+"bcm2835gpio_srst_num 18\n"
+"выбор транспорта swd\n"
+"\n"
+"# Используйте провод аппаратного сброса для сброса микросхемы\n"
+"reset_config srst_only\n"
+"adapter_nsrst_delay 100\n"
+"adapter_nsrst_assert_width 100\n"
+"\n"
+"# Укажите тип микросхемы\n"
+"source [find target/atsame5x.cfg]\n"
+"\n"
+"# Установите скорость адаптера\n"
+"adapter_khz 40\n"
+"\n"
+"# Подключиться к чипу\n"
+"init\n"
+"targets\n"
+"сброс остановка\n"
 
+#, fuzzy
 msgid ""
 "cd ~/openocd/\n"
 "sudo ~/openocd/install/bin/openocd -f ~/openocd/openocd.cfg\n"
 msgstr ""
+"cd ~/openocd/\n"
+"sudo ~/openocd/install/bin/openocd -f ~/openocd/openocd.cfg\n"
 
+#, fuzzy
 msgid "telnet 127.0.0.1 4444\n"
-msgstr ""
+msgstr "telnet 127.0.0.1 4444\n"
 
+#, fuzzy
 msgid ""
 "bindto 0.0.0.0\n"
 "gdb_port 44444\n"
 msgstr ""
+"bindto 0.0.0.0\n"
+"gdb_port 44444\n"
 
+#, fuzzy
 msgid ""
 "cd /path/to/klipper/\n"
 "gdb out/klipper.elf\n"
 msgstr ""
+"cd /path/to/klipper/\n"
+"gdb out/klipper.elf\n"
 
 msgid "target remote octopi:44444\n"
-msgstr ""
+msgstr "целевой удаленный octopi:44444\n"
 
 #: docs/Bootloaders.md:block 1 (header)
 msgid "Bootloaders"
-msgstr ""
+msgstr "Загрузчики"
 
 #: docs/Bootloaders.md:block 7 (paragraph)
 msgid ""
@@ -772,6 +933,10 @@ msgid ""
 "<https://github.com/arduino/Arduino/blob/1.8.5/hardware/arduino/avr/boards.txt>"
 " is a useful reference."
 msgstr ""
+"В целом, проект Arduino является хорошим справочником по загрузчикам и "
+"процедурам прошивки 8-битных микроконтроллеров Atmel Atmega. В частности, "
+"файл \"boards.txt\": <https://github.com/arduino/Arduino/blob/1.8.5/hardware/"
+"arduino/avr/boards.txt> является полезным справочником."
 
 #: docs/Bootloaders.md:block 32 (paragraph)
 msgid ""
@@ -780,30 +945,43 @@ msgid ""
 "<https://github.com/PaulStoffregen/teensy_loader_cli>. One can flash an "
 "application with it using something like:"
 msgstr ""
+"Устройство Teensy++ от pjrc.com поставляется с проприетарным загрузчиком. "
+"Для его прошивки требуется пользовательская утилита с сайта <https://"
+"github.com/PaulStoffregen/teensy_loader_cli>. С его помощью можно прошить "
+"приложение, используя что-то вроде:"
 
 #: docs/Bootloaders.md:block 42 (paragraph)
 msgid ""
 "The code at <https://github.com/shumatech/BOSSA> can be used to program the "
 "SAM3. It is recommended to use version 1.9 or later."
 msgstr ""
+"Для программирования SAM3 можно использовать код по адресу <https://"
+"github.com/shumatech/BOSSA>. Рекомендуется использовать версию 1.9 или более "
+"позднюю."
 
 #: docs/Bootloaders.md:block 48 (paragraph)
 msgid ""
 "The code at <https://github.com/shumatech/BOSSA> can be used to program the "
 "SAM4. It is necessary to use version `1.8.0` or higher."
 msgstr ""
+"Код по адресу <https://github.com/shumatech/BOSSA> может быть использован "
+"для программирования SAM4. Необходимо использовать версию `1.8.0` или выше."
 
 #: docs/Bootloaders.md:block 66 (paragraph)
 msgid ""
 "Obtain a bootloader - several bootloaders are available from "
 "<https://github.com/adafruit/uf2-samdx1/releases/latest>. For example:"
 msgstr ""
+"Получите загрузчик - несколько загрузчиков доступны по адресу <https://"
+"github.com/adafruit/uf2-samdx1/releases/latest>. Например:"
 
 #: docs/Bootloaders.md:block 78 (paragraph)
 msgid ""
 "The \"stm32duino\" project has a USB capable bootloader - see: "
 "<https://github.com/rogerclarkmelbourne/STM32duino-bootloader>"
 msgstr ""
+"В проекте \"stm32duino\" есть загрузчик с поддержкой USB - см: <https://"
+"github.com/rogerclarkmelbourne/STM32duino-bootloader>"
 
 #: docs/Bootloaders.md:block 113 (paragraph)
 msgid ""
@@ -811,6 +989,9 @@ msgid ""
 "see: <http://smoothieware.org/flashing-the-bootloader> for further "
 "information on that topic."
 msgstr ""
+"В этом документе не описывается метод прошивки загрузчика - см: <http://"
+"smoothieware.org/flashing-the-bootloader> для получения дополнительной "
+"информации по этой теме."
 
 #: docs/Bootloaders.md:block 114 (paragraph)
 msgid ""
@@ -821,6 +1002,13 @@ msgid ""
 "application file (eg, `out/klipper.bin`) to a file named `firmware.bin` on "
 "an SD card, and then to reboot the micro-controller with that SD card."
 msgstr ""
+"Обычно Smoothieboards поставляются с загрузчиком с сайта: <https://"
+"github.com/triffid/LPC17xx-DFU-Bootloader>. При использовании этого "
+"загрузчика приложение должно быть скомпилировано с начальным адресом 16KiB. "
+"Самый простой способ прошить приложение с помощью этого загрузчика - "
+"скопировать файл приложения (например, `out/klipper.bin`) в файл с именем "
+"`firmware.bin` на SD-карту, а затем перезагрузить микроконтроллер с помощью "
+"этой SD-карты."
 
 #: docs/Bootloaders.md:block 117 (paragraph)
 msgid ""
@@ -828,6 +1016,9 @@ msgid ""
 " from the instructions at: <https://learn.adafruit.com/programming-"
 "microcontrollers-using-openocd-on-raspberry-pi>"
 msgstr ""
+"В этом разделе описано, как установить и запустить OpenOCD. Он заимствован "
+"из инструкций по адресу: <https://learn.adafruit.com/programming-"
+"microcontrollers-using-openocd-on-raspberry-pi>"
 
 #: docs/Bootloaders.md:block 75 (paragraph)
 msgid ""
@@ -837,6 +1028,12 @@ msgid ""
 "<https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-"
 "uarts> for details on enabling the full uart on the Raspberry Pi GPIO pins."
 msgstr ""
+"Обратите внимание, что если вы используете Raspberry Pi для "
+"последовательного 3,3 В, протокол stm32flash использует режим "
+"последовательной четности, который \"мини UART\" Raspberry Pi не "
+"поддерживает. Смотрите <https://www.raspberrypi.com/documentation/computers/"
+"configuration.html#configuring-uarts> для получения подробной информации о "
+"включении полного UART на GPIO пинах Raspberry Pi."
 
 #: docs/Bootloaders.md:block 85 (paragraph)
 msgid ""
@@ -845,28 +1042,38 @@ msgid ""
 " is a [fork with builds specific to the SKR Mini E3 "
 "1.2](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest)."
 msgstr ""
+"[HID bootloader](https://github.com/Serasidis/STM32_HID_Bootloader) - это "
+"компактный загрузчик без драйверов, способный прошиваться по USB. Также "
+"доступен [форк со сборками, специфичными для SKR Mini E3 1.2](https://"
+"github.com/Arksine/STM32_HID_Bootloader/releases/latest)."
 
 #: docs/Bootloaders.md:block 105 (header)
 msgid "STM32F103/STM32F072 with MSC bootloader"
-msgstr ""
+msgstr "STM32F103/STM32F072 с загрузчиком MSC"
 
 #: docs/Bootloaders.md:block 106 (paragraph)
 msgid ""
 "The [MSC bootloader](https://github.com/Telekatz/MSC-stm32f103-bootloader) "
 "is a driverless bootloader capable of flashing over USB."
 msgstr ""
+"[MSC bootloader](https://github.com/Telekatz/MSC-stm32f103-bootloader) - это "
+"бездрайверный загрузчик, способный прошиваться по USB."
 
 #: docs/Bootloaders.md:block 108 (paragraph)
 msgid ""
 "For STM32F072 boards it is also possible to flash the bootloader over USB "
 "(via DFU) with something like:"
 msgstr ""
+"Для плат STM32F072 также можно прошить загрузчик через USB (через DFU), "
+"используя что-то вроде:"
 
 #: docs/Bootloaders.md:block 109 (code)
+#, fuzzy
 msgid ""
 " dfu-util -d 0483:df11 -a 0 -R -D  MSCboot-STM32F072.bin "
 "-s0x08000000:leave\n"
 msgstr ""
+" dfu-util -d 0483:df11 -a 0 -R -D  MSCboot-STM32F072.bin -s0x08000000:leave\n"
 
 #: docs/Bootloaders.md:block 110 (paragraph)
 msgid ""
@@ -874,6 +1081,9 @@ msgid ""
 "bootloader (the application must be compiled with with the corresponding "
 "starting address)."
 msgstr ""
+"Этот загрузчик использует 8 или 16 килобайт флэш-памяти, см. описание "
+"загрузчика (приложение должно быть скомпилировано с соответствующим "
+"начальным адресом)."
 
 #: docs/Bootloaders.md:block 111 (paragraph)
 msgid ""
@@ -881,6 +1091,9 @@ msgid ""
 "twice. As soon as the bootloader is activated, the board appears as a USB "
 "flash drive onto which the klipper.bin file can be copied."
 msgstr ""
+"Загрузчик можно активировать, дважды нажав на кнопку сброса платы. Как "
+"только загрузчик активирован, плата становится USB-накопителем, на который "
+"можно скопировать файл klipper.bin."
 
 #: docs/Bootloaders.md:block 73 (paragraph)
 msgid ""
@@ -891,10 +1104,16 @@ msgid ""
 " The \"stm32flash\" package can then be used to flash the device using "
 "something like:"
 msgstr ""
+"Устройства STM32F103 оснащены ПЗУ, которое может прошивать загрузчик или "
+"приложение через последовательный порт 3,3 В. Обычно выводы PA10 (MCU Rx) и "
+"PA9 (MCU Tx) подключаются к адаптеру UART 3,3 В. Для доступа к ПЗУ "
+"необходимо подключить вывод \"boot 0\" к высокому уровню, а вывод \"boot 1\" "
+"- к низкому, а затем сбросить устройство. Пакет \"stm32flash\" можно "
+"использовать для прошивки устройства, используя что-то вроде:"
 
 #: docs/Bootloaders.md:block 112 (header)
 msgid "STM32F103/STM32F0x2 with CanBoot bootloader"
-msgstr ""
+msgstr "STM32F103/STM32F0x2 с загрузчиком CanBoot"
 
 #: docs/Bootloaders.md:block 113 (paragraph)
 msgid ""
@@ -903,6 +1122,10 @@ msgid ""
 " is derived from Klipper's source code. Currently CanBoot supports the "
 "STM32F103, STM32F042, and STM32F072 models."
 msgstr ""
+"Загрузчик [CanBoot](https://github.com/Arksine/CanBoot) предоставляет "
+"возможность загрузки прошивки Klipper по шине CANBUS. Сам загрузчик получен "
+"из исходного кода Klipper. В настоящее время CanBoot поддерживает модели "
+"STM32F103, STM32F042 и STM32F072."
 
 #: docs/Bootloaders.md:block 115 (paragraph)
 msgid ""
@@ -910,6 +1133,9 @@ msgid ""
 " is present and enter the bootloader. If this doesn't occur it is possible "
 "to enter the bootloader by pressing the reset button twice in succession."
 msgstr ""
+"При первой прошивке CanBoot должен обнаружить отсутствие приложения и войти "
+"в загрузчик. Если этого не происходит, можно войти в загрузчик, нажав кнопку "
+"сброса два раза подряд."
 
 #: docs/Bootloaders.md:block 116 (paragraph)
 msgid ""
@@ -918,25 +1144,35 @@ msgid ""
 " not have a UUID it is possible to query nodes currently running the "
 "bootloader:"
 msgstr ""
+"Для загрузки прошивки Klipper можно использовать утилиту `flash_can.py`, "
+"находящуюся в папке `lib/canboot`. Для прошивки необходим UUID устройства. "
+"Если у вас нет UUID, можно запросить узлы, на которых в данный момент "
+"работает загрузчик:"
 
 #: docs/Bootloaders.md:block 117 (code)
+#, fuzzy
 msgid "python3 flash_can.py -q\n"
-msgstr ""
+msgstr "python3 flash_can.py -q\n"
 
 #: docs/Bootloaders.md:block 118 (paragraph)
 msgid ""
 "This will return UUIDs for all connected nodes not currently assigned a "
 "UUID. This should include all nodes currently in the bootloader."
 msgstr ""
+"Это вернет UUID для всех подключенных узлов, которым в данный момент не "
+"присвоен UUID. Это должно включать все узлы, находящиеся в данный момент в "
+"загрузчике."
 
 #: docs/Bootloaders.md:block 119 (paragraph)
 msgid "Once you have a UUID, you may upload firmware with following command:"
-msgstr ""
+msgstr "Получив UUID, вы можете загрузить прошивку с помощью следующей команды:"
 
 #: docs/Bootloaders.md:block 120 (code)
+#, fuzzy
 msgid ""
 "python3 flash_can.py -i can0 -f ~/klipper/out/klipper.bin -u aabbccddeeff\n"
 msgstr ""
+"python3 flash_can.py -i can0 -f ~/klipper/out/klipper.bin -u aabbccddeeff\n"
 
 #: docs/Bootloaders.md:block 121 (paragraph)
 msgid ""
@@ -944,12 +1180,17 @@ msgid ""
 "options may be omitted, they default to `can0` and "
 "`~/klipper/out/klipper.bin` respectively."
 msgstr ""
+"Где `aabbccddeeff` заменяется вашим UUID. Обратите внимание, что опции `-i` "
+"и `-f` могут быть опущены, по умолчанию они принимают значения `can0` и `~/"
+"klipper/out/klipper.bin` соответственно."
 
 #: docs/Bootloaders.md:block 122 (paragraph)
 msgid ""
 "When building Klipper for use with CanBoot, select the 8 KiB Bootloader "
 "option."
 msgstr ""
+"При сборке Klipper для использования с CanBoot выберите опцию 8 KiB "
+"Bootloader."
 
 #: docs/Bootloaders.md:block 86 (paragraph)
 msgid ""
@@ -958,6 +1199,10 @@ msgid ""
 "section above, substituting the file name for the desired hid bootloader "
 "binary (ie: hid_generic_pc13.bin for the blue pill)."
 msgstr ""
+"Для типовых плат STM32F103, таких как синяя таблетка, можно прошить "
+"загрузчик через последовательный порт 3,3 В с помощью stm32flash, как "
+"указано в разделе stm32duino выше, заменив имя файла на нужный двоичный файл "
+"загрузчика hid (т.е.: hid_generic_pc13.bin для синей таблетки)."
 
 #: docs/Bootloaders.md:block 104 (paragraph)
 msgid ""
@@ -968,6 +1213,13 @@ msgid ""
 "in the SKR Mini E3's \"PIN\" document. There is a ground pin next to PA2 "
 "which you can use to pull PA2 low."
 msgstr ""
+"Возможно, потребуется вручную войти в загрузчик, это можно сделать, "
+"установив низкий уровень \"boot 0\" и высокий \"boot 1\". В SKR Mini E3 "
+"функция \"Boot 1\" недоступна, поэтому ее можно выполнить, установив низкий "
+"уровень на выводе PA2, если вы прошили файл \"hid_btt_skr_mini_e3.bin\". В "
+"документе \"PIN\" SKR Mini E3 этот вывод обозначен как \"TX0\" на заголовке "
+"TFT. Рядом с PA2 есть контакт заземления, который можно использовать для "
+"подтягивания PA2 к низкому уровню."
 
 #: docs/Bootloaders.md:block 107 (paragraph)
 msgid ""
@@ -975,6 +1227,10 @@ msgid ""
 "noted in the stm32duino section above, substituting the file name for the "
 "desired MSC bootloader binary (ie: MSCboot-Bluepill.bin for the blue pill)."
 msgstr ""
+"Можно прошить загрузчик через последовательный порт 3,3 В с помощью "
+"stm32flash, как указано в разделе stm32duino выше, заменив имя файла на "
+"нужный двоичный файл загрузчика MSC (т.е. MSCboot-Bluepill.bin для синей "
+"таблетки)."
 
 #: docs/Bootloaders.md:block 114 (paragraph)
 msgid ""
@@ -985,6 +1241,12 @@ msgid ""
 "`canboot.bin` for the file name where appropriate. The CanBoot repository "
 "linked above provides instructions for building the bootloader."
 msgstr ""
+"Для прошивки CanBoot рекомендуется использовать программатор ST-Link, однако "
+"для устройств STM32F103 можно использовать `stm32flash`, а для устройств "
+"STM32F042/STM32F072 - `dfu-util`. Инструкции по этим методам прошивки см. в "
+"предыдущих разделах этого документа, заменяя `canboot.bin` в имени файла, "
+"где это необходимо. В репозитории CanBoot, ссылка на который приведена выше, "
+"содержатся инструкции по сборке загрузчика."
 
 #: docs/Bootloaders.md:block 124 (paragraph)
 msgid ""
@@ -998,6 +1260,16 @@ msgid ""
 "Pro 1.1 is available "
 "here](https://github.com/Arksine/STM32_HID_Bootloader/releases/latest)."
 msgstr ""
+"Микроконтроллеры STM32F4 оснащены встроенным системным загрузчиком, "
+"способным прошиваться по USB (через DFU), через последовательный порт 3,3 В "
+"и различными другими способами (более подробная информация приведена в "
+"документе STM AN2606). Некоторые платы STM32F4, такие как SKR Pro 1.1, не "
+"могут войти в загрузчик DFU. Для плат на базе STM32F405/407 доступен "
+"загрузчик HID, если пользователь предпочитает прошивку через USB, а не через "
+"sdcard. Обратите внимание, что вам может потребоваться настройка и сборка "
+"версии, специфичной для вашей платы, а "
+"[сборка для SKR Pro 1.1 доступна здесь](https://github.com/Arksine/"
+"STM32_HID_Bootloader/releases/latest)."
 
 #: docs/Bootloaders.md:block 125 (paragraph)
 msgid ""
@@ -1006,10 +1278,14 @@ msgid ""
 "STM32F103 using stm32flash](#stm32f103-micro-controllers-blue-pill-devices)."
 " For example:"
 msgstr ""
+"Если ваша плата не поддерживает DFU, наиболее доступным методом прошивки, "
+"скорее всего, будет последовательный 3,3 В, что соответствует процедуре "
+"[прошивка STM32F103 с помощью stm32flash](#stm32f103-micro-controllers-blue-"
+"pill-devices). Например:"
 
 #: docs/Bootloaders.md:block 51 (header)
 msgid "SAMDC21 micro-controllers (Duet3D Toolboard 1LC)"
-msgstr ""
+msgstr "Микроконтроллеры SAMDC21 (Duet3D Toolboard 1LC)"
 
 #: docs/Bootloaders.md:block 52 (paragraph)
 msgid ""
@@ -1017,6 +1293,10 @@ msgid ""
 " commonly done with a dedicated SWD hardware dongle. Alternatively, one can "
 "use a [Raspberry Pi with OpenOCD](#running-openocd-on-the-raspberry-pi)."
 msgstr ""
+"Прошивка SAMC21 осуществляется через интерфейс ARM Serial Wire Debug (SWD). "
+"Обычно для этого используется специальный аппаратный SWD-ключ. В качестве "
+"альтернативы можно использовать [Raspberry Pi with OpenOCD](#running-openocd-"
+"on-the-raspberry-pi)."
 
 #: docs/Bootloaders.md:block 53 (paragraph)
 msgid ""
@@ -1025,6 +1305,11 @@ msgid ""
 "other purposes. If using OpenOCD on a Rasberry Pi, this can be done by "
 "running the following commands before invoking OpenOCD."
 msgstr ""
+"При использовании OpenOCD с SAMC21 необходимо предпринять дополнительные "
+"шаги, чтобы сначала перевести микросхему в режим Cold Plugging, если плата "
+"использует выводы SWD для других целей. При использовании OpenOCD на "
+"Rasberry Pi это можно сделать, выполнив следующие команды перед вызовом "
+"OpenOCD."
 
 #: docs/Bootloaders.md:block 54 (code)
 msgid ""
@@ -1047,23 +1332,49 @@ msgid ""
 "echo $SWCLK > /sys/class/gpio/unexport\n"
 "echo $SRST > /sys/class/gpio/unexport\n"
 msgstr ""
+"SWCLK=25\n"
+"SWDIO=24\n"
+"SRST=18\n"
+"\n"
+"echo \"Экспорт выводов SWCLK и SRST\".\n"
+"echo $SWCLK > /sys/class/gpio/export\n"
+"echo $SRST > /sys/class/gpio/export\n"
+"echo \"out\" > /sys/class/gpio/gpio$SWCLK/direction\n"
+"echo \"out\" > /sys/class/gpio/gpio$SRST/direction\n"
+"\n"
+"echo \"Установка низкого уровня SWCLK и подача импульсов на SRST\".\n"
+"echo \"0\" > /sys/class/gpio/gpio$SWCLK/value\n"
+"echo \"0\" > /sys/class/gpio/gpio$SRST/value\n"
+"echo \"1\" > /sys/class/gpio/gpio$SRST/value\n"
+"\n"
+"echo \"Неэкспорт выводов SWCLK и SRST\".\n"
+"echo $SWCLK > /sys/class/gpio/unexport\n"
+"echo $SRST > /sys/class/gpio/unexport\n"
 
 #: docs/Bootloaders.md:block 55 (paragraph)
 msgid "To flash a program with OpenOCD use the following chip config:"
 msgstr ""
+"Чтобы прошить программу с помощью OpenOCD, используйте следующую "
+"конфигурацию чипа:"
 
 #: docs/Bootloaders.md:block 57 (paragraph)
 msgid ""
 "Obtain a program; for instance, klipper can be built for this chip. Flash "
 "with OpenOCD commands similar to:"
 msgstr ""
+"Получите программу; например, для этого чипа можно собрать klipper. Прошивка "
+"с помощью команд OpenOCD, таких как:"
 
 #: docs/Bootloaders.md:block 58 (code)
+#, fuzzy
 msgid ""
 "at91samd chip-erase\n"
 "at91samd bootloader 0\n"
 "program out/klipper.elf verify\n"
 msgstr ""
+"at91samd chip-erase\n"
+"at91samd bootloader 0\n"
+"program out/klipper.elf verify\n"
 
 #~ msgid ""
 #~ "For generic STM32F103 boards such as the blue pill it is possible to flash "

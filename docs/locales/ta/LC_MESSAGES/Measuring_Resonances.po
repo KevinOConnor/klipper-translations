@@ -1,96 +1,107 @@
 # Languages add-on <noreply-addon-languages@weblate.org>, 2025.
+# தமிழ்நேரம் <anishprabu.t@gmail.com>, 2025.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2025-01-08 18:18+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/klipper/"
+"measuring_resonances/ta/>\n"
 "Language: ta\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Measuring Resonances"
-msgstr ""
+msgstr "அதிர்வுகளை அளவிடுதல்"
 
 msgid "Installation instructions"
-msgstr ""
+msgstr "நிறுவல் வழிமுறைகள்"
 
 msgid "Wiring"
-msgstr ""
+msgstr "வயரிங்"
 
 msgid ""
 "You need to connect ADXL345 to your Raspberry Pi via SPI. Note that the I2C "
 "connection, which is suggested by ADXL345 documentation, has too low "
 "throughput and **will not work**. The recommended connection scheme:"
 msgstr ""
+"SPI வழியாக உங்கள் ராச்பெர்ரி பைக்கு ADXL345 ஐ இணைக்க வேண்டும். ADXL345 ஆவணங்களால் "
+"பரிந்துரைக்கப்பட்ட I2C இணைப்பு மிகக் குறைந்த செயல்திறனைக் கொண்டுள்ளது மற்றும் ** வேலை "
+"செய்யாது **. பரிந்துரைக்கப்பட்ட இணைப்பு திட்டம்:"
 
 msgid "ADXL345 pin"
-msgstr ""
+msgstr "ADXL345 முள்"
 
 msgid "RPi pin"
-msgstr ""
+msgstr "Rpi முள்"
 
 msgid "RPi pin name"
-msgstr ""
+msgstr "RPI முள் பெயர்"
 
 msgid "3V3 (or VCC)"
-msgstr ""
+msgstr "3V3 (அல்லது VCC)"
 
 msgid "01"
-msgstr ""
+msgstr "01"
 
 msgid "3.3v DC power"
-msgstr ""
+msgstr "3.3 வி டிசி ஆற்றல்"
 
 msgid "GND"
-msgstr ""
+msgstr "Gnd"
 
 msgid "06"
-msgstr ""
+msgstr "06"
 
 msgid "Ground"
-msgstr ""
+msgstr "மைதானம்"
 
 msgid "CS"
-msgstr ""
+msgstr "சி.எச்"
 
 msgid "24"
-msgstr ""
+msgstr "24"
 
 msgid "GPIO08 (SPI0_CE0_N)"
-msgstr ""
+msgstr "Gpio08 (spi0_ce0_n)"
 
 msgid "SDO"
-msgstr ""
+msgstr "எச்.டி.ஓ"
 
 msgid "21"
-msgstr ""
+msgstr "21"
 
 msgid "GPIO09 (SPI0_MISO)"
-msgstr ""
+msgstr "GPIO09 (SPI0_MISO)"
 
 msgid "SDA"
-msgstr ""
+msgstr "எச்.டி.ஏ."
 
 msgid "19"
-msgstr ""
+msgstr "19"
 
 msgid "GPIO10 (SPI0_MOSI)"
-msgstr ""
+msgstr "GPIO10 (SPI0_MOSI)"
 
 msgid "SCL"
-msgstr ""
+msgstr "எச்.சி.எல்"
 
 msgid "23"
-msgstr ""
+msgstr "23"
 
 msgid "GPIO11 (SPI0_SCLK)"
-msgstr ""
+msgstr "GPIO11 (SPI0_SCLK)"
 
 msgid "Fritzing wiring diagrams for some of the ADXL345 boards:"
-msgstr ""
+msgstr "சில ADXL345 பலகைகளுக்கான வயரிங் வரைபடங்களை உருவாக்குதல்:"
 
 msgid "![ADXL345-Rpi](img/adxl345-fritzing.png)"
-msgstr ""
+msgstr "!"
 
 msgid "Mounting the accelerometer"
-msgstr ""
+msgstr "முடுக்கமானியை ஏற்றுவது"
 
 msgid ""
 "The accelerometer must be attached to the toolhead. One needs to design a "
@@ -100,18 +111,26 @@ msgid ""
 " forth - it should be fine even if Z axis of accelerometer is X axis of the "
 "printer, etc.)."
 msgstr ""
+"முடுக்கமானி கருவித்தடத்துடன் இணைக்கப்பட வேண்டும். ஒருவர் தங்கள் சொந்த 3D அச்சுப்பொறிக்கு "
+"பொருந்தக்கூடிய சரியான ஏற்றத்தை வடிவமைக்க வேண்டும். அச்சுப்பொறியின் அச்சுகளுடன் "
+"முடுக்கமானியின் அச்சுகளை சீரமைப்பது நல்லது (ஆனால் அது மிகவும் வசதியானதாக இருந்தால், "
+"அச்சுகளை மாற்றலாம் - அதாவது ஃச் அச்சை ஃச் உடன் சீரமைக்க தேவையில்லை - சட் அச்சு என்றாலும் கூ"
+"ட நன்றாக இருக்க வேண்டும் முடுக்கமானி என்பது அச்சுப்பொறியின் ஃச் அச்சு, முதலியன)."
 
 msgid "An example of mounting ADXL345 on the SmartEffector:"
-msgstr ""
+msgstr "ச்மார்ட்ஃபெக்டரில் ADXL345 ஐ ஏற்றுவதற்கான எடுத்துக்காட்டு:"
 
 msgid "![ADXL345 on SmartEffector](img/adxl345-mount.jpg)"
-msgstr ""
+msgstr "!"
 
 msgid ""
 "Note that on a bed slinger printer one must design 2 mounts: one for the "
 "toolhead and one for the bed, and run the measurements twice. See the "
 "corresponding [section](#bed-slinger-printers) for more details."
 msgstr ""
+"ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியில் ஒருவர் 2 ஏற்றங்களை வடிவமைக்க வேண்டும் என்பதை நினைவில் "
+"கொள்க: ஒன்று கருவிக்கு மற்றும் படுக்கைக்கு ஒன்று, மற்றும் இரண்டு முறை அளவீடுகளை இயக்கவும். "
+"மேலும் விவரங்களுக்கு தொடர்புடைய [பிரிவு] (#படுக்கை-ச்லிங்கர்-பிரிண்டர்கள்) ஐப் பார்க்கவும்."
 
 msgid ""
 "**Attention:** make sure the accelerometer and any screws that hold it in "
@@ -120,36 +139,47 @@ msgid ""
 " from the printer frame. Failing to ensure that can create a ground loop in "
 "the system that may damage the electronics."
 msgstr ""
+"** கவனம்: ** முடுக்கமானி மற்றும் அதை வைத்திருக்கும் எந்த திருகுகளும் அச்சுப்பொறியின் எந்த "
+"உலோக பகுதிகளையும் தொடாது என்பதை உறுதிப்படுத்திக் கொள்ளுங்கள். அடிப்படையில், அச்சுப்பொறி "
+"சட்டகத்திலிருந்து முடுக்கமானியின் மின் தனிமைப்படுத்தலை உறுதி செய்வதற்காக மவுண்ட் "
+"வடிவமைக்கப்பட வேண்டும். மின்னணுவியல் சேதப்படுத்தக்கூடிய கணினியில் ஒரு தரை வளையத்தை "
+"உருவாக்க முடியும் என்பதை உறுதிப்படுத்தத் தவறியது."
 
 msgid "Software installation"
-msgstr ""
+msgstr "மென்பொருள் நிறுவல்"
 
 msgid ""
 "Make sure the Linux SPI driver is enabled by running `sudo raspi-config` and"
 " enabling SPI under the \"Interfacing options\" menu."
 msgstr ""
+"`சுடோ ராச்பி-கான்ஃபிக்` ஐ இயக்குவதன் மூலமும்,\" இடைமுக விருப்பங்கள் \"மெனுவின் கீழ் SPI "
+"ஐ இயக்குவதன் மூலமும் லினக்ச் எச்பிஐ இயக்கி இயக்கப்பட்டிருப்பதை உறுதிசெய்க."
 
 msgid ""
 "It is advised to start with 1 probe point, in the middle of the print bed, "
 "slightly above it."
 msgstr ""
+"அச்சு படுக்கையின் நடுவில், அதற்கு சற்று மேலே 1 ஆய்வு புள்ளியுடன் தொடங்க "
+"அறிவுறுத்தப்படுகிறது."
 
 msgid "Restart Klipper via the `RESTART` command."
-msgstr ""
+msgstr "`மறுதொடக்கம்` கட்டளை வழியாக கிளிப்பரை மறுதொடக்கம் செய்யுங்கள்."
 
 msgid "Measuring the resonances"
-msgstr ""
+msgstr "அதிர்வுகளை அளவிடுதல்"
 
 msgid "Checking the setup"
-msgstr ""
+msgstr "அமைப்பைச் சரிபார்க்கிறது"
 
 msgid "Now you can test a connection."
-msgstr ""
+msgstr "இப்போது நீங்கள் ஒரு இணைப்பை சோதிக்கலாம்."
 
 msgid ""
 "For \"non bed-slingers\" (e.g. one accelerometer), in Octoprint, enter "
 "`ACCELEROMETER_QUERY`"
 msgstr ""
+"\"படுக்கை-ச்லிங்கர்ச் அல்லாதவர்கள்\" (எ.கா. ஒரு முடுக்கமானி), ஆக்டோப்ரின்ட்டில், "
+"`முடுக்கமானி_ குவேரி` ஐ உள்ளிடவும்"
 
 msgid ""
 "For \"bed-slingers\" (e.g. more than one accelerometer), enter "
@@ -157,11 +187,17 @@ msgid ""
 "entered, e.g. `CHIP=bed` (see: [bed-slinger](#bed-slinger-printers)) for all"
 " installed accelerometer chips."
 msgstr ""
+"\"படுக்கை-ச்லிங்கர்ச்\" க்கு (எ.கா. ஒன்றுக்கு மேற்பட்ட முடுக்கமானிகள்), `முடுக்கமானி_க் கள் "
+"சிப் = <சிப்>` எங்கே `<iph>` என்பது உள்ளிட்ட சிப்பின் பெயர், எ.கா. நிறுவப்பட்ட அனைத்து "
+"முடுக்கமானி சில்லுகளுக்கும் `சிப் = படுக்கை` (காண்க: [படுக்கை-ச்லிங்கர்] "
+"(#படுக்கை-ச்லிங்கர்-பிரிண்டர்கள்))."
 
 msgid ""
 "You should see the current measurements from the accelerometer, including "
 "the free-fall acceleration, e.g."
 msgstr ""
+"ஃப்ரீ-வீழ்ச்சி முடுக்கம் உட்பட முடுக்கமானிலிருந்து தற்போதைய அளவீடுகளை நீங்கள் காண வேண்டும், "
+"எ.கா."
 
 msgid ""
 "Next, try running `MEASURE_AXES_NOISE` in Octoprint, you should get some "
@@ -170,15 +206,24 @@ msgid ""
 "can be indicative of the sensor issues, problems with its power, or too "
 "noisy imbalanced fans on a 3D printer."
 msgstr ""
+"அடுத்து, ஆக்டோபிரிண்டில் `அளவீடு_அக்ச்_நோயிச்` ஐ இயக்க முயற்சிக்கவும், அச்சுகளில் "
+"முடுக்கமானி சத்தத்திற்கு சில அடிப்படை எண்களைப் பெற வேண்டும் (~ 1-100 வரம்பில் எங்காவது "
+"இருக்க வேண்டும்). மிக உயர்ந்த அச்சுகள் ஒலி (எ.கா. 1000 மற்றும் அதற்கு மேற்பட்டவை) சென்சார் "
+"சிக்கல்கள், அதன் சக்தியுடன் சிக்கல்கள் அல்லது 3D அச்சுப்பொறியில் சத்தமில்லாத சமநிலையற்ற "
+"ரசிகர்களைக் குறிக்கும்."
 
 msgid "Now you can run some real-life tests. Run the following command:"
 msgstr ""
+"இப்போது நீங்கள் சில நிச வாழ்க்கை சோதனைகளை இயக்கலாம். பின்வரும் கட்டளையை இயக்கவும்:"
 
 msgid ""
 "Note that it will create vibrations on X axis. It will also disable input "
 "shaping if it was enabled previously, as it is not valid to run the "
 "resonance testing with the input shaper enabled."
 msgstr ""
+"இது ஃச் அச்சில் அதிர்வுகளை உருவாக்கும் என்பதை நினைவில் கொள்க. இது முன்னர் "
+"இயக்கப்பட்டிருந்தால் உள்ளீட்டு வடிவமைப்பை முடக்கிவிடும், ஏனெனில் உள்ளீட்டு சேப்பருடன் அதிர்வு "
+"சோதனையை இயக்குவது செல்லுபடியாகாது."
 
 msgid ""
 "**Attention!** Be sure to observe the printer for the first time, to make "
@@ -188,9 +233,12 @@ msgid ""
 "lower than the default value for `accel_per_hz` parameter in "
 "`[resonance_tester]` section, e.g."
 msgstr ""
+". இது என்றாலும்). அதிர்வுகள் மிகவும் வலுவாக இருந்தால், `[அதிர்வு_டெச்டர்]` பிரிவில் "
+"`act_per_hz` அளவுருவுக்கான இயல்புநிலை மதிப்பை விட குறைவாக குறிப்பிட முயற்சி "
+"செய்யலாம், எ.கா."
 
 msgid "If it works for X axis, run for Y axis as well:"
-msgstr ""
+msgstr "இது ஃச் அச்சுக்கு வேலை செய்தால், ஒய் அச்சுக்கும் இயக்கவும்:"
 
 msgid ""
 "This script will generate the charts `/tmp/shaper_calibrate_x.png` and "
@@ -198,23 +246,32 @@ msgid ""
 "the suggested frequencies for each input shaper, as well as which input "
 "shaper is recommended for your setup. For example:"
 msgstr ""
+"இந்த ச்கிரிப்ட் `/tmp/shaper_calibrate_x.png` மற்றும்`/tmp/shaper_calibrate_y.png` "
+"ஆகியவற்றை அதிர்வெண் பதில்களுடன் உருவாக்கும். ஒவ்வொரு உள்ளீட்டு சேப்பருக்கும் பரிந்துரைக்கப்பட்"
+"ட அதிர்வெண்களையும் நீங்கள் பெறுவீர்கள், அதே போல் உங்கள் அமைப்பிற்கு எந்த உள்ளீட்டு சேப்பர் "
+"பரிந்துரைக்கப்படுகிறது. உதாரணமாக:"
 
 msgid "![Resonances](img/calibrate-y.png)"
-msgstr ""
+msgstr "! [அதிர்வுகள்] (IMG/அளவீடு Y.PNG)"
 
 msgid ""
 "The suggested configuration can be added to `[input_shaper]` section of "
 "`printer.cfg`, e.g.:"
 msgstr ""
+"பரிந்துரைக்கப்பட்ட உள்ளமைவை `[input_shaper]` printur.cfg` இன் பிரிவில் சேர்க்கலாம், "
+"எ.கா .:"
 
 msgid ""
 "or you can choose some other configuration yourself based on the generated "
 "charts: peaks in the power spectral density on the charts correspond to the "
 "resonance frequencies of the printer."
 msgstr ""
+"அல்லது உருவாக்கப்பட்ட விளக்கப்படங்களின் அடிப்படையில் வேறு சில உள்ளமைவுகளை நீங்களே தேர்வு "
+"செய்யலாம்: விளக்கப்படங்களில் உள்ள ஆற்றல் நிறமாலை அடர்த்தியில் உள்ள சிகரங்கள் அச்சுப்பொறியின் "
+"அதிர்வு அதிர்வெண்களுடன் ஒத்திருக்கும்."
 
 msgid "Bed-slinger printers"
-msgstr ""
+msgstr "படுக்கை-ச்லிங்கர் அச்சுப்பொறிகள்"
 
 msgid ""
 "If your printer is a bed slinger printer, you will need to change the "
@@ -223,14 +280,20 @@ msgid ""
 "toolhead and the resonances of Y axis - to the bed (the usual bed slinger "
 "setup)."
 msgstr ""
+"உங்கள் அச்சுப்பொறி ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியாக இருந்தால், ஃச் மற்றும் ஒய் அச்சுகளுக்கா"
+"ன அளவீடுகளுக்கு இடையில் முடுக்கமானியின் இருப்பிடத்தை மாற்ற வேண்டும்: கருவித்தடத்துடன் "
+"இணைக்கப்பட்ட முடுக்கமானி மற்றும் ஒய் அச்சின் அதிர்வுகளுடன் ஃச் அச்சின் அதிர்வுகளை அளவிடவும் "
+"படுக்கை (வழக்கமான படுக்கை ச்லிங்கர் அமைப்பு)."
 
 msgid ""
 "Then the commands `TEST_RESONANCES AXIS=X` and `TEST_RESONANCES AXIS=Y` will"
 " use the correct accelerometer for each axis."
 msgstr ""
+"பின்னர் `test_resonances அச்சு = x` மற்றும்` test_resonances அச்சு = y` கட்டளைகள் "
+"ஒவ்வொரு அச்சுக்கும் சரியான முடுக்கமானியைப் பயன்படுத்தும்."
 
 msgid "Max smoothing"
-msgstr ""
+msgstr "அதிகபட்ச மென்மையான"
 
 msgid ""
 "Keep in mind that the input shaper can create some smoothing in parts. "
@@ -242,12 +305,19 @@ msgid ""
 "larger remaining vibrations. In these cases, you can request to limit the "
 "maximum smoothing from the input shaper."
 msgstr ""
+"உள்ளீட்டு சேப்பர் சில பகுதிகளை மென்மையாக்க முடியும் என்பதை நினைவில் கொள்ளுங்கள். "
+"`அளவீடுகள்_சேப்பர்.பி` ச்கிரிப்ட் அல்லது` சேப்பர்_லிபிரேட்` கட்டளை மூலம் நிகழ்த்தப்பட்ட உள்ளீட்டு"
+" சேப்பரின் தானியங்கி டியூனிங் மென்மையானதை அதிகரிக்க முயற்சிக்கிறது, ஆனால் அதே நேரத்தில் "
+"அவை ஏற்படும் அதிர்வுகளைக் குறைக்க முயற்சிக்கின்றன. சில நேரங்களில் அவை சேப்பர் அதிர்வெண்ணின் "
+"துணை உகந்த தேர்வு செய்யலாம், அல்லது ஒரு பெரிய மீதமுள்ள அதிர்வுகளின் இழப்பில் பகுதிகளில் "
+"குறைந்த மென்மையாக்குவதை நீங்கள் விரும்பலாம். இந்த சந்தர்ப்பங்களில், உள்ளீட்டு வடிவத்திலிருந்து "
+"அதிகபட்ச மென்மையை கட்டுப்படுத்த நீங்கள் கோரலாம்."
 
 msgid "Let's consider the following results from the automatic tuning:"
-msgstr ""
+msgstr "தானியங்கி சரிப்படுத்தும் பின்வரும் முடிவுகளைக் கருத்தில் கொள்வோம்:"
 
 msgid "![Resonances](img/calibrate-x.png)"
-msgstr ""
+msgstr "! [அதிர்வுகள்] (IMG/அளவீடு-X.PNG)"
 
 msgid ""
 "Note that the reported `smoothing` values are some abstract projected "
@@ -258,26 +328,41 @@ msgid ""
 "`square_corner_velocity` parameters. Therefore, you should print some test "
 "prints to see how much smoothing exactly a chosen configuration creates."
 msgstr ""
+"அறிக்கையிடப்பட்ட `மென்மையான` மதிப்புகள் சில சுருக்கமான திட்டமிடப்பட்ட மதிப்புகள் என்பதை "
+"நினைவில் கொள்க. வெவ்வேறு உள்ளமைவுகளை ஒப்பிட்டுப் பார்க்க இந்த மதிப்புகள் பயன்படுத்தப்படலாம்: "
+"அதிக மதிப்பு, ஒரு சேப்பரை மிகவும் மென்மையாக்கும். இருப்பினும், இந்த மென்மையான மதிப்பெண்கள்"
+" எந்தவொரு உண்மையான அளவையும் குறிக்கவில்லை, ஏனெனில் உண்மையான மென்மையானது [`Max_accel`]"
+" (#-மேக்ச்-அக்சலைத் தேர்ந்தெடுப்பது) மற்றும்` ச்கொயர்_கார்னர்_வெலோசிட்டி` அளவுருக்களைப் "
+"பொறுத்தது. ஆகையால், தேர்ந்தெடுக்கப்பட்ட உள்ளமைவு எவ்வளவு மென்மையாக்குகிறது என்பதைக் காண சி"
+"ல சோதனை அச்சிட்டுகளை அச்சிட வேண்டும்."
 
 msgid ""
 "In the example above the suggested shaper parameters are not bad, but what "
 "if you want to get less smoothing on the X axis? You can try to limit the "
 "maximum shaper smoothing using the following command:"
 msgstr ""
+"பரிந்துரைக்கப்பட்ட சேப்பர் அளவுருக்கள் மோசமானவை அல்ல, ஆனால் ஃச் அச்சில் குறைவாக மென்மையாக்க "
+"விரும்பினால் என்ன செய்வது? பின்வரும் கட்டளையைப் பயன்படுத்தி அதிகபட்ச சேப்பர் மென்மையாக்கலை "
+"கட்டுப்படுத்த முயற்சி செய்யலாம்:"
 
 msgid ""
 "which limits the smoothing to 0.2 score. Now you can get the following "
 "result:"
 msgstr ""
+"இது மென்மையானது 0.2 மதிப்பெண்ணாக கட்டுப்படுத்துகிறது. இப்போது நீங்கள் பின்வரும் முடிவைப் "
+"பெறலாம்:"
 
 msgid "![Resonances](img/calibrate-x-max-smoothing.png)"
-msgstr ""
+msgstr "!"
 
 msgid ""
 "If you compare to the previously suggested parameters, the vibrations are a "
 "bit larger, but the smoothing is significantly smaller than previously, "
 "allowing larger maximum acceleration."
 msgstr ""
+"முன்னர் பரிந்துரைக்கப்பட்ட அளவுருக்களுடன் நீங்கள் ஒப்பிட்டுப் பார்த்தால், அதிர்வுகள் சற்று "
+"பெரியவை, ஆனால் மென்மையானது முன்பு இருந்ததை விட கணிசமாக சிறியது, இது பெரிய அதிகபட்"
+"ச முடுக்கம் அனுமதிக்கிறது."
 
 msgid ""
 "When deciding which `max_smoothing` parameter to choose, you can use a "
@@ -292,20 +377,35 @@ msgid ""
 " the projected remaining vibrations reported by the script and make sure "
 "they are not too high."
 msgstr ""
+"தேர்வு செய்ய எந்த `Max_smohothing` அளவுருவை தீர்மானிக்கும்போது, நீங்கள் சோதனை மற்றும் "
+"பிழை அணுகுமுறையைப் பயன்படுத்தலாம். சில வித்தியாசமான மதிப்புகளை முயற்சித்து, நீங்கள் எந்த "
+"முடிவுகளைப் பெறுவீர்கள் என்று பாருங்கள். உள்ளீட்டு சேப்பரால் விளைவாக்கம் செய்யப்படும் உண்மையான "
+"மென்மையாக்கல், முதன்மையாக, அச்சுப்பொறியின் மிகக் குறைந்த அதிர்வு அதிர்வெண்ணைப் பொறுத்தது "
+"என்பதை நினைவில் கொள்க: மிகக் குறைந்த அதிர்வின் அதிர்வெண் - சிறியது மென்மையானது. ஆகையால்"
+", நம்பத்தகாத சிறிய மென்மையாக்கலுடன் உள்ளீட்டு வடிவத்தின் உள்ளமைவைக் கண்டுபிடிக்க ச்கிரிப்டைக் "
+"கோரினால், அது மிகக் குறைந்த அதிர்வு அதிர்வெண்களில் அதிகரித்த ஒலிக்கும் செலவில் இருக்கும் "
+"(அவை பொதுவாக, அச்சிட்டுகளில் மிகவும் முக்கியமாகத் தெரியும்). எனவே, ச்கிரிப்டால் "
+"புகாரளிக்கப்பட்ட மீதமுள்ள அதிர்வுகளை எப்போதும் இருமுறை சரிபார்த்து, அவை மிக அதிகமாக "
+"இல்லை என்பதை உறுதிப்படுத்திக் கொள்ளுங்கள்."
 
 msgid ""
 "Note that if you chose a good `max_smoothing` value for both of your axes, "
 "you can store it in the `printer.cfg` as"
 msgstr ""
+"உங்கள் இரு அச்சுகளுக்கும் ஒரு நல்ல `அதிகபட்ச மென்மையான` மதிப்பை நீங்கள் தேர்வுசெய்தால், அதை "
+"`printel.cfg` இல் சேமிக்கலாம்"
 
 msgid ""
 "Then, if you [rerun](#input-shaper-re-calibration) the input shaper auto-"
 "tuning using `SHAPER_CALIBRATE` Klipper command in the future, it will use "
 "the stored `max_smoothing` value as a reference."
 msgstr ""
+"பின்னர், எதிர்காலத்தில் `சேப்பர்_லிபிரேட்` கிளிப்பர் கட்டளையைப் பயன்படுத்தி உள்ளீட்டு சேப்பர் "
+"தானாக-ட்யூனிங் செய்தால், அது சேமிக்கப்பட்ட` மேக்ச்_மூதிங்` மதிப்பை ஒரு குறிப்பாகப் "
+"பயன்படுத்தும்."
 
 msgid "Selecting max_accel"
-msgstr ""
+msgstr "Max_accel ஐத் தேர்ந்தெடுக்கும்"
 
 msgid ""
 "Since the input shaper can create some smoothing in parts, especially at "
@@ -322,12 +422,23 @@ msgid ""
 "the estimated values for X and Y axes, likely with some conservative safety "
 "margin."
 msgstr ""
+"உள்ளீட்டு சேப்பர் பகுதிகளில் சில மென்மையாக்கத்தை உருவாக்க முடியும் என்பதால், குறிப்பாக அதி"
+"க முடுக்கம் கொண்ட நிலையில், அச்சிடப்பட்ட பகுதிகளில் அதிக மென்மையாக்கப்படாத `மேக்ச்_செல்` "
+"மதிப்பை நீங்கள் இன்னும் தேர்வு செய்ய வேண்டும். ஒரு அளவுத்திருத்த ச்கிரிப்ட் `max_accel` "
+"அளவுருவுக்கான மதிப்பீட்டை வழங்குகிறது, இது அதிக மென்மையாக்கக்கூடாது. அளவுத்திருத்த "
+"ச்கிரிப்டால் காட்டப்படும் `மேக்ச்_செல்` ஒரு தத்துவார்த்த அதிகபட்சம் மட்டுமே என்பதை நினைவில் "
+"கொள்க, அந்தந்த சேப்பர் இன்னும் அதிக மென்மையாக்காமல் வேலை செய்ய முடிகிறது. அச்சிடுவதற்கு இந்"
+"த முடுக்கம் அமைப்பதற்கான பரிந்துரை இல்லை. உங்கள் அச்சுப்பொறி தக்கவைக்கக்கூடிய அதிகபட்ச "
+"முடுக்கம் அதன் இயந்திர பண்புகள் மற்றும் பயன்படுத்தப்பட்ட ச்டெப்பர் மோட்டார்கள் அதிகபட்ச முறுக்கு "
+"ஆகியவற்றைப் பொறுத்தது. ஆகையால், `Max_accel`` [அச்சுப்பொறி] `எக்ச் மற்றும் ஒய் அச்சுகளுக்கா"
+"ன மதிப்பிடப்பட்ட மதிப்புகளைத் தாண்டாத பிரிவில் அமைக்க பரிந்துரைக்கப்படுகிறது, இது சில "
+"பழமைவாத பாதுகாப்பு விளிம்புடன் இருக்கலாம்."
 
 msgid ""
 "Alternatively, follow [this](Resonance_Compensation.md#selecting-max_accel) "
 "part of the input shaper tuning guide and print the test model to choose "
 "`max_accel` parameter experimentally."
-msgstr ""
+msgstr "மாற்றாக, [இதை] (அதிர்வு_பென்சேசன்."
 
 msgid ""
 "The same notice applies to the input shaper [auto-calibration](#input-"
@@ -335,21 +446,31 @@ msgid ""
 "necessary to choose the right `max_accel` value after the auto-calibration, "
 "and the suggested acceleration limits will not be applied automatically."
 msgstr ""
+"அதே அறிவிப்பு உள்ளீட்டு சேப்பர் [ஆட்டோ-அளவுத்திருத்தம்] (#உள்ளீட்டு-சேப்பர்-ஆட்டோ-அளவுகோல்) "
+"`சேப்பர்_லிபிரேட்` கட்டளை: ஆட்டோ அளவுத்திருத்தத்திற்குப் பிறகு சரியான` மேக்ச்_அசெல்` "
+"மதிப்பைத் தேர்வு செய்வது இன்னும் தேவை, மற்றும் பரிந்துரைக்கப்பட்டவை முடுக்கம் வரம்புகள் "
+"தானாகவே பயன்படுத்தப்படாது."
 
 msgid ""
 "If you are doing a shaper re-calibration and the reported smoothing for the "
 "suggested shaper configuration is almost the same as what you got during the"
 " previous calibration, this step can be skipped."
 msgstr ""
+"நீங்கள் ஒரு சேப்பர் மறு அளவுத்திருத்தத்தை செய்கிறீர்கள் மற்றும் பரிந்துரைக்கப்பட்ட சேப்பர் "
+"உள்ளமைவுக்கு மென்மையாக்கப்படுவது முந்தைய அளவுத்திருத்தத்தின் போது உங்களுக்கு கிடைத்ததைப் "
+"போலவே இருக்கும் என்றால், இந்த நடவடிக்கையைத் தவிர்க்கலாம்."
 
 msgid "Input Shaper auto-calibration"
-msgstr ""
+msgstr "உள்ளீட்டு சேப்பர் ஆட்டோ அளவுத்திருத்தமாகும்"
 
 msgid ""
 "Besides manually choosing the appropriate parameters for the input shaper "
 "feature, it is also possible to run the auto-tuning for the input shaper "
 "directly from Klipper. Run the following command via Octoprint terminal:"
 msgstr ""
+"உள்ளீட்டு சேப்பர் அம்சத்திற்கான பொருத்தமான அளவுருக்களை கைமுறையாகத் தேர்ந்தெடுப்பதைத் தவிர, "
+"உள்ளீட்டு சேப்பருக்கான ஆட்டோ-ட்யூனிங்கை கிளிப்பரிலிருந்து நேரடியாக இயக்கவும் முடியும். "
+"ஆக்டோபிரிண்ட் முனையம் வழியாக பின்வரும் கட்டளையை இயக்கவும்:"
 
 msgid ""
 "This will run the full test for both axes and generate the csv output "
@@ -358,6 +479,11 @@ msgid ""
 " each input shaper, as well as which input shaper is recommended for your "
 "setup, on Octoprint console. For example:"
 msgstr ""
+"இது இரு அச்சுகளுக்கும் முழு சோதனையையும் இயக்கும் மற்றும் அதிர்வெண் மறுமொழி மற்றும் "
+"பரிந்துரைக்கப்பட்ட உள்ளீட்டு வடிவங்களுக்கு காபிம வெளியீட்டை (`/tmp/அளவுத்திருத்த_டேட்டா _*"
+". CSV`) உருவாக்கும். ஒவ்வொரு உள்ளீட்டு சேப்பருக்கும் பரிந்துரைக்கப்பட்ட அதிர்வெண்களையும் நீங்கள்"
+" பெறுவீர்கள், அத்துடன் ஆக்டோப்ரிண்ட் கன்சோலில் உங்கள் அமைப்பிற்கு எந்த உள்ளீட்டு சேப்பர் "
+"பரிந்துரைக்கப்படுகிறது. உதாரணமாக:"
 
 msgid ""
 "If you agree with the suggested parameters, you can execute `SAVE_CONFIG` "
@@ -366,24 +492,36 @@ msgid ""
 "following the considerations in [Selecting max_accel](#selecting-max_accel) "
 "section."
 msgstr ""
+"பரிந்துரைக்கப்பட்ட அளவுருக்களுடன் நீங்கள் உடன்பட்டால், அவற்றை சேமித்து கிளிப்பரை மறுதொடக்கம் "
+"செய்ய `Save_config` ஐ இப்போது இயக்கலாம். இது `[அச்சுப்பொறி]` பிரிவில் `max_accel` "
+"மதிப்பைப் புதுப்பிக்காது என்பதை நினைவில் கொள்க. [MAX_ACCEL ஐத் தேர்ந்தெடுப்பது] "
+"(#தேர்ந்தெடுப்பது-MAX_ACCEL) பிரிவில் உள்ள கருத்துகளைப் பின்பற்றி கைமுறையாக புதுப்பிக்க "
+"வேண்டும்."
 
 msgid ""
 "If your printer is a bed slinger printer, you can specify which axis to "
 "test, so that you can change the accelerometer mounting point between the "
 "tests (by default the test is performed for both axes):"
 msgstr ""
+"உங்கள் அச்சுப்பொறி ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியாக இருந்தால், எந்த அச்சை சோதிக்க வேண்டும்"
+" என்பதை நீங்கள் குறிப்பிடலாம், இதன் மூலம் சோதனைகளுக்கு இடையில் முடுக்கமானி பெருகிவரும் "
+"புள்ளியை மாற்றலாம் (இயல்புநிலையாக இரண்டு அச்சுகளுக்கும் சோதனை செய்யப்படுகிறது):"
 
 msgid "You can execute `SAVE_CONFIG` twice - after calibrating each axis."
 msgstr ""
+"ஒவ்வொரு அச்சையும் அளவீடு செய்த பிறகு `Save_Config` ஐ இரண்டு முறை இயக்கலாம்."
 
 msgid ""
 "However, if you connected two accelerometers simultaneously, you simply run "
 "`SHAPER_CALIBRATE` without specifying an axis to calibrate the input shaper "
 "for both axes in one go."
 msgstr ""
+"இருப்பினும், நீங்கள் ஒரே நேரத்தில் இரண்டு முடுக்கமானிகளை இணைத்தால், ஒரே நேரத்தில் இரு "
+"அச்சுகளுக்கும் உள்ளீட்டு சேப்பரை அளவீடு செய்ய ஒரு அச்சைக் குறிப்பிடாமல் `சேப்பர்_லிபிரேட்` ஐ "
+"இயக்குகிறீர்கள்."
 
 msgid "Input Shaper re-calibration"
-msgstr ""
+msgstr "உள்ளீட்டு சேப்பர் மறு அளவுத்தன்மை"
 
 msgid ""
 "`SHAPER_CALIBRATE` command can be also used to re-calibrate the input shaper"
@@ -392,6 +530,11 @@ msgid ""
 "`SHAPER_CALIBRATE` command, or restrict the auto-calibration to a single "
 "axis by supplying `AXIS=` parameter, like"
 msgstr ""
+"எதிர்காலத்தில் உள்ளீட்டு சேப்பரை மீண்டும் அளவீடு செய்ய `சேப்பர்_லிபிரேட்` கட்டளை "
+"பயன்படுத்தப்படலாம், குறிப்பாக அதன் இயக்கவியலைப் பாதிக்கக்கூடிய அச்சுப்பொறியில் சில மாற்றங்கள்"
+" செய்யப்பட்டால். `சேப்பர்_லிப்ரேட்` கட்டளையைப் பயன்படுத்தி முழு அளவுத்திருத்தத்தை மீண்டும் "
+"இயக்கலாம், அல்லது` அச்சு = `அளவுருவை வழங்குவதன் மூலம் தானாக அளவுத்திருத்தத்தை ஒற்றை "
+"அச்சுக்கு கட்டுப்படுத்தலாம்"
 
 msgid ""
 "Also, due to some noise in measurements, it is possible that the tuning "
@@ -400,21 +543,32 @@ msgid ""
 "much. However, it is still advised to double-check the suggested parameters,"
 " and print some test prints before using them to confirm they are good."
 msgstr ""
+"மேலும், அளவீடுகளில் சில ஒலி காரணமாக, ட்யூனிங் முடிவுகள் ஒரு அளவுத்திருத்தத்திலிருந்து "
+"மற்றொரு அளவிற்கு சற்று வித்தியாசமாக இருக்கும். இருப்பினும், ஒலி அச்சுத் தரத்தை அதிகம் "
+"பாதிக்கும் என்று எதிர்பார்க்கப்படவில்லை. இருப்பினும், பரிந்துரைக்கப்பட்ட அளவுருக்களை இருமுறை"
+" சரிபார்க்கவும், சில சோதனை அச்சிட்டுகளை அவற்றைப் பயன்படுத்துவதற்கு முன்பு அவை நல்லவை "
+"என்பதை உறுதிப்படுத்தவும் அறிவுறுத்தப்படுகிறது."
 
 msgid "Offline processing of the accelerometer data"
-msgstr ""
+msgstr "முடுக்கமானி தரவின் இணைப்பில்லாத செயலாக்கம்"
 
 msgid ""
 "It is possible to generate the raw accelerometer data and process it offline"
 " (e.g. on a host machine), for example to find resonances. In order to do "
 "so, run the following commands via Octoprint terminal:"
 msgstr ""
+"மூல முடுக்கமானி தரவை உருவாக்கி அதை ஆஃப்லைனில் செயலாக்க முடியும் (எ.கா. ஒரு புரவலன் "
+"கணினியில்), எடுத்துக்காட்டாக அதிர்வுகளைக் கண்டறிய. அவ்வாறு செய்ய, பின்வரும் கட்டளைகளை "
+"ஆக்டோப்ரிண்ட் டெர்மினல் வழியாக இயக்கவும்:"
 
 msgid ""
 "ignoring any errors for `SET_INPUT_SHAPER` command. For `TEST_RESONANCES` "
 "command, specify the desired test axis. The raw data will be written into "
 "`/tmp` directory on the RPi."
 msgstr ""
+"`set_input_shaper` கட்டளைக்கான ஏதேனும் பிழைகள் புறக்கணித்தல். `Test_resonances` "
+"கட்டளைக்கு, விரும்பிய சோதனை அச்சைக் குறிப்பிடவும். மூல தரவு RPI இல் `/tmp` கோப்பகத்தில் "
+"எழுதப்படும்."
 
 msgid ""
 "The data can be processed later by the following scripts: "
@@ -422,16 +576,24 @@ msgid ""
 "them accept one or several raw csv files as the input depending on the mode."
 " The graph_accelerometer.py script supports several modes of operation:"
 msgstr ""
+"பின்வரும் ச்கிரிப்ட்களால் தரவை பின்னர் செயலாக்க முடியும்: "
+"`ச்கிரிப்ட்கள்/வரைபடம்_சிலெரோமீட்டர்.பை` மற்றும்` ச்கிரிப்டுகள்/அளவீடு_சேப்பர்.பை`. அவை "
+"இரண்டும் ஒன்று அல்லது பல மூல சி.எச்.வி கோப்புகளை பயன்முறையைப் பொறுத்து உள்ளீடாக "
+"ஏற்றுக்கொள்கின்றன. வரைபடம்_சிலெரோமீட்டர்.பி ச்கிரிப்ட் பல செயல்பாட்டு முறைகளை ஆதரிக்கிறது:"
 
 msgid ""
 "plotting raw accelerometer data (use `-r` parameter), only 1 input is "
 "supported;"
 msgstr ""
+"மூல முடுக்கமானி தரவைத் திட்டமிடுவது (`-r` அளவுருவைப் பயன்படுத்தவும்), 1 உள்ளீடு மட்டுமே"
+" ஆதரிக்கப்படுகிறது;"
 
 msgid ""
 "plotting a frequency response (no extra parameters required), if multiple "
 "inputs are specified, the average frequency response is computed;"
 msgstr ""
+"அதிர்வெண் பதிலைத் திட்டமிடுவது (கூடுதல் அளவுருக்கள் தேவையில்லை), பல உள்ளீடுகள் "
+"குறிப்பிடப்பட்டால், சராசரி அதிர்வெண் பதில் கணக்கிடப்படுகிறது;"
 
 msgid ""
 "comparison of the frequency response between several inputs (use `-c` "
@@ -439,6 +601,10 @@ msgid ""
 "consider via `-a x`, `-a y` or `-a z` parameter (if none specified, the sum "
 "of vibrations for all axes is used);"
 msgstr ""
+"பல உள்ளீடுகளுக்கு இடையிலான அதிர்வெண் பதிலின் ஒப்பீடு (`-c` அளவுருவைப் பயன்படுத்தவும்); `-"
+"a x`,` -a y` அல்லது `-a Z` அளவுரு வழியாக எந்த முடுக்கமானி அச்சு கருத்தில் கொள்ள "
+"வேண்டும் என்பதை நீங்கள் கூடுதலாக குறிப்பிடலாம் (எதுவும் குறிப்பிடப்படவில்லை என்றால், எல்லா "
+"அச்சுகளுக்கும் அதிர்வுகளின் தொகை பயன்படுத்தப்படுகிறது);"
 
 msgid ""
 "plotting the spectrogram (use `-s` parameter), only 1 input is supported; "
@@ -446,19 +612,27 @@ msgid ""
 "x`, `-a y` or `-a z` parameter (if none specified, the sum of vibrations for"
 " all axes is used)."
 msgstr ""
+"ச்பெக்ட்ரோகிராம் சூழ்ச்சி (`-s` அளவுருவைப் பயன்படுத்தவும்), 1 உள்ளீடு மட்டுமே "
+"ஆதரிக்கப்படுகிறது; `-a x`,` -a y` அல்லது `-a Z` அளவுரு வழியாக எந்த முடுக்கமானி "
+"அச்சு கருத்தில் கொள்ள வேண்டும் என்பதை நீங்கள் கூடுதலாக குறிப்பிடலாம் (எதுவும் "
+"குறிப்பிடப்படவில்லை என்றால், எல்லா அச்சுகளுக்கும் அதிர்வுகளின் தொகை பயன்படுத்தப்படுகிறது)."
 
 msgid ""
 "Note that graph_accelerometer.py script supports only the raw_data\\*.csv "
 "files and not resonances\\*.csv or calibration_data\\*.csv files."
 msgstr ""
+"Raw_data \\*ஐ மட்டுமே ஆதரிக்கிறது என்பதை நினைவில் கொள்க. காபிம கோப்புகளை மட்டுமே "
+"ஆதரிக்கிறது என்பதை நினைவில் கொள்க."
 
 msgid "For example,"
-msgstr ""
+msgstr "உதாரணமாக,"
 
 msgid ""
 "will plot the comparison of several `/tmp/raw_data_x_*.csv` files for Z axis"
 " to `/tmp/resonances_x.png` file."
 msgstr ""
+"பல `/tmp/raw_data_x _*ஐ ஒப்பிட்டுப் பார்க்கும். சட் அச்சுக்கான CSV` கோப்புகள்`/tmp/"
+"ronnances_x.png` கோப்புக்கு."
 
 msgid ""
 "The shaper_calibrate.py script accepts 1 or several inputs and can run "
@@ -468,11 +642,19 @@ msgid ""
 "parameter is provided, or the CSV file if `-c output.csv` parameter is "
 "specified."
 msgstr ""
+"Shaper_calibrate.py ச்கிரிப்ட் 1 அல்லது பல உள்ளீடுகளை ஏற்றுக்கொள்கிறது மற்றும் உள்ளீட்டு "
+"சேப்பரின் தானியங்கி ட்யூனிங்கை இயக்க முடியும் மற்றும் வழங்கப்பட்ட அனைத்து உள்ளீடுகளுக்கும் "
+"சிறப்பாக செயல்படும் சிறந்த அளவுருக்களை பரிந்துரைக்க முடியும். இது பரிந்துரைக்கப்பட்ட "
+"அளவுருக்களை கன்சோலுக்கு அச்சிடுகிறது, மேலும் `-o output.png` அளவுரு வழங்கப்பட்டால் "
+"அல்லது காபிம கோப்பு` -c output.csv` அளவுரு குறிப்பிடப்பட்டால் விளக்கப்படத்தை "
+"உருவாக்கலாம்."
 
 msgid ""
 "Providing several inputs to shaper_calibrate.py script can be useful if "
 "running some advanced tuning of the input shapers, for example:"
 msgstr ""
+"உள்ளீட்டு சேப்பர்களின் சில மேம்பட்ட ட்யூனிங்கை இயக்கினால், சேப்பர்_லிபிரேட்..பி.பை "
+"ச்கிரிப்டுக்கு பல உள்ளீடுகளை வழங்குவது பயனுள்ளதாக இருக்கும், எடுத்துக்காட்டாக:"
 
 msgid ""
 "Running `TEST_RESONANCES AXIS=X OUTPUT=raw_data` (and `Y` axis) for a single"
@@ -481,15 +663,24 @@ msgid ""
 "second time in order to detect axes cross-resonances and attempt to cancel "
 "them with input shapers."
 msgstr ""
+"ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியில் இரண்டு முறை முதல் முறையாக கருவித்தடத்துடன் இணைக்கப்பட்"
+"ட முடுக்கமானி, மற்றும் படுக்கையில் இரண்டாவது முறையாக இணைக்கப்பட்ட முடுக்கமானி வரிசையில் "
+"இணைக்கப்பட்டிருக்கும் `test_resonances அச்சு = ஃச் வெளியீடு = raw_data` (மற்றும்` y` "
+"அச்சு) இயங்கும் அச்சுகள் குறுக்கு அதிர்வெண்களைக் கண்டறிந்து அவற்றை உள்ளீட்டு வடிவங்களுடன் ரத்து"
+" செய்ய முயற்சிக்க."
 
 msgid ""
 "Running `TEST_RESONANCES AXIS=Y OUTPUT=raw_data` twice on a bed slinger with"
 " a glass bed and a magnetic surfaces (which is lighter) to find the input "
 "shaper parameters that work well for any print surface configuration."
 msgstr ""
+"எந்தவொரு அச்சு மேற்பரப்பு உள்ளமைவுக்கும் நன்றாக வேலை செய்யும் உள்ளீட்டு சேப்பர் அளவுருக்களைக் "
+"கண்டுபிடிக்க ஒரு கண்ணாடி படுக்கை மற்றும் காந்த மேற்பரப்புகளுடன் (இது இலகுவானது) ஒரு "
+"படுக்கை ச்லிங்கரில் இரண்டு முறை இயங்கும் `test_resonances அச்சு = ஒய் வெளியீடு = ஒய் "
+"வெளியீடு = raw_data`."
 
 msgid "Combining the resonance data from multiple test points."
-msgstr ""
+msgstr "பல சோதனை புள்ளிகளிலிருந்து அதிர்வு தரவை இணைத்தல்."
 
 msgid ""
 "Combining the resonance data from 2 axis (e.g. on a bed slinger printer to "
@@ -497,15 +688,20 @@ msgid ""
 "vibrations of the *bed* in case the nozzle 'catches' a print when moving in "
 "X axis direction)."
 msgstr ""
+"2 அச்சிலிருந்து அதிர்வு தரவை இணைத்தல் (எ.கா. ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியில் x- "
+"அச்சு உள்ளீடு_சேப்பரை x- அச்சு உள்ளீடு_சேப்பரை ஃச் மற்றும் ஒய் அச்சுகள் இரண்டிலிருந்தும் * "
+"படுக்கையின் அதிர்வுகளை ரத்து செய்ய * ஃச் அச்சு திசையில் நகரும் போது 'பிடிக்கும்' ஒரு "
+"அச்சு 'பிடிக்கும்' )."
 
 msgid "~/klippy-env/bin/pip install -v numpy\n"
-msgstr ""
+msgstr "~/klippy -env/bin/pip install -v numpy\n"
 
 msgid "Recv: // adxl345 values (x, y, z): 470.719200, 941.438400, 9728.196800\n"
 msgstr ""
+"Recv: // adxl345 மதிப்புகள் (x, ஒய், z): 470.719200, 941.438400, 9728.196800\n"
 
 msgid "TEST_RESONANCES AXIS=X\n"
-msgstr ""
+msgstr "Test_resonances அச்சு = ஃச்\n"
 
 msgid ""
 "[resonance_tester]\n"
@@ -513,14 +709,20 @@ msgid ""
 "accel_per_hz: 50  # default is 75\n"
 "probe_points: ...\n"
 msgstr ""
+"[அதிர்வு_டெச்டர்]\n"
+" Act_chip: ADXL345\n"
+" Act_per_HZ: 50 # இயல்புநிலை 75 ஆகும்\n"
+" probet_points: ...\n"
 
 msgid "TEST_RESONANCES AXIS=Y\n"
-msgstr ""
+msgstr "Test_resonances அச்சு = ஒய்\n"
 
 msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o /tmp/shaper_calibrate_x.png\n"
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_y_*.csv -o /tmp/shaper_calibrate_y.png\n"
 msgstr ""
+"~/klipper/scripts/அளவீடுகள்_சேப்பர்\n"
+" ~/klipper/scripts/அளவீடுகள்_சேப்பர்\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 34.4 Hz (vibrations = 4.0%, smoothing ~= 0.132)\n"
@@ -535,6 +737,27 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 2800 mm/sec^2\n"
 "Recommended shaper is mzv @ 34.6 Hz\n"
 msgstr ""
+"பொருத்தப்பட்ட சேப்பர் 'zv' அதிர்வெண் = 34.4 எர்ட்ச் (அதிர்வுகள் = 4.0%, மென்மையாக்குதல் ~ = "
+"0.132)\n"
+" 'ZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 4500 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'MZV' அதிர்வெண் = 34.6 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ "
+"= 0.170)\n"
+" 'MZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 3500 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'ஈ' அதிர்வெண் = 41.4 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = "
+"0.188)\n"
+" 'EI' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 3200 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் '2hump_ei' அதிர்வெண் = 51.8 எர்ட்ச் (அதிர்வுகள் = 0.0%, "
+"மென்மையாக்குதல் ~ = 0.201)\n"
+" '2hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 3000 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் '3hump_ei' அதிர்வெண் = 61.8 எர்ட்ச் (அதிர்வுகள் = 0.0%, "
+"மென்மையாக்குதல் ~ = 0.215)\n"
+" '3hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 2800 "
+"மிமீ/நொடி^2\n"
+" பரிந்துரைக்கப்பட்ட சேப்பர் MZV @ 34.6 Hz\n"
 
 msgid ""
 "[input_shaper]\n"
@@ -546,6 +769,15 @@ msgid ""
 "[printer]\n"
 "max_accel: 3000  # should not exceed the estimated max_accel for X and Y axes\n"
 msgstr ""
+"[input_shaper]\n"
+" shaper_freq_x: ...\n"
+" shaper_type_x: ...\n"
+" Shaper_freq_y: 34.6\n"
+" Shaper_type_y: MZV\n"
+"\n"
+" [அச்சுப்பொறி]\n"
+" Max_accel: 3000 # ஃச் மற்றும் ஒய் அச்சுகளுக்கான மதிப்பிடப்பட்ட MAX_ACCEL ஐ விட அதிகமா"
+"க இருக்கக்கூடாது\n"
 
 msgid ""
 "[adxl345 hotend]\n"
@@ -562,6 +794,19 @@ msgid ""
 "accel_chip_y: adxl345 bed\n"
 "probe_points: ...\n"
 msgstr ""
+"[ADXL345 HOTEND]\n"
+" # `ஒட்டென்ட்` சிப் ஒரு RPI உடன் இணைக்கப்பட்டுள்ளது என்று கருதுவது\n"
+" CS_PIN: RPI: எதுவுமில்லை\n"
+"\n"
+" [ADXL345 படுக்கை]\n"
+" # `படுக்கை` சிப் ஒரு அச்சுப்பொறி MCU போர்டுடன் இணைக்கப்பட்டுள்ளது என்று கருதுவது\n"
+" CS_PIN: ... # அச்சுப்பொறி போர்டு SPI CHIP தேர்ந்தெடு (CS) முள்\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" # படுக்கை ச்லிங்கர் அச்சுப்பொறியின் வழக்கமான அமைப்பைக் கருதுங்கள்\n"
+" Act_chip_x: ADXL345 HOTEND\n"
+" Act_chip_y: adxl345 படுக்கை\n"
+" probet_points: ...\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 57.8 Hz (vibrations = 20.3%, smoothing ~= 0.053)\n"
@@ -576,11 +821,32 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 1500 mm/sec^2\n"
 "Recommended shaper is 2hump_ei @ 45.2 Hz\n"
 msgstr ""
+"பொருத்தப்பட்ட சேப்பர் 'zv' அதிர்வெண் = 57.8 எர்ட்ச் (அதிர்வுகள் = 20.3%, மென்மையாக்குதல் ~ "
+"= 0.053)\n"
+" 'ZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 13000 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'MZV' அதிர்வெண் = 34.8 எர்ட்ச் (அதிர்வுகள் = 3.6%, மென்மையாக்குதல் ~ "
+"= 0.168)\n"
+" 'MZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 3600 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'ஈ' அதிர்வெண் = 48.8 எர்ட்ச் (அதிர்வுகள் = 4.9%, மென்மையாக்குதல் ~ = "
+"0.135)\n"
+" 'EI' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 4400 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் '2hump_ei' அதிர்வெண் = 45.2 எர்ட்ச் (அதிர்வுகள் = 0.1%, "
+"மென்மையாக்குதல் ~ = 0.264)\n"
+" '2hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 2200 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் '3hump_ei' அதிர்வெண் = 48.0 எர்ட்ச் (அதிர்வுகள் = 0.0%, "
+"மென்மையாக்குதல் ~ = 0.356)\n"
+" '3hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 1500 "
+"மிமீ/நொடி^2\n"
+" பரிந்துரைக்கப்பட்ட சேப்பர் 2hump_ei @ 45.2 எர்ட்ச்\n"
 
 msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
 "/tmp/shaper_calibrate_x.png --max_smoothing=0.2\n"
-msgstr ""
+msgstr "~/klipper/scripts/அளவீடுகள்_சேப்பர்\n"
 
 msgid ""
 "Fitted shaper 'zv' frequency = 55.4 Hz (vibrations = 19.7%, smoothing ~= 0.057)\n"
@@ -595,6 +861,27 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 3900 mm/sec^2\n"
 "Recommended shaper is 3hump_ei @ 72.6 Hz\n"
 msgstr ""
+"பொருத்தப்பட்ட சேப்பர் 'zv' அதிர்வெண் = 55.4 எர்ட்ச் (அதிர்வுகள் = 19.7%, மென்மையாக்குதல் ~ "
+"= 0.057)\n"
+" 'ZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 12000 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'MZV' அதிர்வெண் = 34.6 எர்ட்ச் (அதிர்வுகள் = 3.6%, மென்மையாக்குதல் ~ "
+"= 0.170)\n"
+" 'MZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 3500 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'ஈ' அதிர்வெண் = 48.2 எர்ட்ச் (அதிர்வுகள் = 4.8%, மென்மையாக்குதல் ~ = "
+"0.139)\n"
+" 'EI' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, MAX_ACCEL <= 4300 மிமீ/நொடி^2 "
+"பரிந்துரைத்தது\n"
+" பொருத்தப்பட்ட சேப்பர் '2hump_ei' அதிர்வெண் = 52.0 எர்ட்ச் (அதிர்வுகள் = 2.7%, "
+"மென்மையாக்குதல் ~ = 0.200)\n"
+" '2hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 3000 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் '3hump_ei' அதிர்வெண் = 72.6 எர்ட்ச் (அதிர்வுகள் = 1.4%, "
+"மென்மையாக்குதல் ~ = 0.155)\n"
+" '3hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 3900 "
+"மிமீ/நொடி^2\n"
+" பரிந்துரைக்கப்பட்ட சேப்பர் 3hump_ei @ 72.6 எர்ட்ச்\n"
 
 msgid ""
 "[resonance_tester]\n"
@@ -602,9 +889,13 @@ msgid ""
 "probe_points: ...\n"
 "max_smoothing: 0.25  # an example\n"
 msgstr ""
+"[அதிர்வு_டெச்டர்]\n"
+" act_chip: ...\n"
+" probet_points: ...\n"
+" MAX_SMOHEDING: 0.25 # ஒரு எடுத்துக்காட்டு\n"
 
 msgid "SHAPER_CALIBRATE\n"
-msgstr ""
+msgstr "Shaper_calibrate\n"
 
 msgid ""
 "Calculating the best input shaper parameters for y axis\n"
@@ -620,26 +911,52 @@ msgid ""
 "To avoid too much smoothing with '3hump_ei', suggested max_accel <= 2500 mm/sec^2\n"
 "Recommended shaper_type_y = mzv, shaper_freq_y = 36.8 Hz\n"
 msgstr ""
+"ஒய் அச்சுக்கான சிறந்த உள்ளீட்டு சேப்பர் அளவுருக்களைக் கணக்கிடுதல்\n"
+" பொருத்தப்பட்ட சேப்பர் 'zv' அதிர்வெண் = 39.0 எர்ட்ச் (அதிர்வுகள் = 13.2%, மென்மையாக்குதல் ~ "
+"= 0.105)\n"
+" 'ZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 5900 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'MZV' அதிர்வெண் = 36.8 எர்ட்ச் (அதிர்வுகள் = 1.7%, மென்மையாக்குதல் ~ "
+"= 0.150)\n"
+" 'MZV' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 4000 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் 'ஈ' அதிர்வெண் = 36.6 எர்ட்ச் (அதிர்வுகள் = 2.2%, மென்மையாக்குதல் ~ = "
+"0.240)\n"
+" 'EI' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 2500 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் '2hump_ei' அதிர்வெண் = 48.0 எர்ட்ச் (அதிர்வுகள் = 0.0%, "
+"மென்மையாக்குதல் ~ = 0.234)\n"
+" '2hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 2500 "
+"மிமீ/நொடி^2\n"
+" பொருத்தப்பட்ட சேப்பர் '3hump_ei' அதிர்வெண் = 59.0 எர்ட்ச் (அதிர்வுகள் = 0.0%, "
+"மென்மையாக்குதல் ~ = 0.235)\n"
+" '3hump_ei' உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL <= 2500 "
+"மிமீ/நொடி^2\n"
+" பரிந்துரைக்கப்பட்ட Shaper_type_y = MZV, சேப்பர்_ஃப்ரெக்_ஒய் = 36.8 எர்ட்ச்\n"
 
 msgid "SHAPER_CALIBRATE AXIS=Y\n"
-msgstr ""
+msgstr "Shaper_calibrate அச்சு = ஒய்\n"
 
 msgid "SHAPER_CALIBRATE AXIS=X\n"
-msgstr ""
+msgstr "Shaper_calibrate அச்சு = ஃச்\n"
 
 msgid ""
 "SET_INPUT_SHAPER SHAPER_FREQ_X=0 SHAPER_FREQ_Y=0\n"
 "TEST_RESONANCES AXIS=X OUTPUT=raw_data\n"
 msgstr ""
+"Set_input_shaper shaper_freq_x = 0 shaper_freq_y = 0\n"
+" Test_resonances அச்சு = ஃச் வெளியீடு = RAW_DATA\n"
 
 msgid ""
 "~/klipper/scripts/graph_accelerometer.py /tmp/raw_data_x_*.csv -o "
 "/tmp/resonances_x.png -c -a z\n"
 msgstr ""
+"~/klipper/scripts/brack_accelerometer.py /tmp/raw_data_x_*.csv -o /tmp/"
+"resonances_x.png -c -a சட்\n"
 
 #: docs/Measuring_Resonances.md:block 80 (header)
 msgid "Testing custom axes"
-msgstr ""
+msgstr "தனிப்பயன் அச்சுகளை சோதித்தல்"
 
 #: docs/Measuring_Resonances.md:block 81 (paragraph)
 msgid ""
@@ -647,36 +964,46 @@ msgid ""
 "useful for input shaper calibration, it can be used to study printer "
 "resonances in-depth and to check, for example, belt tension."
 msgstr ""
+"`Test_resonances` கட்டளை தனிப்பயன் அச்சுகளை ஆதரிக்கிறது. உள்ளீட்டு சேப்பர் "
+"அளவுத்திருத்தத்திற்கு இது உண்மையில் பயனுள்ளதாக இல்லை என்றாலும், அச்சுப்பொறி அதிர்வுகளை "
+"ஆழமாகப் படிக்கவும், சரிபார்க்கவும் இது பயன்படுத்தப்படலாம், எடுத்துக்காட்டாக, பெல்ட் பதற்றம்."
 
 #: docs/Measuring_Resonances.md:block 82 (paragraph)
 msgid "To check the belt tension on CoreXY printers, execute"
-msgstr ""
+msgstr "கோர்சி அச்சுப்பொறிகளில் பெல்ட் பதற்றத்தை சரிபார்க்க, இயக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 83 (code)
 msgid ""
 "TEST_RESONANCES AXIS=1,1 OUTPUT=raw_data\n"
 "TEST_RESONANCES AXIS=1,-1 OUTPUT=raw_data\n"
 msgstr ""
+"Test_resonances அச்சு = 1,1 வெளியீடு = RAW_DATA\n"
+" Test_resonances அச்சு = 1, -1 வெளியீடு = RAW_DATA\n"
 
 #: docs/Measuring_Resonances.md:block 84 (paragraph)
 msgid "and use `graph_accelerometer.py` to process the generated files, e.g."
 msgstr ""
+"உருவாக்கப்பட்ட கோப்புகளை செயலாக்க `வரைபடம்_சிலெரோமீட்டர்.பை` ஐப் பயன்படுத்தவும், எ.கா."
 
 #: docs/Measuring_Resonances.md:block 85 (code)
 msgid ""
 "~/klipper/scripts/graph_accelerometer.py -c /tmp/raw_data_axis*.csv -o "
 "/tmp/resonances.png\n"
 msgstr ""
+"~/klipper/scripts/brack_acceleromer.py -c /tmp/raw_data_axis*.csv -o /tmp/"
+"resonances.png\n"
 
 #: docs/Measuring_Resonances.md:block 86 (paragraph)
 msgid "which will generate `/tmp/resonances.png` comparing the resonances."
-msgstr ""
+msgstr "இது அதிர்வுகளை ஒப்பிடுகையில் `/tmp/அதிர்வுகளை உருவாக்கும்."
 
 #: docs/Measuring_Resonances.md:block 87 (paragraph)
 msgid ""
 "For Delta printers with the default tower placement (tower A ~= 210 degrees,"
 " B ~= 330 degrees, and C ~= 90 degrees), execute"
 msgstr ""
+"இயல்புநிலை கோபுர வேலைவாய்ப்புடன் டெல்டா அச்சுப்பொறிகளுக்கு (கோபுரம் A ~ = 210 டிகிரி, "
+"பி ~ = 330 டிகிரி மற்றும் சி ~ = 90 டிகிரி), இயக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 88 (code)
 msgid ""
@@ -684,14 +1011,17 @@ msgid ""
 "TEST_RESONANCES AXIS=-0.866025404,-0.5 OUTPUT=raw_data\n"
 "TEST_RESONANCES AXIS=0.866025404,-0.5 OUTPUT=raw_data\n"
 msgstr ""
+"Test_resonances அச்சு = 0,1 வெளியீடு = RAW_DATA\n"
+" Test_resonances அச்சு = -0.866025404, -0.5 வெளியீடு = RAW_DATA\n"
+" Test_resonances அச்சு = 0.866025404, -0.5 வெளியீடு = RAW_DATA\n"
 
 #: docs/Measuring_Resonances.md:block 89 (paragraph)
 msgid "and then use the same command"
-msgstr ""
+msgstr "பின்னர் அதே கட்டளையைப் பயன்படுத்துங்கள்"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid "to generate `/tmp/resonances.png` comparing the resonances."
-msgstr ""
+msgstr "அதிர்வுகளை ஒப்பிட்டு `/tmp/ronsnances.png` ஐ உருவாக்க."
 
 #: docs/Measuring_Resonances.md:block 26 (code)
 msgid ""
@@ -706,6 +1036,16 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[MCU RPI]\n"
+" சீரியல்: /tmp /klipper_host_mcu\n"
+"\n"
+" [ADXL345]\n"
+" CS_PIN: RPI: எதுவுமில்லை\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" Act_chip: ADXL345\n"
+" probet_points:\n"
+" 100, 100, 20 # ஒரு எடுத்துக்காட்டு\n"
 
 #: docs/Measuring_Resonances.md:block 111 (paragraph)
 msgid ""
@@ -714,30 +1054,34 @@ msgid ""
 "first to start the measurements, and then to stop them and write the output "
 "file. Refer to [G-Codes](G-Codes.md#adxl345) for more details."
 msgstr ""
+"சில சாதாரண அச்சுப்பொறி செயல்பாட்டின் போது `முடுக்கமானி_மேசர்` கட்டளையை இரண்டு முறை "
+"இயக்குவதன் மூலமும் மூல தரவைப் பெறலாம் - முதலில் அளவீடுகளைத் தொடங்கவும், பின்னர் அவற்றை "
+"நிறுத்தி வெளியீட்டு கோப்பை எழுதவும். மேலும் விவரங்களுக்கு [சி-குறியீடுகள்] "
+"(சி-கோட்ச்.எம்டி#ஏடிஎக்ச்எல் 345) ஐப் பார்க்கவும்."
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "MPU-9250 pin"
-msgstr ""
+msgstr "MPU-9250 முள்"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "09"
-msgstr ""
+msgstr "09"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "03"
-msgstr ""
+msgstr "03"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "GPIO02 (SDA1)"
-msgstr ""
+msgstr "GPIO02 (SDA1)"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "05"
-msgstr ""
+msgstr "05"
 
 #: docs/Measuring_Resonances.md:block 9 (table)
 msgid "GPIO03 (SCL1)"
-msgstr ""
+msgstr "GPIO03 (SCL1)"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -745,11 +1089,14 @@ msgid ""
 "additional software dependencies not installed by default. First, run on "
 "your Raspberry Pi the following commands:"
 msgstr ""
+"அதிர்வு அளவீடுகள் மற்றும் சேப்பர் ஆட்டோ-அளவுத்திருத்தத்திற்கு இயல்புநிலையாக நிறுவப்படாத "
+"கூடுதல் மென்பொருள் சார்புகள் தேவை என்பதை நினைவில் கொள்க. முதலில், உங்கள் ராச்பெர்ரி பையில் "
+"பின்வரும் கட்டளைகளை இயக்கவும்:"
 
 #: docs/Measuring_Resonances.md:block 22 (paragraph)
 msgid ""
 "Next, in order to install NumPy in the Klipper environment, run the command:"
-msgstr ""
+msgstr "அடுத்து, கிளிப்பர் சூழலில் நம்பியை நிறுவ, கட்டளையை இயக்கவும்:"
 
 #: docs/Measuring_Resonances.md:block 24 (paragraph)
 msgid ""
@@ -758,6 +1105,10 @@ msgid ""
 "installation. On some occasions, if the board has too little RAM the "
 "installation may fail and you will need to enable swap."
 msgstr ""
+"சிபியு இன் செயல்திறனைப் பொறுத்து, 10-20 நிமிடங்கள் வரை * நிறைய நேரம் ஆகலாம் என்பதை "
+"நினைவில் கொள்க. பொறுமையாக இருங்கள் மற்றும் நிறுவலை முடிக்க காத்திருங்கள். சில "
+"சந்தர்ப்பங்களில், போர்டில் மிகக் குறைந்த ரேம் இருந்தால் நிறுவல் தோல்வியடையக்கூடும், மேலும் "
+"நீங்கள் இடமாற்றத்தை இயக்க வேண்டும்."
 
 #: docs/Measuring_Resonances.md:block 31 (code)
 msgid ""
@@ -773,16 +1124,29 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[MCU RPI]\n"
+" சீரியல்: /tmp /klipper_host_mcu\n"
+"\n"
+" [MPU9250]\n"
+" I2C_MCU: RPI\n"
+" I2C_BUS: I2C.1\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" Act_chip: MPU9250\n"
+" probet_points:\n"
+" 100, 100, 20 # ஒரு எடுத்துக்காட்டு\n"
 
 #: docs/Measuring_Resonances.md:block 8 (paragraph)
 msgid ""
 "***Double-check your wiring before powering up to prevent damaging your "
 "MCU/Raspberry Pi or the accelerometer.***"
 msgstr ""
+"*** உங்கள் MCU/ராச்பெர்ரி பை அல்லது முடுக்கமானி சேதப்படுத்துவதைத் தடுக்க உங்கள் வயரிங் "
+"இயக்குவதற்கு முன் இருமுறை சரிபார்க்கவும். ***"
 
 #: docs/Measuring_Resonances.md:block 9 (header)
 msgid "SPI Accelerometers"
-msgstr ""
+msgstr "SPI முடுக்கமானிகள்"
 
 #: docs/Measuring_Resonances.md:block 11 (code)
 msgid ""
@@ -790,36 +1154,41 @@ msgid ""
 "3.3V+MOSI\n"
 "SCLK+CS\n"
 msgstr ""
+"Gnd+miso\n"
+" 3.3 வி+மொசி\n"
+" SCLK+CS\n"
 
 #: docs/Measuring_Resonances.md:block 12 (header)
 msgid "ADXL345"
-msgstr ""
+msgstr "45"
 
 #: docs/Measuring_Resonances.md:block 18 (header)
 msgid "I2C Accelerometers"
-msgstr ""
+msgstr "I2C முடுக்கமானிகள்"
 
 #: docs/Measuring_Resonances.md:block 20 (code)
 msgid ""
 "3.3V+SDA\n"
 "GND+SCL\n"
 msgstr ""
+"Z.\n"
+" GND+SCL\n"
 
 #: docs/Measuring_Resonances.md:block 21 (header)
 msgid "MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500"
-msgstr ""
+msgstr "MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Recommended connection scheme for I2C on the Raspberry Pi:"
-msgstr ""
+msgstr "ராச்பெர்ரி பையில் I2C க்கான பரிந்துரைக்கப்பட்ட இணைப்பு திட்டம்:"
 
 #: docs/Measuring_Resonances.md:block 24 (table)
 msgid "VCC"
-msgstr ""
+msgstr "வி.சி.சி."
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "RP2040 pin"
-msgstr ""
+msgstr "RP2040 முள்"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "39"
@@ -827,35 +1196,35 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "3v3"
-msgstr ""
+msgstr "மருத்தீடு"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "38"
-msgstr ""
+msgstr "38"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "GP0 (I2C0 SDA)"
-msgstr ""
+msgstr "GP0 (I2C0 SDA)"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "02"
-msgstr ""
+msgstr "02"
 
 #: docs/Measuring_Resonances.md:block 27 (table)
 msgid "GP1 (I2C0 SCL)"
-msgstr ""
+msgstr "GP1 (I2C0 SCL)"
 
 #: docs/Measuring_Resonances.md:block 42 (header)
 msgid "Configure ADXL345 With RPi"
-msgstr ""
+msgstr "RPI உடன் ADXL345 ஐ உள்ளமைக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 44 (paragraph)
 msgid "Add the following to the printer.cfg file:"
-msgstr ""
+msgstr "Printur.cfg கோப்பில் பின்வருவனவற்றைச் சேர்க்கவும்:"
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid "Configure MPU-6000/9000 series With RPi"
-msgstr ""
+msgstr "RPI உடன் MPU-6000/9000 தொடரை உள்ளமைக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 48 (paragraph)
 msgid ""
@@ -863,18 +1232,22 @@ msgid ""
 " (see [Enabling I2C](RPi_microcontroller.md#optional-enabling-i2c) section "
 "for more details). Then, add the following to the printer.cfg:"
 msgstr ""
+"மேலும் விவரங்களுக்கு லினக்ச் I2C இயக்கி இயக்கப்பட்டிருப்பதை உறுதிசெய்து, பாட் வீதம் 400000 "
+"ஆக அமைக்கப்பட்டிருப்பதை உறுதிசெய்க (I2C] (RPI_MICROController.md#விருப்ப"
+"-ENABLESING-I2C) பகுதியைப் பார்க்கவும்). பின்னர், பின்வருவனவற்றை அச்சுப்பொறியில் "
+"சேர்க்கவும். Cfg:"
 
 #: docs/Measuring_Resonances.md:block 13 (header)
 msgid "Direct to Raspberry Pi"
-msgstr ""
+msgstr "ராச்பெர்ரி பைக்கு நேரடியாக"
 
 #: docs/Measuring_Resonances.md:block 16 (table)
 msgid "3.3V DC power"
-msgstr ""
+msgstr "3.3 வி டிசி ஆற்றல்"
 
 #: docs/Measuring_Resonances.md:block 19 (header)
 msgid "Using Raspberry Pi Pico"
-msgstr ""
+msgstr "ராச்பெர்ரி பை பிக்கோவைப் பயன்படுத்துதல்"
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -884,6 +1257,12 @@ msgid ""
 "of GPIO. The Pico does not have much processing power, so make sure it is "
 "only running the accelerometer and not performing any other duties."
 msgstr ""
+"நீங்கள் ADXL345 ஐ உங்கள் ராச்பெர்ரி பை பைக்கோவுடன் இணைக்கலாம், பின்னர் பிக்கோவை உங்கள் "
+"ராச்பெர்ரி பைவுடன் யூ.எச்.பி வழியாக இணைக்கலாம். இது மற்ற கிளிப்பர் சாதனங்களில் "
+"முடுக்கமானியை மீண்டும் பயன்படுத்துவதை எளிதாக்குகிறது, ஏனெனில் நீங்கள் GPIO க்கு பதிலாக "
+"யூ.எச்.பி வழியாக இணைக்க முடியும். பிக்கோவுக்கு அதிக செயலாக்க ஆற்றல் இல்லை, எனவே இது "
+"முடுக்கமானியை மட்டுமே இயக்குகிறது மற்றும் வேறு எந்த கடமைகளையும் செய்யாது என்பதை "
+"உறுதிப்படுத்திக் கொள்ளுங்கள்."
 
 #: docs/Measuring_Resonances.md:block 21 (paragraph)
 msgid ""
@@ -891,18 +1270,21 @@ msgid ""
 "3.3V only. Depending on the board's layout, a level shifter may be present, "
 "which makes 5V dangerous for your RPi."
 msgstr ""
+"உங்கள் RPI க்கு சேதம் ஏற்படுவதைத் தவிர்ப்பதற்காக, ADXL345 ஐ 3.3V உடன் மட்டுமே இணைக்கவும். "
+"வாரியத்தின் தளவமைப்பைப் பொறுத்து, ஒரு நிலை சிஃப்ட்டர் இருக்கலாம், இது உங்கள் RPI க்கு 5V "
+"ஆபத்தானது."
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "Pico pin"
-msgstr ""
+msgstr "முள் உச்சம்"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "Pico pin name"
-msgstr ""
+msgstr "பிக்கோ முள் பெயர்"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "2"
@@ -910,7 +1292,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP1 (SPI0_CSn)"
-msgstr ""
+msgstr "Gp1 (spi0_csn)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "1"
@@ -918,7 +1300,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP0 (SPI0_RX)"
-msgstr ""
+msgstr "Gp0 (spi0_rx)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "5"
@@ -926,7 +1308,7 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP3 (SPI0_TX)"
-msgstr ""
+msgstr "Gp3 (spi0_tx)"
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "4"
@@ -934,27 +1316,27 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 22 (table)
 msgid "GP2 (SPI0_SCK)"
-msgstr ""
+msgstr "Gp2 (spi0_sck)"
 
 #: docs/Measuring_Resonances.md:block 23 (paragraph)
 msgid "Wiring diagrams for some of the ADXL345 boards:"
-msgstr ""
+msgstr "சில ADXL345 பலகைகளுக்கான வயரிங் வரைபடங்கள்:"
 
 #: docs/Measuring_Resonances.md:block 24 (paragraph)
 msgid "![ADXL345-Pico](img/adxl345-pico.png)"
-msgstr ""
+msgstr "!"
 
 #: docs/Measuring_Resonances.md:block 54 (header)
 msgid "Configure ADXL345 With Pi Pico"
-msgstr ""
+msgstr "PI பைக்கோவுடன் ADXL345 ஐ உள்ளமைக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 55 (header)
 msgid "Flash the Pico Firmware"
-msgstr ""
+msgstr "பிக்கோ ஃபார்ம்வேரை ஃபிளாச்"
 
 #: docs/Measuring_Resonances.md:block 56 (paragraph)
 msgid "On your Raspberry Pi, compile the firmware for the Pico."
-msgstr ""
+msgstr "உங்கள் ராச்பெர்ரி பையில், பிக்கோவிற்கான ஃபார்ம்வேரை தொகுக்கவும்."
 
 #: docs/Measuring_Resonances.md:block 57 (code)
 msgid ""
@@ -962,20 +1344,25 @@ msgid ""
 "make clean\n"
 "make menuconfig\n"
 msgstr ""
+"சிடி ~/கிளிப்பர்\n"
+" சுத்தமாக செய்யுங்கள்\n"
+" மெனுகான்ஃபிக் செய்யுங்கள்\n"
 
 #: docs/Measuring_Resonances.md:block 58 (paragraph)
 msgid "![Pico menuconfig](img/klipper_pico_menuconfig.png)"
-msgstr ""
+msgstr "!"
 
 #: docs/Measuring_Resonances.md:block 59 (paragraph)
 msgid ""
 "Now, while holding down the `BOOTSEL` button on the Pico, connect the Pico "
 "to the Raspberry Pi via USB. Compile and flash the firmware."
 msgstr ""
+"இப்போது, பிக்கோவில் `பூட்சல்` பொத்தானை அழுத்திப் பிடிக்கும்போது, பிக்கோவை யூ.எச்.பி வழியா"
+"க ராச்பெர்ரி பைக்கு இணைக்கவும். ஃபார்ம்வேரை தொகுத்து ஒளிரச் செய்யுங்கள்."
 
 #: docs/Measuring_Resonances.md:block 60 (code)
 msgid "make flash FLASH_DEVICE=first\n"
-msgstr ""
+msgstr "ஃப்ளாச் ஃப்ளாச்_டெவிச் = முதலில் செய்யுங்கள்\n"
 
 #: docs/Measuring_Resonances.md:block 61 (paragraph)
 msgid ""
@@ -983,10 +1370,13 @@ msgid ""
 "example, that's `make flash FLASH_DEVICE=2e8a:0003`. ![Determine flash "
 "device](img/flash_rp2040_FLASH_DEVICE.png)"
 msgstr ""
+"அது தோல்வியுற்றால், எந்த `ஃப்ளாச்_டெவிச்` பயன்படுத்த வேண்டும் என்று உங்களுக்குத் "
+"தெரிவிக்கப்படும். இந்த எடுத்துக்காட்டில், இது `ஃப்ளாச் ஃப்ளாச்_டெவிச் = 2e8a: 0003` ஐ "
+"உருவாக்குங்கள். !"
 
 #: docs/Measuring_Resonances.md:block 62 (header)
 msgid "Configure the Connection"
-msgstr ""
+msgstr "இணைப்பை உள்ளமைக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 63 (paragraph)
 msgid ""
@@ -994,6 +1384,9 @@ msgid ""
 "serial device. Find the pico serial device with `ls /dev/serial/by-id/*`. "
 "You can now add an `adxl.cfg` file with the following settings:"
 msgstr ""
+"PICO இப்போது புதிய ஃபார்ம்வேருடன் மறுதொடக்கம் செய்யும், மேலும் இது ஒரு தொடர் சாதனமாகக் "
+"காண்பிக்கப்பட வேண்டும். `Ls/dev/serial/by-id/*` உடன் பைக்கோ தொடர் சாதனத்தைக் கண்டறியவும்"
+". நீங்கள் இப்போது பின்வரும் அமைப்புகளுடன் `adxl.cfg` கோப்பைச் சேர்க்கலாம்:"
 
 #: docs/Measuring_Resonances.md:block 64 (code)
 msgid ""
@@ -1016,18 +1409,39 @@ msgid ""
 "[output_pin power_mode] # Improve power stability\n"
 "pin: adxl:gpio23\n"
 msgstr ""
+"[MCU ADXL]\n"
+" # நீங்கள் மேலே கண்டறிந்த எதற்கும் <myserial> ஐ மாற்றவும். உதாரணமாக,\n"
+" # USB-KLIPPER_RP2040_E661640843545B2E-IF00\n"
+" சீரியல்:/dev/serial/by-id/usb-klipper_rp2040_ <myserial>\n"
+"\n"
+" [ADXL345]\n"
+" CS_PIN: ADXL: GPIO1\n"
+" SPI_BUS: SPI0A\n"
+" AXES_MAP: ஃச், சட், y\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" Act_chip: ADXL345\n"
+" probet_points:\n"
+" # உங்கள் அச்சு படுக்கையின் நடுவில் சற்று மேலே எங்காவது\n"
+" 147,154, 20\n"
+"\n"
+" [output_pin power_mode] # ஆற்றல் நிலைத்தன்மையை மேம்படுத்தவும்\n"
+" முள்: ADXL: GPIO23\n"
 
 #: docs/Measuring_Resonances.md:block 65 (paragraph)
 msgid ""
 "If setting up the ADXL345 configuration in a separate file, as shown above, "
 "you'll also want to modify your `printer.cfg` file to include this:"
 msgstr ""
+"ADXL345 உள்ளமைவை ஒரு தனி கோப்பில் அமைத்தால், மேலே காட்டப்பட்டுள்ளபடி, இதைச் சேர்க்க உங்கள் "
+"`printel.cfg` கோப்பையும் மாற்றவும் விரும்புவீர்கள்:"
 
 #: docs/Measuring_Resonances.md:block 66 (code)
 msgid ""
 "[include adxl.cfg] # Comment this out when you disconnect the "
 "accelerometer\n"
 msgstr ""
+"[include adxl.cfg] # கருத்து this out when you disconnect the accelerometer\n"
 
 #: docs/Measuring_Resonances.md:block 81 (paragraph)
 msgid ""
@@ -1038,6 +1452,11 @@ msgid ""
 "power, the wiring (that it matches the schematics, no wire is broken or "
 "loose, etc.), and soldering quality."
 msgstr ""
+"`தவறான ADXL345 ஐடி (XX vs E5 கிடைத்தது)` போன்ற பிழையைப் பெற்றால், `xx` வேறு ஏதேனும்"
+" ஐடி, உடனடியாக மீண்டும் முயற்சிக்கவும். SPI துவக்கத்தில் சிக்கல் உள்ளது. நீங்கள் இன்னும் பிழை "
+"பெற்றால், அது ADXL345 அல்லது தவறான சென்சார் ஆகியவற்றுடன் இணைப்பு சிக்கலைக் குறிக்கிறது. "
+"ஆற்றல், வயரிங் (இது திட்டவட்டத்துடன் பொருந்துகிறது, கம்பி உடைக்கப்படவில்லை அல்லது தளர்வானது"
+" போன்றவை), மற்றும் சாலிடரிங் தகுதி ஆகியவற்றை இருமுறை சரிபார்க்கவும்."
 
 #: docs/Measuring_Resonances.md:block 100 (paragraph)
 msgid ""
@@ -1046,6 +1465,9 @@ msgid ""
 " for example, for the input shaper [re-calibration](#input-shaper-re-"
 "calibration)."
 msgstr ""
+"மாற்றாக நீங்கள் உள்ளீட்டு சேப்பரை கிளிப்பர் [நேரடியாக] (#உள்ளீட்டு-சேப்பர்-ஆட்டோ-அளவுகோல்) "
+"இலிருந்து இயக்கலாம், இது வசதியானதாக இருக்கும், எடுத்துக்காட்டாக, உள்ளீட்டு வடிவத்திற்கு "
+"[மறு அளவுத்திருத்தம்] (#உள்ளீட்டு-காட்சிக்கு -இ-அளவுத்திருத்தம்)."
 
 #: docs/Measuring_Resonances.md:block 152 (paragraph)
 msgid ""
@@ -1059,6 +1481,15 @@ msgid ""
 "Always check that all parts of the printer (including the ones that may "
 "normally not move) are securely fixed in place after each auto-tuning."
 msgstr ""
+"** எச்சரிக்கை! ** சேப்பர் ஆட்டோ அளவுத்திருத்தத்தை அடிக்கடி இயக்குவது நல்லதல்ல (எ.கா. "
+"ஒவ்வொரு அச்சுக்கும் முன், அல்லது ஒவ்வொரு நாளும்). அதிர்வு அதிர்வெண்களைத் தீர்மானிக்க, ஆட்டோ "
+"அளவுத்திருத்தம் ஒவ்வொரு அச்சுகளிலும் தீவிர அதிர்வுகளை உருவாக்குகிறது. பொதுவாக, 3 டி "
+"அச்சுப்பொறிகள் அதிர்வு அதிர்வெண்களுக்கு அருகிலுள்ள அதிர்வுகளுக்கு நீண்டகாலமாக வெளிப்பாட்டைத்"
+" தாங்கும் வகையில் வடிவமைக்கப்படவில்லை. அவ்வாறு செய்வது அச்சுப்பொறி கூறுகளின் உடைகளை "
+"அதிகரிக்கலாம் மற்றும் அவற்றின் ஆயுட்காலம் குறைக்கலாம். சில பகுதிகள் அவிழ்க்க அல்லது "
+"தளர்வானதாக மாறும் அபாயமும் உள்ளது. அச்சுப்பொறியின் அனைத்து பகுதிகளும் (பொதுவாக நகராதவை"
+" உட்பட) ஒவ்வொரு ஆட்டோ-ட்யூனிங்கிற்குப் பிறகு பாதுகாப்பாக சரி செய்யப்படுகின்றன என்பதை "
+"எப்போதும் சரிபார்க்கவும்."
 
 #: docs/Measuring_Resonances.md:block 2 (paragraph)
 msgid ""
@@ -1072,6 +1503,15 @@ msgid ""
 "to the I2C interface of a Raspberry Pi directly, or to an I2C interface of "
 "an MCU board that supports 400kbit/s *fast mode* in Klipper."
 msgstr ""
+"கிளிப்பர் ADXL345, MPU-9250 மற்றும் LIS2DW இணக்கமான முடுக்கமானிகள் ஆகியவற்றிற்கான "
+"உள்ளமைக்கப்பட்ட ஆதரவைக் கொண்டுள்ளது, அவை வெவ்வேறு அச்சுகளுக்கான அச்சுப்பொறியின் அதிர்வு "
+"அதிர்வெண்களை அளவிட பயன்படுகின்றன, மேலும் அதிர்வுகளை ஈடுசெய்ய ஆட்டோ-டியூன் "
+"[உள்ளீட்டு சேப்பர்கள்] (அதிர்வு_பென்சேசன். முடுக்கமானிகளைப் பயன்படுத்த சில சாலிடரிங் மற்றும் "
+"கிரிம்பிங் தேவை என்பதை நினைவில் கொள்க. ADXL345/LIS2DW ஐ ஒரு ராச்பெர்ரி PI அல்லது MCU "
+"போர்டின் SPI இடைமுகத்துடன் இணைக்க முடியும் (இது நியாயமான முறையில் வேகமாக இருக்க "
+"வேண்டும்). MPU குடும்பத்தை ஒரு ராச்பெர்ரி PI இன் I2C இடைமுகத்துடன் நேரடியாக இணைக்கலாம் "
+"அல்லது கிளிப்பரில் 400Kbit/s * வேகமான பயன்முறை * ஐ ஆதரிக்கும் MCU போர்டின் I2C "
+"இடைமுகத்துடன் இணைக்கப்படலாம்."
 
 #: docs/Measuring_Resonances.md:block 3 (paragraph)
 msgid ""
@@ -1080,6 +1520,10 @@ msgid ""
 "connected to a 5V printer MCU ensure it has a voltage regulator and level "
 "shifters."
 msgstr ""
+"முடுக்கமானிகளை வளர்க்கும் போது, பல்வேறு வகையான பிசிபி போர்டு வடிவமைப்புகள் மற்றும் "
+"அவற்றில் வெவ்வேறு குளோன்கள் உள்ளன என்பதை அறிந்து கொள்ளுங்கள். இது 5 வி அச்சுப்பொறி "
+"எம்.சி.யுவுடன் இணைக்கப் போகிறது என்றால், அதில் மின்னழுத்த சீராக்கி மற்றும் நிலை மாற்றிகள் "
+"இருப்பதை உறுதிசெய்க."
 
 #: docs/Measuring_Resonances.md:block 4 (paragraph)
 msgid ""
@@ -1087,6 +1531,9 @@ msgid ""
 "number of boards appear to be hard-configured for I2C by pulling SDO to "
 "GND)."
 msgstr ""
+"ADXL345S/LIS2DWS க்கு, வாரியம் SPI பயன்முறையை ஆதரிக்கிறது என்பதை உறுதிப்படுத்திக் "
+"கொள்ளுங்கள் (SDO ஐ GND க்கு இழுப்பதன் மூலம் I2C க்கு ஒரு சிறிய எண்ணிக்கையிலான பலகைகள் "
+"கடுமையாக கட்டமைக்கப்பட்டதாகத் தெரிகிறது)."
 
 #: docs/Measuring_Resonances.md:block 5 (paragraph)
 msgid ""
@@ -1094,22 +1541,25 @@ msgid ""
 "of board designs and clones with different I2C pull-up resistors which will "
 "need supplementing."
 msgstr ""
+"MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500 களுக்கு பல்வேறு வகையான பலகை "
+"வடிவமைப்புகள் மற்றும் குளோன்கள் வெவ்வேறு I2C புல்-அப் மின்தடையங்களைக் கொண்டுள்ளன, அவை துணை "
+"தேவைப்படும்."
 
 #: docs/Measuring_Resonances.md:block 6 (header)
 msgid "MCUs with Klipper I2C *fast-mode* Support"
-msgstr ""
+msgstr "கிளிப்பர் I2C * வேகமான முறை * ஆதரவுடன் MCU கள்"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU Family"
-msgstr ""
+msgstr "MCU குடும்பம்"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) Tested"
-msgstr ""
+msgstr "MCU (கள்) சோதிக்கப்பட்டது"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "MCU(s) with Support"
-msgstr ""
+msgstr "ஆதரவுடன் MCU (கள்)"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "Raspberry Pi"
@@ -1117,37 +1567,39 @@ msgstr ""
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "3B+, Pico"
-msgstr ""
+msgstr "3 பி+, பிக்கோ"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "3A, 3A+, 3B, 4"
-msgstr ""
+msgstr "A, a+, heb, 4"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AVR ATmega"
-msgstr ""
+msgstr "ஏ.வி.ஆர்"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "ATmega328p"
-msgstr ""
+msgstr "Atmega328p"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid ""
 "ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, "
 "ATmega1284, ATmega2560"
 msgstr ""
+"Atmega32u4, atmega128, atmega168, atmega328, atmega644p, atmega1280, "
+"atmega1284, atmega2560"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AVR AT90"
-msgstr ""
+msgstr "AVR AT90"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "AT90usb646, AT90usb1286"
-msgstr ""
+msgstr "AT90USB646, AT90USB1286"
 
 #: docs/Measuring_Resonances.md:block 10 (paragraph)
 msgid ""
@@ -1155,28 +1607,33 @@ msgid ""
 "recommended for signal integrity over a long distance. If you still "
 "experience signal integrity issues (SPI/I2C errors):"
 msgstr ""
+"கேடய முறுக்கப்பட்ட சோடிகள் (CAT5E அல்லது அதற்கு மேற்பட்டவை) கொண்ட ஈத்தர்நெட் கேபிள் நீண்ட "
+"தூரத்தில் சமிக்ஞை ஒருமைப்பாட்டிற்கு பரிந்துரைக்கப்படுகிறது. நீங்கள் இன்னும் சமிக்ஞை "
+"ஒருமைப்பாடு சிக்கல்களை அனுபவித்தால் (SPI/I2C பிழைகள்):"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Double check the wiring with a digital multimeter for:"
-msgstr ""
+msgstr "இதற்கான டிசிட்டல் மல்டிமீட்டருடன் வயரிங் இருமுறை சரிபார்க்கவும்:"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Correct connections when turned off (continuity)"
-msgstr ""
+msgstr "அணைக்கப்படும் போது சரியான இணைப்புகள் (தொடர்ச்சி)"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Correct power and ground voltages"
-msgstr ""
+msgstr "சரியான ஆற்றல் மற்றும் தரை மின்னழுத்தங்கள்"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "I2C only:"
-msgstr ""
+msgstr "I2c மட்டும்:"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
 "Check the SCL and SDA lines' resistances to 3.3V are in the range of 900 "
 "ohms to 1.8K"
 msgstr ""
+"3.3V க்கு SCL மற்றும் SDA வரிகளின் எதிர்ப்புகள் 900 ஓம்ச் முதல் 1.8K வரை உள்ளன என்பதை "
+"சரிபார்க்கவும்"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid ""
@@ -1184,22 +1641,29 @@ msgid ""
 "and user manual UM10204](https://www.pololu.com/file/0J435/UM10204.pdf) for "
 "*fast-mode*"
 msgstr ""
+"முழு தொழில்நுட்ப விவரங்களுக்கு "
+"[I2C-PUS விவரக்குறிப்பு மற்றும் பயனர் கையேடு UM10204 இன் அத்தியாயம் 7] (https://"
+"www.pololu.com/file/0j435/um10204.pdf)"
 
 #: docs/Measuring_Resonances.md:block 11 (unordered list)
 msgid "Shorten the cable"
-msgstr ""
+msgstr "கேபிளை சுருக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 12 (paragraph)
 msgid "Connect ethernet cable shielding only to the MCU board/Pi ground."
 msgstr ""
+"ஈத்தர்நெட் கேபிள் கேடயத்தை MCU போர்டு/PI மைதானத்துடன் மட்டுமே இணைக்கவும்."
 
 #: docs/Measuring_Resonances.md:block 15 (paragraph)
 msgid "Suggested twisted pair order for three twisted pairs:"
 msgstr ""
+"மூன்று முறுக்கப்பட்ட சோடிகளுக்கு பரிந்துரைக்கப்பட்ட முறுக்கப்பட்ட இணை ஆர்டர்:"
 
 #: docs/Measuring_Resonances.md:block 17 (paragraph)
 msgid "Note that unlike a cable shield, GND must be connected at both ends."
 msgstr ""
+"கேபிள் கேடயத்தைப் போலன்றி, சி.என்.டி இரு முனைகளிலும் இணைக்கப்பட வேண்டும் என்பதை நினைவில் "
+"கொள்க."
 
 #: docs/Measuring_Resonances.md:block 20 (paragraph)
 msgid ""
@@ -1207,10 +1671,14 @@ msgid ""
 "wiring and configuration will vary according to your specific board and "
 "available pins.**"
 msgstr ""
+"** குறிப்பு: பல MCU கள் SPI பயன்முறையில் ADXL345 உடன் வேலை செய்யும் (எ.கா. பை பைக்கோ)"
+", வயரிங் மற்றும் உள்ளமைவு உங்கள் குறிப்பிட்ட பலகை மற்றும் கிடைக்கக்கூடிய ஊசிகளின்படி "
+"மாறுபடும். **"
 
 #: docs/Measuring_Resonances.md:block 32 (paragraph)
 msgid "Suggested twisted pair order for three pairs (preferred):"
 msgstr ""
+"மூன்று சோடிகளுக்கு பரிந்துரைக்கப்பட்ட முறுக்கப்பட்ட இணை ஆர்டர் (விரும்பப்படுகிறது):"
 
 #: docs/Measuring_Resonances.md:block 33 (code)
 msgid ""
@@ -1218,16 +1686,21 @@ msgid ""
 "SDA+GND\n"
 "SCL+GND\n"
 msgstr ""
+"H.ZV+GND\n"
+" TEE+GND\n"
+" SCL+GND\n"
 
 #: docs/Measuring_Resonances.md:block 34 (paragraph)
 msgid "or for two pairs:"
-msgstr ""
+msgstr "அல்லது இரண்டு சோடிகளுக்கு:"
 
 #: docs/Measuring_Resonances.md:block 36 (paragraph)
 msgid ""
 "Note that unlike a cable shield, any GND(s) should be connected at both "
 "ends."
 msgstr ""
+"ஒரு கேபிள் கவசத்தைப் போலல்லாமல், மற்றும் சி.என்.டி) இரு முனைகளிலும் இணைக்கப்பட வேண்டும் "
+"என்பதை நினைவில் கொள்க."
 
 #: docs/Measuring_Resonances.md:block 38 (paragraph)
 msgid ""
@@ -1236,70 +1709,77 @@ msgid ""
 "include pull-ups, but some are too large at 10K and must be changed or "
 "supplemented by smaller parallel resistors."
 msgstr ""
+"இந்த முடுக்கமானிகள் RPI, RP2040 (PICO) மற்றும் AVR இல் 400Kbit/s (*ஃபாச்ட் பயன்முறை*) "
+"இல் I2C க்கு மேல் வேலை செய்ய சோதிக்கப்பட்டுள்ளன. சில MPU முடுக்கமானி தொகுதிகள் "
+"புல்-அப்களை உள்ளடக்குகின்றன, ஆனால் சில 10K இல் மிகப் பெரியவை, மேலும் அவை சிறிய இணையான "
+"மின்தடையங்களால் மாற்றப்பட வேண்டும் அல்லது கூடுதலாக வழங்கப்பட வேண்டும்."
 
 #: docs/Measuring_Resonances.md:block 41 (paragraph)
 msgid "The RPi has buit-in 1.8K pull-ups on both SCL and SDA."
 msgstr ""
+"ரிசர்வ் வங்கி SCL மற்றும் SDA இரண்டிலும் 1.8K புல்-அப்களை உள்ளமைக்கப்பட்டுள்ளது."
 
 #: docs/Measuring_Resonances.md:block 42 (paragraph)
 msgid "![MPU-9250 connected to Pi](img/mpu9250-PI-fritzing.png)"
-msgstr ""
+msgstr "!"
 
 #: docs/Measuring_Resonances.md:block 43 (paragraph)
 msgid "Recommended connection scheme for I2C (i2c0a) on the RP2040:"
-msgstr ""
+msgstr "RP2040 இல் I2C (I2C0A) க்கான பரிந்துரைக்கப்பட்ட இணைப்புத் திட்டம்:"
 
 #: docs/Measuring_Resonances.md:block 44 (table)
 msgid "RP2040 pin name"
-msgstr ""
+msgstr "RP2040 முள் பெயர்"
 
 #: docs/Measuring_Resonances.md:block 45 (paragraph)
 msgid "The Pico does not include any built-in I2C pull-up resistors."
-msgstr ""
+msgstr "பைக்கோவில் எந்த உள்ளமைக்கப்பட்ட I2C புல்-அப் மின்தடையங்களும் இல்லை."
 
 #: docs/Measuring_Resonances.md:block 46 (paragraph)
 msgid "![MPU-9250 connected to Pico](img/mpu9250-PICO-fritzing.png)"
-msgstr ""
+msgstr "!"
 
 #: docs/Measuring_Resonances.md:block 47 (header)
 msgid ""
 "Recommended connection scheme for I2C(TWI) on the AVR ATmega328P Arduino "
 "Nano:"
 msgstr ""
+"AVR ATMEGA328P Arduino நானோவில் I2C (TWI) க்கான பரிந்துரைக்கப்பட்ட இணைப்பு திட்டம்:"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Atmega328P TQFP32 pin"
-msgstr ""
+msgstr "Atmege328p TQFP32 முள்"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Atmega328P pin name"
-msgstr ""
+msgstr "ATMEGA328P முள் பெயர்"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "Arduino Nano pin"
-msgstr ""
+msgstr "அர்டுயினோ நானோ முள்"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "27"
-msgstr ""
+msgstr "27"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "A4"
-msgstr ""
+msgstr "இளஞ்சிவப்பு"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "28"
-msgstr ""
+msgstr "28"
 
 #: docs/Measuring_Resonances.md:block 48 (table)
 msgid "A5"
-msgstr ""
+msgstr "சகோதரர்"
 
 #: docs/Measuring_Resonances.md:block 49 (paragraph)
 msgid ""
 "The Arduino Nano does not include any built-in pull-up resistors nor a 3.3V "
 "power pin."
 msgstr ""
+"அர்டுயினோ நானோவில் எந்த உள்ளமைக்கப்பட்ட புல்-அப் மின்தடையங்கள் அல்லது 3.3 வி பவர் முள் இல்லை."
 
 #: docs/Measuring_Resonances.md:block 63 (paragraph)
 msgid ""
@@ -1308,10 +1788,13 @@ msgid ""
 "Raspberry Pi. This will configure a second Klipper instance that runs on "
 "your Pi."
 msgstr ""
+"முதலில், ராச்பெர்ரி பை மீது \"லினக்ச் எம்.சி.யு\" ஐ அமைக்க [RPI மைக்ரோகண்ட்ரோலர் ஆவணம்] "
+"(RPI_MICROController.md) இல் உள்ள வழிமுறைகளை சரிபார்த்து பின்பற்றவும். இது உங்கள் பை "
+"மீது இயங்கும் இரண்டாவது கிளிப்பர் நிகழ்வை உள்ளமைக்கும்."
 
 #: docs/Measuring_Resonances.md:block 82 (header)
 msgid "Configure LIS2DW series"
-msgstr ""
+msgstr "LIS2DW தொடரை உள்ளமைக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 83 (code)
 msgid ""
@@ -1331,16 +1814,33 @@ msgid ""
 "    # Somewhere slightly above the middle of your print bed\n"
 "    147,154, 20\n"
 msgstr ""
+"[MCU LIS]\n"
+" # நீங்கள் மேலே கண்டறிந்த எதற்கும் <myserial> ஐ மாற்றவும். உதாரணமாக,\n"
+" # USB-KLIPPER_RP2040_E661640843545B2E-IF00\n"
+" சீரியல்:/dev/serial/by-id/usb-klipper_rp2040_ <myserial>\n"
+"\n"
+" [LIS2DW]\n"
+" CS_PIN: LIS: GPIO1\n"
+" SPI_BUS: SPI0A\n"
+" AXES_MAP: ஃச், சட், y\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" Act_chip: lis2dw\n"
+" probet_points:\n"
+" # உங்கள் அச்சு படுக்கையின் நடுவில் சற்று மேலே எங்காவது\n"
+" 147,154, 20\n"
 
 #: docs/Measuring_Resonances.md:block 87 (header)
 msgid "Configure MPU-9520 Compatibles With Pico"
-msgstr ""
+msgstr "MPU-9520 ஐ பைக்கோவுடன் இணக்கமாக உள்ளமைக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 88 (paragraph)
 msgid ""
 "Pico I2C is set to 400000 on default. Simply add the following to the "
 "printer.cfg:"
 msgstr ""
+"பிக்கோ ஐ 2 சி இயல்புநிலையாக 400000 ஆக அமைக்கப்பட்டுள்ளது. அச்சுப்பொறியில் "
+"பின்வருவனவற்றைச் சேர்க்கவும். Cfg:"
 
 #: docs/Measuring_Resonances.md:block 89 (code)
 msgid ""
@@ -1359,16 +1859,32 @@ msgid ""
 "[static_digital_output pico_3V3pwm] # Improve power stability\n"
 "pins: pico:gpio23\n"
 msgstr ""
+"[MCU பைக்கோ]\n"
+" சீரியல்:/dev/serial/by-id/<உங்கள் பைக்கோவின் தொடர் ஐடி>\n"
+"\n"
+" [MPU9250]\n"
+" I2C_MCU: PICO\n"
+" I2C_BUS: I2C0A\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" Act_chip: MPU9250\n"
+" probet_points:\n"
+" 100, 100, 20 # ஒரு எடுத்துக்காட்டு\n"
+"\n"
+" [static_digital_output pico_3v3pwm] # ஆற்றல் நிலைத்தன்மையை மேம்படுத்தவும்\n"
+" பின்ச்: பிக்கோ: GPIO23\n"
 
 #: docs/Measuring_Resonances.md:block 90 (header)
 msgid "Configure MPU-9520 Compatibles with AVR"
-msgstr ""
+msgstr "AVR உடன் இணக்கமான MPU-9520 ஐ உள்ளமைக்கவும்"
 
 #: docs/Measuring_Resonances.md:block 91 (paragraph)
 msgid ""
 "AVR I2C will be set to 400000 by the mpu9250 option. Simply add the "
 "following to the printer.cfg:"
 msgstr ""
+"AVR I2C MPU9250 விருப்பத்தால் 400000 ஆக அமைக்கப்படும். அச்சுப்பொறியில் பின்வருவனவற்றைச் "
+"சேர்க்கவும். Cfg:"
 
 #: docs/Measuring_Resonances.md:block 92 (code)
 msgid ""
@@ -1383,12 +1899,22 @@ msgid ""
 "probe_points:\n"
 "    100, 100, 20  # an example\n"
 msgstr ""
+"[MCU நானோ]\n"
+" சீரியல்:/dev/serial/by-id/<உங்கள் நானோவின் தொடர் ஐடி>\n"
+"\n"
+" [MPU9250]\n"
+" I2C_MCU: நானோ\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" Act_chip: MPU9250\n"
+" probet_points:\n"
+" 100, 100, 20 # ஒரு எடுத்துக்காட்டு\n"
 
 #: docs/Measuring_Resonances.md:block 101 (paragraph)
 msgid ""
 "**If you are using a MPU-9250 compatible accelerometer and it shows up as "
 "`mpu-unknown`, use with caution! They are probably refurbished chips!**"
-msgstr ""
+msgstr ". அவை புதுப்பிக்கப்பட்ட சில்லுகள்! **"
 
 #: docs/Measuring_Resonances.md:block 122 (paragraph)
 msgid ""
@@ -1397,6 +1923,10 @@ msgid ""
 "MCU board), or to two different physical SPI interfaces on the same board "
 "(rarely available). Then they can be configured in the following manner:"
 msgstr ""
+"இருப்பினும், நீங்கள் ஒரே நேரத்தில் இரண்டு முடுக்கமானிகளையும் இணைக்க முடியும், இருப்பினும் "
+"ADXL345 வெவ்வேறு பலகைகளுடன் (ஒரு RPI மற்றும் அச்சுப்பொறி MCU போர்டுடன்) அல்லது ஒரே "
+"பலகையில் இரண்டு வெவ்வேறு உடல் SPI இடைமுகங்களுடன் இணைக்கப்பட வேண்டும் (அரிதாகவே "
+"கிடைக்கிறது). பின்னர் அவை பின்வரும் முறையில் கட்டமைக்கப்படலாம்:"
 
 #: docs/Measuring_Resonances.md:block 124 (paragraph)
 msgid ""
@@ -1405,6 +1935,10 @@ msgid ""
 "pulled-down to 0V (address 104) and the other its AD0 pin pulled-up to 3.3V "
 "(address 105):"
 msgstr ""
+"இரண்டு MPU கள் ஒரு I2C பச்சைப் பகிர்ந்து கொள்ளலாம், ஆனால் 400Kbit/s I2C பச் போதுமானதாக "
+"இல்லாததால் அவை ** ஒரே நேரத்தில் அளவிட முடியாது. ஒன்று அதன் AD0 முள் 0V க்கு இழுக்கப்பட "
+"வேண்டும் (முகவரி 104), மற்றொன்று அதன் AD0 முள் 3.3V க்கு இழுக்கப்படுகிறது (முகவரி "
+"105):"
 
 #: docs/Measuring_Resonances.md:block 125 (code)
 msgid ""
@@ -1424,18 +1958,38 @@ msgid ""
 "accel_chip_y: mpu9250 bed\n"
 "probe_points: ...\n"
 msgstr ""
+"[MPU9250 HOTEND]\n"
+" I2C_MCU: RPI\n"
+" I2C_BUS: I2C.1\n"
+" I2C_ADDRESS: 104 # இந்த MPU முள் AD0 குறைவாக இழுக்கப்பட்டுள்ளது\n"
+"\n"
+" [MPU9250 படுக்கை]\n"
+" I2C_MCU: RPI\n"
+" I2C_BUS: I2C.1\n"
+" I2C_ADDRESS: 105 # இந்த MPU முள் AD0 ஐ உயர்த்தியுள்ளது\n"
+"\n"
+" [அதிர்வு_டெச்டர்]\n"
+" # படுக்கை ச்லிங்கர் அச்சுப்பொறியின் வழக்கமான அமைப்பைக் கருதுங்கள்\n"
+" Act_chip_x: MPU9250 HOTEND\n"
+" Act_chip_y: MPU9250 படுக்கை\n"
+" probet_points: ...\n"
 
 #: docs/Measuring_Resonances.md:block 126 (paragraph)
 msgid ""
 "[Test with each MPU individually before connecting both to the bus for easy "
 "debugging.]"
 msgstr ""
+"[எளிதாக பிழைத்திருத்தத்திற்காக பச்சுடன் இணைவதற்கு முன் ஒவ்வொரு MPU உடன் தனித்தனியாக "
+"சோதிக்கவும்.]"
 
 #: docs/Measuring_Resonances.md:block 58 (code)
 msgid ""
 "sudo apt update\n"
 "sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev\n"
 msgstr ""
+"சூடோ APT புதுப்பிப்பு\n"
+" sudo apt install python3-numpy python3-matplotlib libatlas-base-dev "
+"libopenblas-dev\n"
 
 #: docs/Measuring_Resonances.md:block 148 (paragraph)
 msgid ""
@@ -1446,12 +2000,16 @@ msgid ""
 "you should inform the script about it by passing "
 "`--square_corner_velocity=...` parameter, e.g."
 msgstr ""
+"அதிக மென்மையாக்காமல் அதிகபட்ச முடுக்கம் `சதுர_கார்னர்_வெலோசிட்டி` ஐப் பொறுத்தது என்பதை "
+"நினைவில் கொள்ளுங்கள். பொதுவான பரிந்துரை அதன் இயல்புநிலை மதிப்பு 5.0 இலிருந்து அதை "
+"மாற்றக்கூடாது, இது இயல்புநிலையாக `அளவீடுகள்_சேப்பர்.பி` ச்கிரிப்ட் மூலம் பயன்படுத்தப்படும் "
+"மதிப்பு. நீங்கள் அதை மாற்றினால், `--சதுர_கார்ன்_வெலோசிட்டி = ...` அளவுரு, எ.கா."
 
 #: docs/Measuring_Resonances.md:block 149 (code)
 msgid ""
 "~/klipper/scripts/calibrate_shaper.py /tmp/resonances_x_*.csv -o "
 "/tmp/shaper_calibrate_x.png --square_corner_velocity=10.0\n"
-msgstr ""
+msgstr "~/klipper/scripts/அளவீடுகள்_சேப்பர்\n"
 
 #: docs/Measuring_Resonances.md:block 150 (paragraph)
 msgid ""
@@ -1460,6 +2018,10 @@ msgid ""
 "`square_corner_velocity` parameter into account, and there is no need to "
 "specify it explicitly."
 msgstr ""
+"இதனால் அதிகபட்ச முடுக்கம் பரிந்துரைகளை சரியாக கணக்கிட முடியும். `சேப்பர்_லிபிரேட்` "
+"கட்டளை ஏற்கனவே கட்டமைக்கப்பட்ட` சதுர_கார்ன்_வெலோசிட்டி` அளவுருவை கணக்கில் "
+"எடுத்துக்கொள்கிறது, அதை வெளிப்படையாகக் குறிப்பிட வேண்டிய அவசியமில்லை என்பதை நினைவில் "
+"கொள்க."
 
 #: docs/Measuring_Resonances.md:block 111 (paragraph)
 msgid ""
@@ -1471,6 +2033,13 @@ msgid ""
 "can be useful, for example, if resonance tests were done at multiple test "
 "points. Delete the extra CSV files if you do not desire to average them."
 msgstr ""
+"இது 2 காபிம கோப்புகளை (`/TMP/அதிர்வு_எக்ச் _*. CSV` மற்றும்`/TMP/அதிர்வு_ஒய் _*. "
+"CSV`) உருவாக்கும். இந்த கோப்புகளை ராச்பெர்ரி பை மீது தனித்து நிற்கும் ச்கிரிப்ட் மூலம் "
+"செயலாக்க முடியும். இந்த ச்கிரிப்ட் அளவிடப்பட்ட ஒவ்வொரு அச்சுக்கும் ஒற்றை சி.எச்.வி கோப்புடன் "
+"இயக்கப்பட வேண்டும், இருப்பினும் நீங்கள் முடிவுகளை சராசரியாக விரும்பினால் பல சி.எச்.வி "
+"கோப்புகளுடன் பயன்படுத்தலாம். சராசரி முடிவுகள் பயனுள்ளதாக இருக்கும், எடுத்துக்காட்டாக, பல "
+"சோதனை புள்ளிகளில் அதிர்வு சோதனைகள் செய்யப்பட்டால். கூடுதல் சி.எச்.வி கோப்புகளை நீங்கள் "
+"சராசரியாக விரும்பவில்லை என்றால் அவற்றை நீக்கவும்."
 
 #~ msgid ""
 #~ "This will generate 2 CSV files (`/tmp/resonances_x_*.csv` and "

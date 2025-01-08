@@ -1,41 +1,53 @@
 # Languages add-on <noreply-addon-languages@weblate.org>, 2025.
+# தமிழ்நேரம் <anishprabu.t@gmail.com>, 2025.
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2025-01-08 00:03+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/klipper/"
+"bootloader_entry/ta/>\n"
 "Language: ta\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: docs/Bootloader_Entry.md:block 1 (header)
 msgid "Bootloader Entry"
-msgstr ""
+msgstr "துவக்க ஏற்றி நுழைவு"
 
 #: docs/Bootloader_Entry.md:block 2 (paragraph)
 msgid ""
 "Klipper can be instructed to reboot into a [Bootloader](Bootloaders.md) in "
 "one of the following ways:"
 msgstr ""
+"பின்வரும் வழிகளில் ஒன்றில் [துவக்க ஏற்றி] (துவக்க ஏற்றிகள்] (துவக்க ஏற்றிகள்."
 
 #: docs/Bootloader_Entry.md:block 3 (header)
 msgid "Requesting the bootloader"
-msgstr ""
+msgstr "துவக்க ஏற்றி கோருகிறது"
 
 #: docs/Bootloader_Entry.md:block 4 (header)
 msgid "Virtual Serial"
-msgstr ""
+msgstr "மெய்நிகர் தொடர்"
 
 #: docs/Bootloader_Entry.md:block 5 (paragraph)
 msgid ""
 "If a virtual (USB-ACM) serial port is in use, pulsing DTR while at 1200 baud"
 " will request the bootloader."
 msgstr ""
+"ஒரு மெய்நிகர் (யூ.எச்.பி-ஏ.சி.எம்) சீரியல் துறைமுகம் பயன்பாட்டில் இருந்தால், டி.டி.ஆரை "
+"துடிக்கும் போது 1200 பாட் துவக்க ஏற்றி கோரும்."
 
 #: docs/Bootloader_Entry.md:block 6 (header)
 msgid "Python (with `flash_usb`)"
-msgstr ""
+msgstr "பைதான் (`ஃப்ளாச்_ச்பி` உடன்)"
 
 #: docs/Bootloader_Entry.md:block 7 (paragraph)
 msgid "To enter the bootloader using python (using `flash_usb`):"
 msgstr ""
+"பைத்தானைப் பயன்படுத்தி துவக்க ஏற்றியை உள்ளிட (`Flash_usb` ஐப் பயன்படுத்தி):"
 
 #: docs/Bootloader_Entry.md:block 8 (code)
 msgid ""
@@ -43,38 +55,49 @@ msgid ""
 "> python3 -c 'import flash_usb as u; u.enter_bootloader(\"<DEVICE>\")'\n"
 "Entering bootloader on <DEVICE>\n"
 msgstr ""
+"> குறுவட்டு கிளிப்பர்/ச்கிரிப்ட்கள்\n"
+" > python3 -c 'இறக்குமதி ஃப்ளாச்_யூச்பி u; U.Enter_bootloader (\"<sevice>\") '\n"
+" <device> இல் துவக்க ஏற்றியை உள்ளிடுகிறது\n"
 
 #: docs/Bootloader_Entry.md:block 9 (paragraph)
 msgid ""
 "Where `<DEVICE>` is your serial device, such as `/dev/serial.by-id/usb-"
 "Klipper[...]` or `/dev/ttyACM0`"
 msgstr ""
+"`<sevider>` என்பது உங்கள் தொடர் சாதனம், அதாவது `/dev/serial.by-id/usb-klipper "
+"[...]` அல்லது `/dev/ttyacm0`"
 
 #: docs/Bootloader_Entry.md:block 10 (paragraph)
 msgid ""
 "Note that if this fails, no output will be printed, success is indicated by "
 "printing `Entering bootloader on <DEVICE>`."
 msgstr ""
+"இது தோல்வியுற்றால், எந்த வெளியீடும் அச்சிடப்படாது என்பதை நினைவில் கொள்க, <சாதனத்தில் துவக்"
+"க ஏற்றியை உள்ளிடுவதன் மூலம் செய் குறிக்கப்படுகிறது."
 
 #: docs/Bootloader_Entry.md:block 11 (header)
 msgid "Picocom"
-msgstr ""
+msgstr "பைக்கோகாம்"
 
 #: docs/Bootloader_Entry.md:block 12 (code)
 msgid ""
 "picocom -b 1200 <DEVICE>\n"
 "<Ctrl-A><Ctrl-P>\n"
 msgstr ""
+"picocom -b 1200 <device>\n"
+" <ctrl-a> <ctrl-p>\n"
 
 #: docs/Bootloader_Entry.md:block 14 (paragraph)
 msgid ""
 "`<Ctrl-A><Ctrl-P>` means holding `Ctrl`, pressing and releasing `a`, "
 "pressing and releasing `p`, then releasing `Ctrl`"
 msgstr ""
+"`<ctrl-a> <ctrl-p>` என்றால் `ctrl` ஐ வைத்திருப்பது,` A` ஐ அழுத்தி விடுவித்தல், `p` "
+"ஐ அழுத்தி வெளியிடுவது, பின்னர்` ctrl` ஐ வெளியிடுகிறது"
 
 #: docs/Bootloader_Entry.md:block 15 (header)
 msgid "Physical serial"
-msgstr ""
+msgstr "இயற்பியல் தொடர்"
 
 #: docs/Bootloader_Entry.md:block 16 (paragraph)
 msgid ""
@@ -82,21 +105,24 @@ msgid ""
 "adapter is being used to connect to it), sending the string "
 "`<SPACE><FS><SPACE>Request Serial Bootloader!!<SPACE>~`."
 msgstr ""
+"MCU இல் ஒரு இயற்பியல் சீரியல் துறைமுகம் பயன்படுத்தப்பட்டால் (ஒரு யூ.எச்.பி சீரியல் அடாப்டர் "
+"அதனுடன் இணைக்கப் பயன்படுத்தப்பட்டாலும் கூட), `<space> <fs> <space> என்ற சரத்தை "
+"அனுப்புகிறது தொடர் துவக்க ஏற்றி !! ."
 
 #: docs/Bootloader_Entry.md:block 17 (paragraph)
 msgid "`<SPACE>` is an ASCII literal space, 0x20."
-msgstr ""
+msgstr "`<space>` என்பது ஒரு ASCII நேரடி இடம், 0x20."
 
 #: docs/Bootloader_Entry.md:block 18 (paragraph)
 msgid "`<FS>` is the ASCII File Separator, 0x1c."
-msgstr ""
+msgstr "`<fs>` என்பது ASCII கோப்பு பிரிப்பான், 0x1c."
 
 #: docs/Bootloader_Entry.md:block 19 (paragraph)
 msgid ""
 "Note that this is not a valid message as per the [MCU "
 "Protocol](Protocol.md#micro-controller-interface), but sync characters(`~`) "
 "are still respected."
-msgstr ""
+msgstr "[MCU நெறிமுறை] (புரோட்டோகால்."
 
 #: docs/Bootloader_Entry.md:block 20 (paragraph)
 msgid ""
@@ -104,30 +130,37 @@ msgid ""
 "in, prefixing an extra sync character can increase reliability if other "
 "tools were previously accessing the serial port."
 msgstr ""
+"இந்த செய்தி மட்டுமே பெறப்பட்ட \"தடுப்பில்\" ஒரே விசயமாக இருக்க வேண்டும் என்பதால், கூடுதல் "
+"ஒத்திசைவு எழுத்தை முன்னொட்டு மற்ற கருவிகள் முன்பு சீரியல் போர்ட்டை அணுகினால் நம்பகத்தன்மையை "
+"அதிகரிக்கும்."
 
 #: docs/Bootloader_Entry.md:block 21 (header)
 msgid "Shell"
-msgstr ""
+msgstr "ஓடு"
 
 #: docs/Bootloader_Entry.md:block 22 (code)
 msgid ""
 "stty <BAUD> < /dev/<DEVICE>\n"
 "echo $'~ \\x1c Request Serial Bootloader!! ~' >> /dev/<DEVICE>\n"
 msgstr ""
+"stty <baud> </sve /<device>\n"
+" எதிரொலி $ '~ \\ x1c கோரிக்கை தொடர் துவக்க ஏற்றி !! ~ '>> /dev /<device>\n"
 
 #: docs/Bootloader_Entry.md:block 23 (paragraph)
 msgid ""
 "Where `<DEVICE>` is your serial port, such as `/dev/ttyS0`, or "
 "`/dev/serial/by-id/gpio-serial2`, and"
 msgstr ""
+"`<சாதனம்>` என்பது உங்கள் தொடர் துறைமுகம், அதாவது `/dev/ttys0`, அல்லது`/dev/serial/"
+"by-id/gpio-serial2`, மற்றும்"
 
 #: docs/Bootloader_Entry.md:block 24 (paragraph)
 msgid "`<BAUD>` is the baud rate of the serial port, such as `115200`."
-msgstr ""
+msgstr "`<baud>` என்பது `115200` போன்ற தொடர் துறைமுகத்தின் பாட் வீதமாகும்."
 
 #: docs/Bootloader_Entry.md:block 25 (header)
 msgid "CANBUS"
-msgstr ""
+msgstr "கான்பச்"
 
 #: docs/Bootloader_Entry.md:block 26 (paragraph)
 msgid ""
@@ -136,44 +169,54 @@ msgid ""
 "if the device already has a nodeid, and will also be processed if the mcu is"
 " shutdown."
 msgstr ""
+"கான்பச் பயன்பாட்டில் இருந்தால், ஒரு சிறப்பு [நிர்வாக செய்தி] "
+"(canbus_protocol.md#நிர்வாக-மெசேச்கள்) துவக்க ஏற்றி கோரும். சாதனம் ஏற்கனவே ஒரு நோடிட் "
+"வைத்திருந்தாலும் இந்த செய்தி மதிக்கப்படும், மேலும் MCU பணிநிறுத்தம் செய்யப்பட்டால் "
+"செயலாக்கப்படும்."
 
 #: docs/Bootloader_Entry.md:block 27 (paragraph)
 msgid ""
 "This method also applies to devices operating in [CANBridge](CANBUS.md#usb-"
 "to-can-bus-bridge-mode) mode."
 msgstr ""
+"[CANBRIDGE] (Canbus.MD#USB-TO-CAN-BUS-BRIDGE-MODE) பயன்முறையில் செயல்படும் "
+"சாதனங்களுக்கும் இந்த முறை பொருந்தும்."
 
 #: docs/Bootloader_Entry.md:block 28 (header)
 msgid "Katapult's flashtool.py"
-msgstr ""
+msgstr "கட்டபுல்ட்டின் ஃப்ளாச் டூல்.பை"
 
 #: docs/Bootloader_Entry.md:block 29 (code)
 msgid "python3 ./katapult/scripts/flashtool.py -i <CAN_IFACE> -u <UUID> -r\n"
-msgstr ""
+msgstr "பைதான் 3\n"
 
 #: docs/Bootloader_Entry.md:block 30 (paragraph)
 msgid ""
 "Where `<CAN_IFACE>` is the can interface to use. If using `can0`, both the "
 "`-i` and `<CAN_IFACE>` may be omitted."
 msgstr ""
+"`<can_iface>` என்பது பயன்படுத்தக்கூடிய இடைமுகம். `Can0` ஐப் பயன்படுத்தினால்,` -i` "
+"மற்றும் `<can_iface> இரண்டுமே தவிர்க்கப்படலாம்."
 
 #: docs/Bootloader_Entry.md:block 31 (paragraph)
 msgid "`<UUID>` is the UUID of your CAN device."
-msgstr ""
+msgstr "`<uuid>` என்பது உங்கள் CAN சாதனத்தின் UUID ஆகும்."
 
 #: docs/Bootloader_Entry.md:block 32 (paragraph)
 msgid ""
 "See the [CANBUS Documentation](CANBUS.md#finding-the-canbus_uuid-for-new-"
 "micro-controllers) for information on finding the CAN UUID of your devices."
 msgstr ""
+"உங்கள் சாதனங்களின் UUID ஐக் கண்டுபிடிப்பது குறித்த தகவலுக்கு [Canbus Documentation] "
+"(canbus.md#கண்டுபிடிப்பு-தி-கன்பச்_யூயிட்-புதிய-மைக்ரோ-கன்ட்ரோலர்கள்) ஐப் பார்க்கவும்."
 
 #: docs/Bootloader_Entry.md:block 33 (header)
 msgid "Entering the bootloader"
-msgstr ""
+msgstr "துவக்க ஏற்றி நுழைகிறது"
 
 #: docs/Bootloader_Entry.md:block 34 (paragraph)
 msgid "When klipper receives one of the above bootloader requests:"
-msgstr ""
+msgstr "மேலே உள்ள துவக்க ஏற்றி கோரிக்கைகளில் ஒன்றை கிளிப்பர் பெறும்போது:"
 
 #: docs/Bootloader_Entry.md:block 35 (paragraph)
 msgid ""
@@ -181,6 +224,9 @@ msgid ""
 "that Katapult stay active on the next boot, then reset the MCU (therefore "
 "entering Katapult)."
 msgstr ""
+"கட்டபுல்ட் (முன்னர் கான்பூட் என்று அழைக்கப்பட்டார்) கிடைத்தால், அடுத்த துவக்கத்தில் கட்டபல்ட் "
+"செயலில் இருக்க வேண்டும் என்று கிளிப்பர் கோருவார், பின்னர் MCU ஐ மீட்டமைக்கவும் (எனவே "
+"கட்டபால்ட்டுக்குள் நுழைகிறது)."
 
 #: docs/Bootloader_Entry.md:block 36 (paragraph)
 msgid ""
@@ -188,26 +234,33 @@ msgid ""
 "specific bootloader, such as STM32's DFU mode([see note](#stm32-dfu-"
 "warning))."
 msgstr ""
+"கட்டபுல்ட் கிடைக்கவில்லை என்றால், கிளிப்பர் STM32 இன் DFU பயன்முறையைப் போன்ற ஒரு "
+"இயங்குதள-குறிப்பிட்ட துவக்க ஏற்றியை உள்ளிட முயற்சிப்பார் ([குறிப்பைக் காண்க] (#STM32-DFU-"
+"WARNING))."
 
 #: docs/Bootloader_Entry.md:block 37 (paragraph)
 msgid ""
 "In short, Klipper will reboot to Katapult if installed, then a hardware "
 "specific bootloader if available."
 msgstr ""
+"சுருக்கமாக, நிறுவப்பட்டால் கிளிப்பர் கட்டபுல்ட்டுக்கு மறுதொடக்கம் செய்யும், பின்னர் ஒரு "
+"வன்பொருள் குறிப்பிட்ட துவக்க ஏற்றி கிடைத்தால்."
 
 #: docs/Bootloader_Entry.md:block 38 (paragraph)
 msgid ""
 "For details about the specific bootloaders on various platforms see "
 "[Bootloaders](Bootloaders.md)"
 msgstr ""
+"பல்வேறு தளங்களில் குறிப்பிட்ட துவக்க ஏற்றிகள் பற்றிய விவரங்களுக்கு [துவக்க ஏற்றிகள்] (துவக்"
+"க ஏற்றிகள்."
 
 #: docs/Bootloader_Entry.md:block 39 (header)
 msgid "Notes"
-msgstr ""
+msgstr "குறிப்புகள்"
 
 #: docs/Bootloader_Entry.md:block 40 (header)
 msgid "STM32 DFU Warning"
-msgstr ""
+msgstr "STM32 DFU எச்சரிக்கை"
 
 #: docs/Bootloader_Entry.md:block 41 (paragraph)
 msgid ""
@@ -217,3 +270,8 @@ msgid ""
 "operations when using DFU mode. Consult the documentation for your board for"
 " more details."
 msgstr ""
+"ஆக்டோபச் புரோ வி 1 போன்ற சில பலகைகளில், டி.எஃப்.யூ பயன்முறையில் நுழைவது விரும்பத்தகாத "
+"செயல்களை ஏற்படுத்தும் என்பதை நினைவில் கொள்க (டி.எஃப்.யூ பயன்முறையில் இருக்கும்போது ஈட்டரை "
+"இயக்குவது போன்றவை). ஈட்டர்களைத் துண்டிக்க பரிந்துரைக்கப்படுகிறது, இல்லையெனில் DFU "
+"பயன்முறையைப் பயன்படுத்தும் போது விரும்பத்தகாத செயல்பாடுகளைத் தடுக்கவும். மேலும் "
+"விவரங்களுக்கு உங்கள் வாரியத்திற்கான ஆவணங்களை அணுகவும்."

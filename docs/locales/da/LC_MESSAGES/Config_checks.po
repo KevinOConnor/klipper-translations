@@ -1,15 +1,17 @@
 # srbjessen <srbjessen@gmail.com>, 2023.
+# Sebastian <sebastiankiwidk@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-04-19 19:52+0000\n"
-"Last-Translator: srbjessen <srbjessen@gmail.com>\n"
-"Language-Team: Danish <https://hosted.weblate.org/projects/klipper/config_checks/da/>\n"
+"PO-Revision-Date: 2025-01-16 04:17+0000\n"
+"Last-Translator: Sebastian <sebastiankiwidk@gmail.com>\n"
+"Language-Team: Danish <https://hosted.weblate.org/projects/klipper/"
+"config_checks/da/>\n"
 "Language: da\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid ""
 "This document provides a list of steps to help confirm the pin settings in "
@@ -29,26 +31,34 @@ msgid ""
 "issue a STATUS command after every RESTART to verify that the config file is"
 " successfully loaded."
 msgstr ""
+"Med denne guide kan det være nødvendigt at lave ændringer til Klipper "
+"konfigurerings filen. Husk at køre en RESTART kommando efter hver ændring "
+"til konfigurerings filen, for at være sikker på ændringerne tages i brug ("
+"skriv \"restart\" I Octoprint terminalen og klik \"Send\"). Det er også en "
+"god idé at køre en STATUS kommando efter hver RESTART for at verificere at "
+"konfigurations filen er succesfuldt indlæst."
 
 msgid "Verify temperature"
-msgstr ""
+msgstr "Verificer temperatur"
 
 msgid "Verify M112"
-msgstr ""
+msgstr "Verificer M112"
 
 msgid "Verify heaters"
-msgstr ""
+msgstr "Verificer varmere"
 
 msgid ""
 "If the printer has a heated bed then perform the above test again with the "
 "bed."
 msgstr ""
+"Hvis printeren har en varme plade skal ovenstående test udføres igen med "
+"pladen."
 
 msgid "Verify stepper motor enable pin"
-msgstr ""
+msgstr "Verificer stepper motor aktiv pin"
 
 msgid "Verify endstops"
-msgstr ""
+msgstr "Verificer endestops"
 
 msgid ""
 "If the endstop does not change at all then it generally indicates that the "
@@ -59,7 +69,7 @@ msgid ""
 msgstr ""
 
 msgid "Verify stepper motors"
-msgstr ""
+msgstr "Verificer stepper motore"
 
 msgid ""
 "If the stepper does not move at all, then verify the \"enable_pin\" and "
@@ -90,10 +100,10 @@ msgid ""
 msgstr ""
 
 msgid "Verify extruder motor"
-msgstr ""
+msgstr "Verificer extruder motor"
 
 msgid "Calibrate PID settings"
-msgstr ""
+msgstr "Kalibrer PID instillinger"
 
 msgid ""
 "At the completion of the tuning test run `SAVE_CONFIG` to update the "
@@ -110,7 +120,7 @@ msgid ""
 msgstr ""
 
 msgid "Next steps"
-msgstr ""
+msgstr "Næste step"
 
 msgid ""
 "This guide is intended to help with basic verification of pin settings in "
@@ -134,7 +144,7 @@ msgstr ""
 
 #: docs/Config_checks.md:block 1 (header)
 msgid "Configuration checks"
-msgstr ""
+msgstr "Konfigurations tjek"
 
 #: docs/Config_checks.md:block 28 (paragraph)
 msgid ""

@@ -14,6 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: install mdpo dependency
+      run: apt-get install libmd4c-dev
     - name: install mdpo
       run: pip install mdpo
     - name: run update-md.sh

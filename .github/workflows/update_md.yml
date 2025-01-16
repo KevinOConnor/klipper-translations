@@ -18,8 +18,8 @@ jobs:
       run: sudo apt-get install libmd4c-dev libmd4c-html0 libmd4c-html0-dev
     - name: install mdpo
       run: pip install mdpo
-    - name: run update-md.sh
-      run: bash ./scripts/update-md.sh
+    - name: run update-md.py
+      run: python ./scripts/update-md.py
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:

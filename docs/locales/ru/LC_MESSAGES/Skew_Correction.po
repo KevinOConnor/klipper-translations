@@ -8,13 +8,11 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-12-19 09:54+0000\n"
 "Last-Translator: gfbdrgng <hnaofegnp@hldrive.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/"
-"skew_correction/ru/>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/klipper/skew_correction/ru/>\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.9.2-dev\n"
 
 #: docs/Skew_Correction.md:block 1 (header)
@@ -24,17 +22,17 @@ msgstr "Коррекция перекоса"
 #: docs/Skew_Correction.md:block 2 (paragraph)
 msgid ""
 "Software based skew correction can help resolve dimensional inaccuracies "
-"resulting from a printer assembly that is not perfectly square. Note that if"
-" your printer is significantly skewed it is strongly recommended to first "
-"use mechanical means to get your printer as square as possible prior to "
-"applying software based correction."
+"resulting from a printer assembly that is not perfectly square. Note that if "
+"your printer is significantly skewed it is strongly recommended to first use "
+"mechanical means to get your printer as square as possible prior to applying "
+"software based correction."
 msgstr ""
-"Программная коррекция перекоса может помочь устранить неточности в размерах,"
-" возникающие в результате неправильной квадратной сборки принтера. Обратите "
+"Программная коррекция перекоса может помочь устранить неточности в размерах, "
+"возникающие в результате неправильной квадратной сборки принтера. Обратите "
 "внимание, что если ваш принтер сильно перекошен, настоятельно рекомендуется "
-"сначала использовать механические средства, чтобы придать принтеру как можно"
-" более квадратную форму, прежде чем применять коррекцию на основе "
-"программного обеспечения."
+"сначала использовать механические средства, чтобы придать принтеру как можно "
+"более квадратную форму, прежде чем применять коррекцию на основе программного "
+"обеспечения."
 
 #: docs/Skew_Correction.md:block 3 (header)
 msgid "Print a Calibration Object"
@@ -43,11 +41,11 @@ msgstr "Печать Объекта Калибровки"
 #: docs/Skew_Correction.md:block 4 (paragraph)
 msgid ""
 "The first step in correcting skew is to print a [calibration "
-"object](https://www.thingiverse.com/thing:2563185/files) along the plane you"
-" want to correct. There is also a [calibration "
-"object](https://www.thingiverse.com/thing:2972743) that includes all planes "
-"in one model. You want the object oriented so that corner A is toward the "
-"origin of the plane."
+"object](https://www.thingiverse.com/thing:2563185/files) along the plane you "
+"want to correct. There is also a [calibration "
+"object](https://www.thingiverse.com/thing:2972743) that includes all planes in"
+" one model. You want the object oriented so that corner A is toward the origin"
+" of the plane."
 msgstr ""
 "Первым шагом в исправлении перекоса является печать [калибровочного "
 "объекта](https://www.thingiverse.com/thing:2563185/files ) вдоль плоскости, "
@@ -59,8 +57,8 @@ msgstr ""
 #: docs/Skew_Correction.md:block 5 (paragraph)
 msgid ""
 "Make sure that no skew correction is applied during this print. You may do "
-"this by either removing the `[skew_correction]` module from printer.cfg or "
-"by issuing a `SET_SKEW CLEAR=1` gcode."
+"this by either removing the `[skew_correction]` module from printer.cfg or by "
+"issuing a `SET_SKEW CLEAR=1` gcode."
 msgstr ""
 "Убедитесь, что во время этой печати не применяется коррекция перекоса. Вы "
 "можете сделать это, либо удалив модуль `[skew_correction]` из файла "
@@ -88,34 +86,14 @@ msgstr ""
 "можете использовать gcode `SET_SKEW` для настройки skew_correton. Например, "
 "если ваши измеренные длины по XY следующие:"
 
-#: docs/Skew_Correction.md:block 11 (code)
-msgid ""
-"Length AC = 140.4\n"
-"Length BD = 142.8\n"
-"Length AD = 99.8\n"
-msgstr ""
-"Длина АС = 140,4\n"
-"Длина BD = 142,8\n"
-"Длина AD = 99,8\n"
-
 #: docs/Skew_Correction.md:block 12 (paragraph)
 msgid "`SET_SKEW` can be used to configure skew correction for the XY plane."
 msgstr ""
 "`SET_SKEW` можно использовать для настройки коррекции перекоса плоскости XY."
 
-#: docs/Skew_Correction.md:block 13 (code)
-#, fuzzy
-msgid "SET_SKEW XY=140.4,142.8,99.8\n"
-msgstr "SET_SKEW XY=140.4,142.8,99.8\n"
-
 #: docs/Skew_Correction.md:block 14 (paragraph)
 msgid "You may also add measurements for XZ and YZ to the gcode:"
 msgstr "Вы также можете добавить размеры XZ и YZ в gcode:"
-
-#: docs/Skew_Correction.md:block 15 (code)
-#, fuzzy
-msgid "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
-msgstr "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
 
 #: docs/Skew_Correction.md:block 16 (paragraph)
 msgid ""
@@ -123,52 +101,37 @@ msgid ""
 "similar to `[bed_mesh]`. After setting skew using the `SET_SKEW` gcode, you "
 "may use the `SKEW_PROFILE` gcode to save it:"
 msgstr ""
-"Модуль `[skew_correction]` также поддерживает управление профилями "
-"аналогично `[bed_mesh]`. После настройки перекоса с помощью gcode `SET_SKEW`"
-" вы можете использовать gcode `SKEW_PROFILE` для его сохранения:"
-
-#: docs/Skew_Correction.md:block 17 (code)
-#, fuzzy
-msgid "SKEW_PROFILE SAVE=my_skew_profile\n"
-msgstr "SKEW_PROFILE SAVE=my_skew_profile\n"
+"Модуль `[skew_correction]` также поддерживает управление профилями аналогично "
+"`[bed_mesh]`. После настройки перекоса с помощью gcode `SET_SKEW` вы можете "
+"использовать gcode `SKEW_PROFILE` для его сохранения:"
 
 #: docs/Skew_Correction.md:block 18 (paragraph)
 msgid ""
-"After this command you will be prompted to issue a `SAVE_CONFIG` gcode to "
-"save the profile to persistent storage. If no profile is named "
-"`my_skew_profile` then a new profile will be created. If the named profile "
-"exists it will be overwritten."
+"After this command you will be prompted to issue a `SAVE_CONFIG` gcode to save"
+" the profile to persistent storage. If no profile is named `my_skew_profile` "
+"then a new profile will be created. If the named profile exists it will be "
+"overwritten."
 msgstr ""
 "После этой команды вам будет предложено ввести gcode `SAVE_CONFIG` для "
-"сохранения профиля в постоянном хранилище. Если ни один профиль не имеет "
-"имени «my_skew_profile», будет создан новый профиль. Если именованный "
-"профиль существует, он будет перезаписан."
+"сохранения профиля в постоянном хранилище. Если ни один профиль не имеет имени"
+" «my_skew_profile», будет создан новый профиль. Если именованный профиль "
+"существует, он будет перезаписан."
 
 #: docs/Skew_Correction.md:block 19 (paragraph)
 msgid "Once you have a saved profile, you may load it:"
 msgstr "Если у вас есть сохраненный профиль, вы можете загрузить его:"
 
-#: docs/Skew_Correction.md:block 20 (code)
-#, fuzzy
-msgid "SKEW_PROFILE LOAD=my_skew_profile\n"
-msgstr "SKEW_PROFILE LOAD=my_skew_profile\n"
-
 #: docs/Skew_Correction.md:block 21 (paragraph)
 msgid "It is also possible to remove an old or out of date profile:"
 msgstr "Также возможно удалить старый или устаревший профиль:"
 
-#: docs/Skew_Correction.md:block 22 (code)
-#, fuzzy
-msgid "SKEW_PROFILE REMOVE=my_skew_profile\n"
-msgstr "SKEW_PROFILE REMOVE=my_skew_profile\n"
-
 #: docs/Skew_Correction.md:block 23 (paragraph)
 msgid ""
-"After removing a profile you will be prompted to issue a `SAVE_CONFIG` to "
-"make this change persist."
+"After removing a profile you will be prompted to issue a `SAVE_CONFIG` to make"
+" this change persist."
 msgstr ""
-"После удаления профиля вам будет предложено выполнить `SAVE_CONFIG`, чтобы "
-"это изменение сохранилось."
+"После удаления профиля вам будет предложено выполнить `SAVE_CONFIG`, чтобы это"
+" изменение сохранилось."
 
 #: docs/Skew_Correction.md:block 24 (header)
 msgid "Verifying your correction"
@@ -176,20 +139,14 @@ msgstr "Проверка исправления"
 
 #: docs/Skew_Correction.md:block 25 (paragraph)
 msgid ""
-"After skew_correction has been configured you may reprint the calibration "
-"part with correction enabled. Use the following gcode to check your skew on "
-"each plane. The results should be lower than those reported via "
-"`GET_CURRENT_SKEW`."
+"After skew_correction has been configured you may reprint the calibration part"
+" with correction enabled. Use the following gcode to check your skew on each "
+"plane. The results should be lower than those reported via `GET_CURRENT_SKEW`."
 msgstr ""
-"После настройки skew_correction вы можете перепечатать калибровочную часть с"
-" включенной коррекцией. Используйте следующий gcode, чтобы проверить перекос"
-" на каждой плоскости. Результаты должны быть ниже, чем те, которые "
-"сообщаются через `GET_CURRENT_SKEW`."
-
-#: docs/Skew_Correction.md:block 26 (code)
-#, fuzzy
-msgid "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
-msgstr "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
+"После настройки skew_correction вы можете перепечатать калибровочную часть с "
+"включенной коррекцией. Используйте следующий gcode, чтобы проверить перекос на"
+" каждой плоскости. Результаты должны быть ниже, чем те, которые сообщаются "
+"через `GET_CURRENT_SKEW`."
 
 #: docs/Skew_Correction.md:block 27 (header)
 msgid "Caveats"
@@ -198,37 +155,35 @@ msgstr "Оговорки"
 #: docs/Skew_Correction.md:block 28 (paragraph)
 msgid ""
 "Due to the nature of skew correction it is recommended to configure skew in "
-"your start gcode, after homing and any kind of movement that travels near "
-"the edge of the print area such as a purge or nozzle wipe. You may use use "
-"the `SET_SKEW` or `SKEW_PROFILE` gcodes to accomplish this. It is also "
-"recommended to issue a `SET_SKEW CLEAR=1` in your end gcode."
+"your start gcode, after homing and any kind of movement that travels near the "
+"edge of the print area such as a purge or nozzle wipe. You may use use the "
+"`SET_SKEW` or `SKEW_PROFILE` gcodes to accomplish this. It is also recommended"
+" to issue a `SET_SKEW CLEAR=1` in your end gcode."
 msgstr ""
-"Из-за характера коррекции перекоса рекомендуется настроить перекос в "
-"начальном gcode после возврата в исходное положение и любого движения, "
-"совершающегося вблизи края области печати, например продувки или протирания "
-"сопла. Для этого вы можете использовать g-коды `SET_SKEW` или "
-"`SKEW_PROFILE`. Также рекомендуется указать `SET_SKEW CLEAR=1` в конечном "
-"gcode."
+"Из-за характера коррекции перекоса рекомендуется настроить перекос в начальном"
+" gcode после возврата в исходное положение и любого движения, совершающегося "
+"вблизи края области печати, например продувки или протирания сопла. Для этого "
+"вы можете использовать g-коды `SET_SKEW` или `SKEW_PROFILE`. Также "
+"рекомендуется указать `SET_SKEW CLEAR=1` в конечном gcode."
 
 #: docs/Skew_Correction.md:block 29 (paragraph)
 msgid ""
 "Keep in mind that it is possible for `[skew_correction]` to generate a "
-"correction that moves the tool beyond the printer's boundaries on the X "
-"and/or Y axes. It is recommended to arrange parts away from the edges when "
-"using `[skew_correction]`."
+"correction that moves the tool beyond the printer's boundaries on the X and/or"
+" Y axes. It is recommended to arrange parts away from the edges when using "
+"`[skew_correction]`."
 msgstr ""
-"Имейте в виду, что `[skew_correction]` может генерировать коррекцию, которая"
-" перемещает инструмент за пределы границ принтера по осям X и/или Y. При "
-"использовании `[skew_correction]` рекомендуется располагать детали подальше "
-"от краев."
+"Имейте в виду, что `[skew_correction]` может генерировать коррекцию, которая "
+"перемещает инструмент за пределы границ принтера по осям X и/или Y. При "
+"использовании `[skew_correction]` рекомендуется располагать детали подальше от"
+" краев."
 
 #: docs/Skew_Correction.md:block 7 (paragraph)
 msgid ""
-"The `[skew_correction]` module requires 3 measurements for each plane you "
-"want to correct; the length from Corner A to Corner C, the length from "
-"Corner B to Corner D, and the length from Corner A to Corner D. When "
-"measuring length AD do not include the flats on the corners that some test "
-"objects provide."
+"The `[skew_correction]` module requires 3 measurements for each plane you want"
+" to correct; the length from Corner A to Corner C, the length from Corner B to"
+" Corner D, and the length from Corner A to Corner D. When measuring length AD "
+"do not include the flats on the corners that some test objects provide."
 msgstr ""
 "Модуль `[skew_correction]` требует 3 измерения для каждой плоскости, которую "
 "вы хотите исправить: длина от угла A до угла C, длина от угла B до угла D и "
@@ -236,14 +191,46 @@ msgstr ""
 "поверхности на углах, которые обеспечивают некоторые тестовые объекты."
 
 #~ msgid ""
-#~ "The `[skew_correcton]` module requires 3 measurements for each plane you "
-#~ "want to correct; the length from Corner A to Corner C, the length from "
-#~ "Corner B to Corner D, and the length from Corner A to Corner D. When "
-#~ "measuring length AD do not include the flats on the corners that some test "
-#~ "objects provide."
+#~ "Length AC = 140.4\n"
+#~ "Length BD = 142.8\n"
+#~ "Length AD = 99.8\n"
+#~ msgstr ""
+#~ "Длина АС = 140,4\n"
+#~ "Длина BD = 142,8\n"
+#~ "Длина AD = 99,8\n"
+
+#, fuzzy
+#~ msgid "SET_SKEW XY=140.4,142.8,99.8\n"
+#~ msgstr "SET_SKEW XY=140.4,142.8,99.8\n"
+
+#, fuzzy
+#~ msgid "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
+#~ msgstr "SET_SKEW XY=140.4,142.8,99.8 XZ=141.6,141.4,99.8 YZ=142.4,140.5,99.5\n"
+
+#, fuzzy
+#~ msgid "SKEW_PROFILE SAVE=my_skew_profile\n"
+#~ msgstr "SKEW_PROFILE SAVE=my_skew_profile\n"
+
+#, fuzzy
+#~ msgid "SKEW_PROFILE LOAD=my_skew_profile\n"
+#~ msgstr "SKEW_PROFILE LOAD=my_skew_profile\n"
+
+#, fuzzy
+#~ msgid "SKEW_PROFILE REMOVE=my_skew_profile\n"
+#~ msgstr "SKEW_PROFILE REMOVE=my_skew_profile\n"
+
+#, fuzzy
+#~ msgid "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
+#~ msgstr "CALC_MEASURED_SKEW AC=<ac_length> BD=<bd_length> AD=<ad_length>\n"
+
+#~ msgid ""
+#~ "The `[skew_correcton]` module requires 3 measurements for each plane you want "
+#~ "to correct; the length from Corner A to Corner C, the length from Corner B to "
+#~ "Corner D, and the length from Corner A to Corner D. When measuring length AD "
+#~ "do not include the flats on the corners that some test objects provide."
 #~ msgstr ""
 #~ "Модуль `[skew_correcton]` требует проведения трех измерений для каждой "
 #~ "плоскости, которую необходимо скорректировать: длина от угла A до угла C, "
-#~ "длина от угла B до угла D и длина от угла A до угла D. При измерении длины "
-#~ "AD не учитывайте плоские поверхности на углах, которые предусмотрены в "
-#~ "некоторых тестовых объектах."
+#~ "длина от угла B до угла D и длина от угла A до угла D. При измерении длины AD "
+#~ "не учитывайте плоские поверхности на углах, которые предусмотрены в некоторых "
+#~ "тестовых объектах."

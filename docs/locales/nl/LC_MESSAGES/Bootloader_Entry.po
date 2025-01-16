@@ -4,13 +4,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-09-11 14:09+0000\n"
 "Last-Translator: Simon Tillema <shtillema@gomarus.nl>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/"
-"bootloader_entry/nl/>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/klipper/bootloader_entry/nl/>\n"
 "Language: nl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.8-dev\n"
-"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/Bootloader_Entry.md:block 1 (header)
 msgid "Bootloader Entry"
@@ -18,8 +17,8 @@ msgstr ""
 
 #: docs/Bootloader_Entry.md:block 2 (paragraph)
 msgid ""
-"Klipper can be instructed to reboot into a [Bootloader](Bootloaders.md) in "
-"one of the following ways:"
+"Klipper can be instructed to reboot into a [Bootloader](Bootloaders.md) in one"
+" of the following ways:"
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 3 (header)
@@ -32,8 +31,8 @@ msgstr ""
 
 #: docs/Bootloader_Entry.md:block 5 (paragraph)
 msgid ""
-"If a virtual (USB-ACM) serial port is in use, pulsing DTR while at 1200 baud"
-" will request the bootloader."
+"If a virtual (USB-ACM) serial port is in use, pulsing DTR while at 1200 baud "
+"will request the bootloader."
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 6 (header)
@@ -42,13 +41,6 @@ msgstr ""
 
 #: docs/Bootloader_Entry.md:block 7 (paragraph)
 msgid "To enter the bootloader using python (using `flash_usb`):"
-msgstr ""
-
-#: docs/Bootloader_Entry.md:block 8 (code)
-msgid ""
-"> cd klipper/scripts\n"
-"> python3 -c 'import flash_usb as u; u.enter_bootloader(\"<DEVICE>\")'\n"
-"Entering bootloader on <DEVICE>\n"
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 9 (paragraph)
@@ -67,16 +59,10 @@ msgstr ""
 msgid "Picocom"
 msgstr ""
 
-#: docs/Bootloader_Entry.md:block 12 (code)
-msgid ""
-"picocom -b 1200 <DEVICE>\n"
-"<Ctrl-A><Ctrl-P>\n"
-msgstr ""
-
 #: docs/Bootloader_Entry.md:block 14 (paragraph)
 msgid ""
-"`<Ctrl-A><Ctrl-P>` means holding `Ctrl`, pressing and releasing `a`, "
-"pressing and releasing `p`, then releasing `Ctrl`"
+"`<Ctrl-A><Ctrl-P>` means holding `Ctrl`, pressing and releasing `a`, pressing "
+"and releasing `p`, then releasing `Ctrl`"
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 15 (header)
@@ -108,18 +94,12 @@ msgstr ""
 #: docs/Bootloader_Entry.md:block 20 (paragraph)
 msgid ""
 "Because this message must be the only thing in the \"block\" it is received "
-"in, prefixing an extra sync character can increase reliability if other "
-"tools were previously accessing the serial port."
+"in, prefixing an extra sync character can increase reliability if other tools "
+"were previously accessing the serial port."
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 21 (header)
 msgid "Shell"
-msgstr ""
-
-#: docs/Bootloader_Entry.md:block 22 (code)
-msgid ""
-"stty <BAUD> < /dev/<DEVICE>\n"
-"echo $'~ \\x1c Request Serial Bootloader!! ~' >> /dev/<DEVICE>\n"
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 23 (paragraph)
@@ -139,23 +119,19 @@ msgstr "CAN-bus"
 #: docs/Bootloader_Entry.md:block 26 (paragraph)
 msgid ""
 "If CANBUS is in use, a special [admin message](CANBUS_protocol.md#admin-"
-"messages) will request the bootloader. This message will be respected even "
-"if the device already has a nodeid, and will also be processed if the mcu is"
-" shutdown."
+"messages) will request the bootloader. This message will be respected even if "
+"the device already has a nodeid, and will also be processed if the mcu is "
+"shutdown."
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 27 (paragraph)
 msgid ""
-"This method also applies to devices operating in [CANBridge](CANBUS.md#usb-"
-"to-can-bus-bridge-mode) mode."
+"This method also applies to devices operating in [CANBridge](CANBUS.md#usb-to-"
+"can-bus-bridge-mode) mode."
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 28 (header)
 msgid "Katapult's flashtool.py"
-msgstr ""
-
-#: docs/Bootloader_Entry.md:block 29 (code)
-msgid "python3 ./katapult/scripts/flashtool.py -i <CAN_IFACE> -u <UUID> -r\n"
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 30 (paragraph)
@@ -192,8 +168,7 @@ msgstr ""
 #: docs/Bootloader_Entry.md:block 36 (paragraph)
 msgid ""
 "If Katapult is not available, klipper will then try to enter a platform-"
-"specific bootloader, such as STM32's DFU mode([see note](#stm32-dfu-"
-"warning))."
+"specific bootloader, such as STM32's DFU mode([see note](#stm32-dfu-warning))."
 msgstr ""
 
 #: docs/Bootloader_Entry.md:block 37 (paragraph)
@@ -218,9 +193,28 @@ msgstr ""
 
 #: docs/Bootloader_Entry.md:block 41 (paragraph)
 msgid ""
-"Note that on some boards, like the Octopus Pro v1, entering DFU mode can "
-"cause undesired actions (such as powering the heater while in DFU mode). It "
-"is recommended to disconnect heaters, and otherwise prevent undesired "
-"operations when using DFU mode. Consult the documentation for your board for"
-" more details."
+"Note that on some boards, like the Octopus Pro v1, entering DFU mode can cause"
+" undesired actions (such as powering the heater while in DFU mode). It is "
+"recommended to disconnect heaters, and otherwise prevent undesired operations "
+"when using DFU mode. Consult the documentation for your board for more "
+"details."
 msgstr ""
+
+#~ msgid ""
+#~ "> cd klipper/scripts\n"
+#~ "> python3 -c 'import flash_usb as u; u.enter_bootloader(\"<DEVICE>\")'\n"
+#~ "Entering bootloader on <DEVICE>\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "picocom -b 1200 <DEVICE>\n"
+#~ "<Ctrl-A><Ctrl-P>\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "stty <BAUD> < /dev/<DEVICE>\n"
+#~ "echo $'~ \\x1c Request Serial Bootloader!! ~' >> /dev/<DEVICE>\n"
+#~ msgstr ""
+
+#~ msgid "python3 ./katapult/scripts/flashtool.py -i <CAN_IFACE> -u <UUID> -r\n"
+#~ msgstr ""

@@ -63,6 +63,8 @@ Az alábbiakban a léptető teljesítménytesztek eredményeit mutatjuk be. A fe
 | AR100 | 3529K | 2507K |
 | STM32F407 | 3652K | 2459K |
 | STM32F446 | 3913K | 2634K |
+| RP2350 | 4167K | 2663K |
+| SAME70 | 6667K | 4737K |
 | STM32H743 | 9091K | 6061K |
 
 Ha nem tudod, hogy egy adott lapon milyen mikrokontroller van, keresd meg a megfelelő [config fájlt](../config/), és keresd meg a mikrokontroller nevét a fájl tetején lévő megjegyzésekben.

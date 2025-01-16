@@ -95,7 +95,7 @@ Klippy上位机的主程序能对模块进行热加载。如果设置文件中�
 1. 参考位于klippy/kinematics/目录已有的运动学类。动力学类旨在将一个笛卡尔坐标系中的运动转化为各个步进电机的运动。建议复制已有的代码，并在其基础上进行修改。
 1. 若需要的运动学方程未被Klipper涵盖，则应使用C语言实现新动力学体系中各个步进电机的位置方程（见klippy/chelper/，如kin_cart.c, kin_corexy.c, and kin_delta.c）。位置方程中应调用`move_get_coord()`以将运动的时间点（单位 ：秒）转化为对应的笛卡尔坐标位置（单位：毫米），进而计算目标步进电机运动目标位置（单位：毫米）。
 1. 在新的运动学类中实现`calc_position`方法。该方法将通过各个步进电机的位置计算笛卡尔坐标系下的打印头位置；同时该方法通常只在回零和z探测时使用，因此无需过分追求效率。
-1. 之后实现`check_move()`, `get_status()`, `get_steppers()`, `home()`, `set_position()`方法。这些函数用于特定的运动学检查。在开发的初期，可以直接使用已有代码。
+1. Other methods. Implement the `check_move()`, `get_status()`, `get_steppers()`, `home()`, `clear_homing_state()`, and `set_position()` methods. These functions are typically used to provide kinematic specific checks. However, at the start of development one can use boiler-plate code here.
 1. 添加测试实例。创建一个G代码文件，其中包含一系列的运动命令用于测试新增的运动学模型。 按照[调试文档](Debugging.md)将该G代码文件转换为微控制器命令。在遭遇困难状况和检查数据传递相当有用。
 
 ## 移植到新的微控制器

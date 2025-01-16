@@ -1,4 +1,4 @@
-# Configuration reference
+# Ссылка на конфигурацию
 
 Этот документ является справочником по опциям, доступным в файле конфигурации Klipper.
 
@@ -14,811 +14,813 @@
 
 Перед входными выводами может стоять символ `^`, указывающий на необходимость включения аппаратного подтягивающего резистора для данного вывода. Если микроконтроллер поддерживает подтягивающие резисторы, то перед входным выводом можно поставить `~`.
 
-Note, some config sections may "create" additional pins. Where this occurs, the config section defining the pins must be listed in the config file before any sections using those pins.
+Обратите внимание, что некоторые секции конфигурации могут "создавать" дополнительные пины. Если это происходит, секция конфигурации, определяющая контакты, должна быть указана в файле конфигурации перед секциями, использующими эти контакты.
 
 ### [mcu]
 
-Configuration of the primary micro-controller.
+Конфигурация основного микроконтроллера.
 
 ```
 [mcu]
 serial:
-#   The serial port to connect to the MCU. If unsure (or if it
-#   changes) see the "Where's my serial port?" section of the FAQ.
-#   This parameter must be provided when using a serial port.
+# Последовательный порт для подключения к MCU. Если вы не уверены (или если он
+# меняется), смотрите раздел FAQ "Где мой последовательный порт?".
+# Этот параметр должен быть указан при использовании последовательного порта.
 #baud: 250000
-#   The baud rate to use. The default is 250000.
+# Используемая скорость передачи данных. По умолчанию 250000.
 #canbus_uuid:
-#   If using a device connected to a CAN bus then this sets the unique
-#   chip identifier to connect to. This value must be provided when using
-#   CAN bus for communication.
+# Если используется устройство, подключенное к шине CAN, то этот параметр задает уникальный
+# идентификатор чипа для подключения. Это значение должно быть предоставлено при использовании
+# шину CAN для связи.
 #canbus_interface:
-#   If using a device connected to a CAN bus then this sets the CAN
-#   network interface to use. The default is 'can0'.
+# Если используется устройство, подключенное к шине CAN, то здесь задается сетевой интерфейс CAN
+# сетевой интерфейс для использования. По умолчанию используется 'can0'.
 #restart_method:
-#   This controls the mechanism the host will use to reset the
-#   micro-controller. The choices are 'arduino', 'cheetah', 'rpi_usb',
-#   and 'command'. The 'arduino' method (toggle DTR) is common on
-#   Arduino boards and clones. The 'cheetah' method is a special
-#   method needed for some Fysetc Cheetah boards. The 'rpi_usb' method
-#   is useful on Raspberry Pi boards with micro-controllers powered
-#   over USB - it briefly disables power to all USB ports to
-#   accomplish a micro-controller reset. The 'command' method involves
-#   sending a Klipper command to the micro-controller so that it can
-#   reset itself. The default is 'arduino' if the micro-controller
-#   communicates over a serial port, 'command' otherwise.
+# Здесь задается механизм, который будет использоваться хостом для перезагрузки
+# микроконтроллера. На выбор предлагаются следующие варианты: 'arduino', 'cheetah', 'rpi_usb',
+# и 'command'. Метод 'arduino' (переключение DTR) распространен на
+# платах и клонах Arduino. Метод 'cheetah' - это специальный
+# метод, необходимый для некоторых плат Fysetc Cheetah. Метод 'rpi_usb'
+# полезен на платах Raspberry Pi с микроконтроллерами, питающимися
+# по USB - он кратковременно отключает питание всех USB-портов, чтобы
+# выполнить сброс микроконтроллера. Метод 'command' включает в себя
+# отправку команды Klipper микроконтроллеру, чтобы он мог
+# сбросить себя. По умолчанию используется 'arduino', если микроконтроллер
+# общается через последовательный порт, в противном случае - 'command'.
 ```
 
 ### [mcu my_extra_mcu]
 
-Additional micro-controllers (one may define any number of sections with an "mcu" prefix). Additional micro-controllers introduce additional pins that may be configured as heaters, steppers, fans, etc.. For example, if an "[mcu extra_mcu]" section is introduced, then pins such as "extra_mcu:ar9" may then be used elsewhere in the config (where "ar9" is a hardware pin name or alias name on the given mcu).
+Дополнительные микроконтроллеры (можно определить любое количество секций с префиксом "mcu"). Дополнительные микроконтроллеры вводят дополнительные контакты, которые могут быть сконфигурированы как нагреватели, шаговики, вентиляторы и т. д.. Например, если введена секция "[mcu extra_mcu]", то такие пины, как "extra_mcu:ar9", могут быть использованы в других местах конфигурации (где "ar9" - это имя аппаратного пина или псевдоним данного mcu).
 
 ```
 [mcu my_extra_mcu]
-# See the "mcu" section for configuration parameters.
+# Параметры конфигурации смотрите в разделе "mcu".
 ```
 
-## Common kinematic settings
+## Общие кинематические настройки
 
 ### [принтер]
 
-The printer section controls high level printer settings.
+Раздел принтера управляет высокоуровневыми настройками принтера.
 
 ```
-[printer]
-kinematics:
-#   The type of printer in use. This option may be one of: cartesian,
-#   corexy, corexz, hybrid_corexy, hybrid_corexz, rotary_delta, delta,
-#   deltesian, polar, winch, or none. This parameter must be specified.
+[принтер].
+кинематика:
+#    Тип используемого принтера. Этот параметр может быть одним из: cartesian,
+#    corexy, corexz, hybrid_corexy, hybrid_corexz, rotary_delta, delta,
+#    deltesian, polar, winch или none. Этот параметр должен быть указан.
 max_velocity:
-#   Maximum velocity (in mm/s) of the toolhead (relative to the
-#   print). This parameter must be specified.
+#    Максимальная скорость (в мм/с) головки инструмента (относительно
+#    печати). Этот параметр должен быть указан.
 max_accel:
-#   Maximum acceleration (in mm/s^2) of the toolhead (relative to the
-#   print). Although this parameter is described as a "maximum"
-#   acceleration, in practice most moves that accelerate or decelerate
-#   will do so at the rate specified here. The value specified here
-#   may be changed at runtime using the SET_VELOCITY_LIMIT command.
-#   This parameter must be specified.
+#    Максимальное ускорение (в мм/с^2) головки инструмента (относительно
+#    печати). Хотя этот параметр описывается как "максимальное"
+#    ускорение, на практике большинство движений, которые ускоряются или замедляются.
+#    будут происходить со скоростью, указанной здесь. Указанное здесь значение
+#    может быть изменено во время выполнения с помощью команды SET_VELOCITY_LIMIT.
+#    Этот параметр должен быть указан.
 #minimum_cruise_ratio: 0.5
-#   Most moves will accelerate to a cruising speed, travel at that
-#   cruising speed, and then decelerate. However, some moves that
-#   travel a short distance could nominally accelerate and then
-#   immediately decelerate. This option reduces the top speed of these
-#   moves to ensure there is always a minimum distance traveled at a
-#   cruising speed. That is, it enforces a minimum distance traveled
-#   at cruising speed relative to the total distance traveled. It is
-#   intended to reduce the top speed of short zigzag moves (and thus
-#   reduce printer vibration from these moves). For example, a
-#   minimum_cruise_ratio of 0.5 would ensure that a standalone 1.5mm
-#   move would have a minimum cruising distance of 0.75mm. Specify a
-#   ratio of 0.0 to disable this feature (there would be no minimum
-#   cruising distance enforced between acceleration and deceleration).
-#   The value specified here may be changed at runtime using the
-#   SET_VELOCITY_LIMIT command. The default is 0.5.
+#    Большинство ходов разгоняется до крейсерской скорости, движется с ней.
+#    крейсерской скорости, а затем замедляются. Однако некоторые ходы, которые
+#    проходят небольшое расстояние, могут номинально ускориться, а затем
+#    сразу же замедляться. Эта опция уменьшает максимальную скорость этих
+#    ходов, чтобы обеспечить минимальное расстояние, пройденное на
+#    крейсерской скорости. Иными словами, она принудительно устанавливает минимальное расстояние, пройденное
+#    на крейсерской скорости по отношению к общему пройденному расстоянию. Это
+#    предназначена для снижения максимальной скорости коротких зигзагообразных перемещений (и, таким образом.
+#    уменьшить вибрацию принтера от этих движений). Например.
+#    минимальное_отношение_крейсерской_скорости, равное 0,5, гарантирует, что автономный 1,5-миллиметровый
+#    перемещение будет иметь минимальное крейсерское расстояние 0,75 мм. Укажите
+#    соотношение 0.0, чтобы отключить эту функцию (не будет минимальной
+#    крейсерского расстояния между ускорением и замедлением).
+#    Указанное здесь значение может быть изменено во время выполнения с помощью команды
+#    SET_VELOCITY_LIMIT. По умолчанию это значение равно 0,5.
 #square_corner_velocity: 5.0
-#   The maximum velocity (in mm/s) that the toolhead may travel a 90
-#   degree corner at. A non-zero value can reduce changes in extruder
-#   flow rates by enabling instantaneous velocity changes of the
-#   toolhead during cornering. This value configures the internal
-#   centripetal velocity cornering algorithm; corners with angles
-#   larger than 90 degrees will have a higher cornering velocity while
-#   corners with angles less than 90 degrees will have a lower
-#   cornering velocity. If this is set to zero then the toolhead will
-#   decelerate to zero at each corner. The value specified here may be
-#   changed at runtime using the SET_VELOCITY_LIMIT command. The
-#   default is 5mm/s.
+#    Максимальная скорость (в мм/с), с которой головка инструмента может пройти угол 90
+#    угол в 90 градусов. Ненулевое значение может уменьшить изменения в экструдере
+#    расхода экструдера за счет мгновенного изменения скорости
+#    головки инструмента во время прохождения угла. Это значение настраивает внутреннюю
+#    алгоритм центростремительной скорости при поворотах; углы с углами
+#    больше 90 градусов будут иметь более высокую скорость поворота, в то время как
+#    углы с углами менее 90 градусов будут иметь меньшую
+#    скорость поворота. Если это значение установлено в ноль, то головка инструмента будет
+#    замедляться до нуля на каждом повороте. Значение, указанное здесь, может быть
+#    изменить во время выполнения с помощью команды SET_VELOCITY_LIMIT. На сайте
+#    по умолчанию составляет 5 мм/с.
 #max_accel_to_decel:
-#   This parameter is deprecated and should no longer be used.
+#    Этот параметр устарел и больше не должен использоваться.
+
+Переведено с помощью DeepL.com (бесплатная версия)
 ```
 
 ### [шаговый]
 
-Stepper motor definitions. Different printer types (as specified by the "kinematics" option in the [printer] config section) require different names for the stepper (eg, `stepper_x` vs `stepper_a`). Below are common stepper definitions.
+Определения шагового двигателя. Разные типы принтеров (как указано в опции "кинематика" в разделе [принтер] конфигурация) требуют разных имен для шагового двигателя (например, `stepper_x` против `stepper_a`). Ниже приведены общие определения шаговиков.
 
-See the [rotation distance document](Rotation_Distance.md) for information on calculating the `rotation_distance` parameter. See the [Multi-MCU homing](Multi_MCU_Homing.md) document for information on homing using multiple micro-controllers.
+Информацию о расчете параметра `расстояние_вращения` смотрите в документе [rotation distance document](Rotation_Distance.md). Информацию о самонаведении с использованием нескольких микроконтроллеров см. в документе [Multi-MCU homing](Multi_MCU_Homing.md).
 
 ```
 [stepper_x]
 step_pin:
-#   Step GPIO pin (triggered high). This parameter must be provided.
+#    Контакт GPIO шага (высокий уровень срабатывания). Этот параметр должен быть указан.
 dir_pin:
-#   Direction GPIO pin (high indicates positive direction). This
-#   parameter must be provided.
+#    Контакт GPIO направления (высокий уровень указывает на положительное направление). Этот
+#    параметр должен быть указан.
 enable_pin:
-#   Enable pin (default is enable high; use ! to indicate enable
-#   low). If this parameter is not provided then the stepper motor
-#   driver must always be enabled.
+#    Разрешающий вывод (по умолчанию - высокий уровень; используйте ! для обозначения разрешения
+#    низкий). Если этот параметр не указан, то драйвер шагового двигателя
+#    драйвер должен быть всегда включен.
 rotation_distance:
-#   Distance (in mm) that the axis travels with one full rotation of
-#   the stepper motor (or final gear if gear_ratio is specified).
-#   This parameter must be provided.
+#    Расстояние (в мм), которое проходит ось за один полный оборот
+#    шагового двигателя (или конечной передачи, если указано передаточное_отношение).
+#    Этот параметр должен быть указан.
 microsteps:
-#   The number of microsteps the stepper motor driver uses. This
-#   parameter must be provided.
+#    Количество микрошагов, используемых драйвером шагового двигателя. Этот
+#    параметр должен быть указан.
 #full_steps_per_rotation: 200
-#   The number of full steps for one rotation of the stepper motor.
-#   Set this to 200 for a 1.8 degree stepper motor or set to 400 for a
-#   0.9 degree motor. The default is 200.
+#    Количество полных шагов для одного оборота шагового двигателя.
+#    Установите это значение на 200 для шагового двигателя с углом поворота 1,8 градуса или на 400 для двигателя с углом поворота
+#    0,9 градусов. По умолчанию установлено значение 200.
 #gear_ratio:
-#   The gear ratio if the stepper motor is connected to the axis via a
-#   gearbox. For example, one may specify "5:1" if a 5 to 1 gearbox is
-#   in use. If the axis has multiple gearboxes one may specify a comma
-#   separated list of gear ratios (for example, "57:11, 2:1"). If a
-#   gear_ratio is specified then rotation_distance specifies the
-#   distance the axis travels for one full rotation of the final gear.
-#   The default is to not use a gear ratio.
-#step_pulse_duration:
-#   The minimum time between the step pulse signal edge and the
-#   following "unstep" signal edge. This is also used to set the
-#   minimum time between a step pulse and a direction change signal.
-#   The default is 0.000000100 (100ns) for TMC steppers that are
-#   configured in UART or SPI mode, and the default is 0.000002 (which
-#   is 2us) for all other steppers.
+#    Передаточное число, если шаговый двигатель подключен к оси через
+#    редуктор. Например, можно указать "5:1", если используется редуктор 5 к 1.
+#    используется. Если ось имеет несколько редукторов, можно указать разделенный запятыми
+#    разделенный запятыми список передаточных чисел (например, "57:11, 2:1"). Если
+#    передаточное_отношение указано, то расстояние_вращения определяет
+#    расстояние, которое проходит ось за один полный оборот конечной передачи.
+#    По умолчанию передаточное число не используется.
+#    длительность_шагового_импульса:
+#    Минимальное время между фронтом импульсного сигнала шага и
+#    следующим за ним фронтом сигнала "отбой". Это также используется для установки
+#    минимального времени между импульсом шага и сигналом изменения направления.
+#    По умолчанию 0.000000100 (100ns) для степперов TMC, которые
+#    сконфигурированы в режиме UART или SPI, и по умолчанию 0.000002 (что
+#    это 2us) для всех остальных степперов.
 endstop_pin:
-#   Endstop switch detection pin. If this endstop pin is on a
-#   different mcu than the stepper motor then it enables "multi-mcu
-#   homing". This parameter must be provided for the X, Y, and Z
-#   steppers on cartesian style printers.
+#    Контакт обнаружения переключателя конечного останова. Если этот вывод endstop находится на
+#    другом микроконтроллере, чем шаговый двигатель, то он включает "мульти-микроконтроллер
+#    самонаведение". Этот параметр должен быть задан для шаговых двигателей X, Y и Z
+#    шаговых двигателей на принтерах с картезианским стилем.
 #position_min: 0
-#   Minimum valid distance (in mm) the user may command the stepper to
-#   move to.  The default is 0mm.
+#    Минимальное допустимое расстояние (в мм), на которое пользователь может приказать шаговому механизму
+#    перемещаться.  По умолчанию 0 мм.
 position_endstop:
-#   Location of the endstop (in mm). This parameter must be provided
-#   for the X, Y, and Z steppers on cartesian style printers.
+#    Расположение конечного ограничителя (в мм). Этот параметр должен быть задан
+#    для шаговых механизмов X, Y и Z на принтерах с картезианским стилем печати.
 position_max:
-#   Maximum valid distance (in mm) the user may command the stepper to
-#   move to. This parameter must be provided for the X, Y, and Z
-#   steppers on cartesian style printers.
+#    Максимальное допустимое расстояние (в мм), на которое пользователь может дать команду степперу
+#    перемещаться. Этот параметр должен быть указан для степперов X, Y и Z
+#    степперов на принтерах с картезианским стилем печати.
 #homing_speed: 5.0
-#   Maximum velocity (in mm/s) of the stepper when homing. The default
-#   is 5mm/s.
+#    Максимальная скорость (в мм/с) шагового устройства при наведении. По умолчанию
+#    5 мм/с.
 #homing_retract_dist: 5.0
-#   Distance to backoff (in mm) before homing a second time during
-#   homing. Set this to zero to disable the second home. The default
-#   is 5mm.
+#    Расстояние до отката (в мм) перед повторным наведением во время
+#    самонаведения. Установите это значение на ноль, чтобы отключить второе возвращение. По умолчанию
+#    является 5 мм.
 #homing_retract_speed:
-#   Speed to use on the retract move after homing in case this should
-#   be different from the homing speed, which is the default for this
-#   parameter
+#    Скорость, используемая при втягивании после самонаведения, в случае, если она должна
+#    отличаться от скорости наведения, которая используется по умолчанию для этого
+#    параметр
 #second_homing_speed:
-#   Velocity (in mm/s) of the stepper when performing the second home.
-#   The default is homing_speed/2.
+#    Скорость (в мм/с) шагового механизма при выполнении второго возврата домой.
+#    По умолчанию это homing_speed/2.
 #homing_positive_dir:
-#   If true, homing will cause the stepper to move in a positive
-#   direction (away from zero); if false, home towards zero. It is
-#   better to use the default than to specify this parameter. The
-#   default is true if position_endstop is near position_max and false
-#   if near position_min.
+#    Если установлено значение true, то при наведении шаговый механизм будет двигаться в положительном
+#    направлении (в сторону от нуля); если false, то в сторону нуля. Это
+#    лучше использовать значение по умолчанию, чем указывать этот параметр. По адресу
+#    по умолчанию равно true, если position_endstop находится вблизи position_max, и false
+#    если вблизи position_min.
 ```
 
-### Cartesian Kinematics
+### Декартова кинематика
 
-See [example-cartesian.cfg](../config/example-cartesian.cfg) for an example cartesian kinematics config file.
+Пример файла конфигурации картезианской кинематики смотрите в [example-cartesian.cfg](../config/example-cartesian.cfg).
 
-Only parameters specific to cartesian printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, характерные для картезианских принтеров - доступные параметры см. в разделе [общие кинематические настройки](#common-kinematic-settings)
 
 ```
-[printer]
-kinematics: cartesian
+[принтер].
+кинематика: картезианская
 max_z_velocity:
-#   This sets the maximum velocity (in mm/s) of movement along the z
-#   axis. This setting can be used to restrict the maximum speed of
-#   the z stepper motor. The default is to use max_velocity for
-#   max_z_velocity.
+# Это задает максимальную скорость (в мм/с) перемещения вдоль оси z
+# оси. Эта настройка может использоваться для ограничения максимальной скорости
+# шагового двигателя z. По умолчанию используется значение max_velocity для
+# max_z_velocity.
 max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. It limits the acceleration of the z stepper motor. The
-#   default is to use max_accel for max_z_accel.
+# Эта настройка задает максимальное ускорение (в мм/с^2) движения вдоль
+# оси z. Оно ограничивает ускорение шагового двигателя z. По
+# по умолчанию используется max_accel для max_z_accel.
 
-# The stepper_x section is used to describe the stepper controlling
-# the X axis in a cartesian robot.
+# Секция stepper_x используется для описания шагового двигателя, управляющего
+# осью X в картезианском роботе.
 [stepper_x]
 
-# The stepper_y section is used to describe the stepper controlling
-# the Y axis in a cartesian robot.
+# Раздел stepper_y используется для описания шагового механизма, управляющего осью
+# осью Y в картезианском роботе.
 [stepper_y]
 
-# The stepper_z section is used to describe the stepper controlling
-# the Z axis in a cartesian robot.
+# Раздел stepper_z используется для описания шагового устройства, управляющего осью
+# осью Z в картезианском роботе.
 [stepper_z]
 ```
 
-### Linear Delta Kinematics
+### Линейная дельта-кинематика
 
-See [example-delta.cfg](../config/example-delta.cfg) for an example linear delta kinematics config file. See the [delta calibrate guide](Delta_Calibrate.md) for information on calibration.
+Пример файла конфигурации линейной дельта-кинематики см. в [example-delta.cfg](../config/example-delta.cfg). Информацию о калибровке смотрите в руководстве [delta calibrate guide](Delta_Calibrate.md).
 
-Only parameters specific to linear delta printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, характерные для линейных дельта-принтеров - доступные параметры смотрите в разделе [общие кинематические настройки](#common-kinematic-settings).
 
 ```
-[printer]
-kinematics: delta
+[принтер].
+кинематика: дельта
 max_z_velocity:
-#   For delta printers this limits the maximum velocity (in mm/s) of
-#   moves with z axis movement. This setting can be used to reduce the
-#   maximum speed of up/down moves (which require a higher step rate
-#   than other moves on a delta printer). The default is to use
-#   max_velocity for max_z_velocity.
+#    Для дельта-принтеров это ограничение максимальной скорости (в мм/с)
+#    перемещения по оси z. Эта настройка может быть использована для уменьшения
+#    максимальной скорости перемещений вверх/вниз (которые требуют более высокой скорости шага
+#    чем другие перемещения на дельта-принтере). По умолчанию используется
+#    max_velocity для max_z_velocity.
 #max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. Setting this may be useful if the printer can reach higher
-#   acceleration on XY moves than Z moves (eg, when using input shaper).
-#   The default is to use max_accel for max_z_accel.
+#    Это задает максимальное ускорение (в мм/с^2) перемещения вдоль
+#    оси z. Установка этого параметра может быть полезна, если принтер может достичь большего
+#    ускорения при движении по XY, чем при движении по Z (например, при использовании входного формирователя).
+#    По умолчанию используется max_accel для max_z_accel.
 #minimum_z_position: 0
-#   The minimum Z position that the user may command the head to move
-#   to. The default is 0.
+#    Минимальная позиция по Z, в которую пользователь может приказать голове переместиться.
+#    в. По умолчанию равно 0.
 delta_radius:
-#   Radius (in mm) of the horizontal circle formed by the three linear
-#   axis towers. This parameter may also be calculated as:
+#    Радиус (в мм) горизонтальной окружности, образованной тремя линейными
+#    осями. Этот параметр также может быть рассчитан как:
 #    delta_radius = smooth_rod_offset - effector_offset - carriage_offset
-#   This parameter must be provided.
-#print_radius:
-#   The radius (in mm) of valid toolhead XY coordinates. One may use
-#   this setting to customize the range checking of toolhead moves. If
-#   a large value is specified here then it may be possible to command
-#   the toolhead into a collision with a tower. The default is to use
-#   delta_radius for print_radius (which would normally prevent a
-#   tower collision).
+#    Этот параметр должен быть указан.
+# print_radius:
+#    Радиус (в мм) действительных координат XY головки инструмента. Можно использовать
+#    этот параметр для настройки проверки диапазона перемещения головки инструмента. Если
+#    здесь задано большое значение, то может возникнуть команда
+#    головке инструмента в столкновение с башней. По умолчанию используется
+#    delta_radius для print_radius (что обычно предотвращает
+#    столкновения с башней).
 
-# The stepper_a section describes the stepper controlling the front
-# left tower (at 210 degrees). This section also controls the homing
-# parameters (homing_speed, homing_retract_dist) for all towers.
+#    Секция stepper_a описывает шаговый механизм, управляющий передней
+#    левой башней (на 210 градусов). Эта секция также управляет параметрами наведения
+#    параметрами (homing_speed, homing_retract_dist) для всех башен.
 [stepper_a]
 position_endstop:
-#   Distance (in mm) between the nozzle and the bed when the nozzle is
-#   in the center of the build area and the endstop triggers. This
-#   parameter must be provided for stepper_a; for stepper_b and
-#   stepper_c this parameter defaults to the value specified for
-#   stepper_a.
-arm_length:
-#   Length (in mm) of the diagonal rod that connects this tower to the
-#   print head. This parameter must be provided for stepper_a; for
-#   stepper_b and stepper_c this parameter defaults to the value
-#   specified for stepper_a.
+#    Расстояние (в мм) между соплом и станиной, когда сопло находится
+#    в центре зоны сборки и срабатывает концевой упор. Этот
+#    параметр должен быть указан для степпера_a; для степпера_b и
+#    stepper_c этот параметр по умолчанию принимает значение, указанное для
+# stepper_a.
+длина_руки:
+#    Длина (в мм) диагонального стержня, соединяющего эту башню с
+#    печатающей головкой. Этот параметр должен быть указан для степпера_a; для
+#    stepper_b и stepper_c этот параметр по умолчанию принимает значение
+#    указанное для stepper_a.
 #angle:
-#   This option specifies the angle (in degrees) that the tower is
-#   at. The default is 210 for stepper_a, 330 for stepper_b, and 90
-#   for stepper_c.
+#    Этот параметр задает угол (в градусах), под которым находится башня
+#    под которым находится башня. По умолчанию это 210 для stepper_a, 330 для stepper_b и 90
+#    для stepper_c.
 
-# The stepper_b section describes the stepper controlling the front
-# right tower (at 330 degrees).
+#    Секция stepper_b описывает шаговый механизм, управляющий передней
+#    правой башней (под углом 330 градусов).
 [stepper_b]
 
-# The stepper_c section describes the stepper controlling the rear
-# tower (at 90 degrees).
+#    Раздел stepper_c описывает шаговый механизм, управляющий задней
+#    башней (под углом 90 градусов).
 [stepper_c]
 
-# The delta_calibrate section enables a DELTA_CALIBRATE extended
-# g-code command that can calibrate the tower endstop positions and
-# angles.
+#    Секция delta_calibrate включает расширенную команду DELTA_CALIBRATE
+#    команду g-кода, которая может откалибровать положения конечных упоров башни и
+#    углы.
 [delta_calibrate]
-radius:
-#   Radius (in mm) of the area that may be probed. This is the radius
-#   of nozzle coordinates to be probed; if using an automatic probe
-#   with an XY offset then choose a radius small enough so that the
-#   probe always fits over the bed. This parameter must be provided.
+радиус:
+#    Радиус (в мм) области, которую можно зондировать. Это радиус
+#    координат сопла для зондирования; если используется автоматическое зондирование
+#    с XY-смещением, то выберите радиус достаточно малым, чтобы
+#    зонд всегда помещался над станиной. Этот параметр должен быть указан.
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#    Скорость (в мм/с) перемещения без зондирования во время калибровки.
+#    По умолчанию - 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#    Высота (в мм), на которую следует дать команду головке переместиться
+#    непосредственно перед началом работы датчика. По умолчанию равно 5.
 ```
 
-### Deltesian Kinematics
+### Дельтезианская кинематика
 
-See [example-deltesian.cfg](../config/example-deltesian.cfg) for an example deltesian kinematics config file.
+Смотрите [example-deltesian.cfg](../config/example-deltesian.cfg) для примера файла конфигурации кинематики Дельтезиана.
 
-Only parameters specific to deltesian printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, специфичные для дельтезианских принтеров - доступные параметры см. в разделе [общие кинематические настройки] (#common-kinematic-settings).
 
 ```
-[printer]
-kinematics: deltesian
+[принтер].
+кинематика: дельтезианская
 max_z_velocity:
-#   For deltesian printers, this limits the maximum velocity (in mm/s) of
-#   moves with z axis movement. This setting can be used to reduce the
-#   maximum speed of up/down moves (which require a higher step rate
-#   than other moves on a deltesian printer). The default is to use
-#   max_velocity for max_z_velocity.
+#    Для дельтезианских принтеров это ограничение максимальной скорости (в мм/с)
+#    перемещения по оси z. Эта настройка может быть использована для уменьшения
+#    максимальной скорости перемещений вверх/вниз (которые требуют более высокой скорости шага
+#    чем другие перемещения на дельтезианском принтере). По умолчанию используется
+#    max_velocity для max_z_velocity.
 #max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. Setting this may be useful if the printer can reach higher
-#   acceleration on XY moves than Z moves (eg, when using input shaper).
-#   The default is to use max_accel for max_z_accel.
+#    Это задает максимальное ускорение (в мм/с^2) движения вдоль
+#    оси z. Установка этого параметра может быть полезна, если принтер может достичь большего
+#    ускорения при движении по XY, чем при движении по Z (например, при использовании входного формирователя).
+#    По умолчанию используется max_accel для max_z_accel.
 #minimum_z_position: 0
-#   The minimum Z position that the user may command the head to move
-#   to. The default is 0.
+#    Минимальная позиция по Z, в которую пользователь может приказать голове переместиться.
+#    в. По умолчанию равно 0.
 #min_angle: 5
-#   This represents the minimum angle (in degrees) relative to horizontal
-#   that the deltesian arms are allowed to achieve. This parameter is
-#   intended to restrict the arms from becoming completely horizontal,
-#   which would risk accidental inversion of the XZ axis. The default is 5.
+#    Это минимальный угол (в градусах) относительно горизонтали.
+#    которого могут достичь дельтезианские руки. Этот параметр
+#    предназначен для того, чтобы ограничить руки от полного горизонтального положения,
+#    что может привести к случайной инверсии оси XZ. По умолчанию значение равно 5.
 #print_width:
-#   The distance (in mm) of valid toolhead X coordinates. One may use
-#   this setting to customize the range checking of toolhead moves. If
-#   a large value is specified here then it may be possible to command
-#   the toolhead into a collision with a tower. This setting usually
-#   corresponds to bed width (in mm).
+#    Расстояние (в мм) от действительных координат X головки инструмента. Можно использовать
+#    эту настройку, чтобы настроить проверку диапазона перемещения инструментальной головки. Если
+#    здесь задано большое значение, то может возникнуть команда
+#    головке инструмента в столкновение с башней. Обычно эта настройка
+#    соответствует ширине станины (в мм).
 #slow_ratio: 3
-#   The ratio used to limit velocity and acceleration on moves near the
-#   extremes of the X axis. If vertical distance divided by horizontal
-#   distance exceeds the value of slow_ratio, then velocity and
-#   acceleration are limited to half their nominal values. If vertical
-#   distance divided by horizontal distance exceeds twice the value of
-#   the slow_ratio, then velocity and acceleration are limited to one
-#   quarter of their nominal values. The default is 3.
+#    Коэффициент, используемый для ограничения скорости и ускорения при перемещениях вблизи
+#    крайних точек оси X. Если вертикальное расстояние, деленное на горизонтальное
+#    расстояние превышает значение параметра slow_ratio, то скорость и
+#    ускорение ограничиваются половиной их номинальных значений. Если вертикальное
+#    расстояние, деленное на горизонтальное расстояние, превышает вдвое значение
+#    соотношения slow_ratio, то скорость и ускорение ограничены одной
+#    четвертью своих номинальных значений. По умолчанию установлено значение 3.
 
-# The stepper_left section is used to describe the stepper controlling
-# the left tower. This section also controls the homing parameters
-# (homing_speed, homing_retract_dist) for all towers.
+#    Секция stepper_left используется для описания шагового механизма, управляющего
+#    левой башней. Эта секция также управляет параметрами самонаведения
+# (homing_speed, homing_retract_dist) для всех башен.
 [stepper_left]
 position_endstop:
-#   Distance (in mm) between the nozzle and the bed when the nozzle is
-#   in the center of the build area and the endstops are triggered. This
-#   parameter must be provided for stepper_left; for stepper_right this
-#   parameter defaults to the value specified for stepper_left.
+#    Расстояние (в мм) между соплом и станиной, когда сопло находится
+#    в центре зоны сборки и срабатывают концевые упоры. Этот
+#    параметр должен быть указан для stepper_left; для stepper_right этот
+#    параметр по умолчанию принимает значение, указанное для stepper_left.
 arm_length:
-#   Length (in mm) of the diagonal rod that connects the tower carriage to
-#   the print head. This parameter must be provided for stepper_left; for
-#   stepper_right, this parameter defaults to the value specified for
-#   stepper_left.
+#    Длина (в мм) диагонального стержня, соединяющего каретку башни с
+#    печатающей головкой. Этот параметр должен быть указан для stepper_left; для
+#    stepper_right этот параметр по умолчанию принимает значение, указанное для
+# stepper_left.
 arm_x_length:
-#   Horizontal distance between the print head and the tower when the
-#   printers is homed. This parameter must be provided for stepper_left;
-#   for stepper_right, this parameter defaults to the value specified for
-#   stepper_left.
+#    Горизонтальное расстояние между печатающей головкой и башней, когда
+#    принтера. Этот параметр должен быть указан для stepper_left;
+#    для stepper_right этот параметр по умолчанию принимает значение, указанное для
+# stepper_left.
 
-# The stepper_right section is used to describe the stepper controlling the
-# right tower.
+#    Секция stepper_right используется для описания шагового механизма, управляющего
+#    правой башней.
 [stepper_right]
 
-# The stepper_y section is used to describe the stepper controlling
-# the Y axis in a deltesian robot.
+#    Секция stepper_y используется для описания шагового механизма, управляющего
+#    осью Y в дельтезианском роботе.
 [stepper_y]
 ```
 
-### CoreXY Kinematics
+### Кинематика CoreXY
 
-See [example-corexy.cfg](../config/example-corexy.cfg) for an example corexy (and h-bot) kinematics file.
+Смотрите [example-corexy.cfg](../config/example-corexy.cfg) для примера файла кинематики corexy (и h-bot).
 
-Only parameters specific to corexy printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, характерные для принтеров corexy - доступные параметры смотрите в разделе [общие кинематические настройки](#common-kinematic-settings).
 
 ```
-[printer]
-kinematics: corexy
+[принтер].
+кинематика: corexy
 max_z_velocity:
-#   This sets the maximum velocity (in mm/s) of movement along the z
-#   axis. This setting can be used to restrict the maximum speed of
-#   the z stepper motor. The default is to use max_velocity for
-#   max_z_velocity.
+# Это задает максимальную скорость (в мм/с) перемещения вдоль оси z
+# оси. Эта настройка может использоваться для ограничения максимальной скорости
+# шагового двигателя z. По умолчанию используется значение max_velocity для
+# max_z_velocity.
 max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. It limits the acceleration of the z stepper motor. The
-#   default is to use max_accel for max_z_accel.
+# Эта настройка задает максимальное ускорение (в мм/с^2) движения вдоль
+# оси z. Оно ограничивает ускорение шагового двигателя z. По
+# по умолчанию используется max_accel для max_z_accel.
 
-# The stepper_x section is used to describe the X axis as well as the
-# stepper controlling the X+Y movement.
+# Секция stepper_x используется для описания оси X, а также
+# шагового двигателя, управляющего движением X+Y.
 [stepper_x]
 
-# The stepper_y section is used to describe the Y axis as well as the
-# stepper controlling the X-Y movement.
+# Секция stepper_y используется для описания оси Y, а также
+# шагового механизма, управляющего движением X-Y.
 [stepper_y]
 
-# The stepper_z section is used to describe the stepper controlling
-# the Z axis.
+# Секция stepper_z используется для описания шага, управляющего
+# осью Z.
 [stepper_z]
 ```
 
-### CoreXZ Kinematics
+### Кинематика CoreXZ
 
-See [example-corexz.cfg](../config/example-corexz.cfg) for an example corexz kinematics config file.
+Пример файла конфигурации кинематики corexz см. в [example-corexz.cfg](../config/example-corexz.cfg).
 
-Only parameters specific to corexz printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, характерные для принтеров corexz - доступные параметры смотрите в разделе [общие кинематические настройки](#common-kinematic-settings).
 
 ```
-[printer]
-kinematics: corexz
+[принтер]
+кинематика: corexz
 max_z_velocity:
-#   This sets the maximum velocity (in mm/s) of movement along the z
-#   axis. The default is to use max_velocity for max_z_velocity.
+# Это задает максимальную скорость (в мм/с) перемещения вдоль оси z
+# оси. По умолчанию для max_z_velocity используется max_velocity.
 max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. The default is to use max_accel for max_z_accel.
+# Задает максимальное ускорение (в мм/с^2) движения вдоль оси
+# оси z. По умолчанию используется max_accel для max_z_accel.
 
-# The stepper_x section is used to describe the X axis as well as the
-# stepper controlling the X+Z movement.
+# Секция stepper_x используется для описания оси X, а также
+# шагового механизма, управляющего движением X+Z.
 [stepper_x]
 
-# The stepper_y section is used to describe the stepper controlling
-# the Y axis.
+# Секция stepper_y используется для описания шага, управляющего
+# осью Y.
 [stepper_y]
 
-# The stepper_z section is used to describe the Z axis as well as the
-# stepper controlling the X-Z movement.
+# Секция stepper_z используется для описания оси Z, а также
+# шагового механизма, управляющего движением по оси X-Z.
 [stepper_z]
 ```
 
-### Hybrid-CoreXY Kinematics
+### Кинематика Hybrid-CoreXY
 
-See [example-hybrid-corexy.cfg](../config/example-hybrid-corexy.cfg) for an example hybrid corexy kinematics config file.
+Пример файла конфигурации кинематики гибридного corexy смотрите в [example-hybrid-corexy.cfg](../config/example-hybrid-corexy.cfg).
 
-This kinematic is also known as Markforged kinematic.
+Эта кинематика также известна как кинематика Markforged.
 
-Only parameters specific to hybrid corexy printers are described here see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, характерные для гибридных принтеров corexy, доступные параметры смотрите в разделе [общие кинематические настройки](#common-kinematic-settings).
 
 ```
-[printer]
-kinematics: hybrid_corexy
+[принтер]
+кинематика: гибридная_коррекция
 max_z_velocity:
-#   This sets the maximum velocity (in mm/s) of movement along the z
-#   axis. The default is to use max_velocity for max_z_velocity.
+# Здесь задается максимальная скорость (в мм/с) перемещения вдоль оси z
+# оси. По умолчанию для max_z_velocity используется max_velocity.
 max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. The default is to use max_accel for max_z_accel.
+# Задает максимальное ускорение (в мм/с^2) движения вдоль оси
+# оси z. По умолчанию используется max_accel для max_z_accel.
 
-# The stepper_x section is used to describe the X axis as well as the
-# stepper controlling the X-Y movement.
+# Секция stepper_x используется для описания оси X, а также
+# шагового механизма, управляющего движением по оси X-Y.
 [stepper_x]
 
-# The stepper_y section is used to describe the stepper controlling
-# the Y axis.
+# Секция stepper_y используется для описания шага, управляющего
+# осью Y.
 [stepper_y]
 
-# The stepper_z section is used to describe the stepper controlling
-# the Z axis.
+# Секция stepper_z используется для описания шага, управляющего
+# осью Z.
 [stepper_z]
 ```
 
-### Hybrid-CoreXZ Kinematics
+### Кинематика Hybrid-CoreXZ
 
-See [example-hybrid-corexz.cfg](../config/example-hybrid-corexz.cfg) for an example hybrid corexz kinematics config file.
+Пример файла конфигурации гибридной кинематики corexz смотрите в [example-hybrid-corexz.cfg](../config/example-hybrid-corexz.cfg).
 
-This kinematic is also known as Markforged kinematic.
+Эта кинематика также известна как кинематика Markforged.
 
-Only parameters specific to hybrid corexy printers are described here see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, характерные для гибридных принтеров corexy, доступные параметры смотрите в разделе [общие кинематические настройки](#common-kinematic-settings).
 
 ```
-[printer]
-kinematics: hybrid_corexz
+[принтер]
+кинематика: hybrid_corexz
 max_z_velocity:
-#   This sets the maximum velocity (in mm/s) of movement along the z
-#   axis. The default is to use max_velocity for max_z_velocity.
+# Здесь задается максимальная скорость (в мм/с) перемещения вдоль оси z
+# оси. По умолчанию для max_z_velocity используется max_velocity.
 max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. The default is to use max_accel for max_z_accel.
+# Задает максимальное ускорение (в мм/с^2) движения вдоль оси
+# оси z. По умолчанию используется max_accel для max_z_accel.
 
-# The stepper_x section is used to describe the X axis as well as the
-# stepper controlling the X-Z movement.
+# Секция stepper_x используется для описания оси X, а также
+# шагового механизма, управляющего движением по оси X-Z.
 [stepper_x]
 
-# The stepper_y section is used to describe the stepper controlling
-# the Y axis.
+# Секция stepper_y используется для описания шага, управляющего
+# осью Y.
 [stepper_y]
 
-# The stepper_z section is used to describe the stepper controlling
-# the Z axis.
+# Секция stepper_z используется для описания шага, управляющего
+# осью Z.
 [stepper_z]
 ```
 
-### Polar Kinematics
+### Полярная кинематика
 
-See [example-polar.cfg](../config/example-polar.cfg) for an example polar kinematics config file.
+Пример файла конфигурации полярной кинематики смотрите в [example-polar.cfg](../config/example-polar.cfg).
 
-Only parameters specific to polar printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, специфичные для полярных принтеров - доступные параметры смотрите в разделе [общие кинематические настройки](#common-kinematic-settings).
 
-POLAR KINEMATICS ARE A WORK IN PROGRESS. Moves around the 0, 0 position are known to not work properly.
+ПОЛЯРНАЯ КИНЕМАТИКА НАХОДИТСЯ В СТАДИИ РАЗРАБОТКИ. Известно, что перемещения вокруг позиции 0, 0 не работают должным образом.
 
 ```
-[printer]
-kinematics: polar
+[принтер].
+кинематика: полярная
 max_z_velocity:
-#   This sets the maximum velocity (in mm/s) of movement along the z
-#   axis. This setting can be used to restrict the maximum speed of
-#   the z stepper motor. The default is to use max_velocity for
-#   max_z_velocity.
+#    Это задает максимальную скорость (в мм/с) перемещения вдоль оси z
+#    оси. Эта настройка может использоваться для ограничения максимальной скорости
+#    шагового двигателя z. По умолчанию используется значение max_velocity для
+#    max_z_velocity.
 max_z_accel:
-#   This sets the maximum acceleration (in mm/s^2) of movement along
-#   the z axis. It limits the acceleration of the z stepper motor. The
-#   default is to use max_accel for max_z_accel.
+#    Эта настройка задает максимальное ускорение (в мм/с^2) движения вдоль
+#    оси z. Оно ограничивает ускорение шагового двигателя z. По
+#    по умолчанию используется max_accel для max_z_accel.
 
-# The stepper_bed section is used to describe the stepper controlling
-# the bed.
-[stepper_bed]
+#    Секция stepper_bed используется для описания шагового механизма, управляющего
+#    кроватью.
+[stepper_bed].
 gear_ratio:
-#   A gear_ratio must be specified and rotation_distance may not be
-#   specified. For example, if the bed has an 80 toothed pulley driven
-#   by a stepper with a 16 toothed pulley then one would specify a
-#   gear ratio of "80:16". This parameter must be provided.
+#    Должно быть указано передаточное_отношение, а расстояние_вращения не может быть
+#    задано. Например, если кровать имеет 80-зубый шкив, приводимый в движение
+#    шаговым механизмом с 16-зубчатым шкивом, то можно указать
+#    передаточное число "80:16". Этот параметр должен быть указан.
 
-# The stepper_arm section is used to describe the stepper controlling
-# the carriage on the arm.
+#    Секция stepper_arm используется для описания шагового механизма, управляющего
+#    кареткой на манипуляторе.
 [stepper_arm]
 
-# The stepper_z section is used to describe the stepper controlling
-# the Z axis.
+#    Секция stepper_z используется для описания шагового механизма, управляющего
+#    осью Z.
 [stepper_z]
 ```
 
-### Rotary delta Kinematics
+### Роторная дельта-кинематика
 
-See [example-rotary-delta.cfg](../config/example-rotary-delta.cfg) for an example rotary delta kinematics config file.
+Пример файла конфигурации кинематики роторной дельты смотрите в [example-rotary-delta.cfg](../config/example-rotary-delta.cfg).
 
-Only parameters specific to rotary delta printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, характерные для ротационных дельта-принтеров - доступные параметры смотрите в разделе [общие кинематические настройки](#common-kinematic-settings).
 
-ROTARY DELTA KINEMATICS ARE A WORK IN PROGRESS. Homing moves may timeout and some boundary checks are not implemented.
+КИНЕМАТИКА ВРАЩАЮЩИХСЯ ДЕЛЬТАЛЕТОВ НАХОДИТСЯ В СТАДИИ РАЗРАБОТКИ. Движения самонаведения могут прерываться по времени, а некоторые проверки границ не реализованы.
 
 ```
-[printer]
-kinematics: rotary_delta
+[принтер]
+кинематика: вращение_дельта
 max_z_velocity:
-#   For delta printers this limits the maximum velocity (in mm/s) of
-#   moves with z axis movement. This setting can be used to reduce the
-#   maximum speed of up/down moves (which require a higher step rate
-#   than other moves on a delta printer). The default is to use
-#   max_velocity for max_z_velocity.
+# Для дельта-принтеров это ограничение максимальной скорости (в мм/с)
+# перемещения по оси z. Эта настройка может быть использована для уменьшения
+# максимальной скорости перемещений вверх/вниз (которые требуют более высокой скорости шага
+# чем другие перемещения на дельта-принтере). По умолчанию используется
+# max_velocity для max_z_velocity.
 #minimum_z_position: 0
-#   The minimum Z position that the user may command the head to move
-#   to.  The default is 0.
-shoulder_radius:
-#   Radius (in mm) of the horizontal circle formed by the three
-#   shoulder joints, minus the radius of the circle formed by the
-#   effector joints. This parameter may also be calculated as:
-#     shoulder_radius = (delta_f - delta_e) / sqrt(12)
-#   This parameter must be provided.
-shoulder_height:
-#   Distance (in mm) of the shoulder joints from the bed, minus the
-#   effector toolhead height. This parameter must be provided.
+# Минимальная позиция Z, в которую пользователь может приказать головке переместиться.
+# в.  По умолчанию равно 0.
+плечо_радиуса:
+# Радиус (в мм) горизонтальной окружности, образованной тремя
+# плечевыми суставами, минус радиус окружности, образованной
+# суставами эффекторов. Этот параметр также может быть рассчитан как:
+# shoulder_radius = (delta_f - delta_e) / sqrt(12)
+# Этот параметр должен быть указан.
+высота_плеча:
+# Расстояние (в мм) плечевых соединений от станины за вычетом
+# высота головки инструмента эффектора. Этот параметр должен быть указан.
 
-# The stepper_a section describes the stepper controlling the rear
-# right arm (at 30 degrees). This section also controls the homing
-# parameters (homing_speed, homing_retract_dist) for all arms.
+# Раздел stepper_a описывает шаговый механизм, управляющий задней частью
+# правой руки (под углом 30 градусов). Эта секция также управляет параметрами наведения
+# параметры (homing_speed, homing_retract_dist) для всех рук.
 [stepper_a]
 gear_ratio:
-#   A gear_ratio must be specified and rotation_distance may not be
-#   specified. For example, if the arm has an 80 toothed pulley driven
-#   by a pulley with 16 teeth, which is in turn connected to a 60
-#   toothed pulley driven by a stepper with a 16 toothed pulley, then
-#   one would specify a gear ratio of "80:16, 60:16". This parameter
-#   must be provided.
+# Должно быть указано передаточное_отношение, а расстояние_вращения не может быть
+# задано. Например, если рука имеет 80-зубый шкив, приводимый в движение
+# шкивом с 16 зубьями, который, в свою очередь, соединен с 60
+# зубчатым шкивом, приводимым в движение шаговым механизмом с 16-зубым шкивом, то
+# можно указать передаточное число "80:16, 60:16". Этот параметр
+# должен быть указан.
 position_endstop:
-#   Distance (in mm) between the nozzle and the bed when the nozzle is
-#   in the center of the build area and the endstop triggers. This
-#   parameter must be provided for stepper_a; for stepper_b and
-#   stepper_c this parameter defaults to the value specified for
-#   stepper_a.
+# Расстояние (в мм) между соплом и станиной, когда сопло находится
+# в центре области сборки и срабатывает концевой упор. Этот
+# параметр должен быть указан для степпера_a; для степпера_b и
+# stepper_c этот параметр по умолчанию принимает значение, указанное для
+# stepper_a.
 upper_arm_length:
-#   Length (in mm) of the arm connecting the "shoulder joint" to the
-#   "elbow joint". This parameter must be provided for stepper_a; for
-#   stepper_b and stepper_c this parameter defaults to the value
-#   specified for stepper_a.
+# Длина (в мм) руки, соединяющей "плечевой сустав" с
+# "локтевым суставом". Этот параметр должен быть указан для степпера_a; для
+# stepper_b и stepper_c этот параметр по умолчанию принимает значение
+# указанное для stepper_a.
 lower_arm_length:
-#   Length (in mm) of the arm connecting the "elbow joint" to the
-#   "effector joint". This parameter must be provided for stepper_a;
-#   for stepper_b and stepper_c this parameter defaults to the value
-#   specified for stepper_a.
+# Длина (в мм) руки, соединяющей "локтевой сустав" с
+# "эффекторным суставом". Этот параметр должен быть указан для степпера_a;
+# для stepper_b и stepper_c этот параметр по умолчанию принимает значение.
+# указанное для stepper_a.
 #angle:
-#   This option specifies the angle (in degrees) that the arm is at.
-#   The default is 30 for stepper_a, 150 for stepper_b, and 270 for
-#   stepper_c.
+# Этот параметр задает угол (в градусах), под которым находится рука.
+# По умолчанию это 30 для stepper_a, 150 для stepper_b и 270 для
+# stepper_c.
 
-# The stepper_b section describes the stepper controlling the rear
-# left arm (at 150 degrees).
+# Раздел stepper_b описывает шаговый механизм, управляющий задней
+# левой рукой (под углом 150 градусов).
 [stepper_b]
 
-# The stepper_c section describes the stepper controlling the front
-# arm (at 270 degrees).
+# Раздел stepper_c описывает шаговый механизм, управляющий передней
+# рукой (под углом 270 градусов).
 [stepper_c]
 
-# The delta_calibrate section enables a DELTA_CALIBRATE extended
-# g-code command that can calibrate the shoulder endstop positions.
+# Секция delta_calibrate включает расширенную команду DELTA_CALIBRATE
+# команду g-кода, которая может откалибровать положения концевых упоров плеч.
 [delta_calibrate]
-radius:
-#   Radius (in mm) of the area that may be probed. This is the radius
-#   of nozzle coordinates to be probed; if using an automatic probe
-#   with an XY offset then choose a radius small enough so that the
-#   probe always fits over the bed. This parameter must be provided.
+радиус:
+# Радиус (в мм) области, которую можно зондировать. Это радиус
+# координат сопла для зондирования; если используется автоматическое зондирование
+# с XY-смещением, то выберите радиус достаточно малым, чтобы
+# зонд всегда помещался над станиной. Этот параметр должен быть указан.
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+# Скорость (в мм/с) перемещения без зондирования во время калибровки.
+# По умолчанию - 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+# Высота (в мм), на которую следует дать команду головке переместиться
+# непосредственно перед началом работы датчика. По умолчанию равно 5.
 ```
 
-### Cable winch Kinematics
+### Кинематика тросовой лебедки
 
-See the [example-winch.cfg](../config/example-winch.cfg) for an example cable winch kinematics config file.
+Смотрите файл [example-winch.cfg](../config/example-winch.cfg) для примера файла конфигурации кинематики кабельной лебедки.
 
-Only parameters specific to cable winch printers are described here - see [common kinematic settings](#common-kinematic-settings) for available parameters.
+Здесь описаны только параметры, специфичные для принтеров кабельных лебедок - доступные параметры см. в разделе [общие кинематические настройки](#common-kinematic-settings).
 
-CABLE WINCH SUPPORT IS EXPERIMENTAL. Homing is not implemented on cable winch kinematics. In order to home the printer, manually send movement commands until the toolhead is at 0, 0, 0 and then issue a `G28` command.
+ПОДДЕРЖКА ТРОСОВОЙ ЛЕБЕДКИ ЯВЛЯЕТСЯ ЭКСПЕРИМЕНТАЛЬНОЙ. Наведение не реализовано в кинематике кабельной лебедки. Чтобы установить принтер в исходное положение, вручную подавайте команды перемещения, пока головка инструмента не окажется в точке 0, 0, 0, а затем подайте команду `G28`.
 
 ```
-[printer]
-kinematics: winch
+[принтер]
+кинематика: лебедка
 
-# The stepper_a section describes the stepper connected to the first
-# cable winch. A minimum of 3 and a maximum of 26 cable winches may be
-# defined (stepper_a to stepper_z) though it is common to define 4.
-[stepper_a]
-rotation_distance:
-#   The rotation_distance is the nominal distance (in mm) the toolhead
-#   moves towards the cable winch for each full rotation of the
-#   stepper motor. This parameter must be provided.
+#    Секция stepper_a описывает шаговый механизм, подключенный к первой
+#    кабельной лебедке. Может быть определено минимум 3 и максимум 26 тросовых лебедок
+#    определены (от stepper_a до stepper_z), хотя обычно определяют 4.
+[stepper_a].
+расстояние поворота:
+#    Расстояние_поворота - это номинальное расстояние (в мм), на которое головка инструмента
+#    перемещается по направлению к кабельной лебедке за каждый полный оборот
+#    шагового двигателя. Этот параметр должен быть указан.
 anchor_x:
 anchor_y:
 anchor_z:
-#   The X, Y, and Z position of the cable winch in cartesian space.
-#   These parameters must be provided.
+#    Положение X, Y и Z тросовой лебедки в декартовом пространстве.
+#    Эти параметры должны быть указаны.
 ```
 
-### None Kinematics
+### Отсутствует Кинематика
 
-It is possible to define a special "none" kinematics to disable kinematic support in Klipper. This may be useful for controlling devices that are not typical 3d-printers or for debugging purposes.
+Можно задать специальную кинематику " нет", чтобы отключить кинематическую поддержку в Klipper. Это может быть полезно для управления устройствами, которые не являются типичными 3d-принтерами, или для целей отладки.
 
 ```
-[printer]
-kinematics: none
-max_velocity: 1
-max_accel: 1
-#   The max_velocity and max_accel parameters must be defined. The
-#   values are not used for "none" kinematics.
+[принтер].
+кинематика: нет
+макс_скорость: 1
+макс_ускорение: 1
+#    Параметры max_velocity и max_accel должны быть определены. На
+#    значения не используются для кинематики " нет".
 ```
 
-## Common extruder and heated bed support
+## Общий экструдер и подогреваемая подставка
 
 ### [экструдер]
 
-The extruder section is used to describe the heater parameters for the nozzle hotend along with the stepper controlling the extruder. See the [command reference](G-Codes.md#extruder) for additional information. See the [pressure advance guide](Pressure_Advance.md) for information on tuning pressure advance.
+Раздел "Экструдер" используется для описания параметров нагревателя для сопла хотэнда и шагового механизма, управляющего экструдером. Дополнительную информацию см. в [справочнике команд](G-Codes.md#extruder). Информацию о настройке опережения давления см. в руководстве [pressure advance guide](Pressure_Advance.md).
 
 ```
-[extruder]
+[экструдер].
 step_pin:
 dir_pin:
 enable_pin:
-microsteps:
+микрошаги:
 rotation_distance:
 #full_steps_per_rotation:
 #gear_ratio:
-#   See the "stepper" section for a description of the above
-#   parameters. If none of the above parameters are specified then no
-#   stepper will be associated with the nozzle hotend (though a
-#   SYNC_EXTRUDER_MOTION command may associate one at run-time).
-nozzle_diameter:
-#   Diameter of the nozzle orifice (in mm). This parameter must be
-#   provided.
-filament_diameter:
-#   The nominal diameter of the raw filament (in mm) as it enters the
-#   extruder. This parameter must be provided.
+#    См. раздел "Шаговое управление" для описания вышеуказанных
+#    параметров. Если ни один из вышеперечисленных параметров не указан, то ни один
+#    степпер не будет связан с хотэндом форсунки (хотя
+#    команда SYNC_EXTRUDER_MOTION может связать его во время выполнения).
+диаметр_сопла:
+#    Диаметр отверстия сопла (в мм). Этот параметр должен быть
+#    предоставлен.
+диаметр нити (filament_diameter):
+#    Номинальный диаметр сырой нити (в мм), когда она поступает в
+#    экструдер. Этот параметр должен быть предоставлен.
 #max_extrude_cross_section:
-#   Maximum area (in mm^2) of an extrusion cross section (eg,
-#   extrusion width multiplied by layer height). This setting prevents
-#   excessive amounts of extrusion during relatively small XY moves.
-#   If a move requests an extrusion rate that would exceed this value
-#   it will cause an error to be returned. The default is: 4.0 *
-#   nozzle_diameter^2
-#instantaneous_corner_velocity: 1.000
-#   The maximum instantaneous velocity change (in mm/s) of the
-#   extruder during the junction of two moves. The default is 1mm/s.
+#    Максимальная площадь (в мм^2) поперечного сечения экструзии (например,
+#    ширина экструзии, умноженная на высоту слоя). Эта настройка предотвращает
+#    чрезмерного количества экструзии при относительно небольших перемещениях по XY.
+Если перемещение запрашивает скорость экструзии, превышающую это значение, #
+#    это приведет к возврату ошибки. По умолчанию: 4.0 *
+#    диаметр_сопла^2
+#    мгновенная_угловая_скорость: 1.000
+#    Максимальное мгновенное изменение скорости (в мм/с)
+#    экструдера во время стыка двух движений. По умолчанию 1 мм/с.
 #max_extrude_only_distance: 50.0
-#   Maximum length (in mm of raw filament) that a retraction or
-#   extrude-only move may have. If a retraction or extrude-only move
-#   requests a distance greater than this value it will cause an error
-#   to be returned. The default is 50mm.
+#    Максимальная длина (в мм сырой нити), на которую может быть выполнено втягивание или
+#    extrude-only move может иметь. Если движение с втягиванием или только с выдавливанием
+#    запрашивает расстояние, превышающее это значение, это приведет к ошибке
+#    будет возвращена ошибка. По умолчанию это значение равно 50 мм.
 #max_extrude_only_velocity:
 #max_extrude_only_accel:
-#   Maximum velocity (in mm/s) and acceleration (in mm/s^2) of the
-#   extruder motor for retractions and extrude-only moves. These
-#   settings do not have any impact on normal printing moves. If not
-#   specified then they are calculated to match the limit an XY
-#   printing move with a cross section of 4.0*nozzle_diameter^2 would
-#   have.
-#pressure_advance: 0.0
-#   The amount of raw filament to push into the extruder during
-#   extruder acceleration. An equal amount of filament is retracted
-#   during deceleration. It is measured in millimeters per
-#   millimeter/second. The default is 0, which disables pressure
-#   advance.
+#    Максимальная скорость (в мм/с) и ускорение (в мм/с^2)
+#    двигателя экструдера для втягивания и перемещения только экструдера. Эти
+#    настройки не оказывают никакого влияния на обычные движения печати. Если они не
+#    указаны, то они рассчитываются так, чтобы соответствовать пределу XY
+#    движения печати с поперечным сечением 4,0*диаметр_сопла^2
+#    иметь.
+# pressure_advance: 0.0
+#    Количество сырого филамента, которое нужно протолкнуть в экструдер во время
+#    ускорения экструдера. Равное количество нити втягивается
+#    во время замедления. Измеряется в миллиметрах на
+#    миллиметр/секунду. По умолчанию установлено значение 0, что отключает давление
+#    опережение.
 #pressure_advance_smooth_time: 0.040
-#   A time range (in seconds) to use when calculating the average
-#   extruder velocity for pressure advance. A larger value results in
-#   smoother extruder movements. This parameter may not exceed 200ms.
-#   This setting only applies if pressure_advance is non-zero. The
-#   default is 0.040 (40 milliseconds).
+#    Диапазон времени (в секундах), используемый при расчете средней
+#    скорости экструдера для опережения давления. Большее значение приводит к
+#    более плавное движение экструдера. Этот параметр не может превышать 200 мс.
+#    Эта настройка применяется только в том случае, если pressure_advance ненулевое. На
+#    по умолчанию составляет 0,040 (40 миллисекунд).
 #
-# The remaining variables describe the extruder heater.
+#    Остальные переменные описывают нагреватель экструдера.
 heater_pin:
-#   PWM output pin controlling the heater. This parameter must be
-#   provided.
+#    ШИМ-выходной контакт, управляющий нагревателем. Этот параметр должен быть
+#    предоставлен.
 #max_power: 1.0
-#   The maximum power (expressed as a value from 0.0 to 1.0) that the
-#   heater_pin may be set to. The value 1.0 allows the pin to be set
-#   fully enabled for extended periods, while a value of 0.5 would
-#   allow the pin to be enabled for no more than half the time. This
-#   setting may be used to limit the total power output (over extended
-#   periods) to the heater. The default is 1.0.
-sensor_type:
-#   Type of sensor - common thermistors are "EPCOS 100K B57560G104F",
-#   "ATC Semitec 104GT-2", "ATC Semitec 104NT-4-R025H42G", "Generic
-#   3950","Honeywell 100K 135-104LAG-J01", "NTC 100K MGB18-104F39050L32",
-#   "SliceEngineering 450", and "TDK NTCG104LH104JT1". See the
-#   "Temperature sensors" section for other sensors. This parameter
-#   must be provided.
+#    Максимальная мощность (выраженная в виде значения от 0,0 до 1,0), на которую может быть установлен
+#    нагревателя_контакта может быть установлена. Значение 1.0 позволяет установить контакт
+#    полностью включенным на длительное время, в то время как значение 0,5
+#    позволит контакту быть включенным не более половины времени. Этот
+#    настройка может быть использована для ограничения общей выходной мощности (в течение длительных
+#    периодов) на нагреватель. По умолчанию значение равно 1,0.
+тип_датчика:
+#    Тип датчика - распространенные термисторы: "EPCOS 100K B57560G104F",
+#    "ATC Semitec 104GT-2", "ATC Semitec 104NT-4-R025H42G", "Generic
+#    3950", "Honeywell 100K 135-104LAG-J01", "NTC 100K MGB18-104F39050L32",
+#    "SliceEngineering 450", и "TDK NTCG104LH104JT1". См.
+#    "Датчики температуры" для других датчиков. Этот параметр
+#    должен быть указан.
 sensor_pin:
-#   Analog input pin connected to the sensor. This parameter must be
-#   provided.
+#    Контакт аналогового входа, подключенный к датчику. Этот параметр должен быть
+#    предоставлен.
 #pullup_resistor: 4700
-#   The resistance (in ohms) of the pullup attached to the thermistor.
-#   This parameter is only valid when the sensor is a thermistor. The
-#   default is 4700 ohms.
+#    Сопротивление (в омах) подтяжки, подключенной к термистору.
+#    Этот параметр действителен только в том случае, если датчик является термистором. По адресу
+#    по умолчанию составляет 4700 Ом.
 #smooth_time: 1.0
-#   A time value (in seconds) over which temperature measurements will
-#   be smoothed to reduce the impact of measurement noise. The default
-#   is 1 seconds.
+#    Значение времени (в секундах), в течение которого измерения температуры будут
+#    будут сглажены, чтобы уменьшить влияние шума при измерении. По умолчанию
+#    является 1 секунда.
 control:
-#   Control algorithm (either pid or watermark). This parameter must
-#   be provided.
+#    Алгоритм управления (либо pid, либо watermark). Этот параметр должен
+#    быть предоставлен.
 pid_Kp:
 pid_Ki:
 pid_Kd:
-#   The proportional (pid_Kp), integral (pid_Ki), and derivative
-#   (pid_Kd) settings for the PID feedback control system. Klipper
-#   evaluates the PID settings with the following general formula:
-#     heater_pwm = (Kp*error + Ki*integral(error) - Kd*derivative(error)) / 255
-#   Where "error" is "requested_temperature - measured_temperature"
-#   and "heater_pwm" is the requested heating rate with 0.0 being full
-#   off and 1.0 being full on. Consider using the PID_CALIBRATE
-#   command to obtain these parameters. The pid_Kp, pid_Ki, and pid_Kd
-#   parameters must be provided for PID heaters.
+#    Пропорциональная (pid_Kp), интегральная (pid_Ki) и производная
+#    (pid_Kd) настройки для системы управления с обратной связью PID. Клиппер
+#    оценивает настройки ПИД-регулятора по следующей общей формуле:
+#    heater_pwm = (Kp*error + Ki*integral(error) - Kd*derivative(error)) / 255
+#    Где "error" - это "requested_temperature - measured_temperature"
+#    и "heater_pwm" - запрашиваемая скорость нагрева, при этом 0.0 - полное
+#    выключен, а 1.0 - полностью включен. Рассмотрите возможность использования команды PID_CALIBRATE
+#    для получения этих параметров. Параметры pid_Kp, pid_Ki и pid_Kd
+#    параметры должны быть указаны для ПИД-нагревателей.
 #max_delta: 2.0
-#   On 'watermark' controlled heaters this is the number of degrees in
-#   Celsius above the target temperature before disabling the heater
-#   as well as the number of degrees below the target before
-#   re-enabling the heater. The default is 2 degrees Celsius.
+#    Для нагревателей с управлением "водяной знак" это количество градусов в
+#    Цельсия выше целевой температуры перед отключением нагревателя
+#    а также количество градусов ниже целевой температуры перед тем, как
+#    повторным включением нагревателя. По умолчанию - 2 градуса Цельсия.
 #pwm_cycle_time: 0.100
-#   Time in seconds for each software PWM cycle of the heater. It is
-#   not recommended to set this unless there is an electrical
-#   requirement to switch the heater faster than 10 times a second.
-#   The default is 0.100 seconds.
+#   Время в секундах для каждого программного цикла ШИМ нагревателя   
+#    не рекомендуется устанавливать это значение, если нет электрического
+#    требования переключать нагреватель быстрее, чем 10 раз в секунду.
+#    По умолчаию 0,100 секунды.
 #min_extrude_temp: 170
-#   The minimum temperature (in Celsius) at which extruder move
-#   commands may be issued. The default is 170 Celsius.
+#    Минимальная температура (в градусах Цельсия), при которой перемещение экструдера
+#    могут быть поданы команды. По умолчанию 170 градусов Цельсия.
 min_temp:
 max_temp:
-#   The maximum range of valid temperatures (in Celsius) that the
-#   heater must remain within. This controls a safety feature
-#   implemented in the micro-controller code - should the measured
-#   temperature ever fall outside this range then the micro-controller
-#   will go into a shutdown state. This check can help detect some
-#   heater and sensor hardware failures. Set this range just wide
-#   enough so that reasonable temperatures do not result in an error.
-#   These parameters must be provided.
+#    Максимальный диапазон допустимых температур (в градусах Цельсия), в пределах которого
+#    нагреватель должен оставаться в пределах. Это контролирует функцию безопасности
+#    реализованной в коде микроконтроллера - если измеренная
+#    температура выйдет за пределы этого диапазона, то микроконтроллер
+#    перейдет в состояние отключения. Эта проверка может помочь обнаружить некоторые
+#    аппаратные сбои нагревателей и датчиков. Установите этот диапазон достаточно широким
+#    достаточно, чтобы разумные температуры не приводили к ошибке.
+#    Эти параметры должны быть указаны.
 ```
 
 ### [heater_bed]
 
-The heater_bed section describes a heated bed. It uses the same heater settings described in the "extruder" section.
+Раздел heater_bed описывает подогреваемую станину. В нем используются те же настройки нагревателя, что и в разделе "Экструдер".
 
 ```
 [heater_bed]
-heater_pin:
-sensor_type:
-sensor_pin:
-control:
+контакт_нагревателя:
+тип_датчика:
+контакт_датчика:
+управление:
 min_temp:
 max_temp:
-#   See the "extruder" section for a description of the above parameters.
+# Описание вышеуказанных параметров см. в разделе "Экструдер".
 ```
 
-## Bed level support
+## Поддержка на уровне кровати
 
 ### [кровать_сетка]
 
-Mesh Bed Leveling. One may define a bed_mesh config section to enable move transformations that offset the z axis based on a mesh generated from probed points. When using a probe to home the z-axis, it is recommended to define a safe_z_home section in printer.cfg to home toward the center of the print area.
+Выравнивание слоя сетки. Можно определить раздел конфигурации bed_mesh, чтобы включить преобразования перемещения, которые смещают ось z на основе сетки, созданной из точек зондирования. При использовании датчика для установки оси z рекомендуется задать в файле printer.cfg секцию safe_z_home для установки оси z в центр области печати.
 
-See the [bed mesh guide](Bed_Mesh.md) and [command reference](G-Codes.md#bed_mesh) for additional information.
+Дополнительную информацию см. в [руководстве по сетке кровати] (Bed_Mesh.md) и [справочнике команд] (G-Codes.md#bed_mesh).
 
-Visual Examples:
+Визуальные примеры:
 
 ```
  rectangular bed, probe_count = 3, 3:
@@ -843,138 +845,138 @@ Visual Examples:
 ```
 [bed_mesh]
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#    Скорость (в мм/с) перемещения без рельефа во время калибровки.
+#    По умолчанию 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#    Высота (в мм), на которую следует дать команду головке переместиться
+#    непосредственно перед началом работы датчика. По умолчанию равно 5.
 #mesh_radius:
-#   Defines the radius of the mesh to probe for round beds. Note that
-#   the radius is relative to the coordinate specified by the
-#   mesh_origin option. This parameter must be provided for round beds
-#   and omitted for rectangular beds.
+#    Определяет радиус сетки для зондирования круглых кроватей. Обратите внимание, что
+#    радиус задается относительно координаты, указанной параметром
+#    параметром mesh_origin. Этот параметр должен быть указан для круглых кроватей
+#    и опущен для прямоугольных кроватей.
 #mesh_origin:
-#   Defines the center X, Y coordinate of the mesh for round beds. This
-#   coordinate is relative to the probe's location. It may be useful
-#   to adjust the mesh_origin in an effort to maximize the size of the
-#   mesh radius. Default is 0, 0. This parameter must be omitted for
-#   rectangular beds.
+#    Определяет координаты центра X, Y сетки для круглых кроватей. Эта
+#    координата является относительной по отношению к местоположению зонда. Может оказаться полезным
+#    настроить mesh_origin в попытке максимизировать размер
+#    радиуса сетки. По умолчанию 0, 0. Этот параметр должен быть опущен для
+#    прямоугольных кроватей.
 #mesh_min:
-#   Defines the minimum X, Y coordinate of the mesh for rectangular
-#   beds. This coordinate is relative to the probe's location. This
-#   will be the first point probed, nearest to the origin. This
-#   parameter must be provided for rectangular beds.
+#    Определяет минимальные координаты X, Y сетки для прямоугольных
+#    кровати. Эта координата относится к местоположению зонда. Это
+#    будет первой точкой зондирования, ближайшей к началу координат. Этот
+#    параметр должен быть задан для прямоугольных грядок.
 #mesh_max:
-#   Defines the maximum X, Y coordinate of the mesh for rectangular
-#   beds. Adheres to the same principle as mesh_min, however this will
-#   be the furthest point probed from the bed's origin. This parameter
-#   must be provided for rectangular beds.
+#    Определяет максимальную координату X, Y сетки для прямоугольных
+#    кроватей. Придерживается того же принципа, что и mesh_min, однако это будет
+#    будет самой удаленной точкой от начала координат кровати. Этот параметр
+#    должен быть задан для прямоугольных кроватей.
 #probe_count: 3, 3
-#   For rectangular beds, this is a comma separate pair of integer
-#   values X, Y defining the number of points to probe along each
-#   axis. A single value is also valid, in which case that value will
-#   be applied to both axes. Default is 3, 3.
-#round_probe_count: 5
-#   For round beds, this integer value defines the maximum number of
-#   points to probe along each axis. This value must be an odd number.
-#   Default is 5.
+#    Для прямоугольных кроватей это пара целых чисел через запятую.
+#    значений X, Y, определяющих количество точек для зондирования вдоль каждой
+#    оси. Одиночное значение также допустимо, в этом случае это значение будет
+#    будет применяться к обеим осям. По умолчанию 3, 3.
+# round_probe_count: 5
+#    Для круглых кроватей это целочисленное значение определяет максимальное количество
+#    точек для зондирования вдоль каждой оси. Это значение должно быть нечетным числом.
+#    По умолчанию 5.
 #fade_start: 1.0
-#   The gcode z position in which to start phasing out z-adjustment
-#   when fade is enabled. Default is 1.0.
+#    Позиция gcode z, в которой начинается постепенное уменьшение z-коррекции
+#    когда включено затухание. По умолчанию 1.0.
 #fade_end: 0.0
-#   The gcode z position in which phasing out completes. When set to a
-#   value below fade_start, fade is disabled. It should be noted that
-#   fade may add unwanted scaling along the z-axis of a print. If a
-#   user wishes to enable fade, a value of 10.0 is recommended.
-#   Default is 0.0, which disables fade.
+#    Позиция gcode z, в которой завершается фазирование. Если установлено значение
+#    значение ниже fade_start, сглаживание отключается. Следует отметить, что
+#    затухание может добавить нежелательное масштабирование по оси z отпечатка. Если
+#    пользователь хочет включить затухание, рекомендуется использовать значение 10.0.
+#    По умолчанию 0.0, что отключает затухание.
 #fade_target:
-#   The z position in which fade should converge. When this value is
-#   set to a non-zero value it must be within the range of z-values in
-#   the mesh. Users that wish to converge to the z homing position
-#   should set this to 0. Default is the average z value of the mesh.
+#    Позиция по оси z, в которой должно сходиться затухание. Когда это значение
+#    устанавливается ненулевое значение, оно должно быть в диапазоне значений z в
+#    сетке. Пользователи, которые хотят сходиться в z-позиции самонаведения
+#    должны установить это значение в 0. По умолчанию это среднее значение z сетки.
 #split_delta_z: .025
-#   The amount of Z difference (in mm) along a move that will trigger
-#   a split. Default is .025.
+#    Величина разницы Z (в мм) вдоль перемещения, которая вызовет
+#    разделение. По умолчанию .025.
 #move_check_distance: 5.0
-#   The distance (in mm) along a move to check for split_delta_z.
-#   This is also the minimum length that a move can be split. Default
-#   is 5.0.
+#    Расстояние (в мм) вдоль перемещения для проверки на наличие split_delta_z.
+#    Это также минимальная длина, на которую можно разделить ход. По умолчанию
+#    равно 5.0.
 #mesh_pps: 2, 2
-#   A comma separated pair of integers X, Y defining the number of
-#   points per segment to interpolate in the mesh along each axis. A
-#   "segment" can be defined as the space between each probed point.
-#   The user may enter a single value which will be applied to both
-#   axes. Default is 2, 2.
-#algorithm: lagrange
-#   The interpolation algorithm to use. May be either "lagrange" or
-#   "bicubic". This option will not affect 3x3 grids, which are forced
-#   to use lagrange sampling. Default is lagrange.
+#    Пара целых чисел X, Y, разделенных запятыми, определяющая количество
+#    точек в сегменте для интерполяции в сетке вдоль каждой оси. A
+#    "сегмент" может быть определен как пространство между каждой точкой зондирования.
+#    Пользователь может ввести одно значение, которое будет применяться к обеим
+#    осям. По умолчанию 2, 2.
+#алгоритм: lagrange
+#    Используемый алгоритм интерполяции. Может быть либо "lagrange", либо
+#    "bicubic". Эта опция не влияет на сетки 3x3, которые вынуждены
+#    использовать выборку Лагранжа. По умолчанию используется lagrange.
 #bicubic_tension: .2
-#   When using the bicubic algorithm the tension parameter above may
-#   be applied to change the amount of slope interpolated. Larger
-#   numbers will increase the amount of slope, which results in more
-#   curvature in the mesh. Default is .2.
-#zero_reference_position:
-#   An optional X,Y coordinate that specifies the location on the bed
-#   where Z = 0.  When this option is specified the mesh will be offset
-#   so that zero Z adjustment occurs at this location.  The default is
-#   no zero reference.
+#    При использовании бикубического алгоритма параметр tension, указанный выше, может
+#    быть применен для изменения величины интерполируемого наклона. Большие
+#    числа увеличат величину наклона, что приведет к большей
+#    кривизны в сетке. По умолчанию - .2.
+# zeroo_reference_position:
+#    Необязательная координата X,Y, определяющая местоположение на кровати.
+#    где Z = 0. При указании этой опции сетка будет смещена
+#    таким образом, чтобы в этом месте происходила нулевая регулировка Z.  По умолчанию
+#    без нулевой привязки.
 #faulty_region_1_min:
 #faulty_region_1_max:
-#   Optional points that define a faulty region.  See docs/Bed_Mesh.md
-#   for details on faulty regions.  Up to 99 faulty regions may be added.
-#   By default no faulty regions are set.
+#    Необязательные точки, определяющие дефектную область.  См. docs/Bed_Mesh.md
+#    для получения подробной информации о дефектных регионах.  Может быть добавлено до 99 дефектных областей.
+#    По умолчанию дефектные области не заданы.
 #adaptive_margin:
-#   An optional margin (in mm) to be added around the bed area used by
-#   the defined print objects when generating an adaptive mesh.
+#    Необязательное поле (в мм), добавляемое вокруг области кровати, используемой
+#    определенными объектами печати при генерации адаптивной сетки.
 #scan_overshoot:
-#  The maximum amount of travel (in mm) available outside of the mesh.
-#  For rectangular beds this applies to travel on the X axis, and for round beds
-#  it applies to the entire radius.  The tool must be able to travel the amount
-#  specified outside of the mesh.  This value is used to optimize the travel
-#  path when performing a "rapid scan".  The minimum value that may be specified
-#  is 1.  The default is no overshoot.
+#    Максимальная величина перемещения (в мм), доступная за пределами сетки.
+#    Для прямоугольных станин это относится к перемещению по оси X, а для круглых станин
+#    это относится ко всему радиусу.  Инструмент должен иметь возможность перемещаться на указанную величину
+#    указанного за пределами сетки.  Это значение используется для оптимизации
+#    пути при выполнении "быстрого сканирования".  Минимальное значение, которое может быть указано.
+#    равно 1. По умолчанию проскакивание отсутствует.
 ```
 
 ### [кровать_наклон]
 
-Bed tilt compensation. One may define a bed_tilt config section to enable move transformations that account for a tilted bed. Note that bed_mesh and bed_tilt are incompatible; both cannot be defined.
+Компенсация наклона кровати. Можно определить секцию конфигурации bed_tilt, чтобы включить трансформации перемещения, учитывающие наклон кровати. Обратите внимание, что bed_mesh и bed_tilt несовместимы; оба эти параметра не могут быть определены.
 
-See the [command reference](G-Codes.md#bed_tilt) for additional information.
+Дополнительную информацию см. в [справочнике команд](G-Codes.md#bed_tilt).
 
 ```
 [bed_tilt]
 #x_adjust: 0
-#   The amount to add to each move's Z height for each mm on the X
-#   axis. The default is 0.
+#    Сумма, которую нужно добавить к высоте Z каждого движения за каждый мм по оси X
+#    оси. По умолчанию 0.
 #y_adjust: 0
-#   The amount to add to each move's Z height for each mm on the Y
-#   axis. The default is 0.
+#    Сумма, добавляемая к высоте Z каждого хода за каждый мм по оси Y
+#    оси. По умолчанию 0.
 #z_adjust: 0
-#   The amount to add to the Z height when the nozzle is nominally at
-#   0, 0. The default is 0.
-# The remaining parameters control a BED_TILT_CALIBRATE extended
-# g-code command that may be used to calibrate appropriate x and y
-# adjustment parameters.
+#    Сумма, добавляемая к высоте Z, когда сопло номинально находится в точке
+#    0, 0. По умолчанию 0.
+#    Остальные параметры управляют расширенной командой BED_TILT_CALIBRATE
+#    командой g-кода, которая может быть использована для калибровки соответствующих x и y
+#    параметров настройки.
 #points:
-#   A list of X, Y coordinates (one per line; subsequent lines
-#   indented) that should be probed during a BED_TILT_CALIBRATE
-#   command. Specify coordinates of the nozzle and be sure the probe
-#   is above the bed at the given nozzle coordinates. The default is
-#   to not enable the command.
+#    Список координат X, Y (по одной в строке; последующие строки
+#    с отступом), которые должны быть проверены во время выполнения команды BED_TILT_CALIBRATE
+#    команды. Укажите координаты сопла и убедитесь, что зонд
+#    находится над пластом в заданных координатах сопла. По умолчанию
+#    не включать команду.
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#    Скорость (в мм/с) перемещения без зондирования во время калибровки.
+#    По умолчанию - 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#    Высота (в мм), на которую следует дать команду головке переместиться
+#    непосредственно перед началом работы датчика. По умолчанию равно 5.
 ```
 
 ### [bed_screws]
 
-Tool to help adjust bed leveling screws. One may define a [bed_screws] config section to enable a BED_SCREWS_ADJUST g-code command.
+Инструмент для регулировки винтов выравнивания кровати. Можно определить секцию конфигурации [bed_screws], чтобы включить команду g-кода BED_SCREWS_ADJUST.
 
-See the [leveling guide](Manual_Level.md#adjusting-bed-leveling-screws) and [command reference](G-Codes.md#bed_screws) for additional information.
+Дополнительную информацию см. в [руководстве по выравниванию] (Manual_Level.md#adjusting bed-leveling-screws) и [справочнике команд](G-Codes.md#bed_screws).
 
 ```
 [bed_screws]
@@ -1013,83 +1015,83 @@ See the [leveling guide](Manual_Level.md#adjusting-bed-leveling-screws) and [com
 
 ### [screws_tilt_adjust]
 
-Tool to help adjust bed screws tilt using Z probe. One may define a screws_tilt_adjust config section to enable a SCREWS_TILT_CALCULATE g-code command.
+Инструмент для регулировки наклона винтов кровати с помощью Z-зонда. Можно определить секцию конфигурации screws_tilt_adjust, чтобы включить команду g-кода SCREWS_TILT_CALCULATE.
 
-See the [leveling guide](Manual_Level.md#adjusting-bed-leveling-screws-using-the-bed-probe) and [command reference](G-Codes.md#screws_tilt_adjust) for additional information.
+Дополнительную информацию см. в [руководстве по выравниванию] (Manual_Level.md#adjusting bed-leveling-screws-using-the-bed-probe) и [справочнике команд](G-Codes.md#screws_tilt_adjust).
 
 ```
 [screws_tilt_adjust]
 #screw1:
-#   The (X, Y) coordinate of the first bed leveling screw. This is a
-#   position to command the nozzle to so that the probe is directly
-#   above the bed screw (or as close as possible while still being
-#   above the bed). This is the base screw used in calculations. This
-#   parameter must be provided.
+#    Координата (X, Y) первого винта выравнивания кровати. Это
+#    положение, в которое нужно установить сопло, чтобы зонд находился прямо
+#    над винтом кровати (или как можно ближе к нему, оставаясь при этом
+#    над станиной). Это базовый винт, используемый в расчетах. Этот
+#    параметр должен быть предоставлен.
 #screw1_name:
-#   An arbitrary name for the given screw. This name is displayed when
-#   the helper script runs. The default is to use a name based upon
-#   the screw XY location.
+#    произвольное имя для данного винта. Это имя отображается при
+#    запуске вспомогательного скрипта. По умолчанию используется имя, основанное на
+#    расположения винта по оси XY.
 #screw2:
 #screw2_name:
 #...
-#   Additional bed leveling screws. At least two screws must be
-#   defined.
+#    Дополнительные винты для выравнивания кровати. Должно быть определено не менее двух винтов.
+#    определены.
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#    Скорость (в мм/с) перемещения без пробивки во время калибровки.
+#    По умолчанию 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#    Высота (в мм), на которую следует дать команду головке переместиться
+#    непосредственно перед началом работы датчика. По умолчанию равно 5.
 #screw_thread: CW-M3
-#   The type of screw used for bed leveling, M3, M4, or M5, and the
-#   rotation direction of the knob that is used to level the bed.
-#   Accepted values: CW-M3, CCW-M3, CW-M4, CCW-M4, CW-M5, CCW-M5.
-#   Default value is CW-M3 which most printers use. A clockwise
-#   rotation of the knob decreases the gap between the nozzle and the
-#   bed. Conversely, a counter-clockwise rotation increases the gap.
+#    Тип винта, используемого для выравнивания ложа, M3, M4 или M5, и
+#    направление вращения ручки, используемой для выравнивания кровати.
+#    Принимаемые значения: CW-M3, CCW-M3, CW-M4, CCW-M4, CW-M5, CCW-M5.
+#    Значение по умолчанию - CW-M3, которое используется в большинстве принтеров. Вращение по часовой стрелке
+#    вращение ручки уменьшает зазор между соплом и
+#    постелью. И наоборот, поворот против часовой стрелки увеличивает зазор.
 ```
 
 ### [z_tilt]
 
-Multiple Z stepper tilt adjustment. This feature enables independent adjustment of multiple z steppers (see the "stepper_z1" section) to adjust for tilt. If this section is present then a Z_TILT_ADJUST extended [G-Code command](G-Codes.md#z_tilt) becomes available.
+Регулировка наклона нескольких Z-шаговиков. Эта функция позволяет независимо регулировать наклон нескольких шаговиков z (см. раздел "stepper_z1"). Если эта секция присутствует, то становится доступной расширенная [команда G-кода] Z_TILT_ADJUST (G-Codes.md#z_tilt).
 
 ```
 [z_tilt]
 #z_positions:
-#   A list of X, Y coordinates (one per line; subsequent lines
-#   indented) describing the location of each bed "pivot point". The
-#   "pivot point" is the point where the bed attaches to the given Z
-#   stepper. It is described using nozzle coordinates (the X, Y position
-#   of the nozzle if it could move directly above the point). The
-#   first entry corresponds to stepper_z, the second to stepper_z1,
-#   the third to stepper_z2, etc. This parameter must be provided.
+#    Список координат X, Y (по одной в строке; последующие строки
+#    с отступом), описывающих расположение каждой "точки поворота" кровати. На
+#    "точка поворота" - это точка, в которой кровать крепится к данному Z
+#    степперу. Она описывается с помощью координат сопла (положение X, Y
+#    сопла, если бы оно могло двигаться прямо над точкой). На
+#    первая запись соответствует stepper_z, вторая - stepper_z1,
+#    третья - stepper_z2 и т. д. Этот параметр должен быть указан.
 #points:
-#   A list of X, Y coordinates (one per line; subsequent lines
-#   indented) that should be probed during a Z_TILT_ADJUST command.
-#   Specify coordinates of the nozzle and be sure the probe is above
-#   the bed at the given nozzle coordinates. This parameter must be
-#   provided.
+#    Список координат X, Y (по одной в строке; последующие строки
+#    отступы), которые должны быть проверены во время выполнения команды Z_TILT_ADJUST.
+#    Укажите координаты сопла и убедитесь, что зонд находится над
+#    станиной в заданных координатах сопла. Этот параметр должен быть
+#    предоставлен.
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#    Скорость (в мм/с) перемещения без зондирования во время калибровки.
+#    По умолчанию - 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#    Высота (в мм), на которую следует дать команду головке переместиться
+#    непосредственно перед началом работы датчика. По умолчанию равно 5.
 #retries: 0
-#   Number of times to retry if the probed points aren't within
-#   tolerance.
+#    Количество повторных попыток, если точки зондирования не находятся в пределах
+#    допуска.
 #retry_tolerance: 0
-#   If retries are enabled then retry if largest and smallest probed
-#   points differ more than retry_tolerance. Note the smallest unit of
-#   change here would be a single step. However if you are probing
-#   more points than steppers then you will likely have a fixed
-#   minimum value for the range of probed points which you can learn
-#   by observing command output.
+#    Если включены повторные попытки, то повторите попытку, если наибольшая и наименьшая прозондированные
+#    точки отличаются больше, чем допуск retry_tolerance. Обратите внимание, что наименьшей единицей
+#    изменения здесь будет один шаг. Однако если вы измеряете
+#    больше точек, чем шагов, то у вас, скорее всего, будет фиксированное
+#    минимальное значение для диапазона зондируемых точек, которое можно узнать
+#    путем наблюдения за выводом команды.
 ```
 
 ### [quad_gantry_level]
 
-Moving gantry leveling using 4 independently controlled Z motors. Corrects hyperbolic parabola effects (potato chip) on moving gantry which is more flexible. WARNING: Using this on a moving bed may lead to undesirable results. If this section is present then a QUAD_GANTRY_LEVEL extended G-Code command becomes available. This routine assumes the following Z motor configuration:
+Выравнивание подвижного портала с помощью 4 независимо управляемых двигателей Z. Корректирует эффект гиперболической параболы (картофельной крошки) на подвижном портале, который является более гибким. ПРЕДУПРЕЖДЕНИЕ: Использование этой функции на движущейся станине может привести к нежелательным результатам. Если эта секция присутствует, то становится доступной расширенная команда G-кода QUAD_GANTRY_LEVEL. Эта процедура предполагает следующую конфигурацию двигателя Z:
 
 ```
  ----------------
@@ -1102,40 +1104,40 @@ Moving gantry leveling using 4 independently controlled Z motors. Corrects hyper
  ----------------
 ```
 
-Where x is the 0, 0 point on the bed
+Где x - точка 0, 0 на станине.
 
 ```
 [quad_gantry_level]
 #gantry_corners:
-#   A newline separated list of X, Y coordinates describing the two
-#   opposing corners of the gantry. The first entry corresponds to Z,
-#   the second to Z2. This parameter must be provided.
+#    Список координат X, Y, разделенных новой строкой, описывающий два
+#    противоположные углы портала. Первая запись соответствует Z,
+#    вторая - Z2. Этот параметр должен быть указан.
 #points:
-#   A newline separated list of four X, Y points that should be probed
-#   during a QUAD_GANTRY_LEVEL command. Order of the locations is
-#   important, and should correspond to Z, Z1, Z2, and Z3 location in
-#   order. This parameter must be provided. For maximum accuracy,
-#   ensure your probe offsets are configured.
+#    Список из четырех точек X, Y, которые должны быть прощупаны
+#    во время выполнения команды QUAD_GANTRY_LEVEL. Порядок расположения точек
+#    важен и должен соответствовать расположению Z, Z1, Z2 и Z3 в
+#    порядке. Этот параметр должен быть указан. Для достижения максимальной точности,
+#    убедитесь, что смещения ваших датчиков настроены.
 #speed: 50
-#   The speed (in mm/s) of non-probing moves during the calibration.
-#   The default is 50.
+#    Скорость (в мм/с) перемещения без зондирования во время калибровки.
+#    По умолчанию - 50.
 #horizontal_move_z: 5
-#   The height (in mm) that the head should be commanded to move to
-#   just prior to starting a probe operation. The default is 5.
+#    Высота (в мм), на которую следует дать команду головке переместиться
+#    непосредственно перед началом работы датчика. По умолчанию равно 5.
 #max_adjust: 4
-#   Safety limit if an adjustment greater than this value is requested
-#   quad_gantry_level will abort.
+#    Предел безопасности, если запрашивается регулировка, превышающая это значение.
+#    quad_gantry_level прервется.
 #retries: 0
-#   Number of times to retry if the probed points aren't within
-#   tolerance.
+#    Количество повторных попыток, если точки зондирования не находятся в пределах
+#    допуска.
 #retry_tolerance: 0
-#   If retries are enabled then retry if largest and smallest probed
-#   points differ more than retry_tolerance.
+#    Если включены повторные попытки, то повторите попытку, если наибольшая и наименьшая прозондированные
+#    точки отличаются больше, чем допуск retry_tolerance.
 ```
 
 ### [skew_correction]
 
-Printer Skew Correction. It is possible to use software to correct printer skew across 3 planes, xy, xz, yz. This is done by printing a calibration model along a plane and measuring three lengths. Due to the nature of skew correction these lengths are set via gcode. See [Skew Correction](Skew_Correction.md) and [Command Reference](G-Codes.md#skew_correction) for details.
+Коррекция перекоса принтера. С помощью программного обеспечения можно исправить перекос принтера в трех плоскостях - xy, xz, yz. Это делается путем печати калибровочной модели вдоль плоскости и измерения трех длин. В силу особенностей коррекции перекоса эти длины задаются с помощью gcode. Подробности см. в разделе [Skew Correction](Skew_Correction.md) и [Command Reference](G-Codes.md#skew_correction).
 
 ```
 [skew_correction]
@@ -1143,231 +1145,231 @@ Printer Skew Correction. It is possible to use software to correct printer skew 
 
 ### [z_thermal_adjust]
 
-Temperature-dependant toolhead Z position adjustment. Compensate for vertical toolhead movement caused by thermal expansion of the printer's frame in real-time using a temperature sensor (typically coupled to a vertical section of frame).
+Регулировка положения Z головки инструмента в зависимости от температуры. Компенсация вертикального перемещения головки инструмента, вызванного тепловым расширением рамы принтера, в режиме реального времени с помощью датчика температуры (обычно подключаемого к вертикальной части рамы).
 
-See also: [extended g-code commands](G-Codes.md#z_thermal_adjust).
+Смотрите также: [расширенные команды g-кода](G-Codes.md#z_thermal_adjust).
 
 ```
 [z_thermal_adjust]
 #temp_coeff:
-#   The temperature coefficient of expansion, in mm/degC. For example, a
-#   temp_coeff of 0.01 mm/degC will move the Z axis downwards by 0.01 mm for
-#   every degree Celsius that the temperature sensor increases. Defaults to
-#   0.0 mm/degC, which applies no adjustment.
+#    Температурный коэффициент расширения, в мм/degC. Например.
+# temp_coeff 0,01 мм/degC будет перемещать ось Z вниз на 0,01 мм за
+#    каждый градус Цельсия, на который увеличивается температура датчика. По умолчанию
+#    0,0 мм/градус Цельсия, при котором корректировка не применяется.
 #smooth_time:
-#   Smoothing window applied to the temperature sensor, in seconds. Can reduce
-#   motor noise from excessive small corrections in response to sensor noise.
-#   The default is 2.0 seconds.
+#    Окно сглаживания, применяемое к датчику температуры, в секундах. Может уменьшить
+#    шум двигателя от чрезмерно малых коррекций в ответ на шум датчика.
+#    По умолчанию 2,0 секунды.
 #z_adjust_off_above:
-#   Disables adjustments above this Z height [mm]. The last computed correction
-#   will remain applied until the toolhead moves below the specified Z height
-#   again. The default is 99999999.0 mm (always on).
+#    Отключает корректировку выше данной высоты Z [мм]. Последняя рассчитанная коррекция
+#    будет применяться до тех пор, пока головка инструмента не переместится ниже указанной высоты Z
+#    снова. По умолчанию 99999999.0 мм (всегда включена).
 #max_z_adjustment:
-#   Maximum absolute adjustment that can be applied to the Z axis [mm]. The
-#   default is 99999999.0 mm (unlimited).
+#    Максимальная абсолютная корректировка, которая может быть применена к оси Z [мм]. По
+#    по умолчанию 99999999.0 мм (неограниченно).
 #sensor_type:
 #sensor_pin:
 #min_temp:
 #max_temp:
-#   Temperature sensor configuration.
-#   See the "extruder" section for the definition of the above
-#   parameters.
+#    Конфигурация датчика температуры.
+#    См. раздел "Экструдер" для определения вышеуказанных
+#    параметров.
 #gcode_id:
-#   See the "heater_generic" section for the definition of this
-#   parameter.
+#    Определение этого параметра см. в разделе "Нагреватель_генератора".
+#    параметра.
 ```
 
-## Customized homing
+## Индивидуальная наводка
 
 ### [safe_z_home]
 
-Safe Z homing. One may use this mechanism to home the Z axis at a specific X, Y coordinate. This is useful if the toolhead, for example has to move to the center of the bed before Z can be homed.
+Безопасная установка оси Z. С помощью этого механизма можно установить ось Z на определенную координату X, Y. Это полезно, если, например, инструментальная головка должна переместиться в центр станины, прежде чем ось Z будет установлена.
 
 ```
 [safe_z_home]
 home_xy_position:
-#   A X, Y coordinate (e.g. 100, 100) where the Z homing should be
-#   performed. This parameter must be provided.
+#    Координаты X, Y (например, 100, 100), по которым должно быть выполнено Z-самонаведение.
+#    выполняться. Этот параметр должен быть предоставлен.
 #speed: 50.0
-#   Speed at which the toolhead is moved to the safe Z home
-#   coordinate. The default is 50 mm/s
+#    Скорость, с которой головка инструмента перемещается в безопасную точку Z.
+#    координате. По умолчанию 50 мм/с.
 #z_hop:
-#   Distance (in mm) to lift the Z axis prior to homing. This is
-#   applied to any homing command, even if it doesn't home the Z axis.
-#   If the Z axis is already homed and the current Z position is less
-#   than z_hop, then this will lift the head to a height of z_hop. If
-#   the Z axis is not already homed the head is lifted by z_hop.
-#   The default is to not implement Z hop.
+#    Расстояние (в мм) для подъема оси Z перед установкой в исходное положение. Это значение
+#    применяется к любой команде наведения, даже если она не наводит ось Z.
+#    Если ось Z уже установлена и текущее положение Z меньше
+#    чем z_hop, то эта команда поднимет головку на высоту z_hop. Если
+#    ось Z еще не выведена, то головка будет поднята на высоту z_hop.
+#    По умолчанию Z-хоп не используется.
 #z_hop_speed: 15.0
-#   Speed (in mm/s) at which the Z axis is lifted prior to homing. The
-#   default is 15 mm/s.
+#    Скорость (в мм/с), с которой ось Z поднимается перед самонаведением. По
+#    по умолчанию составляет 15 мм/с.
 #move_to_previous: False
-#   When set to True, the X and Y axes are reset to their previous
-#   positions after Z axis homing. The default is False.
+#    Если установлено значение True, оси X и Y возвращаются в свои предыдущие
+#    положения после наведения оси Z. По умолчанию установлено значение False.
 ```
 
 ### [homing_override]
 
-Homing override. One may use this mechanism to run a series of g-code commands in place of a G28 found in the normal g-code input. This may be useful on printers that require a specific procedure to home the machine.
+Переопределение наведения. С помощью этого механизма можно запустить серию команд g-кода вместо G28, используемого при обычном вводе g-кода. Это может быть полезно для принтеров, которые требуют специальной процедуры для установки машины в исходное положение.
 
 ```
 [homing_override]
 gcode:
-#   A list of G-Code commands to execute in place of G28 commands
-#   found in the normal g-code input. See docs/Command_Templates.md
-#   for G-Code format. If a G28 is contained in this list of commands
-#   then it will invoke the normal homing procedure for the printer.
-#   The commands listed here must home all axes. This parameter must
-#   be provided.
+#    Список команд G-кода для выполнения вместо команд G28.
+#    встречающихся в обычном вводе G-кода. См. docs/Command_Templates.md
+#    для формата G-кода. Если G28 содержится в этом списке команд.
+#    то она вызовет обычную процедуру возврата принтера в исходное положение.
+#    Команды, перечисленные здесь, должны вывести все оси. Этот параметр должен быть
+#    быть предоставлен.
 #axes: xyz
-#   The axes to override. For example, if this is set to "z" then the
-#   override script will only be run when the z axis is homed (eg, via
-#   a "G28" or "G28 Z0" command). Note, the override script should
-#   still home all axes. The default is "xyz" which causes the
-#   override script to be run in place of all G28 commands.
+#    Оси для переопределения. Например, если этот параметр имеет значение "z", то скрипт
+#    скрипт переопределения будет выполняться только при наведении оси z (например, через
+#    команду "G28" или "G28 Z0"). Обратите внимание, что сценарий переопределения должен
+#    по-прежнему устанавливать все оси. По умолчанию используется значение "xyz", которое заставляет
+#    скрипт переопределения будет выполняться вместо всех команд G28.
 #set_position_x:
 #set_position_y:
 #set_position_z:
-#   If specified, the printer will assume the axis is at the specified
-#   position prior to running the above g-code commands. Setting this
-#   disables homing checks for that axis. This may be useful if the
-#   head must move prior to invoking the normal G28 mechanism for an
-#   axis. The default is to not force a position for an axis.
+#    Если указано, принтер будет считать, что ось находится в указанном
+#    позиции перед выполнением вышеуказанных команд g-кода. Установка этого параметра
+#    отключает проверку наведения для этой оси. Это может быть полезно, если
+#    головка должна перемещаться до того, как будет задействован обычный механизм G28 для оси
+#    оси. По умолчанию положение оси не задается.
 ```
 
 ### [endstop_phase]
 
-Stepper phase adjusted endstops. To use this feature, define a config section with an "endstop_phase" prefix followed by the name of the corresponding stepper config section (for example, "[endstop_phase stepper_z]"). This feature can improve the accuracy of endstop switches. Add a bare "[endstop_phase]" declaration to enable the ENDSTOP_PHASE_CALIBRATE command.
+Конечные остановки с регулировкой фазы шагового механизма. Чтобы использовать эту функцию, определите секцию конфигурации с префиксом "endstop_phase", за которым следует имя соответствующей секции конфигурации степпера (например, "[endstop_phase stepper_z]"). Эта функция может повысить точность переключения конечных остановок. Добавьте голое объявление "[endstop_phase]", чтобы включить команду ENDSTOP_PHASE_CALIBRATE.
 
-See the [endstop phases guide](Endstop_Phase.md) and [command reference](G-Codes.md#endstop_phase) for additional information.
+Дополнительную информацию см. в руководстве [Endstop Phases guide](Endstop_Phase.md) и [command reference](G-Codes.md#endstop_phase).
 
 ```
 [endstop_phase stepper_z]
 #endstop_accuracy:
-#   Sets the expected accuracy (in mm) of the endstop. This represents
-#   the maximum error distance the endstop may trigger (eg, if an
-#   endstop may occasionally trigger 100um early or up to 100um late
-#   then set this to 0.200 for 200um). The default is
-#   4*rotation_distance/full_steps_per_rotation.
-#trigger_phase:
-#   This specifies the phase of the stepper motor driver to expect
-#   when hitting the endstop. It is composed of two numbers separated
-#   by a forward slash character - the phase and the total number of
-#   phases (eg, "7/64"). Only set this value if one is sure the
-#   stepper motor driver is reset every time the mcu is reset. If this
-#   is not set, then the stepper phase will be detected on the first
-#   home and that phase will be used on all subsequent homes.
+#    Устанавливает ожидаемую точность (в мм) концевого упора. Это представляет собой
+#    максимальное расстояние ошибки, на котором может сработать концевой ограничитель (например, если
+#    концевой упор может иногда срабатывать на 100 м раньше или до 100 м позже
+#    то установите значение 0.200 для 200um). По умолчанию
+#    4*расстояние_вращения/полное_количество_шагов_на_вращение.
+#    фаза_триггера:
+#    Здесь указывается фаза драйвера шагового двигателя, которую следует ожидать
+#    при ударе о конечный ограничитель. Она состоит из двух чисел, разделенных
+#    символом прямой косой черты - фаза и общее количество
+#    фаз (например, "7/64"). Устанавливайте это значение только в том случае, если вы уверены, что
+#    драйвер шагового двигателя сбрасывается каждый раз при перезагрузке микроконтроллера. Если это значение
+#    не установлено, то фаза шагового двигателя будет определена при первом
+#    доме и эта фаза будет использоваться во всех последующих домах.
 #endstop_align_zero: False
-#   If true then the position_endstop of the axis will effectively be
-#   modified so that the zero position for the axis occurs at a full
-#   step on the stepper motor. (If used on the Z axis and the print
-#   layer height is a multiple of a full step distance then every
-#   layer will occur on a full step.) The default is False.
+#    Если установлено значение true, то позиционный_концевой_стоп оси будет эффективно
+#    изменен таким образом, что нулевая позиция для оси происходит на полном
+#    шаге шагового двигателя. (Если используется на оси Z и высота печатного
+#    высота слоя печати кратна расстоянию полного шага, то каждый
+#    слой будет располагаться на полном шаге). По умолчанию установлено значение False.
 ```
 
-## G-Code macros and events
+## Макросы и события G-кода
 
 ### [gcode_macro]
 
-G-Code macros (one may define any number of sections with a "gcode_macro" prefix). See the [command template guide](Command_Templates.md) for more information.
+Макросы G-кода (можно определить любое количество секций с префиксом "gcode_macro"). Дополнительную информацию см. в руководстве [Шаблоны команд] (Command_Templates.md).
 
 ```
-[gcode_macro my_cmd]
+gcode_macro my_cmd]
 #gcode:
-#   A list of G-Code commands to execute in place of "my_cmd". See
-#   docs/Command_Templates.md for G-Code format. This parameter must
-#   be provided.
-#variable_<name>:
-#   One may specify any number of options with a "variable_" prefix.
-#   The given variable name will be assigned the given value (parsed
-#   as a Python literal) and will be available during macro expansion.
-#   For example, a config with "variable_fan_speed = 75" might have
-#   gcode commands containing "M106 S{ fan_speed * 255 }". Variables
-#   can be changed at run-time using the SET_GCODE_VARIABLE command
-#   (see docs/Command_Templates.md for details). Variable names may
-#   not use upper case characters.
+#    Список команд G-кода для выполнения вместо "my_cmd". См.
+#    docs/Command_Templates.md для формата G-кода. Этот параметр должен быть
+#    быть предоставлен.
+#    переменная_<имя>:
+#    Можно указать любое количество параметров с префиксом "переменная_".
+#    Заданному имени переменной будет присвоено заданное значение (разобранное
+#    как литерал Python) и будет доступно при расширении макроса.
+#    Например, конфигурация с "variable_fan_speed = 75" может содержать
+#    gcode-команды, содержащие "M106 S{ fan_speed * 255 }". Переменные
+#    могут быть изменены во время выполнения программы с помощью команды SET_GCODE_VARIABLE
+#    (подробности см. в файле docs/Command_Templates.md). Имена переменных могут
+#    не использовать символы верхнего регистра.
 #rename_existing:
-#   This option will cause the macro to override an existing G-Code
-#   command and provide the previous definition of the command via the
-#   name provided here. This can be used to override builtin G-Code
-#   commands. Care should be taken when overriding commands as it can
-#   cause complex and unexpected results. The default is to not
-#   override an existing G-Code command.
-#description: G-Code macro
-#   This will add a short description used at the HELP command or while
-#   using the auto completion feature. Default "G-Code macro"
+#    Этот параметр заставит макрос переопределить существующую команду G-Code
+#    команду и предоставить предыдущее определение команды через
+#    имя, указанное здесь. Это можно использовать для переопределения встроенных G-Code
+#    команды. При переопределении команд следует соблюдать осторожность, так как это может
+#    привести к сложным и неожиданным результатам. По умолчанию не следует
+#    переопределять существующую команду G-Code.
+#description: Макрос G-кода
+#    Это добавит краткое описание, используемое в команде HELP или при
+#    использовании функции автоматического завершения. По умолчанию "макрос G-кода"
 ```
 
 ### [delayed_gcode]
 
-Execute a gcode on a set delay. See the [command template guide](Command_Templates.md#delayed-gcodes) and [command reference](G-Codes.md#delayed_gcode) for more information.
+Выполнение gcode с заданной задержкой. Дополнительную информацию см. в [руководстве по шаблонам команд](Command_Templates.md#delayed-gcodes) и [справочнике команд](G-Codes.md#delayed_gcode).
 
 ```
 [delayed_gcode my_delayed_gcode]
 gcode:
-#   A list of G-Code commands to execute when the delay duration has
-#   elapsed. G-Code templates are supported. This parameter must be
-#   provided.
+#    Список команд G-кода для выполнения, когда длительность задержки
+#    истекло. Поддерживаются шаблоны G-кода. Этот параметр должен быть
+#    предоставлен.
 #initial_duration: 0.0
-#   The duration of the initial delay (in seconds). If set to a
-#   non-zero value the delayed_gcode will execute the specified number
-#   of seconds after the printer enters the "ready" state. This can be
-#   useful for initialization procedures or a repeating delayed_gcode.
-#   If set to 0 the delayed_gcode will not execute on startup.
-#   Default is 0.
+#    Длительность начальной задержки (в секундах). Если задано
+#    ненулевое значение, то отложенный_гкод будет выполняться указанное количество
+#    секунд после того, как принтер перейдет в состояние "готов". Это может быть
+#    полезным для процедур инициализации или повторяющегося delayed_gcode.
+#    Если установлено значение 0, отложенный_gcode не будет выполняться при запуске.
+#    По умолчанию 0.
 ```
 
 ### [save_variables]
 
-Support saving variables to disk so that they are retained across restarts. See [command templates](Command_Templates.md#save-variables-to-disk) and [G-Code reference](G-Codes.md#save_variables) for further information.
+Поддержка сохранения переменных на диск, чтобы они сохранялись после перезапуска. Дополнительную информацию см. в [шаблонах команд](Command_Templates.md#save-variables-to-disk) и [справочнике G-кодов](G-Codes.md#save_variables).
 
 ```
 [save_variables]
 filename:
-#   Required - provide a filename that would be used to save the
-#   variables to disk e.g. ~/variables.cfg
+#    Требуется - укажите имя файла, который будет использоваться для сохранения
+#    переменных на диск, например ~/variables.cfg
 ```
 
 ### [idle_timeout]
 
-Idle timeout. An idle timeout is automatically enabled - add an explicit idle_timeout config section to change the default settings.
+Таймаут простоя. Таймаут простоя включается автоматически - добавьте явную секцию конфигурации idle_timeout, чтобы изменить настройки по умолчанию.
 
 ```
 [idle_timeout]
 #gcode:
-#   A list of G-Code commands to execute on an idle timeout. See
-#   docs/Command_Templates.md for G-Code format. The default is to run
-#   "TURN_OFF_HEATERS" and "M84".
+#    Список команд G-кода для выполнения по таймауту простоя. См.
+#    docs/Command_Templates.md для формата G-кода. По умолчанию выполняется
+#    "TURN_OFF_HEATERS" и "M84".
 #timeout: 600
-#   Idle time (in seconds) to wait before running the above G-Code
-#   commands. The default is 600 seconds.
+#    Время простоя (в секундах) для ожидания перед выполнением вышеуказанных G-кодов
+#    команды. По умолчанию установлено значение 600 секунд.
 ```
 
 ## Optional G-Code features
 
 ### [virtual_sdcard]
 
-A virtual sdcard may be useful if the host machine is not fast enough to run OctoPrint well. It allows the Klipper host software to directly print gcode files stored in a directory on the host using standard sdcard G-Code commands (eg, M24).
+Виртуальная sdcard может быть полезна, если хост-машина недостаточно быстра для хорошей работы OctoPrint. Она позволяет хост-программе Klipper напрямую печатать файлы gcode, хранящиеся в каталоге на хосте, используя стандартные команды sdcard G-Code (например, M24).
 
 ```
 [virtual_sdcard]
-path:
-#   The path of the local directory on the host machine to look for
-#   g-code files. This is a read-only directory (sdcard file writes
-#   are not supported). One may point this to OctoPrint's upload
-#   directory (generally ~/.octoprint/uploads/ ). This parameter must
-#   be provided.
+путь:
+#    Путь к локальному каталогу на хост-машине для поиска
+#    файлы g-кода. Это каталог, доступный только для чтения (запись файлов sdcard
+#    не поддерживается). Можно указать на каталог загрузки OctoPrint.
+#    каталог (обычно ~/.octoprint/uploads/ ). Этот параметр должен
+#    быть предоставлен.
 #on_error_gcode:
-#   A list of G-Code commands to execute when an error is reported.
-#   See docs/Command_Templates.md for G-Code format. The default is to
-#   run TURN_OFF_HEATERS.
+#    Список команд G-кода для выполнения при сообщении об ошибке.
+#    Формат G-кода см. в файле docs/Command_Templates.md. По умолчанию
+#    выполнить TURN_OFF_HEATERS.
 ```
 
 ### [sdcard_loop]
 
-Some printers with stage-clearing features, such as a part ejector or a belt printer, can find use in looping sections of the sdcard file. (For example, to print the same part over and over, or repeat the a section of a part for a chain or other repeated pattern).
+Некоторые принтеры с функцией очистки этапа, такие как выталкиватель деталей или ленточный принтер, могут найти применение в зацикливании секций файла sdcard. (Например, для печати одной и той же детали снова и снова или повторения участка детали для создания цепочки или другого повторяющегося узора).
 
-See the [command reference](G-Codes.md#sdcard_loop) for supported commands. See the [sample-macros.cfg](../config/sample-macros.cfg) file for a Marlin compatible M808 G-Code macro.
+Поддерживаемые команды см. в [справочнике команд](G-Codes.md#sdcard_loop). Файл [sample-macros.cfg](../config/sample-macros.cfg) для макроса G-кода M808, совместимого с Marlin.
 
 ```
 [sdcard_loop]
@@ -1375,81 +1377,81 @@ See the [command reference](G-Codes.md#sdcard_loop) for supported commands. See 
 
 ### [force_move]
 
-Support manually moving stepper motors for diagnostic purposes. Note, using this feature may place the printer in an invalid state - see the [command reference](G-Codes.md#force_move) for important details.
+Поддержка ручного перемещения шаговых двигателей в целях диагностики. Обратите внимание, что использование этой функции может перевести принтер в нерабочее состояние - важные подробности см. в [справочнике команд](G-Codes.md#force_move).
 
 ```
 [force_move]
 #enable_force_move: False
-#   Set to true to enable FORCE_MOVE and SET_KINEMATIC_POSITION
-#   extended G-Code commands. The default is false.
+#    Установите значение true, чтобы включить FORCE_MOVE и SET_KINEMATIC_POSITION
+#    расширенные команды G-кода. По умолчанию установлено значение false.
 ```
 
 ### [pause_resume]
 
-Pause/Resume functionality with support of position capture and restore. See the [command reference](G-Codes.md#pause_resume) for more information.
+Функции паузы/возобновления с поддержкой захвата и восстановления позиции. Дополнительную информацию см. в [справочнике команд](G-Codes.md#pause_resume).
 
 ```
 [pause_resume]
 #recover_velocity: 50.
-#   When capture/restore is enabled, the speed at which to return to
-#   the captured position (in mm/s). Default is 50.0 mm/s.
+#    Когда захват/восстановление включен, скорость, с которой нужно вернуться в
+#    захваченному положению (в мм/с). По умолчанию 50,0 мм/с.
 ```
 
 ### [firmware_retraction]
 
-Firmware filament retraction. This enables G10 (retract) and G11 (unretract) GCODE commands issued by many slicers. The parameters below provide startup defaults, although the values can be adjusted via the SET_RETRACTION [command](G-Codes.md#firmware_retraction)), allowing per-filament settings and runtime tuning.
+Втягивание нити прошивки. Это позволяет выполнять GCODE-команды G10 (втягивание) и G11 (оттягивание), выдаваемые многими слайсерами. Приведенные ниже параметры являются начальными значениями по умолчанию, однако их можно настроить с помощью команды SET_RETRACTION [command](G-Codes.md#firmware_retraction)), что позволяет устанавливать параметры для каждого филамента и настраивать их во время работы.
 
 ```
 [firmware_retraction]
 #retract_length: 0
-#   The length of filament (in mm) to retract when G10 is activated,
-#   and to unretract when G11 is activated (but see
-#   unretract_extra_length below). The default is 0 mm.
+#    Длина нити (в мм) для втягивания при активации G10,
+#    и не втягивать при активации G11 (но см.
+#    unretract_extra_length ниже). По умолчанию 0 мм.
 #retract_speed: 20
-#   The speed of retraction, in mm/s. The default is 20 mm/s.
+#    Скорость втягивания, в мм/с. По умолчанию 20 мм/с.
 #unretract_extra_length: 0
-#   The length (in mm) of *additional* filament to add when
-#   unretracting.
+#    Длина (в мм) *дополнительной* нити, которую нужно добавить при
+#    распутывании.
 #unretract_speed: 10
-#   The speed of unretraction, in mm/s. The default is 10 mm/s.
+#    Скорость распутывания, в мм/с. По умолчанию 10 мм/с.
 ```
 
 ### [gcode_arcs]
 
-Support for gcode arc (G2/G3) commands.
+Поддержка команд gcode arc (G2/G3).
 
 ```
 [gcode_arcs]
-#resolution: 1.0
-#   An arc will be split into segments. Each segment's length will
-#   equal the resolution in mm set above. Lower values will produce a
-#   finer arc, but also more work for your machine. Arcs smaller than
-#   the configured value will become straight lines. The default is
-#   1mm.
+#разрешение: 1.0
+#    Дуга будет разбита на сегменты. Длина каждого сегмента будет
+#    равна разрешению в мм, заданному выше. При меньших значениях получится
+#    более тонкую дугу, но и больше работы для вашего станка. Дуги меньше, чем
+#    заданного значения, станут прямыми линиями. По умолчанию
+#    1 мм.
 ```
 
 ### [respond]
 
-Enable the "M118" and "RESPOND" extended [commands](G-Codes.md#respond).
+Включите расширенные [команды] "M118" и "RESPOND" (G-Codes.md#respond).
 
 ```
-[respond]
+[ответить]
 #default_type: echo
-#   Sets the default prefix of the "M118" and "RESPOND" output to one
-#   of the following:
-#       echo: "echo: " (This is the default)
-#       command: "// "
-#       error: "!! "
+#    Устанавливает префикс вывода "M118" и "RESPOND" по умолчанию в одно из следующих значений
+#        из следующих:
+#        echo: "echo: " (Это значение по умолчанию)
+#        command: "// "
+#    error: "!! "
 #default_prefix: echo:
-#   Directly sets the default prefix. If present, this value will
-#   override the "default_type".
+#    Непосредственно задает префикс по умолчанию. Если он присутствует, это значение будет
+#    отменяет значение "default_type".
 ```
 
 ### [exclude_object]
 
-Enables support to exclude or cancel individual objects during the printing process.
+Включает поддержку исключения или отмены отдельных объектов в процессе печати.
 
-See the [exclude objects guide](Exclude_Object.md) and [command reference](G-Codes.md#excludeobject) for additional information. See the [sample-macros.cfg](../config/sample-macros.cfg) file for a Marlin/RepRapFirmware compatible M486 G-Code macro.
+Дополнительную информацию см. в руководстве [exclude objects guide](Exclude_Object.md) и [command reference](G-Codes.md#excludeobject). Смотрите файл [sample-macros.cfg](../config/sample-macros.cfg) для макроса G-кода M486, совместимого с Marlin/RepRapFirmware.
 
 ```
 [exclude_object]
@@ -1459,81 +1461,82 @@ See the [exclude objects guide](Exclude_Object.md) and [command reference](G-Cod
 
 ### [input_shaper]
 
-Enables [resonance compensation](Resonance_Compensation.md). Also see the [command reference](G-Codes.md#input_shaper).
+Включает [компенсацию резонанса](Resonance_Compensation.md). Также см. справочник [команд](G-Codes.md#input_shaper).
 
 ```
 [input_shaper]
 #shaper_freq_x: 0
-#   A frequency (in Hz) of the input shaper for X axis. This is
-#   usually a resonance frequency of X axis that the input shaper
-#   should suppress. For more complex shapers, like 2- and 3-hump EI
-#   input shapers, this parameter can be set from different
-#   considerations. The default value is 0, which disables input
-#   shaping for X axis.
+#    Частота (в Гц) входного формирователя для оси X. Это
+#    обычно резонансная частота оси X, которую входной формирователь
+#    должен подавлять. Для более сложных формирователей, например 2- и 3-горбых EI
+#    входных формирователей, этот параметр может быть задан из различных
+#    соображений. Значение по умолчанию равно 0, что отключает входной
+#    формирователь для оси X.
 #shaper_freq_y: 0
-#   A frequency (in Hz) of the input shaper for Y axis. This is
-#   usually a resonance frequency of Y axis that the input shaper
-#   should suppress. For more complex shapers, like 2- and 3-hump EI
-#   input shapers, this parameter can be set from different
-#   considerations. The default value is 0, which disables input
-#   shaping for Y axis.
+#    Частота (в Гц) входного шейпера для оси Y. Это
+#    обычно резонансная частота оси Y, которую входной формирователь
+#    должен подавлять. Для более сложных формирователей, например 2- и 3-горбых EI
+#    входных формирователей, этот параметр может быть задан из различных
+#    соображений. Значение по умолчанию равно 0, что отключает входной
+#    формирователь для оси Y.
 #shaper_type: mzv
-#   A type of the input shaper to use for both X and Y axes. Supported
-#   shapers are zv, mzv, zvd, ei, 2hump_ei, and 3hump_ei. The default
-#   is mzv input shaper.
+#    Тип входного формирователя, который будет использоваться для осей X и Y. Поддерживаемые
+#    шейперы: zv, mzv, zvd, ei, 2hump_ei и 3hump_ei. По умолчанию
+#    является входной шейпер mzv.
 #shaper_type_x:
 #shaper_type_y:
-#   If shaper_type is not set, these two parameters can be used to
-#   configure different input shapers for X and Y axes. The same
-#   values are supported as for shaper_type parameter.
+#    Если тип_шейпера не задан, эти два параметра можно использовать для того, чтобы
+#    настроить разные входные формирователи для осей X и Y. Те же
+#    значения, что и для параметра shaper_type.
 #damping_ratio_x: 0.1
 #damping_ratio_y: 0.1
-#   Damping ratios of vibrations of X and Y axes used by input shapers
-#   to improve vibration suppression. Default value is 0.1 which is a
-#   good all-round value for most printers. In most circumstances this
-#   parameter requires no tuning and should not be changed.
+#    Коэффициенты демпфирования вибраций по осям X и Y, используемые входными формирователями
+#    для улучшения подавления вибраций. Значение по умолчанию - 0,1, что является
+#    хорошим универсальным значением для большинства принтеров. В большинстве случаев этот
+#    параметр не требует настройки и не должен изменяться.
 ```
 
 ### [adxl345]
 
-Support for ADXL345 accelerometers. This support allows one to query accelerometer measurements from the sensor. This enables an ACCELEROMETER_MEASURE command (see [G-Codes](G-Codes.md#adxl345) for more information). The default chip name is "default", but one may specify an explicit name (eg, [adxl345 my_chip_name]).
+Поддержка акселерометров ADXL345. Эта поддержка позволяет запрашивать измерения акселерометра у датчика. Для этого используется команда ACCELEROMETER_MEASURE (более подробную информацию см. в [G-Codes](G-Codes.md#adxl345)). По умолчанию используется имя чипа "default", но можно указать явное имя (например, [adxl345 my_chip_name]).
 
 ```
 [adxl345]
 cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
+#    Контакт разрешения SPI для датчика. Этот параметр должен быть указан.
 #spi_speed: 5000000
-#   The SPI speed (in hz) to use when communicating with the chip.
-#   The default is 5000000.
+#    Скорость SPI (в гц), используемая при обмене данными с чипом.
+#    По умолчанию 5000000.
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки SPI" для описания
+#    вышеуказанных параметров.
 #axes_map: x, y, z
-#   The accelerometer axis for each of the printer's X, Y, and Z axes.
-#   This may be useful if the accelerometer is mounted in an
-#   orientation that does not match the printer orientation. For
-#   example, one could set this to "y, x, z" to swap the X and Y axes.
-#   It is also possible to negate an axis if the accelerometer
-#   direction is reversed (eg, "x, z, -y"). The default is "x, y, z".
-#rate: 3200
-#   Output data rate for ADXL345. ADXL345 supports the following data
-#   rates: 3200, 1600, 800, 400, 200, 100, 50, and 25. Note that it is
-#   not recommended to change this rate from the default 3200, and
-#   rates below 800 will considerably affect the quality of resonance
-#   measurements.
+#    Ось акселерометра для каждой из осей X, Y и Z принтера.
+#    Это может быть полезно, если акселерометр установлен в
+#    ориентации, которая не совпадает с ориентацией принтера. Например,
+#    например, можно установить значение "y, x, z", чтобы поменять местами оси X и Y.
+#    Также можно отменить ось, если акселерометр
+#    направление меняется на противоположное (например, "x, z, -y"). По умолчанию используется значение "x, y, z".
+# rate: 3200
+#    Скорость передачи выходных данных для ADXL345. ADXL345 поддерживает следующие данные
+#    скорости: 3200, 1600, 800, 400, 200, 100, 50 и 25. Обратите внимание, что
+#    не рекомендуется изменять эту скорость по сравнению с 3200 по умолчанию, и
+#    скорости ниже 800 значительно ухудшают качество резонансных
+#    измерений.
 ```
 
 ### [lis2dw]
 
-Support for LIS2DW accelerometers.
+Поддержка акселерометров LIS2DW.
 
 ```
 [lis2dw]
-cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
 #spi_speed: 5000000
 #   The SPI speed (in hz) to use when communicating with the chip.
 #   The default is 5000000.
@@ -1543,18 +1546,8 @@ cs_pin:
 #spi_software_miso_pin:
 #   See the "common SPI settings" section for a description of the
 #   above parameters.
-#axes_map: x, y, z
-#   See the "adxl345" section for information on this parameter.
-```
-
-### [mpu9250]
-
-Support for MPU-9250, MPU-9255, MPU-6515, MPU-6050, and MPU-6500 accelerometers (one may define any number of sections with an "mpu9250" prefix).
-
-```
-[mpu9250 my_accelerometer]
 #i2c_address:
-#   Default is 104 (0x68). If AD0 is high, it would be 0x69 instead.
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
@@ -1566,9 +1559,59 @@ Support for MPU-9250, MPU-9255, MPU-6515, MPU-6050, and MPU-6500 accelerometers 
 #   See the "adxl345" section for information on this parameter.
 ```
 
+### [lis3dh]
+
+Support for LIS3DH accelerometers.
+
+```
+[lis3dh]
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
+#spi_speed: 5000000
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
+#axes_map: x, y, z
+#   See the "adxl345" section for information on this parameter.
+```
+
+### [mpu9250]
+
+Поддержка акселерометров MPU-9250, MPU-9255, MPU-6515, MPU-6050 и MPU-6500 (можно задать любое количество секций с префиксом "mpu9250").
+
+```
+[mpu9250 my_accelerometer]
+#i2c_address:
+#    По умолчанию 104 (0x68). Если AD0 имеет высокий уровень, вместо него будет 0x69.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров. По умолчанию "i2c_speed" равно 400000.
+# axes_map: x, y, z
+#    Информацию об этом параметре см. в разделе "adxl345".
+```
+
 ### [resonance_tester]
 
-Support for resonance testing and automatic input shaper calibration. In order to use most of the functionality of this module, additional software dependencies must be installed; refer to [Measuring Resonances](Measuring_Resonances.md) and the [command reference](G-Codes.md#resonance_tester) for more information. See the [Max smoothing](Measuring_Resonances.md#max-smoothing) section of the measuring resonances guide for more information on `max_smoothing` parameter and its use.
+Поддержка тестирования резонансов и автоматической калибровки входного формирователя. Для использования большей части функциональности этого модуля необходимо установить дополнительные программные зависимости; за дополнительной информацией обратитесь к разделу [Измерение резонансов](Measuring_Resonances.md) и справочнику [Команда](G-Codes.md#resonance_tester). Дополнительную информацию о параметре `max_smoothing` и его использовании см. в разделе [Max smoothing](Measuring_Resonances.md#max-smoothing) руководства по измерению резонансов.
 
 ```
 [resonance_tester]
@@ -1597,11 +1640,14 @@ Support for resonance testing and automatic input shaper calibration. In order t
 #   auto-calibration (with 'SHAPER_CALIBRATE' command). By default no
 #   maximum smoothing is specified. Refer to Measuring_Resonances guide
 #   for more details on using this feature.
+#move_speed: 50
+#   The speed (in mm/s) to move the toolhead to and between test points
+#   during the calibration. The default is 50.
 #min_freq: 5
 #   Minimum frequency to test for resonances. The default is 5 Hz.
 #max_freq: 133.33
 #   Maximum frequency to test for resonances. The default is 133.33 Hz.
-#accel_per_hz: 75
+#accel_per_hz: 60
 #   This parameter is used to determine which acceleration to use to
 #   test a specific frequency: accel = accel_per_hz * freq. Higher the
 #   value, the higher is the energy of the oscillations. Can be set to
@@ -1615,13 +1661,20 @@ Support for resonance testing and automatic input shaper calibration. In order t
 #   hz_per_sec. Small values make the test slow, and the large values
 #   will decrease the precision of the test. The default value is 1.0
 #   (Hz/sec == sec^-2).
+#sweeping_accel: 400
+#   An acceleration of slow sweeping moves. The default is 400 mm/sec^2.
+#sweeping_period: 1.2
+#   A period of slow sweeping moves. Setting this parameter to 0
+#   disables slow sweeping moves. Avoid setting it to a too small
+#   non-zero value in order to not poison the measurements.
+#   The default is 1.2 sec which is a good all-round choice.
 ```
 
-## Config file helpers
+## Помощники для конфигурационных файлов
 
 ### [board_pins]
 
-Board pin aliases (one may define any number of sections with a "board_pins" prefix). Use this to define aliases for the pins on a micro-controller.
+Псевдонимы выводов платы (можно задать любое количество секций с префиксом "board_pins"). Используйте это для определения псевдонимов выводов микроконтроллера.
 
 ```
 [board_pins my_aliases]
@@ -1638,9 +1691,9 @@ aliases_<name>:
 #   starting with "aliases_" may be specified.
 ```
 
-### [include]
+### [включить]
 
-Include file support. One may include additional config file from the main printer config file. Wildcards may also be used (eg, "configs/*.cfg").
+Поддержка включаемых файлов. Можно включить дополнительный файл конфигурации из основного файла конфигурации принтера. Также могут использоваться символы подстановки (например, "configs/*.cfg").
 
 ```
 [include my_other_config.cfg]
@@ -1648,122 +1701,122 @@ Include file support. One may include additional config file from the main print
 
 ### [duplicate_pin_override]
 
-This tool allows a single micro-controller pin to be defined multiple times in a config file without normal error checking. This is intended for diagnostic and debugging purposes. This section is not needed where Klipper supports using the same pin multiple times, and using this override may cause confusing and unexpected results.
+Этот инструмент позволяет многократно определять один вывод микроконтроллера в конфигурационном файле без обычной проверки ошибок. Это предназначено для диагностики и отладки. Этот раздел не нужен там, где Klipper поддерживает многократное использование одного и того же вывода, и использование этого переопределения может привести к запутанным и неожиданным результатам.
 
 ```
 [duplicate_pin_override]
-pins:
-#   A comma separated list of pins that may be used multiple times in
-#   a config file without normal error checks. This parameter must be
-#   provided.
+пины:
+#    Список пинов, разделенных запятыми, который может быть использован несколько раз в
+#    конфигурационном файле без обычных проверок на ошибки. Этот параметр должен быть
+#    предоставлен.
 ```
 
-## Bed probing hardware
+## Оборудование для зондирования кровати
 
-### [probe]
+### [зонд]
 
-Z height probe. One may define this section to enable Z height probing hardware. When this section is enabled, PROBE and QUERY_PROBE extended [g-code commands](G-Codes.md#probe) become available. Also, see the [probe calibrate guide](Probe_Calibrate.md). The probe section also creates a virtual "probe:z_virtual_endstop" pin. One may set the stepper_z endstop_pin to this virtual pin on cartesian style printers that use the probe in place of a z endstop. If using "probe:z_virtual_endstop" then do not define a position_endstop in the stepper_z config section.
+Датчик высоты Z. Эту секцию можно определить, чтобы включить аппаратное обеспечение зондирования высоты Z. Когда эта секция включена, становятся доступными расширенные команды [g-кода] PROBE и QUERY_PROBE (G-Codes.md#probe). Также см. руководство по калибровке [probe calibrate](Probe_Calibrate.md). Секция probe также создает виртуальный вывод "probe:z_virtual_endstop". На принтерах картезианского типа, использующих датчик вместо концевого упора по оси z, можно установить контакт stepper_z endstop_pin на этот виртуальный контакт. Если вы используете "probe:z_virtual_endstop", то не определяйте position_endstop в разделе конфигурации stepper_z.
 
 ```
 [probe]
 pin:
-#   Probe detection pin. If the pin is on a different microcontroller
-#   than the Z steppers then it enables "multi-mcu homing". This
-#   parameter must be provided.
+#    Контакт обнаружения зонда. Если этот вывод находится на другом микроконтроллере.
+#    чем Z-шаговый, то он включает "multi-mcu homing". Этот
+#    параметр должен быть указан.
 #deactivate_on_each_sample: True
-#   This determines if Klipper should execute deactivation gcode
-#   between each probe attempt when performing a multiple probe
-#   sequence. The default is True.
+#    Этот параметр определяет, должен ли Klipper выполнять gcode деактивации
+#    между каждой попыткой зондирования при выполнении последовательности из нескольких зондирований
+#    последовательности. По умолчанию установлено значение True.
 #x_offset: 0.0
-#   The distance (in mm) between the probe and the nozzle along the
-#   x-axis. The default is 0.
+#    Расстояние (в мм) между зондом и соплом по оси
+#    оси x. По умолчанию равно 0.
 #y_offset: 0.0
-#   The distance (in mm) between the probe and the nozzle along the
-#   y-axis. The default is 0.
+#    Расстояние (в мм) между зондом и соплом по оси
+#    оси y. По умолчанию равно 0.
 z_offset:
-#   The distance (in mm) between the bed and the nozzle when the probe
-#   triggers. This parameter must be provided.
+#    Расстояние (в мм) между станиной и соплом, когда зонд
+#    срабатывает. Этот параметр должен быть предоставлен.
 #speed: 5.0
-#   Speed (in mm/s) of the Z axis when probing. The default is 5mm/s.
+#    Скорость (в мм/с) оси Z при зондировании. По умолчанию 5 мм/с.
 #samples: 1
-#   The number of times to probe each point. The probed z-values will
-#   be averaged. The default is to probe 1 time.
+#    Количество раз для зондирования каждой точки. Полученные значения z
+#    будут усреднены. По умолчанию зондирование выполняется 1 раз.
 #sample_retract_dist: 2.0
-#   The distance (in mm) to lift the toolhead between each sample (if
-#   sampling more than once). The default is 2mm.
+#    Расстояние (в мм), на которое следует поднимать головку инструмента между каждым образцом (если
+#    отбора проб более одного раза). По умолчанию - 2 мм.
 #lift_speed:
-#   Speed (in mm/s) of the Z axis when lifting the probe between
-#   samples. The default is to use the same value as the 'speed'
-#   parameter.
+#    Скорость (в мм/с) оси Z при подъеме зонда между
+#    пробами. По умолчанию используется то же значение, что и параметр 'speed'
+#    параметр.
 #samples_result: average
-#   The calculation method when sampling more than once - either
-#   "median" or "average". The default is average.
+#    Метод расчета при более чем однократной выборке - либо
+#    "медиана" или "среднее". По умолчанию используется среднее значение.
 #samples_tolerance: 0.100
-#   The maximum Z distance (in mm) that a sample may differ from other
-#   samples. If this tolerance is exceeded then either an error is
-#   reported or the attempt is restarted (see
-#   samples_tolerance_retries). The default is 0.100mm.
+#    Максимальное расстояние по Z (в мм), на которое образец может отличаться от других
+#    образцов. Если этот допуск превышен, то либо сообщается об ошибке
+#    сообщается об ошибке, либо попытка перезапускается (см.
+# samples_tolerance_retries). По умолчанию 0,100 мм.
 #samples_tolerance_retries: 0
-#   The number of times to retry if a sample is found that exceeds
-#   samples_tolerance. On a retry, all current samples are discarded
-#   and the probe attempt is restarted. If a valid set of samples are
-#   not obtained in the given number of retries then an error is
-#   reported. The default is zero which causes an error to be reported
-#   on the first sample that exceeds samples_tolerance.
+#    Количество повторных попыток, если найден образец, превышающий
+# samples_tolerance. При повторной попытке все текущие образцы отбрасываются
+#    и попытка зондирования начинается заново. Если правильный набор образцов
+#    не получен за заданное число повторных попыток, то об ошибке
+#    сообщается об ошибке. По умолчанию равно нулю, что приводит к сообщению об ошибке
+#    на первом образце, превышающем samples_tolerance.
 #activate_gcode:
-#   A list of G-Code commands to execute prior to each probe attempt.
-#   See docs/Command_Templates.md for G-Code format. This may be
-#   useful if the probe needs to be activated in some way. Do not
-#   issue any commands here that move the toolhead (eg, G1). The
-#   default is to not run any special G-Code commands on activation.
+#    Список команд G-кода для выполнения перед каждой попыткой зондирования.
+#    Формат G-кода см. в файле docs/Command_Templates.md. Это может быть
+#    полезным, если зонд нужно активировать каким-либо образом. Не следует
+#    вводить сюда команды, которые перемещают головку инструмента (например, G1). По адресу
+#    по умолчанию не запускать никаких специальных команд G-кода при активации.
 #deactivate_gcode:
-#   A list of G-Code commands to execute after each probe attempt
-#   completes. See docs/Command_Templates.md for G-Code format. Do not
-#   issue any commands here that move the toolhead. The default is to
-#   not run any special G-Code commands on deactivation.
+#    Список команд G-кода для выполнения после каждой попытки зондирования
+#    завершается. Формат G-кода см. в файле docs/Command_Templates.md. Не следует
+#    выполнять здесь команды, которые перемещают головку инструмента. По умолчанию
+#    не выполнять никаких специальных команд G-кода при деактивации.
 ```
 
 ### [bltouch]
 
-BLTouch probe. One may define this section (instead of a probe section) to enable a BLTouch probe. See [BL-Touch guide](BLTouch.md) and [command reference](G-Codes.md#bltouch) for further information. A virtual "probe:z_virtual_endstop" pin is also created (see the "probe" section for the details).
+Сенсорный датчик BLTouch. Можно определить эту секцию (вместо секции зонда), чтобы включить зонд BLTouch. Дополнительную информацию см. в [BL-Touch guide](BLTouch.md) и [command reference](G-Codes.md#bltouch). Также создается виртуальный вывод "probe:z_virtual_endstop" (подробности см. в разделе "probe").
 
 ```
 [bltouch]
 sensor_pin:
-#   Pin connected to the BLTouch sensor pin. Most BLTouch devices
-#   require a pullup on the sensor pin (prefix the pin name with "^").
-#   This parameter must be provided.
+#    Контакт, подключенный к контакту датчика BLTouch. Большинство устройств BLTouch
+#    требуют подтяжки к выводу датчика (префикс имени вывода - "^").
+#    Этот параметр должен быть указан.
 control_pin:
-#   Pin connected to the BLTouch control pin. This parameter must be
-#   provided.
+#    Контакт, подключенный к управляющему контакту BLTouch. Этот параметр должен быть
+#    предоставлен.
 #pin_move_time: 0.680
-#   The amount of time (in seconds) to wait for the BLTouch pin to
-#   move up or down. The default is 0.680 seconds.
+#    Количество времени (в секундах), в течение которого нужно ждать, пока пин BLTouch
+#    перемещение вверх или вниз. По умолчанию 0,680 секунды.
 #stow_on_each_sample: True
-#   This determines if Klipper should command the pin to move up
-#   between each probe attempt when performing a multiple probe
-#   sequence. Read the directions in docs/BLTouch.md before setting
-#   this to False. The default is True.
+#    Это определяет, должен ли Klipper давать команду штырьку двигаться вверх
+#    между каждой попыткой зондирования при выполнении последовательности из нескольких зондирований
+#    последовательности. Прочитайте инструкции в файле docs/BLTouch.md, прежде чем устанавливать значение
+#    это значение на False. По умолчанию установлено значение True.
 #probe_with_touch_mode: False
-#   If this is set to True then Klipper will probe with the device in
-#   "touch_mode". The default is False (probing in "pin_down" mode).
+#    Если это значение установлено в True, то Klipper будет зондировать устройство в
+#    "touch_mode". По умолчанию установлено значение False (зондирование в режиме "pin_down").
 #pin_up_reports_not_triggered: True
-#   Set if the BLTouch consistently reports the probe in a "not
-#   triggered" state after a successful "pin_up" command. This should
-#   be True for all genuine BLTouch devices. Read the directions in
-#   docs/BLTouch.md before setting this to False. The default is True.
+#    Устанавливается, если BLTouch постоянно сообщает о том, что пробник находится в состоянии "не
+#    сработал" после успешной команды "pin_up". Это должно
+#    быть True для всех подлинных устройств BLTouch. Прочитайте инструкции в
+#    docs/BLTouch.md, прежде чем устанавливать значение False. По умолчанию установлено значение True.
 #pin_up_touch_mode_reports_triggered: True
-#   Set if the BLTouch consistently reports a "triggered" state after
-#   the commands "pin_up" followed by "touch_mode". This should be
-#   True for all genuine BLTouch devices. Read the directions in
-#   docs/BLTouch.md before setting this to False. The default is True.
+#    Устанавливает, будет ли BLTouch постоянно сообщать о состоянии "срабатывания" после
+#    команды "pin_up", за которой следует "touch_mode". Это должно быть
+#    True для всех настоящих устройств BLTouch. Прочитайте инструкции в
+#    docs/BLTouch.md, прежде чем устанавливать значение False. По умолчанию установлено значение True.
 #set_output_mode:
-#   Request a specific sensor pin output mode on the BLTouch V3.0 (and
-#   later). This setting should not be used on other types of probes.
-#   Set to "5V" to request a sensor pin output of 5 Volts (only use if
-#   the controller board needs 5V mode and is 5V tolerant on its input
-#   signal line). Set to "OD" to request the sensor pin output use
-#   open drain mode. The default is to not request an output mode.
+#    Запрашивает определенный режим вывода контактов датчика на BLTouch V3.0 (и
+#    более поздних версий). Эта настройка не должна использоваться для других типов датчиков.
+#    Установите значение "5V", чтобы запросить выход датчика на 5 вольт (используйте только в том случае, если
+#    плата контроллера нуждается в режиме 5 В и допускает 5 В на своем входе
+#    сигнальной линии). Установите значение "OD", чтобы запросить использование выхода датчика в режиме
+#    режим открытого стока. По умолчанию режим вывода не запрашивается.
 #x_offset:
 #y_offset:
 #z_offset:
@@ -1774,49 +1827,49 @@ control_pin:
 #samples_result:
 #samples_tolerance:
 #samples_tolerance_retries:
-#   See the "probe" section for information on these parameters.
+#    Информацию об этих параметрах см. в разделе "probe".
 ```
 
 ### [smart_effector]
 
-The "Smart Effector" from Duet3d implements a Z probe using a force sensor. One may define this section instead of `[probe]` to enable the Smart Effector specific features. This also enables [runtime commands](G-Codes.md#smart_effector) to adjust the parameters of the Smart Effector at run time.
+Smart Effector" из Duet3d реализует Z-зонд с помощью датчика силы. Можно определить эту секцию вместо `[probe]`, чтобы включить специфические функции Smart Effector. Это также позволяет использовать [runtime commands](G-Codes.md#smart_effector) для настройки параметров Smart Effector во время выполнения.
 
 ```
 [smart_effector]
 pin:
-#   Pin connected to the Smart Effector Z Probe output pin (pin 5). Note that
-#   pullup resistor on the board is generally not required. However, if the
-#   output pin is connected to the board pin with a pullup resistor, that
-#   resistor must be high value (e.g. 10K Ohm or more). Some boards have a low
-#   value pullup resistor on the Z probe input, which will likely result in an
-#   always-triggered probe state. In this case, connect the Smart Effector to
-#   a different pin on the board. This parameter is required.
+#    Контакт, подключенный к выходному контакту Smart Effector Z Probe (контакт 5). Обратите внимание, что
+#    подтягивающий резистор на плате обычно не требуется. Однако если
+#    выходной контакт подключен к контакту платы с подтягивающим резистором, этот
+#    резистор должен иметь высокое значение (например, 10K Ом или более). На некоторых платах подтягивающий резистор имеет низкое
+#    подтягивающий резистор на входе датчика Z, что, скорее всего, приведет к тому, что
+#    всегда задействованному состоянию датчика. В этом случае подключите интеллектуальный эффектор к
+#    другому выводу на плате. Этот параметр является обязательным.
 #control_pin:
-#   Pin connected to the Smart Effector control input pin (pin 7). If provided,
-#   Smart Effector sensitivity programming commands become available.
+#    Контакт, подключенный к входному контакту управления Smart Effector (контакт 7). Если задан,
+#    становятся доступны команды программирования чувствительности Smart Effector.
 #probe_accel:
-#   If set, limits the acceleration of the probing moves (in mm/sec^2).
-#   A sudden large acceleration at the beginning of the probing move may
-#   cause spurious probe triggering, especially if the hotend is heavy.
-#   To prevent that, it may be necessary to reduce the acceleration of
-#   the probing moves via this parameter.
-#recovery_time: 0.4
-#   A delay between the travel moves and the probing moves in seconds. A fast
-#   travel move prior to probing may result in a spurious probe triggering.
-#   This may cause 'Probe triggered prior to movement' errors if no delay
-#   is set. Value 0 disables the recovery delay.
-#   Default value is 0.4.
+#    Если установлен, ограничивает ускорение перемещения зонда (в мм/сек^2).
+#    Внезапное большое ускорение в начале движения зонда может
+#    привести к ложным срабатываниям датчика, особенно если хотэнд тяжелый.
+#    Чтобы предотвратить это, может потребоваться уменьшить ускорение
+#    движения зонда с помощью этого параметра.
+#    время_восстановления: 0,4
+#    Задержка между перемещением и перемещением зонда в секундах. Быстрое
+#    перемещение перед зондированием может привести к ложным срабатываниям зонда.
+#    Это может привести к ошибке "Зонд сработал до перемещения", если задержка не установлена.
+#    не установлена. Значение 0 отключает задержку восстановления.
+#    Значение по умолчанию - 0,4.
 #x_offset:
 #y_offset:
-#   Should be left unset (or set to 0).
+#    следует оставить без значения (или установить на 0).
 z_offset:
-#   Trigger height of the probe. Start with -0.1 (mm), and adjust later using
-#   `PROBE_CALIBRATE` command. This parameter must be provided.
+#    Высота срабатывания датчика. Начните с -0,1 (мм), а затем скорректируйте с помощью
+#    команды `PROBE_CALIBRATE`. Этот параметр должен быть указан.
 #speed:
-#   Speed (in mm/s) of the Z axis when probing. It is recommended to start
-#   with the probing speed of 20 mm/s and adjust it as necessary to improve
-#   the accuracy and repeatability of the probe triggering.
-#samples:
+#    Скорость (в мм/с) оси Z при выполнении зондирования. Рекомендуется начинать
+#    со скорости зондирования 20 мм/с и регулировать ее по мере необходимости для повышения
+#    точности и повторяемости срабатывания датчика.
+# образцы:
 #sample_retract_dist:
 #samples_result:
 #samples_tolerance:
@@ -1824,32 +1877,32 @@ z_offset:
 #activate_gcode:
 #deactivate_gcode:
 #deactivate_on_each_sample:
-#   See the "probe" section for more information on the parameters above.
+#    Дополнительные сведения о параметрах см. в разделе "Зонд".
 ```
 
 ### [probe_eddy_current]
 
-Support for eddy current inductive probes. One may define this section (instead of a probe section) to enable this probe. See the [command reference](G-Codes.md#probe_eddy_current) for further information.
+Поддержка вихретоковых индуктивных датчиков. Можно определить эту секцию (вместо секции зонда), чтобы включить этот зонд. Дополнительную информацию см. в [справочнике команд](G-Codes.md#probe_eddy_current).
 
 ```
 [probe_eddy_current my_eddy_probe]
-sensor_type: ldc1612
-#   The sensor chip used to perform eddy current measurements. This
-#   parameter must be provided and must be set to ldc1612.
+тип_датчика: ldc1612
+#    Микросхема датчика, используемая для измерения вихревых токов. Этот
+#    параметр должен быть предоставлен и должен быть установлен в ldc1612.
 #intb_pin:
-#   MCU gpio pin connected to the ldc1612 sensor's INTB pin (if
-#   available). The default is to not use the INTB pin.
+#    вывод gpio MCU, подключенный к выводу INTB датчика ldc1612 (если
+#    доступен). По умолчанию вывод INTB не используется.
 #z_offset:
-#   The nominal distance (in mm) between the nozzle and bed that a
-#   probing attempt should stop at. This parameter must be provided.
+#    Номинальное расстояние (в мм) между соплом и станиной, при котором
+#    попытка зондирования должна остановиться. Этот параметр должен быть указан.
 #i2c_address:
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   The i2c settings for the sensor chip. See the "common I2C
-#   settings" section for a description of the above parameters.
+#    Настройки i2c для микросхемы датчика. См. раздел "Общие настройки I2C
+#    настройки" для описания вышеуказанных параметров.
 #x_offset:
 #y_offset:
 #speed:
@@ -1859,12 +1912,12 @@ sensor_type: ldc1612
 #samples_result:
 #samples_tolerance:
 #samples_tolerance_retries:
-#   See the "probe" section for information on these parameters.
+#    Информацию об этих параметрах см. в разделе "probe".
 ```
 
 ### [axis_twist_compensation]
 
-A tool to compensate for inaccurate probe readings due to twist in X gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
+A tool to compensate for inaccurate probe readings due to twist in X or Y gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
 
 ```
 [axis_twist_compensation]
@@ -1877,254 +1930,271 @@ A tool to compensate for inaccurate probe readings due to twist in X gantry. See
 calibrate_start_x: 20
 #   Defines the minimum X coordinate of the calibration
 #   This should be the X coordinate that positions the nozzle at the starting
-#   calibration position. This parameter must be provided.
+#   calibration position.
 calibrate_end_x: 200
 #   Defines the maximum X coordinate of the calibration
 #   This should be the X coordinate that positions the nozzle at the ending
-#   calibration position. This parameter must be provided.
+#   calibration position.
 calibrate_y: 112.5
 #   Defines the Y coordinate of the calibration
 #   This should be the Y coordinate that positions the nozzle during the
-#   calibration process. This parameter must be provided and is recommended to
+#   calibration process. This parameter is recommended to
 #   be near the center of the bed
+
+# For Y-axis twist compensation, specify the following parameters:
+calibrate_start_y: ...
+#   Defines the minimum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the starting
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_end_y: ...
+#   Defines the maximum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the ending
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_x: ...
+#   Defines the X coordinate of the calibration for Y axis twist compensation
+#   This should be the X coordinate that positions the nozzle during the
+#   calibration process for Y axis twist compensation. This parameter must be
+#   provided and is recommended to be near the center of the bed.
 ```
 
-## Additional stepper motors and extruders
+## Дополнительные шаговые двигатели и экструдеры
 
 ### [stepper_z1]
 
-Multi-stepper axes. On a cartesian style printer, the stepper controlling a given axis may have additional config blocks defining steppers that should be stepped in concert with the primary stepper. One may define any number of sections with a numeric suffix starting at 1 (for example, "stepper_z1", "stepper_z2", etc.).
+Многошаговые оси. В принтере, работающем в картезианском стиле, степпер, управляющий данной осью, может иметь дополнительные блоки конфигурации, определяющие степперы, которые должны работать в паре с основным степпером. Можно задать любое количество секций с числовым суффиксом, начиная с 1 (например, "stepper_z1", "stepper_z2" и т. д.).
 
 ```
 [stepper_z1]
 #step_pin:
 #dir_pin:
 #enable_pin:
-#microsteps:
+#микрошаги:
 #rotation_distance:
-#   See the "stepper" section for the definition of the above parameters.
+#    Определение вышеуказанных параметров см. в разделе "степпер".
 #endstop_pin:
-#   If an endstop_pin is defined for the additional stepper then the
-#   stepper will home until the endstop is triggered. Otherwise, the
-#   stepper will home until the endstop on the primary stepper for the
-#   axis is triggered.
+#    Если для дополнительного шагового механизма задан штифт endstop_pin, то он
+#    степпер будет двигаться до тех пор, пока не сработает endstop. В противном случае
+#    шаговый механизм будет перемещаться до тех пор, пока не сработает концевой упор на основном шаговом механизме для
+#    оси не сработает.
 ```
 
-### [extruder1]
+### [экструдер1]
 
-In a multi-extruder printer add an additional extruder section for each additional extruder. The additional extruder sections should be named "extruder1", "extruder2", "extruder3", and so on. See the "extruder" section for a description of available parameters.
+В принтере с несколькими экструдерами добавьте дополнительную секцию для каждого экструдера. Дополнительные секции экструдера должны называться " экструдер1", "экструдер2", "экструдер3" и так далее. Описание доступных параметров смотрите в разделе "Экструдер".
 
-See [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg) for an example configuration.
+Пример конфигурации смотрите в [sample-multi-extruder.cfg](../config/sample-multi-extruder.cfg).
 
 ```
 [extruder1]
 #step_pin:
 #dir_pin:
 #...
-#   See the "extruder" section for available stepper and heater
-#   parameters.
+#    См. раздел "Экструдер" для получения информации о доступных шаговых и нагревательных
+#    параметры.
 #shared_heater:
-#   This option is deprecated and should no longer be specified.
+#    Эта опция устарела и больше не должна указываться.
 ```
 
 ### [dual_carriage]
 
-Support for cartesian and hybrid_corexy/z printers with dual carriages on a single axis. The carriage mode can be set via the SET_DUAL_CARRIAGE extended g-code command. For example, "SET_DUAL_CARRIAGE CARRIAGE=1" command will activate the carriage defined in this section (CARRIAGE=0 will return activation to the primary carriage). Dual carriage support is typically combined with extra extruders - the SET_DUAL_CARRIAGE command is often called at the same time as the ACTIVATE_EXTRUDER command. Be sure to park the carriages during deactivation. Note that during G28 homing, typically the primary carriage is homed first followed by the carriage defined in the `[dual_carriage]` config section. However, the `[dual_carriage]` carriage will be homed first if both carriages home in a positive direction and the [dual_carriage] carriage has a `position_endstop` greater than the primary carriage, or if both carriages home in a negative direction and the `[dual_carriage]` carriage has a `position_endstop` less than the primary carriage.
+Поддержка картезианских и гибридных_corexy/z принтеров с двумя каретками на одной оси. Режим каретки может быть установлен с помощью расширенной команды g-кода SET_DUAL_CARRIAGE. Например, команда "SET_DUAL_CARRIAGE CARRIAGE=1" активирует каретку, определенную в этом разделе (CARRIAGE=0 возвращает активацию к основной каретке). Поддержка двойной каретки обычно сочетается с дополнительными экструдерами - команда SET_DUAL_CARRIAGE часто вызывается одновременно с командой ACTIVATE_EXTRUDER. Не забудьте припарковать каретки во время деактивации. Обратите внимание, что при наведении G28 обычно сначала наводится основная каретка, а затем каретка, определенная в разделе конфигурации `[dual_carriage]`. Однако каретка `[dual_carriage]` будет направлена первой, если обе каретки возвращаются в положительном направлении и каретка [dual_carriage] имеет `позицию_endstop` больше, чем основная каретка, или если обе каретки возвращаются в отрицательном направлении и каретка `[dual_carriage]` имеет `позицию_endstop` меньше, чем основная каретка.
 
-Additionally, one could use "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" or "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" commands to activate either copying or mirroring mode of the dual carriage, in which case it will follow the motion of the carriage 0 accordingly. These commands can be used to print two parts simultaneously - either two identical parts (in COPY mode) or mirrored parts (in MIRROR mode). Note that COPY and MIRROR modes also require appropriate configuration of the extruder on the dual carriage, which can typically be achieved with "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" or a similar command.
+Кроме того, можно использовать команды "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=COPY" или "SET_DUAL_CARRIAGE CARRIAGE=1 MODE=MIRROR" для активации режима копирования или зеркального отображения двойной каретки, в этом случае она будет следовать за движением каретки 0 соответственно. Эти команды можно использовать для одновременной печати двух деталей - либо двух одинаковых деталей (в режиме COPY), либо зеркально отраженных (в режиме MIRROR). Обратите внимание, что режимы COPY и MIRROR также требуют соответствующей настройки экструдера на двойной каретке, что обычно достигается с помощью команды "SYNC_EXTRUDER_MOTION MOTION_QUEUE=extruder EXTRUDER=<dual_carriage_extruder>" или аналогичной команды.
 
-See [sample-idex.cfg](../config/sample-idex.cfg) for an example configuration.
+Пример конфигурации смотрите в [sample-idex.cfg](../config/sample-idex.cfg).
 
 ```
 [dual_carriage]
-axis:
-#   The axis this extra carriage is on (either x or y). This parameter
-#   must be provided.
+ось:
+#    Ось, по которой перемещается дополнительная каретка (либо x, либо y). Этот параметр
+#    должен быть указан.
 #safe_distance:
-#   The minimum distance (in mm) to enforce between the dual and the primary
-#   carriages. If a G-Code command is executed that will bring the carriages
-#   closer than the specified limit, such a command will be rejected with an
-#   error. If safe_distance is not provided, it will be inferred from
-#   position_min and position_max for the dual and primary carriages. If set
-#   to 0 (or safe_distance is unset and position_min and position_max are
-#   identical for the primary and dual carraiges), the carriages proximity
-#   checks will be disabled.
+#    Минимальное расстояние (в мм), которое должно соблюдаться между двойной и основной
+#    каретками. Если будет выполнена команда G-кода, которая приблизит каретки
+#    ближе, чем указанный предел, такая команда будет отклонена с ошибкой
+#    ошибкой. Если безопасное_расстояние не указано, оно будет выведено из
+#    position_min и position_max для сдвоенной и основной кареток. Если установлено
+#    на 0 (или безопасное_расстояние не задано, а position_min и position_max
+#    одинаковы для основной и двойной кареток), проверка близости кареток
+#    проверки будут отключены.
 #step_pin:
 #dir_pin:
 #enable_pin:
-#microsteps:
+#микрошаги:
 #rotation_distance:
 #endstop_pin:
 #position_endstop:
 #position_min:
 #position_max:
-#   See the "stepper" section for the definition of the above parameters.
+#    Определение вышеуказанных параметров см. в разделе "Шаговый механизм".
 ```
 
 ### [extruder_stepper]
 
-Support for additional steppers synchronized to the movement of an extruder (one may define any number of sections with an "extruder_stepper" prefix).
+Поддержка дополнительных степперов, синхронизированных с движением экструдера (можно определить любое количество секций с префиксом "extruder_stepper").
 
-See the [command reference](G-Codes.md#extruder) for more information.
+Дополнительную информацию см. в [справочнике команд](G-Codes.md#extruder).
 
 ```
-[extruder_stepper my_extra_stepper]
+[extruder_stepper my_extra_stepper].
 extruder:
-#   The extruder this stepper is synchronized to. If this is set to an
-#   empty string then the stepper will not be synchronized to an
-#   extruder. This parameter must be provided.
+#    Экструдер, с которым синхронизируется этот степпер. Если это значение установлено в
+#    пустая строка, то степпер не будет синхронизирован с
+#    экструдером. Этот параметр должен быть указан.
 #step_pin:
 #dir_pin:
 #enable_pin:
-#microsteps:
+#микрошаги:
 #rotation_distance:
-#   See the "stepper" section for the definition of the above
-#   parameters.
+#    См. раздел "Степпер" для определения вышеуказанных
+#    параметров.
 ```
 
 ### [manual_stepper]
 
-Manual steppers (one may define any number of sections with a "manual_stepper" prefix). These are steppers that are controlled by the MANUAL_STEPPER g-code command. For example: "MANUAL_STEPPER STEPPER=my_stepper MOVE=10 SPEED=5". See [G-Codes](G-Codes.md#manual_stepper) file for a description of the MANUAL_STEPPER command. The steppers are not connected to the normal printer kinematics.
+Ручные степперы (можно определить любое количество секций с префиксом "manual_stepper"). Это степперы, которые управляются командой g-кода MANUAL_STEPPER. Например: "MANUAL_STEPPER STEPPER=my_stepper MOVE=10 SPEED=5". Описание команды MANUAL_STEPPER см. в файле [G-Codes](G-Codes.md#manual_stepper). Шаговые механизмы не связаны с обычной кинематикой принтера.
 
 ```
 [manual_stepper my_stepper]
 #step_pin:
 #dir_pin:
 #enable_pin:
-#microsteps:
+#микрошаги:
 #rotation_distance:
-#   See the "stepper" section for a description of these parameters.
+#    Описание этих параметров см. в разделе "Шаговый механизм".
 #velocity:
-#   Set the default velocity (in mm/s) for the stepper. This value
-#   will be used if a MANUAL_STEPPER command does not specify a SPEED
-#   parameter. The default is 5mm/s.
+#    Установите скорость по умолчанию (в мм/с) для шагового механизма. Это значение
+#    будет использоваться, если в команде MANUAL_STEPPER не указан параметр SPEED
+#    параметр. По умолчанию - 5 мм/с.
 #accel:
-#   Set the default acceleration (in mm/s^2) for the stepper. An
-#   acceleration of zero will result in no acceleration. This value
-#   will be used if a MANUAL_STEPPER command does not specify an ACCEL
-#   parameter. The default is zero.
+#    Устанавливает ускорение по умолчанию (в мм/с^2) для шагового механизма. Значение
+#    ускорение, равное нулю, приведет к отсутствию ускорения. Это значение
+#    будет использоваться, если в команде MANUAL_STEPPER не указан параметр ACCEL
+#    параметр. По умолчанию это значение равно нулю.
 #endstop_pin:
-#   Endstop switch detection pin. If specified, then one may perform
-#   "homing moves" by adding a STOP_ON_ENDSTOP parameter to
-#   MANUAL_STEPPER movement commands.
+#    Контакт обнаружения переключателя конечного останова. Если он указан, то можно выполнять
+#    "самонаводящиеся движения", добавив параметр STOP_ON_ENDSTOP к
+#    командам движения MANUAL_STEPPER.
 ```
 
-## Custom heaters and sensors
+## Индивидуальные нагреватели и датчики
 
 ### [verify_heater]
 
-Heater and temperature sensor verification. Heater verification is automatically enabled for each heater that is configured on the printer. Use verify_heater sections to change the default settings.
+Проверка нагревателя и датчика температуры. Проверка нагревателя автоматически включается для каждого нагревателя, настроенного на принтере. Используйте секции verify_heater, чтобы изменить настройки по умолчанию.
 
 ```
 [verify_heater heater_config_name]
 #max_error: 120
-#   The maximum "cumulative temperature error" before raising an
-#   error. Smaller values result in stricter checking and larger
-#   values allow for more time before an error is reported.
-#   Specifically, the temperature is inspected once a second and if it
-#   is close to the target temperature then an internal "error
-#   counter" is reset; otherwise, if the temperature is below the
-#   target range then the counter is increased by the amount the
-#   reported temperature differs from that range. Should the counter
-#   exceed this "max_error" then an error is raised. The default is
+#   Максимальная "суммарная ошибка температуры" перед тем, как выдать
+#   ошибку. Меньшие значения приводят к более строгой проверке, а большие
+#   значения позволяют увеличить время до сообщения об ошибке.
+#   В частности, температура проверяется раз в секунду, и если она
+#   близка к целевой температуре, то внутренний "счетчик ошибок
+#   счетчик ошибок" сбрасывается; в противном случае, если температура ниже
+#   целевого диапазона, то счетчик увеличивается на величину
+#   зарегистрированная температура отличается от этого диапазона. Если счетчик
+#   превысит это значение "max_error", то будет выдана ошибка. По умолчанию
 #   120.
 #check_gain_time:
-#   This controls heater verification during initial heating. Smaller
-#   values result in stricter checking and larger values allow for
-#   more time before an error is reported. Specifically, during
-#   initial heating, as long as the heater increases in temperature
-#   within this time frame (specified in seconds) then the internal
-#   "error counter" is reset. The default is 20 seconds for extruders
-#   and 60 seconds for heater_bed.
-#hysteresis: 5
-#   The maximum temperature difference (in Celsius) to a target
-#   temperature that is considered in range of the target. This
-#   controls the max_error range check. It is rare to customize this
-#   value. The default is 5.
+#   Это контролирует проверку нагревателя во время начального нагрева. Меньшие
+#   значения приводят к более строгой проверке, а большие значения позволяют
+#   больше времени до сообщения об ошибке. В частности, во время
+#   начального нагрева, если температура нагревателя увеличивается
+#   в течение этого времени (указанного в секундах), то внутренний
+#   "счетчик ошибок" сбрасывается. По умолчанию это 20 секунд для экструдеров
+#   и 60 секунд для нагревателя_кровати.
+#гистерезис: 5
+#   Максимальная разница температур (в градусах Цельсия) с целевой
+#   температуры, которая считается в диапазоне целевой. Это
+#   управляет проверкой диапазона max_error. Настраивать это
+#   значение. По умолчанию это значение равно 5.
 #heating_gain: 2
-#   The minimum temperature (in Celsius) that the heater must increase
-#   by during the check_gain_time check. It is rare to customize this
-#   value. The default is 2.
+#   Минимальная температура (в градусах Цельсия), на которую должен увеличиться нагреватель.
+#   на время проверки check_gain_time. Настраивать это
+#   значение. По умолчанию это значение равно 2.
 ```
 
 ### [homing_heaters]
 
-Tool to disable heaters when homing or probing an axis.
+Инструмент для отключения нагревателей при наведении или зондировании оси.
 
 ```
 [homing_heaters]
 #steppers:
-#   A comma separated list of steppers that should cause heaters to be
-#   disabled. The default is to disable heaters for any homing/probing
-#   move.
-#   Typical example: stepper_z
+#    Список степперов, которые должны вызывать отключение нагревателей, разделенный запятыми.
+#    отключены. По умолчанию нагреватели отключаются для любого хоминга/пробивания
+#    move.
+#    Типичный пример: stepper_z
 #heaters:
-#   A comma separated list of heaters to disable during homing/probing
-#   moves. The default is to disable all heaters.
-#   Typical example: extruder, heater_bed
+#    Список нагревателей, которые нужно отключить во время хоминга/пробивания, разделенный запятыми.
+#    движения. По умолчанию отключаются все нагреватели.
+#    Типичный пример: экструдер, нагревательная_кровать
 ```
 
-### [thermistor]
+### [термистор]
 
-Custom thermistors (one may define any number of sections with a "thermistor" prefix). A custom thermistor may be used in the sensor_type field of a heater config section. (For example, if one defines a "[thermistor my_thermistor]" section then one may use a "sensor_type: my_thermistor" when defining a heater.) Be sure to place the thermistor section in the config file above its first use in a heater section.
+Пользовательские термисторы (можно определить любое количество секций с префиксом "термистор"). Пользовательский термистор может быть использован в поле sensor_type секции конфигурации нагревателя. (Например, если определить секцию "[термистор мой_термистор]", то при определении нагревателя можно использовать "тип_датчика: мой_термистор"). Обязательно поместите секцию термистора в конфигурационный файл выше ее первого использования в секции нагревателя.
 
 ```
 [thermistor my_thermistor]
-#temperature1:
-#resistance1:
+#температура1:
+#сопротивление1:
 #temperature2:
-#resistance2:
+#сопротивление2:
 #temperature3:
 #resistance3:
-#   Three resistance measurements (in Ohms) at the given temperatures
-#   (in Celsius). The three measurements will be used to calculate the
-#   Steinhart-Hart coefficients for the thermistor. These parameters
-#   must be provided when using Steinhart-Hart to define the
-#   thermistor.
+#    Три измерения сопротивления (в Омах) при заданных температурах
+#    (в градусах Цельсия). Эти три измерения будут использованы для расчета
+#    коэффициентов Штейнхарта-Харта для термистора. Эти параметры
+#    должны быть указаны при использовании метода Штейнхарта-Харта для определения
+#    термистора.
 #beta:
-#   Alternatively, one may define temperature1, resistance1, and beta
-#   to define the thermistor parameters. This parameter must be
-#   provided when using "beta" to define the thermistor.
+#    Альтернативно, можно определить температуру1, сопротивление1 и бету
+#    для определения параметров термистора. Этот параметр должен быть
+#    указываться при использовании "beta" для определения термистора.
 ```
 
 ### [adc_temperature]
 
-Custom ADC temperature sensors (one may define any number of sections with an "adc_temperature" prefix). This allows one to define a custom temperature sensor that measures a voltage on an Analog to Digital Converter (ADC) pin and uses linear interpolation between a set of configured temperature/voltage (or temperature/resistance) measurements to determine the temperature. The resulting sensor can be used as a sensor_type in a heater section. (For example, if one defines a "[adc_temperature my_sensor]" section then one may use a "sensor_type: my_sensor" when defining a heater.) Be sure to place the sensor section in the config file above its first use in a heater section.
+Пользовательские датчики температуры АЦП (можно определить любое количество секций с префиксом "adc_temperature"). Это позволяет определить пользовательский датчик температуры, который измеряет напряжение на выводе аналого-цифрового преобразователя (ADC) и использует линейную интерполяцию между набором настроенных измерений температуры/напряжения (или температуры/сопротивления) для определения температуры. Полученный датчик можно использовать как тип_датчика в секции нагревателя. (Например, если определить секцию "[adc_temperature my_sensor]", то при определении нагревателя можно использовать "sensor_type: my_sensor"). Обязательно поместите секцию датчика в конфигурационный файл выше ее первого использования в секции нагревателя.
 
 ```
 [adc_temperature my_sensor]
-#temperature1:
+#температура1:
 #voltage1:
 #temperature2:
 #voltage2:
 #...
-#   A set of temperatures (in Celsius) and voltages (in Volts) to use
-#   as reference when converting a temperature. A heater section using
-#   this sensor may also specify adc_voltage and voltage_offset
-#   parameters to define the ADC voltage (see "Common temperature
-#   amplifiers" section for details). At least two measurements must
-#   be provided.
-#temperature1:
-#resistance1:
-#temperature2:
-#resistance2:
+#    Набор температур (в градусах Цельсия) и напряжений (в вольтах) для использования
+#    в качестве ссылки при преобразовании температуры. Секция нагревателя, использующая
+#    этот датчик, может также указать параметры adc_voltage и voltage_offset
+#    параметры для определения напряжения АЦП (см. раздел "Общие температурные
+#    усилители" для получения подробной информации). Необходимо указать как минимум два измерения
+#    быть предоставлены.
+#температура1:
+#сопротивление1:
+#температура2:
+#сопротивление2:
 #...
-#   Alternatively one may specify a set of temperatures (in Celsius)
-#   and resistance (in Ohms) to use as reference when converting a
-#   temperature. A heater section using this sensor may also specify a
-#   pullup_resistor parameter (see "extruder" section for details). At
-#   least two measurements must be provided.
+#    В качестве альтернативы можно указать набор температур (в градусах Цельсия)
+#    и сопротивление (в Омах) для использования в качестве эталона при преобразовании
+#    температуры. Секция нагревателя, использующая этот датчик, может также указать
+#    параметр pullup_resistor (подробности см. в разделе "Экструдер"). На
+#    необходимо указать как минимум два измерения.
 ```
 
 ### [heater_generic]
 
-Generic heaters (one may define any number of sections with a "heater_generic" prefix). These heaters behave similarly to standard heaters (extruders, heated beds). Use the SET_HEATER_TEMPERATURE command (see [G-Codes](G-Codes.md#heaters) for details) to set the target temperature.
+Общие нагреватели (можно определить любое количество секций с префиксом "heater_generic"). Эти нагреватели ведут себя так же, как и стандартные нагреватели (экструдеры, обогреваемые станины). Для задания целевой температуры используйте команду SET_HEATER_TEMPERATURE (подробности см. в [G-Codes](G-Codes.md#heaters)).
 
 ```
 [heater_generic my_generic_heater]
 #gcode_id:
-#   The id to use when reporting the temperature in the M105 command.
-#   This parameter must be provided.
+#    Идентификатор, который будет использоваться при сообщении температуры в команде M105.
+#    Этот параметр должен быть указан.
 #heater_pin:
 #max_power:
 #sensor_type:
@@ -2137,30 +2207,30 @@ Generic heaters (one may define any number of sections with a "heater_generic" p
 #pwm_cycle_time:
 #min_temp:
 #max_temp:
-#   See the "extruder" section for the definition of the above
-#   parameters.
+#    См. раздел "Экструдер" для определения вышеуказанных
+#    параметров.
 ```
 
 ### [temperature_sensor]
 
-Generic temperature sensors. One can define any number of additional temperature sensors that are reported via the M105 command.
+Общие датчики температуры. Можно определить любое количество дополнительных датчиков температуры, которые будут сообщаться с помощью команды M105.
 
 ```
-[temperature_sensor my_sensor]
-#sensor_type:
+[температурный_сенсор мой_сенсор]
+#сенсор_типа:
 #sensor_pin:
 #min_temp:
 #max_temp:
-#   See the "extruder" section for the definition of the above
-#   parameters.
+#    См. раздел "Экструдер" для определения вышеуказанных
+#    параметров.
 #gcode_id:
-#   See the "heater_generic" section for the definition of this
-#   parameter.
+#    Определение этого параметра см. в разделе "Нагреватель_генеральный".
+#    параметра.
 ```
 
 ### [temperature_probe]
 
-Reports probe coil temperature. Includes optional thermal drift calibration for eddy current based probes. A `[temperature_probe]` section may be linked to a `[probe_eddy_current]` by using the same postfix for both sections.
+Сообщает о температуре катушки зонда. Включает дополнительную калибровку теплового дрейфа для зондов на основе вихревых токов. Секция `[temperature_probe]` может быть связана с секцией `[probe_eddy_current]`, используя один и тот же постфикс для обеих секций.
 
 ```
 [temperature_probe my_probe]
@@ -2212,367 +2282,371 @@ Reports probe coil temperature. Includes optional thermal drift calibration for 
 #   "calibration_extruder_temp" option is set.  Its recommended to heat
 #   the extruder some distance from the bed to minimize its impact on
 #   the probe coil temperature.  The default is 50.
+#max_validation_temp: 60.
+#   The maximum temperature used to validate the calibration.  It is
+#   recommended to set this to a value between 100 and 120 for enclosed
+#   printers.  The default is 60.
 ```
 
-## Temperature sensors
+## Датчики температуры
 
-Klipper includes definitions for many types of temperature sensors. These sensors may be used in any config section that requires a temperature sensor (such as an `[extruder]` or `[heater_bed]` section).
+Klipper содержит определения для многих типов температурных датчиков. Эти датчики можно использовать в любой секции конфигурации, где требуется датчик температуры (например, в секции `[extruder]` или `[heater_bed]`).
 
-### Common thermistors
+### Обычные термисторы
 
-Common thermistors. The following parameters are available in heater sections that use one of these sensors.
+Обычные термисторы. Следующие параметры доступны в секциях нагревателей, использующих один из этих датчиков.
 
 ```
 sensor_type:
-#   One of "EPCOS 100K B57560G104F", "ATC Semitec 104GT-2",
-#   "ATC Semitec 104NT-4-R025H42G", "Generic 3950",
-#   "Honeywell 100K 135-104LAG-J01", "NTC 100K MGB18-104F39050L32",
-#   "SliceEngineering 450", or "TDK NTCG104LH104JT1"
+#    Один из "EPCOS 100K B57560G104F", "ATC Semitec 104GT-2",
+#    "ATC Semitec 104NT-4-R025H42G", "Generic 3950",
+#    "Honeywell 100K 135-104LAG-J01", "NTC 100K MGB18-104F39050L32",
+#    "SliceEngineering 450", или "TDK NTCG104LH104JT1".
 sensor_pin:
-#   Analog input pin connected to the thermistor. This parameter must
-#   be provided.
+#    Контакт аналогового входа, подключенный к термистору. Этот параметр должен
+#    быть предоставлен.
 #pullup_resistor: 4700
-#   The resistance (in ohms) of the pullup attached to the thermistor.
-#   The default is 4700 ohms.
+#    Сопротивление (в омах) подтяжки, подключенной к термистору.
+#    По умолчанию 4700 Ом.
 #inline_resistor: 0
-#   The resistance (in ohms) of an extra (not heat varying) resistor
-#   that is placed inline with the thermistor. It is rare to set this.
-#   The default is 0 ohms.
+#    Сопротивление (в омах) дополнительного (не изменяющего тепло) резистора.
+#    который устанавливается в линию с термистором. Это редко задается.
+#    По умолчанию 0 Ом.
 ```
 
-### Common temperature amplifiers
+### Усилители общей температуры
 
-Common temperature amplifiers. The following parameters are available in heater sections that use one of these sensors.
+Общие усилители температуры. Следующие параметры доступны в секциях нагревателей, использующих один из этих датчиков.
 
 ```
-sensor_type:
-#   One of "PT100 INA826", "AD595", "AD597", "AD8494", "AD8495",
-#   "AD8496", or "AD8497".
+тип_датчика:
+#    Один из "PT100 INA826", "AD595", "AD597", "AD8494", "AD8495",
+#    "AD8496" или "AD8497".
 sensor_pin:
-#   Analog input pin connected to the sensor. This parameter must be
-#   provided.
+#    Контакт аналогового входа, подключенный к датчику. Этот параметр должен быть
+#    предоставлен.
 #adc_voltage: 5.0
-#   The ADC comparison voltage (in Volts). The default is 5 volts.
+#    Напряжение сравнения АЦП (в вольтах). По умолчанию 5 вольт.
 #voltage_offset: 0
-#   The ADC voltage offset (in Volts). The default is 0.
+#    Смещение напряжения АЦП (в вольтах). По умолчанию 0.
 ```
 
-### Directly connected PT1000 sensor
+### Датчик PT1000 с прямым подключением
 
-Directly connected PT1000 sensor. The following parameters are available in heater sections that use one of these sensors.
+Датчик PT1000 с прямым подключением. Следующие параметры доступны в секциях нагревателей, использующих один из этих датчиков.
 
 ```
-sensor_type: PT1000
+тип_датчика: PT1000
 sensor_pin:
-#   Analog input pin connected to the sensor. This parameter must be
-#   provided.
+#    Контакт аналогового входа, подключенный к датчику. Этот параметр должен быть
+#    предоставлен.
 #pullup_resistor: 4700
-#   The resistance (in ohms) of the pullup attached to the sensor. The
-#   default is 4700 ohms.
+#    Сопротивление (в омах) подтягивающего устройства, подключенного к датчику. По
+#    по умолчанию составляет 4700 Ом.
 ```
 
-### MAXxxxxx temperature sensors
+### Датчики температуры MAXxxxxx
 
-MAXxxxxx serial peripheral interface (SPI) temperature based sensors. The following parameters are available in heater sections that use one of these sensor types.
+Датчики температуры на основе последовательного периферийного интерфейса (SPI) MAXxxxxx. Следующие параметры доступны в секциях нагревателей, использующих один из этих типов датчиков.
 
 ```
-sensor_type:
-#   One of "MAX6675", "MAX31855", "MAX31856", or "MAX31865".
+тип_датчика:
+# Один из "MAX6675", "MAX31855", "MAX31856" или "MAX31865".
 sensor_pin:
-#   The chip select line for the sensor chip. This parameter must be
-#   provided.
+# Линия выбора микросхемы для микросхемы датчика. Этот параметр должен быть
+# предоставлен.
 #spi_speed: 4000000
-#   The SPI speed (in hz) to use when communicating with the chip.
-#   The default is 4000000.
+# Скорость SPI (в гц), используемая при обмене данными с микросхемой.
+# По умолчанию 4000000.
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки SPI" для описания
+#    вышеуказанных параметров.
 #tc_type: K
 #tc_use_50Hz_filter: False
 #tc_averaging_count: 1
-#   The above parameters control the sensor parameters of MAX31856
-#   chips. The defaults for each parameter are next to the parameter
-#   name in the above list.
+# Вышеуказанные параметры управляют параметрами датчиков MAX31856
+#    микросхемы. Значения по умолчанию для каждого параметра находятся рядом с его
+#    в приведенном выше списке.
 #rtd_nominal_r: 100
 #rtd_reference_r: 430
 #rtd_num_of_wires: 2
 #rtd_use_50Hz_filter: False
-#   The above parameters control the sensor parameters of MAX31865
-#   chips. The defaults for each parameter are next to the parameter
-#   name in the above list.
+#    Вышеуказанные параметры управляют параметрами датчиков микросхемы MAX31865
+#    микросхемы. Значения по умолчанию для каждого параметра находятся рядом с его
+#    в приведенном выше списке.
 ```
 
-### BMP180/BMP280/BME280/BMP388/BME680 temperature sensor
+### Датчик температуры BMP180/BMP280/BME280/BMP388/BME680
 
-BMP180/BMP280/BME280/BMP388/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
+Датчики окружающей среды BMP180/BMP280/BME280/BMP388/BME680 с двухпроводным интерфейсом (I2C). Обратите внимание, что эти датчики не предназначены для использования с экструдерами и нагревателями, а скорее для мониторинга температуры окружающей среды (C), давления (гПа), относительной влажности и, в случае BME680, уровня газа. Смотрите [sample-macros.cfg](../config/sample-macros.cfg) для gcode_macro, который может использоваться для сообщения о давлении и влажности в дополнение к температуре.
 
 ```
-sensor_type: BME280
+тип_датчика: BME280
 #i2c_address:
-#   Default is 118 (0x76). The BMP180, BMP388 and some BME280 sensors
-#   have an address of 119 (0x77).
+#    По умолчанию 118 (0x76). Датчики BMP180, BMP388 и некоторые датчики BME280
+#    имеют адрес 119 (0x77).
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 ```
 
-### AHT10/AHT20/AHT21 temperature sensor
+### Датчик температуры AHT10/AHT20/AHT21
 
-AHT10/AHT20/AHT21 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C) and relative humidity. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report humidity in addition to temperature.
+Датчики окружающей среды AHT10/AHT20/AHT21 с двухпроводным интерфейсом (I2C). Обратите внимание, что эти датчики не предназначены для использования с экструдерами и нагревателями, а скорее для мониторинга температуры окружающей среды (C) и относительной влажности. Смотрите [sample-macros.cfg](../config/sample-macros.cfg) для макроса gcode_macro, который можно использовать для сообщения о влажности в дополнение к температуре.
 
 ```
-sensor_type: AHT10
-#   Also use AHT10 for AHT20 and AHT21 sensors.
+тип_датчика: AHT10
+#    Также используйте AHT10 для датчиков AHT20 и AHT21.
 #i2c_address:
-#   Default is 56 (0x38). Some AHT10 sensors give the option to use
-#   57 (0x39) by moving a resistor.
+#    По умолчанию 56 (0x38). Некоторые датчики AHT10 позволяют использовать.
+#    57 (0x39) путем перемещения резистора.
 #i2c_mcu:
 #i2c_bus:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 #aht10_report_time:
-#   Interval in seconds between readings. Default is 30, minimum is 5
+#    Интервал в секундах между считываниями. По умолчанию 30, минимум 5
 ```
 
-### HTU21D sensor
+### Датчик HTU21D
 
-HTU21D family two wire interface (I2C) environmental sensor. Note that this sensor is not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C) and relative humidity. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report humidity in addition to temperature.
+Датчик окружающей среды семейства HTU21D с двухпроводным интерфейсом (I2C). Обратите внимание, что этот датчик не предназначен для использования с экструдерами и нагревателями, а скорее для мониторинга температуры окружающей среды (C) и относительной влажности. Смотрите [sample-macros.cfg](../config/sample-macros.cfg) для макроса gcode_macro, который можно использовать для сообщения о влажности в дополнение к температуре.
 
 ```
-sensor_type:
-#   Must be "HTU21D" , "SI7013", "SI7020", "SI7021" or "SHT21"
+тип_датчика:
+#    Должно быть "HTU21D", "SI7013", "SI7020", "SI7021" или "SHT21".
 #i2c_address:
-#   Default is 64 (0x40).
+#    По умолчанию 64 (0x40).
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+# вышеуказанных параметров.
 #htu21d_hold_master:
-#   If the sensor can hold the I2C buf while reading. If True no other
-#   bus communication can be performed while reading is in progress.
-#   Default is False.
+#    Может ли датчик удерживать I2C buf во время чтения. Если True, то никакие другие
+#    обмен данными по шине не может осуществляться во время чтения.
+#    По умолчанию False.
 #htu21d_resolution:
-#   The resolution of temperature and humidity reading.
-#   Valid values are:
-#    'TEMP14_HUM12' -> 14bit for Temp and 12bit for humidity
-#    'TEMP13_HUM10' -> 13bit for Temp and 10bit for humidity
-#    'TEMP12_HUM08' -> 12bit for Temp and 08bit for humidity
-#    'TEMP11_HUM11' -> 11bit for Temp and 11bit for humidity
-#   Default is: "TEMP11_HUM11"
+#    Разрешение показаний температуры и влажности.
+#    Допустимые значения:
+#    'TEMP14_HUM12' -> 14 бит для температуры и 12 бит для влажности.
+#     'TEMP13_HUM10' -> 13 бит для температуры и 10 бит для влажности
+#     'TEMP12_HUM08' -> 12 бит для температуры и 08 бит для влажности
+#     'TEMP11_HUM11' -> 11 бит для температуры и 11 бит для влажности
+#    По умолчанию: "TEMP11_HUM11"
 #htu21d_report_time:
-#   Interval in seconds between readings. Default is 30
+#    Интервал в секундах между показаниями. По умолчанию 30
 ```
 
-### SHT3X sensor
+### Датчик SHT3X
 
-SHT3X family two wire interface (I2C) environmental sensor. These sensors have a range of -55~125 C, so are usable for e.g. chamber temperature monitoring. They can also function as simple fan/heater controllers.
+Датчики окружающей среды семейства SHT3X с двухпроводным интерфейсом (I2C). Эти датчики имеют диапазон -55~125 C, поэтому могут использоваться, например, для мониторинга температуры в камере. Они также могут работать в качестве простых контроллеров вентиляторов/нагревателей.
 
 ```
-sensor_type: SHT3X
+тип_датчика: SHT3X
 #i2c_address:
-#   Default is 68 (0x44).
+#    По умолчанию 68 (0x44).
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 ```
 
-### LM75 temperature sensor
+### Датчик температуры LM75
 
-LM75/LM75A two wire (I2C) connected temperature sensors. These sensors have a range of -55~125 C, so are usable for e.g. chamber temperature monitoring. They can also function as simple fan/heater controllers.
+Датчики температуры LM75/LM75A с двухпроводным подключением (I2C). Эти датчики имеют диапазон -55~125 C, поэтому могут использоваться, например, для контроля температуры в камере. Они также могут работать в качестве простых контроллеров вентиляторов/нагревателей.
 
 ```
-sensor_type: LM75
+тип_датчика: LM75
 #i2c_address:
-#   Default is 72 (0x48). Normal range is 72-79 (0x48-0x4F) and the 3
-#   low bits of the address are configured via pins on the chip
-#   (usually with jumpers or hard wired).
+#    По умолчанию 72 (0x48). Нормальный диапазон - 72-79 (0x48-0x4F), а 3
+#    младших бита адреса конфигурируются с помощью выводов на чипе
+#    (обычно с помощью перемычек или жесткого подключения).
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 #lm75_report_time:
-#   Interval in seconds between readings. Default is 0.8, with minimum
-#   0.5.
+#    Интервал в секундах между считываниями. По умолчанию 0,8, минимальное значение
+#    0.5.
 ```
 
-### Builtin micro-controller temperature sensor
+### Встроенный микроконтроллерный датчик температуры
 
-The atsam, atsamd, and stm32 micro-controllers contain an internal temperature sensor. One can use the "temperature_mcu" sensor to monitor these temperatures.
+Микроконтроллеры atsam, atsamd и stm32 содержат внутренний датчик температуры. Для мониторинга этих температур можно использовать датчик "temperature_mcu".
 
 ```
-sensor_type: temperature_mcu
+тип_датчика: temperature_mcu
 #sensor_mcu: mcu
-#   The micro-controller to read from. The default is "mcu".
+#    Микроконтроллер, с которого будет считываться информация. По умолчанию используется "mcu".
 #sensor_temperature1:
 #sensor_adc1:
-#   Specify the above two parameters (a temperature in Celsius and an
-#   ADC value as a float between 0.0 and 1.0) to calibrate the
-#   micro-controller temperature. This may improve the reported
-#   temperature accuracy on some chips. A typical way to obtain this
-#   calibration information is to completely remove power from the
-#   printer for a few hours (to ensure it is at the ambient
-#   temperature), then power it up and use the QUERY_ADC command to
-#   obtain an ADC measurement. Use some other temperature sensor on
-#   the printer to find the corresponding ambient temperature. The
-#   default is to use the factory calibration data on the
-#   micro-controller (if applicable) or the nominal values from the
-#   micro-controller specification.
+#    Укажите два вышеуказанных параметра (температуру в градусах Цельсия и
+#    значение АЦП в виде плавающей величины между 0,0 и 1,0) для калибровки
+#    температуры микроконтроллера. Это может улучшить заявленную
+#    точность температуры на некоторых чипах. Типичный способ получения этой
+#    калибровочной информации является полное отключение питания от
+#    принтера на несколько часов (чтобы убедиться, что он находится при температуре окружающей среды).
+#    температуре окружающей среды), затем включить его и использовать команду QUERY_ADC для
+#    получения измерений АЦП. Используйте какой-либо другой датчик температуры на
+#    принтера, чтобы найти соответствующую температуру окружающей среды. На сайте
+#    по умолчанию используются данные заводской калибровки на
+#    микроконтроллера (если применимо) или номинальные значения из
+#    спецификации микроконтроллера.
 #sensor_temperature2:
 #sensor_adc2:
-#   If sensor_temperature1/sensor_adc1 is specified then one may also
-#   specify sensor_temperature2/sensor_adc2 calibration data. Doing so
-#   may provide calibrated "temperature slope" information. The
-#   default is to use the factory calibration data on the
-#   micro-controller (if applicable) or the nominal values from the
-#   micro-controller specification.
+#    Если указаны sensor_temperature1/sensor_adc1, то можно также
+#    указать калибровочные данные sensor_temperature2/sensor_adc2. В этом случае
+#    может предоставить калиброванную информацию о "температурном наклоне". По
+#    по умолчанию используются заводские калибровочные данные на
+#    микроконтроллера (если применимо) или номинальные значения из
+#    спецификации микроконтроллера.
 ```
 
-### Host temperature sensor
+### Датчик температуры хоста
 
-Temperature from the machine (eg Raspberry Pi) running the host software.
+Температура от компьютера (например, Raspberry Pi), на котором запущено программное обеспечение хоста.
 
 ```
-sensor_type: temperature_host
+тип_датчика: температура_хоста
 #sensor_path:
-#   The path to temperature system file. The default is
-#   "/sys/class/thermal/thermal_zone0/temp" which is the temperature
-#   system file on a Raspberry Pi computer.
+#    Путь к системному файлу температуры. По умолчанию это.
+#    "/sys/class/thermal/thermal_zone0/temp", который является температурным
+#    системный файл на компьютере Raspberry Pi.
 ```
 
-### DS18B20 temperature sensor
+### Датчик температуры DS18B20
 
-DS18B20 is a 1-wire (w1) digital temperature sensor. Note that this sensor is not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C). These sensors have range up to 125 C, so are usable for e.g. chamber temperature monitoring. They can also function as simple fan/heater controllers. DS18B20 sensors are only supported on the "host mcu", e.g. the Raspberry Pi. The w1-gpio Linux kernel module must be installed.
+DS18B20 - это 1-проводной (w1) цифровой датчик температуры. Обратите внимание, что этот датчик не предназначен для использования с экструдерами и нагревателями, а скорее для контроля температуры окружающей среды (C). Эти датчики имеют диапазон до 125 C, поэтому их можно использовать, например, для контроля температуры в камере. Они также могут работать в качестве простых контроллеров вентиляторов/нагревателей. Датчики DS18B20 поддерживаются только на "главном микроконтроллере", например, Raspberry Pi. Необходимо установить модуль w1-gpio ядра Linux.
 
 ```
-sensor_type: DS18B20
+тип_датчика: DS18B20
 serial_no:
-#   Each 1-wire device has a unique serial number used to identify the device,
-#   usually in the format 28-031674b175ff. This parameter must be provided.
-#   Attached 1-wire devices can be listed using the following Linux command:
-#   ls /sys/bus/w1/devices/
+#    Каждое 1-проводное устройство имеет уникальный серийный номер, используемый для идентификации устройства,
+#    обычно в формате 28-031674b175ff. Этот параметр должен быть указан.
+#    Присоединенные 1-проводные устройства можно перечислить с помощью следующей команды Linux:
+#    ls /sys/bus/w1/devices/
 #ds18_report_time:
-#   Interval in seconds between readings. Default is 3.0, with a minimum of 1.0
+#    Интервал в секундах между считываниями. По умолчанию 3,0, минимум 1,0.
 #sensor_mcu:
-#   The micro-controller to read from. Must be the host_mcu
+#    Микроконтроллер, с которого будут считываться данные. Должен быть host_mcu
 ```
 
-### Combined temperature sensor
+### Комбинированный датчик температуры
 
-Combined temperature sensor is a virtual temperature sensor based on several other sensors. This sensor can be used with extruders, heater_generic and heater beds.
+Комбинированный датчик температуры - это виртуальный датчик температуры, основанный на нескольких других датчиках. Этот датчик можно использовать с экструдерами, нагревателем_generic и нагревателями.
 
 ```
-sensor_type: temperature_combined
+тип_датчика: температура_комбинированная
 #sensor_list:
-#   Must be provided. List of sensors to combine to new "virtual"
-#   sensor.
-#   E.g. 'temperature_sensor sensor1,extruder,heater_bed'
+#    Должен быть предоставлен. Список датчиков для объединения в новый "виртуальный"
+#    sensor.
+#    Например, 'temperature_sensor sensor1,extruder,heater_bed'
 #combination_method:
-#   Must be provided. Combination method used for the sensor.
-#   Available options are 'max', 'min', 'mean'.
+#    Должно быть указано. Метод объединения, используемый для датчика.
+#    Доступны следующие варианты: 'max', 'min', 'mean'.
 #maximum_deviation:
-#   Must be provided. Maximum permissible deviation between the sensors
-#   to combine (e.g. 5 degrees). To disable it, use a large value (e.g. 999.9)
+#    Должно быть указано. Максимально допустимое отклонение между датчиками.
+#    для объединения (например, 5 градусов). Чтобы отключить его, используйте большое значение (например, 999,9).
 ```
 
-## Fans
+## Вентиляторы
 
-### [fan]
+### [вентилятор]
 
-Print cooling fan.
+Вентилятор охлаждения печати.
 
 ```
 [fan]
 pin:
-#   Output pin controlling the fan. This parameter must be provided.
+#    Выходной контакт, управляющий вентилятором. Этот параметр должен быть предоставлен.
 #max_power: 1.0
-#   The maximum power (expressed as a value from 0.0 to 1.0) that the
-#   pin may be set to. The value 1.0 allows the pin to be set fully
-#   enabled for extended periods, while a value of 0.5 would allow the
-#   pin to be enabled for no more than half the time. This setting may
-#   be used to limit the total power output (over extended periods) to
-#   the fan. If this value is less than 1.0 then fan speed requests
-#   will be scaled between zero and max_power (for example, if
-#   max_power is .9 and a fan speed of 80% is requested then the fan
-#   power will be set to 72%). The default is 1.0.
+#    Максимальная мощность (выраженная в виде значения от 0,0 до 1,0), на которую может быть установлен
+#    пин может быть установлен. Значение 1.0 позволяет установить пин полностью
+#    включенным на длительное время, в то время как значение 0,5 позволяет
+#    пин быть включенным не более чем на половину времени. Эта настройка может
+#    может использоваться для ограничения общей выходной мощности (в течение длительного времени)
+#    вентилятора. Если это значение меньше 1,0, то запросы скорости вентилятора
+#    будут масштабироваться между нулем и max_power (например, если
+#    max_power равно .9 и запрашивается скорость вентилятора 80 %, то вентилятор
+#    мощность будет установлена на 72%). По умолчанию это значение равно 1,0.
 #shutdown_speed: 0
-#   The desired fan speed (expressed as a value from 0.0 to 1.0) if
-#   the micro-controller software enters an error state. The default
-#   is 0.
+#    Желаемая скорость вращения вентилятора (выражается в виде значения от 0,0 до 1,0), если
+#    программное обеспечение микроконтроллера перейдет в состояние ошибки. По умолчанию
+#    является 0.
 #cycle_time: 0.010
-#   The amount of time (in seconds) for each PWM power cycle to the
-#   fan. It is recommended this be 10 milliseconds or greater when
-#   using software based PWM. The default is 0.010 seconds.
+#    Количество времени (в секундах) для каждого цикла питания ШИМ для
+#    вентилятора. Рекомендуется, чтобы это время составляло 10 миллисекунд или больше, если
+#    использовании программного ШИМ. По умолчанию 0,010 секунды.
 #hardware_pwm: False
-#   Enable this to use hardware PWM instead of software PWM. Most fans
-#   do not work well with hardware PWM, so it is not recommended to
-#   enable this unless there is an electrical requirement to switch at
-#   very high speeds. When using hardware PWM the actual cycle time is
-#   constrained by the implementation and may be significantly
-#   different than the requested cycle_time. The default is False.
+#    Включите эту опцию, чтобы использовать аппаратный ШИМ вместо программного ШИМ. Большинство вентиляторов
+#    плохо работают с аппаратным ШИМ, поэтому не рекомендуется
+#    включать эту опцию, если только нет электрических требований к переключению на
+#    очень высоких скоростях. При использовании аппаратной ШИМ фактическое время цикла
+#    ограничивается реализацией и может значительно
+#    отличаться от запрошенного времени цикла. По умолчанию установлено значение False.
 #kick_start_time: 0.100
-#   Time (in seconds) to run the fan at full speed when either first
-#   enabling or increasing it by more than 50% (helps get the fan
-#   spinning). The default is 0.100 seconds.
+#    Время (в секундах) для запуска вентилятора на полную скорость при первом
+#    включении, либо увеличении ее более чем на 50 % (помогает заставить вентилятор
+#    вращаться). По умолчанию 0,100 секунды.
 #off_below: 0.0
-#   The minimum input speed which will power the fan (expressed as a
-#   value from 0.0 to 1.0). When a speed lower than off_below is
-#   requested the fan will instead be turned off. This setting may be
-#   used to prevent fan stalls and to ensure kick starts are
-#   effective. The default is 0.0.
+#    Минимальная входная скорость, при которой вентилятор будет работать (выражается в виде
+#    значение от 0.0 до 1.0). Если запрашивается скорость ниже, чем off_below
+#    запрашивается, вентилятор будет выключен. Эта настройка может быть
+#    использоваться для предотвращения остановки вентилятора и для обеспечения эффективного запуска
+#    эффективным. По умолчанию 0.0.
 #
-#   This setting should be recalibrated whenever max_power is adjusted.
-#   To calibrate this setting, start with off_below set to 0.0 and the
-#   fan spinning. Gradually lower the fan speed to determine the lowest
-#   input speed which reliably drives the fan without stalls. Set
-#   off_below to the duty cycle corresponding to this value (for
-#   example, 12% -> 0.12) or slightly higher.
+#    Эту настройку следует перекалибровать при каждом изменении max_power.
+#    Чтобы откалибровать эту настройку, начните с того, что off_below установлено на 0.0 и
+#    вращается вентилятор. Постепенно снижайте скорость вентилятора, чтобы определить самую низкую
+#    входной скорости, которая обеспечивает надежную работу вентилятора без застоев. Установите
+#    off_below на рабочий цикл, соответствующий этому значению (например.
+#    например, 12% -> 0,12) или немного выше.
 #tachometer_pin:
-#   Tachometer input pin for monitoring fan speed. A pullup is generally
-#   required. This parameter is optional.
+#    Входной контакт тахометра для контроля скорости вращения вентилятора. Подтягивание обычно
+#    требуется. Этот параметр необязателен.
 #tachometer_ppr: 2
-#   When tachometer_pin is specified, this is the number of pulses per
-#   revolution of the tachometer signal. For a BLDC fan this is
-#   normally half the number of poles. The default is 2.
+#    Если указан параметр tachometer_pin, это количество импульсов на один
+#    оборот сигнала тахометра. Для вентилятора BLDC это
+#    обычно половина числа полюсов. По умолчанию это 2.
 #tachometer_poll_interval: 0.0015
-#   When tachometer_pin is specified, this is the polling period of the
-#   tachometer pin, in seconds. The default is 0.0015, which is fast
-#   enough for fans below 10000 RPM at 2 PPR. This must be smaller than
-#   30/(tachometer_ppr*rpm), with some margin, where rpm is the
-#   maximum speed (in RPM) of the fan.
+#    Если указан tachometer_pin, это период опроса
+#    пина тахометра, в секундах. По умолчанию 0.0015, что достаточно быстро
+#    достаточно быстро для вентиляторов со скоростью менее 10000 об/мин при 2 PPR. Это значение должно быть меньше, чем
+#    30/(tachometer_ppr*rpm), с некоторым запасом, где rpm - это
+#    максимальная скорость (в оборотах в минуту) вентилятора.
 #enable_pin:
-#   Optional pin to enable power to the fan. This can be useful for fans
-#   with dedicated PWM inputs. Some of these fans stay on even at 0% PWM
-#   input. In such a case, the PWM pin can be used normally, and e.g. a
-#   ground-switched FET(standard fan pin) can be used to control power to
-#   the fan.
+#    Дополнительный контакт для включения питания вентилятора. Это может быть полезно для вентиляторов
+#    с выделенными ШИМ-входами. Некоторые из этих вентиляторов остаются включенными даже при 0% ШИМ
+#    на входе. В этом случае вывод PWM можно использовать нормально, и, например.
+#    переключаемый на землю FET (стандартный вывод вентилятора) может быть использован для управления питанием
+#    вентилятора.
 ```
 
 ### [heater_fan]
 
-Heater cooling fans (one may define any number of sections with a "heater_fan" prefix). A "heater fan" is a fan that will be enabled whenever its associated heater is active. By default, a heater_fan has a shutdown_speed equal to max_power.
+Вентиляторы охлаждения нагревателя (можно определить любое количество секций с префиксом "heater_fan"). Вентилятор нагревателя" - это вентилятор, который будет включен каждый раз, когда соответствующий ему нагреватель активен. По умолчанию вентилятор_нагревателя имеет скорость выключения, равную max_power.
 
 ```
 [heater_fan heatbreak_cooling_fan]
 #pin:
-#max_power:
+#макс_мощность:
 #shutdown_speed:
 #cycle_time:
 #hardware_pwm:
@@ -2582,24 +2656,24 @@ Heater cooling fans (one may define any number of sections with a "heater_fan" p
 #tachometer_ppr:
 #tachometer_poll_interval:
 #enable_pin:
-#   See the "fan" section for a description of the above parameters.
+#    Описание вышеуказанных параметров см. в разделе "Вентилятор".
 #heater: extruder
-#   Name of the config section defining the heater that this fan is
-#   associated with. If a comma separated list of heater names is
-#   provided here, then the fan will be enabled when any of the given
-#   heaters are enabled. The default is "extruder".
+#    Имя секции конфигурации, определяющей нагреватель, с которым связан этот вентилятор.
+#    ассоциирован с ним. Если список имен нагревателей, разделенных запятой.
+#    указан, то вентилятор будет включен, когда любой из указанных
+#    нагревателей. По умолчанию используется "Экструдер".
 #heater_temp: 50.0
-#   A temperature (in Celsius) that the heater must drop below before
-#   the fan is disabled. The default is 50 Celsius.
+#    Температура (в градусах Цельсия), ниже которой должен опуститься нагреватель, прежде чем
+#    отключения вентилятора. По умолчанию 50 градусов Цельсия.
 #fan_speed: 1.0
-#   The fan speed (expressed as a value from 0.0 to 1.0) that the fan
-#   will be set to when its associated heater is enabled. The default
-#   is 1.0
+#    Скорость вентилятора (выраженная в виде значения от 0,0 до 1,0), которую вентилятор
+#    будет установлена при включении связанного с ним нагревателя. По умолчанию
+#    является 1.0
 ```
 
 ### [controller_fan]
 
-Controller cooling fan (one may define any number of sections with a "controller_fan" prefix). A "controller fan" is a fan that will be enabled whenever its associated heater or its associated stepper driver is active. The fan will stop whenever an idle_timeout is reached to ensure no overheating will occur after deactivating a watched component.
+Вентилятор охлаждения контроллера (можно определить любое количество секций с префиксом "controller_fan"). Вентилятор контроллера" - это вентилятор, который будет включен всякий раз, когда активен связанный с ним нагреватель или связанный с ним шаговый драйвер. Вентилятор будет останавливаться при достижении значения idle_timeout, чтобы исключить перегрев после отключения компонента, за которым ведется наблюдение.
 
 ```
 [controller_fan my_controller_fan]
@@ -2614,33 +2688,33 @@ Controller cooling fan (one may define any number of sections with a "controller
 #tachometer_ppr:
 #tachometer_poll_interval:
 #enable_pin:
-#   See the "fan" section for a description of the above parameters.
+#    Описание вышеуказанных параметров см. в разделе "Вентилятор".
 #fan_speed: 1.0
-#   The fan speed (expressed as a value from 0.0 to 1.0) that the fan
-#   will be set to when a heater or stepper driver is active.
-#   The default is 1.0
+#    Скорость вентилятора (выраженная в виде значения от 0.0 до 1.0), на которую вентилятор
+#    будет установлена, когда активен нагреватель или шаговый драйвер.
+#    По умолчанию 1.0
 #idle_timeout:
-#   The amount of time (in seconds) after a stepper driver or heater
-#   was active and the fan should be kept running. The default
-#   is 30 seconds.
+#    Количество времени (в секундах) после того, как шаговый драйвер или нагреватель
+#    был активен, и вентилятор должен продолжать работать. По умолчанию
+#    является 30 секунд.
 #idle_speed:
-#   The fan speed (expressed as a value from 0.0 to 1.0) that the fan
-#   will be set to when a heater or stepper driver was active and
-#   before the idle_timeout is reached. The default is fan_speed.
+#    Скорость вентилятора (выраженная в виде значения от 0,0 до 1,0), которую вентилятор
+#    будет установлена, если нагреватель или шаговый драйвер были активны и
+#    до достижения значения idle_timeout. По умолчанию используется значение fan_speed.
 #heater:
 #stepper:
-#   Name of the config section defining the heater/stepper that this fan
-#   is associated with. If a comma separated list of heater/stepper names
-#   is provided here, then the fan will be enabled when any of the given
-#   heaters/steppers are enabled. The default heater is "extruder", the
-#   default stepper is all of them.
+#    Имя секции конфигурации, определяющей нагреватель/шаговый вентилятор, с которым этот вентилятор
+#    связан с этим вентилятором. Если список имен нагревателей/шаговиков, разделенных запятой.
+#    указан здесь, то вентилятор будет включен, когда любой из указанных
+#    нагревателей/шаговиков. Нагревателем по умолчанию является "Экструдер", а
+#    шаговый по умолчанию - все.
 ```
 
 ### [temperature_fan]
 
-Temperature-triggered cooling fans (one may define any number of sections with a "temperature_fan" prefix). A "temperature fan" is a fan that will be enabled whenever its associated sensor is above a set temperature. By default, a temperature_fan has a shutdown_speed equal to max_power.
+Вентиляторы охлаждения с температурным триггером (можно определить любое количество секций с префиксом "temperature_fan"). Температурный вентилятор" - это вентилятор, который будет включаться всякий раз, когда температура соответствующего датчика будет выше заданной. По умолчанию у вентилятора temperature_fan скорость выключения равна max_power.
 
-See the [command reference](G-Codes.md#temperature_fan) for additional information.
+Дополнительную информацию см. в [справочнике команд](G-Codes.md#temperature_fan).
 
 ```
 [temperature_fan my_temp_fan]
@@ -2655,48 +2729,48 @@ See the [command reference](G-Codes.md#temperature_fan) for additional informati
 #tachometer_ppr:
 #tachometer_poll_interval:
 #enable_pin:
-#   See the "fan" section for a description of the above parameters.
+#    Описание вышеуказанных параметров см. в разделе "Вентилятор".
 #sensor_type:
 #sensor_pin:
 #control:
 #max_delta:
 #min_temp:
 #max_temp:
-#   See the "extruder" section for a description of the above parameters.
+#    Описание вышеуказанных параметров см. в разделе "Экструдер".
 #pid_Kp:
 #pid_Ki:
 #pid_Kd:
-#   The proportional (pid_Kp), integral (pid_Ki), and derivative
-#   (pid_Kd) settings for the PID feedback control system. Klipper
-#   evaluates the PID settings with the following general formula:
-#     fan_pwm = max_power - (Kp*e + Ki*integral(e) - Kd*derivative(e)) / 255
-#   Where "e" is "target_temperature - measured_temperature" and
-#   "fan_pwm" is the requested fan rate with 0.0 being full off and
-#   1.0 being full on. The pid_Kp, pid_Ki, and pid_Kd parameters must
-#   be provided when the PID control algorithm is enabled.
+#    Пропорциональная (pid_Kp), интегральная (pid_Ki) и производная
+#    (pid_Kd) настройки для системы управления с обратной связью PID. Клиппер
+#    оценивает настройки ПИД-регулятора по следующей общей формуле:
+#    fan_pwm = max_power - (Kp*e + Ki*integral(e) - Kd*derivative(e)) / 255
+#    Где "e" - это "целевая_температура - измеренная_температура" и
+#    "fan_pwm" - запрашиваемая частота вращения вентилятора, где 0.0 - полное выключение, а
+#    1.0 - полное включение. Параметры pid_Kp, pid_Ki и pid_Kd должны быть
+#    должны быть заданы, если включен алгоритм ПИД-регулирования.
 #pid_deriv_time: 2.0
-#   A time value (in seconds) over which temperature measurements will
-#   be smoothed when using the PID control algorithm. This may reduce
-#   the impact of measurement noise. The default is 2 seconds.
+#    Значение времени (в секундах), в течение которого измерения температуры будут
+#    сглаживаться при использовании алгоритма ПИД-регулирования. Это может уменьшить
+#    влияние шума при измерениях. По умолчанию установлено значение 2 секунды.
 #target_temp: 40.0
-#   A temperature (in Celsius) that will be the target temperature.
-#   The default is 40 degrees.
+#    Температура (в градусах Цельсия), которая будет целевой температурой.
+#    По умолчанию - 40 градусов.
 #max_speed: 1.0
-#   The fan speed (expressed as a value from 0.0 to 1.0) that the fan
-#   will be set to when the sensor temperature exceeds the set value.
-#   The default is 1.0.
+#    Скорость вращения вентилятора (выраженная в виде значения от 0,0 до 1,0), на которую вентилятор
+#    будет установлена, когда температура датчика превысит заданное значение.
+#    По умолчанию 1.0.
 #min_speed: 0.3
-#   The minimum fan speed (expressed as a value from 0.0 to 1.0) that
-#   the fan will be set to for PID temperature fans.
-#   The default is 0.3.
+#    Минимальная скорость вентилятора (выраженная в виде значения от 0,0 до 1,0), на которую
+#    будет установлена для вентиляторов с ПИД-регулятором температуры.
+#    По умолчанию 0.3.
 #gcode_id:
-#   If set, the temperature will be reported in M105 queries using the
-#   given id. The default is to not report the temperature via M105.
+#    Если задано, температура будет сообщаться в запросах M105 с использованием
+#    заданный идентификатор. По умолчанию температура не сообщается через M105.
 ```
 
 ### [fan_generic]
 
-Manually controlled fan (one may define any number of sections with a "fan_generic" prefix). The speed of a manually controlled fan is set with the SET_FAN_SPEED [gcode command](G-Codes.md#fan_generic).
+Вентилятор с ручным управлением (можно определить любое количество секций с префиксом "fan_generic"). Скорость вентилятора с ручным управлением задается командой SET_FAN_SPEED [gcode](G-Codes.md#fan_generic).
 
 ```
 [fan_generic extruder_partfan]
@@ -2711,14 +2785,14 @@ Manually controlled fan (one may define any number of sections with a "fan_gener
 #tachometer_ppr:
 #tachometer_poll_interval:
 #enable_pin:
-#   See the "fan" section for a description of the above parameters.
+#    Описание вышеуказанных параметров см. в разделе "Вентилятор".
 ```
 
 ## LEDs
 
 ### [led]
 
-Support for LEDs (and LED strips) controlled via micro-controller PWM pins (one may define any number of sections with an "led" prefix). See the [command reference](G-Codes.md#led) for more information.
+Поддержка светодиодов (и светодиодных лент), управляемых через ШИМ-штырьки микроконтроллера (можно задать любое количество секций с префиксом "led"). Дополнительную информацию см. в [справочнике команд](G-Codes.md#led).
 
 ```
 [led my_led]
@@ -2726,346 +2800,346 @@ Support for LEDs (and LED strips) controlled via micro-controller PWM pins (one 
 #green_pin:
 #blue_pin:
 #white_pin:
-#   The pin controlling the given LED color. At least one of the above
-#   parameters must be provided.
+#    Контакт, управляющий заданным цветом светодиода. Хотя бы один из перечисленных выше
+#    параметров должно быть указано.
 #cycle_time: 0.010
-#   The amount of time (in seconds) per PWM cycle. It is recommended
-#   this be 10 milliseconds or greater when using software based PWM.
-#   The default is 0.010 seconds.
+#    Количество времени (в секундах) на один цикл ШИМ. Рекомендуется.
+#    это время должно быть 10 миллисекунд или больше, если используется программный ШИМ.
+#    По умолчанию 0,010 секунды.
 #hardware_pwm: False
-#   Enable this to use hardware PWM instead of software PWM. When
-#   using hardware PWM the actual cycle time is constrained by the
-#   implementation and may be significantly different than the
-#   requested cycle_time. The default is False.
+#    Включите эту опцию, чтобы использовать аппаратный ШИМ вместо программного. Когда
+#    использовании аппаратной ШИМ фактическое время цикла ограничивается
+#    реализацией и может значительно отличаться от
+#    запрошенного времени цикла. По умолчанию установлено значение False.
 #initial_RED: 0.0
 #initial_GREEN: 0.0
 #initial_BLUE: 0.0
 #initial_WHITE: 0.0
-#   Sets the initial LED color. Each value should be between 0.0 and
-#   1.0. The default for each color is 0.
+#    Устанавливает начальный цвет светодиода. Каждое значение должно находиться в диапазоне от 0,0 до
+#    1.0. По умолчанию для каждого цвета установлено значение 0.
 ```
 
-### [neopixel]
+### [неопиксель]
 
-Neopixel (aka WS2812) LED support (one may define any number of sections with a "neopixel" prefix). See the [command reference](G-Codes.md#led) for more information.
+Поддержка неопиксельных (они же WS2812) светодиодов (можно задать любое количество секций с префиксом "neopixel"). Дополнительную информацию см. в [справочнике команд](G-Codes.md#led).
 
-Note that the [linux mcu](RPi_microcontroller.md) implementation does not currently support directly connected neopixels. The current design using the Linux kernel interface does not allow this scenario because the kernel GPIO interface is not fast enough to provide the required pulse rates.
+Обратите внимание, что реализация [linux mcu](RPi_microcontroller.md) в настоящее время не поддерживает напрямую подключенные неопиксели. Текущая конструкция, использующая интерфейс ядра Linux, не позволяет реализовать этот сценарий, поскольку интерфейс GPIO ядра недостаточно быстр для обеспечения требуемой частоты импульсов.
 
 ```
-[neopixel my_neopixel]
+[neopixel my_neopixel].
 pin:
-#   The pin connected to the neopixel. This parameter must be
-#   provided.
+#    Контакт, подключенный к неопикселю. Этот параметр должен быть
+#    предоставлен.
 #chain_count:
-#   The number of Neopixel chips that are "daisy chained" to the
-#   provided pin. The default is 1 (which indicates only a single
-#   Neopixel is connected to the pin).
+#    Количество чипов Neopixel, которые "соединены в цепочку" с
+#    указанному пину. По умолчанию равно 1 (что означает, что только один
+#    Neopixel подключен к пину).
 #color_order: GRB
-#   Set the pixel order required by the LED hardware (using a string
-#   containing the letters R, G, B, W with W optional). Alternatively,
-#   this may be a comma separated list of pixel orders - one for each
-#   LED in the chain. The default is GRB.
+#    Устанавливает порядок пикселей, требуемый аппаратным обеспечением светодиода (используется строка
+#    содержащей буквы R, G, B, W, причём W необязательно). В качестве альтернативы,
+#    это может быть разделенный запятыми список порядков пикселей - по одному для каждого
+#    светодиодов в цепочке. По умолчанию используется GRB.
 #initial_RED: 0.0
 #initial_GREEN: 0.0
 #initial_BLUE: 0.0
 #initial_WHITE: 0.0
-#   See the "led" section for information on these parameters.
+#    Информацию об этих параметрах см. в разделе "led".
 ```
 
 ### [dotstar]
 
-Dotstar (aka APA102) LED support (one may define any number of sections with a "dotstar" prefix). See the [command reference](G-Codes.md#led) for more information.
+Поддержка светодиодов Dotstar (aka APA102) (можно задать любое количество секций с префиксом "dotstar"). Дополнительную информацию см. в [справочнике команд](G-Codes.md#led).
 
 ```
 [dotstar my_dotstar]
 data_pin:
-#   The pin connected to the data line of the dotstar. This parameter
-#   must be provided.
+#    Контакт, подключенный к линии данных дотстара. Этот параметр
+#    должен быть указан.
 clock_pin:
-#   The pin connected to the clock line of the dotstar. This parameter
-#   must be provided.
+#    Контакт, подключенный к тактовой линии дотстара. Этот параметр
+#    должен быть указан.
 #chain_count:
-#   See the "neopixel" section for information on this parameter.
+#    Информацию об этом параметре см. в разделе "Неопиксели".
 #initial_RED: 0.0
 #initial_GREEN: 0.0
 #initial_BLUE: 0.0
-#   See the "led" section for information on these parameters.
+#    Информацию об этих параметрах см. в разделе "led".
 ```
 
 ### [pca9533]
 
-PCA9533 LED support. The PCA9533 is used on the mightyboard.
+Поддержка светодиодов PCA9533. PCA9533 используется на плате mightyboard.
 
 ```
 [pca9533 my_pca9533]
 #i2c_address: 98
-#   The i2c address that the chip is using on the i2c bus. Use 98 for
-#   the PCA9533/1, 99 for the PCA9533/2. The default is 98.
+#    Адрес i2c, который чип использует на шине i2c. Используйте 98 для
+#    PCA9533/1, 99 - для PCA9533/2. По умолчанию используется 98.
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 #initial_RED: 0.0
 #initial_GREEN: 0.0
 #initial_BLUE: 0.0
 #initial_WHITE: 0.0
-#   See the "led" section for information on these parameters.
+#    Информацию об этих параметрах см. в разделе "led".
 ```
 
 ### [pca9632]
 
-PCA9632 LED support. The PCA9632 is used on the FlashForge Dreamer.
+Поддержка светодиодов PCA9632. PCA9632 используется в FlashForge Dreamer.
 
 ```
 [pca9632 my_pca9632]
 #i2c_address: 98
-#   The i2c address that the chip is using on the i2c bus. This may be
-#   96, 97, 98, or 99.  The default is 98.
+#    Адрес i2c, который чип использует на шине i2c. Это может быть
+#    96, 97, 98 или 99.  По умолчанию это 98.
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 #scl_pin:
 #sda_pin:
-#   Alternatively, if the pca9632 is not connected to a hardware I2C
-#   bus, then one may specify the "clock" (scl_pin) and "data"
-#   (sda_pin) pins. The default is to use hardware I2C.
+#    Альтернативный вариант, если pca9632 не подключен к аппаратной I2C
+#    шине, то можно указать "часы" (scl_pin) и "данные"
+#    (sda_pin). По умолчанию используется аппаратный I2C.
 #color_order: RGBW
-#   Set the pixel order of the LED (using a string containing the
-#   letters R, G, B, W). The default is RGBW.
+#    Устанавливает порядок пикселей светодиода (используя строку, содержащую
+#    буквы R, G, B, W). По умолчанию используется RGBW.
 #initial_RED: 0.0
 #initial_GREEN: 0.0
 #initial_BLUE: 0.0
 #initial_WHITE: 0.0
-#   See the "led" section for information on these parameters.
+#    Информацию об этих параметрах см. в разделе "led".
 ```
 
-## Additional servos, buttons, and other pins
+## Дополнительные сервоприводы, кнопки и другие контакты
 
-### [servo]
+### [сервопривод]
 
-Servos (one may define any number of sections with a "servo" prefix). The servos may be controlled using the SET_SERVO [g-code command](G-Codes.md#servo). For example: SET_SERVO SERVO=my_servo ANGLE=180
+Сервоприводы (можно задать любое количество секций с префиксом "servo"). Сервоприводами можно управлять с помощью команды SET_SERVO [g-код](G-Codes.md#servo). Например: SET_SERVO SERVO=my_servo ANGLE=180
 
 ```
 [servo my_servo]
-pin:
-#   PWM output pin controlling the servo. This parameter must be
-#   provided.
+пин:
+#    ШИМ-выход, управляющий сервоприводом. Этот параметр должен быть
+#    предоставлен.
 #maximum_servo_angle: 180
-#   The maximum angle (in degrees) that this servo can be set to. The
-#   default is 180 degrees.
+#    Максимальный угол (в градусах), на который может быть установлен данный сервопривод. По
+#    по умолчанию составляет 180 градусов.
 #minimum_pulse_width: 0.001
-#   The minimum pulse width time (in seconds). This should correspond
-#   with an angle of 0 degrees. The default is 0.001 seconds.
+#    Минимальная длительность импульса (в секундах). Это должно соответствовать
+#    с углом в 0 градусов. По умолчанию 0,001 секунды.
 #maximum_pulse_width: 0.002
-#   The maximum pulse width time (in seconds). This should correspond
-#   with an angle of maximum_servo_angle. The default is 0.002
-#   seconds.
+#    Время максимальной ширины импульса (в секундах). Это должно соответствовать
+#    с углом maximum_servo_angle. По умолчанию 0,002
+#    секунд.
 #initial_angle:
-#   Initial angle (in degrees) to set the servo to. The default is to
-#   not send any signal at startup.
+#    Начальный угол (в градусах) для установки сервопривода. По умолчанию
+#    не посылать никаких сигналов при запуске.
 #initial_pulse_width:
-#   Initial pulse width time (in seconds) to set the servo to. (This
-#   is only valid if initial_angle is not set.) The default is to not
-#   send any signal at startup.
+#    Начальная длительность импульса (в секундах) для настройки сервопривода. (Это
+#    действует только в том случае, если не задан initial_angle). По умолчанию не
+#    посылать никаких сигналов при запуске.
 ```
 
 ### [gcode_button]
 
-Execute gcode when a button is pressed or released (or when a pin changes state). You can check the state of the button by using `QUERY_BUTTON button=my_gcode_button`.
+Выполняйте gcode при нажатии или отпускании кнопки (или при изменении состояния пина). Вы можете проверить состояние кнопки, используя `QUERY_BUTTON button=my_gcode_button`.
 
 ```
 [gcode_button my_gcode_button]
 pin:
-#   The pin on which the button is connected. This parameter must be
-#   provided.
+#    Контакт, к которому подключена кнопка. Этот параметр должен быть
+#    предоставлен.
 #analog_range:
-#   Two comma separated resistances (in Ohms) specifying the minimum
-#   and maximum resistance range for the button. If analog_range is
-#   provided then the pin must be an analog capable pin. The default
-#   is to use digital gpio for the button.
+#    Два сопротивления (в Омах), разделенные запятыми, указывающие минимальный
+#    и максимальный диапазон сопротивления для кнопки. Если параметр analog_range
+#    указан, то пин должен быть пином с аналоговой поддержкой. По умолчанию
+#    используется цифровой gpio для кнопки.
 #analog_pullup_resistor:
-#   The pullup resistance (in Ohms) when analog_range is specified.
-#   The default is 4700 ohms.
+#    Сопротивление подтяжки (в Омах), если указан аналоговый_диапазон.
+#    По умолчанию 4700 Ом.
 #press_gcode:
-#   A list of G-Code commands to execute when the button is pressed.
-#   G-Code templates are supported. This parameter must be provided.
+#    Список команд G-Code для выполнения при нажатии кнопки.
+#    Поддерживаются шаблоны G-кода. Этот параметр должен быть указан.
 #release_gcode:
-#   A list of G-Code commands to execute when the button is released.
-#   G-Code templates are supported. The default is to not run any
-#   commands on a button release.
+#    Список команд G-кода для выполнения при отпускании кнопки.
+#    Поддерживаются шаблоны G-кода. По умолчанию не выполняется ни одна
+#    команды при отпускании кнопки.
 ```
 
 ### [output_pin]
 
-Run-time configurable output pins (one may define any number of sections with an "output_pin" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1" type extended [g-code commands](G-Codes.md#output_pin).
+Конфигурируемые во время выполнения выходные пины (можно определить любое количество секций с префиксом "output_pin"). Сконфигурированные здесь пины будут настроены как выходные, и их можно будет изменить во время выполнения с помощью расширенных [команд g-кода] типа "SET_PIN PIN=my_pin VALUE=.1" (G-Codes.md#output_pin).
 
 ```
 [output_pin my_pin]
 pin:
-#   The pin to configure as an output. This parameter must be
-#   provided.
+#    Вывод для конфигурирования в качестве выхода. Этот параметр должен быть
+#    предоставлен.
 #pwm: False
-#   Set if the output pin should be capable of pulse-width-modulation.
-#   If this is true, the value fields should be between 0 and 1; if it
-#   is false the value fields should be either 0 or 1. The default is
-#   False.
+#    Устанавливает, должен ли выходной пин иметь возможность широтно-импульсной модуляции.
+#    Если этот параметр истинный, поля значений должны быть от 0 до 1; если он
+#    false, то поля значений должны быть либо 0, либо 1.    По умолчанию
+# False.
 #value:
-#   The value to initially set the pin to during MCU configuration.
-#   The default is 0 (for low voltage).
+#    Значение, на которое изначально устанавливается вывод при конфигурировании MCU.
+#    По умолчанию 0 (для низкого напряжения).
 #shutdown_value:
-#   The value to set the pin to on an MCU shutdown event. The default
-#   is 0 (for low voltage).
+#    Значение, на которое устанавливается вывод при событии выключения MCU. По умолчанию
+#    является 0 (для низкого напряжения).
 #cycle_time: 0.100
-#   The amount of time (in seconds) per PWM cycle. It is recommended
-#   this be 10 milliseconds or greater when using software based PWM.
-#   The default is 0.100 seconds for pwm pins.
+#    Количество времени (в секундах) на один цикл ШИМ. Рекомендуется.
+#    при использовании программного ШИМ это время должно быть 10 миллисекунд или больше.
+#    По умолчанию 0,100 секунды для pwm пинов.
 #hardware_pwm: False
-#   Enable this to use hardware PWM instead of software PWM. When
-#   using hardware PWM the actual cycle time is constrained by the
-#   implementation and may be significantly different than the
-#   requested cycle_time. The default is False.
+#    Включите эту опцию, чтобы использовать аппаратный ШИМ вместо программного. Когда
+#    использовании аппаратной ШИМ фактическое время цикла ограничивается
+#    реализацией и может значительно отличаться от
+#    запрошенного времени цикла. По умолчанию установлено значение False.
 #scale:
-#   This parameter can be used to alter how the 'value' and
-#   'shutdown_value' parameters are interpreted for pwm pins. If
-#   provided, then the 'value' parameter should be between 0.0 and
-#   'scale'. This may be useful when configuring a PWM pin that
-#   controls a stepper voltage reference. The 'scale' can be set to
-#   the equivalent stepper amperage if the PWM were fully enabled, and
-#   then the 'value' parameter can be specified using the desired
-#   amperage for the stepper. The default is to not scale the 'value'
-#   parameter.
+#    Этот параметр можно использовать для изменения того, как параметры 'value' и
+#    'shutdown_value' интерпретируются для pwm пинов. Если
+#    указан, то параметр 'value' должен быть между 0.0 и
+#    'scale'. Это может быть полезно при настройке вывода ШИМ, который
+#    управляет опорным напряжением шагового двигателя. Параметр 'scale' может быть установлен в значение
+#    эквивалентную силу тока шагового двигателя, если бы ШИМ был полностью включен, и
+#    затем параметр 'value' можно задать, используя желаемую
+#    ампераж для шагового двигателя. По умолчанию параметр 'value' не масштабируется.
+#    параметр.
 #maximum_mcu_duration:
 #static_value:
-#   These options are deprecated and should no longer be specified.
+#    Эти параметры устарели и больше не должны указываться.
 ```
 
 ### [pwm_tool]
 
-Pulse width modulation digital output pins capable of high speed updates (one may define any number of sections with an "output_pin" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1" type extended [g-code commands](G-Codes.md#output_pin).
+Цифровые выходные контакты с широтно-импульсной модуляцией, способные к высокоскоростному обновлению (можно определить любое количество секций с префиксом "output_pin"). Сконфигурированные здесь пины будут настроены как выходные, и их можно будет изменить во время выполнения программы с помощью расширенных типа "SET_PIN PIN=my_pin VALUE=.1"[команд g-кода](G-Codes.md#output_pin).
 
 ```
 [pwm_tool my_tool]
 pin:
-#   The pin to configure as an output. This parameter must be provided.
+#    Контакт для конфигурирования в качестве выхода. Этот параметр должен быть указан.
 #maximum_mcu_duration:
-#   The maximum duration a non-shutdown value may be driven by the MCU
-#   without an acknowledge from the host.
-#   If host can not keep up with an update, the MCU will shutdown
-#   and set all pins to their respective shutdown values.
-#   Default: 0 (disabled)
-#   Usual values are around 5 seconds.
+#    Максимальное время, в течение которого MCU может управлять не выключенным значением.
+#    без подтверждения от хоста.
+#    Если хост не успевает за обновлением, MCU выключится
+#    и установит все пины в соответствующие значения отключения.
+#    По умолчанию: 0 (отключено)
+#    Обычные значения составляют около 5 секунд.
 #value:
 #shutdown_value:
 #cycle_time: 0.100
 #hardware_pwm: False
 #scale:
-#   See the "output_pin" section for the definition of these parameters.
+#    Определение этих параметров см. в разделе "output_pin".
 ```
 
 ### Цикл PWM
 
-Run-time configurable output pins with dynamic pwm cycle timing (one may define any number of sections with an "pwm_cycle_time" prefix). Pins configured here will be setup as output pins and one may modify them at run-time using "SET_PIN PIN=my_pin VALUE=.1 CYCLE_TIME=0.100" type extended [g-code commands](G-Codes.md#pwm_cycle_time).
+Конфигурируемые во время выполнения выходные пины с динамической синхронизацией циклов pwm (можно определить любое количество секций с префиксом "pwm_cycle_time"). Сконфигурированные здесь пины будут настроены как выходные, и их можно будет изменять во время выполнения с помощью расширенных [команд g-кода] типа "SET_PIN PIN=my_pin VALUE=.1 CYCLE_TIME=0.100" (G-Codes.md#pwm_cycle_time).
 
 ```
 [pwm_cycle_time my_pin]
-pin:
-#value:
-#shutdown_value:
+пин:
+#значение:
+#выключение_значения:
 #cycle_time: 0.100
 #scale:
-#   See the "output_pin" section for information on these parameters.
+#    Информацию об этих параметрах см. в разделе "output_pin".
 ```
 
 ### [static_digital_output]
 
-Statically configured digital output pins (one may define any number of sections with a "static_digital_output" prefix). Pins configured here will be setup as a GPIO output during MCU configuration. They can not be changed at run-time.
+Статически сконфигурированные цифровые выходные контакты (можно определить любое количество секций с префиксом "static_digital_output"). Настроенные здесь выводы будут установлены как выводы GPIO во время конфигурирования MCU. Они не могут быть изменены во время выполнения программы.
 
 ```
 [static_digital_output my_output_pins]
 pins:
-#   A comma separated list of pins to be set as GPIO output pins. The
-#   pin will be set to a high level unless the pin name is prefaced
-#   with "!". This parameter must be provided.
+#    Список выводов, которые будут установлены в качестве выходных выводов GPIO, разделенный запятыми. Пины
+#    пин будет установлен на высокий уровень, если перед именем пина не стоит
+#    с "!". Этот параметр должен быть указан.
 ```
 
 ### [multi_pin]
 
-Multiple pin outputs (one may define any number of sections with a "multi_pin" prefix). A multi_pin output creates an internal pin alias that can modify multiple output pins each time the alias pin is set. For example, one could define a "[multi_pin my_fan]" object containing two pins and then set "pin=multi_pin:my_fan" in the "[fan]" section - on each fan change both output pins would be updated. These aliases may not be used with stepper motor pins.
+Многоконтактные выходы (можно определить любое количество секций с префиксом "multi_pin"). Выход multi_pin создает внутренний псевдоним пина, который может изменять несколько выходных пинов каждый раз, когда устанавливается псевдоним пина. Например, можно определить объект "[multi_pin my_fan]", содержащий два вывода, а затем задать "pin=multi_pin:my_fan" в секции "[fan]" - при каждом изменении вентилятора оба вывода будут обновляться. Эти псевдонимы нельзя использовать с контактами шагового двигателя.
 
 ```
-[multi_pin my_multi_pin]
+[multi_pin my_multi_pin].
 pins:
-#   A comma separated list of pins associated with this alias. This
-#   parameter must be provided.
+#    Список пинов, связанных с этим псевдонимом, разделенный запятыми. Этот
+#    параметр должен быть указан.
 ```
 
-## TMC stepper driver configuration
+## Конфигурация шагового драйвера TMC
 
-Configuration of Trinamic stepper motor drivers in UART/SPI mode. Additional information is in the [TMC Drivers guide](TMC_Drivers.md) and in the [command reference](G-Codes.md#tmcxxxx).
+Конфигурация драйверов шаговых двигателей Trinamic в режиме UART/SPI. Дополнительная информация содержится в руководстве [TMC Drivers guide](TMC_Drivers.md) и в справочнике [command reference](G-Codes.md#tmcxxxx).
 
 ### [tmc2130]
 
-Configure a TMC2130 stepper motor driver via SPI bus. To use this feature, define a config section with a "tmc2130" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2130 stepper_x]").
+Конфигурирование драйвера шагового двигателя TMC2130 через шину SPI. Чтобы использовать эту функцию, определите секцию конфигурации с префиксом "tmc2130", за которым следует имя соответствующей секции конфигурации шагового двигателя (например, "[tmc2130 stepper_x]").
 
 ```
 [tmc2130 stepper_x]
 cs_pin:
-#   The pin corresponding to the TMC2130 chip select line. This pin
-#   will be set to low at the start of SPI messages and raised to high
-#   after the message completes. This parameter must be provided.
+#    Вывод, соответствующий линии выбора микросхемы TMC2130. Этот вывод
+#    будет установлен в низкий уровень в начале SPI-сообщения и поднят в высокий уровень
+#    после завершения сообщения. Этот параметр должен быть указан.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки SPI" для описания
+#    вышеуказанных параметров.
 #chain_position:
 #chain_length:
-#   These parameters configure an SPI daisy chain. The two parameters
-#   define the stepper position in the chain and the total chain length.
-#   Position 1 corresponds to the stepper that connects to the MOSI signal.
-#   The default is to not use an SPI daisy chain.
+#    Эти параметры конфигурируют последовательную цепочку SPI. Два параметра
+#    определяют позицию шаговика в цепи и общую длину цепи.
+#    Позиция 1 соответствует шаговику, который подключается к сигналу MOSI.
+#    По умолчанию SPI-цепочка не используется.
 #interpolate: True
-#   If true, enable step interpolation (the driver will internally
-#   step at a rate of 256 micro-steps). This interpolation does
-#   introduce a small systemic positional deviation - see
-#   TMC_Drivers.md for details. The default is True.
+#    Если true, включите интерполяцию шагов (драйвер будет внутренне
+#    шагать с частотой 256 микрошагов). Такая интерполяция
+#    вносит небольшое систематическое отклонение позиционирования - см.
+#    TMC_Drivers.md для получения подробной информации. По умолчанию установлено значение True.
 run_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   during stepper movement. This parameter must be provided.
+#    Количество тока (в амперах RMS) для настройки драйвера на использование
+#    во время движения шагового механизма. Этот параметр должен быть указан.
 #hold_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   when the stepper is not moving. Setting a hold_current is not
-#   recommended (see TMC_Drivers.md for details). The default is to
-#   not reduce the current.
+#    Величина тока (в амперах RMS) для настройки драйвера на использование.
+#    когда шаговик не движется. Установка параметра hold_current не
+#    рекомендуется (подробности см. в TMC_Drivers.md). По умолчанию
+#    не уменьшать ток.
 #sense_resistor: 0.110
-#   The resistance (in ohms) of the motor sense resistor. The default
-#   is 0.110 ohms.
+#    Сопротивление (в омах) резистора чувства двигателя. По умолчанию
+#    является 0,110 Ом.
 #stealthchop_threshold: 0
-#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
-#   set, "stealthChop" mode will be enabled if the stepper motor
-#   velocity is below this value. The default is 0, which disables
-#   "stealthChop" mode.
+#    Скорость (в мм/с), на которую устанавливается порог "stealthChop". Когда
+#    установлен, режим "stealthChop" будет включен, если скорость шагового двигателя
+#    скорость ниже этого значения. По умолчанию установлено значение 0, которое отключает
+#    режим "stealthChop".
 #coolstep_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
-#   threshold to. If set, the coolstep feature will be enabled when
-#   the stepper motor velocity is near or above this value. Important
-#   - if coolstep_threshold is set and "sensorless homing" is used,
-#   then one must ensure that the homing speed is above the coolstep
-#   threshold! The default is to not enable the coolstep feature.
+#    Скорость (в мм/с) для установки внутреннего "CoolStep" драйвера TMC.
+#    порог. Если установлено, функция "Coolstep" будет включена, когда
+#    скорость шагового двигателя близка к этому значению или превышает его. Важно
+#    - если установлен порог coolstep_threshold и используется "бессенсорное наведение",
+#    то необходимо убедиться, что скорость самонаведения выше порога coolstep
+#    порога! По умолчанию функция coolstep не включена.
 #high_velocity_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "high
-#   velocity" threshold (THIGH) to. This is typically used to disable
-#   the "CoolStep" feature at high speeds. The default is to not set a
-#   TMC "high velocity" threshold.
+#    Скорость (в мм/с) для установки внутреннего "высокого порога" драйвера TMC
+#    порог высокой скорости" (THIGH). Обычно это используется для отключения
+#    функции "CoolStep" на высоких скоростях. По умолчанию не устанавливается
+#    порог "высокой скорости" TMC.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -3083,13 +3157,13 @@ run_current:
 #driver_X3: 255
 #driver_START_SIN: 0
 #driver_START_SIN90: 247
-#   These fields control the Microstep Table registers directly. The optimal
-#   wave table is specific to each motor and might vary with current. An
-#   optimal configuration will have minimal print artifacts caused by
-#   non-linear stepper movement. The values specified above are the default
-#   values used by the driver. The value must be specified as a decimal integer
-#   (hex form is not supported). In order to compute the wave table fields,
-#   see the tmc2130 "Calculation Sheet" from the Trinamic website.
+#    Эти поля управляют регистрами таблицы микрошагов напрямую. Оптимальная
+#    волновая таблица специфична для каждого двигателя и может меняться в зависимости от тока. На
+#    оптимальная конфигурация будет иметь минимальные артефакты печати, вызванные
+#    нелинейным движением шагового двигателя. Значения, указанные выше, являются значениями по умолчанию
+#    значения, используемые драйвером. Значение должно быть указано в виде целого десятичного числа
+#    (шестнадцатеричная форма не поддерживается). Для вычисления полей волновой таблицы,
+#    смотрите "Расчетную таблицу" tmc2130 с сайта Trinamic.
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 0
 #driver_TBL: 1
@@ -3109,61 +3183,61 @@ run_current:
 #driver_SEDN: 0
 #driver_SEIMIN: 0
 #driver_SFILT: 0
-#   Set the given register during the configuration of the TMC2130
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#    Установите данный регистр во время конфигурирования микросхемы TMC2130
+#    чипа. Это может быть использовано для установки пользовательских параметров двигателя. На
+#    значения по умолчанию для каждого параметра находятся рядом с названием параметра в
+#    вышеприведенном списке.
 #diag0_pin:
 #diag1_pin:
-#   The micro-controller pin attached to one of the DIAG lines of the
-#   TMC2130 chip. Only a single diag pin should be specified. The pin
-#   is "active low" and is thus normally prefaced with "^!". Setting
-#   this creates a "tmc2130_stepper_x:virtual_endstop" virtual pin
-#   which may be used as the stepper's endstop_pin. Doing this enables
-#   "sensorless homing". (Be sure to also set driver_SGT to an
-#   appropriate sensitivity value.) The default is to not enable
-#   sensorless homing.
+#    вывод микроконтроллера, подключенный к одной из линий DIAG микросхемы
+#    микросхемы TMC2130. Следует указывать только один вывод diag. Контакт
+#    является "активным низким" и поэтому обычно предваряется символом "^!". Установка
+#    это создает виртуальный пин "tmc2130_stepper_x:virtual_endstop"
+#    который может быть использован в качестве контакта endstop_pin шагового механизма. Это позволяет
+#    "бессенсорное наведение". (Не забудьте также установить для параметра driver_SGT
+#    соответствующее значение чувствительности). По умолчанию не включается
+#    бессенсорное наведение.
 ```
 
 ### [tmc2208]
 
-Configure a TMC2208 (or TMC2224) stepper motor driver via single wire UART. To use this feature, define a config section with a "tmc2208" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2208 stepper_x]").
+Настройка драйвера шагового двигателя TMC2208 (или TMC2224) через однопроводной UART. Чтобы использовать эту функцию, определите секцию конфигурации с префиксом "tmc2208", за которым следует имя соответствующей секции конфигурации шагового двигателя (например, "[tmc2208 stepper_x]").
 
 ```
 [tmc2208 stepper_x]
 uart_pin:
-#   The pin connected to the TMC2208 PDN_UART line. This parameter
-#   must be provided.
+#    Контакт, подключенный к линии TMC2208 PDN_UART. Этот параметр
+#    должен быть предоставлен.
 #tx_pin:
-#   If using separate receive and transmit lines to communicate with
-#   the driver then set uart_pin to the receive pin and tx_pin to the
-#   transmit pin. The default is to use uart_pin for both reading and
-#   writing.
+#    Если для связи с драйвером используются отдельные линии приема и передачи.
+#    драйвером, то установите uart_pin на вывод приема, а tx_pin - на вывод
+#    передаче. По умолчанию uart_pin используется как для чтения, так и для
+#    записи.
 #select_pins:
-#   A comma separated list of pins to set prior to accessing the
-#   tmc2208 UART. This may be useful for configuring an analog mux for
-#   UART communication. The default is to not configure any pins.
+#    Список выводов, разделенных запятыми, который необходимо установить перед доступом к
+#    tmc2208 UART. Это может быть полезно для настройки аналогового мукса для
+#    связи с UART. По умолчанию пины не задаются.
 #interpolate: True
-#   If true, enable step interpolation (the driver will internally
-#   step at a rate of 256 micro-steps). This interpolation does
-#   introduce a small systemic positional deviation - see
-#   TMC_Drivers.md for details. The default is True.
+#    Если true, включите пошаговую интерполяцию (драйвер будет внутренне
+#    шаг с частотой 256 микрошагов). Такая интерполяция
+#    вносит небольшое систематическое отклонение позиционирования - см.
+#   TMC_Drivers.md для получения подробной информации. По умолчанию установлено значение True.
 run_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   during stepper movement. This parameter must be provided.
+#    Количество тока (в амперах RMS) для настройки драйвера на использование
+#    во время движения шагового механизма. Этот параметр должен быть указан.
 #hold_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   when the stepper is not moving. Setting a hold_current is not
-#   recommended (see TMC_Drivers.md for details). The default is to
-#   not reduce the current.
+#    Количество тока (в амперах RMS) для настройки драйвера на использование.
+#    когда шаговик не движется. Установка параметра hold_current не
+#    рекомендуется (подробности см. в TMC_Drivers.md). По умолчанию
+#    не уменьшать ток.
 #sense_resistor: 0.110
-#   The resistance (in ohms) of the motor sense resistor. The default
-#   is 0.110 ohms.
+#    Сопротивление (в омах) резистора чувства двигателя. По умолчанию
+#    является 0,110 Ом.
 #stealthchop_threshold: 0
-#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
-#   set, "stealthChop" mode will be enabled if the stepper motor
-#   velocity is below this value. The default is 0, which disables
-#   "stealthChop" mode.
+#    Скорость (в мм/с), на которую устанавливается порог "stealthChop". Когда
+#    установлен, режим "stealthChop" будет включен, если скорость шагового двигателя
+#    скорость ниже этого значения. По умолчанию установлено значение 0, которое отключает
+#    режим "stealthChop".
 #driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 20
@@ -3178,15 +3252,15 @@ run_current:
 #driver_PWM_FREQ: 1
 #driver_PWM_GRAD: 14
 #driver_PWM_OFS: 36
-#   Set the given register during the configuration of the TMC2208
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#    Установите данный регистр во время конфигурирования микросхемы TMC2208
+#    чипа. Это может быть использовано для установки пользовательских параметров двигателя. На
+#    значения по умолчанию для каждого параметра находятся рядом с именем параметра в
+#    вышеприведенном списке.
 ```
 
 ### [tmc2209]
 
-Configure a TMC2209 stepper motor driver via single wire UART. To use this feature, define a config section with a "tmc2209" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2209 stepper_x]").
+Настройка драйвера шагового двигателя TMC2209 через однопроводной UART. Чтобы использовать эту функцию, определите секцию конфигурации с префиксом "tmc2209", за которым следует имя соответствующей секции конфигурации шагового двигателя (например, "[tmc2209 stepper_x]").
 
 ```
 [tmc2209 stepper_x]
@@ -3198,18 +3272,18 @@ run_current:
 #hold_current:
 #sense_resistor: 0.110
 #stealthchop_threshold: 0
-#   See the "tmc2208" section for the definition of these parameters.
+#    См. раздел "tmc2208" для определения этих параметров.
 #coolstep_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
-#   threshold to. If set, the coolstep feature will be enabled when
-#   the stepper motor velocity is near or above this value. Important
-#   - if coolstep_threshold is set and "sensorless homing" is used,
-#   then one must ensure that the homing speed is above the coolstep
-#   threshold! The default is to not enable the coolstep feature.
+#    Скорость (в мм/с) для установки внутреннего "CoolStep" драйвера TMC.
+#    порог. Если установлено, функция "Coolstep" будет включена, когда
+#    скорость шагового двигателя близка к этому значению или превышает его. Важно
+#    - если установлен порог coolstep_threshold и используется "бессенсорное наведение",
+#    то необходимо убедиться, что скорость самонаведения выше порога coolstep
+#    порога! По умолчанию функция coolstep не включена.
 #uart_address:
-#   The address of the TMC2209 chip for UART messages (an integer
-#   between 0 and 3). This is typically used when multiple TMC2209
-#   chips are connected to the same UART pin. The default is zero.
+#    Адрес микросхемы TMC2209 для сообщений UART (целое число
+#    от 0 до 3). Это обычно используется, когда несколько микросхем TMC2209
+#    микросхем подключены к одному выводу UART. По умолчанию - ноль.
 #driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 20
@@ -3230,61 +3304,61 @@ run_current:
 #driver_SEMAX: 0
 #driver_SEDN: 0
 #driver_SEIMIN: 0
-#   Set the given register during the configuration of the TMC2209
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#    Установите данный регистр во время конфигурирования микросхемы TMC2209
+#    чипа. Это может быть использовано для установки пользовательских параметров двигателя. На
+#    значения по умолчанию для каждого параметра находятся рядом с названием параметра в
+#    вышеприведенном списке.
 #diag_pin:
-#   The micro-controller pin attached to the DIAG line of the TMC2209
-#   chip. The pin is normally prefaced with "^" to enable a pullup.
-#   Setting this creates a "tmc2209_stepper_x:virtual_endstop" virtual
-#   pin which may be used as the stepper's endstop_pin. Doing this
-#   enables "sensorless homing". (Be sure to also set driver_SGTHRS to
-#   an appropriate sensitivity value.) The default is to not enable
-#   sensorless homing.
+#    вывод микроконтроллера, подключенный к линии DIAG микросхемы TMC2209.
+#    микросхемы. Перед выводом обычно ставится "^", чтобы включить подтягивание.
+#    Установка этого параметра создает виртуальный "tmc2209_stepper_x:virtual_endstop"
+#    вывод, который может быть использован в качестве конечного_контакта шаговика. При этом
+#    включает "бессенсорное наведение". (Не забудьте также установить для параметра driver_SGTHRS
+#    соответствующее значение чувствительности). По умолчанию не включается
+#    бессенсорное наведение.
 ```
 
 ### [tmc2660]
 
-Configure a TMC2660 stepper motor driver via SPI bus. To use this feature, define a config section with a tmc2660 prefix followed by the name of the corresponding stepper config section (for example, "[tmc2660 stepper_x]").
+Конфигурирование драйвера шагового двигателя TMC2660 через шину SPI. Чтобы использовать эту функцию, определите секцию конфигурации с префиксом tmc2660, за которым следует имя соответствующей секции конфигурации шагового двигателя (например, "[tmc2660 stepper_x]").
 
 ```
 [tmc2660 stepper_x]
 cs_pin:
-#   The pin corresponding to the TMC2660 chip select line. This pin
-#   will be set to low at the start of SPI messages and set to high
-#   after the message transfer completes. This parameter must be
-#   provided.
+#    Вывод, соответствующий линии выбора микросхемы TMC2660. Этот вывод
+#    будет установлен в низкий уровень в начале передачи SPI-сообщений и в высокий уровень
+#    после завершения передачи сообщения. Этот параметр должен быть
+#    предоставлен.
 #spi_speed: 4000000
-#   SPI bus frequency used to communicate with the TMC2660 stepper
-#   driver. The default is 4000000.
+#    Частота шины SPI, используемая для связи с шаговым механизмом TMC2660
+#    драйвером. По умолчанию - 4000000.
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки SPI" для описания
+#    вышеуказанных параметров.
 #interpolate: True
-#   If true, enable step interpolation (the driver will internally
-#   step at a rate of 256 micro-steps). This only works if microsteps
-#   is set to 16. Interpolation does introduce a small systemic
-#   positional deviation - see TMC_Drivers.md for details. The default
-#   is True.
+#    Если true, включите пошаговую интерполяцию (драйвер будет внутренне
+#    шагать с частотой 256 микрошагов). Это работает только в том случае, если параметр microsteps
+#    установлено значение 16. Интерполяция вносит небольшое системное
+#    позиционное отклонение - подробности см. в TMC_Drivers.md. По умолчанию
+# является True.
 run_current:
-#   The amount of current (in amps RMS) used by the driver during
-#   stepper movement. This parameter must be provided.
+#    Количество тока (в амперах RMS), используемого драйвером во время
+#    движения шаговика. Этот параметр должен быть предоставлен.
 #sense_resistor:
-#   The resistance (in ohms) of the motor sense resistor. This
-#   parameter must be provided.
+#    Сопротивление (в омах) резистора чувства двигателя. Этот
+#    параметр должен быть указан.
 #idle_current_percent: 100
-#   The percentage of the run_current the stepper driver will be
-#   lowered to when the idle timeout expires (you need to set up the
-#   timeout using a [idle_timeout] config section). The current will
-#   be raised again once the stepper has to move again. Make sure to
-#   set this to a high enough value such that the steppers do not lose
-#   their position. There is also small delay until the current is
-#   raised again, so take this into account when commanding fast moves
-#   while the stepper is idling. The default is 100 (no reduction).
+#    Процент от тока работы, на который будет опускаться драйвер шагового двигателя.
+#    снижаться, когда истечет таймаут холостого хода (необходимо настроить
+#    таймаут с помощью секции конфигурации [idle_timeout]). Ток будет
+#    будет снова повышен, как только шаговый механизм снова начнет двигаться. Убедитесь, что
+#    установить достаточно высокое значение, чтобы шаговики не потеряли
+#    свое положение. Существует также небольшая задержка, пока ток
+#    снова увеличится, так что учитывайте это при командовании быстрыми движениями
+#    во время холостого хода шагового механизма. По умолчанию установлено значение 100 (без уменьшения).
 #driver_TBL: 2
 #driver_RNDTF: 0
 #driver_HDEC: 0
@@ -3303,19 +3377,19 @@ run_current:
 #driver_SLPL: 0
 #driver_DISS2G: 0
 #driver_TS2G: 3
-#   Set the given parameter during the configuration of the TMC2660
-#   chip. This may be used to set custom driver parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   list above. See the TMC2660 datasheet about what each parameter
-#   does and what the restrictions on parameter combinations are. Be
-#   especially aware of the CHOPCONF register, where setting CHM to
-#   either zero or one will lead to layout changes (the first bit of
-#   HDEC) is interpreted as the MSB of HSTRT in this case).
+#    Установите данный параметр во время конфигурирования микросхемы TMC2660
+#    чипа. Это может быть использовано для установки пользовательских параметров драйвера. На
+#    значения по умолчанию для каждого параметра находятся рядом с его именем в
+#    списке выше. О том, что делает каждый параметр, смотрите в техническом описании TMC2660.
+#    и ограничения на комбинации параметров. Будьте
+#    особенно внимательны к регистру CHOPCONF, где установка CHM в
+#    либо в ноль, либо в единицу приведет к изменению схемы (первый бит
+#    HDEC) интерпретируется как MSB HSTRT в этом случае).
 ```
 
 ### [tmc2240]
 
-Configure a TMC2240 stepper motor driver via SPI bus or UART. To use this feature, define a config section with a "tmc2240" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2240 stepper_x]").
+Конфигурирование драйвера шагового двигателя TMC2240 через шину SPI или UART. Чтобы использовать эту функцию, определите секцию конфигурации с префиксом "tmc2240", за которым следует имя соответствующей секции конфигурации шагового двигателя (например, "[tmc2240 stepper_x]").
 
 ```
 [tmc2240 stepper_x]
@@ -3430,6 +3504,7 @@ run_current:
 #driver_SEIMIN: 0
 #driver_SFILT: 0
 #driver_SG4_ANGLE_OFFSET: 1
+#driver_SLOPE_CONTROL: 0
 #   Set the given register during the configuration of the TMC2240
 #   chip. This may be used to set custom motor parameters. The
 #   defaults for each parameter are next to the parameter name in the
@@ -3448,58 +3523,58 @@ run_current:
 
 ### [tmc5160]
 
-Configure a TMC5160 stepper motor driver via SPI bus. To use this feature, define a config section with a "tmc5160" prefix followed by the name of the corresponding stepper config section (for example, "[tmc5160 stepper_x]").
+Конфигурирование драйвера шагового двигателя TMC5160 через шину SPI. Чтобы использовать эту функцию, определите секцию конфигурации с префиксом "tmc5160", за которым следует имя соответствующей секции конфигурации шагового двигателя (например, "[tmc5160 stepper_x]").
 
 ```
 [tmc5160 stepper_x]
 cs_pin:
-#   The pin corresponding to the TMC5160 chip select line. This pin
-#   will be set to low at the start of SPI messages and raised to high
-#   after the message completes. This parameter must be provided.
+#    Вывод, соответствующий линии выбора микросхемы TMC5160. Этот вывод
+#    будет установлен в низкий уровень в начале SPI-сообщений и поднят в высокий уровень
+#    после завершения сообщения. Этот параметр должен быть указан.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки SPI" для описания
+#    вышеуказанных параметров.
 #chain_position:
 #chain_length:
-#   These parameters configure an SPI daisy chain. The two parameters
-#   define the stepper position in the chain and the total chain length.
-#   Position 1 corresponds to the stepper that connects to the MOSI signal.
-#   The default is to not use an SPI daisy chain.
+#    Эти параметры конфигурируют последовательную цепочку SPI. Два параметра
+#    определяют позицию шаговика в цепи и общую длину цепи.
+#    Позиция 1 соответствует шаговику, который подключается к сигналу MOSI.
+#    По умолчанию SPI-цепочка не используется.
 #interpolate: True
-#   If true, enable step interpolation (the driver will internally
-#   step at a rate of 256 micro-steps). The default is True.
+#    Если true, включите интерполяцию шагов (драйвер будет внутренне
+#    шагать с частотой 256 микрошагов). По умолчанию установлено значение True.
 run_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   during stepper movement. This parameter must be provided.
+#    Величина тока (в амперах RMS) для настройки драйвера на использование
+#    во время шагового движения. Этот параметр должен быть предоставлен.
 #hold_current:
-#   The amount of current (in amps RMS) to configure the driver to use
-#   when the stepper is not moving. Setting a hold_current is not
-#   recommended (see TMC_Drivers.md for details). The default is to
-#   not reduce the current.
+#    Величина тока (в амперах RMS) для настройки драйвера на использование.
+#    когда шаговик не движется. Установка параметра hold_current не
+#    рекомендуется (подробности см. в TMC_Drivers.md). По умолчанию
+#    не уменьшать ток.
 #sense_resistor: 0.075
-#   The resistance (in ohms) of the motor sense resistor. The default
-#   is 0.075 ohms.
+#    Сопротивление (в омах) резистора чувства двигателя. По умолчанию
+#    является 0,075 Ом.
 #stealthchop_threshold: 0
-#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
-#   set, "stealthChop" mode will be enabled if the stepper motor
-#   velocity is below this value. The default is 0, which disables
-#   "stealthChop" mode.
+#    Скорость (в мм/с), на которую устанавливается порог "stealthChop". Когда
+#    установлен, режим "stealthChop" будет включен, если скорость шагового двигателя
+#    скорость ниже этого значения. По умолчанию установлено значение 0, которое отключает
+#    режим "stealthChop".
 #coolstep_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
-#   threshold to. If set, the coolstep feature will be enabled when
-#   the stepper motor velocity is near or above this value. Important
-#   - if coolstep_threshold is set and "sensorless homing" is used,
-#   then one must ensure that the homing speed is above the coolstep
-#   threshold! The default is to not enable the coolstep feature.
+#    Скорость (в мм/с) для установки внутреннего "CoolStep" драйвера TMC.
+#    порог. Если установлено, функция "Coolstep" будет включена, когда
+#    скорость шагового двигателя близка к этому значению или превышает его. Важно
+#    - если установлен порог coolstep_threshold и используется "бессенсорное наведение",
+#    то необходимо убедиться, что скорость самонаведения выше порога coolstep
+#    порога! По умолчанию функция coolstep не включена.
 #high_velocity_threshold:
-#   The velocity (in mm/s) to set the TMC driver internal "high
-#   velocity" threshold (THIGH) to. This is typically used to disable
-#   the "CoolStep" feature at high speeds. The default is to not set a
-#   TMC "high velocity" threshold.
+#    Скорость (в мм/с) для установки внутреннего "высокого порога" драйвера TMC
+#    порог высокой скорости" (THIGH). Обычно это используется для отключения
+#    функции "CoolStep" на высоких скоростях. По умолчанию не устанавливается
+#    порог "высокой скорости" TMC.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -3517,13 +3592,13 @@ run_current:
 #driver_X3: 255
 #driver_START_SIN: 0
 #driver_START_SIN90: 247
-#   These fields control the Microstep Table registers directly. The optimal
-#   wave table is specific to each motor and might vary with current. An
-#   optimal configuration will have minimal print artifacts caused by
-#   non-linear stepper movement. The values specified above are the default
-#   values used by the driver. The value must be specified as a decimal integer
-#   (hex form is not supported). In order to compute the wave table fields,
-#   see the tmc2130 "Calculation Sheet" from the Trinamic website.
+#    Эти поля управляют регистрами таблицы микрошагов напрямую. Оптимальная
+#    волновая таблица специфична для каждого двигателя и может меняться в зависимости от тока. На
+#    оптимальная конфигурация будет иметь минимальные артефакты печати, вызванные
+#    нелинейным движением шагового двигателя. Значения, указанные выше, являются значениями по умолчанию
+#    значения, используемые драйвером. Значение должно быть указано в виде целого десятичного числа
+#    (шестнадцатеричная форма не поддерживается). Для вычисления полей волновой таблицы,
+#    смотрите "Расчетную таблицу" tmc2130 с сайта Trinamic.
 #driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 6
 #driver_TPOWERDOWN: 10
@@ -3557,182 +3632,183 @@ run_current:
 #driver_BBMCLKS: 4
 #driver_BBMTIME: 0
 #driver_FILT_ISENSE: 0
-#   Set the given register during the configuration of the TMC5160
-#   chip. This may be used to set custom motor parameters. The
-#   defaults for each parameter are next to the parameter name in the
-#   above list.
+#    Установите данный регистр во время конфигурирования микросхемы TMC5160
+#    микросхемы. Это может быть использовано для установки пользовательских параметров двигателя. На
+#    значения по умолчанию для каждого параметра находятся рядом с названием параметра в
+#    вышеприведенном списке.
 #diag0_pin:
 #diag1_pin:
-#   The micro-controller pin attached to one of the DIAG lines of the
-#   TMC5160 chip. Only a single diag pin should be specified. The pin
-#   is "active low" and is thus normally prefaced with "^!". Setting
-#   this creates a "tmc5160_stepper_x:virtual_endstop" virtual pin
-#   which may be used as the stepper's endstop_pin. Doing this enables
-#   "sensorless homing". (Be sure to also set driver_SGT to an
-#   appropriate sensitivity value.) The default is to not enable
-#   sensorless homing.
+#    вывод микроконтроллера, подключенный к одной из линий DIAG микросхемы
+#    микросхемы TMC5160. Следует указывать только один вывод diag. Контакт
+#    является "активным низким" и поэтому обычно предваряется символом "^!". Установка
+#    это создает виртуальный пин "tmc5160_stepper_x:virtual_endstop"
+#    который может быть использован в качестве контакта endstop_pin шагового механизма. Это позволяет
+#    "бессенсорное наведение". (Не забудьте также установить для параметра driver_SGT
+#    соответствующее значение чувствительности). По умолчанию не включается
+#    бессенсорное наведение.
 ```
 
-## Run-time stepper motor current configuration
+## Конфигурация тока шагового двигателя во время работы
 
 ### [ad5206]
 
-Statically configured AD5206 digipots connected via SPI bus (one may define any number of sections with an "ad5206" prefix).
+Статически сконфигурированные дигипоты AD5206, подключенные через шину SPI (можно задать любое количество секций с префиксом "ad5206").
 
 ```
 [ad5206 my_digipot]
 enable_pin:
-#   The pin corresponding to the AD5206 chip select line. This pin
-#   will be set to low at the start of SPI messages and raised to high
-#   after the message completes. This parameter must be provided.
+#    Вывод, соответствующий линии выбора микросхемы AD5206. Этот вывод
+#    будет установлен в низкий уровень при запуске SPI-сообщений и поднят в высокий уровень
+#    после завершения сообщения. Этот параметр должен быть указан.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   See the "common SPI settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки SPI" для описания
+#    вышеуказанных параметров.
 #channel_1:
 #channel_2:
 #channel_3:
 #channel_4:
 #channel_5:
 #channel_6:
-#   The value to statically set the given AD5206 channel to. This is
-#   typically set to a number between 0.0 and 1.0 with 1.0 being the
-#   highest resistance and 0.0 being the lowest resistance. However,
-#   the range may be changed with the 'scale' parameter (see below).
-#   If a channel is not specified then it is left unconfigured.
+#    Значение, на которое статически устанавливается данный канал AD5206. Это
+#    обычно задается числом от 0.0 до 1.0, причем 1.0 - это самое
+#    наибольшее сопротивление, а 0.0 - наименьшее. Однако,
+#    диапазон может быть изменен с помощью параметра 'scale' (см. ниже).
+#    Если канал не указан, то он остается неконфигурированным.
 #scale:
-#   This parameter can be used to alter how the 'channel_x' parameters
-#   are interpreted. If provided, then the 'channel_x' parameters
-#   should be between 0.0 and 'scale'. This may be useful when the
-#   AD5206 is used to set stepper voltage references. The 'scale' can
-#   be set to the equivalent stepper amperage if the AD5206 were at
-#   its highest resistance, and then the 'channel_x' parameters can be
-#   specified using the desired amperage value for the stepper. The
-#   default is to not scale the 'channel_x' parameters.
+#    Этот параметр можно использовать для изменения того, как параметры 'channel_x'
+#    интерпретируются. Если он указан, то параметры 'channel_x'
+#    должны находиться в диапазоне от 0,0 до 'scale'. Это может быть полезно, когда
+#    AD5206 используется для установки опорного напряжения шагового управления. Значение 'scale' может
+#    быть установлен на эквивалентную силу тока шагового двигателя, если бы AD5206 был на
+#    максимальном сопротивлении, а затем параметры 'channel_x' могут быть
+#    задаются с помощью желаемого значения силы тока для шаговика. На сайте
+#    по умолчанию параметры 'channel_x' не масштабируются.
 ```
 
 ### [mcp4451]
 
-Statically configured MCP4451 digipot connected via I2C bus (one may define any number of sections with an "mcp4451" prefix).
+Статически сконфигурированный дигипот MCP4451, подключенный по шине I2C (можно задать любое количество секций с префиксом "mcp4451").
 
 ```
 [mcp4451 my_digipot]
 i2c_address:
-#   The i2c address that the chip is using on the i2c bus. This
-#   parameter must be provided.
+#    Адрес i2c, который микросхема использует на шине i2c. Этот
+#    параметр должен быть предоставлен.
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 #wiper_0:
 #wiper_1:
 #wiper_2:
 #wiper_3:
-#   The value to statically set the given MCP4451 "wiper" to. This is
-#   typically set to a number between 0.0 and 1.0 with 1.0 being the
-#   highest resistance and 0.0 being the lowest resistance. However,
-#   the range may be changed with the 'scale' parameter (see below).
-#   If a wiper is not specified then it is left unconfigured.
+#    Значение, на которое статически устанавливается данный "дворник" MCP4451. Это
+#    обычно устанавливается в число от 0.0 до 1.0, причем 1.0 - это
+#    наибольшее сопротивление, а 0.0 - наименьшее. Однако,
+#    диапазон может быть изменен с помощью параметра 'scale' (см. ниже).
+#    Если стеклоочиститель не указан, то он остается ненастроенным.
 #scale:
-#   This parameter can be used to alter how the 'wiper_x' parameters
-#   are interpreted. If provided, then the 'wiper_x' parameters should
-#   be between 0.0 and 'scale'. This may be useful when the MCP4451 is
-#   used to set stepper voltage references. The 'scale' can be set to
-#   the equivalent stepper amperage if the MCP4451 were at its highest
-#   resistance, and then the 'wiper_x' parameters can be specified
-#   using the desired amperage value for the stepper. The default is
-#   to not scale the 'wiper_x' parameters.
+#    Этот параметр можно использовать для изменения того, как параметры 'wiper_x'
+#    интерпретируются. Если он задан, то параметры 'wiper_x' должны
+#    находиться в диапазоне от 0.0 до 'scale'. Это может быть полезно, когда MCP4451
+#    используется для установки опорных значений шагового напряжения. Параметр 'scale' может быть установлен в значение
+#    эквивалентную силу тока шагового двигателя, если бы MCP4451 имел максимальное
+#    сопротивление, а затем параметры 'wiper_x' могут быть заданы
+#    используя желаемое значение силы тока для шагового двигателя. По умолчанию
+#    не масштабировать параметры 'wiper_x'.
 ```
 
 ### [mcp4728]
 
-Statically configured MCP4728 digital-to-analog converter connected via I2C bus (one may define any number of sections with an "mcp4728" prefix).
+Статически сконфигурированный цифро-аналоговый преобразователь MCP4728, подключенный по шине I2C (можно задать любое количество секций с префиксом "mcp4728").
 
 ```
 [mcp4728 my_dac]
 #i2c_address: 96
-#   The i2c address that the chip is using on the i2c bus. The default
-#   is 96.
+#    Адрес i2c, который чип использует на шине i2c. По умолчанию
+#    96.
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 #channel_a:
 #channel_b:
 #channel_c:
 #channel_d:
-#   The value to statically set the given MCP4728 channel to. This is
-#   typically set to a number between 0.0 and 1.0 with 1.0 being the
-#   highest voltage (2.048V) and 0.0 being the lowest voltage.
-#   However, the range may be changed with the 'scale' parameter (see
-#   below). If a channel is not specified then it is left
-#   unconfigured.
+#    Значение, на которое статически устанавливается данный канал MCP4728. Это
+#    обычно устанавливается в число от 0.0 до 1.0, причем 1.0 - это
+#    самое высокое напряжение (2,048 В) и 0,0 - самое низкое напряжение.
+#    Однако диапазон может быть изменен с помощью параметра 'scale' (см.
+#    ниже). Если канал не указан, то он остается
+#    ненастроенным.
 #scale:
-#   This parameter can be used to alter how the 'channel_x' parameters
-#   are interpreted. If provided, then the 'channel_x' parameters
-#   should be between 0.0 and 'scale'. This may be useful when the
-#   MCP4728 is used to set stepper voltage references. The 'scale' can
-#   be set to the equivalent stepper amperage if the MCP4728 were at
-#   its highest voltage (2.048V), and then the 'channel_x' parameters
-#   can be specified using the desired amperage value for the
-#   stepper. The default is to not scale the 'channel_x' parameters.
+#    Этот параметр можно использовать для изменения того, как параметры 'channel_x'
+#    интерпретируются. Если он указан, то параметры 'channel_x'
+#    должны находиться в диапазоне от 0,0 до 'scale'. Это может быть полезно, когда
+#    MCP4728 используется для установки опорного напряжения шагового управления. Значение 'scale' может
+#    быть установлен на эквивалентный ампераж шагового двигателя, если бы MCP4728 был на
+#    максимальном напряжении (2,048 В), а затем параметры 'channel_x'
+#    можно задать, используя желаемое значение силы тока для
+#    шаговика. По умолчанию параметры 'channel_x' не масштабируются.
 ```
 
 ### [mcp4018]
 
-Statically configured MCP4018 digipot connected via two gpio "bit banging" pins (one may define any number of sections with an "mcp4018" prefix).
+Статически сконфигурированный дигипот MCP4018, подключенный через два gpio "bit banging" пина (можно задать любое количество секций с префиксом "mcp4018").
 
 ```
 [mcp4018 my_digipot]
 scl_pin:
-#   The SCL "clock" pin. This parameter must be provided.
+#    Вывод "тактового" сигнала SCL. Этот параметр должен быть указан.
 sda_pin:
-#   The SDA "data" pin. This parameter must be provided.
+#    Вывод SDA "данные". Этот параметр должен быть указан.
 wiper:
-#   The value to statically set the given MCP4018 "wiper" to. This is
-#   typically set to a number between 0.0 and 1.0 with 1.0 being the
-#   highest resistance and 0.0 being the lowest resistance. However,
-#   the range may be changed with the 'scale' parameter (see below).
-#   This parameter must be provided.
+#    Значение, на которое статически устанавливается данный "дворник" MCP4018. Это
+#    обычно устанавливается в число от 0.0 до 1.0, причем 1.0 - это самое
+#    наибольшее сопротивление, а 0.0 - наименьшее. Однако,
+#    диапазон может быть изменен с помощью параметра 'scale' (см. ниже).
+#    Этот параметр должен быть указан.
 #scale:
-#   This parameter can be used to alter how the 'wiper' parameter is
-#   interpreted. If provided, then the 'wiper' parameter should be
-#   between 0.0 and 'scale'. This may be useful when the MCP4018 is
-#   used to set stepper voltage references. The 'scale' can be set to
-#   the equivalent stepper amperage if the MCP4018 is at its highest
-#   resistance, and then the 'wiper' parameter can be specified using
-#   the desired amperage value for the stepper. The default is to not
-#   scale the 'wiper' parameter.
+#    Этот параметр можно использовать для изменения того, как будет интерпретироваться параметр 'wiper'
+#    интерпретации. Если он указан, то параметр 'wiper' должен находиться
+#    между 0,0 и 'scale'. Это может быть полезно, когда MCP4018
+#    используется для установки опорных значений шагового напряжения. Параметр 'scale' может быть установлен в значение
+#    эквивалентную силу тока шагового двигателя, если MCP4018 имеет максимальное
+#    сопротивление, а затем параметр 'wiper' может быть задан с помощью
+#    желаемое значение силы тока для шаговика. По умолчанию
+#    масштабирование параметра 'wiper'.
 ```
 
-## Display support
+## Поддержка дисплея
 
 ### [display]
 
-Support for a display attached to the micro-controller.
+Поддержка дисплея, подключенного к микроконтроллеру.
 
 ```
 [display]
 lcd_type:
 #   The type of LCD chip in use. This may be "hd44780", "hd44780_spi",
-#   "st7920", "emulated_st7920", "uc1701", "ssd1306", or "sh1106".
+#   "aip31068_spi", "st7920", "emulated_st7920", "uc1701", "ssd1306", or
+#   "sh1106".
 #   See the display sections below for information on each type and
 #   additional parameters they provide. This parameter must be
 #   provided.
 #display_group:
 #   The name of the display_data group to show on the display. This
 #   controls the content of the screen (see the "display_data" section
-#   for more information). The default is _default_20x4 for hd44780
-#   displays and _default_16x4 for other displays.
+#   for more information). The default is _default_20x4 for hd44780 or
+#   aip31068_spi displays and _default_16x4 for other displays.
 #menu_timeout:
 #   Timeout for menu. Being inactive this amount of seconds will
 #   trigger menu exit or return to root menu when having autorun
@@ -3800,41 +3876,68 @@ lcd_type:
 #   button.
 ```
 
-#### hd44780 display
+#### дисплей hd44780
 
-Information on configuring hd44780 displays (which is used in "RepRapDiscount 2004 Smart Controller" type displays).
+Информация о настройке дисплеев hd44780 (используется в дисплеях типа "RepRapDiscount 2004 Smart Controller").
 
 ```
-[display]
+[дисплей]
 lcd_type: hd44780
-#   Set to "hd44780" for hd44780 displays.
+#    Установите значение "hd44780" для дисплеев hd44780.
 rs_pin:
 e_pin:
 d4_pin:
 d5_pin:
 d6_pin:
 d7_pin:
-#   The pins connected to an hd44780 type lcd. These parameters must
-#   be provided.
+#    Пины, подключенные к ЖК-дисплею типа hd44780. Эти параметры должны
+#    быть предоставлены.
 #hd44780_protocol_init: True
-#   Perform 8-bit/4-bit protocol initialization on an hd44780 display.
-#   This is necessary on real hd44780 devices. However, one may need
-#   to disable this on some "clone" devices. The default is True.
+#    Выполняет инициализацию 8-битного/4-битного протокола на дисплее hd44780.
+#    Это необходимо на реальных устройствах hd44780. Однако может потребоваться
+#    отключить это на некоторых "клонированных" устройствах. По умолчанию установлено значение True.
 #line_length:
-#   Set the number of characters per line for an hd44780 type lcd.
-#   Possible values are 20 (default) and 16. The number of lines is
-#   fixed to 4.
+#    Устанавливает количество символов в строке для lcd типа hd44780.
+#    Возможные значения: 20 (по умолчанию) и 16. Количество строк
+#    фиксировано на 4.
 ...
 ```
 
 #### hd44780_spi display
 
-Information on configuring an hd44780_spi display - a 20x04 display controlled via a hardware "shift register" (which is used in mightyboard based printers).
+Информация о настройке дисплея hd44780_spi - дисплея 20x04, управляемого через аппаратный "сдвиговый регистр" (который используется в принтерах на базе mightyboard).
 
 ```
 [display]
 lcd_type: hd44780_spi
-#   Set to "hd44780_spi" for hd44780_spi displays.
+#    Установите значение "hd44780_spi" для дисплеев hd44780_spi.
+latch_pin:
+spi_software_sclk_pin:
+spi_software_mosi_pin:
+spi_software_miso_pin:
+#    Пины, подключенные к сдвиговому регистру, управляющему дисплеем.
+#    Вывод spi_software_miso_pin должен быть установлен на неиспользуемый вывод
+#    основной платы принтера, поскольку сдвиговый регистр не имеет вывода MISO,
+#    но программная реализация spi требует, чтобы этот вывод был
+#    сконфигурирован.
+#hd44780_protocol_init: True
+#    Выполняет инициализацию 8-битного/4-битного протокола на дисплее hd44780.
+#    Это необходимо на реальных устройствах hd44780. Однако может потребоваться
+#    отключить это на некоторых "клонированных" устройствах. По умолчанию установлено значение True.
+#line_length:
+#    Устанавливает количество символов в строке для lcd типа hd44780.
+#    Возможные значения: 20 (по умолчанию) и 16. Количество строк
+#    фиксировано на 4.
+...
+```
+
+#### aip31068_spi display
+
+Information on configuring an aip31068_spi display - a very similar to hd44780_spi a 20x04 (20 symbols by 4 lines) display with slightly different internal protocol.
+
+```
+[display]
+lcd_type: aip31068_spi
 latch_pin:
 spi_software_sclk_pin:
 spi_software_mosi_pin:
@@ -3844,10 +3947,6 @@ spi_software_miso_pin:
 #   printer mainboard as the shift register does not have a MISO pin,
 #   but the software spi implementation requires this pin to be
 #   configured.
-#hd44780_protocol_init: True
-#   Perform 8-bit/4-bit protocol initialization on an hd44780 display.
-#   This is necessary on real hd44780 devices. However, one may need
-#   to disable this on some "clone" devices. The default is True.
 #line_length:
 #   Set the number of characters per line for an hd44780 type lcd.
 #   Possible values are 20 (default) and 16. The number of lines is
@@ -3855,82 +3954,82 @@ spi_software_miso_pin:
 ...
 ```
 
-#### st7920 display
+#### дисплей st7920
 
-Information on configuring st7920 displays (which is used in "RepRapDiscount 12864 Full Graphic Smart Controller" type displays).
+Информация о настройке дисплеев st7920 (используется в дисплеях типа "RepRapDiscount 12864 Full Graphic Smart Controller").
 
 ```
-[display]
+[дисплей]
 lcd_type: st7920
-#   Set to "st7920" for st7920 displays.
+#    Установите значение "st7920" для дисплеев st7920.
 cs_pin:
 sclk_pin:
 sid_pin:
-#   The pins connected to an st7920 type lcd. These parameters must be
-#   provided.
+#    Выводы, подключаемые к ЖК-дисплею типа st7920. Эти параметры должны быть
+#    предоставлены.
 ...
 ```
 
 #### emulated_st7920 display
 
-Information on configuring an emulated st7920 display - found in some "2.4 inch touchscreen devices" and similar.
+Информация о настройке эмулированного дисплея st7920 - встречается в некоторых "2,4-дюймовых устройствах с сенсорным экраном" и им подобных.
 
 ```
 [display]
 lcd_type: emulated_st7920
-#   Set to "emulated_st7920" for emulated_st7920 displays.
+#    Установите значение "emulated_st7920" для дисплеев emulated_st7920.
 en_pin:
 spi_software_sclk_pin:
 spi_software_mosi_pin:
 spi_software_miso_pin:
-#   The pins connected to an emulated_st7920 type lcd. The en_pin
-#   corresponds to the cs_pin of the st7920 type lcd,
-#   spi_software_sclk_pin corresponds to sclk_pin and
-#   spi_software_mosi_pin corresponds to sid_pin. The
-#   spi_software_miso_pin needs to be set to an unused pin of the
-#   printer mainboard as the st7920 as no MISO pin but the software
-#   spi implementation requires this pin to be configured.
+#    Пины, подключенные к ЖК-дисплею типа emulated_st7920. Вывод en_pin
+#    соответствует cs_pin ЖК-дисплея типа st7920,
+#    spi_software_sclk_pin соответствует sclk_pin и
+#    spi_software_mosi_pin соответствует sid_pin. На сайте
+#    spi_software_miso_pin должен быть установлен на неиспользуемый контакт
+#    основной платы принтера, поскольку у st7920 нет вывода MISO, но программная
+#    реализация spi требует, чтобы этот вывод был настроен.
 ...
 ```
 
-#### uc1701 display
+#### uc1701 дисплей
 
-Information on configuring uc1701 displays (which is used in "MKS Mini 12864" type displays).
+Информация о настройке дисплеев uc1701 (который используется в дисплеях типа "MKS Mini 12864").
 
 ```
-[display]
+[дисплей]
 lcd_type: uc1701
-#   Set to "uc1701" for uc1701 displays.
+#    Установите значение "uc1701" для дисплеев uc1701.
 cs_pin:
 a0_pin:
-#   The pins connected to a uc1701 type lcd. These parameters must be
-#   provided.
+#    Выводы, подключенные к дисплею типа uc1701. Эти параметры должны быть
+#    предоставлены.
 #rst_pin:
-#   The pin connected to the "rst" pin on the lcd. If it is not
-#   specified then the hardware must have a pull-up on the
-#   corresponding lcd line.
+#    Контакт, подключенный к контакту "rst" на ЖК-дисплее. Если он не указан.
+#    указан, то аппаратное обеспечение должно иметь подтяжку на
+#    соответствующей линии ЖК-дисплея.
 #contrast:
-#   The contrast to set. The value may range from 0 to 63 and the
-#   default is 40.
+#    Устанавливаемый контраст. Значение может варьироваться от 0 до 63, а по
+#    по умолчанию - 40.
 ...
 ```
 
-#### ssd1306 and sh1106 displays
+#### ssd1306 и sh1106 дисплеи
 
-Information on configuring ssd1306 and sh1106 displays.
+Информация о настройке дисплеев ssd1306 и sh1106.
 
 ```
 [display]
 lcd_type:
-#   Set to either "ssd1306" or "sh1106" for the given display type.
+#    Установите значение "ssd1306" или "sh1106" для данного типа дисплея.
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   Optional parameters available for displays connected via an i2c
-#   bus. See the "common I2C settings" section for a description of
-#   the above parameters.
+#    Дополнительные параметры, доступные для дисплеев, подключенных через шину i2c.
+#    шиной. См. раздел "Общие настройки I2C" для описания
+#    вышеуказанных параметров.
 #cs_pin:
 #dc_pin:
 #spi_speed:
@@ -3938,378 +4037,378 @@ lcd_type:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   The pins connected to the lcd when in "4-wire" spi mode. See the
-#   "common SPI settings" section for a description of the parameters
-#   that start with "spi_". The default is to use i2c mode for the
-#   display.
+#    Пины, подключенные к lcd в режиме "4-wire" spi. См.
+#    "Общие настройки SPI" для описания параметров.
+#    которые начинаются с "spi_". По умолчанию используется режим i2c для
+#    дисплея.
 #reset_pin:
-#   A reset pin may be specified on the display. If it is not
-#   specified then the hardware must have a pull-up on the
-#   corresponding lcd line.
+#    На дисплее может быть указан вывод сброса. Если он не указан.
+#    указан, то аппаратное обеспечение должно иметь подтяжку на
+#    соответствующей линии ЖК-дисплея.
 #contrast:
-#   The contrast to set. The value may range from 0 to 256 and the
-#   default is 239.
+#    Устанавливаемый контраст. Значение может варьироваться от 0 до 256, а по
+#    по умолчанию - 239.
 #vcomh: 0
-#   Set the Vcomh value on the display. This value is associated with
-#   a "smearing" effect on some OLED displays. The value may range
-#   from 0 to 63. Default is 0.
+#    Установка значения Vcomh на дисплее. Это значение связано с
+#    эффектом "размазывания" на некоторых OLED-дисплеях. Значение может варьироваться
+#    от 0 до 63. По умолчанию 0.
 #invert: False
-#   TRUE inverts the pixels on certain OLED displays.  The default is
-#   False.
+#    TRUE инвертирует пиксели на некоторых OLED-дисплеях.  По умолчанию
+#    False.
 #x_offset: 0
-#   Set the horizontal offset value on SH1106 displays. The default is
-#   0.
+#    Установка значения горизонтального смещения на дисплеях SH1106. По умолчанию
+#    0.
 ...
 ```
 
 ### [display_data]
 
-Support for displaying custom data on an lcd screen. One may create any number of display groups and any number of data items under those groups. The display will show all the data items for a given group if the display_group option in the [display] section is set to the given group name.
+Поддержка отображения пользовательских данных на ЖК-дисплее. Можно создать любое количество групп отображения и любое количество элементов данных в этих группах. На экране будут отображаться все элементы данных для данной группы, если параметр display_group в секции [display] установлен на имя данной группы.
 
-A [default set of display groups](../klippy/extras/display/display.cfg) are automatically created. One can replace or extend these display_data items by overriding the defaults in the main printer.cfg config file.
+Автоматически создается [набор групп отображения по умолчанию](.../klippy/extras/display/display.cfg). Можно заменить или расширить эти элементы display_data, переопределив значения по умолчанию в основном файле конфигурации printer.cfg.
 
 ```
 [display_data my_group_name my_data_name]
-position:
-#   Comma separated row and column of the display position that should
-#   be used to display the information. This parameter must be
-#   provided.
+позиция:
+#    Через запятую строки и столбцы позиции отображения, которая должна
+#    использоваться для отображения информации. Этот параметр должен быть
+#    предоставлен.
 text:
-#   The text to show at the given position. This field is evaluated
-#   using command templates (see docs/Command_Templates.md). This
-#   parameter must be provided.
+#    Текст для отображения в данной позиции. Это поле оценивается
+#    с помощью шаблонов команд (см. docs/Command_Templates.md). Этот
+#    параметр должен быть указан.
 ```
 
 ### [display_template]
 
-Display data text "macros" (one may define any number of sections with a display_template prefix). See the [command templates](Command_Templates.md) document for information on template evaluation.
+Текстовые "макросы" отображения данных (можно определить любое количество секций с префиксом display_template). Информацию об оценке шаблонов см. в документе [Шаблоны команд](Command_Templates.md).
 
-This feature allows one to reduce repetitive definitions in display_data sections. One may use the builtin `render()` function in display_data sections to evaluate a template. For example, if one were to define `[display_template my_template]` then one could use `{ render('my_template') }` in a display_data section.
+Эта возможность позволяет сократить количество повторяющихся определений в секциях display_data. Для оценки шаблона в секциях display_data можно использовать встроенную функцию `render()`. Например, если определить `[display_template my_template]`, то можно использовать `{ render('my_template')}` в секции display_data.
 
-This feature can also be used for continuous LED updates using the [SET_LED_TEMPLATE](G-Codes.md#set_led_template) command.
+Эта функция также может быть использована для непрерывного обновления светодиодов с помощью команды [SET_LED_TEMPLATE](G-Codes.md#set_led_template).
 
 ```
 [display_template my_template_name]
-#param_<name>:
-#   One may specify any number of options with a "param_" prefix. The
-#   given name will be assigned the given value (parsed as a Python
-#   literal) and will be available during macro expansion. If the
-#   parameter is passed in the call to render() then that value will
-#   be used during macro expansion. For example, a config with
-#   "param_speed = 75" might have a caller with
-#   "render('my_template_name', param_speed=80)". Parameter names may
-#   not use upper case characters.
+#param_<имя>:
+#    Можно указать любое количество опций с префиксом "param_". .
+#    заданному имени будет присвоено заданное значение (разобранное как Python
+#    литерал) и будет доступно при расширении макроса. Если
+#    параметр передан в вызове render(), то это значение будет
+#    будет использоваться при расширении макроса. Например, конфигурация с
+#    "param_speed = 75" может иметь вызывающую функцию с
+#    "render('my_template_name', param_speed=80)". Имена параметров могут
+#    не использовать символы верхнего регистра.
 text:
-#   The text to return when the this template is rendered. This field
-#   is evaluated using command templates (see
-#   docs/Command_Templates.md). This parameter must be provided.
+#    Текст, возвращаемый при рендеринге этого шаблона. Это поле
+#    оценивается с помощью шаблонов команд (см.
+#    docs/Command_Templates.md). Этот параметр должен быть указан.
 ```
 
 ### [display_glyph]
 
-Display a custom glyph on displays that support it. The given name will be assigned the given display data which can then be referenced in the display templates by their name surrounded by two "tilde" symbols i.e. `~my_display_glyph~`
+Отображает пользовательский глиф на дисплеях, которые его поддерживают. Заданное имя будет присвоено данным дисплея, на которые затем можно ссылаться в шаблонах дисплеев по их имени, окруженному двумя символами "тильда", т.е. `~my_display_glyph~`
 
-See [sample-glyphs.cfg](../config/sample-glyphs.cfg) for some examples.
+Примеры смотрите в [sample-glyphs.cfg](../config/sample-glyphs.cfg).
 
 ```
 [display_glyph my_display_glyph]
 #data:
-#   The display data, stored as 16 lines consisting of 16 bits (1 per
-#   pixel) where '.' is a blank pixel and '*' is an on pixel (e.g.,
-#   "****************" to display a solid horizontal line).
-#   Alternatively, one can use '0' for a blank pixel and '1' for an on
-#   pixel. Put each display line into a separate config line. The
-#   glyph must consist of exactly 16 lines with 16 bits each. This
-#   parameter is optional.
+#    Данные дисплея, хранящиеся в виде 16 строк, состоящих из 16 битов (1 на
+#    пиксель), где '.' - пустой пиксель, а '*' - включенный пиксель (например,
+#    "****************" для отображения сплошной горизонтальной линии).
+#    В качестве альтернативы можно использовать '0' для пустого пикселя и '1' для включенного
+#    пикселя. Поместите каждую строку отображения в отдельную строку конфигурации. Глиф
+#    глиф должен состоять ровно из 16 строк с 16 битами каждая. Этот
+#    параметр является необязательным.
 #hd44780_data:
-#   Glyph to use on 20x4 hd44780 displays. The glyph must consist of
-#   exactly 8 lines with 5 bits each. This parameter is optional.
+#    Глиф для использования на дисплеях 20x4 hd44780. Глиф должен состоять из.
+#    ровно 8 строк с 5 битами в каждой. Этот параметр необязателен.
 #hd44780_slot:
-#   The hd44780 hardware index (0..7) to store the glyph at. If
-#   multiple distinct images use the same slot then make sure to only
-#   use one of those images in any given screen. This parameter is
-#   required if hd44780_data is specified.
+#    Аппаратный индекс hd44780 (0..7) для хранения глифа. Если
+#    несколько разных изображений используют один и тот же слот, то убедитесь, что только
+#    использовать только одно из этих изображений на любом экране. Этот параметр
+#    требуется, если указан параметр hd44780_data.
 ```
 
 ### [display my_extra_display]
 
-If a primary [display] section has been defined in printer.cfg as shown above it is possible to define multiple auxiliary displays. Note that auxiliary displays do not currently support menu functionality, thus they do not support the "menu" options or button configuration.
+Если в файле printer.cfg определена основная секция [display], как показано выше, можно определить несколько вспомогательных дисплеев. Обратите внимание, что вспомогательные дисплеи в настоящее время не поддерживают функциональность меню, поэтому они не поддерживают опции "меню" или конфигурацию кнопок.
 
 ```
 [display my_extra_display]
-# See the "display" section for available parameters.
+# Доступные параметры см. в разделе "Дисплей".
 ```
 
-### [menu]
+### [меню]
 
-Customizable lcd display menus.
+Настраиваемые меню ЖК-дисплея.
 
-A [default set of menus](../klippy/extras/display/menu.cfg) are automatically created. One can replace or extend the menu by overriding the defaults in the main printer.cfg config file.
+Автоматически создается [набор меню по умолчанию](.../klippy/extras/display/menu.cfg). Можно заменить или расширить меню, переопределив значения по умолчанию в основном файле конфигурации printer.cfg.
 
-See the [command template document](Command_Templates.md#menu-templates) for information on menu attributes available during template rendering.
+Информацию об атрибутах меню, доступных при отрисовке шаблона, см. в документе [Шаблоны команд](Command_Templates.md#menu-templates).
 
 ```
-# Common parameters available for all menu config sections.
+# Общие параметры, доступные для всех разделов конфигурации меню.
 #[menu __some_list __some_name]
 #type: disabled
-#   Permanently disabled menu element, only required attribute is 'type'.
-#   Allows you to easily disable/hide existing menu items.
+#   Постоянно отключенный элемент меню, единственный обязательный атрибут - 'type'.
+#   Позволяет легко отключать/скрывать существующие пункты меню.
 
 #[menu some_name]
 #type:
-#   One of command, input, list, text:
-#       command - basic menu element with various script triggers
-#       input   - same like 'command' but has value changing capabilities.
-#                 Press will start/stop edit mode.
-#       list    - it allows for menu items to be grouped together in a
-#                 scrollable list.  Add to the list by creating menu
-#                 configurations using "some_list" as a prefix - for
-#                 example: [menu some_list some_item_in_the_list]
-#       vsdlist - same as 'list' but will append files from virtual sdcard
-#                 (will be removed in the future)
+#   Один из команд, ввод, список, текст:
+#       command - базовый элемент меню с различными скриптовыми триггерами
+#        input    - то же самое, что и 'command', но с возможностью изменения значения.
+#                  нажатие запускает/останавливает режим редактирования.
+#        список     - позволяет группировать пункты меню в
+#                  прокручиваемый список.  Пополняйте список, создавая меню
+#                  конфигурации, используя "some_list" в качестве префикса - для
+#                  например: [menu some_list some_item_in_the_list]
+#       vsdlist - то же самое, что и 'list', но добавляет файлы с виртуальной sdcard
+#                 (в будущем будет удален)
 #name:
-#   Name of menu item - evaluated as a template.
+#   Имя пункта меню - оценивается как шаблон.
 #enable:
-#   Template that evaluates to True or False.
+#   Шаблон, который оценивается как True или False.
 #index:
-#   Position where an item needs to be inserted in list. By default
-#   the item is added at the end.
+#   Позиция, на которую нужно вставить пункт в списке. По умолчанию
+#   элемент добавляется в конец.
 
 #[menu some_list]
 #type: list
 #name:
 #enable:
-#   See above for a description of these parameters.
+#   Описание этих параметров см. выше.
 
 #[menu some_list some_command]
 #type: command
 #name:
 #enable:
-#   See above for a description of these parameters.
+#   Описание этих параметров см. выше.
 #gcode:
-#   Script to run on button click or long click. Evaluated as a
-#   template.
+#   Сценарий для запуска при нажатии кнопки или длительном нажатии. Оценивается как
+#  шаблон.
 
 #[menu some_list some_input]
 #type: input
 #name:
 #enable:
-#   See above for a description of these parameters.
+#   Описание этих параметров см. выше.
 #input:
-#   Initial value to use when editing - evaluated as a template.
-#   Result must be float.
+#   Начальное значение для использования при редактировании - оценивается как шаблон.
+#   Результат должен быть float.
 #input_min:
-#   Minimum value of range - evaluated as a template. Default -99999.
+#   Минимальное значение диапазона - оценивается как шаблон. По умолчанию -99999.
 #input_max:
-#   Maximum value of range - evaluated as a template. Default 99999.
+#   Максимальное значение диапазона - оценивается как шаблон. По умолчанию 99999.
 #input_step:
-#   Editing step - Must be a positive integer or float value. It has
-#   internal fast rate step. When "(input_max - input_min) /
-#   input_step > 100" then fast rate step is 10 * input_step else fast
-#   rate step is same input_step.
+#   Шаг редактирования - должно быть положительным целым числом или плавающей величиной. Имеет
+#   внутренний быстрый шаг. Если "(input_max - input_min) /
+#   input_step > 100", то быстрый шаг равен 10 * input_step, иначе быстрый шаг
+#   шаг скорости равен input_step.
 #realtime:
-#   This attribute accepts static boolean value. When enabled then
-#   gcode script is run after each value change. The default is False.
+#   Этот атрибут принимает статическое булево значение. Если он включен, то
+#   скрипт gcode запускается после каждого изменения значения. По умолчанию установлено значение False.
 #gcode:
-#   Script to run on button click, long click or value change.
-#   Evaluated as a template. The button click will trigger the edit
-#   mode start or end.
+#   Скрипт для запуска при нажатии кнопки, длительном нажатии или изменении значения.
+#   Оценивается как шаблон. Нажатие на кнопку запускает редактирование
+#   начало или конец режима.
 ```
 
-## Filament sensors
+## Датчики нити
 
 ### [filament_switch_sensor]
 
-Filament Switch Sensor. Support for filament insert and runout detection using a switch sensor, such as an endstop switch.
+Датчик переключения нити. Поддержка обнаружения вставки и выбега нити с помощью датчика-переключателя, например, концевого выключателя.
 
-See the [command reference](G-Codes.md#filament_switch_sensor) for more information.
+Дополнительную информацию см. в [справочнике команд](G-Codes.md#filament_switch_sensor).
 
 ```
 [filament_switch_sensor my_sensor]
 #pause_on_runout: True
-#   When set to True, a PAUSE will execute immediately after a runout
-#   is detected. Note that if pause_on_runout is False and the
-#   runout_gcode is omitted then runout detection is disabled. Default
-#   is True.
+#    Если установлено значение True, то пауза будет выполняться сразу же после выбега.
+#    будет обнаружена. Обратите внимание, что если pause_on_runout равно False и
+#    runout_gcode опущен, то обнаружение выбега будет отключено. По умолчанию
+#    равно True.
 #runout_gcode:
-#   A list of G-Code commands to execute after a filament runout is
-#   detected. See docs/Command_Templates.md for G-Code format. If
-#   pause_on_runout is set to True this G-Code will run after the
-#   PAUSE is complete. The default is not to run any G-Code commands.
+#    Список команд G-кода для выполнения после того, как будет
+#    обнаружено. Формат G-кода см. в файле docs/Command_Templates.md. Если
+#    pause_on_runout установлено значение True, этот G-код будет запущен после
+#    PAUSE будет завершен. По умолчанию команды G-кода не запускаются.
 #insert_gcode:
-#   A list of G-Code commands to execute after a filament insert is
-#   detected. See docs/Command_Templates.md for G-Code format. The
-#   default is not to run any G-Code commands, which disables insert
-#   detection.
+#    Список команд G-кода для выполнения после того, как вставка нити будет
+#    обнаружена. Формат G-кода см. в файле docs/Command_Templates.md. По
+#    по умолчанию - не выполнять никаких команд G-кода, что отключает обнаружение вставки
+#    обнаружение.
 #event_delay: 3.0
-#   The minimum amount of time in seconds to delay between events.
-#   Events triggered during this time period will be silently
-#   ignored. The default is 3 seconds.
+#    Минимальное количество времени в секундах для задержки между событиями.
+#    События, сработавшие в течение этого периода времени, будут молча
+#    игнорироваться. По умолчанию - 3 секунды.
 #pause_delay: 0.5
-#   The amount of time to delay, in seconds, between the pause command
-#   dispatch and execution of the runout_gcode. It may be useful to
-#   increase this delay if OctoPrint exhibits strange pause behavior.
-#   Default is 0.5 seconds.
+#    Количество времени задержки в секундах между командой паузы
+#    отправкой и выполнением runout_gcode. Может быть полезно
+#    увеличить эту задержку, если OctoPrint демонстрирует странное поведение паузы.
+#    По умолчанию 0,5 секунды.
 #switch_pin:
-#   The pin on which the switch is connected. This parameter must be
-#   provided.
+#    Контакт, к которому подключен переключатель. Этот параметр должен быть
+#    предоставлен.
 ```
 
 ### [filament_motion_sensor]
 
-Filament Motion Sensor. Support for filament insert and runout detection using an encoder that toggles the output pin during filament movement through the sensor.
+Датчик движения нити. Поддержка обнаружения вставки и выбега нити с помощью энкодера, который переключает выходной контакт во время движения нити через датчик.
 
-See the [command reference](G-Codes.md#filament_switch_sensor) for more information.
+Дополнительную информацию см. в [справочнике команд](G-Codes.md#filament_switch_sensor).
 
 ```
 [filament_motion_sensor my_sensor]
 detection_length: 7.0
-#   The minimum length of filament pulled through the sensor to trigger
-#   a state change on the switch_pin
-#   Default is 7 mm.
+#    Минимальная длина нити, протянутой через датчик, чтобы вызвать
+#    изменение состояния на контакте switch_pin
+#    По умолчанию 7 мм.
 extruder:
-#   The name of the extruder section this sensor is associated with.
-#   This parameter must be provided.
+#    Имя секции экструдера, с которой связан этот датчик.
+#    Этот параметр должен быть указан.
 switch_pin:
 #pause_on_runout:
 #runout_gcode:
 #insert_gcode:
 #event_delay:
 #pause_delay:
-#   See the "filament_switch_sensor" section for a description of the
-#   above parameters.
+#    Описание параметров см. в разделе "filament_switch_sensor".
+#    вышеуказанных параметров.
 ```
 
 ### [tsl1401cl_filament_width_sensor]
 
-TSLl401CL Based Filament Width Sensor. See the [guide](TSL1401CL_Filament_Width_Sensor.md) for more information.
+Датчик ширины филамента на базе TSLl401CL. Дополнительную информацию см. в [руководстве](TSL1401CL_Filament_Width_Sensor.md).
 
 ```
 [tsl1401cl_filament_width_sensor]
 #pin:
 #default_nominal_filament_diameter: 1.75 # (mm)
-#   Maximum allowed filament diameter difference as mm.
+#    Максимально допустимая разница диаметров нитей в мм.
 #max_difference: 0.2
-#   The distance from sensor to the melting chamber as mm.
+#    Расстояние от датчика до плавильной камеры в мм.
 #measurement_delay: 100
 ```
 
 ### [hall_filament_width_sensor]
 
-Hall filament width sensor (see [Hall Filament Width Sensor](Hall_Filament_Width_Sensor.md)).
+Датчик ширины нити Холла (см. [Hall Filament Width Sensor](Hall_Filament_Width_Sensor.md)).
 
 ```
 [hall_filament_width_sensor]
 adc1:
 adc2:
-#   Analog input pins connected to the sensor. These parameters must
-#   be provided.
+#    Контакты аналогового входа, подключенные к датчику. Эти параметры должны
+#    быть предоставлены.
 #cal_dia1: 1.50
 #cal_dia2: 2.00
-#   The calibration values (in mm) for the sensors. The default is
-#   1.50 for cal_dia1 and 2.00 for cal_dia2.
+#    Калибровочные значения (в мм) для датчиков. По умолчанию
+# 1.50 для cal_dia1 и 2.00 для cal_dia2.
 #raw_dia1: 9500
 #raw_dia2: 10500
-#   The raw calibration values for the sensors. The default is 9500
-#   for raw_dia1 and 10500 for raw_dia2.
+#    Необработанные калибровочные значения для датчиков. По умолчанию 9500
+#    для raw_dia1 и 10500 для raw_dia2.
 #default_nominal_filament_diameter: 1.75
-#   The nominal filament diameter. This parameter must be provided.
+#    Номинальный диаметр нити. Этот параметр должен быть указан.
 #max_difference: 0.200
-#   Maximum allowed filament diameter difference in millimeters (mm).
-#   If difference between nominal filament diameter and sensor output
-#   is more than +- max_difference, extrusion multiplier is set back
-#   to %100. The default is 0.200.
+#    Максимально допустимая разница в диаметре нити в миллиметрах (мм).
+#    Если разница между номинальным диаметром нити и выходным сигналом датчика
+#    превышает +- max_difference, множитель экструзии устанавливается обратно
+#    до %100. По умолчанию 0.200.
 #measurement_delay: 70
-#   The distance from sensor to the melting chamber/hot-end in
-#   millimeters (mm). The filament between the sensor and the hot-end
-#   will be treated as the default_nominal_filament_diameter. Host
-#   module works with FIFO logic. It keeps each sensor value and
-#   position in an array and POP them back in correct position. This
-#   parameter must be provided.
+#    Расстояние от датчика до плавильной камеры/горячего конца в
+#    миллиметрах (мм). Нить между датчиком и горячим концом
+#    будет рассматриваться как диаметр_номинального_филамента_по_умолчанию. Хост
+#    модуль работает с логикой FIFO. Он сохраняет каждое значение датчика и
+#    положение в массиве и возвращает их в правильное положение. Этот
+#    параметр должен быть предоставлен.
 #enable: False
-#   Sensor enabled or disabled after power on. The default is to
-#   disable.
+#    Датчик включается или выключается после включения питания. По умолчанию
+#    disable.
 #measurement_interval: 10
-#   The approximate distance (in mm) between sensor readings. The
-#   default is 10mm.
+#    Приблизительное расстояние (в мм) между показаниями датчика. По
+#    по умолчанию - 10 мм.
 #logging: False
-#   Out diameter to terminal and klipper.log can be turn on|of by
-#   command.
+#    Вывод диаметра в терминал и klipper.log можно включить|отключить командой
+#    командой.
 #min_diameter: 1.0
-#   Minimal diameter for trigger virtual filament_switch_sensor.
+#    Минимальный диаметр для срабатывания виртуального датчика filament_switch_sensor.
 #use_current_dia_while_delay: False
-#   Use the current diameter instead of the nominal diameter while
-#   the measurement delay has not run through.
+#    Использовать текущий диаметр вместо номинального, пока
+#    задержка измерения не закончилась.
 #pause_on_runout:
 #runout_gcode:
 #insert_gcode:
 #event_delay:
 #pause_delay:
-#   See the "filament_switch_sensor" section for a description of the
-#   above parameters.
+#    Описание параметров см. в разделе "filament_switch_sensor".
+#    вышеуказанных параметров.
 ```
 
-## Load Cells
+## Датчики нагрузки
 
 ### [load_cell]
 
-Load Cell. Uses an ADC sensor attached to a load cell to create a digital scale.
+Тензодатчик. Использует датчик ADC, подключенный к тензодатчику, для создания цифровой шкалы.
 
 ```
 [load_cell]
-sensor_type:
-#   This must be one of the supported sensor types, see below.
+тип_датчика:
+#    Это должен быть один из поддерживаемых типов датчиков, см. ниже.
 ```
 
-#### XH711
+#### HX711
 
-This is a 24 bit low sample rate chip using "bit-bang" communications. It is suitable for filament scales.
+Это 24-битная микросхема с низкой частотой дискретизации, использующая "бит-банг" обмен данными. Он подходит для нитевидных весов.
 
 ```
 [load_cell]
-sensor_type: hx711
+тип датчика: hx711
 sclk_pin:
-#   The pin connected to the HX711 clock line. This parameter must be provided.
+#    Контакт, подключенный к тактовой линии HX711. Этот параметр должен быть указан.
 dout_pin:
-#   The pin connected to the HX711 data output line. This parameter must be
-#   provided.
+#    Контакт, подключенный к линии вывода данных HX711. Этот параметр должен быть
+#    предоставлен.
 #gain: A-128
-#   Valid values for gain are: A-128, A-64, B-32. The default is A-128.
-#   'A' denotes the input channel and the number denotes the gain. Only the 3
-#   listed combinations are supported by the chip. Note that changing the gain
-#   setting also selects the channel being read.
+#    Допустимыми значениями для коэффициента усиления являются: A-128, A-64, B-32. По умолчанию используется значение A-128.
+#    'A' обозначает входной канал, а число - коэффициент усиления. Только 3
+#    перечисленных комбинаций поддерживаются микросхемой. Обратите внимание, что изменение коэффициента усиления
+#    также выбирает считываемый канал.
 #sample_rate: 80
-#   Valid values for sample_rate are 80 or 10. The default value is 80.
-#   This must match the wiring of the chip. The sample rate cannot be changed
-#   in software.
+#    Допустимые значения для sample_rate - 80 или 10. По умолчанию используется значение 80.
+#    Это должно соответствовать схеме подключения микросхемы. Частота дискретизации не может быть изменена
+#    в программном обеспечении.
 ```
 
 #### HX717
 
-This is the 4x higher sample rate version of the HX711, suitable for probing.
+Это версия HX711 с 4-кратным увеличением частоты дискретизации, подходящая для измерений.
 
 ```
 [load_cell]
-sensor_type: hx717
+тип датчика: hx717
 sclk_pin:
-#   The pin connected to the HX717 clock line. This parameter must be provided.
+#    Контакт, подключенный к тактовой линии HX717. Этот параметр должен быть указан.
 dout_pin:
-#   The pin connected to the HX717 data output line. This parameter must be
-#   provided.
+#    Контакт, подключенный к линии вывода данных HX717. Этот параметр должен быть
+#    предоставлен.
 #gain: A-128
-#   Valid values for gain are A-128, B-64, A-64, B-8.
-#   'A' denotes the input channel and the number denotes the gain setting.
-#   Only the 4 listed combinations are supported by the chip. Note that
-#   changing the gain setting also selects the channel being read.
+#    Допустимые значения коэффициента усиления: A-128, B-64, A-64, B-8.
+#    'A' обозначает входной канал, а число - настройку усиления.
+#    Микросхема поддерживает только 4 перечисленные комбинации. Обратите внимание, что
+#    изменение настройки усиления также выбирает считываемый канал.
 #sample_rate: 320
-#   Valid values for sample_rate are: 10, 20, 80, 320. The default is 320.
-#   This must match the wiring of the chip. The sample rate cannot be changed
-#   in software.
+#    Допустимыми значениями для sample_rate являются: 10, 20, 80, 320. По умолчанию используется значение 320.
+#    Это должно соответствовать схеме подключения микросхемы. Частота дискретизации не может быть изменена
+#    в программном обеспечении.
 ```
 
 #### ADS1220
 
-The ADS1220 is a 24 bit ADC supporting up to a 2Khz sample rate configurable in software.
+ADS1220 - это 24-битный АЦП, поддерживающий частоту дискретизации до 2 КГц, настраиваемую программно.
 
 ```
 [load_cell]
@@ -4333,184 +4432,201 @@ data_ready_pin:
 #gain: 128
 #   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
 #   The default is 128
+#pga_bypass: False
+#   Disable the internal Programmable Gain Amplifier. If
+#   True the PGA will be disabled for gains 1, 2, and 4. The PGA is always
+#   enabled for gain settings 8 to 128, regardless of the pga_bypass setting.
+#   If AVSS is used as an input pga_bypass is forced to True.
+#   The default is False.
 #sample_rate: 660
 #   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
-#   mode the chips c internal clock runs twice as fast and the SPI communication
+#   mode the chip's internal clock runs twice as fast and the SPI communication
 #   speed is also doubled.
 #   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
 #   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
 #   The default is 660
+#input_mux:
+#   Input multiplexer configuration, select a pair of pins to use. The first pin
+#   is the positive, AINP, and the second pin is the negative, AINN. Valid
+#   values are: 'AIN0_AIN1', 'AIN0_AIN2', 'AIN0_AIN3', 'AIN1_AIN2', 'AIN1_AIN3',
+#   'AIN2_AIN3', 'AIN1_AIN0', 'AIN3_AIN2', 'AIN0_AVSS', 'AIN1_AVSS', 'AIN2_AVSS'
+#   and 'AIN3_AVSS'. If AVSS is used the PGA is bypassed and the pga_bypass
+#   setting will be forced to True.
+#   The default is AIN0_AIN1.
+#vref:
+#   The selected voltage reference. Valid values are: 'internal', 'REF0', 'REF1'
+#   and 'analog_supply'. Default is 'internal'.
 ```
 
-## Board specific hardware support
+## Поддержка аппаратного обеспечения для конкретной платы
 
 ### [sx1509]
 
-Configure an SX1509 I2C to GPIO expander. Due to the delay incurred by I2C communication you should NOT use SX1509 pins as stepper enable, step or dir pins or any other pin that requires fast bit-banging. They are best used as static or gcode controlled digital outputs or hardware-pwm pins for e.g. fans. One may define any number of sections with an "sx1509" prefix. Each expander provides a set of 16 pins (sx1509_my_sx1509:PIN_0 to sx1509_my_sx1509:PIN_15) which can be used in the printer configuration.
+Настройте расширитель SX1509 с I2C на GPIO. Из-за задержки, возникающей при обмене данными по протоколу I2C, вы не должны использовать выводы SX1509 в качестве выводов разрешения шага, шага или дир или любых других выводов, требующих быстрого перебора битов. Лучше всего использовать их в качестве статических или управляемых кодом цифровых выходов или аппаратных pwm-выводов для, например, вентиляторов. Можно определить любое количество секций с префиксом "sx1509". Каждый расширитель предоставляет набор из 16 выводов (sx1509_my_sx1509:PIN_0 - sx1509_my_sx1509:PIN_15), которые могут быть использованы в конфигурации принтера.
 
-See the [generic-duet2-duex.cfg](../config/generic-duet2-duex.cfg) file for an example.
+Пример смотрите в файле [generic-duet2-duex.cfg](../config/generic-duet2-duex.cfg).
 
 ```
 [sx1509 my_sx1509]
 i2c_address:
-#   I2C address used by this expander. Depending on the hardware
-#   jumpers this is one out of the following addresses: 62 63 112
-#   113. This parameter must be provided.
+#    Адрес I2C, используемый этим расширителем. В зависимости от аппаратных
+#    перемычек это один из следующих адресов: 62 63 112
+#    113. Этот параметр должен быть указан.
 #i2c_mcu:
 #i2c_bus:
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
 #i2c_speed:
-#   See the "common I2C settings" section for a description of the
-#   above parameters.
+#    См. раздел "Общие настройки I2C" для описания
+#    выше указанных параметров.
 ```
 
 ### [samd_sercom]
 
-SAMD SERCOM configuration to specify which pins to use on a given SERCOM. One may define any number of sections with a "samd_sercom" prefix. Each SERCOM must be configured prior to using it as SPI or I2C peripheral. Place this config section above any other section that makes use of SPI or I2C buses.
+Конфигурация SAMD SERCOM, определяющая, какие контакты использовать на данном SERCOM. Можно определить любое количество секций с префиксом "samd_sercom". Каждый SERCOM должен быть сконфигурирован до использования его в качестве периферийного устройства SPI или I2C. Поместите эту секцию конфигурации выше любой другой секции, использующей шины SPI или I2C.
 
 ```
 [samd_sercom my_sercom]
 sercom:
-#   The name of the sercom bus to configure in the micro-controller.
-#   Available names are "sercom0", "sercom1", etc.. This parameter
-#   must be provided.
+#    Имя шины sercom для конфигурирования в микроконтроллере.
+#    Доступные имена: "sercom0", "sercom1" и т. д. Этот параметр
+#    должен быть указан.
 tx_pin:
-#   MOSI pin for SPI communication, or SDA (data) pin for I2C
-#   communication. The pin must have a valid pinmux configuration
-#   for the given SERCOM peripheral. This parameter must be provided.
+#    вывод MOSI для SPI-коммуникации, или вывод SDA (данные) для I2C
+#    связи. Контакт должен иметь действительную конфигурацию pinmux
+#    для данного периферийного устройства SERCOM. Этот параметр должен быть предоставлен.
 #rx_pin:
-#   MISO pin for SPI communication. This pin is not used for I2C
-#   communication (I2C uses tx_pin for both sending and receiving).
-#   The pin must have a valid pinmux configuration for the given
-#   SERCOM peripheral. This parameter is optional.
+#    вывод MISO для связи по SPI. Этот вывод не используется для I2C
+#    связи (I2C использует tx_pin как для отправки, так и для приема).
+#    Контакт должен иметь правильную конфигурацию pinmux для данного
+#    периферийного устройства SERCOM. Этот параметр является необязательным.
 clk_pin:
-#   CLK pin for SPI communication, or SCL (clock) pin for I2C
-#   communication. The pin must have a valid pinmux configuration
-#   for the given SERCOM peripheral. This parameter must be provided.
+#    вывод CLK для SPI-коммуникации, или вывод SCL (тактовый генератор) для I2C
+#    связи. Контакт должен иметь правильную конфигурацию pinmux
+#    для данного периферийного устройства SERCOM. Этот параметр должен быть предоставлен.
 ```
 
 ### [adc_scaled]
 
-Duet2 Maestro analog scaling by vref and vssa readings. Defining an adc_scaled section enables virtual adc pins (such as "my_name:PB0") that are automatically adjusted by the board's vref and vssa monitoring pins. Be sure to define this config section above any config sections that use one these virtual pins.
+Масштабирование аналоговых сигналов Duet2 Maestro по показаниям vref и vssa. Определение секции adc_scaled позволяет использовать виртуальные выводы adc (например, "my_name:PB0"), которые автоматически корректируются контрольными выводами vref и vssa платы. Обязательно определите эту секцию конфигурации выше всех секций конфигурации, которые используют один из этих виртуальных выводов.
 
-See the [generic-duet2-maestro.cfg](../config/generic-duet2-maestro.cfg) file for an example.
+Пример смотрите в файле [generic-duet2-maestro.cfg](../config/generic-duet2-maestro.cfg).
 
 ```
 [adc_scaled my_name]
 vref_pin:
-#   The ADC pin to use for VREF monitoring. This parameter must be
-#   provided.
+#    Контакт АЦП, который будет использоваться для контроля VREF. Этот параметр должен быть
+#    предоставлен.
 vssa_pin:
-#   The ADC pin to use for VSSA monitoring. This parameter must be
-#   provided.
+#    Вывод АЦП, используемый для мониторинга VSSA. Этот параметр должен быть
+#    предоставлен.
 #smooth_time: 2.0
-#   A time value (in seconds) over which the vref and vssa
-#   measurements will be smoothed to reduce the impact of measurement
-#   noise. The default is 2 seconds.
+#    Значение времени (в секундах), в течение которого измерения vref и vssa
+#    измерения будут сглажены, чтобы уменьшить влияние
+#    шума. По умолчанию - 2 секунды.
 ```
 
-### [replicape]
+### [реплика]
 
-Replicape support - see the [beaglebone guide](Beaglebone.md) and the [generic-replicape.cfg](../config/generic-replicape.cfg) file for an example.
+Поддержка репликации - см. руководство [beaglebone guide](Beaglebone.md) и файл [generic-replicape.cfg](../config/generic-replicape.cfg) для примера.
 
 ```
-# The "replicape" config section adds "replicape:stepper_x_enable"
-# virtual stepper enable pins (for steppers X, Y, Z, E, and H) and
-# "replicape:power_x" PWM output pins (for hotbed, e, h, fan0, fan1,
-# fan2, and fan3) that may then be used elsewhere in the config file.
-[replicape]
-revision:
-#   The replicape hardware revision. Currently only revision "B3" is
-#   supported. This parameter must be provided.
+# Раздел конфигурации "replicape" добавляет "replicape:stepper_x_enable"
+# виртуальные контакты разрешения шагов (для шагов X, Y, Z, E и H) и
+# "replicape:power_x" выходные контакты ШИМ (для hotbed, e, h, fan0, fan1,
+# fan2 и fan3), которые затем могут быть использованы в других местах конфигурационного файла.
+[replicape].
+ревизия:
+#    Ревизия аппаратного обеспечения replicape. В настоящее время поддерживается только ревизия "B3"
+#    поддерживается. Этот параметр должен быть указан.
 #enable_pin: !gpio0_20
-#   The replicape global enable pin. The default is !gpio0_20 (aka
-#   P9_41).
+#    Глобальный разрешающий пин replicape. По умолчанию используется !gpio0_20 (он же
+#    P9_41).
 host_mcu:
-#   The name of the mcu config section that communicates with the
-#   Klipper "linux process" mcu instance. This parameter must be
-#   provided.
+#    Имя секции конфигурации mcu, которая взаимодействует с
+#    экземпляром mcu Klipper "linux process". Этот параметр должен быть
+#    предоставлен.
 #standstill_power_down: False
-#   This parameter controls the CFG6_ENN line on all stepper
-#   motors. True sets the enable lines to "open". The default is
-#   False.
+#    Этот параметр управляет строкой CFG6_ENN на всех шаговых
+#    моторов. True устанавливает строки разрешения в "открытое" состояние. По умолчанию
+#    False.
 #stepper_x_microstep_mode:
 #stepper_y_microstep_mode:
 #stepper_z_microstep_mode:
 #stepper_e_microstep_mode:
 #stepper_h_microstep_mode:
-#   This parameter controls the CFG1 and CFG2 pins of the given
-#   stepper motor driver. Available options are: disable, 1, 2,
-#   spread2, 4, 16, spread4, spread16, stealth4, and stealth16. The
-#   default is disable.
+#    Этот параметр управляет контактами CFG1 и CFG2 данного
+#    драйвера шагового двигателя. Доступные опции: disable, 1, 2,
+#    spread2, 4, 16, spread4, spread16, stealth4 и stealth16. По адресу
+#    по умолчанию - disable.
 #stepper_x_current:
 #stepper_y_current:
 #stepper_z_current:
 #stepper_e_current:
 #stepper_h_current:
-#   The configured maximum current (in Amps) of the stepper motor
-#   driver. This parameter must be provided if the stepper is not in a
-#   disable mode.
+#    Настроенный максимальный ток (в амперах) шагового двигателя.
+#    драйвера. Этот параметр должен быть указан, если шаговый двигатель не находится в
+#    отключенном режиме.
 #stepper_x_chopper_off_time_high:
 #stepper_y_chopper_off_time_high:
 #stepper_z_chopper_off_time_high:
 #stepper_e_chopper_off_time_high:
 #stepper_h_chopper_off_time_high:
-#   This parameter controls the CFG0 pin of the stepper motor driver
-#   (True sets CFG0 high, False sets it low). The default is False.
+#    Этот параметр управляет выводом CFG0 драйвера шагового двигателя.
+#    (True устанавливает высокий уровень CFG0, False - низкий). По умолчанию используется значение False.
 #stepper_x_chopper_hysteresis_high:
 #stepper_y_chopper_hysteresis_high:
 #stepper_z_chopper_hysteresis_high:
 #stepper_e_chopper_hysteresis_high:
 #stepper_h_chopper_hysteresis_high:
-#   This parameter controls the CFG4 pin of the stepper motor driver
-#   (True sets CFG4 high, False sets it low). The default is False.
+#    Этот параметр управляет выводом CFG4 драйвера шагового двигателя.
+#    (True устанавливает высокий уровень CFG4, False - низкий). По умолчанию используется значение False.
 #stepper_x_chopper_blank_time_high:
 #stepper_y_chopper_blank_time_high:
 #stepper_z_chopper_blank_time_high:
 #stepper_e_chopper_blank_time_high:
 #stepper_h_chopper_blank_time_high:
-#   This parameter controls the CFG5 pin of the stepper motor driver
-#   (True sets CFG5 high, False sets it low). The default is True.
+#    Этот параметр управляет выводом CFG5 драйвера шагового двигателя.
+#    (True устанавливает высокий уровень CFG5, False - низкий). По умолчанию установлено значение True.
 ```
 
-## Other Custom Modules
+## Другие пользовательские модули
 
-### [palette2]
+### [палитра2]
 
-Palette 2 multimaterial support - provides a tighter integration supporting Palette 2 devices in connected mode.
+Поддержка мультиматериалов Palette 2 - обеспечивает более тесную интеграцию, поддерживая устройства Palette 2 в подключенном режиме.
 
-This modules also requires `[virtual_sdcard]` and `[pause_resume]` for full functionality.
+Для полной функциональности этого модуля также необходимы `[virtual_sdcard]` и `[pause_resume]`.
 
-If you use this module, do not use the Palette 2 plugin for Octoprint as they will conflict, and 1 will fail to initialize properly likely aborting your print.
+Если вы используете этот модуль, не используйте плагин Palette 2 для Octoprint, так как они будут конфликтовать, и 1 не сможет инициализироваться должным образом, что приведет к прерыванию печати.
 
-If you use Octoprint and stream gcode over the serial port instead of printing from virtual_sd, then remo **M1** and **M0** from *Pausing commands* in *Settings > Serial Connection > Firmware & protocol* will prevent the need to start print on the Palette 2 and unpausing in Octoprint for your print to begin.
+Если вы используете Octoprint и передаете gcode через последовательный порт вместо печати из virtual_sd, то удалите **M1** и **M0** из *Pausing commands* в *Settings > Serial Connection > Firmware & protocol*, чтобы избежать необходимости запуска печати на Palette 2 и снятия паузы в Octoprint для начала печати.
 
 ```
 [palette2]
 serial:
-#   The serial port to connect to the Palette 2.
-#baud: 115200
-#   The baud rate to use. The default is 115200.
+#    Последовательный порт для подключения к Palette 2.
+# Baud: 115200
+#    Используемая скорость передачи данных. По умолчанию 115200.
 #feedrate_splice: 0.8
-#   The feedrate to use when splicing, default is 0.8
+#    Скорость передачи данных, используемая при сращивании, по умолчанию 0,8
 #feedrate_normal: 1.0
-#   The feedrate to use after splicing, default is 1.0
+#    Скорость подачи после сращивания, по умолчанию 1,0
 #auto_load_speed: 2
-#   Extrude feedrate when autoloading, default is 2 (mm/s)
+#    Скорость подачи экструзии при автозагрузке, по умолчанию 2 (мм/с)
 #auto_cancel_variation: 0.1
-#   Auto cancel print when ping variation is above this threshold
+#   Автоматическая отмена печати при изменении пинга выше этого порога
 ```
 
 ### [angle]
 
-Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
+Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, mt6816, mt6826s, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
 
 ```
 [angle my_angle_sensor]
 sensor_type:
 #   The type of the magnetic hall sensor chip. Available choices are
-#   "a1333", "as5047d", and "tle5012b". This parameter must be
+#   "a1333", "as5047d", "mt6816", "mt6826s", and "tle5012b". This parameter must be
 #   specified.
 #sample_period: 0.000400
 #   The query period (in seconds) to use during measurements. The
@@ -4532,58 +4648,58 @@ cs_pin:
 #   above parameters.
 ```
 
-## Common bus parameters
+## Общие параметры шины
 
-### Common SPI settings
+### Общие настройки SPI
 
-The following parameters are generally available for devices using an SPI bus.
+Следующие параметры обычно доступны для устройств, использующих шину SPI.
 
 ```
 #spi_speed:
-#   The SPI speed (in hz) to use when communicating with the device.
-#   The default depends on the type of device.
+#    Скорость SPI (в гц), которую следует использовать при обмене данными с устройством.
+#    Значение по умолчанию зависит от типа устройства.
 #spi_bus:
-#   If the micro-controller supports multiple SPI busses then one may
-#   specify the micro-controller bus name here. The default depends on
-#   the type of micro-controller.
+#    Если микроконтроллер поддерживает несколько шин SPI, то можно
+#    указать здесь имя шины микроконтроллера. Значение по умолчанию зависит от
+#    типа микроконтроллера.
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   Specify the above parameters to use "software based SPI". This
-#   mode does not require micro-controller hardware support (typically
-#   any general purpose pins may be used). The default is to not use
-#   "software spi".
+#    Укажите вышеуказанные параметры для использования "программного SPI". Этот
+#    режим не требует аппаратной поддержки микроконтроллера (обычно
+#    могут использоваться любые пины общего назначения). По умолчанию не используется
+#    "программный SPI".
 ```
 
-### Common I2C settings
+### Общие настройки I2C
 
-The following parameters are generally available for devices using an I2C bus.
+Следующие параметры обычно доступны для устройств, использующих шину I2C.
 
-Note that Klipper's current micro-controller support for I2C is generally not tolerant to line noise. Unexpected errors on the I2C wires may result in Klipper raising a run-time error. Klipper's support for error recovery varies between each micro-controller type. It is generally recommended to only use I2C devices that are on the same printed circuit board as the micro-controller.
+Обратите внимание, что текущая поддержка I2C микроконтроллерами Klipper, как правило, не толерантна к помехам на линии. Неожиданные ошибки на проводах I2C могут привести к тому, что Klipper выдаст ошибку во время выполнения. Поддержка Klipper для устранения ошибок варьируется в зависимости от типа микроконтроллера. Обычно рекомендуется использовать только те устройства I2C, которые находятся на той же печатной плате, что и микроконтроллер.
 
-Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
+Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family and some STM32 (F0, G0, G4, L4, F7, H7) support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
 
 ```
 #i2c_address:
-#   The i2c address of the device. This must specified as a decimal
-#   number (not in hex). The default depends on the type of device.
+#    i2c-адрес устройства. Он должен быть указан в виде десятичного
+#    число (не в шестнадцатеричном виде). Значение по умолчанию зависит от типа устройства.
 #i2c_mcu:
-#   The name of the micro-controller that the chip is connected to.
-#   The default is "mcu".
+#    Имя микроконтроллера, к которому подключена микросхема.
+#    По умолчанию - "mcu".
 #i2c_bus:
-#   If the micro-controller supports multiple I2C busses then one may
-#   specify the micro-controller bus name here. The default depends on
-#   the type of micro-controller.
+#    Если микроконтроллер поддерживает несколько шин I2C, то можно
+#    указать здесь имя шины микроконтроллера. Значение по умолчанию зависит от
+#    типа микроконтроллера.
 #i2c_software_scl_pin:
 #i2c_software_sda_pin:
-#   Specify these parameters to use micro-controller software based
-#   I2C "bit-banging" support. The two parameters should the two pins
-#   on the micro-controller to use for the scl and sda wires. The
-#   default is to use hardware based I2C support as specified by the
-#   i2c_bus parameter.
+#    Укажите эти параметры, чтобы использовать программное обеспечение микроконтроллера.
+#    поддержки "битового удара" I2C. Эти два параметра должны соответствовать двум выводам
+#    на микроконтроллере для проводов scl и sda. На
+#    по умолчанию используется аппаратная поддержка I2C, указанная параметром
+#    параметром i2c_bus.
 #i2c_speed:
-#   The I2C speed (in Hz) to use when communicating with the device.
-#   The Klipper implementation on most micro-controllers is hard-coded
-#   to 100000 and changing this value has no effect. The default is
-#   100000. Linux, RP2040 and ATmega support 400000.
+#    Скорость I2C (в Гц), которую следует использовать при взаимодействии с устройством.
+#    Реализация Klipper на большинстве микроконтроллеров жестко закодирована
+#    на 100000, и изменение этого значения не имеет никакого эффекта. По умолчанию
+#    100000. Linux, RP2040 и ATmega поддерживают 400000.
 ```

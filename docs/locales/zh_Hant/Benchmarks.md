@@ -316,6 +316,25 @@ finalize_config crc=0
 | 1 stepper (200Mhz) | 39 |
 | 3 stepper (200Mhz) | 181 |
 
+### SAME70 step rate benchmark
+
+The following configuration sequence is used on the SAME70:
+
+```
+allocate_oids count=3
+config_stepper oid=0 step_pin=PC18 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0
+config_stepper oid=1 step_pin=PC16 dir_pin=PD10 invert_step=-1 step_pulse_ticks=0
+config_stepper oid=2 step_pin=PC28 dir_pin=PA4 invert_step=-1 step_pulse_ticks=0
+finalize_config crc=0
+```
+
+The test was last run on commit `34e9ea55` with gcc version `arm-none-eabi-gcc (NixOS 10.3-2021.10) 10.3.1` on a SAME70Q20B micro-controller.
+
+| same70 | ticks |
+| --- | --- |
+| 1個步進電機 | 45 |
+| 3個步進電機 | 190 |
+
 ### AR100 step rate benchmark
 
 The following configuration sequence is used on AR100 CPU (Allwinner A64):
@@ -328,16 +347,16 @@ config_stepper oid=2 step_pin=PL12 dir_pin=PE16 invert_step=-1 step_pulse_ticks=
 finalize_config crc=0
 ```
 
-The test was last run on commit `08d037c6` with gcc version `or1k-linux-musl-gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller.
+The test was last run on commit `b7978d37` with gcc version `or1k-linux-musl-gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller.
 
 | AR100 R_PIO | ticks |
 | --- | --- |
 | 1個步進電機 | 85 |
 | 3個步進電機 | 359 |
 
-### RP2040 步速率基準測試
+### RPxxxx step rate benchmark
 
-RP2040 上使用以下配置序列：
+The following configuration sequence is used on the RP2040 and RP2350:
 
 ```
 allocate_oids count=3
@@ -347,12 +366,19 @@ config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 step_pulse_tic
 finalize_config crc=0
 ```
 
-該測試最後一次在 Raspberry Pi Pico 板上使用 gcc 版本 `arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0`和提交 `59314d99` 執行。
+The test was last run on commit `f6718291` with gcc version `arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0` on Raspberry Pi Pico and Pico 2 boards.
 
-| rp2040 | ticks |
+| rp2040 (*) | ticks |
 | --- | --- |
 | 1個步進電機 | 5 |
 | 3個步進電機 | 22 |
+
+| rp2350 | ticks |
+| --- | --- |
+| 1個步進電機 | 36 |
+| 3個步進電機 | 169 |
+
+(*) Note that the reported rp2040 ticks are relative to a 12Mhz scheduling timer and do not correspond to its 125Mhz internal ARM processing rate. It is expected that 5 scheduling ticks corresponds to ~47 ARM core cycles and 22 scheduling ticks corresponds to ~224 ARM core cycles.
 
 ### Linux MCU 步速率基準測試
 
@@ -403,7 +429,8 @@ get_uptime
 | sam4s8c (USB) | 650K | 8d4a5c16 | arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
 | samd51 (USB) | 864K | 01d2183f | arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
 | stm32f446 (USB) | 870K | 01d2183f | arm-none-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
-| rp2040 (USB) | 873K | c5667193 | arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0 |
+| rp2040 (USB) | 885K | f6718291 | arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0 |
+| rp2350 (USB) | 885K | f6718291 | arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0 |
 
 ## Host 基準測試
 

@@ -1438,8 +1438,9 @@ Support for LIS2DW accelerometers.
 
 ```
 [lis2dw]
-cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
 #spi_speed: 5000000
 #   The SPI speed (in hz) to use when communicating with the chip.
 #   The default is 5000000.
@@ -1449,6 +1450,46 @@ cs_pin:
 #spi_software_miso_pin:
 #   See the "common SPI settings" section for a description of the
 #   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
+#axes_map: x, y, z
+#   See the "adxl345" section for information on this parameter.
+```
+
+### [lis3dh]
+
+Support for LIS3DH accelerometers.
+
+```
+[lis3dh]
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
+#spi_speed: 5000000
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
 #axes_map: x, y, z
 #   See the "adxl345" section for information on this parameter.
 ```
@@ -1479,38 +1520,58 @@ cs_pin:
 ```
 [resonance_tester]
 #probe_points:
-#   共振测试点的列表（每行一个X,Y,Z坐标点），至少指定一个点。请确保
-#   所有点在XY平面上都有足够容许打印头移动头移动的安全余量（约几厘米）。
+#   A list of X, Y, Z coordinates of points (one point per line) to test
+#   resonances at. At least one point is required. Make sure that all
+#   points with some safety margin in XY plane (~a few centimeters)
+#   are reachable by the toolhead.
 #accel_chip:
-#   一个用于测量的加速度计芯片的名称。如果adxl345芯片定义时没有明确指定
-#   名称，这个参数可以直接引用 "accel_chip: adxl345"，否则必须提供一个明确
-#   的名称，例如 "accel_chip: adxl345 my_chip_name"。
-#   必须被提供这个参数或下面的两个参数。
+#   A name of the accelerometer chip to use for measurements. If
+#   adxl345 chip was defined without an explicit name, this parameter
+#   can simply reference it as "accel_chip: adxl345", otherwise an
+#   explicit name must be supplied as well, e.g. "accel_chip: adxl345
+#   my_chip_name". Either this, or the next two parameters must be
+#   set.
 #accel_chip_x:
 #accel_chip_y:
-#   用于测量每个轴的加速计芯片的名称。在平移热床的打印机上可能很有用，
-#   如果两个单独的加速度计分别被安装在打印床（用于Y轴）和工具头（X轴）上。
-#   这些参数的格式与 “accel_chip” 参数相同。
-#   必须提供“accel_chip”或这两个参数。
+#   Names of the accelerometer chips to use for measurements for each
+#   of the axis. Can be useful, for instance, on bed slinger printer,
+#   if two separate accelerometers are mounted on the bed (for Y axis)
+#   and on the toolhead (for X axis). These parameters have the same
+#   format as 'accel_chip' parameter. Only 'accel_chip' or these two
+#   parameters must be provided.
 #max_smoothing:
-#   在自动校准整形(使用'SHAPER_CALIBRATE' 命令)的过程中允许每个轴的最大输
-#   入整形器平滑度。
-#   默认不指定最大的平滑度。
-#   请参考共振校准指南以了解有关使用此功能的更多细节。
+#   Maximum input shaper smoothing to allow for each axis during shaper
+#   auto-calibration (with 'SHAPER_CALIBRATE' command). By default no
+#   maximum smoothing is specified. Refer to Measuring_Resonances guide
+#   for more details on using this feature.
+#move_speed: 50
+#   The speed (in mm/s) to move the toolhead to and between test points
+#   during the calibration. The default is 50.
 #min_freq: 5
-#   测试谐振的最小频率。默认为5Hz。
+#   Minimum frequency to test for resonances. The default is 5 Hz.
 #max_freq: 133.33
-#   测试谐振的最大频率。默认为133.33 Hz。
-#accel_per_hz: 75
-#   这个参数用于决定测试一个特定的频率的加速度： accel = accel_per_hz * freq。
-#   数值越大加速度越高，振荡的能量就越大。如果打印机上的共振太强，可以
-#   设置为比默认值更低的值。然而，较低的值会使高频共振的测量不那么精确。
-#   默认为75mm/s。
+#   Maximum frequency to test for resonances. The default is 133.33 Hz.
+#accel_per_hz: 60
+#   This parameter is used to determine which acceleration to use to
+#   test a specific frequency: accel = accel_per_hz * freq. Higher the
+#   value, the higher is the energy of the oscillations. Can be set to
+#   a lower than the default value if the resonances get too strong on
+#   the printer. However, lower values make measurements of
+#   high-frequency resonances less precise. The default value is 75
+#   (mm/sec).
 #hz_per_sec: 1
-#   决定测试的速度。当测试所有频率在范围[min_freq, max_freq]内时，每秒钟
-#   频率都会增加 hz_per_sec。更小的数值会使测试变慢，更大的数值会降低测
-#   试的精度。
-#   默认值是1.0（Hz/sec == sec^-2）。
+#   Determines the speed of the test. When testing all frequencies in
+#   range [min_freq, max_freq], each second the frequency increases by
+#   hz_per_sec. Small values make the test slow, and the large values
+#   will decrease the precision of the test. The default value is 1.0
+#   (Hz/sec == sec^-2).
+#sweeping_accel: 400
+#   An acceleration of slow sweeping moves. The default is 400 mm/sec^2.
+#sweeping_period: 1.2
+#   A period of slow sweeping moves. Setting this parameter to 0
+#   disables slow sweeping moves. Avoid setting it to a too small
+#   non-zero value in order to not poison the measurements.
+#   The default is 1.2 sec which is a good all-round choice.
 ```
 
 ## 配置文件助手
@@ -1751,7 +1812,7 @@ sensor_type: ldc1612
 
 ### [axis_twist_compensation]
 
-A tool to compensate for inaccurate probe readings due to twist in X gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
+A tool to compensate for inaccurate probe readings due to twist in X or Y gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
 
 ```
 [axis_twist_compensation]
@@ -1764,16 +1825,33 @@ A tool to compensate for inaccurate probe readings due to twist in X gantry. See
 calibrate_start_x: 20
 #   Defines the minimum X coordinate of the calibration
 #   This should be the X coordinate that positions the nozzle at the starting
-#   calibration position. This parameter must be provided.
+#   calibration position.
 calibrate_end_x: 200
 #   Defines the maximum X coordinate of the calibration
 #   This should be the X coordinate that positions the nozzle at the ending
-#   calibration position. This parameter must be provided.
+#   calibration position.
 calibrate_y: 112.5
 #   Defines the Y coordinate of the calibration
 #   This should be the Y coordinate that positions the nozzle during the
-#   calibration process. This parameter must be provided and is recommended to
+#   calibration process. This parameter is recommended to
 #   be near the center of the bed
+
+# For Y-axis twist compensation, specify the following parameters:
+calibrate_start_y: ...
+#   Defines the minimum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the starting
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_end_y: ...
+#   Defines the maximum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the ending
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_x: ...
+#   Defines the X coordinate of the calibration for Y axis twist compensation
+#   This should be the X coordinate that positions the nozzle during the
+#   calibration process for Y axis twist compensation. This parameter must be
+#   provided and is recommended to be near the center of the bed.
 ```
 
 ## 额外的步进电机和挤出机
@@ -2081,6 +2159,10 @@ Reports probe coil temperature. Includes optional thermal drift calibration for 
 #   "calibration_extruder_temp" option is set.  Its recommended to heat
 #   the extruder some distance from the bed to minimize its impact on
 #   the probe coil temperature.  The default is 50.
+#max_validation_temp: 60.
+#   The maximum temperature used to validate the calibration.  It is
+#   recommended to set this to a value between 100 and 120 for enclosed
+#   printers.  The default is 60.
 ```
 
 ## 温度传感器
@@ -3270,6 +3352,7 @@ run_current:
 #driver_SEIMIN: 0
 #driver_SFILT: 0
 #driver_SG4_ANGLE_OFFSET: 1
+#driver_SLOPE_CONTROL: 0
 #   Set the given register during the configuration of the TMC2240
 #   chip. This may be used to set custom motor parameters. The
 #   defaults for each parameter are next to the parameter name in the
@@ -3557,72 +3640,82 @@ wiper:
 ```
 [display]
 lcd_type:
-#   使用的 LCD 芯片类型。这可以是“hd44780”、“hd44780_spi”、
-#   “st7920”、“emulated_st7920”、“uc1701”、“ssd1306”、或“sh1106”。
-#   有关不同的LCD芯片类型和它们特有的参数，请查看下面的显示屏分段。
-#   必须提供此参数。
+#   The type of LCD chip in use. This may be "hd44780", "hd44780_spi",
+#   "aip31068_spi", "st7920", "emulated_st7920", "uc1701", "ssd1306", or
+#   "sh1106".
+#   See the display sections below for information on each type and
+#   additional parameters they provide. This parameter must be
+#   provided.
 #display_group:
-#   显示在这个显示屏上的 display_data 组。它决定了这个屏幕显示
-#   的内容（详见“display_data”分段）。
-#   hd44780 默认使用 _default_20x4，其他显示屏则默认使用 _default_16x4。
+#   The name of the display_data group to show on the display. This
+#   controls the content of the screen (see the "display_data" section
+#   for more information). The default is _default_20x4 for hd44780 or
+#   aip31068_spi displays and _default_16x4 for other displays.
 #menu_timeout:
-#   菜单超时时间。在不活跃给定时间后将会退出菜单或在 autorun 启用时
-#   回到根菜单。
-#   默认为 0 秒（禁用）。
+#   Timeout for menu. Being inactive this amount of seconds will
+#   trigger menu exit or return to root menu when having autorun
+#   enabled. The default is 0 seconds (disabled)
 #menu_root:
-#   在主屏幕按下编码器时显示的主菜单段名称。
-#   默认为 __main，这会显示在 klippy/extras/display/menu.cfg中定义的主菜单。
+#   Name of the main menu section to show when clicking the encoder
+#   on the home screen. The defaults is __main, and this shows the
+#   the default menus as defined in klippy/extras/display/menu.cfg
 #menu_reverse_navigation:
-#   启用时反转上滚动和下滚动。
-#   默认为False。这是一个可选参数。
+#   When enabled it will reverse up and down directions for list
+#   navigation. The default is False. This parameter is optional.
 #encoder_pins:
-#   连接到编码器的引脚。使用编码器时必须提供两个引脚。
-#   使用菜单时必须提供此参数。
+#   The pins connected to encoder. 2 pins must be provided when using
+#   encoder. This parameter must be provided when using menu.
 #encoder_steps_per_detent:
-#   编码器在每一个凹陷处（"click"）发出多少步。如果编码器需要转过两个凹
-#   陷才能在条目之间移动，或者转过一个凹痕会在两个词条之间移动/跳过
-#   一个词条，可以尝试改变这个值。
-#   允许的值是2 （半步）或 4（全步）。
-#   默认为 4。
+#   How many steps the encoder emits per detent ("click"). If the
+#   encoder takes two detents to move between entries or moves two
+#   entries from one detent, try changing this. Allowed values are 2
+#   (half-stepping) or 4 (full-stepping). The default is 4.
 #click_pin:
-#   连接到 "enter" 按钮或编码器按压的引脚。
-#   使用菜单时必须提供此参数。
-#   如果定义了 “analog_range_click_pin”配置参数，则这个参数的引脚需要
-#   是模拟引脚。
+#   The pin connected to 'enter' button or encoder 'click'. This
+#   parameter must be provided when using menu. The presence of an
+#   'analog_range_click_pin' config parameter turns this parameter
+#   from digital to analog.
 #back_pin:
-#   连接到“back”按钮的引脚。这是一个可选参数，菜单不需要这个按钮。
-#   如果定义了 “analog_range_back_pin”配置参数，则这个参数的引脚需要
-#   是模拟引脚。
+#   The pin connected to 'back' button. This parameter is optional,
+#   menu can be used without it. The presence of an
+#   'analog_range_back_pin' config parameter turns this parameter from
+#   digital to analog.
 #up_pin:
-#   连接到“up”按钮的引脚。在不使用编码器时使用菜单必须提供这个参数。
-#   如果定义了 “analog_range_up_pin”配置参数，则这个参数的引脚需要
-#   是模拟引脚。
+#   The pin connected to 'up' button. This parameter must be provided
+#   when using menu without encoder. The presence of an
+#   'analog_range_up_pin' config parameter turns this parameter from
+#   digital to analog.
 #down_pin:
-#   连接到“down”按钮的引脚。 在不使用编码器时使用菜单必须提供这个参数。
-#   如果定义了 “analog_range_down_pin”配置参数，则这个参数的引脚需要
-#   是模拟引脚。
+#   The pin connected to 'down' button. This parameter must be
+#   provided when using menu without encoder. The presence of an
+#   'analog_range_down_pin' config parameter turns this parameter from
+#   digital to analog.
 #kill_pin:
-#   连接到“kill”按钮的引脚。 这个按钮将会触发紧急停止。
-#   如果定义了 “analog_range_kill_pin”配置参数，则这个参数的引脚需要
-#   是模拟引脚。
+#   The pin connected to 'kill' button. This button will call
+#   emergency stop. The presence of an 'analog_range_kill_pin' config
+#   parameter turns this parameter from digital to analog.
 #analog_pullup_resistor: 4700
-#   连接到模拟按钮的拉高电阻阻值(ohms)
-#   默认为 4700 ohms。
+#   The resistance (in ohms) of the pullup attached to the analog
+#   button. The default is 4700 ohms.
 #analog_range_click_pin:
-#   'enter'按钮的阻值范围。
-#   在使用模拟按钮时必须提供由逗号分隔最小和最大值。
+#   The resistance range for a 'enter' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_back_pin:
-#   'back'按钮的阻值范围。
-#   在使用模拟按钮时必须提供由逗号分隔最小和最大值。
+#   The resistance range for a 'back' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_up_pin:
-#   'up'按钮的阻值范围。
-#   在使用模拟按钮时必须提供由逗号分隔最小和最大值。
+#   The resistance range for a 'up' button. Range minimum and maximum
+#   comma-separated values must be provided when using analog button.
 #analog_range_down_pin:
-#   'down'按钮的阻值范围。
-#   在使用模拟按钮时必须提供由逗号分隔最小和最大值。
+#   The resistance range for a 'down' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_kill_pin:
-#   'kill'按钮的阻值范围。
-#   在使用模拟按钮时必须提供由逗号分隔最小和最大值。
+#   The resistance range for a 'kill' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 ```
 
 #### hd44780显示器
@@ -3676,6 +3769,29 @@ spi_software_miso_pin:
 #line_length:
 #   设置一个 hd44780 类 LCD 每行显示的字符数量。可能的值为20
 #   （默认）和 16。行数固定为4。
+...
+```
+
+#### aip31068_spi display
+
+Information on configuring an aip31068_spi display - a very similar to hd44780_spi a 20x04 (20 symbols by 4 lines) display with slightly different internal protocol.
+
+```
+[display]
+lcd_type: aip31068_spi
+latch_pin:
+spi_software_sclk_pin:
+spi_software_mosi_pin:
+spi_software_miso_pin:
+#   The pins connected to the shift register controlling the display.
+#   The spi_software_miso_pin needs to be set to an unused pin of the
+#   printer mainboard as the shift register does not have a MISO pin,
+#   but the software spi implementation requires this pin to be
+#   configured.
+#line_length:
+#   Set the number of characters per line for an hd44780 type lcd.
+#   Possible values are 20 (default) and 16. The number of lines is
+#   fixed to 4.
 ...
 ```
 
@@ -4074,7 +4190,7 @@ sensor_type:
 #   This must be one of the supported sensor types, see below.
 ```
 
-#### XH711
+#### HX711
 
 This is a 24 bit low sample rate chip using "bit-bang" communications. It is suitable for filament scales.
 
@@ -4146,13 +4262,30 @@ data_ready_pin:
 #gain: 128
 #   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
 #   The default is 128
+#pga_bypass: False
+#   Disable the internal Programmable Gain Amplifier. If
+#   True the PGA will be disabled for gains 1, 2, and 4. The PGA is always
+#   enabled for gain settings 8 to 128, regardless of the pga_bypass setting.
+#   If AVSS is used as an input pga_bypass is forced to True.
+#   The default is False.
 #sample_rate: 660
 #   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
-#   mode the chips c internal clock runs twice as fast and the SPI communication
+#   mode the chip's internal clock runs twice as fast and the SPI communication
 #   speed is also doubled.
 #   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
 #   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
 #   The default is 660
+#input_mux:
+#   Input multiplexer configuration, select a pair of pins to use. The first pin
+#   is the positive, AINP, and the second pin is the negative, AINN. Valid
+#   values are: 'AIN0_AIN1', 'AIN0_AIN2', 'AIN0_AIN3', 'AIN1_AIN2', 'AIN1_AIN3',
+#   'AIN2_AIN3', 'AIN1_AIN0', 'AIN3_AIN2', 'AIN0_AVSS', 'AIN1_AVSS', 'AIN2_AVSS'
+#   and 'AIN3_AVSS'. If AVSS is used the PGA is bypassed and the pga_bypass
+#   setting will be forced to True.
+#   The default is AIN0_AIN1.
+#vref:
+#   The selected voltage reference. Valid values are: 'internal', 'REF0', 'REF1'
+#   and 'analog_supply'. Default is 'internal'.
 ```
 
 ## 控制板特定硬件支持
@@ -4313,30 +4446,32 @@ serial:
 
 ### [angle]
 
-支持使用a1333、as5047d或tle5012b SPI芯片的磁性霍尔角度传感器测量并读取步进电机的角度。测量结果可以通过[API服务器](API_Server.md)和[运动分析工具](Debugging.md#motion-analysis-and-data-logging)获取。可用的命令请见[G代码参考](G-Codes.md#angle)。
+Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, mt6816, mt6826s, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
 
 ```
 [angle my_angle_sensor]
 sensor_type:
-# 磁性霍尔传感器芯片的类型。
-# 可用的选择是 "a1333" "as5047d "和 "tle5012b"。
-# 这个参数必须被指定。
+#   The type of the magnetic hall sensor chip. Available choices are
+#   "a1333", "as5047d", "mt6816", "mt6826s", and "tle5012b". This parameter must be
+#   specified.
 #sample_period: 0.000400
-# 测量时使用的查询周期（以秒为单位）。
-# 默认值是 0.000400 （每秒钟2500个样本）
+#   The query period (in seconds) to use during measurements. The
+#   default is 0.000400 (which is 2500 samples per second).
 #stepper:
-# 角度传感器连接的步进电机名称（例如，"stepper_x"）。
-# 设置这个值可以启用一个角度校准工具
-# 要使用这个功能需要安装Python "numpy "包。
-# 默认是不启用角度传感器的角度校准。
+#   The name of the stepper that the angle sensor is attached to (eg,
+#   "stepper_x"). Setting this value enables an angle calibration
+#   tool. To use this feature, the Python "numpy" package must be
+#   installed. The default is to not enable angle calibration for the
+#   angle sensor.
 cs_pin:
-# 传感器的SPI引脚。必须提供此参数。
+#   The SPI enable pin for the sensor. This parameter must be provided.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-# 有关上述参数的描述，参考 "common SPI settings "
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
 ```
 
 ## 常见的总线参数
@@ -4366,7 +4501,7 @@ cs_pin:
 
 请注意，Klipper当前的微控制器对I2C的支持通常不能容忍线路噪声。I2C线路上的意外错误可能会导致Klipper产生运行时错误。Klipper 对错误恢复的支持在每种微控制器类型之间有所不同。通常建议只使用与微控制器位于同一印刷电路板上的I2C设备。
 
-大多数Klipper微控制器实现只支持100000的`i2c_speed`（*标准模式*，100kbit/s）。Klipper的"Linux"微控制器支持400000的速度（*快速模式*，400kbit/s），但它必须[在操作系统中设置](RPi_microcontroller.md#optional-enabling-i2c)，否则会忽略`i2c_speed`参数。Klipper的"RP2040"微控制器和ATmega AVR系列通过`i2c_speed`参数支持400000的速率。所有其他Klipper微控制器使用100000的速率并忽略`i2c_speed`参数。
+Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family and some STM32 (F0, G0, G4, L4, F7, H7) support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
 
 ```
 #i2c_address:

@@ -2,52 +2,52 @@
 
 Клиппер обладает несколькими привлекательными функциями:
 
-* High precision stepper movement. Klipper utilizes an application processor (such as a low-cost Raspberry Pi) when calculating printer movements. The application processor determines when to step each stepper motor, it compresses those events, transmits them to the micro-controller, and then the micro-controller executes each event at the requested time. Each stepper event is scheduled with a precision of 25 micro-seconds or better. The software does not use kinematic estimations (such as the Bresenham algorithm) - instead it calculates precise step times based on the physics of acceleration and the physics of the machine kinematics. More precise stepper movement provides quieter and more stable printer operation.
-* Best in class performance. Klipper is able to achieve high stepping rates on both new and old micro-controllers. Even old 8-bit micro-controllers can obtain rates over 175K steps per second. On more recent micro-controllers, several million steps per second are possible. Higher stepper rates enable higher print velocities. The stepper event timing remains precise even at high speeds which improves overall stability.
+* Высокоточное шаговое движение. Klipper использует прикладной процессор (например, недорогой Raspberry Pi) при расчете движений принтера. Прикладной процессор определяет, когда нужно сделать шаг каждому шаговому двигателю, сжимает эти события, передает их микроконтроллеру, а затем микроконтроллер выполняет каждое событие в требуемое время. Каждое событие шагового двигателя запланировано с точностью 25 микросекунд или лучше. Программное обеспечение не использует кинематические оценки (такие как алгоритм Брезенхема) - вместо этого оно рассчитывает точное время шага, основываясь на физике ускорения и физике кинематики машины. Более точное движение шагового механизма обеспечивает более тихую и стабильную работу принтера.
+* Лучшая в своем классе производительность. Klipper способен достичь высокой скорости шагов как на новых, так и на старых микроконтроллерах. Даже на старых 8-битных микроконтроллерах можно получить скорость более 175 тысяч шагов в секунду. На более современных микроконтроллерах возможно выполнение нескольких миллионов шагов в секунду. Более высокая частота шагов позволяет увеличить скорость печати. Временные характеристики шагового механизма остаются точными даже на высоких скоростях, что повышает общую стабильность.
 * Klipper поддерживает принтеры с несколькими микроконтроллерами. Например, один микроконтроллер может использоваться для управления экструдером, в то время как другой управляет нагревателями принтера, а третий управляет остальной частью принтера. Программное обеспечение хоста Klipper реализует синхронизацию тактовых импульсов для учета дрейфа тактовых импульсов между микроконтроллерами. Для включения нескольких микроконтроллеров не требуется специального кода - для этого просто требуется несколько дополнительных строк в конфигурационном файле.
 * Настройка с помощью простого конфигурационного файла. Нет необходимости перепрошивать микроконтроллер, чтобы изменить настройки. Вся конфигурация Klipper хранится в стандартном конфигурационном файле, который можно легко редактировать. Это упрощает настройку и обслуживание оборудования.
 * Klipper поддерживает функцию "Плавное регулировку давления "PA" " - механизм, учитывающий влияние давления в экструдере. Это позволяет уменьшить "сопливость" экструдера и улучшить качество углов печати. Реализация Klipper не предусматривает мгновенного изменения скорости экструдера, что повышает общую стабильность и надежность.
 * Klipper поддерживает функцию "Input Shaping" для снижения влияния вибраций на качество печати. Это позволяет уменьшить или устранить "звон" (также известный как "призрак", "эхо" или "рябь") при печати. Это также позволяет увеличить скорость печати при сохранении высокого качества.
 * Klipper использует "итеративный решатель" для расчета точного времени шага на основе простых кинематических уравнений. Это облегчает перенос Klipper на новые типы роботов и позволяет сохранять точное время даже при сложной кинематике (не требуется "сегментация линий").
-* Klipper is hardware agnostic. One should get the same precise timing independent of the low-level electronics hardware. The Klipper micro-controller code is designed to faithfully follow the schedule provided by the Klipper host software (or prominently alert the user if it is unable to). This makes it easier to use available hardware, to upgrade to new hardware, and to have confidence in the hardware.
+* Klipper не зависит от аппаратного обеспечения. Вы должны получать одинаково точное время независимо от низкоуровневого электронного оборудования. Код микроконтроллера Klipper разработан таким образом, чтобы точно следовать расписанию, предоставленному хост-программой Klipper (или предупреждать пользователя, если это не удается). Это облегчает использование имеющегося оборудования, переход на новое оборудование и уверенность в нем.
 * Переносимый код. Klipper работает на микроконтроллерах на базе ARM, AVR и PRU. Существующие принтеры типа "reprap" могут работать с Klipper без аппаратной модификации - достаточно добавить Raspberry Pi. Внутренняя компоновка кода Klipper облегчает поддержку и других архитектур микроконтроллеров.
-* Simpler code. Klipper uses a very high level language (Python) for most code. The kinematics algorithms, the G-code parsing, the heating and thermistor algorithms, etc. are all written in Python. This makes it easier to develop new functionality.
-* Custom programmable macros. New G-Code commands can be defined in the printer config file (no code changes are necessary). Those commands are programmable - allowing them to produce different actions depending on the state of the printer.
+* Более простой код. В Klipper используется язык очень высокого уровня (Python) для большей части кода. Алгоритмы кинематики, парсинг G-кода, алгоритмы нагрева и терморезисторов и т.д. написаны на Python. Это облегчает разработку новых функций.
+* Пользовательские программируемые макросы. Новые команды G-Code можно определить в файле конфигурации принтера (изменения кода не требуются). Эти команды можно программировать - они могут выполнять различные действия в зависимости от состояния принтера.
 * Встроенный API-сервер. Помимо стандартного интерфейса G-Code, Klipper поддерживает богатый интерфейс приложений на основе JSON. Это позволяет программистам создавать внешние приложения с детальным управлением принтером.
 
-## Additional features
+## Дополнительные возможности
 
-Klipper supports many standard 3d printer features:
+Klipper поддерживает множество стандартных функций 3d-принтера:
 
-* Several web interfaces available. Works with Mainsail, Fluidd, OctoPrint and others. This allows the printer to be controlled using a regular web-browser. The same Raspberry Pi that runs Klipper can also run the web interface.
-* Standard G-Code support. Common g-code commands that are produced by typical "slicers" (SuperSlicer, Cura, PrusaSlicer, etc.) are supported.
-* Support for multiple extruders. Extruders with shared heaters and extruders on independent carriages (IDEX) are also supported.
-* Support for cartesian, delta, corexy, corexz, hybrid-corexy, hybrid-corexz, deltesian, rotary delta, polar, and cable winch style printers.
-* Automatic bed leveling support. Klipper can be configured for basic bed tilt detection or full mesh bed leveling. If the bed uses multiple Z steppers then Klipper can also level by independently manipulating the Z steppers. Most Z height probes are supported, including BL-Touch probes and servo activated probes.
-* Automatic delta calibration support. The calibration tool can perform basic height calibration as well as an enhanced X and Y dimension calibration. The calibration can be done with a Z height probe or via manual probing.
-* Run-time "exclude object" support. When configured, this module may facilitate canceling of just one object in a multi-part print.
-* Support for common temperature sensors (eg, common thermistors, AD595, AD597, AD849x, PT100, PT1000, MAX6675, MAX31855, MAX31856, MAX31865, BME280, HTU21D, DS18B20, and LM75). Custom thermistors and custom analog temperature sensors can also be configured. One can monitor the internal micro-controller temperature sensor and the internal temperature sensor of a Raspberry Pi.
-* Basic thermal heater protection enabled by default.
-* Support for standard fans, nozzle fans, and temperature controlled fans. No need to keep fans running when the printer is idle. Fan speed can be monitored on fans that have a tachometer.
-* Support for run-time configuration of TMC2130, TMC2208/TMC2224, TMC2209, TMC2660, and TMC5160 stepper motor drivers. There is also support for current control of traditional stepper drivers via AD5206, DAC084S085, MCP4451, MCP4728, MCP4018, and PWM pins.
-* Support for common LCD displays attached directly to the printer. A default menu is also available. The contents of the display and menu can be fully customized via the config file.
-* Constant acceleration and "look-ahead" support. All printer moves will gradually accelerate from standstill to cruising speed and then decelerate back to a standstill. The incoming stream of G-Code movement commands are queued and analyzed - the acceleration between movements in a similar direction will be optimized to reduce print stalls and improve overall print time.
-* Klipper implements a "stepper phase endstop" algorithm that can improve the accuracy of typical endstop switches. When properly tuned it can improve a print's first layer bed adhesion.
-* Support for filament presence sensors, filament motion sensors, and filament width sensors.
-* Support for measuring and recording acceleration using an adxl345, mpu9250, and mpu6050 accelerometers.
-* Support for limiting the top speed of short "zigzag" moves to reduce printer vibration and noise. See the [kinematics](Kinematics.md) document for more information.
-* Sample configuration files are available for many common printers. Check the [config directory](../config/) for a list.
+* Доступно несколько веб-интерфейсов. Работает с Mainsail, Fluidd, OctoPrint и другими. Это позволяет управлять принтером с помощью обычного веб-браузера. На том же Raspberry Pi, на котором работает Klipper, можно запустить веб-интерфейс.
+* Поддержка стандартного G-кода. Поддерживаются общие команды g-кода, которые производятся типичными "слайсерами" (SuperSlicer, Cura, PrusaSlicer и т. д.).
+* Поддержка нескольких экструдеров. Также поддерживаются экструдеры с общими нагревателями и экструдеры на независимых каретках (IDEX).
+* Поддерживаются принтеры, работающие в форматах cartesian, delta, corexy, corexz, hybrid-corexy, hybrid-corexz, deltesian, rotary delta, polar и cable winch.
+* Поддержка автоматического выравнивания кровати. Klipper может быть настроен на базовое определение наклона станины или полное выравнивание станины по сетке. Если в станине используется несколько Z-шаговиков, Klipper также может выравнивать станину, независимо управляя Z-шаговиками. Поддерживается большинство датчиков высоты Z, включая датчики BL-Touch и датчики с сервоприводом.
+* Поддержка автоматической дельта-калибровки. Инструмент калибровки может выполнять базовую калибровку по высоте, а также расширенную калибровку по размерам X и Y. Калибровка может выполняться с помощью датчика высоты Z или вручную.
+* Поддержка функции "исключить объект" во время выполнения. При настройке этот модуль может облегчить отмену только одного объекта в печати, состоящей из нескольких частей.
+* Поддержка распространенных датчиков температуры (например, обычных термисторов, AD595, AD597, AD849x, PT100, PT1000, MAX6675, MAX31855, MAX31856, MAX31865, BME280, HTU21D, DS18B20 и LM75). Также можно настроить пользовательские термисторы и аналоговые датчики температуры. Можно контролировать внутренний датчик температуры микроконтроллера и внутренний датчик температуры Raspberry Pi.
+* Базовая тепловая защита нагревателя включена по умолчанию.
+* Поддержка стандартных вентиляторов, вентиляторов сопел и вентиляторов с контролем температуры. Нет необходимости держать вентиляторы включенными, когда принтер простаивает. Скорость вращения вентиляторов можно отслеживать на вентиляторах, оснащенных тахометром.
+* Поддержка конфигурирования во время выполнения драйверов шаговых двигателей TMC2130, TMC2208/TMC2224, TMC2209, TMC2660 и TMC5160. Также поддерживается управление током традиционных шаговых драйверов с помощью AD5206, DAC084S085, MCP4451, MCP4728, MCP4018 и выводов ШИМ.
+* Поддержка распространенных ЖК-дисплеев, подключаемых непосредственно к принтеру. Также доступно меню по умолчанию. Содержимое дисплея и меню можно полностью настроить с помощью файла конфигурации.
+* Постоянное ускорение и поддержка "опережения". Все движения принтера постепенно ускоряются от остановки до крейсерской скорости, а затем замедляются до остановки. Поступающий поток команд движения G-кода ставится в очередь и анализируется - ускорение между движениями в одном направлении будет оптимизировано для уменьшения задержек печати и улучшения общего времени печати.
+* В Klipper реализован алгоритм "шагового фазового концевика", который позволяет повысить точность типичных концевых выключателей. При правильной настройке он может улучшить адгезию первого слоя отпечатка.
+* Поддержка датчиков наличия нити, датчиков движения нити и датчиков ширины нити.
+* Поддержка измерения и регистрации ускорения с помощью акселерометров adxl345, mpu9250 и mpu6050.
+* Поддержка ограничения максимальной скорости коротких "зигзагообразных" движений для уменьшения вибрации и шума принтера. Дополнительные сведения см. в документе [кинематика ](Kinematics.md).
+* Для многих распространенных принтеров доступны образцы конфигурационных файлов. Список можно найти в каталоге [config](../config/).
 
-To get started with Klipper, read the [installation](Installation.md) guide.
+Чтобы начать работу с Klipper, прочитайте руководство [установка](Installation.md).
 
-## Step Benchmarks
+## Шаговые ориентиры
 
-Below are the results of stepper performance tests. The numbers shown represent total number of steps per second on the micro-controller.
+Ниже приведены результаты тестов производительности степпера. Цифры показывают общее количество шагов в секунду на микроконтроллере.
 
-| Микроконтроллер | 1 stepper active | 3 steppers active |
+| Микроконтроллер | 1 шаговый активный | 3 шаговика активны |
 | --- | --- | --- |
-| 16Mhz AVR | 157 тыс. | 99 тыс. |
-| 20Mhz AVR | 196 тыс. | 123 тыс. |
+| 16 МГц AVR | 157 тыс. | 99 тыс. |
+| 20МГц AVR | 196 тыс. | 123 тыс. |
 | SAMD21 | 686 тыс. | 471 тыс. |
 | STM32F042 | 814 тыс. | 578 тыс. |
 | Beaglebone PRU | 866 тыс. | 708 тыс. |
@@ -63,8 +63,10 @@ Below are the results of stepper performance tests. The numbers shown represent 
 | AR100 | 3529K | 2507K |
 | STM32F407 | 3652 тыс. | 2459 тыс. |
 | STM32F446 | 3913 тыс. | 2634 тыс. |
+| RP2350 | 4167K | 2663K |
+| SAME70 | 6667K | 4737K |
 | STM32H743 | 9091K | 6061K |
 
-If unsure of the micro-controller on a particular board, find the appropriate [config file](../config/), and look for the micro-controller name in the comments at the top of that file.
+Если вы не знаете, какой микроконтроллер установлен на конкретной плате, найдите соответствующий файл [config](../config/) и найдите название микроконтроллера в комментариях в верхней части этого файла.
 
-Further details on the benchmarks are available in the [Benchmarks document](Benchmarks.md).
+Более подробная информация о бенчмарках доступна в документе [Benchmarks](Benchmarks.md).

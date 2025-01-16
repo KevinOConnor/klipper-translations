@@ -28,7 +28,7 @@
 # 溫度感測器設定...
 ```
 
-更多關於設定 `temperature_probe` 相關細節請見[配置參考](https://www.klipper3d.org/zh-Hant/Config_Reference.html#_18)。建議先行設定 `calibration_position`、`calibration_extruder_temp`、`extruder_heating_z`、`calibration_bed_temp` 部分，便能自動化下述一些步驟。若要校準的列印機是封閉式的，強烈建議將 `max_validation_temp` 設定在 100\~120 之間。
+See the [configuration reference](Config_Reference.md#temperature_probe) for further details on how to configure a `temperature_probe`. It is advised to configure the `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, and `calibration_bed_temp` options, as doing so will automate some of the steps outlined below. If the printer to be calibrated is enclosed, it is strongly recommended to set the `max_validation_temp` option to a value between 100 and 120.
 
 渦電流探針的製造商可能會提供預設的飄移補償，可以將它手動添加到 `[probe_eddy_current]` 部分中的 `drift_calibration` 設定。若是沒有、或預設補償效果不佳，可以輸入 `TEMPERATURE_PROBE_CALIBRATE` 指令以使用 `[temperature_probe]` 功能中的手動校準流程。
 

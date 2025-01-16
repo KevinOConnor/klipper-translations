@@ -39,7 +39,7 @@ Der OctoPrint-Webserver muss konfiguriert werden, um mit der Klipper Host-Softwa
 Navigieren Sie zum Einstellungstab (Das Zahnradsymbol oben auf der Seite). Fügen Sie unter „Serial Connection“ in „Additional serial ports“ hinzu:
 
 ```
-~/printer_data/comms/klippy.sock
+~/printer_data/comms/klippy.serial
 ```
 
 Dann drücken Sie „Save“.

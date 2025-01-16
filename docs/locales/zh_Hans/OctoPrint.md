@@ -39,7 +39,7 @@ OctoPrint 网页服务器需要配置和Klipper Host 软件的连接。使用浏
 浏览到设置界面（在网页顶部的扳手图标）。在"Serial Connection" 下的 "Additional serial ports" 添加：
 
 ```
-~/printer_data/comms/klippy.sock
+~/printer_data/comms/klippy.serial
 ```
 
 然后点击"保存"。

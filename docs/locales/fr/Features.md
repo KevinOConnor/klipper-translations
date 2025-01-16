@@ -63,6 +63,8 @@ Ci-après les résultats des tests de performance du stepper. Les chiffres indiq
 | AR100 | 3529K | 2507K |
 | STM32F407 | 3652K | 2459K |
 | STM32F446 | 3913K | 2634K |
+| RP2350 | 4167K | 2663K |
+| SAME70 | 6667K | 4737K |
 | STM32H743 | 9091K | 6061K |
 
 Si vous n'êtes pas sûr du microcontrôleur d'une carte particulière, trouvez le [fichier de configuration](../config/) approprié , et cherchez le nom du microcontrôleur dans les commentaires en haut de ce fichier.

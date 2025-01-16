@@ -39,7 +39,7 @@ Az OctoPrint webszerverét úgy kell konfigurálni, hogy kommunikálni tudjon a 
 Navigálj a Beállítások fülre (a csavarkulcs ikon az oldal tetején). A "Soros kapcsolat" alatt a "További soros portok" alatt add hozzá:
 
 ```
-~/printer_data/comms/klippy.sock
+~/printer_data/comms/klippy.serial
 ```
 
 Ezután kattints a "Mentés" gombra.

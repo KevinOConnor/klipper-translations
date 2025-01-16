@@ -10,7 +10,7 @@ BIGTREETECH是Klipper的官方主板赞助商。BIGTREETECH致力于开发创新
 
 ## 赞助
 
-[<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor) [<img src="./img/sponsors/peopoly-logo.png" width="200" style="margin:25px" />](https://peopoly.net)
+[<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor)
 
 ## Klipper的开发者们
 

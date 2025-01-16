@@ -10,7 +10,7 @@ BIGTREETECH е официалният спонсор на Klipper. BIGTREETECH �
 
 ## Спонсори
 
-[<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor) [<img src="./img/sponsors/peopoly-logo.png" width="200" style="margin:25px" />](https://peopoly.net)
+[<img src="./img/sponsors/obico-light-horizontal.png" width="200" style="margin:25px" />](https://obico.io/klipper.html?source=klipper_sponsor)
 
 ## Разработчици на Klipper
 

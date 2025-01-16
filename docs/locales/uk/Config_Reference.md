@@ -1790,25 +1790,61 @@ unretract_extra_length нижче). За замовчуванням 0 мм.
 Підтримка акселерометрів LIS2DW.
 
 ```
-[lis2dw] cs_pin:
-
-Штифт увімкнення SPI для датчика. Цей параметр необхідно вказати.
-
+[lis2dw]
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
 #spi_speed: 5000000
-
-Швидкість SPI (у Гц), яка використовується під час обміну даними з чіпом.
-
-За замовчуванням 5000000.
-
-#spi_bus: #spi_software_sclk_pin: #spi_software_mosi_pin: #spi_software_miso_pin:
-
-Перегляньте розділ «Загальні налаштування SPI», щоб отримати опис
-
-параметр вище.
-
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
 #axes_map: x, y, z
+#   See the "adxl345" section for information on this parameter.
+```
 
-Перегляньте розділ "adxl345", щоб отримати інформацію про цей параметр.
+### [lis3dh]
+
+Support for LIS3DH accelerometers.
+
+```
+[lis3dh]
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
+#spi_speed: 5000000
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
+#axes_map: x, y, z
+#   See the "adxl345" section for information on this parameter.
 ```
 
 ### [mpu9250]
@@ -1837,49 +1873,59 @@ unretract_extra_length нижче). За замовчуванням 0 мм.
 
 ```
 [resonance_tester]
- #probe_points:
- # Список координат X, Y, Z точок (по одній точці на лінію) для перевірки
- # резонансів при. Необхідно принаймні один бал. Переконайтеся, що всі
- # точки з деяким запасом міцності в площині XY (~кілька сантиметрів)
- # доступні за допомогою інструментальної головки.
- #accel_chip:
- # Назва чіпа акселерометра, який буде використовуватися для вимірювань. Якщо
- # чіп adxl345 був визначений без явного імені, цей параметр
- # можна просто посилатися на нього як на "accel_chip: adxl345", інакше an
- #Також має бути вказано # явне ім’я, напр. "accel_chip: adxl345
- # my_chip_name". Має бути або цей, або наступні два параметри
- # набір.
- #accel_chip_x:
- #accel_chip_y:
- # Назви чіпів акселерометрів, які будуть використовуватися для вимірювань для кожного
- # осі. Може бути корисним, наприклад, на принтері bed slinger,
- # якщо на ліжку встановлено два окремих акселерометри (для осі Y)
- # і на інструментальній головці (для осі X). Ці параметри однакові
- # формат як параметр "accel_chip". Тільки 'accel_chip' або ці два
- Потрібно вказати # параметр.
- #max_smoothing:
- # Максимальне згладжування вхідного шейпера для кожної осі під час шейпера
- # автокалібрування (за допомогою команди 'SHAPER_CALIBRATE'). За замовчуванням ні
- # вказано максимальне згладжування. Див. посібник Measuring_Resonances
- #, щоб дізнатися більше про використання цієї функції.
- #min_freq: 5
- # Мінімальна частота для перевірки резонансів. За замовчуванням 5 Гц.
- #max_freq: 133,33
- # Максимальна частота для перевірки резонансів. За замовчуванням 133,33 Гц.
- #accel_per_hz: 75
- # Цей параметр використовується для визначення того, яке прискорення використовувати
- # перевірка певної частоти: accel = accel_per_hz * freq. Вище
- # значення, тим більша енергія коливань. Можна встановити на
- # нижче значення за замовчуванням, якщо резонанси стають занадто сильними
- #принтер. Однак нижчі значення роблять вимірювання
- # високочастотні резонанси менш точні. Значення за замовчуванням – 75
- # (мм/с).
- #hz_per_sec: 1
- # Визначає швидкість тесту. При тестуванні всіх частот в
- # діапазон [min_freq, max_freq], щосекунди частота збільшується на
- # Гц_за_сек. Малі значення роблять тест повільним, а великі
- # зменшить точність тесту. Значення за замовчуванням — 1,0
- # (Гц/сек == сек^-2).
+#probe_points:
+#   A list of X, Y, Z coordinates of points (one point per line) to test
+#   resonances at. At least one point is required. Make sure that all
+#   points with some safety margin in XY plane (~a few centimeters)
+#   are reachable by the toolhead.
+#accel_chip:
+#   A name of the accelerometer chip to use for measurements. If
+#   adxl345 chip was defined without an explicit name, this parameter
+#   can simply reference it as "accel_chip: adxl345", otherwise an
+#   explicit name must be supplied as well, e.g. "accel_chip: adxl345
+#   my_chip_name". Either this, or the next two parameters must be
+#   set.
+#accel_chip_x:
+#accel_chip_y:
+#   Names of the accelerometer chips to use for measurements for each
+#   of the axis. Can be useful, for instance, on bed slinger printer,
+#   if two separate accelerometers are mounted on the bed (for Y axis)
+#   and on the toolhead (for X axis). These parameters have the same
+#   format as 'accel_chip' parameter. Only 'accel_chip' or these two
+#   parameters must be provided.
+#max_smoothing:
+#   Maximum input shaper smoothing to allow for each axis during shaper
+#   auto-calibration (with 'SHAPER_CALIBRATE' command). By default no
+#   maximum smoothing is specified. Refer to Measuring_Resonances guide
+#   for more details on using this feature.
+#move_speed: 50
+#   The speed (in mm/s) to move the toolhead to and between test points
+#   during the calibration. The default is 50.
+#min_freq: 5
+#   Minimum frequency to test for resonances. The default is 5 Hz.
+#max_freq: 133.33
+#   Maximum frequency to test for resonances. The default is 133.33 Hz.
+#accel_per_hz: 60
+#   This parameter is used to determine which acceleration to use to
+#   test a specific frequency: accel = accel_per_hz * freq. Higher the
+#   value, the higher is the energy of the oscillations. Can be set to
+#   a lower than the default value if the resonances get too strong on
+#   the printer. However, lower values make measurements of
+#   high-frequency resonances less precise. The default value is 75
+#   (mm/sec).
+#hz_per_sec: 1
+#   Determines the speed of the test. When testing all frequencies in
+#   range [min_freq, max_freq], each second the frequency increases by
+#   hz_per_sec. Small values make the test slow, and the large values
+#   will decrease the precision of the test. The default value is 1.0
+#   (Hz/sec == sec^-2).
+#sweeping_accel: 400
+#   An acceleration of slow sweeping moves. The default is 400 mm/sec^2.
+#sweeping_period: 1.2
+#   A period of slow sweeping moves. Setting this parameter to 0
+#   disables slow sweeping moves. Avoid setting it to a too small
+#   non-zero value in order to not poison the measurements.
+#   The default is 1.2 sec which is a good all-round choice.
 ```
 
 ## Помічники конфігураційних файлів
@@ -2155,46 +2201,46 @@ docs/BLTouch.md, перш ніж встановити значення False. Т
 
 ### [axis_twist_compensation]
 
-Інструмент для компенсації неточних показань датчика через перекручування X-портального ланцюга. Перегляньте Посібник з компенсації скручування осі, щоб отримати докладнішу інформацію щодо симптомів, конфігурації та налаштування.
+A tool to compensate for inaccurate probe readings due to twist in X or Y gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
 
 ```
-[axis_twist_compensation] #швидкість: 50
-
-Швидкість (у мм/с) незондувальних рухів під час калібрування.
-
-За замовчуванням 50.
-
+[axis_twist_compensation]
+#speed: 50
+#   The speed (in mm/s) of non-probing moves during the calibration.
+#   The default is 50.
 #horizontal_move_z: 5
-
-Висота (у мм), на яку слід наказати рухатися голові
-
-безпосередньо перед початком операції зондування. За замовчуванням 5.
-
+#   The height (in mm) that the head should be commanded to move to
+#   just prior to starting a probe operation. The default is 5.
 calibrate_start_x: 20
-
-Визначає мінімальну координату X калібрування
-
-Це має бути координата X, яка розташовує сопло на початку
-
-позиція калібрування. Цей параметр необхідно вказати.
-
+#   Defines the minimum X coordinate of the calibration
+#   This should be the X coordinate that positions the nozzle at the starting
+#   calibration position.
 calibrate_end_x: 200
+#   Defines the maximum X coordinate of the calibration
+#   This should be the X coordinate that positions the nozzle at the ending
+#   calibration position.
+calibrate_y: 112.5
+#   Defines the Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle during the
+#   calibration process. This parameter is recommended to
+#   be near the center of the bed
 
-Визначає максимальну координату X калібрування
-
-Це має бути координата X, яка розташовує сопло в кінці
-
-позиція калібрування. Цей параметр необхідно вказати.
-
-calibrate_y: 112,5
-
-Визначає координату Y калібрування
-
-Це має бути координата Y, яка розташовує сопло під час
-
-процес калібрування. Цей параметр повинен бути наданий і рекомендований
-
-бути біля центру ліжка
+# For Y-axis twist compensation, specify the following parameters:
+calibrate_start_y: ...
+#   Defines the minimum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the starting
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_end_y: ...
+#   Defines the maximum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the ending
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_x: ...
+#   Defines the X coordinate of the calibration for Y axis twist compensation
+#   This should be the X coordinate that positions the nozzle during the
+#   calibration process for Y axis twist compensation. This parameter must be
+#   provided and is recommended to be near the center of the bed.
 ```
 
 ## Додаткові крокові двигуни та екструдери
@@ -2488,54 +2534,58 @@ See the "extruder" section for the definition of the above
 
 ```
 [temperature_probe my_probe]
- #sensor_type:
- #sensor_pin:
- #min_temp:
- #max_temp:
- # Конфігурація датчика температури.
- # Дивіться розділ «екструдер» для визначення наведеного вище
- # параметри.
- #smooth_time:
- # Значення часу (у секундах), протягом якого відбуватимуться вимірювання температури
- # бути згладженими для зменшення впливу шуму вимірювання. За замовчуванням
- # становить 2,0 секунди.
- #gcode_id:
- # Перегляньте розділ "heater_generic" для визначення цього
- # параметр.
- #швидкість:
- # Швидкість руху [мм/с] для xy рухається під час калібрування. За замовчуванням
- # — це швидкість, визначена зондом.
- #horizontal_move_z:
- # Відстань z [мм] від ліжка, на якій відбуватимуться переміщення xy
- # під час калібрування. За замовчуванням 2 мм.
- #відпочинок_z:
- # Відстань z [мм] від станини, на якій буде стояти інструмент
- # для нагріву котушки зонда під час калібрування. За замовчуванням — 0,4 мм
- #calibration_position:
- # Положення X, Y, Z, куди слід перемістити інструмент
- # ініціалізація калібрування дрейфу зонда. Це місце розташування
- # де відбудеться перше ручне дослідження. Якщо опущено,
- # типовою поведінкою є не переміщення інструмента перед першим
- # ручний зонд.
- #calibration_bed_temp:
- # Максимальна безпечна температура шару (в C), яка використовується для нагрівання зонда
- # під час калібрування дрейфу зонда. Коли встановлено, калібрування
- # процедура включить ліжко після першого зразка
- # прийнято. Після завершення процедури калібрування станини
- # температура буде встановлена на нуль. Якщо опущено, за замовчуванням
- # поведінка - не встановлювати температуру ліжка.
- #calibration_extruder_temp:
- # Температура екструдера (у C), встановлена зондом під час калібрування дрейфу.
- # Якщо вказано цей параметр, процедура чекатиме, доки не завершиться
- # задана температура досягнута перед запитом першого посібника
- # зонд. Після завершення процедури калібрування екструдера
- # температура буде встановлена на 0. Якщо опущено, поведінка за замовчуванням
- # не встановлювати температуру екструдера.
- #extruder_heating_z: 50.
- # Розташування Z, де відбуватиметься нагрівання екструдера, якщо
- # Параметр "calibration_extruder_temp" встановлено. Рекомендується нагріти
- # екструдер на деякій відстані від станини, щоб мінімізувати його вплив
- # температура котушки датчика. За замовчуванням 50.
+#sensor_type:
+#sensor_pin:
+#min_temp:
+#max_temp:
+#   Temperature sensor configuration.
+#   See the "extruder" section for the definition of the above
+#   parameters.
+#smooth_time:
+#   A time value (in seconds) over which temperature measurements will
+#   be smoothed to reduce the impact of measurement noise. The default
+#   is 2.0 seconds.
+#gcode_id:
+#   See the "heater_generic" section for the definition of this
+#   parameter.
+#speed:
+#   The travel speed [mm/s] for xy moves during calibration.  Default
+#   is the speed defined by the probe.
+#horizontal_move_z:
+#   The z distance [mm] from the bed at which xy moves will occur
+#   during calibration. Default is 2mm.
+#resting_z:
+#   The z distance [mm] from the bed at which the tool will rest
+#   to heat the probe coil during calibration.  Default is .4mm
+#calibration_position:
+#   The X, Y, Z position where the tool should be moved when
+#   probe drift calibration initializes.  This is the location
+#   where the first manual probe will occur.  If omitted, the
+#   default behavior is not to move the tool prior to the first
+#   manual probe.
+#calibration_bed_temp:
+#   The maximum safe bed temperature (in C) used to heat the probe
+#   during probe drift calibration.  When set, the calibration
+#   procedure will turn on the bed after the first sample is
+#   taken.  When the calibration procedure is complete the bed
+#   temperature will be set to zero.  When omitted the default
+#   behavior is not to set the bed temperature.
+#calibration_extruder_temp:
+#   The extruder temperature (in C) set probe during drift calibration.
+#   When this option is supplied the procedure will wait for until the
+#   specified temperature is reached before requesting the first manual
+#   probe.  When the calibration procedure is complete the extruder
+#   temperature will be set to 0.  When omitted the default behavior is
+#   not to set the extruder temperature.
+#extruder_heating_z: 50.
+#   The Z location where extruder heating will occur if the
+#   "calibration_extruder_temp" option is set.  Its recommended to heat
+#   the extruder some distance from the bed to minimize its impact on
+#   the probe coil temperature.  The default is 50.
+#max_validation_temp: 60.
+#   The maximum temperature used to validate the calibration.  It is
+#   recommended to set this to a value between 100 and 120 for enclosed
+#   printers.  The default is 60.
 ```
 
 ## Датчики температури
@@ -3674,131 +3724,132 @@ PCA9533/1, 99 для PCA9533/2. За замовчуванням 98.
 
 ```
 [tmc2240 stepper_x]
- cs_pin:
- # Пін, що відповідає лінії вибору мікросхеми TMC2240. Ця шпилька
- # буде встановлено на низький рівень на початку повідомлень SPI і підвищено на високий
- # після завершення повідомлення. Цей параметр необхідно вказати.
- #spi_speed:
- #spi_bus:
- #spi_software_sclk_pin:
- #spi_software_mosi_pin:
- #spi_software_miso_pin:
- # Перегляньте розділ «Загальні налаштування SPI», щоб отримати опис
- # параметр вище.
- #uart_pin:
- # Штифт, підключений до лінії TMC2240 DIAG1/SW. Якщо цей параметр
- # за умови, що зв'язок UART використовується замість SPI.
- #chain_position:
- #chain_length:
- # Ці параметри налаштовують шлейфове з’єднання SPI. Два параметри
- # визначити позицію кроку в ланцюзі та загальну довжину ланцюга.
- # Позиція 1 відповідає степеру, який підключається до сигналу MOSI.
- # За замовчуванням ланцюжок SPI не використовується.
- #interpolate: Правда
- # Якщо істина, увімкнути крокову інтерполяцію (драйвер буде внутрішньо
- # крок зі швидкістю 256 мікрокроків). Типовим значенням є True.
- run_current:
- # Величина струму (в амперах RMS), щоб налаштувати драйвер для використання
- # під час руху степера.  ей параметр необхідно вказати.
- #hold_current:
- # Величина струму (в амперах RMS), щоб налаштувати драйвер для використання
- # коли степпер не рухається. Налаштування hold_current не є
- # рекомендовано (подробиці див. на TMC_Drivers.md). Типовим значенням є
- # не зменшувати струм.
- #rref: 12000
- # Опір (в Омах) резистора між IREF і GND. The
- # за замовчуванням 12000.
- #stealthchop_threshold: 0
- # Швидкість (у мм/с), на яку потрібно встановити порогове значення "stealthChop". Коли
- # set, режим "stealthChop" буде ввімкнено, якщо кроковий двигун
- # швидкість нижче цього значення. За замовчуванням 0, що вимикає
- # режим "stealthChop".
- #coolstep_threshold:
- # Швидкість (у мм/с) для встановлення внутрішнього "CoolStep" драйвера TMC
- # поріг до. Якщо встановлено, функція coolstep буде ввімкнена, коли
- # швидкість крокового двигуна близька до цього значення або перевищує його. важливо
- # - якщо встановлено coolstep_threshold і використовується "безсенсорне самонаведення",
- # тоді потрібно переконатися, що швидкість наведення вище кроку холоду
- #поріг! За замовчуванням функцію coolstep не ввімкнено.
- #high_velocity_threshold:
- # Швидкість (у мм/с) для встановлення високого рівня внутрішнього драйвера TMC
- # швидкість" порогове значення (СТЕГНО) до. Це зазвичай використовується для вимкнення
- # функція "CoolStep" на високих швидкостях. За замовчуванням не встановлено a
- # Поріг "високої швидкості" TMC.
- #драйвер_MSLUT0: 2863314260
- #драйвер_MSLUT1: 1251300522
- #драйвер_MSLUT2: 608774441
- #драйвер_MSLUT3: 269500962
- #драйвер_MSLUT4: 4227858431
- #драйвер_MSLUT5: 3048961917
- #драйвер_MSLUT6: 1227445590
- #driver_MSLUT7: 4211234
- #driver_W0: 2
- #driver_W1: 1
- #driver_W2: 1
- #driver_W3: 1
- #водій_X1: 128
- #driver_X2: 255
- #driver_X3: 255
- #driver_START_SIN: 0
- #driver_START_SIN90: 247
- #driver_OFFSET_SIN90: 0
- # Ці поля безпосередньо керують регістрами таблиці Microstep. Оптимальний
- Таблиця хвиль # є специфічною для кожного двигуна та може змінюватись залежно від струму. Ан
- # оптимальна конфігурація матиме мінімальні артефакти друку, викликані
- # нелінійний кроковий рух. Зазначені вище значення є типовими
- # значення, які використовує драйвер. Значення має бути вказане як ціле десяткове число
- # (шістнадцяткова форма не підтримується). Щоб обчислити поля хвильової таблиці,
- # дивіться tmc2130 "Таблиця розрахунків" на веб-сайті Trinamic.
- # Крім того, цей драйвер також має поле OFFSET_SIN90, яке можна використовувати
- # для налаштування двигуна з незбалансованими котушками. Перегляньте `Таблицю пошуку синусоїди`
- # розділ у таблиці даних для інформації про це поле та способи налаштування
- # це.
- #driver_MULTISTEP_FILT: Правда
- #driver_IHOLDDELAY: 6
- #driver_IRUNDELAY: 4
- #driver_TPOWERDOWN: 10
- #драйвер_TBL: 2
- #driver_TOFF: 3
- #driver_HEND: 2
- #driver_HSTRT: 5
- #драйвер_FD3: 0
- #драйвер_TPFD: 4
- #driver_CHM: 0
- #driver_VHIGHFS: 0
- #driver_VHIGHCHM: 0
- #driver_DISS2G: 0
- #driver_DISS2VS: 0
- #driver_PWM_AUTOSCALE: Правда
- #driver_PWM_AUTOGRAD: Правда
- #driver_PWM_FREQ: 0
- #водій_ВІЛЬНИЙ КОЛЕШ: 0
- #driver_PWM_GRAD: 0
- #driver_PWM_OFS: 29
- #driver_PWM_REG: 4
- #driver_PWM_LIM: 12
- #driver_SGT: 0
- #driver_SEMIN: 0
- #driver_SEUP: 0
- #driver_SEMAX: 0
- #driver_SEDN: 0
- #driver_SEIMIN: 0
- #driver_SFILT: 0
- #driver_SG4_ANGLE_OFFSET: 1
- # Встановіть заданий регістр під час конфігурації TMC2240
- # чіп. Це може бути використано для встановлення власних параметрів двигуна. The
- # значення за замовчуванням для кожного параметра вказано поруч із назвою параметра в
- # вище списку.
- #diag0_pin:
- #diag1_pin:
- # Вивід мікроконтролера, приєднаний до однієї з ліній DIAG
- # Чіп TMC2240. Потрібно вказати лише один діагностичний штифт. шпилька
- # є "активним низьким" і тому зазвичай має перед собою "^!". Налаштування
- # це створює віртуальний пін "tmc2240_stepper_x:virtual_endstop"
- # який можна використовувати як endstop_pin степера. Це дозволяє
- # "безсенсорне самонаведення". (Не забудьте також встановити driver_SGT на an
- # відповідне значення чутливості.) За умовчанням не ввімкнено
- # безсенсорне самонаведення.
+cs_pin:
+#   The pin corresponding to the TMC2240 chip select line. This pin
+#   will be set to low at the start of SPI messages and raised to high
+#   after the message completes. This parameter must be provided.
+#spi_speed:
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#uart_pin:
+#   The pin connected to the TMC2240 DIAG1/SW line. If this parameter
+#   is provided UART communication is used rather then SPI.
+#chain_position:
+#chain_length:
+#   These parameters configure an SPI daisy chain. The two parameters
+#   define the stepper position in the chain and the total chain length.
+#   Position 1 corresponds to the stepper that connects to the MOSI signal.
+#   The default is to not use an SPI daisy chain.
+#interpolate: True
+#   If true, enable step interpolation (the driver will internally
+#   step at a rate of 256 micro-steps). The default is True.
+run_current:
+#   The amount of current (in amps RMS) to configure the driver to use
+#   during stepper movement. This parameter must be provided.
+#hold_current:
+#   The amount of current (in amps RMS) to configure the driver to use
+#   when the stepper is not moving. Setting a hold_current is not
+#   recommended (see TMC_Drivers.md for details). The default is to
+#   not reduce the current.
+#rref: 12000
+#   The resistance (in ohms) of the resistor between IREF and GND. The
+#   default is 12000.
+#stealthchop_threshold: 0
+#   The velocity (in mm/s) to set the "stealthChop" threshold to. When
+#   set, "stealthChop" mode will be enabled if the stepper motor
+#   velocity is below this value. The default is 0, which disables
+#   "stealthChop" mode.
+#coolstep_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "CoolStep"
+#   threshold to. If set, the coolstep feature will be enabled when
+#   the stepper motor velocity is near or above this value. Important
+#   - if coolstep_threshold is set and "sensorless homing" is used,
+#   then one must ensure that the homing speed is above the coolstep
+#   threshold! The default is to not enable the coolstep feature.
+#high_velocity_threshold:
+#   The velocity (in mm/s) to set the TMC driver internal "high
+#   velocity" threshold (THIGH) to. This is typically used to disable
+#   the "CoolStep" feature at high speeds. The default is to not set a
+#   TMC "high velocity" threshold.
+#driver_MSLUT0: 2863314260
+#driver_MSLUT1: 1251300522
+#driver_MSLUT2: 608774441
+#driver_MSLUT3: 269500962
+#driver_MSLUT4: 4227858431
+#driver_MSLUT5: 3048961917
+#driver_MSLUT6: 1227445590
+#driver_MSLUT7: 4211234
+#driver_W0: 2
+#driver_W1: 1
+#driver_W2: 1
+#driver_W3: 1
+#driver_X1: 128
+#driver_X2: 255
+#driver_X3: 255
+#driver_START_SIN: 0
+#driver_START_SIN90: 247
+#driver_OFFSET_SIN90: 0
+#   These fields control the Microstep Table registers directly. The optimal
+#   wave table is specific to each motor and might vary with current. An
+#   optimal configuration will have minimal print artifacts caused by
+#   non-linear stepper movement. The values specified above are the default
+#   values used by the driver. The value must be specified as a decimal integer
+#   (hex form is not supported). In order to compute the wave table fields,
+#   see the tmc2130 "Calculation Sheet" from the Trinamic website.
+#   Additionally, this driver also has the OFFSET_SIN90 field which can be used
+#   to tune a motor with unbalanced coils. See the `Sine Wave Lookup Table`
+#   section in the datasheet for information about this field and how to tune
+#   it.
+#driver_MULTISTEP_FILT: True
+#driver_IHOLDDELAY: 6
+#driver_IRUNDELAY: 4
+#driver_TPOWERDOWN: 10
+#driver_TBL: 2
+#driver_TOFF: 3
+#driver_HEND: 2
+#driver_HSTRT: 5
+#driver_FD3: 0
+#driver_TPFD: 4
+#driver_CHM: 0
+#driver_VHIGHFS: 0
+#driver_VHIGHCHM: 0
+#driver_DISS2G: 0
+#driver_DISS2VS: 0
+#driver_PWM_AUTOSCALE: True
+#driver_PWM_AUTOGRAD: True
+#driver_PWM_FREQ: 0
+#driver_FREEWHEEL: 0
+#driver_PWM_GRAD: 0
+#driver_PWM_OFS: 29
+#driver_PWM_REG: 4
+#driver_PWM_LIM: 12
+#driver_SGT: 0
+#driver_SEMIN: 0
+#driver_SEUP: 0
+#driver_SEMAX: 0
+#driver_SEDN: 0
+#driver_SEIMIN: 0
+#driver_SFILT: 0
+#driver_SG4_ANGLE_OFFSET: 1
+#driver_SLOPE_CONTROL: 0
+#   Set the given register during the configuration of the TMC2240
+#   chip. This may be used to set custom motor parameters. The
+#   defaults for each parameter are next to the parameter name in the
+#   above list.
+#diag0_pin:
+#diag1_pin:
+#   The micro-controller pin attached to one of the DIAG lines of the
+#   TMC2240 chip. Only a single diag pin should be specified. The pin
+#   is "active low" and is thus normally prefaced with "^!". Setting
+#   this creates a "tmc2240_stepper_x:virtual_endstop" virtual pin
+#   which may be used as the stepper's endstop_pin. Doing this enables
+#   "sensorless homing". (Be sure to also set driver_SGT to an
+#   appropriate sensitivity value.) The default is to not enable
+#   sensorless homing.
 ```
 
 ### [tmc5160]
@@ -4118,153 +4169,84 @@ sda_pin:
 Підтримка дисплея, підключеного до мікроконтролера.
 
 ```
-[дисплей] lcd_type:
-
-Тип РК-чіпа, що використовується. Це може бути "hd44780", "hd44780_spi",
-
-"st7920", "emulated_st7920", "uc1701", "ssd1306" або "sh1106".
-
-Перегляньте розділи дисплея нижче для отримання інформації про кожен тип і
-
-додаткові параметри, які вони надають. Цей параметр повинен бути
-
-надано.
-
+[display]
+lcd_type:
+#   The type of LCD chip in use. This may be "hd44780", "hd44780_spi",
+#   "aip31068_spi", "st7920", "emulated_st7920", "uc1701", "ssd1306", or
+#   "sh1106".
+#   See the display sections below for information on each type and
+#   additional parameters they provide. This parameter must be
+#   provided.
 #display_group:
-
-Назва групи display_data для відображення на дисплеї. Це
-
-контролює вміст екрана (див. розділ «display_data».
-
-для отримання додаткової інформації). Типовим є _default_20x4 для hd44780
-
-дисплеїв і _default_16x4 для інших дисплеїв.
-
+#   The name of the display_data group to show on the display. This
+#   controls the content of the screen (see the "display_data" section
+#   for more information). The default is _default_20x4 for hd44780 or
+#   aip31068_spi displays and _default_16x4 for other displays.
 #menu_timeout:
-
-Час очікування для меню. Будучи неактивним протягом такої кількості секунд
-
-тригер вихід із меню або повернення до кореневого меню під час автозапуску
-
-увімкнено. За замовчуванням 0 секунд (вимкнено)
-
+#   Timeout for menu. Being inactive this amount of seconds will
+#   trigger menu exit or return to root menu when having autorun
+#   enabled. The default is 0 seconds (disabled)
 #menu_root:
-
-Назва розділу головного меню, який буде показано під час натискання кодера
-
-на головному екрані. За замовчуванням __main, і це показує
-
-типові меню, як визначено у klippy/extras/display/menu.cfg
-
+#   Name of the main menu section to show when clicking the encoder
+#   on the home screen. The defaults is __main, and this shows the
+#   the default menus as defined in klippy/extras/display/menu.cfg
 #menu_reverse_navigation:
-
-Якщо ввімкнути, він змінює напрямки вгору та вниз для списку
-
-навігація. За замовчуванням значення False. Цей параметр необов'язковий.
-
+#   When enabled it will reverse up and down directions for list
+#   navigation. The default is False. This parameter is optional.
 #encoder_pins:
-
-Виводи, підключені до кодера. При використанні необхідно передбачити 2 шпильки
-
-кодувальник. Цей параметр необхідно вказати під час використання меню.
-
+#   The pins connected to encoder. 2 pins must be provided when using
+#   encoder. This parameter must be provided when using menu.
 #encoder_steps_per_detent:
-
-Скільки кроків кодер видає на фіксацію ("клацання"). Якщо
-
-кодер використовує два фіксатори для переходу між записами або переміщує два
-
-записів з одного блокування, спробуйте змінити це. Дозволені значення 2
-
-(напівкроковий) або 4 (повний крок). За замовчуванням 4.
-
+#   How many steps the encoder emits per detent ("click"). If the
+#   encoder takes two detents to move between entries or moves two
+#   entries from one detent, try changing this. Allowed values are 2
+#   (half-stepping) or 4 (full-stepping). The default is 4.
 #click_pin:
-
-Штифт, підключений до кнопки «введення» або «клацання» кодера. Це
-
-Під час використання меню необхідно вказати # параметр. Наявність ан
-
-Параметр конфігурації 'analog_range_click_pin' повертає цей параметр
-
-від цифрового до аналогового.
-
+#   The pin connected to 'enter' button or encoder 'click'. This
+#   parameter must be provided when using menu. The presence of an
+#   'analog_range_click_pin' config parameter turns this parameter
+#   from digital to analog.
 #back_pin:
-
-Штифт, підключений до кнопки "назад". Цей параметр необов'язковий,
-
-меню можна використовувати без нього. Наявність ан
-
-Параметр конфігурації 'analog_range_back_pin' повертає цей параметр з
-
-цифро-аналоговий.
-
+#   The pin connected to 'back' button. This parameter is optional,
+#   menu can be used without it. The presence of an
+#   'analog_range_back_pin' config parameter turns this parameter from
+#   digital to analog.
 #up_pin:
-
-Штифт, підключений до кнопки «вгору». Цей параметр необхідно вказати
-
-при використанні меню без кодера. Наявність ан
-
-Параметр конфігурації 'analog_range_up_pin' повертає цей параметр з
-
-цифро-аналоговий.
-
+#   The pin connected to 'up' button. This parameter must be provided
+#   when using menu without encoder. The presence of an
+#   'analog_range_up_pin' config parameter turns this parameter from
+#   digital to analog.
 #down_pin:
-
-Штифт, підключений до кнопки «вниз». Цей параметр повинен бути
-
-надається при використанні меню без кодера. Наявність ан
-
-Параметр конфігурації 'analog_range_down_pin' повертає цей параметр з
-
-цифро-аналоговий.
-
+#   The pin connected to 'down' button. This parameter must be
+#   provided when using menu without encoder. The presence of an
+#   'analog_range_down_pin' config parameter turns this parameter from
+#   digital to analog.
 #kill_pin:
-
-Штифт, пов’язаний з кнопкою «kill». Ця кнопка викличе
-
-аварійна зупинка. Наявність конфігурації 'analog_range_kill_pin'
-
-Параметр # перетворює цей параметр із цифрового на аналоговий. #analog_pullup_resistor: 4700
-
-Опір (в Омах) підтягування, підключеного до аналога
-
-кнопка. За замовчуванням 4700 Ом.
-
+#   The pin connected to 'kill' button. This button will call
+#   emergency stop. The presence of an 'analog_range_kill_pin' config
+#   parameter turns this parameter from digital to analog.
+#analog_pullup_resistor: 4700
+#   The resistance (in ohms) of the pullup attached to the analog
+#   button. The default is 4700 ohms.
 #analog_range_click_pin:
-
-Діапазон опору для кнопки «введення». Діапазон мінімальний і
-
-Максимальна кількість значень, розділених комами, має бути надано під час використання аналогового
-
-кнопка.
-
+#   The resistance range for a 'enter' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_back_pin:
-
-Діапазон опору для кнопки «Назад». Діапазон мінімальний і
-
-Максимальна кількість значень, розділених комами, має бути надано під час використання аналогового
-
-кнопка.
-
+#   The resistance range for a 'back' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_up_pin:
-
-Діапазон опору для кнопки «вгору». Мінімальний і максимальний діапазон
-
-Під час використання аналогової кнопки необхідно вказати # значення, розділені комами. #analog_range_down_pin:
-
-Діапазон опору для кнопки «вниз». Діапазон мінімальний і
-
-Максимальна кількість значень, розділених комами, має бути надано під час використання аналогового
-
-кнопка.
-
+#   The resistance range for a 'up' button. Range minimum and maximum
+#   comma-separated values must be provided when using analog button.
+#analog_range_down_pin:
+#   The resistance range for a 'down' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_kill_pin:
-
-Діапазон опору для кнопки «вбити». Діапазон мінімальний і
-
-Максимальна кількість значень, розділених комами, має бути надано під час використання аналогового
-
-кнопка.
+#   The resistance range for a 'kill' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 ```
 
 #### дисплей hd44780
@@ -4338,6 +4320,29 @@ fixed to 4.
 
 встановлено на 4.
 
+...
+```
+
+#### aip31068_spi display
+
+Information on configuring an aip31068_spi display - a very similar to hd44780_spi a 20x04 (20 symbols by 4 lines) display with slightly different internal protocol.
+
+```
+[display]
+lcd_type: aip31068_spi
+latch_pin:
+spi_software_sclk_pin:
+spi_software_mosi_pin:
+spi_software_miso_pin:
+#   The pins connected to the shift register controlling the display.
+#   The spi_software_miso_pin needs to be set to an unused pin of the
+#   printer mainboard as the shift register does not have a MISO pin,
+#   but the software spi implementation requires this pin to be
+#   configured.
+#line_length:
+#   Set the number of characters per line for an hd44780 type lcd.
+#   Possible values are 20 (default) and 16. The number of lines is
+#   fixed to 4.
 ...
 ```
 
@@ -4905,7 +4910,7 @@ switch_pin: #pause_on_runout: #runout_gcode: #insert_gcode: #event_delay: #pause
 Це має бути один із підтримуваних типів датчиків, див. нижче.
 ```
 
-#### XH711
+#### HX711
 
 Це 24-бітний чіп із низькою частотою дискретизації, який використовує зв’язок «bit-bang». Підходить для нитяних лусочок.
 
@@ -4976,51 +4981,51 @@ dout_pin:
 ADS1220 — це 24-розрядний АЦП, що підтримує частоту дискретизації до 2 КГц, яку можна налаштувати програмно.
 
 ```
-[load_cell] sensor_type: ads1220 cs_pin:
-
-Штифт, підключений до лінії вибору мікросхеми ADS1220. Цей параметр повинен
-
-бути надано.
-
+[load_cell]
+sensor_type: ads1220
+cs_pin:
+#   The pin connected to the ADS1220 chip select line. This parameter must
+#   be provided.
 #spi_speed: 512000
-
-Цей чіп підтримує 2 швидкості: 256000 або 512000. Швидша швидкість лише
-
-увімкнено, коли використовується одна з частот дискретизації Turbo. Правильна spi_speed
-
-вибирається на основі частоти дискретизації.
-
-#spi_bus: #spi_software_sclk_pin: #spi_software_mosi_pin: #spi_software_miso_pin:
-
-Перегляньте розділ «Загальні налаштування SPI», щоб отримати опис
-
-параметр вище.
-
+#   This chip supports 2 speeds: 256000 or 512000. The faster speed is only
+#   enabled when one of the Turbo sample rates is used. The correct spi_speed
+#   is selected based on the sample rate.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
 data_ready_pin:
-
-Pin, підключений до лінії готовності даних ADS1220. Цей параметр повинен бути
-
-надано.
-
-#прибуток: 128
-
-Дійсні значення посилення: 128, 64, 32, 16, 8, 4, 2, 1
-
-За замовчуванням 128
-
+#   Pin connected to the ADS1220 data ready line. This parameter must be
+#   provided.
+#gain: 128
+#   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
+#   The default is 128
+#pga_bypass: False
+#   Disable the internal Programmable Gain Amplifier. If
+#   True the PGA will be disabled for gains 1, 2, and 4. The PGA is always
+#   enabled for gain settings 8 to 128, regardless of the pga_bypass setting.
+#   If AVSS is used as an input pga_bypass is forced to True.
+#   The default is False.
 #sample_rate: 660
-
-Цей чіп підтримує два діапазони частот дискретизації: звичайний і турбо. У турбо
-
-режим чіпів c внутрішнім годинником працює вдвічі швидше і зв'язок SPI
-
-швидкість також подвоюється.
-
-Нормальна частота дискретизації: 20, 45, 90, 175, 330, 600, 1000
-
-Частота дискретизації Turbo: 40, 90, 180, 350, 660, 1200, 2000
-
-За замовчуванням 660
+#   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
+#   mode the chip's internal clock runs twice as fast and the SPI communication
+#   speed is also doubled.
+#   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
+#   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
+#   The default is 660
+#input_mux:
+#   Input multiplexer configuration, select a pair of pins to use. The first pin
+#   is the positive, AINP, and the second pin is the negative, AINN. Valid
+#   values are: 'AIN0_AIN1', 'AIN0_AIN2', 'AIN0_AIN3', 'AIN1_AIN2', 'AIN1_AIN3',
+#   'AIN2_AIN3', 'AIN1_AIN0', 'AIN3_AIN2', 'AIN0_AVSS', 'AIN1_AVSS', 'AIN2_AVSS'
+#   and 'AIN3_AVSS'. If AVSS is used the PGA is bypassed and the pga_bypass
+#   setting will be forced to True.
+#   The default is AIN0_AIN1.
+#vref:
+#   The selected voltage reference. Valid values are: 'internal', 'REF0', 'REF1'
+#   and 'analog_supply'. Default is 'internal'.
 ```
 
 ## Спеціальна апаратна підтримка плати
@@ -5203,44 +5208,32 @@ vssa_pin:
 
 ### [кут]
 
-Підтримка магнітного датчика кута Холла для зчитування вимірювань кута вала крокового двигуна за допомогою мікросхем SPI a1333, as5047d або tle5012b. Вимірювання доступні через API-сервер і інструмент аналізу руху. Доступні команди див. у довідці G-Code.
+Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, mt6816, mt6826s, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
 
 ```
-[angle my_angle_sensor] тип_датчика:
-
-Тип мікросхеми магнітного датчика Холла. Доступні варіанти
-
-"a1333", "as5047d" і "tle5012b". Цей параметр повинен бути
-
-вказано.
-
-#період_вибірки: 0,000400
-
-Період запиту (у секундах) для використання під час вимірювань. The
-
-за замовчуванням 0,000400 (що становить 2500 вибірок на секунду).
-
-#степер:
-
-Назва степпера, до якого прикріплено датчик кута (наприклад,
-
-"stepper_x"). Встановлення цього значення вмикає калібрування кута
-
-інструмент. Щоб використовувати цю функцію, потрібен пакет Python "numpy".
-
-встановлено. За замовчуванням не вмикається калібрування кута для
-
-датчик кута.
-
+[angle my_angle_sensor]
+sensor_type:
+#   The type of the magnetic hall sensor chip. Available choices are
+#   "a1333", "as5047d", "mt6816", "mt6826s", and "tle5012b". This parameter must be
+#   specified.
+#sample_period: 0.000400
+#   The query period (in seconds) to use during measurements. The
+#   default is 0.000400 (which is 2500 samples per second).
+#stepper:
+#   The name of the stepper that the angle sensor is attached to (eg,
+#   "stepper_x"). Setting this value enables an angle calibration
+#   tool. To use this feature, the Python "numpy" package must be
+#   installed. The default is to not enable angle calibration for the
+#   angle sensor.
 cs_pin:
-
-Штифт увімкнення SPI для датчика. Цей параметр необхідно вказати.
-
-#spi_speed: #spi_bus: #spi_software_sclk_pin: #spi_software_mosi_pin: #spi_software_miso_pin:
-
-Перегляньте розділ «Загальні налаштування SPI», щоб отримати опис
-
-параметр вище.
+#   The SPI enable pin for the sensor. This parameter must be provided.
+#spi_speed:
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
 ```
 
 ## Загальні параметри шини
@@ -5272,7 +5265,7 @@ cs_pin:
 
 Зауважте, що поточна підтримка мікроконтролерів Klipper для I2C, як правило, нетерпима до лінійного шуму. Неочікувані помилки в проводах I2C можуть призвести до того, що Klipper викличе помилку виконання. Підтримка Klipper для відновлення помилок залежить від кожного типу мікроконтролера. Зазвичай рекомендується використовувати лише пристрої I2C, які розташовані на одній друкованій платі з мікроконтролером.
 
-Більшість реалізацій мікроконтролерів Klipper підтримують лише  i2c_speed  100000 (стандартний режим, 100 кбіт/с). Мікроконтролер Klipper «Linux» підтримує швидкість 400 000 (швидкий режим, 400 Кбіт/с), але її потрібно [встановити в операційній системі] (RPi_microcontroller.md#optional-enabling-i2c) і  i2c_speed  інакше параметр ігнорується. Мікроконтролер Klipper "RP2040" і сімейство ATmega AVR підтримують швидкість 400 000 за допомогою параметра  i2c_speed . Усі інші мікроконтролери Klipper використовують швидкість 100 000 і ігнорують параметр  i2c_speed .
+Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family and some STM32 (F0, G0, G4, L4, F7, H7) support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
 
 ```
 #i2c_адреса:

@@ -13,15 +13,46 @@ This module uses manual measurements by the user to correct the probe's results.
 
 > **Tip:** Make sure the [probe X and Y offsets](Config_Reference.md#probe) are correctly set as they greatly influence calibration.
 
-1. After setting up the [axis_twist_compensation] module, perform `AXIS_TWIST_COMPENSATION_CALIBRATE`
+### Basic Usage: X-Axis Calibration
 
-* The calibration wizard will prompt you to measure the probe Z offset at a few points along the bed
-* The calibration defaults to 3 points but you can use the option `SAMPLE_COUNT=` to use a different number.
+1. After setting up the `[axis_twist_compensation]` module, run:
 
-1. [Adjust your Z offset](Probe_Calibrate.md#calibrating-probe-z-offset)
-1. Perform automatic/probe-based bed tramming operations, such as [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) etc
-1. Home all axis, then perform a [Bed Mesh](Bed_Mesh.md) if required
-1. Perform a test print, followed by any [fine-tuning](Axis_Twist_Compensation.md#fine-tuning) as desired
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE
+```
+
+This command will calibrate the X-axis by default. - The calibration wizard will prompt you to measure the probe Z offset at several points along the bed. - By default, the calibration uses 3 points, but you can specify a different number with the option: `SAMPLE_COUNT=<value>`
+
+1. **Adjust Your Z Offset:** After completing the calibration, be sure to [adjust your Z offset] (Probe_Calibrate.md#calibrating-probe-z-offset).
+1. **Perform Bed Leveling Operations:** Use probe-based operations as needed, such as:
+
+   - [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust)
+   - [Z Tilt Adjust](G-Codes.md#z_tilt_adjust)
+
+1. **Finalize the Setup:**
+
+   - Home all axes, and perform a [Bed Mesh](Bed_Mesh.md) if necessary.
+   - Run a test print, followed by any [fine-tuning](Axis_Twist_Compensation.md#fine-tuning) if needed.
+
+### For Y-Axis Calibration
+
+The calibration process for the Y-axis is similar to the X-axis. To calibrate the Y-axis, use:
+
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE AXIS=Y
+```
+
+This will guide you through the same measuring process as for the X-axis.
+
+### Automatic Calibration for Both Axes
+
+To perform automatic calibration for both the X and Y axes without manual intervention, use:
+
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE AUTO=True
+```
+
+In this mode, the calibration process will run for both axes automatically.
 
 > **Tip:** Bed temperature and nozzle temperature and size do not seem to have an influence to the calibration process.
 

@@ -6,6 +6,16 @@
 
 ## Зміни
 
+20241203: The resonance test has been changed to include slow sweeping moves. This change requires that testing point(s) have some clearance in X/Y plane (+/- 30 mm from the test point should suffice when using the default settings). The new test should generally produce more accurate and reliable test results. However, if required, the previous test behavior can be restored by adding options `sweeping_period: 0` and `accel_per_hz: 75` to the `[resonance_tester]` config section.
+
+20241201: In some cases Klipper may have ignored leading characters or spaces in a traditional G-Code command. For example, "99M123" may have been interpreted as "M123" and "M 321" may have been interpreted as "M321". Klipper will now report these cases with an "Unknown command" warning.
+
+20241112: Option `CHIPS=<chip_name>` in `TEST_RESONANCES` and `SHAPER_CALIBRATE` requires specifying the full name(s) of the accel chip(s). For example, `adxl345 rpi` instead of short name - `rpi`.
+
+20240912: `SET_PIN`, `SET_SERVO`, `SET_FAN_SPEED`, `M106`, and `M107` commands are now collated. Previously, if many updates to the same object were issued faster than the minimum scheduling time (typically 100ms) then actual updates could be queued far into the future. Now if many updates are issued in rapid succession then it is possible that only the latest request will be applied. If the previous behavior is requried then consider adding explicit `G4` delay commands between updates.
+
+20240912: Support for `maximum_mcu_duration` and `static_value` parameters in `[output_pin]` config sections have been removed. These options have been deprecated since 20240123.
+
 20240415: параметр `on_error_gcode` в параметрі `[virtual_sdcard]` config розділ тепер має за замовчуванням. Якщо цей параметр не вказаний зараз за замовчуванням до `TURN_OFF_HEATERS`. Якщо попередня поведінка є бажаною (застосуйте не дію за замовчуванням на помилку під час віртуального друку_sdcard) потім визначте `on_error_gcode` з порожньою вартістю.
 
 20240313: параметр `max_accel_to_decel` у розділі `[printer]` було вилучено. `ACCEL_TO_DECEL` параметр `SET_VELOCITY_LIMIT` команда була розшифрована. `printer.toolhead.max_accel_to_decel` було вилучено статус. Використовуйте параметр [minimum_cruise_ratio](./Config_Reference.md#printer) замість. Відхилені функції будуть видалені в найближчому майбутньому, і використовуючи їх в проміжному режимі може призвести до того, що не відрізняється поведінкою.

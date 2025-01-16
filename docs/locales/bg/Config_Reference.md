@@ -1516,8 +1516,9 @@ cs_pin:
 
 ```
 [lis2dw]
-cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
 #spi_speed: 5000000
 #   The SPI speed (in hz) to use when communicating with the chip.
 #   The default is 5000000.
@@ -1527,6 +1528,46 @@ cs_pin:
 #spi_software_miso_pin:
 #   See the "common SPI settings" section for a description of the
 #   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
+#axes_map: x, y, z
+#   See the "adxl345" section for information on this parameter.
+```
+
+### [lis3dh]
+
+Support for LIS3DH accelerometers.
+
+```
+[lis3dh]
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
+#spi_speed: 5000000
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
 #axes_map: x, y, z
 #   See the "adxl345" section for information on this parameter.
 ```
@@ -1581,11 +1622,14 @@ cs_pin:
 #   auto-calibration (with 'SHAPER_CALIBRATE' command). By default no
 #   maximum smoothing is specified. Refer to Measuring_Resonances guide
 #   for more details on using this feature.
+#move_speed: 50
+#   The speed (in mm/s) to move the toolhead to and between test points
+#   during the calibration. The default is 50.
 #min_freq: 5
 #   Minimum frequency to test for resonances. The default is 5 Hz.
 #max_freq: 133.33
 #   Maximum frequency to test for resonances. The default is 133.33 Hz.
-#accel_per_hz: 75
+#accel_per_hz: 60
 #   This parameter is used to determine which acceleration to use to
 #   test a specific frequency: accel = accel_per_hz * freq. Higher the
 #   value, the higher is the energy of the oscillations. Can be set to
@@ -1599,6 +1643,13 @@ cs_pin:
 #   hz_per_sec. Small values make the test slow, and the large values
 #   will decrease the precision of the test. The default value is 1.0
 #   (Hz/sec == sec^-2).
+#sweeping_accel: 400
+#   An acceleration of slow sweeping moves. The default is 400 mm/sec^2.
+#sweeping_period: 1.2
+#   A period of slow sweeping moves. Setting this parameter to 0
+#   disables slow sweeping moves. Avoid setting it to a too small
+#   non-zero value in order to not poison the measurements.
+#   The default is 1.2 sec which is a good all-round choice.
 ```
 
 ## Помощни средства за конфигурационния файл
@@ -1848,7 +1899,7 @@ sensor_type: ldc1612
 
 ### [axis_twist_compensation]
 
-Инструмент за компенсиране на неточните показания на сондата, дължащи се на усукване на портала X. За по-подробна информация относно симптомите, конфигурацията и настройката вижте [Ръководство за компенсиране на усукването на оста](Axis_Twist_Compensation.md).
+A tool to compensate for inaccurate probe readings due to twist in X or Y gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
 
 ```
 [axis_twist_compensation]
@@ -1861,16 +1912,33 @@ sensor_type: ldc1612
 calibrate_start_x: 20
 #   Defines the minimum X coordinate of the calibration
 #   This should be the X coordinate that positions the nozzle at the starting
-#   calibration position. This parameter must be provided.
+#   calibration position.
 calibrate_end_x: 200
 #   Defines the maximum X coordinate of the calibration
 #   This should be the X coordinate that positions the nozzle at the ending
-#   calibration position. This parameter must be provided.
+#   calibration position.
 calibrate_y: 112.5
 #   Defines the Y coordinate of the calibration
 #   This should be the Y coordinate that positions the nozzle during the
-#   calibration process. This parameter must be provided and is recommended to
+#   calibration process. This parameter is recommended to
 #   be near the center of the bed
+
+# For Y-axis twist compensation, specify the following parameters:
+calibrate_start_y: ...
+#   Defines the minimum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the starting
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_end_y: ...
+#   Defines the maximum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the ending
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_x: ...
+#   Defines the X coordinate of the calibration for Y axis twist compensation
+#   This should be the X coordinate that positions the nozzle during the
+#   calibration process for Y axis twist compensation. This parameter must be
+#   provided and is recommended to be near the center of the bed.
 ```
 
 ## Допълнителни стъпкови двигатели и екструдери
@@ -2196,6 +2264,10 @@ axis:
 #   "calibration_extruder_temp" option is set.  Its recommended to heat
 #   the extruder some distance from the bed to minimize its impact on
 #   the probe coil temperature.  The default is 50.
+#max_validation_temp: 60.
+#   The maximum temperature used to validate the calibration.  It is
+#   recommended to set this to a value between 100 and 120 for enclosed
+#   printers.  The default is 60.
 ```
 
 ## Температурни сензори
@@ -3414,6 +3486,7 @@ run_current:
 #driver_SEIMIN: 0
 #driver_SFILT: 0
 #driver_SG4_ANGLE_OFFSET: 1
+#driver_SLOPE_CONTROL: 0
 #   Set the given register during the configuration of the TMC2240
 #   chip. This may be used to set custom motor parameters. The
 #   defaults for each parameter are next to the parameter name in the
@@ -3705,83 +3778,84 @@ wiper:
 Поддръжка на дисплей, свързан към микроконтролера.
 
 ```
-[дисплей]
+[display]
 lcd_type:
-# Типът на използвания LCD чип. Това може да бъде "hd44780", "hd44780_spi",
-# "st7920", "emulated_st7920", "uc1701", "ssd1306" или "sh1106".
-# Вижте разделите за дисплея по-долу за информация за всеки тип и
-# допълнителните параметри, които те предоставят. Този параметър трябва да бъде
-# предоставен.
+#   The type of LCD chip in use. This may be "hd44780", "hd44780_spi",
+#   "aip31068_spi", "st7920", "emulated_st7920", "uc1701", "ssd1306", or
+#   "sh1106".
+#   See the display sections below for information on each type and
+#   additional parameters they provide. This parameter must be
+#   provided.
 #display_group:
-# Името на групата display_data, която ще се показва на дисплея. Това
-# контролира съдържанието на екрана (вж. раздела "display_data")
-# за повече информация). По подразбиране е _default_20x4 за hd44780
-# и _default_16x4 за други дисплеи.
+#   The name of the display_data group to show on the display. This
+#   controls the content of the screen (see the "display_data" section
+#   for more information). The default is _default_20x4 for hd44780 or
+#   aip31068_spi displays and _default_16x4 for other displays.
 #menu_timeout:
-# Време за изчакване на менюто. Ако не сте активни, този брой секунди ще
-# задейства излизане от менюто или връщане към главното меню, когато има автоматично стартиране
-# активирано. По подразбиране е 0 секунди (изключено).
+#   Timeout for menu. Being inactive this amount of seconds will
+#   trigger menu exit or return to root menu when having autorun
+#   enabled. The default is 0 seconds (disabled)
 #menu_root:
-# Името на раздела на главното меню, който ще се показва при щракване върху енкодера
-# на началния екран. По подразбиране е __main и това показва
-# менютата по подразбиране, както са дефинирани в klippy/extras/display/menu.cfg
+#   Name of the main menu section to show when clicking the encoder
+#   on the home screen. The defaults is __main, and this shows the
+#   the default menus as defined in klippy/extras/display/menu.cfg
 #menu_reverse_navigation:
-# Когато е разрешено, то ще обърне посоките нагоре и надолу за списъка
-# навигация. По подразбиране е False. Този параметър е незадължителен.
+#   When enabled it will reverse up and down directions for list
+#   navigation. The default is False. This parameter is optional.
 #encoder_pins:
-# Изводите, свързани с енкодера. Трябва да се предоставят 2 извода, когато се използва
-# енкодер. Този параметър трябва да бъде предоставен, когато се използва меню.
+#   The pins connected to encoder. 2 pins must be provided when using
+#   encoder. This parameter must be provided when using menu.
 #encoder_steps_per_detent:
-# Колко стъпки излъчва енкодерът за едно натискане ("кликване"). Ако
-# енкодерът се нуждае от два детента, за да се придвижи между позиции или се движи с два
-# записи от един детент, опитайте да промените това. Позволените стойности са 2
-# (половин стъпка) или 4 (пълна стъпка). По подразбиране е 4.
+#   How many steps the encoder emits per detent ("click"). If the
+#   encoder takes two detents to move between entries or moves two
+#   entries from one detent, try changing this. Allowed values are 2
+#   (half-stepping) or 4 (full-stepping). The default is 4.
 #click_pin:
-# Изводът, свързан с бутона 'enter' или енкодера 'click'. Този
-# параметър трябва да бъде предоставен, когато се използва менюто. Наличието на
-# 'analog_range_click_pin' конфигурационен параметър превръща този параметър
-# от цифров в аналогов.
+#   The pin connected to 'enter' button or encoder 'click'. This
+#   parameter must be provided when using menu. The presence of an
+#   'analog_range_click_pin' config parameter turns this parameter
+#   from digital to analog.
 #back_pin:
-# Изводът, свързан с бутона "назад". Този параметър не е задължителен,
-# менюто може да се използва и без него. Наличието на
-# 'analog_range_back_pin' превръща този параметър от
-# цифров в аналогов.
+#   The pin connected to 'back' button. This parameter is optional,
+#   menu can be used without it. The presence of an
+#   'analog_range_back_pin' config parameter turns this parameter from
+#   digital to analog.
 #up_pin:
-# Изводът, свързан с бутона 'up'. Този параметър трябва да се предостави
-# когато използвате меню без енкодер. Наличието на
-# 'analog_range_up_pin' превръща този параметър от
-# цифров в аналогов.
+#   The pin connected to 'up' button. This parameter must be provided
+#   when using menu without encoder. The presence of an
+#   'analog_range_up_pin' config parameter turns this parameter from
+#   digital to analog.
 #down_pin:
-# Изводът, свързан с бутона "надолу". Този параметър трябва да бъде
-# когато се използва меню без енкодер. Наличието на
-# 'analog_range_down_pin' превръща този параметър от
-# цифров в аналогов.
+#   The pin connected to 'down' button. This parameter must be
+#   provided when using menu without encoder. The presence of an
+#   'analog_range_down_pin' config parameter turns this parameter from
+#   digital to analog.
 #kill_pin:
-# Изводът, свързан с бутона 'kill'. Този бутон ще извика
-# аварийно спиране. Наличието на конфигурация 'analog_range_kill_pin'
-# превръща този параметър от цифров в аналогов.
+#   The pin connected to 'kill' button. This button will call
+#   emergency stop. The presence of an 'analog_range_kill_pin' config
+#   parameter turns this parameter from digital to analog.
 #analog_pullup_resistor: 4700
-# Съпротивлението (в омове) на издърпването, свързано към аналоговия
-# бутон. По подразбиране е 4700 ома.
+#   The resistance (in ohms) of the pullup attached to the analog
+#   button. The default is 4700 ohms.
 #analog_range_click_pin:
-# Диапазонът на съпротивлението за бутон "Enter". Минимален обхват и
-# максимални стойности, разделени със запетая, трябва да бъдат предоставени, когато се използва аналогов
-# бутон.
+#   The resistance range for a 'enter' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_back_pin:
-# Диапазонът на съпротивление за бутон "назад". Минимален обхват и
-# максимални стойности, разделени със запетая, трябва да бъдат предоставени при използване на аналогов
-# бутон.
+#   The resistance range for a 'back' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_up_pin:
-# Диапазонът на съпротивление за бутон "нагоре". Минимален и максимален обхват
-# трябва да се посочат стойности, разделени със запетая, когато се използва аналогов бутон.
+#   The resistance range for a 'up' button. Range minimum and maximum
+#   comma-separated values must be provided when using analog button.
 #analog_range_down_pin:
-# Диапазонът на съпротивление за бутон "надолу". Минимален обхват и
-# максималните стойности, разделени със запетая, трябва да бъдат предоставени, когато се използва аналогов
-# бутон.
+#   The resistance range for a 'down' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_kill_pin:
-# Диапазонът на съпротивление за бутон "kill". Минимален обхват и
-# максимални стойности, разделени със запетая, трябва да бъдат предоставени при използване на аналогов
-# бутон.
+#   The resistance range for a 'kill' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 ```
 
 #### hd44780 дисплей
@@ -3836,6 +3910,29 @@ spi_software_miso_pin:
 # Задайте броя на символите на ред за lcd тип hd44780.
 # Възможните стойности са 20 (по подразбиране) и 16. Броят на редовете е
 # фиксиран на 4.
+...
+```
+
+#### aip31068_spi display
+
+Information on configuring an aip31068_spi display - a very similar to hd44780_spi a 20x04 (20 symbols by 4 lines) display with slightly different internal protocol.
+
+```
+[display]
+lcd_type: aip31068_spi
+latch_pin:
+spi_software_sclk_pin:
+spi_software_mosi_pin:
+spi_software_miso_pin:
+#   The pins connected to the shift register controlling the display.
+#   The spi_software_miso_pin needs to be set to an unused pin of the
+#   printer mainboard as the shift register does not have a MISO pin,
+#   but the software spi implementation requires this pin to be
+#   configured.
+#line_length:
+#   Set the number of characters per line for an hd44780 type lcd.
+#   Possible values are 20 (default) and 16. The number of lines is
+#   fixed to 4.
 ...
 ```
 
@@ -4245,7 +4342,7 @@ sensor_type:
 #   This must be one of the supported sensor types, see below.
 ```
 
-#### XH711
+#### HX711
 
 Това е 24-битов чип с ниска честота на дискретизация, който използва "bit-bang" комуникации. Той е подходящ за везни с нишки.
 
@@ -4317,13 +4414,30 @@ data_ready_pin:
 #gain: 128
 #   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
 #   The default is 128
+#pga_bypass: False
+#   Disable the internal Programmable Gain Amplifier. If
+#   True the PGA will be disabled for gains 1, 2, and 4. The PGA is always
+#   enabled for gain settings 8 to 128, regardless of the pga_bypass setting.
+#   If AVSS is used as an input pga_bypass is forced to True.
+#   The default is False.
 #sample_rate: 660
 #   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
-#   mode the chips c internal clock runs twice as fast and the SPI communication
+#   mode the chip's internal clock runs twice as fast and the SPI communication
 #   speed is also doubled.
 #   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
 #   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
 #   The default is 660
+#input_mux:
+#   Input multiplexer configuration, select a pair of pins to use. The first pin
+#   is the positive, AINP, and the second pin is the negative, AINN. Valid
+#   values are: 'AIN0_AIN1', 'AIN0_AIN2', 'AIN0_AIN3', 'AIN1_AIN2', 'AIN1_AIN3',
+#   'AIN2_AIN3', 'AIN1_AIN0', 'AIN3_AIN2', 'AIN0_AVSS', 'AIN1_AVSS', 'AIN2_AVSS'
+#   and 'AIN3_AVSS'. If AVSS is used the PGA is bypassed and the pga_bypass
+#   setting will be forced to True.
+#   The default is AIN0_AIN1.
+#vref:
+#   The selected voltage reference. Valid values are: 'internal', 'REF0', 'REF1'
+#   and 'analog_supply'. Default is 'internal'.
 ```
 
 ## Специфична хардуерна поддръжка на борда
@@ -4488,32 +4602,32 @@ serial:
 
 ### [ъгъл]
 
-Поддръжка на магнитен сензор за ъгъл на Хол за отчитане на измервания на ъгъла на вала на стъпковия двигател с помощта на SPI чипове a1333, as5047d или tle5012b. Измерванията са достъпни чрез [API Server](API_Server.md) и [инструмент за анализ на движението](Debugging.md#motion-analysis-and-data-logging). За наличните команди вижте [G-Code reference](G-Codes.md#angle).
+Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, mt6816, mt6826s, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
 
 ```
-[ъгъл my_angle_sensor]
+[angle my_angle_sensor]
 sensor_type:
-# Типът на чипа на магнитния сензор на Хол. Наличните варианти са
-# "a1333", "as5047d" и "tle5012b". Този параметър трябва да бъде
-# посочен.
+#   The type of the magnetic hall sensor chip. Available choices are
+#   "a1333", "as5047d", "mt6816", "mt6826s", and "tle5012b". This parameter must be
+#   specified.
 #sample_period: 0.000400
-# Периодът на запитване (в секунди), който ще се използва по време на измерванията. В
-# по подразбиране е 0,000400 (което е 2500 проби в секунда).
+#   The query period (in seconds) to use during measurements. The
+#   default is 0.000400 (which is 2500 samples per second).
 #stepper:
-# Името на стъпковия механизъм, към който е свързан сензорът за ъгъл (напр,
-# "stepper_x"). Задаването на тази стойност позволява калибриране на ъгъла
-# инструмент. За да се използва тази функция, трябва да се използва пакетът Python "numpy".
-# инсталиран. По подразбиране не се разрешава калибрирането на ъгъла за
-# ъглов сензор.
+#   The name of the stepper that the angle sensor is attached to (eg,
+#   "stepper_x"). Setting this value enables an angle calibration
+#   tool. To use this feature, the Python "numpy" package must be
+#   installed. The default is to not enable angle calibration for the
+#   angle sensor.
 cs_pin:
-# Изводът за разрешаване на SPI за сензора. Този параметър трябва да бъде предоставен.
+#   The SPI enable pin for the sensor. This parameter must be provided.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-# Вижте раздела "Общи настройки на SPI" за описание на
-# горепосочените параметри.
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
 ```
 
 ## Общи параметри на шината
@@ -4545,7 +4659,7 @@ cs_pin:
 
 Обърнете внимание, че текущата поддръжка на I2C от страна на микроконтролера Klipper обикновено не е толерантна към линейни шумове. Неочаквани грешки по I2C проводниците могат да доведат до това Klipper да обяви грешка по време на изпълнение. Поддръжката на Klipper за възстановяване на грешки е различна за всеки тип микроконтролер. Обикновено се препоръчва да се използват само I2C устройства, които са на същата печатна платка като микроконтролера.
 
-Повечето имплементации на микроконтролери Klipper поддържат само `i2c_speed` от 100000 (*стандартен режим*, 100kbit/s). Микроконтролерът Klipper "Linux" поддържа скорост 400000 (*бърз режим*, 400kbit/s), но тя трябва да бъде [зададена в операционната система](RPi_microcontroller.md#optional-enabling-i2c) и в противен случай параметърът `i2c_speed` се игнорира. Микроконтролерът Klipper "RP2040" и фамилията ATmega AVR поддържат скорост от 400000 чрез параметъра `i2c_speed`. Всички останали микроконтролери Klipper използват скорост 100000 и игнорират параметъра `i2c_speed`.
+Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family and some STM32 (F0, G0, G4, L4, F7, H7) support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
 
 ```
 #i2c_address:

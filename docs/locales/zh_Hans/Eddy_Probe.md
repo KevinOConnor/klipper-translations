@@ -28,7 +28,7 @@
 # 温度探针配置文件
 ```
 
-在[configuration reference](Config_Reference.md#temperature_probe)有更多关于如何配置`temperature_probe`的内容。建议配置`calibration_position`， `calibration_extruder_temp`， `extruder_heating_z`, 和 `calibration_bed_temp`选项，这会在接下来的校准过程中自动完成一些步骤。
+See the [configuration reference](Config_Reference.md#temperature_probe) for further details on how to configure a `temperature_probe`. It is advised to configure the `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, and `calibration_bed_temp` options, as doing so will automate some of the steps outlined below. If the printer to be calibrated is enclosed, it is strongly recommended to set the `max_validation_temp` option to a value between 100 and 120.
 
 Eddy probe的制造商提供了一些可以使用的校准预设可以手动添加到`[probe_eddy_current]`中到`drift_calibration`选项中。如果他们没提供预设的校准文件或者预设的校准文件不适用于你的系统，`temperature_probe`模块可以使用TEMPERATURE_PROBE_CALIBRATE`命令来进行手动校准。
 

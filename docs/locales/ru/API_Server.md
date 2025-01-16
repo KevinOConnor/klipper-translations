@@ -1,4 +1,4 @@
-# API server
+# Сервер API
 
 В этом документе описывается интерфейс прикладного программиста Klipper (API). Этот интерфейс позволяет внешним приложениям запрашивать программное обеспечение хоста Klipper и управлять им.
 
@@ -12,7 +12,7 @@
 
 Это приводит к тому, что программное обеспечение хоста создает доменный сокет Unix. Затем клиент может открыть соединение с этим сокетом и отправлять команды Klipper.
 
-See the [Moonraker](https://github.com/Arksine/moonraker) project for a popular tool that can forward HTTP requests to Klipper's API Server Unix Domain Socket.
+Смотрите проект [Moonraker](https://github.com/Arksine/moonraker) для популярного инструмента, который может перенаправлять HTTP-запросы на API-сервер Klipper's Unix Domain Socket.
 
 ## Формат запроса
 
@@ -28,71 +28,71 @@ Klipper содержит инструмент `scripts/whconsole.py`, котор
 ~/klipper/scripts/whconsole.py /tmp/klippy_uds
 ```
 
-This tool can read a series of JSON commands from stdin, send them to Klipper, and report the results. The tool expects each JSON command to be on a single line, and it will automatically append the 0x03 terminator when transmitting a request. (The Klipper API server does not have a newline requirement.)
+Этот инструмент может считывать серию JSON-команд из stdin, отправлять их в Klipper и сообщать о результатах. Инструмент ожидает, что каждая команда JSON будет в одной строке, и при передаче запроса он автоматически добавит терминатор 0x03. (Сервер API Klipper не требует ставить новую строку)
 
-## API Protocol
+## Протокол API
 
-The command protocol used on the communication socket is inspired by [json-rpc](https://www.jsonrpc.org/).
+Протокол команд, используемый на коммуникационном сокете, вдохновлен [json-rpc](https://www.jsonrpc.org/).
 
-A request might look like:
+Запрос может выглядеть следующим образом:
 
-`{"id": 123, "method": "info", "params": {}}`
+`{" идентификатор": 123, ""метод": " "информация", "параметры": {}}`
 
-and a response might look like:
+и ответ может выглядеть следующим образом:
 
-`{"id": 123, "result": {"state_message": "Printer is ready", "klipper_path": "/home/pi/klipper", "config_file": "/home/pi/printer.cfg", "software_version": "v0.8.0-823-g883b1cb6", "hostname": "octopi", "cpu_info": "4 core ARMv7 Processor rev 4 (v7l)", "state": "ready", "python_path": "/home/pi/klippy-env/bin/python", "log_file": "/tmp/klippy.log"}}`
+`{" идентификатор": 123, " результат": {"state_message": "Принтер готов", " klipper_path": "/home/pi/klipper", "config_file": "/home/pi/printer.cfg", " программная_версия": "v0.8.0-823-g883b1cb6", "hostname": "octopi", "cpu_info": "4-ядерный процессор ARMv7 rev 4 (v7l)", ""состояние": " готов", "python_path": "/home/pi/klippy-env/bin/python", " лог_файл": "/tmp/klippy.log"}}`
 
-Each request must be a JSON dictionary. (This document uses the Python term "dictionary" to describe a "JSON object" - a mapping of key/value pairs contained within `{}`.)
+Каждый запрос должен представлять собой JSON-словарь. (В этом документе используется термин Python "словарь" для описания "объекта JSON" - отображения пар ключ/значение, содержащихся в `{}`)
 
-The request dictionary must contain a "method" parameter that is the string name of an available Klipper "endpoint".
+Словарь запросов должен содержать параметр " метод", который представляет собой строковое имя доступной "конечной точки" Klipper.
 
-The request dictionary may contain a "params" parameter which must be of a dictionary type. The "params" provide additional parameter information to the Klipper "endpoint" handling the request. Its content is specific to the "endpoint".
+Словарь запроса может содержать параметр "params", который должен иметь тип словаря. Параметр "params" предоставляет дополнительную информацию о параметрах для "конечной точки" Klipper, обрабатывающей запрос. Его содержание зависит от конкретной "конечной точки".
 
-The request dictionary may contain an "id" parameter which may be of any JSON type. If "id" is present then Klipper will respond to the request with a response message containing that "id". If "id" is omitted (or set to a JSON "null" value) then Klipper will not provide any response to the request. A response message is a JSON dictionary containing "id" and "result". The "result" is always a dictionary - its contents are specific to the "endpoint" handling the request.
+Словарь запроса может содержать параметр "id", который может быть любого типа JSON. Если "id" присутствует, то Klipper ответит на запрос сообщением, содержащим этот "id". Если параметр "id" опущен (или установлен в значение JSON " нуль"), то Klipper не будет предоставлять никакого ответа на запрос. Ответное сообщение - это JSON-словарь, содержащий "id" и "result". Результат" всегда является словарем - его содержимое зависит от "конечной точки", обрабатывающей запрос.
 
-If the processing of a request results in an error, then the response message will contain an "error" field instead of a "result" field. For example, the request: `{"id": 123, "method": "gcode/script", "params": {"script": "G1 X200"}}` might result in an error response such as: `{"id": 123, "error": {"message": "Must home axis first: 200.000 0.000 0.000 [0.000]", "error": "WebRequestError"}}`
+Если в результате обработки запроса возникла ошибка, то в ответном сообщении вместо поля "результат" будет содержаться поле "ошибка". Например, запрос: `{"идентификатор": 123, ""метод": "gcode/скрипт", "параметры": { "скрипт": "G1 X200"}}` может привести к ответу об ошибке, например: `{"id": 123, "ошибка": {"сообщение": "Сначала должна быть домашняя ось: 200.000 0.000 0.000 [0.000]", "ошибка": "WebRequestError"}}`
 
-Klipper will always start processing requests in the order that they are received. However, some request may not complete immediately, which could cause the associated response to be sent out of order with respect to responses from other requests. A JSON request will never pause the processing of future JSON requests.
+Klipper всегда начинает обработку запросов в порядке их поступления. Однако некоторые запросы могут быть завершены не сразу, что может привести к тому, что связанный с ними ответ будет отправлен не по порядку относительно ответов от других запросов. JSON-запрос никогда не приостанавливает обработку последующих JSON-запросов.
 
-## Subscriptions
+## Подписки
 
-Some Klipper "endpoint" requests allow one to "subscribe" to future asynchronous update messages.
+Некоторые запросы "конечной точки" Klipper позволяют "подписаться" на будущие асинхронные сообщения об обновлениях.
 
-For example:
+Например:
 
-`{"id": 123, "method": "gcode/subscribe_output", "params": {"response_template":{"key": 345}}}`
+`{"идентификатор": 123, "метод": "gcode/subscribe_output", "параметры": {"response_template":{"ключ": 345}}}`
 
-may initially respond with:
+может первоначально ответить:
 
-`{"id": 123, "result": {}}`
+`{" идентификатор": 123, "результат": {}}`
 
-and cause Klipper to send future messages similar to:
+и заставить Klipper отправлять в будущем сообщения, подобные этому:
 
-`{"params": {"response": "ok B:22.8 /0.0 T0:22.4 /0.0"}, "key": 345}`
+`{" параметры": { " ответ": "ok B:22.8 /0.0 T0:22.4 /0.0"}, " ключ": 345}`
 
-A subscription request accepts a "response_template" dictionary in the "params" field of the request. That "response_template" dictionary is used as a template for future asynchronous messages - it may contain arbitrary key/value pairs. When sending these future asynchronous messages, Klipper will add a "params" field containing a dictionary with "endpoint" specific contents to the response template and then send that template. If a "response_template" field is not provided then it defaults to an empty dictionary (`{}`).
+Запрос на подписку принимает словарь "response_template" в поле "params" запроса. Этот словарь "response_template" используется в качестве шаблона для будущих асинхронных сообщений - он может содержать произвольные пары ключ/значение. При отправке этих будущих асинхронных сообщений Klipper добавит в шаблон ответа поле "params", содержащее словарь с содержимым, специфичным для "конечной точки", и затем отправит этот шаблон. Если поле "response_template" не указано, то по умолчанию будет использоваться пустой словарь (`{}`).
 
-## Available "endpoints"
+## Доступные "конечные точки"
 
-By convention, Klipper "endpoints" are of the form `<module_name>/<some_name>`. When making a request to an "endpoint", the full name must be set in the "method" parameter of the request dictionary (eg, `{"method"="gcode/restart"}`).
+По условию, "конечные точки" Klipper имеют вид `<имя_модуля>/<имя_модуля>`. При выполнении запроса к "конечной точке" полное имя должно быть задано в параметре "method" словаря запроса (например, `{"метод"="gcode/restart"}`).
 
-### info
+### информация
 
-The "info" endpoint is used to obtain system and version information from Klipper. It is also used to provide the client's version information to Klipper. For example: `{"id": 123, "method": "info", "params": { "client_info": { "version": "v1"}}}`
+Конечная точка "info" используется для получения информации о системе и версии от Klipper. Она также используется для предоставления Klipper информации о версии клиента. Например: `{"идентификатор": 123, "метод": "информация ", " параметры ": { "client_info": { " версия": "v1"}}}`
 
-If present, the "client_info" parameter must be a dictionary, but that dictionary may have arbitrary contents. Clients are encouraged to provide the name of the client and its software version when first connecting to the Klipper API server.
+Если параметр "client_info" присутствует, он должен быть словарем, но этот словарь может иметь произвольное содержимое. Клиентам рекомендуется указывать имя клиента и версию его программного обеспечения при первом подключении к серверу Klipper API.
 
 ### emergency_stop
 
-The "emergency_stop" endpoint is used to instruct Klipper to transition to a "shutdown" state. It behaves similarly to the G-Code `M112` command. For example: `{"id": 123, "method": "emergency_stop"}`
+Конечная точка "emergency_stop" используется для указания Klipper перейти в состояние "выключения". Она ведет себя аналогично команде G-кода `M112`. Например: `{" идентификатор": 123, "метод": "emergency_stop"}}
 
 ### register_remote_method
 
-This endpoint allows clients to register methods that can be called from klipper. It will return an empty object upon success.
+Эта конечная точка позволяет клиентам регистрировать методы, которые могут быть вызваны из klipper. В случае успеха он вернет пустой объект.
 
-For example: `{"id": 123, "method": "register_remote_method", "params": {"response_template": {"action": "run_paneldue_beep"}, "remote_method": "paneldue_beep"}}` will return: `{"id": 123, "result": {}}`
+Например: `{" идентификатор": 123, " метод": "register_remote_method", " параметры": { "response_template": {" действие": "run_paneldue_beep"}, "remote_method": "paneldue_beep"}}` вернет: `{" идентификатор": 123, " результат": {}}`
 
-The remote method `paneldue_beep` may now be called from Klipper. Note that if the method takes parameters they should be provided as keyword arguments. Below is an example of how it may called from a gcode_macro:
+Удаленный метод `paneldue_beep` теперь может быть вызван из Klipper. Обратите внимание, что если метод принимает параметры, то они должны быть предоставлены как аргументы ключевого слова. Ниже приведен пример вызова метода из gcode_macro:
 
 ```
 [gcode_macro PANELDUE_BEEP]
@@ -100,131 +100,131 @@ gcode:
   {action_call_remote_method("paneldue_beep", frequency=300, duration=1.0)}
 ```
 
-When the PANELDUE_BEEP gcode macro is executed, Klipper would send something like the following over the socket: `{"action": "run_paneldue_beep", "params": {"frequency": 300, "duration": 1.0}}`
+Когда выполняется макрос gcode PANELDUE_BEEP, Klipper отправляет по сокету что-то вроде следующего: `{" действие": "run_paneldue_beep", "параметры": {" частота": 300, "продолжительность": 1.0}}`
 
-### objects/list
+### объекты/списки
 
-This endpoint queries the list of available printer "objects" that one may query (via the "objects/query" endpoint). For example: `{"id": 123, "method": "objects/list"}` might return: `{"id": 123, "result": {"objects": ["webhooks", "configfile", "heaters", "gcode_move", "query_endstops", "idle_timeout", "toolhead", "extruder"]}}`
+Эта конечная точка запрашивает список доступных "объектов" принтера, которые можно запросить (через конечную точку " объекты/запрос"). Например: `{" идентификатор": 123, "метод": " объекты/список"}` может вернуть: `{" идентификатор": 123, " результат": { " объекты": [" вебхуки", " конфигфайл", "нагреватели", "gcode_move", "query_endstops", "idle_timeout", " инструментальная головка", "экструдер"]}}''
 
-### objects/query
+### объекты/запросы
 
-This endpoint allows one to query information from printer objects. For example: `{"id": 123, "method": "objects/query", "params": {"objects": {"toolhead": ["position"], "webhooks": null}}}` might return: `{"id": 123, "result": {"status": {"webhooks": {"state": "ready", "state_message": "Printer is ready"}, "toolhead": {"position": [0.0, 0.0, 0.0, 0.0]}}, "eventtime": 3051555.377933684}}`
+Эта конечная точка позволяет запрашивать информацию из объектов принтера. Например: `{" идентификатор": 123, " метод": " объекты/запрос", "параметры": {" объекты": {" инструменты": [" позиция"], " вебхуки": null}}}}" может вернуть: `{" идентификатор": 123, " результат": { " статус": {" вебхуки": {" состояние": "готов", "state_message": "Принтер готов"}, " инструментарий": { " позиция": [0.0, 0.0, 0.0, 0.0]}}, " время события": 3051555.377933684}}`
 
-The "objects" parameter in the request must be a dictionary containing the printer objects that are to be queried - the key contains the printer object name and the value is either "null" (to query all fields) or a list of field names.
+Параметр "объекты" в запросе должен представлять собой словарь, содержащий объекты принтера, которые необходимо запросить - ключ содержит имя объекта принтера, а значение - либо "ноль" (для запроса всех полей), либо список имен полей.
 
-The response message will contain a "status" field containing a dictionary with the queried information - the key contains the printer object name and the value is a dictionary containing its fields. The response message will also contain an "eventtime" field containing the timestamp from when the query was taken.
+Ответное сообщение будет содержать поле "статус", содержащее словарь с запрашиваемой информацией - ключ содержит имя объекта принтера, а значение - словарь, содержащий его поля. Ответное сообщение также будет содержать поле "время события", содержащее метку времени, когда был сделан запрос.
 
-Available fields are documented in the [Status Reference](Status_Reference.md) document.
+Доступные поля описаны в документе [Справочник статуса](Status_Reference.md).
 
-### objects/subscribe
+### объекты/подписка
 
-This endpoint allows one to query and then subscribe to information from printer objects. The endpoint request and response is identical to the "objects/query" endpoint. For example: `{"id": 123, "method": "objects/subscribe", "params": {"objects":{"toolhead": ["position"], "webhooks": ["state"]}, "response_template":{}}}` might return: `{"id": 123, "result": {"status": {"webhooks": {"state": "ready"}, "toolhead": {"position": [0.0, 0.0, 0.0, 0.0]}}, "eventtime": 3052153.382083195}}` and result in subsequent asynchronous messages such as: `{"params": {"status": {"webhooks": {"state": "shutdown"}}, "eventtime": 3052165.418815847}}`
+Эта конечная точка позволяет запрашивать и затем подписываться на информацию от объектов принтера. Запрос и ответ конечной точки идентичны конечной точке "objects/query". Например: `{" идентификатор": 123, " метод": "objects/subscribe", " параметры": { " объекты":{ " инструменты": [" позиция"], " вебхуки": [" состояние"]}, "response_template":{}}}` может вернуть: `{" идентификатор": 123, " результат": { " статус": { " вебхуки": { " состояние": " готов"}, " головка инструмента": { " позиция": [0.0, 0.0, 0.0, 0.0]}}, " событие": 3052153.382083195}}'' и привести к последующим асинхронным сообщениям, таким как: `{" параметры": {" статус": {" Вебхуки": {" состояние": " отключение"}}, " время событий": 3052165.418815847}}`
 
 ### gcode/help
 
-This endpoint allows one to query available G-Code commands that have a help string defined. For example: `{"id": 123, "method": "gcode/help"}` might return: `{"id": 123, "result": {"RESTORE_GCODE_STATE": "Restore a previously saved G-Code state", "PID_CALIBRATE": "Run PID calibration test", "QUERY_ADC": "Report the last value of an analog pin", ...}}`
+Эта конечная точка позволяет запрашивать доступные команды G-Code, для которых определена строка помощи. Например: `{" идентификатор": 123, " метод": "gcode/help"}` может вернуть: `{" идентификатор": 123, " результат": { "RESTORE_GCODE_STATE": "Восстановить ранее сохраненное состояние G-кода", "PID_CALIBRATE": "Запустить тест калибровки ПИД", "QUERY_ADC": "Сообщить последнее значение аналогового пина", ...}}`
 
 ### gcode/script
 
-This endpoint allows one to run a series of G-Code commands. For example: `{"id": 123, "method": "gcode/script", "params": {"script": "G90"}}`
+Эта конечная точка позволяет выполнить серию команд G-Code. Например: `{" идентификатор": 123, " метод": "gcode/script", " параметры": {" скрипт": "G90"}}`
 
-If the provided G-Code script raises an error, then an error response is generated. However, if the G-Code command produces terminal output, that terminal output is not provided in the response. (Use the "gcode/subscribe_output" endpoint to obtain G-Code terminal output.)
+Если предоставленный сценарий G-кода приводит к ошибке, то генерируется ответ об ошибке. Однако если команда G-Code выводит терминальный вывод, то этот вывод не будет предоставлен в ответе. (Для получения терминального вывода G-кода используйте конечную точку "gcode/subscribe_output")
 
-If there is a G-Code command being processed when this request is received, then the provided script will be queued. This delay could be significant (eg, if a G-Code wait for temperature command is running). The JSON response message is sent when the processing of the script fully completes.
+Если в момент получения этого запроса выполняется команда G-Code, то предоставленный сценарий будет поставлен в очередь. Эта задержка может быть значительной (например, если выполняется команда G-Code wait for temperature). Ответное сообщение JSON отправляется, когда обработка сценария полностью завершена.
 
 ### gcode/restart
 
-This endpoint allows one to request a restart - it is similar to running the G-Code "RESTART" command. For example: `{"id": 123, "method": "gcode/restart"}`
+Эта конечная точка позволяет запросить перезапуск - это аналогично выполнению команды G-Code "RESTART". Например: `{"id": 123, "method": "gcode/restart"}`
 
-As with the "gcode/script" endpoint, this endpoint only completes after any pending G-Code commands complete.
+Как и в случае с конечной точкой "gcode/script", эта конечная точка завершается только после выполнения всех ожидающих команд G-Code.
 
 ### gcode/firmware_restart
 
-This is similar to the "gcode/restart" endpoint - it implements the G-Code "FIRMWARE_RESTART" command. For example: `{"id": 123, "method": "gcode/firmware_restart"}`
+Это аналогично конечной точке "gcode/restart" - она реализует команду G-кода "FIRMWARE_RESTART". Например: `{"id": 123, "method": "gcode/firmware_restart"}`
 
-As with the "gcode/script" endpoint, this endpoint only completes after any pending G-Code commands complete.
+Как и в случае с конечной точкой "gcode/script", эта конечная точка завершается только после выполнения всех ожидающих команд G-Code.
 
 ### gcode/subscribe_output
 
-This endpoint is used to subscribe to G-Code terminal messages that are generated by Klipper. For example: `{"id": 123, "method": "gcode/subscribe_output", "params": {"response_template":{}}}` might later produce asynchronous messages such as: `{"params": {"response": "// Klipper state: Shutdown"}}`
+Эта конечная точка используется для подписки на сообщения терминала G-Code, которые генерируются Klipper. Например: `{"id": 123, "method": "gcode/subscribe_output", "params": {"response_template":{}}}}` может впоследствии выдать такие асинхронные сообщения, как: `{"params": {"response": "// Состояние клиппера: Shutdown"}}`
 
-This endpoint is intended to support human interaction via a "terminal window" interface. Parsing content from the G-Code terminal output is discouraged. Use the "objects/subscribe" endpoint to obtain updates on Klipper's state.
+Эта конечная точка предназначена для поддержки взаимодействия с человеком через интерфейс "окно терминала". Разбор содержимого терминального вывода G-Code не рекомендуется. Используйте конечную точку "objects/subscribe" для получения обновлений о состоянии Klipper.
 
 ### motion_report/dump_stepper
 
-This endpoint is used to subscribe to Klipper's internal stepper queue_step command stream for a stepper. Obtaining these low-level motion updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Эта конечная точка используется для подписки на внутренний поток команд queue_step для шагового механизма Klipper. Получение этих низкоуровневых обновлений движения может быть полезно для целей диагностики и отладки. Использование этой конечной точки может увеличить нагрузку на систему Klipper.
 
-A request may look like: `{"id": 123, "method":"motion_report/dump_stepper", "params": {"name": "stepper_x", "response_template": {}}}` and might return: `{"id": 123, "result": {"header": ["interval", "count", "add"]}}` and might later produce asynchronous messages such as: `{"params": {"first_clock": 179601081, "first_time": 8.98, "first_position": 0, "last_clock": 219686097, "last_time": 10.984, "data": [[179601081, 1, 0], [29573, 2, -8685], [16230, 4, -1525], [10559, 6, -160], [10000, 976, 0], [10000, 1000, 0], [10000, 1000, 0], [10000, 1000, 0], [9855, 5, 187], [11632, 4, 1534], [20756, 2, 9442]]}}`
+Запрос может выглядеть следующим образом: `{"id": 123, "method": "motion_report/dump_stepper", "params": { "name": "stepper_x", "response_template": {}}}` и может вернуть: `{"id": 123, "result": { "header": ["interval", "count", "add"]}}` и в дальнейшем может выдавать асинхронные сообщения, такие как: `{"params": {"first_clock": 179601081, "first_time": 8.98, "first_position": 0, "last_clock": 219686097, "last_time": 10.984, "data": [[179601081, 1, 0], [29573, 2, -8685], [16230, 4, -1525], [10559, 6, -160], [10000, 976, 0], [10000, 1000, 0], [10000, 1000, 0], [10000, 1000, 0], [9855, 5, 187], [11632, 4, 1534], [20756, 2, 9442]]}}`
 
-The "header" field in the initial query response is used to describe the fields found in later "data" responses.
+Поле "заголовок" в первоначальном ответе на запрос используется для описания полей, содержащихся в последующих ответах "данные".
 
 ### motion_report/dump_trapq
 
-This endpoint is used to subscribe to Klipper's internal "trapezoid motion queue". Obtaining these low-level motion updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Эта конечная точка используется для подписки на внутреннюю "очередь движения трапеции" Klipper. Получение этих низкоуровневых обновлений движения может быть полезно для диагностики и отладки. Использование этой конечной точки может увеличить нагрузку на систему Klipper.
 
-A request may look like: `{"id": 123, "method": "motion_report/dump_trapq", "params": {"name": "toolhead", "response_template":{}}}` and might return: `{"id": 1, "result": {"header": ["time", "duration", "start_velocity", "acceleration", "start_position", "direction"]}}` and might later produce asynchronous messages such as: `{"params": {"data": [[4.05, 1.0, 0.0, 0.0, [300.0, 0.0, 0.0], [0.0, 0.0, 0.0]], [5.054, 0.001, 0.0, 3000.0, [300.0, 0.0, 0.0], [-1.0, 0.0, 0.0]]]}}`
+Запрос может выглядеть следующим образом: `{" идентификатор": 123, " метод": "motion_report/dump_trapq", " параметры": { " название": " инструментальная головка", "response_template":{}}}` и может возвращать: `{" идентификатор": 1, " результат": { " заголовок": [" время", "продолжительность", "start_velocity", " ускорение", "start_position", "direction"]}}` и впоследствии может выдать асинхронные сообщения, такие как: `{" параметры": {"data": [[4.05, 1.0, 0.0, 0.0, [300.0, 0.0, 0.0], [0.0, 0.0, 0.0]], [5.054, 0.001, 0.0, 3000.0, [300.0, 0.0, 0.0], [-1.0, 0.0, 0.0]]]}}`
 
-The "header" field in the initial query response is used to describe the fields found in later "data" responses.
+Поле "заголовок" в первоначальном ответе на запрос используется для описания полей, содержащихся в последующих ответах "данные".
 
 ### adxl345/dump_adxl345
 
-This endpoint is used to subscribe to ADXL345 accelerometer data. Obtaining these low-level motion updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Эта конечная точка используется для подписки на данные акселерометра ADXL345. Получение этих низкоуровневых обновлений движения может быть полезно для целей диагностики и отладки. Использование этой конечной точки может увеличить нагрузку на систему Klipper.
 
-A request may look like: `{"id": 123, "method":"adxl345/dump_adxl345", "params": {"sensor": "adxl345", "response_template": {}}}` and might return: `{"id": 123,"result":{"header":["time","x_acceleration","y_acceleration", "z_acceleration"]}}` and might later produce asynchronous messages such as: `{"params":{"overflows":0,"data":[[3292.432935,-535.44309,-1529.8374,9561.4], [3292.433256,-382.45935,-1606.32927,9561.48375]]}}`
+Запрос может выглядеть следующим образом: `{"id": 123, "method": "adxl345/dump_adxl345", "params": { "sensor": "adxl345", "response_template": {}}}` и может вернуть: `{"id": 123, "result":{"header":["time", "x_acceleration", "y_acceleration", "z_acceleration"]}}` и может позже выдать асинхронные сообщения, такие как: `{"params":{"overflows":0,"data":[[3292.432935,-535.44309,-1529.8374,9561.4], [3292.433256,-382.45935,-1606.32927,9561.48375]]}}`
 
-The "header" field in the initial query response is used to describe the fields found in later "data" responses.
+Поле "заголовок" в первоначальном ответе на запрос используется для описания полей, содержащихся в последующих ответах "данные".
 
 ### angle/dump_angle
 
-This endpoint is used to subscribe to [angle sensor data](Config_Reference.md#angle). Obtaining these low-level motion updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Эта конечная точка используется для подписки на [данные датчика угла](Config_Reference.md#angle). Получение этих низкоуровневых обновлений движения может быть полезно для диагностики и отладки. Использование этой конечной точки может увеличить нагрузку на систему Klipper.
 
-A request may look like: `{"id": 123, "method":"angle/dump_angle", "params": {"sensor": "my_angle_sensor", "response_template": {}}}` and might return: `{"id": 123,"result":{"header":["time","angle"]}}` and might later produce asynchronous messages such as: `{"params":{"position_offset":3.151562,"errors":0, "data":[[1290.951905,-5063],[1290.952321,-5065]]}}`
+Запрос может выглядеть следующим образом: `{"id": 123, "method": "angle/dump_angle", "params": { "sensor": "my_angle_sensor", "response_template": {}}}` и может вернуть: `{"id": 123, "result":{"header":["time", "angle"]}}` и в дальнейшем может выдавать асинхронные сообщения, такие как: `{"params":{"position_offset":3.151562,"errors":0, "data":[[1290.951905,-5063],[1290.952321,-5065]]}}`
 
-The "header" field in the initial query response is used to describe the fields found in later "data" responses.
+Поле "заголовок" в первоначальном ответе на запрос используется для описания полей, содержащихся в последующих ответах "данные".
 
 ### hx71x/dump_hx71x
 
-This endpoint is used to subscribe to raw HX711 and HX717 ADC data. Obtaining these low-level ADC updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Эта конечная точка используется для подписки на необработанные данные АЦП HX711 и HX717. Получение этих низкоуровневых обновлений АЦП может быть полезно для целей диагностики и отладки. Использование этой конечной точки может увеличить нагрузку на систему Klipper.
 
-A request may look like: `{"id": 123, "method":"hx71x/dump_hx71x", "params": {"sensor": "load_cell", "response_template": {}}}` and might return: `{"id": 123,"result":{"header":["time","counts","value"]}}` and might later produce asynchronous messages such as: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
+Запрос может выглядеть следующим образом: `{"id": 123, "method": "hx71x/dump_hx71x", "params": { "sensor": "load_cell", "response_template": {}}}` и может вернуть: `{"id": 123, "result":{"header":["time", "counts", "value"]}}` и в дальнейшем может выдавать асинхронные сообщения, такие как: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
 
 ### ads1220/dump_ads1220
 
-This endpoint is used to subscribe to raw ADS1220 ADC data. Obtaining these low-level ADC updates may be useful for diagnostic and debugging purposes. Using this endpoint may increase Klipper's system load.
+Эта конечная точка используется для подписки на необработанные данные АЦП ADS1220. Получение этих низкоуровневых обновлений АЦП может быть полезно для целей диагностики и отладки. Использование этой конечной точки может увеличить нагрузку на систему Klipper.
 
-A request may look like: `{"id": 123, "method":"ads1220/dump_ads1220", "params": {"sensor": "load_cell", "response_template": {}}}` and might return: `{"id": 123,"result":{"header":["time","counts","value"]}}` and might later produce asynchronous messages such as: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
+Запрос может выглядеть следующим образом: `{"id": 123, "method": "ads1220/dump_ads1220", "params": { "sensor": "load_cell", "response_template": {}}}` и может вернуть: `{"id": 123, "result":{"header":["time", "counts", "value"]}}` и в дальнейшем может выдавать асинхронные сообщения, такие как: `{"params":{"data":[[3292.432935, 562534, 0.067059278], [3292.4394937, 5625322, 0.670590639]]}}`
 
 ### pause_resume/cancel
 
-This endpoint is similar to running the "PRINT_CANCEL" G-Code command. For example: `{"id": 123, "method": "pause_resume/cancel"}`
+Эта конечная точка аналогична выполнению команды G-кода "PRINT_CANCEL". Например: `{"id": 123, "method": "pause_resume/cancel"}`
 
-As with the "gcode/script" endpoint, this endpoint only completes after any pending G-Code commands complete.
+Как и в случае с конечной точкой "gcode/script", эта конечная точка завершается только после выполнения всех ожидающих команд G-Code.
 
 ### pause_resume/pause
 
-This endpoint is similar to running the "PAUSE" G-Code command. For example: `{"id": 123, "method": "pause_resume/pause"}`
+Эта конечная точка аналогична выполнению команды G-кода "PAUSE". Например: `{"id": 123, "method": "pause_resume/pause"}`
 
-As with the "gcode/script" endpoint, this endpoint only completes after any pending G-Code commands complete.
+Как и в случае с конечной точкой "gcode/script", эта конечная точка завершается только после выполнения всех ожидающих команд G-Code.
 
 ### pause_resume/resume
 
-This endpoint is similar to running the "RESUME" G-Code command. For example: `{"id": 123, "method": "pause_resume/resume"}`
+Эта конечная точка аналогична выполнению команды G-кода "RESUME". Например: `{"id": 123, "method": "pause_resume/resume"}`
 
-As with the "gcode/script" endpoint, this endpoint only completes after any pending G-Code commands complete.
+Как и в случае с конечной точкой "gcode/script", эта конечная точка завершается только после выполнения всех ожидающих команд G-Code.
 
 ### query_endstops/status
 
-This endpoint will query the active endpoints and return their status. For example: `{"id": 123, "method": "query_endstops/status"}` might return: `{"id": 123, "result": {"y": "open", "x": "open", "z": "TRIGGERED"}}`
+Эта конечная точка будет запрашивать активные конечные точки и возвращать их статус. Например: `{"id": 123, "method": "query_endstops/status"}` может вернуть: `{"id": 123, "result": {"y": "открыто", "x": "открыто", "z": "TRIGGERED"}}`
 
-As with the "gcode/script" endpoint, this endpoint only completes after any pending G-Code commands complete.
+Как и в случае с конечной точкой "gcode/script", эта конечная точка завершается только после выполнения всех ожидающих команд G-Code.
 
 ### bed_mesh/dump_mesh
 
-Dumps the configuration and state for the current mesh and all saved profiles.
+Сбрасывает конфигурацию и состояние для текущей сетки и всех сохраненных профилей.
 
-For example: `{"id": 123, "method": "bed_mesh/dump_mesh"}`
+Например: `{"id": 123, "method": "bed_mesh/dump_mesh"}`
 
-might return:
+может вернуться:
 
 ```
 {
@@ -335,4 +335,4 @@ might return:
 }
 ```
 
-The `dump_mesh` endpoint takes one optional parameter, `mesh_args`. This parameter must be an object, where the keys and values are parameters available to [BED_MESH_CALIBRATE](#bed_mesh_calibrate). This will update the mesh configuration and probe points using the supplied parameters prior to returning the result. It is recommended to omit mesh parameters unless it is desired to visualize the probe points and/or travel path before performing `BED_MESH_CALIBRATE`.
+Конечная точка `dump_mesh` принимает один необязательный параметр, `mesh_args`. Этот параметр должен быть объектом, где ключами и значениями являются параметры, доступные для [BED_MESH_CALIBRATE](#bed_mesh_calibrate). Перед возвратом результата будет обновлена конфигурация сетки и точки зондирования с использованием предоставленных параметров. Рекомендуется опустить параметры сетки, если не требуется визуализировать точки зондирования и/или траекторию движения перед выполнением `BED_MESH_CALIBRATE`.

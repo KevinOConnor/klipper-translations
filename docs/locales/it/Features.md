@@ -63,6 +63,8 @@ Di seguito sono riportati i risultati dei test delle prestazioni degli stepper. 
 | AR100 | 3529K | 2507K |
 | STM32F407 | 3652K | 2459K |
 | STM32F446 | 3913K | 2634K |
+| RP2350 | 4167K | 2663K |
+| SAME70 | 6667K | 4737K |
 | STM32H743 | 9091K | 6061K |
 
 Se non sei sicuro del microcontrollore su una particolare scheda, trova il [file di configurazione](../config/) appropriato e cerca il nome del microcontrollore nei commenti nella parte superiore di quel file.

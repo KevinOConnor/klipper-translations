@@ -51,7 +51,7 @@ serial:
 
 ### [mcu my_extra_mcu]
 
-Additional micro-controllers (one may define any number of sections with an "mcu" prefix). Additional micro-controllers introduce additional pins that may be configured as heaters, steppers, fans, etc.. For example, if an "[mcu extra_mcu]" section is introduced, then pins such as "extra_mcu:ar9" may then be used elsewhere in the config (where "ar9" is a hardware pin name or alias name on the given mcu).
+Zusätzliche Mikrocontroller (Jemand kann eine beliebige Anzahl an Abschnitten mit einer "mcu"-Präfix definieren). Zusätzliche Mikrocontroller fügen zusätzliche Pins hinzu die als Heizeinheiten, Schrittmotor, Lüfter etc.. konfiguriert werden können. Zum Beispiel, wenn ein Abschnitt "[mcu extra_mcu]" hinzugefügt wird, können Pins wie "extra_mcu:ar9" (wo "ar9" ein Hardware-Pin-Name oder Alias-Name von dem gegebenen mcu ist) woanders in der Konfiguration benutzt werden.
 
 ```
 [mcu my_extra_mcu]
@@ -3910,7 +3910,7 @@ lcd_type:
 
 Support for displaying custom data on an lcd screen. One may create any number of display groups and any number of data items under those groups. The display will show all the data items for a given group if the display_group option in the [display] section is set to the given group name.
 
-A [default set of display groups](../klippy/extras/display/display.cfg) are automatically created. One can replace or extend these display_data items by overriding the defaults in the main printer.cfg config file.
+Ein [Standard-Set an Display-Gruppen](../klippy/extras/display/display.cfg) werden automatisch erstellt. Diese display_data-Objekte können überschrieben oder vergrößert werden, indem die Standardkonfiguration in der primären printer.cfg Konfigurationsdatei überschrieben wird.
 
 ```
 [display_data my_group_name my_data_name]

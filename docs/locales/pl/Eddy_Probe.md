@@ -1,6 +1,6 @@
-# Eddy Current Inductive probe
+# Czujnik indukcyjny Eddy Current
 
-This document describes how to use an [eddy current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in Klipper.
+Ten dokument opisuje w jaki sposób używać czujnika indukcyjnego [eddy current](https://en.wikipedia.org/wiki/Eddy_current) z Klipperem.
 
 Currently, an eddy current probe can not be used for Z homing. The sensor can only be used for Z probing.
 

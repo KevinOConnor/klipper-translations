@@ -1648,7 +1648,7 @@ Include file support. One may include additional config file from the main print
 
 ### [duplicate_pin_override]
 
-This tool allows a single micro-controller pin to be defined multiple times in a config file without normal error checking. This is intended for diagnostic and debugging purposes. This section is not needed where Klipper supports using the same pin multiple times, and using this override may cause confusing and unexpected results.
+Tento nástroj umožňuje definovat jeden pin mikrokontroléru v konfiguračním souboru vícekrát bez běžné kontroly chyb. Je určen pro diagnostické a ladicí účely. Tato část není nutná tam, kde Klipper podporuje vícenásobné použití stejného pinu, a použití tohoto přepisu může způsobit matoucí a neočekávané výsledky.
 
 ```
 [duplicate_pin_override]
@@ -2259,7 +2259,7 @@ sensor_pin:
 
 ### Directly connected PT1000 sensor
 
-Directly connected PT1000 sensor. The following parameters are available in heater sections that use one of these sensors.
+Přímo připojený senzor PT1000. Následující parametry jsou k dispozici v sekcích topných těles, které používají jeden z těchto snímačů.
 
 ```
 sensor_type: PT1000
@@ -2985,7 +2985,7 @@ pin:
 
 ### [static_digital_output]
 
-Statically configured digital output pins (one may define any number of sections with a "static_digital_output" prefix). Pins configured here will be setup as a GPIO output during MCU configuration. They can not be changed at run-time.
+Staticky nakonfigurované digitální výstupní piny (lze definovat libovolný počet sekcí s předponou „static_digital_output“). Zde nakonfigurované piny budou při konfiguraci MCU nastaveny jako výstup GPIO. Za běhu je nelze měnit.
 
 ```
 [static_digital_output my_output_pins]
@@ -3186,7 +3186,7 @@ run_current:
 
 ### [tmc2209]
 
-Configure a TMC2209 stepper motor driver via single wire UART. To use this feature, define a config section with a "tmc2209" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2209 stepper_x]").
+Nastavte ovladač krokového motoru TMC2209 prostřednictvím jednovodičového UART. Chcete-li tuto funkci použít, definujte konfigurační sekci s předponou „tmc2209“ následovanou názvem příslušné konfigurační sekce krokového ovladače (například „[tmc2209 stepper_x]“).
 
 ```
 [tmc2209 stepper_x]
@@ -3246,7 +3246,7 @@ run_current:
 
 ### [tmc2660]
 
-Configure a TMC2660 stepper motor driver via SPI bus. To use this feature, define a config section with a tmc2660 prefix followed by the name of the corresponding stepper config section (for example, "[tmc2660 stepper_x]").
+Konfigurace ovladače krokového motoru TMC2660 prostřednictvím sběrnice SPI. Chcete-li tuto funkci použít, definujte konfigurační sekci s předponou tmc2660 následovanou názvem příslušné konfigurační sekce krokového ovladače (například „[tmc2660 stepper_x]“).
 
 ```
 [tmc2660 stepper_x]
@@ -3315,7 +3315,7 @@ run_current:
 
 ### [tmc2240]
 
-Configure a TMC2240 stepper motor driver via SPI bus or UART. To use this feature, define a config section with a "tmc2240" prefix followed by the name of the corresponding stepper config section (for example, "[tmc2240 stepper_x]").
+Nastavte ovladač krokového motoru TMC2240 prostřednictvím sběrnice SPI nebo UART. Chcete-li tuto funkci použít, definujte konfigurační sekci s předponou „tmc2240“, za kterou následuje název příslušné konfigurační sekce krokového ovladače (například „[tmc2240 stepper_x]“).
 
 ```
 [tmc2240 stepper_x]
@@ -3448,7 +3448,7 @@ run_current:
 
 ### [tmc5160]
 
-Configure a TMC5160 stepper motor driver via SPI bus. To use this feature, define a config section with a "tmc5160" prefix followed by the name of the corresponding stepper config section (for example, "[tmc5160 stepper_x]").
+Nastavte ovladač krokového motoru TMC5160 prostřednictvím sběrnice SPI. Chcete-li tuto funkci použít, definujte konfigurační sekci s předponou „tmc5160“, za kterou následuje název příslušné konfigurační sekce krokového motoru (například „[tmc5160 stepper_x]“).
 
 ```
 [tmc5160 stepper_x]
@@ -3616,7 +3616,7 @@ enable_pin:
 
 ### [mcp4451]
 
-Statically configured MCP4451 digipot connected via I2C bus (one may define any number of sections with an "mcp4451" prefix).
+Staticky nakonfigurovaný digipot MCP4451 připojený přes sběrnici I2C (lze definovat libovolný počet sekcí s předponou „mcp4451“).
 
 ```
 [mcp4451 my_digipot]
@@ -3652,7 +3652,7 @@ i2c_address:
 
 ### [mcp4728]
 
-Statically configured MCP4728 digital-to-analog converter connected via I2C bus (one may define any number of sections with an "mcp4728" prefix).
+Staticky nakonfigurovaný digitálně-analogový převodník MCP4728 připojený přes sběrnici I2C (lze definovat libovolný počet sekcí s předponou „mcp4728“).
 
 ```
 [mcp4728 my_dac]
@@ -3689,7 +3689,7 @@ Statically configured MCP4728 digital-to-analog converter connected via I2C bus 
 
 ### [mcp4018]
 
-Statically configured MCP4018 digipot connected via two gpio "bit banging" pins (one may define any number of sections with an "mcp4018" prefix).
+Staticky nakonfigurovaný digipot MCP4018 připojený přes dva gpio „bit banging“ piny (lze definovat libovolný počet sekcí s předponou „mcp4018“).
 
 ```
 [mcp4018 my_digipot]

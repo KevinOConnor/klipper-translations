@@ -1,8 +1,8 @@
 # Сетка стола
 
-The Bed Mesh module may be used to compensate for bed surface irregularities to achieve a better first layer across the entire bed. It should be noted that software based correction will not achieve perfect results, it can only approximate the shape of the bed. Bed Mesh also cannot compensate for mechanical and electrical issues. If an axis is skewed or a probe is not accurate then the bed_mesh module will not receive accurate results from the probing process.
+Модуль Bed Mesh можно использовать для компенсации неровностей поверхности кровати, чтобы добиться лучшего первого слоя по всей кровати. Следует отметить, что программная коррекция не позволяет достичь идеальных результатов, она может лишь приблизительно повторить форму ложа. Сетка станины также не может компенсировать механические и электрические проблемы. Если ось перекошена или датчик неточен, модуль bed_mesh не получит точных результатов от процесса измерения.
 
-Prior to Mesh Calibration you will need to be sure that your Probe's Z-Offset is calibrated. If using an endstop for Z homing it will need to be calibrated as well. See [Probe Calibrate](Probe_Calibrate.md) and Z_ENDSTOP_CALIBRATE in [Manual Level](Manual_Level.md) for more information.
+Перед калибровкой сетки необходимо убедиться, что Z-смещение зонда откалибровано. Если для наведения по Z используется концевой упор, его также необходимо откалибровать. Дополнительные сведения см. в разделе [Калибровка зонда](Probe_Calibrate.md) и Z_ENDSTOP_CALIBRATE в разделе [Ручной уровень](Manual_Level.md).
 
 ## Основные настройки
 
@@ -12,7 +12,7 @@ Prior to Mesh Calibration you will need to be sure that your Probe's Z-Offset is
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
@@ -21,21 +21,21 @@ probe_count: 5, 3
 
 - `speed: 120` *Default Value: 50* Скорость, с которой инструмент перемещается между точками.
 - `horizontal_move_z: 5` *Default Value: 5* Координата Z, по которой поднимается зонд перед перемещением между точками.
-- `mesh_min: 35, 6` *Required* The first probed coordinate, nearest to the origin. This coordinate is relative to the probe's location.
-- `mesh_max: 240, 198` *Required* The probed coordinate farthest from the origin. This is not necessarily the last point probed, as the probing process occurs in a zig-zag fashion. As with `mesh_min`, this coordinate is relative to the probe's location.
-- `probe_count: 5, 3` *Default Value: 3, 3* The number of points to probe on each axis, specified as X, Y integer values. In this example 5 points will be probed along the X axis, with 3 points along the Y axis, for a total of 15 probed points. Note that if you wanted a square grid, for example 3x3, this could be specified as a single integer value that is used for both axes, ie `probe_count: 3`. Note that a mesh requires a minimum probe_count of 3 along each axis.
+- `mesh_min: 35, 6` *Обязательно* Первая координата зонда, ближайшая к началу координат. Эта координата является относительной по отношению к местоположению зонда.
+- `mesh_max: 240, 198` *Обязательно* Самая удаленная от начала координата. Это не обязательно последняя точка, так как процесс зондирования происходит зигзагообразно. Как и в случае с `mesh_min`, эта координата является относительной по отношению к местоположению зонда.
+- `probe_count: 5, 3` *Значение по умолчанию: 3, 3* Количество точек для зондирования по каждой оси, заданное как целочисленные значения X, Y. В этом примере по оси X будет прощупано 5 точек, а по оси Y - 3 точки, итого 15 точек. Обратите внимание, что если вам нужна квадратная сетка, например 3x3, это можно указать как одно целое значение, которое будет использоваться для обеих осей, то есть `probe_count: 3`. Обратите внимание, что для сетки требуется минимальное количество зондов (probe_count) по 3 вдоль каждой оси.
 
 На рисунке ниже показано, как опции `mesh_min`, `mesh_max` и `probe_count` используются для генерации точек зондирования. Стрелки указывают направление процедуры зондирования, начиная с точки `mesh_min`. Для примера, когда зонд находится в точке `mesh_min`, сопло будет находиться в точке (11, 1), а когда зонд находится в точке `mesh_max`, сопло будет находиться в точке (206, 193).
 
 ![bedmesh_rect_basic](img/bedmesh_rect_basic.svg)
 
-### Round beds
+### Круглые лежаки
 
-This example assumes a printer equipped with a round bed radius of 100mm. We will use the same probe offsets as the rectangular example, 24 mm on X and 5 mm on Y.
+В этом примере предполагается, что принтер оснащен круглой станиной радиусом 100 мм. Мы будем использовать те же смещения датчиков, что и в прямоугольном примере: 24 мм по оси X и 5 мм по оси Y.
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_radius: 75
 mesh_origin: 0, 0
@@ -43,48 +43,48 @@ round_probe_count: 5
 ```
 
 - `mesh_radius: 75` *Required* Радиус сетки зонда в мм относительно `mesh_origin`. Обратите внимание, что смещение зонда ограничивает размер радиуса сетки. В данном примере радиус, превышающий 76, выведет инструмент за пределы диапазона принтера.
-- `mesh_origin: 0, 0` *Default Value: 0, 0* The center point of the mesh. This coordinate is relative to the probe's location. While the default is 0, 0, it may be useful to adjust the origin in an effort to probe a larger portion of the bed. See the illustration below.
-- `round_probe_count: 5` *Default Value: 5* This is an integer value that defines the maximum number of probed points along the X and Y axes. By "maximum", we mean the number of points probed along the mesh origin. This value must be an odd number, as it is required that the center of the mesh is probed.
+- `mesh_origin: 0, 0` *Значение по умолчанию: 0, 0* Центральная точка сетки. Эта координата находится относительно местоположения зонда. Хотя по умолчанию используется значение 0, 0, может оказаться полезным изменить начало координат, чтобы прозондировать большую часть кровати. См. иллюстрацию ниже.
+- `round_probe_count: 5` *Значение по умолчанию: 5* Это целочисленное значение, определяющее максимальное количество точек, прощупываемых по осям X и Y. Под "максимальным" подразумевается количество точек, прощупываемых вдоль начала сетки. Это значение должно быть нечетным, так как требуется, чтобы центр сетки был прозондирован.
 
-The illustration below shows how the probed points are generated. As you can see, setting the `mesh_origin` to (-10, 0) allows us to specify a larger mesh radius of 85.
+На рисунке ниже показано, как генерируются точки зондирования. Как видите, установка `mesh_origin` в (-10, 0) позволяет нам задать больший радиус сетки - 85.
 
 ![bedmesh_round_basic](img/bedmesh_round_basic.svg)
 
-## Advanced Configuration
+## Расширенная конфигурация
 
-Below the more advanced configuration options are explained in detail. Each example will build upon the basic rectangular bed configuration shown above. Each of the advanced options apply to round beds in the same manner.
+Ниже подробно описаны более сложные варианты конфигурации. Каждый пример основан на базовой конфигурации прямоугольной кровати, показанной выше. Все дополнительные опции аналогичным образом применяются к круглым кроватям.
 
-### Mesh Interpolation
+### Интерполяция сетки
 
-While its possible to sample the probed matrix directly using simple bi-linear interpolation to determine the Z-Values between probed points, it is often useful to interpolate extra points using more advanced interpolation algorithms to increase mesh density. These algorithms add curvature to the mesh, attempting to simulate the material properties of the bed. Bed Mesh offers lagrange and bicubic interpolation to accomplish this.
+Хотя для определения Z-величин между точками зондирования можно напрямую использовать матрицу зондирования с помощью простой билинейной интерполяции, часто бывает полезно интерполировать дополнительные точки с помощью более сложных алгоритмов интерполяции для увеличения плотности сетки. Эти алгоритмы добавляют кривизну в сетку, пытаясь имитировать свойства материала постели. В Bed Mesh для этого используются алгоритмы интерполяции Лагранжа и бикубической интерполяции.
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
 probe_count: 5, 3
 mesh_pps: 2, 3
-algorithm: bicubic
+алгоритм: бикубический
 bicubic_tension: 0.2
 ```
 
-- `mesh_pps: 2, 3` *Default Value: 2, 2* The `mesh_pps` option is shorthand for Mesh Points Per Segment. This option specifies how many points to interpolate for each segment along the X and Y axes. Consider a 'segment' to be the space between each probed point. Like `probe_count`, `mesh_pps` is specified as an X, Y integer pair, and also may be specified a single integer that is applied to both axes. In this example there are 4 segments along the X axis and 2 segments along the Y axis. This evaluates to 8 interpolated points along X, 6 interpolated points along Y, which results in a 13x8 mesh. Note that if mesh_pps is set to 0 then mesh interpolation is disabled and the probed matrix will be sampled directly.
-- `algorithm: lagrange` *Default Value: lagrange* The algorithm used to interpolate the mesh. May be `lagrange` or `bicubic`. Lagrange interpolation is capped at 6 probed points as oscillation tends to occur with a larger number of samples. Bicubic interpolation requires a minimum of 4 probed points along each axis, if less than 4 points are specified then lagrange sampling is forced. If `mesh_pps` is set to 0 then this value is ignored as no mesh interpolation is done.
-- `bicubic_tension: 0.2` *Default Value: 0.2* If the `algorithm` option is set to bicubic it is possible to specify the tension value. The higher the tension the more slope is interpolated. Be careful when adjusting this, as higher values also create more overshoot, which will result in interpolated values higher or lower than your probed points.
+- `mesh_pps: 2, 3` *Значение по умолчанию: 2, 2* Параметр `mesh_pps` - это сокращение от Mesh Points Per Segment. Эта опция указывает, сколько точек интерполировать для каждого сегмента по осям X и Y. Считайте, что "сегмент" - это пространство между каждой точкой зондирования. Как и `probe_count`, `mesh_pps` задается как пара целых чисел X, Y, а также может быть задано одно целое число, которое применяется к обеим осям. В данном примере имеется 4 сегмента по оси X и 2 сегмента по оси Y. В результате получается 8 интерполированных точек по оси X, 6 интерполированных точек по оси Y, что дает сетку 13x8. Обратите внимание, что если значение mesh_pps равно 0, то интерполяция сетки отключается и матрица зондирования будет сэмплироваться напрямую.
+- `алгоритм: lagrange` *Значение по умолчанию: lagrange* Алгоритм, используемый для интерполяции сетки. Может быть `lagrange` или `bicubic`. Интерполяция Лагранжа ограничена 6 точками зондирования, так как при большем количестве выборок возникают колебания. Бикубическая интерполяция требует минимум 4 точки вдоль каждой оси, если указано менее 4 точек, то выборка по Лагранжу будет принудительной. Если `mesh_pps` установлено в 0, то это значение игнорируется, так как интерполяция сетки не выполняется.
+- `bicubic_tension: 0.2` *Значение по умолчанию: 0.2* Если опция `алгоритм` установлена на bicubic, то можно указать значение натяжения. Чем выше натяжение, тем больше наклон интерполируется. Будьте осторожны при настройке этого параметра, так как более высокие значения также создают большую перегрузку, что приведет к тому, что интерполированные значения будут выше или ниже, чем ваши измеренные точки.
 
-The illustration below shows how the options above are used to generate an interpolated mesh.
+На рисунке ниже показано, как перечисленные выше параметры используются для создания интерполированной сетки.
 
 ![bedmesh_interpolated](img/bedmesh_interpolated.svg)
 
-### Move Splitting
+### Разделение движений
 
-Bed Mesh works by intercepting gcode move commands and applying a transform to their Z coordinate. Long moves must be split into smaller moves to correctly follow the shape of the bed. The options below control the splitting behavior.
+Bed Mesh работает, перехватывая команды перемещения gcode и применяя трансформацию к их координате Z. Длинные перемещения должны быть разбиты на более мелкие, чтобы правильно следовать форме кровати. Опции ниже управляют поведением разбиения.
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
@@ -93,18 +93,18 @@ move_check_distance: 5
 split_delta_z: .025
 ```
 
-- `move_check_distance: 5` *Default Value: 5* The minimum distance to check for the desired change in Z before performing a split. In this example, a move longer than 5mm will be traversed by the algorithm. Each 5mm a mesh Z lookup will occur, comparing it with the Z value of the previous move. If the delta meets the threshold set by `split_delta_z`, the move will be split and traversal will continue. This process repeats until the end of the move is reached, where a final adjustment will be applied. Moves shorter than the `move_check_distance` have the correct Z adjustment applied directly to the move without traversal or splitting.
-- `split_delta_z: .025` *Default Value: .025* As mentioned above, this is the minimum deviation required to trigger a move split. In this example, any Z value with a deviation +/- .025mm will trigger a split.
+- `move_check_distance: 5` *Значение по умолчанию: 5* Минимальное расстояние для проверки желаемого изменения Z перед выполнением разбиения. В данном примере алгоритм будет проверять перемещения длиной более 5 мм. Через каждые 5 мм будет выполняться поиск Z сетки, сравнивая его со значением Z предыдущего хода. Если дельта соответствует порогу, заданному параметром `split_delta_z`, ход будет разделен и обход продолжится. Этот процесс повторяется до тех пор, пока не будет достигнут конец перемещения, где будет применена окончательная корректировка. К перемещениям, длина которых меньше `move_check_distance`, правильная корректировка Z применяется непосредственно к перемещению без обхода или разбиения.
+- `split_delta_z: .025` *Значение по умолчанию: .025* Как упоминалось выше, это минимальное отклонение, необходимое для запуска разделения движения. В данном примере любое значение Z с отклонением +/- .025 мм вызовет сплит.
 
-Generally the default values for these options are sufficient, in fact the default value of 5mm for the `move_check_distance` may be overkill. However an advanced user may wish to experiment with these options in an effort to squeeze out the optimal first layer.
+Как правило, значений по умолчанию для этих параметров достаточно, а значение по умолчанию 5 мм для `move_check_distance` может оказаться излишним. Однако опытный пользователь может захотеть поэкспериментировать с этими параметрами, пытаясь выжать оптимальный первый слой.
 
-### Mesh Fade
+### Сетчатый оттенок
 
-When "fade" is enabled Z adjustment is phased out over a distance defined by the configuration. This is accomplished by applying small adjustments to the layer height, either increasing or decreasing depending on the shape of the bed. When fade has completed, Z adjustment is no longer applied, allowing the top of the print to be flat rather than mirror the shape of the bed. Fade also may have some undesirable traits, if you fade too quickly it can result in visible artifacts on the print. Also, if your bed is significantly warped, fade can shrink or stretch the Z height of the print. As such, fade is disabled by default.
+Когда включено "затухание", регулировка Z постепенно уменьшается на расстояние, определенное конфигурацией. Это достигается путем применения небольших корректировок высоты слоя, которые либо увеличиваются, либо уменьшаются в зависимости от формы ложа. По окончании затухания регулировка Z больше не применяется, что позволяет верхней части отпечатка быть плоской, а не зеркально отражать форму ложа. Затухание также может иметь некоторые нежелательные свойства: если затухать слишком быстро, это может привести к появлению видимых артефактов на отпечатке. Кроме того, если ваша кровать сильно деформирована, затухание может уменьшить или растянуть высоту Z отпечатка. Поэтому по умолчанию затухание отключено.
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
@@ -114,17 +114,17 @@ fade_end: 10
 fade_target: 0
 ```
 
-- `fade_start: 1` *Default Value: 1* The Z height in which to start phasing out adjustment. It is a good idea to get a few layers down before starting the fade process.
-- `fade_end: 10` *Default Value: 0* The Z height in which fade should complete. If this value is lower than `fade_start` then fade is disabled. This value may be adjusted depending on how warped the print surface is. A significantly warped surface should fade out over a longer distance. A near flat surface may be able to reduce this value to phase out more quickly. 10mm is a sane value to begin with if using the default value of 1 for `fade_start`.
-- `fade_target: 0` *Default Value: The average Z value of the mesh* The `fade_target` can be thought of as an additional Z offset applied to the entire bed after fade completes. Generally speaking we would like this value to be 0, however there are circumstances where it should not be. For example, lets assume your homing position on the bed is an outlier, its .2 mm lower than the average probed height of the bed. If the `fade_target` is 0, fade will shrink the print by an average of .2 mm across the bed. By setting the `fade_target` to .2, the homed area will expand by .2 mm, however, the rest of the bed will be accurately sized. Generally its a good idea to leave `fade_target` out of the configuration so the average height of the mesh is used, however it may be desirable to manually adjust the fade target if one wants to print on a specific portion of the bed.
+- `fade_start: 1` *Значение по умолчанию: 1* Высота Z, с которой следует начинать постепенное выравнивание. Перед началом процесса затухания рекомендуется спустить несколько слоев.
+- `fade_end: 10` *Значение по умолчанию: 0* Высота Z, на которой должно завершиться затухание. Если это значение меньше, чем `fade_start`, то затухание будет отключено. Это значение может быть изменено в зависимости от того, насколько деформирована поверхность печати. Сильно деформированная поверхность должна затухать на большем расстоянии. На почти плоской поверхности это значение можно уменьшить, чтобы затухание происходило быстрее. 10 мм - разумное значение для начала, если использовать значение по умолчанию 1 для `fade_start`.
+- `fade_target: 0` *Значение по умолчанию: Среднее значение Z сетки* Значение `fade_target` можно рассматривать как дополнительное смещение Z, применяемое ко всему слою после завершения затухания. Вообще говоря, мы хотели бы, чтобы это значение было равно 0, однако есть обстоятельства, при которых оно не должно быть таким. Например, предположим, что ваше положение самонаведения на кровати - это выброс, оно на 0,2 мм ниже, чем средняя измеренная высота кровати. Если `fade_target` равно 0, fade уменьшит отпечаток в среднем на .2 мм по всей станине. Если задать `fade_target` равным .2, то область, в которую попадает отпечаток, расширится на .2 мм, однако остальная часть ложа будет иметь точные размеры. Обычно рекомендуется не задавать `fade_target` в конфигурации, чтобы использовалась средняя высота сетки, однако может быть желательно вручную настроить цель затухания, если требуется печать на определенной части ложа.
 
-### Configuring the zero reference position
+### Настройка нулевого опорного положения
 
-Many probes are susceptible to "drift", ie: inaccuracies in probing introduced by heat or interference. This can make calculating the probe's z-offset challenging, particularly at different bed temperatures. As such, some printers use an endstop for homing the Z axis and a probe for calibrating the mesh. In this configuration it is possible offset the mesh so that the (X, Y) `reference position` applies zero adjustment. The `reference postion` should be the location on the bed where a [Z_ENDSTOP_CALIBRATE](./Manual_Level#calibrating-a-z-endstop) paper test is performed. The bed_mesh module provides the `zero_reference_position` option for specifying this coordinate:
+Многие датчики подвержены "дрейфу", т. е. неточностям в измерениях, вызванным нагревом или помехами. Это может затруднить расчет смещения датчика по оси Z, особенно при различных температурах станины. Поэтому в некоторых принтерах используется концевой упор для наведения оси Z и датчик для калибровки сетки. При такой конфигурации можно сместить сетку так, чтобы в `опорном положении` (X, Y) применялась нулевая корректировка. В качестве `опорного положения` должно выступать место на станине, где выполняется тест бумаги [Z_ENDSTOP_CALIBRATE](./Manual_Level#calibrating-a-z-endstop). Модуль bed_mesh предоставляет опцию `zero_reference_position` для указания этой координаты:
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
@@ -132,36 +132,36 @@ zero_reference_position: 125, 110
 probe_count: 5, 3
 ```
 
-- `zero_reference_position: ` *Default Value: None (disabled)* The `zero_reference_position` expects an (X, Y) coordinate matching that of the `reference position` described above. If the coordinate lies within the mesh then the mesh will be offset so the reference position applies zero adjustment. If the coordinate lies outside of the mesh then the coordinate will be probed after calibration, with the resulting z-value used as the z-offset. Note that this coordinate must NOT be in a location specified as a `faulty_region` if a probe is necessary.
+- `zero_reference_position: ` *Значение по умолчанию: None (отключено)* Функция `zero_reference_position` ожидает координату (X, Y), совпадающую с координатой `reference position`, описанной выше. Если координата находится внутри сетки, то сетка будет смещена, так что к опорной позиции будет применена нулевая корректировка. Если координата лежит вне сетки, то она будет измерена после калибровки, а полученное значение z будет использовано в качестве z-смещения. Обратите внимание, что эта координата НЕ должна находиться в месте, указанном как `faulty_region`, если необходимо выполнить зондирование.
 
-#### The deprecated relative_reference_index
+#### Устаревший индекс relative_reference_index
 
-Existing configurations using the `relative_reference_index` option must be updated to use the `zero_reference_position`. The response to the [BED_MESH_OUTPUT PGP=1](#output) gcode command will include the (X, Y) coordinate associated with the index; this position may be used as the value for the `zero_reference_position`. The output will look similar to the following:
+Существующие конфигурации, использующие опцию `relative_reference_index`, должны быть обновлены для использования `zero_reference_position`. Ответ на команду [BED_MESH_OUTPUT PGP=1](#output) gcode будет включать координату (X, Y), связанную с индексом; эта позиция может быть использована в качестве значения для `нулевой позиции_ссылки`. Вывод будет выглядеть следующим образом:
 
 ```
-// bed_mesh: generated points
-// Index | Tool Adjusted | Probe
+// bed_mesh: сгенерированные точки
+// Индекс | Настроенный инструмент | Зонд
 // 0 | (1.0, 1.0) | (24.0, 6.0)
 // 1 | (36.7, 1.0) | (59.7, 6.0)
 // 2 | (72.3, 1.0) | (95.3, 6.0)
 // 3 | (108.0, 1.0) | (131.0, 6.0)
-... (additional generated points)
+... (дополнительные сгенерированные точки)
 // bed_mesh: relative_reference_index 24 is (131.5, 108.0)
 ```
 
-*Note: The above output is also printed in `klippy.log` during initialization.*
+*Примечание: Вышеприведенный вывод также выводится в `klippy.log` во время инициализации.*
 
-Using the example above we see that the `relative_reference_index` is printed along with its coordinate. Thus the `zero_reference_position` is `131.5, 108`.
+На примере выше мы видим, что `относительный_индекс_ссылки` выводится вместе с его координатой. Таким образом, `нулевая_позиция_ссылки` равна `131.5, 108`.
 
-### Faulty Regions
+### Неисправные регионы
 
-It is possible for some areas of a bed to report inaccurate results when probing due to a "fault" at specific locations. The best example of this are beds with series of integrated magnets used to retain removable steel sheets. The magnetic field at and around these magnets may cause an inductive probe to trigger at a distance higher or lower than it would otherwise, resulting in a mesh that does not accurately represent the surface at these locations. **Note: This should not be confused with probe location bias, which produces inaccurate results across the entire bed.**
+Некоторые участки кровати могут показывать неточные результаты при зондировании из-за "неисправности" в определенных местах. Лучшим примером этого являются кровати с рядом встроенных магнитов, используемых для удержания съемных стальных листов. Магнитное поле на этих магнитах и вокруг них может заставить индуктивный датчик сработать на расстоянии выше или ниже, чем в противном случае, что приведет к получению сетки, которая неточно отображает поверхность в этих местах. **Примечание: Не следует путать это со смещением местоположения датчика, которое приводит к неточным результатам по всему слою**
 
-The `faulty_region` options may be configured to compensate for this affect. If a generated point lies within a faulty region bed mesh will attempt to probe up to 4 points at the boundaries of this region. These probed values will be averaged and inserted in the mesh as the Z value at the generated (X, Y) coordinate.
+Опции `faulty_region` могут быть настроены для компенсации этого влияния. Если сгенерированная точка находится в неисправной области, сетка попытается прощупать до 4 точек на границах этой области. Эти значения будут усреднены и вставлены в сетку как значение Z в сгенерированной координате (X, Y).
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
@@ -176,27 +176,27 @@ faulty_region_4_min: 30.0, 170.0
 faulty_region_4_max: 45.0, 210.0
 ```
 
-- `faulty_region_{1...99}_min` `faulty_region_{1..99}_max` *Default Value: None (disabled)* Faulty Regions are defined in a way similar to that of mesh itself, where minimum and maximum (X, Y) coordinates must be specified for each region. A faulty region may extend outside of a mesh, however the alternate points generated will always be within the mesh boundary. No two regions may overlap.
+- `faulty_region_{1...99}_min` `faulty_region_{1..99}_max` *Значение по умолчанию: None (отключено)* Дефектные регионы определяются аналогично сетке, где для каждого региона должны быть указаны минимальные и максимальные координаты (X, Y). Неисправный регион может выходить за пределы сетки, однако генерируемые альтернативные точки всегда будут находиться в границах сетки. Два региона не могут пересекаться.
 
-The image below illustrates how replacement points are generated when a generated point lies within a faulty region. The regions shown match those in the sample config above. The replacement points and their coordinates are identified in green.
+На изображении ниже показано, как генерируются точки замены, если сгенерированная точка находится в неисправном регионе. Показанные области соответствуют областям в приведенном выше примере конфигурации. Точки замены и их координаты выделены зеленым цветом.
 
 ![bedmesh_interpolated](img/bedmesh_faulty_regions.svg)
 
-### Adaptive Meshes
+### Адаптивные сетки
 
-Adaptive bed meshing is a way to speed up the bed mesh generation by only probing the area of the bed used by the objects being printed. When used, the method will automatically adjust the mesh parameters based on the area occupied by the defined print objects.
+Адаптивное зацепление станины - это способ ускорить генерацию сетки станины, используя только область станины, занятую печатаемыми объектами. При использовании этого метода параметры сетки автоматически настраиваются в зависимости от площади, занимаемой заданными объектами печати.
 
-The adapted mesh area will be computed from the area defined by the boundaries of all the defined print objects so it covers every object, including any margins defined in the configuration. After the area is computed, the number of probe points will be scaled down based on the ratio of the default mesh area and the adapted mesh area. To illustrate this consider the following example:
+Адаптированная область сетки будет вычислена из области, определенной границами всех определенных объектов печати, так что она охватывает все объекты, включая любые поля, определенные в конфигурации. После вычисления области количество точек зондирования будет уменьшено на основе соотношения площади сетки по умолчанию и адаптированной площади сетки. Для иллюстрации этого рассмотрим следующий пример:
 
-For a 150mmx150mm bed with `mesh_min` set to `25,25` and `mesh_max` set to `125,125`, the default mesh area is a 100mmx100mm square. An adapted mesh area of `50,50` means a ratio of `0.5x0.5` between the adapted area and default mesh area.
+Для кровати 150x150 мм с `mesh_min`, установленной на `25,25`, и `mesh_max`, установленной на `125,125`, площадь сетки по умолчанию составляет квадрат 100 ммx100 мм. Адаптированная площадь сетки `50,50` означает соотношение `0,5x0,5` между адаптированной площадью и площадью сетки по умолчанию.
 
-If the `bed_mesh` configuration specified `probe_count` as `7x7`, the adapted bed mesh will use 4x4 probe points (7 * 0.5 rounded up).
+Если в конфигурации `bed_mesh` указано `probe_count` как `7x7`, то адаптированная сетка кровати будет использовать 4x4 точки зондирования (7 * 0.5 с округлением вверх).
 
 ![adaptive_bedmesh](img/adaptive_bed_mesh.svg)
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
@@ -204,37 +204,37 @@ probe_count: 5, 3
 adaptive_margin: 5
 ```
 
-- `adaptive_margin`  *Default Value: 0*  Margin (in mm) to add around the area of the bed used by the defined objects. The diagram below shows the adapted bed mesh area with an `adaptive_margin` of 5mm. The adapted mesh area (area in green) is computed as the used bed area (area in blue) plus the defined margin.
+- `adaptive_margin` *Значение по умолчанию: 0* Граница (в мм) для добавления вокруг области кровати, используемой определенными объектами. На рисунке ниже показана адаптированная область сетки кровати с `adaptive_margin` в 5 мм. Адаптированная площадь сетки (площадь, выделенная зеленым цветом) рассчитывается как используемая площадь ложа (площадь, выделенная синим цветом) плюс определенная маржа.
 
    ![adaptive_bedmesh_margin](img/adaptive_bed_mesh_margin.svg)
 
-By nature, adaptive bed meshes use the objects defined by the Gcode file being printed. Therefore, it is expected that each Gcode file will generate a mesh that probes a different area of the print bed. Therefore, adapted bed meshes should not be re-used. The expectation is that a new mesh will be generated for each print if adaptive meshing is used.
+По своей природе адаптивные сетки печатной основы используют объекты, определенные файлом Gcode, на котором выполняется печать. Поэтому ожидается, что каждый Gcode-файл будет генерировать сетку, которая будет охватывать разные области печатного слоя. Поэтому адаптированные сетки станины не следует использовать повторно. При использовании адаптивного зацепления предполагается, что для каждой печати будет создаваться новая сетка.
 
-It is also important to consider that adaptive bed meshing is best used on machines that can normally probe the entire bed and achieve a maximum variance less than or equal to 1 layer height. Machines with mechanical issues that a full bed mesh normally compensates for may have undesirable results when attempting print moves **outside** of the probed area. If a full bed mesh has a variance greater than 1 layer height, caution must be taken when using adaptive bed meshes and attempting print moves outside of the meshed area.
+Также важно учитывать, что адаптивное зацепление ложа лучше всего использовать на машинах, которые могут нормально прощупать все ложе и достичь максимального отклонения менее или равного 1 высоте слоя. Машины с механическими проблемами, которые обычно компенсируются полной сеткой станины, могут получить нежелательные результаты при попытке перемещения печати **за пределами** зоны зондирования. Если полная сетка кровати имеет дисперсию более 1 высоты слоя, необходимо соблюдать осторожность при использовании адаптивных сеток кровати и попытках перемещения печати за пределы зоны сетки.
 
-## Surface Scans
+## Сканирование поверхности
 
-Some probes, such as the [Eddy Current Probe](./Eddy_Probe.md), are capable of "scanning" the surface of the bed. That is, these probes can sample a mesh without lifting the tool between samples. To activate scanning mode, the `METHOD=scan` or `METHOD=rapid_scan` probe parameter should be passed in the `BED_MESH_CALIBRATE` gcode command.
+Некоторые датчики, например [Eddy Current Probe](./Eddy_Probe.md), способны "сканировать" поверхность станины. То есть эти зонды могут брать пробы сетки, не поднимая инструмент между пробами. Чтобы активировать режим сканирования, в gcode-команде `BED_MESH_CALIBRATE` следует передать параметр зонда `METHOD=scan` или `METHOD=rapid_scan`.
 
-### Scan Height
+### Высота сканирования
 
-The scan height is set by the `horizontal_move_z` option in `[bed_mesh]`. In addition it can be supplied with the `BED_MESH_CALIBRATE` gcode command via the `HORIZONTAL_MOVE_Z` parameter.
+Высота сканирования задается параметром `horizontal_move_z` в `[bed_mesh]`. Кроме того, она может быть задана командой gcode `BED_MESH_CALIBRATE` через параметр `HORIZONTAL_MOVE_Z`.
 
-The scan height must be sufficiently low to avoid scanning errors. Typically a height of 2mm (ie: `HORIZONTAL_MOVE_Z=2`) should work well, presuming that the probe is mounted correctly.
+Высота сканирования должна быть достаточно низкой, чтобы избежать ошибок сканирования. Обычно высота в 2 мм (т.е. `HORIZONTAL_MOVE_Z=2`) должна работать хорошо, при условии, что датчик установлен правильно.
 
-It should be noted that if the probe is more than 4mm above the surface then the results will be invalid. Thus, scanning is not possible on beds with severe surface deviation or beds with extreme tilt that hasn't been corrected.
+Следует отметить, что если зонд находится на высоте более 4 мм от поверхности, результаты будут недействительными. Таким образом, сканирование невозможно на кроватях с сильным отклонением поверхности или на кроватях с сильным наклоном, который не был исправлен.
 
-### Rapid (Continuous) Scanning
+### Быстрое (непрерывное) сканирование
 
-When performing a `rapid_scan` one should keep in mind that the results will have some amount of error. This error should be low enough to be useful on large print areas with reasonably thick layer heights. Some probes may be more prone to error than others.
+При выполнении `быстрого_сканирования` следует учитывать, что результаты будут иметь некоторую погрешность. Эта погрешность должна быть достаточно низкой, чтобы быть полезной для больших областей печати с достаточно большой высотой слоя. Некоторые датчики могут быть более склонны к ошибкам, чем другие.
 
-It is not recommended that rapid mode be used to scan a "dense" mesh. Some of the error introduced during a rapid scan may be gaussian noise from the sensor, and a dense mesh will reflect this noise (ie: there will be peaks and valleys).
+Не рекомендуется использовать быстрый режим для сканирования "плотной" сетки. Часть ошибки, вносимой при быстром сканировании, может быть гауссовым шумом от датчика, и плотная сетка будет отражать этот шум (т. е. будут пики и долины).
 
-Bed Mesh will attempt to optimize the travel path to provide the best possible result based on the configuration. This includes avoiding faulty regions when collecting samples and "overshooting" the mesh when changing direction. This overshoot improves sampling at the edges of a mesh, however it requires that the mesh be configured in a way that allows the tool to travel outside of the mesh.
+Bed Mesh попытается оптимизировать траекторию движения, чтобы обеспечить наилучший результат в зависимости от конфигурации. Это включает в себя избегание дефектных областей при сборе образцов и "проскакивание" сетки при изменении направления. Такой пролет улучшает отбор проб на краях сетки, однако для этого необходимо, чтобы сетка была настроена таким образом, чтобы инструмент мог перемещаться за ее пределы.
 
 ```
 [bed_mesh]
-speed: 120
+скорость: 120
 horizontal_move_z: 5
 mesh_min: 35, 6
 mesh_max: 240, 198
@@ -242,64 +242,64 @@ probe_count: 5
 scan_overshoot: 8
 ```
 
-- `scan_overshoot` *Default Value: 0 (disabled)* The maximum amount of travel (in mm) available outside of the mesh. For rectangular beds this applies to travel on the X axis, and for round beds it applies to the entire radius. The tool must be able to travel the amount specified outside of the mesh. This value is used to optimize the travel path when performing a "rapid scan". The minimum value that may be specified is 1. The default is no overshoot.
+- `scan_overshoot` *Значение по умолчанию: 0 (отключено)* Максимальная величина перемещения (в мм), доступная за пределами сетки. Для прямоугольных станин это значение относится к перемещению по оси X, а для круглых станин - по всему радиусу. Инструмент должен иметь возможность перемещаться на указанную величину за пределами сетки. Это значение используется для оптимизации траектории движения при выполнении "быстрого сканирования". Минимальное значение, которое может быть указано, - 1. По умолчанию проскакивание отсутствует.
 
-If no scan overshoot is configured then travel path optimization will not be applied to changes in direction.
+Если не настроено превышение сканирования, то оптимизация траектории движения не будет применяться при изменении направления.
 
-## Bed Mesh Gcodes
+## Кроватная сетка Gcodes
 
-### Calibration
+### Калибровка
 
-`BED_MESH_CALIBRATE PROFILE=<name> METHOD=[manual | automatic | scan | rapid_scan] \ [<probe_parameter>=<value>] [<mesh_parameter>=<value>] [ADAPTIVE=[0|1] \ [ADAPTIVE_MARGIN=<value>]` *Default Profile: default* *Default Method: automatic if a probe is detected, otherwise manual*  *Default Adaptive: 0*  *Default Adaptive Margin: 0*
+`BED_MESH_CALIBRATE PROFILE=<имя> METHOD=[ ручное | автоматическое | сканирование | rapid_scan] \ [<probe_parameter>=<значение>] [<mesh_parameter>=<значение>] [ADAPTIVE=[0|1] \ [ADAPTIVE_MARGIN=<значение>]` * Профиль по умолчанию: по умолчанию* * Метод по умолчанию: автоматический, если обнаружен зонд, иначе ручной* * Адаптивный по умолчанию: 0* * Адаптивный маржа по умолчанию: 0*
 
-Initiates the probing procedure for Bed Mesh Calibration.
+Запускает процедуру зондирования для калибровки сетки кровати.
 
-The mesh will be saved into a profile specified by the `PROFILE` parameter, or `default` if unspecified. The `METHOD` parameter takes one of the following values:
+Сетка будет сохранена в профиль, указанный параметром `ПРОФИЛЬ`, или `по умолчанию`, если он не указан. Параметр `МЕТОД` принимает одно из следующих значений:
 
-- `METHOD=manual`: enables manual probing using the nozzle and the paper test
-- `METHOD=automatic`: Automatic (standard) probing. This is the default.
-- `METHOD=scan`: Enables surface scanning. The tool will pause over each position to collect a sample.
-- `METHOD=rapid_scan`: Enables continuous surface scanning.
+- `METHOD=manual`: включает ручное зондирование с помощью насадки и бумажного теста
+- `METHOD=автоматический`: Автоматическое (стандартное) зондирование. Используется по умолчанию.
+- `METHOD=scan`: Включает сканирование поверхности. Инструмент будет останавливаться на каждой позиции, чтобы собрать образец.
+- `METHOD=rapid_scan`: Включает непрерывное сканирование поверхности.
 
-XY positions are automatically adjusted to include the X and/or Y offsets when a probing method other than `manual` is selected.
+Позиции XY автоматически корректируются с учетом смещений X и/или Y, если выбран метод зондирования, отличный от `ручного`.
 
-It is possible to specify mesh parameters to modify the probed area. The following parameters are available:
+Можно задать параметры сетки, чтобы изменить зондируемую область. Доступны следующие параметры:
 
-- Rectangular beds (cartesian):
+- Прямоугольные кровати (картезианские):
    - `MESH_MIN`
    - `MESH_MAX`
    - `PROBE_COUNT`
-- Round beds (delta):
+- Круглые кровати (дельта):
    - `MESH_RADIUS`
    - `MESH_ORIGIN`
    - `ROUND_PROBE_COUNT`
-- All beds:
+- Все кровати:
    - `MESH_PPS`
-   - `ALGORITHM`
-   - `ADAPTIVE`
+   - `АЛГОРИТМ`
+   - `АДАПТИВНОСТЬ`
    - `ADAPTIVE_MARGIN`
 
-See the configuration documentation above for details on how each parameter applies to the mesh.
+Подробную информацию о том, как каждый параметр применяется к сетке, смотрите в документации по конфигурации выше.
 
-### Profiles
+### Профили
 
 `BED_MESH_PROFILE SAVE=<name> LOAD=<name> REMOVE=<name>`
 
-After a BED_MESH_CALIBRATE has been performed, it is possible to save the current mesh state into a named profile. This makes it possible to load a mesh without re-probing the bed. After a profile has been saved using `BED_MESH_PROFILE SAVE=<name>` the `SAVE_CONFIG` gcode may be executed to write the profile to printer.cfg.
+После выполнения BED_MESH_CALIBRATE можно сохранить текущее состояние сетки в именованном профиле. Это позволяет загрузить сетку без повторного зондирования кровати. После сохранения профиля с помощью команды `BED_MESH_PROFILE SAVE=<имя>` может быть выполнен код `SAVE_CONFIG` для записи профиля в файл printer.cfg.
 
-Profiles can be loaded by executing `BED_MESH_PROFILE LOAD=<name>`.
+Профили можно загрузить, выполнив команду `BED_MESH_PROFILE LOAD=<имя>`.
 
-It should be noted that each time a BED_MESH_CALIBRATE occurs, the current state is automatically saved to the *default* profile. The *default* profile can be removed as follows:
+Следует отметить, что каждый раз, когда происходит BED_MESH_CALIBRATE, текущее состояние автоматически сохраняется в профиль *по умолчанию*. Профиль *по умолчанию* можно удалить следующим образом:
 
-`BED_MESH_PROFILE REMOVE=default`
+`BED_MESH_PROFILE REMOVE=по умолчанию`
 
-Any other saved profile can be removed in the same fashion, replacing *default* with the named profile you wish to remove.
+Любой другой сохраненный профиль можно удалить таким же образом, заменив * по умолчанию* на именованный профиль, который вы хотите удалить.
 
-#### Loading the default profile
+#### Загрузка профиля по умолчанию
 
-Previous versions of `bed_mesh` always loaded the profile named *default* on startup if it was present. This behavior has been removed in favor of allowing the user to determine when a profile is loaded. If a user wishes to load the `default` profile it is recommended to add `BED_MESH_PROFILE LOAD=default` to either their `START_PRINT` macro or their slicer's "Start G-Code" configuration, whichever is applicable.
+Предыдущие версии `bed_mesh` при запуске всегда загружали профиль с именем *default*, если он присутствовал. Это поведение было удалено в пользу того, чтобы позволить пользователю определять, когда загружать профиль. Если пользователь хочет загружать профиль `default`, рекомендуется добавить `BED_MESH_PROFILE LOAD=default` либо в макрос `START_PRINT`, либо в конфигурацию "Start G-Code" слайсера, в зависимости от того, что применимо.
 
-Alternatively the old behavior of loading a profile at startup can be restored with a `[delayed_gcode]`:
+В качестве альтернативы можно восстановить старое поведение загрузки профиля при запуске с помощью `[delayed_gcode]`:
 
 ```ini
 [delayed_gcode bed_mesh_init]
@@ -308,16 +308,16 @@ gcode:
   BED_MESH_PROFILE LOAD=default
 ```
 
-### Output
+### Выход
 
 `BED_MESH_OUTPUT PGP=[0 | 1]`
 
-Outputs the current mesh state to the terminal. Note that the mesh itself is output
+Выводит текущее состояние сетки на терминал. Обратите внимание, что сама сетка выводится
 
-The PGP parameter is shorthand for "Print Generated Points". If `PGP=1` is set, the generated probed points will be output to the terminal:
+Параметр PGP - это сокращение от "Print Generated Points". Если задано `PGP=1`, сгенерированные точки зондирования будут выводиться на терминал:
 
 ```
-// bed_mesh: generated points
+// bed_mesh: сгенерированные точки
 // Index | Tool Adjusted | Probe
 // 0 | (11.0, 1.0) | (35.0, 6.0)
 // 1 | (62.2, 1.0) | (86.2, 6.0)
@@ -336,156 +336,156 @@ The PGP parameter is shorthand for "Print Generated Points". If `PGP=1` is set, 
 // 14 | (216.0, 193.0) | (240.0, 198.0)
 ```
 
-The "Tool Adjusted" points refer to the nozzle location for each point, and the "Probe" points refer to the probe location. Note that when manually probing the "Probe" points will refer to both the tool and nozzle locations.
+Точки "Инструмент настроен" относятся к местоположению сопла для каждой точки, а точки "Зонд" - к местоположению зонда. Обратите внимание, что при ручном зондировании точки " Зонд" будут относиться как к месту расположения инструмента, так и к месту расположения сопла.
 
-### Clear Mesh State
+### Очистить состояние сетки
 
 `BED_MESH_CLEAR`
 
-This gcode may be used to clear the internal mesh state.
+Этот код можно использовать для очистки внутреннего состояния сетки.
 
-### Apply X/Y offsets
+### Применить смещение по оси X/Y
 
-`BED_MESH_OFFSET [X=<value>] [Y=<value>] [ZFADE=<value>]`
+`BED_MESH_OFFSET [X=<значение>] [Y=<значение>] [ZFADE=<значение>]`
 
-This is useful for printers with multiple independent extruders, as an offset is necessary to produce correct Z adjustment after a tool change. Offsets should be specified relative to the primary extruder. That is, a positive X offset should be specified if the secondary extruder is mounted to the right of the primary extruder, a positive Y offset should be specified if the secondary extruder is mounted "behind" the primary extruder, and a positive ZFADE offset should be specified if the secondary extruder's nozzle is above the primary extruder's.
+Это полезно для принтеров с несколькими независимыми экструдерами, поскольку смещение необходимо для правильной регулировки Z после смены инструмента. Смещение следует указывать относительно первичного экструдера. То есть положительное смещение по X должно быть указано, если вторичный экструдер установлен справа от первичного, положительное смещение по Y должно быть указано, если вторичный экструдер установлен "позади" первичного, и положительное смещение по ZFADE должно быть указано, если сопло вторичного экструдера находится над соплом первичного экструдера.
 
-Note that a ZFADE offset does *NOT* directly apply additional adjustment. It is intended to compensate for a `gcode offset` when [mesh fade](#mesh-fade) is enabled. For example, if a secondary extruder is higher than the primary and needs a negative gcode offset, ie: `SET_GCODE_OFFSET Z=-.2`, it can be accounted for in `bed_mesh` with `BED_MESH_OFFSET ZFADE=.2`.
+Обратите внимание, что смещение ZFADE *НЕ* непосредственно применяет дополнительную корректировку. Оно предназначено для компенсации `смещения gcode` при включении [mesh fade](#mesh-fade). Например, если вторичный экструдер расположен выше основного и ему требуется отрицательное смещение gcode, т.е. `SET_GCODE_OFFSET Z=-.2`, это может быть учтено в `bed_mesh` с `BED_MESH_OFFSET ZFADE=.2`.
 
-## Bed Mesh Webhooks APIs
+## API-интерфейсы Bed Mesh Webhooks
 
-### Dumping mesh data
+### Выгрузка данных о сетке
 
-`{"id": 123, "method": "bed_mesh/dump_mesh"}`
+`{" идентификатор": 123, "метод": "bed_mesh/dump_mesh"}`.
 
 Dumps the configuration and state for the current mesh and all saved profiles.
 
 The `dump_mesh` endpoint takes one optional parameter, `mesh_args`. This parameter must be an object, where the keys and values are parameters available to [BED_MESH_CALIBRATE](#bed_mesh_calibrate). This will update the mesh configuration and probe points using the supplied parameters prior to returning the result. It is recommended to omit mesh parameters unless it is desired to visualize the probe points and/or travel path before performing `BED_MESH_CALIBRATE`.
 
-## Visualization and analysis
+## Визуализация и анализ
 
-Most users will likely find that the visualizers included with applications such as Mainsail, Fluidd, and Octoprint are sufficient for basic analysis. However, Klipper's `scripts` folder contains the `graph_mesh.py` script that may be used to perform additional visualizations and more detailed analysis, particularly useful for debugging hardware or the results produced by `bed_mesh`:
+Большинство пользователей, скорее всего, сочтут, что визуализаторов, входящих в состав таких приложений, как Mainsail, Fluidd и Octoprint, достаточно для базового анализа. Однако в папке scripts Klipper находится скрипт `graph_mesh.py`, который можно использовать для дополнительной визуализации и более детального анализа, особенно полезного для отладки оборудования или результатов, полученных с помощью `bed_mesh`:
 
 ```
-usage: graph_mesh.py [-h] {list,plot,analyze,dump} ...
+Использование: graph_mesh.py [-h] {list,plot,analyze,dump} ...
 
-Graph Bed Mesh Data
+График данных сетки кровати
 
-positional arguments:
+позиционные аргументы:
   {list,plot,analyze,dump}
-    list                List available plot types
-    plot                Plot a specified type
-    analyze             Perform analysis on mesh data
-    dump                Dump API response to json file
+    list Список доступных типов графиков
+    plot Построить график указанного типа
+    analyze Выполнить анализ данных сетки
+    dump Выгрузить ответ API в json-файл
 
-options:
-  -h, --help            show this help message and exit
+опции:
+  -h, --help Показать сообщение о помощи и выйти
 ```
 
-### Pre-requisites
+### Пререквизиты
 
-Like most graphing tools provided by Klipper, `graph_mesh.py` requires the `matplotlib` and `numpy` python dependencies. In addition, connecting to Klipper via Moonraker's websocket requires the `websockets` python dependency. While all visualizations can be output to an `svg` file, most of the visualizations offered by `graph_mesh.py` are better viewed in live preview mode on a desktop class PC. For example, the 3D visualizations may be rotated and zoomed in preview mode, and the path visualizations can optionally be animated in preview mode.
+Как и большинство инструментов для построения графиков, предоставляемых Klipper, `graph_mesh.py` требует python-зависимости `matplotlib` и `numpy`. Кроме того, для подключения к Klipper через веб-сокет Moonraker требуется python-зависимость `websockets`. Хотя все визуализации могут быть выведены в файл `svg, большинство визуализаций, предлагаемых `graph_mesh.py`, лучше просматривать в режиме живого просмотра на настольном компьютере. Например, 3D-визуализации можно поворачивать и масштабировать в режиме предварительного просмотра, а визуализации путей могут быть анимированы в режиме предварительного просмотра.
 
-### Plotting Mesh data
+### Построение графика данных сетки
 
-The `graph_mesh.py` tool can plot several types of visualizations. Available types can be shown by running `graph_mesh.py list`:
+Инструмент `graph_mesh.py` может строить несколько типов визуализаций. Доступные типы можно посмотреть, выполнив команду `graph_mesh.py list`:
 
 ```
 graph_mesh.py list
-points    Plot original generated points
-path      Plot probe travel path
-rapid     Plot rapid scan travel path
-probedz   Plot probed Z values
-meshz     Plot mesh Z values
-overlay   Plots the current probed mesh overlaid with a profile
-delta     Plots the delta between current probed mesh and a profile
+точки     Построить исходные сгенерированные точки
+path       Построить траекторию движения зонда
+rapid      Построить путь быстрого сканирования
+probedz    Построить значения Z зонда
+meshz      Построить значения Z сетки
+Наложение    Изображает текущую сетку, наложенную на профиль
+delta      Показывает дельту между текущей зондированной сеткой и профилем
 ```
 
-Several options are available when plotting visualizations:
+При построении визуализаций доступно несколько вариантов:
 
 ```
-usage: graph_mesh.py plot [-h] [-a] [-s] [-p PROFILE_NAME] [-o OUTPUT] <plot type> <input>
+использование: graph_mesh.py plot [-h] [-a] [-s] [-p PROFILE_NAME] [-o OUTPUT] <тип графика> <вход>
 
-positional arguments:
-  <plot type>           Type of data to graph
-  <input>               Path/url to Klipper Socket or path to json file
+позиционные аргументы:
+  <plot type> Тип данных для построения графика
+  <input> Path/url к Klipper Socket или путь к json-файлу
 
-options:
-  -h, --help            show this help message and exit
-  -a, --animate         Animate paths in live preview
-  -s, --scale-plot      Use axis limits reported by Klipper to scale plot X/Y
+опции:
+  -h, --help показать это справочное сообщение и выйти
+  -a, --анимировать Анимировать пути в живом предварительном просмотре
+  -s, --scale-plot Использовать пределы осей, сообщаемые Klipper, для масштабирования графика X/Y
   -p PROFILE_NAME, --profile-name PROFILE_NAME
-                        Optional name of a profile to plot for 'probedz'
+                        Опциональное имя профиля для построения графика для 'probedz'
   -o OUTPUT, --output OUTPUT
                         Output file path
 ```
 
-Below is a description of each argument:
+Ниже приведено описание каждого аргумента:
 
-- `plot type`: A required positional argument designating the type of visualization to generate. Must be one of the types output by the `graph_mesh.py list` command.
-- `input`: A required positional argument containing a path or url to the input source. This must be one of the following:
-   - A path to Klipper's Unix Domain Socket
-   - A url to an instance of Moonraker
-   - A path to a json file produced by `graph_mesh.py dump <input>`
-- `-a`: Optional animation for the `path` and `rapid` visualization types. Animations only apply to a live preview.
-- `-s`: Optionally scales a plot using the `axis_minimum` and `axis_maximum` values reported by Klipper's `toolhead` object when the dump file was generated.
-- `-p`: A profile name that may be specified when generating the `probedz` 3D mesh visualization. When generating an `overlay` or `delta` visualization this argument must be provided.
-- `-o`: An optional file path indicating that the script should save the visualization to this location rather than run in preview mode. Images are saved in `svg` format.
+- `Тип участка`: Необходимый позиционный аргумент, указывающий тип генерируемой визуализации. Должен быть одним из типов, выводимых командой `graph_mesh.py list`.
+- `ввод`: Обязательный позиционный аргумент, содержащий путь или url к источнику входных данных. Это должно быть одно из следующих значений:
+   - Путь к Unix-доменному сокету Клиппера
+   - url на экземпляр Moonraker
+   - Путь к json-файлу, создаваемому командой `graph_mesh.py dump <input>`
+- `-a`: Необязательная анимация для типов визуализации `путь` и `скорость`. Анимация применяется только для живого предварительного просмотра.
+- `-s`: Опционально масштабирует график, используя значения `axis_minimum` и `axis_maximum`, сообщенные объектом Klipper `toolhead` при создании файла дампа.
+- `-p`: Имя профиля, которое может быть указано при генерации 3D-визуализации сетки `probedz`. При генерации визуализации `overlay` или `delta` этот аргумент должен быть указан.
+- `-o`: Необязательный путь к файлу, указывающий, что скрипт должен сохранить визуализацию в этом месте, а не запускать в режиме предварительного просмотра. Изображения сохраняются в формате `svg`.
 
-For example, to plot an animated rapid path, connecting via Klipper's unix socket:
+Например, чтобы построить анимированный быстрый путь, подключившись через unix-сокет Klipper:
 
 ```
 graph_mesh.py plot -a rapid ~/printer_data/comms/klippy.sock
 ```
 
-Or to plot a 3d visualization of the mesh, connecting via Moonraker:
+Или постройте 3d-визуализацию сетки, подключившись через Moonraker:
 
 ```
 graph_mesh.py plot meshz http://my-printer.local
 ```
 
-### Bed Mesh Analysis
+### Анализ сетки кровати
 
-The `graph_mesh.py` tool may also be used to perform an analysis on the data provided by the [bed_mesh/dump_mesh](#dumping-mesh-data) API:
+Инструмент `graph_mesh.py` также может быть использован для анализа данных, предоставляемых API [bed_mesh/dump_mesh](#dumping-mesh-data):
 
 ```
 graph_mesh.py analyze <input>
 ```
 
-As with the `plot` command, the `<input>` must be a path to Klipper's unix socket, a URL to an instance of Moonraker, or a path to a json file generated by the dump command.
+Как и в команде `plot`, `<input>` должен представлять собой путь к unix-сокету Klipper, URL-адрес экземпляра Moonraker или путь к json-файлу, сгенерированному командой dump.
 
-To begin, the analysis will perform various checks on the points and probe paths generated by `bed_mesh` at the time of the dump. This includes the following:
+Для начала анализ выполнит различные проверки точек и траекторий зондов, сгенерированных `bed_mesh` во время создания дампа. К ним относятся следующие:
 
-- The number of probe points generated, without any additions
-- The number of probe points generated including any points generated as the result faulty regions and/or a configured zero reference position.
-- The number of probe points generated when performing a rapid scan.
-- The total number of moves generated for a rapid scan.
-- A validation that the probe points generated for a rapid scan are identical to the probe points generated for a standard probing procedure.
-- A "backtracking" check for both the standard probe path and a rapid scan path. Backtracking can be defined as moving to the same position more than once during the probing procedure. Backtracking should never occur during a standard probe. Faulty regions *can* result in backtracking during a rapid scan in an attempt to avoid entering a faulty region when approaching or leaving a probe location, however should never occur otherwise.
+- Количество точек зондирования, созданных без каких-либо дополнений
+- Количество сгенерированных точек зонда, включая любые точки, сгенерированные в результате неисправных областей и/или сконфигурированного нулевого опорного положения.
+- Количество точек зондирования, создаваемых при выполнении быстрого сканирования.
+- Общее количество ходов, созданных для быстрого сканирования.
+- Проверка того, что точки зондирования, созданные для быстрого сканирования, идентичны точкам зондирования, созданным для стандартной процедуры зондирования.
+- Проверка "обратного хода" как для стандартной траектории зондирования, так и для траектории быстрого сканирования. Обратный ход можно определить как перемещение в одну и ту же позицию более одного раза во время процедуры зондирования. Обратный путь никогда не должен возникать во время стандартного зондирования. Неисправные области *могут* привести к отступлению во время быстрого сканирования в попытке избежать попадания в неисправную область при приближении или удалении от места зондирования, однако в противном случае этого не должно происходить.
 
-Next each probed mesh present in the dump will by analyzed, beginning with the mesh loaded at the time of the dump (if present) and followed by any saved profiles. The following data is extracted:
+Далее анализируется каждая зондируемая сетка, присутствующая в дампе, начиная с сетки, загруженной во время дампа (если она присутствует), и затем все сохраненные профили. Извлекаются следующие данные:
 
-- Mesh shape (Min X,Y, Max X,Y Probe Count)
-- Mesh Z range, (Minimum Z, Maximum Z)
-- Mean Z value in the mesh
-- Standard Deviation of the Z values in the Mesh
+- Форма сетки (минимальное количество зондов X,Y, максимальное количество зондов X,Y)
+- Диапазон Z сетки, (минимальный Z, максимальный Z)
+- Среднее значение Z в сетке
+- Стандартное отклонение значений Z в сетке
 
-In addition to the above, a delta analysis is performed between meshes with the same shape, reporting the following:
+Кроме того, между сетками одинаковой формы проводится дельта-анализ, который дает следующие результаты:
 
-- The range of the delta between to meshes (Minimum and Maximum)
-- The mean delta
-- Standard Deviation of the delta
-- The absolute maximum difference
-- The absolute mean
+- Диапазон дельты между сетками (минимум и максимум)
+- Средняя дельта
+- Стандартное отклонение дельты
+- Абсолютная максимальная разница
+- Среднее абсолютное значение
 
-### Save mesh data to a file
+### Сохраните данные сетки в файл
 
-The `dump` command may be used to save the response to a file which can be shared for analysis when troubleshooting:
+Команда `dump` может быть использована для сохранения ответа в файл, который можно использовать для анализа при устранении неполадок:
 
 ```
 graph_mesh.py dump -o <output file name> <input>
 ```
 
-The `<input>` should be a path to Klipper's unix socket or a URL to an instance of Moonraker. The `-o` option may be used to specify the path to the output file. If omitted, the file will be saved in the working directory, with a file name in the following format:
+Параметр `<input>` должен представлять собой путь к unix-сокету Klipper или URL-адрес экземпляра Moonraker. Опция `-o` может быть использована для указания пути к выходному файлу. Если опция опущена, файл будет сохранен в рабочем каталоге с именем в следующем формате:
 
 `klipper-bedmesh-{year}{month}{day}{hour}{minute}{second}.json`

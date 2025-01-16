@@ -3,11 +3,11 @@
 Протокол обмена сообщениями Klipper используется для низкоуровневой связи между программным обеспечением хоста Klipper и программным обеспечением микроконтроллера Klipper. На высоком уровне протокол можно рассматривать как последовательность строк команд и ответов, которые сжимаются, передаются, а затем обрабатываются на принимающей стороне. Примерная серия команд в несжатом удобочитаемом формате может выглядеть следующим образом:
 
 ```
-set_digital_out pin=PA3 value=1
-set_digital_out pin=PA7 value=1
-schedule_digital_out oid=8 clock=4000000 value=0
-queue_step oid=7 interval=7458 count=10 add=331
-queue_step oid=7 interval=11717 count=4 add=1281
+set_digital_out pin=PA3 значение=1
+set_digital_out pin=PA7 значение=1
+schedule_digital_out oid=8 часы=4000000 значение=0
+queue_step oid=7 интервал=7458 счет=10 добавить=331
+queue_step oid=7 интервал=11717 счет=4 добавить=1281
 ```
 
 Смотрите [mcu commands](MCU_Commands.md) документ для получения информации о доступных командах. См. документ [отладка](Debugging.md) для получения информации о том, как преобразовать файл G-кода в соответствующие команды микроконтроллера, доступные для чтения человеком.
@@ -28,39 +28,39 @@ queue_step oid=7 interval=11717 count=4 add=1281
 DECL_COMMAND(command_update_digital_out, "update_digital_out oid=%c value=%c");
 ```
 
-The above declares a command named "update_digital_out". This allows the host to "invoke" this command which would cause the command_update_digital_out() C function to be executed in the micro-controller. The above also indicates that the command takes two integer parameters. When the command_update_digital_out() C code is executed, it will be passed an array containing these two integers - the first corresponding to the 'oid' and the second corresponding to the 'value'.
+Выше объявлена команда с именем "update_digital_out". Это позволяет хосту "вызвать" эту команду, что приведет к выполнению C-функции command_update_digital_out() в микроконтроллере. Выше также указано, что команда принимает два целочисленных параметра. При выполнении C-кода command_update_digital_out() ему будет передан массив, содержащий эти два целых числа - первое, соответствующее 'oid', и второе, соответствующее 'value'.
 
-In general, the parameters are described with printf() style syntax (eg, "%u"). The formatting directly corresponds to the human-readable view of commands (eg, "update_digital_out oid=7 value=1"). In the above example, "value=" is a parameter name and "%c" indicates the parameter is an integer. Internally, the parameter name is only used as documentation. In this example, the "%c" is also used as documentation to indicate the expected integer is 1 byte in size (the declared integer size does not impact the parsing or encoding).
+В общем случае параметры описываются с помощью синтаксиса в стиле printf() (например, "%u"). Форматирование напрямую соответствует человекочитаемому виду команд (например, "update_digital_out oid=7 value=1"). В приведенном выше примере "value=" - это имя параметра, а "%c" указывает на то, что параметр является целым числом. Внутри программы имя параметра используется только в качестве документации. В этом примере "%c" также используется в качестве документации, чтобы указать, что ожидаемое целое число имеет размер 1 байт (объявленный размер целого числа не влияет на синтаксический анализ или кодировку).
 
-The micro-controller build will collect all commands declared with DECL_COMMAND(), determine their parameters, and arrange for them to be callable.
+Сборка микроконтроллера соберет все команды, объявленные с помощью DECL_COMMAND(), определит их параметры и сделает их вызываемыми.
 
-### Declaring responses
+### Объявление ответов
 
-To send information from the micro-controller to the host a "response" is generated. These are both declared and transmitted using the sendf() C macro. For example:
+Для передачи информации от микроконтроллера к хосту генерируется "ответ". Они объявляются и передаются с помощью макроса sendf() C. Например:
 
 ```
 sendf("status clock=%u status=%c", sched_read_time(), sched_is_shutdown());
 ```
 
-The above transmits a "status" response message that contains two integer parameters ("clock" and "status"). The micro-controller build automatically finds all sendf() calls and generates encoders for them. The first parameter of the sendf() function describes the response and it is in the same format as command declarations.
+Выше передается ответное сообщение "status", содержащее два целочисленных параметра ("clock" и "status"). Сборка микроконтроллера автоматически находит все вызовы sendf() и генерирует для них кодировщики. Первый параметр функции sendf() описывает ответ и имеет тот же формат, что и объявления команд.
 
-The host can arrange to register a callback function for each response. So, in effect, commands allow the host to invoke C functions in the micro-controller and responses allow the micro-controller software to invoke code in the host.
+Хост может зарегистрировать функцию обратного вызова для каждого ответа. Таким образом, команды позволяют хосту вызывать функции C в микроконтроллере, а ответы позволяют программному обеспечению микроконтроллера вызывать код в хосте.
 
-The sendf() macro should only be invoked from command or task handlers, and it should not be invoked from interrupts or timers. The code does not need to issue a sendf() in response to a received command, it is not limited in the number of times sendf() may be invoked, and it may invoke sendf() at any time from a task handler.
+Макрос sendf() должен вызываться только из обработчиков команд или задач и не должен вызываться из прерываний или таймеров. Коду не нужно выдавать sendf() в ответ на полученную команду, он не ограничен в количестве вызовов sendf() и может вызывать sendf() в любое время из обработчика задачи.
 
-#### Output responses
+#### Выходные ответы
 
-To simplify debugging, there is also an output() C function. For example:
+Для упрощения отладки также имеется функция вывода() на Си. Например:
 
 ```
-output("The value of %u is %s with size %u.", x, buf, buf_len);
+output("Значение %u равно %s с размером %u.", x, buf, buf_len);
 ```
 
-The output() function is similar in usage to printf() - it is intended to generate and format arbitrary messages for human consumption.
+Функция output() по своему назначению похожа на printf() - она предназначена для генерации и форматирования произвольных сообщений для человеческого потребления.
 
-### Declaring enumerations
+### Объявление перечислений
 
-Enumerations allow the host code to use string identifiers for parameters that the micro-controller handles as integers. They are declared in the micro-controller code - for example:
+Перечисления позволяют коду хоста использовать строковые идентификаторы для параметров, которые микроконтроллер обрабатывает как целые числа. Они объявляются в коде микроконтроллера - например:
 
 ```
 DECL_ENUMERATION("spi_bus", "spi", 0);
@@ -68,45 +68,45 @@ DECL_ENUMERATION("spi_bus", "spi", 0);
 DECL_ENUMERATION_RANGE("pin", "PC0", 16, 8);
 ```
 
-If the first example, the DECL_ENUMERATION() macro defines an enumeration for any command/response message with a parameter name of "spi_bus" or parameter name with a suffix of "_spi_bus". For those parameters the string "spi" is a valid value and it will be transmitted with an integer value of zero.
+В первом примере макрос DECL_ENUMERATION() определяет перечисление для любого сообщения команды/ответа с именем параметра "spi_bus" или именем параметра с суффиксом "_spi_bus". Для этих параметров строка "spi" является допустимым значением и будет передаваться с целым значением, равным нулю.
 
-It's also possible to declare an enumeration range. In the second example, a "pin" parameter (or any parameter with a suffix of "_pin") would accept PC0, PC1, PC2, ..., PC7 as valid values. The strings will be transmitted with integers 16, 17, 18, ..., 23.
+Также можно объявить диапазон перечислений. Во втором примере параметр "pin" (или любой другой параметр с суффиксом "_pin") будет принимать в качестве допустимых значений PC0, PC1, PC2, ..., PC7. Строки будут передаваться целыми числами 16, 17, 18, ..., 23.
 
-### Declaring constants
+### Объявление констант
 
-Constants can also be exported. For example, the following:
+Константы также можно экспортировать. Например, следующее:
 
 ```
 DECL_CONSTANT("SERIAL_BAUD", 250000);
 ```
 
-would export a constant named "SERIAL_BAUD" with a value of 250000 from the micro-controller to the host. It is also possible to declare a constant that is a string - for example:
+экспортирует из микроконтроллера в хост константу с именем "SERIAL_BAUD" со значением 250000. Также можно объявить константу, которая является строкой - например:
 
 ```
 DECL_CONSTANT_STR("MCU", "pru");
 ```
 
-## Low-level message encoding
+## Низкоуровневое кодирование сообщений
 
-To accomplish the above RPC mechanism, each command and response is encoded into a binary format for transmission. This section describes the transmission system.
+Чтобы реализовать описанный выше механизм RPC, каждая команда и ответ кодируются в двоичный формат для передачи. В этом разделе описывается система передачи данных.
 
-### Message Blocks
+### Блоки сообщений
 
-All data sent from host to micro-controller and vice-versa are contained in "message blocks". A message block has a two byte header and a three byte trailer. The format of a message block is:
+Все данные, передаваемые от хоста к микроконтроллеру и наоборот, содержатся в "блоках сообщений". Блок сообщения имеет двухбайтовый заголовок и трехбайтовый трейлер. Формат блока сообщений следующий:
 
 ```
-<1 byte length><1 byte sequence><n-byte content><2 byte crc><1 byte sync>
+<1 байт длины><1 байт последовательности><n байт содержимого><2 байта crc><1 байт sync>
 ```
 
-The length byte contains the number of bytes in the message block including the header and trailer bytes (thus the minimum message length is 5 bytes). The maximum message block length is currently 64 bytes. The sequence byte contains a 4 bit sequence number in the low-order bits and the high-order bits always contain 0x10 (the high-order bits are reserved for future use). The content bytes contain arbitrary data and its format is described in the following section. The crc bytes contain a 16bit CCITT [CRC](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) of the message block including the header bytes but excluding the trailer bytes. The sync byte is 0x7e.
+Байт длины содержит количество байт в блоке сообщения, включая байты заголовка и трейлера (таким образом, минимальная длина сообщения составляет 5 байт). Максимальная длина блока сообщения в настоящее время составляет 64 байта. Байт последовательности содержит 4-битный номер последовательности в младших битах, а старшие биты всегда содержат 0x10 (старшие биты зарезервированы для будущего использования). Байт содержимого содержит произвольные данные, их формат описан в следующем разделе. Байт crc содержит 16-битный CCITT [CRC](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) блока сообщения, включая байты заголовка, но исключая байты трейлера. Байт синхронизации имеет значение 0x7e.
 
-The format of the message block is inspired by [HDLC](https://en.wikipedia.org/wiki/High-Level_Data_Link_Control) message frames. Like in HDLC, the message block may optionally contain an additional sync character at the start of the block. Unlike in HDLC, a sync character is not exclusive to the framing and may be present in the message block content.
+Формат блока сообщений разработан по образцу кадров сообщений [HDLC](https://en.wikipedia.org/wiki/High-Level_Data_Link_Control). Как и в HDLC, блок сообщений может опционально содержать дополнительный символ синхронизации в начале блока. В отличие от HDLC, символ синхронизации не является исключительной частью фрейма и может присутствовать в содержимом блока сообщений.
 
-### Message Block Contents
+### Содержание блока сообщений
 
-Each message block sent from host to micro-controller contains a series of zero or more message commands in its contents. Each command starts with a [Variable Length Quantity](#variable-length-quantities) (VLQ) encoded integer command-id followed by zero or more VLQ parameters for the given command.
+Каждый блок сообщений, передаваемый от хоста к микроконтроллеру, содержит серию из нуля или более команд сообщений. Каждая команда начинается с [Variable Length Quantity](#variable-length-quantities) (VLQ), закодированного целочисленного command-id, за которым следуют ноль или более VLQ-параметров для данной команды.
 
-As an example, the following four commands might be placed in a single message block:
+Например, следующие четыре команды могут быть помещены в один блок сообщений:
 
 ```
 update_digital_out oid=6 value=1
@@ -115,21 +115,21 @@ get_config
 get_clock
 ```
 
-and encoded into the following eight VLQ integers:
+и кодируются в следующие восемь целых чисел VLQ:
 
 ```
 <id_update_digital_out><6><1><id_update_digital_out><5><0><id_get_config><id_get_clock>
 ```
 
-In order to encode and parse the message contents, both the host and micro-controller must agree on the command ids and the number of parameters each command has. So, in the above example, both the host and micro-controller would know that "id_update_digital_out" is always followed by two parameters, and "id_get_config" and "id_get_clock" have zero parameters. The host and micro-controller share a "data dictionary" that maps the command descriptions (eg, "update_digital_out oid=%c value=%c") to their integer command-ids. When processing the data, the parser will know to expect a specific number of VLQ encoded parameters following a given command id.
+Чтобы закодировать и разобрать содержимое сообщения, хост и микроконтроллер должны договориться об идентификаторах команд и количестве параметров в каждой команде. Так, в приведенном выше примере и хост, и микроконтроллер будут знать, что за командой "id_update_digital_out" всегда следуют два параметра, а команды "id_get_config" и "id_get_clock" имеют нулевые параметры. Хост и микроконтроллер совместно используют "словарь данных", который сопоставляет описания команд (например, "update_digital_out oid=%c value=%c") с их целочисленными идентификаторами команд. При обработке данных синтаксический анализатор будет знать, что после заданного идентификатора команды следует определенное количество параметров в кодировке VLQ.
 
-The message contents for blocks sent from micro-controller to host follow the same format. The identifiers in these messages are "response ids", but they serve the same purpose and follow the same encoding rules. In practice, message blocks sent from the micro-controller to the host never contain more than one response in the message block contents.
+Содержание сообщений для блоков, отправляемых от микроконтроллера к хосту, имеет одинаковый формат. Идентификаторы в этих сообщениях - это "идентификаторы ответов", но они служат той же цели и подчиняются тем же правилам кодирования. На практике блоки сообщений, отправляемые от микроконтроллера к хосту, никогда не содержат более одного ответа в содержимом блока сообщений.
 
-#### Variable Length Quantities
+#### Количества переменной длины
 
-See the [wikipedia article](https://en.wikipedia.org/wiki/Variable-length_quantity) for more information on the general format of VLQ encoded integers. Klipper uses an encoding scheme that supports both positive and negative integers. Integers close to zero use less bytes to encode and positive integers typically encode using less bytes than negative integers. The following table shows the number of bytes each integer takes to encode:
+Более подробную информацию об общем формате целых чисел, закодированных в VLQ, смотрите в статье [wikipedia](https://en.wikipedia.org/wiki/Variable-length_quantity). Klipper использует схему кодирования, которая поддерживает как положительные, так и отрицательные целые числа. Для кодирования целых чисел, близких к нулю, требуется меньше байт, а для кодирования положительных целых чисел обычно требуется меньше байт, чем для отрицательных. В следующей таблице показано количество байт, необходимых для кодирования каждого целого числа:
 
-| Integer | Encoded size |
+| Целое число | Размер в кодировке |
 | --- | --- |
 | -32 .. 95 | 1 |
 | -4096 .. 12287 | 2 |
@@ -137,38 +137,38 @@ See the [wikipedia article](https://en.wikipedia.org/wiki/Variable-length_quanti
 | -67108864 .. 201326591 | 4 |
 | -2147483648 .. 4294967295 | 5 |
 
-#### Variable length strings
+#### Строки переменной длины
 
-As an exception to the above encoding rules, if a parameter to a command or response is a dynamic string then the parameter is not encoded as a simple VLQ integer. Instead it is encoded by transmitting the length as a VLQ encoded integer followed by the contents itself:
+В качестве исключения из вышеуказанных правил кодирования, если параметр команды или ответа представляет собой динамическую строку, то параметр не кодируется как простое целое число VLQ. Вместо этого он кодируется путем передачи длины в виде целого числа в кодировке VLQ, за которым следует само содержимое:
 
 ```
-<VLQ encoded length><n-byte contents>
+<Длина в кодировке VLQ><n-байтовое содержимое>
 ```
 
-The command descriptions found in the data dictionary allow both the host and micro-controller to know which command parameters use simple VLQ encoding and which parameters use string encoding.
+Описания команд, содержащиеся в словаре данных, позволяют хосту и микроконтроллеру узнать, какие параметры команды используют простую кодировку VLQ, а какие - строковую кодировку.
 
-## Data Dictionary
+## Словарь данных
 
-In order for meaningful communications to be established between micro-controller and host, both sides must agree on a "data dictionary". This data dictionary contains the integer identifiers for commands and responses along with their descriptions.
+Для того чтобы между микроконтроллером и хостом установился полноценный обмен данными, обе стороны должны договориться о "словаре данных". Этот словарь данных содержит целочисленные идентификаторы команд и ответов, а также их описания.
 
-The micro-controller build uses the contents of DECL_COMMAND() and sendf() macros to generate the data dictionary. The build automatically assigns unique identifiers to each command and response. This system allows both the host and micro-controller code to seamlessly use descriptive human-readable names while still using minimal bandwidth.
+Сборка микроконтроллера использует содержимое макросов DECL_COMMAND() и sendf() для создания словаря данных. Сборка автоматически присваивает уникальные идентификаторы каждой команде и ответу. Такая система позволяет коду хоста и микроконтроллера без проблем использовать описательные человекопонятные имена, используя при этом минимальную пропускную способность.
 
-The host queries the data dictionary when it first connects to the micro-controller. Once the host downloads the data dictionary from the micro-controller, it uses that data dictionary to encode all commands and to parse all responses from the micro-controller. The host must therefore handle a dynamic data dictionary. However, to keep the micro-controller software simple, the micro-controller always uses its static (compiled in) data dictionary.
+Хост запрашивает словарь данных при первом подключении к микроконтроллеру. Как только хост загружает словарь данных с микроконтроллера, он использует этот словарь данных для кодирования всех команд и разбора всех ответов микроконтроллера. Таким образом, хост должен работать с динамическим словарем данных. Однако, чтобы упростить программное обеспечение микроконтроллера, он всегда использует статический (скомпилированный) словарь данных.
 
-The data dictionary is queried by sending "identify" commands to the micro-controller. The micro-controller will respond to each identify command with an "identify_response" message. Since these two commands are needed prior to obtaining the data dictionary, their integer ids and parameter types are hard-coded in both the micro-controller and the host. The "identify_response" response id is 0, the "identify" command id is 1. Other than having hard-coded ids the identify command and its response are declared and transmitted the same way as other commands and responses. No other command or response is hard-coded.
+Словарь данных запрашивается путем отправки микроконтроллеру команд "identify". Микроконтроллер отвечает на каждую команду identify сообщением "identify_response". Поскольку эти две команды необходимы для получения словаря данных, их целочисленные идентификаторы и типы параметров жестко закодированы как в микроконтроллере, так и в хосте. Идентификатор ответа "identify_response" равен 0, а идентификатор команды "identify" - 1. Кроме жестко закодированных идентификаторов, команда "identify" и ее ответ объявляются и передаются так же, как и другие команды и ответы. Никакие другие команды или ответы не имеют жестко закодированных идентификаторов.
 
-The format of the transmitted data dictionary itself is a zlib compressed JSON string. The micro-controller build process generates the string, compresses it, and stores it in the text section of the micro-controller flash. The data dictionary can be much larger than the maximum message block size - the host downloads it by sending multiple identify commands requesting progressive chunks of the data dictionary. Once all chunks are obtained the host will assemble the chunks, uncompress the data, and parse the contents.
+Сам формат передаваемого словаря данных представляет собой сжатую в zlib строку JSON. Процесс сборки микроконтроллера генерирует эту строку, сжимает ее и сохраняет в текстовом разделе флэш-памяти микроконтроллера. Словарь данных может быть намного больше максимального размера блока сообщений - хост загружает его, посылая несколько команд identify, запрашивающих последовательные фрагменты словаря данных. После получения всех фрагментов хост соберет их, распакует данные и разберет их содержимое.
 
-In addition to information on the communication protocol, the data dictionary also contains the software version, enumerations (as defined by DECL_ENUMERATION), and constants (as defined by DECL_CONSTANT).
+Помимо информации о протоколе связи, словарь данных также содержит версию программного обеспечения, перечисления (как определено в DECL_ENUMERATION) и константы (как определено в DECL_CONSTANT).
 
-## Message flow
+## Поток сообщений
 
-Message commands sent from host to micro-controller are intended to be error-free. The micro-controller will check the CRC and sequence numbers in each message block to ensure the commands are accurate and in-order. The micro-controller always processes message blocks in-order - should it receive a block out-of-order it will discard it and any other out-of-order blocks until it receives blocks with the correct sequencing.
+Команды сообщений, передаваемые от хоста к микроконтроллеру, должны быть безошибочными. Микроконтроллер проверяет CRC и порядковые номера в каждом блоке сообщений, чтобы убедиться в точности и последовательности команд. Микроконтроллер всегда обрабатывает блоки сообщений по порядку - если он получит блок не по порядку, то отбросит его и все другие блоки не по порядку, пока не получит блоки с правильной последовательностью.
 
-The low-level host code implements an automatic retransmission system for lost and corrupt message blocks sent to the micro-controller. To facilitate this, the micro-controller transmits an "ack message block" after each successfully received message block. The host schedules a timeout after sending each block and it will retransmit should the timeout expire without receiving a corresponding "ack". In addition, if the micro-controller detects a corrupt or out-of-order block it may transmit a "nak message block" to facilitate fast retransmission.
+В низкоуровневом коде хоста реализована система автоматической ретрансляции потерянных и поврежденных блоков сообщений, отправленных на микроконтроллер. Для этого микроконтроллер передает "блок сообщений ack" после каждого успешно принятого блока сообщений. Хост устанавливает тайм-аут после отправки каждого блока и повторно передает сообщение, если по истечении тайм-аута не будет получен соответствующий "ack". Кроме того, если микроконтроллер обнаруживает поврежденный или неупорядоченный блок, он может передать "nak message block" для облегчения быстрой повторной передачи.
 
-An "ack" is a message block with empty content (ie, a 5 byte message block) and a sequence number greater than the last received host sequence number. A "nak" is a message block with empty content and a sequence number less than the last received host sequence number.
+Ack" - это блок сообщения с пустым содержимым (т.е. блок сообщения размером 5 байт) и порядковым номером, большим, чем последний полученный порядковый номер хоста. nak" - это блок сообщения с пустым содержимым и номером последовательности, меньшим, чем последний полученный номер последовательности хоста.
 
-The protocol facilitates a "window" transmission system so that the host can have many outstanding message blocks in-flight at a time. (This is in addition to the many commands that may be present in a given message block.) This allows maximum bandwidth utilization even in the event of transmission latency. The timeout, retransmit, windowing, and ack mechanism are inspired by similar mechanisms in [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol).
+Протокол поддерживает "оконную" систему передачи, так что у хоста может быть много незавершенных блоков сообщений в полете одновременно. (Это в дополнение к множеству команд, которые могут присутствовать в данном блоке сообщений). Это позволяет максимально использовать полосу пропускания даже в случае задержки передачи. Механизмы тайм-аута, повторной передачи, окна и подтверждения были вдохновлены аналогичными механизмами в [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol).
 
-In the other direction, message blocks sent from micro-controller to host are designed to be error-free, but they do not have assured transmission. (Responses should not be corrupt, but they may go missing.) This is done to keep the implementation in the micro-controller simple. There is no automatic retransmission system for responses - the high-level code is expected to be capable of handling an occasional missing response (usually by re-requesting the content or setting up a recurring schedule of response transmission). The sequence number field in message blocks sent to the host is always one greater than the last received sequence number of message blocks received from the host. It is not used to track sequences of response message blocks.
+В другом направлении блоки сообщений, передаваемые от микроконтроллера к хосту, спроектированы так, чтобы не допускать ошибок, но они не имеют гарантированной передачи. (Ответы не должны быть повреждены, но они могут пропасть.) Это сделано для того, чтобы сохранить простоту реализации в микроконтроллере. Автоматической системы повторной передачи ответов не существует - предполагается, что код высокого уровня будет способен справиться со случайным отсутствием ответа (обычно путем повторного запроса содержимого или установки повторяющегося расписания передачи ответов). Поле номера последовательности в блоках сообщений, отправляемых хосту, всегда на единицу больше последнего полученного номера последовательности в блоках сообщений, полученных от хоста. Оно не используется для отслеживания последовательности блоков ответных сообщений.

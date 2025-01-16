@@ -2273,7 +2273,7 @@ sensor_pin:
 #    dans la liste ci-dessus.
 ```
 
-### BMP180/BMP280/BME280/BMP388/BME680 temperature sensor
+### Capteur de température BMP180/BMP280/BME280/BMP388/BME680
 
 BMP180/BMP280/BME280/BMP388/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
 
@@ -2438,9 +2438,9 @@ serial_no:
 #    Le micro-contrôleur à lire. Doit être le host_mcu
 ```
 
-### Combined temperature sensor
+### Capteur de température combiné
 
-Combined temperature sensor is a virtual temperature sensor based on several other sensors. This sensor can be used with extruders, heater_generic and heater beds.
+Le capteur de température combiné est un capteur virtuel basé sur plusieurs autres capteurs Ce capteur peut être utilisé avec des extrudeurs, des chauffages génériques et des plateaux chauffants.
 
 ```
 sensor_type: temperature_combined
@@ -4184,7 +4184,7 @@ adc2:
 #    paramètres ci-dessus.
 ```
 
-## Load Cells
+## Cellules de charge
 
 ### [load_cell]
 

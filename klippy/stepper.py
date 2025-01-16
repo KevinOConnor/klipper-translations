@@ -138,8 +138,10 @@ class MCU_stepper:
     def get_commanded_position(self):
         ffi_main, ffi_lib = chelper.get_ffi()
         return ffi_lib.itersolve_get_commanded_pos(self._stepper_kinematics)
-    def get_mcu_position(self):
-        mcu_pos_dist = self.get_commanded_position() + self._mcu_position_offset
+    def get_mcu_position(self, cmd_pos=None):
+        if cmd_pos is None:
+            cmd_pos = self.get_commanded_position()
+        mcu_pos_dist = cmd_pos + self._mcu_position_offset
         mcu_pos = mcu_pos_dist / self._step_dist
         if mcu_pos >= 0.:
             return int(mcu_pos + 0.5)
@@ -401,7 +403,7 @@ class PrinterRail:
             changed_invert = pin_params['invert'] != endstop['invert']
             changed_pullup = pin_params['pullup'] != endstop['pullup']
             if changed_invert or changed_pullup:
-                raise error("Pinter rail %s shared endstop pin %s "
+                raise error("Printer rail %s shared endstop pin %s "
                             "must specify the same pullup/invert settings" % (
                                 self.get_name(), pin_name))
         mcu_endstop.add_stepper(stepper)

@@ -1533,19 +1533,60 @@ Support for LIS2DW accelerometers.
 
 ```
 [lis2dw]
-cs_pin:
-# Pin aktivácie SPI pre senzor. Tento parameter je potrebné zadať.
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
 #spi_speed: 5000000
-# Rýchlosť SPI (v Hz), ktorá sa má použiť pri komunikácii s čipom.
-# Predvolená hodnota je 5 000 000.
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-# Popis nájdete v časti „spoločné nastavenia SPI“.
-# vyššie uvedené parametre.
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
 #axes_map: x, y, z
-# Informácie o tomto parametri nájdete v časti "adxl345".
+#   See the "adxl345" section for information on this parameter.
+```
+
+### [lis3dh]
+
+Support for LIS3DH accelerometers.
+
+```
+[lis3dh]
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
+#spi_speed: 5000000
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
+#axes_map: x, y, z
+#   See the "adxl345" section for information on this parameter.
 ```
 
 ### [mpu9250]
@@ -1574,48 +1615,58 @@ Support for resonance testing and automatic input shaper calibration. In order t
 ```
 [resonance_tester]
 #probe_points:
-# Zoznam súradníc X, Y, Z bodov (jeden bod na riadok) na testovanie
-# rezonancie pri. Vyžaduje sa aspoň jeden bod. Uistite sa, že všetky
-# bodov s určitou bezpečnostnou rezervou v rovine XY (~ niekoľko centimetrov)
-# sú dosiahnuteľné z hlavy nástroja.
+#   A list of X, Y, Z coordinates of points (one point per line) to test
+#   resonances at. At least one point is required. Make sure that all
+#   points with some safety margin in XY plane (~a few centimeters)
+#   are reachable by the toolhead.
 #accel_chip:
-# Názov čipu akcelerometra, ktorý sa má použiť na meranie. Ak
-# čip adxl345 bol definovaný bez explicitného názvu, tohto parametra
-# ho môže jednoducho odkazovať ako "accel_chip: adxl345", inak an
-# musí byť zadaný aj explicitný názov, napr. "accel_chip: adxl345
-# my_chip_name". Musí to byť buď tento, alebo ďalšie dva parametre
-# sada.
+#   A name of the accelerometer chip to use for measurements. If
+#   adxl345 chip was defined without an explicit name, this parameter
+#   can simply reference it as "accel_chip: adxl345", otherwise an
+#   explicit name must be supplied as well, e.g. "accel_chip: adxl345
+#   my_chip_name". Either this, or the next two parameters must be
+#   set.
 #accel_chip_x:
 #accel_chip_y:
-# Názvy čipov akcelerometra, ktoré sa majú použiť na meranie každého z nich
-# osi. Môže byť užitočný napríklad na tlačiarni posteľnej pračky,
-# ak sú na posteli namontované dva samostatné akcelerometre (pre os Y)
-# a na hlave nástroja (pre os X). Tieto parametre majú rovnaké
-# formát ako parameter 'accel_chip'. Iba „accel_chip“ alebo tieto dva
-Je potrebné zadať # parametrov.
+#   Names of the accelerometer chips to use for measurements for each
+#   of the axis. Can be useful, for instance, on bed slinger printer,
+#   if two separate accelerometers are mounted on the bed (for Y axis)
+#   and on the toolhead (for X axis). These parameters have the same
+#   format as 'accel_chip' parameter. Only 'accel_chip' or these two
+#   parameters must be provided.
 #max_smoothing:
-# Maximálne vyhladenie vstupného tvarovača, ktoré umožňuje každú os počas tvarovania
-# automatická kalibrácia (s príkazom 'SHAPER_CALIBRATE'). Štandardne nie
-# je špecifikované maximálne vyhladenie. Pozrite si príručku Measuring_Resonances
-# pre ďalšie podrobnosti o používaní tejto funkcie.
+#   Maximum input shaper smoothing to allow for each axis during shaper
+#   auto-calibration (with 'SHAPER_CALIBRATE' command). By default no
+#   maximum smoothing is specified. Refer to Measuring_Resonances guide
+#   for more details on using this feature.
+#move_speed: 50
+#   The speed (in mm/s) to move the toolhead to and between test points
+#   during the calibration. The default is 50.
 #min_freq: 5
-# Minimálna frekvencia na testovanie rezonancií. Predvolená hodnota je 5 Hz.
-#max_freq: 133,33
-# Maximálna frekvencia na testovanie rezonancií. Predvolená hodnota je 133,33 Hz.
-#accel_per_hz: 75
-# Tento parameter sa používa na určenie, ktoré zrýchlenie sa má použiť
-# otestujte konkrétnu frekvenciu: accel = accel_per_hz * frekv. Vyššie
-# hodnota, tým vyššia je energia kmitov. Dá sa nastaviť na
-# a nižšia ako predvolená hodnota, ak sú rezonancie príliš silné
-# tlačiareň. Nižšie hodnoty však robia merania
-# vysokofrekvenčné rezonancie sú menej presné. Predvolená hodnota je 75
-# (mm/s).
+#   Minimum frequency to test for resonances. The default is 5 Hz.
+#max_freq: 133.33
+#   Maximum frequency to test for resonances. The default is 133.33 Hz.
+#accel_per_hz: 60
+#   This parameter is used to determine which acceleration to use to
+#   test a specific frequency: accel = accel_per_hz * freq. Higher the
+#   value, the higher is the energy of the oscillations. Can be set to
+#   a lower than the default value if the resonances get too strong on
+#   the printer. However, lower values make measurements of
+#   high-frequency resonances less precise. The default value is 75
+#   (mm/sec).
 #hz_per_sec: 1
-# Určuje rýchlosť testu. Pri testovaní všetkých frekvencií v
-# rozsah [min_freq, max_freq], každú sekundu sa frekvencia zvyšuje o
-# hz_per_sec. Malé hodnoty spomaľujú test a veľké hodnoty
-# zníži presnosť testu. Predvolená hodnota je 1,0
-# (Hz/s == s^-2).
+#   Determines the speed of the test. When testing all frequencies in
+#   range [min_freq, max_freq], each second the frequency increases by
+#   hz_per_sec. Small values make the test slow, and the large values
+#   will decrease the precision of the test. The default value is 1.0
+#   (Hz/sec == sec^-2).
+#sweeping_accel: 400
+#   An acceleration of slow sweeping moves. The default is 400 mm/sec^2.
+#sweeping_period: 1.2
+#   A period of slow sweeping moves. Setting this parameter to 0
+#   disables slow sweeping moves. Avoid setting it to a too small
+#   non-zero value in order to not poison the measurements.
+#   The default is 1.2 sec which is a good all-round choice.
 ```
 
 ## Pomocníci konfiguračného súboru
@@ -1865,29 +1916,46 @@ sensor_type: ldc1612
 
 ### [axis_twist_compensation]
 
-Nástroj na kompenzáciu nepresných hodnôt sondy v dôsledku skrútenia X gantry. Podrobnejšie informácie týkajúce sa symptómov, konfigurácie a nastavenia nájdete v [Príručka kompenzácie skrútenia osi] (Axis_Twist_Compensation.md).
+A tool to compensate for inaccurate probe readings due to twist in X or Y gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
 
 ```
 [axis_twist_compensation]
-#rýchlosť: 50
-#       Rýchlosť (v mm/s) nesnímaných pohybov počas kalibrácie.
-#       Predvolená hodnota je 50.
+#speed: 50
+#   The speed (in mm/s) of non-probing moves during the calibration.
+#   The default is 50.
 #horizontal_move_z: 5
-#       Výška (v mm), do ktorej sa má hlava pohnúť
-#       tesne pred spustením operácie sondy. Predvolená hodnota je 5.
+#   The height (in mm) that the head should be commanded to move to
+#   just prior to starting a probe operation. The default is 5.
 calibrate_start_x: 20
-#       Definuje minimálnu X súradnicu kalibrácie
-#       Toto by mala byť súradnica X, ktorá umiestni trysku na začiatok
-#       kalibračná pozícia. Tento parameter je potrebné zadať.
+#   Defines the minimum X coordinate of the calibration
+#   This should be the X coordinate that positions the nozzle at the starting
+#   calibration position.
 calibrate_end_x: 200
-#       Definuje maximálnu X súradnicu kalibrácie
-#       Toto by mala byť súradnica X, ktorá umiestni trysku na koniec
-#       kalibračná pozícia. Tento parameter je potrebné zadať.
-calibrate_y: 112,5
-#       Definuje súradnicu Y kalibrácie
-#       Toto by mala byť súradnica Y, ktorá umiestňuje trysku počas
-#       proces kalibrácie. Tento parameter musí byť zadaný a odporúča sa
-#       byť blízko stredu postele
+#   Defines the maximum X coordinate of the calibration
+#   This should be the X coordinate that positions the nozzle at the ending
+#   calibration position.
+calibrate_y: 112.5
+#   Defines the Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle during the
+#   calibration process. This parameter is recommended to
+#   be near the center of the bed
+
+# For Y-axis twist compensation, specify the following parameters:
+calibrate_start_y: ...
+#   Defines the minimum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the starting
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_end_y: ...
+#   Defines the maximum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the ending
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_x: ...
+#   Defines the X coordinate of the calibration for Y axis twist compensation
+#   This should be the X coordinate that positions the nozzle during the
+#   calibration process for Y axis twist compensation. This parameter must be
+#   provided and is recommended to be near the center of the bed.
 ```
 
 ## Prídavné krokové motory a extrudéry
@@ -2213,6 +2281,10 @@ Reports probe coil temperature. Includes optional thermal drift calibration for 
 #   "calibration_extruder_temp" option is set.  Its recommended to heat
 #   the extruder some distance from the bed to minimize its impact on
 #   the probe coil temperature.  The default is 50.
+#max_validation_temp: 60.
+#   The maximum temperature used to validate the calibration.  It is
+#   recommended to set this to a value between 100 and 120 for enclosed
+#   printers.  The default is 60.
 ```
 
 ## Temperature sensors
@@ -3431,6 +3503,7 @@ run_current:
 #driver_SEIMIN: 0
 #driver_SFILT: 0
 #driver_SG4_ANGLE_OFFSET: 1
+#driver_SLOPE_CONTROL: 0
 #   Set the given register during the configuration of the TMC2240
 #   chip. This may be used to set custom motor parameters. The
 #   defaults for each parameter are next to the parameter name in the
@@ -3722,83 +3795,84 @@ stierač:
 Support for a display attached to the micro-controller.
 
 ```
-[zobraziť]
+[display]
 lcd_type:
-# Typ používaného LCD čipu. Môže to byť "hd44780", "hd44780_spi",
-# "st7920", "emulated_st7920", "uc1701", "ssd1306" alebo "sh1106".
-# Informácie o jednotlivých typoch a typoch nájdete v častiach zobrazenia nižšie
-# ďalšie parametre, ktoré poskytujú. Tento parameter musí byť
-# poskytnuté.
+#   The type of LCD chip in use. This may be "hd44780", "hd44780_spi",
+#   "aip31068_spi", "st7920", "emulated_st7920", "uc1701", "ssd1306", or
+#   "sh1106".
+#   See the display sections below for information on each type and
+#   additional parameters they provide. This parameter must be
+#   provided.
 #display_group:
-# Názov skupiny display_data, ktorá sa má zobraziť na displeji. Toto
-# riadi obsah obrazovky (pozrite si časť „display_data“.
-#   Pre viac informácií). Predvolená hodnota je _default_20x4 pre hd44780
-# displejov a _default_16x4 pre ostatné displeje.
+#   The name of the display_data group to show on the display. This
+#   controls the content of the screen (see the "display_data" section
+#   for more information). The default is _default_20x4 for hd44780 or
+#   aip31068_spi displays and _default_16x4 for other displays.
 #menu_timeout:
-# Časový limit pre menu. Ak je toto množstvo sekúnd neaktívne, bude to tak
-# spúšťacie menu ukončenie alebo návrat do koreňového menu pri automatickom spustení
-# povolené. Predvolená hodnota je 0 sekúnd (zakázané)
+#   Timeout for menu. Being inactive this amount of seconds will
+#   trigger menu exit or return to root menu when having autorun
+#   enabled. The default is 0 seconds (disabled)
 #menu_root:
-# Názov časti hlavnej ponuky, ktorá sa zobrazí po kliknutí na kódovač
-# na domovskej obrazovke. Predvolená hodnota je __main a toto zobrazuje
-# predvolené ponuky definované v klippy/extras/display/menu.cfg
+#   Name of the main menu section to show when clicking the encoder
+#   on the home screen. The defaults is __main, and this shows the
+#   the default menus as defined in klippy/extras/display/menu.cfg
 #menu_reverse_navigation:
-# Keď je povolená, bude sa pre zoznam obracať nahor a nadol
-# navigácia. Predvolená hodnota je False. Tento parameter je voliteľný.
+#   When enabled it will reverse up and down directions for list
+#   navigation. The default is False. This parameter is optional.
 #encoder_pins:
-# Kolíky pripojené ku kódovaču. Pri použití musia byť poskytnuté 2 kolíky
-# kódovač. Tento parameter je potrebné zadať pri používaní ponuky.
+#   The pins connected to encoder. 2 pins must be provided when using
+#   encoder. This parameter must be provided when using menu.
 #encoder_steps_per_detent:
-# Koľko krokov vydá kódovač na zarážku ("kliknutie"). Ak
-# kódovač má dve zarážky na pohyb medzi záznamami alebo pohybuje dvoma
-# záznamov z jednej zarážky, skúste to zmeniť. Povolené hodnoty sú 2
-# (polovičný krok) alebo 4 (úplný krok). Predvolená hodnota je 4.
+#   How many steps the encoder emits per detent ("click"). If the
+#   encoder takes two detents to move between entries or moves two
+#   entries from one detent, try changing this. Allowed values are 2
+#   (half-stepping) or 4 (full-stepping). The default is 4.
 #click_pin:
-# Kolík pripojený k tlačidlu „enter“ alebo „kliknutiu“ kódovača. Toto
-Pri používaní ponuky je potrebné zadať # parameter. Prítomnosť an
-# 'analog_range_click_pin' konfiguračný parameter zmení tento parameter
-# z digitálneho na analógový.
+#   The pin connected to 'enter' button or encoder 'click'. This
+#   parameter must be provided when using menu. The presence of an
+#   'analog_range_click_pin' config parameter turns this parameter
+#   from digital to analog.
 #back_pin:
-# Kolík pripojený k tlačidlu „späť“. Tento parameter je voliteľný,
-# menu je možné použiť aj bez neho. Prítomnosť an
-# 'analog_range_back_pin' konfiguračný parameter zmení tento parameter z
-# digitálne na analógové.
+#   The pin connected to 'back' button. This parameter is optional,
+#   menu can be used without it. The presence of an
+#   'analog_range_back_pin' config parameter turns this parameter from
+#   digital to analog.
 #up_pin:
-# Kolík pripojený k tlačidlu „hore“. Tento parameter je potrebné zadať
-# pri používaní ponuky bez kódovača. Prítomnosť an
-# 'analog_range_up_pin' konfiguračný parameter zmení tento parameter z
-# digitálne na analógové.
+#   The pin connected to 'up' button. This parameter must be provided
+#   when using menu without encoder. The presence of an
+#   'analog_range_up_pin' config parameter turns this parameter from
+#   digital to analog.
 #down_pin:
-# Kolík pripojený k tlačidlu „dole“. Tento parameter musí byť
-# poskytnuté pri používaní ponuky bez kódovača. Prítomnosť an
-# 'analog_range_down_pin' konfiguračný parameter zmení tento parameter
-# digitálne na analógové.
+#   The pin connected to 'down' button. This parameter must be
+#   provided when using menu without encoder. The presence of an
+#   'analog_range_down_pin' config parameter turns this parameter from
+#   digital to analog.
 #kill_pin:
-# Kolík pripojený k tlačidlu „zabiť“. Toto tlačidlo zavolá
-#   núdzová zastávka. Prítomnosť konfigurácie 'analog_range_kill_pin'
-# parameter zmení tento parameter z digitálneho na analógový.
-#analog_pullup_rezistor: 4700
-# Odpor (v ohmoch) pullupu pripojeného k analógu
-# tlačidlo. Predvolená hodnota je 4700 ohmov.
+#   The pin connected to 'kill' button. This button will call
+#   emergency stop. The presence of an 'analog_range_kill_pin' config
+#   parameter turns this parameter from digital to analog.
+#analog_pullup_resistor: 4700
+#   The resistance (in ohms) of the pullup attached to the analog
+#   button. The default is 4700 ohms.
 #analog_range_click_pin:
-# Rozsah odporu pre tlačidlo „enter“. Minimálny dosah a
-Pri použití analógového signálu je potrebné zadať maximálne hodnoty oddelené čiarkou
-# tlačidlo.
+#   The resistance range for a 'enter' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_back_pin:
-# Rozsah odporu pre tlačidlo „späť“. Minimálny dosah a
-Pri použití analógového signálu je potrebné zadať maximálne hodnoty oddelené čiarkou
-# tlačidlo.
+#   The resistance range for a 'back' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_up_pin:
-# Rozsah odporu pre tlačidlo „hore“. Minimálny a maximálny rozsah
-Pri použití analógového tlačidla je potrebné zadať # hodnoty oddelené čiarkou.
+#   The resistance range for a 'up' button. Range minimum and maximum
+#   comma-separated values must be provided when using analog button.
 #analog_range_down_pin:
-# Rozsah odporu pre tlačidlo „dole“. Minimálny dosah a
-Pri použití analógového signálu je potrebné zadať maximálne hodnoty oddelené čiarkou
-# tlačidlo.
+#   The resistance range for a 'down' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 #analog_range_kill_pin:
-# Rozsah odporu pre tlačidlo „zabiť“. Minimálny dosah a
-Pri použití analógového signálu je potrebné zadať maximálne hodnoty oddelené čiarkou
-# tlačidlo.
+#   The resistance range for a 'kill' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 ```
 
 #### hd44780 display
@@ -3853,6 +3927,29 @@ spi_software_miso_pin:
 # Nastavte počet znakov na riadok pre lcd typu hd44780.
 # Možné hodnoty sú 20 (predvolené) a 16. Počet riadkov je
 # opravené na 4.
+...
+```
+
+#### aip31068_spi display
+
+Information on configuring an aip31068_spi display - a very similar to hd44780_spi a 20x04 (20 symbols by 4 lines) display with slightly different internal protocol.
+
+```
+[display]
+lcd_type: aip31068_spi
+latch_pin:
+spi_software_sclk_pin:
+spi_software_mosi_pin:
+spi_software_miso_pin:
+#   The pins connected to the shift register controlling the display.
+#   The spi_software_miso_pin needs to be set to an unused pin of the
+#   printer mainboard as the shift register does not have a MISO pin,
+#   but the software spi implementation requires this pin to be
+#   configured.
+#line_length:
+#   Set the number of characters per line for an hd44780 type lcd.
+#   Possible values are 20 (default) and 16. The number of lines is
+#   fixed to 4.
 ...
 ```
 
@@ -4262,7 +4359,7 @@ sensor_type:
 #   This must be one of the supported sensor types, see below.
 ```
 
-#### XH711
+#### HX711
 
 This is a 24 bit low sample rate chip using "bit-bang" communications. It is suitable for filament scales.
 
@@ -4334,13 +4431,30 @@ data_ready_pin:
 #gain: 128
 #   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
 #   The default is 128
+#pga_bypass: False
+#   Disable the internal Programmable Gain Amplifier. If
+#   True the PGA will be disabled for gains 1, 2, and 4. The PGA is always
+#   enabled for gain settings 8 to 128, regardless of the pga_bypass setting.
+#   If AVSS is used as an input pga_bypass is forced to True.
+#   The default is False.
 #sample_rate: 660
 #   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
-#   mode the chips c internal clock runs twice as fast and the SPI communication
+#   mode the chip's internal clock runs twice as fast and the SPI communication
 #   speed is also doubled.
 #   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
 #   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
 #   The default is 660
+#input_mux:
+#   Input multiplexer configuration, select a pair of pins to use. The first pin
+#   is the positive, AINP, and the second pin is the negative, AINN. Valid
+#   values are: 'AIN0_AIN1', 'AIN0_AIN2', 'AIN0_AIN3', 'AIN1_AIN2', 'AIN1_AIN3',
+#   'AIN2_AIN3', 'AIN1_AIN0', 'AIN3_AIN2', 'AIN0_AVSS', 'AIN1_AVSS', 'AIN2_AVSS'
+#   and 'AIN3_AVSS'. If AVSS is used the PGA is bypassed and the pga_bypass
+#   setting will be forced to True.
+#   The default is AIN0_AIN1.
+#vref:
+#   The selected voltage reference. Valid values are: 'internal', 'REF0', 'REF1'
+#   and 'analog_supply'. Default is 'internal'.
 ```
 
 ## Hardvérová podpora špecifická pre dosku
@@ -4505,32 +4619,32 @@ seriál:
 
 ### [angle]
 
-Podpora magnetického hall uhlového snímača na čítanie meraní uhlového hriadeľa krokového motora pomocou čipov SPI a1333, as5047d alebo tle5012b. Merania sú dostupné cez [API Server](API_Server.md) a [nástroj na analýzu pohybu](Debugging.md#motion-analysis-and-data-logging). Dostupné príkazy nájdete v [Odkaz na kód G](G-Codes.md#uhol).
+Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, mt6816, mt6826s, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
 
 ```
-[uhol my_uhol_sensor]
-senzor_typ:
-#       Typ magnetického hallového senzorového čipu. Dostupné možnosti sú
-#       "a1333", "as5047d" a "tle5012b". Tento parameter musí byť
-#       špecifikované.
-#sample_period: 0,000400
-#       Obdobie dopytu (v sekundách), ktoré sa má použiť počas meraní. The
-#       predvolená hodnota je 0,000400 (čo je 2500 vzoriek za sekundu).
+[angle my_angle_sensor]
+sensor_type:
+#   The type of the magnetic hall sensor chip. Available choices are
+#   "a1333", "as5047d", "mt6816", "mt6826s", and "tle5012b". This parameter must be
+#   specified.
+#sample_period: 0.000400
+#   The query period (in seconds) to use during measurements. The
+#   default is 0.000400 (which is 2500 samples per second).
 #stepper:
-#       Názov steppera, ku ktorému je pripojený snímač uhla (napr.
-#       "stepper_x"). Nastavenie tejto hodnoty umožňuje kalibráciu uhla
-#       nástroj. Na použitie tejto funkcie musí byť balík Python "numpy".
-#       nainštalovaný. Predvolené nastavenie je nepovoliť kalibráciu uhla pre
-#       snímač uhla.
+#   The name of the stepper that the angle sensor is attached to (eg,
+#   "stepper_x"). Setting this value enables an angle calibration
+#   tool. To use this feature, the Python "numpy" package must be
+#   installed. The default is to not enable angle calibration for the
+#   angle sensor.
 cs_pin:
-#       Pin aktivácie SPI pre senzor. Tento parameter je potrebné zadať.
+#   The SPI enable pin for the sensor. This parameter must be provided.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#       Popis nájdete v časti „spoločné nastavenia SPI“.
-#       vyššie uvedené parametre.
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
 ```
 
 ## Spoločné parametre zbernice
@@ -4562,7 +4676,7 @@ The following parameters are generally available for devices using an I2C bus.
 
 Všimnite si, že súčasná podpora mikrokontroléra Klipper pre I2C vo všeobecnosti nie je tolerantná k šumu linky. Neočakávané chyby na I2C vodičoch môžu spôsobiť, že Klipper vyvolá chybu behu. Podpora Klipper pre obnovu chýb sa líši medzi jednotlivými typmi mikrokontroléra. Vo všeobecnosti sa odporúča používať iba I2C zariadenia, ktoré sú na rovnakej doske s plošnými spojmi ako mikrokontrolér.
 
-Väčšina implementácií mikrokontroléra Klipper podporuje iba `i2c_speed` 100 000 (*štandardný režim*, 100 kbit/s). Mikrokontrolér Klipper "Linux" podporuje rýchlosť 400 000 (*rýchly režim*, 400 kbit/s), ale musí byť [nastavená v operačnom systéme] (RPi_microcontroller.md#optional-enabling-i2c) a `i2c_speed` parameter je inak ignorovaný. Mikrokontrolér Klipper "RP2040" a rodina ATmega AVR podporujú rýchlosť 400 000 prostredníctvom parametra "i2c_speed". Všetky ostatné mikrokontroléry Klipper používajú rýchlosť 100 000 a ignorujú parameter `i2c_speed`.
+Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family and some STM32 (F0, G0, G4, L4, F7, H7) support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
 
 ```
 #i2c_address:

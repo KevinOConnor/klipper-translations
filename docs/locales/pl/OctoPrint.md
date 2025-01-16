@@ -1,6 +1,6 @@
-# OctoPrint for Klipper
+# OctoPrint dla Klippera
 
-Klipper has a few options for its front ends, Octoprint was the first and original front end for Klipper. This document will give a brief overview of installing with this option.
+Klipper ma kilka opcji interfejsów użytkownika, a Octoprint był pierwszym i oryginalnym interfejsem dla Klippera. Ten dokument zawiera krótki przegląd instalacji przy użyciu tej opcji.
 
 ## Install with OctoPi
 
@@ -39,7 +39,7 @@ The OctoPrint web server needs to be configured to communicate with the Klipper 
 Navigate to the Settings tab (the wrench icon at the top of the page). Under "Serial Connection" in "Additional serial ports" add:
 
 ```
-~/printer_data/comms/klippy.sock
+~/printer_data/comms/klippy.serial
 ```
 
 Then click "Save".

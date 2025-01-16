@@ -1,12 +1,12 @@
 # Вимірювання Резонансів
 
-Klipper має вбудовану підтримку ADXL345, MPU-9250 та LIS2DW сумісні акселерометри, які можуть бути використані для вимірювання резонансних частот принтера для різних осей, а також автоматичного відключення [вхідних форм](Resonance_Compensation.md) для компенсації резонансів. Зауважте, що за допомогою акселерометрів вимагає деяких паяльників і ламків. ADXL345/LIS2DW може бути підключений до інтерфейсу SPI Raspberry Pi або MCU (потрібно бути досить швидко). Сім'я МПУ може бути підключена до інтерфейсу I2C Raspberry Pi безпосередньо, або до інтерфейсу I2C дошки МКУ, яка підтримує 400kbit/s *fast режим* в Klipper.
+Klipper has built-in support for the ADXL345, MPU-9250, LIS2DW and LIS3DH compatible accelerometers which can be used to measure resonance frequencies of the printer for different axes, and auto-tune [input shapers](Resonance_Compensation.md) to compensate for resonances. Note that using accelerometers requires some soldering and crimping. The ADXL345 can be connected to the SPI interface of a Raspberry Pi or MCU board (it needs to be reasonably fast). The MPU family can be connected to the I2C interface of a Raspberry Pi directly, or to an I2C interface of an MCU board that supports 400kbit/s *fast mode* in Klipper. The LIS2DW and LIS3DH can be connected to either SPI or I2C with the same considerations as above.
 
 При стисканні акселерометрів слід розуміти, що існують різні зразки друкованої плати та різні клони їх. Якщо він буде підключений до принтера 5V MCU, щоб він має регулятор напруги та перемикачі рівня.
 
-Для ADXL345s/LIS2DWs переконайтеся, що дошка підтримує режим SPI (дрібна кількість дощок з'являються, щоб бути важко налаштованими для I2C шляхом витягування SDO до GND).
+For ADXL345s, make sure that the board supports SPI mode (a small number of boards appear to be hard-configured for I2C by pulling SDO to GND).
 
-Для MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500 є також різноманітними платними конструкціями та клонами з різними резисторами I2C, які потребують доповнення.
+For MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500s and LIS2DW/LIS3DH there are also a variety of board designs and clones with different I2C pull-up resistors which will need supplementing.
 
 ## MCU з Klipper I2C *fast-mode* Підтримка
 
@@ -15,6 +15,7 @@ Klipper має вбудовану підтримку ADXL345, MPU-9250 та LIS2
 | Малина Пі | 3B+, Піко | 3А, 3А+, 3Б, 4 |
 | АВР АМПА | A Tmega328p | ATmega 32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, ATmega1284, ATmega2560 |
 | ВІДЕОРЕЄСТРАТОР AT90 | - | AT90 usb646, AT90usb1286 |
+| SAMD | SAMC21G18 | SAMC21G18, SAMD21G18, SAMD21E18, SAMD21J18, SAMD21E15, SAMD51G19, SAMD51J19, SAMD51N19, SAMD51P20, SAME51J19, SAME51N19, SAME54P20 |
 
 ## Інструкція по монтажу
 
@@ -170,10 +171,18 @@ sudo apt встановити python3-numpy python3-matplotlib libatlas-base-dev
 Далі, щоб встановити NumPy в середовищі Klipper, запустити команду:
 
 ```
-~/klippy-env/bin/pip встановлення -v numpy
+~/klippy-env/bin/pip install -v "numpy<1.26"
 ```
 
-Зауважте, що в залежності від продуктивності ЦП може знадобитися *a багато* часу, до 10-20 хвилин. Будьте хворими і чекайте завершення монтажу. У деяких випадках, якщо дошка занадто мало оперативної пам'яті, установка може бути неможливим, і вам буде потрібно включити застібку.
+Note that, depending on the performance of the CPU, it may take *a lot* of time, up to 10-20 minutes. Be patient and wait for the completion of the installation. On some occasions, if the board has too little RAM the installation may fail and you will need to enable swap. Also note the forced version, due to newer versions of NumPY having requirements that may not be satisfied in some klipper python environments.
+
+Once installed please check that no errors show from the command:
+
+```
+~/klippy-env/bin/python -c 'import numpy;'
+```
+
+The correct output should simply be a new line.
 
 #### Налаштування ADXL345 з RPi
 
@@ -253,7 +262,7 @@ accel_chip: adxl345
 
 Рештарт Кліппер через команду `RESTART`.
 
-#### Налаштування серії LIS2DW
+#### Configure LIS2DW series over SPI
 
 ```
 [mcu lis]
@@ -545,6 +554,10 @@ max_smoothing: 0.25 # приклад
 таким чином, можна правильно розрахувати максимальні рекомендації прискорення. Зауважте, що `SHAPER_CALIBRATE` команда вже приймає налаштовувані `square_corner_velocity` параметр враховується, і немає необхідності уточнювати його явно.
 
 Якщо ви виконуєте рекалібрацію формувача і повідомляється розгладжування за запропонованою конфігурацією формера практично таким же, що ви отримали під час попереднього калібрування, цей крок можна пропустити.
+
+### Unreliable measurements of resonance frequencies
+
+Sometimes the resonance measurements can produce bogus results, leading to the incorrect suggestions for the input shapers. This can be caused by a variety of reasons, including running fans on the toolhead, incorrect position or non-rigid mounting of the accelerometer, or mechanical problems such as loose belts or binding or bumpy axis. Keep in mind that all fans should be disabled for resonance testing, especially the noisy ones, and that the accelerometer should be rigidly mounted on the corresponding moving part (e.g. on the bed itself for the bed slinger, or on the extruder of the printer itself and not the carriage, and some people get better results by mounting the accelerometer on the nozzle itself). As for mechanical problems, the user should inspect if there is any fault that can be fixed with a moving axis (e.g. linear guide rails cleaned up and lubricated and V-slot wheels tension adjusted correctly). If none of that helps, a user may try the other shapers from the produced list besides the one recommended by default.
 
 ### Тестування користувальницьких осей
 

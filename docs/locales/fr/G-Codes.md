@@ -71,6 +71,12 @@ Les commandes suivantes sont disponibles lorsqu'une section [angle config](Confi
 
 `ANGLE_CALIBRATE CHIP=<nom_de_la_puce>` : Effectue une calibration d'angle sur le capteur donné (il doit y avoir une section de configuration `[angle nom_de_la_puce]` qui a indiqué un paramètre `stepper`). IMPORTANT - cet outil commandera au moteur pas à pas de se déplacer sans vérifier les limites normales de la cinématique. Idéalement, le moteur devrait être déconnecté de tout chariot d'imprimante avant d'effectuer le calibrage. Si le moteur pas à pas ne peut pas être déconnecté de l'imprimante, assurez-vous que le chariot est proche du centre de son rail avant de commencer l'étalonnage. (Le moteur pas à pas peut se déplacer vers l'avant ou l'arrière de deux rotations complètes durant ce test). Après avoir terminé ce test, utilisez la commande `SAVE_CONFIG` pour sauvegarder les données de calibration dans le fichier de configuration. Afin d'utiliser cet outil, le paquetage Python "numpy" doit être installé (voir le document [mesurer les résonances](Measuring_Resonances.md#software-installation) pour plus d'informations).
 
+#### ANGLE_CHIP_CALIBRATE
+
+`ANGLE_CHIP_CALIBRATE CHIP=<chip_name>`: Perform internal sensor calibration, if implemented (MT6826S/MT6835).
+
+- **MT68XX**: The motor should be disconnected from any printer carriage before performing calibration. After calibration, the sensor should be reset by disconnecting the power.
+
 #### ANGLE_DEBUG_READ
 
 `ANGLE_DEBUG_READ CHIP=<nom_de_la_configuration> REG=<registre>` : Interroge le registre "registre" du capteur (par exemple 44 ou 0x2C). Peut être utile à des fins de débogage. Ceci n'est disponible que pour les puces tle5012b.
@@ -86,7 +92,12 @@ section](Config_Reference.md#axis_twist_compensation) is enabled.
 
 #### AXIS_TWIST_COMPENSATION_CALIBRATE
 
-`AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=<value>]`: Initiates the X twist calibration wizard. `SAMPLE_COUNT` specifies the number of points along the X axis to calibrate at and defaults to 3.
+`AXIS_TWIST_COMPENSATION_CALIBRATE [AXIS=<X|Y>] [AUTO=<True|False>] [SAMPLE_COUNT=<value>]`
+
+Calibrates axis twist compensation by specifying the target axis or enabling automatic calibration.
+
+- **AXIS:** Define the axis (`X` or `Y`) for which the twist compensation will be calibrated. If not specified, the axis defaults to `'X'`.
+- **AUTO:** Enables automatic calibration mode. When `AUTO=True`, the calibration will run for both the X and Y axes. In this mode, `AXIS` cannot be specified. If both `AXIS` and `AUTO` are provided, an error will be raised.
 
 ### [bed_mesh]
 
@@ -279,6 +290,8 @@ La commande suivante est disponible lorsqu'une section [fan_generic config](Conf
 
 `SET_FAN_SPEED FAN=nom_config SPEED=<vitesse>` Cette commande définit la vitesse d'un ventilateur. La valeur de "vitesse" doit être comprise entre 0,0 et 1,0.
 
+`SET_FAN_SPEED PIN=config_name TEMPLATE=<template_name> [<param_x>=<literal>]`: If `TEMPLATE` is specified then it assigns a [display_template](Config_Reference.md#display_template) to the given fan. For example, if one defined a `[display_template my_fan_template]` config section then one could assign `TEMPLATE=my_fan_template` here. The display_template should produce a string containing a floating point number with the desired value. The template will be continuously evaluated and the fan will be automatically set to the resulting speed. One may set display_template parameters to use during template evaluation (parameters will be parsed as Python literals). If TEMPLATE is an empty string then this command will clear any previous template assigned to the pin (one can then use `SET_FAN_SPEED` commands to manage the values directly).
+
 ### [filament_switch_sensor]
 
 La commande suivante est disponible lorsqu'une section de configuration [filament_switch_sensor](Config_Reference.md#filament_switch_sensor) ou [filament_motion_sensor](Config_Reference.md#filament_motion_sensor) est activée.
@@ -322,7 +335,7 @@ Le module force_move est automatiquement chargé, mais certaines commandes néce
 
 #### SET_KINEMATIC_POSITION
 
-`SET_KINEMATIC_POSITION [X=<value>] [Y=<value>] [Z=<value>] ` : Force le code cinématique de bas niveau à croire que la tête d'outil est à la position cartésienne donnée. Il s'agit d'une commande de diagnostic et de débogage ; utilisez SET_GCODE_OFFSET et/ou G92 pour des transformations d'axe régulières. Si un axe n'est pas spécifié, la position par défaut sera celle de la dernière commande de la tête. La définition d'une position incorrecte ou invalide peut entraîner des erreurs logicielles internes. Cette commande peut invalider les futures vérifications de limites ; émettez ensuite un G28 pour réinitialiser la cinématique.
+`SET_KINEMATIC_POSITION [X=<value>] [Y=<value>] [Z=<value>] [CLEAR=<[X][Y][Z]>]`: Force the low-level kinematic code to believe the toolhead is at the given cartesian position. This is a diagnostic and debugging command; use SET_GCODE_OFFSET and/or G92 for regular axis transformations. If an axis is not specified then it will default to the position that the head was last commanded to. Setting an incorrect or invalid position may lead to internal software errors. Use the CLEAR parameter to forget the homing state for the given axes. Note that CLEAR will not override the previous functionality; if an axis is not specified to CLEAR it will have its kinematic position set as per above. This command may invalidate future boundary checks; issue a G28 afterwards to reset the kinematics.
 
 ### [gcode]
 
@@ -499,6 +512,8 @@ La commande suivante est disponible lorsqu'une section [output_pin config](Confi
 
 `SET_PIN PIN=config_name VALUE=<value>`: Set the pin to the given output `VALUE`. VALUE should be 0 or 1 for "digital" output pins. For PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and `scale` if a scale is configured in the output_pin config section.
 
+`SET_PIN PIN=config_name TEMPLATE=<template_name> [<param_x>=<literal>]`: If `TEMPLATE` is specified then it assigns a [display_template](Config_Reference.md#display_template) to the given pin. For example, if one defined a `[display_template my_pin_template]` config section then one could assign `TEMPLATE=my_pin_template` here. The display_template should produce a string containing a floating point number with the desired value. The template will be continuously evaluated and the pin will be automatically set to the resulting value. One may set display_template parameters to use during template evaluation (parameters will be parsed as Python literals). If TEMPLATE is an empty string then this command will clear any previous template assigned to the pin (one can then use `SET_PIN` commands to manage the values directly).
+
 ### [palette2]
 
 Les commandes suivantes sont disponibles lorsque la section [palette2 config](Config_Reference.md#palette2) est activée.
@@ -609,6 +624,14 @@ The following command is available when a [pwm_cycle_time config section](Config
 
 `SET_PIN PIN=config_name VALUE=<value> [CYCLE_TIME=<cycle_time>]`: This command works similarly to [output_pin](#output_pin) SET_PIN commands. The command here supports setting an explicit cycle time using the CYCLE_TIME parameter (specified in seconds). Note that the CYCLE_TIME parameter is not stored between SET_PIN commands (any SET_PIN command without an explicit CYCLE_TIME parameter will use the `cycle_time` specified in the pwm_cycle_time config section).
 
+### [quad_gantry_level]
+
+The following commands are available when the [quad_gantry_level config section](Config_Reference.md#quad_gantry_level) is enabled.
+
+#### QUAD_GANTRY_LEVEL
+
+`QUAD_GANTRY_LEVEL [RETRIES=<value>] [RETRY_TOLERANCE=<value>] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`: This command will probe the points specified in the config and then make independent adjustments to each Z stepper to compensate for tilt. See the PROBE command for details on the optional probe parameters. The optional `RETRIES`, `RETRY_TOLERANCE`, and `HORIZONTAL_MOVE_Z` values override those options specified in the config file.
+
 ### [query_adc]
 
 Le module query_adc est automatiquement chargé.
@@ -637,11 +660,11 @@ Les commandes suivantes sont disponibles lorsqu'une section [configuration du te
 
 #### TEST_RESONANCES
 
-`TEST_RESONANCES AXE=<axe> OUTPUT=<resonances,raw_data> [NOM=<nom>] [FREQ_START=<freq_min>] [FREQ_END=<freq_max>] [HZ_PER_SEC=<hz_par_sec>] [CHIPS=<nom_puce_adxl345>] [POINT=x,y,z] [INPUT_SHAPING=[<0:1>]]` : Exécute le test de résonance dans tous les points de sonde configurés pour l'"axe" demandé et mesure l'accélération en utilisant les puces accélérométres configurées pour l'axe respectif. L'"axe" peut être X ou Y, ou spécifier une direction arbitraire comme `AXIS=dx,dy`, où dx et dy sont des nombres à virgule flottante définissant un vecteur de direction (par exemple, `AXIS=X`, `AXIS=Y`, ou `AXIS=1,-1` pour définir une direction diagonale). Notez que `AXIS=dx,dy` et `AXIS=-dx,-dy` sont équivalents. `nom_puce_adxl345` peut être une ou plusieurs puces adxl345 configurées, délimitées par des virgules, par exemple `CHIPS="adxl345, adxl345 rpi"`. Notez que le terme `adxl345` peut être omis pour les puces adxl345 nommées. Si POINT est indiqué, il remplacera le(s) point(s) configuré(s) dans `[resonance_tester]`. Si `INPUT_SHAPING=0` ou non défini (par défaut), désactive la mise en forme de l'entrée pour le test de résonance, car il n'est pas valide d'exécuter le test de résonance avec la mise en forme de l'entrée active. Le paramètre `OUTPUT` consiste en une liste séparée par des virgules des sorties qui seront écrites. Si `raw_data` est demandé, alors les données brutes de l'accéléromètre sont écrites dans un fichier ou une série de fichiers `/tmp/raw_data_<axe>_[<nom_puce>_][<point>_]<nom>.csv` avec (la partie `<point>_` du nom générée seulement si plus d'un point de sonde est configuré ou si POINT est spécifié). Si `resonances` est spécifié, la réponse en fréquence est calculée (à travers tous les points de sonde) et écrite dans le fichier `/tmp/resonances_<axe>_<nom>.csv`. S'il n'est pas défini, OUTPUT prend par défaut la valeur de `resonances`, et NAME prend par défaut la valeur de l'heure actuelle au format "AAAAMMJJ_HHMMSS".
+`TEST_RESONANCES AXIS=<axis> [OUTPUT=<resonances,raw_data>] [NAME=<name>] [FREQ_START=<min_freq>] [FREQ_END=<max_freq>] [ACCEL_PER_HZ=<accel_per_hz>] [HZ_PER_SEC=<hz_per_sec>] [CHIPS=<chip_name>] [POINT=x,y,z] [INPUT_SHAPING=<0:1>]`: Runs the resonance test in all configured probe points for the requested "axis" and measures the acceleration using the accelerometer chips configured for the respective axis. "axis" can either be X or Y, or specify an arbitrary direction as `AXIS=dx,dy`, where dx and dy are floating point numbers defining a direction vector (e.g. `AXIS=X`, `AXIS=Y`, or `AXIS=1,-1` to define a diagonal direction). Note that `AXIS=dx,dy` and `AXIS=-dx,-dy` is equivalent. `chip_name` can be one or more configured accel chips, delimited with comma, for example `CHIPS="adxl345, adxl345 rpi"`. If POINT is specified it will override the point(s) configured in `[resonance_tester]`. If `INPUT_SHAPING=0` or not set(default), disables input shaping for the resonance testing, because it is not valid to run the resonance testing with the input shaper enabled. `OUTPUT` parameter is a comma-separated list of which outputs will be written. If `raw_data` is requested, then the raw accelerometer data is written into a file or a series of files `/tmp/raw_data_<axis>_[<chip_name>_][<point>_]<name>.csv` with (`<point>_` part of the name generated only if more than 1 probe point is configured or POINT is specified). If `resonances` is specified, the frequency response is calculated (across all probe points) and written into `/tmp/resonances_<axis>_<name>.csv` file. If unset, OUTPUT defaults to `resonances`, and NAME defaults to the current time in "YYYYMMDD_HHMMSS" format.
 
 #### SHAPER_CALIBRATE
 
-`SHAPER_CALIBRATE [AXIS=<axis>] [NAME=<name>] [FREQ_START=<min_freq>] [FREQ_END=<max_freq>] [HZ_PER_SEC=<hz_per_sec>] [CHIPS=<adxl345_chip_name>] [MAX_SMOOTHING=<max_smoothing>]`: Similarly to `TEST_RESONANCES`, runs the resonance test as configured, and tries to find the optimal parameters for the input shaper for the requested axis (or both X and Y axes if `AXIS` parameter is unset). If `MAX_SMOOTHING` is unset, its value is taken from `[resonance_tester]` section, with the default being unset. See the [Max smoothing](Measuring_Resonances.md#max-smoothing) of the measuring resonances guide for more information on the use of this feature. The results of the tuning are printed to the console, and the frequency responses and the different input shapers values are written to a CSV file(s) `/tmp/calibration_data_<axis>_<name>.csv`. Unless specified, NAME defaults to the current time in "YYYYMMDD_HHMMSS" format. Note that the suggested input shaper parameters can be persisted in the config by issuing `SAVE_CONFIG` command, and if `[input_shaper]` was already enabled previously, these parameters take effect immediately.
+`SHAPER_CALIBRATE [AXIS=<axis>] [NAME=<name>] [FREQ_START=<min_freq>] [FREQ_END=<max_freq>] [ACCEL_PER_HZ=<accel_per_hz>][HZ_PER_SEC=<hz_per_sec>] [CHIPS=<chip_name>] [MAX_SMOOTHING=<max_smoothing>] [INPUT_SHAPING=<0:1>]`: Similarly to `TEST_RESONANCES`, runs the resonance test as configured, and tries to find the optimal parameters for the input shaper for the requested axis (or both X and Y axes if `AXIS` parameter is unset). If `MAX_SMOOTHING` is unset, its value is taken from `[resonance_tester]` section, with the default being unset. See the [Max smoothing](Measuring_Resonances.md#max-smoothing) of the measuring resonances guide for more information on the use of this feature. The results of the tuning are printed to the console, and the frequency responses and the different input shapers values are written to a CSV file(s) `/tmp/calibration_data_<axis>_<name>.csv`. Unless specified, NAME defaults to the current time in "YYYYMMDD_HHMMSS" format. Note that the suggested input shaper parameters can be persisted in the config by issuing `SAVE_CONFIG` command, and if `[input_shaper]` was already enabled previously, these parameters take effect immediately.
 
 ### [respond]
 
@@ -824,7 +847,7 @@ Les commandes suivantes sont disponibles lorsque la section [z_tilt config](Conf
 
 #### Z_TILT_ADJUST
 
-`Z_TILT_ADJUST [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`: Cette commande sondera les points spécifiés dans la configuration, puis effectuera des ajustements indépendants sur chaque stepper Z pour compenser l'inclinaison. Voir la commande PROBE pour plus de détails sur les paramètres de sonde facultatifs. La valeur facultative `HORIZONTAL_MOVE_Z` remplace l'option `horizontal_move_z` spécifiée dans le fichier de configuration.
+`Z_TILT_ADJUST [RETRIES=<value>] [RETRY_TOLERANCE=<value>] [HORIZONTAL_MOVE_Z=<value>] [<probe_parameter>=<value>]`: This command will probe the points specified in the config and then make independent adjustments to each Z stepper to compensate for tilt. See the PROBE command for details on the optional probe parameters. The optional `RETRIES`, `RETRY_TOLERANCE`, and `HORIZONTAL_MOVE_Z` values override those options specified in the config file.
 
 ### [temperature_probe]
 

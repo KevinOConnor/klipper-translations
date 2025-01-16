@@ -1510,8 +1510,9 @@ Support for LIS2DW accelerometers.
 
 ```
 [lis2dw]
-cs_pin:
-#   The SPI enable pin for the sensor. This parameter must be provided.
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
 #spi_speed: 5000000
 #   The SPI speed (in hz) to use when communicating with the chip.
 #   The default is 5000000.
@@ -1521,6 +1522,46 @@ cs_pin:
 #spi_software_miso_pin:
 #   See the "common SPI settings" section for a description of the
 #   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
+#axes_map: x, y, z
+#   See the "adxl345" section for information on this parameter.
+```
+
+### [lis3dh]
+
+Support for LIS3DH accelerometers.
+
+```
+[lis3dh]
+#cs_pin:
+#   The SPI enable pin for the sensor. This parameter must be provided
+#   if using SPI.
+#spi_speed: 5000000
+#   The SPI speed (in hz) to use when communicating with the chip.
+#   The default is 5000000.
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
+#i2c_address:
+#   Default is 25 (0x19). If SA0 is high, it would be 24 (0x18) instead.
+#i2c_mcu:
+#i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#i2c_speed: 400000
+#   See the "common I2C settings" section for a description of the
+#   above parameters. The default "i2c_speed" is 400000.
 #axes_map: x, y, z
 #   See the "adxl345" section for information on this parameter.
 ```
@@ -1551,43 +1592,58 @@ Prise en charge du test de résonance et du calibrage automatique du façonneur 
 ```
 [resonance_tester]
 #probe_points:
-#    Une liste de coordonnées X, Y, Z de points (un point par ligne) à tester.
-#    Au moins un point est requis. Assurez-vous que tous les points avec une certaine marge
-#    de sécurité dans le plan XY (~ quelques centimètres) sont accessibles par la tête de l'outil.
+#   A list of X, Y, Z coordinates of points (one point per line) to test
+#   resonances at. At least one point is required. Make sure that all
+#   points with some safety margin in XY plane (~a few centimeters)
+#   are reachable by the toolhead.
 #accel_chip:
-#    Nom de la puce d'accéléromètre à utiliser pour les mesures. Si la puce adxl345 a été définie
-#    sans un nom explicite, ce paramètre peut simplement la référencer en tant que
-#    "accel_chip : adxl345", sinon un nom explicite doit être fourni, par exemple
-#    "accel_chip : adxl345 my_chip_name". Soit ce paramètre seul, soit les deux paramètres
-#    suivants doivent être définis.
+#   A name of the accelerometer chip to use for measurements. If
+#   adxl345 chip was defined without an explicit name, this parameter
+#   can simply reference it as "accel_chip: adxl345", otherwise an
+#   explicit name must be supplied as well, e.g. "accel_chip: adxl345
+#   my_chip_name". Either this, or the next two parameters must be
+#   set.
 #accel_chip_x:
 #accel_chip_y:
-#    Noms des puces d'accéléromètre à utiliser pour les mesures de chaque axe.
-#    Peut être utile, par exemple, sur une imprimante de type "bed slinger", si deux accéléromètres
-#    séparés sont montés, un sur le lit (pour l'axe Y), l'autre sur la tête de l'outil (pour l'axe X).
-#    Ces paramètres ont le même format que le paramètre 'accel_chip'. Soit le paramètre
-#    'accel_chip' soit ces deux paramètres doivent être fournis.
+#   Names of the accelerometer chips to use for measurements for each
+#   of the axis. Can be useful, for instance, on bed slinger printer,
+#   if two separate accelerometers are mounted on the bed (for Y axis)
+#   and on the toolhead (for X axis). These parameters have the same
+#   format as 'accel_chip' parameter. Only 'accel_chip' or these two
+#   parameters must be provided.
 #max_smoothing:
-#    Lissage maximal du façonneur (shaper) d'entrée à autoriser pour chaque axe pendant
-#    l'auto-calibration (avec la commande 'SHAPER_CALIBRATE'). Par défaut, aucun lissage
-#    maximal n'est spécifié. Reportez-vous au guide Measuring_Resonances pour plus de détails
-#    sur l'utilisation de cette fonction.
+#   Maximum input shaper smoothing to allow for each axis during shaper
+#   auto-calibration (with 'SHAPER_CALIBRATE' command). By default no
+#   maximum smoothing is specified. Refer to Measuring_Resonances guide
+#   for more details on using this feature.
+#move_speed: 50
+#   The speed (in mm/s) to move the toolhead to and between test points
+#   during the calibration. The default is 50.
 #min_freq: 5
-#    Fréquence minimale de test des résonances. La valeur par défaut est 5 Hz.
+#   Minimum frequency to test for resonances. The default is 5 Hz.
 #max_freq: 133.33
-#    Fréquence maximale de test des résonances. La valeur par défaut est 133,33 Hz.
-#accel_per_hz: 75
-#    Ce paramètre permet de déterminer l'accélération à utiliser pour tester une fréquence
-#    spécifique: accel = accel_per_hz * freq. Plus haute est cette valeur, plus l'énergie des
-#    oscillations est élevée. Peut être fixé à une valeur inférieure à celle par défaut si les
-#    résonances deviennent trop fortes sur l'imprimante. Cependant, des valeurs plus faibles
-#    rendent les mesures des résonances à haute fréquence moins précises. La valeur par
-#    défaut est de 75 (mm/sec).
+#   Maximum frequency to test for resonances. The default is 133.33 Hz.
+#accel_per_hz: 60
+#   This parameter is used to determine which acceleration to use to
+#   test a specific frequency: accel = accel_per_hz * freq. Higher the
+#   value, the higher is the energy of the oscillations. Can be set to
+#   a lower than the default value if the resonances get too strong on
+#   the printer. However, lower values make measurements of
+#   high-frequency resonances less precise. The default value is 75
+#   (mm/sec).
 #hz_per_sec: 1
-#    Détermine la vitesse de l'essai. Lors du test de toutes les fréquences dans la plage [min_freq,
-#    max_freq], chaque seconde, la fréquence augmente de hz_per_sec.
-#    De faibles valeurs rendent le test lent, de grandes valeurs diminueront la précision du test.
-#    La valeur par défaut est 1.0 (Hz/sec == sec^-2).
+#   Determines the speed of the test. When testing all frequencies in
+#   range [min_freq, max_freq], each second the frequency increases by
+#   hz_per_sec. Small values make the test slow, and the large values
+#   will decrease the precision of the test. The default value is 1.0
+#   (Hz/sec == sec^-2).
+#sweeping_accel: 400
+#   An acceleration of slow sweeping moves. The default is 400 mm/sec^2.
+#sweeping_period: 1.2
+#   A period of slow sweeping moves. Setting this parameter to 0
+#   disables slow sweeping moves. Avoid setting it to a too small
+#   non-zero value in order to not poison the measurements.
+#   The default is 1.2 sec which is a good all-round choice.
 ```
 
 ## Assistants de fichiers de configuration
@@ -1834,29 +1890,46 @@ sensor_type: ldc1612
 
 ### [axis_twist_compensation]
 
-Un outil pour compenser les lectures inexactes de la sonde en raison de la torsion de la structure en X. Voir le [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) pour des informations plus détaillées sur les symptômes, la configuration et la mise en service.
+A tool to compensate for inaccurate probe readings due to twist in X or Y gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) for more detailed information regarding symptoms, configuration and setup.
 
 ```
 [axis_twist_compensation]
 #speed: 50
-#   Vitesse (en mm/s) des déplacements sans mesures pendant l'étape d'étalonnage.
-#   La valeur par défaut est de 50.
+#   The speed (in mm/s) of non-probing moves during the calibration.
+#   The default is 50.
 #horizontal_move_z: 5
-#   La hauteur (en mm) à laquelle la tête doit se positionner
-#   avant de commencer une mesure. La valeur par défaut est de 5.
+#   The height (in mm) that the head should be commanded to move to
+#   just prior to starting a probe operation. The default is 5.
 calibrate_start_x: 20
-#   Définit la coordonnée minimum en X pour les mesures
-#   Ce doit être la coordonnée X qui positionne la buse à la position de
-#   départ des mesures. Ce paramètre est obligatoire.
+#   Defines the minimum X coordinate of the calibration
+#   This should be the X coordinate that positions the nozzle at the starting
+#   calibration position.
 calibrate_end_x: 200
-#   Définit la coordonnée maximum en X pour les mesures
-#   Ce doit être la coordonnée X qui positionne la buse à la position de
-#   fin des mesures. Ce paramètre est obligatoire.
+#   Defines the maximum X coordinate of the calibration
+#   This should be the X coordinate that positions the nozzle at the ending
+#   calibration position.
 calibrate_y: 112.5
-#   Définit la coordonnée Y de mesure
-#   Ce doit être la coordonnée Y qui positionne la buse à la position de
-#   mesures. Ce paramètre est obligatoire et il est conseillé de mettre une mesure
-#   proche du centre du plateau
+#   Defines the Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle during the
+#   calibration process. This parameter is recommended to
+#   be near the center of the bed
+
+# For Y-axis twist compensation, specify the following parameters:
+calibrate_start_y: ...
+#   Defines the minimum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the starting
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_end_y: ...
+#   Defines the maximum Y coordinate of the calibration
+#   This should be the Y coordinate that positions the nozzle at the ending
+#   calibration position for the Y axis. This parameter must be provided if
+#   compensating for Y axis twist.
+calibrate_x: ...
+#   Defines the X coordinate of the calibration for Y axis twist compensation
+#   This should be the X coordinate that positions the nozzle during the
+#   calibration process for Y axis twist compensation. This parameter must be
+#   provided and is recommended to be near the center of the bed.
 ```
 
 ## Moteurs pas à  pas et extrudeurs additionnels
@@ -2180,6 +2253,10 @@ Reports probe coil temperature. Includes optional thermal drift calibration for 
 #   "calibration_extruder_temp" option is set.  Its recommended to heat
 #   the extruder some distance from the bed to minimize its impact on
 #   the probe coil temperature.  The default is 50.
+#max_validation_temp: 60.
+#   The maximum temperature used to validate the calibration.  It is
+#   recommended to set this to a value between 100 and 120 for enclosed
+#   printers.  The default is 60.
 ```
 
 ## Capteurs de température
@@ -2273,7 +2350,7 @@ sensor_pin:
 #    dans la liste ci-dessus.
 ```
 
-### BMP180/BMP280/BME280/BMP388/BME680 temperature sensor
+### Capteur de température BMP180/BMP280/BME280/BMP388/BME680
 
 BMP180/BMP280/BME280/BMP388/BME680 two wire interface (I2C) environmental sensors. Note that these sensors are not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C), pressure (hPa), relative humidity and in case of the BME680 gas level. See [sample-macros.cfg](../config/sample-macros.cfg) for a gcode_macro that may be used to report pressure and humidity in addition to temperature.
 
@@ -2438,9 +2515,9 @@ serial_no:
 #    Le micro-contrôleur à lire. Doit être le host_mcu
 ```
 
-### Combined temperature sensor
+### Capteur de température combiné
 
-Combined temperature sensor is a virtual temperature sensor based on several other sensors. This sensor can be used with extruders, heater_generic and heater beds.
+Le capteur de température combiné est un capteur virtuel basé sur plusieurs autres capteurs Ce capteur peut être utilisé avec des extrudeurs, des chauffages génériques et des plateaux chauffants.
 
 ```
 sensor_type: temperature_combined
@@ -3386,6 +3463,7 @@ run_current:
 #driver_SEIMIN: 0
 #driver_SFILT: 0
 #driver_SG4_ANGLE_OFFSET: 1
+#driver_SLOPE_CONTROL: 0
 #   Set the given register during the configuration of the TMC2240
 #   chip. This may be used to set custom motor parameters. The
 #   defaults for each parameter are next to the parameter name in the
@@ -3675,73 +3753,83 @@ Prise en charge d'un écran relié au microcontrôleur.
 
 ```
 [display]
-lcd_type :
-#   Le type de puce LCD utilisé. Cela peut être "hd44780", "hd44780_spi", "st7920",
-#   "emulated_st7920", "uc1701", "ssd1306", ou "sh1106".
-#   Voir les sections d'affichage ci-dessous pour plus d'informations sur chaque type
-#   et les paramètres supplémentaires qu'ils fournissent. Ce paramètre doit être
-#   fourni.
-#display_group :
-#   Le nom du groupe de données à afficher sur l'écran. Cela contrôle le contenu de
-#   l'écran (voir la section "display_data" pour plus d'informations). La valeur par
-#   défaut est _default_20x4 pour les écrans hd44780 et _default_16x4 pour les
-#   autres affichages.
-#menu_timeout :
-#   Délai d'attente pour le menu. Le fait d'être inactif pendant ce nombre de secondes
-#   déclenchera la sortie du menu ou le retour au menu racine si l'autorun est activé.
-#   La valeur par défaut est 0 seconde (désactivé)
-#menu_root :
-#   Nom de la section du menu principal à afficher lorsque vous cliquez sur l'encodeur
-#   de l'écran d'accueil. La valeur par défaut est __main, et cela affiche les menus par
-#   défaut tels que définis dans klippy/extras/display/menu.cfg
-#menu_reverse_navigation :
-#   Lorsque activé, inverse les directions vers le haut et vers le bas de la liste.
-#   La valeur par défaut est False. Ce paramètre est optionnel.
-#encoder_pins :
-#   Les broches connectées à l'encodeur. 2 broches doivent être fournies lorsque vous
-#   utilisez l'encodeur. Ce paramètre doit être fourni lors de l'utilisation du menu.
-#encoder_steps_per_detent :
-#   Combien de pas l'encodeur émet par cran ("clic"). Si l'encodeur prend deux crans pour
-#   se déplacer entre les entrées ou déplace deux entrées à partir d'un seul cran, essayez de
-#   modifier cette valeur. Les valeurs autorisées sont 2 (demi-step) ou 4 (full-step).
-#   La valeur par défaut est 4.
-#click_pin :
-#   La broche connectée au bouton 'entrée' ou au 'clic' de l'encodeur. Ce paramètre doit
-#   être fourni lors de l'utilisation du menu. La présence d'un paramètre de configuration
-#   'analog_range_click_pin' fait passer ce paramètre de numérique à analogique.
-#back_pin :
-#   La broche connectée au bouton 'retour'. Ce paramètre est facultatif, le menu peut être utilisé
-#   sans lui. La présence d'un paramètre de configuration 'analog_range_back_pin'  transforme
-#   ce paramètre de numérique à analogique.
-#up_pin :
-#   La broche connectée au bouton 'haut'. Ce paramètre doit être fourni lorsque vous utilisez un
-#   menu sans encodeur. La présence d'un paramètre de configuration 'analog_range_up_pin'
-#   transforme ce paramètre de numérique à analogique.
-#down_pin :
-#   La broche connectée au bouton 'bas'. Ce paramètre doit être fourni lorsque vous utilisez un
-#   menu sans encodeur. La présence d'un paramètre de configuration 'analog_range_down_pin'
-#   transforme ce paramètre de numérique à analogique.
-#kill_pin :
-#   La broche connectée au bouton 'kill'. Ce bouton appellera l'arrêt d'urgence. La présence d'un
-#   paramètre 'analog_range_kill_pin'  fait passer ce paramètre de numérique à analogique.
-#analog_pullup_resistor : 4700
-#   La résistance (en ohms) du pullup attaché au bouton analogique.
-#   La valeur par défaut est de 4700 ohms.
-#analog_range_click_pin :
-#   La plage de résistances du bouton 'entrée'. Les valeurs minimale et maximale de la plage
-#   séparées par des virgules doivent être fournies lors de l'utilisation du bouton analogique.
-#analog_range_back_pin :
-#   La plage de résistances du bouton 'retour'. Les valeurs minimale et maximale de la plage
-#   séparées par des virgules doivent être fournies lors de l'utilisation du bouton analogique.
-#analog_range_up_pin :
-#   La plage de résistances du bouton 'haut'. Les valeurs minimale et maximale de la plage
-#   séparées par des virgules doivent être fournies lors de l'utilisation du bouton analogique.
-#analog_range_down_pin :
-#   La plage de résistances du bouton 'bas'. Les valeurs minimale et maximale de la plage
-#   séparées par des virgules doivent être fournies lors de l'utilisation du bouton analogique.
-#analog_range_kill_pin :
-#   La plage de résistances du bouton 'kill'. Les valeurs minimale et maximale de la plage
-#   séparées par des virgules doivent être fournies lors de l'utilisation du bouton analogique.
+lcd_type:
+#   The type of LCD chip in use. This may be "hd44780", "hd44780_spi",
+#   "aip31068_spi", "st7920", "emulated_st7920", "uc1701", "ssd1306", or
+#   "sh1106".
+#   See the display sections below for information on each type and
+#   additional parameters they provide. This parameter must be
+#   provided.
+#display_group:
+#   The name of the display_data group to show on the display. This
+#   controls the content of the screen (see the "display_data" section
+#   for more information). The default is _default_20x4 for hd44780 or
+#   aip31068_spi displays and _default_16x4 for other displays.
+#menu_timeout:
+#   Timeout for menu. Being inactive this amount of seconds will
+#   trigger menu exit or return to root menu when having autorun
+#   enabled. The default is 0 seconds (disabled)
+#menu_root:
+#   Name of the main menu section to show when clicking the encoder
+#   on the home screen. The defaults is __main, and this shows the
+#   the default menus as defined in klippy/extras/display/menu.cfg
+#menu_reverse_navigation:
+#   When enabled it will reverse up and down directions for list
+#   navigation. The default is False. This parameter is optional.
+#encoder_pins:
+#   The pins connected to encoder. 2 pins must be provided when using
+#   encoder. This parameter must be provided when using menu.
+#encoder_steps_per_detent:
+#   How many steps the encoder emits per detent ("click"). If the
+#   encoder takes two detents to move between entries or moves two
+#   entries from one detent, try changing this. Allowed values are 2
+#   (half-stepping) or 4 (full-stepping). The default is 4.
+#click_pin:
+#   The pin connected to 'enter' button or encoder 'click'. This
+#   parameter must be provided when using menu. The presence of an
+#   'analog_range_click_pin' config parameter turns this parameter
+#   from digital to analog.
+#back_pin:
+#   The pin connected to 'back' button. This parameter is optional,
+#   menu can be used without it. The presence of an
+#   'analog_range_back_pin' config parameter turns this parameter from
+#   digital to analog.
+#up_pin:
+#   The pin connected to 'up' button. This parameter must be provided
+#   when using menu without encoder. The presence of an
+#   'analog_range_up_pin' config parameter turns this parameter from
+#   digital to analog.
+#down_pin:
+#   The pin connected to 'down' button. This parameter must be
+#   provided when using menu without encoder. The presence of an
+#   'analog_range_down_pin' config parameter turns this parameter from
+#   digital to analog.
+#kill_pin:
+#   The pin connected to 'kill' button. This button will call
+#   emergency stop. The presence of an 'analog_range_kill_pin' config
+#   parameter turns this parameter from digital to analog.
+#analog_pullup_resistor: 4700
+#   The resistance (in ohms) of the pullup attached to the analog
+#   button. The default is 4700 ohms.
+#analog_range_click_pin:
+#   The resistance range for a 'enter' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
+#analog_range_back_pin:
+#   The resistance range for a 'back' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
+#analog_range_up_pin:
+#   The resistance range for a 'up' button. Range minimum and maximum
+#   comma-separated values must be provided when using analog button.
+#analog_range_down_pin:
+#   The resistance range for a 'down' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
+#analog_range_kill_pin:
+#   The resistance range for a 'kill' button. Range minimum and
+#   maximum comma-separated values must be provided when using analog
+#   button.
 ```
 
 #### écran hd44780
@@ -3796,6 +3884,29 @@ spi_software_miso_pin:
 #   Définit le nombre de caractères par ligne pour un lcd de type hd44780.
 #   Les valeurs possibles sont 20 (par défaut) et 16. Le nombre de lignes est
 #   fixé à 4.
+...
+```
+
+#### aip31068_spi display
+
+Information on configuring an aip31068_spi display - a very similar to hd44780_spi a 20x04 (20 symbols by 4 lines) display with slightly different internal protocol.
+
+```
+[display]
+lcd_type: aip31068_spi
+latch_pin:
+spi_software_sclk_pin:
+spi_software_mosi_pin:
+spi_software_miso_pin:
+#   The pins connected to the shift register controlling the display.
+#   The spi_software_miso_pin needs to be set to an unused pin of the
+#   printer mainboard as the shift register does not have a MISO pin,
+#   but the software spi implementation requires this pin to be
+#   configured.
+#line_length:
+#   Set the number of characters per line for an hd44780 type lcd.
+#   Possible values are 20 (default) and 16. The number of lines is
+#   fixed to 4.
 ...
 ```
 
@@ -4184,7 +4295,7 @@ adc2:
 #    paramètres ci-dessus.
 ```
 
-## Load Cells
+## Cellules de charge
 
 ### [load_cell]
 
@@ -4196,7 +4307,7 @@ sensor_type:
 #   This must be one of the supported sensor types, see below.
 ```
 
-#### XH711
+#### HX711
 
 This is a 24 bit low sample rate chip using "bit-bang" communications. It is suitable for filament scales.
 
@@ -4268,13 +4379,30 @@ data_ready_pin:
 #gain: 128
 #   Valid gain values are 128, 64, 32, 16, 8, 4, 2, 1
 #   The default is 128
+#pga_bypass: False
+#   Disable the internal Programmable Gain Amplifier. If
+#   True the PGA will be disabled for gains 1, 2, and 4. The PGA is always
+#   enabled for gain settings 8 to 128, regardless of the pga_bypass setting.
+#   If AVSS is used as an input pga_bypass is forced to True.
+#   The default is False.
 #sample_rate: 660
 #   This chip supports two ranges of sample rates, Normal and Turbo. In turbo
-#   mode the chips c internal clock runs twice as fast and the SPI communication
+#   mode the chip's internal clock runs twice as fast and the SPI communication
 #   speed is also doubled.
 #   Normal sample rates: 20, 45, 90, 175, 330, 600, 1000
 #   Turbo sample rates: 40, 90, 180, 350, 660, 1200, 2000
 #   The default is 660
+#input_mux:
+#   Input multiplexer configuration, select a pair of pins to use. The first pin
+#   is the positive, AINP, and the second pin is the negative, AINN. Valid
+#   values are: 'AIN0_AIN1', 'AIN0_AIN2', 'AIN0_AIN3', 'AIN1_AIN2', 'AIN1_AIN3',
+#   'AIN2_AIN3', 'AIN1_AIN0', 'AIN3_AIN2', 'AIN0_AVSS', 'AIN1_AVSS', 'AIN2_AVSS'
+#   and 'AIN3_AVSS'. If AVSS is used the PGA is bypassed and the pga_bypass
+#   setting will be forced to True.
+#   The default is AIN0_AIN1.
+#vref:
+#   The selected voltage reference. Valid values are: 'internal', 'REF0', 'REF1'
+#   and 'analog_supply'. Default is 'internal'.
 ```
 
 ## Support matériel spécifique à une carte
@@ -4438,30 +4566,32 @@ serial:
 
 ### [angle]
 
-Prise en charge du capteur d'angle Hall magnétique pour la lecture des mesures de l'angle de l'arbre du moteur pas à pas à l'aide des puces SPI a1333, as5047d ou tle5012b. Les mesures sont disponibles via le [serveur API](API_Server.md) et l'[outil d'analyse de mouvement](Debugging.md#motion-analysis-and-data-logging). Voir la [référence G-Code](G-Codes.md#angle) pour les commandes disponibles.
+Magnetic hall angle sensor support for reading stepper motor angle shaft measurements using a1333, as5047d, mt6816, mt6826s, or tle5012b SPI chips. The measurements are available via the [API Server](API_Server.md) and [motion analysis tool](Debugging.md#motion-analysis-and-data-logging). See the [G-Code reference](G-Codes.md#angle) for available commands.
 
 ```
 [angle my_angle_sensor]
 sensor_type:
-#   Le type de la puce du capteur magnétique à effet Hall. Les choix disponibles
-#   sont "a1333", "as5047d" et "tle5012b". Ce paramètre doit être spécifié.
+#   The type of the magnetic hall sensor chip. Available choices are
+#   "a1333", "as5047d", "mt6816", "mt6826s", and "tle5012b". This parameter must be
+#   specified.
 #sample_period: 0.000400
-#   La période de requête (en secondes) à utiliser lors des mesures. La valeur par
-#   défaut est de 0.000400 (ce qui correspond à 2500 échantillons par seconde).
+#   The query period (in seconds) to use during measurements. The
+#   default is 0.000400 (which is 2500 samples per second).
 #stepper:
-#   Le nom du pilote moteur pas à pas auquel le capteur d'angle est attaché (ex,
-#   "stepper_x"). La définition de cette valeur active un étalonnage d'angle.
-#   Pour utiliser cette fonction, le paquet Python "numpy" doit être installé.
-#   Par défaut, l'étalonnage d'angle n'est pas activé pour un capteur d'angle.
+#   The name of the stepper that the angle sensor is attached to (eg,
+#   "stepper_x"). Setting this value enables an angle calibration
+#   tool. To use this feature, the Python "numpy" package must be
+#   installed. The default is to not enable angle calibration for the
+#   angle sensor.
 cs_pin:
-#  La broche d'activation SPI du capteur. Ce paramètre doit être fourni.
+#   The SPI enable pin for the sensor. This parameter must be provided.
 #spi_speed:
 #spi_bus:
 #spi_software_sclk_pin:
 #spi_software_mosi_pin:
 #spi_software_miso_pin:
-#   Voir la section "paramètres SPI communs" pour une description des
-#   paramètres ci-dessus.
+#   See the "common SPI settings" section for a description of the
+#   above parameters.
 ```
 
 ## Paramètres communs aux bus
@@ -4493,7 +4623,7 @@ Les paramètres suivants sont généralement disponibles pour les dispositifs ut
 
 La prise en charge actuelle du microcontrôleur de Klipper pour I2C n'est généralement pas tolérante au bruit de ligne. Des erreurs inattendues sur les fils I2C peuvent amener Klipper à générer une erreur d'exécution. La prise en charge de Klipper pour la récupération d'erreur varie selon chaque type de microcontrôleur. Il est généralement recommandé de n'utiliser que des appareils I2C qui se trouvent sur la même carte de circuit imprimé que le microcontrôleur.
 
-La plupart des implémentations de microcontrôleurs Klipper ne prennent en charge qu'une `i2c_speed` de 100000 (*mode standard*, 100kbit/s). Le micro-contrôleur Klipper "Linux" supporte une vitesse de 400000 (*fast mode*, 400kbit/s), mais il doit être [défini dans le système d'exploitation](RPi_microcontroller.md#optional-enabling-i2c) sinon le paramètre `i2c_speed` sera ignoré. Le microcontrôleur Klipper "RP2040" et la famille ATmega AVR supportent un taux de 400000 via le paramètre `i2c_speed`. Tous les autres microcontrôleurs Klipper utilisent un taux de 100000 et ignorent le paramètre `i2c_speed`.
+Most Klipper micro-controller implementations only support an `i2c_speed` of 100000 (*standard mode*, 100kbit/s). The Klipper "Linux" micro-controller supports a 400000 speed (*fast mode*, 400kbit/s), but it must be [set in the operating system](RPi_microcontroller.md#optional-enabling-i2c) and the `i2c_speed` parameter is otherwise ignored. The Klipper "RP2040" micro-controller and ATmega AVR family and some STM32 (F0, G0, G4, L4, F7, H7) support a rate of 400000 via the `i2c_speed` parameter. All other Klipper micro-controllers use a 100000 rate and ignore the `i2c_speed` parameter.
 
 ```
 #i2c_address:

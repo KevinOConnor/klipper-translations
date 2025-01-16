@@ -10,7 +10,7 @@ Zapoznaj się z [rotation distance document](Rotation_Distance.md).
 
 ## Gdzie jest mój port szeregowy?
 
-Aby odnaleźć USB serial port wpisz w terminalu SSH 'ls /dev/serial/by-id/*' Powinieneś zobaczyć :
+Aby odnaleźć port USB wpisz w terminalu SSH 'ls /dev/serial/by-id/*' Powinieneś zobaczyć :
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0

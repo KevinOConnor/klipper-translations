@@ -13,15 +13,46 @@ bias](Probe_Calibrate.md#location-bias-check). It may result in probe operations
 
 > **Съвет:** Уверете се, че [отместванията на сондата X и Y](Config_Reference.md#probe) са правилно зададени, тъй като те оказват голямо влияние върху калибрирането.
 
-1. След като настроите модула [axis_twist_compensation], изпълнете `AXIS_TWIST_COMPENSATION_CALIBRATE`.
+### Basic Usage: X-Axis Calibration
 
-* Съветникът за калибриране ще ви подкани да измерите изместването на сондата Z в няколко точки по протежение на леглото.
-* По подразбиране калибрирането е с 3 точки, но можете да използвате опцията `SAMPLE_COUNT=`, за да използвате друг брой.
+1. After setting up the `[axis_twist_compensation]` module, run:
 
-1. [Настройте изместването Z](Probe_Calibrate.md#calibrating-probe-z-offset)
-1. Извършване на автоматични/базирани на сонда операции за трамбоване на леглото, като например [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust), [Z Tilt Adjust](G-Codes.md#z_tilt_adjust) и др.
-1. Поставете всички оси в изходно положение, след което при необходимост направете [Bed Mesh](Bed_Mesh.md)
-1. Извършете тестово отпечатване, последвано от [фина настройка](Axis_Twist_Compensation.md#fine-tuning) по желание.
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE
+```
+
+This command will calibrate the X-axis by default. - The calibration wizard will prompt you to measure the probe Z offset at several points along the bed. - By default, the calibration uses 3 points, but you can specify a different number with the option: `SAMPLE_COUNT=<value>`
+
+1. **Adjust Your Z Offset:** After completing the calibration, be sure to [adjust your Z offset] (Probe_Calibrate.md#calibrating-probe-z-offset).
+1. **Perform Bed Leveling Operations:** Use probe-based operations as needed, such as:
+
+   - [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust)
+   - [Z Tilt Adjust](G-Codes.md#z_tilt_adjust)
+
+1. **Finalize the Setup:**
+
+   - Home all axes, and perform a [Bed Mesh](Bed_Mesh.md) if necessary.
+   - Run a test print, followed by any [fine-tuning](Axis_Twist_Compensation.md#fine-tuning) if needed.
+
+### For Y-Axis Calibration
+
+The calibration process for the Y-axis is similar to the X-axis. To calibrate the Y-axis, use:
+
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE AXIS=Y
+```
+
+This will guide you through the same measuring process as for the X-axis.
+
+### Automatic Calibration for Both Axes
+
+To perform automatic calibration for both the X and Y axes without manual intervention, use:
+
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE AUTO=True
+```
+
+In this mode, the calibration process will run for both axes automatically.
 
 > **Съвет:** Изглежда, че температурата на леглото и температурата и размерът на дюзата не оказват влияние върху процеса на калибриране.
 

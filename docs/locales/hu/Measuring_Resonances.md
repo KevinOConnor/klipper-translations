@@ -1,12 +1,12 @@
 # Rezonanciák mérése
 
-A Klipper beépített támogatással rendelkezik az ADXL345, MPU-9250 és LIS2DW kompatibilis gyorsulásmérőkhöz, amelyek segítségével a nyomtató különböző tengelyek rezonanciafrekvenciái mérhetők, és a rezonanciák kompenzálására a [bemeneti alakítók](Resonance_Compensation.md) automatikus beállítása használható. Vedd figyelembe, hogy a gyorsulásmérők használata némi forrasztást és krimpelést igényel. Az ADXL345/LIS2DW csatlakoztatható egy Raspberry Pi vagy MCU lap SPI interfészéhez (viszonylag gyorsnak kell lennie). Az MPU-család közvetlenül csatlakoztatható egy Raspberry Pi I2C-interfészéhez, vagy egy MCU-kártya I2C-interfészéhez, amely támogatja a Klipper 400kbit/s *gyors üzemmódot*.
+Klipper has built-in support for the ADXL345, MPU-9250, LIS2DW and LIS3DH compatible accelerometers which can be used to measure resonance frequencies of the printer for different axes, and auto-tune [input shapers](Resonance_Compensation.md) to compensate for resonances. Note that using accelerometers requires some soldering and crimping. The ADXL345 can be connected to the SPI interface of a Raspberry Pi or MCU board (it needs to be reasonably fast). The MPU family can be connected to the I2C interface of a Raspberry Pi directly, or to an I2C interface of an MCU board that supports 400kbit/s *fast mode* in Klipper. The LIS2DW and LIS3DH can be connected to either SPI or I2C with the same considerations as above.
 
 A gyorsulásmérők beszerzésekor vedd figyelembe, hogy számos különböző nyomtatott áramköri lapkakialakítás és különböző klónok léteznek. Ha 5V-os nyomtató MCU-hoz csatlakozik, győződj meg róla, hogy rendelkezel feszültségszabályozóval és szintválasztóval.
 
-Az ADXL345s/LIS2DW-k esetében győződj meg róla, hogy a kártya támogatja az SPI módot (úgy tűnik, hogy néhány kártya keményen I2C-re van konfigurálva az SDO GND-re húzásával).
+For ADXL345s, make sure that the board supports SPI mode (a small number of boards appear to be hard-configured for I2C by pulling SDO to GND).
 
-Az MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500-asok esetében is vannak különböző lapkakialakítások és klónok különböző I2C pull-up ellenállásokkal, amelyeket ki kell egészíteni.
+For MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500s and LIS2DW/LIS3DH there are also a variety of board designs and clones with different I2C pull-up resistors which will need supplementing.
 
 ## MCU-k Klipper I2C *gyors üzemmódú* támogatással
 
@@ -15,6 +15,7 @@ Az MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500-asok esetében is vannak külön
 | Raspberry Pi | 3B+, Pico | 3A, 3A+, 3B, 4 |
 | AVR ATmega | ATmega328p | ATmega32u4, ATmega128, ATmega168, ATmega328, ATmega644p, ATmega1280, ATmega1284, ATmega2560 |
 | AVR AT90 | - | AT90usb646, AT90usb1286 |
+| SAMD | SAMC21G18 | SAMC21G18, SAMD21G18, SAMD21E18, SAMD21J18, SAMD21E15, SAMD51G19, SAMD51J19, SAMD51N19, SAMD51P20, SAME51J19, SAME51N19, SAME54P20 |
 
 ## Telepítési utasítások
 
@@ -170,10 +171,18 @@ sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-
 Ezután a NumPy telepítéséhez a Klipper környezetbe futtassuk a parancsot:
 
 ```
-~/klippy-env/bin/pip install -v numpy
+~/klippy-env/bin/pip install -v "numpy<1.26"
 ```
 
-Vedd figyelembe, hogy a CPU teljesítményétől függően ez *sok* időt vehet igénybe, akár 10-20 percet is. Legyél türelmes, és várd meg a telepítés befejezését. Bizonyos esetekben, ha a kártyán túl kevés RAM van, a telepítés meghiúsulhat, és engedélyezned kell a swapot.
+Note that, depending on the performance of the CPU, it may take *a lot* of time, up to 10-20 minutes. Be patient and wait for the completion of the installation. On some occasions, if the board has too little RAM the installation may fail and you will need to enable swap. Also note the forced version, due to newer versions of NumPY having requirements that may not be satisfied in some klipper python environments.
+
+Once installed please check that no errors show from the command:
+
+```
+~/klippy-env/bin/python -c 'import numpy;'
+```
+
+The correct output should simply be a new line.
 
 #### ADXL345 konfigurálása RPi-vel
 
@@ -253,7 +262,7 @@ Ha az ADXL345 konfigurációját külön fájlban állítod be, ahogy fentebb l�
 
 Indítsd újra a Klippert a `RESTART` paranccsal.
 
-#### LIS2DW sorozat konfigurálása
+#### Configure LIS2DW series over SPI
 
 ```
 [mcu lis]
@@ -545,6 +554,10 @@ Ne feledd, hogy a maximális gyorsulás túl nagy simítás nélkül a `square_c
 hogy helyesen tudd kiszámítani a maximális gyorsulási ajánlásokat. Vedd figyelembe, hogy a `SHAPER_CALIBRATE` parancs már figyelembe veszi a konfigurált `square_corner_velocity` paramétert, és nincs szükség annak explicit megadására.
 
 Ha a formázó újrakalibrálását végzi, és a javasolt formázó konfigurációhoz tartozó simítás majdnem megegyezik az előző kalibrálás során kapott értékkel, ez a lépés kihagyható.
+
+### Unreliable measurements of resonance frequencies
+
+Sometimes the resonance measurements can produce bogus results, leading to the incorrect suggestions for the input shapers. This can be caused by a variety of reasons, including running fans on the toolhead, incorrect position or non-rigid mounting of the accelerometer, or mechanical problems such as loose belts or binding or bumpy axis. Keep in mind that all fans should be disabled for resonance testing, especially the noisy ones, and that the accelerometer should be rigidly mounted on the corresponding moving part (e.g. on the bed itself for the bed slinger, or on the extruder of the printer itself and not the carriage, and some people get better results by mounting the accelerometer on the nozzle itself). As for mechanical problems, the user should inspect if there is any fault that can be fixed with a moving axis (e.g. linear guide rails cleaned up and lubricated and V-slot wheels tension adjusted correctly). If none of that helps, a user may try the other shapers from the produced list besides the one recommended by default.
 
 ### Egyéni tengelyek tesztelése
 

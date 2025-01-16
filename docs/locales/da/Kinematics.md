@@ -1,6 +1,6 @@
 # Kinematics
 
-This document provides an overview of how Klipper implements robot motion (its [kinematics](https://en.wikipedia.org/wiki/Kinematics)). The contents may be of interest to both developers interested in working on the Klipper software as well as users interested in better understanding the mechanics of their machines.
+Dette dokument giver et overblik over hvordan Klipper implementerer robot motions (dens [kinematic](https://en.wikipedia.org/wiki/Kinematics)). Indholdet kan være af interesse for både udviklere, som ønsker at arbede med Klipper softwaren, såvel som brugere som ønsker en bedre forståelse for mekanikken i deres maskiner.
 
 ## Acceleration
 

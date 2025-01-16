@@ -28,7 +28,7 @@
 # temperature probe configuration...
 ```
 
-Вижте [configuration reference](Config_Reference.md#temperature_probe) за повече подробности относно конфигурирането на `temperature_probe`. Препоръчително е да конфигурирате опциите `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z` и `calibration_bed_temp`, тъй като това ще автоматизира някои от стъпките, описани по-долу.
+See the [configuration reference](Config_Reference.md#temperature_probe) for further details on how to configure a `temperature_probe`. It is advised to configure the `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, and `calibration_bed_temp` options, as doing so will automate some of the steps outlined below. If the printer to be calibrated is enclosed, it is strongly recommended to set the `max_validation_temp` option to a value between 100 and 120.
 
 Производителите на вихрови сонди могат да предложат стандартна калибрация на дрейфа, която може да се добави ръчно към опцията `drift_calibration` в раздела `[probe_eddy_current]`. Ако това не е така или ако стандартното калибриране не работи добре във вашата система, модулът `temperature_probe` предлага процедура за ръчно калибриране чрез gcode командата `TEMPERATURE_PROBE_CALIBRATE`.
 

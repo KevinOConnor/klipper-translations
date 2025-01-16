@@ -316,6 +316,25 @@ JavaScript licenses API Веб-сайт Go1.13.8
 | 1 кроковий (200Mhz) | 39 хв |
 | 3 кроковий (200Mhz) | 181 |
 
+### SAME70 step rate benchmark
+
+The following configuration sequence is used on the SAME70:
+
+```
+allocate_oids count=3
+config_stepper oid=0 step_pin=PC18 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0
+config_stepper oid=1 step_pin=PC16 dir_pin=PD10 invert_step=-1 step_pulse_ticks=0
+config_stepper oid=2 step_pin=PC28 dir_pin=PA4 invert_step=-1 step_pulse_ticks=0
+finalize_config crc=0
+```
+
+The test was last run on commit `34e9ea55` with gcc version `arm-none-eabi-gcc (NixOS 10.3-2021.10) 10.3.1` on a SAME70Q20B micro-controller.
+
+| same70 | кліщі |
+| --- | --- |
+| 1 крок | 45 |
+| 3 крок | 190 |
+
 ### AR100 покрокова оцінка
 
 На AR100 використовується послідовність конфігурації (Allwinner A64):
@@ -328,16 +347,16 @@ config_stepper oid=2 step_pin=PL12 dr_pin=PE16 invert_step=-1 step_pulse_ticks=0
 JavaScript licenses API Веб-сайт Go1.13.8
 ```
 
-Тест був останній курс на комітування `08d037c6` з версією Gcc `or1k-linux-musl-gcc (GCC) 9.2.0` на мікроконтролері Allwinner A64-H.
+The test was last run on commit `b7978d37` with gcc version `or1k-linux-musl-gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller.
 
 | АР100 Р_ПІО | кліщі |
 | --- | --- |
 | 1 крок | 85 |
 | 3 крок | 359 |
 
-### RP2040 покрокова оцінка
+### RPxxxx step rate benchmark
 
-На RP2040 використовується наступна послідовність конфігурації:
+The following configuration sequence is used on the RP2040 and RP2350:
 
 ```
 сортувати_oids count=3
@@ -347,12 +366,19 @@ config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 step_pulse_tic
 javascript licenses api веб-сайт go1.13.8
 ```
 
-Тест був останній курс на комітування `59314d99` з версією Gcc `arm-non-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0` на дошці Raspberry Pico.
+The test was last run on commit `f6718291` with gcc version `arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0` on Raspberry Pi Pico and Pico 2 boards.
 
-| рп2040 | кліщі |
+| rp2040 (*) | кліщі |
 | --- | --- |
 | 1 крок | 5 |
 | 3 крок | 22 |
+
+| rp2350 | кліщі |
+| --- | --- |
+| 1 крок | 36 |
+| 3 крок | 169 |
+
+(*) Note that the reported rp2040 ticks are relative to a 12Mhz scheduling timer and do not correspond to its 125Mhz internal ARM processing rate. It is expected that 5 scheduling ticks corresponds to ~47 ARM core cycles and 22 scheduling ticks corresponds to ~224 ARM core cycles.
 
 ### Linux MCU покрокова оцінка
 
@@ -403,7 +429,8 @@ FLOOD 100000 0.0 debug_nop
 | sam4s8c (USB) | 650K | 8d4a5c16 | arm-on-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
 | samd51 (USB) | 864K | 01д2183ф | arm-on-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
 | стм32ф446 (USB) | 870K | 01д2183ф | arm-on-eabi-gcc (Fedora 7.4.0-1.fc30) 7.4.0 |
-| rp2040 (USB) | 873K | п5667193 | arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0 |
+| rp2040 (USB) | 885K | f6718291 | arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0 |
+| rp2350 (USB) | 885K | f6718291 | arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0 |
 
 ## Хост Бенчмарки
 

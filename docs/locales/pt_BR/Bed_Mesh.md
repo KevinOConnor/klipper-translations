@@ -120,7 +120,7 @@ fade_target: 0
 
 ### Configurando a posição de referência zero
 
-Muitas sondas são suscetíveis a “desvios”, ou seja: imprecisões na sondagem introduzidas por calor ou interferência. Isso pode tornar o cálculo do z-offset da sonda um desafio, especialmente em diferentes temperaturas do leito. Como tal, algumas impressoras usam um fim de curso para posicionar o eixo "Z" e uma sonda para calibrar a malha. Nesta configuração é possível deslocar a malha para que a `reference position` (X, Y) aplique ajuste zero. A `reference position` deve ser o local na cama onde um teste de papel [Z_ENDSTOP_CALIBRATE](./Manual_Level#calibrating-a-z-endstop) é realizado. O módulo "bed_mesh" fornece a opção `zero_reference_position` para especificar esta coordenada:
+Many probes are susceptible to "drift", ie: inaccuracies in probing introduced by heat or interference. This can make calculating the probe's z-offset challenging, particularly at different bed temperatures. As such, some printers use an endstop for homing the Z axis and a probe for calibrating the mesh. In this configuration it is possible offset the mesh so that the (X, Y) `reference position` applies zero adjustment. The `reference postion` should be the location on the bed where a [Z_ENDSTOP_CALIBRATE](./Manual_Level.md#calibrating-a-z-endstop) paper test is performed. The bed_mesh module provides the `zero_reference_position` option for specifying this coordinate:
 
 ```
 [bed_mesh]

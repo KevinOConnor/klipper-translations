@@ -39,7 +39,7 @@ Es necesario configurar el servidor web OctoPrint para que se comunique con el s
 Vete a la pestaña Configuración (el icono de llave inglesa en la parte superior de la página). En "Conexión serie" en "Puertos serie adicionales" añadir:
 
 ```
-~/printer_data/comms/klippy.sock
+~/printer_data/comms/klippy.serial
 ```
 
 A continuación, haz clic en "Guardar".

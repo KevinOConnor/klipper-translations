@@ -63,6 +63,8 @@ Nachfolgend sind die Ergebnisse der Stepper-Leistungstests aufgeführt. Die ange
 | AR100 | 3529K | 2507K |
 | STM32F407 | 3652K | 2459K |
 | STM32F446 | 3913K | 2634K |
+| RP2350 | 4167K | 2663K |
+| SAME70 | 6667K | 4737K |
 | STM32H743 | 9091K | 6061K |
 
 Wenn Sie sich nicht sicher sind, welcher Mikrocontroller auf einem bestimmten Board installiert ist, suchen Sie die entsprechende [config-Datei](../config/) und suchen Sie den Namen des Mikrocontrollers in den Kommentaren am Anfang der Datei.

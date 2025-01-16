@@ -13,15 +13,46 @@ bias](Probe_Calibrate.md#location-bias-check). It may result in probe operations
 
 > **提示：**请确保正确设置[Probe X和Y Offset](Config_Reference.md#Probe)，因为它们对校准影响很大。
 
-1. 设置好[AXIS_TWIST_COMPOMENT]模块后，执行`AXIS_TWIST_COMCOMPATION_CALIBRATE`
+### Basic Usage: X-Axis Calibration
 
-* 校准向导将提示您在床上的几个点上测量探头Z偏移量
-* 该校准默认为3分，但您可以使用选项`SAMPLE_COUNT=`来使用不同的数字。
+1. After setting up the `[axis_twist_compensation]` module, run:
 
-1. [调整您的Z offset](Probe_Calibrate.md#calibrating-probe-z-offset)
-1. 执行自动/探针式床铺操作，如[螺旋倾斜调整](G-Codes.md#螺旋倾斜调整)、[Z倾斜调整](G-Codes.md#z_倾斜调整)等
-1. 原点所有轴，然后根据需要执行[Bed Mesh](Bed_Mesh.md)
-1. 执行测试打印，然后根据需要执行任何[fine-tuning](Axis_Twist_Compensation.md#fine-tuning)
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE
+```
+
+This command will calibrate the X-axis by default. - The calibration wizard will prompt you to measure the probe Z offset at several points along the bed. - By default, the calibration uses 3 points, but you can specify a different number with the option: `SAMPLE_COUNT=<value>`
+
+1. **Adjust Your Z Offset:** After completing the calibration, be sure to [adjust your Z offset] (Probe_Calibrate.md#calibrating-probe-z-offset).
+1. **Perform Bed Leveling Operations:** Use probe-based operations as needed, such as:
+
+   - [Screws Tilt Adjust](G-Codes.md#screws_tilt_adjust)
+   - [Z Tilt Adjust](G-Codes.md#z_tilt_adjust)
+
+1. **Finalize the Setup:**
+
+   - Home all axes, and perform a [Bed Mesh](Bed_Mesh.md) if necessary.
+   - Run a test print, followed by any [fine-tuning](Axis_Twist_Compensation.md#fine-tuning) if needed.
+
+### For Y-Axis Calibration
+
+The calibration process for the Y-axis is similar to the X-axis. To calibrate the Y-axis, use:
+
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE AXIS=Y
+```
+
+This will guide you through the same measuring process as for the X-axis.
+
+### Automatic Calibration for Both Axes
+
+To perform automatic calibration for both the X and Y axes without manual intervention, use:
+
+```
+AXIS_TWIST_COMPENSATION_CALIBRATE AUTO=True
+```
+
+In this mode, the calibration process will run for both axes automatically.
 
 > **提示：**床温、喷嘴温度和尺寸似乎对校准过程没有影响。
 

@@ -4,7 +4,7 @@ These instructions assume the software will run on a linux based host running a 
 
 For the purposes of these instructions host relates to the Linux device and mcu relates to the printboard. SBC relates to the term Small Board Computer such as the Raspberry Pi.
 
-## Obtain a Klipper Configuration File
+## Pobierz plik konfiguracyjny Klippera
 
 Most Klipper settings are determined by a "printer configuration file" printer.cfg, that will be stored on the host. An appropriate configuration file can often be found by looking in the Klipper [config directory](../config/) for a file starting with a "printer-" prefix that corresponds to the target printer. The Klipper configuration file contains technical information about the printer that will be needed during the installation.
 
@@ -14,33 +14,33 @@ If no configuration file for the printer can be found, but the type of printer c
 
 It is also possible to define a new printer configuration from scratch. However, this requires significant technical knowledge about the printer and its electronics. It is recommended that most users start with an appropriate configuration file. If creating a new custom printer configuration file, then start with the closest example [config file](../config/) and use the Klipper [config reference](Config_Reference.md) for further information.
 
-## Interacting with Klipper
+## Interakcja z Klipperem
 
-Klipper is a 3d printer firmware, so it needs some way for the user to interact with it.
+Klipper jest wyłącznie oprogramowaniem układowym dla drukarek 3D, dlatego użytkownik potrzebuje oddzielnego interface'u do zarządzania nim.
 
-Currently the best choices are front ends that retrieve information through the [Moonraker web API](https://moonraker.readthedocs.io/) and there is also the option to use [Octoprint](https://octoprint.org/) to control Klipper.
+Obecnie najlepszym wyborem są interface'y użytkownika oparte o Moonraker web API (https://moonraker.readthedocs.io/) Jako kontroler można również wykorzystać OctoPrint (https://octoprint.org/).
 
-The choice is up to the user on what to use, but the underlying Klipper is the same in all cases. We encourage users to research the options available and make an informed decision.
+Wybór interface'u należy do użytkownika, podstawowy Klipper pozostaje taki sam we wszystkich przypadkach. Zachęcamy użytkowników do zapoznania się z dostępnymi opcjami i podjęcia świadomej decyzji.
 
-## Obtaining an OS image for SBC's
+## Uzyskiwanie obrazu systemu operacyjnego dla SBC (komputerów jednopłytkowych).
 
-There are many ways to obtain an OS image for Klipper for SBC use, most depend on what front end you wish to use. Some manafactures of these SBC boards also provide their own Klipper-centric images.
+Istnieje wiele sposobów na uzyskanie obrazu systemu operacyjnego dla Klippera do użytku z komputerami jednopłytkowymi (SBC), a większość z nich zależy od wybranego interfejsu użytkownika. Niektórzy producenci płyt SBC również udostępniają własne obrazy systemowe skoncentrowane na Klipperze.
 
-The two main Moonraker based front ends are [Fluidd](https://docs.fluidd.xyz/) and [Mainsail](https://docs.mainsail.xyz/), the latter of which has a premade install image ["MainsailOS"](http://docs.mainsailOS.xyz), this has the option for Raspberry Pi and some OrangePi varianta.
+Dwa główne interfejsy użytkownika oparte na Moonraker to [Fluidd](https://docs.fluidd.xyz/) oraz [Mainsail](https://docs.mainsail.xyz/). Ten drugi oferuje gotowy obraz instalacyjny ["MainsailOS"](http://docs.mainsailOS.xyz), który jest dostępny dla Raspberry Pi oraz niektórych wariantów OrangePi.
 
-Fluidd can be installed via KIAUH(Klipper Install And Update Helper), which is explained below and is a 3rd party installer for all things Klipper.
+Fluidd można zainstalować za pomocą KIAUH (Klipper Install And Update Helper), co jest opisane poniżej. Jest to narzędzie firm trzecich służące do instalacji i aktualizacji wszystkich komponentów Klippera.
 
-OctoPrint can be installed via the popular OctoPi image or via KIAUH, this process is explained in <OctoPrint.md>
+OctoPrint można zainstalować za pomocą popularnego obrazu OctoPi lub za pomocą KIAUH. Proces ten jest opisany w pliku <OctoPrint.md>
 
-## Installing via KIAUH
+## Instalacja przez KIAUH
 
-Normally you would start with a base image for your SBC, RPiOS Lite for example, or in the case of a x86 Linux device, Ubuntu Server. Please note that Desktop variants are not recommended due to certain helper programs that can stop some Klipper functions working and even mask access to some print boards.
+Zazwyczaj rozpoczyna się od podstawowego obrazu systemu operacyjnego dla SBC, na przykład RPiOS Lite, lub w przypadku urządzenia x86 z Linuxem – Ubuntu Server. Należy pamiętać, że warianty z interfejsem graficznym (Desktop) nie są zalecane ze względu na niektóre programy pomocnicze, które mogą zakłócać działanie niektórych funkcji Klippera, a nawet uniemożliwiać dostęp do niektórych płyt drukarek.
 
-KIAUH can be used to install Klipper and its associated programs on a variety of Linux based systems that run a form of Debian. More information can be found at https://github.com/dw-0/kiauh
+KIAUH można użyć do zainstalowania Klippera i powiązanych programów na różnych systemach opartych na Linuksie, które działają na wersji Debiana. Więcej informacji można znaleźć pod adresem https://github.com/dw-0/kiauh
 
-## Building and flashing the micro-controller
+## Tworzenie zawartości i programowanie mikrokontrolera
 
-To compile the micro-controller code, start by running these commands on your host device:
+Aby skompilować kod mikrokontrolera, zacznij od uruchomienia następujących poleceń na swoim urządzeniu:
 
 ```
 cd ~/klipper/
@@ -61,19 +61,19 @@ Otherwise, the following steps are often used to "flash" the printer control boa
 ls /dev/serial/by-id/*
 ```
 
-It should report something similar to the following:
+Powinien zaraportować coś podobnego do tego:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
 ```
 
-It's common for each printer to have its own unique serial port name. This unique name will be used when flashing the micro-controller. It's possible there may be multiple lines in the above output - if so, choose the line corresponding to the micro-controller. If many items are listed and the choice is ambiguous, unplug the board and run the command again, the missing item will be your print board(see the [FAQ](FAQ.md#wheres-my-serial-port) for more information).
+Wiele drukarek 3D ma swoją unikalną nazwę portu szeregowego. Ta unikalna nazwa będzie używana podczas wgrywania oprogramowania do mikrokontrolera. Może wystąpić sytuacja, w której w powyższym wyniku pojawi się wiele linii – w takim przypadku wybierz linię odpowiadającą mikrokontrolerowi. Jeśli lista jest długa i wybór jest niejednoznaczny, odłącz płytę drukarki i uruchom polecenie ponownie. Brakujący element to właśnie twoja płyta drukarki (więcej informacji znajdziesz w FAQ).
 
-For common micro-controllers with STM32 or clone chips, LPC chips and others it is usual that these need an initial Klipper flash via SD card.
+Dla popularnych mikrokontrolerów z chipami STM32 lub ich klonami, chipami LPC i innymi, zwykle konieczne jest wstępne wgranie oprogramowania Klipper za pomocą karty SD.
 
-When flashing with this method, it is important to make sure that the print board is not connected with USB to the host, due to some boards being able to feed power back to the board and stopping a flash from occuring.
+Podczas wgrywania oprogramowania tą metodą, ważne jest, aby upewnić się, że płyta drukarki nie jest podłączona do hosta za pomocą USB, ponieważ niektóre płyty mogą przesyłać zasilanie z powrotem do mikrokontrolera, co uniemożliwia poprawne przeprowadzenie procesu wgrywania.
 
-For common micro-controllers using Atmega chips, for example the 2560, the code can be flashed with something similar to:
+Dla powszechnych mikrokontrolerów używających chipów Atmega, na przykład 2560, kod można wgrać za pomocą polecenia podobnego do:
 
 ```
 sudo service klipper stop
@@ -93,7 +93,7 @@ sudo service klipper start
 
 It is important to note that RP2040 chips may need to be put into Boot mode before this operation.
 
-## Configuring Klipper
+## Konfiguracja Klippera
 
 The next step is to copy the [printer configuration file](#obtain-a-klipper-configuration-file) to the host.
 
@@ -114,7 +114,7 @@ It's common for each printer to have its own unique name for the micro-controlle
 ls /dev/serial/by-id/*
 ```
 
-It should report something similar to the following:
+Powinien zaraportować coś podobnego do tego:
 
 ```
 /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0

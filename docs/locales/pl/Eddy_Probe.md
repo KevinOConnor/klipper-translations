@@ -1,6 +1,6 @@
-# Eddy Current Inductive probe
+# Czujnik indukcyjny Eddy Current
 
-This document describes how to use an [eddy current](https://en.wikipedia.org/wiki/Eddy_current) inductive probe in Klipper.
+Ten dokument opisuje w jaki sposób używać czujnika indukcyjnego [eddy current](https://en.wikipedia.org/wiki/Eddy_current) z Klipperem.
 
 Currently, an eddy current probe can not be used for Z homing. The sensor can only be used for Z probing.
 
@@ -28,7 +28,7 @@ As with all inductive probes, eddy current probes are subject to significant the
 # temperature probe configuration...
 ```
 
-See the [configuration reference](Config_Reference.md#temperature_probe) for further details on how to configure a `temperature_probe`. It is advised to configure the `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, and `calibration_bed_temp` options, as doing so will automate some of the steps outlined below.
+See the [configuration reference](Config_Reference.md#temperature_probe) for further details on how to configure a `temperature_probe`. It is advised to configure the `calibration_position`, `calibration_extruder_temp`, `extruder_heating_z`, and `calibration_bed_temp` options, as doing so will automate some of the steps outlined below. If the printer to be calibrated is enclosed, it is strongly recommended to set the `max_validation_temp` option to a value between 100 and 120.
 
 Eddy probe manufacturers may offer a stock drift calibration that can be manually added to `drift_calibration` option of the `[probe_eddy_current]` section. If they do not, or if the stock calibration does not perform well on your system, the `temperature_probe` module offers a manual calibration procedure via the `TEMPERATURE_PROBE_CALIBRATE` gcode command.
 

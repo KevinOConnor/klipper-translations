@@ -1,4 +1,4 @@
-# Commands templates
+# Шаблоны команд
 
 Этот документ предоставляет информацию о реализации последовательностей команд G-Code в разделах конфигурации gcode_macro (и аналогичных).
 
@@ -22,24 +22,24 @@ gcode:
 
 ## Добавьте описание своему макросу
 
-To help identify the functionality a short description can be added. Add `description:` with a short text to describe the functionality. Default is "G-Code macro" if not specified. For example:
+Чтобы помочь идентифицировать функциональность, можно добавить краткое описание. Добавьте `description:` с коротким текстом для описания функциональности. По умолчанию это "макрос G-кода", если не указано. Например:
 
 ```
 [gcode_macro blink_led]
-description: Blink my_led one time
+описание: Blink my_led one time
 gcode:
   SET_PIN PIN=my_led VALUE=1
   G4 P2000
   SET_PIN PIN=my_led VALUE=0
 ```
 
-The terminal will display the description when you use the `HELP` command or the autocomplete function.
+Терминал отобразит описание, когда вы воспользуетесь командой `HELP` или функцией автозаполнения.
 
-## Save/Restore state for G-Code moves
+## Сохранение/восстановление состояния для перемещений G-кода
 
 К сожалению, командный язык G-Code может оказаться сложным в использовании. Стандартным механизмом перемещения инструментальной головки является команда `G1` (команда `G0` является псевдонимом для `G1` и может использоваться как взаимозаменяемая с ней). Однако эта команда опирается на "состояние разбора G-кода", установленное командами `M82`, `M83`, `G90`, `G91`, `G92` и предыдущими командами `G1`. При создании макроса G-кода целесообразно всегда явно устанавливать состояние разбора G-кода перед подачей команды `G1`. (В противном случае есть риск, что команда `G1` выполнит нежелательный запрос)
 
-A common way to accomplish that is to wrap the `G1` moves in `SAVE_GCODE_STATE`, `G91`, and `RESTORE_GCODE_STATE`. For example:
+Обычный способ добиться этого - обернуть движения `G1` в `SAVE_GCODE_STATE`, `G91` и `RESTORE_GCODE_STATE`. Например:
 
 ```
 [gcode_macro MOVE_UP]
@@ -50,16 +50,16 @@ gcode:
   RESTORE_GCODE_STATE NAME=my_move_up_state
 ```
 
-The `G91` command places the G-Code parsing state into "relative move mode" and the `RESTORE_GCODE_STATE` command restores the state to what it was prior to entering the macro. Be sure to specify an explicit speed (via the `F` parameter) on the first `G1` command.
+Команда `G91` переводит состояние разбора G-кода в "режим относительного перемещения", а команда `RESTORE_GCODE_STATE` восстанавливает состояние до того, каким оно было до ввода макроса. Обязательно укажите явную скорость (через параметр `F`) в первой команде `G1`.
 
-## Template expansion
+## Расширение шаблона
 
-The gcode_macro `gcode:` config section is evaluated using the Jinja2 template language. One can evaluate expressions at run-time by wrapping them in `{ }` characters or use conditional statements wrapped in `{% %}`. See the [Jinja2 documentation](http://jinja.pocoo.org/docs/2.10/templates/) for further information on the syntax.
+Конфигурационная секция gcode_macro `gcode:` оценивается с помощью шаблонного языка Jinja2. Можно оценивать выражения во время выполнения, обернув их в символы `{ }`, или использовать условные операторы, обернутые в `{% %}`. Более подробную информацию о синтаксисе см. в [документации Jinja2](http://jinja.pocoo.org/docs/2.10/templates/).
 
-An example of a complex macro:
+Пример сложного макроса:
 
 ```
-[gcode_macro clean_nozzle]
+[gcode_macro cleanan_nozzle]
 gcode:
   {% set wipe_count = 8 %}
   SAVE_GCODE_STATE NAME=clean_nozzle_state
@@ -67,25 +67,25 @@ gcode:
   G0 Z15 F300
   {% for wipe in range(wipe_count) %}
     {% for coordinate in [(275, 4),(235, 4)] %}
-      G0 X{coordinate[0]} Y{coordinate[1] + 0.25 * wipe} Z9.7 F12000
+      G0 X{координата[0]} Y{координата[1] + 0.25 * wipe} Z9.7 F12000
     {% endfor %}
   {% endfor %}
   RESTORE_GCODE_STATE NAME=clean_nozzle_state
 ```
 
-### Macro parameters
+### Макропараметры
 
-It is often useful to inspect parameters passed to the macro when it is called. These parameters are available via the `params` pseudo-variable. For example, if the macro:
+Часто бывает полезно проверить параметры, передаваемые макросу при его вызове. Эти параметры доступны через псевдопеременную `params`. Например, если макрос:
 
 ```
 [gcode_macro SET_PERCENT]
 gcode:
-  M117 Now at { params.VALUE|float * 100 }%
+  M117 Теперь при { params.VALUE|float * 100 }%
 ```
 
-were invoked as `SET_PERCENT VALUE=.2` it would evaluate to `M117 Now at 20%`. Note that parameter names are always in upper-case when evaluated in the macro and are always passed as strings. If performing math then they must be explicitly converted to integers or floats.
+если бы он был вызван как `SET_PERCENT VALUE=.2`, то его значение было бы равно `M117 Теперь на 20%`. Обратите внимание, что имена параметров всегда пишутся в верхнем регистре при оценке в макросе и всегда передаются как строки. При выполнении математических операций они должны быть явно преобразованы в целые числа или плавающие.
 
-It's common to use the Jinja2 `set` directive to use a default parameter and assign the result to a local name. For example:
+Обычно в Jinja2 используется директива `set`, чтобы использовать параметр по умолчанию и присвоить результат локальному имени. Например:
 
 ```
 [gcode_macro SET_BED_TEMPERATURE]
@@ -94,17 +94,17 @@ gcode:
   M140 S{bed_temp}
 ```
 
-### The "rawparams" variable
+### Переменная "rawparams"
 
-The full unparsed parameters for the running macro can be access via the `rawparams` pseudo-variable.
+Доступ к полным непарсированным параметрам запущенного макроса можно получить через псевдопеременную `rawparams`.
 
-Note that this will include any comments that were part of the original command.
+Обратите внимание, что при этом будут включены все комментарии, которые были частью исходной команды.
 
-See the [sample-macros.cfg](../config/sample-macros.cfg) file for an example showing how to override the `M117` command using `rawparams`.
+Смотрите файл [sample-macros.cfg](../config/sample-macros.cfg) для примера, показывающего, как переопределить команду `M117` с помощью `rawparams`.
 
-### The "printer" Variable
+### Переменная "принтер"
 
-It is possible to inspect (and alter) the current state of the printer via the `printer` pseudo-variable. For example:
+Через псевдопеременную `printer` можно проверять (и изменять) текущее состояние принтера. Например:
 
 ```
 [gcode_macro slow_fan]
@@ -112,13 +112,13 @@ gcode:
   M106 S{ printer.fan.speed * 0.9 * 255}
 ```
 
-Available fields are defined in the [Status Reference](Status_Reference.md) document.
+Доступные поля определены в документе [Справочник состояния](Status_Reference.md).
 
-Important! Macros are first evaluated in entirety and only then are the resulting commands executed. If a macro issues a command that alters the state of the printer, the results of that state change will not be visible during the evaluation of the macro. This can also result in subtle behavior when a macro generates commands that call other macros, as the called macro is evaluated when it is invoked (which is after the entire evaluation of the calling macro).
+Важно! Макросы сначала оцениваются целиком, и только потом выполняются полученные команды. Если макрос выдает команду, которая изменяет состояние принтера, результаты изменения состояния не будут видны во время оценки макроса. Это также может привести к нечеткому поведению, когда макрос генерирует команды, вызывающие другие макросы, поскольку вызываемый макрос оценивается при его вызове (то есть после полной оценки вызывающего макроса).
 
-By convention, the name immediately following `printer` is the name of a config section. So, for example, `printer.fan` refers to the fan object created by the `[fan]` config section. There are some exceptions to this rule - notably the `gcode_move` and `toolhead` objects. If the config section contains spaces in it, then one can access it via the `[ ]` accessor - for example: `printer["generic_heater my_chamber_heater"].temperature`.
+По соглашению, имя, следующее сразу за `printer`, является именем секции конфигурации. Так, например, `printer.fan` ссылается на объект fan, созданный секцией конфигурации `[fan]`. Из этого правила есть некоторые исключения - в частности, объекты `gcode_move` и `toolhead`. Если секция конфигурации содержит пробелы, то доступ к ней можно получить через аксессор `[ ]` - например: `printer["generic_heater my_chamber_heater"].temperature`.
 
-Note that the Jinja2 `set` directive can assign a local name to an object in the `printer` hierarchy. This can make macros more readable and reduce typing. For example:
+Обратите внимание, что директива Jinja2 `set` может присваивать локальное имя объекту в иерархии `принтер`. Это может сделать макросы более читабельными и сократить количество вводимых символов. Например:
 
 ```
 [gcode_macro QUERY_HTU21D]
@@ -127,45 +127,44 @@ gcode:
     M117 Temp:{sensor.temperature} Humidity:{sensor.humidity}
 ```
 
-## Actions
+## Действия
 
-There are some commands available that can alter the state of the printer. For example, `{ action_emergency_stop() }` would cause the printer to go into a shutdown state. Note that these actions are taken at the time that the macro is evaluated, which may be a significant amount of time before the generated g-code commands are executed.
+Есть несколько команд, которые могут изменять состояние принтера. Например, `{ action_emergency_stop() }` приведет к тому, что принтер перейдет в состояние выключения. Обратите внимание, что эти действия выполняются в момент оценки макроса, что может занять значительное время до выполнения сгенерированных команд g-кода.
 
-Available "action" commands:
+Доступные команды "действия":
 
-- `action_respond_info(msg)`: Write the given `msg` to the /tmp/printer pseudo-terminal. Each line of `msg` will be sent with a "// " prefix.
-- `action_raise_error(msg)`: Abort the current macro (and any calling macros) and write the given `msg` to the /tmp/printer pseudo-terminal. The first line of `msg` will be sent with a "!! " prefix and subsequent lines will have a "// " prefix.
-- `action_emergency_stop(msg)`: Transition the printer to a shutdown state. The `msg` parameter is optional, it may be useful to describe the reason for the shutdown.
-- `action_call_remote_method(method_name)`: Calls a method registered by a remote client. If the method takes parameters they should be provided via keyword arguments, ie: `action_call_remote_method("print_stuff", my_arg="hello_world")`
+- `action_respond_info(msg)`: Записывает заданное `msg` в псевдотерминал /tmp/printer. Каждая строка `msg` будет отправлена с префиксом "//".
+- `action_raise_error(msg)`: Прерывает текущий макрос (и все вызывающие макросы) и записывает заданное `msg` в псевдотерминал /tmp/printer. Первая строка `msg` будет отправлена с префиксом "!!! ", а последующие строки - с префиксом "//".
+- `action_emergency_stop(msg)`: Переводит принтер в состояние выключения. Параметр `msg` необязателен, он может быть полезен для описания причины выключения.
+- `action_call_remote_method(method_name)`: Вызывает метод, зарегистрированный удаленным клиентом. Если метод принимает параметры, они должны быть предоставлены через ключевые аргументы, т.е.: `action_call_remote_method("print_stuff", my_arg="hello_world")`
 
-## Variables
+## Переменные
 
-The SET_GCODE_VARIABLE command may be useful for saving state between macro calls. Variable names may not contain any upper case characters. For example:
+Команда SET_GCODE_VARIABLE может быть полезна для сохранения состояния между вызовами макросов. Имена переменных не должны содержать символов верхнего регистра. Например:
 
 ```
 [gcode_macro start_probe]
 variable_bed_temp: 0
 gcode:
-  # Save target temperature to bed_temp variable
+  # Сохранить целевую температуру в переменной bed_temp
   SET_GCODE_VARIABLE MACRO=start_probe VARIABLE=bed_temp VALUE={printer.heater_bed.target}
-  # Disable bed heater
+  # Отключить нагреватель кровати
   M140
-  # Perform probe
+  # Выполнить зондирование
   PROBE
-  # Call finish_probe macro at completion of probe
+  # Вызов макроса finish_probe по завершении зондирования
   finish_probe
-
 [gcode_macro finish_probe]
 gcode:
-  # Restore temperature
+  # Восстановление температуры
   M140 S{printer["gcode_macro start_probe"].bed_temp}
 ```
 
-Be sure to take the timing of macro evaluation and command execution into account when using SET_GCODE_VARIABLE.
+При использовании SET_GCODE_VARIABLE обязательно учитывайте время выполнения макроса и команды.
 
-## Delayed Gcodes
+## Задержанные G-коды
 
-The [delayed_gcode] configuration option can be used to execute a delayed gcode sequence:
+Опция конфигурации [delayed_gcode] может использоваться для выполнения последовательности gcode с задержкой:
 
 ```
 [delayed_gcode clear_display]
@@ -178,22 +177,22 @@ gcode:
  G1 E50
  G90
  M400
- M117 Load Complete!
+ Загрузка M117 завершена!
  UPDATE_DELAYED_GCODE ID=clear_display DURATION=10
 ```
 
-When the `load_filament` macro above executes, it will display a "Load Complete!" message after the extrusion is finished. The last line of gcode enables the "clear_display" delayed_gcode, set to execute in 10 seconds.
+При выполнении макроса `load_filament` на экране появится сообщение "Load Complete!" после завершения экструзии. Последняя строка gcode включает отложенный_gcode "clear_display", настроенный на выполнение через 10 секунд.
 
-The `initial_duration` config option can be set to execute the delayed_gcode on printer startup. The countdown begins when the printer enters the "ready" state. For example, the below delayed_gcode will execute 5 seconds after the printer is ready, initializing the display with a "Welcome!" message:
+Опция конфигурации `initial_duration` может быть установлена для выполнения delayed_gcode при запуске принтера. Отсчет времени начинается, когда принтер переходит в состояние "готов". Например, приведенный ниже код delayed_gcode будет выполнен через 5 секунд после готовности принтера, инициализируя дисплей сообщением " Добро пожаловать!":
 
 ```
 [delayed_gcode welcome]
 initial_duration: 5.
 gcode:
-  M117 Welcome!
+    M117 Добро пожаловать!
 ```
 
-Its possible for a delayed gcode to repeat by updating itself in the gcode option:
+Отложенный gcode может повториться, обновившись в опции gcode:
 
 ```
 [delayed_gcode report_temp]
@@ -203,40 +202,40 @@ gcode:
   UPDATE_DELAYED_GCODE ID=report_temp DURATION=2
 ```
 
-The above delayed_gcode will send "// Extruder Temp: [ex0_temp]" to Octoprint every 2 seconds. This can be canceled with the following gcode:
+Приведенный выше код delayed_gcode будет отправлять Octoprint сообщение "// Extruder Temp: [ex0_temp]" каждые 2 секунды. Это можно отменить с помощью следующего gcode:
 
 ```
 UPDATE_DELAYED_GCODE ID=report_temp DURATION=0
 ```
 
-## Menu templates
+## Шаблоны меню
 
-If a [display config section](Config_Reference.md#display) is enabled, then it is possible to customize the menu with [menu](Config_Reference.md#menu) config sections.
+Если включен раздел конфигурации [дисплей](Config_Reference.md#display)], то можно настроить меню с помощью разделов конфигурации [меню](Config_Reference.md#menu).
 
-The following read-only attributes are available in menu templates:
+В шаблонах меню доступны следующие атрибуты, доступные только для чтения:
 
-* `menu.width` - element width (number of display columns)
-* `menu.ns` - element namespace
-* `menu.event` - name of the event that triggered the script
-* `menu.input` - input value, only available in input script context
+* `menu.width` - ширина элемента (количество отображаемых колонок)
+* `menu.ns` - пространство имен элемента
+* `menu.event` - имя события, вызвавшего скрипт
+* `menu.input` - значение ввода, доступно только в контексте сценария ввода
 
-The following actions are available in menu templates:
+В шаблонах меню доступны следующие действия:
 
-* `menu.back(force, update)`: will execute menu back command, optional boolean parameters `<force>` and `<update>`.
-   * When `<force>` is set True then it will also stop editing. Default value is False.
-   * When `<update>` is set False then parent container items are not updated. Default value is True.
-* `menu.exit(force)` - will execute menu exit command, optional boolean parameter `<force>` default value False.
-   * When `<force>` is set True then it will also stop editing. Default value is False.
+* `menu.back(force, update)`: выполнит команду возврата к меню, необязательные булевы параметры `<force>` и `<update>`.
+   * Если для `<force>` установлено значение True, то редактирование также будет остановлено. Значение по умолчанию - False.
+   * Если значение `<обновить>` установлено Ложь, то элементы родительского контейнера не обновляются. Значение по умолчанию - Истина.
+* `menu.exit(force)` - выполнит команду выхода из меню, необязательный булевский параметр `<force>` по умолчанию имеет значение Ложь.
+   * Если для `<force>` установлено значение True, то редактирование также будет остановлено. Значение по умолчанию - False.
 
-## Save Variables to disk
+## Сохранить переменные на диске
 
-If a [save_variables config section](Config_Reference.md#save_variables) has been enabled, `SAVE_VARIABLE VARIABLE=<name> VALUE=<value>` can be used to save the variable to disk so that it can be used across restarts. All stored variables are loaded into the `printer.save_variables.variables` dict at startup and can be used in gcode macros. to avoid overly long lines you can add the following at the top of the macro:
+Если включен раздел конфигурации [save_variables](Config_Reference.md#save_variables), то `SAVE_VARIABLE VARIABLE=<имя> VALUE=<значение>` можно использовать для сохранения переменной на диск, чтобы ее можно было использовать при перезапуске. Все сохраненные переменные при запуске загружаются в дикту `printer.save_variables.variables` и могут быть использованы в макросах gcode. Чтобы избежать слишком длинных строк, можно добавить в начало макроса следующее:
 
 ```
 {% set svv = printer.save_variables.variables %}
 ```
 
-As an example, it could be used to save the state of 2-in-1-out hotend and when starting a print ensure that the active extruder is used, instead of T0:
+Например, его можно использовать для сохранения состояния хотэнда 2-in-1-out и при запуске печати убедиться, что используется активный экструдер, а не T0:
 
 ```
 [gcode_macro T1]

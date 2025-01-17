@@ -1,0 +1,1926 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>துவக்க ஏற்றிகள் - Klipper documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_klipper3d/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-VEN1PGNQL4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-VEN1PGNQL4",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEN1PGNQL4"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Klipper documentation" class="md-header__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Klipper documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              துவக்க ஏற்றிகள்
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2 0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh/" hreflang="zh" class="md-select__link">
+                    简体中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh-Hant/" hreflang="zh-Hant" class="md-select__link">
+                    繁體中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/hu/" hreflang="hu" class="md-select__link">
+                    Magyar
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/it/" hreflang="it" class="md-select__link">
+                    Italiano
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/fr/" hreflang="fr" class="md-select__link">
+                    Français
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Klipper documentation" class="md-nav__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    Klipper documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Overview.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features.html" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ.html" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Releases.html" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Changes.html" class="md-nav__link">
+        Configuration Changes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contact.html" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Installation and Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation and Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Installation and Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OctoPrint.html" class="md-nav__link">
+        OctoPrint for Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Configuration Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Reference.html" class="md-nav__link">
+        Configuration reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rotation_Distance.html" class="md-nav__link">
+        Rotation distance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_checks.html" class="md-nav__link">
+        Configuration checks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Bed Level
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bed Level" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Bed Level
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Level.html" class="md-nav__link">
+        Bed leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Delta_Calibrate.html" class="md-nav__link">
+        Delta calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probe_Calibrate.html" class="md-nav__link">
+        Probe calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BLTouch.html" class="md-nav__link">
+        BL-Touch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Manual_Level.html" class="md-nav__link">
+        Manual leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Mesh.html" class="md-nav__link">
+        Bed Mesh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Endstop_Phase.html" class="md-nav__link">
+        Endstop phase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Axis_Twist_Compensation.html" class="md-nav__link">
+        Axis Twist Compensation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_5" type="checkbox" id="__nav_7_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_5">
+          Resonance Compensation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resonance Compensation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_5">
+          <span class="md-nav__icon md-icon"></span>
+          Resonance Compensation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Resonance_Compensation.html" class="md-nav__link">
+        Resonance Compensation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Measuring_Resonances.html" class="md-nav__link">
+        Measuring Resonances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pressure_Advance.html" class="md-nav__link">
+        Pressure advance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../G-Codes.html" class="md-nav__link">
+        G-Codes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" type="checkbox" id="__nav_7_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Command templates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Command templates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Command templates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Command_Templates.html" class="md-nav__link">
+        Commands templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Status_Reference.html" class="md-nav__link">
+        Status reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TMC_Drivers.html" class="md-nav__link">
+        TMC drivers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Multi_MCU_Homing.html" class="md-nav__link">
+        Multiple Micro-controller Homing and Probing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Slicers.html" class="md-nav__link">
+        Slicers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Skew_Correction.html" class="md-nav__link">
+        Skew correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exclude_Object.html" class="md-nav__link">
+        Exclude Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Using_PWM_Tools.html" class="md-nav__link">
+        Using PWM tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Developer Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Code_Overview.html" class="md-nav__link">
+        Code overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kinematics.html" class="md-nav__link">
+        Kinematics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Protocol.html" class="md-nav__link">
+        Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API_Server.html" class="md-nav__link">
+        API server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MCU_Commands.html" class="md-nav__link">
+        MCU commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_protocol.html" class="md-nav__link">
+        CANBUS protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Debugging.html" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Benchmarks.html" class="md-nav__link">
+        Benchmarks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING.html" class="md-nav__link">
+        Contributing to Klipper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Packaging.html" class="md-nav__link">
+        Packaging Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Device Specific Documents
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Device Specific Documents" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Device Specific Documents
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example_Configs.html" class="md-nav__link">
+        Example configurations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDCard_Updates.html" class="md-nav__link">
+        SDCard updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RPi_microcontroller.html" class="md-nav__link">
+        RPi microcontroller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Beaglebone.html" class="md-nav__link">
+        Beaglebone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloaders.html" class="md-nav__link">
+        Bootloaders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloader_Entry.html" class="md-nav__link">
+        Bootloader Entry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS.html" class="md-nav__link">
+        CANBUS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_Troubleshooting.html" class="md-nav__link">
+        CANBUS Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSL1401CL_Filament_Width_Sensor.html" class="md-nav__link">
+        TSL1401CL filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Hall_Filament_Width_Sensor.html" class="md-nav__link">
+        Hall filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Eddy_Probe.html" class="md-nav__link">
+        Eddy Current Inductive probe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ஏ.வி.ஆர் மைக்ரோ-கன்ட்ரோலர்கள்
+  </a>
+  
+    <nav class="md-nav" aria-label="ஏ.வி.ஆர் மைக்ரோ-கன்ட்ரோலர்கள்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atmega2560" class="md-nav__link">
+    Atmega2560
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atmega1280" class="md-nav__link">
+    Atmega1280
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atmega1284p" class="md-nav__link">
+    Atmega1284p
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at90usb1286" class="md-nav__link">
+    AT90USB1286
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atmega168" class="md-nav__link">
+    Atmega168
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sam3-arduino" class="md-nav__link">
+    SAM3 மைக்ரோ-கன்ட்ரோலர்கள் (Arduino காரணமாக)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sam4s" class="md-nav__link">
+    SAM4S மைக்ரோகண்ட்ரோலர் (டூயட் வைஃபை)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samdc21-3-1" class="md-nav__link">
+    SAMDC21 மைக்ரோ-கன்ட்ரோலர்கள் (டூட் 3 டி கருவித்தலை 1 எல்.சி)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samd21-" class="md-nav__link">
+    SAMD21 மைக்ரோ-கன்ட்ரோலர்கள் (ஆர்டுயினோ சீரோ)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samd51-4" class="md-nav__link">
+    SAMD51 மைக்ரோ-கன்ட்ரோலர்கள் (அடாஃப்ரூட் மெட்ரோ-எம் 4 மற்றும் ஒத்த)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stm32f103-" class="md-nav__link">
+    STM32F103 மைக்ரோ-கன்ட்ரோலர்கள் (நீல மாத்திரை சாதனங்கள்)
+  </a>
+  
+    <nav class="md-nav" aria-label="STM32F103 மைக்ரோ-கன்ட்ரோலர்கள் (நீல மாத்திரை சாதனங்கள்)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stm32f103-stm32duino-boottloader" class="md-nav__link">
+    STM32F103 STM32Duino Boottloader உடன்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hid-stm32f103" class="md-nav__link">
+    HID துவக்க ஏற்றியுடன் STM32F103
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#msc-stm32f103stm32f072" class="md-nav__link">
+    MSC துவக்க ஏற்றி உடன் STM32F103/STM32F072
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canboot-boothloader-stm32f103stm32f0x2" class="md-nav__link">
+    CANBOOT BOOTHLOADER உடன் STM32F103/STM32F0X2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stm32f4-skr-pro-11" class="md-nav__link">
+    STM32F4 மைக்ரோ-கன்ட்ரோலர்கள் (SKR PRO 1.1)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1768" class="md-nav__link">
+    எல்பிசி 1768 மைக்ரோகண்ட்ரோலர் (ச்மூத்த்போர்டு)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ராச்பெர்ரி பையில் ஓபன்ஓக்ட் இயங்குகிறது
+  </a>
+  
+    <nav class="md-nav" aria-label="ராச்பெர்ரி பையில் ஓபன்ஓக்ட் இயங்குகிறது">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openocd" class="md-nav__link">
+    OpenOCD ஐ உள்ளமைக்கவும்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ராச்பெர்ரி பை இலக்கு சிப்பிற்கு கம்பி
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openocd_1" class="md-nav__link">
+    OpenOCD ஐ இயக்கவும்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openocd-gdb" class="md-nav__link">
+    OpenOCD மற்றும் GDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/locales/ta/Bootloaders.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="_1">துவக்க ஏற்றிகள்<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>இந்த ஆவணம் கிளிப்பர் ஆதரிக்கும் மைக்ரோகண்ட்ரோலர்களில் காணப்படும் பொதுவான துவக்க ஏற்றி பற்றிய தகவல்களை வழங்குகிறது.</p>
+<p>துவக்க ஏற்றி 3 வது தரப்பு மென்பொருளாகும், இது முதலில் இயக்கப்படும் போது மைக்ரோ-கன்ட்ரோலரில் இயங்குகிறது. சிறப்பு வன்பொருள் தேவையில்லாமல் மைக்ரோ-கன்ட்ரோலருக்கு ஒரு புதிய பயன்பாட்டை (எ.கா., கிளிப்பர்) ஒளிரச் செய்ய இது பொதுவாகப் பயன்படுத்தப்படுகிறது. துரதிர்ச்டவசமாக, மைக்ரோ-கன்ட்ரோலரை ஒளிரச் செய்வதற்கு தொழில் பரந்த தரநிலை இல்லை, அல்லது அனைத்து மைக்ரோ-கன்ட்ரோலர்களிலும் செயல்படும் ஒரு நிலையான துவக்க ஏற்றி இல்லை. மோசமான சேதி என்னவென்றால், ஒவ்வொரு துவக்க ஏற்றுதலுக்கும் ஒரு பயன்பாட்டை ஒளிரச் செய்ய வெவ்வேறு படிகள் தேவைப்படுவது பொதுவானது.</p>
+<p>ஒரு துவக்க ஏற்றியை ஒரு மைக்ரோ-கன்ட்ரோலருக்கு ஒளிரச் செய்ய முடிந்தால், பொதுவாக ஒரு பயன்பாட்டை ஒளிரச் செய்ய அந்த பொறிமுறையையும் பயன்படுத்தலாம், ஆனால் இதைச் செய்யும்போது கவனக்குறைவாக துவக்க ஏற்றியை அகற்றலாம். இதற்கு நேர்மாறாக, ஒரு துவக்க ஏற்றி பொதுவாக ஒரு பயனரை ஒரு பயன்பாட்டை ஒளிரச் செய்ய மட்டுமே அனுமதிக்கும். எனவே ஒரு பயன்பாட்டை சாத்தியமான இடங்களில் ஒளிரச் செய்ய துவக்க ஏற்றி பயன்படுத்த பரிந்துரைக்கப்படுகிறது.</p>
+<p>இந்த ஆவணம் பொதுவான துவக்க ஏற்றிகள், துவக்க ஏற்றியை ஒளிரச் செய்ய தேவையான படிகள் மற்றும் ஒரு பயன்பாட்டை ஒளிரச் செய்ய தேவையான படிகளை விவரிக்க முயற்சிக்கிறது. இந்த ஆவணம் அதிகாரப்பூர்வ குறிப்பு அல்ல; கிளிப்பர் உருவாக்குபவர்கள் குவித்த பயனுள்ள தகவல்களின் தொகுப்பாக இது கருதப்படுகிறது.</p>
+<h2 id="-">ஏ.வி.ஆர் மைக்ரோ-கன்ட்ரோலர்கள்<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<p>பொதுவாக, 8-பிட் அட்மெல் அட்மகா மைக்ரோ-கன்ட்ரோலர்களில் துவக்க ஏற்றிகள் மற்றும் ஒளிரும் நடைமுறைகளுக்கு ARDUINO திட்டம் ஒரு நல்ல குறிப்பு ஆகும். குறிப்பாக, "போர்டுகள்.</p>
+<p>ஒரு துவக்க ஏற்றியை ஒளிரச் செய்ய, ஏ.வி.ஆர் சில்லுகளுக்கு வெளிப்புற வன்பொருள் ஒளிரும் கருவி தேவைப்படுகிறது (இது SPI ஐப் பயன்படுத்தி சிப்புடன் தொடர்பு கொள்கிறது). இந்த கருவியை வாங்கலாம் (எடுத்துக்காட்டாக, "ஏ.வி.ஆர் ஐ.எச்.பி", "ஆர்டுயினோ ஐ.எச்.பி" அல்லது "யூ.எச்.பி டைனி ஐ.எச்.பி" க்கான வலைத் தேடலைச் செய்யுங்கள்). ஏ.வி.ஆர் துவக்க ஏற்றியை ஒளிரச் செய்ய மற்றொரு அர்டுயினோ அல்லது ராச்பெர்ரி பைவைப் பயன்படுத்தவும் முடியும் (எடுத்துக்காட்டாக, "ராச்பெர்ரி பை பயன்படுத்தி ஏ.வி.ஆர் நிரல்" என்பதற்கான வலைத் தேடலைச் செய்யுங்கள்). கீழே உள்ள எடுத்துக்காட்டுகள் "ஏ.வி.ஆர் ஐ.எச்.பி எம்.கே 2" வகை சாதனம் பயன்பாட்டில் இருப்பதாகக் கருதி எழுதப்பட்டுள்ளன.</p>
+<p>"அவ்ர்தூட்" நிரல் என்பது ஆட்மெகா சில்லுகளை ஒளிரச் செய்யப் பயன்படுத்தப்படும் மிகவும் பொதுவான கருவியாகும் (துவக்க ஏற்றி ஒளிரும் மற்றும் பயன்பாட்டு ஒளிரும் இரண்டும்).</p>
+<h3 id="atmega2560">Atmega2560<a class="headerlink" href="#atmega2560" title="Permanent link">&para;</a></h3>
+<p>இந்த சிப் பொதுவாக "அர்டுயினோ மெகா" இல் காணப்படுகிறது மற்றும் 3D அச்சுப்பொறி பலகைகளில் மிகவும் பொதுவானது.</p>
+<p>துவக்க ஏற்றி ஃபிளாச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்துங்கள்:</p>
+<div class="highlight"><pre><span></span><code>wget &#39;https://github.com/arduino/arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/stk500v2/stk500boot_v2_mega2560.hex&#39;
+
+ avrdude -cavrispv2 -patmega2560 -p/dev/ttyacm0 -b115200 -e -u -u lock: w: 0x3f: m -u efuse: w: 0xfd: m -u hfuse: w: 0xd8: m -u lfuse: w: 0xff: மீ
+ avrdude -cavrispv2 -patmega2560 -p/dev/ttyacm0 -b115200 -u ஃப்ளாச்: W: STK500BOOT_V2_MEGA2560.hex
+ avrdude -cavrispv2 -patmega2560 -p/dev/ttyacm0 -b115200 -u lock: w: 0x0f: m
+</code></pre></div>
+
+<p>ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>avrdude -cwiring -patmega2560 -p/dev/ttyacm0 -b115200 -d -uflash: w: out/klipper.elf.hex: i
+</code></pre></div>
+
+<h3 id="atmega1280">Atmega1280<a class="headerlink" href="#atmega1280" title="Permanent link">&para;</a></h3>
+<p>இந்த சிப் பொதுவாக "அர்டுயினோ மெகா" இன் முந்தைய பதிப்புகளில் காணப்படுகிறது.</p>
+<p>துவக்க ஏற்றி ஃபிளாச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்துங்கள்:</p>
+<div class="highlight"><pre><span></span><code>wget &#39;https://github.com/arduino/arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/atmega/atmegaboot_168_atmega1280.hex&#39;
+
+ avrdude -cavrispv2 -patmega1280 -p/dev/ttyacm0 -b115200 -e -u -u lock: w: 0x3f: m -u efuse: w: 0xf5: m -u hfuse: w: 0xda: m -u lfuse: w: 0xff: மீ
+ avrdude -cavrispv2 -patmega1280 -p/dev/ttyacm0 -b115200 -u ஃப்ளாச்: W: atmegaboot_168_atmega1280.hex
+ avrdude -cavrispv2 -patmega1280 -p/dev/ttyacm0 -b115200 -u lock: w: 0x0f: m
+</code></pre></div>
+
+<p>ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>avrdude -carduino -patmega1280 -p/dev/ttyacm0 -b57600 -d -uflash: w: out/klipper.elf.hex: i
+</code></pre></div>
+
+<h3 id="atmega1284p">Atmega1284p<a class="headerlink" href="#atmega1284p" title="Permanent link">&para;</a></h3>
+<p>இந்த சிப் பொதுவாக "மெல்சி" பாணி 3D அச்சுப்பொறி பலகைகளில் காணப்படுகிறது.</p>
+<p>துவக்க ஏற்றி ஃபிளாச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்துங்கள்:</p>
+<div class="highlight"><pre><span></span><code>wget &#39;https://github.com/lauszus/sanguina/raw/1.0.2/bootloaders/optiboot/optiboot_atmega1284p.hex&#39;
+
+ avrdude -cavrispv2 -patmega1284p -p/dev/ttyacm0 -b115200 -e -u -u lock: w: 0x3f: m -u efuse: w: 0xfd: m -u hfuse: w: 0xde: m -u lfuse: w: 0xff: மீ
+ avrdude -cavrispv2 -patmega1284p -p/dev/ttyacm0 -b115200 -u ஃப்ளாச்: W: optiboot_atmega1284p.hex
+ avrdude -cavrispv2 -patmega1284p -p/dev/ttyacm0 -b115200 -u lock: w: 0x0f: m
+</code></pre></div>
+
+<p>ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>avrdude -carduino -patmega1284p -p/dev/ttyacm0 -b115200 -d -uflash: w: out/klipper.elf.hex: i
+</code></pre></div>
+
+<p>57600 என்ற பாட் வீதத்தைப் பயன்படுத்தும் துவக்க ஏற்றி மூலம் பல "மெல்சி" பாணி பலகைகள் முன்பே ஏற்றப்பட்டுள்ளன என்பதை நினைவில் கொள்க. இந்த விசயத்தில், ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>avrdude -carduino -patmega1284p -p/dev/ttyacm0 -b57600 -d -uflash: w: out/klipper.elf.hex: i
+</code></pre></div>
+
+<h3 id="at90usb1286">AT90USB1286<a class="headerlink" href="#at90usb1286" title="Permanent link">&para;</a></h3>
+<p>இந்த ஆவணம் AT90USB1286 க்கு ஒரு துவக்க ஏற்றியை ஒளிரச் செய்வதற்கான முறையை மறைக்காது அல்லது இந்த சாதனத்திற்கு பொதுவான பயன்பாட்டை ஒளிரச் செய்யாது.</p>
+<p>Pjrc.com இலிருந்து டீன் ஏச் ++ சாதனம் தனியுரிம துவக்க ஏற்றி மூலம் வருகிறது. இதற்கு <a href="https://github.com/paulstoffregen/teensy_loader_cli">https://github.com/paulstoffregen/teensy_loader_cli</a> இலிருந்து தனிப்பயன் ஒளிரும் கருவி தேவைப்படுகிறது. இதுபோன்ற ஒன்றைப் பயன்படுத்தி ஒரு பயன்பாட்டை ஒளிரச் செய்யலாம்:</p>
+<div class="highlight"><pre><span></span><code>teensy_loader_cli --mcu = at90usb1286 out/klipper.elf.hex -v
+</code></pre></div>
+
+<h3 id="atmega168">Atmega168<a class="headerlink" href="#atmega168" title="Permanent link">&para;</a></h3>
+<p>ATMEGA168 வரையறுக்கப்பட்ட ஃபிளாச் இடத்தைக் கொண்டுள்ளது. துவக்க ஏற்றி பயன்படுத்தினால், ஆப்டிபூட் துவக்க ஏற்றி பயன்படுத்த பரிந்துரைக்கப்படுகிறது. அந்த துவக்க ஏற்றி போன்ற ஒன்றைப் பயன்படுத்துங்கள்:</p>
+<div class="highlight"><pre><span></span><code>wget &#39;https://github.com/arduino/arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega168.hex&#39;
+
+ avrdude -cavrispv2 -patmega168 -p/dev/ttyacm0 -b115200 -e -u -u -u lock: w: 0x3f: m -u efuse: w: 0x04: m -u hfuse: w: 0xdd: m -u lfus: W: 0xff: மீ
+ avrdude -cavrispv2 -patmega168 -p/dev/ttyacm0 -b115200 -u ஃப்ளாச்: W: optiboot_atmega168.hex
+ avrdude -cavrispv2 -patmega168 -p/dev/ttyacm0 -b115200 -u lock: w: 0x0f: m
+</code></pre></div>
+
+<p>ஆப்டிபூட் துவக்க ஏற்றி வழியாக ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>avrdude -carduino -patmega168 -p/dev/ttyacm0 -b115200 -d -uflash: w: out/klipper.elf.hex: i
+</code></pre></div>
+
+<h2 id="sam3-arduino">SAM3 மைக்ரோ-கன்ட்ரோலர்கள் (Arduino காரணமாக)<a class="headerlink" href="#sam3-arduino" title="Permanent link">&para;</a></h2>
+<p>SAM3 MCU உடன் துவக்க ஏற்றி பயன்படுத்துவது பொதுவானதல்ல. சிப்பில் ஒரு ரோம் உள்ளது, இது ஃபிளாச் 3.3 வி சீரியல் போர்ட்டிலிருந்து அல்லது யூ.எச்.பி.</p>
+<p>ROM ஐ இயக்க, மீட்டமைப்பின் போது "அழித்தல்" முள் அதிகமாக உள்ளது, இது ஃபிளாச் உள்ளடக்கங்களை அழிக்கிறது, மேலும் ரோம் இயங்குகிறது. ஒரு ஆர்டுயினோவில், "புரோகிராமிங் யூ.எச்.பி துறைமுகம்" (மின்சார விநியோகத்திற்கு மிக நெருக்கமான யூ.எச்.பி போர்ட்) இல் 1200 என்ற பாட் வீதத்தை அமைப்பதன் மூலம் இந்த வரிசையை நிறைவேற்ற முடியும்.</p>
+<p><a href="https://github.com/shumatech/bossa">https://github.com/shumatech/bossa</a> இல் உள்ள குறியீட்டை SAM3 ஐ நிரல் செய்ய பயன்படுத்தலாம். பதிப்பு 1.9 அல்லது அதற்குப் பிறகு பயன்படுத்த பரிந்துரைக்கப்படுகிறது.</p>
+<p>ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>bosac -u -p/dev/ttyacm0 -a -e -w out/klipper.bin -v -b
+ bosac -u -p /dev /ttyacm0 -r
+</code></pre></div>
+
+<h2 id="sam4s">SAM4S மைக்ரோகண்ட்ரோலர் (டூயட் வைஃபை)<a class="headerlink" href="#sam4s" title="Permanent link">&para;</a></h2>
+<p>SAM4 MCU உடன் துவக்க ஏற்றி பயன்படுத்துவது பொதுவானதல்ல. சிப்பில் ஒரு ரோம் உள்ளது, இது ஃபிளாச் 3.3 வி சீரியல் போர்ட்டிலிருந்து அல்லது யூ.எச்.பி.</p>
+<p>ROM ஐ இயக்க, மீட்டமைப்பின் போது "அழித்தல்" முள் அதிகமாக உள்ளது, இது ஃபிளாச் உள்ளடக்கங்களை அழிக்கிறது, மேலும் ரோம் இயங்குகிறது.</p>
+<p><a href="https://github.com/shumatech/bossa">https://github.com/shumatech/bossa</a> இல் உள்ள குறியீட்டை SAM4 ஐ நிரல் செய்ய பயன்படுத்தலாம். <code>1.8.0</code> அல்லது அதற்கு மேற்பட்ட பதிப்பைப் பயன்படுத்துவது தேவை.</p>
+<p>ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>bosac --port =/dev/ttyacm0 -u -u -e -w -v -r out/klipper.bin
+</code></pre></div>
+
+<h2 id="samdc21-3-1">SAMDC21 மைக்ரோ-கன்ட்ரோலர்கள் (டூட் 3 டி கருவித்தலை 1 எல்.சி)<a class="headerlink" href="#samdc21-3-1" title="Permanent link">&para;</a></h2>
+<p>SAMC21 கை சீரியல் கம்பி பிழைத்திருத்த (SWD) இடைமுகம் வழியாக ஒளிரும். இது பொதுவாக ஒரு பிரத்யேக SWD வன்பொருள் டாங்கிள் மூலம் செய்யப்படுகிறது. மாற்றாக, ஒருவர் [ஓபன்ஓசிடி உடன் ராச்பெர்ரி பை] (#ரன்னிங்-ஓபெனோக்ட்-ஆன்-தி-ராச்பெர்ரி-பிஐ) பயன்படுத்தலாம்.</p>
+<p>SAMC21 உடன் OpenOCD ஐப் பயன்படுத்தும் போது, மற்ற நோக்கங்களுக்காக SWD ஊசிகளைப் பயன்படுத்தினால், முதலில் சிப்பை குளிர் சொருகும் பயன்முறையில் வைக்க கூடுதல் படிகள் எடுக்கப்பட வேண்டும். ராச்பெர்ரி பை மீது OpenOCD ஐப் பயன்படுத்தினால், OpenOCD ஐத் தொடங்குவதற்கு முன் பின்வரும் கட்டளைகளை இயக்குவதன் மூலம் இதைச் செய்யலாம்.</p>
+<div class="highlight"><pre><span></span><code>SWCLK = 25
+ Swdio = 24
+ Srst = 18
+
+ எதிரொலி &quot;SWCLK மற்றும் SRST ஊசிகளை ஏற்றுமதி செய்தல்.&quot;
+ எதிரொலி $ swclk&gt;/sys/class/gpio/ஏற்றுமதி
+ எதிரொலி $ srst&gt;/sys/class/gpio/ஏற்றுமதி
+ எதிரொலி &quot;அவுட்&quot;&gt;/sys/class/gpio/gpio $ swclk/திசை
+ எதிரொலி &quot;அவுட்&quot;&gt;/sys/class/gpio/gpio $ srst/dicersion
+
+ எக்கோ &quot;SWCLK குறைந்த மற்றும் துடிக்கும் SRST ஐ அமைத்தல்.&quot;
+ எதிரொலி &quot;0&quot;&gt;/sys/class/gpio/gpio $ swclk/value
+ எதிரொலி &quot;0&quot;&gt;/sys/class/gpio/gpio $ srst/value
+ எதிரொலி &quot;1&quot;&gt;/sys/class/gpio/gpio $ srst/value
+
+ எதிரொலி &quot;திட்டமிடப்படாத SWCLK மற்றும் SRST PINS.&quot;
+ எதிரொலி $ swclk&gt;/sys/class/gpio/Unpport
+ எதிரொலி $ srst&gt;/sys/class/gpio/Unpport
+</code></pre></div>
+
+<p>OpenOCD உடன் ஒரு நிரலை ஒளிரச் செய்ய பின்வரும் சிப் கட்டமைப்பைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>சான்று [இலக்கு/AT91SAMDXX.CFG ஐக் கண்டறியவும்]
+</code></pre></div>
+
+<p>ஒரு நிரலைப் பெறுங்கள்; உதாரணமாக, இந்த சிப்பிற்காக கிளிப்பரை உருவாக்க முடியும். ஓபன்ஓசிடி கட்டளைகளுடன் ஃபிளாச்:</p>
+<div class="highlight"><pre><span></span><code>at91SAMD சிப்-ராச்
+ AT91SAMD துவக்க ஏற்றி 0
+ நிரல் வெளியே/klipper.elf சரிபார்க்கவும்
+</code></pre></div>
+
+<h2 id="samd21-">SAMD21 மைக்ரோ-கன்ட்ரோலர்கள் (ஆர்டுயினோ சீரோ)<a class="headerlink" href="#samd21-" title="Permanent link">&para;</a></h2>
+<p>SAMD21 துவக்க ஏற்றி கை சீரியல் கம்பி பிழைத்திருத்த (SWD) இடைமுகம் வழியாக ஒளிரும். இது பொதுவாக ஒரு பிரத்யேக SWD வன்பொருள் டாங்கிள் மூலம் செய்யப்படுகிறது. மாற்றாக, ஒருவர் [ஓபன்ஓசிடி உடன் ராச்பெர்ரி பை] (#ரன்னிங்-ஓபெனோக்ட்-ஆன்-தி-ராச்பெர்ரி-பிஐ) பயன்படுத்தலாம்.</p>
+<p>OpenOCD உடன் துவக்க ஏற்றி ஒளிரச் செய்ய பின்வரும் சிப் உள்ளமைவைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>சான்று [இலக்கு/AT91SAMDXX.CFG ஐக் கண்டறியவும்]
+</code></pre></div>
+
+<p>ஒரு துவக்க ஏற்றியைப் பெறுங்கள் - எடுத்துக்காட்டாக:</p>
+<div class="highlight"><pre><span></span><code>wget &#39;https://github.com/arduino/arduinocore-samd/raw/1.8.3/bootloaders/zero/samd21_sam_ba.bin&#39;
+</code></pre></div>
+
+<p>ஓபன்ஓசிடி கட்டளைகளுடன் ஃபிளாச் இதுபோன்றது:</p>
+<div class="highlight"><pre><span></span><code>AT91SAMD துவக்க ஏற்றி 0
+ நிரல் samd21_sam_ba.bin சரிபார்க்கவும்
+</code></pre></div>
+
+<p>SAMD21 இல் மிகவும் பொதுவான துவக்க ஏற்றி "Arduino பூச்சியத்தில்" காணப்படுகிறது. இது 8kib துவக்க ஏற்றி பயன்படுத்துகிறது (பயன்பாடு 8kib இன் தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும்). மீட்டமை பொத்தானை இருமுறை சொடுக்கு செய்வதன் மூலம் இந்த துவக்க ஏற்றியை உள்ளிடலாம். ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>bosac -u -u -p/dev/ttyacm0 --offset = 0x2000 -w out/klipper.bin -v -b -r
+</code></pre></div>
+
+<p>இதற்கு நேர்மாறாக, "Arduino M0" 16kib துவக்க ஏற்றியைப் பயன்படுத்துகிறது (பயன்பாடு 16kib இன் தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும்). இந்த துவக்க ஏற்றியில் ஒரு பயன்பாட்டை ஒளிரச் செய்ய, மைக்ரோ -கன்ட்ரோலரை மீட்டமைத்து, துவக்கத்தின் முதல் சில நொடிகளில் ஃபிளாச் கட்டளையை இயக்கவும் - இது போன்றது:</p>
+<div class="highlight"><pre><span></span><code>avrdude -c stk500v2 -p atmega2560 -p/dev/ttyacm0 -u -uflash: w: out/klipper.elf.hex: i
+</code></pre></div>
+
+<h2 id="samd51-4">SAMD51 மைக்ரோ-கன்ட்ரோலர்கள் (அடாஃப்ரூட் மெட்ரோ-எம் 4 மற்றும் ஒத்த)<a class="headerlink" href="#samd51-4" title="Permanent link">&para;</a></h2>
+<p>SAMD21 ஐப் போலவே, SAMD51 துவக்க ஏற்றி கை சீரியல் கம்பி பிழைத்திருத்த (SWD) இடைமுகம் வழியாக ஒளிரும். [ராச்பெர்ரி பை மீது ஓபன்ஓசிடி] (#ரன்னிங்-ஓபெனோக்ட்-ஆன்-தி-ராச்பெர்ரி-பிஐ) உடன் ஒரு துவக்க ஏற்றியை ஒளிரச் செய்ய பின்வரும் சிப் கட்டமைப்பைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>சான்று [இலக்கு/atsame5x.cfg ஐக் கண்டறியவும்]
+</code></pre></div>
+
+<p>ஒரு துவக்க ஏற்றியைப் பெறுங்கள் - பல துவக்க ஏற்றிகள் <a href="https://github.com/adafruit/uf2-samdx1/releases/latest">https://github.com/adafruit/uf2-samdx1/releases/latest</a> இலிருந்து கிடைக்கின்றன. உதாரணமாக:</p>
+<div class="highlight"><pre><span></span><code>wget &#39;https://github.com/adafruit/uf2-samdx1/relaises/download/v3.7.0/bootloader-isybitsy_m4-v3.7.0.bin&#39;
+</code></pre></div>
+
+<p>ஓபன்ஓசிடி கட்டளைகளுடன் ஃபிளாச் இதுபோன்றது:</p>
+<div class="highlight"><pre><span></span><code>AT91SAMD துவக்க ஏற்றி 0
+ நிரல் பூட்ட்லோடர்-ஐடிபிட்சி_எம் 4-வி 3.7.0.bin சரிபார்க்கவும்
+ AT91SAMD துவக்க ஏற்றி 16384
+</code></pre></div>
+
+<p>SAMD51 16KIB துவக்க ஏற்றியைப் பயன்படுத்துகிறது (பயன்பாடு 16KIB இன் தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும்). ஒரு பயன்பாட்டை ஒளிரச் செய்ய இதுபோன்ற ஒன்றைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code>bosac -u -u -p/dev/ttyacm0 --offset = 0x4000 -w out/klipper.bin -v -b -r
+</code></pre></div>
+
+<h2 id="stm32f103-">STM32F103 மைக்ரோ-கன்ட்ரோலர்கள் (நீல மாத்திரை சாதனங்கள்)<a class="headerlink" href="#stm32f103-" title="Permanent link">&para;</a></h2>
+<p>STM32F103 சாதனங்களில் ஒரு ரோம் உள்ளது, இது ஒரு துவக்க ஏற்றி அல்லது பயன்பாட்டை 3.3V சீரியல் வழியாக ஒளிரச் செய்யலாம். பொதுவாக ஒருவர் PA10 (MCU RX) மற்றும் PA9 (MCU TX) ஊசிகளை 3.3V UART அடாப்டருக்கு கம்பி செய்வார். ROM ஐ அணுக, ஒருவர் "பூட் 0" முள் உயரமாகவும், "துவக்க 1" முள் குறைவாகவும், பின்னர் சாதனத்தை மீட்டமைக்க வேண்டும். "STM32flash" தொகுப்பு பின்னர் சாதனத்தை ஒளிரச் செய்ய பயன்படுத்தப்படலாம்:</p>
+<div class="highlight"><pre><span></span><code>STM32flash -in ut/clipper.bin -in -g 0/virgins0
+</code></pre></div>
+
+<p>3.3 வி சீரியலுக்கு ஒருவர் ராச்பெர்ரி பி.ஐ.யைப் பயன்படுத்துகிறார் என்றால், எச்.டி.எம் 32 ஃப்ளாச் நெறிமுறை ஒரு தொடர் சமநிலை பயன்முறையைப் பயன்படுத்துகிறது, இது ராச்பெர்ரி பியின் "மினி யுஆர்ட்" ஆதரிக்காது. ராச்பெர்ரி பை சி.பி.ஐ.ஓ ஊசிகளில் முழு யுஆர்ட்டை இயக்குவது குறித்த விவரங்களுக்கு <a href="https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts">https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts</a> ஐப் பார்க்கவும்.</p>
+<p>ஒளிரும் பிறகு, "பூட் 0" மற்றும் "துவக்க 1" இரண்டையும் குறைவாக அமைக்கவும், இதனால் எதிர்காலம் ஃப்ளாச் மூலம் துவக்கத்தை மீட்டமைக்கிறது.</p>
+<h3 id="stm32f103-stm32duino-boottloader">STM32F103 STM32Duino Boottloader உடன்<a class="headerlink" href="#stm32f103-stm32duino-boottloader" title="Permanent link">&para;</a></h3>
+<p>"STM32Duino" திட்டத்தில் யூ.எச்.பி திறன் கொண்ட துவக்க ஏற்றி உள்ளது - காண்க: <a href="https://github.com/rogerclarkmelbourne/stm32duino-bootloader">https://github.com/rogerclarkmelbourne/stm32duino-bootloader</a></p>
+<p>இந்த துவக்க ஏற்றி 3.3 வி சீரியல் வழியாக இதுபோன்ற ஒன்றைக் கொண்டிருக்கலாம்:</p>
+<div class="highlight"><pre><span></span><code>wget &#39;https://github.com/rogerclarkmelbourne/stm32duino-bootloader/raw/master/binaries/generic_boot20_pc13.bin&#39;
+
+ STM32FLASH -W generic_boot20_pc13.bin -v -g 0 /dev /ttyama00
+</code></pre></div>
+
+<p>இந்த துவக்க ஏற்றி 8 கிப் ஃபிளாச் இடத்தைப் பயன்படுத்துகிறது (பயன்பாடு 8KIB இன் தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும்). போன்ற ஒரு பயன்பாட்டை ஒளிரச் செய்யுங்கள்:</p>
+<div class="highlight"><pre><span></span><code>dfu -util -d 1eaf: 0003 -a 2 -r -d out/klipper.bin
+</code></pre></div>
+
+<p>துவக்க ஏற்றி பொதுவாக துவக்கத்திற்குப் பிறகு ஒரு குறுகிய காலத்திற்கு மட்டுமே இயங்கும். மேலே உள்ள கட்டளையை நேரம் செய்ய வேண்டியது தேவை, இதனால் துவக்க ஏற்றி இன்னும் செயலில் இருக்கும்போது அது இயங்கும் (துவக்க ஏற்றி இயங்கும் போது ஒரு போர்டு எல்.ஈ.டி ஒளிரும்). மாற்றாக, மீட்டமைக்கப்பட்ட பிறகு துவக்க ஏற்றியில் தங்குவதற்கு "பூட் 0" முள் குறைவாகவும், "துவக்க 1" முள் உயரமாகவும் அமைக்கவும்.</p>
+<h3 id="hid-stm32f103">HID துவக்க ஏற்றியுடன் STM32F103<a class="headerlink" href="#hid-stm32f103" title="Permanent link">&para;</a></h3>
+<p>[HID BOOTLOADER] (<a href="https://github.com/serasidis/stm32_hid_bootloader">https://github.com/serasidis/stm32_hid_bootloader</a>) என்பது யூ.எச்.பி மீது ஒளிரும் திறன் கொண்ட ஒரு சிறிய, இயக்கி இல்லாத துவக்க ஏற்றி ஆகும். [எச்.கே.ஆர் மினி இ 3 1.2] (<a href="https://github.com/arksine/STM32_HID_BOOTLOADER/RELEASES/LATEST">https://github.com/arksine/STM32_HID_BOOTLOADER/RELEASES/LATEST</a>) க்கு குறிப்பிட்ட கட்டமைப்பைக் கொண்ட முட்கரண்டி).</p>
+<p>நீல மாத்திரை போன்ற பொதுவான STM32F103 பலகைகளுக்கு, மேலே உள்ள STM32Duino பிரிவில் குறிப்பிடப்பட்டுள்ளபடி STM32flash ஐப் பயன்படுத்தி 3.3V சீரியல் வழியாக துவக்க ஏற்றியை ஒளிரச் செய்ய முடியும், விரும்பிய HID துவக்க ஏற்றி பைனரிக்கு (IE: HID_GENERIC_PC13.Bin க்கு கோப்பு பெயரை மாற்றுகிறது. ).</p>
+<p>SKR மினி E3 க்கு STM32flash ஐப் பயன்படுத்த முடியாது, ஏனெனில் பூட் 0 முள் நேரடியாக தரையில் பிணைக்கப்பட்டுள்ளது மற்றும் தலைப்பு ஊசிகள் வழியாக உடைக்கப்படவில்லை. துவக்க ஏற்றியை ஒளிரச் செய்ய STM32CubeProgrammer உடன் STLINK V2 ஐப் பயன்படுத்த பரிந்துரைக்கப்படுகிறது. உங்களுக்கு ஒரு ச்ட்லிங்க் அணுகல் இல்லையென்றால், பின்வரும் சிப் உள்ளமைவுடன் ஒரு [ராச்பெர்ரி பை மற்றும் ஓபன்ஓசிடி] (#ரன்னிங்-ஓபெனோக்ட்-ஆன்-தி-ராச்பெர்ரி-பிஐ) பயன்படுத்தவும் முடியும்:</p>
+<div class="highlight"><pre><span></span><code>சான்று [இலக்கு/STM32F1X.CFG ஐக் கண்டறியவும்]
+</code></pre></div>
+
+<p>நீங்கள் விரும்பினால், தற்போதைய ஃபிளாச் பின்வரும் கட்டளையுடன் காப்புப்பிரதி எடுக்கலாம். முடிக்க சிறிது நேரம் ஆகலாம் என்பதை நினைவில் கொள்க:</p>
+<div class="highlight"><pre><span></span><code>ஃப்ளாச் ரீட்_பேங்க் 0 BTT_SKR_MINI_E3_BACKUP.BIN
+</code></pre></div>
+
+<p>இறுதியாக, நீங்கள் ஒத்த கட்டளைகளுடன் ஒளிரலாம்:</p>
+<div class="highlight"><pre><span></span><code>STM32F1x mass_erase 0
+ நிரல் hid_btt_skr_mini_e3.bin 0x08000000 ஐ சரிபார்க்கவும்
+</code></pre></div>
+
+<p>குறிப்புகள்:</p>
+<ul>
+<li>மேலே உள்ள எடுத்துக்காட்டு சிப்பை அழிக்கிறது, பின்னர் துவக்க ஏற்றியை நிரல் செய்கிறது. ஃபிளாச் செய்ய தேர்ந்தெடுக்கப்பட்ட முறையைப் பொருட்படுத்தாமல், ஒளிரும் முன் சிப்பை அழிக்க பரிந்துரைக்கப்படுகிறது.</li>
+<li>இந்த துவக்க ஏற்றி மூலம் எச்.கே.ஆர் மினி இ 3 ஐ ஒளிரச் செய்வதற்கு முன், நீங்கள் இனி எச்.டி.கார்டு வழியாக ஃபார்ம்வேரைப் புதுப்பிக்க முடியாது என்பதை நீங்கள் அறிந்திருக்க வேண்டும்.</li>
+<li>You may need to hold down the reset button on the board while launching OpenOCD. It should display something like:
+   <code>Open On-Chip Debugger 0.10.0+dev-01204-gc60252ac-dirty (2020-04-27-16:00)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+DEPRECATED! use 'adapter speed' not 'adapter_khz'
+Info : BCM2835 GPIO JTAG/SWD bitbang driver
+Info : JTAG and SWD modes enabled
+Info : clock speed 40 kHz
+Info : SWD DPIDR 0x1ba01477
+Info : stm32f1x.cpu: hardware has 6 breakpoints, 4 watchpoints
+Info : stm32f1x.cpu: external reset detected
+Info : starting gdb server for stm32f1x.cpu on 3333
+Info : Listening on port 3333 for gdb connections</code>
+அதன் பிறகு நீங்கள் மீட்டமை பொத்தானை வெளியிடலாம்.</li>
+</ul>
+<p>இந்த துவக்க ஏற்றிக்கு 2 கிப் ஃபிளாச் இடம் தேவைப்படுகிறது (பயன்பாடு 2KIB இன் தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும்).</p>
+<p>துவக்க ஏற்றிக்கு பைனரியைப் பதிவேற்ற HID FLASH நிரல் பயன்படுத்தப்படுகிறது. இந்த மென்பொருளை பின்வரும் கட்டளைகளுடன் நிறுவலாம்:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install libusb-1.0
+ சிடி ~/கிளிப்பர்/லிப்/இட்ஃப்ளாச்
+ உருவாக்கு
+</code></pre></div>
+
+<p>துவக்க ஏற்றி இயங்கினால், நீங்கள் போன்ற ஒன்றைக் கொண்டு ஒளிரலாம்:</p>
+<div class="highlight"><pre><span></span><code>~/mow/lib/hidflash/hid-flash ~/mower/out/rocks.bin
+</code></pre></div>
+
+<p>மாற்றாக, கிளிப்பரை நேரடியாக ஃபிளாச் செய்ய <code>மேக் ஃப்ளாச்</code> ஐப் பயன்படுத்தலாம்:</p>
+<div class="highlight"><pre><span></span><code>ஃப்ளாச் ஃப்ளாச்_டெவிச் = 1209: பெபா
+</code></pre></div>
+
+<p>அல்லது கிளிப்பர் முன்பு ஒளிரப்பட்டிருந்தால்:</p>
+<div class="highlight"><pre><span></span><code>ஃப்ளாச் ஃப்ளாச்_டெவிச் =/dev/ttyacm0 ஐ உருவாக்கவும்
+</code></pre></div>
+
+<p>துவக்க ஏற்றியை கைமுறையாக உள்ளிடுவது அவசியமாக இருக்கலாம், இதை "பூட் 0" குறைந்த மற்றும் "துவக்க 1" உயர் அமைப்பதன் மூலம் இதைச் செய்யலாம். எச்.கே.ஆர் மினி இ 3 "பூட் 1" இல் கிடைக்கவில்லை, எனவே நீங்கள் "HID_BTT_SKR_MINI_E3.BIN" இந்த முள் எச்.கே.ஆர் மினி இ 3 இன் "முள்" ஆவணத்தில் டிஎஃப்டி தலைப்பில் "டிஎக்ச் 0" என்று பெயரிடப்பட்டுள்ளது. PA2 க்கு அடுத்ததாக ஒரு தரை முள் உள்ளது, இது PA2 ஐ குறைவாக இழுக்க பயன்படுத்தலாம்.</p>
+<h3 id="msc-stm32f103stm32f072">MSC துவக்க ஏற்றி உடன் STM32F103/STM32F072<a class="headerlink" href="#msc-stm32f103stm32f072" title="Permanent link">&para;</a></h3>
+<p>[MSC துவக்க ஏற்றி] (<a href="https://github.com/telekatz/msc-stm32f103-bootloader">https://github.com/telekatz/msc-stm32f103-bootloader</a>) என்பது யூ.எச்.பி மீது ஒளிரும் திறன் கொண்ட இயக்கி இல்லாத துவக்க ஏற்றி ஆகும்.</p>
+<p>மேலே உள்ள STM32Duino பிரிவில் குறிப்பிடப்பட்டுள்ளபடி STM32Flash ஐப் பயன்படுத்தி 3.3V சீரியல் வழியாக துவக்க ஏற்றியை ஒளிரச் செய்ய முடியும், விரும்பிய MSC துவக்க ஏற்றி பைனரியின் கோப்பு பெயரை மாற்றுகிறது (அதாவது நீல மாத்திரைக்கு MSCBOOT-BLUEPILL.BIN).</p>
+<p>STM32F072 பலகைகளுக்கு யூ.எச்.பி (டி.எஃப்.யூ வழியாக) மீது துவக்க ஏற்றியை ஒளிரச் செய்யலாம்:</p>
+<div class="highlight"><pre><span></span><code> dfu -util -d 0483: df11 -a 0 -r -d mscboot -stm32f072.bin -s0x08000000: விடுப்பு
+</code></pre></div>
+
+<p>இந்த துவக்க ஏற்றி 8 கிப் அல்லது 16 கிப் ஃபிளாச் இடத்தைப் பயன்படுத்துகிறது, துவக்க ஏற்றியின் விளக்கத்தைப் பார்க்கவும் (பயன்பாடு தொடர்புடைய தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும்).</p>
+<p>பலகையின் மீட்டமைப்பு பொத்தானை இரண்டு முறை அழுத்துவதன் மூலம் துவக்க ஏற்றி செயல்படுத்தப்படலாம். துவக்க ஏற்றி செயல்படுத்தப்பட்டவுடன், பலகை யூ.எச்.பி ஃபிளாச் டிரைவாக தோன்றும், அதில் klipper.bin கோப்பை நகலெடுக்க முடியும்.</p>
+<h3 id="canboot-boothloader-stm32f103stm32f0x2">CANBOOT BOOTHLOADER உடன் STM32F103/STM32F0X2<a class="headerlink" href="#canboot-boothloader-stm32f103stm32f0x2" title="Permanent link">&para;</a></h3>
+<p>[Canboot] (<a href="https://github.com/arksine/canboot">https://github.com/arksine/canboot</a>) பூட்லோடர் கான்பச் மீது கிளிப்பர் ஃபார்ம்வேரைப் பதிவேற்றுவதற்கான விருப்பத்தை வழங்குகிறது. துவக்க ஏற்றி கிளிப்பரின் மூலக் குறியீட்டிலிருந்து பெறப்பட்டது. தற்போது கான்பூட் STM32F103, STM32F042 மற்றும் STM32F072 மாதிரிகளை ஆதரிக்கிறது.</p>
+<p>கேன்பூட்டை ஃபிளாச் செய்ய எச்.டி-லிங்க் புரோகிராமரைப் பயன்படுத்த பரிந்துரைக்கப்படுகிறது, இருப்பினும் எச்.டி.எம் 32 எஃப் 103 சாதனங்களில் <code>எச்.டி.எம் 32 ஃப்ளாச்</code> ஐப் பயன்படுத்தி ஃபிளாச் செய்ய முடியும், மேலும் எச்.டி.எம் 32 எஃப் 042/எச்.டி.எம் 32 எஃப் 072 சாதனங்களில்<code>டி.எஃப்.யூ-யுடில்</code>. இந்த ஒளிரும் முறைகள் குறித்த வழிமுறைகளுக்கு இந்த ஆவணத்தில் உள்ள முந்தைய பிரிவுகளைப் பார்க்கவும், பொருத்தமான இடங்களில் கோப்பு பெயருக்கு <code>canboot.bin</code> ஐ மாற்றியமைத்தல். மேலே இணைக்கப்பட்ட கான்பூட் களஞ்சியமானது துவக்க ஏற்றியை உருவாக்குவதற்கான வழிமுறைகளை வழங்குகிறது.</p>
+<p>முதல் முறையாக கான்பூட் ஒளிரும் போது, எந்த பயன்பாடும் இல்லை என்பதைக் கண்டறிந்து துவக்க ஏற்றியை உள்ளிட வேண்டும். இது நிகழவில்லை என்றால், மீட்டமை பொத்தானை இரண்டு முறை அடுத்தடுத்து அழுத்துவதன் மூலம் துவக்க ஏற்றியை உள்ளிட முடியும்.</p>
+<p>கிளிப்பர் ஃபார்ம்வேரைப் பதிவேற்ற <code>லிப்/கான்பூட்</code> கோப்புறையில் வழங்கப்பட்ட<code>ஃப்ளாச்_கான்.பை</code> பயன்பாடு பயன்படுத்தப்படலாம். ஃபிளாச் செய்ய சாதனம் UUID தேவை. உங்களிடம் UUID இல்லையென்றால், தற்போது துவக்க ஏற்றியை இயக்கும் முனைகளை வினவ முடியும்:</p>
+<div class="highlight"><pre><span></span><code>பைதான் 3 ஃப்ளாச்_கான்.பை -கியூ
+</code></pre></div>
+
+<p>இது தற்போது UUID ஒதுக்கப்படாத அனைத்து இணைக்கப்பட்ட முனைகளுக்கும் UUID களைத் தரும். இது தற்போது துவக்க ஏற்றியில் உள்ள அனைத்து முனைகளையும் கொண்டிருக்க வேண்டும்.</p>
+<p>உங்களிடம் UUID கிடைத்ததும், பின்வரும் கட்டளையுடன் ஃபார்ம்வேரை பதிவேற்றலாம்:</p>
+<div class="highlight"><pre><span></span><code>பைதான் 3 ஃப்ளாச்_சிகான்.பை -ஐ கேன் 0 -எஃப் ~/மோவர்/அவுட்/ராக்ச்.பின் -யூ ஏஏபிசி.டி டீஃப்
+</code></pre></div>
+
+<p><code>Aabbccddeeff</code> உங்கள் UUID ஆல் மாற்றப்படுகிறது. <code>-I</code> மற்றும்<code>-f</code> விருப்பங்கள் தவிர்க்கப்படலாம் என்பதை நினைவில் கொள்க, அவை முறையே <code>can0</code> மற்றும்<code>~/klipper/out/klipper.bin</code> க்கு இயல்புநிலையாக இருக்கும்.</p>
+<p>கான்பூட் உடன் பயன்படுத்த கிளிப்பரை உருவாக்கும்போது, 8 KIB துவக்க ஏற்றி விருப்பத்தைத் தேர்ந்தெடுக்கவும்.</p>
+<h2 id="stm32f4-skr-pro-11">STM32F4 மைக்ரோ-கன்ட்ரோலர்கள் (SKR PRO 1.1)<a class="headerlink" href="#stm32f4-skr-pro-11" title="Permanent link">&para;</a></h2>
+<p>STM32F4 மைக்ரோ-கன்ட்ரோலர்கள் யூ.எச்.பி (டி.எஃப்.யூ வழியாக), 3.3 வி சீரியல் மற்றும் பல்வேறு முறைகள் மீது ஒளிரும் திறன் கொண்ட உள்ளமைக்கப்பட்ட கணினி துவக்க ஏற்றி பொருத்தப்பட்டுள்ளன (மேலும் தகவலுக்கு எச்.டி.எம் ஆவணம் AN2606 ஐப் பார்க்கவும்). எச்.கே.ஆர் புரோ 1.1 போன்ற சில எச்.டி.எம் 32 எஃப் 4 பலகைகள் டி.எஃப்.யூ துவக்க ஏற்றிக்குள் நுழைய முடியாது. SDCARD ஐப் பயன்படுத்துவதை விட யூ.எச்.பி -ஐ விட பயனரை விரும்பினால், STM32F405/407 அடிப்படையிலான பலகைகளுக்கு HID துவக்க ஏற்றி கிடைக்கிறது. உங்கள் போர்டுக்கு குறிப்பிட்ட ஒரு பதிப்பை நீங்கள் உள்ளமைக்க வேண்டும் மற்றும் உருவாக்க வேண்டியிருக்கலாம் என்பதை நினைவில் கொள்க, ஒரு [SKR Pro 1.1 க்கான கட்டமைப்பானது இங்கே கிடைக்கிறது] (<a href="https://github.com/arksine/stm32_hid_bootloader/relaess/latest">https://github.com/arksine/stm32_hid_bootloader/relaess/latest</a>).</p>
+<p>உங்கள் போர்டு டி.எஃப்.யு திறன் கொண்டதாக இல்லாவிட்டால், மிகவும் அணுகக்கூடிய ஒளிரும் முறை 3.3 வி சீரியல் வழியாக இருக்கலாம், இது [STM32F103 ஐ ஒளிரும் STM32F103 ஐ ஒளிரச் செய்கிறது] (#STM32F103-மைக்ரோ-கன்ட்ரோலர்கள்-ப்ளூ-பில்-பங்கேற்பு) போன்ற அதே நடைமுறையைப் பின்பற்றுகிறது. உதாரணமாக:</p>
+<div class="highlight"><pre><span></span><code>wget https://github.com/arksine/stm32_hid_bootloader/relaess/download/v0.5-beta/hid_bootloader_skr_pro.bin
+
+ STM32FLASH -W HID_BOOTLOADER_SKR_PRO.BIN -V -G 0 /DEV /TTYAMA00
+</code></pre></div>
+
+<p>இந்த துவக்க ஏற்றிக்கு STM32F4 இல் 16 கிப் ஃபிளாச் இடம் தேவைப்படுகிறது (பயன்பாடு 16KIB இன் தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும்).</p>
+<p>STM32F1 ஐப் போலவே, STM32F4 MCU இல் பைனரிகளைப் பதிவேற்ற HID FLASH கருவியைப் பயன்படுத்துகிறது. HID-FLASH ஐ எவ்வாறு உருவாக்குவது மற்றும் பயன்படுத்துவது என்பது குறித்த விவரங்களுக்கு மேலே உள்ள வழிமுறைகளைப் பார்க்கவும்.</p>
+<p>துவக்க ஏற்றியை கைமுறையாக உள்ளிடுவது அவசியமாக இருக்கலாம், இதை "துவக்க 0" குறைந்த, "துவக்க 1" உயர் அமைப்பதன் மூலமும் சாதனத்தில் செருகுவதன் மூலமும் செய்ய முடியும். நிரலாக்கமானது சாதனத்தை அவிழ்த்துவிட்டு, "துவக்க 1" ஐ மீண்டும் குறைவாக அமைக்கவும், எனவே பயன்பாடு ஏற்றப்படும்.</p>
+<h2 id="1768">எல்பிசி 1768 மைக்ரோகண்ட்ரோலர் (ச்மூத்த்போர்டு)<a class="headerlink" href="#1768" title="Permanent link">&para;</a></h2>
+<p>இந்த ஆவணம் ஒரு துவக்க ஏற்றியை ஒளிரச் செய்வதற்கான முறையை விவரிக்கவில்லை-காண்க: <a href="http://smoothieware.org/flashing-the-bootloader">http://smoothieware.org/flashing-the-bootloader</a> அந்த தலைப்பில் மேலதிக தகவல்களுக்கு.</p>
+<p>மிருதுவான போர்டுகள் ஒரு துவக்க ஏற்றியுடன் வருவது பொதுவானது: <a href="https://github.com/triffid/lpc17xx-dfu-bootloader">https://github.com/triffid/lpc17xx-dfu-bootloader</a>. இந்த துவக்க ஏற்றியைப் பயன்படுத்தும் போது பயன்பாடு 16KIB இன் தொடக்க முகவரியுடன் தொகுக்கப்பட வேண்டும். இந்த துவக்க ஏற்றி மூலம் ஒரு பயன்பாட்டை ஒளிரச் செய்வதற்கான எளிதான வழி, பயன்பாட்டு கோப்பை (எ.கா., <code>அவுட்/கிளிப்பர்.பின்</code>) ஒரு எச்டி கார்டில்<code>ஃபார்ம்வேர்.பின்</code> என்ற கோப்பில் நகலெடுக்கவும், பின்னர் மைக்ரோ-கன்ட்ரோலரை மீண்டும் துவக்கவும் அந்த எச்டி அட்டை.</p>
+<h2 id="_2">ராச்பெர்ரி பையில் ஓபன்ஓக்ட் இயங்குகிறது<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>OpenOCD என்பது ஒரு மென்பொருள் தொகுப்பாகும், இது குறைந்த அளவிலான சிப் ஒளிரும் மற்றும் பிழைத்திருத்தத்தை செய்ய முடியும். இது பலவிதமான கை சில்லுகளுடன் தொடர்பு கொள்ள ராச்பெர்ரி பையில் GPIO ஊசிகளைப் பயன்படுத்தலாம்.</p>
+<p>OpenOCD ஐ எவ்வாறு நிறுவலாம் மற்றும் தொடங்கலாம் என்பதை இந்த பிரிவு விவரிக்கிறது. இது அறிவுறுத்தல்களிலிருந்து பெறப்பட்டது: <a href="https://learn.adafruit.com/programming-microcontrollers-using-openocd-on-raspberry-pi-pi">https://learn.adafruit.com/programming-microcontrollers-using-openocd-on-raspberry-pi-pi</a></p>
+<p>மென்பொருளைப் பதிவிறக்கம் செய்து தொகுத்தல் மூலம் தொடங்கவும் (ஒவ்வொரு அடியும் பல நிமிடங்கள் ஆகலாம், மேலும் "மேக்" படி 30+ நிமிடங்கள் ஆகலாம்):</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get Update
+ sudo apt-get anatoconf libtool telnet ஐ நிறுவவும்
+ mkdir ~/openocd
+ cd ~/openocd/
+ git நகலி http://openocd.zylin.com/openocd
+ குறுவட்டு ஓபன்ஓஆர்டி
+ ./bootstrap
+ ./configure --enable-sysfsgpio --enable-bcm2835gpio --prefix=/home/pi/openocd/install
+ உருவாக்கு
+ நிறுவவும்
+</code></pre></div>
+
+<h3 id="openocd">OpenOCD ஐ உள்ளமைக்கவும்<a class="headerlink" href="#openocd" title="Permanent link">&para;</a></h3>
+<p>OpenOCD கட்டமைப்பு கோப்பை உருவாக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>நானோ ~/openocd/openocd.cfg
+</code></pre></div>
+
+<p>பின்வருவனவற்றைப் போன்ற ஒரு உள்ளமைவைப் பயன்படுத்தவும்:</p>
+<div class="highlight"><pre><span></span><code># RPI ஊசிகளைப் பயன்படுத்துகிறது: SWDCLK க்கு GPIO25, SWDIO க்கு GPIO24, NRST க்கு GPIO18
+ சான்று [இடைமுகத்தைக் கண்டறியவும்/raspberrypi2- native.cfg]
+ BCM2835GPIO_SWD_NUMS 25 24
+ BCM2835GPIO_SRST_NUM 18
+ போக்குவரத்து SWD ஐத் தேர்ந்தெடுக்கவும்
+
+ # சிப் மீட்டமைப்புகளுக்கு வன்பொருள் மீட்டமைப்பு கம்பியைப் பயன்படுத்தவும்
+ Reset_config srst_only
+ அடாப்டர்_என்எச்ஆர்எச்டி_டெலே 100
+ அடாப்டர்_என்எச்ஆர்எச்டி_செர்ட்_விட் 100
+
+ # சிப் வகையைக் குறிப்பிடவும்
+ சான்று [இலக்கு/atsame5x.cfg ஐக் கண்டறியவும்]
+
+ # அடாப்டர் வேகத்தை அமைக்கவும்
+ அடாப்டர்_கெச் 40
+
+ # சிப்புடன் இணைக்கவும்
+ init
+ இலக்குகள்
+ நிறுத்தத்தை மீட்டமை
+</code></pre></div>
+
+<h3 id="_3">ராச்பெர்ரி பை இலக்கு சிப்பிற்கு கம்பி<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>வயரிங் முன் ராச்பெர்ரி பை மற்றும் இலக்கு சிப் இரண்டையும் பவர்ஆஃப்! ராச்பெர்ரி பைவுடன் இணைப்பதற்கு முன் இலக்கு சிப் 3.3V ஐப் பயன்படுத்துகிறது என்பதை சரிபார்க்கவும்!</p>
+<p>ராச்பெர்ரி பை மீது முறையே சி.என்.டி, சி.பி.ஐ.ஓ 25, சி.பி.ஐ.ஓ 24 மற்றும் சி.பி.ஐ.ஓ 18 உடன் இலக்கு சிப்பில் சி.என்.டி, எச்.டபிள்யூ.டி.சி.எல், எச்.டபிள்யூ.டி.ஐ.ஓ மற்றும் ஆர்.எச்.டி ஆகியவற்றை இணைக்கவும்.</p>
+<p>பின்னர் ராச்பெர்ரி பைவை இயக்கி, இலக்கு சிப்பிற்கு சக்தியை வழங்கவும்.</p>
+<h3 id="openocd_1">OpenOCD ஐ இயக்கவும்<a class="headerlink" href="#openocd_1" title="Permanent link">&para;</a></h3>
+<p>OpenOCD ஐ இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>cd ~/openocd/
+ sudo ~/openocd/install/bin/openocd -f ~/openocd/openocd.cfg
+</code></pre></div>
+
+<p>மேலே உள்ளவை OpenOCD சில குறுஞ்செய்திகளை வெளியிட்டு பின்னர் காத்திருக்க வேண்டும் (அது உடனடியாக யூனிக்ச் செல் வரியில் திரும்பக்கூடாது). OpenOCD அதன் சொந்தமாக வெளியேறினால் அல்லது அது தொடர்ந்து குறுஞ்செய்திகளை வெளியிட்டால், வயரிங் இருமுறை சரிபார்க்கவும்.</p>
+<p>OpenOCD இயங்கும் மற்றும் நிலையானதாக இருந்தால், ஒருவர் அதை டெல்நெட் வழியாக கட்டளைகளை அனுப்பலாம். மற்றொரு பாஓடு அமர்வைத் திறந்து பின்வருவனவற்றை இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>டெல்நெட் 127.0.0.1 4444
+</code></pre></div>
+
+<p>(Ctrl+] ஐ அழுத்துவதன் மூலம் ஒருவர் டெல்நெட்டிலிருந்து வெளியேறலாம், பின்னர் "வெளியேறு" கட்டளையை இயக்கலாம்.)</p>
+<h3 id="openocd-gdb">OpenOCD மற்றும் GDB<a class="headerlink" href="#openocd-gdb" title="Permanent link">&para;</a></h3>
+<p>கிளிப்பரை பிழைத்திருத்த சி.டி.பி உடன் ஓபன்ஓசிடியைப் பயன்படுத்த முடியும். ஒருவர் டெச்க்டாப் வகுப்பு கணினியில் GDB ஐ இயக்குகிறார் என்று பின்வரும் கட்டளைகள் கருதுகின்றன.</p>
+<p>OpenOCD கட்டமைப்பு கோப்பில் பின்வருவனவற்றைச் சேர்க்கவும்:</p>
+<div class="highlight"><pre><span></span><code>பிண்டோ 0.0.0.0
+ GDB_PORT 44444
+</code></pre></div>
+
+<p>ராச்பெர்ரி பை மீது OpenOCD ஐ மறுதொடக்கம் செய்து, பின்னர் டெச்க்டாப் கணினியில் பின்வரும் யூனிக்ச் கட்டளையை இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>குறுவட்டு/பாதை/முதல்/கட்டர்/
+ GDB அவுட்/கிளிஃப்ச்
+</code></pre></div>
+
+<p>GDB ரன்னுக்குள்:</p>
+<div class="highlight"><pre><span></span><code>இலக்கு தொலை ஆக்டோபி: 44444
+</code></pre></div>
+
+<p>(Replace "octopi" with the விருந்தோம்பி பெயர் of the புற்றுப்பழம் Pi.) Once gdb is running it is possible பெறுநர் கணம் breakpoints and பெறுநர் inspect registers.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -5,8 +5,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "PO-Revision-Date: 2024-11-27 06:32+0000\n"
 "Last-Translator: Meteor2 <ryumeteor175@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/"
-"benchmarks/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/klipper/benchmarks/ja/>\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,37 +25,37 @@ msgstr ""
 
 msgid ""
 "The primary goal of the benchmarks is to provide a consistent mechanism for "
-"measuring the impact of coding changes within the software. A secondary goal"
-" is to provide high-level metrics for comparing the performance between "
-"chips and between software platforms."
+"measuring the impact of coding changes within the software. A secondary goal "
+"is to provide high-level metrics for comparing the performance between chips "
+"and between software platforms."
 msgstr ""
 
 msgid ""
-"The step rate benchmark is designed to find the maximum stepping rate that "
-"the hardware and software can reach. This benchmark stepping rate is not "
+"The step rate benchmark is designed to find the maximum stepping rate that the"
+" hardware and software can reach. This benchmark stepping rate is not "
 "achievable in day-to-day use as Klipper needs to perform other tasks (eg, "
 "mcu/host communication, temperature reading, endstop checking) in any real-"
 "world usage."
 msgstr ""
 
 msgid ""
-"In general, the pins for the benchmark tests are chosen to flash LEDs or "
-"other innocuous pins. **Always verify that it is safe to drive the "
-"configured pins prior to running a benchmark.** It is not recommended to "
-"drive an actual stepper during a benchmark."
+"In general, the pins for the benchmark tests are chosen to flash LEDs or other"
+" innocuous pins. **Always verify that it is safe to drive the configured pins "
+"prior to running a benchmark.** It is not recommended to drive an actual "
+"stepper during a benchmark."
 msgstr ""
 
 msgid "Step rate benchmark test"
 msgstr ""
 
 msgid ""
-"The above tests three steppers simultaneously stepping. If running the above"
-" results in a \"Rescheduled timer in the past\" or \"Stepper too far in "
-"past\" error then it indicates the `ticks` parameter is too low (it results "
-"in a stepping rate that is too fast). The goal is to find the lowest setting"
-" of the ticks parameter that reliably results in a successful completion of "
-"the test. It should be possible to bisect the ticks parameter until a stable"
-" value is found."
+"The above tests three steppers simultaneously stepping. If running the above "
+"results in a \"Rescheduled timer in the past\" or \"Stepper too far in past\" "
+"error then it indicates the `ticks` parameter is too low (it results in a "
+"stepping rate that is too fast). The goal is to find the lowest setting of the"
+" ticks parameter that reliably results in a successful completion of the test."
+" It should be possible to bisect the ticks parameter until a stable value is "
+"found."
 msgstr ""
 
 msgid ""
@@ -210,17 +209,17 @@ msgid "Command dispatch benchmark"
 msgstr ""
 
 msgid ""
-"When the test completes, determine the difference between the clocks "
-"reported in the two \"uptime\" response messages. The total number of "
-"commands per second is then `100000 * mcu_frequency / clock_diff`."
+"When the test completes, determine the difference between the clocks reported "
+"in the two \"uptime\" response messages. The total number of commands per "
+"second is then `100000 * mcu_frequency / clock_diff`."
 msgstr ""
 
 msgid ""
 "Note that this test may saturate the USB/CPU capacity of a Raspberry Pi. If "
-"running on a Raspberry Pi, Beaglebone, or similar host computer then "
-"increase the delay (eg, `DELAY {clock + 20*freq} get_uptime`). Where "
-"applicable, the benchmarks below are with console.py running on a desktop "
-"class machine with the device connected via a high-speed hub."
+"running on a Raspberry Pi, Beaglebone, or similar host computer then increase "
+"the delay (eg, `DELAY {clock + 20*freq} get_uptime`). Where applicable, the "
+"benchmarks below are with console.py running on a desktop class machine with "
+"the device connected via a high-speed hub."
 msgstr ""
 
 msgid "MCU"
@@ -346,55 +345,6 @@ msgstr ""
 msgid "Host Benchmarks"
 msgstr ""
 
-msgid ""
-"SET start_clock {clock+freq}\n"
-"SET ticks 1000\n"
-"\n"
-"reset_step_clock oid=0 clock={start_clock}\n"
-"set_next_step_dir oid=0 dir=0\n"
-"queue_step oid=0 interval={ticks} count=60000 add=0\n"
-"set_next_step_dir oid=0 dir=1\n"
-"queue_step oid=0 interval=3000 count=1 add=0\n"
-"\n"
-"reset_step_clock oid=1 clock={start_clock}\n"
-"set_next_step_dir oid=1 dir=0\n"
-"queue_step oid=1 interval={ticks} count=60000 add=0\n"
-"set_next_step_dir oid=1 dir=1\n"
-"queue_step oid=1 interval=3000 count=1 add=0\n"
-"\n"
-"reset_step_clock oid=2 clock={start_clock}\n"
-"set_next_step_dir oid=2 dir=0\n"
-"queue_step oid=2 interval={ticks} count=60000 add=0\n"
-"set_next_step_dir oid=2 dir=1\n"
-"queue_step oid=2 interval=3000 count=1 add=0\n"
-msgstr ""
-
-msgid "clear_shutdown\n"
-msgstr ""
-
-msgid "ECHO Test result is: {\"%.0fK\" % (3. * freq / ticks / 1000.)}\n"
-msgstr ""
-
-msgid ""
-"DELAY {clock + 2*freq} get_uptime\n"
-"FLOOD 100000 0.0 debug_nop\n"
-"get_uptime\n"
-msgstr ""
-
-msgid ""
-"time ~/klippy-env/bin/python ./klippy/klippy.py config/example-cartesian.cfg"
-" -i something_complex.gcode -o /dev/null -d out/klipper.dict\n"
-msgstr ""
-
-msgid "RP2040 step rate benchmark"
-msgstr ""
-
-msgid "The following configuration sequence is used on the RP2040:"
-msgstr ""
-
-msgid "rp2040"
-msgstr ""
-
 msgid "66"
 msgstr ""
 
@@ -407,42 +357,33 @@ msgstr ""
 msgid "rp2040 (USB)"
 msgstr ""
 
-msgid "873K"
-msgstr ""
-
-msgid "c5667193"
-msgstr ""
-
-msgid "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
-msgstr ""
-
 #: docs/Benchmarks.md:block 1 (header)
 msgid "Benchmarks"
 msgstr ""
 
 #: docs/Benchmarks.md:block 9 (paragraph)
 msgid ""
-"The test is performed using the console.py tool (described in "
-"<Debugging.md>). The micro-controller is configured for the particular "
-"hardware platform (see below) and then the following is cut-and-paste into "
-"the console.py terminal window:"
+"The test is performed using the console.py tool (described in <Debugging.md>)."
+" The micro-controller is configured for the particular hardware platform (see "
+"below) and then the following is cut-and-paste into the console.py terminal "
+"window:"
 msgstr ""
 
 #: docs/Benchmarks.md:block 86 (paragraph)
 msgid ""
 "The command dispatch benchmark tests how many \"dummy\" commands the micro-"
-"controller can process. It is primarily a test of the hardware communication"
-" mechanism. The test is run using the console.py tool (described in "
-"<Debugging.md>). The following is cut-and-paste into the console.py terminal"
-" window:"
+"controller can process. It is primarily a test of the hardware communication "
+"mechanism. The test is run using the console.py tool (described in "
+"<Debugging.md>). The following is cut-and-paste into the console.py terminal "
+"window:"
 msgstr ""
 
 #: docs/Benchmarks.md:block 92 (paragraph)
 msgid ""
 "It is possible to run timing tests on the host software using the \"batch "
-"mode\" processing mechanism (described in <Debugging.md>). This is typically"
-" done by choosing a large and complex G-Code file and timing how long it "
-"takes for the host software to process it. For example:"
+"mode\" processing mechanism (described in <Debugging.md>). This is typically "
+"done by choosing a large and complex G-Code file and timing how long it takes "
+"for the host software to process it. For example:"
 msgstr ""
 
 #: docs/Benchmarks.md:block 14 (paragraph)
@@ -457,26 +398,17 @@ msgid ""
 "The benchmarks are run with parameters suitable for TMC Drivers. For micro-"
 "controllers that support `STEPPER_BOTH_EDGE=1` (as reported in the `MCU "
 "config` line when console.py first starts) use `step_pulse_duration=0` and "
-"`invert_step=-1` to enable optimized stepping on both edges of the step "
-"pulse. For other micro-controllers use a `step_pulse_duration` corresponding"
-" to 100ns."
-msgstr ""
-
-#: docs/Benchmarks.md:block 20 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PA5 dir_pin=PA4 invert_step=0 step_pulse_ticks=32\n"
-"config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=0 step_pulse_ticks=32\n"
-"config_stepper oid=2 step_pin=PC7 dir_pin=PC6 invert_step=0 step_pulse_ticks=32\n"
-"finalize_config crc=0\n"
+"`invert_step=-1` to enable optimized stepping on both edges of the step pulse."
+" For other micro-controllers use a `step_pulse_duration` corresponding to "
+"100ns."
 msgstr ""
 
 #: docs/Benchmarks.md:block 21 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `avr-gcc (GCC) "
-"5.4.0`. Both the 16Mhz and 20Mhz tests were run using simulavr configured "
-"for an atmega644p (previous tests have confirmed simulavr results match "
-"tests on both a 16Mhz at90usb and a 16Mhz atmega2560)."
+"5.4.0`. Both the 16Mhz and 20Mhz tests were run using simulavr configured for "
+"an atmega644p (previous tests have confirmed simulavr results match tests on "
+"both a 16Mhz at90usb and a 16Mhz atmega2560)."
 msgstr ""
 
 #: docs/Benchmarks.md:block 22 (table)
@@ -487,45 +419,18 @@ msgstr ""
 msgid "486"
 msgstr ""
 
-#: docs/Benchmarks.md:block 25 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PB27 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PB26 dir_pin=PC30 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PA21 dir_pin=PC30 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 26 (paragraph)
 msgid ""
-"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
-"gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
+"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc"
+" (Fedora 10.2.0-4.fc34) 10.2.0`."
 msgstr ""
 
 #: docs/Benchmarks.md:block 27 (table)
 msgid "257"
 msgstr ""
 
-#: docs/Benchmarks.md:block 30 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PC26 dir_pin=PC18 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PC26 dir_pin=PA8 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PC26 dir_pin=PB4 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 32 (table)
 msgid "260"
-msgstr ""
-
-#: docs/Benchmarks.md:block 35 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PD6 dir_pin=PD11 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PD7 dir_pin=PD12 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PD8 dir_pin=PD13 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
 msgstr ""
 
 #: docs/Benchmarks.md:block 36 (paragraph)
@@ -542,15 +447,6 @@ msgstr ""
 msgid "215"
 msgstr ""
 
-#: docs/Benchmarks.md:block 40 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=gpio0_23 dir_pin=gpio1_12 invert_step=0 step_pulse_ticks=20\n"
-"config_stepper oid=1 step_pin=gpio1_15 dir_pin=gpio0_26 invert_step=0 step_pulse_ticks=20\n"
-"config_stepper oid=2 step_pin=gpio0_22 dir_pin=gpio2_1 invert_step=0 step_pulse_ticks=20\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 41 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `pru-gcc (GCC) "
@@ -565,30 +461,12 @@ msgstr ""
 msgid "847"
 msgstr ""
 
-#: docs/Benchmarks.md:block 45 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PA1 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PB8 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 47 (table)
 msgid "59"
 msgstr ""
 
 #: docs/Benchmarks.md:block 47 (table)
 msgid "249"
-msgstr ""
-
-#: docs/Benchmarks.md:block 50 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PC13 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PB3 dir_pin=PB6 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PA4 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
 msgstr ""
 
 #: docs/Benchmarks.md:block 52 (table)
@@ -599,19 +477,10 @@ msgstr ""
 msgid "264"
 msgstr ""
 
-#: docs/Benchmarks.md:block 55 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PA5 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PB2 dir_pin=PB6 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PB3 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 56 (paragraph)
 msgid ""
-"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
-"gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The STM32F407 results were obtained by "
+"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc"
+" (Fedora 10.2.0-4.fc34) 10.2.0`. The STM32F407 results were obtained by "
 "running an STM32F407 binary on an STM32F446 (and thus using a 168Mhz clock)."
 msgstr ""
 
@@ -623,58 +492,31 @@ msgstr ""
 msgid "205"
 msgstr ""
 
-#: docs/Benchmarks.md:block 61 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=P1.20 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=P1.21 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=P1.23 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
-"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
-"gcc (Fedora 10.2.0-4.fc34) 10.2.0`. The 120Mhz LPC1769 results were obtained"
-" by overclocking an LPC1768 to 120Mhz."
+"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc"
+" (Fedora 10.2.0-4.fc34) 10.2.0`. The 120Mhz LPC1769 results were obtained by "
+"overclocking an LPC1768 to 120Mhz."
 msgstr ""
 
 #: docs/Benchmarks.md:block 63 (table)
 msgid "222"
 msgstr ""
 
-#: docs/Benchmarks.md:block 67 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PA27 dir_pin=PA20 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PB3 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PA17 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 68 (paragraph)
 msgid ""
-"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
-"gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD21G18 micro-controller."
+"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc"
+" (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD21G18 micro-controller."
 msgstr ""
 
 #: docs/Benchmarks.md:block 69 (table)
 msgid "306"
 msgstr ""
 
-#: docs/Benchmarks.md:block 72 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PA22 dir_pin=PA20 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PA22 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PA22 dir_pin=PA19 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 73 (paragraph)
 msgid ""
-"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
-"gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD51J19A micro-controller."
+"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc"
+" (Fedora 10.2.0-4.fc34) 10.2.0` on a SAMD51J19A micro-controller."
 msgstr ""
 
 #: docs/Benchmarks.md:block 74 (table)
@@ -689,35 +531,11 @@ msgstr ""
 msgid "181"
 msgstr ""
 
-#: docs/Benchmarks.md:block 77 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=gpio25 dir_pin=gpio3 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=gpio26 dir_pin=gpio4 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
-#: docs/Benchmarks.md:block 78 (paragraph)
-msgid ""
-"The test was last run on commit `59314d99` with gcc version `arm-none-eabi-"
-"gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a Raspberry Pi Pico board."
-msgstr ""
-
-#: docs/Benchmarks.md:block 82 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=gpio2 dir_pin=gpio3 invert_step=0 step_pulse_ticks=5\n"
-"config_stepper oid=1 step_pin=gpio4 dir_pin=gpio5 invert_step=0 step_pulse_ticks=5\n"
-"config_stepper oid=2 step_pin=gpio6 dir_pin=gpio17 invert_step=0 step_pulse_ticks=5\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 83 (paragraph)
 msgid ""
 "The test was last run on commit `59314d99` with gcc version `gcc (Raspbian "
-"8.3.0-6+rpi1) 8.3.0` on a Raspberry Pi 3 (revision a02082). It was difficult"
-" to get stable results in this benchmark."
+"8.3.0-6+rpi1) 8.3.0` on a Raspberry Pi 3 (revision a02082). It was difficult "
+"to get stable results in this benchmark."
 msgstr ""
 
 #: docs/Benchmarks.md:block 84 (table)
@@ -730,11 +548,11 @@ msgstr ""
 
 #: docs/Benchmarks.md:block 15 (paragraph)
 msgid ""
-"To produce the benchmarks found in the [Features](Features.md) document, the"
-" total number of steps per second is calculated by multiplying the number of"
-" active steppers with the nominal mcu frequency and dividing by the final "
-"ticks parameter. The results are rounded to the nearest K. For example, with"
-" three active steppers:"
+"To produce the benchmarks found in the [Features](Features.md) document, the "
+"total number of steps per second is calculated by multiplying the number of "
+"active steppers with the nominal mcu frequency and dividing by the final ticks"
+" parameter. The results are rounded to the nearest K. For example, with three "
+"active steppers:"
 msgstr ""
 
 #: docs/Benchmarks.md:block 59 (header)
@@ -745,19 +563,10 @@ msgstr ""
 msgid "The following configuration sequence is used on the STM32G0B1:"
 msgstr ""
 
-#: docs/Benchmarks.md:block 61 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PB13 dir_pin=PB12 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PB10 dir_pin=PB2 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PB0 dir_pin=PC5 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
-"The test was last run on commit `247cd753` with gcc version `arm-none-eabi-"
-"gcc (Fedora 10.2.0-4.fc34) 10.2.0`."
+"The test was last run on commit `247cd753` with gcc version `arm-none-eabi-gcc"
+" (Fedora 10.2.0-4.fc34) 10.2.0`."
 msgstr ""
 
 #: docs/Benchmarks.md:block 63 (table)
@@ -780,20 +589,10 @@ msgstr ""
 msgid "The following configuration sequence is used on a STM32H743VIT6:"
 msgstr ""
 
-#: docs/Benchmarks.md:block 61 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PD4 dir_pin=PD3 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PA15 dir_pin=PA8 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PE2 dir_pin=PE3 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-msgstr ""
-
 #: docs/Benchmarks.md:block 62 (paragraph)
 msgid ""
-"The test was last run on commit `00191b5c` with gcc version `arm-none-eabi-"
-"gcc (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) [gcc-8-branch revision "
-"273027]`."
+"The test was last run on commit `00191b5c` with gcc version `arm-none-eabi-gcc"
+" (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) [gcc-8-branch revision 273027]`."
 msgstr ""
 
 #: docs/Benchmarks.md:block 63 (table)
@@ -815,22 +614,6 @@ msgstr ""
 #: docs/Benchmarks.md:block 86 (paragraph)
 msgid ""
 "The following configuration sequence is used on AR100 CPU (Allwinner A64):"
-msgstr ""
-
-#: docs/Benchmarks.md:block 87 (code)
-msgid ""
-"allocate_oids count=3\n"
-"config_stepper oid=0 step_pin=PL10 dir_pin=PE14 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=1 step_pin=PL11 dir_pin=PE15 invert_step=-1 step_pulse_ticks=0\n"
-"config_stepper oid=2 step_pin=PL12 dir_pin=PE16 invert_step=-1 step_pulse_ticks=0\n"
-"finalize_config crc=0\n"
-"\n"
-msgstr ""
-
-#: docs/Benchmarks.md:block 88 (paragraph)
-msgid ""
-"The test was last run on commit `08d037c6` with gcc version `or1k-linux-"
-"musl-gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller."
 msgstr ""
 
 #: docs/Benchmarks.md:block 89 (table)
@@ -861,12 +644,295 @@ msgstr ""
 msgid "or1k-linux-musl-gcc 9.3.0"
 msgstr ""
 
+#: docs/Benchmarks.md:block 85 (header)
+msgid "SAME70 step rate benchmark"
+msgstr ""
+
+#: docs/Benchmarks.md:block 86 (paragraph)
+msgid "The following configuration sequence is used on the SAME70:"
+msgstr ""
+
+#: docs/Benchmarks.md:block 88 (paragraph)
+msgid ""
+"The test was last run on commit `34e9ea55` with gcc version `arm-none-eabi-gcc"
+" (NixOS 10.3-2021.10) 10.3.1` on a SAME70Q20B micro-controller."
+msgstr ""
+
+#: docs/Benchmarks.md:block 89 (table)
+msgid "same70"
+msgstr ""
+
+#: docs/Benchmarks.md:block 89 (table)
+msgid "45"
+msgstr ""
+
+#: docs/Benchmarks.md:block 89 (table)
+msgid "190"
+msgstr ""
+
+#: docs/Benchmarks.md:block 93 (paragraph)
+msgid ""
+"The test was last run on commit `b7978d37` with gcc version `or1k-linux-musl-"
+"gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller."
+msgstr ""
+
+#: docs/Benchmarks.md:block 95 (header)
+msgid "RPxxxx step rate benchmark"
+msgstr ""
+
+#: docs/Benchmarks.md:block 96 (paragraph)
+msgid "The following configuration sequence is used on the RP2040 and RP2350:"
+msgstr ""
+
+#: docs/Benchmarks.md:block 98 (paragraph)
+msgid ""
+"The test was last run on commit `f6718291` with gcc version `arm-none-eabi-gcc"
+" (Fedora 14.1.0-1.fc40) 14.1.0` on Raspberry Pi Pico and Pico 2 boards."
+msgstr ""
+
+#: docs/Benchmarks.md:block 99 (table)
+msgid "rp2040 (*)"
+msgstr ""
+
+#: docs/Benchmarks.md:block 100 (table)
+msgid "rp2350"
+msgstr ""
+
+#: docs/Benchmarks.md:block 100 (table)
+msgid "36"
+msgstr ""
+
+#: docs/Benchmarks.md:block 100 (table)
+msgid "169"
+msgstr ""
+
+#: docs/Benchmarks.md:block 101 (paragraph)
+msgid ""
+"(*) Note that the reported rp2040 ticks are relative to a 12Mhz scheduling "
+"timer and do not correspond to its 125Mhz internal ARM processing rate. It is "
+"expected that 5 scheduling ticks corresponds to ~47 ARM core cycles and 22 "
+"scheduling ticks corresponds to ~224 ARM core cycles."
+msgstr ""
+
+#: docs/Benchmarks.md:block 112 (table)
+msgid "885K"
+msgstr ""
+
+#: docs/Benchmarks.md:block 112 (table)
+msgid "f6718291"
+msgstr ""
+
+#: docs/Benchmarks.md:block 112 (table)
+msgid "arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0"
+msgstr ""
+
+#: docs/Benchmarks.md:block 112 (table)
+msgid "rp2350 (USB)"
+msgstr ""
+
 #~ msgid ""
-#~ "To produce the benchmarks found in the Features.md document, the total "
-#~ "number of steps per second is calculated by multiplying the number of active"
-#~ " steppers with the nominal mcu frequency and dividing by the final ticks "
-#~ "parameter. The results are rounded to the nearest K. For example, with three"
-#~ " active steppers:"
+#~ "SET start_clock {clock+freq}\n"
+#~ "SET ticks 1000\n"
+#~ "\n"
+#~ "reset_step_clock oid=0 clock={start_clock}\n"
+#~ "set_next_step_dir oid=0 dir=0\n"
+#~ "queue_step oid=0 interval={ticks} count=60000 add=0\n"
+#~ "set_next_step_dir oid=0 dir=1\n"
+#~ "queue_step oid=0 interval=3000 count=1 add=0\n"
+#~ "\n"
+#~ "reset_step_clock oid=1 clock={start_clock}\n"
+#~ "set_next_step_dir oid=1 dir=0\n"
+#~ "queue_step oid=1 interval={ticks} count=60000 add=0\n"
+#~ "set_next_step_dir oid=1 dir=1\n"
+#~ "queue_step oid=1 interval=3000 count=1 add=0\n"
+#~ "\n"
+#~ "reset_step_clock oid=2 clock={start_clock}\n"
+#~ "set_next_step_dir oid=2 dir=0\n"
+#~ "queue_step oid=2 interval={ticks} count=60000 add=0\n"
+#~ "set_next_step_dir oid=2 dir=1\n"
+#~ "queue_step oid=2 interval=3000 count=1 add=0\n"
+#~ msgstr ""
+
+#~ msgid "clear_shutdown\n"
+#~ msgstr ""
+
+#~ msgid "ECHO Test result is: {\"%.0fK\" % (3. * freq / ticks / 1000.)}\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "DELAY {clock + 2*freq} get_uptime\n"
+#~ "FLOOD 100000 0.0 debug_nop\n"
+#~ "get_uptime\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "time ~/klippy-env/bin/python ./klippy/klippy.py config/example-cartesian.cfg "
+#~ "-i something_complex.gcode -o /dev/null -d out/klipper.dict\n"
+#~ msgstr ""
+
+#~ msgid "RP2040 step rate benchmark"
+#~ msgstr ""
+
+#~ msgid "The following configuration sequence is used on the RP2040:"
+#~ msgstr ""
+
+#~ msgid "rp2040"
+#~ msgstr ""
+
+#~ msgid "873K"
+#~ msgstr ""
+
+#~ msgid "c5667193"
+#~ msgstr ""
+
+#~ msgid "arm-none-eabi-gcc (Fedora 10.2.0-4.fc34) 10.2.0"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PA5 dir_pin=PA4 invert_step=0 step_pulse_ticks=32\n"
+#~ "config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=0 step_pulse_ticks=32\n"
+#~ "config_stepper oid=2 step_pin=PC7 dir_pin=PC6 invert_step=0 step_pulse_ticks=32\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PB27 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PB26 dir_pin=PC30 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PA21 dir_pin=PC30 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PC26 dir_pin=PC18 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PC26 dir_pin=PA8 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PC26 dir_pin=PB4 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PD6 dir_pin=PD11 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PD7 dir_pin=PD12 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PD8 dir_pin=PD13 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=gpio0_23 dir_pin=gpio1_12 invert_step=0 step_pulse_ticks=20\n"
+#~ "config_stepper oid=1 step_pin=gpio1_15 dir_pin=gpio0_26 invert_step=0 step_pulse_ticks=20\n"
+#~ "config_stepper oid=2 step_pin=gpio0_22 dir_pin=gpio2_1 invert_step=0 step_pulse_ticks=20\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PA1 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PA3 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PB8 dir_pin=PA2 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PC13 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PB3 dir_pin=PB6 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PA4 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PA5 dir_pin=PB5 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PB2 dir_pin=PB6 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PB3 dir_pin=PB7 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=P1.20 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=P1.21 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=P1.23 dir_pin=P1.18 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PA27 dir_pin=PA20 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PB3 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PA17 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PA22 dir_pin=PA20 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PA22 dir_pin=PA21 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PA22 dir_pin=PA19 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=gpio25 dir_pin=gpio3 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=gpio26 dir_pin=gpio4 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=gpio27 dir_pin=gpio5 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The test was last run on commit `59314d99` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 10.2.0-4.fc34) 10.2.0` on a Raspberry Pi Pico board."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=gpio2 dir_pin=gpio3 invert_step=0 step_pulse_ticks=5\n"
+#~ "config_stepper oid=1 step_pin=gpio4 dir_pin=gpio5 invert_step=0 step_pulse_ticks=5\n"
+#~ "config_stepper oid=2 step_pin=gpio6 dir_pin=gpio17 invert_step=0 step_pulse_ticks=5\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PB13 dir_pin=PB12 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PB10 dir_pin=PB2 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PB0 dir_pin=PC5 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PD4 dir_pin=PD3 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PA15 dir_pin=PA8 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PE2 dir_pin=PE3 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "allocate_oids count=3\n"
+#~ "config_stepper oid=0 step_pin=PL10 dir_pin=PE14 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=1 step_pin=PL11 dir_pin=PE15 invert_step=-1 step_pulse_ticks=0\n"
+#~ "config_stepper oid=2 step_pin=PL12 dir_pin=PE16 invert_step=-1 step_pulse_ticks=0\n"
+#~ "finalize_config crc=0\n"
+#~ "\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The test was last run on commit `08d037c6` with gcc version `or1k-linux-musl-"
+#~ "gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To produce the benchmarks found in the Features.md document, the total number "
+#~ "of steps per second is calculated by multiplying the number of active steppers"
+#~ " with the nominal mcu frequency and dividing by the final ticks parameter. The"
+#~ " results are rounded to the nearest K. For example, with three active "
+#~ "steppers:"
 #~ msgstr ""
 
 #~ msgid ""
@@ -877,18 +943,18 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "Benchmarks may be run with the micro-controller code compiled using a \"step"
-#~ " pulse duration\" of zero (the tables below report this as \"no delay\"). "
-#~ "This configuration is believed to be valid in real-world usage when one is "
-#~ "solely using Trinamic stepper drivers. The results of these benchmarks are "
-#~ "not reported in the Features.md document."
+#~ "Benchmarks may be run with the micro-controller code compiled using a \"step "
+#~ "pulse duration\" of zero (the tables below report this as \"no delay\"). This "
+#~ "configuration is believed to be valid in real-world usage when one is solely "
+#~ "using Trinamic stepper drivers. The results of these benchmarks are not "
+#~ "reported in the Features.md document."
 #~ msgstr ""
 
 #~ msgid ""
 #~ "The test was last run on commit `01d2183f` with gcc version `avr-gcc (GCC) "
-#~ "5.4.0`. Both the 16Mhz and 20Mhz tests were run using simulavr configured "
-#~ "for an atmega644p (previous tests have confirmed simulavr results match "
-#~ "tests on both a 16Mhz at90usb and a 16Mhz atmega2560)."
+#~ "5.4.0`. Both the 16Mhz and 20Mhz tests were run using simulavr configured for "
+#~ "an atmega644p (previous tests have confirmed simulavr results match tests on "
+#~ "both a 16Mhz at90usb and a 16Mhz atmega2560)."
 #~ msgstr ""
 
 #~ msgid "104"
@@ -904,8 +970,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-"
-#~ "gcc (Fedora 7.4.0-1.fc30) 7.4.0`."
+#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 7.4.0-1.fc30) 7.4.0`."
 #~ msgstr ""
 
 #~ msgid "388"
@@ -942,8 +1008,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `59a60d68` with gcc version `arm-none-eabi-"
-#~ "gcc 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907]`."
+#~ "The test was last run on commit `59a60d68` with gcc version `arm-none-eabi-gcc"
+#~ " 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907]`."
 #~ msgstr ""
 
 #~ msgid "519"
@@ -976,8 +1042,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `0b0c47c5` with gcc version `arm-none-eabi-"
-#~ "gcc (Fedora 9.2.0-1.fc30) 9.2.0`."
+#~ "The test was last run on commit `0b0c47c5` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 9.2.0-1.fc30) 9.2.0`."
 #~ msgstr ""
 
 #~ msgid "247"
@@ -1002,9 +1068,9 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-"
-#~ "gcc (Fedora 7.4.0-1.fc30) 7.4.0`. The STM32F407 results were obtained by "
-#~ "running an STM32F407 binary on an STM32F446 (and thus using a 168Mhz clock)."
+#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 7.4.0-1.fc30) 7.4.0`. The STM32F407 results were obtained by running "
+#~ "an STM32F407 binary on an STM32F446 (and thus using a 168Mhz clock)."
 #~ msgstr ""
 
 #~ msgid "757"
@@ -1029,9 +1095,9 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-"
-#~ "gcc (Fedora 7.4.0-1.fc30) 7.4.0`. The 120Mhz LPC1769 results were obtained "
-#~ "by overclocking an LPC1768 to 120Mhz."
+#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 7.4.0-1.fc30) 7.4.0`. The 120Mhz LPC1769 results were obtained by "
+#~ "overclocking an LPC1768 to 120Mhz."
 #~ msgstr ""
 
 #~ msgid "448"
@@ -1056,8 +1122,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-"
-#~ "gcc (Fedora 7.4.0-1.fc30) 7.4.0` on a SAMD21G18 micro-controller."
+#~ "The test was last run on commit `8d4a5c16` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 7.4.0-1.fc30) 7.4.0` on a SAMD21G18 micro-controller."
 #~ msgstr ""
 
 #~ msgid "277"
@@ -1076,8 +1142,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `524ebbc7` with gcc version `arm-none-eabi-"
-#~ "gcc (Fedora 9.2.0-1.fc30) 9.2.0` on a SAMD51J19A micro-controller."
+#~ "The test was last run on commit `524ebbc7` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 9.2.0-1.fc30) 9.2.0` on a SAMD51J19A micro-controller."
 #~ msgstr ""
 
 #~ msgid "516"
@@ -1237,8 +1303,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "The test was last run on commit `c5667193` with gcc version `arm-none-eabi-"
-#~ "gcc (Fedora 10.2.0-4.fc34) 10.2.0` on a Raspberry Pi Pico board."
+#~ "The test was last run on commit `c5667193` with gcc version `arm-none-eabi-gcc"
+#~ " (Fedora 10.2.0-4.fc34) 10.2.0` on a Raspberry Pi Pico board."
 #~ msgstr ""
 
 #~ msgid ""
@@ -1250,15 +1316,15 @@ msgstr ""
 
 #~ msgid ""
 #~ "The command dispatch benchmark tests how many \"dummy\" commands the micro-"
-#~ "controller can process. It is primarily a test of the hardware communication"
-#~ " mechanism. The test is run using the console.py tool (described in "
+#~ "controller can process. It is primarily a test of the hardware communication "
+#~ "mechanism. The test is run using the console.py tool (described in "
 #~ "[Debugging.md](Debugging.md)). The following is cut-and-paste into the "
 #~ "console.py terminal window:"
 #~ msgstr ""
 
 #~ msgid ""
 #~ "It is possible to run timing tests on the host software using the \"batch "
-#~ "mode\" processing mechanism (described in [Debugging.md](Debugging.md)). "
-#~ "This is typically done by choosing a large and complex G-Code file and "
-#~ "timing how long it takes for the host software to process it. For example:"
+#~ "mode\" processing mechanism (described in [Debugging.md](Debugging.md)). This "
+#~ "is typically done by choosing a large and complex G-Code file and timing how "
+#~ "long it takes for the host software to process it. For example:"
 #~ msgstr ""

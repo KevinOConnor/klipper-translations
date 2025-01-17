@@ -13,7 +13,7 @@
     
     
       
-        <title>TMC drivers - Klipper documentation</title>
+        <title>Драйверы TMC - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tmc-drivers" class="md-skip">
+        <a href="#tmc" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TMC drivers
+              Драйверы TMC
             
           </span>
         </div>
@@ -1328,35 +1328,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tuning-motor-current" class="md-nav__link">
-    Tuning motor current
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prefer-to-not-specify-a-hold_current" class="md-nav__link">
-    Prefer to not specify a hold_current
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-spreadcycle-vs-stealthchop-mode" class="md-nav__link">
-    Setting "spreadCycle" vs "stealthChop" Mode
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tmc-interpolate-setting-introduces-small-position-deviation" class="md-nav__link">
-    TMC interpolate setting introduces small position deviation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
+    Ток двигателя настройки
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hold_current" class="md-nav__link">
+    Предпочтительнее не указывать hold_current
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spreadcycle-stealthchop" class="md-nav__link">
+    Установка режима "spreadCycle" против режима "stealthChop"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tmc_1" class="md-nav__link">
+    Настройка интерполяции TMC приводит к небольшому отклонению положения
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     Самонаведение без датчиков
   </a>
   
@@ -1364,21 +1364,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     Ограничения
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#_4" class="md-nav__link">
+    Пререквизиты
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     Тюнинг
   </a>
   
@@ -1386,43 +1386,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#choose-homing-speed" class="md-nav__link">
-    Choose homing speed
+  <a href="#_6" class="md-nav__link">
+    Выберите скорость наведения
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-printercfg-for-sensorless-homing" class="md-nav__link">
-    Configure printer.cfg for sensorless homing
+  <a href="#printercfg" class="md-nav__link">
+    Настройка файла printer.cfg для бессенсорного самонаведения
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#find-highest-sensitivity-that-successfully-homes" class="md-nav__link">
-    Find highest sensitivity that successfully homes
+  <a href="#_7" class="md-nav__link">
+    Найдите максимальную чувствительность, которая успешно справляется с домами
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#find-lowest-sensitivity-that-homes-with-one-touch" class="md-nav__link">
-    Find lowest sensitivity that homes with one touch
+  <a href="#_8" class="md-nav__link">
+    Найдите самую низкую чувствительность, которая устанавливается одним касанием
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#update-printercfg-with-sensitivity-value" class="md-nav__link">
-    Update printer.cfg with sensitivity value
+  <a href="#printercfg_1" class="md-nav__link">
+    Обновление файла printer.cfg со значением чувствительности
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#using-macros-when-homing" class="md-nav__link">
-    Using Macros when Homing
+  <a href="#_9" class="md-nav__link">
+    Использование макросов при наведении
   </a>
   
 </li>
@@ -1433,8 +1433,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tips-for-sensorless-homing-on-corexy" class="md-nav__link">
-    Tips for sensorless homing on CoreXY
+  <a href="#corexy" class="md-nav__link">
+    Советы по бессенсорному самонаведению на CoreXY
   </a>
   
 </li>
@@ -1445,80 +1445,80 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#querying-and-diagnosing-driver-settings" class="md-nav__link">
-    Querying and diagnosing driver settings
+  <a href="#_10" class="md-nav__link">
+    Запрос и диагностика настроек драйвера
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-driver_xxx-settings" class="md-nav__link">
-    Configuring driver_XXX settings
+  <a href="#_xxx" class="md-nav__link">
+    Настройка параметров драйвера_XXX
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-questions" class="md-nav__link">
-    Common Questions
+  <a href="#_11" class="md-nav__link">
+    Общие вопросы
   </a>
   
-    <nav class="md-nav" aria-label="Common Questions">
+    <nav class="md-nav" aria-label="Общие вопросы">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#can-i-use-stealthchop-mode-on-an-extruder-with-pressure-advance" class="md-nav__link">
-    Can I use stealthChop mode on an extruder with pressure advance?
+  <a href="#stealthchop" class="md-nav__link">
+    Можно ли использовать режим stealthChop на экструдере с опережением давления?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#i-keep-getting-unable-to-read-tmc-uart-stepper_x-register-ifcnt-errors" class="md-nav__link">
-    I keep getting "Unable to read tmc uart 'stepper_x' register IFCNT" errors?
+  <a href="#unable-to-read-tmc-uart-stepper_x-register-ifcnt" class="md-nav__link">
+    Я продолжаю получать ошибки "Unable to read tmc uart 'stepper_x' register IFCNT"?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#i-keep-getting-unable-to-write-tmc-spi-stepper_x-register-errors" class="md-nav__link">
-    I keep getting "Unable to write tmc spi 'stepper_x' register ..." errors?
+  <a href="#unable-to-write-tmc-spi-stepper_x-register" class="md-nav__link">
+    Я продолжаю получать ошибки "Unable to write tmc spi 'stepper_x' register ..."?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-did-i-get-a-tmc-reports-error-error" class="md-nav__link">
-    Why did I get a "TMC reports error: ..." error?
+  <a href="#tmc_2" class="md-nav__link">
+    Почему я получил ошибку "TMC сообщает об ошибке: ..."?
   </a>
   
-    <nav class="md-nav" aria-label="Why did I get a "TMC reports error: ..." error?">
+    <nav class="md-nav" aria-label="Почему я получил ошибку "TMC сообщает об ошибке: ..."?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tmc-reports-error-ot1overtemperror" class="md-nav__link">
-    TMC reports error: ... ot=1(OvertempError!)
+  <a href="#tmc-ot1overtemperror" class="md-nav__link">
+    TMC сообщает об ошибке: ... ot=1(OvertempError!)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tmc-reports-error-shorttognd-or-shorttosupply" class="md-nav__link">
-    TMC reports error: ... ShortToGND OR ShortToSupply
+  <a href="#tmc-shorttognd-shorttosupply" class="md-nav__link">
+    TMC сообщает об ошибке: ... ShortToGND ИЛИ ShortToSupply
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tmc-reports-error-reset1reset-or-cs_actual0reset-or-se0reset" class="md-nav__link">
-    TMC reports error: ... reset=1(Reset) OR CS_ACTUAL=0(Reset?) OR SE=0(Reset?)
+  <a href="#tmc-1-cs_actual0-se0" class="md-nav__link">
+    TMC сообщает об ошибке: ... сброс=1(Сброс) ИЛИ CS_ACTUAL=0(Сброс?) ИЛИ SE=0(Сброс?)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tmc-reports-error-uv_cp1undervoltage" class="md-nav__link">
-    TMC reports error: ... uv_cp=1(Undervoltage!)
+  <a href="#tmc-uv_cp1" class="md-nav__link">
+    TMC сообщает об ошибке: ... uv_cp=1( Пониженное напряжение!)
   </a>
   
 </li>
@@ -1529,8 +1529,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-do-i-tune-spreadcyclecoolstepetc-mode-on-my-drivers" class="md-nav__link">
-    How do I tune spreadCycle/coolStep/etc. mode on my drivers?
+  <a href="#spreadcyclecoolstepetc" class="md-nav__link">
+    Как настроить режим spreadCycle/coolStep/etc. на моих драйверах?
   </a>
   
 </li>
@@ -1557,69 +1557,69 @@
 </a>
 
 
-<h1 id="tmc-drivers">TMC drivers<a class="headerlink" href="#tmc-drivers" title="Permanent link">&para;</a></h1>
+<h1 id="tmc">Драйверы TMC<a class="headerlink" href="#tmc" title="Permanent link">&para;</a></h1>
 <p>В этом документе содержится информация об использовании драйверов шаговых двигателей Trinamic (Тринамик) в режиме SPI/UART на Klipper.</p>
 <p>Klipper также может использовать драйверы Trinamic в их "автономном режиме" (standalone mode). Однако, когда драйверы находятся в этом режиме, специальная настройка Klipper не требуется, и расширенные функции Klipper, обсуждаемые в этом документе, недоступны.</p>
 <p>В дополнение к этому документу обязательно ознакомьтесь с<a href="Config_Reference.html#tmc-stepper-driver-configuration">TMC driver config reference</a>.</p>
-<h2 id="tuning-motor-current">Tuning motor current<a class="headerlink" href="#tuning-motor-current" title="Permanent link">&para;</a></h2>
-<p>A higher driver current increases positional accuracy and torque. However, a higher current also increases the heat produced by the stepper motor and the stepper motor driver. If the stepper motor driver gets too hot it will disable itself and Klipper will report an error. If the stepper motor gets too hot, it loses torque and positional accuracy. (If it gets very hot it may also melt plastic parts attached to it or near it.)</p>
-<p>As a general tuning tip, prefer higher current values as long as the stepper motor does not get too hot and the stepper motor driver does not report warnings or errors. In general, it is okay for the stepper motor to feel warm, but it should not become so hot that it is painful to touch.</p>
-<h2 id="prefer-to-not-specify-a-hold_current">Prefer to not specify a hold_current<a class="headerlink" href="#prefer-to-not-specify-a-hold_current" title="Permanent link">&para;</a></h2>
-<p>If one configures a <code>hold_current</code> then the TMC driver can reduce current to the stepper motor when it detects that the stepper is not moving. However, changing motor current may itself introduce motor movement. This may occur due to "detent forces" within the stepper motor (the permanent magnet in the rotor pulls towards the iron teeth in the stator) or due to external forces on the axis carriage.</p>
-<p>Most stepper motors will not obtain a significant benefit to reducing current during normal prints, because few printing moves will leave a stepper motor idle for sufficiently long to activate the <code>hold_current</code> feature. And, it is unlikely that one would want to introduce subtle print artifacts to the few printing moves that do leave a stepper idle sufficiently long.</p>
-<p>If one wishes to reduce current to motors during print start routines, then consider issuing <a href="G-Codes.html#set_tmc_current">SET_TMC_CURRENT</a> commands in a <a href="Slicers.html#klipper-gcode_macro">START_PRINT macro</a> to adjust the current before and after normal printing moves.</p>
-<p>Some printers with dedicated Z motors that are idle during normal printing moves (no bed_mesh, no bed_tilt, no Z skew_correction, no "vase mode" prints, etc.) may find that Z motors do run cooler with a <code>hold_current</code>. If implementing this then be sure to take into account this type of uncommanded Z axis movement during bed leveling, bed probing, probe calibration, and similar. The <code>driver_TPOWERDOWN</code> and <code>driver_IHOLDDELAY</code> should also be calibrated accordingly. If unsure, prefer to not specify a <code>hold_current</code>.</p>
-<h2 id="setting-spreadcycle-vs-stealthchop-mode">Setting "spreadCycle" vs "stealthChop" Mode<a class="headerlink" href="#setting-spreadcycle-vs-stealthchop-mode" title="Permanent link">&para;</a></h2>
-<p>By default, Klipper places the TMC drivers in "spreadCycle" mode. If the driver supports "stealthChop" then it can be enabled by adding <code>stealthchop_threshold: 999999</code> to the TMC config section.</p>
-<p>In general, spreadCycle mode provides greater torque and greater positional accuracy than stealthChop mode. However, stealthChop mode may produce significantly lower audible noise on some printers.</p>
-<p>Tests comparing modes have shown an increased "positional lag" of around 75% of a full-step during constant velocity moves when using stealthChop mode (for example, on a printer with 40mm rotation_distance and 200 steps_per_rotation, position deviation of constant speed moves increased by ~0.150mm). However, this "delay in obtaining the requested position" may not manifest as a significant print defect and one may prefer the quieter behavior of stealthChop mode.</p>
-<p>It is recommended to always use "spreadCycle" mode (by not specifying <code>stealthchop_threshold</code>) or to always use "stealthChop" mode (by setting <code>stealthchop_threshold</code> to 999999). Unfortunately, the drivers often produce poor and confusing results if the mode changes while the motor is at a non-zero velocity.</p>
-<h2 id="tmc-interpolate-setting-introduces-small-position-deviation">TMC interpolate setting introduces small position deviation<a class="headerlink" href="#tmc-interpolate-setting-introduces-small-position-deviation" title="Permanent link">&para;</a></h2>
-<p>The TMC driver <code>interpolate</code> setting may reduce the audible noise of printer movement at the cost of introducing a small systemic positional error. This systemic positional error results from the driver's delay in executing "steps" that Klipper sends it. During constant velocity moves, this delay results in a positional error of nearly half a configured microstep (more precisely, the error is half a microstep distance minus a 512th of a full step distance). For example, on an axis with a 40mm rotation_distance, 200 steps_per_rotation, and 16 microsteps, the systemic error introduced during constant velocity moves is ~0.006mm.</p>
-<p>For best positional accuracy consider using spreadCycle mode and disable interpolation (set <code>interpolate: False</code> in the TMC driver config). When configured this way, one may increase the <code>microstep</code> setting to reduce audible noise during stepper movement. Typically, a microstep setting of <code>64</code> or <code>128</code> will have similar audible noise as interpolation, and do so without introducing a systemic positional error.</p>
-<p>If using stealthChop mode then the positional inaccuracy from interpolation is small relative to the positional inaccuracy introduced from stealthChop mode. Therefore tuning interpolation is not considered useful when in stealthChop mode, and one can leave interpolation in its default state.</p>
-<h2 id="_1">Самонаведение без датчиков<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1">Ток двигателя настройки<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Более высокий ток драйвера увеличивает точность позиционирования и крутящий момент. Однако более высокий ток также увеличивает тепловыделение шагового двигателя и драйвера шагового двигателя. Если драйвер шагового двигателя перегревается, он отключается, и Klipper сообщает об ошибке. Если шаговый двигатель перегревается, он теряет крутящий момент и точность позиционирования. (Если он сильно нагревается, то может расплавить пластиковые детали, прикрепленные к нему или рядом с ним)</p>
+<p>В качестве общего совета по настройке, предпочитайте более высокие значения тока, пока шаговый двигатель не нагревается слишком сильно и драйвер шагового двигателя не выдает предупреждений или ошибок. В целом, шаговый двигатель может быть теплым, но он не должен стать настолько горячим, чтобы к нему было больно прикасаться.</p>
+<h2 id="hold_current">Предпочтительнее не указывать hold_current<a class="headerlink" href="#hold_current" title="Permanent link">&para;</a></h2>
+<p>Если настроить <code>hold_current</code>, то драйвер TMC может уменьшить ток шагового двигателя, когда обнаружит, что шаговый двигатель не движется. Однако изменение тока двигателя может само по себе вызвать его движение. Это может произойти из-за "сил сдерживания" внутри шагового двигателя (постоянный магнит в роторе притягивается к железным зубцам в статоре) или из-за внешних сил на каретке оси.</p>
+<p>Большинство шаговых двигателей не получат значительного преимущества от снижения тока во время обычной печати, потому что лишь немногие движения печати оставляют шаговый двигатель незадействованным достаточно долго, чтобы активировать функцию <code>hold_current</code>. И вряд ли кто-то захочет вносить тонкие артефакты в те немногие движения печати, которые оставляют шаговый двигатель без работы достаточно долго.</p>
+<p>Если вы хотите уменьшить ток, подаваемый на двигатели во время запуска печати, подумайте о том, чтобы подать команду <a href="G-Codes.html#set_tmc_current">SET_TMC_CURRENT</a> в макросе <a href="Slicers.html#klipper-gcode_macro">START_PRINT</a> для регулировки тока до и после обычных движений печати.</p>
+<p>Некоторые принтеры с выделенными двигателями Z, которые бездействуют во время обычных движений печати (без bed_mesh, без bed_tilt, без Z skew_correction, без печати в режиме "вазы" и т. д.), могут обнаружить, что двигатели Z работают холоднее при <code>hold_current</code>. Если это реализовано, то обязательно учитывайте этот тип необязательного движения оси Z во время выравнивания станины, зондирования станины, калибровки датчиков и т. п. Параметры <code>driver_TPOWERDOWN</code> и <code>driver_IHOLDDELAY</code> также должны быть откалиброваны соответствующим образом. Если вы не уверены, предпочтите не указывать <code>hold_current</code>.</p>
+<h2 id="spreadcycle-stealthchop">Установка режима "spreadCycle" против режима "stealthChop"<a class="headerlink" href="#spreadcycle-stealthchop" title="Permanent link">&para;</a></h2>
+<p>По умолчанию Klipper переводит драйверы TMC в режим "spreadCycle". Если драйвер поддерживает режим "stealthChop", то его можно включить, добавив <code>stealthchop_threshold: 999999</code> в секцию конфигурации TMC.</p>
+<p>В целом, режим spreadCycle обеспечивает больший крутящий момент и большую точность позиционирования, чем режим stealthChop. Однако в некоторых принтерах режим stealthChop может издавать значительно меньше звукового шума.</p>
+<p>Тесты, сравнивающие режимы, показали увеличение "задержки позиционирования" примерно на 75 % от полного шага при перемещениях с постоянной скоростью при использовании режима stealthChop (например, на принтере с 40 мм расстоянием_вращения и 200 шагами_на_вращение, отклонение позиции при перемещениях с постоянной скоростью увеличилось на ~0,150 мм). Однако эта "задержка в получении требуемой позиции" может не проявляться как существенный дефект печати, и можно предпочесть более спокойное поведение режима stealthChop.</p>
+<p>Рекомендуется всегда использовать режим "spreadCycle" (не указывая <code>stealthchop_threshold</code>) или всегда использовать режим "stealthChop" (устанавливая <code>stealthchop_threshold</code> в 999999). К сожалению, драйверы часто выдают плохие и запутанные результаты, если режим меняется, когда двигатель имеет ненулевую скорость.</p>
+<h2 id="tmc_1">Настройка интерполяции TMC приводит к небольшому отклонению положения<a class="headerlink" href="#tmc_1" title="Permanent link">&para;</a></h2>
+<p>Настройка драйвера TMC <code>интерполяция</code> может уменьшить слышимый шум при движении принтера ценой внесения небольшой системной ошибки позиционирования. Эта системная ошибка позиционирования возникает из-за задержки драйвера при выполнении "шагов", которые посылает ему Klipper. При движении с постоянной скоростью эта задержка приводит к ошибке позиционирования почти в половину настроенного микрошага (точнее, ошибка равна половине расстояния микрошага минус 512-я часть расстояния полного шага). Например, для оси с расстоянием_вращения 40 мм, 200 шагов_на_вращение и 16 микрошагами системная ошибка, вносимая при перемещениях с постоянной скоростью, составляет ~0,006 мм.</p>
+<p>Для достижения наилучшей точности позиционирования используйте режим spreadCycle и отключите интерполяцию (установите <code>interpolate: False</code> в конфигурации драйвера TMC). При такой конфигурации можно увеличить настройку <code>микрошага</code>, чтобы уменьшить слышимый шум при движении шаговика. Как правило, при установке микрошага <code>64</code> или <code>128</code> слышимый шум будет таким же, как при интерполяции, и при этом не будет вноситься систематическая ошибка позиционирования.</p>
+<p>Если используется режим stealthChop, то неточность позиционирования от интерполяции мала по сравнению с неточностью позиционирования, вносимой режимом stealthChop. Поэтому настройка интерполяции не считается полезной в режиме stealthChop, и можно оставить интерполяцию в состоянии по умолчанию.</p>
+<h2 id="_2">Самонаведение без датчиков<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>Бессенсорная парковка позволяет перемещать ось без использования физического концевого выключателя. Вместо этого каретка на оси перемещается в механический предел, заставляя шаговый двигатель терять шаги. Драйвер шагового двигателя фиксирует потерю шага и сообщает об этом управляющему MCU (Klipper) путем переключения одного из выводов. Эта информация может быть использована Klipper в качестве конечной остановки оси.</p>
 <p>В данном руководстве рассматривается настройка бездатчикового самонаведения для оси X вашего (картезианского) принтера. Тем не менее, она работает одинаково со всеми другими осями (требующими конечного упора). Конфигурировать и настраивать его следует для одной оси за один раз.</p>
-<h3 id="_2">Ограничения<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Be sure that your mechanical components are able to handle the load of the carriage bumping into the limit of the axis repeatedly. Especially leadscrews might generate a lot of force. Homing a Z axis by bumping the nozzle into the printing surface might not be a good idea. For best results, verify that the axis carriage will make a firm contact with the axis limit.</p>
-<p>Further, sensorless homing might not be accurate enough for your printer. While homing X and Y axes on a cartesian machine can work well, homing the Z axis is generally not accurate enough and may result in an inconsistent first layer height. Homing a delta printer sensorless is not advisable due to missing accuracy.</p>
+<h3 id="_3">Ограничения<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>Убедитесь, что ваши механические компоненты способны выдержать нагрузку от многократных ударов каретки о пределы оси. Особенно это касается винтов, которые могут создавать большое усилие. Наведение оси Z путем удара сопла о поверхность печати может оказаться не самой лучшей идеей. Для достижения наилучших результатов убедитесь, что каретка оси плотно соприкасается с ограничителем оси.</p>
+<p>Кроме того, бессенсорное наведение может быть недостаточно точным для вашего принтера. В то время как наведение по осям X и Y на картезианской машине может работать хорошо, наведение по оси Z обычно недостаточно точно и может привести к неравномерной высоте первого слоя. Бессенсорное наведение дельта-принтера не рекомендуется из-за недостаточной точности.</p>
 <p>Кроме того, обнаружение срыва шагового привода зависит от механической нагрузки на двигатель, тока двигателя и его температуры (сопротивления катушки).</p>
-<p>Sensorless homing works best at medium motor speeds. For very slow speeds (less than 10 RPM) the motor does not generate significant back EMF and the TMC cannot reliably detect motor stalls. Further, at very high speeds, the back EMF of the motor approaches the supply voltage of the motor, so the TMC cannot detect stalls anymore. It is advised to have a look in the datasheet of your specific TMCs. There you can also find more details on limitations of this setup.</p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
-<p>A few prerequisites are needed to use sensorless homing:</p>
+<p>Бессенсорное самонаведение лучше всего работает при средних скоростях вращения двигателя. При очень низких скоростях (менее 10 об/мин) двигатель не генерирует значительную обратную ЭДС, и TMC не может надежно обнаружить остановку двигателя. Далее, на очень высоких скоростях обратная ЭДС двигателя приближается к напряжению питания двигателя, поэтому TMC уже не может обнаружить остановку. Рекомендуется заглянуть в технический паспорт конкретного TMC. Там же можно найти более подробную информацию об ограничениях этой установки.</p>
+<h3 id="_4">Пререквизиты<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>Для использования бессенсорного самонаведения необходимо несколько предварительных условий:</p>
 <ol>
-<li>A stallGuard capable TMC stepper driver (tmc2130, tmc2209, tmc2660, or tmc5160).</li>
-<li>SPI / UART interface of the TMC driver wired to micro-controller (stand-alone mode does not work).</li>
-<li>The appropriate "DIAG" or "SG_TST" pin of TMC driver connected to the micro-controller.</li>
-<li>The steps in the <a href="Config_checks.html">config checks</a> document must be run to confirm the stepper motors are configured and working properly.</li>
+<li>Шаговый драйвер TMC с поддержкой StallGuard (tmc2130, tmc2209, tmc2660 или tmc5160).</li>
+<li>Интерфейс SPI / UART драйвера TMC подключен к микроконтроллеру (автономный режим не работает).</li>
+<li>Соответствующий вывод "DIAG" или "SG_TST" драйвера TMC подключается к микроконтроллеру.</li>
+<li>Чтобы убедиться, что шаговые двигатели настроены и работают правильно, необходимо выполнить действия, описанные в документе <a href="Config_checks.html">config checks</a>.</li>
 </ol>
-<h3 id="_3">Тюнинг<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>The procedure described here has six major steps:</p>
+<h3 id="_5">Тюнинг<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Описанная здесь процедура состоит из шести основных этапов:</p>
 <ol>
-<li>Choose a homing speed.</li>
-<li>Configure the <code>printer.cfg</code> file to enable sensorless homing.</li>
-<li>Find the stallguard setting with highest sensitivity that successfully homes.</li>
-<li>Find the stallguard setting with lowest sensitivity that successfully homes with a single touch.</li>
-<li>Update the <code>printer.cfg</code> with the desired stallguard setting.</li>
-<li>Create or update <code>printer.cfg</code> macros to home consistently.</li>
+<li>Выберите скорость самонаведения.</li>
+<li>Настройте файл <code>printer.cfg</code>, чтобы включить бессенсорное самонаведение.</li>
+<li>Найдите настройку stallguard с максимальной чувствительностью, которая успешно работает в домах.</li>
+<li>Найдите настройку stallguard с наименьшей чувствительностью, которая позволяет успешно управлять домом одним касанием.</li>
+<li>Обновить файл <code>printer.cfg</code> с нужными настройками stallguard.</li>
+<li>Создайте или обновите макросы в файле <code>printer.cfg</code> для последовательной установки дома.</li>
 </ol>
-<h4 id="choose-homing-speed">Choose homing speed<a class="headerlink" href="#choose-homing-speed" title="Permanent link">&para;</a></h4>
-<p>The homing speed is an important choice when performing sensorless homing. It's desirable to use a slow homing speed so that the carriage does not exert excessive force on the frame when making contact with the end of the rail. However, the TMC drivers can't reliably detect a stall at very slow speeds.</p>
-<p>A good starting point for the homing speed is for the stepper motor to make a full rotation every two seconds. For many axes this will be the <code>rotation_distance</code> divided by two. For example:</p>
+<h4 id="_6">Выберите скорость наведения<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>Скорость самонаведения - важный выбор при выполнении бессенсорного самонаведения. Желательно использовать низкую скорость самонаведения, чтобы каретка не оказывала чрезмерного усилия на раму при контакте с концом рельса. Однако драйверы TMC не могут надежно обнаружить остановку на очень низких скоростях.</p>
+<p>Хорошей отправной точкой для скорости самонаведения является то, что шаговый двигатель должен совершать полный оборот каждые две секунды. Для многих осей это будет <code>расстояние_вращения</code>, деленное на два. Например:</p>
 <div class="highlight"><pre><span></span><code>[stepper_x]
 rotation_distance: 40
 homing_speed: 20
 ...
 </code></pre></div>
 
-<h4 id="configure-printercfg-for-sensorless-homing">Configure printer.cfg for sensorless homing<a class="headerlink" href="#configure-printercfg-for-sensorless-homing" title="Permanent link">&para;</a></h4>
-<p>The <code>homing_retract_dist</code> setting must be set to zero in the <code>stepper_x</code> config section to disable the second homing move. The second homing attempt does not add value when using sensorless homing, it will not work reliably, and it will confuse the tuning process.</p>
-<p>Be sure that a <code>hold_current</code> setting is not specified in the TMC driver section of the config. (If a hold_current is set then after contact is made, the motor stops while the carriage is pressed against the end of the rail, and reducing the current while in that position may cause the carriage to move - that results in poor performance and will confuse the tuning process.)</p>
-<p>It is necessary to configure the sensorless homing pins and to configure initial "stallguard" settings. A tmc2209 example configuration for an X axis might look like:</p>
+<h4 id="printercfg">Настройка файла printer.cfg для бессенсорного самонаведения<a class="headerlink" href="#printercfg" title="Permanent link">&para;</a></h4>
+<p>Чтобы отключить второе движение самонаведения, в разделе конфигурации <code>stepper_x</code> необходимо установить значение <code>homing_retract_dist</code> на ноль. Вторая попытка самонаведения не добавляет ценности при использовании бессенсорного самонаведения, она не будет работать надежно и запутает процесс настройки.</p>
+<p>Убедитесь, что в разделе конфигурации драйвера TMC не задано значение <code>hold_current</code> (если задано значение hold_current, то после установления контакта двигатель останавливается, пока каретка прижата к концу рельса, и уменьшение тока в этом положении может привести к перемещению каретки - это приведет к ухудшению производительности и запутает процесс настройки)</p>
+<p>Необходимо сконфигурировать контакты бессенсорного самонаведения и задать начальные настройки "stallguard". Пример конфигурации tmc2209 для оси X может выглядеть следующим образом:</p>
 <div class="highlight"><pre><span></span><code>[tmc2209 stepper_x]
-diag_pin: ^PA1      # Set to MCU pin connected to TMC DIAG pin
-driver_SGTHRS: 255  # 255 is most sensitive value, 0 is least sensitive
+diag_pin: ^PA1 # Установите на вывод MCU, подключенный к выводу TMC DIAG
+driver_SGTHRS: 255 # 255 - наиболее чувствительное значение, 0 - наименее чувствительное
 ...
 
 [stepper_x]
@@ -1628,138 +1628,138 @@ homing_retract_dist: 0
 ...
 </code></pre></div>
 
-<p>An example tmc2130 or tmc5160 config might look like:</p>
+<p>Пример конфигурации tmc2130 или tmc5160 может выглядеть следующим образом:</p>
 <div class="highlight"><pre><span></span><code>[tmc2130 stepper_x]
-diag1_pin: ^!PA1 # Pin connected to TMC DIAG1 pin (or use diag0_pin / DIAG0 pin)
-driver_SGT: -64  # -64 is most sensitive value, 63 is least sensitive
+diag1_pin: ^!PA1 # Контакт, подключенный к контакту TMC DIAG1 (или используйте diag0_pin / DIAG0 pin)
+driver_SGT: -64 # -64 - наиболее чувствительное значение, 63 - наименее чувствительное
 ...
 
-[stepper_x]
+[stepper_x].
 endstop_pin: tmc2130_stepper_x:virtual_endstop
 homing_retract_dist: 0
 ...
 </code></pre></div>
 
-<p>An example tmc2660 config might look like:</p>
+<p>Пример конфигурации tmc2660 может выглядеть следующим образом:</p>
 <div class="highlight"><pre><span></span><code>[tmc2660 stepper_x]
-driver_SGT: -64     # -64 is most sensitive value, 63 is least sensitive
+driver_SGT: -64 # -64 - наиболее чувствительное значение, 63 - наименее чувствительное
 ...
 
 [stepper_x]
-endstop_pin: ^PA1   # Pin connected to TMC SG_TST pin
+endstop_pin: ^PA1 # Контакт подключен к контакту TMC SG_TST
 homing_retract_dist: 0
 ...
 </code></pre></div>
 
-<p>The examples above only show settings specific to sensorless homing. See the <a href="Config_Reference.html#tmc-stepper-driver-configuration">config reference</a> for all the available options.</p>
-<h4 id="find-highest-sensitivity-that-successfully-homes">Find highest sensitivity that successfully homes<a class="headerlink" href="#find-highest-sensitivity-that-successfully-homes" title="Permanent link">&para;</a></h4>
-<p>Place the carriage near the center of the rail. Use the SET_TMC_FIELD command to set the highest sensitivity. For tmc2209:</p>
+<p>В приведенных примерах показаны только настройки, характерные для бессенсорного самонаведения. Все доступные параметры смотрите в разделе <a href="Config_Reference.html#tmc-stepper-driver-configuration">config reference</a>.</p>
+<h4 id="_7">Найдите максимальную чувствительность, которая успешно справляется с домами<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Установите каретку вблизи центра рельса. С помощью команды SET_TMC_FIELD установите максимальную чувствительность. Для tmc2209:</p>
 <div class="highlight"><pre><span></span><code>SET_TMC_FIELD STEPPER=stepper_x FIELD=SGTHRS VALUE=255
 </code></pre></div>
 
-<p>For tmc2130, tmc5160, and tmc2660:</p>
+<p>Для tmc2130, tmc5160 и tmc2660:</p>
 <div class="highlight"><pre><span></span><code>SET_TMC_FIELD STEPPER=stepper_x FIELD=sgt VALUE=-64
 </code></pre></div>
 
-<p>Then issue a <code>G28 X0</code> command and verify the axis does not move at all or quickly stops moving. If the axis does not stop, then issue an <code>M112</code> to halt the printer - something is not correct with the diag/sg_tst pin wiring or configuration and it must be corrected before continuing.</p>
-<p>Next, continually decrease the sensitivity of the <code>VALUE</code> setting and run the <code>SET_TMC_FIELD</code> <code>G28 X0</code> commands again to find the highest sensitivity that results in the carriage successfully moving all the way to the endstop and halting. (For tmc2209 drivers this will be decreasing SGTHRS, for other drivers it will be increasing sgt.) Be sure to start each attempt with the carriage near the center of the rail (if needed issue <code>M84</code> and then manually move the carriage to the center). It should be possible to find the highest sensitivity that homes reliably (settings with higher sensitivity result in small or no movement). Note the found value as <em>maximum_sensitivity</em>. (If the minimum possible sensitivity (SGTHRS=0 or sgt=63) is obtained without any carriage movement then something is not correct with the diag/sg_tst pin wiring or configuration and it must be corrected before continuing.)</p>
-<p>When searching for maximum_sensitivity, it may be convenient to jump to different VALUE settings (so as to bisect the VALUE parameter). If doing this then be prepared to issue an <code>M112</code> command to halt the printer, as a setting with a very low sensitivity may cause the axis to repeatedly "bang" into the end of the rail.</p>
-<p>Be sure to wait a couple of seconds between each homing attempt. After the TMC driver detects a stall it may take a little time for it to clear its internal indicator and be capable of detecting another stall.</p>
-<p>During these tuning tests, if a <code>G28 X0</code> command does not move all the way to the axis limit, then be careful with issuing any regular movement commands (eg, <code>G1</code>). Klipper will not have a correct understanding of the carriage position and a move command may cause undesirable and confusing results.</p>
-<h4 id="find-lowest-sensitivity-that-homes-with-one-touch">Find lowest sensitivity that homes with one touch<a class="headerlink" href="#find-lowest-sensitivity-that-homes-with-one-touch" title="Permanent link">&para;</a></h4>
-<p>When homing with the found <em>maximum_sensitivity</em> value, the axis should move to the end of the rail and stop with a "single touch" - that is, there should not be a "clicking" or "banging" sound. (If there is a banging or clicking sound at maximum_sensitivity then the homing_speed may be too low, the driver current may be too low, or sensorless homing may not be a good choice for the axis.)</p>
-<p>The next step is to again continually move the carriage to a position near the center of the rail, decrease the sensitivity, and run the <code>SET_TMC_FIELD</code> <code>G28 X0</code> commands - the goal is now to find the lowest sensitivity that still results in the carriage successfully homing with a "single touch". That is, it does not "bang" or "click" when contacting the end of the rail. Note the found value as <em>minimum_sensitivity</em>.</p>
-<h4 id="update-printercfg-with-sensitivity-value">Update printer.cfg with sensitivity value<a class="headerlink" href="#update-printercfg-with-sensitivity-value" title="Permanent link">&para;</a></h4>
-<p>After finding <em>maximum_sensitivity</em> and <em>minimum_sensitivity</em>, use a calculator to obtain the recommend sensitivity as <em>minimum_sensitivity + (maximum_sensitivity - minimum_sensitivity)/3</em>. The recommended sensitivity should be in the range between the minimum and maximum, but slightly closer to the minimum. Round the final value to the nearest integer value.</p>
-<p>For tmc2209 set this in the config as <code>driver_SGTHRS</code>, for other TMC drivers set this in the config as <code>driver_SGT</code>.</p>
-<p>If the range between <em>maximum_sensitivity</em> and <em>minimum_sensitivity</em> is small (eg, less than 5) then it may result in unstable homing. A faster homing speed may increase the range and make the operation more stable.</p>
-<p>Note that if any change is made to driver current, homing speed, or a notable change is made to the printer hardware, then it will be necessary to run the tuning process again.</p>
-<h4 id="using-macros-when-homing">Using Macros when Homing<a class="headerlink" href="#using-macros-when-homing" title="Permanent link">&para;</a></h4>
-<p>After sensorless homing completes the carriage will be pressed against the end of the rail and the stepper will exert a force on the frame until the carriage is moved away. It is a good idea to create a macro to home the axis and immediately move the carriage away from the end of the rail.</p>
-<p>It is a good idea for the macro to pause at least 2 seconds prior to starting sensorless homing (or otherwise ensure that there has been no movement on the stepper for 2 seconds). Without a delay it is possible for the driver's internal stall flag to still be set from a previous move.</p>
-<p>It can also be useful to have that macro set the driver current before homing and set a new current after the carriage has moved away.</p>
-<p>An example macro might look something like:</p>
+<p>Затем подайте команду <code>G28 X0</code> и убедитесь, что ось не двигается вообще или быстро останавливается. Если ось не останавливается, подайте команду <code>M112</code> для остановки принтера - что-то не так с подключением или конфигурацией контактов diag/sg_tst, и это необходимо исправить, прежде чем продолжать.</p>
+<p>Затем постоянно уменьшайте чувствительность параметра <code>VALUE</code> и снова выполните команды <code>SET_TMC_FIELD</code> <code>G28 X0</code>, чтобы найти максимальную чувствительность, при которой каретка успешно перемещается до конечной остановки и останавливается. (Для драйверов tmc2209 это будет уменьшение SGTHRS, для других драйверов - увеличение sgt). Обязательно начинайте каждую попытку с каретки, находящейся около центра рельса (при необходимости выдайте <code>M84</code> и вручную переместите каретку в центр). Должна быть найдена максимальная чувствительность, при которой каретка перемещается надежно (настройки с более высокой чувствительностью приводят к небольшому перемещению или его отсутствию). Запишите найденное значение как <em>maximum_sensitivity</em>. (Если минимально возможная чувствительность (SGTHRS=0 или sgt=63) достигается без какого-либо движения каретки, значит, что-то не так с подключением или конфигурацией контактов diag/sg_tst, и это необходимо исправить, прежде чем продолжать)</p>
+<p>При поиске параметра maximum_sensitivity может оказаться удобным переходить к различным настройкам VALUE (так, чтобы пересечь параметр VALUE). При этом следует быть готовым к подаче команды <code>M112</code> для остановки принтера, поскольку настройка с очень низкой чувствительностью может привести к тому, что ось будет неоднократно "ударяться" о торец направляющей.</p>
+<p>Не забудьте подождать пару секунд между каждой попыткой наведения. После того как драйвер TMC обнаружит сбой, ему может потребоваться некоторое время, чтобы очистить свой внутренний индикатор и обнаружить новый сбой.</p>
+<p>Во время этих тестов настройки, если команда <code>G28 X0</code> не перемещается до конца оси, то будьте осторожны с подачей любых обычных команд перемещения (например, <code>G1</code>). Klipper не будет иметь правильного представления о положении каретки, и команда перемещения может привести к нежелательным и запутанным результатам.</p>
+<h4 id="_8">Найдите самую низкую чувствительность, которая устанавливается одним касанием<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>При наведении с найденным значением <em>максимальной_чувствительности</em> ось должна двигаться к концу рельса и останавливаться "одним касанием" - то есть не должно быть звука "щелчка" или "стука". (Если при максимальной_чувствительности раздается стук или щелчок, то скорость самонаведения может быть слишком низкой, ток драйвера может быть слишком низким, или бессенсорное самонаведение может быть не лучшим выбором для данной оси)</p>
+<p>Следующий шаг - снова постоянно перемещать каретку в положение, близкое к центру рельса, уменьшить чувствительность и выполнить команды <code>SET_TMC_FIELD</code> <code>G28 X0</code> - теперь цель состоит в том, чтобы найти наименьшую чувствительность, при которой каретка успешно наводится "одним касанием". То есть, она не "бьется" и не "щелкает" при контакте с концом рельса. Запишите найденное значение как <em>minimum_sensitivity</em>.</p>
+<h4 id="printercfg_1">Обновление файла printer.cfg со значением чувствительности<a class="headerlink" href="#printercfg_1" title="Permanent link">&para;</a></h4>
+<p>Найдя <em>максимальную_чувствительность</em> и <em>минимальную_чувствительность</em>, воспользуйтесь калькулятором, чтобы получить рекомендуемую чувствительность как <em>минимальная_чувствительность + (максимальная_чувствительность - минимальная_чувствительность)/3</em>. Рекомендуемая чувствительность должна находиться в диапазоне между минимальной и максимальной, но немного ближе к минимальной. Округлите итоговое значение до ближайшего целого числа.</p>
+<p>Для tmc2209 задайте в конфигурации значение <code>driver_SGTHRS</code>, для других драйверов TMC задайте в конфигурации значение <code>driver_SGT</code>.</p>
+<p>Если диапазон между <em>максимальной_чувствительностью</em> и <em>минимальной_чувствительностью</em> мал (например, менее 5), это может привести к нестабильному наведению. Более высокая скорость наведения может увеличить диапазон и сделать работу более стабильной.</p>
+<p>Обратите внимание, что если изменится ток драйвера, скорость наведения или произойдут заметные изменения в аппаратной части принтера, то процесс настройки придется выполнить заново.</p>
+<h4 id="_9">Использование макросов при наведении<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>После завершения бессенсорного наведения каретка будет прижата к концу рельса, и шаговый механизм будет оказывать усилие на раму до тех пор, пока каретка не отойдет. Хорошей идеей будет создать макрос для установки оси и немедленного перемещения каретки от конца рельса.</p>
+<p>Макросу желательно сделать паузу не менее 2 секунд перед началом бессенсорного наведения (или убедиться, что в течение 2 секунд на шаговом механизме не было движения). Без задержки возможно, что внутренний флаг остановки драйвера все еще установлен после предыдущего движения.</p>
+<p>Также может быть полезно, чтобы этот макрос устанавливал ток драйвера перед наведением и устанавливал новый ток после того, как каретка отойдет.</p>
+<p>Пример макроса может выглядеть следующим образом:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro SENSORLESS_HOME_X]
 gcode:
     {% set HOME_CUR = 0.700 %}
     {% set driver_config = printer.configfile.settings[&#39;tmc2209 stepper_x&#39;] %}
     {% set RUN_CUR = driver_config.run_current %}
-    # Set current for sensorless homing
+    # Установка тока для бессенсорного самонаведения
     SET_TMC_CURRENT STEPPER=stepper_x CURRENT={HOME_CUR}
-    # Pause to ensure driver stall flag is clear
+    # Пауза, чтобы убедиться, что флаг остановки драйвера сброшен
     G4 P2000
-    # Home
+    # Дом
     G28 X0
-    # Move away
+    # Отъезд
     G90
     G1 X5 F1200
-    # Set current during print
+    # Установите ток во время печати
     SET_TMC_CURRENT STEPPER=stepper_x CURRENT={RUN_CUR}
 </code></pre></div>
 
-<p>The resulting macro can be called from a <a href="Config_Reference.html#homing_override">homing_override config section</a> or from a <a href="Slicers.html#klipper-gcode_macro">START_PRINT macro</a>.</p>
-<p>Note that if the driver current during homing is changed, then the tuning process should be run again.</p>
-<h3 id="tips-for-sensorless-homing-on-corexy">Tips for sensorless homing on CoreXY<a class="headerlink" href="#tips-for-sensorless-homing-on-corexy" title="Permanent link">&para;</a></h3>
-<p>It is possible to use sensorless homing on the X and Y carriages of a CoreXY printer. Klipper uses the <code>[stepper_x]</code> stepper to detect stalls when homing the X carriage and uses the <code>[stepper_y]</code> stepper to detect stalls when homing the Y carriage.</p>
-<p>Use the tuning guide described above to find the appropriate "stall sensitivity" for each carriage, but be aware of the following restrictions:</p>
+<p>Полученный макрос можно вызвать из раздела конфигурации <a href="Config_Reference.html#homing_override">homing_override</a> или из макроса <a href="Slicers.html#klipper-gcode_macro">START_PRINT</a>.</p>
+<p>Обратите внимание, что если ток драйвера во время самонаведения изменится, то процесс настройки следует запустить снова.</p>
+<h3 id="corexy">Советы по бессенсорному самонаведению на CoreXY<a class="headerlink" href="#corexy" title="Permanent link">&para;</a></h3>
+<p>Можно использовать бессенсорное самонаведение на каретки X и Y принтера CoreXY. Klipper использует шаговый механизм <code>[stepper_x]</code> для обнаружения срыва при наведении каретки X и использует шаговый механизм <code>[stepper_y]</code> для обнаружения срыва при наведении каретки Y.</p>
+<p>Используйте руководство по настройке, описанное выше, чтобы найти подходящую "чувствительность срыва" для каждой каретки, но помните о следующих ограничениях:</p>
 <ol>
-<li>When using sensorless homing on CoreXY, make sure there is no <code>hold_current</code> configured for either stepper.</li>
-<li>While tuning, make sure both the X and Y carriages are near the center of their rails before each home attempt.</li>
-<li>After tuning is complete, when homing both X and Y, use macros to ensure that one axis is homed first, then move that carriage away from the axis limit, pause for at least 2 seconds, and then start the homing of the other carriage. The move away from the axis avoids homing one axis while the other is pressed against the axis limit (which may skew the stall detection). The pause is necessary to ensure the driver's stall flag is cleared prior to homing again.</li>
+<li>При использовании бессенсорного самонаведения на CoreXY убедитесь, что для обоих шаговиков не настроен <code>hold_current</code>.</li>
+<li>При настройке убедитесь, что каретки X и Y находятся в центре своих рельсов перед каждой попыткой возврата в исходное положение.</li>
+<li>После завершения настройки при самонаведении по осям X и Y используйте макросы, чтобы обеспечить сначала самонаведение по одной оси, затем отведите каретку от ограничителя оси, сделайте паузу не менее 2 секунд, а затем начните самонаведение по другой каретке. Перемещение в сторону от оси позволяет избежать самонаведения одной оси, в то время как другая прижата к границе оси (что может исказить обнаружение срыва). Пауза необходима для того, чтобы флаг срыва привода был сброшен перед повторным наведением.</li>
 </ol>
-<p>An example CoreXY homing macro might look like:</p>
+<p>Пример макроса самонаведения CoreXY может выглядеть следующим образом:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro HOME]
 gcode:
     G90
-    # Home Z
+    # Дом Z
     G28 Z0
     G1 Z10 F1200
-    # Home Y
+    # Дом Y
     G28 Y0
     G1 Y5 F1200
-    # Home X
+    # Дом X
     G4 P2000
     G28 X0
     G1 X5 F1200
 </code></pre></div>
 
-<h2 id="querying-and-diagnosing-driver-settings">Querying and diagnosing driver settings<a class="headerlink" href="#querying-and-diagnosing-driver-settings" title="Permanent link">&para;</a></h2>
-<p>The `<a href="G-Codes.html#dump_tmc">DUMP_TMC command</a> is a useful tool when configuring and diagnosing the drivers. It will report all fields configured by Klipper as well as all fields that can be queried from the driver.</p>
-<p>All of the reported fields are defined in the Trinamic datasheet for each driver. These datasheets can be found on the <a href="https://www.trinamic.com/">Trinamic website</a>. Obtain and review the Trinamic datasheet for the driver to interpret the results of DUMP_TMC.</p>
-<h2 id="configuring-driver_xxx-settings">Configuring driver_XXX settings<a class="headerlink" href="#configuring-driver_xxx-settings" title="Permanent link">&para;</a></h2>
-<p>Klipper supports configuring many low-level driver fields using <code>driver_XXX</code> settings. The <a href="Config_Reference.html#tmc-stepper-driver-configuration">TMC driver config reference</a> has the full list of fields available for each type of driver.</p>
-<p>In addition, almost all fields can be modified at run-time using the <a href="G-Codes.html#set_tmc_field">SET_TMC_FIELD command</a>.</p>
-<p>Each of these fields is defined in the Trinamic datasheet for each driver. These datasheets can be found on the <a href="https://www.trinamic.com/">Trinamic website</a>.</p>
-<p>Note that the Trinamic datasheets sometime use wording that can confuse a high-level setting (such as "hysteresis end") with a low-level field value (eg, "HEND"). In Klipper, <code>driver_XXX</code> and SET_TMC_FIELD always set the low-level field value that is actually written to the driver. So, for example, if the Trinamic datasheet states that a value of 3 must be written to the HEND field to obtain a "hysteresis end" of 0, then set <code>driver_HEND=3</code> to obtain the high-level value of 0.</p>
-<h2 id="common-questions">Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
-<h3 id="can-i-use-stealthchop-mode-on-an-extruder-with-pressure-advance">Can I use stealthChop mode on an extruder with pressure advance?<a class="headerlink" href="#can-i-use-stealthchop-mode-on-an-extruder-with-pressure-advance" title="Permanent link">&para;</a></h3>
-<p>Many people successfully use "stealthChop" mode with Klipper's pressure advance. Klipper implements <a href="Kinematics.html#pressure-advance">smooth pressure advance</a> which does not introduce any instantaneous velocity changes.</p>
-<p>However, "stealthChop" mode may produce lower motor torque and/or produce higher motor heat. It may or may not be an adequate mode for your particular printer.</p>
-<h3 id="i-keep-getting-unable-to-read-tmc-uart-stepper_x-register-ifcnt-errors">I keep getting "Unable to read tmc uart 'stepper_x' register IFCNT" errors?<a class="headerlink" href="#i-keep-getting-unable-to-read-tmc-uart-stepper_x-register-ifcnt-errors" title="Permanent link">&para;</a></h3>
-<p>This occurs when Klipper is unable to communicate with a tmc2208 or tmc2209 driver.</p>
-<p>Make sure that the motor power is enabled, as the stepper motor driver generally needs motor power before it can communicate with the micro-controller.</p>
-<p>If this error occurs after flashing Klipper for the first time, then the stepper driver may have been previously programmed in a state that is not compatible with Klipper. To reset the state, remove all power from the printer for several seconds (physically unplug both USB and power plugs).</p>
-<p>Otherwise, this error is typically the result of incorrect UART pin wiring or an incorrect Klipper configuration of the UART pin settings.</p>
-<h3 id="i-keep-getting-unable-to-write-tmc-spi-stepper_x-register-errors">I keep getting "Unable to write tmc spi 'stepper_x' register ..." errors?<a class="headerlink" href="#i-keep-getting-unable-to-write-tmc-spi-stepper_x-register-errors" title="Permanent link">&para;</a></h3>
-<p>This occurs when Klipper is unable to communicate with a tmc2130 or tmc5160 driver.</p>
-<p>Make sure that the motor power is enabled, as the stepper motor driver generally needs motor power before it can communicate with the micro-controller.</p>
-<p>Otherwise, this error is typically the result of incorrect SPI wiring, an incorrect Klipper configuration of the SPI settings, or an incomplete configuration of devices on an SPI bus.</p>
-<p>Note that if the driver is on a shared SPI bus with multiple devices then be sure to fully configure every device on that shared SPI bus in Klipper. If a device on a shared SPI bus is not configured, then it may incorrectly respond to commands not intended for it and corrupt the communication to the intended device. If there is a device on a shared SPI bus that can not be configured in Klipper, then use a <a href="Config_Reference.html#static_digital_output">static_digital_output config section</a> to set the CS pin of the unused device high (so that it will not attempt to use the SPI bus). The board's schematic is often a useful reference for finding which devices are on an SPI bus and their associated pins.</p>
-<h3 id="why-did-i-get-a-tmc-reports-error-error">Why did I get a "TMC reports error: ..." error?<a class="headerlink" href="#why-did-i-get-a-tmc-reports-error-error" title="Permanent link">&para;</a></h3>
-<p>This type of error indicates the TMC driver detected a problem and has disabled itself. That is, the driver stopped holding its position and ignored movement commands. If Klipper detects that an active driver has disabled itself, it will transition the printer into a "shutdown" state.</p>
-<p>It's also possible that a <strong>TMC reports error</strong> shutdown occurs due to SPI errors that prevent communication with the driver (on tmc2130, tmc5160, or tmc2660). If this occurs, it's common for the reported driver status to show <code>00000000</code> or <code>ffffffff</code> - for example: <code>TMC reports error: DRV_STATUS: ffffffff ...</code> OR <code>TMC reports error: READRSP@RDSEL2: 00000000 ...</code>. Such a failure may be due to an SPI wiring problem or may be due to a self-reset or failure of the TMC driver.</p>
-<p>Some common errors and tips for diagnosing them:</p>
-<h4 id="tmc-reports-error-ot1overtemperror">TMC reports error: <code>... ot=1(OvertempError!)</code><a class="headerlink" href="#tmc-reports-error-ot1overtemperror" title="Permanent link">&para;</a></h4>
-<p>This indicates the motor driver disabled itself because it became too hot. Typical solutions are to decrease the stepper motor current, increase cooling on the stepper motor driver, and/or increase cooling on the stepper motor.</p>
-<h4 id="tmc-reports-error-shorttognd-or-shorttosupply">TMC reports error: <code>... ShortToGND</code> OR <code>ShortToSupply</code><a class="headerlink" href="#tmc-reports-error-shorttognd-or-shorttosupply" title="Permanent link">&para;</a></h4>
-<p>This indicates the driver has disabled itself because it detected very high current passing through the driver. This may indicate a loose or shorted wire to the stepper motor or within the stepper motor itself.</p>
-<p>This error may also occur if using stealthChop mode and the TMC driver is not able to accurately predict the mechanical load of the motor. (If the driver makes a poor prediction then it may send too much current through the motor and trigger its own over-current detection.) To test this, disable stealthChop mode and check if the errors continue to occur.</p>
-<h4 id="tmc-reports-error-reset1reset-or-cs_actual0reset-or-se0reset">TMC reports error: <code>... reset=1(Reset)</code> OR <code>CS_ACTUAL=0(Reset?)</code> OR <code>SE=0(Reset?)</code><a class="headerlink" href="#tmc-reports-error-reset1reset-or-cs_actual0reset-or-se0reset" title="Permanent link">&para;</a></h4>
-<p>This indicates that the driver has reset itself mid-print. This may be due to voltage or wiring issues.</p>
-<h4 id="tmc-reports-error-uv_cp1undervoltage">TMC reports error: <code>... uv_cp=1(Undervoltage!)</code><a class="headerlink" href="#tmc-reports-error-uv_cp1undervoltage" title="Permanent link">&para;</a></h4>
-<p>This indicates the driver has detected a low-voltage event and has disabled itself. This may be due to wiring or power supply issues.</p>
-<h3 id="how-do-i-tune-spreadcyclecoolstepetc-mode-on-my-drivers">How do I tune spreadCycle/coolStep/etc. mode on my drivers?<a class="headerlink" href="#how-do-i-tune-spreadcyclecoolstepetc-mode-on-my-drivers" title="Permanent link">&para;</a></h3>
-<p>The <a href="https://www.trinamic.com/">Trinamic website</a> has guides on configuring the drivers. These guides are often technical, low-level, and may require specialized hardware. Regardless, they are the best source of information.</p>
+<h2 id="_10">Запрос и диагностика настроек драйвера<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>Команда `<a href="G-Codes.html#dump_tmc">DUMP_TMC</a> является полезным инструментом при настройке и диагностике драйверов. Она сообщает обо всех полях, сконфигурированных Klipper, а также обо всех полях, которые могут быть запрошены из драйвера.</p>
+<p>Все указанные поля определены в техническом описании Trinamic для каждого драйвера. Эти технические описания можно найти на сайте <a href="https://www.trinamic.com/">Trinamic</a>. Получите и просмотрите технический паспорт Trinamic для драйвера, чтобы интерпретировать результаты DUMP_TMC.</p>
+<h2 id="_xxx">Настройка параметров драйвера_XXX<a class="headerlink" href="#_xxx" title="Permanent link">&para;</a></h2>
+<p>Klipper поддерживает настройку многих низкоуровневых полей драйвера с помощью параметров <code>driver_XXX</code>. В справочнике <a href="Config_Reference.html#tmc-stepper-driver-configuration">TMC driver config reference</a> приведен полный список полей, доступных для каждого типа драйверов.</p>
+<p>Кроме того, почти все поля могут быть изменены во время выполнения программы с помощью команды <a href="G-Codes.html#set_tmc_field">SET_TMC_FIELD</a>.</p>
+<p>Каждое из этих полей определено в техническом описании Trinamic для каждого драйвера. Эти технические паспорта можно найти на сайте <a href="https://www.trinamic.com/">Trinamic</a>.</p>
+<p>Обратите внимание, что в даташитах Trinamic иногда используются формулировки, в которых можно спутать высокоуровневую настройку (например, "конец гистерезиса") со значением низкоуровневого поля (например, "HEND"). В Klipper, <code>driver_XXX</code> и SET_TMC_FIELD всегда устанавливают значение низкоуровневого поля, которое фактически записывается в драйвер. Так, например, если в техническом описании Trinamic указано, что для получения "конца гистерезиса" 0 в поле HEND должно быть записано значение 3, то установите <code>driver_HEND=3</code>, чтобы получить значение высокого уровня 0.</p>
+<h2 id="_11">Общие вопросы<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="stealthchop">Можно ли использовать режим stealthChop на экструдере с опережением давления?<a class="headerlink" href="#stealthchop" title="Permanent link">&para;</a></h3>
+<p>Многие люди успешно используют режим "stealthChop" с опережением давления в Klipper. В Klipper реализовано <a href="Kinematics.html#pressure-advance">плавное опережение давления</a>, которое не вносит никаких мгновенных изменений в скорость.</p>
+<p>Однако режим "stealthChop" может снижать крутящий момент двигателя и/или увеличивать его нагрев. Этот режим может подойти или не подойти для вашего конкретного принтера.</p>
+<h3 id="unable-to-read-tmc-uart-stepper_x-register-ifcnt">Я продолжаю получать ошибки "Unable to read tmc uart 'stepper_x' register IFCNT"?<a class="headerlink" href="#unable-to-read-tmc-uart-stepper_x-register-ifcnt" title="Permanent link">&para;</a></h3>
+<p>Это происходит, когда Klipper не может установить связь с драйвером tmc2208 или tmc2209.</p>
+<p>Убедитесь, что питание двигателя включено, так как драйверу шагового двигателя обычно требуется питание двигателя, прежде чем он сможет взаимодействовать с микроконтроллером.</p>
+<p>Если эта ошибка возникает после первой прошивки Klipper, то, возможно, драйвер шагового механизма был запрограммирован в состоянии, не совместимом с Klipper. Чтобы сбросить это состояние, отключите питание принтера на несколько секунд (физически отсоедините оба разъема USB и питания).</p>
+<p>В противном случае эта ошибка обычно является результатом неправильного подключения выводов UART или неправильной конфигурации Klipper для настроек выводов UART.</p>
+<h3 id="unable-to-write-tmc-spi-stepper_x-register">Я продолжаю получать ошибки "Unable to write tmc spi 'stepper_x' register ..."?<a class="headerlink" href="#unable-to-write-tmc-spi-stepper_x-register" title="Permanent link">&para;</a></h3>
+<p>Это происходит, когда Klipper не может установить связь с драйвером tmc2130 или tmc5160.</p>
+<p>Убедитесь, что питание двигателя включено, так как драйверу шагового двигателя обычно требуется питание двигателя, прежде чем он сможет взаимодействовать с микроконтроллером.</p>
+<p>В противном случае эта ошибка обычно является результатом неправильного подключения SPI, неправильной конфигурации настроек SPI в Klipper или неполной конфигурации устройств на шине SPI.</p>
+<p>Обратите внимание, что если драйвер находится на общей SPI-шине с несколькими устройствами, то обязательно полностью сконфигурируйте в Klipper каждое устройство на этой общей SPI-шине. Если устройство на общей шине SPI не сконфигурировано, оно может некорректно реагировать на команды, не предназначенные для него, и нарушить связь с предназначенным для него устройством. Если на общей шине SPI есть устройство, которое не может быть сконфигурировано в Klipper, используйте секцию конфигурации <a href="Config_Reference.html#static_digital_output">static_digital_output</a> для установки высокого уровня на пин CS неиспользуемого устройства (чтобы оно не пыталось использовать шину SPI). Схема платы часто является полезным справочным материалом для поиска устройств на шине SPI и их соответствующих выводов.</p>
+<h3 id="tmc_2">Почему я получил ошибку "TMC сообщает об ошибке: ..."?<a class="headerlink" href="#tmc_2" title="Permanent link">&para;</a></h3>
+<p>Этот тип ошибки указывает на то, что драйвер TMC обнаружил проблему и отключился. То есть драйвер перестал удерживать позицию и игнорирует команды перемещения. Если Klipper обнаружит, что активный драйвер отключился, он переведет принтер в состояние "выключения".</p>
+<p>Также возможно, что отключение <strong>TMC сообщает об ошибке</strong> происходит из-за ошибок SPI, которые не позволяют установить связь с драйвером (на tmc2130, tmc5160 или tmc2660). В этом случае в сообщении о состоянии драйвера обычно отображается <code>00000000</code> или <code>ffffff</code> - например: <code>TMC сообщает об ошибке: DRV_STATUS: ffffffff ...</code> ИЛИ <code>TMC сообщает об ошибке: READRSP@RDSEL2: 00000000 ...</code>. Такой сбой может быть связан с проблемой подключения SPI, а также с самосбросом или сбоем драйвера TMC.</p>
+<p>Некоторые распространенные ошибки и советы по их диагностике:</p>
+<h4 id="tmc-ot1overtemperror">TMC сообщает об ошибке: <code>... ot=1(OvertempError!)</code><a class="headerlink" href="#tmc-ot1overtemperror" title="Permanent link">&para;</a></h4>
+<p>Это означает, что драйвер двигателя отключился из-за перегрева. Типичными решениями являются уменьшение тока шагового двигателя, увеличение охлаждения драйвера шагового двигателя и/или увеличение охлаждения шагового двигателя.</p>
+<h4 id="tmc-shorttognd-shorttosupply">TMC сообщает об ошибке: <code>... ShortToGND</code> ИЛИ <code>ShortToSupply</code><a class="headerlink" href="#tmc-shorttognd-shorttosupply" title="Permanent link">&para;</a></h4>
+<p>Это означает, что драйвер отключился, поскольку обнаружил очень высокий ток, проходящий через драйвер. Это может указывать на ослабление или замыкание провода к шаговому двигателю или внутри самого шагового двигателя.</p>
+<p>Эта ошибка также может возникнуть, если используется режим stealthChop и драйвер TMC не в состоянии точно предсказать механическую нагрузку на двигатель. (Если драйвер делает плохой прогноз, то он может послать слишком большой ток через двигатель и спровоцировать собственное обнаружение перегрузки по току). Чтобы проверить это, отключите режим stealthChop и проверьте, продолжаются ли ошибки.</p>
+<h4 id="tmc-1-cs_actual0-se0">TMC сообщает об ошибке: <code>... сброс=1(Сброс)</code> ИЛИ <code>CS_ACTUAL=0(Сброс?)</code> ИЛИ <code>SE=0(Сброс?)</code><a class="headerlink" href="#tmc-1-cs_actual0-se0" title="Permanent link">&para;</a></h4>
+<p>Это означает, что драйвер сбросился в середине печати. Это может быть вызвано проблемами с напряжением или проводкой.</p>
+<h4 id="tmc-uv_cp1">TMC сообщает об ошибке: <code>... uv_cp=1( Пониженное напряжение!)</code><a class="headerlink" href="#tmc-uv_cp1" title="Permanent link">&para;</a></h4>
+<p>Это означает, что драйвер обнаружил событие низкого напряжения и отключился. Это может быть вызвано проблемами с проводкой или питанием.</p>
+<h3 id="spreadcyclecoolstepetc">Как настроить режим spreadCycle/coolStep/etc. на моих драйверах?<a class="headerlink" href="#spreadcyclecoolstepetc" title="Permanent link">&para;</a></h3>
+<p>На сайте <a href="https://www.trinamic.com/">Trinamic</a> есть руководства по настройке драйверов. Эти руководства часто являются техническими, низкоуровневыми и могут требовать специализированного оборудования. Тем не менее, они являются лучшим источником информации.</p>
 
               
             </article>

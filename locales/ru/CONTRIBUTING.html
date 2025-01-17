@@ -1343,15 +1343,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#helping-with-reviews" class="md-nav__link">
-    Helping with reviews
+  <a href="#_3" class="md-nav__link">
+    Помощь в написании обзоров
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reviewers" class="md-nav__link">
-    Reviewers
+  <a href="#_4" class="md-nav__link">
+    Рецензенты
   </a>
   
 </li>
@@ -1362,8 +1362,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#format-of-commit-messages" class="md-nav__link">
-    Format of commit messages
+  <a href="#_5" class="md-nav__link">
+    Формат сообщений фиксации
   </a>
   
 </li>
@@ -1404,122 +1404,122 @@
 </ol>
 <p>При работе над усовершенствованиями подумайте о том, чтобы начать (или внести свой вклад) тему на <a href="Contact.html">Klipper Discourse</a>. Постоянное обсуждение на форуме может улучшить видимость работы над улучшением и привлечь других людей, заинтересованных в тестировании новой работы.</p>
 <h2 id="_2">Что ожидать от рецензии<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>Contributions to Klipper are reviewed before merging. The primary goal of the review process is to check for defects and to check that the submission follows guidelines specified in the Klipper documentation.</p>
-<p>It is understood that there are many ways to accomplish a task; it is not the intent of the review to discuss the "best" implementation. Where possible, review discussions focused on facts and measurements are preferable.</p>
-<p>The majority of submissions will result in feedback from a review. Be prepared to obtain feedback, provide further details, and to update the submission if needed.</p>
-<p>Common things a reviewer will look for:</p>
+<p>Вклад в Klipper проверяется перед слиянием. Основная цель процесса рецензирования - проверить наличие дефектов и убедиться, что представленные материалы соответствуют рекомендациям, указанным в документации Klipper.</p>
+<p>Понятно, что существует множество способов выполнения задачи; целью обзора не является обсуждение "лучшей" реализации. Там, где это возможно, предпочтительны обсуждения, сосредоточенные на фактах и измерениях.</p>
+<p>Большинство поданных работ будут сопровождаться отзывами. Будьте готовы получить отзыв, предоставить дополнительные сведения и при необходимости обновить работу.</p>
+<p>Обычные вещи, на которые обращает внимание рецензент:</p>
 <ol>
 <li>
-<p>Is the submission free of defects and is it ready to be widely deployed?</p>
-<p>Submitters are expected to test their changes prior to submission. The reviewers look for errors, but they don't, in general, test submissions. An accepted submission is often deployed to thousands of printers within a few weeks of acceptance. Quality of submissions is therefore considered a priority.</p>
-<p>The main <a href="https://github.com/Klipper3d/klipper">Klipper3d/klipper</a> GitHub repository does not accept experimental work. Submitters should perform experimentation, debugging, and testing in their own repositories. The <a href="Contact.html">Klipper Discourse</a> server is a good place to raise awareness of new work and to find users interested in providing real-world feedback.</p>
-<p>Submissions must pass all <a href="Debugging.html">regression test cases</a>.</p>
-<p>When fixing a defect in the code, submitters should have a general understanding of the root cause of that defect, and the fix should target that root cause.</p>
-<p>Code submissions should not contain excessive debugging code, debugging options, nor run-time debug logging.</p>
-<p>Comments in code submissions should focus on enhancing code maintenance. Submissions should not contain "commented out code" nor excessive comments describing past implementations. There should not be excessive "todo" comments.</p>
-<p>Updates to documentation should not declare that they are a "work in progress".</p>
+<p>Нет ли в представленном материале дефектов и готов ли он к широкому внедрению?</p>
+<p>Ожидается, что авторы будут тестировать свои изменения перед отправкой. Рецензенты ищут ошибки, но, как правило, не тестируют представленные материалы. Принятая заявка часто распространяется на тысячи принтеров в течение нескольких недель после принятия. Поэтому качество подаваемых материалов считается приоритетным.</p>
+<p>Основной репозиторий <a href="https://github.com/Klipper3d/klipper">Klipper3d/klipper</a> GitHub не принимает экспериментальные работы. Участники должны проводить эксперименты, отладку и тестирование в своих собственных репозиториях. Сервер <a href="Contact.html">Klipper Discourse</a> - хорошее место для повышения осведомленности о новой работе и поиска пользователей, заинтересованных в предоставлении реальных отзывов.</p>
+<p>Представленные материалы должны пройти все <a href="Debugging.html">регрессионные тесты</a>.</p>
+<p>Исправляя дефект в коде, отправители должны иметь общее представление о первопричине этого дефекта, и исправление должно быть направлено на эту первопричину.</p>
+<p>Представленный код не должен содержать избыточного отладочного кода, отладочных опций или регистрации отладки во время выполнения.</p>
+<p>Комментарии в представленном коде должны быть направлены на улучшение сопровождения кода. Материалы не должны содержать "закомментированный код" или чрезмерные комментарии, описывающие прошлые реализации. Не должно быть чрезмерных комментариев "todo".</p>
+<p>Обновления документации не должны заявлять, что они являются "незавершенными".</p>
 </li>
 <li>
-<p>Does the submission provide a "high impact" benefit to real-world users performing real-world tasks?</p>
-<p>Reviewers need to identify, at least in their own minds, roughly "who the target audience is", a rough scale of "the size of that audience", the "benefit" they will obtain, how the "benefit is measured", and the "results of those measurement tests". In most cases this will be obvious to both the submitter and the reviewer, and it is not explicitly stated during a review.</p>
-<p>Submissions to the master Klipper branch are expected to have a noteworthy target audience. As a general "rule of thumb", submissions should target a user base of at least a 100 real-world users.</p>
-<p>If a reviewer asks for details on the "benefit" of a submission, please don't consider it criticism. Being able to understand the real-world benefits of a change is a natural part of a review.</p>
-<p>When discussing benefits it is preferable to discuss "facts and measurements". In general, reviewers are not looking for responses of the form "someone may find option X useful", nor are they looking for responses of the form "this submission adds a feature that firmware X implements". Instead, it is generally preferable to discuss details on how the quality improvement was measured and what were the results of those measurements - for example, "tests on Acme X1000 printers show improved corners as seen in picture ...", or for example "print time of real-world object X on a Foomatic X900 printer went from 4 hours to 3.5 hours". It is understood that testing of this type can take significant time and effort. Some of Klipper's most notable features took months of discussion, rework, testing, and documentation prior to being merged into the master branch.</p>
-<p>All new modules, config options, commands, command parameters, and documents should have "high impact". We do not want to burden users with options that they can not reasonably configure nor do we want to burden them with options that don't provide a notable benefit.</p>
-<p>A reviewer may ask for clarification on how a user is to configure an option - an ideal response will contain details on the process - for example, "users of the MegaX500 are expected to set option X to 99.3 while users of the Elite100Y are expected to calibrate option X using procedure ...".</p>
-<p>If the goal of an option is to make the code more modular then prefer using code constants instead of user facing config options.</p>
-<p>New modules, new options, and new parameters should not provide similar functionality to existing modules - if the differences are arbitrary than it's preferable to utilize the existing system or refactor the existing code.</p>
+<p>Приносит ли заявка "большую пользу" реальным пользователям, выполняющим реальные задачи?</p>
+<p>Рецензенты должны хотя бы приблизительно определить, "кто является целевой аудиторией", приблизительную шкалу "размера этой аудитории", "пользу", которую они получат, как "польза измеряется" и "результаты этих измерений". В большинстве случаев это очевидно как для автора, так и для рецензента, и не указывается в явном виде во время рецензирования.</p>
+<p>Ожидается, что материалы, отправляемые в мастер-ветку Klipper, будут иметь заметную целевую аудиторию. В качестве общего "эмпирического правила", представленные материалы должны быть нацелены на базу пользователей, состоящую не менее чем из 100 реальных пользователей.</p>
+<p>Если рецензент просит подробно рассказать о "пользе" работы, не считайте это критикой. Возможность понять реальную пользу от изменений - естественная часть рецензирования.</p>
+<p>При обсуждении преимуществ предпочтительнее обсуждать "факты и измерения". В целом, рецензенты не ищут ответов типа "кто-то может найти опцию X полезной", равно как и ответов типа "эта заявка добавляет функцию, которая реализована в прошивке X". Вместо этого, как правило, предпочтительнее обсудить детали того, как измерялось улучшение качества и каковы были результаты этих измерений - например, "тесты на принтерах Acme X1000 показали улучшение углов, как видно на рисунке...", или, например, "время печати реального объекта X на принтере Foomatic X900 сократилось с 4 часов до 3,5 часов". Понятно, что тестирование такого рода может занять много времени и сил. Некоторые из наиболее заметных функций Klipper потребовались месяцы обсуждений, доработок, тестирования и документирования, прежде чем они были добавлены в основную ветку.</p>
+<p>Все новые модули, опции конфигурации, команды, параметры команд и документы должны иметь "высокую степень воздействия". Мы не хотим нагружать пользователей опциями, которые они не могут разумно настроить, а также не хотим нагружать их опциями, которые не дают заметных преимуществ.</p>
+<p>Рецензент может попросить разъяснить, как пользователь должен настраивать ту или иную опцию - идеальный ответ будет содержать подробную информацию о процессе, например, "пользователи MegaX500 должны установить опцию X на 99,3, а пользователи Elite100Y должны откалибровать опцию X с помощью процедуры ...".</p>
+<p>Если цель опции - сделать код более модульным, то лучше использовать константы кода, а не опции конфигурации, обращенные к пользователю.</p>
+<p>Новые модули, новые опции и новые параметры не должны предоставлять функциональность, аналогичную существующим модулям - если различия произвольны, предпочтительнее использовать существующую систему или рефакторить существующий код.</p>
 </li>
 <li>
-<p>Is the copyright of the submission clear, non-gratuitous, and compatible?</p>
-<p>New C files and Python files should have an unambiguous copyright statement. See the existing files for the preferred format. Declaring a copyright on an existing file when making minor changes to that file is discouraged.</p>
-<p>Code taken from 3rd party sources must be compatible with the Klipper license (GNU GPLv3). Large 3rd party code additions should be added to the <code>lib/</code> directory (and follow the format described in <a href="https://github.com/Klipper3d/klipper/blob/master/lib/README">lib/README</a>).</p>
-<p>Submitters must provide a <a href="#format-of-commit-messages">Signed-off-by line</a> using their full real name. It indicates the submitter agrees with the <a href="developer-certificate-of-origin">developer certificate of origin</a>.</p>
+<p>Ясно ли авторское право, не является ли оно безвозмездным и совместимым?</p>
+<p>Новые файлы на Си и файлы на Python должны содержать недвусмысленное заявление об авторских правах. Предпочтительный формат см. в существующих файлах. Не рекомендуется объявлять авторские права на существующий файл при внесении в него незначительных изменений.</p>
+<p>Код, взятый из сторонних источников, должен быть совместим с лицензией Klipper (GNU GPLv3). Крупные дополнения к стороннему коду должны быть добавлены в каталог <code>lib/</code> (и соответствовать формату, описанному в <a href="https://github.com/Klipper3d/klipper/blob/master/lib/README">lib/README</a>).</p>
+<p>Отправители должны предоставить строку <a href="#format-of-commit-messages">Signed-off-by</a>, используя свое полное настоящее имя. Она указывает, что отправитель согласен с <a href="developer-certificate-of-origin">сертификатом происхождения разработчика</a>.</p>
 </li>
 <li>
-<p>Does the submission follow guidelines specified in the Klipper documentation?</p>
-<p>In particular, code should follow the guidelines in <Code_Overview.md> and config files should follow the guidelines in <Example_Configs.md>.</p>
+<p>Соответствует ли подача материала рекомендациям, указанным в документации Klipper?</p>
+<p>В частности, код должен следовать рекомендациям в <Code_Overview.md>, а файлы конфигурации - рекомендациям в <Example_Configs.md>.</p>
 </li>
 <li>
-<p>Is the Klipper documentation updated to reflect new changes?</p>
-<p>At a minimum, the reference documentation must be updated with corresponding changes to the code:</p>
+<p>Обновляется ли документация Klipper, чтобы отразить новые изменения?</p>
+<p>Как минимум, справочная документация должна быть обновлена с учетом соответствующих изменений в коде:</p>
 <ul>
-<li>All commands and command parameters must be documented in <G-Codes.md>.</li>
-<li>All user facing modules and their config parameters must be documented in <Config_Reference.md>.</li>
-<li>All exported "status variables" must be documented in <Status_Reference.md>.</li>
-<li>All new "webhooks" and their parameters must be documented in <API_Server.md>.</li>
-<li>Any change that makes a non-backwards compatible change to a command or config file setting must be documented in <Config_Changes.md>.</li>
+<li>Все команды и параметры команд должны быть задокументированы в <G-Codes.md>.</li>
+<li>Все модули, предназначенные для пользователей, и их параметры конфигурации должны быть задокументированы в <Config_Reference.md>.</li>
+<li>Все экспортируемые "переменные состояния" должны быть задокументированы в <Status_Reference.md>.</li>
+<li>Все новые "веб-крючки" и их параметры должны быть задокументированы в <API_Server.md>.</li>
+<li>Любое изменение, которое вносит несовместимые с обратным ходом изменения в команду или настройки файла конфигурации, должно быть задокументировано в <Config_Changes.md>.</li>
 </ul>
 </li>
 </ol>
-<p>New documents should be added to <Overview.md> and be added to the website index <a href="https://github.com/Klipper3d/klipper/blob/master/docs/_klipper3d/mkdocs.yml">docs/_klipper3d/mkdocs.yml</a>.</p>
+<p>Новые документы должны быть добавлены в <Overview.md> и добавлены в индекс сайта <a href="https://github.com/Klipper3d/klipper/blob/master/docs/_klipper3d/mkdocs.yml">docs/_klipper3d/mkdocs.yml</a>.</p>
 <ol>
 <li>
-<p>Are commits well formed, address a single topic per commit, and independent?</p>
-<p>Commit messages should follow the <a href="#format-of-commit-messages">preferred format</a>.</p>
-<p>Commits must not have a merge conflict. New additions to the Klipper master branch are always done via a "rebase" or "squash and rebase". It is generally not necessary for submitters to re-merge their submission on every update to the Klipper master repository. However, if there is a merge conflict, then submitters are recommended to use <code>git rebase</code> to address the conflict.</p>
-<p>Each commit should address a single high-level change. Large changes should be broken up into multiple independent commits. Each commit should "stand on its own" so that tools like <code>git bisect</code> and <code>git revert</code> work reliably.</p>
-<p>Whitespace changes should not be mixed with functional changes. In general, gratuitous whitespace changes are not accepted unless they are from the established "owner" of the code being modified.</p>
+<p>Хорошо ли сформированы коммиты, касаются ли они одной темы в каждом коммите и являются ли они независимыми?</p>
+<p>Сообщения коммитов должны соответствовать <a href="#format-of-commit-messages">предпочтительному формату</a>.</p>
+<p>Коммиты не должны иметь конфликтов слияния. Новые добавления в мастер-ветку Klipper всегда выполняются через "rebase" или "слияние и возврат". Как правило, сабмиттерам нет необходимости повторно сливать свои коммиты при каждом обновлении мастер-репозитория Klipper. Однако, если возникает конфликт слияния, рекомендуется использовать <code>git rebase</code> для устранения конфликта.</p>
+<p>Каждый коммит должен относиться к одному высокоуровневому изменению. Большие изменения должны быть разбиты на несколько независимых коммитов. Каждый коммит должен "стоять на своём", чтобы такие инструменты, как <code>git bisect</code> и <code>git revert</code>, работали надёжно.</p>
+<p>Изменения пробельных символов не должны смешиваться с функциональными изменениями. В целом, беспричинные изменения пробельных символов не принимаются, если только они не исходят от признанного "владельца" модифицируемого кода.</p>
 </li>
 </ol>
-<p>Klipper does not implement a strict "coding style guide", but modifications to existing code should follow the high-level code flow, code indentation style, and format of that existing code. Submissions of new modules and systems have more flexibility in coding style, but it is preferable for that new code to follow an internally consistent style and to generally follow industry wide coding norms.</p>
-<p>It is not a goal of a review to discuss "better implementations". However, if a reviewer struggles to understand the implementation of a submission, then they may ask for changes to make the implementation more transparent. In particular, if reviewers can not convince themselves that a submission is free of defects then changes may be necessary.</p>
-<p>As part of a review, a reviewer may create an alternate Pull Request for a topic. This may be done to avoid excessive "back and forth" on minor procedural items and thus streamline the submission process. It may also be done because the discussion inspires a reviewer to build an alternative implementation. Both situations are a normal result of a review and should not be considered criticism of the original submission.</p>
-<h3 id="helping-with-reviews">Helping with reviews<a class="headerlink" href="#helping-with-reviews" title="Permanent link">&para;</a></h3>
-<p>We appreciate help with reviews! It is not necessary to be a <a href="#reviewers">listed reviewer</a> to perform a review. Submitters of GitHub Pull Requests are also encouraged to review their own submissions.</p>
-<p>To help with a review, follow the steps outlined in <a href="#what-to-expect-in-a-review">what to expect in a review</a> to verify the submission. After completing the review, add a comment to the GitHub Pull Request with your findings. If the submission passes the review then please state that explicitly in the comment - for example something like "I reviewed this change according to the steps in the CONTRIBUTING document and everything looks good to me". If unable to complete some steps in the review then please explicitly state which steps were reviewed and which steps were not reviewed - for example something like "I didn't check the code for defects, but I reviewed everything else in the CONTRIBUTING document and it looks good".</p>
-<p>We also appreciate testing of submissions. If the code was tested then please add a comment to the GitHub Pull Request with the results of your test - success or failure. Please explicitly state that the code was tested and the results - for example something like "I tested this code on my Acme900Z printer with a vase print and the results were good".</p>
-<h3 id="reviewers">Reviewers<a class="headerlink" href="#reviewers" title="Permanent link">&para;</a></h3>
+<p>Klipper не использует строгое "руководство по стилю кодирования", но модификации существующего кода должны следовать высокоуровневому потоку кода, стилю отступов и формату существующего кода. Новые модули и системы могут быть более гибкими в отношении стиля кодирования, но предпочтительно, чтобы новый код следовал внутренне согласованному стилю и в целом соответствовал общепринятым в отрасли нормам кодирования.</p>
+<p>Обсуждение "лучших реализаций" не является целью рецензии. Однако если рецензенту трудно понять реализацию представленного материала, он может попросить внести изменения, чтобы сделать реализацию более прозрачной. В частности, если рецензенты не могут убедить себя в том, что в представленном материале нет дефектов, то могут потребоваться изменения.</p>
+<p>В рамках рецензирования рецензент может создать альтернативный Pull Request для темы. Это может быть сделано для того, чтобы избежать чрезмерного обсуждения мелких процедурных вопросов и тем самым упростить процесс отправки. Также это может быть сделано, потому что обсуждение вдохновляет рецензента на создание альтернативной реализации. Обе ситуации являются нормальным результатом рецензирования и не должны рассматриваться как критика исходной заявки.</p>
+<h3 id="_3">Помощь в написании обзоров<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>Мы благодарны за помощь с рецензиями! Не обязательно быть <a href="#reviewers">перечисленным рецензентом</a>, чтобы выполнять рецензирование. Авторам GitHub Pull Requests также рекомендуется рецензировать свои собственные заявки.</p>
+<p>Чтобы помочь с рецензированием, выполните шаги, описанные в <a href="#what-to-expect-in-a-review">What to expect in a review</a>, чтобы проверить отправку. После завершения проверки добавьте комментарий к GitHub Pull Request с вашими выводами. Если заявка прошла проверку, укажите это в комментарии - например, что-то вроде "Я проверил это изменение в соответствии с шагами в документе CONTRIBUTING, и мне кажется, что все хорошо". Если вы не смогли выполнить некоторые этапы рецензирования, укажите, какие этапы были рассмотрены, а какие нет - например, что-то вроде "Я не проверял код на наличие дефектов, но я рассмотрел все остальное в документе CONTRIBUTING, и все выглядит хорошо".</p>
+<p>Мы также признательны за тестирование представленных материалов. Если код был протестирован, пожалуйста, добавьте комментарий к GitHub Pull Request с результатами тестирования - успешными или неудачными. Пожалуйста, явно укажите, что код был протестирован, и результаты - например, что-то вроде "Я протестировал этот код на принтере Acme900Z с печатью вазы, и результаты были хорошими".</p>
+<h3 id="_4">Рецензенты<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>"Рецензентами" Клиппера являются:</p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Название</th>
 <th>GitHub Id</th>
 <th>Сферы интересов</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Dmitry Butyugin</td>
+<td>Дмитрий Бутюгин</td>
 <td>@dmbutyugin</td>
-<td>Input shaping, resonance testing, kinematics</td>
+<td>Формирование входного сигнала, резонансное тестирование, кинематика</td>
 </tr>
 <tr>
 <td>Эрик Каллахан</td>
 <td>@Arksine</td>
-<td>Bed leveling, MCU flashing</td>
+<td>Выравнивание кровати, прошивка MCU</td>
 </tr>
 <tr>
-<td>James Hartley</td>
+<td>Джеймс Хартли</td>
 <td>@JamesH1978</td>
-<td>Configuration files</td>
+<td>Конфигурационные файлы</td>
 </tr>
 <tr>
 <td>Кевин О'Коннор</td>
-<td>@KevinOConnor</td>
-<td>Core motion system, Micro-controller code</td>
+<td>@КевинОконнор</td>
+<td>Основная система движения, код микроконтроллера</td>
 </tr>
 </tbody>
 </table>
-<p>Please do not "ping" any of the reviewers and please do not direct submissions at them. All of the reviewers monitor the forums and PRs, and will take on reviews when they have time to.</p>
-<p>The Klipper "maintainers" are:</p>
+<p>Пожалуйста, не пингуйте рецензентов и не направляйте им заявки. Все рецензенты следят за форумами и PR, и берут на себя рецензии, когда у них есть время.</p>
+<p>"Сопровождающими" Клиппера являются:</p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>GitHub name</th>
+<th>Название</th>
+<th>Название GitHub</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Кевин О'Коннор</td>
-<td>@KevinOConnor</td>
+<td>@КевинОконнор</td>
 </tr>
 </tbody>
 </table>
-<h2 id="format-of-commit-messages">Format of commit messages<a class="headerlink" href="#format-of-commit-messages" title="Permanent link">&para;</a></h2>
-<p>Each commit should have a commit message formatted similar to the following:</p>
+<h2 id="_5">Формат сообщений фиксации<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>Каждая фиксация должна содержать сообщение о фиксации в следующем формате:</p>
 <div class="highlight"><pre><span></span><code>модуль: Краткое резюме с заглавной буквы (не более 50 символов)
 
 Более подробный пояснительный текст, если это необходимо. Сократите его примерно до 75
@@ -1534,26 +1534,26 @@
 Подписано: Мое имя &lt;myemail@example.org &gt;
 </code></pre></div>
 
-<p>In the above example, <code>module</code> should be the name of a file or directory in the repository (without a file extension). For example, <code>clocksync: Fix typo in pause() call at connect time</code>. The purpose of specifying a module name in the commit message is to help provide context for the commit comments.</p>
+<p>В приведенном выше примере <code>module</code> должно быть именем файла или каталога в репозитории (без расширения файла). Например, <code>clocksync: Fix typo in pause() call at connect time</code>. Цель указания имени модуля в сообщении о фиксации - помочь обеспечить контекст для комментариев к фиксации.</p>
 <p>Важно иметь строку "Подписано" (Signed-off-by) при каждой фиксации - она подтверждает, что вы согласны с <a href="developer-certificate-of-origin">developer certificate of origin</a>. В нем должно быть указано ваше настоящее имя (извините, никаких псевдонимов или анонимных сообщений) и текущий адрес электронной почты.</p>
 <h2 id="klipper_1">Вклад в переводы Klipper<a class="headerlink" href="#klipper_1" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/Klipper3d/klipper-translations">Klipper-translations Project</a> is a project dedicated to translating Klipper to different languages. <a href="https://hosted.weblate.org/projects/klipper/">Weblate</a> hosts all the Gettext strings for translating and reviewing. Locales can be displayed on <a href="https://www.klipper3d.org">klipper3d.org</a> once they satisfy the following requirements:</p>
+<p><a href="https://github.com/Klipper3d/klipper-translations">Klipper-translations Project</a> - проект, посвященный переводу Klipper на разные языки. На сайте <a href="https://hosted.weblate.org/projects/klipper/">Weblate</a> размещены все строки Gettext для перевода и просмотра. Локализации могут быть отображены на <a href="https://www.klipper3d.org">klipper3d.org</a>, если они удовлетворяют следующим требованиям:</p>
 <ul>
 <li><input disabled="disabled" type="checkbox" /> 75% Общее покрытие</li>
-<li><input disabled="disabled" type="checkbox" /> All titles (H1) are translated</li>
+<li><input disabled="disabled" type="checkbox" /> Все заголовки (H1) переведены</li>
 <li><input disabled="disabled" type="checkbox" /> Обновленная навигационная иерархия PR в klipper-translations.</li>
 </ul>
 <p>Чтобы уменьшить трудности перевода специфических терминов и получить информацию о текущих переводах, вы можете отправить PR, изменяющий <a href="https://github.com/Klipper3d/klipper-translations">Klipper-translations Project</a> <code>readme.md</code>. Как только перевод будет готов, можно внести соответствующую модификацию в проект Klipper.</p>
 <p>Если перевод уже существует в репозитории Klipper и больше не соответствует приведенному выше контрольному списку, он будет помечен как устаревший через месяц без обновлений.</p>
-<p>Once the requirements are met, you need to:</p>
+<p>После того как требования будут выполнены, вам необходимо:</p>
 <ol>
-<li>update klipper-tranlations repository <a href="https://github.com/Klipper3d/klipper-translations/blob/translations/active_translations">active_translations</a></li>
-<li>Optional: add a manual-index.md file in klipper-translations repository's <code>docs\locals\&lt;lang&gt;</code> folder to replace the language specific index.md (generated index.md does not render correctly).</li>
+<li>обновить репозиторий klipper-tranlations <a href="https://github.com/Klipper3d/klipper-translations/blob/translations/active_translations">active_translations</a></li>
+<li>Дополнительно: добавьте файл manual-index.md в папку <code>docs\locals\&lt;lang&gt;</code> репозитория klipper-translations, чтобы заменить специфичный для каждого языка index.md (сгенерированный index.md отображается некорректно).</li>
 </ol>
 <p>Известные проблемы:</p>
 <ol>
-<li>Currently, there isn't a method for correctly translating pictures in the documentation</li>
-<li>It is impossible to translate titles in mkdocs.yml.</li>
+<li>В настоящее время в документации нет метода правильного перевода изображений</li>
+<li>Невозможно перевести заголовки в mkdocs.yml.</li>
 </ol>
 
               

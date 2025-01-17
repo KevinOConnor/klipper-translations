@@ -13,7 +13,7 @@
     
     
       
-        <title>Commands templates - Klipper documentation</title>
+        <title>Шаблоны команд - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#commands-templates" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Commands templates
+              Шаблоны команд
             
           </span>
         </div>
@@ -1342,44 +1342,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     Добавьте описание своему макросу
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#saverestore-state-for-g-code-moves" class="md-nav__link">
-    Save/Restore state for G-Code moves
+  <a href="#g-_2" class="md-nav__link">
+    Сохранение/восстановление состояния для перемещений G-кода
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#template-expansion" class="md-nav__link">
-    Template expansion
+  <a href="#_3" class="md-nav__link">
+    Расширение шаблона
   </a>
   
-    <nav class="md-nav" aria-label="Template expansion">
+    <nav class="md-nav" aria-label="Расширение шаблона">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#macro-parameters" class="md-nav__link">
-    Macro parameters
+  <a href="#_4" class="md-nav__link">
+    Макропараметры
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-rawparams-variable" class="md-nav__link">
-    The "rawparams" variable
+  <a href="#rawparams" class="md-nav__link">
+    Переменная "rawparams"
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-printer-variable" class="md-nav__link">
-    The "printer" Variable
+  <a href="#_5" class="md-nav__link">
+    Переменная "принтер"
   </a>
   
 </li>
@@ -1390,36 +1390,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#actions" class="md-nav__link">
-    Actions
+  <a href="#_6" class="md-nav__link">
+    Действия
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    Variables
+  <a href="#_7" class="md-nav__link">
+    Переменные
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#delayed-gcodes" class="md-nav__link">
-    Delayed Gcodes
+  <a href="#g-_3" class="md-nav__link">
+    Задержанные G-коды
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#menu-templates" class="md-nav__link">
-    Menu templates
+  <a href="#_8" class="md-nav__link">
+    Шаблоны меню
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#save-variables-to-disk" class="md-nav__link">
-    Save Variables to disk
+  <a href="#_9" class="md-nav__link">
+    Сохранить переменные на диске
   </a>
   
 </li>
@@ -1441,7 +1441,7 @@
 </a>
 
 
-<h1 id="commands-templates">Commands templates<a class="headerlink" href="#commands-templates" title="Permanent link">&para;</a></h1>
+<h1 id="_1">Шаблоны команд<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>Этот документ предоставляет информацию о реализации последовательностей команд G-Code в разделах конфигурации gcode_macro (и аналогичных).</p>
 <h2 id="g-">Названия макросов G-Кода<a class="headerlink" href="#g-" title="Permanent link">&para;</a></h2>
 <p>Регистр не важен для имени макроса G-Code - MY_MACRO и my_macro будут вычисляться одинаково и могут вызываться как в верхнем, так и в нижнем регистре. Если в имени макроса используются какие-либо числа, то все они должны быть в конце имени (например, TEST_MACRO25 является допустимым, но MACRO25_TEST3 - нет).</p>
@@ -1455,20 +1455,20 @@ gcode:
 </code></pre></div>
 
 <p>Обратите внимание, что опция конфигурации <code>gcode:</code> всегда начинается с начала строки, а последующие строки в макросе G-Code никогда не начинаются с начала.</p>
-<h2 id="_1">Добавьте описание своему макросу<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>To help identify the functionality a short description can be added. Add <code>description:</code> with a short text to describe the functionality. Default is "G-Code macro" if not specified. For example:</p>
+<h2 id="_2">Добавьте описание своему макросу<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Чтобы помочь идентифицировать функциональность, можно добавить краткое описание. Добавьте <code>description:</code> с коротким текстом для описания функциональности. По умолчанию это "макрос G-кода", если не указано. Например:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro blink_led]
-description: Blink my_led one time
+описание: Blink my_led one time
 gcode:
   SET_PIN PIN=my_led VALUE=1
   G4 P2000
   SET_PIN PIN=my_led VALUE=0
 </code></pre></div>
 
-<p>The terminal will display the description when you use the <code>HELP</code> command or the autocomplete function.</p>
-<h2 id="saverestore-state-for-g-code-moves">Save/Restore state for G-Code moves<a class="headerlink" href="#saverestore-state-for-g-code-moves" title="Permanent link">&para;</a></h2>
+<p>Терминал отобразит описание, когда вы воспользуетесь командой <code>HELP</code> или функцией автозаполнения.</p>
+<h2 id="g-_2">Сохранение/восстановление состояния для перемещений G-кода<a class="headerlink" href="#g-_2" title="Permanent link">&para;</a></h2>
 <p>К сожалению, командный язык G-Code может оказаться сложным в использовании. Стандартным механизмом перемещения инструментальной головки является команда <code>G1</code> (команда <code>G0</code> является псевдонимом для <code>G1</code> и может использоваться как взаимозаменяемая с ней). Однако эта команда опирается на "состояние разбора G-кода", установленное командами <code>M82</code>, <code>M83</code>, <code>G90</code>, <code>G91</code>, <code>G92</code> и предыдущими командами <code>G1</code>. При создании макроса G-кода целесообразно всегда явно устанавливать состояние разбора G-кода перед подачей команды <code>G1</code>. (В противном случае есть риск, что команда <code>G1</code> выполнит нежелательный запрос)</p>
-<p>A common way to accomplish that is to wrap the <code>G1</code> moves in <code>SAVE_GCODE_STATE</code>, <code>G91</code>, and <code>RESTORE_GCODE_STATE</code>. For example:</p>
+<p>Обычный способ добиться этого - обернуть движения <code>G1</code> в <code>SAVE_GCODE_STATE</code>, <code>G91</code> и <code>RESTORE_GCODE_STATE</code>. Например:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro MOVE_UP]
 gcode:
   SAVE_GCODE_STATE NAME=my_move_up_state
@@ -1477,11 +1477,11 @@ gcode:
   RESTORE_GCODE_STATE NAME=my_move_up_state
 </code></pre></div>
 
-<p>The <code>G91</code> command places the G-Code parsing state into "relative move mode" and the <code>RESTORE_GCODE_STATE</code> command restores the state to what it was prior to entering the macro. Be sure to specify an explicit speed (via the <code>F</code> parameter) on the first <code>G1</code> command.</p>
-<h2 id="template-expansion">Template expansion<a class="headerlink" href="#template-expansion" title="Permanent link">&para;</a></h2>
-<p>The gcode_macro <code>gcode:</code> config section is evaluated using the Jinja2 template language. One can evaluate expressions at run-time by wrapping them in <code>{ }</code> characters or use conditional statements wrapped in <code>{% %}</code>. See the <a href="http://jinja.pocoo.org/docs/2.10/templates/">Jinja2 documentation</a> for further information on the syntax.</p>
-<p>An example of a complex macro:</p>
-<div class="highlight"><pre><span></span><code>[gcode_macro clean_nozzle]
+<p>Команда <code>G91</code> переводит состояние разбора G-кода в "режим относительного перемещения", а команда <code>RESTORE_GCODE_STATE</code> восстанавливает состояние до того, каким оно было до ввода макроса. Обязательно укажите явную скорость (через параметр <code>F</code>) в первой команде <code>G1</code>.</p>
+<h2 id="_3">Расширение шаблона<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>Конфигурационная секция gcode_macro <code>gcode:</code> оценивается с помощью шаблонного языка Jinja2. Можно оценивать выражения во время выполнения, обернув их в символы <code>{ }</code>, или использовать условные операторы, обернутые в <code>{% %}</code>. Более подробную информацию о синтаксисе см. в <a href="http://jinja.pocoo.org/docs/2.10/templates/">документации Jinja2</a>.</p>
+<p>Пример сложного макроса:</p>
+<div class="highlight"><pre><span></span><code>[gcode_macro cleanan_nozzle]
 gcode:
   {% set wipe_count = 8 %}
   SAVE_GCODE_STATE NAME=clean_nozzle_state
@@ -1489,80 +1489,79 @@ gcode:
   G0 Z15 F300
   {% for wipe in range(wipe_count) %}
     {% for coordinate in [(275, 4),(235, 4)] %}
-      G0 X{coordinate[0]} Y{coordinate[1] + 0.25 * wipe} Z9.7 F12000
+      G0 X{координата[0]} Y{координата[1] + 0.25 * wipe} Z9.7 F12000
     {% endfor %}
   {% endfor %}
   RESTORE_GCODE_STATE NAME=clean_nozzle_state
 </code></pre></div>
 
-<h3 id="macro-parameters">Macro parameters<a class="headerlink" href="#macro-parameters" title="Permanent link">&para;</a></h3>
-<p>It is often useful to inspect parameters passed to the macro when it is called. These parameters are available via the <code>params</code> pseudo-variable. For example, if the macro:</p>
+<h3 id="_4">Макропараметры<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>Часто бывает полезно проверить параметры, передаваемые макросу при его вызове. Эти параметры доступны через псевдопеременную <code>params</code>. Например, если макрос:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro SET_PERCENT]
 gcode:
-  M117 Now at { params.VALUE|float * 100 }%
+  M117 Теперь при { params.VALUE|float * 100 }%
 </code></pre></div>
 
-<p>were invoked as <code>SET_PERCENT VALUE=.2</code> it would evaluate to <code>M117 Now at 20%</code>. Note that parameter names are always in upper-case when evaluated in the macro and are always passed as strings. If performing math then they must be explicitly converted to integers or floats.</p>
-<p>It's common to use the Jinja2 <code>set</code> directive to use a default parameter and assign the result to a local name. For example:</p>
+<p>если бы он был вызван как <code>SET_PERCENT VALUE=.2</code>, то его значение было бы равно <code>M117 Теперь на 20%</code>. Обратите внимание, что имена параметров всегда пишутся в верхнем регистре при оценке в макросе и всегда передаются как строки. При выполнении математических операций они должны быть явно преобразованы в целые числа или плавающие.</p>
+<p>Обычно в Jinja2 используется директива <code>set</code>, чтобы использовать параметр по умолчанию и присвоить результат локальному имени. Например:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro SET_BED_TEMPERATURE]
 gcode:
   {% set bed_temp = params.TEMPERATURE|default(40)|float %}
   M140 S{bed_temp}
 </code></pre></div>
 
-<h3 id="the-rawparams-variable">The "rawparams" variable<a class="headerlink" href="#the-rawparams-variable" title="Permanent link">&para;</a></h3>
-<p>The full unparsed parameters for the running macro can be access via the <code>rawparams</code> pseudo-variable.</p>
-<p>Note that this will include any comments that were part of the original command.</p>
-<p>See the <a href="https://github.com/Klipper3d/klipper/blob/master/config/sample-macros.cfg">sample-macros.cfg</a> file for an example showing how to override the <code>M117</code> command using <code>rawparams</code>.</p>
-<h3 id="the-printer-variable">The "printer" Variable<a class="headerlink" href="#the-printer-variable" title="Permanent link">&para;</a></h3>
-<p>It is possible to inspect (and alter) the current state of the printer via the <code>printer</code> pseudo-variable. For example:</p>
+<h3 id="rawparams">Переменная "rawparams"<a class="headerlink" href="#rawparams" title="Permanent link">&para;</a></h3>
+<p>Доступ к полным непарсированным параметрам запущенного макроса можно получить через псевдопеременную <code>rawparams</code>.</p>
+<p>Обратите внимание, что при этом будут включены все комментарии, которые были частью исходной команды.</p>
+<p>Смотрите файл <a href="https://github.com/Klipper3d/klipper/blob/master/config/sample-macros.cfg">sample-macros.cfg</a> для примера, показывающего, как переопределить команду <code>M117</code> с помощью <code>rawparams</code>.</p>
+<h3 id="_5">Переменная "принтер"<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Через псевдопеременную <code>printer</code> можно проверять (и изменять) текущее состояние принтера. Например:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro slow_fan]
 gcode:
   M106 S{ printer.fan.speed * 0.9 * 255}
 </code></pre></div>
 
-<p>Available fields are defined in the <a href="Status_Reference.html">Status Reference</a> document.</p>
-<p>Important! Macros are first evaluated in entirety and only then are the resulting commands executed. If a macro issues a command that alters the state of the printer, the results of that state change will not be visible during the evaluation of the macro. This can also result in subtle behavior when a macro generates commands that call other macros, as the called macro is evaluated when it is invoked (which is after the entire evaluation of the calling macro).</p>
-<p>By convention, the name immediately following <code>printer</code> is the name of a config section. So, for example, <code>printer.fan</code> refers to the fan object created by the <code>[fan]</code> config section. There are some exceptions to this rule - notably the <code>gcode_move</code> and <code>toolhead</code> objects. If the config section contains spaces in it, then one can access it via the <code>[ ]</code> accessor - for example: <code>printer["generic_heater my_chamber_heater"].temperature</code>.</p>
-<p>Note that the Jinja2 <code>set</code> directive can assign a local name to an object in the <code>printer</code> hierarchy. This can make macros more readable and reduce typing. For example:</p>
+<p>Доступные поля определены в документе <a href="Status_Reference.html">Справочник состояния</a>.</p>
+<p>Важно! Макросы сначала оцениваются целиком, и только потом выполняются полученные команды. Если макрос выдает команду, которая изменяет состояние принтера, результаты изменения состояния не будут видны во время оценки макроса. Это также может привести к нечеткому поведению, когда макрос генерирует команды, вызывающие другие макросы, поскольку вызываемый макрос оценивается при его вызове (то есть после полной оценки вызывающего макроса).</p>
+<p>По соглашению, имя, следующее сразу за <code>printer</code>, является именем секции конфигурации. Так, например, <code>printer.fan</code> ссылается на объект fan, созданный секцией конфигурации <code>[fan]</code>. Из этого правила есть некоторые исключения - в частности, объекты <code>gcode_move</code> и <code>toolhead</code>. Если секция конфигурации содержит пробелы, то доступ к ней можно получить через аксессор <code>[ ]</code> - например: <code>printer["generic_heater my_chamber_heater"].temperature</code>.</p>
+<p>Обратите внимание, что директива Jinja2 <code>set</code> может присваивать локальное имя объекту в иерархии <code>принтер</code>. Это может сделать макросы более читабельными и сократить количество вводимых символов. Например:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro QUERY_HTU21D]
 gcode:
     {% set sensor = printer[&quot;htu21d my_sensor&quot;] %}
     M117 Temp:{sensor.temperature} Humidity:{sensor.humidity}
 </code></pre></div>
 
-<h2 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">&para;</a></h2>
-<p>There are some commands available that can alter the state of the printer. For example, <code>{ action_emergency_stop() }</code> would cause the printer to go into a shutdown state. Note that these actions are taken at the time that the macro is evaluated, which may be a significant amount of time before the generated g-code commands are executed.</p>
-<p>Available "action" commands:</p>
+<h2 id="_6">Действия<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Есть несколько команд, которые могут изменять состояние принтера. Например, <code>{ action_emergency_stop() }</code> приведет к тому, что принтер перейдет в состояние выключения. Обратите внимание, что эти действия выполняются в момент оценки макроса, что может занять значительное время до выполнения сгенерированных команд g-кода.</p>
+<p>Доступные команды "действия":</p>
 <ul>
-<li><code>action_respond_info(msg)</code>: Write the given <code>msg</code> to the /tmp/printer pseudo-terminal. Each line of <code>msg</code> will be sent with a "// " prefix.</li>
-<li><code>action_raise_error(msg)</code>: Abort the current macro (and any calling macros) and write the given <code>msg</code> to the /tmp/printer pseudo-terminal. The first line of <code>msg</code> will be sent with a "!! " prefix and subsequent lines will have a "// " prefix.</li>
-<li><code>action_emergency_stop(msg)</code>: Transition the printer to a shutdown state. The <code>msg</code> parameter is optional, it may be useful to describe the reason for the shutdown.</li>
-<li><code>action_call_remote_method(method_name)</code>: Calls a method registered by a remote client. If the method takes parameters they should be provided via keyword arguments, ie: <code>action_call_remote_method("print_stuff", my_arg="hello_world")</code></li>
+<li><code>action_respond_info(msg)</code>: Записывает заданное <code>msg</code> в псевдотерминал /tmp/printer. Каждая строка <code>msg</code> будет отправлена с префиксом "//".</li>
+<li><code>action_raise_error(msg)</code>: Прерывает текущий макрос (и все вызывающие макросы) и записывает заданное <code>msg</code> в псевдотерминал /tmp/printer. Первая строка <code>msg</code> будет отправлена с префиксом "!!! ", а последующие строки - с префиксом "//".</li>
+<li><code>action_emergency_stop(msg)</code>: Переводит принтер в состояние выключения. Параметр <code>msg</code> необязателен, он может быть полезен для описания причины выключения.</li>
+<li><code>action_call_remote_method(method_name)</code>: Вызывает метод, зарегистрированный удаленным клиентом. Если метод принимает параметры, они должны быть предоставлены через ключевые аргументы, т.е.: <code>action_call_remote_method("print_stuff", my_arg="hello_world")</code></li>
 </ul>
-<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
-<p>The SET_GCODE_VARIABLE command may be useful for saving state between macro calls. Variable names may not contain any upper case characters. For example:</p>
+<h2 id="_7">Переменные<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>Команда SET_GCODE_VARIABLE может быть полезна для сохранения состояния между вызовами макросов. Имена переменных не должны содержать символов верхнего регистра. Например:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro start_probe]
 variable_bed_temp: 0
 gcode:
-  # Save target temperature to bed_temp variable
+  # Сохранить целевую температуру в переменной bed_temp
   SET_GCODE_VARIABLE MACRO=start_probe VARIABLE=bed_temp VALUE={printer.heater_bed.target}
-  # Disable bed heater
+  # Отключить нагреватель кровати
   M140
-  # Perform probe
+  # Выполнить зондирование
   PROBE
-  # Call finish_probe macro at completion of probe
+  # Вызов макроса finish_probe по завершении зондирования
   finish_probe
-
 [gcode_macro finish_probe]
 gcode:
-  # Restore temperature
+  # Восстановление температуры
   M140 S{printer[&quot;gcode_macro start_probe&quot;].bed_temp}
 </code></pre></div>
 
-<p>Be sure to take the timing of macro evaluation and command execution into account when using SET_GCODE_VARIABLE.</p>
-<h2 id="delayed-gcodes">Delayed Gcodes<a class="headerlink" href="#delayed-gcodes" title="Permanent link">&para;</a></h2>
-<p>The [delayed_gcode] configuration option can be used to execute a delayed gcode sequence:</p>
+<p>При использовании SET_GCODE_VARIABLE обязательно учитывайте время выполнения макроса и команды.</p>
+<h2 id="g-_3">Задержанные G-коды<a class="headerlink" href="#g-_3" title="Permanent link">&para;</a></h2>
+<p>Опция конфигурации [delayed_gcode] может использоваться для выполнения последовательности gcode с задержкой:</p>
 <div class="highlight"><pre><span></span><code>[delayed_gcode clear_display]
 gcode:
   M117
@@ -1573,19 +1572,19 @@ gcode:
  G1 E50
  G90
  M400
- M117 Load Complete!
+ Загрузка M117 завершена!
  UPDATE_DELAYED_GCODE ID=clear_display DURATION=10
 </code></pre></div>
 
-<p>When the <code>load_filament</code> macro above executes, it will display a "Load Complete!" message after the extrusion is finished. The last line of gcode enables the "clear_display" delayed_gcode, set to execute in 10 seconds.</p>
-<p>The <code>initial_duration</code> config option can be set to execute the delayed_gcode on printer startup. The countdown begins when the printer enters the "ready" state. For example, the below delayed_gcode will execute 5 seconds after the printer is ready, initializing the display with a "Welcome!" message:</p>
+<p>При выполнении макроса <code>load_filament</code> на экране появится сообщение "Load Complete!" после завершения экструзии. Последняя строка gcode включает отложенный_gcode "clear_display", настроенный на выполнение через 10 секунд.</p>
+<p>Опция конфигурации <code>initial_duration</code> может быть установлена для выполнения delayed_gcode при запуске принтера. Отсчет времени начинается, когда принтер переходит в состояние "готов". Например, приведенный ниже код delayed_gcode будет выполнен через 5 секунд после готовности принтера, инициализируя дисплей сообщением " Добро пожаловать!":</p>
 <div class="highlight"><pre><span></span><code>[delayed_gcode welcome]
 initial_duration: 5.
 gcode:
-  M117 Welcome!
+    M117 Добро пожаловать!
 </code></pre></div>
 
-<p>Its possible for a delayed gcode to repeat by updating itself in the gcode option:</p>
+<p>Отложенный gcode может повториться, обновившись в опции gcode:</p>
 <div class="highlight"><pre><span></span><code>[delayed_gcode report_temp]
 initial_duration: 2.
 gcode:
@@ -1593,37 +1592,37 @@ gcode:
   UPDATE_DELAYED_GCODE ID=report_temp DURATION=2
 </code></pre></div>
 
-<p>The above delayed_gcode will send "// Extruder Temp: [ex0_temp]" to Octoprint every 2 seconds. This can be canceled with the following gcode:</p>
+<p>Приведенный выше код delayed_gcode будет отправлять Octoprint сообщение "// Extruder Temp: [ex0_temp]" каждые 2 секунды. Это можно отменить с помощью следующего gcode:</p>
 <div class="highlight"><pre><span></span><code>UPDATE_DELAYED_GCODE ID=report_temp DURATION=0
 </code></pre></div>
 
-<h2 id="menu-templates">Menu templates<a class="headerlink" href="#menu-templates" title="Permanent link">&para;</a></h2>
-<p>If a <a href="Config_Reference.html#display">display config section</a> is enabled, then it is possible to customize the menu with <a href="Config_Reference.html#menu">menu</a> config sections.</p>
-<p>The following read-only attributes are available in menu templates:</p>
+<h2 id="_8">Шаблоны меню<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>Если включен раздел конфигурации <a href="Config_Reference.html#display">дисплей</a>], то можно настроить меню с помощью разделов конфигурации <a href="Config_Reference.html#menu">меню</a>.</p>
+<p>В шаблонах меню доступны следующие атрибуты, доступные только для чтения:</p>
 <ul>
-<li><code>menu.width</code> - element width (number of display columns)</li>
-<li><code>menu.ns</code> - element namespace</li>
-<li><code>menu.event</code> - name of the event that triggered the script</li>
-<li><code>menu.input</code> - input value, only available in input script context</li>
+<li><code>menu.width</code> - ширина элемента (количество отображаемых колонок)</li>
+<li><code>menu.ns</code> - пространство имен элемента</li>
+<li><code>menu.event</code> - имя события, вызвавшего скрипт</li>
+<li><code>menu.input</code> - значение ввода, доступно только в контексте сценария ввода</li>
 </ul>
-<p>The following actions are available in menu templates:</p>
+<p>В шаблонах меню доступны следующие действия:</p>
 <ul>
-<li><code>menu.back(force, update)</code>: will execute menu back command, optional boolean parameters <code>&lt;force&gt;</code> and <code>&lt;update&gt;</code>.<ul>
-<li>When <code>&lt;force&gt;</code> is set True then it will also stop editing. Default value is False.</li>
-<li>When <code>&lt;update&gt;</code> is set False then parent container items are not updated. Default value is True.</li>
+<li><code>menu.back(force, update)</code>: выполнит команду возврата к меню, необязательные булевы параметры <code>&lt;force&gt;</code> и <code>&lt;update&gt;</code>.<ul>
+<li>Если для <code>&lt;force&gt;</code> установлено значение True, то редактирование также будет остановлено. Значение по умолчанию - False.</li>
+<li>Если значение <code>&lt;обновить&gt;</code> установлено Ложь, то элементы родительского контейнера не обновляются. Значение по умолчанию - Истина.</li>
 </ul>
 </li>
-<li><code>menu.exit(force)</code> - will execute menu exit command, optional boolean parameter <code>&lt;force&gt;</code> default value False.<ul>
-<li>When <code>&lt;force&gt;</code> is set True then it will also stop editing. Default value is False.</li>
+<li><code>menu.exit(force)</code> - выполнит команду выхода из меню, необязательный булевский параметр <code>&lt;force&gt;</code> по умолчанию имеет значение Ложь.<ul>
+<li>Если для <code>&lt;force&gt;</code> установлено значение True, то редактирование также будет остановлено. Значение по умолчанию - False.</li>
 </ul>
 </li>
 </ul>
-<h2 id="save-variables-to-disk">Save Variables to disk<a class="headerlink" href="#save-variables-to-disk" title="Permanent link">&para;</a></h2>
-<p>If a <a href="Config_Reference.html#save_variables">save_variables config section</a> has been enabled, <code>SAVE_VARIABLE VARIABLE=&lt;name&gt; VALUE=&lt;value&gt;</code> can be used to save the variable to disk so that it can be used across restarts. All stored variables are loaded into the <code>printer.save_variables.variables</code> dict at startup and can be used in gcode macros. to avoid overly long lines you can add the following at the top of the macro:</p>
+<h2 id="_9">Сохранить переменные на диске<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>Если включен раздел конфигурации <a href="Config_Reference.html#save_variables">save_variables</a>, то <code>SAVE_VARIABLE VARIABLE=&lt;имя&gt; VALUE=&lt;значение&gt;</code> можно использовать для сохранения переменной на диск, чтобы ее можно было использовать при перезапуске. Все сохраненные переменные при запуске загружаются в дикту <code>printer.save_variables.variables</code> и могут быть использованы в макросах gcode. Чтобы избежать слишком длинных строк, можно добавить в начало макроса следующее:</p>
 <div class="highlight"><pre><span></span><code>{% set svv = printer.save_variables.variables %}
 </code></pre></div>
 
-<p>As an example, it could be used to save the state of 2-in-1-out hotend and when starting a print ensure that the active extruder is used, instead of T0:</p>
+<p>Например, его можно использовать для сохранения состояния хотэнда 2-in-1-out и при запуске печати убедиться, что используется активный экструдер, а не T0:</p>
 <div class="highlight"><pre><span></span><code>[gcode_macro T1]
 gcode:
   ACTIVATE_EXTRUDER extruder=extruder1

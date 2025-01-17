@@ -1,0 +1,2330 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>அதிர்வுகளை அளவிடுதல் - Klipper documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_klipper3d/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-VEN1PGNQL4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-VEN1PGNQL4",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEN1PGNQL4"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Klipper documentation" class="md-header__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Klipper documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              அதிர்வுகளை அளவிடுதல்
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2 0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh/" hreflang="zh" class="md-select__link">
+                    简体中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh-Hant/" hreflang="zh-Hant" class="md-select__link">
+                    繁體中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/hu/" hreflang="hu" class="md-select__link">
+                    Magyar
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/it/" hreflang="it" class="md-select__link">
+                    Italiano
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/fr/" hreflang="fr" class="md-select__link">
+                    Français
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Klipper documentation" class="md-nav__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    Klipper documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Overview.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features.html" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ.html" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Releases.html" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Changes.html" class="md-nav__link">
+        Configuration Changes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contact.html" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Installation and Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation and Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Installation and Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OctoPrint.html" class="md-nav__link">
+        OctoPrint for Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Configuration Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Reference.html" class="md-nav__link">
+        Configuration reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rotation_Distance.html" class="md-nav__link">
+        Rotation distance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_checks.html" class="md-nav__link">
+        Configuration checks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Bed Level
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bed Level" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Bed Level
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Level.html" class="md-nav__link">
+        Bed leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Delta_Calibrate.html" class="md-nav__link">
+        Delta calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probe_Calibrate.html" class="md-nav__link">
+        Probe calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BLTouch.html" class="md-nav__link">
+        BL-Touch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Manual_Level.html" class="md-nav__link">
+        Manual leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Mesh.html" class="md-nav__link">
+        Bed Mesh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Endstop_Phase.html" class="md-nav__link">
+        Endstop phase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Axis_Twist_Compensation.html" class="md-nav__link">
+        Axis Twist Compensation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_5" type="checkbox" id="__nav_7_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_5">
+          Resonance Compensation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resonance Compensation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_5">
+          <span class="md-nav__icon md-icon"></span>
+          Resonance Compensation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Resonance_Compensation.html" class="md-nav__link">
+        Resonance Compensation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Measuring_Resonances.html" class="md-nav__link">
+        Measuring Resonances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pressure_Advance.html" class="md-nav__link">
+        Pressure advance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../G-Codes.html" class="md-nav__link">
+        G-Codes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" type="checkbox" id="__nav_7_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Command templates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Command templates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Command templates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Command_Templates.html" class="md-nav__link">
+        Commands templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Status_Reference.html" class="md-nav__link">
+        Status reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TMC_Drivers.html" class="md-nav__link">
+        TMC drivers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Multi_MCU_Homing.html" class="md-nav__link">
+        Multiple Micro-controller Homing and Probing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Slicers.html" class="md-nav__link">
+        Slicers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Skew_Correction.html" class="md-nav__link">
+        Skew correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exclude_Object.html" class="md-nav__link">
+        Exclude Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Using_PWM_Tools.html" class="md-nav__link">
+        Using PWM tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Developer Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Code_Overview.html" class="md-nav__link">
+        Code overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kinematics.html" class="md-nav__link">
+        Kinematics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Protocol.html" class="md-nav__link">
+        Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API_Server.html" class="md-nav__link">
+        API server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MCU_Commands.html" class="md-nav__link">
+        MCU commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_protocol.html" class="md-nav__link">
+        CANBUS protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Debugging.html" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Benchmarks.html" class="md-nav__link">
+        Benchmarks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING.html" class="md-nav__link">
+        Contributing to Klipper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Packaging.html" class="md-nav__link">
+        Packaging Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Device Specific Documents
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Device Specific Documents" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Device Specific Documents
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example_Configs.html" class="md-nav__link">
+        Example configurations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDCard_Updates.html" class="md-nav__link">
+        SDCard updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RPi_microcontroller.html" class="md-nav__link">
+        RPi microcontroller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Beaglebone.html" class="md-nav__link">
+        Beaglebone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloaders.html" class="md-nav__link">
+        Bootloaders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloader_Entry.html" class="md-nav__link">
+        Bootloader Entry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS.html" class="md-nav__link">
+        CANBUS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_Troubleshooting.html" class="md-nav__link">
+        CANBUS Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSL1401CL_Filament_Width_Sensor.html" class="md-nav__link">
+        TSL1401CL filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Hall_Filament_Width_Sensor.html" class="md-nav__link">
+        Hall filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Eddy_Probe.html" class="md-nav__link">
+        Eddy Current Inductive probe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-mcu" class="md-nav__link">
+    கிளிப்பர் I2C * வேகமான முறை * ஆதரவுடன் MCU கள்
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    நிறுவல் வழிமுறைகள்
+  </a>
+  
+    <nav class="md-nav" aria-label="நிறுவல் வழிமுறைகள்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    வயரிங்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi" class="md-nav__link">
+    SPI முடுக்கமானிகள்
+  </a>
+  
+    <nav class="md-nav" aria-label="SPI முடுக்கமானிகள்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    45
+  </a>
+  
+    <nav class="md-nav" aria-label="45">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ராச்பெர்ரி பைக்கு நேரடியாக
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ராச்பெர்ரி பை பிக்கோவைப் பயன்படுத்துதல்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c" class="md-nav__link">
+    I2C முடுக்கமானிகள்
+  </a>
+  
+    <nav class="md-nav" aria-label="I2C முடுக்கமானிகள்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpu-9250mpu-9255mpu-6515mpu-6050mpu-6500" class="md-nav__link">
+    MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500
+  </a>
+  
+    <nav class="md-nav" aria-label="MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avr-atmega328p-arduino-i2c-twi" class="md-nav__link">
+    AVR ATMEGA328P Arduino நானோவில் I2C (TWI) க்கான பரிந்துரைக்கப்பட்ட இணைப்பு திட்டம்:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    முடுக்கமானியை ஏற்றுவது
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    மென்பொருள் நிறுவல்
+  </a>
+  
+    <nav class="md-nav" aria-label="மென்பொருள் நிறுவல்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpi-adxl345" class="md-nav__link">
+    RPI உடன் ADXL345 ஐ உள்ளமைக்கவும்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pi-adxl345" class="md-nav__link">
+    PI பைக்கோவுடன் ADXL345 ஐ உள்ளமைக்கவும்
+  </a>
+  
+    <nav class="md-nav" aria-label="PI பைக்கோவுடன் ADXL345 ஐ உள்ளமைக்கவும்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    பிக்கோ ஃபார்ம்வேரை ஃபிளாச்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    இணைப்பை உள்ளமைக்கவும்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-lis2dw-series-over-spi" class="md-nav__link">
+    Configure LIS2DW series over SPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpi-mpu-60009000" class="md-nav__link">
+    RPI உடன் MPU-6000/9000 தொடரை உள்ளமைக்கவும்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpu-9520" class="md-nav__link">
+    MPU-9520 ஐ பைக்கோவுடன் இணக்கமாக உள்ளமைக்கவும்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avr-mpu-9520" class="md-nav__link">
+    AVR உடன் இணக்கமான MPU-9520 ஐ உள்ளமைக்கவும்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    அதிர்வுகளை அளவிடுதல்
+  </a>
+  
+    <nav class="md-nav" aria-label="அதிர்வுகளை அளவிடுதல்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    அமைப்பைச் சரிபார்க்கிறது
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    அதிர்வுகளை அளவிடுதல்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    படுக்கை-ச்லிங்கர் அச்சுப்பொறிகள்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    அதிகபட்ச மென்மையான
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max_accel" class="md-nav__link">
+    Max_accel ஐத் தேர்ந்தெடுக்கும்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unreliable-measurements-of-resonance-frequencies" class="md-nav__link">
+    Unreliable measurements of resonance frequencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    தனிப்பயன் அச்சுகளை சோதித்தல்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    உள்ளீட்டு சேப்பர் ஆட்டோ அளவுத்திருத்தமாகும்
+  </a>
+  
+    <nav class="md-nav" aria-label="உள்ளீட்டு சேப்பர் ஆட்டோ அளவுத்திருத்தமாகும்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    உள்ளீட்டு சேப்பர் மறு அளவுத்தன்மை
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    முடுக்கமானி தரவின் இணைப்பில்லாத செயலாக்கம்
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/locales/ta/Measuring_Resonances.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="_1">அதிர்வுகளை அளவிடுதல்<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>Klipper has built-in support for the ADXL345, MPU-9250, LIS2DW and LIS3DH compatible accelerometers which can be used to measure resonance frequencies of the printer for different axes, and auto-tune <a href="Resonance_Compensation.html">input shapers</a> to compensate for resonances. Note that using accelerometers requires some soldering and crimping. The ADXL345 can be connected to the SPI interface of a Raspberry Pi or MCU board (it needs to be reasonably fast). The MPU family can be connected to the I2C interface of a Raspberry Pi directly, or to an I2C interface of an MCU board that supports 400kbit/s <em>fast mode</em> in Klipper. The LIS2DW and LIS3DH can be connected to either SPI or I2C with the same considerations as above.</p>
+<p>முடுக்கமானிகளை வளர்க்கும் போது, பல்வேறு வகையான பிசிபி போர்டு வடிவமைப்புகள் மற்றும் அவற்றில் வெவ்வேறு குளோன்கள் உள்ளன என்பதை அறிந்து கொள்ளுங்கள். இது 5 வி அச்சுப்பொறி எம்.சி.யுவுடன் இணைக்கப் போகிறது என்றால், அதில் மின்னழுத்த சீராக்கி மற்றும் நிலை மாற்றிகள் இருப்பதை உறுதிசெய்க.</p>
+<p>For ADXL345s, make sure that the board supports SPI mode (a small number of boards appear to be hard-configured for I2C by pulling SDO to GND).</p>
+<p>For MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500s and LIS2DW/LIS3DH there are also a variety of board designs and clones with different I2C pull-up resistors which will need supplementing.</p>
+<h2 id="i2c-mcu">கிளிப்பர் I2C * வேகமான முறை * ஆதரவுடன் MCU கள்<a class="headerlink" href="#i2c-mcu" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="center">MCU குடும்பம்</th>
+<th align="left">MCU (கள்) சோதிக்கப்பட்டது</th>
+<th align="left">ஆதரவுடன் MCU (கள்)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Raspberry Pi</td>
+<td align="left">3 பி+, பிக்கோ</td>
+<td align="left">A, a+, heb, 4</td>
+</tr>
+<tr>
+<td align="center">ஏ.வி.ஆர்</td>
+<td align="left">Atmega328p</td>
+<td align="left">Atmega32u4, atmega128, atmega168, atmega328, atmega644p, atmega1280, atmega1284, atmega2560</td>
+</tr>
+<tr>
+<td align="center">AVR AT90</td>
+<td align="left">-</td>
+<td align="left">AT90USB646, AT90USB1286</td>
+</tr>
+<tr>
+<td align="center">SAMD</td>
+<td align="left">SAMC21G18</td>
+<td align="left">SAMC21G18, SAMD21G18, SAMD21E18, SAMD21J18, SAMD21E15, SAMD51G19, SAMD51J19, SAMD51N19, SAMD51P20, SAME51J19, SAME51N19, SAME54P20</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">நிறுவல் வழிமுறைகள்<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">வயரிங்<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>கேடய முறுக்கப்பட்ட சோடிகள் (CAT5E அல்லது அதற்கு மேற்பட்டவை) கொண்ட ஈத்தர்நெட் கேபிள் நீண்ட தூரத்தில் சமிக்ஞை ஒருமைப்பாட்டிற்கு பரிந்துரைக்கப்படுகிறது. நீங்கள் இன்னும் சமிக்ஞை ஒருமைப்பாடு சிக்கல்களை அனுபவித்தால் (SPI/I2C பிழைகள்):</p>
+<ul>
+<li>இதற்கான டிசிட்டல் மல்டிமீட்டருடன் வயரிங் இருமுறை சரிபார்க்கவும்:<ul>
+<li>அணைக்கப்படும் போது சரியான இணைப்புகள் (தொடர்ச்சி)</li>
+<li>சரியான ஆற்றல் மற்றும் தரை மின்னழுத்தங்கள்</li>
+</ul>
+</li>
+<li>I2c மட்டும்:<ul>
+<li>3.3V க்கு SCL மற்றும் SDA வரிகளின் எதிர்ப்புகள் 900 ஓம்ச் முதல் 1.8K வரை உள்ளன என்பதை சரிபார்க்கவும்</li>
+<li>முழு தொழில்நுட்ப விவரங்களுக்கு [I2C-PUS விவரக்குறிப்பு மற்றும் பயனர் கையேடு UM10204 இன் அத்தியாயம் 7] (<a href="https://www.pololu.com/file/0j435/um10204.pdf">https://www.pololu.com/file/0j435/um10204.pdf</a>)</li>
+</ul>
+</li>
+<li>கேபிளை சுருக்கவும்</li>
+</ul>
+<p>ஈத்தர்நெட் கேபிள் கேடயத்தை MCU போர்டு/PI மைதானத்துடன் மட்டுமே இணைக்கவும்.</p>
+<p><strong><em> உங்கள் MCU/ராச்பெர்ரி பை அல்லது முடுக்கமானி சேதப்படுத்துவதைத் தடுக்க உங்கள் வயரிங் இயக்குவதற்கு முன் இருமுறை சரிபார்க்கவும். </em></strong></p>
+<h3 id="spi">SPI முடுக்கமானிகள்<a class="headerlink" href="#spi" title="Permanent link">&para;</a></h3>
+<p>மூன்று முறுக்கப்பட்ட சோடிகளுக்கு பரிந்துரைக்கப்பட்ட முறுக்கப்பட்ட இணை ஆர்டர்:</p>
+<div class="highlight"><pre><span></span><code>Gnd+miso
+ 3.3 வி+மொசி
+ SCLK+CS
+</code></pre></div>
+
+<p>கேபிள் கேடயத்தைப் போலன்றி, சி.என்.டி இரு முனைகளிலும் இணைக்கப்பட வேண்டும் என்பதை நினைவில் கொள்க.</p>
+<h4 id="45">45<a class="headerlink" href="#45" title="Permanent link">&para;</a></h4>
+<h5 id="_4">ராச்பெர்ரி பைக்கு நேரடியாக<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p><strong> குறிப்பு: பல MCU கள் SPI பயன்முறையில் ADXL345 உடன் வேலை செய்யும் (எ.கா. பை பைக்கோ), வயரிங் மற்றும் உள்ளமைவு உங்கள் குறிப்பிட்ட பலகை மற்றும் கிடைக்கக்கூடிய ஊசிகளின்படி மாறுபடும். </strong></p>
+<p>SPI வழியாக உங்கள் ராச்பெர்ரி பைக்கு ADXL345 ஐ இணைக்க வேண்டும். ADXL345 ஆவணங்களால் பரிந்துரைக்கப்பட்ட I2C இணைப்பு மிகக் குறைந்த செயல்திறனைக் கொண்டுள்ளது மற்றும் <strong> வேலை செய்யாது </strong>. பரிந்துரைக்கப்பட்ட இணைப்பு திட்டம்:</p>
+<table>
+<thead>
+<tr>
+<th align="center">ADXL345 முள்</th>
+<th align="center">Rpi முள்</th>
+<th align="center">RPI முள் பெயர்</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">3V3 (அல்லது VCC)</td>
+<td align="center">01</td>
+<td align="center">3.3 வி டிசி ஆற்றல்</td>
+</tr>
+<tr>
+<td align="center">Gnd</td>
+<td align="center">06</td>
+<td align="center">மைதானம்</td>
+</tr>
+<tr>
+<td align="center">சி.எச்</td>
+<td align="center">24</td>
+<td align="center">Gpio08 (spi0_ce0_n)</td>
+</tr>
+<tr>
+<td align="center">எச்.டி.ஓ</td>
+<td align="center">21</td>
+<td align="center">GPIO09 (SPI0_MISO)</td>
+</tr>
+<tr>
+<td align="center">எச்.டி.ஏ.</td>
+<td align="center">19</td>
+<td align="center">GPIO10 (SPI0_MOSI)</td>
+</tr>
+<tr>
+<td align="center">எச்.சி.எல்</td>
+<td align="center">23</td>
+<td align="center">GPIO11 (SPI0_SCLK)</td>
+</tr>
+</tbody>
+</table>
+<p>சில ADXL345 பலகைகளுக்கான வயரிங் வரைபடங்களை உருவாக்குதல்:</p>
+<p>!</p>
+<h5 id="_5">ராச்பெர்ரி பை பிக்கோவைப் பயன்படுத்துதல்<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<p>நீங்கள் ADXL345 ஐ உங்கள் ராச்பெர்ரி பை பைக்கோவுடன் இணைக்கலாம், பின்னர் பிக்கோவை உங்கள் ராச்பெர்ரி பைவுடன் யூ.எச்.பி வழியாக இணைக்கலாம். இது மற்ற கிளிப்பர் சாதனங்களில் முடுக்கமானியை மீண்டும் பயன்படுத்துவதை எளிதாக்குகிறது, ஏனெனில் நீங்கள் GPIO க்கு பதிலாக யூ.எச்.பி வழியாக இணைக்க முடியும். பிக்கோவுக்கு அதிக செயலாக்க ஆற்றல் இல்லை, எனவே இது முடுக்கமானியை மட்டுமே இயக்குகிறது மற்றும் வேறு எந்த கடமைகளையும் செய்யாது என்பதை உறுதிப்படுத்திக் கொள்ளுங்கள்.</p>
+<p>உங்கள் RPI க்கு சேதம் ஏற்படுவதைத் தவிர்ப்பதற்காக, ADXL345 ஐ 3.3V உடன் மட்டுமே இணைக்கவும். வாரியத்தின் தளவமைப்பைப் பொறுத்து, ஒரு நிலை சிஃப்ட்டர் இருக்கலாம், இது உங்கள் RPI க்கு 5V ஆபத்தானது.</p>
+<table>
+<thead>
+<tr>
+<th align="center">ADXL345 முள்</th>
+<th align="center">முள் உச்சம்</th>
+<th align="center">பிக்கோ முள் பெயர்</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">3V3 (அல்லது VCC)</td>
+<td align="center">36</td>
+<td align="center">3.3 வி டிசி ஆற்றல்</td>
+</tr>
+<tr>
+<td align="center">Gnd</td>
+<td align="center">38</td>
+<td align="center">மைதானம்</td>
+</tr>
+<tr>
+<td align="center">சி.எச்</td>
+<td align="center">2</td>
+<td align="center">Gp1 (spi0_csn)</td>
+</tr>
+<tr>
+<td align="center">எச்.டி.ஓ</td>
+<td align="center">1</td>
+<td align="center">Gp0 (spi0_rx)</td>
+</tr>
+<tr>
+<td align="center">எச்.டி.ஏ.</td>
+<td align="center">5</td>
+<td align="center">Gp3 (spi0_tx)</td>
+</tr>
+<tr>
+<td align="center">எச்.சி.எல்</td>
+<td align="center">4</td>
+<td align="center">Gp2 (spi0_sck)</td>
+</tr>
+</tbody>
+</table>
+<p>சில ADXL345 பலகைகளுக்கான வயரிங் வரைபடங்கள்:</p>
+<p>!</p>
+<h3 id="i2c">I2C முடுக்கமானிகள்<a class="headerlink" href="#i2c" title="Permanent link">&para;</a></h3>
+<p>மூன்று சோடிகளுக்கு பரிந்துரைக்கப்பட்ட முறுக்கப்பட்ட இணை ஆர்டர் (விரும்பப்படுகிறது):</p>
+<div class="highlight"><pre><span></span><code>H.ZV+GND
+ TEE+GND
+ SCL+GND
+</code></pre></div>
+
+<p>அல்லது இரண்டு சோடிகளுக்கு:</p>
+<div class="highlight"><pre><span></span><code>Z.
+ GND+SCL
+</code></pre></div>
+
+<p>ஒரு கேபிள் கவசத்தைப் போலல்லாமல், மற்றும் சி.என்.டி) இரு முனைகளிலும் இணைக்கப்பட வேண்டும் என்பதை நினைவில் கொள்க.</p>
+<h4 id="mpu-9250mpu-9255mpu-6515mpu-6050mpu-6500">MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500<a class="headerlink" href="#mpu-9250mpu-9255mpu-6515mpu-6050mpu-6500" title="Permanent link">&para;</a></h4>
+<p>இந்த முடுக்கமானிகள் RPI, RP2040 (PICO) மற்றும் AVR இல் 400Kbit/s (<em>ஃபாச்ட் பயன்முறை</em>) இல் I2C க்கு மேல் வேலை செய்ய சோதிக்கப்பட்டுள்ளன. சில MPU முடுக்கமானி தொகுதிகள் புல்-அப்களை உள்ளடக்குகின்றன, ஆனால் சில 10K இல் மிகப் பெரியவை, மேலும் அவை சிறிய இணையான மின்தடையங்களால் மாற்றப்பட வேண்டும் அல்லது கூடுதலாக வழங்கப்பட வேண்டும்.</p>
+<p>ராச்பெர்ரி பையில் I2C க்கான பரிந்துரைக்கப்பட்ட இணைப்பு திட்டம்:</p>
+<table>
+<thead>
+<tr>
+<th align="center">MPU-9250 முள்</th>
+<th align="center">Rpi முள்</th>
+<th align="center">RPI முள் பெயர்</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">வி.சி.சி.</td>
+<td align="center">01</td>
+<td align="center">3.3 வி டிசி ஆற்றல்</td>
+</tr>
+<tr>
+<td align="center">Gnd</td>
+<td align="center">09</td>
+<td align="center">மைதானம்</td>
+</tr>
+<tr>
+<td align="center">எச்.டி.ஏ.</td>
+<td align="center">03</td>
+<td align="center">GPIO02 (SDA1)</td>
+</tr>
+<tr>
+<td align="center">எச்.சி.எல்</td>
+<td align="center">05</td>
+<td align="center">GPIO03 (SCL1)</td>
+</tr>
+</tbody>
+</table>
+<p>ரிசர்வ் வங்கி SCL மற்றும் SDA இரண்டிலும் 1.8K புல்-அப்களை உள்ளமைக்கப்பட்டுள்ளது.</p>
+<p>!</p>
+<p>RP2040 இல் I2C (I2C0A) க்கான பரிந்துரைக்கப்பட்ட இணைப்புத் திட்டம்:</p>
+<table>
+<thead>
+<tr>
+<th align="center">MPU-9250 முள்</th>
+<th align="center">RP2040 முள்</th>
+<th align="center">RP2040 முள் பெயர்</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">வி.சி.சி.</td>
+<td align="center">36</td>
+<td align="center">மருத்தீடு</td>
+</tr>
+<tr>
+<td align="center">Gnd</td>
+<td align="center">38</td>
+<td align="center">மைதானம்</td>
+</tr>
+<tr>
+<td align="center">எச்.டி.ஏ.</td>
+<td align="center">01</td>
+<td align="center">GP0 (I2C0 SDA)</td>
+</tr>
+<tr>
+<td align="center">எச்.சி.எல்</td>
+<td align="center">02</td>
+<td align="center">GP1 (I2C0 SCL)</td>
+</tr>
+</tbody>
+</table>
+<p>பைக்கோவில் எந்த உள்ளமைக்கப்பட்ட I2C புல்-அப் மின்தடையங்களும் இல்லை.</p>
+<p>!</p>
+<h5 id="avr-atmega328p-arduino-i2c-twi">AVR ATMEGA328P Arduino நானோவில் I2C (TWI) க்கான பரிந்துரைக்கப்பட்ட இணைப்பு திட்டம்:<a class="headerlink" href="#avr-atmega328p-arduino-i2c-twi" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th align="center">MPU-9250 முள்</th>
+<th align="center">Atmege328p TQFP32 முள்</th>
+<th align="center">ATMEGA328P முள் பெயர்</th>
+<th align="center">அர்டுயினோ நானோ முள்</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">வி.சி.சி.</td>
+<td align="center">39</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">Gnd</td>
+<td align="center">38</td>
+<td align="center">மைதானம்</td>
+<td align="center">Gnd</td>
+</tr>
+<tr>
+<td align="center">எச்.டி.ஏ.</td>
+<td align="center">27</td>
+<td align="center">எச்.டி.ஏ.</td>
+<td align="center">இளஞ்சிவப்பு</td>
+</tr>
+<tr>
+<td align="center">எச்.சி.எல்</td>
+<td align="center">28</td>
+<td align="center">எச்.சி.எல்</td>
+<td align="center">சகோதரர்</td>
+</tr>
+</tbody>
+</table>
+<p>அர்டுயினோ நானோவில் எந்த உள்ளமைக்கப்பட்ட புல்-அப் மின்தடையங்கள் அல்லது 3.3 வி பவர் முள் இல்லை.</p>
+<h3 id="_6">முடுக்கமானியை ஏற்றுவது<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>முடுக்கமானி கருவித்தடத்துடன் இணைக்கப்பட வேண்டும். ஒருவர் தங்கள் சொந்த 3D அச்சுப்பொறிக்கு பொருந்தக்கூடிய சரியான ஏற்றத்தை வடிவமைக்க வேண்டும். அச்சுப்பொறியின் அச்சுகளுடன் முடுக்கமானியின் அச்சுகளை சீரமைப்பது நல்லது (ஆனால் அது மிகவும் வசதியானதாக இருந்தால், அச்சுகளை மாற்றலாம் - அதாவது ஃச் அச்சை ஃச் உடன் சீரமைக்க தேவையில்லை - சட் அச்சு என்றாலும் கூட நன்றாக இருக்க வேண்டும் முடுக்கமானி என்பது அச்சுப்பொறியின் ஃச் அச்சு, முதலியன).</p>
+<p>ச்மார்ட்ஃபெக்டரில் ADXL345 ஐ ஏற்றுவதற்கான எடுத்துக்காட்டு:</p>
+<p>!</p>
+<p>ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியில் ஒருவர் 2 ஏற்றங்களை வடிவமைக்க வேண்டும் என்பதை நினைவில் கொள்க: ஒன்று கருவிக்கு மற்றும் படுக்கைக்கு ஒன்று, மற்றும் இரண்டு முறை அளவீடுகளை இயக்கவும். மேலும் விவரங்களுக்கு தொடர்புடைய [பிரிவு] (#படுக்கை-ச்லிங்கர்-பிரிண்டர்கள்) ஐப் பார்க்கவும்.</p>
+<p><strong> கவனம்: </strong> முடுக்கமானி மற்றும் அதை வைத்திருக்கும் எந்த திருகுகளும் அச்சுப்பொறியின் எந்த உலோக பகுதிகளையும் தொடாது என்பதை உறுதிப்படுத்திக் கொள்ளுங்கள். அடிப்படையில், அச்சுப்பொறி சட்டகத்திலிருந்து முடுக்கமானியின் மின் தனிமைப்படுத்தலை உறுதி செய்வதற்காக மவுண்ட் வடிவமைக்கப்பட வேண்டும். மின்னணுவியல் சேதப்படுத்தக்கூடிய கணினியில் ஒரு தரை வளையத்தை உருவாக்க முடியும் என்பதை உறுதிப்படுத்தத் தவறியது.</p>
+<h3 id="_7">மென்பொருள் நிறுவல்<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>அதிர்வு அளவீடுகள் மற்றும் சேப்பர் ஆட்டோ-அளவுத்திருத்தத்திற்கு இயல்புநிலையாக நிறுவப்படாத கூடுதல் மென்பொருள் சார்புகள் தேவை என்பதை நினைவில் கொள்க. முதலில், உங்கள் ராச்பெர்ரி பையில் பின்வரும் கட்டளைகளை இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>சூடோ APT புதுப்பிப்பு
+ sudo apt install python3-numpy python3-matplotlib libatlas-base-dev libopenblas-dev
+</code></pre></div>
+
+<p>அடுத்து, கிளிப்பர் சூழலில் நம்பியை நிறுவ, கட்டளையை இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>~/klippy-env/bin/pip install -v &quot;numpy&lt;1.26&quot;
+</code></pre></div>
+
+<p>Note that, depending on the performance of the CPU, it may take <em>a lot</em> of time, up to 10-20 minutes. Be patient and wait for the completion of the installation. On some occasions, if the board has too little RAM the installation may fail and you will need to enable swap. Also note the forced version, due to newer versions of NumPY having requirements that may not be satisfied in some klipper python environments.</p>
+<p>Once installed please check that no errors show from the command:</p>
+<div class="highlight"><pre><span></span><code>~/klippy-env/bin/python -c &#39;import numpy;&#39;
+</code></pre></div>
+
+<p>The correct output should simply be a new line.</p>
+<h4 id="rpi-adxl345">RPI உடன் ADXL345 ஐ உள்ளமைக்கவும்<a class="headerlink" href="#rpi-adxl345" title="Permanent link">&para;</a></h4>
+<p>முதலில், ராச்பெர்ரி பை மீது "லினக்ச் எம்.சி.யு" ஐ அமைக்க [RPI மைக்ரோகண்ட்ரோலர் ஆவணம்] (RPI_MICROController.md) இல் உள்ள வழிமுறைகளை சரிபார்த்து பின்பற்றவும். இது உங்கள் பை மீது இயங்கும் இரண்டாவது கிளிப்பர் நிகழ்வை உள்ளமைக்கும்.</p>
+<p><code>சுடோ ராச்பி-கான்ஃபிக்</code> ஐ இயக்குவதன் மூலமும்," இடைமுக விருப்பங்கள் "மெனுவின் கீழ் SPI ஐ இயக்குவதன் மூலமும் லினக்ச் எச்பிஐ இயக்கி இயக்கப்பட்டிருப்பதை உறுதிசெய்க.</p>
+<p>Printur.cfg கோப்பில் பின்வருவனவற்றைச் சேர்க்கவும்:</p>
+<div class="highlight"><pre><span></span><code>[MCU RPI]
+ சீரியல்: /tmp /klipper_host_mcu
+
+ [ADXL345]
+ CS_PIN: RPI: எதுவுமில்லை
+
+ [அதிர்வு_டெச்டர்]
+ Act_chip: ADXL345
+ probet_points:
+ 100, 100, 20 # ஒரு எடுத்துக்காட்டு
+</code></pre></div>
+
+<p>அச்சு படுக்கையின் நடுவில், அதற்கு சற்று மேலே 1 ஆய்வு புள்ளியுடன் தொடங்க அறிவுறுத்தப்படுகிறது.</p>
+<h4 id="pi-adxl345">PI பைக்கோவுடன் ADXL345 ஐ உள்ளமைக்கவும்<a class="headerlink" href="#pi-adxl345" title="Permanent link">&para;</a></h4>
+<h5 id="_8">பிக்கோ ஃபார்ம்வேரை ஃபிளாச்<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
+<p>உங்கள் ராச்பெர்ரி பையில், பிக்கோவிற்கான ஃபார்ம்வேரை தொகுக்கவும்.</p>
+<div class="highlight"><pre><span></span><code>சிடி ~/கிளிப்பர்
+ சுத்தமாக செய்யுங்கள்
+ மெனுகான்ஃபிக் செய்யுங்கள்
+</code></pre></div>
+
+<p>!</p>
+<p>இப்போது, பிக்கோவில் <code>பூட்சல்</code> பொத்தானை அழுத்திப் பிடிக்கும்போது, பிக்கோவை யூ.எச்.பி வழியாக ராச்பெர்ரி பைக்கு இணைக்கவும். ஃபார்ம்வேரை தொகுத்து ஒளிரச் செய்யுங்கள்.</p>
+<div class="highlight"><pre><span></span><code>ஃப்ளாச் ஃப்ளாச்_டெவிச் = முதலில் செய்யுங்கள்
+</code></pre></div>
+
+<p>அது தோல்வியுற்றால், எந்த <code>ஃப்ளாச்_டெவிச்</code> பயன்படுத்த வேண்டும் என்று உங்களுக்குத் தெரிவிக்கப்படும். இந்த எடுத்துக்காட்டில், இது <code>ஃப்ளாச் ஃப்ளாச்_டெவிச் = 2e8a: 0003</code> ஐ உருவாக்குங்கள். !</p>
+<h5 id="_9">இணைப்பை உள்ளமைக்கவும்<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<p>PICO இப்போது புதிய ஃபார்ம்வேருடன் மறுதொடக்கம் செய்யும், மேலும் இது ஒரு தொடர் சாதனமாகக் காண்பிக்கப்பட வேண்டும். <code>Ls/dev/serial/by-id/*</code> உடன் பைக்கோ தொடர் சாதனத்தைக் கண்டறியவும். நீங்கள் இப்போது பின்வரும் அமைப்புகளுடன் <code>adxl.cfg</code> கோப்பைச் சேர்க்கலாம்:</p>
+<div class="highlight"><pre><span></span><code>[MCU ADXL]
+ # நீங்கள் மேலே கண்டறிந்த எதற்கும் &lt;myserial&gt; ஐ மாற்றவும். உதாரணமாக,
+ # USB-KLIPPER_RP2040_E661640843545B2E-IF00
+ சீரியல்:/dev/serial/by-id/usb-klipper_rp2040_ &lt;myserial&gt;
+
+ [ADXL345]
+ CS_PIN: ADXL: GPIO1
+ SPI_BUS: SPI0A
+ AXES_MAP: ஃச், சட், y
+
+ [அதிர்வு_டெச்டர்]
+ Act_chip: ADXL345
+ probet_points:
+ # உங்கள் அச்சு படுக்கையின் நடுவில் சற்று மேலே எங்காவது
+ 147,154, 20
+
+ [output_pin power_mode] # ஆற்றல் நிலைத்தன்மையை மேம்படுத்தவும்
+ முள்: ADXL: GPIO23
+</code></pre></div>
+
+<p>ADXL345 உள்ளமைவை ஒரு தனி கோப்பில் அமைத்தால், மேலே காட்டப்பட்டுள்ளபடி, இதைச் சேர்க்க உங்கள் <code>printel.cfg</code> கோப்பையும் மாற்றவும் விரும்புவீர்கள்:</p>
+<div class="highlight"><pre><span></span><code>[include adxl.cfg] # கருத்து this out when you disconnect the accelerometer
+</code></pre></div>
+
+<p><code>மறுதொடக்கம்</code> கட்டளை வழியாக கிளிப்பரை மறுதொடக்கம் செய்யுங்கள்.</p>
+<h4 id="configure-lis2dw-series-over-spi">Configure LIS2DW series over SPI<a class="headerlink" href="#configure-lis2dw-series-over-spi" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>[MCU LIS]
+ # நீங்கள் மேலே கண்டறிந்த எதற்கும் &lt;myserial&gt; ஐ மாற்றவும். உதாரணமாக,
+ # USB-KLIPPER_RP2040_E661640843545B2E-IF00
+ சீரியல்:/dev/serial/by-id/usb-klipper_rp2040_ &lt;myserial&gt;
+
+ [LIS2DW]
+ CS_PIN: LIS: GPIO1
+ SPI_BUS: SPI0A
+ AXES_MAP: ஃச், சட், y
+
+ [அதிர்வு_டெச்டர்]
+ Act_chip: lis2dw
+ probet_points:
+ # உங்கள் அச்சு படுக்கையின் நடுவில் சற்று மேலே எங்காவது
+ 147,154, 20
+</code></pre></div>
+
+<h4 id="rpi-mpu-60009000">RPI உடன் MPU-6000/9000 தொடரை உள்ளமைக்கவும்<a class="headerlink" href="#rpi-mpu-60009000" title="Permanent link">&para;</a></h4>
+<p>மேலும் விவரங்களுக்கு லினக்ச் I2C இயக்கி இயக்கப்பட்டிருப்பதை உறுதிசெய்து, பாட் வீதம் 400000 ஆக அமைக்கப்பட்டிருப்பதை உறுதிசெய்க (I2C] (RPI_MICROController.md#விருப்ப-ENABLESING-I2C) பகுதியைப் பார்க்கவும்). பின்னர், பின்வருவனவற்றை அச்சுப்பொறியில் சேர்க்கவும். Cfg:</p>
+<div class="highlight"><pre><span></span><code>[MCU RPI]
+ சீரியல்: /tmp /klipper_host_mcu
+
+ [MPU9250]
+ I2C_MCU: RPI
+ I2C_BUS: I2C.1
+
+ [அதிர்வு_டெச்டர்]
+ Act_chip: MPU9250
+ probet_points:
+ 100, 100, 20 # ஒரு எடுத்துக்காட்டு
+</code></pre></div>
+
+<h4 id="mpu-9520">MPU-9520 ஐ பைக்கோவுடன் இணக்கமாக உள்ளமைக்கவும்<a class="headerlink" href="#mpu-9520" title="Permanent link">&para;</a></h4>
+<p>பிக்கோ ஐ 2 சி இயல்புநிலையாக 400000 ஆக அமைக்கப்பட்டுள்ளது. அச்சுப்பொறியில் பின்வருவனவற்றைச் சேர்க்கவும். Cfg:</p>
+<div class="highlight"><pre><span></span><code>[MCU பைக்கோ]
+ சீரியல்:/dev/serial/by-id/&lt;உங்கள் பைக்கோவின் தொடர் ஐடி&gt;
+
+ [MPU9250]
+ I2C_MCU: PICO
+ I2C_BUS: I2C0A
+
+ [அதிர்வு_டெச்டர்]
+ Act_chip: MPU9250
+ probet_points:
+ 100, 100, 20 # ஒரு எடுத்துக்காட்டு
+
+ [static_digital_output pico_3v3pwm] # ஆற்றல் நிலைத்தன்மையை மேம்படுத்தவும்
+ பின்ச்: பிக்கோ: GPIO23
+</code></pre></div>
+
+<h4 id="avr-mpu-9520">AVR உடன் இணக்கமான MPU-9520 ஐ உள்ளமைக்கவும்<a class="headerlink" href="#avr-mpu-9520" title="Permanent link">&para;</a></h4>
+<p>AVR I2C MPU9250 விருப்பத்தால் 400000 ஆக அமைக்கப்படும். அச்சுப்பொறியில் பின்வருவனவற்றைச் சேர்க்கவும். Cfg:</p>
+<div class="highlight"><pre><span></span><code>[MCU நானோ]
+ சீரியல்:/dev/serial/by-id/&lt;உங்கள் நானோவின் தொடர் ஐடி&gt;
+
+ [MPU9250]
+ I2C_MCU: நானோ
+
+ [அதிர்வு_டெச்டர்]
+ Act_chip: MPU9250
+ probet_points:
+ 100, 100, 20 # ஒரு எடுத்துக்காட்டு
+</code></pre></div>
+
+<p><code>மறுதொடக்கம்</code> கட்டளை வழியாக கிளிப்பரை மறுதொடக்கம் செய்யுங்கள்.</p>
+<h2 id="_10">அதிர்வுகளை அளவிடுதல்<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="_11">அமைப்பைச் சரிபார்க்கிறது<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>இப்போது நீங்கள் ஒரு இணைப்பை சோதிக்கலாம்.</p>
+<ul>
+<li>"படுக்கை-ச்லிங்கர்ச் அல்லாதவர்கள்" (எ.கா. ஒரு முடுக்கமானி), ஆக்டோப்ரின்ட்டில், <code>முடுக்கமானி_ குவேரி</code> ஐ உள்ளிடவும்</li>
+<li>"படுக்கை-ச்லிங்கர்ச்" க்கு (எ.கா. ஒன்றுக்கு மேற்பட்ட முடுக்கமானிகள்), <code>முடுக்கமானி_க் கள் சிப் = &lt;சிப்&gt;</code> எங்கே <code>&lt;iph&gt;</code> என்பது உள்ளிட்ட சிப்பின் பெயர், எ.கா. நிறுவப்பட்ட அனைத்து முடுக்கமானி சில்லுகளுக்கும் <code>சிப் = படுக்கை</code> (காண்க: [படுக்கை-ச்லிங்கர்] (#படுக்கை-ச்லிங்கர்-பிரிண்டர்கள்)).</li>
+</ul>
+<p>ஃப்ரீ-வீழ்ச்சி முடுக்கம் உட்பட முடுக்கமானிலிருந்து தற்போதைய அளவீடுகளை நீங்கள் காண வேண்டும், எ.கா.</p>
+<div class="highlight"><pre><span></span><code>Recv: // adxl345 மதிப்புகள் (x, ஒய், z): 470.719200, 941.438400, 9728.196800
+</code></pre></div>
+
+<p><code>தவறான ADXL345 ஐடி (XX vs E5 கிடைத்தது)</code> போன்ற பிழையைப் பெற்றால், <code>xx</code> வேறு ஏதேனும் ஐடி, உடனடியாக மீண்டும் முயற்சிக்கவும். SPI துவக்கத்தில் சிக்கல் உள்ளது. நீங்கள் இன்னும் பிழை பெற்றால், அது ADXL345 அல்லது தவறான சென்சார் ஆகியவற்றுடன் இணைப்பு சிக்கலைக் குறிக்கிறது. ஆற்றல், வயரிங் (இது திட்டவட்டத்துடன் பொருந்துகிறது, கம்பி உடைக்கப்படவில்லை அல்லது தளர்வானது போன்றவை), மற்றும் சாலிடரிங் தகுதி ஆகியவற்றை இருமுறை சரிபார்க்கவும்.</p>
+<p>. அவை புதுப்பிக்கப்பட்ட சில்லுகள்! **</p>
+<p>அடுத்து, ஆக்டோபிரிண்டில் <code>அளவீடு_அக்ச்_நோயிச்</code> ஐ இயக்க முயற்சிக்கவும், அச்சுகளில் முடுக்கமானி சத்தத்திற்கு சில அடிப்படை எண்களைப் பெற வேண்டும் (~ 1-100 வரம்பில் எங்காவது இருக்க வேண்டும்). மிக உயர்ந்த அச்சுகள் ஒலி (எ.கா. 1000 மற்றும் அதற்கு மேற்பட்டவை) சென்சார் சிக்கல்கள், அதன் சக்தியுடன் சிக்கல்கள் அல்லது 3D அச்சுப்பொறியில் சத்தமில்லாத சமநிலையற்ற ரசிகர்களைக் குறிக்கும்.</p>
+<h3 id="_12">அதிர்வுகளை அளவிடுதல்<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>இப்போது நீங்கள் சில நிச வாழ்க்கை சோதனைகளை இயக்கலாம். பின்வரும் கட்டளையை இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>Test_resonances அச்சு = ஃச்
+</code></pre></div>
+
+<p>இது ஃச் அச்சில் அதிர்வுகளை உருவாக்கும் என்பதை நினைவில் கொள்க. இது முன்னர் இயக்கப்பட்டிருந்தால் உள்ளீட்டு வடிவமைப்பை முடக்கிவிடும், ஏனெனில் உள்ளீட்டு சேப்பருடன் அதிர்வு சோதனையை இயக்குவது செல்லுபடியாகாது.</p>
+<p>. இது என்றாலும்). அதிர்வுகள் மிகவும் வலுவாக இருந்தால், <code>[அதிர்வு_டெச்டர்]</code> பிரிவில் <code>act_per_hz</code> அளவுருவுக்கான இயல்புநிலை மதிப்பை விட குறைவாக குறிப்பிட முயற்சி செய்யலாம், எ.கா.</p>
+<div class="highlight"><pre><span></span><code>[அதிர்வு_டெச்டர்]
+ Act_chip: ADXL345
+ Act_per_HZ: 50 # இயல்புநிலை 75 ஆகும்
+ probet_points: ...
+</code></pre></div>
+
+<p>இது ஃச் அச்சுக்கு வேலை செய்தால், ஒய் அச்சுக்கும் இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>Test_resonances அச்சு = ஒய்
+</code></pre></div>
+
+<p>இது 2 காபிம கோப்புகளை (<code>/TMP/அதிர்வு_எக்ச் _*. CSV</code> மற்றும்<code>/TMP/அதிர்வு_ஒய் _*. CSV</code>) உருவாக்கும். இந்த கோப்புகளை ராச்பெர்ரி பை மீது தனித்து நிற்கும் ச்கிரிப்ட் மூலம் செயலாக்க முடியும். இந்த ச்கிரிப்ட் அளவிடப்பட்ட ஒவ்வொரு அச்சுக்கும் ஒற்றை சி.எச்.வி கோப்புடன் இயக்கப்பட வேண்டும், இருப்பினும் நீங்கள் முடிவுகளை சராசரியாக விரும்பினால் பல சி.எச்.வி கோப்புகளுடன் பயன்படுத்தலாம். சராசரி முடிவுகள் பயனுள்ளதாக இருக்கும், எடுத்துக்காட்டாக, பல சோதனை புள்ளிகளில் அதிர்வு சோதனைகள் செய்யப்பட்டால். கூடுதல் சி.எச்.வி கோப்புகளை நீங்கள் சராசரியாக விரும்பவில்லை என்றால் அவற்றை நீக்கவும்.</p>
+<div class="highlight"><pre><span></span><code>~/klipper/scripts/அளவீடுகள்_சேப்பர்
+ ~/klipper/scripts/அளவீடுகள்_சேப்பர்
+</code></pre></div>
+
+<p>இந்த ச்கிரிப்ட் <code>/tmp/shaper_calibrate_x.png</code> மற்றும்<code>/tmp/shaper_calibrate_y.png</code> ஆகியவற்றை அதிர்வெண் பதில்களுடன் உருவாக்கும். ஒவ்வொரு உள்ளீட்டு சேப்பருக்கும் பரிந்துரைக்கப்பட்ட அதிர்வெண்களையும் நீங்கள் பெறுவீர்கள், அதே போல் உங்கள் அமைப்பிற்கு எந்த உள்ளீட்டு சேப்பர் பரிந்துரைக்கப்படுகிறது. உதாரணமாக:</p>
+<p>! [அதிர்வுகள்] (IMG/அளவீடு Y.PNG)</p>
+<div class="highlight"><pre><span></span><code>பொருத்தப்பட்ட சேப்பர் &#39;zv&#39; அதிர்வெண் = 34.4 எர்ட்ச் (அதிர்வுகள் = 4.0%, மென்மையாக்குதல் ~ = 0.132)
+ &#39;ZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 4500 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;MZV&#39; அதிர்வெண் = 34.6 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = 0.170)
+ &#39;MZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 3500 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;ஈ&#39; அதிர்வெண் = 41.4 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = 0.188)
+ &#39;EI&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 3200 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;2hump_ei&#39; அதிர்வெண் = 51.8 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = 0.201)
+ &#39;2hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 3000 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;3hump_ei&#39; அதிர்வெண் = 61.8 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = 0.215)
+ &#39;3hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 2800 மிமீ/நொடி^2
+ பரிந்துரைக்கப்பட்ட சேப்பர் MZV @ 34.6 Hz
+</code></pre></div>
+
+<p>பரிந்துரைக்கப்பட்ட உள்ளமைவை <code>[input_shaper]</code> printur.cfg` இன் பிரிவில் சேர்க்கலாம், எ.கா .:</p>
+<div class="highlight"><pre><span></span><code>[input_shaper]
+ shaper_freq_x: ...
+ shaper_type_x: ...
+ Shaper_freq_y: 34.6
+ Shaper_type_y: MZV
+
+ [அச்சுப்பொறி]
+ Max_accel: 3000 # ஃச் மற்றும் ஒய் அச்சுகளுக்கான மதிப்பிடப்பட்ட MAX_ACCEL ஐ விட அதிகமாக இருக்கக்கூடாது
+</code></pre></div>
+
+<p>அல்லது உருவாக்கப்பட்ட விளக்கப்படங்களின் அடிப்படையில் வேறு சில உள்ளமைவுகளை நீங்களே தேர்வு செய்யலாம்: விளக்கப்படங்களில் உள்ள ஆற்றல் நிறமாலை அடர்த்தியில் உள்ள சிகரங்கள் அச்சுப்பொறியின் அதிர்வு அதிர்வெண்களுடன் ஒத்திருக்கும்.</p>
+<p>மாற்றாக நீங்கள் உள்ளீட்டு சேப்பரை கிளிப்பர் [நேரடியாக] (#உள்ளீட்டு-சேப்பர்-ஆட்டோ-அளவுகோல்) இலிருந்து இயக்கலாம், இது வசதியானதாக இருக்கும், எடுத்துக்காட்டாக, உள்ளீட்டு வடிவத்திற்கு [மறு அளவுத்திருத்தம்] (#உள்ளீட்டு-காட்சிக்கு -இ-அளவுத்திருத்தம்).</p>
+<h3 id="-">படுக்கை-ச்லிங்கர் அச்சுப்பொறிகள்<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
+<p>உங்கள் அச்சுப்பொறி ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியாக இருந்தால், ஃச் மற்றும் ஒய் அச்சுகளுக்கான அளவீடுகளுக்கு இடையில் முடுக்கமானியின் இருப்பிடத்தை மாற்ற வேண்டும்: கருவித்தடத்துடன் இணைக்கப்பட்ட முடுக்கமானி மற்றும் ஒய் அச்சின் அதிர்வுகளுடன் ஃச் அச்சின் அதிர்வுகளை அளவிடவும் படுக்கை (வழக்கமான படுக்கை ச்லிங்கர் அமைப்பு).</p>
+<p>இருப்பினும், நீங்கள் ஒரே நேரத்தில் இரண்டு முடுக்கமானிகளையும் இணைக்க முடியும், இருப்பினும் ADXL345 வெவ்வேறு பலகைகளுடன் (ஒரு RPI மற்றும் அச்சுப்பொறி MCU போர்டுடன்) அல்லது ஒரே பலகையில் இரண்டு வெவ்வேறு உடல் SPI இடைமுகங்களுடன் இணைக்கப்பட வேண்டும் (அரிதாகவே கிடைக்கிறது). பின்னர் அவை பின்வரும் முறையில் கட்டமைக்கப்படலாம்:</p>
+<div class="highlight"><pre><span></span><code>[ADXL345 HOTEND]
+ # `ஒட்டென்ட்` சிப் ஒரு RPI உடன் இணைக்கப்பட்டுள்ளது என்று கருதுவது
+ CS_PIN: RPI: எதுவுமில்லை
+
+ [ADXL345 படுக்கை]
+ # `படுக்கை` சிப் ஒரு அச்சுப்பொறி MCU போர்டுடன் இணைக்கப்பட்டுள்ளது என்று கருதுவது
+ CS_PIN: ... # அச்சுப்பொறி போர்டு SPI CHIP தேர்ந்தெடு (CS) முள்
+
+ [அதிர்வு_டெச்டர்]
+ # படுக்கை ச்லிங்கர் அச்சுப்பொறியின் வழக்கமான அமைப்பைக் கருதுங்கள்
+ Act_chip_x: ADXL345 HOTEND
+ Act_chip_y: adxl345 படுக்கை
+ probet_points: ...
+</code></pre></div>
+
+<p>இரண்டு MPU கள் ஒரு I2C பச்சைப் பகிர்ந்து கொள்ளலாம், ஆனால் 400Kbit/s I2C பச் போதுமானதாக இல்லாததால் அவை ** ஒரே நேரத்தில் அளவிட முடியாது. ஒன்று அதன் AD0 முள் 0V க்கு இழுக்கப்பட வேண்டும் (முகவரி 104), மற்றொன்று அதன் AD0 முள் 3.3V க்கு இழுக்கப்படுகிறது (முகவரி 105):</p>
+<div class="highlight"><pre><span></span><code>[MPU9250 HOTEND]
+ I2C_MCU: RPI
+ I2C_BUS: I2C.1
+ I2C_ADDRESS: 104 # இந்த MPU முள் AD0 குறைவாக இழுக்கப்பட்டுள்ளது
+
+ [MPU9250 படுக்கை]
+ I2C_MCU: RPI
+ I2C_BUS: I2C.1
+ I2C_ADDRESS: 105 # இந்த MPU முள் AD0 ஐ உயர்த்தியுள்ளது
+
+ [அதிர்வு_டெச்டர்]
+ # படுக்கை ச்லிங்கர் அச்சுப்பொறியின் வழக்கமான அமைப்பைக் கருதுங்கள்
+ Act_chip_x: MPU9250 HOTEND
+ Act_chip_y: MPU9250 படுக்கை
+ probet_points: ...
+</code></pre></div>
+
+<p>[எளிதாக பிழைத்திருத்தத்திற்காக பச்சுடன் இணைவதற்கு முன் ஒவ்வொரு MPU உடன் தனித்தனியாக சோதிக்கவும்.]</p>
+<p>பின்னர் <code>test_resonances அச்சு = x</code> மற்றும்<code>test_resonances அச்சு = y</code> கட்டளைகள் ஒவ்வொரு அச்சுக்கும் சரியான முடுக்கமானியைப் பயன்படுத்தும்.</p>
+<h3 id="_13">அதிகபட்ச மென்மையான<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>உள்ளீட்டு சேப்பர் சில பகுதிகளை மென்மையாக்க முடியும் என்பதை நினைவில் கொள்ளுங்கள். <code>அளவீடுகள்_சேப்பர்.பி</code> ச்கிரிப்ட் அல்லது<code>சேப்பர்_லிபிரேட்</code> கட்டளை மூலம் நிகழ்த்தப்பட்ட உள்ளீட்டு சேப்பரின் தானியங்கி டியூனிங் மென்மையானதை அதிகரிக்க முயற்சிக்கிறது, ஆனால் அதே நேரத்தில் அவை ஏற்படும் அதிர்வுகளைக் குறைக்க முயற்சிக்கின்றன. சில நேரங்களில் அவை சேப்பர் அதிர்வெண்ணின் துணை உகந்த தேர்வு செய்யலாம், அல்லது ஒரு பெரிய மீதமுள்ள அதிர்வுகளின் இழப்பில் பகுதிகளில் குறைந்த மென்மையாக்குவதை நீங்கள் விரும்பலாம். இந்த சந்தர்ப்பங்களில், உள்ளீட்டு வடிவத்திலிருந்து அதிகபட்ச மென்மையை கட்டுப்படுத்த நீங்கள் கோரலாம்.</p>
+<p>தானியங்கி சரிப்படுத்தும் பின்வரும் முடிவுகளைக் கருத்தில் கொள்வோம்:</p>
+<p>! [அதிர்வுகள்] (IMG/அளவீடு-X.PNG)</p>
+<div class="highlight"><pre><span></span><code>பொருத்தப்பட்ட சேப்பர் &#39;zv&#39; அதிர்வெண் = 57.8 எர்ட்ச் (அதிர்வுகள் = 20.3%, மென்மையாக்குதல் ~ = 0.053)
+ &#39;ZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 13000 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;MZV&#39; அதிர்வெண் = 34.8 எர்ட்ச் (அதிர்வுகள் = 3.6%, மென்மையாக்குதல் ~ = 0.168)
+ &#39;MZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 3600 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;ஈ&#39; அதிர்வெண் = 48.8 எர்ட்ச் (அதிர்வுகள் = 4.9%, மென்மையாக்குதல் ~ = 0.135)
+ &#39;EI&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 4400 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;2hump_ei&#39; அதிர்வெண் = 45.2 எர்ட்ச் (அதிர்வுகள் = 0.1%, மென்மையாக்குதல் ~ = 0.264)
+ &#39;2hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 2200 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;3hump_ei&#39; அதிர்வெண் = 48.0 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = 0.356)
+ &#39;3hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 1500 மிமீ/நொடி^2
+ பரிந்துரைக்கப்பட்ட சேப்பர் 2hump_ei @ 45.2 எர்ட்ச்
+</code></pre></div>
+
+<p>அறிக்கையிடப்பட்ட <code>மென்மையான</code> மதிப்புகள் சில சுருக்கமான திட்டமிடப்பட்ட மதிப்புகள் என்பதை நினைவில் கொள்க. வெவ்வேறு உள்ளமைவுகளை ஒப்பிட்டுப் பார்க்க இந்த மதிப்புகள் பயன்படுத்தப்படலாம்: அதிக மதிப்பு, ஒரு சேப்பரை மிகவும் மென்மையாக்கும். இருப்பினும், இந்த மென்மையான மதிப்பெண்கள் எந்தவொரு உண்மையான அளவையும் குறிக்கவில்லை, ஏனெனில் உண்மையான மென்மையானது [<code>Max_accel</code>] (#-மேக்ச்-அக்சலைத் தேர்ந்தெடுப்பது) மற்றும்<code>ச்கொயர்_கார்னர்_வெலோசிட்டி</code> அளவுருக்களைப் பொறுத்தது. ஆகையால், தேர்ந்தெடுக்கப்பட்ட உள்ளமைவு எவ்வளவு மென்மையாக்குகிறது என்பதைக் காண சில சோதனை அச்சிட்டுகளை அச்சிட வேண்டும்.</p>
+<p>பரிந்துரைக்கப்பட்ட சேப்பர் அளவுருக்கள் மோசமானவை அல்ல, ஆனால் ஃச் அச்சில் குறைவாக மென்மையாக்க விரும்பினால் என்ன செய்வது? பின்வரும் கட்டளையைப் பயன்படுத்தி அதிகபட்ச சேப்பர் மென்மையாக்கலை கட்டுப்படுத்த முயற்சி செய்யலாம்:</p>
+<div class="highlight"><pre><span></span><code>~/klipper/scripts/அளவீடுகள்_சேப்பர்
+</code></pre></div>
+
+<p>இது மென்மையானது 0.2 மதிப்பெண்ணாக கட்டுப்படுத்துகிறது. இப்போது நீங்கள் பின்வரும் முடிவைப் பெறலாம்:</p>
+<p>!</p>
+<div class="highlight"><pre><span></span><code>பொருத்தப்பட்ட சேப்பர் &#39;zv&#39; அதிர்வெண் = 55.4 எர்ட்ச் (அதிர்வுகள் = 19.7%, மென்மையாக்குதல் ~ = 0.057)
+ &#39;ZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 12000 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;MZV&#39; அதிர்வெண் = 34.6 எர்ட்ச் (அதிர்வுகள் = 3.6%, மென்மையாக்குதல் ~ = 0.170)
+ &#39;MZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 3500 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;ஈ&#39; அதிர்வெண் = 48.2 எர்ட்ச் (அதிர்வுகள் = 4.8%, மென்மையாக்குதல் ~ = 0.139)
+ &#39;EI&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, MAX_ACCEL &lt;= 4300 மிமீ/நொடி^2 பரிந்துரைத்தது
+ பொருத்தப்பட்ட சேப்பர் &#39;2hump_ei&#39; அதிர்வெண் = 52.0 எர்ட்ச் (அதிர்வுகள் = 2.7%, மென்மையாக்குதல் ~ = 0.200)
+ &#39;2hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 3000 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;3hump_ei&#39; அதிர்வெண் = 72.6 எர்ட்ச் (அதிர்வுகள் = 1.4%, மென்மையாக்குதல் ~ = 0.155)
+ &#39;3hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 3900 மிமீ/நொடி^2
+ பரிந்துரைக்கப்பட்ட சேப்பர் 3hump_ei @ 72.6 எர்ட்ச்
+</code></pre></div>
+
+<p>முன்னர் பரிந்துரைக்கப்பட்ட அளவுருக்களுடன் நீங்கள் ஒப்பிட்டுப் பார்த்தால், அதிர்வுகள் சற்று பெரியவை, ஆனால் மென்மையானது முன்பு இருந்ததை விட கணிசமாக சிறியது, இது பெரிய அதிகபட்ச முடுக்கம் அனுமதிக்கிறது.</p>
+<p>தேர்வு செய்ய எந்த <code>Max_smohothing</code> அளவுருவை தீர்மானிக்கும்போது, நீங்கள் சோதனை மற்றும் பிழை அணுகுமுறையைப் பயன்படுத்தலாம். சில வித்தியாசமான மதிப்புகளை முயற்சித்து, நீங்கள் எந்த முடிவுகளைப் பெறுவீர்கள் என்று பாருங்கள். உள்ளீட்டு சேப்பரால் விளைவாக்கம் செய்யப்படும் உண்மையான மென்மையாக்கல், முதன்மையாக, அச்சுப்பொறியின் மிகக் குறைந்த அதிர்வு அதிர்வெண்ணைப் பொறுத்தது என்பதை நினைவில் கொள்க: மிகக் குறைந்த அதிர்வின் அதிர்வெண் - சிறியது மென்மையானது. ஆகையால், நம்பத்தகாத சிறிய மென்மையாக்கலுடன் உள்ளீட்டு வடிவத்தின் உள்ளமைவைக் கண்டுபிடிக்க ச்கிரிப்டைக் கோரினால், அது மிகக் குறைந்த அதிர்வு அதிர்வெண்களில் அதிகரித்த ஒலிக்கும் செலவில் இருக்கும் (அவை பொதுவாக, அச்சிட்டுகளில் மிகவும் முக்கியமாகத் தெரியும்). எனவே, ச்கிரிப்டால் புகாரளிக்கப்பட்ட மீதமுள்ள அதிர்வுகளை எப்போதும் இருமுறை சரிபார்த்து, அவை மிக அதிகமாக இல்லை என்பதை உறுதிப்படுத்திக் கொள்ளுங்கள்.</p>
+<p>உங்கள் இரு அச்சுகளுக்கும் ஒரு நல்ல <code>அதிகபட்ச மென்மையான</code> மதிப்பை நீங்கள் தேர்வுசெய்தால், அதை <code>printel.cfg</code> இல் சேமிக்கலாம்</p>
+<div class="highlight"><pre><span></span><code>[அதிர்வு_டெச்டர்]
+ act_chip: ...
+ probet_points: ...
+ MAX_SMOHEDING: 0.25 # ஒரு எடுத்துக்காட்டு
+</code></pre></div>
+
+<p>பின்னர், எதிர்காலத்தில் <code>சேப்பர்_லிபிரேட்</code> கிளிப்பர் கட்டளையைப் பயன்படுத்தி உள்ளீட்டு சேப்பர் தானாக-ட்யூனிங் செய்தால், அது சேமிக்கப்பட்ட<code>மேக்ச்_மூதிங்</code> மதிப்பை ஒரு குறிப்பாகப் பயன்படுத்தும்.</p>
+<h3 id="max_accel">Max_accel ஐத் தேர்ந்தெடுக்கும்<a class="headerlink" href="#max_accel" title="Permanent link">&para;</a></h3>
+<p>உள்ளீட்டு சேப்பர் பகுதிகளில் சில மென்மையாக்கத்தை உருவாக்க முடியும் என்பதால், குறிப்பாக அதிக முடுக்கம் கொண்ட நிலையில், அச்சிடப்பட்ட பகுதிகளில் அதிக மென்மையாக்கப்படாத <code>மேக்ச்_செல்</code> மதிப்பை நீங்கள் இன்னும் தேர்வு செய்ய வேண்டும். ஒரு அளவுத்திருத்த ச்கிரிப்ட் <code>max_accel</code> அளவுருவுக்கான மதிப்பீட்டை வழங்குகிறது, இது அதிக மென்மையாக்கக்கூடாது. அளவுத்திருத்த ச்கிரிப்டால் காட்டப்படும் <code>மேக்ச்_செல்</code> ஒரு தத்துவார்த்த அதிகபட்சம் மட்டுமே என்பதை நினைவில் கொள்க, அந்தந்த சேப்பர் இன்னும் அதிக மென்மையாக்காமல் வேலை செய்ய முடிகிறது. அச்சிடுவதற்கு இந்த முடுக்கம் அமைப்பதற்கான பரிந்துரை இல்லை. உங்கள் அச்சுப்பொறி தக்கவைக்கக்கூடிய அதிகபட்ச முடுக்கம் அதன் இயந்திர பண்புகள் மற்றும் பயன்படுத்தப்பட்ட ச்டெப்பர் மோட்டார்கள் அதிகபட்ச முறுக்கு ஆகியவற்றைப் பொறுத்தது. ஆகையால், <code>Max_accel`` [அச்சுப்பொறி]</code>எக்ச் மற்றும் ஒய் அச்சுகளுக்கான மதிப்பிடப்பட்ட மதிப்புகளைத் தாண்டாத பிரிவில் அமைக்க பரிந்துரைக்கப்படுகிறது, இது சில பழமைவாத பாதுகாப்பு விளிம்புடன் இருக்கலாம்.</p>
+<p>மாற்றாக, [இதை] (அதிர்வு_பென்சேசன்.</p>
+<p>அதே அறிவிப்பு உள்ளீட்டு சேப்பர் [ஆட்டோ-அளவுத்திருத்தம்] (#உள்ளீட்டு-சேப்பர்-ஆட்டோ-அளவுகோல்) <code>சேப்பர்_லிபிரேட்</code> கட்டளை: ஆட்டோ அளவுத்திருத்தத்திற்குப் பிறகு சரியான<code>மேக்ச்_அசெல்</code> மதிப்பைத் தேர்வு செய்வது இன்னும் தேவை, மற்றும் பரிந்துரைக்கப்பட்டவை முடுக்கம் வரம்புகள் தானாகவே பயன்படுத்தப்படாது.</p>
+<p>அதிக மென்மையாக்காமல் அதிகபட்ச முடுக்கம் <code>சதுர_கார்னர்_வெலோசிட்டி</code> ஐப் பொறுத்தது என்பதை நினைவில் கொள்ளுங்கள். பொதுவான பரிந்துரை அதன் இயல்புநிலை மதிப்பு 5.0 இலிருந்து அதை மாற்றக்கூடாது, இது இயல்புநிலையாக <code>அளவீடுகள்_சேப்பர்.பி</code> ச்கிரிப்ட் மூலம் பயன்படுத்தப்படும் மதிப்பு. நீங்கள் அதை மாற்றினால், <code>--சதுர_கார்ன்_வெலோசிட்டி = ...</code> அளவுரு, எ.கா.</p>
+<div class="highlight"><pre><span></span><code>~/klipper/scripts/அளவீடுகள்_சேப்பர்
+</code></pre></div>
+
+<p>இதனால் அதிகபட்ச முடுக்கம் பரிந்துரைகளை சரியாக கணக்கிட முடியும். <code>சேப்பர்_லிபிரேட்</code> கட்டளை ஏற்கனவே கட்டமைக்கப்பட்ட<code>சதுர_கார்ன்_வெலோசிட்டி</code> அளவுருவை கணக்கில் எடுத்துக்கொள்கிறது, அதை வெளிப்படையாகக் குறிப்பிட வேண்டிய அவசியமில்லை என்பதை நினைவில் கொள்க.</p>
+<p>நீங்கள் ஒரு சேப்பர் மறு அளவுத்திருத்தத்தை செய்கிறீர்கள் மற்றும் பரிந்துரைக்கப்பட்ட சேப்பர் உள்ளமைவுக்கு மென்மையாக்கப்படுவது முந்தைய அளவுத்திருத்தத்தின் போது உங்களுக்கு கிடைத்ததைப் போலவே இருக்கும் என்றால், இந்த நடவடிக்கையைத் தவிர்க்கலாம்.</p>
+<h3 id="unreliable-measurements-of-resonance-frequencies">Unreliable measurements of resonance frequencies<a class="headerlink" href="#unreliable-measurements-of-resonance-frequencies" title="Permanent link">&para;</a></h3>
+<p>Sometimes the resonance measurements can produce bogus results, leading to the incorrect suggestions for the input shapers. This can be caused by a variety of reasons, including running fans on the toolhead, incorrect position or non-rigid mounting of the accelerometer, or mechanical problems such as loose belts or binding or bumpy axis. Keep in mind that all fans should be disabled for resonance testing, especially the noisy ones, and that the accelerometer should be rigidly mounted on the corresponding moving part (e.g. on the bed itself for the bed slinger, or on the extruder of the printer itself and not the carriage, and some people get better results by mounting the accelerometer on the nozzle itself). As for mechanical problems, the user should inspect if there is any fault that can be fixed with a moving axis (e.g. linear guide rails cleaned up and lubricated and V-slot wheels tension adjusted correctly). If none of that helps, a user may try the other shapers from the produced list besides the one recommended by default.</p>
+<h3 id="_14">தனிப்பயன் அச்சுகளை சோதித்தல்<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>Test_resonances</code> கட்டளை தனிப்பயன் அச்சுகளை ஆதரிக்கிறது. உள்ளீட்டு சேப்பர் அளவுத்திருத்தத்திற்கு இது உண்மையில் பயனுள்ளதாக இல்லை என்றாலும், அச்சுப்பொறி அதிர்வுகளை ஆழமாகப் படிக்கவும், சரிபார்க்கவும் இது பயன்படுத்தப்படலாம், எடுத்துக்காட்டாக, பெல்ட் பதற்றம்.</p>
+<p>கோர்சி அச்சுப்பொறிகளில் பெல்ட் பதற்றத்தை சரிபார்க்க, இயக்கவும்</p>
+<div class="highlight"><pre><span></span><code>Test_resonances அச்சு = 1,1 வெளியீடு = RAW_DATA
+ Test_resonances அச்சு = 1, -1 வெளியீடு = RAW_DATA
+</code></pre></div>
+
+<p>உருவாக்கப்பட்ட கோப்புகளை செயலாக்க <code>வரைபடம்_சிலெரோமீட்டர்.பை</code> ஐப் பயன்படுத்தவும், எ.கா.</p>
+<div class="highlight"><pre><span></span><code>~/klipper/scripts/brack_acceleromer.py -c /tmp/raw_data_axis*.csv -o /tmp/resonances.png
+</code></pre></div>
+
+<p>இது அதிர்வுகளை ஒப்பிடுகையில் `/tmp/அதிர்வுகளை உருவாக்கும்.</p>
+<p>இயல்புநிலை கோபுர வேலைவாய்ப்புடன் டெல்டா அச்சுப்பொறிகளுக்கு (கோபுரம் A ~ = 210 டிகிரி, பி ~ = 330 டிகிரி மற்றும் சி ~ = 90 டிகிரி), இயக்கவும்</p>
+<div class="highlight"><pre><span></span><code>Test_resonances அச்சு = 0,1 வெளியீடு = RAW_DATA
+ Test_resonances அச்சு = -0.866025404, -0.5 வெளியீடு = RAW_DATA
+ Test_resonances அச்சு = 0.866025404, -0.5 வெளியீடு = RAW_DATA
+</code></pre></div>
+
+<p>பின்னர் அதே கட்டளையைப் பயன்படுத்துங்கள்</p>
+<div class="highlight"><pre><span></span><code>~/klipper/scripts/brack_acceleromer.py -c /tmp/raw_data_axis*.csv -o /tmp/resonances.png
+</code></pre></div>
+
+<p>அதிர்வுகளை ஒப்பிட்டு <code>/tmp/ronsnances.png</code> ஐ உருவாக்க.</p>
+<h2 id="_15">உள்ளீட்டு சேப்பர் ஆட்டோ அளவுத்திருத்தமாகும்<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>உள்ளீட்டு சேப்பர் அம்சத்திற்கான பொருத்தமான அளவுருக்களை கைமுறையாகத் தேர்ந்தெடுப்பதைத் தவிர, உள்ளீட்டு சேப்பருக்கான ஆட்டோ-ட்யூனிங்கை கிளிப்பரிலிருந்து நேரடியாக இயக்கவும் முடியும். ஆக்டோபிரிண்ட் முனையம் வழியாக பின்வரும் கட்டளையை இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>Shaper_calibrate
+</code></pre></div>
+
+<p>இது இரு அச்சுகளுக்கும் முழு சோதனையையும் இயக்கும் மற்றும் அதிர்வெண் மறுமொழி மற்றும் பரிந்துரைக்கப்பட்ட உள்ளீட்டு வடிவங்களுக்கு காபிம வெளியீட்டை (<code>/tmp/அளவுத்திருத்த_டேட்டா _*. CSV</code>) உருவாக்கும். ஒவ்வொரு உள்ளீட்டு சேப்பருக்கும் பரிந்துரைக்கப்பட்ட அதிர்வெண்களையும் நீங்கள் பெறுவீர்கள், அத்துடன் ஆக்டோப்ரிண்ட் கன்சோலில் உங்கள் அமைப்பிற்கு எந்த உள்ளீட்டு சேப்பர் பரிந்துரைக்கப்படுகிறது. உதாரணமாக:</p>
+<div class="highlight"><pre><span></span><code>ஒய் அச்சுக்கான சிறந்த உள்ளீட்டு சேப்பர் அளவுருக்களைக் கணக்கிடுதல்
+ பொருத்தப்பட்ட சேப்பர் &#39;zv&#39; அதிர்வெண் = 39.0 எர்ட்ச் (அதிர்வுகள் = 13.2%, மென்மையாக்குதல் ~ = 0.105)
+ &#39;ZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 5900 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;MZV&#39; அதிர்வெண் = 36.8 எர்ட்ச் (அதிர்வுகள் = 1.7%, மென்மையாக்குதல் ~ = 0.150)
+ &#39;MZV&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 4000 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;ஈ&#39; அதிர்வெண் = 36.6 எர்ட்ச் (அதிர்வுகள் = 2.2%, மென்மையாக்குதல் ~ = 0.240)
+ &#39;EI&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 2500 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;2hump_ei&#39; அதிர்வெண் = 48.0 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = 0.234)
+ &#39;2hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 2500 மிமீ/நொடி^2
+ பொருத்தப்பட்ட சேப்பர் &#39;3hump_ei&#39; அதிர்வெண் = 59.0 எர்ட்ச் (அதிர்வுகள் = 0.0%, மென்மையாக்குதல் ~ = 0.235)
+ &#39;3hump_ei&#39; உடன் அதிக மென்மையாக்குவதைத் தவிர்க்க, பரிந்துரைக்கப்பட்ட MAX_ACCEL &lt;= 2500 மிமீ/நொடி^2
+ பரிந்துரைக்கப்பட்ட Shaper_type_y = MZV, சேப்பர்_ஃப்ரெக்_ஒய் = 36.8 எர்ட்ச்
+</code></pre></div>
+
+<p>பரிந்துரைக்கப்பட்ட அளவுருக்களுடன் நீங்கள் உடன்பட்டால், அவற்றை சேமித்து கிளிப்பரை மறுதொடக்கம் செய்ய <code>Save_config</code> ஐ இப்போது இயக்கலாம். இது <code>[அச்சுப்பொறி]</code> பிரிவில் <code>max_accel</code> மதிப்பைப் புதுப்பிக்காது என்பதை நினைவில் கொள்க. [MAX_ACCEL ஐத் தேர்ந்தெடுப்பது] (#தேர்ந்தெடுப்பது-MAX_ACCEL) பிரிவில் உள்ள கருத்துகளைப் பின்பற்றி கைமுறையாக புதுப்பிக்க வேண்டும்.</p>
+<p>உங்கள் அச்சுப்பொறி ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியாக இருந்தால், எந்த அச்சை சோதிக்க வேண்டும் என்பதை நீங்கள் குறிப்பிடலாம், இதன் மூலம் சோதனைகளுக்கு இடையில் முடுக்கமானி பெருகிவரும் புள்ளியை மாற்றலாம் (இயல்புநிலையாக இரண்டு அச்சுகளுக்கும் சோதனை செய்யப்படுகிறது):</p>
+<div class="highlight"><pre><span></span><code>Shaper_calibrate அச்சு = ஒய்
+</code></pre></div>
+
+<p>ஒவ்வொரு அச்சையும் அளவீடு செய்த பிறகு <code>Save_Config</code> ஐ இரண்டு முறை இயக்கலாம்.</p>
+<p>இருப்பினும், நீங்கள் ஒரே நேரத்தில் இரண்டு முடுக்கமானிகளை இணைத்தால், ஒரே நேரத்தில் இரு அச்சுகளுக்கும் உள்ளீட்டு சேப்பரை அளவீடு செய்ய ஒரு அச்சைக் குறிப்பிடாமல் <code>சேப்பர்_லிபிரேட்</code> ஐ இயக்குகிறீர்கள்.</p>
+<h3 id="_16">உள்ளீட்டு சேப்பர் மறு அளவுத்தன்மை<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>எதிர்காலத்தில் உள்ளீட்டு சேப்பரை மீண்டும் அளவீடு செய்ய <code>சேப்பர்_லிபிரேட்</code> கட்டளை பயன்படுத்தப்படலாம், குறிப்பாக அதன் இயக்கவியலைப் பாதிக்கக்கூடிய அச்சுப்பொறியில் சில மாற்றங்கள் செய்யப்பட்டால். <code>சேப்பர்_லிப்ரேட்</code> கட்டளையைப் பயன்படுத்தி முழு அளவுத்திருத்தத்தை மீண்டும் இயக்கலாம், அல்லது<code>அச்சு =</code>அளவுருவை வழங்குவதன் மூலம் தானாக அளவுத்திருத்தத்தை ஒற்றை அச்சுக்கு கட்டுப்படுத்தலாம்</p>
+<div class="highlight"><pre><span></span><code>Shaper_calibrate அச்சு = ஃச்
+</code></pre></div>
+
+<p><strong> எச்சரிக்கை! </strong> சேப்பர் ஆட்டோ அளவுத்திருத்தத்தை அடிக்கடி இயக்குவது நல்லதல்ல (எ.கா. ஒவ்வொரு அச்சுக்கும் முன், அல்லது ஒவ்வொரு நாளும்). அதிர்வு அதிர்வெண்களைத் தீர்மானிக்க, ஆட்டோ அளவுத்திருத்தம் ஒவ்வொரு அச்சுகளிலும் தீவிர அதிர்வுகளை உருவாக்குகிறது. பொதுவாக, 3 டி அச்சுப்பொறிகள் அதிர்வு அதிர்வெண்களுக்கு அருகிலுள்ள அதிர்வுகளுக்கு நீண்டகாலமாக வெளிப்பாட்டைத் தாங்கும் வகையில் வடிவமைக்கப்படவில்லை. அவ்வாறு செய்வது அச்சுப்பொறி கூறுகளின் உடைகளை அதிகரிக்கலாம் மற்றும் அவற்றின் ஆயுட்காலம் குறைக்கலாம். சில பகுதிகள் அவிழ்க்க அல்லது தளர்வானதாக மாறும் அபாயமும் உள்ளது. அச்சுப்பொறியின் அனைத்து பகுதிகளும் (பொதுவாக நகராதவை உட்பட) ஒவ்வொரு ஆட்டோ-ட்யூனிங்கிற்குப் பிறகு பாதுகாப்பாக சரி செய்யப்படுகின்றன என்பதை எப்போதும் சரிபார்க்கவும்.</p>
+<p>மேலும், அளவீடுகளில் சில ஒலி காரணமாக, ட்யூனிங் முடிவுகள் ஒரு அளவுத்திருத்தத்திலிருந்து மற்றொரு அளவிற்கு சற்று வித்தியாசமாக இருக்கும். இருப்பினும், ஒலி அச்சுத் தரத்தை அதிகம் பாதிக்கும் என்று எதிர்பார்க்கப்படவில்லை. இருப்பினும், பரிந்துரைக்கப்பட்ட அளவுருக்களை இருமுறை சரிபார்க்கவும், சில சோதனை அச்சிட்டுகளை அவற்றைப் பயன்படுத்துவதற்கு முன்பு அவை நல்லவை என்பதை உறுதிப்படுத்தவும் அறிவுறுத்தப்படுகிறது.</p>
+<h2 id="_17">முடுக்கமானி தரவின் இணைப்பில்லாத செயலாக்கம்<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>மூல முடுக்கமானி தரவை உருவாக்கி அதை ஆஃப்லைனில் செயலாக்க முடியும் (எ.கா. ஒரு புரவலன் கணினியில்), எடுத்துக்காட்டாக அதிர்வுகளைக் கண்டறிய. அவ்வாறு செய்ய, பின்வரும் கட்டளைகளை ஆக்டோப்ரிண்ட் டெர்மினல் வழியாக இயக்கவும்:</p>
+<div class="highlight"><pre><span></span><code>Set_input_shaper shaper_freq_x = 0 shaper_freq_y = 0
+ Test_resonances அச்சு = ஃச் வெளியீடு = RAW_DATA
+</code></pre></div>
+
+<p><code>set_input_shaper</code> கட்டளைக்கான ஏதேனும் பிழைகள் புறக்கணித்தல். <code>Test_resonances</code> கட்டளைக்கு, விரும்பிய சோதனை அச்சைக் குறிப்பிடவும். மூல தரவு RPI இல் <code>/tmp</code> கோப்பகத்தில் எழுதப்படும்.</p>
+<p>சில சாதாரண அச்சுப்பொறி செயல்பாட்டின் போது <code>முடுக்கமானி_மேசர்</code> கட்டளையை இரண்டு முறை இயக்குவதன் மூலமும் மூல தரவைப் பெறலாம் - முதலில் அளவீடுகளைத் தொடங்கவும், பின்னர் அவற்றை நிறுத்தி வெளியீட்டு கோப்பை எழுதவும். மேலும் விவரங்களுக்கு [சி-குறியீடுகள்] (சி-கோட்ச்.எம்டி#ஏடிஎக்ச்எல் 345) ஐப் பார்க்கவும்.</p>
+<p>பின்வரும் ச்கிரிப்ட்களால் தரவை பின்னர் செயலாக்க முடியும்: <code>ச்கிரிப்ட்கள்/வரைபடம்_சிலெரோமீட்டர்.பை</code> மற்றும்<code>ச்கிரிப்டுகள்/அளவீடு_சேப்பர்.பை</code>. அவை இரண்டும் ஒன்று அல்லது பல மூல சி.எச்.வி கோப்புகளை பயன்முறையைப் பொறுத்து உள்ளீடாக ஏற்றுக்கொள்கின்றன. வரைபடம்_சிலெரோமீட்டர்.பி ச்கிரிப்ட் பல செயல்பாட்டு முறைகளை ஆதரிக்கிறது:</p>
+<ul>
+<li>மூல முடுக்கமானி தரவைத் திட்டமிடுவது (<code>-r</code> அளவுருவைப் பயன்படுத்தவும்), 1 உள்ளீடு மட்டுமே ஆதரிக்கப்படுகிறது;</li>
+<li>அதிர்வெண் பதிலைத் திட்டமிடுவது (கூடுதல் அளவுருக்கள் தேவையில்லை), பல உள்ளீடுகள் குறிப்பிடப்பட்டால், சராசரி அதிர்வெண் பதில் கணக்கிடப்படுகிறது;</li>
+<li>பல உள்ளீடுகளுக்கு இடையிலான அதிர்வெண் பதிலின் ஒப்பீடு (<code>-c</code> அளவுருவைப் பயன்படுத்தவும்); <code>-a x</code>,<code>-a y</code> அல்லது <code>-a Z</code> அளவுரு வழியாக எந்த முடுக்கமானி அச்சு கருத்தில் கொள்ள வேண்டும் என்பதை நீங்கள் கூடுதலாக குறிப்பிடலாம் (எதுவும் குறிப்பிடப்படவில்லை என்றால், எல்லா அச்சுகளுக்கும் அதிர்வுகளின் தொகை பயன்படுத்தப்படுகிறது);</li>
+<li>ச்பெக்ட்ரோகிராம் சூழ்ச்சி (<code>-s</code> அளவுருவைப் பயன்படுத்தவும்), 1 உள்ளீடு மட்டுமே ஆதரிக்கப்படுகிறது; <code>-a x</code>,<code>-a y</code> அல்லது <code>-a Z</code> அளவுரு வழியாக எந்த முடுக்கமானி அச்சு கருத்தில் கொள்ள வேண்டும் என்பதை நீங்கள் கூடுதலாக குறிப்பிடலாம் (எதுவும் குறிப்பிடப்படவில்லை என்றால், எல்லா அச்சுகளுக்கும் அதிர்வுகளின் தொகை பயன்படுத்தப்படுகிறது).</li>
+</ul>
+<p>Raw_data *ஐ மட்டுமே ஆதரிக்கிறது என்பதை நினைவில் கொள்க. காபிம கோப்புகளை மட்டுமே ஆதரிக்கிறது என்பதை நினைவில் கொள்க.</p>
+<p>உதாரணமாக,</p>
+<div class="highlight"><pre><span></span><code>~/klipper/scripts/brack_accelerometer.py /tmp/raw_data_x_*.csv -o /tmp/resonances_x.png -c -a சட்
+</code></pre></div>
+
+<p>பல <code>/tmp/raw_data_x _*ஐ ஒப்பிட்டுப் பார்க்கும். சட் அச்சுக்கான CSV</code> கோப்புகள்<code>/tmp/ronnances_x.png</code> கோப்புக்கு.</p>
+<p>Shaper_calibrate.py ச்கிரிப்ட் 1 அல்லது பல உள்ளீடுகளை ஏற்றுக்கொள்கிறது மற்றும் உள்ளீட்டு சேப்பரின் தானியங்கி ட்யூனிங்கை இயக்க முடியும் மற்றும் வழங்கப்பட்ட அனைத்து உள்ளீடுகளுக்கும் சிறப்பாக செயல்படும் சிறந்த அளவுருக்களை பரிந்துரைக்க முடியும். இது பரிந்துரைக்கப்பட்ட அளவுருக்களை கன்சோலுக்கு அச்சிடுகிறது, மேலும் <code>-o output.png</code> அளவுரு வழங்கப்பட்டால் அல்லது காபிம கோப்பு<code>-c output.csv</code> அளவுரு குறிப்பிடப்பட்டால் விளக்கப்படத்தை உருவாக்கலாம்.</p>
+<p>உள்ளீட்டு சேப்பர்களின் சில மேம்பட்ட ட்யூனிங்கை இயக்கினால், சேப்பர்_லிபிரேட்..பி.பை ச்கிரிப்டுக்கு பல உள்ளீடுகளை வழங்குவது பயனுள்ளதாக இருக்கும், எடுத்துக்காட்டாக:</p>
+<ul>
+<li>ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியில் இரண்டு முறை முதல் முறையாக கருவித்தடத்துடன் இணைக்கப்பட்ட முடுக்கமானி, மற்றும் படுக்கையில் இரண்டாவது முறையாக இணைக்கப்பட்ட முடுக்கமானி வரிசையில் இணைக்கப்பட்டிருக்கும் <code>test_resonances அச்சு = ஃச் வெளியீடு = raw_data</code> (மற்றும்<code>y</code> அச்சு) இயங்கும் அச்சுகள் குறுக்கு அதிர்வெண்களைக் கண்டறிந்து அவற்றை உள்ளீட்டு வடிவங்களுடன் ரத்து செய்ய முயற்சிக்க.</li>
+<li>எந்தவொரு அச்சு மேற்பரப்பு உள்ளமைவுக்கும் நன்றாக வேலை செய்யும் உள்ளீட்டு சேப்பர் அளவுருக்களைக் கண்டுபிடிக்க ஒரு கண்ணாடி படுக்கை மற்றும் காந்த மேற்பரப்புகளுடன் (இது இலகுவானது) ஒரு படுக்கை ச்லிங்கரில் இரண்டு முறை இயங்கும் <code>test_resonances அச்சு = ஒய் வெளியீடு = ஒய் வெளியீடு = raw_data</code>.</li>
+<li>பல சோதனை புள்ளிகளிலிருந்து அதிர்வு தரவை இணைத்தல்.</li>
+<li>2 அச்சிலிருந்து அதிர்வு தரவை இணைத்தல் (எ.கா. ஒரு படுக்கை ச்லிங்கர் அச்சுப்பொறியில் x- அச்சு உள்ளீடு_சேப்பரை x- அச்சு உள்ளீடு_சேப்பரை ஃச் மற்றும் ஒய் அச்சுகள் இரண்டிலிருந்தும் * படுக்கையின் அதிர்வுகளை ரத்து செய்ய * ஃச் அச்சு திசையில் நகரும் போது 'பிடிக்கும்' ஒரு அச்சு 'பிடிக்கும்' ).</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

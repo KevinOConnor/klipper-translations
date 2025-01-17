@@ -13,7 +13,7 @@
     
     
       
-        <title>OctoPrint for Klipper - Klipper documentation</title>
+        <title>OctoPrint dla Klippera - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#octoprint-for-klipper" class="md-skip">
+        <a href="#octoprint-dla-klippera" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OctoPrint for Klipper
+              OctoPrint dla Klippera
             
           </span>
         </div>
@@ -1365,8 +1365,8 @@
 </a>
 
 
-<h1 id="octoprint-for-klipper">OctoPrint for Klipper<a class="headerlink" href="#octoprint-for-klipper" title="Permanent link">&para;</a></h1>
-<p>Klipper has a few options for its front ends, Octoprint was the first and original front end for Klipper. This document will give a brief overview of installing with this option.</p>
+<h1 id="octoprint-dla-klippera">OctoPrint dla Klippera<a class="headerlink" href="#octoprint-dla-klippera" title="Permanent link">&para;</a></h1>
+<p>Klipper ma kilka opcji interfejsów użytkownika, a Octoprint był pierwszym i oryginalnym interfejsem dla Klippera. Ten dokument zawiera krótki przegląd instalacji przy użyciu tej opcji.</p>
 <h2 id="install-with-octopi">Install with OctoPi<a class="headerlink" href="#install-with-octopi" title="Permanent link">&para;</a></h2>
 <p>Start by installing <a href="https://github.com/guysoft/OctoPi">OctoPi</a> on the Raspberry Pi computer. Use OctoPi v0.17.0 or later - see the <a href="https://github.com/guysoft/OctoPi/releases">OctoPi releases</a> for release information.</p>
 <p>One should verify that OctoPi boots and that the OctoPrint web server works. After connecting to the OctoPrint web page, follow the prompt to upgrade OctoPrint if needed.</p>
@@ -1388,7 +1388,7 @@ git clone https://github.com/Klipper3d/klipper
 <h2 id="configuring-octoprint-to-use-klipper">Configuring OctoPrint to use Klipper<a class="headerlink" href="#configuring-octoprint-to-use-klipper" title="Permanent link">&para;</a></h2>
 <p>The OctoPrint web server needs to be configured to communicate with the Klipper host software. Using a web browser, login to the OctoPrint web page and then configure the following items:</p>
 <p>Navigate to the Settings tab (the wrench icon at the top of the page). Under "Serial Connection" in "Additional serial ports" add:</p>
-<div class="highlight"><pre><span></span><code>~/printer_data/comms/klippy.sock
+<div class="highlight"><pre><span></span><code>~/printer_data/comms/klippy.serial
 </code></pre></div>
 
 <p>Then click "Save".</p>

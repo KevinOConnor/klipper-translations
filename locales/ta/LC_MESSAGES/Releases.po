@@ -1,0 +1,769 @@
+# Languages add-on <noreply-addon-languages@weblate.org>, 2025.
+# தமிழ்நேரம் <anishprabu.t@gmail.com>, 2025.
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
+"PO-Revision-Date: 2025-01-08 18:19+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/klipper/releases/ta/>\n"
+"Language: ta\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
+
+msgid ""
+"History of Klipper releases. Please see [installation](Installation.md) for "
+"information on installing Klipper."
+msgstr ""
+"கிளிப்பர் வெளியீடுகளின் வரலாறு. கிளிப்பரை நிறுவுவது குறித்த தகவலுக்கு "
+"[நிறுவல்] (நிறுவல்.எம்டி) ஐப் பார்க்கவும்."
+
+msgid "Klipper 0.9.0"
+msgstr "வெட்டுதல் 0.9.0"
+
+msgid "Available on 20201020. Major changes in this release:"
+msgstr "20201020 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+msgid ""
+"Support for \"Input Shaping\" - a mechanism to counteract printer resonance. "
+"It can reduce or eliminate \"ringing\" in prints."
+msgstr ""
+"\"உள்ளீட்டு வடிவமைத்தல்\" என்பதற்கான உதவி - அச்சுப்பொறி அதிர்வுகளை "
+"எதிர்ப்பதற்கான ஒரு வழிமுறை. இது அச்சிட்டுகளில் \"ரிங்கிங்\" ஐக் குறைக்கலாம் "
+"அல்லது அகற்றலாம்."
+
+msgid ""
+"New \"Smooth Pressure Advance\" system. This implements \"Pressure Advance\" "
+"without introducing instantaneous velocity changes. It is also now possible to"
+" tune pressure advance using a \"Tuning Tower\" method."
+msgstr ""
+"புதிய \"மென்மையான அழுத்தம் அட்வான்ச்\" அமைப்பு. இது உடனடி விரைவு மாற்றங்களை "
+"அறிமுகப்படுத்தாமல் \"அழுத்தம் முன்னேற்றத்தை\" செயல்படுத்துகிறது. \"ட்யூனிங் "
+"டவர்\" முறையைப் பயன்படுத்தி அழுத்தம் முன்கூட்டியே டியூன் செய்யவும் இப்போது "
+"சாத்தியமாகும்."
+
+msgid ""
+"New \"webhooks\" API server. This provides a programmable JSON interface to "
+"Klipper."
+msgstr ""
+"புதிய \"வெப்ஊக்ச்\" பநிஇ சேவையகம். இது கிளிப்பருக்கு ஒரு நிரல்படுத்தக்கூடிய "
+"சாதொபொகு இடைமுகத்தை வழங்குகிறது."
+
+msgid ""
+"The LCD display and menu are now configurable using the Jinja2 template "
+"language."
+msgstr ""
+"எல்.சி.டி காட்சி மற்றும் பட்டியல் இப்போது சின்சா 2 வார்ப்புரு மொழியைப் "
+"பயன்படுத்தி கட்டமைக்கக்கூடியவை."
+
+msgid ""
+"The TMC2208 stepper motor drivers can now be used in \"standalone\" mode with "
+"Klipper."
+msgstr ""
+"TMC2208 ச்டெப்பர் மின்னோடி இயக்கிகளை இப்போது கிளிப்பருடன் \"தனித்தனி\" "
+"பயன்முறையில் பயன்படுத்தலாம்."
+
+msgid "Improved BL-Touch v3 support."
+msgstr "மேம்படுத்தப்பட்ட பி.எல்-டச் வி 3 உதவி."
+
+msgid ""
+"Improved USB identification. Klipper now has its own USB identification code "
+"and micro-controllers can now report their unique serial numbers during USB "
+"identification."
+msgstr ""
+"மேம்படுத்தப்பட்ட யூ.எச்.பி அடையாளம். கிளிப்பர் இப்போது அதன் சொந்த யூ.எச்.பி "
+"அடையாளக் குறியீட்டைக் கொண்டுள்ளது மற்றும் மைக்ரோ-கன்ட்ரோலர்கள் இப்போது "
+"யூ.எச்.பி அடையாளத்தின் போது அவற்றின் தனித்துவமான வரிசை எண்களைப் புகாரளிக்க "
+"முடியும்."
+
+msgid "New kinematic support for \"Rotary Delta\" and \"CoreXZ\" printers."
+msgstr ""
+"\"ரோட்டரி டெல்டா\" மற்றும் \"கோரக்ச்\" அச்சுப்பொறிகளுக்கான புதிய இயக்கவியல் "
+"உதவி."
+
+msgid ""
+"Micro-controller improvements: support for stm32f070, support for stm32f207, "
+"support for GPIO pins on \"Linux MCU\", stm32 \"HID bootloader\" support, "
+"Chitu bootloader support, MKS Robin bootloader support."
+msgstr ""
+"மைக்ரோ-கான்ட்ரோலர் மேம்பாடுகள்: STM32F070 க்கான உதவி, STM32F207 க்கான உதவி, "
+"\"லினக்ச் எம்.சி.யு\", எச்.டி.எம் 32 \"இட் பூட் லோடர்\" உதவி, சிட்டு "
+"பூட்ட்லோடர் உதவி, எம்.கே.எச் ராபின் பூட்லோடர் உதவி ஆகியவற்றில் சி.பி.ஐ.ஓ "
+"ஊசிகளுக்கான உதவி."
+
+msgid "Improved handling of Python \"garbage collection\" events."
+msgstr "பைதான் \"குப்பை சேகரிப்பு\" நிகழ்வுகளின் மேம்பட்ட கையாளுதல்."
+
+msgid ""
+"Many additional modules added: adc_scaled, adxl345, bme280, display_status, "
+"extruder_stepper, fan_generic, hall_filament_width_sensor, htu21d, "
+"homing_heaters, input_shaper, lm75, print_stats, resonance_tester, "
+"shaper_calibrate, query_adc, graph_accelerometer, graph_extruder, "
+"graph_motion, graph_shaper, graph_temp_sensor, whconsole"
+msgstr ""
+"பல கூடுதல் தொகுதிகள் சேர்க்கப்பட்டுள்ளன: ADC_SCALED, BME280, Display_status, "
+"Extruder_stepper, Fan_generic, Hall_filament_width_sensor, HTU21D, ஓமிங்_எச், "
+"உள்ளீடு_சீப்பர்ச், எல்எம் 75, அச்சுப்பொறிகள், கிராஃபோரேட்டர், கிராஃபோரேட்டர், "
+"கிராஃபோரேட்டர், இயக்கம், வரைபடம்_சேப்பர், வரைபடம்_டெம்ப்_சென்சர், WHCONSOLE"
+
+msgid "Several bug fixes and code cleanups."
+msgstr "பல பிழை திருத்தங்கள் மற்றும் குறியீடு தூய்மைப்படுத்தல்கள்."
+
+msgid "Klipper 0.9.1"
+msgstr "வெட்டுதல் 0.1.1"
+
+msgid "Available on 20201028. Release containing only bug fixes."
+msgstr "20201028 இல் கிடைக்கிறது. பிழை திருத்தங்களை மட்டுமே கொண்ட வெளியீடு."
+
+msgid "Klipper 0.8.0"
+msgstr "வெட்டுதல் 0.8.0"
+
+msgid "Available on 20191021. Major changes in this release:"
+msgstr "20191021 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+msgid ""
+"New G-Code command template support. G-Code in the config file is now "
+"evaluated with the Jinja2 template language."
+msgstr ""
+"புதிய சி-கோட் கட்டளை வார்ப்புரு உதவி. கட்டமைப்பு கோப்பில் உள்ள சி-குறியீடு "
+"இப்போது சின்சா 2 வார்ப்புரு மொழியுடன் மதிப்பீடு செய்யப்படுகிறது."
+
+msgid "Improvements to Trinamic stepper drivers:"
+msgstr "டிரினாமிக் ச்டெப்பர் டிரைவர்களுக்கான மேம்பாடுகள்:"
+
+msgid "New support for TMC2209 and TMC5160 drivers."
+msgstr "TMC2209 மற்றும் TMC5160 இயக்கிகளுக்கு புதிய உதவி."
+
+msgid "Improved DUMP_TMC, SET_TMC_CURRENT, and INIT_TMC G-Code commands."
+msgstr ""
+"மேம்படுத்தப்பட்ட DUMP_TMC, SET_TMC_CURRENT, மற்றும் INIT_TMC G-CODE கட்டளைகள்."
+
+msgid "Improved support for TMC UART handling with an analog mux."
+msgstr "அனலாக் MUX உடன் TMC UART கையாளுதலுக்கான மேம்பட்ட உதவி."
+
+msgid "Improved homing, probing, and bed leveling support:"
+msgstr "மேம்படுத்தப்பட்ட ஓமிங், ஆய்வு மற்றும் படுக்கை சமன் ஆதரவு:"
+
+msgid ""
+"New manual_probe, bed_screws, screws_tilt_adjust, skew_correction, safe_z_home"
+" modules added."
+msgstr ""
+"புதிய கையேடு_பிரோப், படுக்கை_சிறப்புக்கள், திருகுகள்_பில்ட்_ஏடிசச்ட், ச்கீ_ "
+"காரெக்சன், பாதுகாப்பான_இசட்_ஓம் தொகுதிகள் சேர்க்கப்பட்டன."
+
+msgid "Enhanced multi-sample probing with median, average, and retry logic."
+msgstr ""
+"சராசரி, சராசரி மற்றும் மீண்டும் தர்க்கத்துடன் மேம்படுத்தப்பட்ட பல மாதிரி "
+"ஆய்வு."
+
+msgid ""
+"Improved documentation for BL-Touch, probe calibration, endstop calibration, "
+"delta calibration, sensorless homing, and endstop phase calibration."
+msgstr ""
+"பி.எல்-டச், ஆய்வு அளவுத்திருத்தம், எண்ட்ச்டாப் அளவுத்திருத்தம், டெல்டா "
+"அளவுத்திருத்தம், சென்சார்லெச் ஓமிங் மற்றும் எண்ட்ச்டாப் கட்ட "
+"அளவுத்திருத்தத்திற்கான மேம்பட்ட ஆவணங்கள்."
+
+msgid "Improved homing support on a large Z axis."
+msgstr "ஒரு பெரிய சட் அச்சில் மேம்பட்ட ஓமிங் உதவி."
+
+msgid "Many Klipper micro-controller improvements:"
+msgstr "பல கிளிப்பர் மைக்ரோ-கன்ட்ரோலர் மேம்பாடுகள்:"
+
+msgid "Klipper ported to: SAM3X8C, SAM4S8C, SAMD51, STM32F042, STM32F4"
+msgstr "கிளிப்பர் போர்ட்டு: SAM3X8C, SAM4S8C, SAMD51, STM32F042, STM32F4"
+
+msgid "New USB CDC driver implementations on SAM3X, SAM4, STM32F4."
+msgstr "SAM3x, SAM4, STM32F4 இல் புதிய யூ.எச்.பி சி.டி.சி இயக்கி செயலாக்கங்கள்."
+
+msgid "Enhanced support for flashing Klipper over USB."
+msgstr "யூ.எச்.பி மீது கிளிப்பரை ஒளிரச் செய்வதற்கான மேம்பட்ட உதவி."
+
+msgid "Software SPI support."
+msgstr "மென்பொருள் SPI உதவி."
+
+msgid "Greatly improved temperature filtering on the LPC176x."
+msgstr "LPC176X இல் வெப்பநிலை வடிகட்டுதல் பெரிதும் மேம்படுத்தப்பட்டது."
+
+msgid "Early output pin settings can be configured in the micro-controller."
+msgstr ""
+"ஆரம்ப வெளியீட்டு முள் அமைப்புகளை மைக்ரோ-கன்ட்ரோலரில் கட்டமைக்க முடியும்."
+
+msgid "New website with the Klipper documentation: http://klipper3d.org/"
+msgstr "கிளிப்பர் ஆவணத்துடன் புதிய வலைத்தளம்: http://klipper3d.org/"
+
+msgid "Klipper now has a logo."
+msgstr "கிளிப்பருக்கு இப்போது ஒரு லோகோ உள்ளது."
+
+msgid "Experimental support for polar and \"cable winch\" kinematics."
+msgstr "துருவ மற்றும் \"கேபிள் வின்ச்\" இயக்கவியலுக்கான சோதனை உதவி."
+
+msgid "The config file can now include other config files."
+msgstr "கட்டமைப்பு கோப்பில் இப்போது பிற கட்டமைப்பு கோப்புகள் சேர்க்கலாம்."
+
+msgid ""
+"Many additional modules added: board_pins, controller_fan, delayed_gcode, "
+"dotstar, filament_switch_sensor, firmware_retraction, gcode_arcs, "
+"gcode_button, heater_generic, manual_stepper, mcp4018, mcp4728, neopixel, "
+"pause_resume, respond, temperature_sensor tsl1401cl_filament_width_sensor, "
+"tuning_tower"
+msgstr ""
+"பல கூடுதல் தொகுதிகள் சேர்க்கப்பட்டுள்ளன: போர்டு_பின்கள், தாமதமான_சோட், "
+"டாட்ச்டார், ஃபிலமென்ட்_ச்விட்ச்_சென்சர், ஃபார்ம்வேர்_ரெட்சன், சி.கோட்_பட்டன், "
+"ஈட்டர்_செனெரிக், கையேடு_ச்டெப்பர், எம்.சி.பி 4728, நியூபிக்செல், அல்லது, "
+"ட்யூனிங்_டவர்"
+
+msgid ""
+"Many additional commands added: RESTORE_GCODE_STATE, SAVE_GCODE_STATE, "
+"SET_GCODE_VARIABLE, SET_HEATER_TEMPERATURE, SET_IDLE_TIMEOUT, "
+"SET_TEMPERATURE_FAN_TARGET"
+msgstr ""
+"பல கூடுதல் கட்டளைகள் சேர்க்கப்பட்டுள்ளன: restore_gcode_state, "
+"save_gcode_state, set_gcode_variable, set_heater_temperature, "
+"set_idle_timeout, set_temperature_fan_target"
+
+msgid "Klipper 0.7.0"
+msgstr "வெட்டுதல் 0.7.0"
+
+msgid "Available on 20181220. Major changes in this release:"
+msgstr "20181220 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+msgid "Klipper now supports \"mesh\" bed leveling"
+msgstr "கிளிப்பர் இப்போது \"மெச்\" படுக்கை சமநிலையை ஆதரிக்கிறார்"
+
+msgid ""
+"New support for \"enhanced\" delta calibration (calibrates print x/y "
+"dimensions on delta printers)"
+msgstr ""
+"\"மேம்படுத்தப்பட்ட\" டெல்டா அளவுத்திருத்தத்திற்கான புதிய உதவி (டெல்டா "
+"அச்சுப்பொறிகளில் அச்சு x/y பரிமாணங்களை அளவீடு செய்கிறது)"
+
+msgid ""
+"Support for run-time configuration of Trinamic stepper motor drivers (tmc2130,"
+" tmc2208, tmc2660)"
+msgstr ""
+"டிரினாமிக் ச்டெப்பர் மின்னோடி டிரைவர்களின் ரன்-டைம் உள்ளமைவுக்கான உதவி "
+"(டிஎம்சி 2130, டிஎம்சி 2208, டிஎம்சி 2660)"
+
+msgid ""
+"Improved temperature sensor support: MAX6675, MAX31855, MAX31856, MAX31865, "
+"custom thermistors, common pt100 style sensors"
+msgstr ""
+"மேம்படுத்தப்பட்ட வெப்பநிலை சென்சார் ஆதரவு: MAX6675, MAX31855, MAX31856, "
+"MAX31865, தனிப்பயன் தெர்மிச்டர்கள், பொதுவான PT100 பாணி சென்சார்கள்"
+
+msgid ""
+"Several new modules: temperature_fan, sx1509, force_move, mcp4451, z_tilt, "
+"quad_gantry_level, endstop_phase, bltouch"
+msgstr ""
+"பல புதிய தொகுதிகள்: வெப்பநிலை_பான், எச்எக்ச் 1509, ஃபோர்ச்_மோவ், எம்.சி.பி "
+"4451, இசட்_டில்ட், குவாட்_கான்ட்ரி_லெவல், எண்ட்ச்டாப்_பேச், பி.எல்.டி."
+
+msgid ""
+"Several new commands added: SAVE_CONFIG, SET_PRESSURE_ADVANCE, "
+"SET_GCODE_OFFSET, SET_VELOCITY_LIMIT, STEPPER_BUZZ, TURN_OFF_HEATERS, M204, "
+"custom g-code macros"
+msgstr ""
+"பல புதிய கட்டளைகள் சேர்க்கப்பட்டன: Save_config, set_pressure_advance, "
+"set_gcode_offset, set_velocity_limit, stepper_buzz, turn_off_heaters, m204, "
+"தனிப்பயன் சி-குறியீடு மேக்ரோக்கள்"
+
+msgid "Expanded LCD display support:"
+msgstr "விரிவாக்கப்பட்ட எல்சிடி காட்சி ஆதரவு:"
+
+msgid "Support for run-time menus"
+msgstr "ரன்-டைம் மெனுக்களுக்கான உதவி"
+
+msgid "New display icons"
+msgstr "புதிய காட்சி சின்னங்கள்"
+
+msgid "Support for \"uc1701\" and \"ssd1306\" displays"
+msgstr "\"UC1701\" மற்றும் \"SSD1306\" காட்சிகளுக்கான உதவி"
+
+msgid "Additional micro-controller support:"
+msgstr "கூடுதல் மைக்ரோ-கன்ட்ரோலர் ஆதரவு:"
+
+msgid ""
+"Klipper ported to: LPC176x (Smoothieboards), SAM4E8E (Duet2), SAMD21 (Arduino "
+"Zero), STM32F103 (\"Blue pill\" devices), atmega32u4"
+msgstr ""
+"கிளிப்பர் போர்டட்: எல்பிசி 176 ஃச் (ச்மூத்திபோர்டுகள்), SAM4E8E (டூயட் 2), "
+"SAMD21 (Arduino பூச்சியம்), STM32F103 (\"நீல மாத்திரை\" சாதனங்கள்), ATMEGA32U4"
+
+msgid ""
+"New Generic USB CDC driver implemented on AVR, LPC176x, SAMD21, and STM32F103"
+msgstr ""
+"புதிய பொதுவான யூ.எச்.பி சி.டி.சி இயக்கி ஏ.வி.ஆர், எல்பிசி 176 ஃச், எச்ஏஎம்.டி "
+"21 மற்றும் எச்.டி.எம் 32 எஃப் 103 இல் செயல்படுத்தப்பட்டது"
+
+msgid "Performance improvements on ARM processors"
+msgstr "கை செயலிகளில் செயல்திறன் மேம்பாடுகள்"
+
+msgid "The kinematics code was rewritten to use an \"iterative solver\""
+msgstr ""
+"இயக்கவியல் குறியீடு ஒரு \"மறுசீரமைப்பு தீர்வி\" பயன்படுத்த மீண்டும் "
+"எழுதப்பட்டது"
+
+msgid "New automatic test cases for the Klipper host software"
+msgstr "கிளிப்பர் புரவலன் மென்பொருளுக்கான புதிய தானியங்கி சோதனை வழக்குகள்"
+
+msgid "Many new example config files for common off-the-shelf printers"
+msgstr ""
+"பொதுவான ஆஃப்-தி-செல்ஃப் அச்சுப்பொறிகளுக்கு பல புதிய எடுத்துக்காட்டு கட்டமைப்பு"
+" கோப்புகள்"
+
+msgid ""
+"Documentation updates for bootloaders, benchmarking, micro-controller porting,"
+" config checks, pin mapping, slicer settings, packaging, and more"
+msgstr ""
+"துவக்க ஏற்றிகள், தரப்படுத்தல், மைக்ரோ-கன்ட்ரோலர் போர்ட்டிங், கட்டமைப்பு "
+"காசோலைகள், முள் மேப்பிங், ச்லைசர் அமைப்புகள், பேக்கேசிங் மற்றும் பலவற்றிற்கான "
+"ஆவண புதுப்பிப்புகள்"
+
+msgid "Several bug fixes and code cleanups"
+msgstr "பல பிழை திருத்தங்கள் மற்றும் குறியீடு தூய்மைப்படுத்தல்கள்"
+
+msgid "Klipper 0.6.0"
+msgstr "மோவர் 0.6.0"
+
+msgid "Available on 20180331. Major changes in this release:"
+msgstr "20180331 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+msgid "Enhanced heater and thermistor hardware failure checks"
+msgstr "மேம்படுத்தப்பட்ட ஈட்டர் மற்றும் தெர்மோச்டர் வன்பொருள் தோல்வி சோதனைகள்"
+
+msgid "Support for Z probes"
+msgstr "சட் ஆய்வுகளுக்கான உதவி"
+
+msgid ""
+"Initial support for automatic parameter calibration on deltas (via a new "
+"delta_calibrate command)"
+msgstr ""
+"டெல்டாக்களில் தானியங்கி அளவுரு அளவுத்திருத்தத்திற்கான ஆரம்ப உதவி (புதிய "
+"டெல்டா_கலிப்ரேட் கட்டளை வழியாக)"
+
+msgid ""
+"Initial support for bed tilt compensation (via bed_tilt_calibrate command)"
+msgstr ""
+"படுக்கை சாய்வு இழப்பீட்டுக்கான ஆரம்ப உதவி (BED_TILT_CALIBRATE கட்டளை வழியாக)"
+
+msgid "Initial support for \"safe homing\" and homing overrides"
+msgstr "\"பாதுகாப்பான ஓமிங்\" மற்றும் ஓமிங் மேலெழுதல்களுக்கான ஆரம்ப உதவி"
+
+msgid ""
+"Initial support for displaying status on RepRapDiscount style 2004 and 12864 "
+"displays"
+msgstr ""
+"Reprapdiscount சூல் தண்டு 2004 மற்றும் 12864 காட்சிகளில் நிலையை "
+"காண்பிப்பதற்கான ஆரம்ப உதவி"
+
+msgid "New multi-extruder improvements:"
+msgstr "புதிய மல்டி-எக்ச்ட்ரூடர் மேம்பாடுகள்:"
+
+msgid "Support for shared heaters"
+msgstr "பகிரப்பட்ட ஈட்டர்களுக்கான உதவி"
+
+msgid "Initial support for dual carriages"
+msgstr "இரட்டை வண்டிகளுக்கான ஆரம்ப உதவி"
+
+msgid "Support for configuring multiple steppers per axis (eg, dual Z)"
+msgstr "ஒரு அச்சுக்கு பல ச்டெப்பர்களை உள்ளமைப்பதற்கான உதவி (எ.கா., இரட்டை இசட்)"
+
+msgid ""
+"Support for custom digital and pwm output pins (with a new SET_PIN command)"
+msgstr ""
+"தனிப்பயன் டிசிட்டல் மற்றும் பி.டபிள்யூ.எம் வெளியீட்டு ஊசிகளுக்கான உதவி (புதிய "
+"செட்_பின் கட்டளையுடன்)"
+
+msgid ""
+"Initial support for a \"virtual sdcard\" that allows printing directly from "
+"Klipper (helps on machines too slow to run OctoPrint well)"
+msgstr ""
+"கிளிப்பரிலிருந்து நேரடியாக அச்சிட அனுமதிக்கும் \"மெய்நிகர் SDCARD\" க்கான "
+"ஆரம்ப உதவி (ஆக்டோபிரிண்டை நன்றாக இயக்க இயந்திரங்களில் மிகவும் மெதுவாக "
+"உதவுகிறது)"
+
+msgid "Support for setting different arm lengths on each tower of a delta"
+msgstr "டெல்டாவின் ஒவ்வொரு கோபுரத்திலும் வெவ்வேறு கை நீளங்களை அமைப்பதற்கான உதவி"
+
+msgid ""
+"Support for G-Code M220/M221 commands (speed factor override / extrude factor "
+"override)"
+msgstr ""
+"சி-குறியீடு M220 / M221 கட்டளைகளுக்கான உதவி (வேக காரணி மேலெழுதல் / எக்ச்ட்ரூட்"
+" காரணி மேலெழுதல்)"
+
+msgid "Several documentation updates:"
+msgstr "பல ஆவணங்கள் புதுப்பிப்புகள்:"
+
+msgid "New multiple MCU config example"
+msgstr "புதிய பல MCU கட்டமைப்பு எடுத்துக்காட்டு"
+
+msgid "New bltouch sensor config example"
+msgstr "புதிய BLTOUCH சென்சார் கட்டமைப்பு எடுத்துக்காட்டு"
+
+msgid "New FAQ, config check, and G-Code documents"
+msgstr "புதிய கேள்விகள், கட்டமைப்பு காசோலை மற்றும் சி-குறியீடு ஆவணங்கள்"
+
+msgid "Initial support for continuous integration testing on all github commits"
+msgstr ""
+"அனைத்து அறிவிலிமையம் கமிட்டுகளிலும் தொடர்ச்சியான ஒருங்கிணைப்பு சோதனைக்கான "
+"ஆரம்ப உதவி"
+
+msgid "Klipper 0.5.0"
+msgstr "வெட்டுதல் 0.5.0"
+
+msgid "Available on 20171025. Major changes in this release:"
+msgstr "20171025 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+msgid "Support for printers with multiple extruders."
+msgstr "பல எக்ச்ட்ரூடர்களுடன் அச்சுப்பொறிகளுக்கான உதவி."
+
+msgid ""
+"Initial support for running on the Beaglebone PRU. Initial support for the "
+"Replicape board."
+msgstr ""
+"பீகல்போன் ப்ரூவில் இயங்குவதற்கான ஆரம்ப உதவி. பிரதி வாரியத்திற்கான ஆரம்ப உதவி."
+
+msgid ""
+"Initial support for running the micro-controller code in a real-time Linux "
+"process."
+msgstr ""
+"நிகழ்நேர லினக்ச் செயல்பாட்டில் மைக்ரோ-கன்ட்ரோலர் குறியீட்டை இயக்குவதற்கான "
+"ஆரம்ப உதவி."
+
+msgid ""
+"Support for multiple micro-controllers. (For example, one could control an "
+"extruder with one micro-controller and the rest of the printer with another.) "
+"Software clock synchronization is implemented to coordinate actions between "
+"micro-controllers."
+msgstr "பல மைக்ரோ-கன்ட்ரோலர்களுக்கான உதவி. ."
+
+msgid ""
+"Stepper performance improvements (20Mhz AVRs up to 189K steps per second)."
+msgstr ""
+"ச்டெப்பர் செயல்திறன் மேம்பாடுகள் (20 மெகா எர்ட்ச் ஏ.வி.ஆர் கள் நொடிக்கு 189 கி"
+" படிகள் வரை)."
+
+msgid ""
+"Support for controlling servos and support for defining nozzle cooling fans."
+msgstr ""
+"சர்வோக்களைக் கட்டுப்படுத்துவதற்கான உதவி மற்றும் முனை குளிரூட்டும் ரசிகர்களை "
+"வரையறுப்பதற்கான உதவி."
+
+msgid "Klipper 0.4.0"
+msgstr "வெட்டுதல் 0.4.0"
+
+msgid "Available on 20170503. Major changes in this release:"
+msgstr "20170503 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+msgid ""
+"Improved installation on Raspberry Pi machines. Most of the install is now "
+"scripted."
+msgstr ""
+"ராச்பெர்ரி பை இயந்திரங்களில் மேம்படுத்தப்பட்ட நிறுவல். நிறுவலின் பெரும்பாலானவை"
+" இப்போது ச்கிரிப்ட் செய்யப்பட்டுள்ளன."
+
+msgid "Support for corexy kinematics"
+msgstr "கோர்சி இயக்கவியலுக்கான உதவி"
+
+msgid ""
+"Documentation updates: New Kinematics document, new Pressure Advance tuning "
+"guide, new example config files, and more"
+msgstr ""
+"ஆவணப்படுத்தல் புதுப்பிப்புகள்: புதிய இயக்கவியல் ஆவணம், புதிய பிரசர் அட்வான்ச் "
+"ட்யூனிங் வழிகாட்டி, புதிய எடுத்துக்காட்டு கட்டமைப்பு கோப்புகள் மற்றும் பல"
+
+msgid ""
+"Stepper performance improvements (20Mhz AVRs over 175K steps per second, "
+"Arduino Due over 460K)"
+msgstr ""
+"ச்டெப்பர் செயல்திறன் மேம்பாடுகள் (வினாடிக்கு 175K படிகளுக்கு மேல் 20 மெகா "
+"எர்ட்ச் ஏ.வி.ஆர்.எச், 460 கி."
+
+msgid ""
+"Support for automatic micro-controller resets. Support for resets via toggling"
+" USB power on Raspberry Pi."
+msgstr ""
+"தானியங்கி மைக்ரோ-கன்ட்ரோலர் மீட்டமைப்புக்கான உதவி. ராச்பெர்ரி பையில் யூ.எச்.பி"
+" சக்தியை மாற்றுவதன் மூலம் மீட்டமைப்புக்கான உதவி."
+
+msgid ""
+"The pressure advance algorithm now works with look-ahead to reduce pressure "
+"changes during cornering."
+msgstr ""
+"அழுத்த முன்கூட்டியே அல்காரிதம் இப்போது மூலைவிட்டத்தின் போது அழுத்தம் "
+"மாற்றங்களைக் குறைக்க தோற்றத்துடன் செயல்படுகிறது."
+
+msgid "Support for limiting the top speed of short zigzag moves"
+msgstr "குறுகிய சிக்சாக் நகர்வுகளின் உயர் வேகத்தை கட்டுப்படுத்துவதற்கான உதவி"
+
+msgid "Support for AD595 sensors"
+msgstr "AD595 சென்சார்களுக்கான உதவி"
+
+msgid "Klipper 0.3.0"
+msgstr "வெட்டுதல் 0.3.0"
+
+msgid "Available on 20161223. Major changes in this release:"
+msgstr "20161223 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+msgid "Improved documentation"
+msgstr "மேம்படுத்தப்பட்ட ஆவணங்கள்"
+
+msgid "Support for robots with delta kinematics"
+msgstr "டெல்டா இயக்கவியலுடன் ரோபோக்களுக்கான உதவி"
+
+msgid "Support for Arduino Due micro-controller (ARM cortex-M3)"
+msgstr "ஆர்டுயினோ டியூ மைக்ரோ-கன்ட்ரோலருக்கான உதவி (ARM CORTEX-M3)"
+
+msgid "Support for USB based AVR micro-controllers"
+msgstr "யூ.எச்.பி அடிப்படையிலான ஏ.வி.ஆர் மைக்ரோ-கன்ட்ரோலர்களுக்கான உதவி"
+
+msgid "Support for \"pressure advance\" algorithm - it reduces ooze during prints."
+msgstr ""
+"\"பிரசர் அட்வான்ச்\" வழிமுறைக்கான உதவி - இது அச்சிட்டுகளின் போது ஓசைக் "
+"குறைக்கிறது."
+
+msgid ""
+"New \"stepper phased based endstop\" feature - enables higher precision on "
+"endstop homing."
+msgstr ""
+"புதிய \"ச்டெப்பர் கட்டம் அடிப்படையிலான எண்ட்ச்டாப்\" நற்பொருத்தம் - "
+"எண்ட்ச்டாப் ஓமிங்கில் அதிக துல்லியத்தை செயல்படுத்துகிறது."
+
+msgid "Support for \"extended g-code\" commands such as \"help\", \"restart\", and \"status\"."
+msgstr ""
+"\"உதவி\", \"மறுதொடக்கம்\" மற்றும் \"நிலை\" போன்ற \"நீட்டிக்கப்பட்ட "
+"சி-குறியீடு\" கட்டளைகளுக்கான உதவி."
+
+msgid ""
+"Support for reloading the Klipper config and restarting the host software by "
+"issuing a \"restart\" command from the terminal."
+msgstr ""
+"முனையத்திலிருந்து \"மறுதொடக்கம்\" கட்டளையை வழங்குவதன் மூலம் கிளிப்பர் "
+"கட்டமைப்பை மீண்டும் ஏற்றுவதற்கும் புரவலன் மென்பொருளை மறுதொடக்கம் செய்வதற்கும் "
+"உதவி."
+
+msgid ""
+"Stepper performance improvements (20Mhz AVRs up to 158K steps per second)."
+msgstr ""
+"ச்டெப்பர் செயல்திறன் மேம்பாடுகள் (20 மெகா எர்ட்ச் ஏ.வி.ஆர் கள் நொடிக்கு 158 கி"
+" படிகள் வரை)."
+
+msgid ""
+"Improved error reporting. Most errors now shown via the terminal along with "
+"help on how to resolve."
+msgstr ""
+"மேம்படுத்தப்பட்ட பிழை அறிக்கை. பெரும்பாலான பிழைகள் இப்போது முனையம் வழியாக "
+"காட்டப்பட்டுள்ளன, மேலும் எவ்வாறு தீர்ப்பது என்பதற்கான உதவியுடன்."
+
+msgid "Klipper 0.2.0"
+msgstr "வெட்டுதல் 0.2.0"
+
+msgid ""
+"Initial release of Klipper. Available on 20160525. Major features available in"
+" the initial release include:"
+msgstr ""
+"கிளிப்பரின் ஆரம்ப வெளியீடு. 20160525 இல் கிடைக்கிறது. ஆரம்ப வெளியீட்டில் "
+"கிடைக்கும் முக்கிய நற்பொருத்தங்கள் பின்வருமாறு:"
+
+msgid ""
+"Basic support for cartesian printers (steppers, extruder, heated bed, cooling "
+"fan)."
+msgstr ""
+"கார்ட்டீசியன் அச்சுப்பொறிகளுக்கான அடிப்படை உதவி (ச்டெப்பர்கள், எக்ச்ட்ரூடர், "
+"சூடான படுக்கை, குளிரூட்டும் விசிறி)."
+
+msgid ""
+"Support for common g-code commands. Support for interfacing with OctoPrint."
+msgstr ""
+"பொதுவான சி-குறியீடு கட்டளைகளுக்கான உதவி. ஆக்டோபிரிண்டுடன் "
+"இடைமுகப்படுத்துவதற்கான உதவி."
+
+msgid "Acceleration and lookahead handling"
+msgstr "முடுக்கம் மற்றும் பார்வை கையாளுதல்"
+
+msgid "Support for AVR micro-controllers via standard serial ports"
+msgstr ""
+"நிலையான தொடர் துறைமுகங்கள் வழியாக ஏ.வி.ஆர் மைக்ரோ-கன்ட்ரோலர்களுக்கான உதவி"
+
+#: docs/Releases.md:block 1 (header)
+msgid "Releases"
+msgstr ""
+
+#: docs/Releases.md:block 3 (header)
+msgid "Klipper 0.10.0"
+msgstr "வெட்டுதல் 0.10.0"
+
+#: docs/Releases.md:block 4 (paragraph)
+msgid "Available on 20210929. Major changes in this release:"
+msgstr "20210929 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Support for \"Multi-MCU Homing\". It is now possible for a stepper motor and "
+"its endstop to be wired to separate micro-controllers. This simplifies wiring "
+"of Z probes on \"toolhead boards\"."
+msgstr ""
+"\"மல்டி-எம்.சி.யு ஓமிங்\" க்கான உதவி. மைக்ரோ-கன்ட்ரோலர்களைப் பிரிக்க ஒரு "
+"ச்டெப்பர் மின்னோடி மற்றும் அதன் எண்ட்ச்டாப்பை கம்பி செய்ய இப்போது "
+"சாத்தியமாகும். இது \"கருவிஎட் போர்டுகள்\" இல் சட் ஆய்வுகளின் வயரிங் "
+"எளிதாக்குகிறது."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Klipper now has a [Community Discord Server](https://discord.klipper3d.org) "
+"and a [Community Discourse Server](https://community.klipper3d.org)."
+msgstr ""
+"கிளிப்பரில் இப்போது [சமூக டிச்கார்ட் சேவையகம்] (https://discord.klipper3d.org)"
+" மற்றும் [சமூக சொற்பொழிவு சேவையகம்] (https://community.klipper3d.org) உள்ளன."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"The [Klipper website](https://www.klipper3d.org) now uses the \"mkdocs\" "
+"infrastructure. There is also a [Klipper "
+"Translations](https://github.com/Klipper3d/klipper-translations) project."
+msgstr ""
+"[கிளிப்பர் வலைத்தளம்] (https://www.klipper3d.org) இப்போது \"MKDOCS\" "
+"உள்கட்டமைப்பைப் பயன்படுத்துகிறது. [கிளிப்பர் மொழிபெயர்ப்புகள்] "
+"(https://github.com/klipper3d/klipper- மொழிபெயர்ப்பு) திட்டமும் உள்ளது."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid "Automated support for flashing firmware via sdcard on many boards."
+msgstr "பல பலகைகளில் SDCARD வழியாக ஒளிரும் ஃபார்ம்வேரை தானியங்கு உதவி."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid "New kinematic support for \"Hybrid CoreXY\" and \"Hybrid CoreXZ\" printers."
+msgstr ""
+"\"ஐப்ரிட் கோர்எக்சி\" மற்றும் \"ஐப்ரிட் கோர்எக்ச்இச்\" அச்சுப்பொறிகளுக்கான "
+"புதிய இயக்கவியல் உதவி."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Klipper now uses `rotation_distance` to configure stepper motor travel "
+"distances."
+msgstr ""
+"கிளிப்பர் இப்போது ச்டெப்பர் மின்னோடி பயண தூரங்களை உள்ளமைக்க `சுழற்சி_டிச்` ஐப்"
+" பயன்படுத்துகிறார்."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"The main Klipper host code can now directly communicate with micro-controllers"
+" using CAN bus."
+msgstr ""
+"முக்கிய கிளிப்பர் புரவலன் குறியீடு இப்போது CAN பச்சைப் பயன்படுத்தி "
+"மைக்ரோ-கன்ட்ரோலர்களுடன் நேரடியாக தொடர்பு கொள்ளலாம்."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"New \"motion analysis\" system. Klipper's internal motion updates and sensor "
+"results can be tracked and logged for analysis."
+msgstr ""
+"புதிய \"இயக்க பகுப்பாய்வு\" அமைப்பு. கிளிப்பரின் உள் இயக்க புதுப்பிப்புகள் "
+"மற்றும் சென்சார் முடிவுகள் கண்காணிக்கப்பட்டு பகுப்பாய்விற்கு உள்நுழையலாம்."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Trinamic stepper motor drivers are now continuously monitored for error "
+"conditions."
+msgstr ""
+"டிரினாமிக் ச்டெப்பர் மின்னோடி இயக்கிகள் இப்போது பிழை நிலைமைகளுக்கு தொடர்ந்து "
+"கண்காணிக்கப்படுகின்றன."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid "Support for the rp2040 micro-controller (Raspberry Pi Pico boards)."
+msgstr "RP2040 மைக்ரோகண்ட்ரோலருக்கு (ராச்பெர்ரி பை பைக்கோ போர்டு) உதவி."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid "The \"make menuconfig\" system now utilizes kconfiglib."
+msgstr "\"மேக் மெனுகான்ஃபிக்\" அமைப்பு இப்போது Kconfiglib ஐப் பயன்படுத்துகிறது."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Many additional modules added: ds18b20, duplicate_pin_override, "
+"filament_motion_sensor, palette2, motion_report, pca9533, pulse_counter, "
+"save_variables, sdcard_loop, temperature_host, temperature_mcu"
+msgstr ""
+"பல கூடுதல் தொகுதிகள் சேர்க்கப்பட்டுள்ளன: DS18B20, Duciplical_pin_override, "
+"filemament_motion_sensor, pate2, motion_report, pca9533, bulse_counter, "
+"save_variables, sdcard_loop, statem_host, வெப்பநிலை_ம்கு"
+
+#: docs/Releases.md:block 3 (header)
+msgid "Klipper 0.11.0"
+msgstr "வெட்டுதல் 0.11.0"
+
+#: docs/Releases.md:block 4 (paragraph)
+msgid "Available on 20221128. Major changes in this release:"
+msgstr "20221128 இல் கிடைக்கிறது. இந்த வெளியீட்டில் பெரிய மாற்றங்கள்:"
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid "Trinamic stepper motor driver \"step on both edges\" optimization."
+msgstr ""
+"டிரினாமிக் ச்டெப்பர் மின்னோடி டிரைவர் \"இரண்டு விளிம்புகளிலும் படி\" "
+"தேர்வுமுறை."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Support for Python3. The Klipper host code will run with either Python2 or "
+"Python3."
+msgstr ""
+"பைதான் 3 க்கான உதவி. கிளிப்பர் புரவலன் குறியீடு பைதான் 2 அல்லது பைதான் 3 உடன் "
+"இயங்கும்."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Enhanced CAN bus support. Support for CAN bus on rp2040, stm32g0, stm32h7, "
+"same51, and same54 chips. Support for \"USB to CAN bus bridge\" mode."
+msgstr ""
+"மேம்படுத்தப்பட்ட கேன் பச் உதவி. RP2040, STM32G0, STM32H7, SIME51, மற்றும் "
+"SIGH54 சில்லுகளில் CAN பச்சுக்கான உதவி. \"யூ.எச்.பி டு கேன் பச் பிரிட்ச்\" "
+"பயன்முறைக்கு உதவி."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid "Support for CanBoot bootloader."
+msgstr "கான்பூட் துவக்க ஏற்றிக்கு உதவி."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid "Support for mpu9250 and mpu6050 accelerometers."
+msgstr "MPU9250 மற்றும் MPU6050 முடுக்கமானிகளுக்கான உதவி."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Improved error handling for max31856, max31855, max31865, and max6675 "
+"temperature sensors."
+msgstr ""
+"MAX31856, MAX31855, MAX31865 மற்றும் MAX6675 வெப்பநிலை சென்சார்களுக்கான "
+"மேம்பட்ட பிழை கையாளுதல்."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"It is now possible to configure LEDs to update during long running G-Code "
+"commands using LED \"template\" support."
+msgstr ""
+"எல்.ஈ.டி \"வார்ப்புரு\" ஆதரவைப் பயன்படுத்தி நீண்ட காலமாக இயங்கும் சி-குறியீடு "
+"கட்டளைகளின் போது புதுப்பிக்க எல்.ஈ.டிகளை உள்ளமைக்க இப்போது சாத்தியமாகும்."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"Several micro-controller improvements. New support for stm32h743, stm32h750, "
+"stm32l412, stm32g0b1, same70, same51, and same54 chips. Support for i2c reads "
+"on atsamd and stm32f0. Hardware pwm support on stm32. Linux mcu signal based "
+"event dispatch. New rp2040 support for \"make flash\", i2c, and rp2040-e5 USB "
+"errata."
+msgstr ""
+"பல மைக்ரோ-கட்டுப்பாட்டு மேம்பாடுகள். STM32H743, STM32H750, STM32L412, "
+"STM32G0B1, Sime70, Soe51, மற்றும் SIME54 சில்லுகளுக்கான புதிய உதவி. I2C க்கான "
+"உதவி ATSAMD மற்றும் STM32F0 இல் படிக்கிறது. STM32 இல் வன்பொருள் PWM உதவி. "
+"லினக்ச் எம்.சி.யு சிக்னல் அடிப்படையிலான நிகழ்வு அனுப்புதல். \"மேக் ஃப்ளாச்\", "
+"I2C மற்றும் RP2040-E5 யூ.எச்.பி பிழைக்கான புதிய RP2040 உதவி."
+
+#: docs/Releases.md:block 5 (unordered list)
+msgid ""
+"New modules added: angle, dac084S085, exclude_object, led, mpu9250, pca9632, "
+"smart_effector, z_thermal_adjust. New deltesian kinematics added. New dump_mcu"
+" tool added."
+msgstr ""
+"புதிய தொகுதிகள் சேர்க்கப்பட்டன: கோணம், DAC084S085, விலக்கு_ஆப்செக்ட், "
+"எல்.ஈ.டி, எம்.பி. புதிய டெல்டீசியன் இயக்கவியல் சேர்க்கப்பட்டது. புதிய "
+"டம்ப்_எம்சி கருவி சேர்க்கப்பட்டது."

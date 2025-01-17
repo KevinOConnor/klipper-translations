@@ -1,0 +1,1633 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Protocol - Klipper documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_klipper3d/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-VEN1PGNQL4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-VEN1PGNQL4",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEN1PGNQL4"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#protocol" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Klipper documentation" class="md-header__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Klipper documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Protocol
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2 0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh/" hreflang="zh" class="md-select__link">
+                    简体中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh-Hant/" hreflang="zh-Hant" class="md-select__link">
+                    繁體中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/hu/" hreflang="hu" class="md-select__link">
+                    Magyar
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/it/" hreflang="it" class="md-select__link">
+                    Italiano
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/fr/" hreflang="fr" class="md-select__link">
+                    Français
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Klipper documentation" class="md-nav__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    Klipper documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Overview.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features.html" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ.html" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Releases.html" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Changes.html" class="md-nav__link">
+        Configuration Changes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contact.html" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Installation and Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation and Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Installation and Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OctoPrint.html" class="md-nav__link">
+        OctoPrint for Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Configuration Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Reference.html" class="md-nav__link">
+        Configuration reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rotation_Distance.html" class="md-nav__link">
+        Rotation distance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_checks.html" class="md-nav__link">
+        Configuration checks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Bed Level
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bed Level" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Bed Level
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Level.html" class="md-nav__link">
+        Bed leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Delta_Calibrate.html" class="md-nav__link">
+        Delta calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probe_Calibrate.html" class="md-nav__link">
+        Probe calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BLTouch.html" class="md-nav__link">
+        BL-Touch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Manual_Level.html" class="md-nav__link">
+        Manual leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Mesh.html" class="md-nav__link">
+        Bed Mesh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Endstop_Phase.html" class="md-nav__link">
+        Endstop phase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Axis_Twist_Compensation.html" class="md-nav__link">
+        Axis Twist Compensation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_5" type="checkbox" id="__nav_7_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_5">
+          Resonance Compensation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resonance Compensation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_5">
+          <span class="md-nav__icon md-icon"></span>
+          Resonance Compensation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Resonance_Compensation.html" class="md-nav__link">
+        Resonance Compensation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Measuring_Resonances.html" class="md-nav__link">
+        Measuring Resonances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pressure_Advance.html" class="md-nav__link">
+        Pressure advance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../G-Codes.html" class="md-nav__link">
+        G-Codes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" type="checkbox" id="__nav_7_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Command templates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Command templates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Command templates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Command_Templates.html" class="md-nav__link">
+        Commands templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Status_Reference.html" class="md-nav__link">
+        Status reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TMC_Drivers.html" class="md-nav__link">
+        TMC drivers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Multi_MCU_Homing.html" class="md-nav__link">
+        Multiple Micro-controller Homing and Probing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Slicers.html" class="md-nav__link">
+        Slicers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Skew_Correction.html" class="md-nav__link">
+        Skew correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exclude_Object.html" class="md-nav__link">
+        Exclude Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Using_PWM_Tools.html" class="md-nav__link">
+        Using PWM tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Developer Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Code_Overview.html" class="md-nav__link">
+        Code overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kinematics.html" class="md-nav__link">
+        Kinematics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Protocol.html" class="md-nav__link">
+        Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API_Server.html" class="md-nav__link">
+        API server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MCU_Commands.html" class="md-nav__link">
+        MCU commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_protocol.html" class="md-nav__link">
+        CANBUS protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Debugging.html" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Benchmarks.html" class="md-nav__link">
+        Benchmarks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING.html" class="md-nav__link">
+        Contributing to Klipper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Packaging.html" class="md-nav__link">
+        Packaging Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Device Specific Documents
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Device Specific Documents" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Device Specific Documents
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example_Configs.html" class="md-nav__link">
+        Example configurations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDCard_Updates.html" class="md-nav__link">
+        SDCard updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RPi_microcontroller.html" class="md-nav__link">
+        RPi microcontroller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Beaglebone.html" class="md-nav__link">
+        Beaglebone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloaders.html" class="md-nav__link">
+        Bootloaders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloader_Entry.html" class="md-nav__link">
+        Bootloader Entry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS.html" class="md-nav__link">
+        CANBUS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_Troubleshooting.html" class="md-nav__link">
+        CANBUS Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSL1401CL_Filament_Width_Sensor.html" class="md-nav__link">
+        TSL1401CL filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Hall_Filament_Width_Sensor.html" class="md-nav__link">
+        Hall filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Eddy_Probe.html" class="md-nav__link">
+        Eddy Current Inductive probe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    மைக்ரோ-கன்ட்ரோலர் இடைமுகம்
+  </a>
+  
+    <nav class="md-nav" aria-label="மைக்ரோ-கன்ட்ரோலர் இடைமுகம்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    கட்டளைகளை அறிவித்தல்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    பதில்களை அறிவித்தல்
+  </a>
+  
+    <nav class="md-nav" aria-label="பதில்களை அறிவித்தல்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    வெளியீட்டு பதில்கள்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    கணக்கீடுகளை அறிவித்தல்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    மாறிலிகளை அறிவித்தல்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    குறைந்த அளவிலான செய்தி குறியாக்கம்
+  </a>
+  
+    <nav class="md-nav" aria-label="குறைந்த அளவிலான செய்தி குறியாக்கம்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    செய்தி தொகுதிகள்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    செய்தி தொகுதி உள்ளடக்கங்கள்
+  </a>
+  
+    <nav class="md-nav" aria-label="செய்தி தொகுதி உள்ளடக்கங்கள்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    மாறி நீள அளவுகள்
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    மாறி நீள சரங்கள்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    தரவு அகராதி
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    செய்தி ஓட்டம்
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/locales/ta/Protocol.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="protocol">Protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h1>
+<p>கிளிப்பர் புரவலன் மென்பொருளுக்கும் கிளிப்பர் மைக்ரோ-கன்ட்ரோலர் மென்பொருளுக்கும் இடையில் குறைந்த அளவிலான தகவல்தொடர்புக்கு கிளிப்பர் செய்தி நெறிமுறை பயன்படுத்தப்படுகிறது. ஒரு உயர் மட்டத்தில் நெறிமுறையை சுருக்கமாகவும், கடத்தப்பட்ட, பின்னர் பெறும் பக்கத்தில் செயலாக்கப்படும் கட்டளை மற்றும் மறுமொழி சரங்களின் தொடர் என்று கருதலாம். சுருக்கப்படாத மனிதனால் படிக்கக்கூடிய வடிவத்தில் கட்டளைகளின் ஒரு எடுத்துக்காட்டு தொடர்:</p>
+<div class="highlight"><pre><span></span><code>set_digital_out முள் = pa3 மதிப்பு = 1
+ set_digital_out முள் = pa7 மதிப்பு = 1
+ அட்டவணை_டிகிட்டல்_அவுட் OID = 8 கடிகாரம் = 4000000 மதிப்பு = 0
+ queue_step oid = 7 இடைவெளி = 7458 எண்ணிக்கை = 10 சேர் = 331
+ queue_step oid = 7 இடைவெளி = 11717 எண்ணிக்கை = 4 சேர் = 1281
+</code></pre></div>
+
+<p>கிடைக்கக்கூடிய கட்டளைகள் பற்றிய தகவலுக்கு [MCU கட்டளைகள்] (MCU_COMMANDS.MD) ஆவணத்தைப் பார்க்கவும். சி-குறியீட்டு கோப்பை அதனுடன் தொடர்புடைய மனித-படிக்கக்கூடிய மைக்ரோ-கன்ட்ரோலர் கட்டளைகளில் எவ்வாறு மொழிபெயர்ப்பது என்பது குறித்த தகவலுக்கு [பிழைத்திருத்தம்] (பிழைத்திருத்தம். எம்.டி) ஆவணத்தைப் பார்க்கவும்.</p>
+<p>இந்த பக்கம் கிளிப்பர் செய்தியிடல் நெறிமுறையின் உயர் மட்ட விளக்கத்தை வழங்குகிறது. செய்திகள் எவ்வாறு அறிவிக்கப்படுகின்றன, பைனரி வடிவத்தில் ("சுருக்க" திட்டம்) குறியாக்கம் செய்யப்பட்டு, கடத்தப்படுகின்றன என்பதை இது விவரிக்கிறது.</p>
+<p>நெறிமுறையின் குறிக்கோள், புரவலன் மற்றும் மைக்ரோ-கன்ட்ரோலருக்கு இடையில் பிழை இல்லாத தகவல்தொடர்பு சேனலை இயக்குவதாகும், இது குறைந்த லேடிசன், குறைந்த-அலைவரிசை மற்றும் மைக்ரோ-கன்ட்ரோலருக்கு குறைந்த இணக்கத்தன்மை கொண்டது.</p>
+<h2 id="-">மைக்ரோ-கன்ட்ரோலர் இடைமுகம்<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<p>கிளிப்பர் டிரான்ச்மிசன் நெறிமுறை மைக்ரோ-கன்ட்ரோலர் மற்றும் ஓச்டுக்கு இடையிலான ஒரு [RPC] (<a href="https://en.wikipedia.org/wiki/remote_procedure_call">https://en.wikipedia.org/wiki/remote_procedure_call</a>) பொறிமுறையாக கருதலாம். மைக்ரோ-கன்ட்ரோலர் மென்பொருள் புரவலன் அதை உருவாக்கக்கூடிய மறுமொழி செய்திகளுடன் அழைக்கக்கூடிய கட்டளைகளை அறிவிக்கிறது. செயல்களைச் செய்வதற்கும் முடிவுகளை விளக்குவதற்கும் மைக்ரோ-கன்ட்ரோலரைக் கட்டளையிட புரவலன் அந்த தகவலைப் பயன்படுத்துகிறது.</p>
+<h3 id="_1">கட்டளைகளை அறிவித்தல்<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>மைக்ரோ-கண்ட்ரோலர் மென்பொருள் சி குறியீட்டில் உள்ள டெக்_ கமாண்ட் () மேக்ரோவைப் பயன்படுத்தி ஒரு "கட்டளை" அறிவிக்கிறது. உதாரணமாக:</p>
+<div class="highlight"><pre><span></span><code>Dect_command (command_update_digital_out, &quot;Update_digital_out oid =%c மதிப்பு =%c&quot;);
+</code></pre></div>
+
+<p>மேலே உள்ளவை "Update_digital_out" என்ற கட்டளையை அறிவிக்கிறது. இது இந்த கட்டளையை "செயல்படுத்த" அனுமதிக்கிறது, இது கட்டளை_அப்டேட்_டிசிட்டல்_அவுட் () சி செயல்பாட்டை மைக்ரோ-கன்ட்ரோலரில் செயல்படுத்தும். கட்டளை இரண்டு முழு எண் அளவுருக்களை எடுக்கும் என்பதையும் மேலே குறிப்பிடுகிறது. கட்டளை_பிடேட்_டிசிட்டல்_வுட் () சி குறியீடு செயல்படுத்தப்படும்போது, இந்த இரண்டு முழு எண்களைக் கொண்ட ஒரு வரிசையை அது அனுப்பும் - முதலாவது 'OID' உடன் தொடர்புடையது மற்றும் இரண்டாவது 'மதிப்பு' உடன் தொடர்புடையது.</p>
+<p>பொதுவாக, அளவுருக்கள் printf () பாணி தொடரியல் (எ.கா., "%u") உடன் விவரிக்கப்பட்டுள்ளன. வடிவமைப்பு நேரடியாக கட்டளைகளின் மனிதனால் படிக்கக்கூடிய பார்வைக்கு ஒத்திருக்கிறது (எ.கா. மேலே உள்ள எடுத்துக்காட்டில், "மதிப்பு =" என்பது ஒரு அளவுரு பெயர் மற்றும் "%C" அளவுரு ஒரு முழு எண் என்பதைக் குறிக்கிறது. உள்நாட்டில், அளவுரு பெயர் ஆவணங்களாக மட்டுமே பயன்படுத்தப்படுகிறது. இந்த எடுத்துக்காட்டில், எதிர்பார்க்கப்படும் முழு எண் 1 பைட் அளவு என்பதைக் குறிக்க "%சி" ஆவணங்களாகவும் பயன்படுத்தப்படுகிறது (அறிவிக்கப்பட்ட முழு எண் அளவு பாகுபடுத்தல் அல்லது குறியாக்கத்தை பாதிக்காது).</p>
+<p>மைக்ரோ-கட்டுப்பாட்டு உருவாக்கம் டெக்_காமண்ட் () உடன் அறிவிக்கப்பட்ட அனைத்து கட்டளைகளையும் சேகரிக்கும், அவற்றின் அளவுருக்களைத் தீர்மானிக்கும், மேலும் அவை அழைக்கப்பட வேண்டும் என்று ஏற்பாடு செய்யும்.</p>
+<h3 id="_2">பதில்களை அறிவித்தல்<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>மைக்ரோ-கன்ட்ரோலரிடமிருந்து தகவல்களை ஓச்டுக்கு அனுப்ப ஒரு "பதில்" உருவாக்கப்படுகிறது. இவை இரண்டும் Sendf () C மேக்ரோவைப் பயன்படுத்தி அறிவிக்கப்பட்டு கடத்தப்படுகின்றன. உதாரணமாக:</p>
+<div class="highlight"><pre><span></span><code>அனுப்பு (&quot;நிலை கடிகாரம் =%என்பது நிலை =%c&quot;, sall_read_time (), sall_is_shutdown ());
+</code></pre></div>
+
+<p>மேலே உள்ள இரண்டு முழு எண் அளவுருக்கள் ("கடிகாரம்" மற்றும் "நிலை") கொண்ட "நிலை" மறுமொழி செய்தியை அனுப்புகிறது. மைக்ரோ-கன்ட்ரோலர் பில்ட் தானாகவே அனைத்து sendf () அழைப்புகளைக் கண்டுபிடித்து அவற்றுக்கான குறியாக்கிகளை உருவாக்குகிறது. Sendf () செயல்பாட்டின் முதல் அளவுரு பதிலை விவரிக்கிறது, மேலும் இது கட்டளை அறிவிப்புகளின் அதே வடிவத்தில் உள்ளது.</p>
+<p>ஒவ்வொரு பதிலுக்கும் ஒரு அழைப்பு செயல்பாட்டை பதிவு செய்ய புரவலன் ஏற்பாடு செய்யலாம். எனவே, இதன் விளைவாக, மைக்ரோ-கன்ட்ரோலரில் சி செயல்பாடுகளை அழைக்க ஓச்டை கட்டளைகள் அனுமதிக்கின்றன மற்றும் பதில்கள் மைக்ரோ-கான்ரோலர் மென்பொருளை ஓச்டில் குறியீட்டைப் பயன்படுத்த அனுமதிக்கின்றன.</p>
+<p>Sendf () மேக்ரோ கட்டளை அல்லது பணி கையாளுபவர்களிடமிருந்து மட்டுமே பயன்படுத்தப்பட வேண்டும், மேலும் இது குறுக்கீடுகள் அல்லது டைமர்களிடமிருந்து பயன்படுத்தப்படக்கூடாது. பெறப்பட்ட கட்டளைக்கு பதிலளிக்கும் விதமாக குறியீடு ஒரு sendf () ஐ வழங்க தேவையில்லை, இது sendf () எத்தனை முறை செயல்படுத்தப்படலாம் என்பதில் மட்டுப்படுத்தப்படவில்லை, மேலும் இது ஒரு பணி கையாளுபவரிடமிருந்து எந்த நேரத்திலும் Sendf () ஐ அழைக்கலாம்.</p>
+<h4 id="_3">வெளியீட்டு பதில்கள்<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>பிழைத்திருத்தத்தை எளிமைப்படுத்த, ஒரு வெளியீடு () சி செயல்பாடும் உள்ளது. உதாரணமாக:</p>
+<div class="highlight"><pre><span></span><code>வெளியீடு (&quot; %u இன் மதிப்பு %s அளவு %u உடன் %s.&quot;, ஃச், buf, buf_len);
+</code></pre></div>
+
+<p>வெளியீடு () செயல்பாடு அச்சுப்பொறிக்கு () பயன்பாட்டில் ஒத்திருக்கிறது - இது மனித நுகர்வுக்கு தன்னிச்சையான செய்திகளை உருவாக்கி வடிவமைக்கும் நோக்கம் கொண்டது.</p>
+<h3 id="_4">கணக்கீடுகளை அறிவித்தல்<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>மைக்ரோ-கான்ரோடோலர் முழு எண்களாக கையாளும் அளவுருக்களுக்கு சரம் அடையாளங்காட்டிகளைப் பயன்படுத்த புரவலன் குறியீட்டை கணக்கிடுகிறது. அவை மைக்ரோ -கன்ட்ரோலர் குறியீட்டில் அறிவிக்கப்படுகின்றன - எடுத்துக்காட்டாக:</p>
+<div class="highlight"><pre><span></span><code>Decal_enumeration (&quot;SPI_BUS&quot;, &quot;SPI&quot;, 0);
+
+ Dect_enumary_range (&quot;முள்&quot;, &quot;PC0&quot;, 16, 8);
+</code></pre></div>
+
+<p>முதல் எடுத்துக்காட்டு என்றால், "SPI_BUS" இன் அளவுரு பெயருடன் அல்லது "_SPI_BUS" என்ற பின்னொட்டுடன் எந்த கட்டளை/மறுமொழி செய்திக்கான ஒரு கணக்கீட்டை Dect_enumeration () மேக்ரோ வரையறுக்கிறது. அந்த அளவுருக்களுக்கு "SPI" என்ற சரம் செல்லுபடியாகும் மதிப்பு மற்றும் அது பூச்சியத்தின் முழு மதிப்புடன் கடத்தப்படும்.</p>
+<p>ஒரு கணக்கீட்டு வரம்பை அறிவிக்க முடியும். இரண்டாவது எடுத்துக்காட்டில், ஒரு "முள்" அளவுரு (அல்லது "_pin" என்ற பின்னொட்டுடன் கூடிய எந்த அளவுருவும்) பிசி 0, பிசி 1, பிசி 2, ..., பிசி 7 ஐ சரியான மதிப்புகளாக ஏற்றுக் கொள்ளும். 16, 17, 18, ..., 23 எண்களுடன் சரங்கள் அனுப்பப்படும்.</p>
+<h3 id="_5">மாறிலிகளை அறிவித்தல்<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>மாறிலிகளையும் ஏற்றுமதி செய்யலாம். உதாரணமாக, பின்வருபவை:</p>
+<div class="highlight"><pre><span></span><code>Dect_constant (&quot;சீரியல்_பாட்&quot;, 250000);
+</code></pre></div>
+
+<p>மைக்ரோ-கன்ட்ரோலரிலிருந்து ஓச்டுக்கு 250000 மதிப்புடன் "சீரியல்_பாட்" என்ற பெயரில் நிலையான ஏற்றுமதி செய்யும். ஒரு சரம் என்று ஒரு மாறிலியை அறிவிக்க முடியும் - எடுத்துக்காட்டாக:</p>
+<div class="highlight"><pre><span></span><code>Dec_constant_str (&quot;MCU&quot;, &quot;prru&quot;);
+</code></pre></div>
+
+<h2 id="_6">குறைந்த அளவிலான செய்தி குறியாக்கம்<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>மேலே உள்ள RPC பொறிமுறையை நிறைவேற்ற, ஒவ்வொரு கட்டளையும் பதிலும் பரிமாற்றத்திற்கான பைனரி வடிவத்தில் குறியாக்கம் செய்யப்படுகிறது. இந்த பிரிவு பரிமாற்ற அமைப்பை விவரிக்கிறது.</p>
+<h3 id="_7">செய்தி தொகுதிகள்<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>ஓச்டிலிருந்து மைக்ரோ-கன்ட்ரோலருக்கு அனுப்பப்பட்ட அனைத்து தரவும் "செய்தி தொகுதிகள்" இல் உள்ளன. ஒரு செய்தி தொகுதிக்கு இரண்டு பைட் தலைப்பு மற்றும் மூன்று பைட் டிரெய்லர் உள்ளது. ஒரு செய்தித் தொகுதியின் வடிவம்:</p>
+<div class="highlight"><pre><span></span><code>&lt;1 பைட் நீளம்&gt; &lt;1 பைட் வரிசை&gt; &lt;n-பைட் உள்ளடக்கம்&gt; &lt;2 பைட் சி.ஆர்.சி&gt; &lt;1 பைட் ஒத்திசைவு&gt;
+</code></pre></div>
+
+<p>நீள பைட் தலைப்பு மற்றும் டிரெய்லர் பைட்டுகள் உள்ளிட்ட செய்தித் தொகுதியில் உள்ள பைட்டுகளின் எண்ணிக்கையைக் கொண்டுள்ளது (இதனால் குறைந்தபட்ச செய்தி நீளம் 5 பைட்டுகள்). அதிகபட்ச செய்தி தொகுதி நீளம் தற்போது 64 பைட்டுகள். வரிசை பைட் குறைந்த-வரிசை பிட்களில் 4 பிட் வரிசை எண்ணைக் கொண்டுள்ளது மற்றும் உயர்-வரிசை பிட்களில் எப்போதும் 0x10 உள்ளது (உயர்-வரிசை பிட்கள் எதிர்கால பயன்பாட்டிற்காக ஒதுக்கப்பட்டுள்ளன). உள்ளடக்க பைட்டுகள் தன்னிச்சையான தரவைக் கொண்டிருக்கின்றன மற்றும் அதன் வடிவம் பின்வரும் பிரிவில் விவரிக்கப்பட்டுள்ளது. சி.ஆர்.சி பைட்டுகளில் 16 பிட் சி.சி.ஐ.டி [சி.ஆர்.சி] (<a href="https://en.wikipedia.org/wiki/cyclic_redundancy_check">https://en.wikipedia.org/wiki/cyclic_redundancy_check</a>) தலைப்பு பைட்டுகள் உட்பட, ஆனால் டிரெய்லர் பைட்டுகளைத் தவிர்த்து உள்ளது. ஒத்திசைவு பைட் 0x7e ஆகும்.</p>
+<p>செய்தித் தொகுதியின் வடிவம் [HDLC] (<a href="https://en.wikipedia.org/wiki/high-level_data_link_control">https://en.wikipedia.org/wiki/high-level_data_link_control</a>) செய்தி பிரேம்களால் ஈர்க்கப்பட்டுள்ளது. எச்.டி.எல்.சியைப் போலவே, செய்தித் தொகுதியும் விருப்பமாக தொகுதியின் தொடக்கத்தில் கூடுதல் ஒத்திசைவு எழுத்தை கொண்டிருக்கலாம். எச்.டி.எல்.சியைப் போலல்லாமல், ஒரு ஒத்திசைவு எழுத்து ஃப்ரேமிங்கிற்கு பிரத்யேகமானது அல்ல, மேலும் செய்தி தொகுதி உள்ளடக்கத்தில் இருக்கலாம்.</p>
+<h3 id="_8">செய்தி தொகுதி உள்ளடக்கங்கள்<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>ஓச்டிலிருந்து மைக்ரோ-கன்ட்ரோலருக்கு அனுப்பப்பட்ட ஒவ்வொரு செய்தித் தொகுதியிலும் அதன் உள்ளடக்கங்களில் தொடர்ச்சியான பூச்சியம் அல்லது அதற்கு மேற்பட்ட செய்தி கட்டளைகள் உள்ளன. ஒவ்வொரு கட்டளையும் [மாறி நீள அளவு] (#மாறி-நீள-அளவு) (VLQ) குறியிடப்பட்ட முழு எண் கட்டளை-ஐடி உடன் தொடங்குகிறது, அதைத் தொடர்ந்து கொடுக்கப்பட்ட கட்டளைக்கு பூச்சியம் அல்லது அதற்கு மேற்பட்ட VLQ அளவுருக்கள் உள்ளன.</p>
+<p>உதாரணமாக, பின்வரும் நான்கு கட்டளைகள் ஒரு செய்தித் தொகுதியில் வைக்கப்படலாம்:</p>
+<div class="highlight"><pre><span></span><code>Update_digital_out oid = 6 மதிப்பு = 1
+ Update_digital_out oid = 5 மதிப்பு = 0
+ get_config
+ get_clock
+</code></pre></div>
+
+<p>மற்றும் பின்வரும் எட்டு VLQ முழு எண்களில் குறியாக்கம் செய்யப்பட்டுள்ளது:</p>
+<div class="highlight"><pre><span></span><code>&lt;id_update_digital_out&gt; &lt;6&gt; &lt;1&gt; &lt;id_update_digital_out&gt; &lt;5&gt; &lt;0&gt; &lt;disget_config&gt; &lt;id_get_clock&gt;
+</code></pre></div>
+
+<p>செய்தி உள்ளடக்கங்களை குறியாக்கம் மற்றும் அலசுவதற்கு, புரவலன் மற்றும் மைக்ரோ-கன்ட்ரோலர் இரண்டும் கட்டளை ஐடிகள் மற்றும் ஒவ்வொரு கட்டளைக்கும் உள்ள அளவுருக்களின் எண்ணிக்கையை ஏற்றுக்கொள்ள வேண்டும். எனவே, மேலே உள்ள எடுத்துக்காட்டில், புரவலன் மற்றும் மைக்ரோ-கன்ட்ரோலர் இருவரும் "ID_UPDATE_DIGITAL_OUT" எப்போதும் இரண்டு அளவுருக்கள் பின்பற்றப்படுகிறார்கள், மற்றும் "ID_GET_CONFIG" மற்றும் "ID_GET_CLOCK" ஆகியவை சுழிய அளவுருக்களைக் கொண்டுள்ளன என்பதை அறிவார்கள். புரவலன் மற்றும் மைக்ரோ-கன்ட்ரோலர் கட்டளை விளக்கங்களை (எ.கா. தரவை செயலாக்கும்போது, கொடுக்கப்பட்ட கட்டளை ஐடியைத் தொடர்ந்து ஒரு குறிப்பிட்ட எண்ணிக்கையிலான VLQ குறியிடப்பட்ட அளவுருக்களை எதிர்பார்க்கலாம்.</p>
+<p>மைக்ரோ-கன்ட்ரோலரிலிருந்து புரவலன் செய்ய அனுப்பப்பட்ட தொகுதிகளுக்கான செய்தி உள்ளடக்கங்கள் அதே வடிவமைப்பைப் பின்பற்றுகின்றன. இந்த செய்திகளில் உள்ள அடையாளங்காட்டிகள் "மறுமொழி ஐடிகள்", ஆனால் அவை ஒரே நோக்கத்திற்காக பணி செய்கின்றன, அதே குறியாக்க விதிகளைப் பின்பற்றுகின்றன. நடைமுறையில், மைக்ரோ-கன்ட்ரோலரிலிருந்து ஓச்டுக்கு அனுப்பப்பட்ட செய்தி தொகுதிகள் ஒருபோதும் செய்தி தொகுதி உள்ளடக்கங்களில் ஒன்றுக்கு மேற்பட்ட பதில்களைக் கொண்டிருக்கவில்லை.</p>
+<h4 id="_9">மாறி நீள அளவுகள்<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>VLQ குறியிடப்பட்ட முழு எண்களின் பொதுவான வடிவம் குறித்த கூடுதல் தகவலுக்கு [விக்கிபீடியா கட்டுரை] (<a href="https://en.wikipedia.org/wiki/variable-">https://en.wikipedia.org/wiki/variable-</a> நீளம்_ குவாண்டிட்டி) ஐப் பார்க்கவும். நேர்மறை மற்றும் எதிர்மறை முழு எண்களை ஆதரிக்கும் ஒரு குறியாக்க திட்டத்தை கிளிப்பர் பயன்படுத்துகிறது. பூச்சியத்திற்கு நெருக்கமான முழு எண்கள் குறியாக்க குறைந்த பைட்டுகளைப் பயன்படுத்துகின்றன மற்றும் நேர்மறை முழு எண்கள் பொதுவாக எதிர்மறை முழு எண்களைக் காட்டிலும் குறைந்த பைட்டுகளைப் பயன்படுத்தி குறியாக்கம் செய்கின்றன. பின்வரும் அட்டவணை ஒவ்வொரு முழு எண்ணையும் குறியாக்க எடுக்கும் பைட்டுகளின் எண்ணிக்கையைக் காட்டுகிறது:</p>
+<table>
+<thead>
+<tr>
+<th>முழு எண்</th>
+<th>குறியிடப்பட்ட அளவு</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-32 .. 95</td>
+<td>1</td>
+</tr>
+<tr>
+<td>-4096 .. 12287</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-524288 .. 1572863</td>
+<td>3</td>
+</tr>
+<tr>
+<td>-67108864 .. 201326591</td>
+<td>4</td>
+</tr>
+<tr>
+<td>-2147483648 .. 4294967295</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_10">மாறி நீள சரங்கள்<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>மேலே உள்ள குறியாக்க விதிகளுக்கு விதிவிலக்காக, ஒரு கட்டளை அல்லது பதிலுக்கான அளவுரு ஒரு மாறும் சரம் என்றால், அளவுரு ஒரு எளிய VLQ முழு எண்ணாக குறியிடப்படவில்லை. அதற்கு பதிலாக இது ஒரு VLQ குறியிடப்பட்ட முழு எண்ணாக நீளத்தை கடத்துவதன் மூலம் குறியாக்கம் செய்யப்படுகிறது:</p>
+<div class="highlight"><pre><span></span><code>&lt;VLQ குறியிடப்பட்ட நீளம்&gt; &lt;n-பைட் உள்ளடக்கங்கள்&gt;
+</code></pre></div>
+
+<p>தரவு அகராதியில் காணப்படும் கட்டளை விளக்கங்கள் புரவலன் மற்றும் மைக்ரோ-கன்ட்ரோலர் இரண்டையும் எந்த கட்டளை அளவுருக்கள் எளிய VLQ குறியாக்கத்தைப் பயன்படுத்துகின்றன என்பதையும், எந்த அளவுருக்கள் சரம் குறியாக்கத்தைப் பயன்படுத்துகின்றன என்பதையும் அறிய அனுமதிக்கின்றன.</p>
+<h2 id="_11">தரவு அகராதி<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>மைக்ரோ-கன்ட்ரோலருக்கும் ஓச்டுக்கும் இடையில் அர்த்தமுள்ள தகவல்தொடர்புகள் நிறுவப்படுவதற்கு, இரு தரப்பினரும் "தரவு அகராதியை" ஏற்றுக்கொள்ள வேண்டும். இந்த தரவு அகராதியில் அவற்றின் விளக்கங்களுடன் கட்டளைகள் மற்றும் பதில்களுக்கான முழு எண் அடையாளங்காட்டிகள் உள்ளன.</p>
+<p>தரவு அகராதியை உருவாக்க மைக்ரோ-கட்டுப்பாட்டு உருவாக்கம் டெக்_ கமாண்ட் () மற்றும் செண்ட்ஃப் () மேக்ரோக்களின் உள்ளடக்கங்களைப் பயன்படுத்துகிறது. ஒவ்வொரு கட்டளை மற்றும் பதிலுக்கும் தனித்துவமான அடையாளங்காட்டிகளை உருவாக்குவது தானாகவே ஒதுக்குகிறது. இந்த அமைப்பு புரவலன் மற்றும் மைக்ரோ-கன்ட்ரோலர் குறியீடு இரண்டையும் குறைந்தபட்ச அலைவரிசையைப் பயன்படுத்தும் போது விளக்கமான மனித-படிக்கக்கூடிய பெயர்களைப் பயன்படுத்த அனுமதிக்கிறது.</p>
+<p>புரவலன் தரவு அகராதியை முதலில் மைக்ரோ-கன்ட்ரோலருடன் இணைக்கும்போது வினவுகிறது. மைக்ரோ-கன்ட்ரோலரிடமிருந்து தரவு அகராதியை புரவலன் பதிவிறக்கம் செய்தவுடன், எல்லா கட்டளைகளையும் குறியாக்கவும், மைக்ரோ-கன்ட்ரோலரிலிருந்து அனைத்து பதில்களையும் அலசவும் அந்த தரவு அகராதியைப் பயன்படுத்துகிறது. எனவே புரவலன் ஒரு மாறும் தரவு அகராதியைக் கையாள வேண்டும். இருப்பினும், மைக்ரோ-கன்ட்ரோலர் மென்பொருளை எளிமையாக வைத்திருக்க, மைக்ரோ-கன்ட்ரோலர் எப்போதும் அதன் நிலையான (தொகுக்கப்பட்ட) தரவு அகராதியைப் பயன்படுத்துகிறது.</p>
+<p>மைக்ரோ-கன்ட்ரோலருக்கு "அடையாளம் காணுங்கள்" கட்டளைகளை அனுப்புவதன் மூலம் தரவு அகராதி வினவப்படுகிறது. மைக்ரோ-கன்ட்ரோலர் ஒவ்வொரு அடையாள கட்டளைக்கும் "அடையாளம்_ ரெச்போன்ச்" செய்தியுடன் பதிலளிக்கும். தரவு அகராதியைப் பெறுவதற்கு முன்னர் இந்த இரண்டு கட்டளைகளும் தேவைப்படுவதால், அவற்றின் முழு எண் ஐடிகள் மற்றும் அளவுரு வகைகள் மைக்ரோ-கன்ட்ரோலர் மற்றும் புரவலன் இரண்டிலும் கடின குறியீட்டு செய்யப்பட்டுள்ளன. "அடையாளம்_ரெச்போன்ச்" மறுமொழி ஐடி 0, "அடையாளம்" கட்டளை ஐடி 1 ஆகும். கடின குறியீட்டு ஐடிகளைத் தவிர்த்து அடையாளம் காணும் கட்டளை மற்றும் அதன் பதில் பிற கட்டளைகள் மற்றும் பதில்களைப் போலவே அறிவிக்கப்பட்டு அனுப்பப்படுகிறது. வேறு எந்த கட்டளை அல்லது பதிலும் கடின குறியீட்டு அல்ல.</p>
+<p>கடத்தப்பட்ட தரவு அகராதியின் வடிவம் ஒரு ச்லிப் சுருக்கப்பட்ட சாதொபொகு சரம் ஆகும். மைக்ரோ-கட்டுப்பாட்டு உருவாக்க செயல்முறை சரத்தை உருவாக்கி, அதை சுருக்கி, மைக்ரோ-கன்ட்ரோலர் ஃபிளாச் உரை பிரிவில் சேமிக்கிறது. தரவு அகராதி அதிகபட்ச செய்தி தொகுதி அளவை விட மிகப் பெரியதாக இருக்கும் - தரவு அகராதியின் முற்போக்கான பகுதிகளைக் கோரும் பல அடையாள கட்டளைகளை அனுப்புவதன் மூலம் புரவலன் அதை பதிவிறக்குகிறது. அனைத்து துகள்களும் பெறப்பட்டவுடன், புரவலன் துகள்களைக் கூட்டி, தரவைத் துண்டிக்கும், மற்றும் உள்ளடக்கங்களை அலசும்.</p>
+<p>தகவல்தொடர்பு நெறிமுறை பற்றிய தகவல்களுக்கு மேலதிகமாக, தரவு அகராதியில் மென்பொருள் பதிப்பு, கணக்கீடுகள் (டெக்_எனமரேசனால் வரையறுக்கப்பட்டுள்ளபடி) மற்றும் மாறிலிகள் (டெக்_கான்ட்ர்ட்டால் வரையறுக்கப்பட்டவை) ஆகியவை உள்ளன.</p>
+<h2 id="_12">செய்தி ஓட்டம்<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>ஓச்டிலிருந்து மைக்ரோ-கன்ட்ரோலருக்கு அனுப்பப்பட்ட செய்தி கட்டளைகள் பிழையில்லாமல் இருக்க வேண்டும். கட்டளைகள் துல்லியமானவை மற்றும் ஒழுங்காக இருப்பதை உறுதிசெய்ய ஒவ்வொரு செய்தித் தொகுதியிலும் உள்ள சி.ஆர்.சி மற்றும் வரிசை எண்களை மைக்ரோ-கன்ட்ரோலர் சரிபார்க்கிறது. மைக்ரோ-கன்ட்ரோலர் எப்போதுமே செய்தித் தொகுதிகளை-வரிசையில் செயலாக்குகிறார்-அது ஒரு தொகுதியை வெளியேற்றினால், அது சரியான வரிசைமுறையுடன் தொகுதிகள் பெறும் வரை அதை நிராகரிக்கும்.</p>
+<p>குறைந்த-நிலை புரவலன் குறியீடு மைக்ரோ-கன்ட்ரோலருக்கு அனுப்பப்பட்ட இழந்த மற்றும் ஊழல் செய்தி தொகுதிகளுக்கான தானியங்கி மறுசீரமைப்பு முறையை செயல்படுத்துகிறது. இதை எளிதாக்க, மைக்ரோ-கன்ட்ரோலர் ஒவ்வொரு வெற்றிகரமாக பெறப்பட்ட செய்தித் தொகுதியிலும் ஒரு "ACK செய்தி தொகுதியை" கடத்துகிறது. ஒவ்வொரு தொகுதியையும் அனுப்பிய பின் புரவலன் ஒரு காலக்கெடுவை திட்டமிடுகிறது, மேலும் அதனுடன் தொடர்புடைய "ACK" ஐப் பெறாமல் நேரம் முடிந்தது. கூடுதலாக, மைக்ரோ-கன்ட்ரோலர் ஒரு ஊழல் அல்லது ஆர்டர்-க்கு வெளியே உள்ள தொகுதியைக் கண்டறிந்தால், அது விரைவான மறுசீரமைப்பை எளிதாக்க ஒரு "NAK செய்தி தொகுதி" ஐ அனுப்பக்கூடும்.</p>
+<p>ஒரு "ACK" என்பது வெற்று உள்ளடக்கம் (அதாவது, 5 பைட் செய்தி தொகுதி) மற்றும் கடைசியாக பெறப்பட்ட புரவலன் வரிசை எண்ணை விட அதிகமான வரிசை எண். "NAK" என்பது வெற்று உள்ளடக்கம் மற்றும் கடைசியாக பெறப்பட்ட புரவலன் வரிசை எண்ணை விட குறைவான வரிசை எண்.</p>
+<p>நெறிமுறை ஒரு "சாளரம்" பரிமாற்ற அமைப்பை எளிதாக்குகிறது, இதன்மூலம் ஓச்டுக்கு ஒரு நேரத்தில் விமானத்தில் பல சிறந்த செய்தி தொகுதிகள் இருக்க முடியும். (இது கொடுக்கப்பட்ட செய்தித் தொகுதியில் இருக்கக்கூடிய பல கட்டளைகளுக்கு கூடுதலாக உள்ளது.) இது பரிமாற்ற நேரந்தவறுகை ஏற்பட்டால் கூட அதிகபட்ச அலைவரிசை பயன்பாட்டை அனுமதிக்கிறது. [TCP] (<a href="https://en.wikipedia.org/wiki/transmission_control_protocol">https://en.wikipedia.org/wiki/transmission_control_protocol</a>) இல் உள்ள ஒத்த வழிமுறைகளால் காலக்கெடு, ரெட்ரான்ச்மிட், சாளரம் மற்றும் ஏ.சி.கே.</p>
+<p>மற்ற திசையில், மைக்ரோ-கன்ட்ரோலரிலிருந்து ஓச்டுக்கு அனுப்பப்பட்ட செய்தி தொகுதிகள் பிழையில்லாமல் வடிவமைக்கப்பட்டுள்ளன, ஆனால் அவை உறுதியான பரிமாற்றத்தை கொண்டிருக்கவில்லை. (பதில்கள் ஊழல் நிறைந்ததாக இருக்கக்கூடாது, ஆனால் அவை காணாமல் போகக்கூடும்.) மைக்ரோ-கன்ட்ரோலரில் செயல்படுத்துவதை எளிமையாக வைத்திருக்க இது செய்யப்படுகிறது. பதில்களுக்கான தானியங்கி மறுபயன்பாட்டு அமைப்பு எதுவும் இல்லை-உயர் மட்ட குறியீடு அவ்வப்போது காணாமல் போன பதிலைக் கையாளும் திறன் கொண்டதாக இருக்கும் என்று எதிர்பார்க்கப்படுகிறது (வழக்கமாக உள்ளடக்கத்தை மீண்டும் கோருவதன் மூலம் அல்லது மறுமொழி பரிமாற்றத்தின் தொடர்ச்சியான அட்டவணையை அமைப்பதன் மூலம்). ஓச்டுக்கு அனுப்பப்பட்ட செய்தி தொகுதிகளில் உள்ள வரிசை எண் புலம் எப்போதும் ஓச்டிலிருந்து பெறப்பட்ட செய்தித் தொகுதிகளின் கடைசியாக பெறப்பட்ட வரிசை எண்ணிக்கையை விட அதிகமாகும். மறுமொழி செய்தி தொகுதிகளின் காட்சிகளைக் கண்காணிக்க இது பயன்படுத்தப்படவில்லை.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

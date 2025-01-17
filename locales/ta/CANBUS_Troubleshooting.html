@@ -1,0 +1,1491 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>கான்பச் சரிசெய்தல் - Klipper documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_klipper3d/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-VEN1PGNQL4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-VEN1PGNQL4",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEN1PGNQL4"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Klipper documentation" class="md-header__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Klipper documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              கான்பச் சரிசெய்தல்
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2 0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh/" hreflang="zh" class="md-select__link">
+                    简体中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/zh-Hant/" hreflang="zh-Hant" class="md-select__link">
+                    繁體中文
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/hu/" hreflang="hu" class="md-select__link">
+                    Magyar
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/it/" hreflang="it" class="md-select__link">
+                    Italiano
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/fr/" hreflang="fr" class="md-select__link">
+                    Français
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Klipper documentation" class="md-nav__button md-logo" aria-label="Klipper documentation" data-md-component="logo">
+      
+  <img src="../../img/klipper.svg" alt="logo">
+
+    </a>
+    Klipper documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Klipper3d/klipper/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Klipper3d/klipper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Overview.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Features.html" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ.html" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Releases.html" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Changes.html" class="md-nav__link">
+        Configuration Changes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contact.html" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Installation and Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation and Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Installation and Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation.html" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OctoPrint.html" class="md-nav__link">
+        OctoPrint for Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Configuration Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_Reference.html" class="md-nav__link">
+        Configuration reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rotation_Distance.html" class="md-nav__link">
+        Rotation distance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Config_checks.html" class="md-nav__link">
+        Configuration checks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Bed Level
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bed Level" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Bed Level
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Level.html" class="md-nav__link">
+        Bed leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Delta_Calibrate.html" class="md-nav__link">
+        Delta calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probe_Calibrate.html" class="md-nav__link">
+        Probe calibration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BLTouch.html" class="md-nav__link">
+        BL-Touch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Manual_Level.html" class="md-nav__link">
+        Manual leveling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bed_Mesh.html" class="md-nav__link">
+        Bed Mesh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Endstop_Phase.html" class="md-nav__link">
+        Endstop phase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Axis_Twist_Compensation.html" class="md-nav__link">
+        Axis Twist Compensation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_5" type="checkbox" id="__nav_7_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_5">
+          Resonance Compensation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resonance Compensation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_5">
+          <span class="md-nav__icon md-icon"></span>
+          Resonance Compensation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Resonance_Compensation.html" class="md-nav__link">
+        Resonance Compensation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Measuring_Resonances.html" class="md-nav__link">
+        Measuring Resonances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pressure_Advance.html" class="md-nav__link">
+        Pressure advance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../G-Codes.html" class="md-nav__link">
+        G-Codes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" type="checkbox" id="__nav_7_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Command templates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Command templates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Command templates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Command_Templates.html" class="md-nav__link">
+        Commands templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Status_Reference.html" class="md-nav__link">
+        Status reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TMC_Drivers.html" class="md-nav__link">
+        TMC drivers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Multi_MCU_Homing.html" class="md-nav__link">
+        Multiple Micro-controller Homing and Probing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Slicers.html" class="md-nav__link">
+        Slicers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Skew_Correction.html" class="md-nav__link">
+        Skew correction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exclude_Object.html" class="md-nav__link">
+        Exclude Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Using_PWM_Tools.html" class="md-nav__link">
+        Using PWM tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Developer Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Code_Overview.html" class="md-nav__link">
+        Code overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kinematics.html" class="md-nav__link">
+        Kinematics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Protocol.html" class="md-nav__link">
+        Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API_Server.html" class="md-nav__link">
+        API server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MCU_Commands.html" class="md-nav__link">
+        MCU commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_protocol.html" class="md-nav__link">
+        CANBUS protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Debugging.html" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Benchmarks.html" class="md-nav__link">
+        Benchmarks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING.html" class="md-nav__link">
+        Contributing to Klipper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Packaging.html" class="md-nav__link">
+        Packaging Klipper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Device Specific Documents
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Device Specific Documents" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Device Specific Documents
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example_Configs.html" class="md-nav__link">
+        Example configurations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDCard_Updates.html" class="md-nav__link">
+        SDCard updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RPi_microcontroller.html" class="md-nav__link">
+        RPi microcontroller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Beaglebone.html" class="md-nav__link">
+        Beaglebone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloaders.html" class="md-nav__link">
+        Bootloaders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bootloader_Entry.html" class="md-nav__link">
+        Bootloader Entry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS.html" class="md-nav__link">
+        CANBUS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CANBUS_Troubleshooting.html" class="md-nav__link">
+        CANBUS Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSL1401CL_Filament_Width_Sensor.html" class="md-nav__link">
+        TSL1401CL filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Hall_Filament_Width_Sensor.html" class="md-nav__link">
+        Hall filament width sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Eddy_Probe.html" class="md-nav__link">
+        Eddy Current Inductive probe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    பச் வயரிங் செய்யலாம்
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bytes_invalid" class="md-nav__link">
+    BYTES_INVALID கவுண்டரை அதிகரிக்க சரிபார்க்கவும்
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#txquealen" class="md-nav__link">
+    பொருத்தமான txquealen அமைப்பைப் பயன்படுத்தவும்
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    கேண்டம்ப் பதிவுகளைப் பெறுதல்
+  </a>
+  
+    <nav class="md-nav" aria-label="கேண்டம்ப் பதிவுகளைப் பெறுதல்">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    கேண்டம்ப் பதிவில் கிளிப்பர் செய்திகளை பாகுபடுத்துதல்
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    கான்பச் வயரிங் மீது ஒரு வழக்கு பகுப்பாய்வியைப் பயன்படுத்துதல்
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/locales/ta/CANBUS_Troubleshooting.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="_1">கான்பச் சரிசெய்தல்<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>இந்த ஆவணம் [கேன் பச்) (CANBUS.MD) ஐப் பயன்படுத்தும் போது தகவல்தொடர்பு சிக்கல்களை சரிசெய்தல் பற்றிய தகவல்களை வழங்குகிறது.</p>
+<h2 id="_2">பச் வயரிங் செய்யலாம்<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>தகவல்தொடர்பு சிக்கல்களை சரிசெய்வதற்கான முதல் படி கேன் பச் வயரிங் சரிபார்க்க வேண்டும்.</p>
+<p>Be sure there are exactly two 120 Ohm <a href="CANBUS.html#terminating-resistors">terminating
+resistors</a> on the CAN bus. If the resistors are not properly installed then messages may not be able to be sent at all or the connection may have sporadic instability.</p>
+<p>CAN மற்றும் CANL BUS வயரிங் ஒருவருக்கொருவர் முறுக்க வேண்டும். குறைந்தபட்சம், வயரிங் ஒவ்வொரு சில சென்டிமீட்டருக்கும் ஒரு திருப்பத்தைக் கொண்டிருக்க வேண்டும். பவர் கம்பிகளைச் சுற்றி கேன் மற்றும் கேன்ல் வயரிங் முறுக்குவதைத் தவிர்த்து, கேன் மற்றும் கேன்ல் கம்பிகளுக்கு இணையாக பயணிக்கும் பவர் கம்பிகள் அதே அளவு திருப்பங்களைக் கொண்டிருக்கவில்லை என்பதை உறுதிப்படுத்தவும்.</p>
+<p>கேன் பச் வயரிங் இல் உள்ள அனைத்து செருகிகளும் கம்பி கிரிம்ப்களும் முழுமையாகப் பாதுகாக்கப்பட்டுள்ளனவா என்பதை சரிபார்க்கவும். அச்சுப்பொறி கருவியின் இயக்கம் பச் வயரிங் ஒரு மோசமான கம்பி கிரிம்ப் அல்லது பாதுகாப்பற்ற பிளக் இடைப்பட்ட தகவல்தொடர்பு பிழைகள் ஏற்படக்கூடும்.</p>
+<h2 id="bytes_invalid">BYTES_INVALID கவுண்டரை அதிகரிக்க சரிபார்க்கவும்<a class="headerlink" href="#bytes_invalid" title="Permanent link">&para;</a></h2>
+<p>அச்சுப்பொறி செயலில் இருக்கும்போது ஒரு நொடிக்கு ஒரு முறை <code>புள்ளிவிவரங்கள்</code> வரியை கிளிப்பர் பதிவு கோப்பு புகாரளிக்கும். இந்த "புள்ளிவிவரங்கள்" வரிகள் ஒவ்வொரு மைக்ரோ-கன்ட்ரோலருக்கும் <code>பைட்டுகள்_இன் வாலிட்</code> கவுண்டரைக் கொண்டிருக்கும். சாதாரண அச்சுப்பொறி செயல்பாட்டின் போது இந்த கவுண்டர் அதிகரிக்கக்கூடாது (மறுதொடக்கத்திற்குப் பிறகு கவுண்டர் பூச்சியமற்றவராக இருப்பது இயல்பானது, மேலும் கவுண்டர் ஒரு மாதத்திற்கு ஒரு முறை அல்லது அதற்கு மேல் அதிகரித்தால் அது கவலைக்குரியது அல்ல). சாதாரண அச்சிடலின் போது இந்த கவுண்டர் கேன் பச் மைக்ரோ-கன்ட்ரோலரில் அதிகரித்தால் (இது ஒவ்வொரு சில மணிநேரங்களுக்கும் அல்லது அடிக்கடி அதிகரிக்கிறது), இது கடுமையான பிரச்சினையின் அறிகுறியாகும்.</p>
+<p>கேன் பச் இணைப்பில் <code>bytes_invalid</code> ஐ அதிகரிப்பது கேன் பச்சில் மறுவரிசைப்படுத்தப்பட்ட செய்திகளின் அறிகுறியாகும். மறுவரிசைப்படுத்தப்பட்ட செய்திகளுக்கு இரண்டு அறியப்பட்ட காரணங்கள் உள்ளன:</p>
+<ol>
+<li>யூ.எச்.பி க்கான பிரபலமான மெழுகுவர்த்தி_பார்ம்வேரின் பழைய பதிப்புகள் அடாப்டர்களில் மறுவரிசைப்படுத்தப்பட்ட செய்திகளை ஏற்படுத்தக்கூடிய ஒரு பிழை இருந்தது. ஒரு யூ.எச்.பி பயன்படுத்தினால் இந்த ஃபார்ம்வேரை இயக்கும் அடாப்டர் முடியும் என்றால், <code>bytes_invalid</code> ஐ அதிகரிப்பதாக இருந்தால் அண்மைக் கால ஃபார்ம்வேரைப் புதுப்பிக்க உறுதிசெய்க.</li>
+<li>உட்பொதிக்கப்பட்ட சாதனங்களுக்கான சில லினக்ச் கர்னல் கட்டமைப்புகள் பச் செய்திகளை மறுவரிசைப்படுத்துகின்றன. மாற்று லினக்ச் கர்னலைப் பயன்படுத்துவது அல்லது இந்த சிக்கலை வெளிப்படுத்தாத முதன்மையான லினக்ச் கர்னல்களை ஆதரிக்கும் மாற்று வன்பொருளைப் பயன்படுத்துவது அவசியமாக இருக்கலாம்.</li>
+</ol>
+<p>மறுவரிசைப்படுத்தப்பட்ட செய்திகள் ஒரு கடுமையான சிக்கல், அது சரி செய்யப்பட வேண்டும். இது நிலையற்ற நடத்தைக்கு வழிவகுக்கும் மற்றும் அச்சின் எந்தப் பகுதியிலும் குழப்பமான பிழைகள் வழிவகுக்கும்.</p>
+<h2 id="txquealen">பொருத்தமான txquealen அமைப்பைப் பயன்படுத்தவும்<a class="headerlink" href="#txquealen" title="Permanent link">&para;</a></h2>
+<p>பச் போக்குவரத்தை நிர்வகிக்க கிளிப்பர் குறியீடு லினக்ச் கர்னலைப் பயன்படுத்துகிறது. இயல்பாக, கர்னல் வரிசையில் 10 மட்டுமே பாக்கெட்டுகளை அனுப்ப முடியும். அந்த அளவை அதிகரிக்க [CAN0 சாதனத்தை] (CANBUS.MD#ஓச்ட்-ஆர்ட்வேர்) <code>TxQuealen 128</code> உடன் கட்டமைக்க பரிந்துரைக்கப்படுகிறது.</p>
+<p>கிளிப்பர் ஒரு பாக்கெட்டை அனுப்பி, லினக்ச் அதன் டிரான்ச்மிட் வரிசை இடத்தை நிரப்பியிருந்தால், லினக்ச் அந்த பாக்கெட்டை கைவிடுகிறது, மேலும் பின்வருவனவற்றைப் போன்ற செய்திகள் கிளிப்பர் பதிவில் தோன்றும்:</p>
+<div class="highlight"><pre><span></span><code>பிழை -1 இல் எழுத முடியும்: (105) இடையக இடம் கிடைக்கவில்லை
+</code></pre></div>
+
+<p>கிளிப்பர் அதன் சாதாரண பயன்பாட்டு நிலை செய்தி ரெட்ரான்ச்மிட் அமைப்பின் ஒரு பகுதியாக இழந்த செய்திகளை தானாகவே மீண்டும் அனுப்பும். எனவே, இந்த பதிவு செய்தி ஒரு எச்சரிக்கையாகும், மேலும் இது மீட்டெடுக்க முடியாத பிழையைக் குறிக்கவில்லை.</p>
+<p>ஒரு முழுமையான கேன் பச் தோல்வி ஏற்பட்டால் (கேன் கம்பி பிரேக் போன்றவை) பின்னர் லினக்ச் கேன் பச்சில் எந்த செய்திகளையும் அனுப்ப முடியாது, மேலும் மேலே உள்ள செய்தியை கிளிப்பர் பதிவில் கண்டுபிடிப்பது பொதுவானது. இந்த வழக்கில், பதிவு செய்தி ஒரு பெரிய பிரச்சினையின் அறிகுறியாகும் (எந்த செய்திகளையும் கடத்த இயலாமை) மற்றும் இது லினக்ச் <code>TxQuealen</code> உடன் நேரடியாக தொடர்புடையது அல்ல.</p>
+<p>லினக்ச் கட்டளை <code>ஐபி இணைப்பு காட்சி CAN0</code> ஐ இயக்குவதன் மூலம் தற்போதைய வரிசை அளவை ஒருவர் சரிபார்க்கலாம். இது <code>QLEN 128</code> துணுக்கை உட்பட ஒரு சில உரையைப் புகாரளிக்க வேண்டும். <code>QLEN 10</code> போன்ற ஒன்றை ஒருவர் பார்த்தால், CAN சாதனம் சரியாக கட்டமைக்கப்படவில்லை என்பதைக் குறிக்கிறது.</p>
+<p>128 ஐ விட கணிசமாக பெரிய <code>txquealen</code> ஐப் பயன்படுத்த பரிந்துரைக்கப்படவில்லை. 1000000 அதிர்வெண்ணில் இயங்கும் ஒரு பச் பொதுவாக ஒரு கேன் பாக்கெட்டை அனுப்ப 120US ஐ எடுக்கும். இதனால் 128 பாக்கெட்டுகளின் வரிசை வடிகட்ட 15-20 மீட்டர் ஆகும். கணிசமாக பெரிய வரிசை செய்தி சுற்று-பயண நேரத்தில் அதிகப்படியான கூர்முனைகளை ஏற்படுத்தக்கூடும், இது மீட்டெடுக்க முடியாத பிழைகளுக்கு வழிவகுக்கும். மற்றொரு வழி, கிளிப்பரின் பயன்பாட்டு ரெட்ரான்ச்மிட் அமைப்பு லினக்ச் அதிகப்படியான பெரிய வரிசையை வடிகட்ட காத்திருக்க வேண்டியதில்லை என்றால் மிகவும் வலுவானது. இது இணைய ரவுட்டர்களில் [பஃபர் பிளாட்] (<a href="https://en.wikipedia.org/wiki/bufferbloat">https://en.wikipedia.org/wiki/bufferbloat</a>) இன் சிக்கலுக்கு ஒப்பானது.</p>
+<p>சாதாரண சூழ்நிலைகளில் கிளிப்பர் MCU க்கு ~ 25 வரிசை இடங்களைப் பயன்படுத்தலாம் - பொதுவாக மறுபிரவேசங்களின் போது அதிக இடங்களைப் பயன்படுத்துகிறது. . 128 இன் பரிந்துரைக்கப்பட்ட மதிப்புக்கு மேலே. இருப்பினும், மேலே உள்ளபடி, அதிகப்படியான சுற்று-பயண நேர தாமதத்தைத் தவிர்க்க புதிய மதிப்பைத் தேர்ந்தெடுக்கும்போது கவனமாக இருக்க வேண்டும்.</p>
+<h2 id="_3">கேண்டம்ப் பதிவுகளைப் பெறுதல்<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>மைக்ரோ-கன்ட்ரோலருக்கு அனுப்பப்பட்ட மற்றும் அனுப்பப்பட்ட பச் செய்திகள் லினக்ச் கர்னால் கையாளப்படுகின்றன. பிழைத்திருத்த நோக்கங்களுக்காக இந்த செய்திகளை கர்னலில் இருந்து கைப்பற்ற முடியும். இந்த செய்திகளின் பதிவு நோயறிதலில் பயன்படலாம்.</p>
+<p>லினக்ச் [CAN-UTILS] (<a href="https://github.com/linux-can/can-utils">https://github.com/linux-can/can-utils</a>) கருவி பிடிப்பு மென்பொருளை வழங்குகிறது. இது பொதுவாக இயங்குவதன் மூலம் ஒரு கணினியில் நிறுவப்படுகிறது:</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get புதுப்பிப்பு &amp;&amp; sudo apt-get install கேன்-பயன்பாடுகள்
+</code></pre></div>
+
+<p>நிறுவப்பட்டதும், பின்வரும் கட்டளையுடன் ஒரு இடைமுகத்தில் அனைத்து பச் செய்திகளையும் கைப்பற்றலாம்:</p>
+<div class="highlight"><pre><span></span><code>candump -tz -ddex can0,#ffffffff&gt; myCanlog
+</code></pre></div>
+
+<p>கிளிப்பரால் அனுப்பப்பட்ட மற்றும் பெறப்பட்ட ஒவ்வொரு மூல கேன் பச் செய்தியையும் காண, இதன் விளைவாக வரும் பதிவு கோப்பை (<code>மைன்லாக்</code> மேலே உள்ள எடுத்துக்காட்டில்) காணலாம். இந்த செய்திகளின் உள்ளடக்கத்தைப் புரிந்துகொள்வதற்கு கிளிப்பரின் [கான்பச் நெறிமுறை] (Canbus_protocol.md) மற்றும் கிளிப்பரின் [MCU கட்டளைகள்] (MCU_COMMANDS.MD) பற்றிய குறைந்த அளவிலான அறிவு தேவைப்படும்.</p>
+<h3 id="_4">கேண்டம்ப் பதிவில் கிளிப்பர் செய்திகளை பாகுபடுத்துதல்<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>கேண்டம்ப் பதிவில் உள்ள குறைந்த அளவிலான கிளிப்பர் மைக்ரோ-கன்ட்ரோலர் செய்திகளை அலசுவதற்கு ஒருவர் <code>parsecandump.py</code> கருவியைப் பயன்படுத்தலாம். இந்த கருவியைப் பயன்படுத்துவது ஒரு மேம்பட்ட தலைப்பு, இது கிளிப்பர் [MCU கட்டளைகள்] (MCU_COMMANDS.MD) பற்றிய அறிவு தேவைப்படுகிறது. உதாரணமாக:</p>
+<div class="highlight"><pre><span></span><code>./scripts/parsecandump.py mycanlog 108 ./out/klipper.dict
+</code></pre></div>
+
+<p>This tool produces output similar to the <a href="Debugging.html#translating-gcode-files-to-micro-controller-commands">parsedump
+tool</a>. See the documentation for that tool for information on generating the Klipper micro-controller data dictionary.</p>
+<p>In the above example, <code>108</code> is the <a href="CANBUS_protocol.html#micro-controller-id-assignment">CAN bus
+id</a>. It is a hexadecimal number. The id <code>108</code> is assigned by Klipper to the first micro-controller. If the CAN bus has multiple micro-controllers on it, then the second micro-controller would be <code>10a</code>, the third would be <code>10c</code>, and so on.</p>
+<p><code>Parsecandump.py</code> கருவியைப் பயன்படுத்துவதற்காக<code>-tz -ddex</code> கட்டளை -வரி வாதங்களைப் பயன்படுத்தி (எடுத்துக்காட்டாக: <code>candump -tz -ddex can0,#ffffffff</code>) பயன்படுத்தி கேண்டம்ப் பதிவு தயாரிக்கப்பட வேண்டும்.</p>
+<h2 id="_5">கான்பச் வயரிங் மீது ஒரு வழக்கு பகுப்பாய்வியைப் பயன்படுத்துதல்<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>[சிக்ரோக் புல்வெவியூ] (<a href="https://sigrok.org/wiki/pulsyview">https://sigrok.org/wiki/pulsyview</a>) மென்பொருள் குறைந்த வழக்கு [லாசிக் அனலைசர்] (<a href="https://en.wikipedia.org/wiki/logic_analyzer">https://en.wikipedia.org/wiki/logic_analyzer</a>) பச் சிக்னலிங். இது நிபுணர்களுக்கு ஆர்வமாக மட்டுமே இருக்கும் ஒரு மேம்பட்ட தலைப்பு.</p>
+<p>ஒருவர் பெரும்பாலும் "யூ.எச்.பி லாசிக் அனலிசர்களை" $ 15 க்கு கீழ் காணலாம் (2023 வரை அமெரிக்க விலை நிர்ணயம்). இந்த சாதனங்கள் பெரும்பாலும் "சாலே லாசிக் குளோன்கள்" அல்லது "24 மெகா எர்ட்ச் 8 சேனல் யூ.எச்.பி லாசிக் அனலைசர்கள்" என பட்டியலிடப்பட்டுள்ளன.</p>
+<p>!</p>
+<p>"சாலே நகலி" லாசிக் பகுப்பாய்வியுடன் பல்ச்வியூவைப் பயன்படுத்தும் போது மேலே உள்ள படம் எடுக்கப்பட்டது. சிக்ரோக் மற்றும் புல்வெவியூ மென்பொருள் ஒரு டெச்க்டாப் கணினியில் நிறுவப்பட்டது (அது தனித்தனியாக தொகுக்கப்பட்டால் "FX2LAFW" ஃபார்ம்வேரையும் நிறுவவும்). லாசிக் அனலைசரில் உள்ள CH0 முள் CAN RX வரிக்கு அனுப்பப்பட்டது, CH1 முள் CAN TX முள் க்கு கம்பி செய்யப்பட்டது, மற்றும் GND GND க்கு கம்பி செய்யப்பட்டது. D0 மற்றும் D1 வரிகளை (சிவப்பு "ஆய்வு" படவுரு சென்டர் டாப் கருவிப்பட்டி) மட்டுமே காண்பிக்க பல்சேவியூ கட்டமைக்கப்பட்டது. மாதிரிகளின் எண்ணிக்கை 5 மில்லியனாக (சிறந்த கருவிப்பட்டி) அமைக்கப்பட்டது மற்றும் மாதிரி வீதம் 24 மெகா எர்ட்ச் (சிறந்த கருவிப்பட்டி) என அமைக்கப்பட்டது. கேன் டிகோடர் சேர்க்கப்பட்டது (மஞ்சள் மற்றும் பச்சை "குமிழி படவுரு" வலது மேல் கருவிப்பட்டி). டி 0 சேனல் ஆர்எக்ச் என பெயரிடப்பட்டு வீழ்ச்சி விளிம்பில் தூண்டுவதற்கு அமைக்கப்பட்டது (இடதுபுறத்தில் கருப்பு டி 0 லேபிளைக் சொடுக்கு செய்க). டி 1 சேனல் டிஎக்ச் என பெயரிடப்பட்டது (இடதுபுறத்தில் பிரவுன் டி 1 லேபிளைக் சொடுக்கு செய்க). CAN டிகோடர் 1MBIT வீதத்திற்கு கட்டமைக்கப்பட்டது (இடதுபுறத்தில் பச்சை கேன் லேபிளைக் சொடுக்கு செய்க). கேன் டிகோடர் காட்சியின் மேற்பகுதிக்கு நகர்த்தப்பட்டது (கிளிக் செய்து இழுக்க பச்சை கேன் லேபிள்). இறுதியாக, பிடிப்பு தொடங்கப்பட்டது (மேல் இடதுபுறத்தில் "ரன்" என்பதைக் சொடுக்கு செய்க) மற்றும் கேன் பச்சில் ஒரு பாக்கெட் அனுப்பப்பட்டது (<code>கேன்சென்ட் CAN0 123#1212121212</code>).</p>
+<p>லாசிக் அனலைசர் பாக்கெட்டுகளைக் கைப்பற்றுவதற்கும் பிட் நேரத்தை சரிபார்க்கவும் ஒரு சுயாதீன கருவியை வழங்குகிறது.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

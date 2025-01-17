@@ -1328,24 +1328,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requesting-the-bootloader" class="md-nav__link">
-    Requesting the bootloader
+  <a href="#_2" class="md-nav__link">
+    Запрашиваю загрузчик
   </a>
   
-    <nav class="md-nav" aria-label="Requesting the bootloader">
+    <nav class="md-nav" aria-label="Запрашиваю загрузчик">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#virtual-serial" class="md-nav__link">
-    Virtual Serial
+  <a href="#_3" class="md-nav__link">
+    Виртуальный серийный
   </a>
   
-    <nav class="md-nav" aria-label="Virtual Serial">
+    <nav class="md-nav" aria-label="Виртуальный серийный">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#python-with-flash_usb" class="md-nav__link">
-    Python (with flash_usb)
+  <a href="#python-flash_usb" class="md-nav__link">
+    Python (с использованием flash_usb)
   </a>
   
 </li>
@@ -1363,11 +1363,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#physical-serial" class="md-nav__link">
-    Physical serial
+  <a href="#_4" class="md-nav__link">
+    Физическая серия
   </a>
   
-    <nav class="md-nav" aria-label="Physical serial">
+    <nav class="md-nav" aria-label="Физическая серия">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1408,23 +1408,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entering-the-bootloader" class="md-nav__link">
-    Entering the bootloader
+  <a href="#_5" class="md-nav__link">
+    Вход в загрузчик
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
+  <a href="#_6" class="md-nav__link">
+    Примечания
   </a>
   
-    <nav class="md-nav" aria-label="Notes">
+    <nav class="md-nav" aria-label="Примечания">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#stm32-dfu-warning" class="md-nav__link">
-    STM32 DFU Warning
+  <a href="#stm32-dfu" class="md-nav__link">
+    Предупреждение STM32 DFU
   </a>
   
 </li>
@@ -1453,57 +1453,59 @@
 
 <h1 id="_1">Запись в загрузчик<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>Klipper можно дать команду перезагрузиться в <a href="Bootloaders.html">Bootloader</a> одним из следующих способов:</p>
-<h2 id="requesting-the-bootloader">Requesting the bootloader<a class="headerlink" href="#requesting-the-bootloader" title="Permanent link">&para;</a></h2>
-<h3 id="virtual-serial">Virtual Serial<a class="headerlink" href="#virtual-serial" title="Permanent link">&para;</a></h3>
-<p>If a virtual (USB-ACM) serial port is in use, pulsing DTR while at 1200 baud will request the bootloader.</p>
-<h4 id="python-with-flash_usb">Python (with <code>flash_usb</code>)<a class="headerlink" href="#python-with-flash_usb" title="Permanent link">&para;</a></h4>
-<p>To enter the bootloader using python (using <code>flash_usb</code>):</p>
+<h2 id="_2">Запрашиваю загрузчик<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">Виртуальный серийный<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>Если используется виртуальный (USB-ACM) последовательный порт, импульс DTR на скорости 1200 бод запросит загрузчик.</p>
+<h4 id="python-flash_usb">Python (с использованием <code>flash_usb</code>)<a class="headerlink" href="#python-flash_usb" title="Permanent link">&para;</a></h4>
+<p>Чтобы войти в загрузчик с помощью python (используя <code>flash_usb</code>):</p>
 <div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>klipper/scripts
+
 &gt;<span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import flash_usb as u; u.enter_bootloader(&quot;&lt;DEVICE&gt;&quot;)&#39;</span>
+
 Entering<span class="w"> </span>bootloader<span class="w"> </span>on<span class="w"> </span>&lt;DEVICE&gt;
 </code></pre></div>
 
-<p>Where <code>&lt;DEVICE&gt;</code> is your serial device, such as <code>/dev/serial.by-id/usb-Klipper[...]</code> or <code>/dev/ttyACM0</code></p>
-<p>Note that if this fails, no output will be printed, success is indicated by printing <code>Entering bootloader on &lt;DEVICE&gt;</code>.</p>
+<p>Где <code>&lt;DEVICE&gt;</code> - это ваше последовательное устройство, например <code>/dev/serial.by-id/usb-Klipper[...]</code> или <code>/dev/ttyACM0</code></p>
+<p>Обратите внимание, что в случае неудачи не будет выведено никаких результатов, а об успехе будет свидетельствовать печать <code>Entering bootloader on &lt;DEVICE&gt;</code>.</p>
 <h4 id="picocom">Picocom<a class="headerlink" href="#picocom" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>picocom<span class="w"> </span>-b<span class="w"> </span><span class="m">1200</span><span class="w"> </span>&lt;DEVICE&gt;
+<div class="highlight"><pre><span></span><code>picocom<span class="w"> </span>-b<span class="w"> </span><span class="m">1200</span><span class="w"> </span>&lt;Устройство&gt;
 &lt;Ctrl-A&gt;&lt;Ctrl-P&gt;
 </code></pre></div>
 
-<p>Where <code>&lt;DEVICE&gt;</code> is your serial device, such as <code>/dev/serial.by-id/usb-Klipper[...]</code> or <code>/dev/ttyACM0</code></p>
-<p><code>&lt;Ctrl-A&gt;&lt;Ctrl-P&gt;</code> means holding <code>Ctrl</code>, pressing and releasing <code>a</code>, pressing and releasing <code>p</code>, then releasing <code>Ctrl</code></p>
-<h3 id="physical-serial">Physical serial<a class="headerlink" href="#physical-serial" title="Permanent link">&para;</a></h3>
-<p>If a physical serial port is being used on the MCU (even if a USB serial adapter is being used to connect to it), sending the string <code>&lt;SPACE&gt;&lt;FS&gt;&lt;SPACE&gt;Request Serial Bootloader!!&lt;SPACE&gt;~</code>.</p>
-<p><code>&lt;SPACE&gt;</code> is an ASCII literal space, 0x20.</p>
-<p><code>&lt;FS&gt;</code> is the ASCII File Separator, 0x1c.</p>
-<p>Note that this is not a valid message as per the <a href="Protocol.html#micro-controller-interface">MCU Protocol</a>, but sync characters(<code>~</code>) are still respected.</p>
-<p>Because this message must be the only thing in the "block" it is received in, prefixing an extra sync character can increase reliability if other tools were previously accessing the serial port.</p>
+<p>Где <code>&lt;DEVICE&gt;</code> - это ваше последовательное устройство, например <code>/dev/serial.by-id/usb-Klipper[...]</code> или <code>/dev/ttyACM0</code></p>
+<p><code>&lt;Ctrl-A&gt;&lt;Ctrl-P&gt;</code> означает удерживание <code>Ctrl</code>, нажатие и отпускание <code>a</code>, нажатие и отпускание <code>p</code>, затем отпускание <code>Ctrl</code></p>
+<h3 id="_4">Физическая серия<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>Если на MCU используется физический последовательный порт (даже если для подключения к нему используется последовательный USB-адаптер), отправьте строку <code>&lt;SPACE&gt;&lt;FS&gt;&lt;SPACE&gt;Запрос последовательного загрузчика!!&lt;SPACE&gt;~</code>.</p>
+<p><code>&lt;SPACE&gt;</code> - это буквенный пробел ASCII, 0x20.</p>
+<p><code>&lt;FS&gt;</code> - это разделитель файлов ASCII, 0x1c.</p>
+<p>Обратите внимание, что это не является корректным сообщением согласно <a href="Protocol.html#micro-controller-interface">MCU протокола</a>, но символы синхронизации (<code>~</code>) по-прежнему соблюдаются.</p>
+<p>Поскольку это сообщение должно быть единственным в "блоке", в котором оно получено, добавление дополнительного символа синхронизации может повысить надежность, если ранее к последовательному порту обращались другие инструменты.</p>
 <h4 id="shell">Shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>stty<span class="w"> </span>&lt;BAUD&gt;<span class="w"> </span>&lt;<span class="w"> </span>/dev/&lt;DEVICE&gt;
-<span class="nb">echo</span><span class="w"> </span><span class="s1">$&#39;~ \x1c Request Serial Bootloader!! ~&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/dev/&lt;DEVICE&gt;
+<span class="nb">echo</span><span class="w"> </span><span class="s1">$&#39;~ \x1c Запрос последовательного загрузчика!! ~&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/dev/&lt;DEVICE&gt;
 </code></pre></div>
 
-<p>Where <code>&lt;DEVICE&gt;</code> is your serial port, such as <code>/dev/ttyS0</code>, or <code>/dev/serial/by-id/gpio-serial2</code>, and</p>
-<p><code>&lt;BAUD&gt;</code> is the baud rate of the serial port, such as <code>115200</code>.</p>
+<p>Где <code>&lt;DEVICE&gt;</code> - это ваш последовательный порт, например <code>/dev/ttyS0</code>, или <code>/dev/serial/by-id/gpio-serial2</code>, и</p>
+<p><code>&lt;BAUD&gt;</code> - это скорость передачи данных последовательного порта, например <code>115200</code>.</p>
 <h3 id="canbus">CANBUS<a class="headerlink" href="#canbus" title="Permanent link">&para;</a></h3>
-<p>If CANBUS is in use, a special <a href="CANBUS_protocol.html#admin-messages">admin message</a> will request the bootloader. This message will be respected even if the device already has a nodeid, and will also be processed if the mcu is shutdown.</p>
-<p>This method also applies to devices operating in <a href="CANBUS.html#usb-to-can-bus-bridge-mode">CANBridge</a> mode.</p>
+<p>Если используется CANBUS, специальное сообщение <a href="CANBUS_protocol.html#admin-messages">сообщение администратора</a> запросит загрузчик. Это сообщение будет принято, даже если устройство уже имеет nodeid, а также будет обработано, если mcu выключен.</p>
+<p>Этот метод также применим к устройствам, работающим в режиме <a href="CANBUS.html#usb-to-can-bus-bridge-mode">CANBridge</a>.</p>
 <h4 id="katapults-flashtoolpy">Katapult's flashtool.py<a class="headerlink" href="#katapults-flashtoolpy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>./katapult/scripts/flashtool.py<span class="w"> </span>-i<span class="w"> </span>&lt;CAN_IFACE&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;UUID&gt;<span class="w"> </span>-r
 </code></pre></div>
 
-<p>Where <code>&lt;CAN_IFACE&gt;</code> is the can interface to use. If using <code>can0</code>, both the <code>-i</code> and <code>&lt;CAN_IFACE&gt;</code> may be omitted.</p>
-<p><code>&lt;UUID&gt;</code> is the UUID of your CAN device.</p>
-<p>See the <a href="CANBUS.html#finding-the-canbus_uuid-for-new-micro-controllers">CANBUS Documentation</a> for information on finding the CAN UUID of your devices.</p>
-<h2 id="entering-the-bootloader">Entering the bootloader<a class="headerlink" href="#entering-the-bootloader" title="Permanent link">&para;</a></h2>
-<p>When klipper receives one of the above bootloader requests:</p>
-<p>If Katapult (formerly known as CANBoot) is available, klipper will request that Katapult stay active on the next boot, then reset the MCU (therefore entering Katapult).</p>
-<p>If Katapult is not available, klipper will then try to enter a platform-specific bootloader, such as STM32's DFU mode(<a href="#stm32-dfu-warning">see note</a>).</p>
-<p>In short, Klipper will reboot to Katapult if installed, then a hardware specific bootloader if available.</p>
-<p>For details about the specific bootloaders on various platforms see <a href="Bootloaders.html">Bootloaders</a></p>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
-<h3 id="stm32-dfu-warning">STM32 DFU Warning<a class="headerlink" href="#stm32-dfu-warning" title="Permanent link">&para;</a></h3>
-<p>Note that on some boards, like the Octopus Pro v1, entering DFU mode can cause undesired actions (such as powering the heater while in DFU mode). It is recommended to disconnect heaters, and otherwise prevent undesired operations when using DFU mode. Consult the documentation for your board for more details.</p>
+<p>Где <code>&lt;CAN_IFACE&gt;</code> - используемый интерфейс can. Если используется <code>can0</code>, то и <code>-i</code>, и <code>&lt;CAN_IFACE&gt;</code> могут быть опущены.</p>
+<p><code>&lt;UUID&gt;</code> - это UUID вашего CAN-устройства.</p>
+<p>Информацию о поиске CAN UUID ваших устройств смотрите в <a href="CANBUS.html#finding-the-canbus_uuid-for-new-micro-controllers">CANBUS документации</a>.</p>
+<h2 id="_5">Вход в загрузчик<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>Когда klipper получает один из вышеперечисленных запросов загрузчика:</p>
+<p>Если Katapult (ранее известный как CANBoot) доступен, klipper запросит, чтобы Katapult оставался активным при следующей загрузке, а затем сбросит MCU (таким образом, войдя в Katapult).</p>
+<p>Если Katapult недоступен, klipper попытается войти в специфический для платформы загрузчик, например, в режим DFU STM32([<a href="#stm32-dfu-warning">смотрите примечание</a>]).</p>
+<p>Короче говоря, Klipper перезагрузится в Katapult, если он установлен, а затем в аппаратный загрузчик, если он доступен.</p>
+<p>Подробную информацию о конкретных загрузчиках для различных платформ можно найти в разделе <a href="Bootloaders.html">Bootloaders</a></p>
+<h2 id="_6">Примечания<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="stm32-dfu">Предупреждение STM32 DFU<a class="headerlink" href="#stm32-dfu" title="Permanent link">&para;</a></h3>
+<p>Обратите внимание, что на некоторых платах, например Octopus Pro v1, вход в режим DFU может привести к нежелательным действиям (например, включению питания нагревателя в режиме DFU). Рекомендуется отключать нагреватели и иным образом предотвращать нежелательные действия при использовании режима DFU. Для получения более подробной информации обратитесь к документации на вашу плату.</p>
 
               
             </article>

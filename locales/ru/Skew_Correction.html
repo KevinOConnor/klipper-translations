@@ -1385,8 +1385,8 @@
 <p>Первым шагом в исправлении перекоса является печать <a href="https://www.thingiverse.com/thing:2563185/files">калибровочного объекта</a> вдоль плоскости, которую вы хотите исправить. Существует также <a href="https://www.thingiverse.com/thing:2972743">объект калибровки</a>, который включает в себя все плоскости в одной модели. Вы хотите, чтобы объект был ориентирован так, чтобы угол A был направлен к началу плоскости.</p>
 <p>Убедитесь, что во время этой печати не применяется коррекция перекоса. Вы можете сделать это, либо удалив модуль <code>[skew_correction]</code> из файла printer.cfg, либо введя gcode <code>SET_SKEW CLEAR=1</code>.</p>
 <h2 id="_3">Проведите свои измерения<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>The <code>[skew_correction]</code> module requires 3 measurements for each plane you want to correct; the length from Corner A to Corner C, the length from Corner B to Corner D, and the length from Corner A to Corner D. When measuring length AD do not include the flats on the corners that some test objects provide.</p>
-<p><img alt="skew_lengths" src="img/skew_lengths.png" /></p>
+<p>Модуль <code>[skew_correction]</code> требует 3 измерения для каждой плоскости, которую вы хотите исправить: длина от угла A до угла C, длина от угла B до угла D и длина от угла A до угла D. При измерении длины AD не учитывайте плоские поверхности на углах, которые обеспечивают некоторые тестовые объекты.</p>
+<p><img alt="перекос_длин" src="img/skew_lengths.png" /></p>
 <h2 id="_4">Настройка перекоса<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>Убедитесь, что <code>[skew_correction]</code> находится в файле print.cfg. Теперь вы можете использовать gcode <code>SET_SKEW</code> для настройки skew_correton. Например, если ваши измеренные длины по XY следующие:</p>
 <div class="highlight"><pre><span></span><code>Длина АС = 140,4

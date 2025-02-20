@@ -1,15 +1,17 @@
 # srbjessen <srbjessen@gmail.com>, 2024.
+# Sebastian <sebastiankiwidk@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-03-21 11:02+0000\n"
-"Last-Translator: srbjessen <srbjessen@gmail.com>\n"
-"Language-Team: Danish <https://hosted.weblate.org/projects/klipper/overview/da/>\n"
+"PO-Revision-Date: 2025-01-16 04:17+0000\n"
+"Last-Translator: Sebastian <sebastiankiwidk@gmail.com>\n"
+"Language-Team: Danish <https://hosted.weblate.org/projects/klipper/overview/"
+"da/>\n"
 "Language: da\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid ""
 "Welcome to the Klipper documentation. If new to Klipper, start with the "
@@ -311,10 +313,11 @@ msgstr ""
 #: docs/Overview.md:block 6 (unordered list)
 msgid "[Octoprint](OctoPrint.md): Guide to installing Octoprint with Klipper."
 msgstr ""
+"[Octoprint](Octoprint.md): Guide til installering af Octoprint med Klipper."
 
 #: docs/Overview.md:block 10 (unordered list)
 msgid "[Eddy Current Inductive probe](Eddy_Probe.md)"
-msgstr ""
+msgstr "[Eddy Current Inductive probe](Eddy_Probe.md)"
 
 #~ msgid ""
 #~ "[Exclude Object](Exclude_Object.md): The guide to the Exclude Objecs "

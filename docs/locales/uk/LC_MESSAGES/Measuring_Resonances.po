@@ -1,17 +1,20 @@
 # Владислав <vlad.marusenko2000@gmail.com>, 2024.
 # Ruslan Kyba <kybargr@gmail.com>, 2024.
 # Максим Горпиніч <mgorpinic2005@gmail.com>, 2024.
+# Максим Горпиніч <maksimgorpinic2005a@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-11-05 21:00+0000\n"
-"Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/measuring_resonances/uk/>\n"
+"PO-Revision-Date: 2025-02-20 08:20+0000\n"
+"Last-Translator: Максим Горпиніч <maksimgorpinic2005a@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
+"measuring_resonances/uk/>\n"
 "Language: uk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 msgid "Measuring Resonances"
 msgstr "Вимірювання Резонансів"
@@ -1424,12 +1427,24 @@ msgid ""
 "400kbit/s *fast mode* in Klipper. The LIS2DW and LIS3DH can be connected to "
 "either SPI or I2C with the same considerations as above."
 msgstr ""
+"Klipper має вбудовану підтримку сумісних акселерометрів ADXL345, MPU-9250, "
+"LIS2DW і LIS3DH, які можна використовувати для вимірювання резонансних "
+"частот принтера для різних осей і автоматичного налаштування "
+"[формувальників вхідних даних](Resonance_Compensation.md) для компенсації "
+"резонансів. Зауважте, що використання акселерометрів потребує пайки та "
+"обтиску. ADXL345 можна підключити до інтерфейсу SPI плати Raspberry Pi або "
+"MCU (він має бути достатньо швидким). Сімейство MPU можна підключити "
+"безпосередньо до інтерфейсу I2C Raspberry Pi або до інтерфейсу I2C плати "
+"MCU, яка підтримує 400 Кбіт/с *швидкий режим* у Klipper. LIS2DW і LIS3DH "
+"можна підключити до SPI або I2C з тими ж міркуваннями, що й вище."
 
 #: docs/Measuring_Resonances.md:block 4 (paragraph)
 msgid ""
 "For ADXL345s, make sure that the board supports SPI mode (a small number of "
 "boards appear to be hard-configured for I2C by pulling SDO to GND)."
 msgstr ""
+"Для ADXL345 переконайтеся, що плата підтримує режим SPI (невелика кількість "
+"плат, здається, жорстко налаштована для I2C шляхом підтягування SDO до GND)."
 
 #: docs/Measuring_Resonances.md:block 5 (paragraph)
 msgid ""
@@ -1437,20 +1452,25 @@ msgid ""
 "also a variety of board designs and clones with different I2C pull-up "
 "resistors which will need supplementing."
 msgstr ""
+"Для MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500s і LIS2DW/LIS3DH також є "
+"різноманітні дизайни плат і клони з різними підтягуючими резисторами I2C, "
+"які потребують доповнення."
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "SAMD"
-msgstr ""
+msgstr "SAMD"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "SAMC21G18"
-msgstr ""
+msgstr "SAMC21G18"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid ""
 "SAMC21G18, SAMD21G18, SAMD21E18, SAMD21J18, SAMD21E15, SAMD51G19, SAMD51J19, "
 "SAMD51N19, SAMD51P20, SAME51J19, SAME51N19, SAME54P20"
 msgstr ""
+"SAMC21G18, SAMD21G18, SAMD21E18, SAMD21J18, SAMD21E15, SAMD51G19, SAMD51J19, "
+"SAMD51N19, SAMD51P20, SAME51J19, SAME51N19, SAME54P20"
 
 #: docs/Measuring_Resonances.md:block 61 (paragraph)
 msgid ""
@@ -1461,22 +1481,28 @@ msgid ""
 "version, due to newer versions of NumPY having requirements that may not be "
 "satisfied in some klipper python environments."
 msgstr ""
+"Зауважте, що, залежно від продуктивності ЦП, це може зайняти *багато* часу, "
+"до 10-20 хвилин. Запасіться терпінням і дочекайтеся завершення установки. У "
+"деяких випадках, якщо на платі занадто мало оперативної пам’яті, інсталяція "
+"може завершитися помилкою, і вам потрібно буде ввімкнути обмін. Також "
+"зверніть увагу на примусову версію, оскільки нові версії NumPY мають вимоги, "
+"які можуть не виконуватись у деяких середовищах klipper python."
 
 #: docs/Measuring_Resonances.md:block 62 (paragraph)
 msgid "Once installed please check that no errors show from the command:"
-msgstr ""
+msgstr "Після встановлення переконайтеся, що команда не відображає помилки:"
 
 #: docs/Measuring_Resonances.md:block 64 (paragraph)
 msgid "The correct output should simply be a new line."
-msgstr ""
+msgstr "Правильний вихід має бути просто новим рядком."
 
 #: docs/Measuring_Resonances.md:block 85 (header)
 msgid "Configure LIS2DW series over SPI"
-msgstr ""
+msgstr "Налаштуйте серію LIS2DW через SPI"
 
 #: docs/Measuring_Resonances.md:block 155 (header)
 msgid "Unreliable measurements of resonance frequencies"
-msgstr ""
+msgstr "Ненадійні вимірювання резонансних частот"
 
 #: docs/Measuring_Resonances.md:block 156 (paragraph)
 msgid ""
@@ -1495,6 +1521,22 @@ msgid ""
 " If none of that helps, a user may try the other shapers from the produced "
 "list besides the one recommended by default."
 msgstr ""
+"Іноді резонансні вимірювання можуть давати фальшиві результати, що "
+"призводить до неправильних пропозицій для формувачів вхідних даних. Це може "
+"бути викликано різними причинами, зокрема роботою вентиляторів на "
+"інструментальній головці, неправильним положенням або нежорстким кріпленням "
+"акселерометра або механічними проблемами, як-от ослаблені ремені або "
+"закручування чи нерівність осі. Майте на увазі, що всі вентилятори мають "
+"бути відключені для перевірки резонансу, особливо галасливі, і що "
+"акселерометр має бути жорстко встановлений на відповідній рухомій частині ("
+"наприклад, на самій платформі для стропальника ліжка або на самому "
+"екструдері принтера, а не на каретці; деякі люди отримують кращі результати, "
+"встановлюючи акселерометр на самому соплі). Що стосується механічних "
+"проблем, користувач повинен перевірити, чи є якась несправність, яку можна "
+"усунути за допомогою рухомої осі (наприклад, лінійні напрямні рейки очищені "
+"та змащені, а натяг коліс із V-подібним пазом відрегульовано правильно). "
+"Якщо нічого з цього не допомагає, користувач може спробувати інші формувачі "
+"зі створеного списку, окрім рекомендованого за замовчуванням."
 
 #~ msgid "~/klippy-env/bin/pip install -v numpy\n"
 #~ msgstr "~/klippy-env/bin/pip встановлення -v numpy\n"

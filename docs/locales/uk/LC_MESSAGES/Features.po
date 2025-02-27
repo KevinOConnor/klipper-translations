@@ -1,15 +1,18 @@
 # Максим Горпиніч <mgorpinic2005@gmail.com>, 2024.
+# Максим Горпиніч <maksimgorpinic2005a@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-31 21:00+0000\n"
-"Last-Translator: Максим Горпиніч <mgorpinic2005@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/features/uk/>\n"
+"PO-Revision-Date: 2025-02-20 08:20+0000\n"
+"Last-Translator: Максим Горпиніч <maksimgorpinic2005a@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/klipper/"
+"features/uk/>\n"
 "Language: uk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 msgid "Klipper has several compelling features:"
 msgstr "Кліппер має декілька функцій:"
@@ -608,27 +611,27 @@ msgstr "2507 КМ"
 
 #: docs/Features.md:block 10 (table)
 msgid "RP2350"
-msgstr ""
+msgstr "RP2350"
 
 #: docs/Features.md:block 10 (table)
 msgid "4167K"
-msgstr ""
+msgstr "4167K"
 
 #: docs/Features.md:block 10 (table)
 msgid "2663K"
-msgstr ""
+msgstr "2663K"
 
 #: docs/Features.md:block 10 (table)
 msgid "SAME70"
-msgstr ""
+msgstr "SAME70"
 
 #: docs/Features.md:block 10 (table)
 msgid "6667K"
-msgstr ""
+msgstr "6667K"
 
 #: docs/Features.md:block 10 (table)
 msgid "4737K"
-msgstr ""
+msgstr "4737K"
 
 #~ msgid ""
 #~ "Best in class performance. Klipper is able to achieve high stepping rates on "

@@ -6,17 +6,19 @@
 # Alfredo Monclus <alfredomonclus@gmail.com>, 2023.
 # Rundredoffi <contact.rundred@gmail.com>, 2024.
 # Zefut <zefut.pro@gmail.com>, 2024.
+# hilaire12 <hilaangalikiana1@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-12-28 14:00+0000\n"
-"Last-Translator: Zefut <zefut.pro@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/klipper/config_reference/fr/>\n"
+"PO-Revision-Date: 2025-02-25 15:18+0000\n"
+"Last-Translator: hilaire12 <hilaangalikiana1@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/klipper/"
+"config_reference/fr/>\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.10.2-dev\n"
 
 msgid ""
 "This document is a reference for options available in the Klipper config file."
@@ -2296,7 +2298,7 @@ msgid ""
 "A tool to compensate for inaccurate probe readings due to twist in X or Y "
 "gantry. See the [Axis Twist Compensation Guide](Axis_Twist_Compensation.md) "
 "for more detailed information regarding symptoms, configuration and setup."
-msgstr ""
+msgstr "PROBE"
 
 #: docs/Config_Reference.md:block 391 (header)
 msgid "aip31068_spi display"

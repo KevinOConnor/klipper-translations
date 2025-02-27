@@ -1,21 +1,22 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
 # "Zs.Antal" <zsikaiantal@gmail.com>, 2023.
 # "Zs.Antal" <zsikaiantal@icloud.com>, 2024.
-# "Zs.Antal" <antonio092130@icloud.com>, 2024.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2024-09-08 09:09+0000\n"
+"PO-Revision-Date: 2025-02-23 13:01+0000\n"
 "Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/measuring_resonances/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"measuring_resonances/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 msgid "Measuring Resonances"
 msgstr "Rezonanciák mérése"
@@ -1463,12 +1464,27 @@ msgid ""
 "400kbit/s *fast mode* in Klipper. The LIS2DW and LIS3DH can be connected to "
 "either SPI or I2C with the same considerations as above."
 msgstr ""
+"A Klipper beépített támogatással rendelkezik az ADXL345, MPU-9250, LIS2DW és "
+"LIS3DH kompatibilis gyorsulásmérőkhöz, amelyek segítségével a nyomtató "
+"különböző tengelyek rezonanciafrekvenciái mérhetők, és a rezonanciák "
+"kompenzálására a [Rezonancia kompenzáció](Resonance_Compensation.md) "
+"automatikus beállítása használható. Vedd figyelembe, hogy a gyorsulásmérők "
+"használata némi forrasztást és krimpelést igényel. Az ADXL345 "
+"csatlakoztatható egy Raspberry Pi vagy MCU lap SPI interfészéhez (viszonylag "
+"gyorsnak kell lennie). Az MPU-család közvetlenül csatlakoztatható egy "
+"Raspberry Pi I2C-interfészéhez, vagy egy MCU-kártya I2C-interfészéhez, amely "
+"támogatja a Klipper 400kbit/s *gyors üzemmódot*. A LIS2DW és a LIS3DH "
+"csatlakoztatható SPI vagy I2C interfészhez a fentiekkel megegyező "
+"megfontolásokkal."
 
 #: docs/Measuring_Resonances.md:block 4 (paragraph)
 msgid ""
 "For ADXL345s, make sure that the board supports SPI mode (a small number of "
 "boards appear to be hard-configured for I2C by pulling SDO to GND)."
 msgstr ""
+"Az ADXL345-ök esetében győződj meg róla, hogy a kártya támogatja az SPI "
+"módot (úgy tűnik, hogy néhány kártya keményen I2C-re van konfigurálva az SDO "
+"GND-re húzásával)."
 
 #: docs/Measuring_Resonances.md:block 5 (paragraph)
 msgid ""
@@ -1476,20 +1492,25 @@ msgid ""
 "also a variety of board designs and clones with different I2C pull-up "
 "resistors which will need supplementing."
 msgstr ""
+"Az MPU-9250/MPU-9255/MPU-6515/MPU-6050/MPU-6500-asok és a LIS2DW/LIS3DH-ok "
+"esetében is számos különböző lapkakialakítás és klón létezik különböző I2C "
+"felhúzó ellenállásokkal, amelyeket ki kell egészíteni."
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "SAMD"
-msgstr ""
+msgstr "SAMD"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid "SAMC21G18"
-msgstr ""
+msgstr "SAMC21G18"
 
 #: docs/Measuring_Resonances.md:block 7 (table)
 msgid ""
 "SAMC21G18, SAMD21G18, SAMD21E18, SAMD21J18, SAMD21E15, SAMD51G19, SAMD51J19, "
 "SAMD51N19, SAMD51P20, SAME51J19, SAME51N19, SAME54P20"
 msgstr ""
+"SAMC21G18, SAMD21G18, SAMD21E18, SAMD21J18, SAMD21E15, SAMD51G19, SAMD51J19, "
+"SAMD51N19, SAMD51P20, SAME51J19, SAME51N19, SAME54P20"
 
 #: docs/Measuring_Resonances.md:block 61 (paragraph)
 msgid ""
@@ -1500,22 +1521,29 @@ msgid ""
 "version, due to newer versions of NumPY having requirements that may not be "
 "satisfied in some klipper python environments."
 msgstr ""
+"Vedd figyelembe, hogy a CPU teljesítményétől függően ez *sok* időt vehet "
+"igénybe, akár 10-20 percet is. Legyél türelmes, és várd meg a telepítés "
+"befejezését. Bizonyos esetekben, ha a kártyán túl kevés RAM van, a telepítés "
+"sikertelen lehet, és engedélyezned kell a swapot. Vedd figyelembe a "
+"kényszerített verziót is, mivel a NumPY újabb verzióinak olyan követelményei "
+"vannak, amelyek nem feltétlenül teljesülnek egyes klipper python "
+"környezetekben."
 
 #: docs/Measuring_Resonances.md:block 62 (paragraph)
 msgid "Once installed please check that no errors show from the command:"
-msgstr ""
+msgstr "A telepítés után ellenőrizd, hogy a parancs nem mutat-e hibát:"
 
 #: docs/Measuring_Resonances.md:block 64 (paragraph)
 msgid "The correct output should simply be a new line."
-msgstr ""
+msgstr "A helyes kimenetnek egyszerűen egy új sornak kell lennie."
 
 #: docs/Measuring_Resonances.md:block 85 (header)
 msgid "Configure LIS2DW series over SPI"
-msgstr ""
+msgstr "LIS2DW sorozat konfigurálása SPI-n keresztül"
 
 #: docs/Measuring_Resonances.md:block 155 (header)
 msgid "Unreliable measurements of resonance frequencies"
-msgstr ""
+msgstr "Megbízhatatlan rezonanciafrekvenciák mérése"
 
 #: docs/Measuring_Resonances.md:block 156 (paragraph)
 msgid ""
@@ -1534,6 +1562,21 @@ msgid ""
 " If none of that helps, a user may try the other shapers from the produced "
 "list besides the one recommended by default."
 msgstr ""
+"Néha a rezonancia mérések hamis eredményeket adhatnak, ami a bemeneti "
+"alakítókra vonatkozó helytelen javaslatokhoz vezet. Ennek számos oka lehet, "
+"például a nyomtatófej ventilátorok, a gyorsulásmérő helytelen helyzete vagy "
+"nem merev rögzítése, vagy mechanikai problémák, például laza szíjak vagy "
+"tengelyek kötése vagy döcögése. Ne feledd, hogy a rezonancia vizsgálatához "
+"minden ventilátort ki kell kapcsolni, különösen a zajosakat, és hogy a "
+"gyorsulásmérőt stabilan kell felszerelni a megfelelő mozgó alkatrészre (pl. "
+"magára az ágyra a mozgó ágyak esetében, vagy magára a nyomtató extruderére "
+"és nem a kocsira, és egyesek jobb eredményeket érnek el, ha a gyorsulásmérőt "
+"magára a fúvókára szerelik). Ami a mechanikai problémákat illeti, a "
+"felhasználónak ellenőriznie kell, hogy van-e olyan hiba, amely a mozgó "
+"tengelyen javítható (pl. a lineáris vezetősínek megtisztítása és kenése, "
+"valamint a V-nyílású kerekek feszességének megfelelő beállítása). Ha mindez "
+"nem segít, a felhasználó kipróbálhatja az alapértelmezetten ajánlott "
+"formázón kívül a többi formázót is a gyártott listából."
 
 #~ msgid "~/klippy-env/bin/pip install -v numpy\n"
 #~ msgstr "~/klippy-env/bin/pip install -v numpy\n"

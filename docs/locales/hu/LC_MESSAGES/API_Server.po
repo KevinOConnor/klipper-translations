@@ -1,16 +1,17 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
-# "Zs.Antal" <antonio092130@icloud.com>, 2024.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-09-08 09:09+0000\n"
+"PO-Revision-Date: 2025-02-23 13:01+0000\n"
 "Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/api_server/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"api_server/hu/>\n"
 "Language: hu\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 msgid ""
 "This document describes Klipper's Application Programmer Interface (API). This"
@@ -28,8 +29,8 @@ msgid ""
 "In order to use the API server, the klippy.py host software must be started "
 "with the `-a` parameter. For example:"
 msgstr ""
-"Az API-kiszolgáló használatához a klippy.py host szoftvert a `-a` paraméterrel"
-" kell elindítani. Például:"
+"Az API-kiszolgáló használatához a klippy.py gazdagép szoftvert a `-a` "
+"paraméterrel kell elindítani. Például:"
 
 msgid ""
 "This causes the host software to create a Unix Domain Socket. A client can "

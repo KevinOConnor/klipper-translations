@@ -1,21 +1,22 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
 # "Zs.Antal" <zsikaiantal@gmail.com>, 2023.
 # "Zs.Antal" <zsikaiantal@icloud.com>, 2024.
-# "Zs.Antal" <antonio092130@icloud.com>, 2024.
+# "Zs.Antal" <antonio092130@icloud.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2024-09-08 09:09+0000\n"
+"PO-Revision-Date: 2025-02-23 13:01+0000\n"
 "Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/bed_mesh/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"bed_mesh/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 msgid "Basic Configuration"
 msgstr "Alapvető konfiguráció"
@@ -1421,6 +1422,16 @@ msgid ""
 " performed. The bed_mesh module provides the `zero_reference_position` option "
 "for specifying this coordinate:"
 msgstr ""
+"Sok szonda hajlamos a „csúszásra”, azaz: a hő vagy interferencia által "
+"okozott pontatlanságokra. Ez kihívássá teheti a szonda Z-eltolásának "
+"kiszámítását, különösen különböző ágyhőmérsékleteken. Ezért egyes nyomtatók "
+"a Z tengely beállításához végállást, a háló kalibrálásához pedig szondát "
+"használnak. Ebben a konfigurációban lehetséges a háló eltolása úgy, hogy az ("
+"X, Y) `referenciapozíció` nullpontbeállításra vonatkozik. A "
+"`referenciapozíciónak` az ágyon annak a helynek kell lennie, ahol a "
+"[Z_ENDSTOP_CALIBRATE](./Manual_Level.md#calibrating-a-z-endstop) papírpróbát "
+"végzik. A bed_mesh modul biztosítja a `zero_reference_position` opciót e "
+"koordináta megadásához:"
 
 #~ msgid ""
 #~ "// bed_mesh: generated points\n"

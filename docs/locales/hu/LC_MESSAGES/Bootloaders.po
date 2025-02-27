@@ -1,20 +1,22 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
 # "Zs.Antal" <zsikaiantal@gmail.com>, 2023.
 # "Zs.Antal" <zsikaiantal@icloud.com>, 2024.
+# "Zs.Antal" <antonio092130@icloud.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2024-03-15 16:02+0000\n"
-"Last-Translator: \"Zs.Antal\" <zsikaiantal@icloud.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/bootloaders/hu/>\n"
+"PO-Revision-Date: 2025-02-23 13:01+0000\n"
+"Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"bootloaders/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 msgid ""
 "This document provides information on common bootloaders found on micro-"
@@ -903,6 +905,9 @@ msgid ""
 "OpenOCD. It should display something like:After which you can release the "
 "reset button."
 msgstr ""
+"Előfordulhat, hogy az OpenOCD indítása közben nyomva kell tartani a RESET "
+"gombot az alaplapon. Valami olyasmit kell megjelenítenie, mint: Ezt követően "
+"elengedheted a RESET gombot."
 
 #~ msgid ""
 #~ "wget 'https://github.com/arduino/Arduino/raw/1.8.5/hardware/arduino/avr/bootloaders/stk500v2/stk500boot_v2_mega2560.hex'\n"

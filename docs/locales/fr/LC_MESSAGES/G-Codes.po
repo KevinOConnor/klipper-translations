@@ -3,17 +3,19 @@
 # Francis Poulizac <fpoulizac@vivaldi.net>, 2021.
 # Francis Poulizac <francis@poulizac.fr>, 2022, 2023.
 # jean-luc MATTEI <jlucm@free.fr>, 2023, 2024.
+# Thibaud <thibaud.perso@proton.me>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2024-10-01 14:34+0000\n"
-"Last-Translator: jean-luc MATTEI <jlucm@free.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/klipper/g-codes/fr/>\n"
+"PO-Revision-Date: 2025-02-25 15:18+0000\n"
+"Last-Translator: Thibaud <thibaud.perso@proton.me>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/klipper/g-codes/"
+"fr/>\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.10.2-dev\n"
 
 msgid ""
 "This document describes the commands that Klipper supports. These are commands"
@@ -1071,9 +1073,9 @@ msgid ""
 "refer to ADXL345 data sheet for the reference."
 msgstr ""
 "`ACCELEROMETER_DEBUG_WRITE [CHIP=<nom_de_la_configuration>] REG=<registre> "
-"VAL=<valeur>` : Ecrit la \"valeur\" brute dans le registre \"registre\". La "
+"VAL=<valeur>` : Ecrit la \"valeur\" brute dans le registre \"registre\". La "
 "\"valeur\" et le \"registre\" peuvent être des entiers décimaux ou "
-"hexadécimaux. A utiliser avec précaution, et se référer à la fiche technique "
+"hexadécimaux. À utiliser avec précaution, et se référer à la fiche technique "
 "de l'ADXL345 pour la référence."
 
 #: docs/G-Codes.md:block 22 (header)

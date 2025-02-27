@@ -1,16 +1,18 @@
 # Zs.Antal <zsikaiantal@gmail.com>, 2022.
 # "Zs.Antal" <zsikaiantal@gmail.com>, 2023.
+# "Zs.Antal" <antonio092130@icloud.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: yifeiding@protonmail.com\n"
-"PO-Revision-Date: 2023-08-27 22:41+0000\n"
-"Last-Translator: \"Zs.Antal\" <zsikaiantal@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/benchmarks/hu/>\n"
+"PO-Revision-Date: 2025-02-23 13:01+0000\n"
+"Last-Translator: \"Zs.Antal\" <antonio092130@icloud.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/klipper/"
+"benchmarks/hu/>\n"
 "Language: hu\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 msgid "This document describes Klipper benchmarks."
 msgstr "Ez a dokumentum a Klipper referenciaértékeit ismerteti."
@@ -741,65 +743,74 @@ msgstr "or1k-linux-musl-gcc 9.3.0"
 
 #: docs/Benchmarks.md:block 85 (header)
 msgid "SAME70 step rate benchmark"
-msgstr ""
+msgstr "SAME70 lépésszám referenciaérték"
 
 #: docs/Benchmarks.md:block 86 (paragraph)
 msgid "The following configuration sequence is used on the SAME70:"
-msgstr ""
+msgstr "A SAME70 esetében a következő konfigurációs sorrendet kell alkalmazni:"
 
 #: docs/Benchmarks.md:block 88 (paragraph)
 msgid ""
 "The test was last run on commit `34e9ea55` with gcc version `arm-none-eabi-gcc"
 " (NixOS 10.3-2021.10) 10.3.1` on a SAME70Q20B micro-controller."
 msgstr ""
+"A tesztet utoljára a `34e9ea55` kötelezően futtattuk az `arm-none-eabi-gcc ("
+"NixOS 10.3-2021.10) 10.3.1` gcc verzióval egy SAME70Q20B mikrokontrollerrel."
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "same70"
-msgstr ""
+msgstr "same70"
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "45"
-msgstr ""
+msgstr "45"
 
 #: docs/Benchmarks.md:block 89 (table)
 msgid "190"
-msgstr ""
+msgstr "190"
 
 #: docs/Benchmarks.md:block 93 (paragraph)
 msgid ""
 "The test was last run on commit `b7978d37` with gcc version `or1k-linux-musl-"
 "gcc (GCC) 9.2.0` on an Allwinner A64-H micro-controller."
 msgstr ""
+"A tesztet utoljára a `b7978d37` kötelezően futtattuk az `or1k-linux-musl-gcc "
+"(GCC) 9.2.0` gcc verzióval egy Allwinner A64-H mikrokontrollerrel."
 
 #: docs/Benchmarks.md:block 95 (header)
 msgid "RPxxxx step rate benchmark"
-msgstr ""
+msgstr "RPxxxx lépésszám referenciaérték"
 
 #: docs/Benchmarks.md:block 96 (paragraph)
 msgid "The following configuration sequence is used on the RP2040 and RP2350:"
 msgstr ""
+"Az RP2040 és RP2350 készülékeken a következő konfigurációs sorrendet kell "
+"alkalmazni:"
 
 #: docs/Benchmarks.md:block 98 (paragraph)
 msgid ""
 "The test was last run on commit `f6718291` with gcc version `arm-none-eabi-gcc"
 " (Fedora 14.1.0-1.fc40) 14.1.0` on Raspberry Pi Pico and Pico 2 boards."
 msgstr ""
+"A tesztet utoljára az `f6718291` kötelezően futtattuk a `arm-none-eabi-gcc ("
+"Fedora 14.1.0-1.fc40) 14.1.0` gcc verzióval Raspberry Pi Pico és Pico 2 "
+"lapkákon."
 
 #: docs/Benchmarks.md:block 99 (table)
 msgid "rp2040 (*)"
-msgstr ""
+msgstr "rp2040 (*)"
 
 #: docs/Benchmarks.md:block 100 (table)
 msgid "rp2350"
-msgstr ""
+msgstr "rp2350"
 
 #: docs/Benchmarks.md:block 100 (table)
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #: docs/Benchmarks.md:block 100 (table)
 msgid "169"
-msgstr ""
+msgstr "169"
 
 #: docs/Benchmarks.md:block 101 (paragraph)
 msgid ""
@@ -808,22 +819,26 @@ msgid ""
 "expected that 5 scheduling ticks corresponds to ~47 ARM core cycles and 22 "
 "scheduling ticks corresponds to ~224 ARM core cycles."
 msgstr ""
+"(*) Megjegyzendő, hogy a bejelentett rp2040 tickek egy 12Mhz-es ütemező "
+"időzítőhöz viszonyítva vannak, és nem felelnek meg a 125Mhz-es belső ARM-"
+"feldolgozási sebességnek. Várhatóan 5 ütemezési tick megfelel ~47 ARM "
+"magciklusnak, 22 ütemezési tick pedig ~224 ARM magciklusnak."
 
 #: docs/Benchmarks.md:block 112 (table)
 msgid "885K"
-msgstr ""
+msgstr "885K"
 
 #: docs/Benchmarks.md:block 112 (table)
 msgid "f6718291"
-msgstr ""
+msgstr "f6718291"
 
 #: docs/Benchmarks.md:block 112 (table)
 msgid "arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0"
-msgstr ""
+msgstr "arm-none-eabi-gcc (Fedora 14.1.0-1.fc40) 14.1.0"
 
 #: docs/Benchmarks.md:block 112 (table)
 msgid "rp2350 (USB)"
-msgstr ""
+msgstr "rp2350 (USB)"
 
 #~ msgid ""
 #~ "SET start_clock {clock+freq}\n"
